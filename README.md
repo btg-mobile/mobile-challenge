@@ -24,14 +24,13 @@ O app deve counsumir a [API CurrencyLayer](https://currencylayer.com/documentati
 
 ## Observações
 * Dê preferência para a não utilização de bibliotecas externas;
-* Caso opte por usar bibliotecas externas, prefira Gradle (Android) ou CocoaPods (iOS);
-* Você não precisa se preocupar muito com o design, porém gostamos de ver coisas bonitas. 
+* Caso opte por usar bibliotecas externas, prefira Gradle (Android) ou CocoaPods (iOS) como gerenciadores de dependência;
 * O objetivo deste desafio é avaliar o seu conhecimento técnico, estilo de código, conhecimento de arquiteturas, padrões de programação e boas práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 
 ## Features
 ### Obrigatórias:
-- [ ] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API](https://currencylayer.com/documentation) de _Supported Currencies_ (/list)
-- [ ] A cotação atual deve ser obtida da chamada de [API](https://currencylayer.com/documentation) de _Real-time Rates_ (/live)
+- [ ] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API Supported Currencies (/list)](https://currencylayer.com/documentation)
+- [ ] A cotação atual deve ser obtida da chamada de [API Real-time Rates (/live)](https://currencylayer.com/documentation)
 - [ ] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
 
 ### Opcionais (não necessário, porém contam pontos):
