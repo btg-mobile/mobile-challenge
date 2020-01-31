@@ -8,7 +8,7 @@ O Desafio consiste no desenvolvimento de um app de conversão de moedas. O app d
 
 ## Requisitos
 
-O app deverá counsumir a [API](https://currencylayer.com/documentation). Para utilizar a API será necessário fazer um cadastro no plano gratuito para obter uma chave de acesso. Como o plano gratuito da API apresenta apenas as taxas de câmbio em relação ao dólar americano (USD), caso o usuário deseje fazer uma conversão entre quaisquer outras duas moedas, será necessário primeiro converter a moeda de origem para dólar e então de dólar para a moeda desejada.  
+O app deve counsumir a [API CurrencyLayer](https://currencylayer.com/documentation). Para utilizar a API será necessário fazer um cadastro no plano gratuito para obter uma chave de acesso. Como o plano gratuito da API apresenta apenas as taxas de câmbio em relação ao dólar americano (USD), caso o usuário deseje fazer uma conversão entre quaisquer outras duas moedas, será necessário primeiro converter a moeda de origem para dólar e então de dólar para a moeda desejada.  
 
 - [ ] Android: _Kotlin_ | iOS: _Swift_
 - [ ] O aplicativo deve ter duas telas principais:
@@ -20,7 +20,7 @@ O app deverá counsumir a [API](https://currencylayer.com/documentation). Para u
 * A tela de listagem de moedas deve conter:
     * Uma lista das moedas disponíves para conversão, mostrando código e nome da moeda.
     
-- [ ] A listagem de moedas deve ser mostrada obrigatóriamente em uma tela diferente da tela de conversão. O objetivo é analizar a lógica utilizada pelo candidato para trocar informação entre as telas.
+- [ ] A listagem de moedas deve ser mostrada obrigatóriamente em uma tela diferente da tela de conversão.
 
 ## Observações
 * Dê preferência para a não utilização de bibliotecas externas;
