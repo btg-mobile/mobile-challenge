@@ -1,0 +1,2 @@
+include ':app', ':currencyapi'
+rootProject.name='Desafio BTG'

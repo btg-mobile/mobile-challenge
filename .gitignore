@@ -1,0 +1,13 @@
+# Local files
+*.iml
+.gradle
+.DS_Store
+local.properties
+
+# Local directories
+.idea/
+.cxx/
+.externalNativeBuild/
+.gradle/
+build/
+captures/
