@@ -26,9 +26,9 @@ class CurrencyConversionRepositoryTests: XCTestCase {
     
     func testShouldFetchLiveCurrency() {
         let expectation = XCTestExpectation(description: "expect to fetch data from server")
-        sut.fetchLiveCurrency { [weak self] (currencyRate) in
+        sut.fetchLiveCurrency { [weak self] (result) in
             XCTAssertNotNil(self?.sut.url)
-            XCTAssertNotNil(currencyRate)
+            XCTAssertNotNil(result)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 15)

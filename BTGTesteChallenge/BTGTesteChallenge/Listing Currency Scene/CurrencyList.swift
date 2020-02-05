@@ -13,5 +13,4 @@ struct CurrencyList : Decodable {
     var terms: String?
     var privacy: String?
     var currencies: [String:Double]?
-    var error: Error?
 }

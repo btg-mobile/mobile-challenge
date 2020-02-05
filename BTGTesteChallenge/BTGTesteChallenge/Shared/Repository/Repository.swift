@@ -15,7 +15,7 @@ protocol BaseRepositoryProtocol {
 }
 extension BaseRepositoryProtocol {
     var url : URL {
-        let urlString = "\(baseURL)\(endpoint)\(key)"
+        let urlString = "\(baseURL)\(endpoint.rawValue)\(key)"
         guard let url = URL(string: urlString) else {
             fatalError("Unable to get a url")
         }
@@ -37,7 +37,41 @@ final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
     var endpoint: Endpoint = .live
     
     func fetchLiveCurrency(completionHandler: @escaping (Result<CurrencyRate>) -> ()) {
-        
+        URLSession.shared.dataTask(with: url) { (data, response, responseError) in
+            if let error = responseError {
+                completionHandler(.error(error))
+            }
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"Invalid HTTP Response"])))
+                return
+            }
+            
+            if (200...299).contains(httpResponse.statusCode) {
+                //parse data
+                do {
+                    guard let data = data else {
+                        completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"No Data from server"])))
+                        return
+                    }
+//                    let jsonString = String(data: data, encoding: .utf8)
+//                    print(jsonString)
+                    if let currencyRate = try? JSONDecoder().decode(CurrencyRate.self, from: data) {
+                        completionHandler(.success(currencyRate))
+                    } else {
+                        guard let errorMessage = try? JSONDecoder().decode(CurrencyError.self, from: data),
+                            let error = errorMessage.error,
+                            let code = error.code,
+                            let info = error.info else {
+                            completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"Could not parse error message"])))
+                                return
+                        }
+                        completionHandler(.error(NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey:info])))
+                    }
+                    
+                }
+            }
+            
+        }.resume()
     }
     
 }
