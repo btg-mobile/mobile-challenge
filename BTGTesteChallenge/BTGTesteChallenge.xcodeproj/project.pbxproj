@@ -17,6 +17,8 @@
 		E3AC02C823EA62EB00EA0663 /* ConvertCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02C723EA62EB00EA0663 /* ConvertCurrencyModel.swift */; };
 		E3AC02CC23EA632100EA0663 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02CB23EA632100EA0663 /* Error.swift */; };
 		E3AC02CE23EA634D00EA0663 /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */; };
+		E3AC02D123EA643800EA0663 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D023EA643800EA0663 /* Repository.swift */; };
+		E3AC02D323EA646400EA0663 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D223EA646400EA0663 /* Endpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		E3AC02C723EA62EB00EA0663 /* ConvertCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyModel.swift; sourceTree = "<group>"; };
 		E3AC02CB23EA632100EA0663 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
+		E3AC02D023EA643800EA0663 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		E3AC02D223EA646400EA0663 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		E3AC02C923EA630C00EA0663 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E3AC02CF23EA641200EA0663 /* Repository */,
 				E3AC02CA23EA631200EA0663 /* Model */,
 			);
 			path = Shared;
@@ -136,8 +141,17 @@
 			isa = PBXGroup;
 			children = (
 				E3AC02CB23EA632100EA0663 /* Error.swift */,
+				E3AC02D223EA646400EA0663 /* Endpoints.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E3AC02CF23EA641200EA0663 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02D023EA643800EA0663 /* Repository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,11 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3AC02D123EA643800EA0663 /* Repository.swift in Sources */,
 				E3AC02CE23EA634D00EA0663 /* CurrencyList.swift in Sources */,
 				E3AC02A823EA61AC00EA0663 /* ViewController.swift in Sources */,
 				E3AC02A423EA61AC00EA0663 /* AppDelegate.swift in Sources */,
 				E3AC02C823EA62EB00EA0663 /* ConvertCurrencyModel.swift in Sources */,
 				E3AC02CC23EA632100EA0663 /* Error.swift in Sources */,
+				E3AC02D323EA646400EA0663 /* Endpoints.swift in Sources */,
 				E3AC02A623EA61AC00EA0663 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
