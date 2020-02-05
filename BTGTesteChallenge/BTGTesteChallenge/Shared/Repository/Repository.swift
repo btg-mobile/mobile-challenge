@@ -24,11 +24,11 @@ extension BaseRepositoryProtocol {
 }
 
 protocol LiveCurrencyRepositoryProtocol: class, BaseRepositoryProtocol {
-    func fetchLiveCurrency(completionHandler: @escaping (CurrencyRate) -> ())
+    func fetchLiveCurrency(completionHandler: @escaping (Result<CurrencyRate>) -> ())
 }
 
 protocol ListCurrencyRepositoryProtocol: class, BaseRepositoryProtocol {
-    func fetchListOfCurrency(completionHandler: @escaping (CurrencyList) -> ())
+    func fetchListOfCurrency(completionHandler: @escaping (Result<CurrencyList>) -> ())
 }
 
 final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
@@ -36,7 +36,7 @@ final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
     var key: String = ""
     var endpoint: Endpoint = .live
     
-    func fetchLiveCurrency(completionHandler: @escaping (CurrencyRate) -> ()) {
+    func fetchLiveCurrency(completionHandler: @escaping (Result<CurrencyRate>) -> ()) {
         
     }
     
