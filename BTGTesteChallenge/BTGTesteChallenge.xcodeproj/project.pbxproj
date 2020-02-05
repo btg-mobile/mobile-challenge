@@ -14,6 +14,9 @@
 		E3AC02AD23EA61AE00EA0663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3AC02AC23EA61AE00EA0663 /* Assets.xcassets */; };
 		E3AC02B023EA61AE00EA0663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3AC02AE23EA61AE00EA0663 /* LaunchScreen.storyboard */; };
 		E3AC02BB23EA61AE00EA0663 /* BTGTesteChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02BA23EA61AE00EA0663 /* BTGTesteChallengeTests.swift */; };
+		E3AC02C823EA62EB00EA0663 /* ConvertCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02C723EA62EB00EA0663 /* ConvertCurrencyModel.swift */; };
+		E3AC02CC23EA632100EA0663 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02CB23EA632100EA0663 /* Error.swift */; };
+		E3AC02CE23EA634D00EA0663 /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		E3AC02B623EA61AE00EA0663 /* BTGTesteChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTGTesteChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3AC02BA23EA61AE00EA0663 /* BTGTesteChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGTesteChallengeTests.swift; sourceTree = "<group>"; };
 		E3AC02BC23EA61AE00EA0663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3AC02C723EA62EB00EA0663 /* ConvertCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyModel.swift; sourceTree = "<group>"; };
+		E3AC02CB23EA632100EA0663 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,9 @@
 		E3AC02A223EA61AC00EA0663 /* BTGTesteChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				E3AC02C923EA630C00EA0663 /* Shared */,
+				E3AC02C623EA62AF00EA0663 /* Listing Currency Scene */,
+				E3AC02C523EA62A400EA0663 /* Converter Currency Scene */,
 				E3AC02A323EA61AC00EA0663 /* AppDelegate.swift */,
 				E3AC02A523EA61AC00EA0663 /* SceneDelegate.swift */,
 				E3AC02A723EA61AC00EA0663 /* ViewController.swift */,
@@ -97,6 +106,38 @@
 				E3AC02BC23EA61AE00EA0663 /* Info.plist */,
 			);
 			path = BTGTesteChallengeTests;
+			sourceTree = "<group>";
+		};
+		E3AC02C523EA62A400EA0663 /* Converter Currency Scene */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02C723EA62EB00EA0663 /* ConvertCurrencyModel.swift */,
+			);
+			path = "Converter Currency Scene";
+			sourceTree = "<group>";
+		};
+		E3AC02C623EA62AF00EA0663 /* Listing Currency Scene */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */,
+			);
+			path = "Listing Currency Scene";
+			sourceTree = "<group>";
+		};
+		E3AC02C923EA630C00EA0663 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02CA23EA631200EA0663 /* Model */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E3AC02CA23EA631200EA0663 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02CB23EA632100EA0663 /* Error.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3AC02CE23EA634D00EA0663 /* CurrencyList.swift in Sources */,
 				E3AC02A823EA61AC00EA0663 /* ViewController.swift in Sources */,
 				E3AC02A423EA61AC00EA0663 /* AppDelegate.swift in Sources */,
+				E3AC02C823EA62EB00EA0663 /* ConvertCurrencyModel.swift in Sources */,
+				E3AC02CC23EA632100EA0663 /* Error.swift in Sources */,
 				E3AC02A623EA61AC00EA0663 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
