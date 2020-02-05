@@ -21,6 +21,7 @@
 		E3AC02D523EA673F00EA0663 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D423EA673F00EA0663 /* CurrencyConverterViewModel.swift */; };
 		E3AC02D723EA698300EA0663 /* CurrencyConversionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */; };
 		E3AC02D923EA6F7500EA0663 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D823EA6F7500EA0663 /* Result.swift */; };
+		E3AC02DB23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E3AC02D423EA673F00EA0663 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionRepositoryTests.swift; sourceTree = "<group>"; };
 		E3AC02D823EA6F7500EA0663 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				E3AC02BA23EA61AE00EA0663 /* BTGTesteChallengeTests.swift */,
 				E3AC02BC23EA61AE00EA0663 /* Info.plist */,
 				E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */,
+				E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */,
 			);
 			path = BTGTesteChallengeTests;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3AC02D723EA698300EA0663 /* CurrencyConversionRepositoryTests.swift in Sources */,
+				E3AC02DB23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift in Sources */,
 				E3AC02BB23EA61AE00EA0663 /* BTGTesteChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

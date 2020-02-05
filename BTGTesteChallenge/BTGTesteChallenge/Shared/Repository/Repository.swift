@@ -53,8 +53,6 @@ final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
                         completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"No Data from server"])))
                         return
                     }
-//                    let jsonString = String(data: data, encoding: .utf8)
-//                    print(jsonString)
                     if let currencyRate = try? JSONDecoder().decode(CurrencyRate.self, from: data) {
                         completionHandler(.success(currencyRate))
                     } else {
@@ -73,5 +71,47 @@ final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
             
         }.resume()
     }
+}
+
+final class ListCurrencyRepository: ListCurrencyRepositoryProtocol {
     
+    var baseURL: String = ""
+    var key: String = ""
+    var endpoint: Endpoint = .list
+    
+    func fetchListOfCurrency(completionHandler: @escaping (Result<CurrencyList>) -> ()) {
+        
+        URLSession.shared.dataTask(with: url) { (data, response, responseError) in
+            if let error = responseError {
+                completionHandler(.error(error))
+            }
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"Invalid HTTP Response"])))
+                return
+            }
+            
+            if (200...299).contains(httpResponse.statusCode) {
+                do {
+                    guard let data = data else {
+                        completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"No Data from server"])))
+                        return
+                    }
+                    if let currencyList = try? JSONDecoder().decode(CurrencyList.self, from: data) {
+                        completionHandler(.success(currencyList))
+                    } else {
+                        guard let errorMessage = try? JSONDecoder().decode(CurrencyError.self, from: data),
+                            let error = errorMessage.error,
+                            let code = error.code,
+                            let info = error.info else {
+                            completionHandler(.error(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey:"Could not parse error message"])))
+                                return
+                        }
+                        completionHandler(.error(NSError(domain: "", code: code, userInfo: [NSLocalizedDescriptionKey:info])))
+                    }
+                    
+                }
+            }
+            
+        }.resume()
+    }
 }
