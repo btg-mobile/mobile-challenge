@@ -9,8 +9,8 @@
 import Foundation
 
 protocol BaseRepositoryProtocol {
-    var baseURL: String { get } //retrieve from plist
-    var key: String { get } //retrieve from plist
+    var baseURL: String { get set } //retrieve from plist
+    var key: String { get set } //retrieve from plist
     var endpoint: Endpoint {get set}
 }
 extension BaseRepositoryProtocol {
@@ -29,4 +29,15 @@ protocol LiveCurrencyRepositoryProtocol: class, BaseRepositoryProtocol {
 
 protocol ListCurrencyRepositoryProtocol: class, BaseRepositoryProtocol {
     func fetchListOfCurrency(completionHandler: @escaping (CurrencyList) -> ())
+}
+
+final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
+    var baseURL: String = ""
+    var key: String = ""
+    var endpoint: Endpoint = .live
+    
+    func fetchLiveCurrency(completionHandler: @escaping (CurrencyRate) -> ()) {
+        
+    }
+    
 }

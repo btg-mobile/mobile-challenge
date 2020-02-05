@@ -19,6 +19,8 @@
 		E3AC02CE23EA634D00EA0663 /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */; };
 		E3AC02D123EA643800EA0663 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D023EA643800EA0663 /* Repository.swift */; };
 		E3AC02D323EA646400EA0663 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D223EA646400EA0663 /* Endpoints.swift */; };
+		E3AC02D523EA673F00EA0663 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D423EA673F00EA0663 /* CurrencyConverterViewModel.swift */; };
+		E3AC02D723EA698300EA0663 /* CurrencyConversionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		E3AC02CD23EA634D00EA0663 /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
 		E3AC02D023EA643800EA0663 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E3AC02D223EA646400EA0663 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		E3AC02D423EA673F00EA0663 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			children = (
 				E3AC02BA23EA61AE00EA0663 /* BTGTesteChallengeTests.swift */,
 				E3AC02BC23EA61AE00EA0663 /* Info.plist */,
+				E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */,
 			);
 			path = BTGTesteChallengeTests;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				E3AC02C723EA62EB00EA0663 /* ConvertCurrencyModel.swift */,
+				E3AC02D423EA673F00EA0663 /* CurrencyConverterViewModel.swift */,
 			);
 			path = "Converter Currency Scene";
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				E3AC02A823EA61AC00EA0663 /* ViewController.swift in Sources */,
 				E3AC02A423EA61AC00EA0663 /* AppDelegate.swift in Sources */,
 				E3AC02C823EA62EB00EA0663 /* ConvertCurrencyModel.swift in Sources */,
+				E3AC02D523EA673F00EA0663 /* CurrencyConverterViewModel.swift in Sources */,
 				E3AC02CC23EA632100EA0663 /* Error.swift in Sources */,
 				E3AC02D323EA646400EA0663 /* Endpoints.swift in Sources */,
 				E3AC02A623EA61AC00EA0663 /* SceneDelegate.swift in Sources */,
@@ -270,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3AC02D723EA698300EA0663 /* CurrencyConversionRepositoryTests.swift in Sources */,
 				E3AC02BB23EA61AE00EA0663 /* BTGTesteChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GEE43J5XT;
 				INFOPLIST_FILE = BTGTesteChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,6 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GEE43J5XT;
 				INFOPLIST_FILE = BTGTesteChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
