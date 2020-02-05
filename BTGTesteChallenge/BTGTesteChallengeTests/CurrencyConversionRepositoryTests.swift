@@ -33,5 +33,24 @@ class CurrencyConversionRepositoryTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 15)
     }
+    
+    func testShouldFetchLiveCurrencyAndReturnInvalidIFInvalidCredentials() {
+        sut.key = "sadasdasdasdasdasda"
+        var someError : Error!
+        let expectation = XCTestExpectation(description: "expect to fetch data from server")
+        sut.fetchLiveCurrency { [weak self] (result) in
+            XCTAssertNotNil(self?.sut.url)
+            switch result {
+            case .success(let currencyRate):
+                return
+            case .error(let error):
+                someError = error
+            }
+            XCTAssertNotNil(result)
+            XCTAssertNotNil(someError)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 15)
+    }
 
 }
