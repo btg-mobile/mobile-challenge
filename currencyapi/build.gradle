@@ -17,12 +17,31 @@ android {
     }
 
     buildTypes {
+        // Kept both release and debug configurations equal just in case there is a need to change
+        // only one of them
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField('String', 'CURRENCY_LAYER_BASE_URL', 'http://api.currencylayer.com/')
+            buildConfigField('String', 'CURRENCY_LAYER_ACCESS_KEY', '4aa59e99be843d2fbe4fdc32ff733a1e')
+        }
+
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField('String', 'CURRENCY_LAYER_BASE_URL', '"http://api.currencylayer.com/"')
+            buildConfigField('String', 'CURRENCY_LAYER_ACCESS_KEY', '"4aa59e99be843d2fbe4fdc32ff733a1e"')
         }
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -37,13 +56,19 @@ dependencies {
     // Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
     testImplementation 'junit:junit:4.12'
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "org.hamcrest:hamcrest:$hamcrest_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation "io.mockk:mockk:$mockk_version"
+    androidTestImplementation "org.hamcrest:hamcrest:$hamcrest_version"
 }

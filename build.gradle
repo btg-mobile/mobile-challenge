@@ -16,11 +16,6 @@ buildscript {
 }
 
 allprojects {
-    ext.kodein_version = '6.4.1'
-    ext.rxjava_version = '2.2.17'
-    ext.rxandroid_version = '2.1.1'
-    ext.retrofit_version = '2.7.1'
-
     repositories {
         google()
         jcenter()
@@ -29,4 +24,16 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+
+ext {
+    // Dependencies version
+    kodein_version = '6.4.1'
+    rxjava_version = '2.2.17'
+    rxkotlin_version = '2.4.0'
+    rxandroid_version = '2.1.1'
+    retrofit_version = '2.7.1'
+    mockk_version = '1.9.3'
+    hamcrest_version = '2.2'
 }
