@@ -22,6 +22,9 @@
 		E3AC02D723EA698300EA0663 /* CurrencyConversionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */; };
 		E3AC02D923EA6F7500EA0663 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02D823EA6F7500EA0663 /* Result.swift */; };
 		E3AC02DB23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */; };
+		E3AC02DF23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02DE23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift */; };
+		E3CDE5ED23EBAE600095AC20 /* CurrencyRate.json in Resources */ = {isa = PBXBuildFile; fileRef = E3CDE5EB23EB78A70095AC20 /* CurrencyRate.json */; };
+		E3CDE5EF23EBB5670095AC20 /* CurrencyList.json in Resources */ = {isa = PBXBuildFile; fileRef = E3CDE5EE23EBB5670095AC20 /* CurrencyList.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionRepositoryTests.swift; sourceTree = "<group>"; };
 		E3AC02D823EA6F7500EA0663 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyRepositoryTests.swift; sourceTree = "<group>"; };
+		E3AC02DE23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModelTests.swift; sourceTree = "<group>"; };
+		E3CDE5EB23EB78A70095AC20 /* CurrencyRate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyRate.json; sourceTree = "<group>"; };
+		E3CDE5EE23EBB5670095AC20 /* CurrencyList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyList.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +117,12 @@
 		E3AC02B923EA61AE00EA0663 /* BTGTesteChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				E3CDE5EE23EBB5670095AC20 /* CurrencyList.json */,
+				E3CDE5EB23EB78A70095AC20 /* CurrencyRate.json */,
+				E3AC02DD23EB73C300EA0663 /* ViewModel */,
+				E3AC02DC23EB73B100EA0663 /* Repository */,
 				E3AC02BA23EA61AE00EA0663 /* BTGTesteChallengeTests.swift */,
 				E3AC02BC23EA61AE00EA0663 /* Info.plist */,
-				E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */,
-				E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */,
 			);
 			path = BTGTesteChallengeTests;
 			sourceTree = "<group>";
@@ -161,6 +169,23 @@
 				E3AC02D023EA643800EA0663 /* Repository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		E3AC02DC23EB73B100EA0663 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02D623EA698300EA0663 /* CurrencyConversionRepositoryTests.swift */,
+				E3AC02DA23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		E3AC02DD23EB73C300EA0663 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E3AC02DE23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3CDE5ED23EBAE600095AC20 /* CurrencyRate.json in Resources */,
+				E3CDE5EF23EBB5670095AC20 /* CurrencyList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +309,7 @@
 			files = (
 				E3AC02D723EA698300EA0663 /* CurrencyConversionRepositoryTests.swift in Sources */,
 				E3AC02DB23EB1C2400EA0663 /* ListCurrencyRepositoryTests.swift in Sources */,
+				E3AC02DF23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift in Sources */,
 				E3AC02BB23EA61AE00EA0663 /* BTGTesteChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

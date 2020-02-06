@@ -16,20 +16,25 @@ protocol CurrencyConverterViewModelProtocol: class {
     var selectedConversionCurrency: String {get set}
     var currencyListKey: [String] { get }
     var currencyListValue: [String] { get }
+    var currencyDictionary: [String : String] { get set }
+    var currencyRatesDictionary: [String : Decimal] { get set }
     
     func totalOfCurrenciesInList() -> Int
-    func requestLoadData()
-    func performConversion(value: String)
+    func requestCurrencyRates()
+    func requestCurrencyList()
+    func performConversion(value: String) -> Decimal
+    func getUSDCurrencyRateForSource() -> Decimal
+    func getUSDCurrencyRateForDestination() -> Decimal
 }
 
 class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
-        
+
     weak var liveCurrencyRepository: LiveCurrencyRepositoryProtocol?
     weak var listCurrencyRepository: ListCurrencyRepositoryProtocol?
-    var selectedSourceCurrency: String = "USD"
-    var selectedConversionCurrency: String = "USDUSD"
+    var selectedSourceCurrency: String = ""
+    var selectedConversionCurrency: String = ""
     var currencyDictionary: [String : String] = [:]
-    var currencyRatesDictionary: [String : Double] = [:]
+    var currencyRatesDictionary: [String : Decimal] = [:]
     var isSourceSelected: Bool = false
     
     var currencyListKey: [String] {
@@ -53,17 +58,43 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
         return currencyListKey.count
     }
     
-    func getCurrencyRate() -> Double {
+    func getUSDCurrencyRateForSource() -> Decimal {
         return currencyRatesDictionary["USD\(selectedSourceCurrency)"] ?? 0.00
     }
     
-    func requestLoadData() {
-        
+    func getUSDCurrencyRateForDestination() -> Decimal {
+        return currencyRatesDictionary["USD\(selectedConversionCurrency)"] ?? 0.00
     }
     
-    func performConversion(value: String) {
-        
+    func requestCurrencyRates() {
+        liveCurrencyRepository?.fetchLiveCurrency(completionHandler: { [weak self] (result) in
+            switch result {
+            case .success(let currencyRate):
+                guard let quotes = currencyRate.quotes else {
+                    return
+                }
+                self?.currencyRatesDictionary = quotes
+            case .error(let error):
+                break
+            }
+        })
     }
-
-        
+    
+    func requestCurrencyList() {
+        listCurrencyRepository?.fetchListOfCurrency(completionHandler: { [weak self] (result) in
+            switch result {
+            case .success(let currencyList):
+                guard let currencies = currencyList.currencies else { return }
+                self?.currencyDictionary = currencies
+            case .error(let error):
+                break
+            }
+        })
+    }
+    
+    func performConversion(value: String) -> Decimal {
+        guard let numericValue = Decimal(string: value) else { return 0.0 }
+        let convertedValue = (numericValue * getUSDCurrencyRateForDestination()) / getUSDCurrencyRateForSource()
+        return convertedValue
+    }
 }
