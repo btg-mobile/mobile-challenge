@@ -14,7 +14,7 @@ struct CurrencyRate : Decodable {
     var privacy: String?
     var timestamp: Double?
     var source: String?
-    var quotes: [String:Decimal]?
+    var quotes: [String:Double]?
     
     enum CodingKeys: CodingKey {
         case success
@@ -32,6 +32,6 @@ struct CurrencyRate : Decodable {
         privacy = try container.decode(String.self, forKey: .privacy)
         source = try container.decode(String.self, forKey: .source)
         timestamp = try container.decode(TimeInterval.self, forKey: .timestamp)
-        quotes = try container.decode([String:Decimal].self, forKey: .quotes)
+        quotes = try container.decode([String:Double].self, forKey: .quotes)
     }
 }

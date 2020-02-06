@@ -28,6 +28,12 @@ class CurrencyConverterViewModelTests: XCTestCase {
             let currencies = currencyList.currencies {
             sut.currencyDictionary = currencies
         }
+        
+        if let data = FileManager().contents(atPath: currencyRateFilePath),
+            let currencyRate = try? JSONDecoder().decode(CurrencyRate.self, from: data),
+            let quotes = currencyRate.quotes {
+            sut.currencyRatesDictionary = quotes
+        }
     }
 
     override func tearDown() {
@@ -53,13 +59,7 @@ class CurrencyConverterViewModelTests: XCTestCase {
     func testShouldReturnNilCurrencyRatesIfInvalidSelectedSourceAndDestination() {
         sut.selectedSourceCurrency = "xxx"
         sut.selectedConversionCurrency = "xxx"
-        
-        if let data = FileManager().contents(atPath: currencyRateFilePath),
-            let currencyRate = try? JSONDecoder().decode(CurrencyRate.self, from: data),
-            let quotes = currencyRate.quotes {
-            sut.currencyRatesDictionary = quotes
-        }
-        
+                
         XCTAssertNotNil(sut.currencyRatesDictionary)
         XCTAssert(sut.currencyRatesDictionary.count > 0)
         XCTAssertEqual(sut.getUSDCurrencyRateForSource(), 0)
@@ -83,14 +83,45 @@ class CurrencyConverterViewModelTests: XCTestCase {
         XCTAssertTrue(sut.currencyListValue.count > 0)
     }
     
-    func testShouldPerformValidConversionIfValidSourceAndDestination() {
+    func testConversionShouldPerformValidConversionIfValidSourceAndDestination() {
         sut.selectedSourceCurrency = "BRL"
         sut.selectedConversionCurrency = "USD"
-        let convertedValue = sut.performConversion(value: "20.00")
+        var convertedValue = sut.performConversion(value: "20.00")
         XCTAssertTrue(convertedValue > 0)
-        XCTAssertEqual(convertedValue, 4.6728972)
-
+        XCTAssertEqual(convertedValue.roundWith(precision: 3), 4.673)
     }
+    
+    func testConversionShouldPerformReturnSameInputValueIfSameSourceAndDestination() {
+        sut.selectedSourceCurrency = "BRL"
+        sut.selectedConversionCurrency = "BRL"
+        var convertedValue = sut.performConversion(value: "20.00")
+        XCTAssertTrue(convertedValue > 0)
+        XCTAssertEqual(convertedValue.roundWith(precision: 2), 20.00)
+    }
+    
+    func testConversionShouldReturnZeroIfInvalidSource() {
+        sut.selectedSourceCurrency = "xxx"
+        sut.selectedConversionCurrency = "BRL"
+        var convertedValue = sut.performConversion(value: "20.00")
+        XCTAssertTrue(convertedValue == 0)
+        XCTAssertEqual(convertedValue.roundWith(precision: 2), 00.00)
+    }
+    
+    func testConversionShouldReturnZeroIfInvalidDestination() {
+         sut.selectedSourceCurrency = "BRL"
+         sut.selectedConversionCurrency = "xxx"
+         var convertedValue = sut.performConversion(value: "20.00")
+         XCTAssertTrue(convertedValue == 0)
+         XCTAssertEqual(convertedValue.roundWith(precision: 2), 00.00)
+     }
+    
+    func testConversionShouldReturnZeroIfInvalidSourceAndDestination() {
+         sut.selectedSourceCurrency = "xxx"
+         sut.selectedConversionCurrency = "xxx"
+         var convertedValue = sut.performConversion(value: "20.00")
+         XCTAssertTrue(convertedValue == 0)
+         XCTAssertEqual(convertedValue.roundWith(precision: 2), 00.00)
+     }
 }
 
 final class DummyLiveCurrencyRepository : LiveCurrencyRepositoryProtocol {

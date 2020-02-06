@@ -17,14 +17,14 @@ protocol CurrencyConverterViewModelProtocol: class {
     var currencyListKey: [String] { get }
     var currencyListValue: [String] { get }
     var currencyDictionary: [String : String] { get set }
-    var currencyRatesDictionary: [String : Decimal] { get set }
+    var currencyRatesDictionary: [String : Double] { get set }
     
     func totalOfCurrenciesInList() -> Int
     func requestCurrencyRates()
     func requestCurrencyList()
-    func performConversion(value: String) -> Decimal
-    func getUSDCurrencyRateForSource() -> Decimal
-    func getUSDCurrencyRateForDestination() -> Decimal
+    func performConversion(value: String) -> Double
+    func getUSDCurrencyRateForSource() -> Double
+    func getUSDCurrencyRateForDestination() -> Double
 }
 
 class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
@@ -34,7 +34,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
     var selectedSourceCurrency: String = ""
     var selectedConversionCurrency: String = ""
     var currencyDictionary: [String : String] = [:]
-    var currencyRatesDictionary: [String : Decimal] = [:]
+    var currencyRatesDictionary: [String : Double] = [:]
     var isSourceSelected: Bool = false
     
     var currencyListKey: [String] {
@@ -58,11 +58,11 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
         return currencyListKey.count
     }
     
-    func getUSDCurrencyRateForSource() -> Decimal {
+    func getUSDCurrencyRateForSource() -> Double {
         return currencyRatesDictionary["USD\(selectedSourceCurrency)"] ?? 0.00
     }
     
-    func getUSDCurrencyRateForDestination() -> Decimal {
+    func getUSDCurrencyRateForDestination() -> Double {
         return currencyRatesDictionary["USD\(selectedConversionCurrency)"] ?? 0.00
     }
     
@@ -92,9 +92,12 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
         })
     }
     
-    func performConversion(value: String) -> Decimal {
-        guard let numericValue = Decimal(string: value) else { return 0.0 }
+    func performConversion(value: String) -> Double {
+        guard let numericValue = Double(value) else { return 0.0 }
         let convertedValue = (numericValue * getUSDCurrencyRateForDestination()) / getUSDCurrencyRateForSource()
-        return convertedValue
+        return (convertedValue.isInfinite || convertedValue.isNaN) ? 0.00 : convertedValue
     }
 }
+
+
+

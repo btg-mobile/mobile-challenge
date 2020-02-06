@@ -25,6 +25,7 @@
 		E3AC02DF23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC02DE23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift */; };
 		E3CDE5ED23EBAE600095AC20 /* CurrencyRate.json in Resources */ = {isa = PBXBuildFile; fileRef = E3CDE5EB23EB78A70095AC20 /* CurrencyRate.json */; };
 		E3CDE5EF23EBB5670095AC20 /* CurrencyList.json in Resources */ = {isa = PBXBuildFile; fileRef = E3CDE5EE23EBB5670095AC20 /* CurrencyList.json */; };
+		E3CDE5F123EBD65E0095AC20 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CDE5F023EBD65E0095AC20 /* Double+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		E3AC02DE23EB740B00EA0663 /* CurrencyConverterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModelTests.swift; sourceTree = "<group>"; };
 		E3CDE5EB23EB78A70095AC20 /* CurrencyRate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyRate.json; sourceTree = "<group>"; };
 		E3CDE5EE23EBB5670095AC20 /* CurrencyList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyList.json; sourceTree = "<group>"; };
+		E3CDE5F023EBD65E0095AC20 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				E3AC02CF23EA641200EA0663 /* Repository */,
 				E3AC02CA23EA631200EA0663 /* Model */,
+				E3CDE5F023EBD65E0095AC20 /* Double+Extensions.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				E3AC02D123EA643800EA0663 /* Repository.swift in Sources */,
 				E3AC02CE23EA634D00EA0663 /* CurrencyList.swift in Sources */,
 				E3AC02A823EA61AC00EA0663 /* ViewController.swift in Sources */,
+				E3CDE5F123EBD65E0095AC20 /* Double+Extensions.swift in Sources */,
 				E3AC02A423EA61AC00EA0663 /* AppDelegate.swift in Sources */,
 				E3AC02C823EA62EB00EA0663 /* ConvertCurrencyModel.swift in Sources */,
 				E3AC02D523EA673F00EA0663 /* CurrencyConverterViewModel.swift in Sources */,

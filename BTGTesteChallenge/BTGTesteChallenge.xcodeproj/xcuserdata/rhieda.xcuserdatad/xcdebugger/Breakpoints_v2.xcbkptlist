@@ -55,112 +55,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C3421D27-09D4-4F41-9569-E318B7013094"
-            shouldBeEnabled = "Yes"
+            uuid = "FF7FE23B-8C0D-499F-8E15-E8D9186D2149"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BTGTesteChallenge/Converter Currency Scene/CurrencyConverterViewModel.swift"
+            filePath = "BTGTesteChallengeTests/ViewModel/CurrencyConverterViewModelTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "requestCurrencyRates()"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "testConversionShouldReturnZeroIfInvalidSource()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C3421D27-09D4-4F41-9569-E318B7013094 - 3d7403848133d2e7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BTGTesteChallenge.Result&lt;BTGTesteChallenge.CurrencyRate&gt;) -&gt; () in BTGTesteChallenge.CurrencyConverterViewModel.requestCurrencyRates() -&gt; ()"
-                  moduleName = "BTGTesteChallenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rhieda/Documents/repos/BTGPactualTeste/mobile-challenge/BTGTesteChallenge/BTGTesteChallenge/Converter%20Currency%20Scene/CurrencyConverterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "127">
-               </Location>
-               <Location
-                  uuid = "C3421D27-09D4-4F41-9569-E318B7013094 - 3d7403848133d2e7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BTGTesteChallenge.Result&lt;BTGTesteChallenge.CurrencyRate&gt;) -&gt; () in BTGTesteChallenge.CurrencyConverterViewModel.requestCurrencyRates() -&gt; ()"
-                  moduleName = "BTGTesteChallenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rhieda/Documents/repos/BTGPactualTeste/mobile-challenge/BTGTesteChallenge/BTGTesteChallenge/Converter%20Currency%20Scene/CurrencyConverterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "166">
-               </Location>
-               <Location
-                  uuid = "C3421D27-09D4-4F41-9569-E318B7013094 - 3d7403848133d2e7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BTGTesteChallenge.Result&lt;BTGTesteChallenge.CurrencyRate&gt;) -&gt; () in BTGTesteChallenge.CurrencyConverterViewModel.requestCurrencyRates() -&gt; ()"
-                  moduleName = "BTGTesteChallenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rhieda/Documents/repos/BTGPactualTeste/mobile-challenge/BTGTesteChallenge/BTGTesteChallenge/Converter%20Currency%20Scene/CurrencyConverterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "630">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B43E6468-444B-46D2-989A-0D04BC68CE43"
+            uuid = "77553BD4-27EA-4F64-B57E-F15CDC330D99"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BTGTesteChallenge/Converter Currency Scene/CurrencyConverterViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "requestCurrencyRates()"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "performConversion(value:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B43E6468-444B-46D2-989A-0D04BC68CE43 - 3dcfa2779d451b6a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BTGTesteChallenge.CurrencyConverterViewModel.requestCurrencyRates() -&gt; ()"
-                  moduleName = "BTGTesteChallenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rhieda/Documents/repos/BTGPactualTeste/mobile-challenge/BTGTesteChallenge/BTGTesteChallenge/Converter%20Currency%20Scene/CurrencyConverterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "41">
-               </Location>
-               <Location
-                  uuid = "B43E6468-444B-46D2-989A-0D04BC68CE43 - 3d7403848133d2e7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BTGTesteChallenge.Result&lt;BTGTesteChallenge.CurrencyRate&gt;) -&gt; () in BTGTesteChallenge.CurrencyConverterViewModel.requestCurrencyRates() -&gt; ()"
-                  moduleName = "BTGTesteChallenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rhieda/Documents/repos/BTGPactualTeste/mobile-challenge/BTGTesteChallenge/BTGTesteChallenge/Converter%20Currency%20Scene/CurrencyConverterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "116">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
