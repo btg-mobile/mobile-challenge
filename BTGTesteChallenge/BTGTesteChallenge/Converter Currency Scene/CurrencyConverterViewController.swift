@@ -20,8 +20,7 @@ class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        viewModel?.requestCurrencyList()
-        viewModel?.requestCurrencyRates()
+        requestCurrencies()
     }
     
     func initialize() {
@@ -30,14 +29,26 @@ class CurrencyConverterViewController: UIViewController {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
     }
     
+    func requestCurrencies() {
+        viewModel?.requestCurrencyList()
+        viewModel?.requestCurrencyRates()
+    }
+    
     @IBAction func didTapSourceCurrency(_ sender: UIButton) {
-        viewModel?.isSourceSelected = true
-        pickerSetup()
+        guard let viewModel = viewModel else {return}
+        viewModel.isSourceSelected = true
+        if viewModel.totalOfCurrenciesInList() > 0 {
+            pickerSetup()
+        }
+        
     }
     
     @IBAction func didTapDestinationCurrency(_ sender: UIButton) {
-        viewModel?.isSourceSelected = false
-        pickerSetup()
+        guard let viewModel = viewModel else {return}
+        viewModel.isSourceSelected = false
+        if viewModel.totalOfCurrenciesInList() > 0 {
+            pickerSetup()
+        }
     }
     
     func pickerSetup() {
@@ -111,7 +122,12 @@ extension CurrencyConverterViewController: PresentErrorDelegate {
         DispatchQueue.main.async{
             let alertController = UIAlertController(title:"Erro", message: error, preferredStyle:.alert)
             let okAction = UIAlertAction(title:"Ok, entendi.", style: .cancel)
+            let tryAgainAction = UIAlertAction(title: "Tentar Novamente", style: .default, handler: {[weak self]
+                _ in
+                self?.requestCurrencies()
+            })
             alertController.addAction(okAction)
+            alertController.addAction(tryAgainAction)
             self.present(alertController, animated: true, completion: nil)
         }
     }

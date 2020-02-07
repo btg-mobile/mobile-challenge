@@ -15,11 +15,7 @@ class CurrencyListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        self.viewModel.requestCurrencyList {
-            DispatchQueue.main.async{
-                self.tableView.reloadData()
-            }
-        }
+        requestCurrencyList()
     }
         
     func initialize() {
@@ -27,9 +23,16 @@ class CurrencyListTableViewController: UITableViewController {
         viewModel = ListOfCurrencyViewModel(listCurrencyRepository: repository, presentErrorDelegate: self)
         tableView.register(UINib(nibName: "CurrencyCellTableViewCell", bundle: .main), forCellReuseIdentifier: "CurrencyCellTableViewCell")
     }
+    
+    func requestCurrencyList() {
+        self.viewModel.requestCurrencyList {
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -45,7 +48,6 @@ class CurrencyListTableViewController: UITableViewController {
         return cell
     }
     
-
 }
 
 extension CurrencyListTableViewController: PresentErrorDelegate {
@@ -53,7 +55,12 @@ extension CurrencyListTableViewController: PresentErrorDelegate {
         DispatchQueue.main.async{
             let alertController = UIAlertController(title:"Erro", message: error, preferredStyle:.alert)
             let okAction = UIAlertAction(title:"Ok, entendi.", style: .cancel)
+            let tryAgainAction = UIAlertAction(title: "Tentar Novamente", style: .default, handler: {[weak self]
+                _ in
+                self?.requestCurrencyList()
+            })
             alertController.addAction(okAction)
+            alertController.addAction(tryAgainAction)
             self.present(alertController, animated: true, completion: nil)
         }
     }
