@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hugoyamashita.desafiobtg.R
-import br.com.hugoyamashita.desafiobtg.currencylist.CurrencyListAdapter
-import br.com.hugoyamashita.desafiobtg.currencylist.CurrencyListContract
 import br.com.hugoyamashita.desafiobtg.currencylist.CurrencyListContract.Presenter
 import br.com.hugoyamashita.desafiobtg.fadeIn
 import br.com.hugoyamashita.desafiobtg.fadeOut
 import br.com.hugoyamashita.desafiobtg.model.Currency
 import kotlinx.android.synthetic.main.fragment_currencylist.animation_loading
+import kotlinx.android.synthetic.main.fragment_currencylist.btn_filter
 import kotlinx.android.synthetic.main.fragment_currencylist.content
+import kotlinx.android.synthetic.main.fragment_currencylist.edt_filter
 import kotlinx.android.synthetic.main.fragment_currencylist.rv_currencies
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -80,6 +80,10 @@ class CurrencyListFragment : Fragment(), CurrencyListContract.View, KodeinAware 
             setHasFixedSize(true)
             layoutManager = currencyListViewManager
             adapter = currencyListAdapter
+        }
+
+        btn_filter.setOnClickListener {
+            presenter.filterCurrencyList(edt_filter.text.toString())
         }
     }
 

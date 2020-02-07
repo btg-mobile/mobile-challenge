@@ -12,6 +12,7 @@ class CurrencyListPresenter(private val currencyApi: CurrencyLayerApi) : Present
 
     private var view: View? = null
     private var subscriber: Disposable? = null
+    private val currencies = mutableListOf<br.com.hugoyamashita.currencyapi.model.Currency>()
 
     override fun attachToView(view: View) {
         this.view = view
@@ -30,6 +31,11 @@ class CurrencyListPresenter(private val currencyApi: CurrencyLayerApi) : Present
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess { currencyList ->
+                // Refresh local currency list
+                currencies.clear()
+                currencies.addAll(currencyList)
+
+                // Send data to the View
                 view?.refreshCurrencyList(currencyList.map { currency ->
                     Currency(currency.symbol, currency.name)
                 })
@@ -40,6 +46,15 @@ class CurrencyListPresenter(private val currencyApi: CurrencyLayerApi) : Present
                 view?.hideLoadingAnimation()
             }
             .subscribe()
+    }
+
+    override fun filterCurrencyList(filter: String) {
+        view?.refreshCurrencyList(currencies
+            .filter {
+                it.symbol.toLowerCase().contains(filter.toLowerCase()) ||
+                        it.name!!.toLowerCase().contains(filter.toLowerCase())
+            }
+            .map { Currency(it.symbol, it.name) })
     }
 
 }

@@ -14,6 +14,7 @@ interface CurrencyListContract {
         fun attachToView(view: View)
         fun detachFromView()
         fun loadCurrencyList()
+        fun filterCurrencyList(filter: String)
     }
 
 }

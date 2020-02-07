@@ -5,5 +5,7 @@
     <string name="title_available_currencies">Moedas disponíveis</string>
     <string name="input_value">Digite o valor</string>
     <string name="converted_value">Valor convertido</string>
+    <string name="filter">Filtro</string>
+    <string name="action_filter">Filtrar</string>
 
 </resources>
