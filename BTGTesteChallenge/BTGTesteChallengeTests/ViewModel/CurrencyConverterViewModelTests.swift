@@ -21,7 +21,7 @@ class CurrencyConverterViewModelTests: XCTestCase {
         currencyRateFilePath = testBundle.path(forResource: "CurrencyRate", ofType: "json")
         currencyListFilepath = testBundle.path(forResource: "CurrencyList", ofType: "json")
         
-        sut = CurrencyConverterViewModel(liveCurrencyRepository: DummyLiveCurrencyRepository(), listCurrencyRepository: DummyListCurrencyRepository())
+        sut = CurrencyConverterViewModel(liveCurrencyRepository: DummyLiveCurrencyRepository(), listCurrencyRepository: DummyListCurrencyRepository(), presentErrorDelegate: DummyViewController())
         
         if let data = FileManager().contents(atPath: currencyListFilepath),
             let currencyList = try? JSONDecoder().decode(CurrencyList.self, from: data),
@@ -136,4 +136,10 @@ final class DummyListCurrencyRepository: ListCurrencyRepositoryProtocol {
     var key: String = ""
     var endpoint: Endpoint = .list
     func fetchListOfCurrency(completionHandler: @escaping (Result<CurrencyList>) -> ()) {}
+}
+
+final class DummyViewController: PresentErrorDelegate {
+    func present(error: String) {
+        
+    }
 }

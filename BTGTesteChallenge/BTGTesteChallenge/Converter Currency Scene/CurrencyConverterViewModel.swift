@@ -18,6 +18,7 @@ protocol CurrencyConverterViewModelProtocol: class {
     var currencyListValue: [String] { get }
     var currencyDictionary: [String : String] { get set }
     var currencyRatesDictionary: [String : Double] { get set }
+    var delegate: PresentErrorDelegate { get }
     
     func totalOfCurrenciesInList() -> Int
     func requestCurrencyRates()
@@ -36,6 +37,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
     var currencyDictionary: [String : String] = [:]
     var currencyRatesDictionary: [String : Double] = [:]
     var isSourceSelected: Bool = false
+    var delegate: PresentErrorDelegate
     
     var currencyListKey: [String] {
         return currencyDictionary.map {
@@ -49,9 +51,10 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
         }
     }
     
-    init(liveCurrencyRepository: LiveCurrencyRepositoryProtocol, listCurrencyRepository: ListCurrencyRepositoryProtocol) {
+    init(liveCurrencyRepository: LiveCurrencyRepositoryProtocol, listCurrencyRepository: ListCurrencyRepositoryProtocol, presentErrorDelegate: PresentErrorDelegate) {
         self.liveCurrencyRepository = liveCurrencyRepository
         self.listCurrencyRepository = listCurrencyRepository
+        self.delegate = presentErrorDelegate
     }
     
     func totalOfCurrenciesInList() -> Int {
@@ -75,7 +78,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
                 }
                 self?.currencyRatesDictionary = quotes
             case .error(let error):
-                break
+                self?.delegate.present(error: error.localizedDescription)
             }
         })
     }
@@ -87,7 +90,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
                 guard let currencies = currencyList.currencies else { return }
                 self?.currencyDictionary = currencies
             case .error(let error):
-                break
+                self?.delegate.present(error: error.localizedDescription)
             }
         })
     }
