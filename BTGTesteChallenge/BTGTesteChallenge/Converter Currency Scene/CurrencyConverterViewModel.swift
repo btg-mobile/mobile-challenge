@@ -29,10 +29,10 @@ protocol CurrencyConverterViewModelProtocol: class {
 
 class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
     
-    weak var liveCurrencyRepository: LiveCurrencyRepositoryProtocol?
-    weak var listCurrencyRepository: ListCurrencyRepositoryProtocol?
-    var selectedSourceCurrency: String = ""
-    var selectedConversionCurrency: String = ""
+    var liveCurrencyRepository: LiveCurrencyRepositoryProtocol?
+    var listCurrencyRepository: ListCurrencyRepositoryProtocol?
+    var selectedSourceCurrency: String = "USD"
+    var selectedConversionCurrency: String = "USD"
     var currencyDictionary: [String : String] = [:]
     var currencyRatesDictionary: [String : Double] = [:]
     var isSourceSelected: Bool = false

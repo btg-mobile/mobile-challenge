@@ -32,8 +32,8 @@ protocol ListCurrencyRepositoryProtocol: class, BaseRepositoryProtocol {
 }
 
 final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
-    var baseURL: String = ""
-    var key: String = ""
+    var baseURL: String = "http://apilayer.net/api"
+    var key: String = "68e904c6ff1193ea810f9a2450e7aaaa"
     var endpoint: Endpoint = .live
     
     func fetchLiveCurrency(completionHandler: @escaping (Result<CurrencyRate>) -> ()) {
@@ -76,7 +76,7 @@ final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
 final class ListCurrencyRepository: ListCurrencyRepositoryProtocol {
     
     var baseURL: String = "http://apilayer.net/api"
-    var key: String = "sdasdasdsads" //"68e904c6ff1193ea810f9a2450e7aaaa"
+    var key: String = "68e904c6ff1193ea810f9a2450e7aaaa"
     var endpoint: Endpoint = .list
     
     func fetchListOfCurrency(completionHandler: @escaping (Result<CurrencyList>) -> ()) {

@@ -25,7 +25,6 @@ class CurrencyListTableViewController: UITableViewController {
     func initialize() {
         let repository = ListCurrencyRepository()
         viewModel = ListOfCurrencyViewModel(listCurrencyRepository: repository, presentErrorDelegate: self)
-        
         tableView.register(UINib(nibName: "CurrencyCellTableViewCell", bundle: .main), forCellReuseIdentifier: "CurrencyCellTableViewCell")
     }
 
@@ -39,7 +38,6 @@ class CurrencyListTableViewController: UITableViewController {
         return viewModel.totalOfCurrencies()
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCellTableViewCell", for: indexPath) as! CurrencyCellTableViewCell
         cell.setCellContent(code: viewModel.currencyList[indexPath.row].key, description: viewModel.currencyList[indexPath.row].value)
