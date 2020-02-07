@@ -14,8 +14,7 @@ protocol CurrencyConverterViewModelProtocol: class {
     var isSourceSelected: Bool {get set}
     var selectedSourceCurrency: String {get set}
     var selectedConversionCurrency: String {get set}
-    var currencyListKey: [String] { get }
-    var currencyListValue: [String] { get }
+    var currencyList: [(key: String, value: String)] { get }
     var currencyDictionary: [String : String] { get set }
     var currencyRatesDictionary: [String : Double] { get set }
     var delegate: PresentErrorDelegate { get }
@@ -29,7 +28,7 @@ protocol CurrencyConverterViewModelProtocol: class {
 }
 
 class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
-
+    
     weak var liveCurrencyRepository: LiveCurrencyRepositoryProtocol?
     weak var listCurrencyRepository: ListCurrencyRepositoryProtocol?
     var selectedSourceCurrency: String = ""
@@ -39,16 +38,8 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
     var isSourceSelected: Bool = false
     var delegate: PresentErrorDelegate
     
-    var currencyListKey: [String] {
-        return currencyDictionary.map {
-            $0.value
-        }
-    }
-    
-    var currencyListValue: [String] {
-        return currencyDictionary.map {
-            $0.key
-        }
+    var currencyList: [(key: String, value: String)] {
+        DictionarySortHelper.sortAscending(for: currencyDictionary)
     }
     
     init(liveCurrencyRepository: LiveCurrencyRepositoryProtocol, listCurrencyRepository: ListCurrencyRepositoryProtocol, presentErrorDelegate: PresentErrorDelegate) {
@@ -58,7 +49,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModelProtocol {
     }
     
     func totalOfCurrenciesInList() -> Int {
-        return currencyListKey.count
+        return currencyDictionary.count
     }
     
     func getUSDCurrencyRateForSource() -> Double {
