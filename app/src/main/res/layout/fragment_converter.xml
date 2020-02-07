@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/default_padding">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spn_to_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spn_from_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                app:layout_constraintEnd_toStartOf="@id/spn_to_currency"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/input_value"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toStartOf="@id/spn_from_currency"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_convert"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_margin"
+                android:text="Converter"
+                app:layout_constrainedWidth="@id/edt_value"
+                app:layout_constraintEnd_toEndOf="@id/edt_value"
+                app:layout_constraintStart_toStartOf="@id/edt_value"
+                app:layout_constraintTop_toBottomOf="@id/edt_value" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_converted_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_margin"
+                android:enabled="false"
+                android:hint="@string/converted_value"
+                android:inputType="none"
+                android:textSize="@dimen/text_size_big"
+                android:textStyle="bold"
+                app:layout_constrainedWidth="@id/btn_convert"
+                app:layout_constraintEnd_toEndOf="@id/btn_convert"
+                app:layout_constraintStart_toStartOf="@id/btn_convert"
+                app:layout_constraintTop_toBottomOf="@id/btn_convert" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_loading"
+            android:layout_width="@dimen/loading_animation_width"
+            android:layout_height="@dimen/loading_animation_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

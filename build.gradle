@@ -34,6 +34,7 @@ ext {
     rxkotlin_version = '2.4.0'
     rxandroid_version = '2.1.1'
     retrofit_version = '2.7.1'
+    lottie_version = '3.3.1'
     mockk_version = '1.9.3'
     hamcrest_version = '2.2'
 }

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Desafio BTG</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_currencies">Moedas</string>
+    <string name="title_converter">Conversor</string>
+    <string name="title_available_currencies">Moedas disponíveis</string>
+    <string name="input_value">Digite o valor</string>
+    <string name="converted_value">Valor convertido</string>
+
 </resources>
