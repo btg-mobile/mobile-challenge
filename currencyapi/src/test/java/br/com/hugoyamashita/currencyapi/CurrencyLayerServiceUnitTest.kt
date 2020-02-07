@@ -19,8 +19,8 @@ import org.kodein.di.generic.instance
 class CurrencyLayerServiceUnitTest {
 
     @Test
-    fun `Mocked service - Successful request with currencies`() {
-        val service: CurrencyLayerService by unitTestKodein.instance("serviceSuccessfulRequest")
+    fun `Mocked service - Successful currencies request`() {
+        val service: CurrencyLayerService by unitTestKodein.instance("serviceSuccessfulCurrenciesRequest")
         service.getCurrencies()
             .doOnSuccess {
                 // Service response
@@ -40,8 +40,8 @@ class CurrencyLayerServiceUnitTest {
     }
 
     @Test
-    fun `Mocked service - Successful request without currencies`() {
-        val service: CurrencyLayerService by unitTestKodein.instance("noCurrencies")
+    fun `Mocked service - Successful currencies request without currencies`() {
+        val service: CurrencyLayerService by unitTestKodein.instance("serviceRequestWithNoCurrencies")
         service.getCurrencies()
             .doOnSuccess {
                 // Service response
@@ -52,6 +52,49 @@ class CurrencyLayerServiceUnitTest {
                 assertNotNull(it.currencies)
                 assertThat(it.currencies.size, `is`(0))
                 assertThat(it.currencies, `is`(notNullValue()))
+            }
+            .doOnError {
+                fail("This test should not get here")
+            }
+            .test()
+            .assertComplete()
+            .assertNoErrors()
+    }
+
+    @Test
+    fun `Mocked service - Successful conversion rates request`() {
+        val service: CurrencyLayerService by unitTestKodein.instance("serviceSuccessfulConversionRatesRequest")
+        service.getConversionRates()
+            .doOnSuccess {
+                // Service response
+                assertNotNull(it)
+                assertTrue(it.success)
+
+                // Conversion rates
+                assertNotNull(it.quotes)
+                assertThat(it.quotes.size, greaterThan(0))
+            }
+            .doOnError {
+                fail("This test should not get here")
+            }
+            .test()
+            .assertComplete()
+            .assertNoErrors()
+    }
+
+    @Test
+    fun `Mocked service - Successful conversion rates request with no conversion rates`() {
+        val service: CurrencyLayerService by unitTestKodein.instance("serviceRequestWithNoConversionRates")
+        service.getConversionRates()
+            .doOnSuccess {
+                // Service response
+                assertNotNull(it)
+                assertTrue(it.success)
+
+                // Currencies
+                assertNotNull(it.quotes)
+                assertThat(it.quotes.size, `is`(0))
+                assertThat(it.quotes, `is`(notNullValue()))
             }
             .doOnError {
                 fail("This test should not get here")

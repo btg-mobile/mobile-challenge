@@ -20,21 +20,6 @@ import java.lang.Exception
 class CurrencyLayerApiUnitTest {
 
     @Test
-    fun `Currency list cannot be null`() {
-        val api: CurrencyLayerApi by unitTestKodein.instance()
-        api.getCurrencyList()
-            .doOnSuccess {
-                assertNotNull(it)
-            }
-            .doOnError {
-                fail("Error while fetching data from Currency Layer service")
-            }
-            .test()
-            .assertComplete()
-            .assertNoErrors()
-    }
-
-    @Test
     fun `List should have 3 currencies`() {
         val api: CurrencyLayerApi by unitTestKodein.instance("apiWithFixed3Currencies")
 
@@ -52,8 +37,41 @@ class CurrencyLayerApiUnitTest {
     }
 
     @Test
-    fun `Error handling`() {
-        val api: CurrencyLayerApi by unitTestKodein.instance("apiWithRequestError")
+    fun `Error handling while requesting currency list`() {
+        val api: CurrencyLayerApi by unitTestKodein.instance("apiWithCurrencyRequestError")
+
+        api.getCurrencyList()
+            .doOnSuccess {
+                fail("This test must not get here")
+            }
+            .doOnError {
+                assertThat(it, `is`(notNullValue()))
+            }
+            .test()
+            .assertNotComplete()
+            .assertError(CurrencyApiException::class.java)
+    }
+
+    @Test
+    fun `List should have 2 conversion rates`() {
+        val api: CurrencyLayerApi by unitTestKodein.instance("apiWithFixed2ConversionRates")
+
+        api.getConversionRateList()
+            .doOnSuccess {
+                assertThat(it, `is`(notNullValue()))
+                assertThat(it.size, `is`(2))
+            }
+            .doOnError {
+                fail("This test should never get here")
+            }
+            .test()
+            .assertComplete()
+            .assertNoErrors()
+    }
+
+    @Test
+    fun `Error handling while requesting conversion rate list`() {
+        val api: CurrencyLayerApi by unitTestKodein.instance("apiWithConversionRateRequestError")
 
         api.getCurrencyList()
             .doOnSuccess {

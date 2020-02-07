@@ -2,7 +2,7 @@ package br.com.hugoyamashita.currencyapi.model
 
 import com.google.gson.annotations.Expose
 
-data class CurrencyListResponse(
+data class ConversionRateListResponse(
 
     @Expose
     var success: Boolean,
@@ -14,6 +14,12 @@ data class CurrencyListResponse(
     var privacy: String,
 
     @Expose
-    var currencies: Map<String, String>
+    var timestamp: Long,
+
+    @Expose
+    var source: String,
+
+    @Expose
+    var quotes: Map<String, Double>
 
 )

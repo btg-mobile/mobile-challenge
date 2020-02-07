@@ -1,6 +1,7 @@
 package br.com.hugoyamashita.currencyapi.di
 
 import br.com.hugoyamashita.currencyapi.CurrencyLayerService
+import br.com.hugoyamashita.currencyapi.model.ConversionRateListResponse
 import br.com.hugoyamashita.currencyapi.model.CurrencyListResponse
 import io.mockk.every
 import io.mockk.mockk
@@ -14,7 +15,7 @@ internal val currencyLayerServiceUnitTestDiModule = Kodein.Module("UnitTestCurre
     /**
      * Mocks a successful request with some currencies.
      */
-    bind<CurrencyLayerService>("serviceSuccessfulRequest") with provider {
+    bind<CurrencyLayerService>("serviceSuccessfulCurrenciesRequest") with provider {
         mockk<CurrencyLayerService> {
             every { getCurrencies() } returns Single.just(
                 CurrencyListResponse(
@@ -34,7 +35,7 @@ internal val currencyLayerServiceUnitTestDiModule = Kodein.Module("UnitTestCurre
     /**
      * Mocks an unsuccessful request.
      */
-    bind<CurrencyLayerService>("serviceUnsuccessfulRequest") with provider {
+    bind<CurrencyLayerService>("serviceUnsuccessfulCurrenciesRequest") with provider {
         mockk<CurrencyLayerService> {
             every { getCurrencies() } returns Single.just(
                 CurrencyListResponse(
@@ -58,6 +59,45 @@ internal val currencyLayerServiceUnitTestDiModule = Kodein.Module("UnitTestCurre
         mockk<CurrencyLayerService> {
             every { getCurrencies() } returns Single.just(
                 CurrencyListResponse(true, "some terms", "some privacy", mapOf())
+            )
+        }
+    }
+
+    /**
+     * Mocks a successful request with some conversion rates.
+     */
+    bind<CurrencyLayerService>("serviceSuccessfulConversionRatesRequest") with provider {
+        mockk<CurrencyLayerService> {
+            every { getConversionRates() } returns Single.just(
+                ConversionRateListResponse(
+                    true,
+                    "some terms",
+                    "some privacy",
+                    123456L,
+                    "USD",
+                    mapOf(
+                        "USDBRL" to 4.26,
+                        "USDEUR" to 0.91
+                    )
+                )
+            )
+        }
+    }
+
+    /**
+     * Mocks a successful request with some conversion rates.
+     */
+    bind<CurrencyLayerService>("serviceRequestWithNoConversionRates") with provider {
+        mockk<CurrencyLayerService> {
+            every { getConversionRates() } returns Single.just(
+                ConversionRateListResponse(
+                    true,
+                    "some terms",
+                    "some privacy",
+                    123456L,
+                    "USD",
+                    mapOf()
+                )
             )
         }
     }

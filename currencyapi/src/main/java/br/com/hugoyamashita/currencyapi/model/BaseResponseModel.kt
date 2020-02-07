@@ -2,15 +2,15 @@ package br.com.hugoyamashita.currencyapi.model
 
 import com.google.gson.annotations.Expose
 
-interface BaseResponseModel {
+open class BaseResponseModel(
 
-//    @Expose
-//    var success: Boolean?
-//
-//    @Expose
-//    var terms: String?
-//
-//    @Expose
-//    var privacy: String?
+    @Expose
+    open var success: Boolean,
 
-}
+    @Expose
+    open var terms: String,
+
+    @Expose
+    open var privacy: String
+
+)

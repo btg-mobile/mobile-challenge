@@ -4,7 +4,7 @@ import org.kodein.di.Kodein
 
 internal val unitTestKodein = Kodein {
 
-    extend(kodein)
+    extend(apiKodein)
     import(currencyLayerApiUnitTestDiModule)
     import(currencyLayerServiceUnitTestDiModule)
 
