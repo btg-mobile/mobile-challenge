@@ -32,6 +32,7 @@
 		E3CDE5FD23ECF17C0095AC20 /* CurrencyCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CDE5FB23ECF17C0095AC20 /* CurrencyCellTableViewCell.swift */; };
 		E3CDE5FE23ECF17C0095AC20 /* CurrencyCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CDE5FC23ECF17C0095AC20 /* CurrencyCellTableViewCell.xib */; };
 		E3CDE60323ED08460095AC20 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CDE60223ED08460095AC20 /* CurrencyConverterViewController.swift */; };
+		E3CDE60523ED2D340095AC20 /* APIAccess.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3CDE60423ED2D340095AC20 /* APIAccess.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		E3CDE5FB23ECF17C0095AC20 /* CurrencyCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellTableViewCell.swift; sourceTree = "<group>"; };
 		E3CDE5FC23ECF17C0095AC20 /* CurrencyCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCellTableViewCell.xib; sourceTree = "<group>"; };
 		E3CDE60223ED08460095AC20 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
+		E3CDE60423ED2D340095AC20 /* APIAccess.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIAccess.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E3AC02AC23EA61AE00EA0663 /* Assets.xcassets */,
 				E3AC02AE23EA61AE00EA0663 /* LaunchScreen.storyboard */,
 				E3AC02B123EA61AE00EA0663 /* Info.plist */,
+				E3CDE60423ED2D340095AC20 /* APIAccess.plist */,
 			);
 			path = BTGTesteChallenge;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3CDE60523ED2D340095AC20 /* APIAccess.plist in Resources */,
 				E3CDE5FE23ECF17C0095AC20 /* CurrencyCellTableViewCell.xib in Resources */,
 				E3AC02B023EA61AE00EA0663 /* LaunchScreen.storyboard in Resources */,
 				E3AC02AD23EA61AE00EA0663 /* Assets.xcassets in Resources */,

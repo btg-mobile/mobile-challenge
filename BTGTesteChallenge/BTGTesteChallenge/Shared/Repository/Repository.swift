@@ -32,9 +32,27 @@ protocol ListCurrencyRepositoryProtocol: class, BaseRepositoryProtocol {
 }
 
 final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
-    var baseURL: String = "http://apilayer.net/api"
-    var key: String = "68e904c6ff1193ea810f9a2450e7aaaa"
+    
+    var baseURL: String
+    var key: String
     var endpoint: Endpoint = .live
+    
+    init() {
+        if let path =  Bundle.main.path(forResource: "APIAccess", ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: path) {
+            guard let baseUrl: String = dict["baseURL"] as? String,
+                let apiKey: String = dict["key"] as? String else {
+                    self.baseURL = ""
+                    self.key = ""
+                    return
+            }
+            self.baseURL = baseUrl
+            self.key = apiKey
+        } else {
+            self.baseURL = ""
+            self.key = ""
+        }
+    }
     
     func fetchLiveCurrency(completionHandler: @escaping (Result<CurrencyRate>) -> ()) {
         URLSession.shared.dataTask(with: url) { (data, response, responseError) in
@@ -75,9 +93,27 @@ final class LiveCurrencyRepository: LiveCurrencyRepositoryProtocol {
 
 final class ListCurrencyRepository: ListCurrencyRepositoryProtocol {
     
-    var baseURL: String = "http://apilayer.net/api"
-    var key: String = "68e904c6ff1193ea810f9a2450e7aaaa"
+    var baseURL: String
+    var key: String
     var endpoint: Endpoint = .list
+    
+    init() {
+        if let path =  Bundle.main.path(forResource: "APIAccess", ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: path) {
+            guard let baseUrl: String = dict["baseURL"] as? String,
+                let apiKey: String = dict["key"] as? String else {
+                    self.baseURL = ""
+                    self.key = ""
+                    return
+            }
+            self.baseURL = baseUrl
+            self.key = apiKey
+        } else {
+            self.baseURL = ""
+            self.key = ""
+        }
+    }
+    
     
     func fetchListOfCurrency(completionHandler: @escaping (Result<CurrencyList>) -> ()) {
         

@@ -73,14 +73,14 @@ class CurrencyConverterViewModelTests: XCTestCase {
     
     func testShouldReturnKeysIfValidCurrencyList() {
         XCTAssertNotNil(sut.currencyDictionary)
-        XCTAssertNotNil(sut.currencyListKey)
-        XCTAssertTrue(sut.currencyListKey.count > 0)
+        XCTAssertNotNil(sut.currencyList)
+        XCTAssertTrue(sut.currencyList.count > 0)
     }
     
     func testShouldReturnValuesIfValidCurrencyList() {
         XCTAssertNotNil(sut.currencyDictionary)
-        XCTAssertNotNil(sut.currencyListValue)
-        XCTAssertTrue(sut.currencyListValue.count > 0)
+        XCTAssertNotNil(sut.currencyList)
+        XCTAssertTrue(sut.currencyList.count > 0)
     }
     
     func testConversionShouldPerformValidConversionIfValidSourceAndDestination() {
