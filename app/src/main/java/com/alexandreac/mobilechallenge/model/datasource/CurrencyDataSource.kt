@@ -54,7 +54,10 @@ class CurrencyDataSource (val currencyApi: CurrencyApi):
                     response.body()?.quotes?.forEach {
                         quotes.add(it.value)
                     }
-                    convertion = quotes[1]/quotes[0]
+                    if(quotes.size > 1)
+                        convertion = quotes[1]/quotes[0]
+                    else
+                        convertion = quotes[0]
                     var result = (fromValue*convertion).round(2)
                     success(result.toString())
                 } else {

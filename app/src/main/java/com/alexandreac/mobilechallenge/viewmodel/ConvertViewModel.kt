@@ -10,7 +10,6 @@ class ConvertViewModel(val repository: ICurrencyDataSource, application: Applica
                         AndroidViewModel(application), LifecycleObserver {
     val fromInitials = MutableLiveData<String>().apply { value = "USD" }
     val fromName = MutableLiveData<String>().apply { value = "United States Dollar" }
-    val fromValue = MutableLiveData<String>().apply { value = "10.00" }
     val toInitials = MutableLiveData<String>().apply { value = "BRL" }
     val toName = MutableLiveData<String>().apply { value = "Brazilian Real" }
     val toValue = MutableLiveData<String>().apply { value = "10.00" }
@@ -27,17 +26,23 @@ class ConvertViewModel(val repository: ICurrencyDataSource, application: Applica
         toName.postValue(name)
     }
 
-    fun convertMoney(){
+    fun convertMoney(value:String){
         loadingVisibility.postValue(true)
         message.postValue("")
-        repository.convert("${fromInitials.value},${toInitials.value}",
-            fromValue.value!!.toDouble(),{value ->
-            toValue.postValue(value)
-            message.postValue("")
+        val from = fromInitials.value
+        val to = toInitials.value
+        if(!from.equals(to) && value.isNotBlank() && value.isNotEmpty()) {
+            repository.convert("${from},${to}",
+                value.toDouble(), { value ->
+                    toValue.postValue(value)
+                    message.postValue("")
+                    loadingVisibility.postValue(false)
+                }, {
+                    message.postValue(it)
+                    loadingVisibility.postValue(false)
+                })
+        } else {
             loadingVisibility.postValue(false)
-        },{
-            message.postValue(it)
-            loadingVisibility.postValue(false)
-        })
+        }
     }
 }

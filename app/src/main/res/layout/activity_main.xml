@@ -133,13 +133,12 @@
                                     android:id="@+id/convert_from_value_edt"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="@{viewModel.fromValue}"
                                     android:inputType="numberDecimal"
+                                    android:hint="@string/currency_value_hint"
                                     android:textSize="36sp"
                                     android:textStyle="bold"
                                     android:theme="@style/EditText.Convert"
-                                    android:singleLine="true"
-                                    tools:hint="@string/currency_value_hint"/>
+                                    android:singleLine="true"/>
                                 <ImageView
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
@@ -240,7 +239,7 @@
                                     android:gravity="center"
                                     android:textSize="36sp"
                                     android:textStyle="bold"
-                                    android:theme="@style/EditText.Convert"
+                                    android:textColor="@color/white"
                                     android:singleLine="true"
                                     tools:hint="@string/currency_value_hint"/>
                                 <ImageView

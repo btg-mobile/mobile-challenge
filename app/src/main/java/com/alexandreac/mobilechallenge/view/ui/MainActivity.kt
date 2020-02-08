@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, CONVERT_TO_RESULT_OK)
         }
         binding.convertBtn.setOnClickListener {
-            viewModel.convertMoney()
+            viewModel.convertMoney(binding.convertFromValueEdt.text.toString())
         }
         binding.lifecycleOwner = this
         this.lifecycle.addObserver(viewModel)

@@ -9,7 +9,7 @@
     <!--  Convert card  -->
     <string name="currency_initials_hint">AED</string>
     <string name="currency_name_hint">United Arab Emirates Dirham</string>
-    <string name="currency_value_hint">1000.00</string>
+    <string name="currency_value_hint">10.00</string>
     <string name="convertion_error">Houve algum problema na conversão, por favor tente mais tarde. </string>
     <!--  Currency List  -->
     <string name="currency_list_title">LISTA DE MOEDAS</string>
