@@ -17,19 +17,24 @@ class CurrencyDataSource (val currencyApi: CurrencyApi):
         call.enqueue(object: Callback<CurrencyListResponse>{
             override fun onResponse(call: Call<CurrencyListResponse>,
                                     response: Response<CurrencyListResponse>) {
+                val resp = response.body()!!
                 if(response.isSuccessful){
-                    val currencies = mutableListOf<Currency>()
-                    response.body()?.currencies?.forEach{
-                        currencies.add(
-                            Currency(
-                                it.key,
-                                it.value
+                    if(resp.success!!) {
+                        val currencies = mutableListOf<Currency>()
+                        response.body()?.currencies?.forEach {
+                            currencies.add(
+                                Currency(
+                                    it.key,
+                                    it.value
+                                )
                             )
-                        )
+                        }
+                        success(currencies)
+                    } else {
+                        failure(resp.error?.info!!)
                     }
-                    success(currencies)
                 } else {
-                    failure(response.message())
+                    failure(resp.error?.info!!)
                 }
             }
 
@@ -48,20 +53,25 @@ class CurrencyDataSource (val currencyApi: CurrencyApi):
         val call = currencyApi.convert(currencies)
         call.enqueue(object : Callback<ConvertResponse>{
             override fun onResponse(call: Call<ConvertResponse>, response: Response<ConvertResponse>) {
+                val resp = response.body()!!
                 if(response.isSuccessful){
-                    var convertion = 0.0
-                    val quotes = mutableListOf<Double>()
-                    response.body()?.quotes?.forEach {
-                        quotes.add(it.value)
+                    if(resp.success!!){
+                        var convertion = 0.0
+                        val quotes = mutableListOf<Double>()
+                        response.body()?.quotes?.forEach {
+                            quotes.add(it.value)
+                        }
+                        if(quotes.size > 1)
+                            convertion = quotes[1]/quotes[0]
+                        else
+                            convertion = quotes[0]
+                        var result = (fromValue*convertion).round(2)
+                        success(result.toString())
+                    } else {
+                        failure(resp.error?.info!!)
                     }
-                    if(quotes.size > 1)
-                        convertion = quotes[1]/quotes[0]
-                    else
-                        convertion = quotes[0]
-                    var result = (fromValue*convertion).round(2)
-                    success(result.toString())
                 } else {
-                    failure(response.message())
+                    failure(resp.error?.info!!)
                 }
             }
             override fun onFailure(call: Call<ConvertResponse>, t: Throwable) {
