@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mobile Challenge</string>
+    <string name="coin_code_default">MBL</string>
+    <string name="coin_name_default">Mobile Challenge</string>
+    <string name="escolha_a_moeda_para_converter">Escolha a moeda para converter:</string>
+    <string name="usd">USD</string>
+    <string name="brl">BRL</string>
+</resources>
