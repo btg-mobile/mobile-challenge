@@ -14,12 +14,13 @@ import UIKit
 
 protocol CurrencyConversionPresentationLogic {
     func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response)
+    func getExchangeRatesFailed()
 }
 
 class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
     weak var viewController: CurrencyConversionDisplayLogic?
     
-    // MARK: -
+    // MARK: - Load supported currency
     func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
         guard let currencies = response.currencies,
             currencies.success,
@@ -41,5 +42,10 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
         }
         
         return currencies
+    }
+    
+    // MARK: - Error trying to get exchange rates
+    func getExchangeRatesFailed() {
+        viewController?.displayErrorMessage("Erro na API")
     }
 }

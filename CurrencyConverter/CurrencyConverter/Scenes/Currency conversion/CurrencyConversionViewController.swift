@@ -41,6 +41,7 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         super.viewDidLoad()
         setup()
         getSupportedCurrencies()
+        getExchangeRates()
     }
     
     // MARK: Do something
@@ -49,6 +50,10 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     
     private func getSupportedCurrencies() {
         interactor?.getSupportedCurrencies()
+    }
+    
+    private func getExchangeRates() {
+        interactor?.getExchangeRates()
     }
     
     func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel) {

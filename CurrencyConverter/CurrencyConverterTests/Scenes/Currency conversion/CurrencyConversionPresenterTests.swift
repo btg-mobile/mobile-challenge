@@ -78,4 +78,13 @@ class CurrencyConversionPresenterTests: XCTestCase {
         
         XCTAssertEqual(expectedResult, viewControllerSpy.supportedCurrenciesViewModel.currencies.sorted(by: >))
     }
+    
+    func testPresenter_whenRunsExchangeRatesFailed_isCallingDisplayErrorMessageFromViewController() {
+        let viewControllerSpy = ViewControllerSpy()
+        sut.viewController = viewControllerSpy
+        
+        sut.getExchangeRatesFailed()
+        
+        XCTAssertTrue(viewControllerSpy.displayErrorMessageCalled)
+    }
 }

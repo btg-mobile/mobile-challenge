@@ -28,6 +28,18 @@ enum CurrencyConversion {
         }
     }
     
+    // MARK: -
+    enum GetExchangeRates {
+        struct Request {
+        }
+        
+        struct Response {
+        }
+        
+        struct ViewModel {
+        }
+    }
+    
     //MARK: -
     enum ConvertValue {
         struct Request {

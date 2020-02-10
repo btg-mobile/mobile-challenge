@@ -18,7 +18,10 @@ struct Seeds {
         
         static let supportedCurrenciesAPIError = SupportedCurrencies(success: false, currencies: [:])
         
-        static let exchangeRates = ExchangesRates(success: true, source: "USD", timestamp: 123456789, quotes: ["BRL":4.0])
+        static let exchangeRates = ExchangesRates(success: true, source: "USD", timestamp: 123456789, quotes: ["BRL":4.0,
+                                                                                                               "USD":1])
+        static let exchangeRatesAPIError = ExchangesRates(success: false, source: "USD", timestamp: 123456789, quotes: ["BRL":4.0,
+                                                                                                                        "USD":1])
     }
     
     struct ViewModels {

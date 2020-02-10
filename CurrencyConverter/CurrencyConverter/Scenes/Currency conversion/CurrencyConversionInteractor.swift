@@ -14,19 +14,24 @@ import UIKit
 
 protocol CurrencyConversionBusinessLogic {
     func getSupportedCurrencies()
+    func getExchangeRates()
 }
 
 protocol CurrencyConversionDataStore {
-    //var name: String { get set }
+    var exchangeRates: ExchangesRates? { get set }
 }
 
 class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyConversionDataStore {
     var presenter: CurrencyConversionPresentationLogic?
     var supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol
-    //var name: String = ""
+    var exchangeRatesWorker: ExchangeRatesWorkerProtocol
     
-    init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager())) {
+    var exchangeRates: ExchangesRates?
+    
+    init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager()),
+         exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager())) {
         self.supportedCurrenciesWorker = supportedCurrenciesWorker
+        self.exchangeRatesWorker = exchangeRatesWorker
     }
     
     // MARK: - Get Supported Currencies
@@ -35,5 +40,16 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
             let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: currencies, error: error)
             self.presenter?.formatCurrencyListForView(response: response)
         }
+    }
+    
+    // MARK: - Get Exchange Rates
+    func getExchangeRates() {
+        exchangeRatesWorker.getExchangeRates(completion: { (exchangeRates, error) in
+            if error == nil {
+                self.exchangeRates = exchangeRates
+            } else {
+                self.presenter?.getExchangeRatesFailed()
+            }
+        })
     }
 }
