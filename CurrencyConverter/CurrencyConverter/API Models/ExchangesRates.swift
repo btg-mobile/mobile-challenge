@@ -10,7 +10,7 @@
 
 import Foundation
 
-struct ExchangesRates: Decodable, CustomStringConvertible {
+struct ExchangesRates: Codable, CustomStringConvertible {
     let success: Bool
     let source: String
     let timestamp: Double

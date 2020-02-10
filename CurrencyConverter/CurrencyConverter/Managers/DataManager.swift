@@ -9,7 +9,8 @@
 import Foundation
 
 protocol DataManager {
-    func request<T>(_ request:CurrencyConverterRequests, completion: @escaping (T?,Error?) -> ())
+    associatedtype T
+    func request(_ request:CurrencyConverterRequests, completion: @escaping (T?,Error?) -> ())
 }
 
 enum CurrencyConverterRequests {

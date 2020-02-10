@@ -10,7 +10,7 @@
 
 import Foundation
 
-struct SupportedCurrencies: Decodable, CustomStringConvertible {
+struct SupportedCurrencies: Codable, CustomStringConvertible, Equatable {
     let success: Bool
     let currencies: [String: String]
     

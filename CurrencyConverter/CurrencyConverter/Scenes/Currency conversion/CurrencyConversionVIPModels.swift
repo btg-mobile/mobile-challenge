@@ -19,16 +19,12 @@ enum CurrencyConversion {
         }
         
         struct Response {
-            let currencies: SupportedCurrencies
+            let currencies: SupportedCurrencies?
+            let error: Error?
         }
         
         struct ViewModel {
             let currencies: [Currency]
-            
-            struct Currency {
-                let initials: String
-                let name: String
-            }
         }
     }
     

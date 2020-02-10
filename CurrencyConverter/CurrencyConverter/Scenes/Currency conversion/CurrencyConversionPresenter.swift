@@ -13,16 +13,33 @@
 import UIKit
 
 protocol CurrencyConversionPresentationLogic {
-//  func presentSomething(response: CurrencyConversion.Something.Response)
+    func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response)
 }
 
 class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
-  weak var viewController: CurrencyConversionDisplayLogic?
-  
-  // MARK: Do something
-  
-//  func presentSomething(response: CurrencyConversion.Something.Response) {
-////    let viewModel = CurrencyConversion.Something.ViewModel()
-////    viewController?.displaySomething(viewModel: viewModel)
-//  }
+    weak var viewController: CurrencyConversionDisplayLogic?
+    
+    // MARK: -
+    func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
+        guard let currencies = response.currencies,
+            currencies.success,
+            response.error == nil else {
+                viewController?.displayErrorMessage("Erro na API")
+                return
+        }
+        
+        let viewModelCurrencies = getCurrencyViewModel(fromResponse: currencies)
+        let viewModel = CurrencyConversion.LoadSupportedCurrencies.ViewModel(currencies: viewModelCurrencies)
+        viewController?.loadSupportedCurrencies(viewModel: viewModel)
+    }
+    
+    private func getCurrencyViewModel(fromResponse response: SupportedCurrencies) -> [Currency] {
+        var currencies: [Currency] = []
+        
+        for (key, value) in response.currencies {
+            currencies.append(Currency(initials: key, name: value))
+        }
+        
+        return currencies
+    }
 }

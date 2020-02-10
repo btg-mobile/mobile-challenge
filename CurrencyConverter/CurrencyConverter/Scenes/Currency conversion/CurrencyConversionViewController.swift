@@ -13,14 +13,20 @@
 import UIKit
 
 protocol CurrencyConversionDisplayLogic: class {
-//    func displaySomething(viewModel: CurrencyConversion.Something.ViewModel)
+    func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel)
+    func displayErrorMessage(_ message:String)
 }
 
 class CurrencyConversionViewController: UIViewController, CurrencyConversionDisplayLogic {
     var interactor: CurrencyConversionBusinessLogic?
     
-    // MARK: Setup
+    // MARK: - Object lifecycle
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
+    // MARK: - Setup
     private func setup() {
         let viewController = self
         let interactor = CurrencyConversionInteractor()
@@ -30,23 +36,26 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         presenter.viewController = viewController
     }
     
-    // MARK: View lifecycle
-    
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        doSomething()
+        setup()
+        getSupportedCurrencies()
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func doSomething() {
-//        let request = CurrencyConversion.Something.Request()
-//        interactor?.doSomething(request: request)
+    private func getSupportedCurrencies() {
+        interactor?.getSupportedCurrencies()
     }
     
-//    func displaySomething(viewModel: CurrencyConversion.Something.ViewModel) {
-//        //nameTextField.text = viewModel.name
-//    }
+    func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel) {
+        print(viewModel.currencies)
+    }
+    
+    func displayErrorMessage(_ message: String) {
+        print("error")
+    }
 }

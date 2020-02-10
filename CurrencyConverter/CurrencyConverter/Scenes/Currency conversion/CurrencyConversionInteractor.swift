@@ -13,7 +13,7 @@
 import UIKit
 
 protocol CurrencyConversionBusinessLogic {
-//    func doSomething(request: CurrencyConversion.Something.Request)
+    func getSupportedCurrencies()
 }
 
 protocol CurrencyConversionDataStore {
@@ -22,16 +22,18 @@ protocol CurrencyConversionDataStore {
 
 class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyConversionDataStore {
     var presenter: CurrencyConversionPresentationLogic?
-//    var worker: CurrencyConversionWorker?
+    var supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol
     //var name: String = ""
     
-    // MARK: Do something
+    init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager())) {
+        self.supportedCurrenciesWorker = supportedCurrenciesWorker
+    }
     
-//    func doSomething(request: CurrencyConversion.Something.Request) {
-////        worker = CurrencyConversionWorker()
-////        worker?.doSomeWork()
-////
-////        let response = CurrencyConversion.Something.Response()
-////        presenter?.presentSomething(response: response)
-//    }
+    // MARK: - Get Supported Currencies
+    func getSupportedCurrencies() {
+        supportedCurrenciesWorker.loadSupportedCurrencies { (currencies, error) in
+            let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: currencies, error: error)
+            self.presenter?.formatCurrencyListForView(response: response)
+        }
+    }
 }

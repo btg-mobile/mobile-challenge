@@ -12,7 +12,14 @@
 
 import UIKit
 
-protocol CurrencyConvertionWorker {
+protocol CurrencyConversionWorkerProtocol {
     func convert(_ value: Double, _ currency: String, _ to: String) -> Double
+}
+
+protocol SupportedCurrenciesWorkerProtocol {
     func loadSupportedCurrencies(completion: @escaping (SupportedCurrencies?, Error?) -> ())
+}
+
+protocol ExchangeRatesWorkerProtocol {
+    func loadExchangeRates(completion: @escaping (ExchangesRates?, Error?) -> ())
 }

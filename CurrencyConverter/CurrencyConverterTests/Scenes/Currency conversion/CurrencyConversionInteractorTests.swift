@@ -1,0 +1,67 @@
+//
+//  CurrencyConversionInteractorTests.swift
+//  CurrencyConverterTests
+//
+//  Created by Tiago Chaves on 10/02/20.
+//  Copyright © 2020 Tiago Chaves. All rights reserved.
+//
+@testable import CurrencyConverter
+import XCTest
+
+class CurrencyConversionInteractorTests: XCTestCase {
+    var sut: CurrencyConversionInteractor!
+
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+    
+    private func initSutWithError() {
+        sut = CurrencyConversionInteractor(supportedCurrenciesWorker: NetworkSupportedCurrenciesWorkerMock(returnError: NetworkSupportedCurrenciesWorkerError.requestError))
+    }
+    
+    private func initSut() {
+        sut = CurrencyConversionInteractor(supportedCurrenciesWorker: NetworkSupportedCurrenciesWorkerMock())
+    }
+
+    final class CurrencyConversionPresenterSpy: CurrencyConversionPresentationLogic {
+        var formatCurrencyListCalled = false
+        var formatCurrencyListResponse: CurrencyConversion.LoadSupportedCurrencies.Response!
+        
+        func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
+            formatCurrencyListCalled = true
+            formatCurrencyListResponse = response
+        }
+    }
+    
+    func testInteractor_afterRunGetSupportedCurrencies_isCallingFormatCurrencyListFromPresenter() {
+        initSut()
+        let presenterSpy = CurrencyConversionPresenterSpy()
+        sut.presenter = presenterSpy
+        
+        sut.getSupportedCurrencies()
+        
+        XCTAssertTrue(presenterSpy.formatCurrencyListCalled)
+    }
+    
+    func testInteractor_whenGetSupportedCurrenciesReturnError_isSendingTheErrorToPresenter() {
+        initSutWithError()
+        let presenterSpy = CurrencyConversionPresenterSpy()
+        sut.presenter = presenterSpy
+        
+        sut.getSupportedCurrencies()
+        
+        XCTAssertNotNil(presenterSpy.formatCurrencyListResponse.error)
+    }
+    
+    func testInteractor_afterRunGetSupportedCurrencies_isSendingTheSupportedCurrenciesToPresenter() {
+        initSut()
+        let presenterSpy = CurrencyConversionPresenterSpy()
+        sut.presenter = presenterSpy
+        let expectedResult = Seeds.APISeeds.supportedCurrencies
+        
+        sut.getSupportedCurrencies()
+    
+        XCTAssertEqual(expectedResult, presenterSpy.formatCurrencyListResponse.currencies)
+    }
+}
