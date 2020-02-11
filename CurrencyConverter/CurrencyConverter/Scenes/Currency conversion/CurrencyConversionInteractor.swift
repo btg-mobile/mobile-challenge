@@ -68,8 +68,8 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
             let sourceInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.sourceInitials }),
             let resultInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.resultInitials }) else {
                 
-                let response = CurrencyConversion.ConvertValue.Response(resultValue: -1, resultInitials: "")
-                presenter?.formatConvertedCurrencyForView(response: response)
+                let response = CurrencyConversion.FormatTextField.Response(number: -1, currencyInitials: "", textFieldTag: request.textFieldTag)
+                presenter?.formatNumericValueToText(response: response)
                 return
         }
         
@@ -78,8 +78,8 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
         
         let result = currencyConversionWorker.convert(sourceValue, currency: sourceDolarQuote, to: resultDolarQuote)
         
-        let response = CurrencyConversion.ConvertValue.Response(resultValue: result, resultInitials: request.resultInitials)
-        presenter?.formatConvertedCurrencyForView(response: response)
+        let response = CurrencyConversion.FormatTextField.Response(number: result, currencyInitials: request.resultInitials, textFieldTag: request.textFieldTag)
+        presenter?.formatNumericValueToText(response: response)
     }
     
     //MARK: - Convert string in numeric
@@ -100,7 +100,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
             }
         }
         
-        let response = CurrencyConversion.FormatTextField.Response(number: newValue, currencyInitials: request.currencyInitials)
+        let response = CurrencyConversion.FormatTextField.Response(number: newValue, currencyInitials: request.currencyInitials, textFieldTag: request.textFieldTag)
         presenter?.formatNumericValueToText(response: response)
     }
 }

@@ -15,7 +15,6 @@ import UIKit
 protocol CurrencyConversionPresentationLogic {
     func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response)
     func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response)
-    func formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response)
     func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response)
 }
 
@@ -55,16 +54,6 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
         }
     }
     
-    // MARK: - Format conversion result
-    func formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response) {
-        guard let formattedResult = NumberFormatter().format(response.resultValue, toCurrency: response.resultInitials),
-            response.resultValue != -1 else {
-                viewController?.displayErrorMessage("Erro ao tentar formatar o resultado")
-                return
-        }
-        viewController?.displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel(resultValue: formattedResult))
-    }
-    
     //MARK: - Format number to text
     func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response) {
         guard let formattedNewValue = NumberFormatter().format(response.number, toCurrency: response.currencyInitials),
@@ -73,7 +62,7 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
                 return
         }
         
-        let viewModel = CurrencyConversion.FormatTextField.ViewModel(formattedText: formattedNewValue)
+        let viewModel = CurrencyConversion.FormatTextField.ViewModel(formattedText: formattedNewValue, textFieldTag: response.textFieldTag)
         viewController?.displayFormattedValue(viewModel: viewModel)
     }
 }

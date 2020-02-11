@@ -47,15 +47,18 @@ enum CurrencyConversion {
             let textFieldValue: String
             let newText: String
             let currencyInitials: String
+            let textFieldTag: Int
         }
         
         struct Response {
             let number: Double
             let currencyInitials: String
+            let textFieldTag: Int
         }
         
         struct ViewModel {
             let formattedText: String
+            let textFieldTag: Int
         }
     }
     
@@ -65,11 +68,10 @@ enum CurrencyConversion {
             let sourceInitials: String
             let sourceValue: String
             let resultInitials: String
+            let textFieldTag: Int
         }
         
         struct Response {
-            let resultValue: Double
-            let resultInitials: String
         }
         
         struct ViewModel {

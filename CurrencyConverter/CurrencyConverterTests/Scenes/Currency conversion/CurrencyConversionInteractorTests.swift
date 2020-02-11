@@ -33,7 +33,7 @@ class CurrencyConversionInteractorTests: XCTestCase {
         var getExchangeStatusCalled = false
         var formatCurrencyListResponse: CurrencyConversion.LoadSupportedCurrencies.Response!
         var formatConvertedCurrencyForViewCalled = false
-        var formatConvertedCurrencyResponse: CurrencyConversion.ConvertValue.Response!
+        var formatConvertedCurrencyResponse: CurrencyConversion.FormatTextField.Response!
         
         func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
             formatCurrencyListCalled = true
@@ -43,8 +43,8 @@ class CurrencyConversionInteractorTests: XCTestCase {
         func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response) {
             getExchangeStatusCalled = true
         }
-        
-        func formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response) {
+
+        func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response) {
             formatConvertedCurrencyForViewCalled = true
             formatConvertedCurrencyResponse = response
         }
@@ -105,7 +105,7 @@ class CurrencyConversionInteractorTests: XCTestCase {
         let presenterSpy = CurrencyConversionPresenterSpy()
         sut.presenter = presenterSpy
         
-        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "1", resultInitials: "BRL"))
+        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textFieldTag: 1))
         
         XCTAssertTrue(presenterSpy.formatConvertedCurrencyForViewCalled)
     }
@@ -119,9 +119,9 @@ class CurrencyConversionInteractorTests: XCTestCase {
         
         let expectedResult = "BRL"
         
-        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "1", resultInitials: "BRL"))
+        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textFieldTag: 1))
         
-        XCTAssertEqual(expectedResult, presenterSpy.formatConvertedCurrencyResponse.resultInitials)
+        XCTAssertEqual(expectedResult, presenterSpy.formatConvertedCurrencyResponse.currencyInitials)
     }
     
     func testInteractor_afterRunConvertCurrencyWithError_isSendingNegativeOneToPresenter() {
@@ -131,8 +131,8 @@ class CurrencyConversionInteractorTests: XCTestCase {
         sut.presenter = presenterSpy
         let expectedResult: Double = -1
         
-        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "1", resultInitials: "BRL"))
+        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textFieldTag: 1))
         
-        XCTAssertEqual(expectedResult, presenterSpy.formatConvertedCurrencyResponse.resultValue)
+        XCTAssertEqual(expectedResult, presenterSpy.formatConvertedCurrencyResponse.number)
     }
 }

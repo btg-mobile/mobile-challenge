@@ -28,7 +28,7 @@ class CurrencyConversionPresenterTests: XCTestCase {
         var exchangeRatesLoadedCalled = false
         
         var supportedCurrenciesViewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel!
-        var formattedCurrencyViewModel: CurrencyConversion.ConvertValue.ViewModel!
+        var formattedCurrencyViewModel: CurrencyConversion.FormatTextField.ViewModel!
         
         func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel) {
             loadSupportedCurrenciesCalled = true
@@ -39,13 +39,13 @@ class CurrencyConversionPresenterTests: XCTestCase {
             displayErrorMessageCalled = true
         }
         
-        func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel) {
-            displayConvertedValueCalled = true
-            formattedCurrencyViewModel = viewModel
-        }
-        
         func exchangeRatesLoaded() {
             exchangeRatesLoadedCalled = true
+        }
+        
+        func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel) {
+            displayConvertedValueCalled = true
+            formattedCurrencyViewModel = viewModel
         }
     }
     
@@ -112,7 +112,7 @@ class CurrencyConversionPresenterTests: XCTestCase {
         let viewControllerSpy = ViewControllerSpy()
         sut.viewController = viewControllerSpy
         
-        sut.formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response(resultValue: 10.0, resultInitials: "BRL"))
+        sut.formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response(number: 10.0, currencyInitials: "BRL", textFieldTag: 1))
         
         XCTAssertTrue(viewControllerSpy.displayConvertedValueCalled)
     }
@@ -122,8 +122,8 @@ class CurrencyConversionPresenterTests: XCTestCase {
         sut.viewController = viewControllerSpy
         let expectedValue = "R$ 1.000,00"
         
-        sut.formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response(resultValue: 1000.0, resultInitials: "BRL"))
+        sut.formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response(number: 1000.0, currencyInitials: "BRL", textFieldTag: 1))
         
-        XCTAssertEqual(expectedValue, viewControllerSpy.formattedCurrencyViewModel.resultValue)
+        XCTAssertEqual(expectedValue, viewControllerSpy.formattedCurrencyViewModel.formattedText)
     }
 }

@@ -15,7 +15,6 @@ import UIKit
 protocol CurrencyConversionDisplayLogic: class {
     func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel)
     func displayErrorMessage(_ message:String)
-    func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel)
     func exchangeRatesLoaded()
     func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel)
 }
@@ -69,12 +68,10 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     
     //MARK: - Exchange rates loaded
     func exchangeRatesLoaded() {
-        interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "BRL", sourceValue: "1,0", resultInitials: "AWG"))
-    }
-    
-    //MARK: - Show converted currency
-    func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel) {
-        self.resultValueTextField.text = viewModel.resultValue
+        interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "BRL",
+                                                                                     sourceValue: "1,0",
+                                                                                     resultInitials: "AWG",
+                                                                                     textFieldTag: 1))
     }
     
     //MARK: - Error handle
@@ -84,11 +81,16 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     
     //MARK: - Show Formatted Value
     func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel) {
-        self.sourceValueTextField.text = viewModel.formattedText
-        
-        interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD",
-                                                                                     sourceValue: viewModel.formattedText,
-                                                                                     resultInitials: "BRL"))
+        if viewModel.textFieldTag == 0 {
+            self.sourceValueTextField.text = viewModel.formattedText
+            
+            interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD",
+                                                                                         sourceValue: viewModel.formattedText,
+                                                                                         resultInitials: "BRL",
+                                                                                         textFieldTag: 1))
+        } else if viewModel.textFieldTag == 1 {
+            self.resultValueTextField.text = viewModel.formattedText
+        }
     }
 }
 
@@ -97,7 +99,8 @@ extension CurrencyConversionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let request = CurrencyConversion.FormatTextField.Request(textFieldValue: textField.text ?? "",
                                                                  newText: string,
-                                                                 currencyInitials: "USD")
+                                                                 currencyInitials: "USD",
+                                                                 textFieldTag: 0)
         interactor?.convertStringValueInNumber(request: request)
         return false
     }
