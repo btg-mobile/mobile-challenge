@@ -64,7 +64,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     
     // MARK: - Convert currency
     func convertCurrency(request: CurrencyConversion.ConvertValue.Request) {
-        guard let sourceValue = Double(request.sourceValue),
+        guard let sourceValue = NumberFormatter().getNumberValue(of: request.sourceInitials, request.sourceValue)?.doubleValue,
             let sourceInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.sourceInitials }),
             let resultInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.resultInitials }) else {
                 

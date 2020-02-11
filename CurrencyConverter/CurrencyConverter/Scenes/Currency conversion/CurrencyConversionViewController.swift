@@ -74,7 +74,7 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     
     //MARK: - Show converted currency
     func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel) {
-        print(viewModel.resultValue)
+        self.resultValueTextField.text = viewModel.resultValue
     }
     
     //MARK: - Error handle
@@ -85,6 +85,10 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     //MARK: - Show Formatted Value
     func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel) {
         self.sourceValueTextField.text = viewModel.formattedText
+        
+        interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD",
+                                                                                     sourceValue: viewModel.formattedText,
+                                                                                     resultInitials: "BRL"))
     }
 }
 
