@@ -15,10 +15,60 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="US$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="sL4-mO-4Tk">
+                                <rect key="frame" x="20" y="95" width="280" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MSi-Bj-2TZ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-a4-yJa">
+                                <rect key="frame" x="20" y="60" width="280" height="30"/>
+                                <state key="normal" title="United States Dolar (USD)"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="R$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="TE0-65-TJc">
+                                <rect key="frame" x="20" y="246" width="280" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Ql-h4X">
+                                <rect key="frame" x="20" y="211" width="280" height="30"/>
+                                <state key="normal" title="Brazilian Real (BRL)"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Cu-vOO">
+                                <rect key="frame" x="20" y="151" width="280" height="50"/>
+                                <state key="normal" image="trade_currency"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TE0-65-TJc" firstAttribute="trailing" secondItem="7sC-Ql-h4X" secondAttribute="trailing" id="4Nu-nv-3WR"/>
+                            <constraint firstItem="TE0-65-TJc" firstAttribute="leading" secondItem="7sC-Ql-h4X" secondAttribute="leading" id="89O-kT-Vqa"/>
+                            <constraint firstItem="7sC-Ql-h4X" firstAttribute="top" secondItem="dzz-Cu-vOO" secondAttribute="bottom" constant="10" id="H1U-6y-s1X"/>
+                            <constraint firstItem="dzz-Cu-vOO" firstAttribute="top" secondItem="sL4-mO-4Tk" secondAttribute="bottom" constant="10" id="IWT-bM-Y9L"/>
+                            <constraint firstItem="7sC-Ql-h4X" firstAttribute="leading" secondItem="dzz-Cu-vOO" secondAttribute="leading" id="McV-Ux-WpR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sL4-mO-4Tk" secondAttribute="trailing" constant="20" id="Nvm-AI-oTO"/>
+                            <constraint firstItem="7sC-Ql-h4X" firstAttribute="trailing" secondItem="dzz-Cu-vOO" secondAttribute="trailing" id="Pfl-VY-eDA"/>
+                            <constraint firstItem="sL4-mO-4Tk" firstAttribute="top" secondItem="wcP-a4-yJa" secondAttribute="bottom" constant="5" id="R1N-Ot-Vse"/>
+                            <constraint firstItem="TE0-65-TJc" firstAttribute="top" secondItem="7sC-Ql-h4X" secondAttribute="bottom" constant="5" id="VEU-u8-Rjb"/>
+                            <constraint firstItem="sL4-mO-4Tk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZHG-3b-W5O"/>
+                            <constraint firstItem="dzz-Cu-vOO" firstAttribute="trailing" secondItem="sL4-mO-4Tk" secondAttribute="trailing" id="ZWZ-je-rYj"/>
+                            <constraint firstItem="wcP-a4-yJa" firstAttribute="leading" secondItem="sL4-mO-4Tk" secondAttribute="leading" id="dIN-6C-F2R"/>
+                            <constraint firstItem="wcP-a4-yJa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="glL-5X-jgu"/>
+                            <constraint firstItem="wcP-a4-yJa" firstAttribute="trailing" secondItem="sL4-mO-4Tk" secondAttribute="trailing" id="vfB-r7-KIi"/>
+                            <constraint firstItem="dzz-Cu-vOO" firstAttribute="leading" secondItem="sL4-mO-4Tk" secondAttribute="leading" id="wZz-wR-Lze"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Currency convesion" id="U0o-9e-36f"/>
+                    <tabBarItem key="tabBarItem" title="Currency convesion" image="currency_conversion" id="U0o-9e-36f"/>
+                    <connections>
+                        <outlet property="resultCurrencyButton" destination="7sC-Ql-h4X" id="PwS-2o-6x3"/>
+                        <outlet property="resultValueTextField" destination="TE0-65-TJc" id="ixr-lc-Xop"/>
+                        <outlet property="sourceCurrencyButton" destination="wcP-a4-yJa" id="CID-Ax-Nnc"/>
+                        <outlet property="sourceValueTextField" destination="sL4-mO-4Tk" id="B6r-EG-Q3x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,4 +93,8 @@
             <point key="canvasLocation" x="131.25" y="138.38028169014083"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="currency_conversion" width="33" height="33"/>
+        <image name="trade_currency" width="50" height="50"/>
+    </resources>
 </document>

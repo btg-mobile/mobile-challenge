@@ -42,6 +42,24 @@ enum CurrencyConversion {
     }
     
     //MARK: -
+    enum FormatTextField {
+        struct Request {
+            let textFieldValue: String
+            let newText: String
+            let currencyInitials: String
+        }
+        
+        struct Response {
+            let number: Double
+            let currencyInitials: String
+        }
+        
+        struct ViewModel {
+            let formattedText: String
+        }
+    }
+    
+    //MARK: -
     enum ConvertValue {
         struct Request {
             let sourceInitials: String

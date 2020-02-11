@@ -17,6 +17,7 @@ protocol CurrencyConversionDisplayLogic: class {
     func displayErrorMessage(_ message:String)
     func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel)
     func exchangeRatesLoaded()
+    func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel)
 }
 
 class CurrencyConversionViewController: UIViewController, CurrencyConversionDisplayLogic {
@@ -25,11 +26,11 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        setupVipCycle()
     }
     
     // MARK: - Setup
-    private func setup() {
+    private func setupVipCycle() {
         let viewController = self
         let interactor = CurrencyConversionInteractor()
         let presenter = CurrencyConversionPresenter()
@@ -41,10 +42,16 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupVipCycle()
+        setupTextFields(textFields: [sourceValueTextField])
         getSupportedCurrencies()
         getExchangeRates()
     }
+    
+    @IBOutlet weak var sourceValueTextField: UITextField!
+    @IBOutlet weak var resultValueTextField: UITextField!
+    @IBOutlet weak var sourceCurrencyButton: UIButton!
+    @IBOutlet weak var resultCurrencyButton: UIButton!
     
     //MARK: - App data setup
     private func getSupportedCurrencies() {
@@ -73,5 +80,21 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     //MARK: - Error handle
     func displayErrorMessage(_ message: String) {
         print("error")
+    }
+    
+    //MARK: - Show Formatted Value
+    func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel) {
+        self.sourceValueTextField.text = viewModel.formattedText
+    }
+}
+
+//MARK: - Text field delegate
+extension CurrencyConversionViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let request = CurrencyConversion.FormatTextField.Request(textFieldValue: textField.text ?? "",
+                                                                 newText: string,
+                                                                 currencyInitials: "USD")
+        interactor?.convertStringValueInNumber(request: request)
+        return false
     }
 }

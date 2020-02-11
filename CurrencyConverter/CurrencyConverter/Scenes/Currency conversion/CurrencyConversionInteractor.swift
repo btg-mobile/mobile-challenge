@@ -16,6 +16,7 @@ protocol CurrencyConversionBusinessLogic {
     func getSupportedCurrencies()
     func getExchangeRates()
     func convertCurrency(request: CurrencyConversion.ConvertValue.Request)
+    func convertStringValueInNumber(request: CurrencyConversion.FormatTextField.Request)
 }
 
 protocol CurrencyConversionDataStore {
@@ -79,5 +80,33 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
         
         let response = CurrencyConversion.ConvertValue.Response(resultValue: result, resultInitials: request.resultInitials)
         presenter?.formatConvertedCurrencyForView(response: response)
+    }
+    
+    //MARK: - Convert string in numeric
+    func convertStringValueInNumber(request: CurrencyConversion.FormatTextField.Request) {
+        guard let value = NumberFormatter().getNumberValue(of: request.currencyInitials, request.textFieldValue)?.doubleValue else {
+            return
+        }
+        
+        var newValue: Double = 0.0
+        
+        if request.newText != "" {
+            if let newValueToSum = Double(request.newText) {
+                newValue = (value * 10) + (newValueToSum / 100)
+            }
+        } else {
+            if value > 0 {
+                newValue = (value / 10).truncate(places: 2)
+            }
+        }
+        
+        let response = CurrencyConversion.FormatTextField.Response(number: newValue, currencyInitials: request.currencyInitials)
+        presenter?.formatNumericValueToText(response: response)
+    }
+}
+
+extension Double {
+    func truncate(places: Int) -> Double {
+        return floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places))
     }
 }

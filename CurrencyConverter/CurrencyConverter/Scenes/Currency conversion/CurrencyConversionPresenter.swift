@@ -16,6 +16,7 @@ protocol CurrencyConversionPresentationLogic {
     func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response)
     func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response)
     func formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response)
+    func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response)
 }
 
 class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
@@ -62,5 +63,17 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
                 return
         }
         viewController?.displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel(resultValue: formattedResult))
+    }
+    
+    //MARK: - Format number to text
+    func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response) {
+        guard let formattedNewValue = NumberFormatter().format(response.number, toCurrency: response.currencyInitials),
+            response.number != -1 else {
+                viewController?.displayErrorMessage("Erro ao tentar formatar o texto")
+                return
+        }
+        
+        let viewModel = CurrencyConversion.FormatTextField.ViewModel(formattedText: formattedNewValue)
+        viewController?.displayFormattedValue(viewModel: viewModel)
     }
 }
