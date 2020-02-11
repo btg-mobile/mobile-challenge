@@ -9,7 +9,6 @@
 import XCTest
 
 class CurrencyConversionPresenterTests: XCTestCase {
-
     var sut: CurrencyConversionPresenter!
     
     override func setUp() {
@@ -25,8 +24,11 @@ class CurrencyConversionPresenterTests: XCTestCase {
     final class ViewControllerSpy: CurrencyConversionDisplayLogic {
         var loadSupportedCurrenciesCalled = false
         var displayErrorMessageCalled = false
+        var displayConvertedValueCalled = false
+        var exchangeRatesLoadedCalled = false
         
         var supportedCurrenciesViewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel!
+        var formattedCurrencyViewModel: CurrencyConversion.ConvertValue.ViewModel!
         
         func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel) {
             loadSupportedCurrenciesCalled = true
@@ -35,6 +37,15 @@ class CurrencyConversionPresenterTests: XCTestCase {
         
         func displayErrorMessage(_ message: String) {
             displayErrorMessageCalled = true
+        }
+        
+        func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel) {
+            displayConvertedValueCalled = true
+            formattedCurrencyViewModel = viewModel
+        }
+        
+        func exchangeRatesLoaded() {
+            exchangeRatesLoadedCalled = true
         }
     }
     
@@ -83,8 +94,36 @@ class CurrencyConversionPresenterTests: XCTestCase {
         let viewControllerSpy = ViewControllerSpy()
         sut.viewController = viewControllerSpy
         
-        sut.getExchangeRatesFailed()
+        sut.getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response(success: false))
         
         XCTAssertTrue(viewControllerSpy.displayErrorMessageCalled)
+    }
+    
+    func testPresenter_whenRunsExchangeRatesWithSuccess_isCallingExchangeRatesLoadedFromViewController() {
+        let viewControllerSpy = ViewControllerSpy()
+        sut.viewController = viewControllerSpy
+        
+        sut.getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response(success: true))
+        
+        XCTAssertTrue(viewControllerSpy.exchangeRatesLoadedCalled)
+    }
+    
+    func testPresenter_whenRunsCurrencyConversion_isCallingDisplayConvertedValueFromViewController() {
+        let viewControllerSpy = ViewControllerSpy()
+        sut.viewController = viewControllerSpy
+        
+        sut.formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response(resultValue: 10.0, resultInitials: "BRL"))
+        
+        XCTAssertTrue(viewControllerSpy.displayConvertedValueCalled)
+    }
+    
+    func testPresenter_whenRunsCurrencyConversion_isSendingFormattedValueToViewController() {
+        let viewControllerSpy = ViewControllerSpy()
+        sut.viewController = viewControllerSpy
+        let expectedValue = "R$ 1.000,00"
+        
+        sut.formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response(resultValue: 1000.0, resultInitials: "BRL"))
+        
+        XCTAssertEqual(expectedValue, viewControllerSpy.formattedCurrencyViewModel.resultValue)
     }
 }

@@ -14,7 +14,8 @@ import UIKit
 
 protocol CurrencyConversionPresentationLogic {
     func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response)
-    func getExchangeRatesFailed()
+    func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response)
+    func formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response)
 }
 
 class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
@@ -45,7 +46,21 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
     }
     
     // MARK: - Error trying to get exchange rates
-    func getExchangeRatesFailed() {
-        viewController?.displayErrorMessage("Erro na API")
+    func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response) {
+        if response.success {
+            viewController?.exchangeRatesLoaded()
+        } else {
+            viewController?.displayErrorMessage("Erro na API")
+        }
+    }
+    
+    // MARK: - Format conversion result
+    func formatConvertedCurrencyForView(response: CurrencyConversion.ConvertValue.Response) {
+        guard let formattedResult = NumberFormatter().format(response.resultValue, toCurrency: response.resultInitials),
+            response.resultValue != -1 else {
+                viewController?.displayErrorMessage("Erro ao tentar formatar o resultado")
+                return
+        }
+        viewController?.displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel(resultValue: formattedResult))
     }
 }

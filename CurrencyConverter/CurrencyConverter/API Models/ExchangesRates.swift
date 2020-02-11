@@ -24,3 +24,19 @@ struct ExchangesRates: Codable, CustomStringConvertible, Equatable {
         return "Taxas de conversão de \(quotesDate) com base na moeda \(source)"
     }
 }
+
+extension ExchangesRates {
+    func getUSDCurrencyQuotes() -> [USDCurrencyQuote] {
+        let source = self.source
+        var usdCurrencyQuotes: [USDCurrencyQuote] = []
+        
+        for (key, value) in self.quotes {
+            let index = key.index(key.startIndex, offsetBy: source.count)
+            let currencyInitials = key[index...]
+            
+            usdCurrencyQuotes.append(USDCurrencyQuote(currencyInitials: String(currencyInitials), quote: value))
+        }
+        
+        return usdCurrencyQuotes
+    }
+}

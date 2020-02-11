@@ -15,23 +15,27 @@ import UIKit
 protocol CurrencyConversionBusinessLogic {
     func getSupportedCurrencies()
     func getExchangeRates()
+    func convertCurrency(request: CurrencyConversion.ConvertValue.Request)
 }
 
 protocol CurrencyConversionDataStore {
-    var exchangeRates: ExchangesRates? { get set }
+    var usdCurrencyQuotes: [USDCurrencyQuote] { get set }
 }
 
 class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyConversionDataStore {
     var presenter: CurrencyConversionPresentationLogic?
     var supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol
     var exchangeRatesWorker: ExchangeRatesWorkerProtocol
+    var currencyConversionWorker: CurrencyConversionWorkerProtocol
     
-    var exchangeRates: ExchangesRates?
+    var usdCurrencyQuotes: [USDCurrencyQuote] = []
     
     init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager()),
-         exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager())) {
+         exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager()),
+         currencyConversionWorker: CurrencyConversionWorkerProtocol = CurrencyConversionWorker()) {
         self.supportedCurrenciesWorker = supportedCurrenciesWorker
         self.exchangeRatesWorker = exchangeRatesWorker
+        self.currencyConversionWorker = currencyConversionWorker
     }
     
     // MARK: - Get Supported Currencies
@@ -45,11 +49,35 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     // MARK: - Get Exchange Rates
     func getExchangeRates() {
         exchangeRatesWorker.getExchangeRates(completion: { (exchangeRates, error) in
+            var success = false
             if error == nil {
-                self.exchangeRates = exchangeRates
-            } else {
-                self.presenter?.getExchangeRatesFailed()
+                if let exchangeRates = exchangeRates, exchangeRates.success {
+                    self.usdCurrencyQuotes = exchangeRates.getUSDCurrencyQuotes()
+                    success = true
+                }
             }
+            
+            self.presenter?.getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response(success: success))
         })
+    }
+    
+    // MARK: - Convert currency
+    func convertCurrency(request: CurrencyConversion.ConvertValue.Request) {
+        guard let sourceValue = Double(request.sourceValue),
+            let sourceInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.sourceInitials }),
+            let resultInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.resultInitials }) else {
+                
+                let response = CurrencyConversion.ConvertValue.Response(resultValue: -1, resultInitials: "")
+                presenter?.formatConvertedCurrencyForView(response: response)
+                return
+        }
+        
+        let sourceDolarQuote = usdCurrencyQuotes[sourceInitialsIndex]
+        let resultDolarQuote = usdCurrencyQuotes[resultInitialsIndex]
+        
+        let result = currencyConversionWorker.convert(sourceValue, currency: sourceDolarQuote, to: resultDolarQuote)
+        
+        let response = CurrencyConversion.ConvertValue.Response(resultValue: result, resultInitials: request.resultInitials)
+        presenter?.formatConvertedCurrencyForView(response: response)
     }
 }

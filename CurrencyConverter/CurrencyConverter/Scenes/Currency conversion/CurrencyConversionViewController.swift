@@ -15,6 +15,8 @@ import UIKit
 protocol CurrencyConversionDisplayLogic: class {
     func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel)
     func displayErrorMessage(_ message:String)
+    func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel)
+    func exchangeRatesLoaded()
 }
 
 class CurrencyConversionViewController: UIViewController, CurrencyConversionDisplayLogic {
@@ -44,10 +46,7 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         getExchangeRates()
     }
     
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
+    //MARK: - App data setup
     private func getSupportedCurrencies() {
         interactor?.getSupportedCurrencies()
     }
@@ -56,10 +55,22 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         interactor?.getExchangeRates()
     }
     
+    //MARK: - Load supported currencies
     func loadSupportedCurrencies(viewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel) {
         print(viewModel.currencies)
     }
     
+    //MARK: - Exchange rates loaded
+    func exchangeRatesLoaded() {
+        interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "BRL", sourceValue: "1,0", resultInitials: "AWG"))
+    }
+    
+    //MARK: - Show converted currency
+    func displayConvertedValue(viewModel: CurrencyConversion.ConvertValue.ViewModel) {
+        print(viewModel.resultValue)
+    }
+    
+    //MARK: - Error handle
     func displayErrorMessage(_ message: String) {
         print("error")
     }

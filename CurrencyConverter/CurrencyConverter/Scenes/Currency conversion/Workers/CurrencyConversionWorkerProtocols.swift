@@ -1,5 +1,5 @@
 //
-//  CurrencyConversionWorker.swift
+//  CurrencyConversionWorkerProtocols.swift
 //  CurrencyConverter
 //
 //  Created by Tiago Chaves on 09/02/20.
@@ -13,7 +13,7 @@
 import UIKit
 
 protocol CurrencyConversionWorkerProtocol {
-    func convert(_ value: Double, _ currency: String, _ to: String) -> Double
+    func convert(_ value: Double, currency sourceDolarQuote: USDCurrencyQuote, to resultDolarQuote: USDCurrencyQuote) -> Double
 }
 
 protocol SupportedCurrenciesWorkerProtocol {

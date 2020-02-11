@@ -34,6 +34,7 @@ enum CurrencyConversion {
         }
         
         struct Response {
+            let success: Bool
         }
         
         struct ViewModel {
@@ -50,6 +51,7 @@ enum CurrencyConversion {
         
         struct Response {
             let resultValue: Double
+            let resultInitials: String
         }
         
         struct ViewModel {
