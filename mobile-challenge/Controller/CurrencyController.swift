@@ -22,29 +22,39 @@ class CurrencyController {
     
     private var dataProvider : CurrencyDataProvider?
     
-//MARK: - SETUP DE
+//MARK: - SETUP ViewController
+    
+    func setupViewController(){
+        
+        dataProvider = CurrencyDataProvider()
+        
+        //getAndSaveCurrencyList()
+        
+    }
+    
+    func getCurrencyExchange(from: String, to: String) {
+    
+          let provider = CurrencyDataProvider(from: from, to: to)
+
+          provider.getListOfCurrencies { [weak self] results in
+              
+              switch results {
+              case .success(let dict):
+                  print(dict)
+              case .failure(let error):
+                  print(error)
+              }
+              
+          }
+          
+      }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func loadCurrencyTitleForRow(with index: Int) -> String {
+        
+        return self.currencyListArray[index].key
+        
+    }
     
     
     
