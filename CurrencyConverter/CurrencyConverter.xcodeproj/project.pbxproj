@@ -41,6 +41,11 @@
 		DD98AF5E23F0C0910069994B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98AF5D23F0C0910069994B /* DataManager.swift */; };
 		DD98AF7123F0D1EC0069994B /* SupportedCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98AF7023F0D1EC0069994B /* SupportedCurrencies.swift */; };
 		DD98AF7323F0D3240069994B /* ExchangesRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98AF7223F0D3240069994B /* ExchangesRates.swift */; };
+		DDB44CF523F414220063E2F9 /* SupportedCurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CEF23F414220063E2F9 /* SupportedCurrenciesPresenter.swift */; };
+		DDB44CF623F414220063E2F9 /* SupportedCurrenciesWorkerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF023F414220063E2F9 /* SupportedCurrenciesWorkerProtocols.swift */; };
+		DDB44CF823F414220063E2F9 /* SupportedCurrenciesVIPModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF223F414220063E2F9 /* SupportedCurrenciesVIPModels.swift */; };
+		DDB44CF923F414220063E2F9 /* SupportedCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF323F414220063E2F9 /* SupportedCurrenciesViewController.swift */; };
+		DDB44CFA23F414220063E2F9 /* SupportedCurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF423F414220063E2F9 /* SupportedCurrenciesInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +97,11 @@
 		DD98AF5D23F0C0910069994B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DD98AF7023F0D1EC0069994B /* SupportedCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrencies.swift; sourceTree = "<group>"; };
 		DD98AF7223F0D3240069994B /* ExchangesRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangesRates.swift; sourceTree = "<group>"; };
+		DDB44CEF23F414220063E2F9 /* SupportedCurrenciesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesPresenter.swift; sourceTree = "<group>"; };
+		DDB44CF023F414220063E2F9 /* SupportedCurrenciesWorkerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesWorkerProtocols.swift; sourceTree = "<group>"; };
+		DDB44CF223F414220063E2F9 /* SupportedCurrenciesVIPModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesVIPModels.swift; sourceTree = "<group>"; };
+		DDB44CF323F414220063E2F9 /* SupportedCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesViewController.swift; sourceTree = "<group>"; };
+		DDB44CF423F414220063E2F9 /* SupportedCurrenciesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +297,11 @@
 		DD98AF6023F0C1E00069994B /* Supported Currencies */ = {
 			isa = PBXGroup;
 			children = (
+				DDB44CF323F414220063E2F9 /* SupportedCurrenciesViewController.swift */,
+				DDB44CF423F414220063E2F9 /* SupportedCurrenciesInteractor.swift */,
+				DDB44CEF23F414220063E2F9 /* SupportedCurrenciesPresenter.swift */,
+				DDB44CF223F414220063E2F9 /* SupportedCurrenciesVIPModels.swift */,
+				DDB44D0123F41AB60063E2F9 /* Workers */,
 			);
 			path = "Supported Currencies";
 			sourceTree = "<group>";
@@ -306,6 +321,14 @@
 				DD98AF7223F0D3240069994B /* ExchangesRates.swift */,
 			);
 			path = "API Models";
+			sourceTree = "<group>";
+		};
+		DDB44D0123F41AB60063E2F9 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				DDB44CF023F414220063E2F9 /* SupportedCurrenciesWorkerProtocols.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +433,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD76C49723F138F200524BB5 /* NetworkExchangeRatesWorker.swift in Sources */,
+				DDB44CF623F414220063E2F9 /* SupportedCurrenciesWorkerProtocols.swift in Sources */,
+				DDB44CF923F414220063E2F9 /* SupportedCurrenciesViewController.swift in Sources */,
+				DDB44CF823F414220063E2F9 /* SupportedCurrenciesVIPModels.swift in Sources */,
+				DDB44CFA23F414220063E2F9 /* SupportedCurrenciesInteractor.swift in Sources */,
 				DD129A1023F0DFEE007AD51F /* AccessKey.swift in Sources */,
 				DD129A1923F0E27B007AD51F /* CurrencyConversionWorkerProtocols.swift in Sources */,
 				DD98AF3B23F0BE790069994B /* CurrencyConverter.xcdatamodeld in Sources */,
@@ -425,6 +452,7 @@
 				DD98AF3323F0BE790069994B /* SceneDelegate.swift in Sources */,
 				DD98AF5C23F0C00A0069994B /* StorageManager.swift in Sources */,
 				DD129A2623F10778007AD51F /* Currency.swift in Sources */,
+				DDB44CF523F414220063E2F9 /* SupportedCurrenciesPresenter.swift in Sources */,
 				DD76C4A523F2B26700524BB5 /* UIViewController+TextFieldToolBars.swift in Sources */,
 				DD76C49F23F2797400524BB5 /* CurrencyConversionWorker.swift in Sources */,
 				DD129A0A23F0D7FE007AD51F /* NumberFormatter+Currency.swift in Sources */,

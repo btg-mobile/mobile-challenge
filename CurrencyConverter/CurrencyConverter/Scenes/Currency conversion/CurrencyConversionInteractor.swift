@@ -21,6 +21,7 @@ protocol CurrencyConversionBusinessLogic {
 
 protocol CurrencyConversionDataStore {
     var usdCurrencyQuotes: [USDCurrencyQuote] { get set }
+    var supportedCurrencies: SupportedCurrencies? { get set }
 }
 
 class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyConversionDataStore {
@@ -30,6 +31,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     var currencyConversionWorker: CurrencyConversionWorkerProtocol
     
     var usdCurrencyQuotes: [USDCurrencyQuote] = []
+    var supportedCurrencies: SupportedCurrencies?
     
     init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager()),
          exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager()),
@@ -42,8 +44,15 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     // MARK: - Get Supported Currencies
     func getSupportedCurrencies() {
         supportedCurrenciesWorker.loadSupportedCurrencies { (currencies, error) in
-            let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: currencies, error: error)
-            self.presenter?.formatCurrencyListForView(response: response)
+            var success = false
+            if error == nil {
+                if let supportedCurrencies = currencies {
+                    self.supportedCurrencies = supportedCurrencies
+                    success = true
+                }
+            }
+            let response = CurrencyConversion.LoadSupportedCurrencies.Response(success: success)
+            self.presenter?.loadSupportedCurrencyStatus(response: response)
         }
     }
     
@@ -68,7 +77,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
             let sourceInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.sourceInitials }),
             let resultInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.resultInitials }) else {
                 
-                let response = CurrencyConversion.FormatTextField.Response(number: -1, currencyInitials: "", textFieldTag: request.textFieldTag)
+                let response = CurrencyConversion.FormatTextField.Response(number: -1, currencyInitials: "", textField: request.textField)
                 presenter?.formatNumericValueToText(response: response)
                 return
         }
@@ -78,7 +87,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
         
         let result = currencyConversionWorker.convert(sourceValue, currency: sourceDolarQuote, to: resultDolarQuote)
         
-        let response = CurrencyConversion.FormatTextField.Response(number: result, currencyInitials: request.resultInitials, textFieldTag: request.textFieldTag)
+        let response = CurrencyConversion.FormatTextField.Response(number: result, currencyInitials: request.resultInitials, textField: request.textField)
         presenter?.formatNumericValueToText(response: response)
     }
     
@@ -100,7 +109,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
             }
         }
         
-        let response = CurrencyConversion.FormatTextField.Response(number: newValue, currencyInitials: request.currencyInitials, textFieldTag: request.textFieldTag)
+        let response = CurrencyConversion.FormatTextField.Response(number: newValue, currencyInitials: request.currencyInitials, textField: request.textField)
         presenter?.formatNumericValueToText(response: response)
     }
 }

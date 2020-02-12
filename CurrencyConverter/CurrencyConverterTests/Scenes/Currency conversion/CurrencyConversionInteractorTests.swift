@@ -35,7 +35,8 @@ class CurrencyConversionInteractorTests: XCTestCase {
         var formatConvertedCurrencyForViewCalled = false
         var formatConvertedCurrencyResponse: CurrencyConversion.FormatTextField.Response!
         
-        func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
+        
+        func loadSupportedCurrencyStatus(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
             formatCurrencyListCalled = true
             formatCurrencyListResponse = response
         }
@@ -68,14 +69,14 @@ class CurrencyConversionInteractorTests: XCTestCase {
         XCTAssertEqual(Seeds.APISeeds.exchangeRates.getUSDCurrencyQuotes(), sut.usdCurrencyQuotes)
     }
     
-    func testInteractor_whenGetSupportedCurrenciesReturnError_isSendingTheErrorToPresenter() {
+    func testInteractor_whenGetSupportedCurrenciesReturnError_isSendingSuccessFalseToPresenter() {
         initSutWithError()
         let presenterSpy = CurrencyConversionPresenterSpy()
         sut.presenter = presenterSpy
         
         sut.getSupportedCurrencies()
         
-        XCTAssertNotNil(presenterSpy.formatCurrencyListResponse.error)
+        XCTAssertFalse(presenterSpy.formatCurrencyListResponse.success)
     }
     
     func testInteractor_whenGetExchangeRatesRuns_isCallingGetExchangeRatesStatusFromPresenter() {
@@ -88,15 +89,14 @@ class CurrencyConversionInteractorTests: XCTestCase {
         XCTAssertTrue(presenterSpy.getExchangeStatusCalled)
     }
     
-    func testInteractor_afterRunGetSupportedCurrencies_isSendingTheSupportedCurrenciesToPresenter() {
+    func testInteractor_afterRunGetSupportedCurrencies_isSendingSuccessToPresenter() {
         initSut()
         let presenterSpy = CurrencyConversionPresenterSpy()
         sut.presenter = presenterSpy
-        let expectedResult = Seeds.APISeeds.supportedCurrencies
         
         sut.getSupportedCurrencies()
         
-        XCTAssertEqual(expectedResult, presenterSpy.formatCurrencyListResponse.currencies)
+        XCTAssertTrue(presenterSpy.formatCurrencyListResponse.success)
     }
     
     func testInteractor_afterRunConvertCurrency_isCallingFormatConvertedCurrencyFromPresenter() {
@@ -105,7 +105,7 @@ class CurrencyConversionInteractorTests: XCTestCase {
         let presenterSpy = CurrencyConversionPresenterSpy()
         sut.presenter = presenterSpy
         
-        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textFieldTag: 1))
+        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textField: .result))
         
         XCTAssertTrue(presenterSpy.formatConvertedCurrencyForViewCalled)
     }
@@ -119,7 +119,7 @@ class CurrencyConversionInteractorTests: XCTestCase {
         
         let expectedResult = "BRL"
         
-        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textFieldTag: 1))
+        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textField: .result))
         
         XCTAssertEqual(expectedResult, presenterSpy.formatConvertedCurrencyResponse.currencyInitials)
     }
@@ -131,7 +131,7 @@ class CurrencyConversionInteractorTests: XCTestCase {
         sut.presenter = presenterSpy
         let expectedResult: Double = -1
         
-        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textFieldTag: 1))
+        sut.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD", sourceValue: "US$1,00", resultInitials: "BRL", textField: .result))
         
         XCTAssertEqual(expectedResult, presenterSpy.formatConvertedCurrencyResponse.number)
     }

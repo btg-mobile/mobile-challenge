@@ -13,7 +13,7 @@
 import UIKit
 
 protocol CurrencyConversionPresentationLogic {
-    func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response)
+    func loadSupportedCurrencyStatus(response: CurrencyConversion.LoadSupportedCurrencies.Response)
     func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response)
     func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response)
 }
@@ -21,28 +21,12 @@ protocol CurrencyConversionPresentationLogic {
 class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
     weak var viewController: CurrencyConversionDisplayLogic?
     
-    // MARK: - Load supported currency
-    func formatCurrencyListForView(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
-        guard let currencies = response.currencies,
-            currencies.success,
-            response.error == nil else {
-                viewController?.displayErrorMessage("Erro na API")
-                return
+    func loadSupportedCurrencyStatus(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
+        if response.success {
+            viewController?.exchangeRatesLoaded()
+        } else {
+            viewController?.displayErrorMessage("Error trying to retrieve supported currencies.")
         }
-        
-        let viewModelCurrencies = getCurrencyViewModel(fromResponse: currencies)
-        let viewModel = CurrencyConversion.LoadSupportedCurrencies.ViewModel(currencies: viewModelCurrencies)
-        viewController?.loadSupportedCurrencies(viewModel: viewModel)
-    }
-    
-    private func getCurrencyViewModel(fromResponse response: SupportedCurrencies) -> [Currency] {
-        var currencies: [Currency] = []
-        
-        for (key, value) in response.currencies {
-            currencies.append(Currency(initials: key, name: value))
-        }
-        
-        return currencies
     }
     
     // MARK: - Error trying to get exchange rates
@@ -50,7 +34,7 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
         if response.success {
             viewController?.exchangeRatesLoaded()
         } else {
-            viewController?.displayErrorMessage("Erro na API")
+            viewController?.displayErrorMessage("Error trying to retrieve exchange rates.")
         }
     }
     
@@ -58,11 +42,11 @@ class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
     func formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response) {
         guard let formattedNewValue = NumberFormatter().format(response.number, toCurrency: response.currencyInitials),
             response.number != -1 else {
-                viewController?.displayErrorMessage("Erro ao tentar formatar o texto")
+                viewController?.displayErrorMessage("Error trying to format currency.")
                 return
         }
         
-        let viewModel = CurrencyConversion.FormatTextField.ViewModel(formattedText: formattedNewValue, textFieldTag: response.textFieldTag)
+        let viewModel = CurrencyConversion.FormatTextField.ViewModel(formattedText: formattedNewValue, textField: response.textField)
         viewController?.displayFormattedValue(viewModel: viewModel)
     }
 }

@@ -49,45 +49,14 @@ class CurrencyConversionPresenterTests: XCTestCase {
         }
     }
     
-    func testPresenter_whenReceiveError_isCallingDisplayErrorMessageFromViewController() {
+    func testPresenter_whenReceiveSuccessFalseFromSupportedCurrenciesStatus_isCallingDisplayErrorMessageFromViewController() {
         let viewControllerSpy = ViewControllerSpy()
         sut.viewController = viewControllerSpy
-        let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: nil, error: NetworkSupportedCurrenciesWorkerError.requestError)
+        let response = CurrencyConversion.LoadSupportedCurrencies.Response(success: false)
         
-        sut.formatCurrencyListForView(response: response)
+        sut.loadSupportedCurrencyStatus(response: response)
         
         XCTAssertTrue(viewControllerSpy.displayErrorMessageCalled)
-    }
-    
-    func testPresenter_whenReceiveSuccessFalse_isCallingDisplayErrorMessageFromViewController() {
-        let viewControllerSpy = ViewControllerSpy()
-        sut.viewController = viewControllerSpy
-        let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: Seeds.APISeeds.supportedCurrenciesAPIError, error: nil)
-        
-        sut.formatCurrencyListForView(response: response)
-        
-        XCTAssertTrue(viewControllerSpy.displayErrorMessageCalled)
-    }
-    
-    func testPresenter_isCallingLoadSupportedCurrenciesFromViewController() {
-        let viewControllerSpy = ViewControllerSpy()
-        sut.viewController = viewControllerSpy
-        let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: Seeds.APISeeds.supportedCurrencies, error: nil)
-        
-        sut.formatCurrencyListForView(response: response)
-        
-        XCTAssertTrue(viewControllerSpy.loadSupportedCurrenciesCalled)
-    }
-    
-    func testPresenter_isSendingCorrenctListOfCurrenciesToViewController() {
-        let viewControllerSpy = ViewControllerSpy()
-        sut.viewController = viewControllerSpy
-        let response = CurrencyConversion.LoadSupportedCurrencies.Response(currencies: Seeds.APISeeds.supportedCurrencies, error: nil)
-        let expectedResult = Seeds.ViewModels.viewModelCurrencies.sorted(by: >)
-        
-        sut.formatCurrencyListForView(response: response)
-        
-        XCTAssertEqual(expectedResult, viewControllerSpy.supportedCurrenciesViewModel.currencies.sorted(by: >))
     }
     
     func testPresenter_whenRunsExchangeRatesFailed_isCallingDisplayErrorMessageFromViewController() {
@@ -112,7 +81,7 @@ class CurrencyConversionPresenterTests: XCTestCase {
         let viewControllerSpy = ViewControllerSpy()
         sut.viewController = viewControllerSpy
         
-        sut.formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response(number: 10.0, currencyInitials: "BRL", textFieldTag: 1))
+        sut.formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response(number: 10.0, currencyInitials: "BRL", textField: .result))
         
         XCTAssertTrue(viewControllerSpy.displayConvertedValueCalled)
     }
@@ -122,7 +91,7 @@ class CurrencyConversionPresenterTests: XCTestCase {
         sut.viewController = viewControllerSpy
         let expectedValue = "R$ 1.000,00"
         
-        sut.formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response(number: 1000.0, currencyInitials: "BRL", textFieldTag: 1))
+        sut.formatNumericValueToText(response: CurrencyConversion.FormatTextField.Response(number: 1000.0, currencyInitials: "BRL", textField: .result))
         
         XCTAssertEqual(expectedValue, viewControllerSpy.formattedCurrencyViewModel.formattedText)
     }

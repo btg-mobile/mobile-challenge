@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iib-xC-Zwe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FgJ-w2-eBu">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Currency convesion-->
+        <!--Currency Conversion View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CurrencyConversionViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,6 +27,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-a4-yJa">
                                 <rect key="frame" x="20" y="60" width="280" height="30"/>
                                 <state key="normal" title="United States Dolar (USD)"/>
+                                <connections>
+                                    <segue destination="dEh-I2-a6Y" kind="show" id="L5c-Bf-QGH"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="R$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="TE0-65-TJc">
                                 <rect key="frame" x="20" y="246" width="280" height="46"/>
@@ -36,6 +39,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Ql-h4X">
                                 <rect key="frame" x="20" y="211" width="280" height="30"/>
                                 <state key="normal" title="Brazilian Real (BRL)"/>
+                                <connections>
+                                    <segue destination="dEh-I2-a6Y" kind="show" id="4bC-Mg-Ehg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Cu-vOO">
                                 <rect key="frame" x="20" y="151" width="280" height="50"/>
@@ -62,7 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Currency convesion" image="currency_conversion" id="U0o-9e-36f"/>
+                    <navigationItem key="navigationItem" id="pJW-AO-cCN"/>
                     <connections>
                         <outlet property="resultCurrencyButton" destination="7sC-Ql-h4X" id="PwS-2o-6x3"/>
                         <outlet property="resultValueTextField" destination="TE0-65-TJc" id="ixr-lc-Xop"/>
@@ -72,29 +78,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128.75" y="138.38028169014083"/>
+            <point key="canvasLocation" x="2056.875" y="137.32394366197184"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="3f7-oI-kaq">
+        <!--Supported Currencies-->
+        <scene sceneID="lye-qc-4rZ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Iib-xC-Zwe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5y2-xz-FQA">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
+                <viewController id="dEh-I2-a6Y" customClass="SupportedCurrenciesViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZWd-wv-qFL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cte-yQ-AQk">
+                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dEh-I2-a6Y" id="9Zv-pl-2X7"/>
+                                    <outlet property="delegate" destination="dEh-I2-a6Y" id="k2p-qW-gzE"/>
+                                </connections>
+                            </tableView>
+                            <searchBar clipsSubviews="YES" contentMode="redraw" placeholder="Currency name or initials" translatesAutoresizingMaskIntoConstraints="NO" id="0AL-zB-MKG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="dEh-I2-a6Y" id="XEf-6O-WLu"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cte-yQ-AQk" firstAttribute="leading" secondItem="3L5-ta-YdK" secondAttribute="leading" id="9Wp-sB-LXL"/>
+                            <constraint firstItem="cte-yQ-AQk" firstAttribute="top" secondItem="0AL-zB-MKG" secondAttribute="bottom" symbolic="YES" id="KZc-a3-6OT"/>
+                            <constraint firstItem="0AL-zB-MKG" firstAttribute="trailing" secondItem="3L5-ta-YdK" secondAttribute="trailing" id="P0v-aN-i6u"/>
+                            <constraint firstItem="3L5-ta-YdK" firstAttribute="trailing" secondItem="cte-yQ-AQk" secondAttribute="trailing" id="QjT-Hr-hQh"/>
+                            <constraint firstItem="3L5-ta-YdK" firstAttribute="bottom" secondItem="cte-yQ-AQk" secondAttribute="bottom" id="Vla-dP-SW1"/>
+                            <constraint firstItem="0AL-zB-MKG" firstAttribute="top" secondItem="3L5-ta-YdK" secondAttribute="top" id="gCJ-E9-4GR"/>
+                            <constraint firstItem="0AL-zB-MKG" firstAttribute="leading" secondItem="3L5-ta-YdK" secondAttribute="leading" id="qJb-UH-36R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3L5-ta-YdK"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Supported Currencies" image="currency_list" id="ZUF-gi-5Ku"/>
+                    <navigationItem key="navigationItem" id="9Dx-dy-u57"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="89m-kN-lgO"/>
+                        <outlet property="searchBar" destination="0AL-zB-MKG" id="lV5-cU-c15"/>
+                        <outlet property="tableView" destination="cte-yQ-AQk" id="xM3-dK-0x3"/>
                     </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WfN-uO-Ff1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hJQ-SC-krn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.25" y="138.38028169014083"/>
+            <point key="canvasLocation" x="2988.75" y="137.32394366197184"/>
+        </scene>
+        <!--Currency convesion-->
+        <scene sceneID="2sM-eX-mtV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FgJ-w2-eBu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Currency convesion" image="currency_conversion" id="U0o-9e-36f"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M5N-ZL-uqY">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5dI-wj-0ZT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fky-Gf-E7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1059.375" y="137.32394366197184"/>
         </scene>
     </scenes>
     <resources>
-        <image name="currency_conversion" width="33" height="33"/>
+        <image name="currency_conversion" width="25" height="25"/>
+        <image name="currency_list" width="25" height="25"/>
         <image name="trade_currency" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="L5c-Bf-QGH"/>
+    </inferredMetricsTieBreakers>
 </document>

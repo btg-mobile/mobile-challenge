@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-camb-33.png",
+      "filename" : "icons8-camb-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-camb-66.png",
+      "filename" : "icons8-camb-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-camb-99.png",
+      "filename" : "icons8-camb-75.png",
       "scale" : "3x"
     }
   ],

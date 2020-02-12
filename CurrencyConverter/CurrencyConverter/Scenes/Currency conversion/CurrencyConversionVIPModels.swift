@@ -19,8 +19,7 @@ enum CurrencyConversion {
         }
         
         struct Response {
-            let currencies: SupportedCurrencies?
-            let error: Error?
+            let success: Bool
         }
         
         struct ViewModel {
@@ -47,18 +46,18 @@ enum CurrencyConversion {
             let textFieldValue: String
             let newText: String
             let currencyInitials: String
-            let textFieldTag: Int
+            let textField: TextFieldCurrencyType
         }
         
         struct Response {
             let number: Double
             let currencyInitials: String
-            let textFieldTag: Int
+            let textField: TextFieldCurrencyType
         }
         
         struct ViewModel {
             let formattedText: String
-            let textFieldTag: Int
+            let textField: TextFieldCurrencyType
         }
     }
     
@@ -68,7 +67,7 @@ enum CurrencyConversion {
             let sourceInitials: String
             let sourceValue: String
             let resultInitials: String
-            let textFieldTag: Int
+            let textField: TextFieldCurrencyType
         }
         
         struct Response {
