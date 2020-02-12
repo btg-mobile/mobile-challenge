@@ -63,21 +63,77 @@
         <!--Moedas-->
         <scene sceneID="L4E-eC-IEZ">
             <objects>
-                <viewController id="FZH-ba-BKF" sceneMemberID="viewController">
+                <viewController id="FZH-ba-BKF" customClass="CurrencyListViewController" customModule="mobile_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRf-BQ-d6h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C8E-pe-7Od">
-                                <rect key="frame" x="0.0" y="367" width="414" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D51-K9-gqa">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6eu-PF-pdA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="P59-l3-wDX"/>
+                                </constraints>
+                                <color key="barTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="476-6n-zga">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" textLabel="SQu-IE-x5v" detailTextLabel="gyD-RK-eYK" style="IBUITableViewCellStyleValue1" id="Y8b-3J-dsf">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y8b-3J-dsf" id="FTk-Zv-71x">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SQu-IE-x5v">
+                                                    <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gyD-RK-eYK">
+                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6eu-PF-pdA" firstAttribute="top" secondItem="fZA-Yr-c7P" secondAttribute="top" id="0m3-dQ-xNZ"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="trailing" secondItem="6eu-PF-pdA" secondAttribute="trailing" id="2CJ-IY-EHH"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="leading" secondItem="6eu-PF-pdA" secondAttribute="leading" id="4uc-Az-KTi"/>
+                            <constraint firstItem="476-6n-zga" firstAttribute="top" secondItem="6eu-PF-pdA" secondAttribute="bottom" symbolic="YES" id="6p9-PL-XUY"/>
+                            <constraint firstItem="6eu-PF-pdA" firstAttribute="leading" secondItem="fZA-Yr-c7P" secondAttribute="leading" id="MBh-6c-36p"/>
+                            <constraint firstItem="6eu-PF-pdA" firstAttribute="trailing" secondItem="fZA-Yr-c7P" secondAttribute="trailing" id="UZE-LQ-aHr"/>
+                            <constraint firstItem="476-6n-zga" firstAttribute="trailing" secondItem="fZA-Yr-c7P" secondAttribute="trailing" id="hra-ga-xmD"/>
+                            <constraint firstItem="476-6n-zga" firstAttribute="bottom" secondItem="fZA-Yr-c7P" secondAttribute="bottom" id="ma8-mJ-itR"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="bottom" secondItem="6eu-PF-pdA" secondAttribute="top" id="qia-hc-Yri"/>
+                            <constraint firstItem="476-6n-zga" firstAttribute="leading" secondItem="fZA-Yr-c7P" secondAttribute="leading" id="rEa-9M-gWd"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="top" secondItem="vRf-BQ-d6h" secondAttribute="top" id="zF7-hN-xZJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fZA-Yr-c7P"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Moedas" image="bitcoinsign.circle" catalog="system" selectedImage="bitcoinsign.circle.fill" id="wPs-PV-KHF"/>
                     <navigationItem key="navigationItem" id="ZDC-G8-wFJ"/>
+                    <connections>
+                        <outlet property="currencySearchBar" destination="6eu-PF-pdA" id="AFu-c1-bs5"/>
+                        <outlet property="currencyTableView" destination="476-6n-zga" id="dgp-lh-5TX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uq8-Fs-hLe" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,6 +145,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="u4e-n8-f2O" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FQ4-OF-FX3">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

@@ -18,6 +18,7 @@
 		BCE9349223F22E24009EFB38 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9349123F22E24009EFB38 /* CurrencyController.swift */; };
 		BCE9349423F238F8009EFB38 /* LiveExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9349323F238F8009EFB38 /* LiveExchange.swift */; };
 		BCE9349623F244EC009EFB38 /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9349523F244EC009EFB38 /* CurrencyList.swift */; };
+		BCE9349823F30B8F009EFB38 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9349723F30B8F009EFB38 /* CurrencyListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		BCE9349123F22E24009EFB38 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 		BCE9349323F238F8009EFB38 /* LiveExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveExchange.swift; sourceTree = "<group>"; };
 		BCE9349523F244EC009EFB38 /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
+		BCE9349723F30B8F009EFB38 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 				BCE9348823F2259B009EFB38 /* DataProvider */,
 				BCE9348723F22585009EFB38 /* Supporting Files */,
 				BCE9346E23F224B1009EFB38 /* Assets.xcassets */,
-				BCE9347023F224B1009EFB38 /* LaunchScreen.storyboard */,
 				BCE9347323F224B1009EFB38 /* Info.plist */,
 			);
 			path = "mobile-challenge";
@@ -111,6 +112,7 @@
 		BCE9348723F22585009EFB38 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCE9347023F224B1009EFB38 /* LaunchScreen.storyboard */,
 				BCE9346723F224AF009EFB38 /* SceneDelegate.swift */,
 				BCE9346523F224AF009EFB38 /* AppDelegate.swift */,
 			);
@@ -138,6 +140,7 @@
 			children = (
 				BCE9348C23F2261E009EFB38 /* Main.storyboard */,
 				BCE9346923F224AF009EFB38 /* ViewController.swift */,
+				BCE9349723F30B8F009EFB38 /* CurrencyListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			files = (
 				BCE9346A23F224AF009EFB38 /* ViewController.swift in Sources */,
 				BCE9349023F22816009EFB38 /* CurrencyDataProvider.swift in Sources */,
+				BCE9349823F30B8F009EFB38 /* CurrencyListViewController.swift in Sources */,
 				BCE9349623F244EC009EFB38 /* CurrencyList.swift in Sources */,
 				BCE9349423F238F8009EFB38 /* LiveExchange.swift in Sources */,
 				BCE9349223F22E24009EFB38 /* CurrencyController.swift in Sources */,

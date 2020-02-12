@@ -15,3 +15,10 @@ struct CurrencyList: Codable {
     let currencies: [String: String]?
 
 }
+
+struct Currency {
+    
+    let key: String
+    let value: String
+
+}

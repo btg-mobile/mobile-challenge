@@ -13,9 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.teste()
+        //self.teste()
+
     }
-    
     
     func teste(){
   
@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         provider.getListOfCurrencies { [weak self] results in
             
             switch results {
-                
             case .success(let dict):
                 print(dict)
             case .failure(let error):
@@ -32,10 +31,6 @@ class ViewController: UIViewController {
             }
             
         }
-    //        provider.getCurrentCurrencyValue { (results) in
-//
-//
-//        }
         
     }
     
