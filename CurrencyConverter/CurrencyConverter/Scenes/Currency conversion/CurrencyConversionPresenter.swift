@@ -21,15 +21,16 @@ protocol CurrencyConversionPresentationLogic {
 class CurrencyConversionPresenter: CurrencyConversionPresentationLogic {
     weak var viewController: CurrencyConversionDisplayLogic?
     
+    // MARK: - Get supported currencies status
     func loadSupportedCurrencyStatus(response: CurrencyConversion.LoadSupportedCurrencies.Response) {
         if response.success {
-            viewController?.exchangeRatesLoaded()
+            viewController?.supportedCurrenciesLoaded()
         } else {
             viewController?.displayErrorMessage("Error trying to retrieve supported currencies.")
         }
     }
     
-    // MARK: - Error trying to get exchange rates
+    // MARK: - Get exchange rates status
     func getExchangeRatesStatus(response: CurrencyConversion.GetExchangeRates.Response) {
         if response.success {
             viewController?.exchangeRatesLoaded()

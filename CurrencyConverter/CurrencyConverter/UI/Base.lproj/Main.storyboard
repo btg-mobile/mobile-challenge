@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Currency Conversion View Controller-->
+        <!--Currency Converter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CurrencyConversionViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="US$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="sL4-mO-4Tk">
-                                <rect key="frame" x="20" y="95" width="280" height="46"/>
+                                <rect key="frame" x="20" y="139" width="280" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
@@ -25,26 +25,26 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-a4-yJa">
-                                <rect key="frame" x="20" y="60" width="280" height="30"/>
+                                <rect key="frame" x="20" y="104" width="280" height="30"/>
                                 <state key="normal" title="United States Dolar (USD)"/>
                                 <connections>
-                                    <segue destination="dEh-I2-a6Y" kind="show" id="L5c-Bf-QGH"/>
+                                    <action selector="showSupportedCurrencies:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fw7-B6-82h"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="R$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="TE0-65-TJc">
-                                <rect key="frame" x="20" y="246" width="280" height="46"/>
+                                <rect key="frame" x="20" y="290" width="280" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Ql-h4X">
-                                <rect key="frame" x="20" y="211" width="280" height="30"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Ql-h4X">
+                                <rect key="frame" x="20" y="255" width="280" height="30"/>
                                 <state key="normal" title="Brazilian Real (BRL)"/>
                                 <connections>
-                                    <segue destination="dEh-I2-a6Y" kind="show" id="4bC-Mg-Ehg"/>
+                                    <action selector="showSupportedCurrencies:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6bt-ZE-sNM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Cu-vOO">
-                                <rect key="frame" x="20" y="151" width="280" height="50"/>
+                                <rect key="frame" x="20" y="195" width="280" height="50"/>
                                 <state key="normal" image="trade_currency"/>
                             </button>
                         </subviews>
@@ -68,12 +68,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pJW-AO-cCN"/>
+                    <navigationItem key="navigationItem" title="Currency Converter" id="pJW-AO-cCN">
+                        <barButtonItem key="backBarButtonItem" title=" " id="SDd-dS-SSh"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="resultCurrencyButton" destination="7sC-Ql-h4X" id="PwS-2o-6x3"/>
                         <outlet property="resultValueTextField" destination="TE0-65-TJc" id="ixr-lc-Xop"/>
                         <outlet property="sourceCurrencyButton" destination="wcP-a4-yJa" id="CID-Ax-Nnc"/>
                         <outlet property="sourceValueTextField" destination="sL4-mO-4Tk" id="B6r-EG-Q3x"/>
+                        <segue destination="dEh-I2-a6Y" kind="show" identifier="SupportedCurrencies" id="Y5O-BZ-3iM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -89,7 +92,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cte-yQ-AQk">
-                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
+                                <rect key="frame" x="0.0" y="100" width="320" height="468"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="dEh-I2-a6Y" id="9Zv-pl-2X7"/>
@@ -97,7 +100,7 @@
                                 </connections>
                             </tableView>
                             <searchBar clipsSubviews="YES" contentMode="redraw" placeholder="Currency name or initials" translatesAutoresizingMaskIntoConstraints="NO" id="0AL-zB-MKG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="56"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <scopeButtonTitles>
@@ -135,13 +138,25 @@
         <!--Currency convesion-->
         <scene sceneID="2sM-eX-mtV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FgJ-w2-eBu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FgJ-w2-eBu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Currency convesion" image="currency_conversion" id="U0o-9e-36f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M5N-ZL-uqY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="barTintColor" red="0.088486536729368334" green="0.47415398316062174" blue="0.093003457687452967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jm8-4b-QOV">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5dI-wj-0ZT"/>
                     </connections>
@@ -156,7 +171,4 @@
         <image name="currency_list" width="25" height="25"/>
         <image name="trade_currency" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="L5c-Bf-QGH"/>
-    </inferredMetricsTieBreakers>
 </document>

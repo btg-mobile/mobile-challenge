@@ -13,7 +13,7 @@
 import UIKit
 
 protocol SelectCurrencyDelegate: class {
-    func setCurrency(_ currency: Currency)
+    func setCurrency(_ currency: Currency, to: CurrencyType)
 }
 
 protocol SupportedCurrenciesDisplayLogic: class {
@@ -22,6 +22,7 @@ protocol SupportedCurrenciesDisplayLogic: class {
 
 class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDisplayLogic {
     var interactor: SupportedCurrenciesBusinessLogic?
+    var router: (NSObjectProtocol & SupportedCurrenciesRoutingLogic & SupportedCurrenciesDataPassing)?
     
     // MARK: Object lifecycle
     required init?(coder aDecoder: NSCoder) {
@@ -34,14 +35,19 @@ class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDi
         let viewController = self
         let interactor = SupportedCurrenciesInteractor()
         let presenter = SupportedCurrenciesPresenter()
+        let router = SupportedCurrenciesRouter()
         viewController.interactor = interactor
+        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        router.dataStore = interactor
+        router.viewController = viewController
     }
     
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTextFields(textFields: [searchBar.searchTextField])
         loadSupportedCurrenciesList()
     }
     
@@ -58,6 +64,7 @@ class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDi
         }
     }
     var filtering: Bool = false
+    var currencyType: CurrencyType = .source
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -70,15 +77,16 @@ class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDi
     
     // MARK: - Load supported currencies list
     private func loadSupportedCurrenciesList() {
-        
+        interactor?.loadSupportedCurrencies(request: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Request())
     }
     
     func displaySupportedCurrenciesList(viewModel: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.ViewModel) {
         if !filtering {
-            self.filteredCurrencies = viewModel.currencies
-        } else {
             self.currencies = viewModel.currencies
+        } else {
+            self.filteredCurrencies = viewModel.currencies
         }
+        self.currencyType = viewModel.currencyType
     }
 }
 
@@ -104,7 +112,8 @@ extension SupportedCurrenciesViewController: UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let delegate = self.delegate {
             let currency = filtering ? filteredCurrencies[indexPath.row] : currencies[indexPath.row]
-            delegate.setCurrency(currency)
+            delegate.setCurrency(currency, to: self.currencyType)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

@@ -29,4 +29,9 @@ extension NumberFormatter {
         
         return self
     }
+    
+    func getSymbolForCurrencyCode(code: String) -> String? {
+        let locale = NSLocale(localeIdentifier: code)
+        return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
+    }
 }

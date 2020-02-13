@@ -19,15 +19,22 @@ protocol SupportedCurrenciesBusinessLogic {
 
 protocol SupportedCurrenciesDataStore {
     var supportedCurrencies: SupportedCurrencies? { get set }
+    var currencyType: CurrencyType { get set }
 }
 
 class SupportedCurrenciesInteractor: SupportedCurrenciesBusinessLogic, SupportedCurrenciesDataStore {
     var presenter: SupportedCurrenciesPresentationLogic?
     var supportedCurrencies: SupportedCurrencies?
+    var currencyType: CurrencyType = .source
     
     // MARK: - Load supported currencies
     func loadSupportedCurrencies(request: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Request) {
-        
+        guard let supportedCurrencies = self.supportedCurrencies else {
+            return
+        }
+        let response = SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Response(currencies: supportedCurrencies,
+                                                                                     currencyType: self.currencyType)
+        presenter?.formatCurrencyListForView(response: response)
     }
     
     //MARK: - Filter

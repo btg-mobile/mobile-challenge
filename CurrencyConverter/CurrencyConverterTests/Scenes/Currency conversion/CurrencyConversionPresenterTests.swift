@@ -26,6 +26,7 @@ class CurrencyConversionPresenterTests: XCTestCase {
         var displayErrorMessageCalled = false
         var displayConvertedValueCalled = false
         var exchangeRatesLoadedCalled = false
+        var supportedCurrenciesLoadedCalled = false
         
         var supportedCurrenciesViewModel: CurrencyConversion.LoadSupportedCurrencies.ViewModel!
         var formattedCurrencyViewModel: CurrencyConversion.FormatTextField.ViewModel!
@@ -41,6 +42,10 @@ class CurrencyConversionPresenterTests: XCTestCase {
         
         func exchangeRatesLoaded() {
             exchangeRatesLoadedCalled = true
+        }
+        
+        func supportedCurrenciesLoaded() {
+            supportedCurrenciesLoadedCalled = true
         }
         
         func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel) {

@@ -17,11 +17,13 @@ protocol CurrencyConversionBusinessLogic {
     func getExchangeRates()
     func convertCurrency(request: CurrencyConversion.ConvertValue.Request)
     func convertStringValueInNumber(request: CurrencyConversion.FormatTextField.Request)
+    func identifyCurrency(_ currencyType: CurrencyType)
 }
 
 protocol CurrencyConversionDataStore {
     var usdCurrencyQuotes: [USDCurrencyQuote] { get set }
     var supportedCurrencies: SupportedCurrencies? { get set }
+    var currencyType: CurrencyType { get set }
 }
 
 class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyConversionDataStore {
@@ -32,6 +34,7 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     
     var usdCurrencyQuotes: [USDCurrencyQuote] = []
     var supportedCurrencies: SupportedCurrencies?
+    var currencyType: CurrencyType = .source
     
     init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager()),
          exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager()),
@@ -98,7 +101,6 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
         }
         
         var newValue: Double = 0.0
-        
         if request.newText != "" {
             if let newValueToSum = Double(request.newText) {
                 newValue = (value * 10) + (newValueToSum / 100)
@@ -111,6 +113,11 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
         
         let response = CurrencyConversion.FormatTextField.Response(number: newValue, currencyInitials: request.currencyInitials, textField: request.textField)
         presenter?.formatNumericValueToText(response: response)
+    }
+    
+    //MARK: - Identify currency type
+    func identifyCurrency(_ currencyType: CurrencyType) {
+        self.currencyType = currencyType
     }
 }
 

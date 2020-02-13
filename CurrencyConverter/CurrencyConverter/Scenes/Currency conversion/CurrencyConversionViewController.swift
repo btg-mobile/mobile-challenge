@@ -15,11 +15,13 @@ import UIKit
 protocol CurrencyConversionDisplayLogic: class {
     func displayErrorMessage(_ message:String)
     func exchangeRatesLoaded()
+    func supportedCurrenciesLoaded()
     func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel)
 }
 
 class CurrencyConversionViewController: UIViewController, CurrencyConversionDisplayLogic {
     var interactor: CurrencyConversionBusinessLogic?
+    var router: (NSObjectProtocol & CurrencyConversionRoutingLogic & CurrencyConversionDataPassing)?
     
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
@@ -32,9 +34,23 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         let viewController = self
         let interactor = CurrencyConversionInteractor()
         let presenter = CurrencyConversionPresenter()
+        let router = CurrencyConversionRouter()
         viewController.interactor = interactor
+        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
     }
     
     // MARK: - View lifecycle
@@ -46,10 +62,29 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         getExchangeRates()
     }
     
+    var sourceCurrency: Currency = Currency(initials: "USD", name: "United States Dollar") {
+        didSet {
+            self.sourceCurrencyButton.setTitle("\(sourceCurrency.name) (\(sourceCurrency.initials))", for: .normal)
+            convertCurrency()
+        }
+    }
+    var resultCurrency: Currency = Currency(initials: "BRL", name: "Brazilian Real") {
+        didSet {
+            self.resultCurrencyButton.setTitle("\(resultCurrency.name) (\(resultCurrency.initials))", for: .normal)
+            convertCurrency()
+        }
+    }
+    
     @IBOutlet weak var sourceValueTextField: UITextField!
     @IBOutlet weak var resultValueTextField: UITextField!
     @IBOutlet weak var sourceCurrencyButton: UIButton!
     @IBOutlet weak var resultCurrencyButton: UIButton!
+    
+    @IBAction func showSupportedCurrencies(_ sender: UIButton) {
+        let currencyType: CurrencyType = sender.tag == 0 ? .source : .result
+        interactor?.identifyCurrency(currencyType)
+        self.performSegue(withIdentifier: "SupportedCurrencies", sender: nil)
+    }
     
     //MARK: - App data setup
     private func getSupportedCurrencies() {
@@ -60,8 +95,13 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         interactor?.getExchangeRates()
     }
     
-    //MARK: - Exchange rates loaded
+    //MARK: - Exchange Rates Loaded
     func exchangeRatesLoaded() {
+        
+    }
+    
+    //MARK: - Supported Currencies Loaded
+    func supportedCurrenciesLoaded() {
         
     }
     
@@ -74,14 +114,18 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     func displayFormattedValue(viewModel: CurrencyConversion.FormatTextField.ViewModel) {
         if viewModel.textField == .source {
             self.sourceValueTextField.text = viewModel.formattedText
-            
-            interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: "USD",
-                                                                                         sourceValue: viewModel.formattedText,
-                                                                                         resultInitials: "BRL",
-                                                                                         textField: .result))
+            convertCurrency()
         } else if viewModel.textField == .result {
             self.resultValueTextField.text = viewModel.formattedText
         }
+    }
+    
+    private func convertCurrency() {
+        guard let sourceValue = self.sourceValueTextField.text else { return }
+        interactor?.convertCurrency(request: CurrencyConversion.ConvertValue.Request(sourceInitials: sourceCurrency.initials,
+                                                                                     sourceValue: sourceValue,
+                                                                                     resultInitials: resultCurrency.initials,
+                                                                                     textField: .result))
     }
 }
 
@@ -90,20 +134,27 @@ extension CurrencyConversionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let request = CurrencyConversion.FormatTextField.Request(textFieldValue: textField.text ?? "",
                                                                  newText: string,
-                                                                 currencyInitials: "USD",
+                                                                 currencyInitials: sourceCurrency.initials,
                                                                  textField: .source)
         interactor?.convertStringValueInNumber(request: request)
         return false
     }
 }
 
+
+//MARK: - Select Currency Delegate
 extension CurrencyConversionViewController: SelectCurrencyDelegate {
-    func setCurrency(_ currency: Currency) {
-        
+    func setCurrency(_ currency: Currency, to: CurrencyType) {
+        switch to {
+        case .source:
+            sourceCurrency = currency
+        case .result:
+            resultCurrency = currency
+        }
     }
 }
 
-enum TextFieldCurrencyType {
+enum CurrencyType {
     case source
     case result
 }

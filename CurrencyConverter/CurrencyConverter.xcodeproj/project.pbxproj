@@ -46,6 +46,8 @@
 		DDB44CF823F414220063E2F9 /* SupportedCurrenciesVIPModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF223F414220063E2F9 /* SupportedCurrenciesVIPModels.swift */; };
 		DDB44CF923F414220063E2F9 /* SupportedCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF323F414220063E2F9 /* SupportedCurrenciesViewController.swift */; };
 		DDB44CFA23F414220063E2F9 /* SupportedCurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB44CF423F414220063E2F9 /* SupportedCurrenciesInteractor.swift */; };
+		DDD4398A23F5607F0016B272 /* CurrencyConversionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD4398923F5607F0016B272 /* CurrencyConversionRouter.swift */; };
+		DDD4398C23F562800016B272 /* SupportedCurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD4398B23F562800016B272 /* SupportedCurrenciesRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		DDB44CF223F414220063E2F9 /* SupportedCurrenciesVIPModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesVIPModels.swift; sourceTree = "<group>"; };
 		DDB44CF323F414220063E2F9 /* SupportedCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesViewController.swift; sourceTree = "<group>"; };
 		DDB44CF423F414220063E2F9 /* SupportedCurrenciesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesInteractor.swift; sourceTree = "<group>"; };
+		DDD4398923F5607F0016B272 /* CurrencyConversionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionRouter.swift; sourceTree = "<group>"; };
+		DDD4398B23F562800016B272 /* SupportedCurrenciesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		DD129A1123F0E265007AD51F /* Currency conversion */ = {
 			isa = PBXGroup;
 			children = (
+				DDD4398923F5607F0016B272 /* CurrencyConversionRouter.swift */,
 				DD129A1623F0E27B007AD51F /* CurrencyConversionViewController.swift */,
 				DD129A1723F0E27B007AD51F /* CurrencyConversionInteractor.swift */,
 				DD129A1223F0E27B007AD51F /* CurrencyConversionPresenter.swift */,
@@ -297,6 +302,7 @@
 		DD98AF6023F0C1E00069994B /* Supported Currencies */ = {
 			isa = PBXGroup;
 			children = (
+				DDD4398B23F562800016B272 /* SupportedCurrenciesRouter.swift */,
 				DDB44CF323F414220063E2F9 /* SupportedCurrenciesViewController.swift */,
 				DDB44CF423F414220063E2F9 /* SupportedCurrenciesInteractor.swift */,
 				DDB44CEF23F414220063E2F9 /* SupportedCurrenciesPresenter.swift */,
@@ -432,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD4398C23F562800016B272 /* SupportedCurrenciesRouter.swift in Sources */,
 				DD76C49723F138F200524BB5 /* NetworkExchangeRatesWorker.swift in Sources */,
 				DDB44CF623F414220063E2F9 /* SupportedCurrenciesWorkerProtocols.swift in Sources */,
 				DDB44CF923F414220063E2F9 /* SupportedCurrenciesViewController.swift in Sources */,
@@ -457,6 +464,7 @@
 				DD76C49F23F2797400524BB5 /* CurrencyConversionWorker.swift in Sources */,
 				DD129A0A23F0D7FE007AD51F /* NumberFormatter+Currency.swift in Sources */,
 				DD129A2323F0EE07007AD51F /* NetworkSupportedCurrenciesWorker.swift in Sources */,
+				DDD4398A23F5607F0016B272 /* CurrencyConversionRouter.swift in Sources */,
 				DD129A1823F0E27B007AD51F /* CurrencyConversionPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

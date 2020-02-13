@@ -24,7 +24,8 @@ class SupportedCurrenciesPresenter: SupportedCurrenciesPresentationLogic {
         let currencies = response.currencies
         
         let viewModelCurrencies = getCurrencyViewModel(fromResponse: currencies)
-        let viewModel = SupportedCurrenciesVIPModels.LoadSupportedCurrencies.ViewModel(currencies: viewModelCurrencies)
+        let viewModel = SupportedCurrenciesVIPModels.LoadSupportedCurrencies.ViewModel(currencies: viewModelCurrencies,
+                                                                                       currencyType: response.currencyType)
         viewController?.displaySupportedCurrenciesList(viewModel: viewModel)
     }
     

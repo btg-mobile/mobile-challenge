@@ -19,10 +19,12 @@ enum SupportedCurrenciesVIPModels {
         }
         struct Response {
             let currencies: SupportedCurrencies
+            let currencyType: CurrencyType
         }
         
         struct ViewModel {
             let currencies: [Currency]
+            let currencyType: CurrencyType
         }
     }
     // MARK: -
