@@ -22,7 +22,7 @@ class CurrencyController {
     
     private var dataProvider : CurrencyDataProvider?
     
-//MARK: - SETUP ViewController
+    //MARK: - SETUP ViewController
     
     func setupViewController(){
         
@@ -32,35 +32,36 @@ class CurrencyController {
         
     }
     
-    func getCurrencyExchange(from: String, to: String) {
+    func getCurrencyExchange(from: String, to: String){//}, completion(String) -> Void) {
+        
+        let provider = CurrencyDataProvider(from: from, to: to)
+        
+        provider.getCurrentCurrencyValue { [weak self] Results in
+            
+            print("Peguei")
+            
+            switch Results {
+            case .success(let exchange):
+                print(exchange.quotes!)
+                let dolar = exchange.quotes?.values
+                //self?.delegate.
+                print(dolar ?? "")
+            case .failure(let error):
+                print("Erro \(error)")
+            }
+            
+        }
+        
+    }
     
-          let provider = CurrencyDataProvider(from: from, to: to)
-
-          provider.getListOfCurrencies { [weak self] results in
-              
-              switch results {
-              case .success(let dict):
-                  print(dict)
-              case .failure(let error):
-                  print(error)
-              }
-              
-          }
-          
-      }
-    
-    
+    //Title for PickerView
     func loadCurrencyTitleForRow(with index: Int) -> String {
         
         return self.currencyListArray[index].key
         
     }
     
-    
-    
-    
-    
-//MARK: - SETUP DE setupCurrencyListViewController
+    //MARK: - SETUP DE setupCurrencyListViewController
     
     func setupCurrencyListViewController(){
         

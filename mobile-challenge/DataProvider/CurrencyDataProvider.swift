@@ -15,27 +15,40 @@ enum CurrencyError: Error{
 
 struct CurrencyDataProvider {
     
-    let BASE_URL = "http://api.currencylayer.com/"
-    let resourceURL:URL
-    let API_KEY = "c69f0dacc7b5c7cc0b46d694fbe03831"
+    private let BASE_URL = "http://api.currencylayer.com/"
+    private let resourceURL:URL
+    private let API_KEY = "c69f0dacc7b5c7cc0b46d694fbe03831"
 
     init(from: String? = nil, to: String? = nil) {
         
-        let resourceString = "\(BASE_URL)live?access_key=\(API_KEY)&currencies=USD,\(from),\(to)&format=1"
+        let resourceString = "\(BASE_URL)live?access_key=\(API_KEY)&currencies=USD,\(from ?? "USD"),\(to ?? "USD")&format=1"
         
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
         
     }
-    
-    func getCurrentCurrencyValue(completion: @escaping(Result<String, CurrencyError>) -> Void){
+
+    //MARK: - GETTING THE CURRENT VALUE OF CHOSEN CURRENCY
+    func getCurrentCurrencyValue(completion: @escaping(Result<LiveExchange, CurrencyError>) -> Void) {
         
         print(self.resourceURL)
         
         URLSession.shared.dataTask(with: self.resourceURL) { data, response, error in
             
-        }
+            guard let jsonData = data else {
+                completion(.failure(.noDataAvailable))
+                return
+            }
+            
+            do{
+                let updateExchange = try JSONDecoder().decode(LiveExchange.self, from: jsonData)
+                completion(.success(updateExchange))
+            }catch{
+                completion(.failure(.canNotProccessData))
+            }
+            
+        }.resume()
         
     }
     
