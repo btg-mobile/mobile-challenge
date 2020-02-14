@@ -19,6 +19,7 @@ class CurrencyController {
     
     private var currencyListArray : [Currency] = []
     private var notFilteredCurrencyListArray : [Currency] = []
+    private var exchangeArray: [Double] = []
     
     private var dataProvider : CurrencyDataProvider?
     
@@ -28,24 +29,25 @@ class CurrencyController {
         
         dataProvider = CurrencyDataProvider()
         
-        //getAndSaveCurrencyList()
+        //getCurrencyExchange()
         
     }
     
-    func getCurrencyExchange(from: String, to: String){//}, completion(String) -> Void) {
+    func getCurrencyExchange(closure: @escaping(Double) -> Void, amount: Double, from: String, to: String) {
         
         let provider = CurrencyDataProvider(from: from, to: to)
         
         provider.getCurrentCurrencyValue { [weak self] Results in
             
-            print("Peguei")
-            
             switch Results {
             case .success(let exchange):
-                print(exchange.quotes!)
-                let dolar = exchange.quotes?.values
-                //self?.delegate.
-                print(dolar ?? "")
+            
+                guard let firstValue = exchange.quotes?["USD\(from)"] else { return }
+                guard let secondValue = exchange.quotes?["USD\(to)"] else { return }
+                print(firstValue)
+                print(secondValue)
+                closure((self?.calculate(amount: amount, value1: firstValue, value2: secondValue))!)
+                
             case .failure(let error):
                 print("Erro \(error)")
             }
@@ -54,11 +56,34 @@ class CurrencyController {
         
     }
     
+    func calculate(amount: Double, value1: Double, value2: Double) -> Double {
+        
+        let fromToDolar = (amount / value1)
+        let result = fromToDolar * value2
+        
+        return result
+    }
+    
     //Title for PickerView
     func loadCurrencyTitleForRow(with index: Int) -> String {
         
         return self.currencyListArray[index].key
         
+    }
+    
+    func getNameOfCurrencyWithCode(code: String) -> String {
+        
+        var codeStr = ""
+        
+        for i in self.currencyListArray {
+            
+            if i.key == code {
+                codeStr = i.value
+            }
+            
+        }
+        
+        return codeStr
     }
     
     //MARK: - SETUP DE setupCurrencyListViewController

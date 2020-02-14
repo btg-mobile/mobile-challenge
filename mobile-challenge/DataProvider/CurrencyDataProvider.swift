@@ -33,6 +33,7 @@ struct CurrencyDataProvider {
     func getCurrentCurrencyValue(completion: @escaping(Result<LiveExchange, CurrencyError>) -> Void) {
         
         print(self.resourceURL)
+        print("#####")
         
         URLSession.shared.dataTask(with: self.resourceURL) { data, response, error in
             

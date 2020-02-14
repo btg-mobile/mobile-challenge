@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var btnExchange: UIButton!
+    @IBOutlet weak var currencyDescription: UILabel!
     
     private var selectedFrom : String?
     private var selectedTo : String?
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.formatButton()
+        self.format()
         
         self.controller = CurrencyController()
         
@@ -39,44 +40,54 @@ class ViewController: UIViewController {
         self.toPickerView.delegate = self
         self.toPickerView.dataSource = self
         
+        self.amountTextField.delegate = self
+        
     }
     
-    func formatButton(){
-
+    func format(){
+        
+        self.amountTextField.keyboardType = .numbersAndPunctuation
+        
         btnExchange.layer.cornerRadius = 10
         btnExchange.layer.borderWidth = 1
         btnExchange.layer.borderColor = UIColor.black.cgColor
         
     }
-
+    
     @IBAction func btnGetExchange(_ sender: UIButton) {
         
-        controller?.getCurrencyExchange(from: self.selectedFrom ?? "USD", to: self.selectedTo ?? "USD")
+        guard let amount = Double(self.amountTextField.text!) else {
+            
+            let alert = UIAlertController(title: "Atenção", message: "Informe o valor a ser convertido", preferredStyle: .alert)
+            let btnOk = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+            
+            alert.addAction(btnOk)
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
         
+        guard let from = self.selectedFrom else { return }
+        guard let to = self.selectedTo else { return }
         
-//WORKS PERFECLY
-//        print(self.selectedFrom!)
-//        print(self.selectedTo!)
-//
-//        let provider = CurrencyDataProvider(from: self.selectedFrom, to: self.selectedTo)
-//
-//        provider.getCurrentCurrencyValue { (Results) in
-//
-//            print("Peguei")
-//
-//            switch Results {
-//            case .success(let exchange):
-//                print(exchange.quotes!)
-//                let dolar = exchange.quotes?.values
-//
-//                print(dolar ?? "")
-//            case .failure(let error):
-//                print("Erro \(error)")
-//            }
-//
-//        }
-//
-   }
+        controller?.getCurrencyExchange(closure: { (conversion) in
+            print(conversion)
+            
+            DispatchQueue.main.async {
+                
+                let formatter = NumberFormatter()
+                formatter.locale = Locale.autoupdatingCurrent
+                formatter.numberStyle = .decimal
+                if let formattedAmount = formatter.string(from: Double(round(100*conversion)/100) as NSNumber) {
+                    self.resultLabel.text = String(formattedAmount)
+                }
+                self.currencyDescription.text = self.controller?.getNameOfCurrencyWithCode(code: to)
+            }
+            
+        }, amount: amount, from: from, to: to)
+        
+    }
     
 }
 
@@ -94,13 +105,13 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         return self.controller?.loadCurrencyTitleForRow(with: row)
-    
+        
     }
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-    //CRIAR UM DELEGAT PARA OUVIR QUANDO HOUVER ALTERACAO
+        //CRIAR UM DELEGAT PARA OUVIR QUANDO HOUVER ALTERACAO
         
         switch pickerView.tag {
         case 0 :
@@ -146,6 +157,44 @@ extension ViewController : CurrencyControllerDelegate {
             }
             
         }
+        
+    }
+    
+}
+
+//MARK: - EXTENSION OF UITextFieldDelegate
+extension ViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == self.amountTextField {
+            
+            self.amountTextField.resignFirstResponder()
+            
+        }
+        
+        return true
+        
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if(textField == self.amountTextField){
+            let strLength = textField.text?.count ?? 0
+            let lngthToAdd = string.count
+            let lengthCount = strLength + lngthToAdd
+            
+            print(lengthCount)
+            if lengthCount == 0 {
+                
+                self.amountTextField.resignFirstResponder()
+                
+            }
+            
+        }
+        
+        return true
         
     }
     
