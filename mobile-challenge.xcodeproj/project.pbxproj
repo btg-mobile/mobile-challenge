@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCBE04EF23F6318B000580A8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE04ED23F6318B000580A8 /* BaseViewController.swift */; };
 		BCE9346623F224AF009EFB38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9346523F224AF009EFB38 /* AppDelegate.swift */; };
 		BCE9346823F224AF009EFB38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9346723F224AF009EFB38 /* SceneDelegate.swift */; };
 		BCE9346A23F224AF009EFB38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9346923F224AF009EFB38 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BCBE04ED23F6318B000580A8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BCE9346223F224AF009EFB38 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE9346523F224AF009EFB38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCE9346723F224AF009EFB38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				BCE9348C23F2261E009EFB38 /* Main.storyboard */,
 				BCE9346923F224AF009EFB38 /* ViewController.swift */,
 				BCE9349723F30B8F009EFB38 /* CurrencyListViewController.swift */,
+				BCBE04ED23F6318B000580A8 /* BaseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				BCE9349823F30B8F009EFB38 /* CurrencyListViewController.swift in Sources */,
 				BCE9349623F244EC009EFB38 /* CurrencyList.swift in Sources */,
 				BCE9349423F238F8009EFB38 /* LiveExchange.swift in Sources */,
+				BCBE04EF23F6318B000580A8 /* BaseViewController.swift in Sources */,
 				BCE9349223F22E24009EFB38 /* CurrencyController.swift in Sources */,
 				BCE9346623F224AF009EFB38 /* AppDelegate.swift in Sources */,
 				BCE9346823F224AF009EFB38 /* SceneDelegate.swift in Sources */,
@@ -432,7 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "abstec.mobile-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,7 +454,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "abstec.mobile-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

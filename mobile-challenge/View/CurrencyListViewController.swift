@@ -8,13 +8,11 @@
 
 import UIKit
 
-class CurrencyListViewController: UIViewController {
+class CurrencyListViewController: BaseViewController {
     
     var controller : CurrencyController?
     @IBOutlet weak var currencyTableView: UITableView!
     @IBOutlet weak var currencySearchBar: UISearchBar!
-    
-   private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,20 +33,6 @@ class CurrencyListViewController: UIViewController {
         //delegate and datasource SearchBar
         self.currencySearchBar.delegate = self
         
-    }
-    
-    func startActivityIndicator(){
-        
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        //activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
-    
-    func stopActivityIndicator(){
-        activityIndicator.stopAnimating()
-        //activityIndicator.removeFromSuperview()
     }
     
 }

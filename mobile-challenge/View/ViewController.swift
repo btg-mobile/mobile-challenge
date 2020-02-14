@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
     
     @IBOutlet weak var fromPickerView: UIPickerView!
     @IBOutlet weak var toPickerView: UIPickerView!
@@ -58,34 +58,56 @@ class ViewController: UIViewController {
         
         guard let amount = Double(self.amountTextField.text!) else {
             
-            let alert = UIAlertController(title: "Atenção", message: "Informe o valor a ser convertido", preferredStyle: .alert)
-            let btnOk = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
-            
-            alert.addAction(btnOk)
-            
-            self.present(alert, animated: true)
+            showAlert(title: "Atenção", msg: "Informe o valor a ser convertido!", style: .alert)
             
             return
+        
         }
         
-        guard let from = self.selectedFrom else { return }
-        guard let to = self.selectedTo else { return }
+        guard let from = self.selectedFrom else {
+            
+            showAlert(title: "Atenção", msg: "Informe a moeda de origem!", style: .alert)
+            
+            return
+            
+        }
         
-        controller?.getCurrencyExchange(closure: { (conversion) in
-            print(conversion)
+        guard let to = self.selectedTo else {
             
-            DispatchQueue.main.async {
+            showAlert(title: "Atenção", msg: "Informe a moeda de destino!", style: .alert)
                 
-                let formatter = NumberFormatter()
-                formatter.locale = Locale.autoupdatingCurrent
-                formatter.numberStyle = .decimal
-                if let formattedAmount = formatter.string(from: Double(round(100*conversion)/100) as NSNumber) {
-                    self.resultLabel.text = String(formattedAmount)
-                }
-                self.currencyDescription.text = self.controller?.getNameOfCurrencyWithCode(code: to)
-            }
+            return
+        
+        }
+        
+        if from == to {
             
-        }, amount: amount, from: from, to: to)
+            showAlert(title: "Atenção", msg: "Moedas não podem ser iguais!", style: .alert)
+            
+            return
+            
+        }else {
+            
+            startActivityIndicator()
+            
+            controller?.getCurrencyExchange(closure: { (conversion) in
+                print(conversion)
+                
+                DispatchQueue.main.async {
+                    
+                    let formatter = NumberFormatter()
+                    formatter.locale = Locale.autoupdatingCurrent
+                    formatter.numberStyle = .decimal
+                    if let formattedAmount = formatter.string(from: Double(round(100*conversion)/100) as NSNumber) {
+                        self.resultLabel.text = String(formattedAmount)
+                    }
+                    self.currencyDescription.text = self.controller?.getNameOfCurrencyWithCode(code: to)
+                    self.stopActivityIndicator()
+                }
+                
+            }, amount: amount, from: from, to: to)
+            
+        }
         
     }
     
@@ -107,7 +129,6 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
         return self.controller?.loadCurrencyTitleForRow(with: row)
         
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -156,6 +177,8 @@ extension ViewController : CurrencyControllerDelegate {
                 
             }
             
+            //SE HOUVER ERRO, CARREGAR DO COREDATA
+            
         }
         
     }
@@ -177,7 +200,6 @@ extension ViewController : UITextFieldDelegate {
         
     }
     
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if(textField == self.amountTextField){
@@ -185,9 +207,8 @@ extension ViewController : UITextFieldDelegate {
             let lngthToAdd = string.count
             let lengthCount = strLength + lngthToAdd
             
-            print(lengthCount)
-            if lengthCount == 0 {
-                
+            if lngthToAdd == 0 && lengthCount == 1 {
+                self.amountTextField.text = ""
                 self.amountTextField.resignFirstResponder()
                 
             }

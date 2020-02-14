@@ -31,10 +31,7 @@ struct CurrencyDataProvider {
 
     //MARK: - GETTING THE CURRENT VALUE OF CHOSEN CURRENCY
     func getCurrentCurrencyValue(completion: @escaping(Result<LiveExchange, CurrencyError>) -> Void) {
-        
-        print(self.resourceURL)
-        print("#####")
-        
+                
         URLSession.shared.dataTask(with: self.resourceURL) { data, response, error in
             
             guard let jsonData = data else {

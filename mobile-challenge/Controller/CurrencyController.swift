@@ -18,6 +18,7 @@ class CurrencyController {
     weak var delegate : CurrencyControllerDelegate?
     
     private var currencyListArray : [Currency] = []
+    private var sortedCurrencyListArray : [Currency] = []
     private var notFilteredCurrencyListArray : [Currency] = []
     private var exchangeArray: [Double] = []
     
@@ -28,9 +29,7 @@ class CurrencyController {
     func setupViewController(){
         
         dataProvider = CurrencyDataProvider()
-        
-        //getCurrencyExchange()
-        
+    
     }
     
     func getCurrencyExchange(closure: @escaping(Double) -> Void, amount: Double, from: String, to: String) {
@@ -44,12 +43,12 @@ class CurrencyController {
             
                 guard let firstValue = exchange.quotes?["USD\(from)"] else { return }
                 guard let secondValue = exchange.quotes?["USD\(to)"] else { return }
-                print(firstValue)
-                print(secondValue)
+
                 closure((self?.calculate(amount: amount, value1: firstValue, value2: secondValue))!)
                 
             case .failure(let error):
                 print("Erro \(error)")
+                self?.delegate?.errorOnLoadingListOfCurrencies(error: error)
             }
             
         }
@@ -67,7 +66,7 @@ class CurrencyController {
     //Title for PickerView
     func loadCurrencyTitleForRow(with index: Int) -> String {
         
-        return self.currencyListArray[index].key
+        return self.sortedCurrencyListArray[index].key
         
     }
     
@@ -110,6 +109,11 @@ class CurrencyController {
                 self.currencyListArray.sort { 
                     $0.value < $1.value
                 }
+                self.sortedCurrencyListArray = self.currencyListArray
+                self.sortedCurrencyListArray.sort {
+                    $0.key < $1.key
+                }
+                
                 self.notFilteredCurrencyListArray = self.currencyListArray
                 self.delegate?.successOnLoadingListOfCurrencies(currencyList: currencyList)
                 
