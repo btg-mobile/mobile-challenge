@@ -34,11 +34,20 @@ class SupportedCurrenciesInteractor: SupportedCurrenciesBusinessLogic, Supported
         }
         let response = SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Response(currencies: supportedCurrencies,
                                                                                      currencyType: self.currencyType)
-        presenter?.formatCurrencyListForView(response: response)
+        presenter?.formatCurrencyList(response: response)
     }
     
     //MARK: - Filter
     func filterSupportedCurrencies(request: SupportedCurrenciesVIPModels.Filter.Request) {
+        guard let currencies = supportedCurrencies?.currencies else {
+            return
+        }
+        let filter = request.filter
+        let filteredCurrencies = currencies.filter { (initials, name) -> Bool in
+            return initials.uppercased().contains(filter.uppercased()) || name.uppercased().contains(filter.uppercased())
+        }
         
+        let response = SupportedCurrenciesVIPModels.Filter.Response(currencies: filteredCurrencies)
+        presenter?.formatFilteredCurrencyList(response: response)
     }
 }

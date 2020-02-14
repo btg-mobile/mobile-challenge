@@ -125,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="3L5-ta-YdK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Supported Currencies" image="currency_list" id="ZUF-gi-5Ku"/>
-                    <navigationItem key="navigationItem" id="9Dx-dy-u57"/>
+                    <navigationItem key="navigationItem" title="Supported Currencies" id="9Dx-dy-u57"/>
                     <connections>
                         <outlet property="searchBar" destination="0AL-zB-MKG" id="lV5-cU-c15"/>
                         <outlet property="tableView" destination="cte-yQ-AQk" id="xM3-dK-0x3"/>

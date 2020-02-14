@@ -13,29 +13,37 @@
 import UIKit
 
 protocol SupportedCurrenciesPresentationLogic {
-    func formatCurrencyListForView(response: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Response)
+    func formatCurrencyList(response: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Response)
+    func formatFilteredCurrencyList(response: SupportedCurrenciesVIPModels.Filter.Response)
 }
 
 class SupportedCurrenciesPresenter: SupportedCurrenciesPresentationLogic {
     weak var viewController: SupportedCurrenciesDisplayLogic?
     
     // MARK: - Load supported currency
-    func formatCurrencyListForView(response: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Response) {
+    func formatCurrencyList(response: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.Response) {
         let currencies = response.currencies
-        
-        let viewModelCurrencies = getCurrencyViewModel(fromResponse: currencies)
+        let viewModelCurrencies = getCurrencyViewModel(fromResponse: currencies.currencies)
         let viewModel = SupportedCurrenciesVIPModels.LoadSupportedCurrencies.ViewModel(currencies: viewModelCurrencies,
                                                                                        currencyType: response.currencyType)
         viewController?.displaySupportedCurrenciesList(viewModel: viewModel)
     }
     
-    private func getCurrencyViewModel(fromResponse response: SupportedCurrencies) -> [Currency] {
+    //MARK: - Filter
+    func formatFilteredCurrencyList(response: SupportedCurrenciesVIPModels.Filter.Response) {
+        let currencies = response.currencies
+        let viewModelCurrencies = getCurrencyViewModel(fromResponse: currencies)
+        let viewModel = SupportedCurrenciesVIPModels.Filter.ViewModel(currencies: viewModelCurrencies)
+        viewController?.displatFilteredList(viewModel: viewModel)
+    }
+    
+    private func getCurrencyViewModel(fromResponse response: [String: String]) -> [Currency] {
         var currencies: [Currency] = []
         
-        for (key, value) in response.currencies {
+        for (key, value) in response {
             currencies.append(Currency(initials: key, name: value))
         }
         
-        return currencies
+        return currencies.sorted(by: <)
     }
 }

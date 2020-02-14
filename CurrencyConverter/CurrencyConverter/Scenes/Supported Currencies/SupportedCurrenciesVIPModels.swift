@@ -33,10 +33,11 @@ enum SupportedCurrenciesVIPModels {
             let filter: String
         }
         struct Response {
-            let currencies: SupportedCurrencies
+            let currencies: [String: String]
         }
         
         struct ViewModel {
+            let currencies: [Currency]
         }
     }
 }

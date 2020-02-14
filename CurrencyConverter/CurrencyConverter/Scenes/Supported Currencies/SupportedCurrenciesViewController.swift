@@ -18,6 +18,7 @@ protocol SelectCurrencyDelegate: class {
 
 protocol SupportedCurrenciesDisplayLogic: class {
     func displaySupportedCurrenciesList(viewModel: SupportedCurrenciesVIPModels.LoadSupportedCurrencies.ViewModel)
+    func displatFilteredList(viewModel: SupportedCurrenciesVIPModels.Filter.ViewModel)
 }
 
 class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDisplayLogic {
@@ -63,7 +64,11 @@ class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDi
             reloadTableContent()
         }
     }
-    var filtering: Bool = false
+    var filtering: Bool = false {
+        didSet {
+            reloadTableContent()
+        }
+    }
     var currencyType: CurrencyType = .source
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -87,6 +92,12 @@ class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDi
             self.filteredCurrencies = viewModel.currencies
         }
         self.currencyType = viewModel.currencyType
+    }
+    
+    //MARK: - Display filtered list
+    func displatFilteredList(viewModel: SupportedCurrenciesVIPModels.Filter.ViewModel) {
+        self.filtering = true
+        self.filteredCurrencies = viewModel.currencies
     }
 }
 
@@ -120,6 +131,11 @@ extension SupportedCurrenciesViewController: UITableViewDataSource, UITableViewD
 
 extension SupportedCurrenciesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if searchText.isEmpty {
+            self.filtering = false
+        } else {
+            let request = SupportedCurrenciesVIPModels.Filter.Request(filter: searchText)
+            interactor?.filterSupportedCurrencies(request: request)
+        }
     }
 }
