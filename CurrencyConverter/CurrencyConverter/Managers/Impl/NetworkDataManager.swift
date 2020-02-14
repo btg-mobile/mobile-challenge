@@ -42,7 +42,7 @@ enum NetworkDataManagerError: Error {
 
 extension CurrencyConverterRequests {
     static let baseURL = "http://api.currencylayer.com"
-    //    #error("Para compilar de forma correta você deve criar, no projeto, um Swift File conforme exemplo abaixo ou colocar um chave válida na constante accessKey. Após realizar uma das duas ações, comente ou apague esse #error e compile novamente. :)")
+    #error("Para compilar de forma correta você deve criar, no projeto, um Swift File conforme exemplo abaixo ou colocar um chave válida na constante accessKey. Após realizar uma das duas ações, comente ou apague esse #error e compile novamente. :)")
     /*
      //Exemplo do arquivo necessário com uma access key válida
      struct AccessKey {
