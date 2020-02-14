@@ -17,4 +17,18 @@ struct SupportedCurrencies: Codable, CustomStringConvertible, Equatable {
     var description: String {
         return "\(currencies.count) moedas disponíveis para conversão."
     }
+    
+    init(success: Bool, currencies: [String: String]) {
+        self.success = success
+        self.currencies = currencies
+    }
+    
+    init(withCoreDataObj obj: CoreDataSupportedCurrencies) {
+        guard let currencies = obj.currencies as? [String: String] else {
+            self.init(success: false, currencies: [:])
+            return
+        }
+        
+        self.init(success: true, currencies: currencies)
+    }
 }

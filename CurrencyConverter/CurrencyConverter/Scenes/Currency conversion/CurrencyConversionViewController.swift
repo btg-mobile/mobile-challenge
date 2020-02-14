@@ -86,6 +86,11 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
         self.performSegue(withIdentifier: "SupportedCurrencies", sender: nil)
     }
     
+    @IBAction func refreshDataFromServer(_ sender: Any) {
+        getSupportedCurrencies()
+        getExchangeRates()
+    }
+    
     //MARK: - App data setup
     private func getSupportedCurrencies() {
         interactor?.getSupportedCurrencies()
@@ -97,17 +102,28 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     
     //MARK: - Exchange Rates Loaded
     func exchangeRatesLoaded() {
-        
+        DispatchQueue.main.sync {
+            sourceValueTextField.isEnabled = true
+        }
     }
     
     //MARK: - Supported Currencies Loaded
     func supportedCurrenciesLoaded() {
-        
+        DispatchQueue.main.sync {
+            sourceCurrencyButton.isEnabled = true
+            resultCurrencyButton.isEnabled = true
+        }
     }
     
     //MARK: - Error handle
     func displayErrorMessage(_ message: String) {
-        print(message)
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        DispatchQueue.main.sync {
+            present(alert, animated: true)
+        }
     }
     
     //MARK: - Show Formatted Value

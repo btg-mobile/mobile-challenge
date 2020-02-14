@@ -8,29 +8,44 @@
 
 import Foundation
 
-final class NetworkExchangeRatesWorker<T: DataManager>: ExchangeRatesWorkerProtocol where T.T == Data {
-    var dataManager: T
+final class NetworkExchangeRatesWorker<DM: DataManager, SM: StorageManager>: ExchangeRatesWorkerProtocol where DM.T == Data, SM.DataType == ExchangeRates {
+    var dataManager: DM
+    var storageManager: SM
     
-    init(dataManager: T) {
+    init(dataManager: DM, storageManager: SM) {
         self.dataManager = dataManager
+        self.storageManager = storageManager
     }
     
-    func getExchangeRates(completion: @escaping (ExchangesRates?, Error?) -> ()) {
+    func getExchangeRates(completion: @escaping (ExchangeRates?, Error?) -> ()) {
         dataManager.request(.getExchangeRates) { (data, error) in
             if error == nil,
                 let data = data {
                 do {
                     let decoder = JSONDecoder()
-                    let decodedData = try decoder.decode(ExchangesRates.self, from: data)
-                    
+                    let decodedData = try decoder.decode(ExchangeRates.self, from: data)
+                    self.saveExchangeRates(exchangeRates: decodedData)
                     completion(decodedData, nil)
                 } catch {
                     completion(nil, NetworkExchangeRatesWorkerError.cannotDecodeData)
                 }
             } else {
-                completion(nil, NetworkExchangeRatesWorkerError.requestError)
+                let savedExchangeRates = self.getExchangeRatesFromStorage()
+                if savedExchangeRates.quotes.count > 0 {
+                    completion(savedExchangeRates, nil)
+                } else {
+                    completion(nil, NetworkSupportedCurrenciesWorkerError.requestError)
+                }
             }
         }
+    }
+    
+    private func getExchangeRatesFromStorage() -> ExchangeRates {
+        return storageManager.get()
+    }
+    
+    private func saveExchangeRates(exchangeRates: ExchangeRates) {
+        storageManager.save(exchangeRates)
     }
 }
 

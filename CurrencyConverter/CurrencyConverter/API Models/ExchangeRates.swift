@@ -1,5 +1,5 @@
 //
-//  ExchangesRates.swift
+//  ExchangeRates.swift
 //  CurrencyConverter
 //
 //  Created by Tiago Chaves on 09/02/20.
@@ -10,7 +10,7 @@
 
 import Foundation
 
-struct ExchangesRates: Codable, CustomStringConvertible, Equatable {
+struct ExchangeRates: Codable, CustomStringConvertible, Equatable {
     let success: Bool
     let source: String
     let timestamp: Double
@@ -23,9 +23,25 @@ struct ExchangesRates: Codable, CustomStringConvertible, Equatable {
     var description: String {
         return "Taxas de conversão de \(quotesDate) com base na moeda \(source)"
     }
+    
+    init(success: Bool, source: String, timestamp: Double, quotes: [String: Double]) {
+        self.success = success
+        self.source = source
+        self.timestamp = timestamp
+        self.quotes = quotes
+    }
+    
+    init(withCoreDataObj obj: CoreDataExchangeRates) {
+        guard let quotes = obj.quotes as? [String: Double] else {
+            self.init(success: false, source: obj.source ?? "", timestamp: 0, quotes: [:])
+            return
+        }
+        
+        self.init(success: true, source: obj.source ?? "", timestamp: 0, quotes: quotes)
+    }
 }
 
-extension ExchangesRates {
+extension ExchangeRates {
     func getUSDCurrencyQuotes() -> [USDCurrencyQuote] {
         let source = self.source
         var usdCurrencyQuotes: [USDCurrencyQuote] = []

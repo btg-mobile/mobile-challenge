@@ -11,7 +11,7 @@ import Foundation
 struct NetworkExchangeRatesWorkerMock: ExchangeRatesWorkerProtocol {
     var returnError: Error? = nil
     
-    func getExchangeRates(completion: @escaping (ExchangesRates?, Error?) -> ()) {
+    func getExchangeRates(completion: @escaping (ExchangeRates?, Error?) -> ()) {
         if returnError == nil {
             completion(Seeds.APISeeds.exchangeRates,nil)
         } else {

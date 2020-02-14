@@ -36,8 +36,10 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     var supportedCurrencies: SupportedCurrencies?
     var currencyType: CurrencyType = .source
     
-    init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager()),
-         exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager()),
+    init(supportedCurrenciesWorker: SupportedCurrenciesWorkerProtocol = NetworkSupportedCurrenciesWorker(dataManager: NetworkDataManager(),
+                                                                                                         storageManager: SupportedCurrenciesStorage()),
+         exchangeRatesWorker: ExchangeRatesWorkerProtocol = NetworkExchangeRatesWorker(dataManager: NetworkDataManager(),
+                                                                                       storageManager: ExchangeRatesStorage()),
          currencyConversionWorker: CurrencyConversionWorkerProtocol = CurrencyConversionWorker()) {
         self.supportedCurrenciesWorker = supportedCurrenciesWorker
         self.exchangeRatesWorker = exchangeRatesWorker

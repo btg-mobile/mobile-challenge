@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="US$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="sL4-mO-4Tk">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="US$0,00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="sL4-mO-4Tk">
                                 <rect key="frame" x="20" y="139" width="280" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -24,7 +24,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="MSi-Bj-2TZ"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-a4-yJa">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-a4-yJa">
                                 <rect key="frame" x="20" y="104" width="280" height="30"/>
                                 <state key="normal" title="United States Dolar (USD)"/>
                                 <connections>
@@ -36,7 +36,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Ql-h4X">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Ql-h4X">
                                 <rect key="frame" x="20" y="255" width="280" height="30"/>
                                 <state key="normal" title="Brazilian Real (BRL)"/>
                                 <connections>
@@ -70,6 +70,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Currency Converter" id="pJW-AO-cCN">
                         <barButtonItem key="backBarButtonItem" title=" " id="SDd-dS-SSh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ngw-n5-0ka">
+                            <connections>
+                                <action selector="refreshDataFromServer:" destination="BYZ-38-t0r" id="MCP-FC-BOB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="resultCurrencyButton" destination="7sC-Ql-h4X" id="PwS-2o-6x3"/>
@@ -91,9 +96,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cte-yQ-AQk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cte-yQ-AQk">
                                 <rect key="frame" x="0.0" y="100" width="320" height="468"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="lAM-HU-LSB">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <connections>
                                     <outlet property="dataSource" destination="dEh-I2-a6Y" id="9Zv-pl-2X7"/>
                                     <outlet property="delegate" destination="dEh-I2-a6Y" id="k2p-qW-gzE"/>
@@ -124,7 +134,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3L5-ta-YdK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Supported Currencies" image="currency_list" id="ZUF-gi-5Ku"/>
                     <navigationItem key="navigationItem" title="Supported Currencies" id="9Dx-dy-u57"/>
                     <connections>
                         <outlet property="searchBar" destination="0AL-zB-MKG" id="lV5-cU-c15"/>
@@ -135,11 +144,10 @@
             </objects>
             <point key="canvasLocation" x="2988.75" y="137.32394366197184"/>
         </scene>
-        <!--Currency convesion-->
+        <!--Navigation Controller-->
         <scene sceneID="2sM-eX-mtV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FgJ-w2-eBu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Currency convesion" image="currency_conversion" id="U0o-9e-36f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M5N-ZL-uqY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -167,8 +175,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="currency_conversion" width="25" height="25"/>
-        <image name="currency_list" width="25" height="25"/>
         <image name="trade_currency" width="50" height="50"/>
     </resources>
 </document>

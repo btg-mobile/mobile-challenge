@@ -9,12 +9,13 @@
 import Foundation
 
 protocol StorageManager {
-    func save<T>(data:T)
-    func get<T>(data:T) -> T
-    func delete<T>(data: T)
+    associatedtype DataType
+    func save(_ data: DataType)
+    func get() -> DataType
+    func delete(data: DataType)
     func clear()
 }
 
 extension StorageManager {
-    func clear() { }
+    func delete(data: DataType) { }
 }

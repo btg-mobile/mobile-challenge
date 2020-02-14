@@ -98,6 +98,15 @@ class SupportedCurrenciesViewController: UIViewController, SupportedCurrenciesDi
     func displatFilteredList(viewModel: SupportedCurrenciesVIPModels.Filter.ViewModel) {
         self.filtering = true
         self.filteredCurrencies = viewModel.currencies
+        
+        if self.filteredCurrencies.count == 0 {
+            let emptyLabel = EmptyLabel(forView: self.tableView, andMessage: "There isn't currencies for this filter.")
+            
+            DispatchQueue.main.async {
+                self.tableView.backgroundView  = emptyLabel
+                self.tableView.separatorStyle  = .none
+            }
+        }
     }
 }
 

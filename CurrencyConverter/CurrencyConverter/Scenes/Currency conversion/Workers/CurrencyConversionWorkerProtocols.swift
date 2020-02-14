@@ -21,5 +21,5 @@ protocol SupportedCurrenciesWorkerProtocol {
 }
 
 protocol ExchangeRatesWorkerProtocol {
-    func getExchangeRates(completion: @escaping (ExchangesRates?, Error?) -> ())
+    func getExchangeRates(completion: @escaping (ExchangeRates?, Error?) -> ())
 }
