@@ -65,7 +65,7 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
     var sourceCurrency: Currency = Currency(initials: "USD", name: "United States Dollar") {
         didSet {
             self.sourceCurrencyButton.setTitle("\(sourceCurrency.name) (\(sourceCurrency.initials))", for: .normal)
-            convertCurrency()
+            formatSourceValue(sourceValueTextField.text ?? "", withNewString: " ")
         }
     }
     var resultCurrency: Currency = Currency(initials: "BRL", name: "Brazilian Real") {
@@ -127,16 +127,20 @@ class CurrencyConversionViewController: UIViewController, CurrencyConversionDisp
                                                                                      resultInitials: resultCurrency.initials,
                                                                                      textField: .result))
     }
+    
+    private func formatSourceValue(_ sourceValue: String, withNewString newString: String) {
+        let request = CurrencyConversion.FormatTextField.Request(textFieldValue: sourceValue,
+                                                                 newText: newString,
+                                                                 currencyInitials: sourceCurrency.initials,
+                                                                 textField: .source)
+        interactor?.convertStringValueInNumber(request: request)
+    }
 }
 
 //MARK: - Text field delegate
 extension CurrencyConversionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let request = CurrencyConversion.FormatTextField.Request(textFieldValue: textField.text ?? "",
-                                                                 newText: string,
-                                                                 currencyInitials: sourceCurrency.initials,
-                                                                 textField: .source)
-        interactor?.convertStringValueInNumber(request: request)
+        formatSourceValue(textField.text ?? "", withNewString: string)
         return false
     }
 }

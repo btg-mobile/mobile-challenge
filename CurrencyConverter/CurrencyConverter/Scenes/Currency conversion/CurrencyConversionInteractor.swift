@@ -76,15 +76,14 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     
     // MARK: - Convert currency
     func convertCurrency(request: CurrencyConversion.ConvertValue.Request) {
-        guard let sourceValue = NumberFormatter().getNumberValue(of: request.sourceInitials, request.sourceValue)?.doubleValue,
-            let sourceInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.sourceInitials }),
+        guard let sourceInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.sourceInitials }),
             let resultInitialsIndex = usdCurrencyQuotes.firstIndex(where: { $0.currencyInitials == request.resultInitials }) else {
                 
                 let response = CurrencyConversion.FormatTextField.Response(number: -1, currencyInitials: "", textField: request.textField)
                 presenter?.formatNumericValueToText(response: response)
                 return
         }
-        
+        let sourceValue = request.sourceValue.getCurrencyNumericValue()
         let sourceDolarQuote = usdCurrencyQuotes[sourceInitialsIndex]
         let resultDolarQuote = usdCurrencyQuotes[resultInitialsIndex]
         
@@ -96,14 +95,13 @@ class CurrencyConversionInteractor: CurrencyConversionBusinessLogic, CurrencyCon
     
     //MARK: - Convert string in numeric
     func convertStringValueInNumber(request: CurrencyConversion.FormatTextField.Request) {
-        guard let value = NumberFormatter().getNumberValue(of: request.currencyInitials, request.textFieldValue)?.doubleValue else {
-            return
-        }
-        
+        let value = request.textFieldValue.getCurrencyNumericValue()
         var newValue: Double = 0.0
         if request.newText != "" {
             if let newValueToSum = Double(request.newText) {
                 newValue = (value * 10) + (newValueToSum / 100)
+            } else {
+                newValue = value
             }
         } else {
             if value > 0 {

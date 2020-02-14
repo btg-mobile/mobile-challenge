@@ -15,11 +15,6 @@ extension NumberFormatter {
         return formatter.string(from: value as NSNumber)
     }
     
-    func getNumberValue(of currencyInitials: String, _ value: String) -> NSNumber? {
-        let formatter = getCurrencyFormatter(for: currencyInitials)
-        return formatter.number(from: value)
-    }
-    
     private func getCurrencyFormatter(for currencyInitials: String) -> NumberFormatter {
         self.numberStyle = .currencyAccounting
         self.currencyCode = currencyInitials
@@ -28,10 +23,5 @@ extension NumberFormatter {
         self.minimumFractionDigits = 2
         
         return self
-    }
-    
-    func getSymbolForCurrencyCode(code: String) -> String? {
-        let locale = NSLocale(localeIdentifier: code)
-        return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
     }
 }
