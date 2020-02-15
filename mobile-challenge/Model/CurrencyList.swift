@@ -18,7 +18,7 @@ struct CurrencyList: Codable {
 
 struct Currency {
     
-    let key: String
-    let value: String
+    var key: String
+    var value: String
 
 }

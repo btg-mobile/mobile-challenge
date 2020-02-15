@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BCBE04EF23F6318B000580A8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE04ED23F6318B000580A8 /* BaseViewController.swift */; };
+		BCBE04F323F77C95000580A8 /* CurrencyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCBE04F123F77C95000580A8 /* CurrencyDataModel.xcdatamodeld */; };
+		BCBE04F523F77E36000580A8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE04F423F77E36000580A8 /* CoreDataManager.swift */; };
 		BCE9346623F224AF009EFB38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9346523F224AF009EFB38 /* AppDelegate.swift */; };
 		BCE9346823F224AF009EFB38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9346723F224AF009EFB38 /* SceneDelegate.swift */; };
 		BCE9346A23F224AF009EFB38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9346923F224AF009EFB38 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		BCBE04ED23F6318B000580A8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BCBE04F223F77C95000580A8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		BCBE04F423F77E36000580A8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BCE9346223F224AF009EFB38 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE9346523F224AF009EFB38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCE9346723F224AF009EFB38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BCE9349123F22E24009EFB38 /* CurrencyController.swift */,
+				BCBE04F423F77E36000580A8 /* CoreDataManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			children = (
 				BCE9349323F238F8009EFB38 /* LiveExchange.swift */,
 				BCE9349523F244EC009EFB38 /* CurrencyList.swift */,
+				BCBE04F123F77C95000580A8 /* CurrencyDataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,8 +271,10 @@
 				BCE9349423F238F8009EFB38 /* LiveExchange.swift in Sources */,
 				BCBE04EF23F6318B000580A8 /* BaseViewController.swift in Sources */,
 				BCE9349223F22E24009EFB38 /* CurrencyController.swift in Sources */,
+				BCBE04F323F77C95000580A8 /* CurrencyDataModel.xcdatamodeld in Sources */,
 				BCE9346623F224AF009EFB38 /* AppDelegate.swift in Sources */,
 				BCE9346823F224AF009EFB38 /* SceneDelegate.swift in Sources */,
+				BCBE04F523F77E36000580A8 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +541,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BCBE04F123F77C95000580A8 /* CurrencyDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BCBE04F223F77C95000580A8 /* Model.xcdatamodel */,
+			);
+			currentVersion = BCBE04F223F77C95000580A8 /* Model.xcdatamodel */;
+			path = CurrencyDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BCE9345A23F224AF009EFB38 /* Project object */;
 }

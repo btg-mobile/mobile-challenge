@@ -173,16 +173,13 @@
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6eu-PF-pdA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="373" height="56"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="P59-l3-wDX"/>
-                                </constraints>
                                 <color key="barTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="476-6n-zga">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" textLabel="SQu-IE-x5v" detailTextLabel="gyD-RK-eYK" style="IBUITableViewCellStyleValue1" id="Y8b-3J-dsf">
@@ -211,19 +208,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abh-3R-3Wg">
+                                <rect key="frame" x="373" y="59" width="28" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KlN-IT-fG7"/>
+                                    <constraint firstAttribute="width" constant="28" id="cRu-vA-7b8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="list.dash" catalog="system"/>
+                                <connections>
+                                    <action selector="btnSortCurrencies:" destination="FZH-ba-BKF" eventType="touchUpInside" id="Cp1-MK-27q"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6eu-PF-pdA" firstAttribute="top" secondItem="fZA-Yr-c7P" secondAttribute="top" id="0m3-dQ-xNZ"/>
-                            <constraint firstItem="D51-K9-gqa" firstAttribute="trailing" secondItem="6eu-PF-pdA" secondAttribute="trailing" id="2CJ-IY-EHH"/>
-                            <constraint firstItem="D51-K9-gqa" firstAttribute="leading" secondItem="6eu-PF-pdA" secondAttribute="leading" id="4uc-Az-KTi"/>
-                            <constraint firstItem="476-6n-zga" firstAttribute="top" secondItem="6eu-PF-pdA" secondAttribute="bottom" symbolic="YES" id="6p9-PL-XUY"/>
-                            <constraint firstItem="6eu-PF-pdA" firstAttribute="leading" secondItem="fZA-Yr-c7P" secondAttribute="leading" id="MBh-6c-36p"/>
-                            <constraint firstItem="6eu-PF-pdA" firstAttribute="trailing" secondItem="fZA-Yr-c7P" secondAttribute="trailing" id="UZE-LQ-aHr"/>
+                            <constraint firstItem="fZA-Yr-c7P" firstAttribute="trailing" secondItem="Abh-3R-3Wg" secondAttribute="trailing" constant="13" id="3Fu-x7-5N6"/>
+                            <constraint firstItem="476-6n-zga" firstAttribute="top" secondItem="6eu-PF-pdA" secondAttribute="bottom" symbolic="YES" id="JJa-ZC-eY0"/>
+                            <constraint firstItem="6eu-PF-pdA" firstAttribute="top" secondItem="fZA-Yr-c7P" secondAttribute="top" id="PMY-es-fbn"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="leading" secondItem="6eu-PF-pdA" secondAttribute="leading" id="Y8c-pW-5hS"/>
+                            <constraint firstItem="Abh-3R-3Wg" firstAttribute="leading" secondItem="6eu-PF-pdA" secondAttribute="trailing" symbolic="YES" id="aJK-25-XPD"/>
                             <constraint firstItem="476-6n-zga" firstAttribute="trailing" secondItem="fZA-Yr-c7P" secondAttribute="trailing" id="hra-ga-xmD"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="bottom" secondItem="6eu-PF-pdA" secondAttribute="top" id="kH8-im-xWk"/>
                             <constraint firstItem="476-6n-zga" firstAttribute="bottom" secondItem="fZA-Yr-c7P" secondAttribute="bottom" id="ma8-mJ-itR"/>
-                            <constraint firstItem="D51-K9-gqa" firstAttribute="bottom" secondItem="6eu-PF-pdA" secondAttribute="top" id="qia-hc-Yri"/>
+                            <constraint firstItem="6eu-PF-pdA" firstAttribute="leading" secondItem="fZA-Yr-c7P" secondAttribute="leading" id="pMC-8b-iix"/>
+                            <constraint firstItem="D51-K9-gqa" firstAttribute="trailing" secondItem="476-6n-zga" secondAttribute="trailing" id="peM-kz-HGC"/>
                             <constraint firstItem="476-6n-zga" firstAttribute="leading" secondItem="fZA-Yr-c7P" secondAttribute="leading" id="rEa-9M-gWd"/>
+                            <constraint firstItem="Abh-3R-3Wg" firstAttribute="top" secondItem="fZA-Yr-c7P" secondAttribute="top" constant="15" id="tnx-Rr-29N"/>
                             <constraint firstItem="D51-K9-gqa" firstAttribute="top" secondItem="vRf-BQ-d6h" secondAttribute="top" id="zF7-hN-xZJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fZA-Yr-c7P"/>
@@ -265,5 +276,6 @@
         <image name="bitcoinsign.circle" catalog="system" width="64" height="60"/>
         <image name="bitcoinsign.circle.fill" catalog="system" width="64" height="60"/>
         <image name="currencylayer_logo" width="572" height="100"/>
+        <image name="list.dash" catalog="system" width="64" height="42"/>
     </resources>
 </document>

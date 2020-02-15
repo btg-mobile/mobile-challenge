@@ -42,6 +42,7 @@ class ViewController: BaseViewController {
         
         self.amountTextField.delegate = self
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
     func format(){
@@ -61,7 +62,7 @@ class ViewController: BaseViewController {
             showAlert(title: "Atenção", msg: "Informe o valor a ser convertido!", style: .alert)
             
             return
-        
+            
         }
         
         guard let from = self.selectedFrom else {
@@ -75,9 +76,9 @@ class ViewController: BaseViewController {
         guard let to = self.selectedTo else {
             
             showAlert(title: "Atenção", msg: "Informe a moeda de destino!", style: .alert)
-                
+            
             return
-        
+            
         }
         
         if from == to {
@@ -175,9 +176,29 @@ extension ViewController : CurrencyControllerDelegate {
                 
                 self.present(alerta, animated: true)
                 
+                //SE HOUVER ERRO, CARREGAR DO COREDATA
+                self.fromPickerView.reloadAllComponents()
+                self.toPickerView.reloadAllComponents()
+                
             }
             
-            //SE HOUVER ERRO, CARREGAR DO COREDATA
+        }
+        
+    }
+    
+    func timeToStopActivity(resp: Bool) {
+        
+        
+        switch resp {
+        case false:
+            print("")
+        case true:
+            
+            DispatchQueue.main.async {
+                
+                self.stopActivityIndicator()
+                
+            }
             
         }
         

@@ -10,6 +10,7 @@ import UIKit
 
 class CurrencyListViewController: BaseViewController {
     
+    var sortedOption: Bool = false
     var controller : CurrencyController?
     @IBOutlet weak var currencyTableView: UITableView!
     @IBOutlet weak var currencySearchBar: UISearchBar!
@@ -25,13 +26,23 @@ class CurrencyListViewController: BaseViewController {
         self.controller?.delegate = self
         
         self.controller?.setupCurrencyListViewController()
-                
+        
         //delegate and datasource TableView
         self.currencyTableView.delegate = self
         self.currencyTableView.dataSource = self
         
         //delegate and datasource SearchBar
         self.currencySearchBar.delegate = self
+        
+    }
+    
+    @IBAction func btnSortCurrencies(_ sender: UIButton) {
+        
+        self.sortedOption = !self.sortedOption
+        
+        self.controller?.sortArray(for: self.sortedOption)
+        
+        self.currencyTableView.reloadData()
         
     }
     
@@ -120,6 +131,36 @@ extension CurrencyListViewController : CurrencyControllerDelegate {
                 
                 self.present(alerta, animated: true)
                 
+            }
+            
+        }
+        
+    }
+    
+    func timeToStopActivity(resp: Bool) {
+        
+        
+        if resp {
+            
+            DispatchQueue.main.async {
+                
+                self.stopActivityIndicator()
+                
+            }
+            
+        }
+        else {
+            
+            DispatchQueue.main.async {
+                
+                let alerta = UIAlertController(title: "Erro", message: "Problema ao carregar os dados dos moedas", preferredStyle: .alert)
+                let btnOk = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+                
+                alerta.addAction(btnOk)
+                
+                self.present(alerta, animated: true)
+                
+                self.stopActivityIndicator()
             }
             
         }

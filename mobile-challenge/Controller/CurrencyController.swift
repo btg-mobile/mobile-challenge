@@ -11,9 +11,12 @@ import Foundation
 protocol CurrencyControllerDelegate: class {
     func successOnLoadingListOfCurrencies(currencyList: [String : String])
     func errorOnLoadingListOfCurrencies(error: CurrencyError)
+    func timeToStopActivity(resp: Bool)
 }
 
 class CurrencyController {
+    
+    let coreDataManager = CoreDataManager()
     
     weak var delegate : CurrencyControllerDelegate?
     
@@ -29,7 +32,7 @@ class CurrencyController {
     func setupViewController(){
         
         dataProvider = CurrencyDataProvider()
-    
+        
     }
     
     func getCurrencyExchange(closure: @escaping(Double) -> Void, amount: Double, from: String, to: String) {
@@ -40,10 +43,10 @@ class CurrencyController {
             
             switch Results {
             case .success(let exchange):
-            
+                
                 guard let firstValue = exchange.quotes?["USD\(from)"] else { return }
                 guard let secondValue = exchange.quotes?["USD\(to)"] else { return }
-
+                
                 closure((self?.calculate(amount: amount, value1: firstValue, value2: secondValue))!)
                 
             case .failure(let error):
@@ -66,7 +69,23 @@ class CurrencyController {
     //Title for PickerView
     func loadCurrencyTitleForRow(with index: Int) -> String {
         
-        return self.sortedCurrencyListArray[index].key
+        let amount = self.sortedCurrencyListArray.count
+        
+        if amount == 0 {
+            
+//            self.coreDataManager.loadInformationFromCoreData { (arrayCurrency) in
+//
+//                self.currencyListArray = arrayCurrency
+//
+//            }
+            //RETORNAR DADOS DO COREDATA
+            return ""
+        }
+        else{
+            
+            return self.sortedCurrencyListArray[index].key
+            
+        }
         
     }
     
@@ -114,11 +133,35 @@ class CurrencyController {
                     $0.key < $1.key
                 }
                 
+                self.coreDataManager.deleteInformationFromCoreData { (resp) in
+                }
+                
+                self.coreDataManager.saveInformationFromArray(currencyArray: self.currencyListArray)
+                
                 self.notFilteredCurrencyListArray = self.currencyListArray
                 self.delegate?.successOnLoadingListOfCurrencies(currencyList: currencyList)
                 
             case .failure(let currencyError):
-                self.delegate?.errorOnLoadingListOfCurrencies(error: currencyError)
+                
+                self.coreDataManager.loadInformationFromCoreData { (arrayCurrency) in
+                    
+                    if arrayCurrency?.count == 0 {
+
+                        self.delegate?.errorOnLoadingListOfCurrencies(error: currencyError)
+                        self.delegate?.timeToStopActivity(resp: false)
+                        
+                    return
+                        
+                    }else {
+                    
+                        self.currencyListArray = arrayCurrency!
+                        self.notFilteredCurrencyListArray = arrayCurrency!
+                        self.delegate?.timeToStopActivity(resp: true)
+                    
+                    }
+                
+                }
+                
             }
             
         })
@@ -151,6 +194,22 @@ class CurrencyController {
         self.currencyListArray = notFilteredCurrencyListArray.filter({ (Currency) -> Bool in
             (Currency.key.lowercased().contains(searchText.lowercased())) || (Currency.value.lowercased().contains(searchText.lowercased()))
         })
+        
+    }
+    
+    func sortArray(for option: Bool){
+        
+        switch option {
+        case true:
+            self.currencyListArray.sort {
+                $0.key < $1.key
+            }
+        case false:
+            self.currencyListArray.sort {
+                $0.value < $1.value
+            }
+            
+        }
         
     }
     
