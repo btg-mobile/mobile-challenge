@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CurrencyLayerTest</string>
+    <string name="input_amount">Input amount</string>
 </resources>

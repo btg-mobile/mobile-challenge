@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import io.felipeandrade.currencylayertest.R
-import io.felipeandrade.domain.Currency
+import io.felipeandrade.domain.CurrencyModel
 
 class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>() {
 
 
-    private var elements: List<Currency> = listOf()
+    private var elements: List<CurrencyModel> = listOf()
 
-    var onItemClicked: (Currency) -> Unit = {}
+    var onItemClicked: (CurrencyModel) -> Unit = {}
 
     override fun getItemCount(): Int = elements.size
     override fun getItemViewType(position: Int): Int = R.layout.currency_list_item
@@ -24,7 +24,7 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(elements[position], onItemClicked)
 
-    fun setData(newElements: List<Currency>?) {
+    fun setData(newElements: List<CurrencyModel>?) {
         elements = newElements ?: listOf()
         notifyDataSetChanged()
     }
@@ -33,8 +33,8 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(
-            currency: Currency,
-            onCharacterClicked: (Currency) -> Unit
+            currency: CurrencyModel,
+            onCharacterClicked: (CurrencyModel) -> Unit
         ) {
             itemView.apply {
 
