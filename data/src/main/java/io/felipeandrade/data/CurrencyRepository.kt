@@ -9,14 +9,8 @@ class CurrencyRepository(
     private val currencyMapper: CurrencyMapper
 ) {
     suspend fun loadSupportedCurrencies(): List<CurrencyModel> {
-        return try {
-            val response = currencyApi.loadSupportedCurrencies(BuildConfig.API_KEY)
-            currencyMapper.mapSupportedCurrencies(response)
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList()
-        }
+        val response = currencyApi.loadSupportedCurrencies(BuildConfig.API_KEY)
+        return currencyMapper.mapSupportedCurrencies(response)
     }
 
 }

@@ -40,7 +40,7 @@ class CurrencyConversionActivity : AppCompatActivity() {
         viewModel.outputCurrency.observe(this, Observer {
             it?.let { output ->
                 btn_currency_out.text = output.currency.name
-                tv_output_value.text = "${output.currency.symbol} ${output.currency.value}"
+                tv_output_value.text = "${output.currency.symbol} ${output.value}"
             }
         })
 

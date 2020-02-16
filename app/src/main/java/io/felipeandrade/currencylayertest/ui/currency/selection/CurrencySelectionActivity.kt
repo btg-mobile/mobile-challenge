@@ -29,7 +29,7 @@ class CurrencySelectionActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         rv_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter.onItemClicked = { viewModel.itemClicked(it) }
+        adapter.onItemClicked = {currency, id -> viewModel.itemClicked(currency, id) }
         rv_list.adapter = adapter
     }
 
@@ -40,9 +40,9 @@ class CurrencySelectionActivity : AppCompatActivity() {
         })
 
         viewModel.selectedCurrency.observe(this, Observer {
-            it?.let { currency ->
+            it?.let { data ->
                 val intent = Intent()
-                intent.putExtra(SELECTED_CURRENCY_ID, currency.id)
+                intent.putExtra(SELECTED_CURRENCY_ID, data.id)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }

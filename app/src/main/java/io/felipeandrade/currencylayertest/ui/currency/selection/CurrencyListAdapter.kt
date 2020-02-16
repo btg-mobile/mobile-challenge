@@ -7,13 +7,14 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import io.felipeandrade.currencylayertest.R
 import io.felipeandrade.domain.CurrencyModel
+import kotlinx.android.synthetic.main.currency_list_item.view.*
 
 class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>() {
 
 
     private var elements: List<CurrencyModel> = listOf()
 
-    var onItemClicked: (CurrencyModel) -> Unit = {}
+    var onItemClicked: (CurrencyModel, Int) -> Unit = { _, _ -> }
 
     override fun getItemCount(): Int = elements.size
     override fun getItemViewType(position: Int): Int = R.layout.currency_list_item
@@ -22,7 +23,7 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
         ViewHolder(parent.inflate(viewType))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(elements[position], onItemClicked)
+        holder.bind(elements[position], position, onItemClicked)
 
     fun setData(newElements: List<CurrencyModel>?) {
         elements = newElements ?: listOf()
@@ -34,11 +35,13 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
 
         fun bind(
             currency: CurrencyModel,
-            onCharacterClicked: (CurrencyModel) -> Unit
+            position: Int,
+            onItemClicked: (CurrencyModel, Int) -> Unit
         ) {
             itemView.apply {
-
-                setOnClickListener { onCharacterClicked(currency) }
+                tv_currency_symbol.text = currency.symbol
+                tv_currency_name.text = currency.name
+                setOnClickListener { onItemClicked(currency, position) }
             }
         }
     }

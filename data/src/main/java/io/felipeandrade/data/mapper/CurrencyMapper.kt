@@ -8,6 +8,15 @@ class CurrencyMapper {
 
         val result: MutableList<CurrencyModel> = mutableListOf()
 
+        response.currencies.forEach { item ->
+            result.add(
+                CurrencyModel(
+                    symbol = item.key,
+                    name = item.value
+                )
+            )
+        }
+
         return result
     }
 }
