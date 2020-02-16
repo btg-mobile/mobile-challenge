@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CurrencyControllerDelegate: class {
-    func successOnLoadingListOfCurrencies(currencyList: [String : String])
+    func successOnLoadingListOfCurrencies()
     func errorOnLoadingListOfCurrencies(error: CurrencyError)
     func timeToStopActivity(resp: Bool)
 }
@@ -32,6 +32,8 @@ class CurrencyController {
     func setupViewController(){
         
         dataProvider = CurrencyDataProvider()
+        
+        getAndSaveCurrencyList()
         
     }
     
@@ -69,23 +71,7 @@ class CurrencyController {
     //Title for PickerView
     func loadCurrencyTitleForRow(with index: Int) -> String {
         
-        let amount = self.sortedCurrencyListArray.count
-        
-        if amount == 0 {
-            
-//            self.coreDataManager.loadInformationFromCoreData { (arrayCurrency) in
-//
-//                self.currencyListArray = arrayCurrency
-//
-//            }
-            //RETORNAR DADOS DO COREDATA
-            return ""
-        }
-        else{
-            
-            return self.sortedCurrencyListArray[index].key
-            
-        }
+        return self.sortedCurrencyListArray[index].key
         
     }
     
@@ -117,7 +103,7 @@ class CurrencyController {
     func getAndSaveCurrencyList(){
         
         self.dataProvider?.getListOfCurrencies(completion: { (results) in
-            
+
             switch results {
             case .success(let currencyList):
                 for (key, value) in currencyList {
@@ -134,32 +120,36 @@ class CurrencyController {
                 }
                 
                 self.coreDataManager.deleteInformationFromCoreData { (resp) in
+                    
+                    let tmp = resp ? "Removido com sucesso" : "Falha ao remover"
+                    
+                    print(tmp)
                 }
                 
                 self.coreDataManager.saveInformationFromArray(currencyArray: self.currencyListArray)
                 
                 self.notFilteredCurrencyListArray = self.currencyListArray
-                self.delegate?.successOnLoadingListOfCurrencies(currencyList: currencyList)
+                self.delegate?.successOnLoadingListOfCurrencies()
                 
             case .failure(let currencyError):
                 
                 self.coreDataManager.loadInformationFromCoreData { (arrayCurrency) in
                     
                     if arrayCurrency?.count == 0 {
-
+                        
                         self.delegate?.errorOnLoadingListOfCurrencies(error: currencyError)
                         self.delegate?.timeToStopActivity(resp: false)
                         
-                    return
+                        return
                         
                     }else {
-                    
+                        
                         self.currencyListArray = arrayCurrency!
                         self.notFilteredCurrencyListArray = arrayCurrency!
                         self.delegate?.timeToStopActivity(resp: true)
-                    
+       
                     }
-                
+                    
                 }
                 
             }

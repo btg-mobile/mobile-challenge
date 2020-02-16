@@ -107,7 +107,7 @@ extension CurrencyListViewController : UISearchBarDelegate {
 
 extension CurrencyListViewController : CurrencyControllerDelegate {
     
-    func successOnLoadingListOfCurrencies(currencyList: [String : String]) {
+    func successOnLoadingListOfCurrencies() {
         
         DispatchQueue.main.async {
             
@@ -124,7 +124,7 @@ extension CurrencyListViewController : CurrencyControllerDelegate {
             
             DispatchQueue.main.async {
                 
-                let alerta = UIAlertController(title: "Erro", message: "Problema ao carregar os dados dos moedas", preferredStyle: .alert)
+                let alerta = UIAlertController(title: "Erro", message: "Problema ao carregar os dados das moedas", preferredStyle: .alert)
                 let btnOk = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
                 
                 alerta.addAction(btnOk)
@@ -144,6 +144,7 @@ extension CurrencyListViewController : CurrencyControllerDelegate {
             
             DispatchQueue.main.async {
                 
+                self.currencyTableView.reloadData()
                 self.stopActivityIndicator()
                 
             }

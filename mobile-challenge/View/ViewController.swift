@@ -25,14 +25,14 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.format()
+        self.formatUI()
         
         self.controller = CurrencyController()
         
-        //mudar temporatio
         self.controller?.delegate = self
         
-        self.controller?.setupCurrencyListViewController()
+        //self.controller?.setupCurrencyListViewController()
+        self.controller?.setupViewController()
         
         //Delegate and DataSource of PickerViews
         self.fromPickerView.delegate = self
@@ -45,7 +45,22 @@ class ViewController: BaseViewController {
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
-    func format(){
+    @IBAction func btnClearScreen(_ sender: UIButton) {
+    
+        clearFields()
+        
+    }
+    
+    func clearFields(){
+        
+        self.currencyDescription.text = ""
+        self.resultLabel.text = ""
+        self.amountTextField.text = ""
+        //self.fromPickerView.setNeedsLayout()
+        
+    }
+    
+    func formatUI(){
         
         self.amountTextField.keyboardType = .numbersAndPunctuation
         
@@ -152,7 +167,7 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension ViewController : CurrencyControllerDelegate {
     
-    func successOnLoadingListOfCurrencies(currencyList: [String : String]) {
+    func successOnLoadingListOfCurrencies() {
         
         DispatchQueue.main.async {
             
@@ -176,10 +191,14 @@ extension ViewController : CurrencyControllerDelegate {
                 
                 self.present(alerta, animated: true)
                 
+                self.resultLabel.text = ""
+                self.currencyDescription.text = ""
+                
                 //SE HOUVER ERRO, CARREGAR DO COREDATA
                 self.fromPickerView.reloadAllComponents()
                 self.toPickerView.reloadAllComponents()
                 
+                self.stopActivityIndicator()
             }
             
         }
@@ -188,16 +207,24 @@ extension ViewController : CurrencyControllerDelegate {
     
     func timeToStopActivity(resp: Bool) {
         
-        
         switch resp {
         case false:
-            print("")
+            DispatchQueue.main.async {
+                self.stopActivityIndicator()
+            }
         case true:
             
             DispatchQueue.main.async {
                 
                 self.stopActivityIndicator()
                 
+                let alerta = UIAlertController(title: "Sem conexão!", message: "Não foi possivel obter os dados", preferredStyle: .alert)
+                let btnOk = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+                alerta.addAction(btnOk)
+                self.present(alerta, animated: true)
+                
+                self.fromPickerView.isUserInteractionEnabled = false
+                self.toPickerView.isUserInteractionEnabled = false
             }
             
         }
