@@ -1,6 +1,5 @@
 package io.felipeandrade.currencylayertest.ui.currency.conversion
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.felipeandrade.domain.CurrencyModel
@@ -9,8 +8,10 @@ class CurrencyConversionViewModel(
 ) : ViewModel() {
 
 
-    val inputCurrency: LiveData<InputViewState> = MutableLiveData()
-    val outputCurrency: LiveData<OutputViewState> = MutableLiveData()
+    val inputCurrency = MutableLiveData<InputViewState>()
+    val outputCurrency = MutableLiveData<OutputViewState>()
+    val selectCurrencyCode = MutableLiveData<Int>()
+
 
     data class InputViewState(
         val currency: CurrencyModel,
@@ -22,4 +23,17 @@ class CurrencyConversionViewModel(
         val currency: CurrencyModel,
         val value: Double
     )
+
+
+    fun inputBtnClicked() {
+        selectCurrencyCode.postValue(CurrencyConversionActivity.INPUT_REQ_CODE)
+    }
+
+    fun outputBtnClicked() {
+        selectCurrencyCode.postValue(CurrencyConversionActivity.OUTPUT_REQ_CODE)
+    }
+
+    fun inputValueUpdated(newValue: String) {
+
+    }
 }

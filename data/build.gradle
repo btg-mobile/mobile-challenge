@@ -14,7 +14,7 @@ android {
         versionName rootProject.ext.versionName
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
 
-        buildConfigField 'String', 'BASE_URL', '"https://api.currencylayer.com/live"'
+        buildConfigField 'String', 'BASE_URL', '"http://api.currencylayer.com/"'
         buildConfigField 'String', 'API_KEY', currencyApiKey
     }
 

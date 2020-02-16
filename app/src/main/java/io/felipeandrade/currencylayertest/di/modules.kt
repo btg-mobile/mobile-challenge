@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val currencyModule = module(override = true) {
     viewModel { CurrencyConversionViewModel() }
-    viewModel { CurrencySelectionViewModel() }
+    viewModel { CurrencySelectionViewModel(get()) }
     factory { CurrencyListAdapter() }
 
     single { LoadSupportedCurrenciesUseCase(get()) }
