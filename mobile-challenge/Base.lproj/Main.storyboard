@@ -111,15 +111,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMb-C3-5yD">
+                                <rect key="frame" x="338" y="739" width="56" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="Drd-o0-Pws"/>
+                                    <constraint firstAttribute="height" constant="44" id="YCe-LR-6aI"/>
+                                </constraints>
+                                <state key="normal" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="btnClearScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w9t-lz-wTp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aba-Ub-pt6" firstAttribute="leading" secondItem="thq-PZ-Hoj" secondAttribute="trailing" constant="30" id="0Jh-c6-6Pu"/>
                             <constraint firstItem="cYR-zk-vHs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0o3-2y-Vkc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMb-C3-5yD" secondAttribute="trailing" constant="20" id="3hs-Wg-oBd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6hd-hj-Nf3" secondAttribute="trailing" constant="132" id="41k-CG-KK9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cYR-zk-vHs" secondAttribute="trailing" constant="20" id="60G-S6-G56"/>
                             <constraint firstItem="ieW-Pv-iyb" firstAttribute="top" secondItem="sRF-ki-B2a" secondAttribute="bottom" constant="20" id="8C6-Iz-Sw5"/>
                             <constraint firstItem="cKC-vF-E0C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A5X-wc-248"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vMb-C3-5yD" secondAttribute="bottom" constant="30" id="ABf-nl-a4F"/>
                             <constraint firstItem="6hd-hj-Nf3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="DN9-1G-yhR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sRF-ki-B2a" secondAttribute="trailing" constant="20" id="Kp4-1D-HpV"/>
                             <constraint firstItem="oDO-L7-1Xo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KyF-A5-Izr"/>
@@ -277,5 +290,6 @@
         <image name="bitcoinsign.circle.fill" catalog="system" width="64" height="60"/>
         <image name="currencylayer_logo" width="572" height="100"/>
         <image name="list.dash" catalog="system" width="64" height="42"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
 </document>

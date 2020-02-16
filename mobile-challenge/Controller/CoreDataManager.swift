@@ -21,7 +21,7 @@ class CoreDataManager {
         return container
     }()
     
-    func saveContext(){
+    /*func saveContext(){
         
         let context = persistentContainer.viewContext
         
@@ -37,7 +37,7 @@ class CoreDataManager {
             
         }
         
-    }
+    }*/
     
     func saveInformationFromArray(currencyArray: [Currency]) {
         
@@ -50,7 +50,7 @@ class CoreDataManager {
             currency.value = i.value
             
             try? context.save()
-            
+            //saveContext()
         }
         
     }
