@@ -21,7 +21,7 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
 
     private var elements: List<CurrencyModel> = listOf()
 
-    var onItemClicked: (CurrencyModel, Int) -> Unit = { _, _ -> }
+    var onItemClicked: (CurrencyModel) -> Unit = {}
 
     override fun getItemCount(): Int = elements.size
     override fun getItemViewType(position: Int): Int = R.layout.currency_list_item
@@ -43,7 +43,7 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
         fun bind(
             currency: CurrencyModel,
             position: Int,
-            onItemClicked: (CurrencyModel, Int) -> Unit
+            onItemClicked: (CurrencyModel) -> Unit
         ) {
             itemView.apply {
                 tv_currency_symbol.text = currency.symbol
@@ -51,14 +51,13 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
 
                 paintBackground(context, tv_currency_symbol.background, randomColor(position))
 
-                setOnClickListener { onItemClicked(currency, position) }
+                setOnClickListener { onItemClicked(currency) }
             }
         }
 
         private fun paintBackground(context: Context, background: Drawable, bgColor: Int) {
             when (background) {
-                is ShapeDrawable -> background.paint.color =
-                    ContextCompat.getColor(context, bgColor)
+                is ShapeDrawable -> background.paint.color = ContextCompat.getColor(context, bgColor)
                 is GradientDrawable -> background.setColor(ContextCompat.getColor(context, bgColor))
                 is ColorDrawable -> background.color = ContextCompat.getColor(context, bgColor)
             }

@@ -14,7 +14,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CurrencySelectionActivity : AppCompatActivity() {
 
     companion object {
-        const val SELECTED_CURRENCY_ID = "SELECTED_CURRENCY_ID"
+        const val SELECTED_CURRENCY_NAME = "SELECTED_CURRENCY_NAME"
+        const val SELECTED_CURRENCY_SYMBOL = "SELECTED_CURRENCY_SYMBOL"
     }
 
     private val viewModel: CurrencySelectionViewModel by viewModel()
@@ -29,7 +30,7 @@ class CurrencySelectionActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         rv_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter.onItemClicked = {currency, id -> viewModel.itemClicked(currency, id) }
+        adapter.onItemClicked = { viewModel.itemClicked(it) }
         rv_list.adapter = adapter
     }
 
@@ -42,7 +43,8 @@ class CurrencySelectionActivity : AppCompatActivity() {
         viewModel.selectedCurrency.observe(this, Observer {
             it?.let { data ->
                 val intent = Intent()
-                intent.putExtra(SELECTED_CURRENCY_ID, data.id)
+                intent.putExtra(SELECTED_CURRENCY_NAME, data.name)
+                intent.putExtra(SELECTED_CURRENCY_SYMBOL, data.symbol)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }

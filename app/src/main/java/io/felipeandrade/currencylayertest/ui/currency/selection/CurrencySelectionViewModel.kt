@@ -12,24 +12,15 @@ class CurrencySelectionViewModel(
     private val loadSupportedCurrencies: LoadSupportedCurrenciesUseCase
 ) : ViewModel() {
 
-    val selectedCurrency = MutableLiveData<ViewData>()
+    val selectedCurrency = MutableLiveData<CurrencyModel>()
 
     val characterList: LiveData<List<CurrencyModel>> = liveData(Dispatchers.IO) {
         val retrievedData = loadSupportedCurrencies()
         emit(retrievedData)
     }
 
-    fun itemClicked(currency: CurrencyModel, id: Int) {
-        selectedCurrency.postValue(
-            ViewData(
-                currency = currency,
-                id = id
-            )
-        )
+    fun itemClicked(currency: CurrencyModel) {
+        selectedCurrency.postValue(currency)
     }
 
-    data class ViewData(
-        val currency: CurrencyModel,
-        val id: Int
-    )
 }

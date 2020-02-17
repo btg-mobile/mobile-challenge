@@ -1,9 +1,11 @@
 package io.felipeandrade.currencylayertest.ui.currency.conversion
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import io.felipeandrade.currencylayertest.R
 import io.felipeandrade.currencylayertest.ui.currency.selection.CurrencySelectionActivity
 import kotlinx.android.synthetic.main.activity_currency_conversion.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.math.BigDecimal
 
 class CurrencyConversionActivity : AppCompatActivity() {
 
@@ -29,24 +32,35 @@ class CurrencyConversionActivity : AppCompatActivity() {
         initUiEvents()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        viewModel.onActivityResult(requestCode, resultCode, data)
+    }
+
     private fun observeLiveData() {
         viewModel.inputCurrency.observe(this, Observer {
-            it?.let { input ->
-                btn_currency_in.text = input.currency.name
-                et_input_amount.setText(input.currency.symbol)
-            }
+            it?.let { currency -> btn_currency_in.text = currency.name }
+        })
+
+        viewModel.inputValue.observe(this, Observer {
+            it?.let { value -> et_input_amount.setText("$value") }
         })
 
         viewModel.outputCurrency.observe(this, Observer {
-            it?.let { output ->
-                btn_currency_out.text = output.currency.name
-                tv_output_value.text = "${output.currency.symbol} ${output.value}"
-            }
+            it?.let { currency -> btn_currency_out.text = currency.name }
+        })
+
+        viewModel.outputValue.observe(this, Observer {
+            it?.let { data -> tv_output_value.text = currencyFormat(data.currency.symbol, data.value) }
         })
 
         viewModel.selectCurrencyCode.observe(this, Observer {
             it?.let { navigateToCurrencySelection(it) }
         })
+    }
+
+    private fun currencyFormat(symbol: String, value: BigDecimal): String {
+        return "$symbol $value"
     }
 
     private fun initUiEvents() {
@@ -73,6 +87,13 @@ private fun EditText.setOnFinishTyping(function: () -> Unit) {
 
             if (event == null || !event.isShiftPressed) {
                 // the user is done typing.
+
+                val imm =
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(windowToken, 0)
+
+                clearFocus()
+
                 function.invoke()
                 return@OnEditorActionListener true
             }
