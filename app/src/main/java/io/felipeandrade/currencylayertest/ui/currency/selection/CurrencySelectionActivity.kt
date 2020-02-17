@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.felipeandrade.currencylayertest.R
+import io.felipeandrade.currencylayertest.ui.DelayedTextChangeWatcher
 import io.felipeandrade.currencylayertest.ui.setOnFinishTyping
 import kotlinx.android.synthetic.main.activity_currency_selection.*
 import org.koin.android.ext.android.inject
@@ -59,5 +60,10 @@ class CurrencySelectionActivity : AppCompatActivity() {
 
     private fun initUiEvents() {
         et_search.setOnFinishTyping { viewModel.searchFieldUpdated(et_search.text.toString()) }
+        et_search.addTextChangedListener(
+            DelayedTextChangeWatcher {
+                viewModel.searchFieldUpdated(et_search.text.toString())
+            }
+        )
     }
 }

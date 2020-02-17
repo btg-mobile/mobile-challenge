@@ -26,7 +26,7 @@ class CurrencySelectionViewModel(
     }
 
     fun searchFieldUpdated(query: String) {
-        searchQuery.value = query
+        searchQuery.postValue(query)
     }
 
 }
