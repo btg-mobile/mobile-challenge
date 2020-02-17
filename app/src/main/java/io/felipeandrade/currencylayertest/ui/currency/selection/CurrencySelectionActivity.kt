@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.felipeandrade.currencylayertest.R
-import kotlinx.android.synthetic.main.activity_simple_list.*
+import io.felipeandrade.currencylayertest.ui.setOnFinishTyping
+import kotlinx.android.synthetic.main.activity_currency_selection.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,9 +24,10 @@ class CurrencySelectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_simple_list)
+        setContentView(R.layout.activity_currency_selection)
         initRecyclerView()
         observeLiveData()
+        initUiEvents()
     }
 
     private fun initRecyclerView() {
@@ -40,6 +42,10 @@ class CurrencySelectionActivity : AppCompatActivity() {
             adapter.setData(it)
         })
 
+        viewModel.searchQuery.observe(this, Observer {
+            adapter.setFilter(it)
+        })
+
         viewModel.selectedCurrency.observe(this, Observer {
             it?.let { data ->
                 val intent = Intent()
@@ -49,5 +55,9 @@ class CurrencySelectionActivity : AppCompatActivity() {
                 finish()
             }
         })
+    }
+
+    private fun initUiEvents() {
+        et_search.setOnFinishTyping { viewModel.searchFieldUpdated(et_search.text.toString()) }
     }
 }

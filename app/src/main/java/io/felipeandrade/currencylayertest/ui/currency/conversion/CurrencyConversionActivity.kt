@@ -1,20 +1,16 @@
 package io.felipeandrade.currencylayertest.ui.currency.conversion
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import io.felipeandrade.currencylayertest.R
 import io.felipeandrade.currencylayertest.ui.currency.selection.CurrencySelectionActivity
+import io.felipeandrade.currencylayertest.ui.setOnFinishTyping
 import kotlinx.android.synthetic.main.activity_currency_conversion.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.math.BigDecimal
+
 
 class CurrencyConversionActivity : AppCompatActivity() {
 
@@ -76,29 +72,5 @@ class CurrencyConversionActivity : AppCompatActivity() {
     }
 }
 
-private fun EditText.setOnFinishTyping(function: () -> Unit) {
-    setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, event ->
-        if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-            actionId == EditorInfo.IME_ACTION_DONE ||
-            event != null &&
-            event.action == KeyEvent.ACTION_DOWN &&
-            event.keyCode == KeyEvent.KEYCODE_ENTER
-        ) {
 
-            if (event == null || !event.isShiftPressed) {
-                // the user is done typing.
-
-                val imm =
-                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(windowToken, 0)
-
-                clearFocus()
-
-                function.invoke()
-                return@OnEditorActionListener true
-            }
-        }
-        false
-    })
-}
 

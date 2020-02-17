@@ -3,4 +3,5 @@
     <string name="input_amount">Input amount</string>
     <string name="input_currency">Input Currency</string>
     <string name="output_currency">Output Currency</string>
+    <string name="search">Search</string>
 </resources>

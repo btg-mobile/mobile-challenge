@@ -14,6 +14,8 @@ class CurrencySelectionViewModel(
 
     val selectedCurrency = MutableLiveData<CurrencyModel>()
 
+    val searchQuery = MutableLiveData<String>()
+
     val characterList: LiveData<List<CurrencyModel>> = liveData(Dispatchers.IO) {
         val retrievedData = loadSupportedCurrencies()
         emit(retrievedData)
@@ -21,6 +23,10 @@ class CurrencySelectionViewModel(
 
     fun itemClicked(currency: CurrencyModel) {
         selectedCurrency.postValue(currency)
+    }
+
+    fun searchFieldUpdated(query: String) {
+        searchQuery.value = query
     }
 
 }

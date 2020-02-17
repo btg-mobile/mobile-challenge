@@ -20,21 +20,41 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
 
 
     private var elements: List<CurrencyModel> = listOf()
+    private var filteredElements: List<CurrencyModel> = listOf()
 
     var onItemClicked: (CurrencyModel) -> Unit = {}
 
-    override fun getItemCount(): Int = elements.size
+    override fun getItemCount(): Int = filteredElements.size
     override fun getItemViewType(position: Int): Int = R.layout.currency_list_item
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent.inflate(viewType))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(elements[position], position, onItemClicked)
+        holder.bind(filteredElements[position], position, onItemClicked)
 
     fun setData(newElements: List<CurrencyModel>?) {
-        elements = newElements ?: listOf()
+        elements = newElements?.sortedBy { it.symbol } ?: listOf()
+        removeFilter()
         notifyDataSetChanged()
+    }
+
+    fun setFilter(query: String?) {
+        if (query == null || query.trim() == "") {
+            removeFilter()
+            return
+        }
+
+        filteredElements = elements.filter {
+            it.symbol.contains(query, true) ||
+            it.name.contains(query, true)
+        }
+
+        notifyDataSetChanged()
+    }
+
+    private fun removeFilter() {
+        filteredElements = elements.toMutableList()
     }
 
 
@@ -57,7 +77,8 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.ViewHolder>
 
         private fun paintBackground(context: Context, background: Drawable, bgColor: Int) {
             when (background) {
-                is ShapeDrawable -> background.paint.color = ContextCompat.getColor(context, bgColor)
+                is ShapeDrawable -> background.paint.color =
+                    ContextCompat.getColor(context, bgColor)
                 is GradientDrawable -> background.setColor(ContextCompat.getColor(context, bgColor))
                 is ColorDrawable -> background.color = ContextCompat.getColor(context, bgColor)
             }
