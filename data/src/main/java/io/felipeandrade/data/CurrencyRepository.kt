@@ -14,11 +14,15 @@ class CurrencyRepository(
         return currencyMapper.mapSupportedCurrencies(response)
     }
 
-    suspend fun loadLiveCurrencies(source: String, currency: String): Map<String, QuoteModel> {
+    suspend fun loadLiveCurrencies(
+        usd: String,
+        origin: String,
+        target: String
+    ): Map<String, QuoteModel> {
         val response = currencyApi.loadLiveCurrencies(
             apiKey = BuildConfig.API_KEY,
-            source = source,
-            currency = currency
+            source = usd,
+            currency = "$origin,$target"
         )
         return currencyMapper.mapLiveCurrency(response)
     }
