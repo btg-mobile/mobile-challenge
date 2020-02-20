@@ -8,12 +8,14 @@ import retrofit2.http.Query
 
 interface ConverseServices {
 
-    @GET("list")
+//    @GET("list")
+    @GET("5e4d37e52d00006f00c0dbca")
     fun getListCurrency(
         @Query("access_key") apiKey: String
     ): Call<ListCurrencyBodyResponse>
 
-    @GET("live")
+    //@GET("live")
+    @GET("5e4d38752d00007049c0dbd5")
     fun getLiveCurrency(
         @Query("access_key") apiKey: String
     ): Call<LiveCurrencyBodyResponse>
