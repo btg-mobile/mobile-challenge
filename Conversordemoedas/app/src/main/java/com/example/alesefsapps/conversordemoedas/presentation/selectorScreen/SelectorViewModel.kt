@@ -17,7 +17,7 @@ import java.math.BigDecimal
 
 class SelectorViewModel : ViewModel() {
 
-    private val api_key: String = "PUT_YOUR_KEY"
+    private val apiKey: String = "eab8dae1f01e7d851435fe6c99f756f6"
 
     private val service = ApiService.service
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
@@ -35,7 +35,7 @@ class SelectorViewModel : ViewModel() {
     }
 
     fun getCurrency() {
-        val call = service.getListCurrency(api_key)
+        val call = service.getListCurrency(apiKey)
 
         call.enqueue(object : Callback<ListCurrencyBodyResponse> {
             override fun onResponse(
@@ -83,7 +83,7 @@ class SelectorViewModel : ViewModel() {
 
 
     fun getValueLive() {
-        val call = service.getLiveCurrency(api_key)
+        val call = service.getLiveCurrency(apiKey)
 
         call.enqueue(object : Callback<LiveCurrencyBodyResponse> {
             override fun onFailure(call: Call<LiveCurrencyBodyResponse>, t: Throwable) {
