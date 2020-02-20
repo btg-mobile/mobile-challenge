@@ -25,13 +25,15 @@ class SelectorViewModel : ViewModel() {
     private val quotes: MutableList<Quote> = mutableListOf()
     private val values: MutableList<Values> = mutableListOf()
 
+    private const val API_KEY: String = "PUT_YOUR_KEY"
+
     companion object {
         private const val VIEW_FLIPPER_CURRENCY_LIST = 1
         private const val VIEW_FLIPPER_ERROR = 2
     }
 
     fun getCurrency() {
-        val call = service.getListCurrency("PUT_YOUR_KEY")
+        val call = service.getListCurrency(API_KEY)
 
         call.enqueue(object : Callback<ListCurrencyBodyResponse> {
             override fun onResponse(
@@ -79,7 +81,7 @@ class SelectorViewModel : ViewModel() {
 
 
     fun getValueLive() {
-        val call = service.getLiveCurrency("eab8dae1f01e7d851435fe6c99f756f6")
+        val call = service.getLiveCurrency(API_KEY)
 
         call.enqueue(object : Callback<LiveCurrencyBodyResponse> {
             override fun onFailure(call: Call<LiveCurrencyBodyResponse>, t: Throwable) {
