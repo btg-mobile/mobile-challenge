@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Conversor de moedas</string>
+    <string name="conversor_title">Conversor de moedas</string>
+    <string name="selector_title">Seletor de moedas</string>
+    <string name="input_value">Valor de entrada</string>
+    <string name="output_value">Valor de saída</string>
+    <string name="value">Valor</string>
+    <string name="zero">0$</string>
+    <string name="coin_input">Moeda de entrada</string>
+    <string name="coin_output">Moeda de saída</string>
+
+    <string name="error_401">Não autorizado</string>
+    <string name="error_generico">Erro não tratado</string>
+    <string name="error_500">Sem tratamento</string>
+
+    <string name="api_key">eab8dae1f01e7d851435fe6c99f756f6</string>
+
+    <string name="search_hint">Pesquise Pelo nome da moeda</string>
+</resources>
