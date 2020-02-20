@@ -5,8 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiService {
 
-    //private const val BASE_URL: String = "http://api.currencylayer.com/"
-    private const val BASE_URL: String = "http://www.mocky.io/v2/"
+    private const val BASE_URL: String = "http://api.currencylayer.com/"
 
     private fun initRetrofit(): Retrofit {
         return Retrofit.Builder()

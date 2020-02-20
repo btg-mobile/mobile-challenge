@@ -17,7 +17,7 @@ import java.math.BigDecimal
 
 class SelectorViewModel : ViewModel() {
 
-    private val apiKey: String = "eab8dae1f01e7d851435fe6c99f756f6"
+    private val apiKey: String = "YOUR_API_KEY"
 
     private val service = ApiService.service
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
