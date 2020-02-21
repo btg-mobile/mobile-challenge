@@ -3,32 +3,26 @@ package com.example.alesefsapps.conversordemoedas.presentation.selectorScreen
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import android.util.Log
 import com.example.alesefsapps.conversordemoedas.R
-import com.example.alesefsapps.conversordemoedas.data.ApiService
 import com.example.alesefsapps.conversordemoedas.data.model.Currency
 import com.example.alesefsapps.conversordemoedas.data.model.Quote
 import com.example.alesefsapps.conversordemoedas.data.model.Values
 import com.example.alesefsapps.conversordemoedas.data.repository.CurrencyRepository
-import com.example.alesefsapps.conversordemoedas.data.response.LiveCurrencyBodyResponse
+import com.example.alesefsapps.conversordemoedas.data.repository.ValueLiveRepository
 import com.example.alesefsapps.conversordemoedas.data.result.CurrencyResult
 import com.example.alesefsapps.conversordemoedas.data.result.LiveValueResult
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.math.BigDecimal
 
-class SelectorViewModel(private val dataSource: CurrencyRepository) : ViewModel() {
+class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, private val currencyRepository: CurrencyRepository) : ViewModel() {
 
     val selectorLiveData: MutableLiveData<List<Values>> = MutableLiveData()
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
-
+    private val values: MutableList<Values> = mutableListOf()
 
     fun getValueLive() {
-        dataSource.getValueLive { result: LiveValueResult ->
+        valueLiveRepository.getValueLive { result: LiveValueResult ->
             when(result) {
                 is LiveValueResult.Success -> {
-                    getCurrency()
+                    getCurrency(result.quotes)
                 }
                 is LiveValueResult.ApiError -> {
                     if (result.statusCode == 401) {
@@ -44,11 +38,11 @@ class SelectorViewModel(private val dataSource: CurrencyRepository) : ViewModel(
         }
     }
 
-    private fun getCurrency() {
-        dataSource.getCurrency { result: CurrencyResult ->
+    private fun getCurrency(quotes: List<Quote>) {
+        currencyRepository.getCurrency { result: CurrencyResult ->
             when(result) {
                 is CurrencyResult.Success -> {
-                    selectorLiveData.value = result.values
+                    getValues(quotes, result.currency)
                     viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
                 }
                 is CurrencyResult.ApiError -> {
@@ -65,16 +59,31 @@ class SelectorViewModel(private val dataSource: CurrencyRepository) : ViewModel(
         }
     }
 
+    private fun getValues(
+        quotes: List<Quote>,
+        currency: List<Currency>
+    ) {
+        currency.forEach { c ->
+            quotes.forEach { q ->
+                if (q.code.substring(3,6) == c.code) {
+                    values.add(Values(c.code, c.name, q.value))
+                    values.sortBy { values -> values.name }
+                }
+            }
+        }
+        selectorLiveData.value = values
+    }
+
     companion object {
         private const val VIEW_FLIPPER_CURRENCY_LIST = 1
         private const val VIEW_FLIPPER_ERROR = 2
     }
 
 
-    class ViewModelFactory(val dataSource: CurrencyRepository) : ViewModelProvider.Factory {
+    class ViewModelFactory(private val valueLiveRepository: ValueLiveRepository, private val currencyRepository: CurrencyRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(SelectorViewModel::class.java)) {
-                return SelectorViewModel(dataSource) as T
+                return SelectorViewModel(valueLiveRepository, currencyRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }
