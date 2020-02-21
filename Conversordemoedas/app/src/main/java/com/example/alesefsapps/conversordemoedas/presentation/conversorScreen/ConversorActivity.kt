@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import com.example.alesefsapps.conversordemoedas.R
 import com.example.alesefsapps.conversordemoedas.presentation.base.BaseActivity

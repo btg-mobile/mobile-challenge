@@ -18,17 +18,29 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
     private val values: MutableList<Values> = mutableListOf()
 
+    var quotes: List<Quote> = mutableListOf()
+    var currencies: List<Currency> = mutableListOf()
+
     fun getValueLive() {
         valueLiveRepository.getValueLive { result: LiveValueResult ->
             when(result) {
                 is LiveValueResult.Success -> {
+                    quotes = result.quotes
                     getCurrency(result.quotes)
                 }
                 is LiveValueResult.ApiError -> {
-                    if (result.statusCode == 401) {
-                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401_live)
-                    } else {
-                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_live)
+                    when (result.statusCode) {
+                        401 -> {
+                            viewFlipperLiveData.value =
+                                Pair(VIEW_FLIPPER_ERROR, R.string.error_401_live)
+                        }
+                        104 -> {
+                            viewFlipperLiveData.value =
+                                Pair(VIEW_FLIPPER_ERROR, R.string.error_104)
+                        }
+                        else -> {
+                            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_live)
+                        }
                     }
                 }
                 is LiveValueResult.SeverError -> {
@@ -38,18 +50,26 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
         }
     }
 
-    private fun getCurrency(quotes: List<Quote>) {
+    fun getCurrency(quotes: List<Quote>) {
         currencyRepository.getCurrency { result: CurrencyResult ->
             when(result) {
                 is CurrencyResult.Success -> {
+                    this.quotes = quotes
+                    currencies = result.currency
                     getValues(quotes, result.currency)
-                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
                 }
                 is CurrencyResult.ApiError -> {
-                    if (result.statusCode == 401) {
-                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401_list)
-                    } else {
-                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_list)
+                    when (result.statusCode) {
+                        401 -> {
+                            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401_list)
+                        }
+                        104 -> {
+                            viewFlipperLiveData.value =
+                                Pair(VIEW_FLIPPER_ERROR, R.string.error_104)
+                        }
+                        else -> {
+                            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_list)
+                        }
                     }
                 }
                 is CurrencyResult.SeverError -> {
@@ -59,7 +79,7 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
         }
     }
 
-    private fun getValues(
+    fun getValues(
         quotes: List<Quote>,
         currency: List<Currency>
     ) {
@@ -71,7 +91,9 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
                 }
             }
         }
-        selectorLiveData.value = values
+
+            selectorLiveData.value = values
+            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
     }
 
     companion object {
