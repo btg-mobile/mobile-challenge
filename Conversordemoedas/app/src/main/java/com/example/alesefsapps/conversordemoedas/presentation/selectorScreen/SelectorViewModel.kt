@@ -2,113 +2,82 @@ package com.example.alesefsapps.conversordemoedas.presentation.selectorScreen
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
 import com.example.alesefsapps.conversordemoedas.R
 import com.example.alesefsapps.conversordemoedas.data.ApiService
 import com.example.alesefsapps.conversordemoedas.data.model.Currency
 import com.example.alesefsapps.conversordemoedas.data.model.Quote
 import com.example.alesefsapps.conversordemoedas.data.model.Values
-import com.example.alesefsapps.conversordemoedas.data.response.ListCurrencyBodyResponse
+import com.example.alesefsapps.conversordemoedas.data.repository.CurrencyRepository
 import com.example.alesefsapps.conversordemoedas.data.response.LiveCurrencyBodyResponse
+import com.example.alesefsapps.conversordemoedas.data.result.CurrencyResult
+import com.example.alesefsapps.conversordemoedas.data.result.LiveValueResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigDecimal
 
-class SelectorViewModel : ViewModel() {
-
-    private val apiKey: String = "eab8dae1f01e7d851435fe6c99f756f6"
-
-    private val service = ApiService.service
-    val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
+class SelectorViewModel(private val dataSource: CurrencyRepository) : ViewModel() {
 
     val selectorLiveData: MutableLiveData<List<Values>> = MutableLiveData()
-    private val currencies: MutableList<Currency> = mutableListOf()
-    private val quotes: MutableList<Quote> = mutableListOf()
-    private val values: MutableList<Values> = mutableListOf()
+    val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
 
+    fun getValueLive() {
+        dataSource.getValueLive { result: LiveValueResult ->
+            when(result) {
+                is LiveValueResult.Success -> {
+                    getCurrency()
+                }
+                is LiveValueResult.ApiError -> {
+                    if (result.statusCode == 401) {
+                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401_live)
+                    } else {
+                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_live)
+                    }
+                }
+                is LiveValueResult.SeverError -> {
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_server_live)
+                }
+            }
+        }
+    }
+
+    private fun getCurrency() {
+        dataSource.getCurrency { result: CurrencyResult ->
+            when(result) {
+                is CurrencyResult.Success -> {
+                    selectorLiveData.value = result.values
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
+                }
+                is CurrencyResult.ApiError -> {
+                    if (result.statusCode == 401) {
+                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401_list)
+                    } else {
+                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_list)
+                    }
+                }
+                is CurrencyResult.SeverError -> {
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_server_list)
+                }
+            }
+        }
+    }
 
     companion object {
         private const val VIEW_FLIPPER_CURRENCY_LIST = 1
         private const val VIEW_FLIPPER_ERROR = 2
     }
 
-    fun getCurrency() {
-        val call = service.getListCurrency(apiKey)
 
-        call.enqueue(object : Callback<ListCurrencyBodyResponse> {
-            override fun onResponse(
-                call: Call<ListCurrencyBodyResponse>,
-                response: Response<ListCurrencyBodyResponse>
-            ) {
-                when {
-                    response.isSuccessful -> {
-                        response.body()?.currencies?.let {
-                            setCurrencyList(it)
-                        }
-                    }
-                    response.code() == 401 -> {
-                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401)
-                    }
-                    else -> {
-                        viewFlipperLiveData.value =
-                            Pair(VIEW_FLIPPER_ERROR, R.string.error_generico)
-                    }
-                }
+    class ViewModelFactory(val dataSource: CurrencyRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(SelectorViewModel::class.java)) {
+                return SelectorViewModel(dataSource) as T
             }
-
-            override fun onFailure(call: Call<ListCurrencyBodyResponse>, t: Throwable) {
-                viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_500)
-            }
-        })
-    }
-
-    private fun setCurrencyList(currency: HashMap<String, String>) {
-        for (key in currency.keys) {
-            currencies.add(Currency(key, currency[key]))
-
-            this.quotes.forEach {
-                if (it.code.substring(3,6) == key) {
-                    values.add(Values(key, currency[key], it.value))
-                    values.sortBy { values -> values.name }
-                }
-            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
-
-        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
-        selectorLiveData.value = values
-    }
-
-
-
-    fun getValueLive() {
-        val call = service.getLiveCurrency(apiKey)
-
-        call.enqueue(object : Callback<LiveCurrencyBodyResponse> {
-            override fun onFailure(call: Call<LiveCurrencyBodyResponse>, t: Throwable) {
-                Log.e("XXXXe", t.message)
-            }
-
-            override fun onResponse(
-                call: Call<LiveCurrencyBodyResponse>,
-                response: Response<LiveCurrencyBodyResponse>
-            ) {
-                if (response.isSuccessful) {
-                    response.body()?.quotes?.let {
-                        setCurrencyLive(it)
-                    }
-                }
-            }
-        })
-    }
-
-    private fun setCurrencyLive(quote: HashMap<String, BigDecimal>/*, code: MutableSet<String>*/) {
-        for (key in quote.keys) {
-            quotes.add(Quote(key, quote[key]))
-        }
-
-        getCurrency()
     }
 
 }

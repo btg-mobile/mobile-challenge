@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface ConverseServices {
 
-//    @GET("list")
+    //    @GET("list")
     @GET("5e4d37e52d00006f00c0dbca")
     fun getListCurrency(
         @Query("access_key") apiKey: String
@@ -19,4 +19,8 @@ interface ConverseServices {
     fun getLiveCurrency(
         @Query("access_key") apiKey: String
     ): Call<LiveCurrencyBodyResponse>
+
+    /*companion object {
+        const val BASE_URL: String = "http://www.mocky.io/v2/"
+    }*/
 }

@@ -1,7 +1,6 @@
 package com.example.alesefsapps.conversordemoedas.presentation.selectorScreen
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,9 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import com.example.alesefsapps.conversordemoedas.R
+import com.example.alesefsapps.conversordemoedas.data.model.Currency
 import com.example.alesefsapps.conversordemoedas.data.model.Values
+import com.example.alesefsapps.conversordemoedas.data.repository.CurrencyApiDataSource
 import com.example.alesefsapps.conversordemoedas.presentation.base.BaseActivity
 import com.example.alesefsapps.conversordemoedas.presentation.conversorScreen.ConversorActivity
+import kotlinx.android.synthetic.main.activity_conversor.*
 import kotlinx.android.synthetic.main.activity_selector.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 
@@ -29,7 +31,9 @@ class SelectorActivity : BaseActivity() {
         setupToolbar(toolbarMain, R.string.selector_title, true)
 
         val stateCurrency = intent.getStringExtra("STATE_CURRENCY")
-        val viewModel: SelectorViewModel = ViewModelProviders.of(this).get(SelectorViewModel::class.java)
+
+        val viewModel: SelectorViewModel = SelectorViewModel.ViewModelFactory(CurrencyApiDataSource())
+            .create(SelectorViewModel::class.java)
 
         viewModel.selectorLiveData.observe(this, Observer {
             it?.let {
