@@ -8,11 +8,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
 
 class ValueLiveApiDataSource : ValueLiveRepository {
 
     private val apiKey: String = "eab8dae1f01e7d851435fe6c99f756f6"
     private val quotes: MutableList<Quote> = mutableListOf()
+    var timestamp: Int = 0
 
     override fun getValueLive(valueResultCallback: (result: LiveValueResult) -> Unit) {
         val call = service.getLiveCurrency(apiKey)
@@ -27,7 +29,11 @@ class ValueLiveApiDataSource : ValueLiveRepository {
                         response.body()?.quotes?.let {
                             setCurrencyLive(it)
                         }
-                        valueResultCallback(LiveValueResult.Success(quotes))
+                        response.body()?.timestamp?.let {
+                            timestamp = it
+                        }
+
+                        valueResultCallback(LiveValueResult.Success(quotes, timestamp))
                     }
                     else -> {
                         valueResultCallback(LiveValueResult.ApiError(response.code()))

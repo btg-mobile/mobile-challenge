@@ -38,7 +38,7 @@ class SelectorActivity : BaseActivity() {
             it?.let {
                 currencies -> with(recycle_currency) {
                 adapterSelector = SelectorAdapter(currencies as ArrayList<Values>) {
-                        currency -> val intent = ConversorActivity.getStartIntent(this@SelectorActivity, currency.code, currency.name, currency.value, stateCurrency)
+                        currency -> val intent = ConversorActivity.getStartIntent(this@SelectorActivity, currency.code, currency.name, currency.value, stateCurrency, currency.timestamp)
                         this@SelectorActivity.startActivity(intent)
                     }
                 adapter = adapterSelector

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import com.example.alesefsapps.conversordemoedas.R
 import com.example.alesefsapps.conversordemoedas.presentation.base.BaseActivity
@@ -14,8 +15,11 @@ import com.example.alesefsapps.conversordemoedas.utils.NumberTextWatcher
 import kotlinx.android.synthetic.main.activity_conversor.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import java.lang.Double.parseDouble
+import java.lang.Exception
 import java.math.BigDecimal
 import java.math.RoundingMode
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ConversorActivity : BaseActivity() {
@@ -54,7 +58,6 @@ class ConversorActivity : BaseActivity() {
         setClickListeners()
         edit_text_value.myCustomTextWatcher()
 
-
         sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         val sharedCodeIn = sharedPreferences.getString("EXTRA_CODE_INPUT", "defaultcode")
@@ -77,6 +80,20 @@ class ConversorActivity : BaseActivity() {
             button_output.text = "$sharedCodeOut - $sharedNameOut"
         } else {
             button_output.text = getString(R.string.coin_output)
+        }
+
+        label_date_of_values.text = getText(R.string.data_do_valor)
+        getDataTime()
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun getDataTime() {
+        try {
+            val format = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+            val netDate = Date(intent.getStringExtra(EXTRA_TIMESTAMP)?.toLong()!!.times(1000))
+            label_date_of_values.text = format.format(netDate)
+        } catch (e: Exception) {
+            e.toString()
         }
     }
 
@@ -137,8 +154,10 @@ class ConversorActivity : BaseActivity() {
         private const val EXTRA_NAME_OUTPUT = "EXTRA_NAME_OUTPUT"
         private const val EXTRA_VALUE_OUTPUT = "EXTRA_VALUE_OUTPUT"
 
+        private const val EXTRA_TIMESTAMP = "EXTRA_TIMESTAMP"
 
-        fun getStartIntent(context: Context, code: String, name: String?, value: BigDecimal?, state: String): Intent {
+
+        fun getStartIntent(context: Context, code: String, name: String?, value: BigDecimal?, state: String, timestamp: Int): Intent {
 
             val sharedPrefFile = "kotlinsharedpreference"
             var sharedPreferences: SharedPreferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
@@ -151,6 +170,7 @@ class ConversorActivity : BaseActivity() {
                     putExtra(EXTRA_CODE_INPUT, code)
                     putExtra(EXTRA_NAME_INPUT, name)
                     putExtra(EXTRA_VALUE_INPUT, value)
+                    putExtra(EXTRA_TIMESTAMP, timestamp.toString())
 
                     editor.putString("EXTRA_CODE_INPUT", code)
                     editor.putString("EXTRA_NAME_INPUT", name)
@@ -161,6 +181,7 @@ class ConversorActivity : BaseActivity() {
                     putExtra(EXTRA_CODE_OUTPUT, code)
                     putExtra(EXTRA_NAME_OUTPUT, name)
                     putExtra(EXTRA_VALUE_OUTPUT, value)
+                    putExtra(EXTRA_TIMESTAMP, timestamp.toString())
 
                     editor.putString("EXTRA_CODE_OUTPUT", code)
                     editor.putString("EXTRA_NAME_OUTPUT", name)

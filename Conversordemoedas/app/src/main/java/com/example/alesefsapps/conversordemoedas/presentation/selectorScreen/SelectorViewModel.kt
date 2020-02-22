@@ -3,6 +3,7 @@ package com.example.alesefsapps.conversordemoedas.presentation.selectorScreen
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import android.util.Log
 import com.example.alesefsapps.conversordemoedas.R
 import com.example.alesefsapps.conversordemoedas.data.model.Currency
 import com.example.alesefsapps.conversordemoedas.data.model.Quote
@@ -20,13 +21,15 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
 
     var quotes: List<Quote> = mutableListOf()
     var currencies: List<Currency> = mutableListOf()
+    var timestamp: Int = 0
 
     fun getValueLive() {
         valueLiveRepository.getValueLive { result: LiveValueResult ->
             when(result) {
                 is LiveValueResult.Success -> {
                     quotes = result.quotes
-                    getCurrency(result.quotes)
+                    timestamp = result.timestamp
+                    getCurrency(result.quotes, result.timestamp)
                 }
                 is LiveValueResult.ApiError -> {
                     when (result.statusCode) {
@@ -50,13 +53,14 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
         }
     }
 
-    fun getCurrency(quotes: List<Quote>) {
+    fun getCurrency(quotes: List<Quote>, timestamp: Int) {
         currencyRepository.getCurrency { result: CurrencyResult ->
             when(result) {
                 is CurrencyResult.Success -> {
                     this.quotes = quotes
+                    this.timestamp = timestamp
                     currencies = result.currency
-                    getValues(quotes, result.currency)
+                    getValues(quotes, result.currency, timestamp)
                 }
                 is CurrencyResult.ApiError -> {
                     when (result.statusCode) {
@@ -81,12 +85,13 @@ class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, pr
 
     fun getValues(
         quotes: List<Quote>,
-        currency: List<Currency>
+        currency: List<Currency>,
+        timestamp: Int
     ) {
         currency.forEach { c ->
             quotes.forEach { q ->
                 if (q.code.substring(3,6) == c.code) {
-                    values.add(Values(c.code, c.name, q.value))
+                    values.add(Values(c.code, c.name, q.value, timestamp))
                     values.sortBy { values -> values.name }
                 }
             }

@@ -20,4 +20,5 @@
 
     <string name="api_key">eab8dae1f01e7d851435fe6c99f756f6</string>
     <string name="search_hint">Pesquise Pelo nome da moeda</string>
+    <string name="data_do_valor">Data da cotação</string>
 </resources>
