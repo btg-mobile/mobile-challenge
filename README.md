@@ -3,6 +3,7 @@
 Seja bem-vindo! Este é o seu primeiro passo para fazer parte do time de desenvolvimento do maior banco de investimentos da América Latina.
 
 Para rodar a aplicação, adicione a API key no arquivo C:/Users/[usuario]/.gradle/gradle.properties
+
 currencyApiKey=[sua chave de api]
 
 #### LEIA AS INSTRUÇÕES POR COMPLETO ANTES DE COMEÇAR
