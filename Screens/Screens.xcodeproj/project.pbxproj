@@ -3,17 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9E16FD91BF9B5EDF2099A4F8 /* Pods_Screens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CD970D654B8A06066EC038 /* Pods_Screens.framework */; };
 		EC7E088724599DC100D74D42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E088624599DC100D74D42 /* AppDelegate.swift */; };
 		EC7E088924599DC100D74D42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E088824599DC100D74D42 /* SceneDelegate.swift */; };
-		EC7E088B24599DC100D74D42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E088A24599DC100D74D42 /* ViewController.swift */; };
-		EC7E088E24599DC100D74D42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7E088C24599DC100D74D42 /* Main.storyboard */; };
 		EC7E089024599DC300D74D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7E088F24599DC300D74D42 /* Assets.xcassets */; };
 		EC7E089324599DC300D74D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7E089124599DC300D74D42 /* LaunchScreen.storyboard */; };
+		EC7E089E2459AC4500D74D42 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E089D2459AC4500D74D42 /* HomeViewController.swift */; };
+		EC7E08A32459B17F00D74D42 /* UIFont+SFProText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08A22459B17F00D74D42 /* UIFont+SFProText.swift */; };
+		EC7E08A62459B56B00D74D42 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08A52459B56B00D74D42 /* Drawable.swift */; };
+		EC7E08A82459B5A900D74D42 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08A72459B5A900D74D42 /* HomeView.swift */; };
+		EC7E08AA2459B91E00D74D42 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08A92459B91E00D74D42 /* UIView+addSubviews.swift */; };
+		EC7E08B12459CBF600D74D42 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08AF2459CBF600D74D42 /* SF-Pro-Display-Regular.otf */; };
+		EC7E08B22459CBF600D74D42 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08B02459CBF600D74D42 /* SF-Pro-Display-Bold.otf */; };
+		EC7E08B52459CC0F00D74D42 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08B32459CC0E00D74D42 /* SF-Pro-Text-Regular.otf */; };
+		EC7E08B62459CC0F00D74D42 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08B42459CC0F00D74D42 /* SF-Pro-Text-Semibold.otf */; };
+		EC7E08B92459CF0100D74D42 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08B72459CF0100D74D42 /* SF-Pro-Display-RegularItalic.otf */; };
+		EC7E08BA2459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08B82459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf */; };
+		EC7E08BD2459CF1B00D74D42 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08BB2459CF1A00D74D42 /* SF-Pro-Text-SemiboldItalic.otf */; };
+		EC7E08BE2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08BC2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +33,22 @@
 		EC7E088324599DC000D74D42 /* Screens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Screens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7E088624599DC100D74D42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC7E088824599DC100D74D42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EC7E088A24599DC100D74D42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EC7E088D24599DC100D74D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC7E088F24599DC300D74D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC7E089224599DC300D74D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC7E089424599DC300D74D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC7E089D2459AC4500D74D42 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EC7E08A22459B17F00D74D42 /* UIFont+SFProText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+SFProText.swift"; sourceTree = "<group>"; };
+		EC7E08A52459B56B00D74D42 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
+		EC7E08A72459B5A900D74D42 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EC7E08A92459B91E00D74D42 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
+		EC7E08AF2459CBF600D74D42 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		EC7E08B02459CBF600D74D42 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		EC7E08B32459CC0E00D74D42 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		EC7E08B42459CC0F00D74D42 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		EC7E08B72459CF0100D74D42 /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
+		EC7E08B82459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
+		EC7E08BB2459CF1A00D74D42 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		EC7E08BC2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		F36F9FA876BD56A18E9D1D98 /* Pods-Screens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screens.debug.xcconfig"; path = "Target Support Files/Pods-Screens/Pods-Screens.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,15 +103,82 @@
 		EC7E088524599DC100D74D42 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EC7E08AD2459CB8600D74D42 /* Resources */,
+				EC7E08A42459B55A00D74D42 /* Supporting */,
+				EC7E08A12459B16700D74D42 /* Extensions */,
+				EC7E089C2459AC2600D74D42 /* Home */,
+				EC7E089B2459AC0E00D74D42 /* Misc */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		EC7E089A2459ABEC00D74D42 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
 				EC7E088624599DC100D74D42 /* AppDelegate.swift */,
 				EC7E088824599DC100D74D42 /* SceneDelegate.swift */,
-				EC7E088A24599DC100D74D42 /* ViewController.swift */,
-				EC7E088C24599DC100D74D42 /* Main.storyboard */,
-				EC7E088F24599DC300D74D42 /* Assets.xcassets */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		EC7E089B2459AC0E00D74D42 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E089A2459ABEC00D74D42 /* Delegates */,
 				EC7E089124599DC300D74D42 /* LaunchScreen.storyboard */,
 				EC7E089424599DC300D74D42 /* Info.plist */,
 			);
-			path = Screens;
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		EC7E089C2459AC2600D74D42 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E089D2459AC4500D74D42 /* HomeViewController.swift */,
+				EC7E08A72459B5A900D74D42 /* HomeView.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		EC7E08A12459B16700D74D42 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E08A22459B17F00D74D42 /* UIFont+SFProText.swift */,
+				EC7E08A92459B91E00D74D42 /* UIView+addSubviews.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		EC7E08A42459B55A00D74D42 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E08A52459B56B00D74D42 /* Drawable.swift */,
+			);
+			name = Supporting;
+			sourceTree = "<group>";
+		};
+		EC7E08AD2459CB8600D74D42 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E08AE2459CB8D00D74D42 /* Fonts */,
+				EC7E088F24599DC300D74D42 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		EC7E08AE2459CB8D00D74D42 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E08B02459CBF600D74D42 /* SF-Pro-Display-Bold.otf */,
+				EC7E08AF2459CBF600D74D42 /* SF-Pro-Display-Regular.otf */,
+				EC7E08B32459CC0E00D74D42 /* SF-Pro-Text-Regular.otf */,
+				EC7E08B42459CC0F00D74D42 /* SF-Pro-Text-Semibold.otf */,
+				EC7E08B82459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf */,
+				EC7E08B72459CF0100D74D42 /* SF-Pro-Display-RegularItalic.otf */,
+				EC7E08BC2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf */,
+				EC7E08BB2459CF1A00D74D42 /* SF-Pro-Text-SemiboldItalic.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +241,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC7E08B62459CC0F00D74D42 /* SF-Pro-Text-Semibold.otf in Resources */,
+				EC7E08BD2459CF1B00D74D42 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
+				EC7E08BE2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				EC7E089324599DC300D74D42 /* LaunchScreen.storyboard in Resources */,
+				EC7E08BA2459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				EC7E08B92459CF0100D74D42 /* SF-Pro-Display-RegularItalic.otf in Resources */,
+				EC7E08B52459CC0F00D74D42 /* SF-Pro-Text-Regular.otf in Resources */,
+				EC7E08B12459CBF600D74D42 /* SF-Pro-Display-Regular.otf in Resources */,
+				EC7E08B22459CBF600D74D42 /* SF-Pro-Display-Bold.otf in Resources */,
 				EC7E089024599DC300D74D42 /* Assets.xcassets in Resources */,
-				EC7E088E24599DC100D74D42 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,23 +303,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC7E088B24599DC100D74D42 /* ViewController.swift in Sources */,
 				EC7E088724599DC100D74D42 /* AppDelegate.swift in Sources */,
 				EC7E088924599DC100D74D42 /* SceneDelegate.swift in Sources */,
+				EC7E08A62459B56B00D74D42 /* Drawable.swift in Sources */,
+				EC7E08A82459B5A900D74D42 /* HomeView.swift in Sources */,
+				EC7E08A32459B17F00D74D42 /* UIFont+SFProText.swift in Sources */,
+				EC7E08AA2459B91E00D74D42 /* UIView+addSubviews.swift in Sources */,
+				EC7E089E2459AC4500D74D42 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EC7E088C24599DC100D74D42 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC7E088D24599DC100D74D42 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EC7E089124599DC300D74D42 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,7 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.almeidaws.Currency.Screens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -383,7 +475,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.almeidaws.Currency.Screens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

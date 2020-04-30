@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  UIView+addSubviews.swift
 //  Screens
 //
 //  Created by Gustavo Amaral on 29/04/20.
@@ -8,6 +8,8 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate { }
-
+extension UIView {
+    func addSubviews(_ views: UIView...) {
+        views.forEach { addSubview($0) }
+    }
+}
