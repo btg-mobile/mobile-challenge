@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_challenge.MainActivity
 import com.example.mobile_challenge.R
 import com.example.mobile_challenge.model.Currency
+import com.example.mobile_challenge.utility.CurrencyAdapter
+import com.example.mobile_challenge.utility.OnItemClickListener
 
 
 class SelectionFragment : Fragment(), OnItemClickListener {
@@ -23,26 +25,35 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     fun newInstance() = SelectionFragment()
   }
 
-  private val viewModel: MainViewModel by activityViewModels()
   private lateinit var root: View
   private lateinit var recyclerView: RecyclerView
   private lateinit var type: String
   private lateinit var code: String
-  private lateinit var mainActivity : MainActivity
-  private val adapter: CurrencyAdapter by lazy { CurrencyAdapter(ArrayList(), this) }
+  private lateinit var mainActivity: MainActivity
+  private val viewModel: MainViewModel by activityViewModels()
+  private val adapter: CurrencyAdapter by lazy {
+    CurrencyAdapter(
+      ArrayList(),
+      this
+    )
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
     root = inflater.inflate(R.layout.selection_fragment, container, false)
-    recyclerView = root.findViewById(R.id.currency_list)
-    mainActivity = activity as MainActivity
-    type = arguments?.getString("TYPE")!!
-    code = arguments?.getString("CODE")!!
+    setupVars()
     setupRecyclerView()
     setHasOptionsMenu(true)
     return root
+  }
+
+  private fun setupVars() {
+    recyclerView = root.findViewById(R.id.currency_list)
+    mainActivity = activity as MainActivity
+    type = arguments?.getString(getString(R.string.type))!!
+    code = arguments?.getString(getString(R.string.code))!!
   }
 
   private fun setupRecyclerView() {
@@ -55,7 +66,9 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private fun setupItemsRecyclerView() {
     val list = viewModel.currencyList
     adapter.setItemsAdapter(list)
-    val item = list.find { it.currencyCode == code }
+    val item = list.find {
+      it.currencyCode == code
+    }
     item?.let { currency ->
       recyclerView.scrollToPosition(list.indexOf(currency))
     }
@@ -63,10 +76,16 @@ class SelectionFragment : Fragment(), OnItemClickListener {
 
   override fun onItemClicked(item: Currency) {
     mainActivity.showProgressBar(true)
-    if (type == "FROM") {
-      viewModel.getCurrencyValue(item.currencyCode, "FROM")
+    if (type == getString(R.string.from)) {
+      viewModel.getCurrencyValue(
+        item.currencyCode,
+        getString(R.string.from)
+      )
     } else {
-      viewModel.getCurrencyValue(item.currencyCode, "TO")
+      viewModel.getCurrencyValue(
+        item.currencyCode,
+        getString(R.string.to)
+      )
     }
     closeFragment()
   }
@@ -82,7 +101,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   }
 
   private fun searchBarFilter(menu: Menu, inflater: MenuInflater) {
-    inflater.inflate(R.menu.search, menu)
+    inflater.inflate(R.menu.search_sort, menu)
     val searchItem = menu.findItem(R.id.action_search)
     val searchView = searchItem.actionView as SearchView
     searchView.setBackgroundColor(Color.WHITE)
@@ -105,6 +124,36 @@ class SelectionFragment : Fragment(), OnItemClickListener {
 
   fun setOnQueryTextChange(newText: String?) {
     adapter.filter.filter(newText)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item.itemId) {
+      R.id.action_sort_by_code -> {
+        sortBy(getString(R.string.sort_by_code))
+      }
+      R.id.action_sort_by_name -> {
+        sortBy(getString(R.string.sort_by_name))
+      }
+    }
+    return super.onOptionsItemSelected(item)
+  }
+
+  fun sortBy(criteria: String) {
+    val items = adapter.getItems()
+    val sortedItems =
+      if (criteria == getString(R.id.action_sort_by_code)) {
+      items.sortedBy {
+        it.currencyCode
+      }
+    } else {
+      items.sortedBy {
+        it.currencyName
+      }
+    }
+    val arrayList = arrayListOf<Currency>()
+    adapter.setItemsAdapter(sortedItems.flatMapTo(arrayList) {
+      arrayListOf(it)
+    })
   }
 
 }

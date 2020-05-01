@@ -3,7 +3,7 @@ package com.example.mobile_challenge
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.mobile_challenge.ui.main.MainFragment
+import com.example.mobile_challenge.ui.main.ResultFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.main_activity)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
-        .replace(R.id.container, MainFragment.newInstance())
+        .replace(R.id.container, ResultFragment.newInstance())
         .commitNow()
     }
   }

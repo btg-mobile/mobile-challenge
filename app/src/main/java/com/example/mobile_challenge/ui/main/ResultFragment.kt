@@ -6,7 +6,10 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -14,27 +17,27 @@ import com.example.mobile_challenge.MainActivity
 import com.example.mobile_challenge.R
 import java.text.DecimalFormat
 
-class MainFragment : Fragment() {
+class ResultFragment : Fragment() {
 
   companion object {
-    fun newInstance() = MainFragment()
+    fun newInstance() = ResultFragment()
   }
 
-  private val viewModel: MainViewModel by activityViewModels()
   private lateinit var root: View
   private lateinit var input: EditText
   private lateinit var result: TextView
   private lateinit var fromBtn: Button
   private lateinit var toBtn: Button
-  private lateinit var mainActivity : MainActivity
-
+  private lateinit var mainActivity: MainActivity
+  private val viewModel: MainViewModel by activityViewModels()
   private var currencyValue = 0.0
+  val currencyFormat = "###,###.00"
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    root = inflater.inflate(R.layout.main_fragment, container, false)
+    root = inflater.inflate(R.layout.result_fragment, container, false)
     findView()
     clickListeners()
     setInputFormat()
@@ -53,28 +56,28 @@ class MainFragment : Fragment() {
 
   private fun clickListeners() {
     fromBtn.setOnClickListener {
-      openSelectionFragment("FROM")
+      openSelectionFragment(getString(R.string.from))
     }
 
     toBtn.setOnClickListener {
-      openSelectionFragment("TO")
+      openSelectionFragment(getString(R.string.to))
     }
   }
 
   private fun openSelectionFragment(type: String) {
     val bundle = Bundle()
-    bundle.putString("TYPE", type)
-    if (type == "FROM") {
-      bundle.putString("CODE", fromBtn.text.toString())
+    bundle.putString(getString(R.string.type), type)
+    if (type == getString(R.string.from)) {
+      bundle.putString(getString(R.string.code), fromBtn.text.toString())
     } else {
-      bundle.putString("CODE", toBtn.text.toString())
+      bundle.putString(getString(R.string.code), toBtn.text.toString())
     }
     val fragment = SelectionFragment.newInstance()
     fragment.arguments = bundle
-    if (activity?.supportFragmentManager?.findFragmentByTag("SelectionFragment") == null) {
+    if (activity?.supportFragmentManager?.findFragmentByTag(getString(R.string.selection_fragment)) == null) {
       activity?.supportFragmentManager?.beginTransaction()
         ?.replace(R.id.container, fragment)
-        ?.addToBackStack("SelectionFragment")
+        ?.addToBackStack(getString(R.string.selection_fragment))
         ?.commit()
     }
   }
@@ -94,7 +97,7 @@ class MainFragment : Fragment() {
           input.removeTextChangedListener(this)
           val cleanString = stringText.replace("[,.]".toRegex(), "")
           val parsed = cleanString.toDouble()
-          val formatter = DecimalFormat("###,###.00")
+          val formatter = DecimalFormat(currencyFormat)
           val formatted = formatter.format(parsed / 100)
 
           current = formatted
@@ -136,7 +139,7 @@ class MainFragment : Fragment() {
       val parsed = cleanString.toDouble() / 100
       parsed * this
     }
-    val formatter = DecimalFormat("###,###.00")
+    val formatter = DecimalFormat(currencyFormat)
     result.text = formatter.format(finalResult)
   }
 

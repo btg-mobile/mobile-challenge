@@ -9,7 +9,7 @@ import io.ktor.http.takeFrom
 class ClientApi {
 
     private val URL = "http://api.currencylayer.com"
-    private val KEY = "359daed36ec00b5244e6f907c493f571"
+    private val KEY = "e8af0ceaeac239335961d0151a4507b7"
 
     private val client = HttpClient(OkHttp)
 

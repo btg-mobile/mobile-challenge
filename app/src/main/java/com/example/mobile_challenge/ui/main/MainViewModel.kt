@@ -1,7 +1,12 @@
 package com.example.mobile_challenge.ui.main
 
-import androidx.lifecycle.*
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.mobile_challenge.App
+import com.example.mobile_challenge.R
 import com.example.mobile_challenge.model.Currency
 import com.example.mobile_challenge.model.ErrorResponse
 import com.example.mobile_challenge.model.ListResponse
@@ -16,8 +21,9 @@ import kotlinx.serialization.json.Json
 
 @OptIn(UnstableDefault::class)
 class MainViewModel(
-  var client: ClientApi = App.clientApi,
-  var quotes: Map<String, Double> = mapOf("" to 0.0),
+  private val context: Context = App.instance.applicationContext,
+  private var client: ClientApi = App.clientApi,
+  private var quotes: Map<String, Double> = mapOf("" to 0.0),
   var currencyList: ArrayList<Currency> = arrayListOf()
 ) : ViewModel() {
 
@@ -49,14 +55,22 @@ class MainViewModel(
       try {
         while (true) {
           val json = client.httpRequestGetLive()
-          val live = Json.parse(LiveResponse.serializer(), json)
+          val live = Json.parse(
+            LiveResponse.serializer(),
+            json
+          )
           if (live.success && live.quotes.isNotEmpty()) {
             // Update Quotes
             quotes = live.quotes
             // Update first screen
-            getCurrencyValue("BRL", "TO")
+            getCurrencyValue(
+              context.getString(R.string.brl),
+              context.getString(R.string.to)
+            )
           } else {
-            error.postValue("Couldn't fetch data")
+            error.postValue(
+              context.getString(R.string.fetch_data_error)
+            )
           }
           // Get fresh data every 30 seconds
           delay(1000 * 30)
@@ -72,12 +86,17 @@ class MainViewModel(
       try {
         while (true) {
           val json = client.httpRequestGetList()
-          val list = Json.parse(ListResponse.serializer(), json)
+          val list = Json.parse(
+            ListResponse.serializer(),
+            json
+          )
           if (list.success && list.currencies.isNotEmpty()) {
             // Update Currency List
             getCurrencyList(list)
           } else {
-            error.postValue("Couldn't fetch data")
+            error.postValue(
+              context.getString(R.string.fetch_data_error)
+            )
           }
           // Get fresh data every 30 seconds
           delay(1000 * 30)
@@ -96,17 +115,22 @@ class MainViewModel(
       } else {
         client.httpRequestGetLive()
       }
-      val list = Json.parse(ErrorResponse.serializer(), json)
+      val list = Json.parse(
+        ErrorResponse.serializer(),
+        json
+      )
       error.postValue(list.error.info)
     } catch (e: Exception) { // Connection Problem
-      error.postValue("Connection Error")
+      error.postValue(
+        context.getString(R.string.connection_error)
+      )
     }
   }
 
   fun getCurrencyValue(code: String, type: String) {
     val value = quotes.getValue("USD$code")
-    if (type == "FROM") {
-      currencyFrom = if (code != "USD") {
+    if (type == context.getString(R.string.from)) {
+      currencyFrom = if (code != context.getString(R.string.usd)) {
         1 / value
       } else {
         value

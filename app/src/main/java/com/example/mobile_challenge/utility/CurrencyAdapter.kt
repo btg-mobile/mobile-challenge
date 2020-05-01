@@ -1,4 +1,4 @@
-package com.example.mobile_challenge.ui.main
+package com.example.mobile_challenge.utility
 
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,7 @@ interface OnItemClickListener{
 class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse : OnItemClickListener) :
   RecyclerView.Adapter<CurrencyAdapter.UserViewHolder>(), Filterable {
 
-  var filterItems = items
+  private var filterItems = items
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
     val view = LayoutInflater.from(parent.context).inflate(R.layout.item_currency_list, parent, false)
@@ -31,7 +31,8 @@ class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse 
 
   fun setItemsAdapter(newList: ArrayList<Currency>) {
     val oldList = filterItems
-    val diffCallback = PostDiffCallback(oldList, newList)
+    val diffCallback =
+      PostDiffCallback(oldList, newList)
     val diffResult = DiffUtil.calculateDiff(diffCallback)
     filterItems = newList
     if (items.isEmpty()) {
@@ -40,19 +41,8 @@ class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse 
     diffResult.dispatchUpdatesTo(this)
   }
 
-  fun getItem(position: Int): Currency {
-    return filterItems[position]
-  }
-
-  fun removeAt(position: Int) {
-    filterItems.removeAt(position)
-    notifyItemRemoved(position)
-    notifyItemRangeChanged(position, filterItems.size)
-  }
-
-  fun restoreItem(post: Currency, position: Int) {
-    filterItems.add(position, post)
-    notifyItemInserted(position)
+  fun getItems(): ArrayList<Currency> {
+    return items
   }
 
   override fun onBindViewHolder(holder: UserViewHolder, position: Int) {

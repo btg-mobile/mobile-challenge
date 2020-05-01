@@ -1,5 +1,6 @@
 package com.example.mobile_challenge
 
+import android.annotation.SuppressLint
 import android.app.Application
 import com.example.mobile_challenge.utility.ClientApi
 
