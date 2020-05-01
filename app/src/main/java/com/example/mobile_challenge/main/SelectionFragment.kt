@@ -134,7 +134,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private fun sortBy(criteria: String) {
     val items = adapter.getItems()
     val sortedItems =
-      if (criteria == getString(R.id.action_sort_by_code)) {
+      if (criteria == getString(R.string.sort_by_code)) {
         items.sortedBy {
           it.currencyCode
         }
