@@ -3,7 +3,7 @@ package com.example.mobile_challenge
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.mobile_challenge.ui.main.ResultFragment
+import com.example.mobile_challenge.main.ResultFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {

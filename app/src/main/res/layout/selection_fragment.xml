@@ -6,7 +6,7 @@
         android:id="@+id/selection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.SelectionFragment">
+        tools:context=".main.SelectionFragment">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/currency_list"

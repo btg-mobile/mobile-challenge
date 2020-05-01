@@ -1,4 +1,4 @@
-package com.example.mobile_challenge.ui.main
+package com.example.mobile_challenge.main
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -50,26 +50,15 @@ class MainViewModel(
     getCurrencyList()
   }
 
+  // Handle Quote
   private fun getLiveList() {
     viewModelScope.launch(Dispatchers.Default) {
       try {
         val json = client.httpRequestGetLive()
-        val live = Json.parse(LiveResponse.serializer(), json)
+        val live = Json.parse(QuoteLiveResponse.serializer(), json)
         if (live.success && live.quotes.isNotEmpty()) {
-          val list = mutableListOf<QuoteEntity>()
-          live.quotes.flatMapTo(list) {
-            listOf(
-              QuoteEntity(
-                UUID.randomUUID().toString(),
-                it.key.substring(0..2),
-                it.key.substring(3..5),
-                it.value
-              )
-            )
-          }
-          dataBase.quoteDao().insertAll(list)
-          quotes = list
-          getQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
+          updateDataBase(live)
+          setQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
         } else {
           error.postValue(context.getString(R.string.fetch_data_error))
           getQuoteFromDb()
@@ -81,25 +70,37 @@ class MainViewModel(
     }
   }
 
+  private fun updateDataBase(live: QuoteLiveResponse) {
+    val list = mutableListOf<QuoteEntity>()
+    live.quotes.flatMapTo(list) { entry->
+      listOf(
+        QuoteEntity(
+          UUID.randomUUID().toString(),
+          entry.key.substring(0..2),
+          entry.key.substring(3..5),
+          entry.value
+        )
+      )
+    }
+    dataBase.quoteDao().insertAll(list)
+    quotes = list
+  }
+
   private fun getQuoteFromDb() {
     viewModelScope.launch(Dispatchers.Default) {
       val quoteList = dataBase.quoteDao().getAll()
       if (quoteList.isNotEmpty()) {
         quotes = quoteList
-        getQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
+        setQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
       }
     }
   }
 
-  fun getQuoteValue(code: String, type: String) {
+  fun setQuoteValue(code: String, type: String) {
     val value = quotes.find { it.to == code }?.value
     value?.let {
       if (type == context.getString(R.string.from)) {
-        currencyFrom = if (code != context.getString(R.string.usd)) {
-          1 / value
-        } else {
-          value
-        }
+        currencyFrom = 1 / value
         _fromCode.postValue(code)
       } else {
         currencyTo = value
@@ -109,25 +110,26 @@ class MainViewModel(
     }
   }
 
+  // Handle Currency List
   private fun getCurrencyList() {
     viewModelScope.launch(Dispatchers.Default) {
       try {
         val json = client.httpRequestGetList()
-        val listResponse = Json.parse(ListResponse.serializer(), json)
+        val listResponse = Json.parse(CurrencyListResponse.serializer(), json)
         if (listResponse.success && listResponse.currencies.isNotEmpty()) {
-          getCurrencyList(listResponse)
+          setCurrencyFromNetwork(listResponse)
         } else {
           error.postValue(context.getString(R.string.fetch_data_error))
-          getCurrencyFromDb()
+          setCurrencyFromDb()
         }
       } catch (e: Exception) {
         handleErrorResponse("list")
-        getCurrencyFromDb()
+        setCurrencyFromDb()
       }
     }
   }
 
-  private fun getCurrencyFromDb() {
+  private fun setCurrencyFromDb() {
     viewModelScope.launch(Dispatchers.Default) {
       val list = dataBase.currencyDao().getAll()
       if (list.isNotEmpty()) {
@@ -136,9 +138,9 @@ class MainViewModel(
     }
   }
 
-  private fun getCurrencyList(list: ListResponse) {
+  private fun setCurrencyFromNetwork(currencyList: CurrencyListResponse) {
     viewModelScope.launch(Dispatchers.Default) {
-      val currenciesMap = list.currencies
+      val currenciesMap = currencyList.currencies
       val currenciesList = arrayListOf<CurrencyEntity>()
       currenciesMap.forEach { entry ->
         val currency = CurrencyEntity(
@@ -148,25 +150,24 @@ class MainViewModel(
         )
         currenciesList.add(currency)
       }
-      currencyList = currenciesList
+      this@MainViewModel.currencyList = currenciesList
       dataBase.currencyDao().insertAll(currenciesList)
     }
   }
 
-  // Check if it is a error response or a connection problem
+  // Handle Error
   private suspend fun handleErrorResponse(request: String) {
-    try { // Error Response
+    try {
+      // Error Response
       val json = if (request == "list") {
         client.httpRequestGetList()
       } else {
         client.httpRequestGetLive()
       }
-      val list = Json.parse(
-        ErrorResponse.serializer(),
-        json
-      )
+      val list = Json.parse(ErrorResponse.serializer(), json)
       error.postValue(list.error.info)
-    } catch (e: Exception) { // Connection Problem
+    } catch (e: Exception) {
+      // Connection Problem
       error.postValue(
         context.getString(R.string.connection_error)
       )

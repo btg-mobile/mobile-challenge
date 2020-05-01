@@ -1,4 +1,4 @@
-package com.example.mobile_challenge.ui.main
+package com.example.mobile_challenge.main
 
 import android.os.Bundle
 import android.text.Editable
@@ -85,9 +85,7 @@ class ResultFragment : Fragment() {
   private fun setInputFormat() {
     var current = ""
     input.addTextChangedListener(object : TextWatcher {
-      override fun afterTextChanged(s: Editable?) {
-        currencyValue.setResult()
-      }
+      override fun afterTextChanged(s: Editable?) { currencyValue.setResult() }
 
       override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 

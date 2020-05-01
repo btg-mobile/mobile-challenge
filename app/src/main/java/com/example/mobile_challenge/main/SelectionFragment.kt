@@ -1,4 +1,4 @@
-package com.example.mobile_challenge.ui.main
+package com.example.mobile_challenge.main
 
 import android.graphics.Color
 import android.os.Bundle
@@ -31,12 +31,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private lateinit var code: String
   private lateinit var mainActivity: MainActivity
   private val viewModel: MainViewModel by activityViewModels()
-  private val adapter: CurrencyAdapter by lazy {
-    CurrencyAdapter(
-      ArrayList(),
-      this
-    )
-  }
+  private val adapter: CurrencyAdapter by lazy { CurrencyAdapter(ArrayList(), this) }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -66,8 +61,8 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private fun setupItemsRecyclerView() {
     val list = viewModel.currencyList
     adapter.setItemsAdapter(list)
-    val item = list.find {
-      it.currencyCode == code
+    val item = list.find { currency ->
+      currency.currencyCode == code
     }
     item?.let { currency ->
       recyclerView.scrollToPosition(list.indexOf(currency))
@@ -77,12 +72,12 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   override fun onItemClicked(item: CurrencyEntity) {
     mainActivity.showProgressBar(true)
     if (type == getString(R.string.from)) {
-      viewModel.getQuoteValue(
+      viewModel.setQuoteValue(
         item.currencyCode,
         getString(R.string.from)
       )
     } else {
-      viewModel.getQuoteValue(
+      viewModel.setQuoteValue(
         item.currencyCode,
         getString(R.string.to)
       )
@@ -105,25 +100,23 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     val searchItem = menu.findItem(R.id.action_search)
     val searchView = searchItem.actionView as SearchView
     searchView.setBackgroundColor(Color.WHITE)
+
     searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
       override fun onQueryTextSubmit(query: String?): Boolean {
         return true
       }
 
       override fun onQueryTextChange(newText: String?): Boolean {
-        setOnQueryTextChange(newText)
+        adapter.filter.filter(newText)
         return false
       }
     })
+
     val editText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
     editText.setHintTextColor(Color.LTGRAY)
     editText.setTextColor(ContextCompat.getColor(context!!, R.color.colorPrimaryDark))
-    val cleanIcon = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
-    cleanIcon.setColorFilter(ContextCompat.getColor(context!!, R.color.colorPrimaryDark))
-  }
-
-  fun setOnQueryTextChange(newText: String?) {
-    adapter.filter.filter(newText)
+    val clearIcon = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
+    clearIcon.setColorFilter(ContextCompat.getColor(context!!, R.color.colorPrimaryDark))
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -142,14 +135,14 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     val items = adapter.getItems()
     val sortedItems =
       if (criteria == getString(R.id.action_sort_by_code)) {
-      items.sortedBy {
-        it.currencyCode
+        items.sortedBy {
+          it.currencyCode
+        }
+      } else {
+        items.sortedBy {
+          it.currencyName
+        }
       }
-    } else {
-      items.sortedBy {
-        it.currencyName
-      }
-    }
     val arrayList = arrayListOf<CurrencyEntity>()
     adapter.setItemsAdapter(sortedItems.flatMapTo(arrayList) {
       arrayListOf(it)
