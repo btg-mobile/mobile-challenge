@@ -9,13 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_challenge.R
-import com.example.mobile_challenge.model.Currency
+import com.example.mobile_challenge.model.CurrencyEntity
 
 interface OnItemClickListener{
-  fun onItemClicked(item: Currency)
+  fun onItemClicked(item: CurrencyEntity)
 }
 
-class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse : OnItemClickListener) :
+class CurrencyAdapter(private var items: ArrayList<CurrencyEntity>, var clickResponse : OnItemClickListener) :
   RecyclerView.Adapter<CurrencyAdapter.UserViewHolder>(), Filterable {
 
   private var filterItems = items
@@ -29,7 +29,7 @@ class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse 
     return filterItems.size
   }
 
-  fun setItemsAdapter(newList: ArrayList<Currency>) {
+  fun setItemsAdapter(newList: ArrayList<CurrencyEntity>) {
     val oldList = filterItems
     val diffCallback =
       PostDiffCallback(oldList, newList)
@@ -41,7 +41,7 @@ class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse 
     diffResult.dispatchUpdatesTo(this)
   }
 
-  fun getItems(): ArrayList<Currency> {
+  fun getItems(): ArrayList<CurrencyEntity> {
     return items
   }
 
@@ -58,8 +58,8 @@ class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse 
   }
 
   class PostDiffCallback(
-    private val oldList: List<Currency>,
-    private val newList: List<Currency>
+    private val oldList: List<CurrencyEntity>,
+    private val newList: List<CurrencyEntity>
   ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
@@ -82,7 +82,7 @@ class CurrencyAdapter(private var items: ArrayList<Currency>, var clickResponse 
   override fun getFilter(): Filter {
     return object : Filter() {
       override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
-        filterItems = filterResults.values as ArrayList<Currency>
+        filterItems = filterResults.values as ArrayList<CurrencyEntity>
         notifyDataSetChanged()
       }
 

@@ -1,5 +1,7 @@
 package com.example.mobile_challenge.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -10,12 +12,15 @@ class ListResponse(
   val currencies: Map<String, String>
 )
 
-data class Currency(
+@Entity
+data class CurrencyEntity(
+  @PrimaryKey
+  val _id : String ,
   val currencyCode: String,
   val currencyName: String
 ) {
   override fun equals(other: Any?): Boolean {
-    other as Currency
+    other as CurrencyEntity
 
     if (currencyCode != other.currencyCode) {
       return false
@@ -24,5 +29,11 @@ data class Currency(
       return false
     }
     return true
+  }
+
+  override fun hashCode(): Int {
+    var result = currencyCode.hashCode()
+    result = 31 * result + currencyName.hashCode()
+    return result
   }
 }

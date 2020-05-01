@@ -7,24 +7,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobile_challenge.App
 import com.example.mobile_challenge.R
-import com.example.mobile_challenge.model.Currency
-import com.example.mobile_challenge.model.ErrorResponse
-import com.example.mobile_challenge.model.ListResponse
-import com.example.mobile_challenge.model.LiveResponse
+import com.example.mobile_challenge.db.AppDatabase
+import com.example.mobile_challenge.model.*
 import com.example.mobile_challenge.utility.ClientApi
 import com.example.mobile_challenge.utility.SingleLiveData
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
+import java.util.*
+import kotlin.collections.ArrayList
 
 @OptIn(UnstableDefault::class)
 class MainViewModel(
   private val context: Context = App.instance.applicationContext,
   private var client: ClientApi = App.clientApi,
-  private var quotes: Map<String, Double> = mapOf("" to 0.0),
-  var currencyList: ArrayList<Currency> = arrayListOf()
+  private val dataBase: AppDatabase = App.db,
+  private var quotes: List<QuoteEntity> = arrayListOf(),
+  var currencyList: ArrayList<CurrencyEntity> = arrayListOf()
 ) : ViewModel() {
 
   // Handle Error
@@ -53,57 +53,103 @@ class MainViewModel(
   private fun getLiveList() {
     viewModelScope.launch(Dispatchers.Default) {
       try {
-        while (true) {
-          val json = client.httpRequestGetLive()
-          val live = Json.parse(
-            LiveResponse.serializer(),
-            json
-          )
-          if (live.success && live.quotes.isNotEmpty()) {
-            // Update Quotes
-            quotes = live.quotes
-            // Update first screen
-            getCurrencyValue(
-              context.getString(R.string.brl),
-              context.getString(R.string.to)
-            )
-          } else {
-            error.postValue(
-              context.getString(R.string.fetch_data_error)
+        val json = client.httpRequestGetLive()
+        val live = Json.parse(LiveResponse.serializer(), json)
+        if (live.success && live.quotes.isNotEmpty()) {
+          val list = mutableListOf<QuoteEntity>()
+          live.quotes.flatMapTo(list) {
+            listOf(
+              QuoteEntity(
+                UUID.randomUUID().toString(),
+                it.key.substring(0..2),
+                it.key.substring(3..5),
+                it.value
+              )
             )
           }
-          // Get fresh data every 30 seconds
-          delay(1000 * 30)
+          dataBase.quoteDao().insertAll(list)
+          quotes = list
+          getQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
+        } else {
+          error.postValue(context.getString(R.string.fetch_data_error))
+          getQuoteFromDb()
         }
       } catch (e: Exception) {
         handleErrorResponse("live")
+        getQuoteFromDb()
       }
     }
   }
 
+  private fun getQuoteFromDb() {
+    viewModelScope.launch(Dispatchers.Default) {
+      val quoteList = dataBase.quoteDao().getAll()
+      if (quoteList.isNotEmpty()) {
+        quotes = quoteList
+        getQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
+      }
+    }
+  }
+
+  fun getQuoteValue(code: String, type: String) {
+    val value = quotes.find { it.to == code }?.value
+    value?.let {
+      if (type == context.getString(R.string.from)) {
+        currencyFrom = if (code != context.getString(R.string.usd)) {
+          1 / value
+        } else {
+          value
+        }
+        _fromCode.postValue(code)
+      } else {
+        currencyTo = value
+        _toCode.postValue(code)
+      }
+      _liveValue.postValue(currencyFrom * currencyTo)
+    }
+  }
+
   private fun getCurrencyList() {
-    viewModelScope.launch {
+    viewModelScope.launch(Dispatchers.Default) {
       try {
-        while (true) {
-          val json = client.httpRequestGetList()
-          val list = Json.parse(
-            ListResponse.serializer(),
-            json
-          )
-          if (list.success && list.currencies.isNotEmpty()) {
-            // Update Currency List
-            getCurrencyList(list)
-          } else {
-            error.postValue(
-              context.getString(R.string.fetch_data_error)
-            )
-          }
-          // Get fresh data every 30 seconds
-          delay(1000 * 30)
+        val json = client.httpRequestGetList()
+        val listResponse = Json.parse(ListResponse.serializer(), json)
+        if (listResponse.success && listResponse.currencies.isNotEmpty()) {
+          getCurrencyList(listResponse)
+        } else {
+          error.postValue(context.getString(R.string.fetch_data_error))
+          getCurrencyFromDb()
         }
       } catch (e: Exception) {
         handleErrorResponse("list")
+        getCurrencyFromDb()
       }
+    }
+  }
+
+  private fun getCurrencyFromDb() {
+    viewModelScope.launch(Dispatchers.Default) {
+      val list = dataBase.currencyDao().getAll()
+      if (list.isNotEmpty()) {
+        list.flatMapTo(currencyList) { arrayListOf(it) }
+      }
+    }
+  }
+
+  private fun getCurrencyList(list: ListResponse) {
+    viewModelScope.launch(Dispatchers.Default) {
+      val currenciesMap = list.currencies
+      val currenciesList = arrayListOf<CurrencyEntity>()
+      currenciesMap.forEach { entry ->
+        val currency = CurrencyEntity(
+          UUID.randomUUID().toString(),
+          entry.key,
+          entry.value
+        )
+        currenciesList.add(currency)
+      }
+      currencyList = currenciesList
+      dataBase.currencyDao().insertAll(currenciesList)
     }
   }
 
@@ -125,32 +171,6 @@ class MainViewModel(
         context.getString(R.string.connection_error)
       )
     }
-  }
-
-  fun getCurrencyValue(code: String, type: String) {
-    val value = quotes.getValue("USD$code")
-    if (type == context.getString(R.string.from)) {
-      currencyFrom = if (code != context.getString(R.string.usd)) {
-        1 / value
-      } else {
-        value
-      }
-      _fromCode.postValue(code)
-    } else {
-      currencyTo = value
-      _toCode.postValue(code)
-    }
-    _liveValue.postValue(currencyFrom * currencyTo)
-  }
-
-  private fun getCurrencyList(list: ListResponse) {
-    val currenciesMap = list.currencies
-    val currenciesList = arrayListOf<Currency>()
-    currenciesMap.forEach { entry ->
-      val currency = Currency(entry.key, entry.value)
-      currenciesList.add(currency)
-    }
-    currencyList = currenciesList
   }
 
 }

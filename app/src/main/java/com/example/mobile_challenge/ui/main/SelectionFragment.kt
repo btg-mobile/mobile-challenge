@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_challenge.MainActivity
 import com.example.mobile_challenge.R
-import com.example.mobile_challenge.model.Currency
+import com.example.mobile_challenge.model.CurrencyEntity
 import com.example.mobile_challenge.utility.CurrencyAdapter
 import com.example.mobile_challenge.utility.OnItemClickListener
 
@@ -74,15 +74,15 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     }
   }
 
-  override fun onItemClicked(item: Currency) {
+  override fun onItemClicked(item: CurrencyEntity) {
     mainActivity.showProgressBar(true)
     if (type == getString(R.string.from)) {
-      viewModel.getCurrencyValue(
+      viewModel.getQuoteValue(
         item.currencyCode,
         getString(R.string.from)
       )
     } else {
-      viewModel.getCurrencyValue(
+      viewModel.getQuoteValue(
         item.currencyCode,
         getString(R.string.to)
       )
@@ -138,7 +138,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     return super.onOptionsItemSelected(item)
   }
 
-  fun sortBy(criteria: String) {
+  private fun sortBy(criteria: String) {
     val items = adapter.getItems()
     val sortedItems =
       if (criteria == getString(R.id.action_sort_by_code)) {
@@ -150,7 +150,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
         it.currencyName
       }
     }
-    val arrayList = arrayListOf<Currency>()
+    val arrayList = arrayListOf<CurrencyEntity>()
     adapter.setItemsAdapter(sortedItems.flatMapTo(arrayList) {
       arrayListOf(it)
     })
