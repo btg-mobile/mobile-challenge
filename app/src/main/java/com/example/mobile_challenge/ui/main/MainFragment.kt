@@ -6,12 +6,11 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.example.mobile_challenge.MainActivity
 import com.example.mobile_challenge.R
 import java.text.DecimalFormat
 
@@ -27,6 +26,7 @@ class MainFragment : Fragment() {
   private lateinit var result: TextView
   private lateinit var fromBtn: Button
   private lateinit var toBtn: Button
+  private lateinit var mainActivity : MainActivity
 
   private var currencyValue = 0.0
 
@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
     findView()
     clickListeners()
     setInputFormat()
-    updateView()
+    observers()
     return root
   }
 
@@ -47,6 +47,8 @@ class MainFragment : Fragment() {
     result = root.findViewById(R.id.value_result)
     fromBtn = root.findViewById(R.id.from_currency)
     toBtn = root.findViewById(R.id.to_currency)
+    mainActivity = activity as MainActivity
+    mainActivity.showProgressBar(true)
   }
 
   private fun clickListeners() {
@@ -104,10 +106,16 @@ class MainFragment : Fragment() {
     })
   }
 
-  private fun updateView() {
+  private fun observers() {
     viewModel.liveValue.observe(viewLifecycleOwner, Observer { value ->
+      mainActivity.showProgressBar(false)
       currencyValue = value
       currencyValue.setResult()
+    })
+
+    viewModel.error.observe(viewLifecycleOwner, Observer { error ->
+      mainActivity.showProgressBar(false)
+      Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     })
 
     viewModel.fromCode.observe(viewLifecycleOwner, Observer { code ->
@@ -130,5 +138,10 @@ class MainFragment : Fragment() {
     }
     val formatter = DecimalFormat("###,###.00")
     result.text = formatter.format(finalResult)
+  }
+
+  override fun onPause() {
+    super.onPause()
+    mainActivity.showProgressBar(false)
   }
 }

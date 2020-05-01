@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobile_challenge.MainActivity
 import com.example.mobile_challenge.R
 import com.example.mobile_challenge.model.Currency
 
@@ -25,6 +25,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private lateinit var recyclerView: RecyclerView
   private lateinit var type: String
   private lateinit var code: String
+  private lateinit var mainActivity : MainActivity
   private val adapter: CurrencyAdapter by lazy { CurrencyAdapter(ArrayList(), this) }
 
   override fun onCreateView(
@@ -33,6 +34,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   ): View {
     root = inflater.inflate(R.layout.selection_fragment, container, false)
     recyclerView = root.findViewById(R.id.currency_list)
+    mainActivity = activity as MainActivity
     type = arguments?.getString("TYPE")!!
     code = arguments?.getString("CODE")!!
     setupRecyclerView()
@@ -47,21 +49,20 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   }
 
   private fun setupItemsRecyclerView() {
-    viewModel.getCurrencyList()
-    viewModel.currencyList.observe(viewLifecycleOwner, Observer { list ->
-      adapter.setItemsAdapter(list)
-      val item = list.find { it.currencyCode == code }
-      item?.let {currency->
-        recyclerView.scrollToPosition(list.indexOf(currency))
-      }
-    })
+    val list = viewModel.currencyList
+    adapter.setItemsAdapter(list)
+    val item = list.find { it.currencyCode == code }
+    item?.let { currency ->
+      recyclerView.scrollToPosition(list.indexOf(currency))
+    }
   }
 
   override fun onItemClicked(item: Currency) {
+    mainActivity.showProgressBar(true)
     if (type == "FROM") {
-      viewModel.getLiveList(item.currencyCode, "FROM")
+      viewModel.getCurrencyValue(item.currencyCode, "FROM")
     } else {
-      viewModel.getLiveList(item.currencyCode, "TO")
+      viewModel.getCurrencyValue(item.currencyCode, "TO")
     }
     closeFragment()
   }

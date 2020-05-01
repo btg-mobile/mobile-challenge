@@ -63,8 +63,5 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
 
     // HANDLE NETWORK CALL
-    implementation("io.ktor:ktor-client-core:1.3.2")
-    implementation("io.ktor:ktor-client-json:1.3.2")
-    implementation("io.ktor:ktor-client-serialization-jvm:1.3.2")
     implementation "io.ktor:ktor-client-okhttp:1.3.2"
 }
