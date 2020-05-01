@@ -14,17 +14,17 @@ class MainViewModel(
   var client: ClientApi = App.clientApi
 ) : ViewModel() {
 
-  data class ValueType(var value: Double, var type: String)
-
   private val _liveInfo: MutableLiveData<Double> = MutableLiveData()
   val liveInfo: LiveData<Double> = _liveInfo
 
   private val _currencyList: MutableLiveData<ArrayList<Currency>> = MutableLiveData()
   val currencyList: LiveData<ArrayList<Currency>> = _currencyList
 
+  // Update "FROM" button
   private val _fromCode: MutableLiveData<String> = MutableLiveData()
   val fromCode: LiveData<String> = _fromCode
 
+  // Update "TO" button
   private val _toCode: MutableLiveData<String> = MutableLiveData()
   val toCode: LiveData<String> = _toCode
 
@@ -33,7 +33,6 @@ class MainViewModel(
 
   init {
     getLiveList("BRL", "TO")
-    getLiveList("USD", "FROM")
   }
 
   fun getLiveList(code: String, type: String) {
@@ -46,9 +45,11 @@ class MainViewModel(
         } else {
           value
         }
+        // Update FROM button
         _fromCode.postValue(code)
       } else {
         currencyTo = value
+        // Update TO button
         _toCode.postValue(code)
       }
       _liveInfo.postValue(currencyFrom * currencyTo)
@@ -66,8 +67,6 @@ class MainViewModel(
       }
       _currencyList.postValue(currenciesList)
     }
-
   }
-
 
 }

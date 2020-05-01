@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_challenge.R
@@ -26,6 +24,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private lateinit var root: View
   private lateinit var recyclerView: RecyclerView
   private lateinit var type: String
+  private lateinit var code: String
   private val adapter: CurrencyAdapter by lazy { CurrencyAdapter(ArrayList(), this) }
 
   override fun onCreateView(
@@ -35,6 +34,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     root = inflater.inflate(R.layout.selection_fragment, container, false)
     recyclerView = root.findViewById(R.id.currency_list)
     type = arguments?.getString("TYPE")!!
+    code = arguments?.getString("CODE")!!
     setupRecyclerView()
     return root
   }
@@ -50,12 +50,14 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     viewModel.getCurrencyList()
     viewModel.currencyList.observe(viewLifecycleOwner, Observer { list ->
       adapter.setItemsAdapter(list)
+      val item = list.find { it.currencyCode == code }
+      item?.let {currency->
+        recyclerView.scrollToPosition(list.indexOf(currency))
+      }
     })
   }
 
   override fun onItemClicked(item: Currency) {
-    //Update Buttons
-    println("CLICKED ITEM")
     if (type == "FROM") {
       viewModel.getLiveList(item.currencyCode, "FROM")
     } else {

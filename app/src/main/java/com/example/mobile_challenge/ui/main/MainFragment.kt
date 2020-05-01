@@ -62,6 +62,11 @@ class MainFragment : Fragment() {
   private fun openSelectionFragment(type: String) {
     val bundle = Bundle()
     bundle.putString("TYPE", type)
+    if (type == "FROM") {
+      bundle.putString("CODE", fromBtn.text.toString())
+    } else {
+      bundle.putString("CODE", toBtn.text.toString())
+    }
     val fragment = SelectionFragment.newInstance()
     fragment.arguments = bundle
     if (activity?.supportFragmentManager?.findFragmentByTag("SelectionFragment") == null) {
