@@ -1,10 +1,13 @@
 package com.example.mobile_challenge.ui.main
 
+import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.OnBackPressedDispatcher
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,6 +41,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     type = arguments?.getString("TYPE")!!
     code = arguments?.getString("CODE")!!
     setupRecyclerView()
+    setHasOptionsMenu(true)
     return root
   }
 
@@ -70,6 +74,37 @@ class SelectionFragment : Fragment(), OnItemClickListener {
   private fun closeFragment() {
     val dispatcher: OnBackPressedDispatcher = requireActivity().onBackPressedDispatcher
     dispatcher.onBackPressed()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    searchBarFilter(menu, inflater)
+    super.onCreateOptionsMenu(menu, inflater)
+  }
+
+  private fun searchBarFilter(menu: Menu, inflater: MenuInflater) {
+    inflater.inflate(R.menu.search, menu)
+    val searchItem = menu.findItem(R.id.action_search)
+    val searchView = searchItem.actionView as SearchView
+    searchView.setBackgroundColor(Color.WHITE)
+    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+      override fun onQueryTextSubmit(query: String?): Boolean {
+        return true
+      }
+
+      override fun onQueryTextChange(newText: String?): Boolean {
+        setOnQueryTextChange(newText)
+        return false
+      }
+    })
+    val editText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+    editText.setHintTextColor(Color.LTGRAY)
+    editText.setTextColor(ContextCompat.getColor(context!!, R.color.colorPrimaryDark))
+    val cleanIcon = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
+    cleanIcon.setColorFilter(ContextCompat.getColor(context!!, R.color.colorPrimaryDark))
+  }
+
+  fun setOnQueryTextChange(newText: String?) {
+    adapter.filter.filter(newText)
   }
 
 }

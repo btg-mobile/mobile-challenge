@@ -17,7 +17,7 @@ import kotlinx.serialization.json.Json
 @OptIn(UnstableDefault::class)
 class MainViewModel(
   var client: ClientApi = App.clientApi,
-  var quotes: Map<String, Double> = mapOf("USD" to 5.4354),
+  var quotes: Map<String, Double> = mapOf("" to 0.0),
   var currencyList: ArrayList<Currency> = arrayListOf()
 ) : ViewModel() {
 
@@ -47,7 +47,7 @@ class MainViewModel(
   private fun getLiveList() {
     viewModelScope.launch(Dispatchers.Default) {
       try {
-        while(true) {
+        while (true) {
           val json = client.httpRequestGetLive()
           val live = Json.parse(LiveResponse.serializer(), json)
           if (live.success && live.quotes.isNotEmpty()) {
@@ -58,12 +58,12 @@ class MainViewModel(
           } else {
             error.postValue("Couldn't fetch data")
           }
+          // Get fresh data every 30 seconds
           delay(1000 * 30)
         }
       } catch (e: Exception) {
         handleErrorResponse("live")
       }
-
     }
   }
 
@@ -79,6 +79,7 @@ class MainViewModel(
           } else {
             error.postValue("Couldn't fetch data")
           }
+          // Get fresh data every 30 seconds
           delay(1000 * 30)
         }
       } catch (e: Exception) {
