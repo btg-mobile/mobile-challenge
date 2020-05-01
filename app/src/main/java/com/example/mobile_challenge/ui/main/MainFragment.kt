@@ -105,7 +105,7 @@ class MainFragment : Fragment() {
   }
 
   private fun updateView() {
-    viewModel.liveInfo.observe(viewLifecycleOwner, Observer { value ->
+    viewModel.liveValue.observe(viewLifecycleOwner, Observer { value ->
       currencyValue = value
       currencyValue.setResult()
     })

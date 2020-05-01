@@ -14,9 +14,11 @@ class MainViewModel(
   var client: ClientApi = App.clientApi
 ) : ViewModel() {
 
-  private val _liveInfo: MutableLiveData<Double> = MutableLiveData()
-  val liveInfo: LiveData<Double> = _liveInfo
+  // Live currency value
+  private val _liveValue: MutableLiveData<Double> = MutableLiveData()
+  val liveValue: LiveData<Double> = _liveValue
 
+  // List of currencyCode and currencyName
   private val _currencyList: MutableLiveData<ArrayList<Currency>> = MutableLiveData()
   val currencyList: LiveData<ArrayList<Currency>> = _currencyList
 
@@ -32,6 +34,7 @@ class MainViewModel(
   private var currencyTo = 1.0
 
   init {
+    // Update first screen
     getLiveList("BRL", "TO")
   }
 
@@ -45,14 +48,12 @@ class MainViewModel(
         } else {
           value
         }
-        // Update FROM button
         _fromCode.postValue(code)
       } else {
         currencyTo = value
-        // Update TO button
         _toCode.postValue(code)
       }
-      _liveInfo.postValue(currencyFrom * currencyTo)
+      _liveValue.postValue(currencyFrom * currencyTo)
     }
   }
 

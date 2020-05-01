@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">mobile-challenge</string>
+    <string name="currency_layer_key">359daed36ec00b5244e6f907c493f571</string>
+    <string name="usd">USD</string>
+    <string name="brl">BRL</string>
+    <string name="_1_000_00">1,000.00</string>
+</resources>
