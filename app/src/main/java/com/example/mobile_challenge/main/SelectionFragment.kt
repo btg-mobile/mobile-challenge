@@ -147,6 +147,7 @@ class SelectionFragment : Fragment(), OnItemClickListener {
     adapter.setItemsAdapter(sortedItems.flatMapTo(arrayList) {
       arrayListOf(it)
     })
+    recyclerView.scrollToPosition(0)
   }
 
 }

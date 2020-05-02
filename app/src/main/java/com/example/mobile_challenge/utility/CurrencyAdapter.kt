@@ -42,7 +42,7 @@ class CurrencyAdapter(private var items: ArrayList<CurrencyEntity>, var clickRes
   }
 
   fun getItems(): ArrayList<CurrencyEntity> {
-    return items
+    return filterItems
   }
 
   override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
