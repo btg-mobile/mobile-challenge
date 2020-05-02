@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B4854D0245E2EEA004E106B /* CurrencyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4854CF245E2EEA004E106B /* CurrencyEntity.swift */; };
+		5B4854D2245E2F4F004E106B /* CurrencyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4854D1245E2F4F004E106B /* CurrencyListResponse.swift */; };
+		5B4854D4245E3039004E106B /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4854D3245E3039004E106B /* ErrorResponse.swift */; };
+		5B4854D6245E308D004E106B /* QuoteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4854D5245E308D004E106B /* QuoteEntity.swift */; };
+		5B4854D8245E30D0004E106B /* QuoteLiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4854D7245E30D0004E106B /* QuoteLiveResponse.swift */; };
 		5B94BC39245E01D100CA3838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B94BC38245E01D100CA3838 /* AppDelegate.swift */; };
 		5B94BC3B245E01D100CA3838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B94BC3A245E01D100CA3838 /* SceneDelegate.swift */; };
 		5B94BC3D245E01D100CA3838 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B94BC3C245E01D100CA3838 /* ResultViewController.swift */; };
@@ -21,6 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B4854CF245E2EEA004E106B /* CurrencyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEntity.swift; sourceTree = "<group>"; };
+		5B4854D1245E2F4F004E106B /* CurrencyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListResponse.swift; sourceTree = "<group>"; };
+		5B4854D3245E3039004E106B /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		5B4854D5245E308D004E106B /* QuoteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteEntity.swift; sourceTree = "<group>"; };
+		5B4854D7245E30D0004E106B /* QuoteLiveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteLiveResponse.swift; sourceTree = "<group>"; };
 		5B94BC35245E01D100CA3838 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B94BC38245E01D100CA3838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B94BC3A245E01D100CA3838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +57,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B4854CE245E2EA3004E106B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B4854CF245E2EEA004E106B /* CurrencyEntity.swift */,
+				5B4854D1245E2F4F004E106B /* CurrencyListResponse.swift */,
+				5B4854D3245E3039004E106B /* ErrorResponse.swift */,
+				5B4854D5245E308D004E106B /* QuoteEntity.swift */,
+				5B4854D7245E30D0004E106B /* QuoteLiveResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5B94BC2C245E01D100CA3838 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +120,7 @@
 		5B94BC4E245E022800CA3838 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5B4854CE245E2EA3004E106B /* Model */,
 				5B94BC4C245E020D00CA3838 /* Controller */,
 				5B94BC4D245E021B00CA3838 /* View */,
 			);
@@ -184,7 +207,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4854D2245E2F4F004E106B /* CurrencyListResponse.swift in Sources */,
+				5B4854D8245E30D0004E106B /* QuoteLiveResponse.swift in Sources */,
 				5B94BC3D245E01D100CA3838 /* ResultViewController.swift in Sources */,
+				5B4854D0245E2EEA004E106B /* CurrencyEntity.swift in Sources */,
+				5B4854D6245E308D004E106B /* QuoteEntity.swift in Sources */,
+				5B4854D4245E3039004E106B /* ErrorResponse.swift in Sources */,
 				5B94BC50245E053700CA3838 /* ResultView.swift in Sources */,
 				5B94BC5B245E21EC00CA3838 /* SelectionViewCell.swift in Sources */,
 				5B94BC53245E069B00CA3838 /* Extentions.swift in Sources */,
