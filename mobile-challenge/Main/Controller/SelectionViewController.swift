@@ -12,19 +12,39 @@ private let reuseIdentifer = "SelectionViewCell"
 
 class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
   
+  private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+  private var viewModel : MainViewModel?
   private let searchBar = UISearchBar()
-  
   private var sortItem : UIBarButtonItem?
+  private var filterItems = [] as [CurrencyEntity]
+  private var currencyList = [] as [CurrencyEntity]
+  var type = ""
+  var code = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.clearsSelectionOnViewWillAppear = false
+    setupView()
+  }
+  
+  func setupView() {
+    viewModel = appDelegate.mainViewModel
     configureNavigationBar()
+    self.clearsSelectionOnViewWillAppear = false
     self.tableView.separatorStyle = .none
     self.tableView.rowHeight = 60
     self.tableView.register(SelectionViewCell.self, forCellReuseIdentifier: reuseIdentifer)
+    currencyList = viewModel!.currencyList.sorted(by: { (first, second) -> Bool in
+      first.currencyCode < second.currencyCode
+    })
+    filterItems = currencyList
+    self.tableView.reloadData()
+    let position = filterItems.firstIndex { (currency) -> Bool in
+      currency.currencyCode == code
+    }
+    scrollToBottom(position: position ?? 0)
   }
+  
   
   // MARK: - Configure NavigationBar
   
@@ -39,15 +59,37 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
     self.searchBar.tintColor = .white
     self.navigationController?.navigationBar.barStyle = .black
     self.navigationController?.navigationBar.tintColor = .white
-    sortItem = UIBarButtonItem(image: UIImage(named: "ic_sort"), style: .plain, target: self, action: #selector(handleSortToggle))
+    sortItem = UIBarButtonItem(image: UIImage(named: "ic_sort"), style: .plain, target: self, action: #selector(handleSortToggle(_ :)))
     sortItem!.tintColor = .white
     showSearchButton(shouldShow: true)
   }
   
   // MARK: - Configure Sort
   
-  @objc func handleSortToggle() {
+  @objc func handleSortToggle(_ sender : UIBarButtonItem) {
+    // show sort options
     print("Sort")
+    self.view.endEditing(true)
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Sort by Code", style: .default , handler:{ (UIAlertAction)in
+      self.filterItems = self.viewModel!.currencyList.sorted(by: { (first, second) -> Bool in
+        first.currencyCode < second.currencyCode
+      })
+      self.tableView.reloadData()
+      self.scrollToBottom(position: 0)
+    }))
+    alert.addAction(UIAlertAction(title: "Sort by Name", style: .default , handler:{ (UIAlertAction)in
+      self.filterItems = self.viewModel!.currencyList.sorted(by: { (first, second) -> Bool in
+        first.currencyName < second.currencyName
+      })
+      self.tableView.reloadData()
+      self.scrollToBottom(position: 0)
+    }))
+    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+    alert.pruneNegativeWidthConstraints()
+    alert.popoverPresentationController?.sourceView = self.view
+    alert.popoverPresentationController?.barButtonItem = sender
+    self.present(alert, animated: true)
   }
   
   // MARK: - Configure SearchBar
@@ -82,32 +124,70 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
     showSearchButton(shouldShow: true)
   }
   
-  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    print("Search bar editing did begin..")
-  }
-  
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     view.endEditing(true)
+    filterItems = currencyList
+    self.tableView.reloadData()
   }
   
+  // SearchBar filter
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchBar.text!.count > 1 {
+      let filter = currencyList.filter { (currency) -> Bool in
+        currency.currencyCode.lowercased().contains(String(searchBar.text!).lowercased()) ||
+          currency.currencyName.lowercased().contains(String(searchBar.text!).lowercased())
+      }
+      
+      if filter != filterItems {
+        filterItems = filter
+        self.tableView.reloadData()
+      }
+    } else {
+      filterItems = currencyList
+      self.tableView.reloadData()
+    }
+  }
   
   // MARK: - Table view data source
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return 5
+    return filterItems.count
   }
   
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifer) as! SelectionViewCell
-    cell.titleLabel.text = "USD - Dolar"
-    
+    let item = filterItems[indexPath.row]
+    cell.titleLabel.text = "\(item.currencyCode) - \(item.currencyName)"
     return cell
   }
   
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let item = filterItems[indexPath.row]
+    if (type == "FROM") {
+      viewModel?.setQuoteValue(
+        code: item.currencyCode,
+        type: "FROM"
+      )
+    } else {
+      viewModel?.setQuoteValue(
+        code: item.currencyCode,
+        type: "TO"
+      )
+    }
+    view.endEditing(true)
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  func scrollToBottom(position: Int){
+    DispatchQueue.main.async {
+      if (self.tableView.numberOfRows(inSection: 0) > 0){
+        let indexPath = IndexPath( row: position, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+      }
+    }
   }
   
 }

@@ -11,10 +11,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+  var clientApi : ClientApi?
+  var mainViewModel : MainViewModel?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    clientApi = ClientApi()
+    mainViewModel = MainViewModel.init(application : self)
+    
     return true
   }
 

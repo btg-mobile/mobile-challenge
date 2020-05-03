@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CurrencyListResponse{
+struct CurrencyResponse : Codable {
   
   let success: Bool
   let terms: String

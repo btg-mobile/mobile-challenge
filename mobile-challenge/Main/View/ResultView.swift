@@ -13,11 +13,19 @@ class ResultView: UIView {
   // MARK: Properties
   
   var delegate : ResultViewDelegate?
+  
+  lazy var progressSpinner : UIActivityIndicatorView = {
+    let progressSpinner = UIActivityIndicatorView(style: .large)
+    progressSpinner.startAnimating()
+    progressSpinner.isHidden = true
+    return progressSpinner
+  }()
     
   lazy var fromInput : UITextField = {
     let txtField = UITextField()
     txtField.backgroundColor = .clear
     txtField.attributedPlaceholder = NSAttributedString(string: "1,000.00", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)])
+    txtField.font = .systemFont(ofSize: 20)
     txtField.autocorrectionType = .no
     txtField.textColor = .darkGray
     txtField.keyboardType = UIKeyboardType.decimalPad
@@ -29,7 +37,6 @@ class ResultView: UIView {
     let label = UILabel()
     label.textAlignment = .center
     label.backgroundColor = UIColor(named: "app_accent")
-    label.text = "5,350,00"
     label.font = .systemFont(ofSize: 20, weight: .bold)
     label.textColor = .darkGray
     return label
@@ -80,6 +87,11 @@ class ResultView: UIView {
   
   func setUpAutoLayout() {
     backgroundColor = .white
+    
+    progressSpinner.translatesAutoresizingMaskIntoConstraints = false
+    self.addSubview(progressSpinner)
+    progressSpinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    progressSpinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     
     self.addSubview(fromButton)
     fromButton.translatesAutoresizingMaskIntoConstraints = false

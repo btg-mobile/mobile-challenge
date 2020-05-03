@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct QuoteLiveResponse{
+struct QuoteResponse : Codable {
   
   let success: Bool
   let terms: String

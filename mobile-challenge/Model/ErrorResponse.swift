@@ -9,14 +9,14 @@
 import Foundation
 
 
-struct ErrorResponse {
+struct ErrorResponse : Codable {
   
   let success: Bool
   let error: ErrorInfo
   
 }
 
-struct ErrorInfo {
+struct ErrorInfo : Codable {
   
   let code: Int
   let type: String
