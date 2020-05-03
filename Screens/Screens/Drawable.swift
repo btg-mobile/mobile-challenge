@@ -13,3 +13,15 @@ protocol Drawable: AnyObject {
     func stylizeViews()
     func createViewsHierarchy()
 }
+
+extension Drawable {
+    func makeConstraints() { }
+    func stylizeViews() { }
+    func createViewsHierarchy() { }
+    
+    func draw() {
+        createViewsHierarchy()
+        stylizeViews()
+        makeConstraints()
+    }
+}

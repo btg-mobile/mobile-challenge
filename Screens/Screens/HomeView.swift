@@ -84,9 +84,7 @@ extension HomeView: UITableViewDelegate, UIScrollViewDelegate {
             assertionFailure("The type of header must be Header")
             return nil
         }
-        header.createViewsHierarchy()
-        header.stylizeViews()
-        header.makeConstraints()
+        header.draw()
         return header
     }
     
@@ -125,14 +123,10 @@ extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let genericCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        guard let cell = genericCell as? Cell else {
-            fatalError("The type of cells must be Cell")
-        }
+        guard let cell = genericCell as? Cell else { fatalError("The type of cells must be Cell") }
         
         if cell.amount == nil {
-            cell.createViewsHierarchy()
-            cell.stylizeViews()
-            cell.makeConstraints()
+            cell.draw()
         }
         
         let currency = otherCurrencies[indexPath.row]
