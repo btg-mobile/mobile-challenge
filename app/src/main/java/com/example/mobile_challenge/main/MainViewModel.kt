@@ -14,9 +14,7 @@ import com.example.mobile_challenge.utility.SingleLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.UnstableDefault
-import kotlinx.serialization.json.Json
 import java.util.*
-import kotlin.collections.ArrayList
 
 @OptIn(UnstableDefault::class)
 class MainViewModel(
@@ -46,33 +44,46 @@ class MainViewModel(
   private var currencyTo = 1.0
 
   init {
-    getLiveList()
-    getCurrencyList()
+    getQuote()
+    getCurrency()
   }
 
   // Handle Quote
-  private fun getLiveList() {
+  private fun getQuote() {
     viewModelScope.launch(Dispatchers.Default) {
       try {
-        val json = client.httpRequestGetLive()
-        val live = Json.parse(QuoteLiveResponse.serializer(), json)
-        if (live.success && live.quotes.isNotEmpty()) {
-          updateDataBase(live)
-          setQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
-        } else {
-          error.postValue(context.getString(R.string.fetch_data_error))
-          getQuoteFromDb()
+        when (val response = client.httpRequestGetLive()) {
+          is ResponseOptionsQuote.SuccessResponse -> {
+            handleQuoteSuccess(response)
+          }
+          is ResponseOptionsQuote.ErrorResponse -> {
+            error.postValue(response.message)
+            getQuoteFromDb()
+          }
         }
       } catch (e: Exception) {
-        handleErrorResponse("live")
+        // Connection Problem
+        error.postValue(
+          context.getString(R.string.connection_error)
+        )
         getQuoteFromDb()
       }
     }
   }
 
-  private fun updateDataBase(live: QuoteLiveResponse) {
+  private fun handleQuoteSuccess(response: ResponseOptionsQuote.SuccessResponse) {
+    if (response.data.success && response.data.quotes.isNotEmpty()) {
+      updateDataBase(response.data)
+      setQuoteValue(context.getString(R.string.brl), context.getString(R.string.to))
+    } else {
+      error.postValue(context.getString(R.string.fetch_data_error))
+      getQuoteFromDb()
+    }
+  }
+
+  private fun updateDataBase(data: QuoteResponse) {
     val list = mutableListOf<QuoteEntity>()
-    live.quotes.flatMapTo(list) { entry->
+    data.quotes.flatMapTo(list) { entry ->
       listOf(
         QuoteEntity(
           UUID.randomUUID().toString(),
@@ -111,21 +122,33 @@ class MainViewModel(
   }
 
   // Handle Currency List
-  private fun getCurrencyList() {
+  private fun getCurrency() {
     viewModelScope.launch(Dispatchers.Default) {
       try {
-        val json = client.httpRequestGetList()
-        val listResponse = Json.parse(CurrencyListResponse.serializer(), json)
-        if (listResponse.success && listResponse.currencies.isNotEmpty()) {
-          setCurrencyFromNetwork(listResponse)
-        } else {
-          error.postValue(context.getString(R.string.fetch_data_error))
-          setCurrencyFromDb()
+        when (val response = client.httpRequestGetList()) {
+          is ResponseOptionsCurrency.SuccessResponse -> {
+            handleCurrencySuccess(response)
+          }
+          is ResponseOptionsCurrency.ErrorResponse -> {
+            error.postValue(response.message)
+            setCurrencyFromDb()
+          }
         }
       } catch (e: Exception) {
-        handleErrorResponse("list")
+        error.postValue(
+          context.getString(R.string.connection_error)
+        )
         setCurrencyFromDb()
       }
+    }
+  }
+
+  private fun handleCurrencySuccess(response: ResponseOptionsCurrency.SuccessResponse) {
+    if (response.data.success && response.data.currencies.isNotEmpty()) {
+      setCurrencyFromNetwork(response.data)
+    } else {
+      error.postValue(context.getString(R.string.fetch_data_error))
+      getQuoteFromDb()
     }
   }
 
@@ -138,7 +161,7 @@ class MainViewModel(
     }
   }
 
-  private fun setCurrencyFromNetwork(currencyList: CurrencyListResponse) {
+  private fun setCurrencyFromNetwork(currencyList: CurrencyResponse) {
     viewModelScope.launch(Dispatchers.Default) {
       val currenciesMap = currencyList.currencies
       val currenciesList = arrayListOf<CurrencyEntity>()
@@ -152,25 +175,6 @@ class MainViewModel(
       }
       this@MainViewModel.currencyList = currenciesList
       dataBase.currencyDao().insertAll(currenciesList)
-    }
-  }
-
-  // Handle Error
-  private suspend fun handleErrorResponse(request: String) {
-    try {
-      // Error Response
-      val json = if (request == "list") {
-        client.httpRequestGetList()
-      } else {
-        client.httpRequestGetLive()
-      }
-      val list = Json.parse(ErrorResponse.serializer(), json)
-      error.postValue(list.error.info)
-    } catch (e: Exception) {
-      // Connection Problem
-      error.postValue(
-        context.getString(R.string.connection_error)
-      )
     }
   }
 
