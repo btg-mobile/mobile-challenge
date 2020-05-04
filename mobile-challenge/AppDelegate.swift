@@ -13,12 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var clientApi : ClientApi?
   var mainViewModel : MainViewModel?
+  var dataBase: AppDataBase?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    
+    dataBase = AppDataBase()
     clientApi = ClientApi()
     mainViewModel = MainViewModel.init(application : self)
+    
     
     return true
   }

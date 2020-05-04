@@ -8,15 +8,14 @@
 
 import Foundation
 
-final class ClientApi : ClientApiDelegate {
+final class ClientApi {
   
   static let shared = ClientApi()
   
   private let url = "http://api.currencylayer.com"
-  private let key = "e8af0ceaeac239335961d0151a4507b7"
+  private let key = "01e1094551d9f88fa5c01ec84516c1fe"
   
   var session : URLSession?
-  var task : URLSessionTask?
   
   init() {
     session = URLSession.shared
@@ -24,8 +23,7 @@ final class ClientApi : ClientApiDelegate {
   
   
   func fetchCurrencyList(completionHandler: @escaping (ResponseOptionsCurrency) -> Void){
-    self.cancelFetch()
-    task = session?.dataTask(with: URL(string: "\(url)/list?access_key=\(key)")!, completionHandler: { (data, response, error) in
+    let connection = session?.dataTask(with: URL(string: "\(url)/list?access_key=\(key)")!, completionHandler: { (data, response, error) in
       if let error = error {
         print("Error accessing swapi.co: \(error)")
         completionHandler(ResponseOptionsCurrency.ErrorResponse("Error accessing swapi.co: \(error)"))
@@ -44,11 +42,11 @@ final class ClientApi : ClientApiDelegate {
         completionHandler(ResponseOptionsCurrency.ErrorResponse((errorResponse?.error.info)!))
       }
     })
-    task?.resume()
+    connection?.resume()
   }
   
   func fetchQuoteLive(completionHandler: @escaping (ResponseOptionsQuote) -> Void){
-    task = session?.dataTask(with: URL(string: "\(url)/live?access_key=\(key)")!, completionHandler: { (data, response, error) in
+    let connection = session?.dataTask(with: URL(string: "http://api.currencylayer.com/live?access_key=01e1094551d9f88fa5c01ec84516c1fe")!, completionHandler: { (data, response, error) in
       if let error = error {
         print("Error accessing swapi.co: \(error)")
         completionHandler(ResponseOptionsQuote.ErrorResponse("Error accessing swapi.co: \(error)"))
@@ -68,13 +66,7 @@ final class ClientApi : ClientApiDelegate {
       }
       
     })
-    task?.resume()
+    connection?.resume()
   }
-  
-  func cancelFetch() {
-    if let task = task {
-      task.cancel()
-    }
-    task = nil
-  }
+
 }

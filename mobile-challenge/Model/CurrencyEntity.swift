@@ -10,11 +10,11 @@ import Foundation
 
 struct CurrencyEntity {
   
-  let _id : String
+  let _id : Int
   let currencyCode: String
   let currencyName: String
   
-  init(_ _id: String, _ currencyCode: String, currencyName: String) {
+  init(_ _id: Int, _ currencyCode: String,_ currencyName: String) {
       self._id = _id
       self.currencyCode = currencyCode
       self.currencyName = currencyName

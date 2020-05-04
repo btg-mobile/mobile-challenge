@@ -28,6 +28,7 @@
 		5B94BC57245E172E00CA3838 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B94BC56245E172E00CA3838 /* GradientBackground.swift */; };
 		5B94BC59245E1DD600CA3838 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B94BC58245E1DD600CA3838 /* SelectionViewController.swift */; };
 		5B94BC5B245E21EC00CA3838 /* SelectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B94BC5A245E21EC00CA3838 /* SelectionViewCell.swift */; };
+		5BEFA0CC245FBBDB00BA0AE4 /* AppDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEFA0CB245FBBDB00BA0AE4 /* AppDataBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		5B94BC56245E172E00CA3838 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		5B94BC58245E1DD600CA3838 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		5B94BC5A245E21EC00CA3838 /* SelectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewCell.swift; sourceTree = "<group>"; };
+		5BEFA0CB245FBBDB00BA0AE4 /* AppDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataBase.swift; sourceTree = "<group>"; };
 		82871D4891BA83E8D2A33293 /* Pods-mobile-challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge.release.xcconfig"; path = "Target Support Files/Pods-mobile-challenge/Pods-mobile-challenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 				5B94BC54245E06D500CA3838 /* Protocols.swift */,
 				5B94BC56245E172E00CA3838 /* GradientBackground.swift */,
 				5B893A33245E36C2009696E5 /* ClientApi.swift */,
+				5BEFA0CB245FBBDB00BA0AE4 /* AppDataBase.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				5B893A34245E36C2009696E5 /* ClientApi.swift in Sources */,
 				5B4854D4245E3039004E106B /* ErrorResponse.swift in Sources */,
 				5B94BC50245E053700CA3838 /* ResultView.swift in Sources */,
+				5BEFA0CC245FBBDB00BA0AE4 /* AppDataBase.swift in Sources */,
 				5B893A38245E794B009696E5 /* MainViewModel.swift in Sources */,
 				5B94BC5B245E21EC00CA3838 /* SelectionViewCell.swift in Sources */,
 				5B94BC53245E069B00CA3838 /* Extentions.swift in Sources */,

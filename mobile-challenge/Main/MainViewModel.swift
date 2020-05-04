@@ -12,13 +12,13 @@ class MainViewModel {
   
   // Handle Error
   let error = Observable<String>()
-
+  
   // Live currency value
   let liveValue = Observable<Double>()
-
+  
   // Update "FROM" button
   let fromCode = Observable<String>()
-
+  
   // Update "TO" button
   let toCode = Observable<String>()
   
@@ -26,13 +26,15 @@ class MainViewModel {
   var quotes = [] as [QuoteEntity]
   var currencyFrom = 1.0
   var currencyTo = 1.0
+  var dataBase : AppDataBase?
   
   init(application: AppDelegate) {
+    dataBase = application.dataBase
     guard let clientApi = application.clientApi else { return }
-    getCurrency(clientApi)
     getQuote(clientApi)
+    getCurrency(clientApi)
   }
-
+  
   private func getCurrency(_ clientApi: ClientApi) {
     clientApi.fetchCurrencyList { (response) in
       switch (response) {
@@ -41,6 +43,7 @@ class MainViewModel {
         }
       case .ErrorResponse(let message): do {
         self.error.property = message
+        self.setCurrencyFromDb()
         print(message)
         }
       }
@@ -49,21 +52,40 @@ class MainViewModel {
   
   private func handleCurrencySucess(_ data: (CurrencyResponse)) {
     if data.success || !data.currencies.isEmpty{
-      self.setCurrencyFromNetwork(data: data)
+      self.updateCurrencyTableDB(data: data)
     } else {
       self.error.property = "Error while fetching data"
+      self.setCurrencyFromDb()
       print("False Sucess")
     }
   }
   
-  func setCurrencyFromNetwork(data: CurrencyResponse){
-    let currenciesDic = data.currencies
-    var currenciesList = [] as [CurrencyEntity]
-    currenciesDic.forEach { (dic) in
-      let currency = CurrencyEntity(UUID().uuidString, dic.key, currencyName: dic.value)
-      currenciesList.append(currency)
+  private func updateCurrencyTableDB(data: CurrencyResponse){
+    let sortedCurrency = data.currencies.sorted(by: { (first, second) -> Bool in
+      first.key < second.key
+    })
+    var id = 1
+    var list = [] as [CurrencyEntity]
+    sortedCurrency.forEach { (dic) in
+      let currency = CurrencyEntity(
+        id,
+        dic.key,
+        dic.value)
+      list.append(currency)
+      id+=1
     }
-    self.currencyList = currenciesList
+    self.currencyList = list
+    // Update Data base
+    self.dataBase?.insertOrUpdateListCurrencyEntityTable(list: list)
+  }
+  
+  private func setCurrencyFromDb() {
+    print("DATABASE \(String(describing: dataBase))")
+    let list = dataBase?.selectAllCurrencyEntityTable()
+    print("CURRENCY LIST \(String(describing: list))")
+    if (list!.count > 0) {
+      currencyList = list!
+    }
   }
   
   private func getQuote(_ clientApi: ClientApi) {
@@ -74,6 +96,7 @@ class MainViewModel {
         }
       case .ErrorResponse(let message): do {
         self.error.property = message
+        self.setQuoteFromDb()
         print(message)
         }
       }
@@ -82,37 +105,56 @@ class MainViewModel {
   
   private func handleQuoteSucess(_ data: (QuoteResponse)) {
     if data.success || !data.quotes.isEmpty{
-      updateDataBase(data: data)
+      updateQuoteTableDB(data: data)
       setQuoteValue(code: "BRL", type: "TO")
     } else {
       self.error.property = "Error while fetching data"
+      self.setQuoteFromDb()
       print("False Sucess")
     }
   }
   
-  func updateDataBase(data: QuoteResponse) {
+  func updateQuoteTableDB(data: QuoteResponse) {
+    let sortedQuotes = data.quotes.sorted(by: { (first, second) -> Bool in
+      first.key < second.key
+    })
+    var id = 1
     var quoteList = [] as [QuoteEntity]
-    data.quotes.forEach { (quote) in
+    sortedQuotes.forEach { (quote) in
       let quoteEntity = QuoteEntity(
-        _id: UUID().uuidString,
-        from: quote.key.substring(to: 3),
-        to: quote.key.substring(from: 3),
-        value: quote.value)
+        id,
+        quote.key.substring(to: 3),
+        quote.key.substring(from: 3),
+        quote.value)
       quoteList.append(quoteEntity)
+      id+=1
     }
-    // update database
     self.quotes = quoteList
+    // update database
+    self.dataBase?.insertOrUpdateListQuoteEntityTable(list: quoteList)
+  }
+  
+  private func setQuoteFromDb() {
+    let quoteList = dataBase?.selectAllQuoteEntityTable()
+    print("QUOTE LIST \(String(describing: quoteList))")
+    if (quoteList!.count > 0) {
+      self.quotes = quoteList!
+      setQuoteValue(code: "BRL", type: "TO")
+    }
   }
   
   func setQuoteValue(code: String, type: String) {
-    let value = self.quotes.filter { (quote) -> Bool in quote.to == code }[0]
-    if (type == "FROM") {
-      self.currencyFrom = 1 / value.value
-      fromCode.property = (code)
-    } else {
-      self.currencyTo = value.value
-      toCode.property = (code)
+    let value = self.quotes.filter { (quote) -> Bool in quote.to == code }
+    print("QUOTE value \(String(describing: value))")
+    if (value as [QuoteEntity]?) != nil && value.count > 0 {
+      if (type == "FROM") {
+        self.currencyFrom = 1 / value[0].value
+        fromCode.property = (code)
+      } else {
+        self.currencyTo = value[0].value
+        toCode.property = (code)
+      }
+      liveValue.property = (currencyFrom * currencyTo)
     }
-    liveValue.property = (currencyFrom * currencyTo)
   }
 }
