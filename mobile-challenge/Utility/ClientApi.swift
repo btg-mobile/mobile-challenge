@@ -26,7 +26,7 @@ final class ClientApi {
     let connection = session?.dataTask(with: URL(string: "\(url)/list?access_key=\(key)")!, completionHandler: { (data, response, error) in
       if let error = error {
         print("Error accessing swapi.co: \(error)")
-        completionHandler(ResponseOptionsCurrency.ErrorResponse("Error accessing swapi.co: \(error)"))
+        completionHandler(ResponseOptionsCurrency.ErrorResponse("Connection Error"))
         return
       }
       guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
@@ -51,7 +51,7 @@ final class ClientApi {
     let connection = session?.dataTask(with: URL(string: "\(url)/live?access_key=\(key)")!, completionHandler: { (data, response, error) in
       if let error = error {
         print("Error accessing swapi.co: \(error)")
-        completionHandler(ResponseOptionsQuote.ErrorResponse("Error accessing swapi.co: \(error)"))
+        completionHandler(ResponseOptionsQuote.ErrorResponse("Connection Error"))
         return
       }
       guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {

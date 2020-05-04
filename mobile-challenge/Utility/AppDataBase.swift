@@ -17,13 +17,15 @@ class AppDataBase {
   private var db: OpaquePointer?
   
   init() {
-    createDataBase()
+    Dispatch.background {
+      self.createDataBase()
+    }
   }
   
   func createDataBase() {
     let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
       .appendingPathComponent("mobile-challenge.sqlite")
-    if sqlite3_open(fileURL.path,&db) != SQLITE_OK {
+    if sqlite3_open_v2(fileURL.path,&db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil) != SQLITE_OK {
       print("error opening database")
     }
     if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS CurrencyEntity (id INTEGER PRIMARY KEY AUTOINCREMENT, currencyCode TEXT, currencyName TEXT)", nil, nil, nil) != SQLITE_OK {
@@ -39,15 +41,15 @@ class AppDataBase {
   // MARK: - Currency Table
   
   func insertOrUpdateListCurrencyEntityTable(list : [CurrencyEntity]) {
-    let actualList = selectAllCurrencyEntityTable()
+    let actualList = self.selectAllCurrencyEntityTable()
     list.forEach { (entity) in
       let filter = actualList.first { (quote) -> Bool in
         quote._id == entity._id
       }
       if let currency = filter {
-        updateCurrencyEntityTable(newEntity: entity, id: currency._id)
+        self.updateCurrencyEntityTable(newEntity: entity, id: currency._id)
       } else {
-        insertCurrencyEntityTable(entity: entity)
+        self.insertCurrencyEntityTable(entity: entity)
       }
     }
   }
@@ -126,15 +128,15 @@ class AppDataBase {
   // MARK: - Quote Table
   
   func insertOrUpdateListQuoteEntityTable(list : [QuoteEntity]) {
-    let actualList = selectAllQuoteEntityTable()
+    let actualList = self.selectAllQuoteEntityTable()
     list.forEach { (entity) in
       let filter = actualList.first { (quote) -> Bool in
         quote._id == entity._id
       }
       if let quote = filter  {
-        updateQuoteEntityTable(newEntity: entity, id: quote._id)
+        self.updateQuoteEntityTable(newEntity: entity, id: quote._id)
       } else {
-        insertQuoteEntityTable(entity: entity)
+        self.insertQuoteEntityTable(entity: entity)
       }
     }
   }
@@ -213,5 +215,5 @@ class AppDataBase {
     print("Query Result QUOTE: \n \(finalList)\n")
     return finalList
   }
-
+  
 }

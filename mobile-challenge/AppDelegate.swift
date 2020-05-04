@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var dataBase: AppDataBase?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    dataBase = AppDataBase()
+    self.dataBase = AppDataBase()
     clientApi = ClientApi()
     mainViewModel = MainViewModel.init(application : self)
     return true

@@ -40,15 +40,17 @@ class MainViewModel {
   // MARK: - Handle Currency
   
   private func getCurrency(_ clientApi: ClientApi) {
-    clientApi.fetchCurrencyList { (response) in
-      switch (response) {
-      case .SucessResponse(let data): do {
-        self.handleCurrencySucess(data)
-        }
-      case .ErrorResponse(let message): do {
-        print("ErrorResponse Currency\(message)")
-        self.error.value = message
-        self.setCurrencyFromDb()
+    Dispatch.background {
+      clientApi.fetchCurrencyList { (response) in
+        switch (response) {
+        case .SucessResponse(let data): do {
+          self.handleCurrencySucess(data)
+          }
+        case .ErrorResponse(let message): do {
+          print("ErrorResponse Currency\(message)")
+          self.error.value = message
+          self.setCurrencyFromDb()
+          }
         }
       }
     }
@@ -79,30 +81,34 @@ class MainViewModel {
       id+=1
     }
     self.currencyList = list
-    self.dataBase?.insertOrUpdateListCurrencyEntityTable(list: list)
+    Dispatch.background {
+      self.dataBase?.insertOrUpdateListCurrencyEntityTable(list: list)
+    }
   }
   
   private func setCurrencyFromDb() {
-    print("DATABASE \(String(describing: dataBase))")
-    let list = dataBase?.selectAllCurrencyEntityTable()
-    print("CURRENCY LIST \(String(describing: list))")
-    if (list!.count > 0) {
-      currencyList = list!
+    Dispatch.background {
+      let list = self.dataBase?.selectAllCurrencyEntityTable()
+      if (list!.count > 0) {
+        self.currencyList = list!
+      }
     }
   }
   
   // MARK: - Handle Quote
   
   private func getQuote(_ clientApi: ClientApi) {
-    clientApi.fetchQuoteLive { (response) in
-      switch (response) {
-      case .SucessResponse(let data): do {
-        self.handleQuoteSucess(data)
-        }
-      case .ErrorResponse(let message): do {
-        print("ErrorResponse Quote\(message)")
-        self.error.value = message
-        self.setQuoteFromDb()
+    Dispatch.background {
+      clientApi.fetchQuoteLive { (response) in
+        switch (response) {
+        case .SucessResponse(let data): do {
+          self.handleQuoteSucess(data)
+          }
+        case .ErrorResponse(let message): do {
+          print("ErrorResponse Quote\(message)")
+          self.error.value = message
+          self.setQuoteFromDb()
+          }
         }
       }
     }
@@ -135,15 +141,18 @@ class MainViewModel {
       id+=1
     }
     self.quotes = quoteList
-    self.dataBase?.insertOrUpdateListQuoteEntityTable(list: quoteList)
+    Dispatch.background {
+      self.dataBase?.insertOrUpdateListQuoteEntityTable(list: quoteList)
+    }
   }
   
   private func setQuoteFromDb() {
-    let quoteList = dataBase?.selectAllQuoteEntityTable()
-    print("QUOTE LIST \(String(describing: quoteList))")
-    if (quoteList!.count > 0) {
-      self.quotes = quoteList!
-      setQuoteValue(code: "BRL", type: "TO")
+    Dispatch.background {
+      let quoteList = self.dataBase?.selectAllQuoteEntityTable()
+      if (quoteList!.count > 0) {
+        self.quotes = quoteList!
+        self.setQuoteValue(code: "BRL", type: "TO")
+      }
     }
   }
   

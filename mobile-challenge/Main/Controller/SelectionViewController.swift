@@ -180,7 +180,7 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
   }
   
   func scrollToBottom(position: Int){
-    DispatchQueue.main.async {
+    Dispatch.main {
       if (self.tableView.numberOfRows(inSection: 0) > 0){
         let indexPath = IndexPath( row: position, section: 0)
         self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
