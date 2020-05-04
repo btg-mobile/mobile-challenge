@@ -28,7 +28,7 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.view.backgroundColor = #colorLiteral(red: 0.2119999975, green: 0.2630000114, blue: 0.3330000043, alpha: 1)
         navigationController?.navigationItem.searchController?.searchBar.tintColor = .init(white: 1, alpha: 0.8)
-        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.hidesSearchBarWhenScrolling = false
         let searchBarAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         searchBarAppearance.textColor = .init(white: 1, alpha: 0.8)
         let magnifying = UIImageView.appearance(whenContainedInInstancesOf: [UISearchBar.self])
@@ -45,6 +45,7 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocorrectionType = .yes
         searchController.searchBar.placeholder = "Search"
+        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
         
         navigationItem.searchController = searchController
     }

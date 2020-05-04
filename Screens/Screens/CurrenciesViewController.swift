@@ -15,27 +15,59 @@ class CurrenciesViewController: UINavigationController, Drawable {
     private let viewModel = CurrenciesViewModel()
     private var cancellables = Set<AnyCancellable>()
     private weak var tableViewController: CurrenciesTableViewController!
-    
-    init() {
-        let tableViewController = CurrenciesTableViewController()
-        self.tableViewController = tableViewController
-        super.init(rootViewController: tableViewController)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        draw()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refresh()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        cancellables.removeAll()
+    }
+    
+    private func refresh() {
+        
+        if !(tableViewController.refreshControl?.isRefreshing ?? false) {
+            let refreshControl = tableViewController.refreshControl!
+            refreshControl.beginRefreshing()
+            tableViewController.tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl.frame.height), animated: true)
+        }
+        
         viewModel
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
-                print(completion)
-                print(512)
+                switch completion {
+                case .failure(let error):
+                    self.alert(error)
+                case .finished:
+                    self.tableViewController.refreshControl?.endRefreshing()
+                }
             }) { currencies in
                 self.tableViewController.currencies = currencies.sorted()
             }.store(in: &cancellables)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc private func handleRefresh(_ control: UIRefreshControl) {
+        refresh()
+    }
+    
+    func stylizeViews() {
+        tableViewController.refreshControl?.tintColor = .init(white: 1, alpha: 0.8)
+    }
+    
+    func createViewsHierarchy() {
+        let tableViewController = CurrenciesTableViewController()
+        self.tableViewController = tableViewController
+        pushViewController(tableViewController, animated: false)
+        
+        let refreshControl = UIRefreshControl()
+        tableViewController.tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
     }
 }
 

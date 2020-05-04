@@ -18,6 +18,7 @@ public class SQLiteStorage: Storage {
     public init(_ location: Connection.Location) {
         self.connection = createConnection(location)
             .flatMap { createSchema(at: $0) }
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
             .eraseToAnyPublisher()
     }
     

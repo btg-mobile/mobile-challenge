@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E16FD91BF9B5EDF2099A4F8 /* Pods_Screens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CD970D654B8A06066EC038 /* Pods_Screens.framework */; };
+		EC19593E2460381F002DB0C9 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593D2460381F002DB0C9 /* UIViewController+alert.swift */; };
 		EC1A1570245C3F6B00F20499 /* CurrenciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1A156F245C3F6B00F20499 /* CurrenciesTableViewController.swift */; };
 		EC355393245F6FC80023502B /* Fuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC355392245F6FC80023502B /* Fuse.swift */; };
 		EC355396245F71710023502B /* FuseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC355395245F71710023502B /* FuseUtilities.swift */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		53CD970D654B8A06066EC038 /* Pods_Screens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Screens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D987B858B28A0CD1CED64D91 /* Pods-Screens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screens.release.xcconfig"; path = "Target Support Files/Pods-Screens/Pods-Screens.release.xcconfig"; sourceTree = "<group>"; };
+		EC19593D2460381F002DB0C9 /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		EC1A156F245C3F6B00F20499 /* CurrenciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableViewController.swift; sourceTree = "<group>"; };
 		EC355392245F6FC80023502B /* Fuse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuse.swift; sourceTree = "<group>"; };
 		EC355395245F71710023502B /* FuseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuseUtilities.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				EC7E08A22459B17F00D74D42 /* UIFont+SFProText.swift */,
 				EC7E08A92459B91E00D74D42 /* UIView+addSubviews.swift */,
+				EC19593D2460381F002DB0C9 /* UIViewController+alert.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				EC1A1570245C3F6B00F20499 /* CurrenciesTableViewController.swift in Sources */,
 				EC355398245F71A40023502B /* String+Fuse.swift in Sources */,
 				EC355396245F71710023502B /* FuseUtilities.swift in Sources */,
+				EC19593E2460381F002DB0C9 /* UIViewController+alert.swift in Sources */,
 				EC7E088724599DC100D74D42 /* AppDelegate.swift in Sources */,
 				ECD83808245FDBB500EBF6A4 /* CurrienciesViewModel.swift in Sources */,
 				EC7E088924599DC100D74D42 /* SceneDelegate.swift in Sources */,
