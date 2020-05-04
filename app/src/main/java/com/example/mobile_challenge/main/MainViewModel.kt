@@ -46,45 +46,32 @@ class MainViewModel(
     getQuote()
   }
 
-  // Handle Currency List
+  // Handle Currency
+
   private fun getCurrency() {
     viewModelScope.launch(Dispatchers.Default) {
-      try {
-        when (val response = client.httpRequestGetList()) {
-          is ResponseOptionsCurrency.SuccessResponse -> {
-            handleCurrencySuccess(response)
-          }
-          is ResponseOptionsCurrency.ErrorResponse -> {
-            error.postValue(R.string.connection_error)
-            setCurrencyFromDb()
-          }
+      when (val response = client.httpRequestGetList()) {
+        is ResponseOptionsCurrency.SuccessResponse -> {
+          handleCurrencySuccess(response)
         }
-      } catch (e: Exception) {
-        error.postValue(R.string.connection_error)
-        setCurrencyFromDb()
+        is ResponseOptionsCurrency.ErrorResponse -> {
+          error.postValue(R.string.connection_error)
+          setCurrencyFromDb()
+        }
       }
     }
   }
 
   private fun handleCurrencySuccess(response: ResponseOptionsCurrency.SuccessResponse) {
     if (response.data.success && response.data.currencies.isNotEmpty()) {
-      updateCurrencyTableBD(response.data)
+      updateCurrencyTableDb(response.data)
     } else {
       error.postValue(R.string.fetch_data_error)
       setQuoteFromDb()
     }
   }
 
-  private fun setCurrencyFromDb() {
-    viewModelScope.launch(Dispatchers.Default) {
-      val list = dataBase.currencyDao().getAll()
-      if (list.isNotEmpty()) {
-        list.flatMapTo(currencyList) { arrayListOf(it) }
-      }
-    }
-  }
-
-  private fun updateCurrencyTableBD(currencyList: CurrencyResponse) {
+  private fun updateCurrencyTableDb(currencyList: CurrencyResponse) {
     viewModelScope.launch(Dispatchers.Default) {
       val currenciesMap = currencyList.currencies
       val list = arrayListOf<CurrencyEntity>()
@@ -103,30 +90,34 @@ class MainViewModel(
     }
   }
 
+  private fun setCurrencyFromDb() {
+    viewModelScope.launch(Dispatchers.Default) {
+      val list = dataBase.currencyDao().getAll()
+      if (list.isNotEmpty()) {
+        list.flatMapTo(currencyList) { arrayListOf(it) }
+      }
+    }
+  }
+
   // Handle Quote
+
   private fun getQuote() {
     viewModelScope.launch(Dispatchers.Default) {
-      try {
-        when (val response = client.httpRequestGetLive()) {
-          is ResponseOptionsQuote.SuccessResponse -> {
-            handleQuoteSuccess(response)
-          }
-          is ResponseOptionsQuote.ErrorResponse -> {
-            error.postValue(R.string.connection_error)
-            setQuoteFromDb()
-          }
+      when (val response = client.httpRequestGetLive()) {
+        is ResponseOptionsQuote.SuccessResponse -> {
+          handleQuoteSuccess(response)
         }
-      } catch (e: Exception) {
-        // Connection Problem
-        error.postValue(R.string.connection_error)
-        setQuoteFromDb()
+        is ResponseOptionsQuote.ErrorResponse -> {
+          error.postValue(R.string.connection_error)
+          setQuoteFromDb()
+        }
       }
     }
   }
 
   private fun handleQuoteSuccess(response: ResponseOptionsQuote.SuccessResponse) {
     if (response.data.success && response.data.quotes.isNotEmpty()) {
-      updateQuoteTableDB(response.data)
+      updateQuoteTableDb(response.data)
       setQuoteValue("BRL", "TO")
     } else {
       error.postValue(R.string.fetch_data_error)
@@ -134,7 +125,7 @@ class MainViewModel(
     }
   }
 
-  private fun updateQuoteTableDB(data: QuoteResponse) {
+  private fun updateQuoteTableDb(data: QuoteResponse) {
     val list = mutableListOf<QuoteEntity>()
     var id = 1
     data.quotes.forEach { entry ->
@@ -174,7 +165,6 @@ class MainViewModel(
       _liveValue.postValue(currencyFrom * currencyTo)
     }
   }
-
 
 }
 
