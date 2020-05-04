@@ -95,12 +95,17 @@ class ResultFragment : Fragment() {
           input.removeTextChangedListener(this)
           val cleanString = stringText.replace("[,.]".toRegex(), "")
           val parsed = cleanString.toDouble()
-          val formatter = DecimalFormat(currencyFormat)
-          val formatted = formatter.format(parsed / 100)
-
-          current = formatted
-          input.setText(formatted)
-          input.setSelection(formatted.length)
+          if (parsed != 0.0) {
+            val formatter = DecimalFormat(currencyFormat)
+            val formatted = formatter.format(parsed / 100)
+            current = formatted
+            input.setText(formatted)
+            input.setSelection(formatted.length)
+          } else {
+            current = ""
+            input.setText("")
+            currencyValue.setResult()
+          }
           input.addTextChangedListener(this)
         }
       }
