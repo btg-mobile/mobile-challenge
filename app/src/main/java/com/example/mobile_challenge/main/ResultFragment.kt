@@ -116,7 +116,7 @@ class ResultFragment : Fragment() {
 
     viewModel.error.observe(viewLifecycleOwner, Observer { error ->
       mainActivity.showProgressBar(false)
-      Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+      Toast.makeText(context, error?.let { getString(it) } ?: getString(R.string.connection_error), Toast.LENGTH_LONG).show()
     })
 
     viewModel.fromCode.observe(viewLifecycleOwner, Observer { code ->

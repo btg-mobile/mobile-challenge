@@ -14,7 +14,7 @@ import kotlinx.serialization.json.Json
 class ClientApi {
 
   private val url = "http://api.currencylayer.com"
-  private val key = "e8af0ceaeac239335961d0151a4507b7"
+  private val key = "01e1094551d9f88fa5c01ec84516c1fe"
 
   private val client = HttpClient(OkHttp)
 

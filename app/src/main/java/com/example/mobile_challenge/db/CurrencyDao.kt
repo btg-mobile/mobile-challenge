@@ -1,9 +1,6 @@
 package com.example.mobile_challenge.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.mobile_challenge.model.CurrencyEntity
 
 @Dao
@@ -19,4 +16,18 @@ interface CurrencyDao {
 
   @Delete
   fun delete(user: CurrencyEntity)
+
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  fun insert(entity: CurrencyEntity): Long
+
+  @Update(onConflict = OnConflictStrategy.REPLACE)
+  fun update(entity: CurrencyEntity)
+
+  @Transaction
+  fun upsert(entity: CurrencyEntity) {
+    val id = insert(entity)
+    if (id == -1L) {
+      update(entity)
+    }
+  }
 }
