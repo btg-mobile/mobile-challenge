@@ -10,17 +10,17 @@ import Foundation
 
 final class ClientApi {
   
-  static let shared = ClientApi()
+  // MARK: - Init
   
   private let url = "http://api.currencylayer.com"
   private let key = "01e1094551d9f88fa5c01ec84516c1fe"
-  
-  var session : URLSession?
+  private var session : URLSession?
   
   init() {
     session = URLSession.shared
   }
   
+  // MARK: - Fetch Currency
   
   func fetchCurrencyList(completionHandler: @escaping (ResponseOptionsCurrency) -> Void){
     let connection = session?.dataTask(with: URL(string: "\(url)/list?access_key=\(key)")!, completionHandler: { (data, response, error) in
@@ -45,8 +45,10 @@ final class ClientApi {
     connection?.resume()
   }
   
+  // MARK: - Fetch Quote
+  
   func fetchQuoteLive(completionHandler: @escaping (ResponseOptionsQuote) -> Void){
-    let connection = session?.dataTask(with: URL(string: "http://api.currencylayer.com/live?access_key=01e1094551d9f88fa5c01ec84516c1fe")!, completionHandler: { (data, response, error) in
+    let connection = session?.dataTask(with: URL(string: "\(url)/live?access_key=\(key)")!, completionHandler: { (data, response, error) in
       if let error = error {
         print("Error accessing swapi.co: \(error)")
         completionHandler(ResponseOptionsQuote.ErrorResponse("Error accessing swapi.co: \(error)"))
@@ -68,5 +70,5 @@ final class ClientApi {
     })
     connection?.resume()
   }
-
+  
 }

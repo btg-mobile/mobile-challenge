@@ -10,6 +10,8 @@ import Foundation
 
 class MainViewModel {
   
+  // MARK: - Init
+  
   // Handle Error
   let error = Observable<String>()
   
@@ -35,6 +37,8 @@ class MainViewModel {
     getCurrency(clientApi)
   }
   
+  // MARK: - Handle Currency
+  
   private func getCurrency(_ clientApi: ClientApi) {
     clientApi.fetchCurrencyList { (response) in
       switch (response) {
@@ -42,9 +46,9 @@ class MainViewModel {
         self.handleCurrencySucess(data)
         }
       case .ErrorResponse(let message): do {
-        self.error.property = message
+        print("ErrorResponse Currency\(message)")
+        self.error.value = message
         self.setCurrencyFromDb()
-        print(message)
         }
       }
     }
@@ -54,9 +58,9 @@ class MainViewModel {
     if data.success || !data.currencies.isEmpty{
       self.updateCurrencyTableDB(data: data)
     } else {
-      self.error.property = "Error while fetching data"
+      print("False Success Currency")
+      self.error.value = "Error while fetching data"
       self.setCurrencyFromDb()
-      print("False Sucess")
     }
   }
   
@@ -75,7 +79,6 @@ class MainViewModel {
       id+=1
     }
     self.currencyList = list
-    // Update Data base
     self.dataBase?.insertOrUpdateListCurrencyEntityTable(list: list)
   }
   
@@ -88,6 +91,8 @@ class MainViewModel {
     }
   }
   
+  // MARK: - Handle Quote
+  
   private func getQuote(_ clientApi: ClientApi) {
     clientApi.fetchQuoteLive { (response) in
       switch (response) {
@@ -95,9 +100,9 @@ class MainViewModel {
         self.handleQuoteSucess(data)
         }
       case .ErrorResponse(let message): do {
-        self.error.property = message
+        print("ErrorResponse Quote\(message)")
+        self.error.value = message
         self.setQuoteFromDb()
-        print(message)
         }
       }
     }
@@ -108,9 +113,9 @@ class MainViewModel {
       updateQuoteTableDB(data: data)
       setQuoteValue(code: "BRL", type: "TO")
     } else {
-      self.error.property = "Error while fetching data"
+      print("False Success Quote")
+      self.error.value = "Error while fetching data"
       self.setQuoteFromDb()
-      print("False Sucess")
     }
   }
   
@@ -130,7 +135,6 @@ class MainViewModel {
       id+=1
     }
     self.quotes = quoteList
-    // update database
     self.dataBase?.insertOrUpdateListQuoteEntityTable(list: quoteList)
   }
   
@@ -149,12 +153,12 @@ class MainViewModel {
     if (value as [QuoteEntity]?) != nil && value.count > 0 {
       if (type == "FROM") {
         self.currencyFrom = 1 / value[0].value
-        fromCode.property = (code)
+        fromCode.value = (code)
       } else {
         self.currencyTo = value[0].value
-        toCode.property = (code)
+        toCode.value = (code)
       }
-      liveValue.property = (currencyFrom * currencyTo)
+      liveValue.value = (currencyFrom * currencyTo)
     }
   }
 }

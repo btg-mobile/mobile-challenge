@@ -9,5 +9,7 @@
 import UIKit
 
 protocol ResultViewDelegate {
+  
   func openSelectionViewControler( button : UIButton )
+  
 }

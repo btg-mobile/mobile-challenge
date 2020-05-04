@@ -15,16 +15,16 @@ struct CurrencyEntity {
   let currencyName: String
   
   init(_ _id: Int, _ currencyCode: String,_ currencyName: String) {
-      self._id = _id
-      self.currencyCode = currencyCode
-      self.currencyName = currencyName
+    self._id = _id
+    self.currencyCode = currencyCode
+    self.currencyName = currencyName
   }
 }
 
 extension CurrencyEntity: Equatable {
-    static func == (lhs: CurrencyEntity, rhs: CurrencyEntity) -> Bool {
-        return
-            lhs.currencyCode == rhs.currencyCode &&
-            lhs.currencyName == rhs.currencyName
-    }
+  static func == (lhs: CurrencyEntity, rhs: CurrencyEntity) -> Bool {
+    return
+      lhs.currencyCode == rhs.currencyCode &&
+        lhs.currencyName == rhs.currencyName
+  }
 }

@@ -12,6 +12,8 @@ private let reuseIdentifer = "SelectionViewCell"
 
 class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
   
+  // MARK: - Init
+  
   private let appDelegate = UIApplication.shared.delegate as! AppDelegate
   private var viewModel : MainViewModel?
   private let searchBar = UISearchBar()
@@ -23,7 +25,6 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     setupView()
   }
   
@@ -67,8 +68,6 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
   // MARK: - Configure Sort
   
   @objc func handleSortToggle(_ sender : UIBarButtonItem) {
-    // show sort options
-    print("Sort")
     self.view.endEditing(true)
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     alert.addAction(UIAlertAction(title: "Sort by Code", style: .default , handler:{ (UIAlertAction)in
@@ -130,14 +129,14 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
     self.tableView.reloadData()
   }
   
-  // SearchBar filter
+  // MARK: SearchBar filter
+  
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     if searchBar.text!.count > 1 {
       let filter = currencyList.filter { (currency) -> Bool in
         currency.currencyCode.lowercased().contains(String(searchBar.text!).lowercased()) ||
           currency.currencyName.lowercased().contains(String(searchBar.text!).lowercased())
       }
-      
       if filter != filterItems {
         filterItems = filter
         self.tableView.reloadData()
@@ -151,7 +150,6 @@ class SelectionViewController: UITableViewController,  UISearchBarDelegate  {
   // MARK: - Table view data source
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
     return filterItems.count
   }
   

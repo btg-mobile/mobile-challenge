@@ -9,6 +9,8 @@
 import UIKit
 
 
+// MARK: - UITextField
+
 extension UITextField {
   
   func underlined() {
@@ -22,27 +24,27 @@ extension UITextField {
   }
 }
 
+// MARK: - String
+
 extension String {
-    func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
-    }
-
-    func substring(from: Int) -> String {
-        let fromIndex = index(from: from)
-        return String(self[fromIndex...])
-    }
-
-    func substring(to: Int) -> String {
-        let toIndex = index(from: to)
-        return String(self[..<toIndex])
-    }
-
-    func substring(with r: Range<Int>) -> String {
-        let startIndex = index(from: r.lowerBound)
-        let endIndex = index(from: r.upperBound)
-        return String(self[startIndex..<endIndex])
-    }
+  
+  func index(from: Int) -> Index {
+    return self.index(startIndex, offsetBy: from)
+  }
+  
+  func substring(from: Int) -> String {
+    let fromIndex = index(from: from)
+    return String(self[fromIndex...])
+  }
+  
+  func substring(to: Int) -> String {
+    let toIndex = index(from: to)
+    return String(self[..<toIndex])
+  }
+  
 }
+
+// MARK: - UIViewController
 
 extension UIViewController {
   
@@ -70,7 +72,10 @@ extension UIViewController {
   
 }
 
+// MARK: - UIAlertController
+
 extension UIAlertController {
+  
   func pruneNegativeWidthConstraints() {
     for subView in self.view.subviews {
       for constraint in subView.constraints where constraint.debugDescription.contains("width == - 16") {
@@ -78,5 +83,6 @@ extension UIAlertController {
       }
     }
   }
+  
 }
 

@@ -43,7 +43,7 @@
 		5B893A35245E4652009696E5 /* ResponseOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseOptions.swift; sourceTree = "<group>"; };
 		5B893A37245E794B009696E5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		5B893A39245E7CAF009696E5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		5B94BC35245E01D100CA3838 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B94BC35245E01D100CA3838 /* Live Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Live Currency.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B94BC38245E01D100CA3838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B94BC3A245E01D100CA3838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5B94BC3C245E01D100CA3838 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		5B94BC36245E01D100CA3838 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5B94BC35245E01D100CA3838 /* mobile-challenge.app */,
+				5B94BC35245E01D100CA3838 /* Live Currency.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 			);
 			name = "mobile-challenge";
 			productName = "mobile-challenge";
-			productReference = 5B94BC35245E01D100CA3838 /* mobile-challenge.app */;
+			productReference = 5B94BC35245E01D100CA3838 /* Live Currency.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -435,7 +435,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile-challenge.kivia-brito";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Live Currency";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile-challenge.kivia-brito";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Live Currency";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

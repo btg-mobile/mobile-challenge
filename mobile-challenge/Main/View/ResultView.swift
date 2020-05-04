@@ -10,7 +10,7 @@ import UIKit
 
 class ResultView: UIView {
   
-  // MARK: Properties
+  // MARK: - Properties
   
   var delegate : ResultViewDelegate?
   
@@ -20,7 +20,7 @@ class ResultView: UIView {
     progressSpinner.isHidden = true
     return progressSpinner
   }()
-    
+  
   lazy var fromInput : UITextField = {
     let txtField = UITextField()
     txtField.backgroundColor = .clear
@@ -74,7 +74,7 @@ class ResultView: UIView {
     return button
   }()
   
-  // MARK: Init
+  // MARK: - Init
   
   override init(frame: CGRect) { // Need receive userModel
     super.init(frame: frame)
@@ -101,7 +101,6 @@ class ResultView: UIView {
       fromButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50),
       fromButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20)])
     
-
     self.addSubview(fromInput)
     fromInput.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -132,6 +131,8 @@ class ResultView: UIView {
     super.layoutSubviews()
     fromInput.underlined()
   }
+  
+  // MARK: - Handle Buttons
   
   @objc func openSelection(_ sender: UIButton) {
     delegate?.openSelectionViewControler(button :sender)

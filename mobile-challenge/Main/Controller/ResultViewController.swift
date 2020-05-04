@@ -10,12 +10,12 @@ import UIKit
 
 class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDelegate {
   
+  // MARK: - Init
+  
   private var rootView : ResultView { return self.view as! ResultView }
   private let appDelegate = UIApplication.shared.delegate as! AppDelegate
   private var viewModel : MainViewModel?
   private var currencyValue = 0.0
-  
-  // MARK: Init
   
   override func loadView() {
     self.view = ResultView(frame: UIScreen.main.bounds)
@@ -23,17 +23,17 @@ class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDel
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     viewModel = appDelegate.mainViewModel
     rootView.delegate = self
     rootView.progressSpinner.isHidden = false
     rootView.fromInput.delegate = self
     configureNavigationBar()
     observers()
-    
   }
   
-  func configureNavigationBar() {
+  // MARK: - Configure NavigationBar
+  
+  private func configureNavigationBar() {
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     self.navigationController?.navigationBar.barTintColor = UIColor(named: "app_primary")
     self.navigationController?.navigationBar.barStyle = .black
@@ -43,7 +43,7 @@ class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDel
     self.navigationItem.title = "Live Currency"
   }
   
-  // MARK: Button
+  // MARK: - Handle Button
   
   func textFieldDidChangeSelection(_ textField: UITextField) {
     textField.text = currencyInputFormatting(string: textField.text)
@@ -51,7 +51,6 @@ class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDel
   }
   
   func openSelectionViewControler(button: UIButton) {
-    print("Button Clicked")
     let controller = SelectionViewController()
     controller.code = String((button.titleLabel?.text!)!)
     if button == rootView.fromButton {
@@ -62,10 +61,9 @@ class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDel
     self.navigationController?.pushViewController(controller, animated: true)
   }
   
-  // MARK: Observers
+  // MARK: - Observers
   
-  func observers() {
-    
+  private func observers() {
     viewModel?.liveValue.observe = { (value) in
       // show progress bar
       self.rootView.progressSpinner.isHidden = true
@@ -74,31 +72,25 @@ class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDel
       // set currency result
       self.setResult(value: value)
     }
-    
     viewModel?.error.observe = { (error) in
       // stop progress bar
       self.rootView.progressSpinner.isHidden = true
       // show toast
       self.showToast(message: error)
     }
-    
     viewModel?.fromCode.observe = { (code) in
       // set button title
       self.rootView.fromButton.setTitle(code, for: .normal)
     }
-    
-    
     viewModel?.toCode.observe = { (code) in
       // set button title
-       self.rootView.toButton.setTitle(code, for: .normal)
+      self.rootView.toButton.setTitle(code, for: .normal)
     }
-    
   }
   
-  // MARK: Result
+  // MARK: - Result
   
-  func setResult(value : Double) {
-    print("double \(value)")
+  private func setResult(value : Double) {
     let stringText = rootView.fromInput.text
     var finalResult = 0.0
     if (stringText == "") {
@@ -114,30 +106,25 @@ class ResultViewController: UIViewController, ResultViewDelegate, UITextFieldDel
     rootView.toResult.text = numberFormatter.string(from: NSNumber(value: finalResult))?.substring(from: 1)
   }
   
+  // Formatting text for currency input textField
   
-  // formatting text for currency textField
-  func currencyInputFormatting(string: String?) -> String {
+  private func currencyInputFormatting(string: String?) -> String {
     if let string = string {
       var number: NSNumber!
       let formatter = NumberFormatter()
       formatter.numberStyle = .currencyAccounting
       formatter.maximumFractionDigits = 2
       formatter.minimumFractionDigits = 2
-
       var amountWithPrefix = string
-
       // remove from String: "$", ".", ","
       let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
       amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.count), withTemplate: "")
-
-    let double = (amountWithPrefix as NSString).doubleValue
+      let double = (amountWithPrefix as NSString).doubleValue
       number = NSNumber(value: (double / 100))
-
       // if first number is 0 or all numbers were deleted
       guard number != 0 as NSNumber else {
-          return ""
+        return ""
       }
-
       return formatter.string(from: number)!.substring(from: 1)
     } else {
       return ""
