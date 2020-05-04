@@ -87,6 +87,8 @@ class ResultView: UIView {
   
   func setUpAutoLayout() {
     backgroundColor = .white
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    self.addGestureRecognizer(tap)
     
     progressSpinner.translatesAutoresizingMaskIntoConstraints = false
     self.addSubview(progressSpinner)
@@ -137,4 +139,9 @@ class ResultView: UIView {
   @objc func openSelection(_ sender: UIButton) {
     delegate?.openSelectionViewControler(button :sender)
   }
+  
+  @objc func dismissKeyboard() {
+    fromInput.endEditing(true)
+  }
+  
 }

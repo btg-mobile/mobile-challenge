@@ -105,3 +105,11 @@ extension Dispatch {
     }
 }
 
+extension Thread {
+  
+  class func printCurrent(method: String) {
+        print("\r⚡️: \(Thread.current)\r" + "🏭: \(OperationQueue.current?.underlyingQueue?.label ?? "None")\r" + "METHOD: \(method)\r")
+    }
+  
+}
+

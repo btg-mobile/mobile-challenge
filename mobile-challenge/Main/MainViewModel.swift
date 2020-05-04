@@ -31,6 +31,7 @@ class MainViewModel {
   var dataBase : AppDataBase?
   
   init(application: AppDelegate) {
+    Thread.printCurrent(method: "init - MainViewModel")
     dataBase = application.dataBase
     guard let clientApi = application.clientApi else { return }
     getQuote(clientApi)

@@ -148,9 +148,9 @@
 		5B94BC4E245E022800CA3838 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5B893A37245E794B009696E5 /* MainViewModel.swift */,
 				5B94BC4C245E020D00CA3838 /* Controller */,
 				5B94BC4D245E021B00CA3838 /* View */,
-				5B893A37245E794B009696E5 /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";

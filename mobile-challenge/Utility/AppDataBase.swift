@@ -23,6 +23,7 @@ class AppDataBase {
   }
   
   func createDataBase() {
+    Thread.printCurrent(method: "createDataBase - AppDataBase" )
     let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
       .appendingPathComponent("mobile-challenge.sqlite")
     if sqlite3_open_v2(fileURL.path,&db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil) != SQLITE_OK {
@@ -41,6 +42,7 @@ class AppDataBase {
   // MARK: - Currency Table
   
   func insertOrUpdateListCurrencyEntityTable(list : [CurrencyEntity]) {
+    Thread.printCurrent(method: "insertOrUpdateListCurrencyEntityTable - AppDataBase")
     let actualList = self.selectAllCurrencyEntityTable()
     list.forEach { (entity) in
       let filter = actualList.first { (quote) -> Bool in
@@ -128,6 +130,7 @@ class AppDataBase {
   // MARK: - Quote Table
   
   func insertOrUpdateListQuoteEntityTable(list : [QuoteEntity]) {
+    Thread.printCurrent(method: "insertOrUpdateListQuoteEntityTable - AppDataBase")
     let actualList = self.selectAllQuoteEntityTable()
     list.forEach { (entity) in
       let filter = actualList.first { (quote) -> Bool in
