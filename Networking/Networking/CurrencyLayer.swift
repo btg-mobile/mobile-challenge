@@ -29,24 +29,27 @@ public enum CurrencyLayer {
     }
 }
 
-public func supportedCurrencies(_ bundle: Bundle = .main) -> AnyPublisher<[Currency], R.RequestError> {
-    let headers = [ "access_key": Endpoint.apiKey(bundle) ]
-    return R.get(from: .supportedCurrencies(bundle), headers: headers, decoder: JSONDecoder())
-        .map { (decodedResponse: R.RequestDecodedResponse<CurrencyLayer.SupportedCurrencies>) -> [Currency] in
-            decodedResponse.data.currencies.map { Currency(abbreviation: $0.key, fullName: $0.value) }
-        }.eraseToAnyPublisher()
+extension Requester {
+    public func supportedCurrencies(_ bundle: Bundle = .main) -> AnyPublisher<[Currency], RequestError> {
+        let parameters = [ "access_key": Endpoint.apiKey(bundle) ]
+        return get(from: .supportedCurrencies(bundle), queryParameters: parameters, decoder: JSONDecoder())
+            .map { (decodedResponse: RequestDecodedResponse<CurrencyLayer.SupportedCurrencies>) -> [Currency] in
+                decodedResponse.data.currencies.map { Currency(abbreviation: $0.key, fullName: $0.value) }
+            }.eraseToAnyPublisher()
+    }
+
+    public func realTimeRates(_ bundle: Bundle = .main) -> AnyPublisher<[Quote], RequestError> {
+        let parameters = [ "access_key": Endpoint.apiKey(bundle) ]
+        return get(from: .realTimeRates(bundle), queryParameters: parameters, decoder: JSONDecoder())
+            .map { (decodedResponse: RequestDecodedResponse<CurrencyLayer.RealTimeRates>) -> [Quote] in
+                decodedResponse.data.quotes.map { quote in
+                    let pivo = quote.key.index(quote.key.startIndex, offsetBy: 3)
+                    let first = quote.key[..<pivo]
+                    let second = quote.key[pivo...]
+                    return Quote(String(first), String(second), quote.value)
+                }
+            }.eraseToAnyPublisher()
+    }
 }
 
-public func realTimeRates(_ bundle: Bundle = .main) -> AnyPublisher<[Quote], R.RequestError> {
-    let headers = [ "access_key": Endpoint.apiKey(bundle) ]
-    return R.get(from: .supportedCurrencies(bundle), headers: headers, decoder: JSONDecoder())
-        .map { (decodedResponse: R.RequestDecodedResponse<CurrencyLayer.RealTimeRates>) -> [Quote] in
-            decodedResponse.data.quotes.map { quote in
-                let pivo = quote.key.index(quote.key.startIndex, offsetBy: 3)
-                let first = quote.key[..<pivo]
-                let second = quote.key[pivo...]
-                return Quote(String(first), String(second), quote.value)
-            }
-        }.eraseToAnyPublisher()
-}
 

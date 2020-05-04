@@ -28,3 +28,13 @@ public class Services {
         return casted
     }
 }
+
+public extension Services {
+    static func register<S>(_ service: S.Type, maker: @escaping () -> S) {
+        Services.default.register(service, maker: maker)
+    }
+    
+    static func make<S>(_ service: S.Type) -> S {
+        return Services.default.make(service)
+    }
+}

@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC19593024602902002DB0C9 /* Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19592F24602902002DB0C9 /* Requester.swift */; };
+		EC19593224602972002DB0C9 /* URLSessionRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593124602972002DB0C9 /* URLSessionRequester.swift */; };
+		EC19593424602AF1002DB0C9 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593324602AF1002DB0C9 /* RequestError.swift */; };
+		EC19593624602B05002DB0C9 /* RequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593524602B05002DB0C9 /* RequestResponse.swift */; };
+		EC19593824602B18002DB0C9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593724602B18002DB0C9 /* HTTPMethod.swift */; };
+		EC19593A24602B35002DB0C9 /* RequestDecodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593924602B35002DB0C9 /* RequestDecodeResponse.swift */; };
+		EC19593C24602D14002DB0C9 /* MockedRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593B24602D14002DB0C9 /* MockedRequester.swift */; };
 		EC3553A8245F857F0023502B /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EC3553A6245F857F0023502B /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC3553B0245F85F20023502B /* Requisitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3553AF245F85F20023502B /* Requisitions.swift */; };
 		EC3553B3245F86190023502B /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3553B2245F86190023502B /* HTTPStatusCode.swift */; };
 		EC3553B6245F86390023502B /* URL+withQueryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3553B5245F86390023502B /* URL+withQueryParameters.swift */; };
 		EC3553B9245F867E0023502B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3553B8245F867E0023502B /* Endpoint.swift */; };
@@ -49,10 +55,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EC19592F24602902002DB0C9 /* Requester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requester.swift; sourceTree = "<group>"; };
+		EC19593124602972002DB0C9 /* URLSessionRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequester.swift; sourceTree = "<group>"; };
+		EC19593324602AF1002DB0C9 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		EC19593524602B05002DB0C9 /* RequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponse.swift; sourceTree = "<group>"; };
+		EC19593724602B18002DB0C9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		EC19593924602B35002DB0C9 /* RequestDecodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDecodeResponse.swift; sourceTree = "<group>"; };
+		EC19593B24602D14002DB0C9 /* MockedRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedRequester.swift; sourceTree = "<group>"; };
 		EC3553A3245F857F0023502B /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC3553A6245F857F0023502B /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		EC3553A7245F857F0023502B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC3553AF245F85F20023502B /* Requisitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requisitions.swift; sourceTree = "<group>"; };
 		EC3553B2245F86190023502B /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
 		EC3553B5245F86390023502B /* URL+withQueryParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+withQueryParameters.swift"; sourceTree = "<group>"; };
 		EC3553B8245F867E0023502B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -130,8 +142,12 @@
 		EC3553B1245F85F90023502B /* Generic */ = {
 			isa = PBXGroup;
 			children = (
-				EC3553AF245F85F20023502B /* Requisitions.swift */,
+				EC19592F24602902002DB0C9 /* Requester.swift */,
+				EC19593524602B05002DB0C9 /* RequestResponse.swift */,
+				EC19593924602B35002DB0C9 /* RequestDecodeResponse.swift */,
+				EC19593324602AF1002DB0C9 /* RequestError.swift */,
 				EC3553B2245F86190023502B /* HTTPStatusCode.swift */,
+				EC19593724602B18002DB0C9 /* HTTPMethod.swift */,
 			);
 			name = Generic;
 			sourceTree = "<group>";
@@ -147,6 +163,7 @@
 		EC3553B7245F866D0023502B /* Specialized */ = {
 			isa = PBXGroup;
 			children = (
+				EC19593124602972002DB0C9 /* URLSessionRequester.swift */,
 				EC3553BA245F875C0023502B /* CurrencyLayer.swift */,
 				EC3553B8245F867E0023502B /* Endpoint.swift */,
 			);
@@ -182,6 +199,7 @@
 		EC3553F4245F91C50023502B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				EC19593B24602D14002DB0C9 /* MockedRequester.swift */,
 				EC3553EC245F91360023502B /* RequisitionsTests.swift */,
 				EC3553EE245F91660023502B /* RequisitionsTests+get.swift */,
 				EC3553F0245F91820023502B /* RequisitionsTests+post.swift */,
@@ -312,11 +330,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC19593624602B05002DB0C9 /* RequestResponse.swift in Sources */,
+				EC19593424602AF1002DB0C9 /* RequestError.swift in Sources */,
 				EC3553B6245F86390023502B /* URL+withQueryParameters.swift in Sources */,
 				EC3553B3245F86190023502B /* HTTPStatusCode.swift in Sources */,
+				EC19593024602902002DB0C9 /* Requester.swift in Sources */,
+				EC19593224602972002DB0C9 /* URLSessionRequester.swift in Sources */,
 				EC3553BB245F875C0023502B /* CurrencyLayer.swift in Sources */,
 				EC3553B9245F867E0023502B /* Endpoint.swift in Sources */,
-				EC3553B0245F85F20023502B /* Requisitions.swift in Sources */,
+				EC19593824602B18002DB0C9 /* HTTPMethod.swift in Sources */,
+				EC19593A24602B35002DB0C9 /* RequestDecodeResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +349,7 @@
 			files = (
 				EC3553F1245F91820023502B /* RequisitionsTests+post.swift in Sources */,
 				EC3553ED245F91360023502B /* RequisitionsTests.swift in Sources */,
+				EC19593C24602D14002DB0C9 /* MockedRequester.swift in Sources */,
 				EC3553F3245F919C0023502B /* CurrencyLayerTests.swift in Sources */,
 				EC3553EF245F91660023502B /* RequisitionsTests+get.swift in Sources */,
 			);

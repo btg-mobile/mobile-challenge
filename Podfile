@@ -7,6 +7,7 @@ workspace 'Currency'
 target 'Screens' do
     project 'Screens/Screens.xcodeproj'
     pod 'SnapKit', '~> 5.0.0'
+    pod 'SQLite.swift', '~> 0.12.0'
 end
 
 target 'Storage' do

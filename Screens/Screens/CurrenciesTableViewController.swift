@@ -7,19 +7,15 @@
 //
 
 import UIKit
+import Models
 
 class CurrenciesTableViewController: UITableViewController, Drawable {
     
-    var currencies = [Model]() { didSet { filteredCurrencies = currencies } }
-    private var filteredCurrencies = [Model]() { didSet { tableView.reloadData() } }
+    var currencies = [Currency]() { didSet { filteredCurrencies = currencies } }
+    private var filteredCurrencies = [Currency]() { didSet { tableView.reloadData() } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let model = CurrenciesTableViewController.Model(abbreviation: "AED", fullName: "United Arab Emirates Dirham")
-        currencies = Array(repeating: model, count: 7)
-        currencies.append(.init(abbreviation: "BRL", fullName: "Real Brasileiro"))
-        
         draw()
     }
     
@@ -32,6 +28,7 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.view.backgroundColor = #colorLiteral(red: 0.2119999975, green: 0.2630000114, blue: 0.3330000043, alpha: 1)
         navigationController?.navigationItem.searchController?.searchBar.tintColor = .init(white: 1, alpha: 0.8)
+        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
         let searchBarAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         searchBarAppearance.textColor = .init(white: 1, alpha: 0.8)
         let magnifying = UIImageView.appearance(whenContainedInInstancesOf: [UISearchBar.self])
@@ -76,18 +73,6 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
         cell.fullName.text = currency.fullName
         
         return cell
-    }
-
-    struct Model: Fuseable {
-        let abbreviation: String
-        let fullName: String
-        
-        var properties: [FuseProperty] {
-            return [
-                FuseProperty(name: abbreviation),
-                FuseProperty(name: fullName)
-            ]
-        }
     }
 }
 
@@ -157,6 +142,15 @@ fileprivate class Cell: UITableViewCell, Drawable {
         let bottomLine = UILabel()
         self.bottomLine = bottomLine
         addSubview(bottomLine)
+    }
+}
+
+extension Currency: Fuseable {
+    public var properties: [FuseProperty] {
+        return [
+            FuseProperty(name: abbreviation),
+            FuseProperty(name: fullName)
+        ]
     }
 }
 

@@ -12,9 +12,9 @@ import Models
 import Service
 
 public protocol Storage {
-    func write(_ currencies: [Currency]) -> AnyPublisher<Void, StorageError>
+    func write(_ currencies: [Currency]) -> AnyPublisher<[Currency], StorageError>
     func read() -> AnyPublisher<[Row<Currency>], StorageError>
-    func write(_ quotas: [Quote]) -> AnyPublisher<Void, StorageError>
+    func write(_ quotas: [Quote]) -> AnyPublisher<[Quote], StorageError>
     func read() -> AnyPublisher<[Row<Quote>], StorageError>
 }
 

@@ -30,7 +30,33 @@
 		EC7E08BA2459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08B82459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf */; };
 		EC7E08BD2459CF1B00D74D42 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08BB2459CF1A00D74D42 /* SF-Pro-Text-SemiboldItalic.otf */; };
 		EC7E08BE2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC7E08BC2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf */; };
+		ECD83808245FDBB500EBF6A4 /* CurrienciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD83807245FDBB500EBF6A4 /* CurrienciesViewModel.swift */; };
+		ECD8380A245FDCB500EBF6A4 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83809245FDCB500EBF6A4 /* Models.framework */; };
+		ECD8380B245FDCB500EBF6A4 /* Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83809245FDCB500EBF6A4 /* Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECD8380E245FDCB800EBF6A4 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD8380D245FDCB800EBF6A4 /* Networking.framework */; };
+		ECD8380F245FDCB800EBF6A4 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECD8380D245FDCB800EBF6A4 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECD83811245FDCBD00EBF6A4 /* Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83810245FDCBD00EBF6A4 /* Service.framework */; };
+		ECD83812245FDCBD00EBF6A4 /* Service.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83810245FDCBD00EBF6A4 /* Service.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECD83814245FDCC100EBF6A4 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83813245FDCC100EBF6A4 /* Storage.framework */; };
+		ECD83815245FDCC100EBF6A4 /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83813245FDCC100EBF6A4 /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ECD8380C245FDCB500EBF6A4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ECD83812245FDCBD00EBF6A4 /* Service.framework in Embed Frameworks */,
+				ECD8380F245FDCB800EBF6A4 /* Networking.framework in Embed Frameworks */,
+				ECD83815245FDCC100EBF6A4 /* Storage.framework in Embed Frameworks */,
+				ECD8380B245FDCB500EBF6A4 /* Models.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		53CD970D654B8A06066EC038 /* Pods_Screens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Screens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +85,11 @@
 		EC7E08B82459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		EC7E08BB2459CF1A00D74D42 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		EC7E08BC2459CF1B00D74D42 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		ECD83807245FDBB500EBF6A4 /* CurrienciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrienciesViewModel.swift; sourceTree = "<group>"; };
+		ECD83809245FDCB500EBF6A4 /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECD8380D245FDCB800EBF6A4 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECD83810245FDCBD00EBF6A4 /* Service.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Service.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECD83813245FDCC100EBF6A4 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F36F9FA876BD56A18E9D1D98 /* Pods-Screens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screens.debug.xcconfig"; path = "Target Support Files/Pods-Screens/Pods-Screens.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +98,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD8380A245FDCB500EBF6A4 /* Models.framework in Frameworks */,
 				9E16FD91BF9B5EDF2099A4F8 /* Pods_Screens.framework in Frameworks */,
+				ECD83814245FDCC100EBF6A4 /* Storage.framework in Frameworks */,
+				ECD83811245FDCBD00EBF6A4 /* Service.framework in Frameworks */,
+				ECD8380E245FDCB800EBF6A4 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +122,10 @@
 		C6DB46F1F466C1D80D1A7CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECD83813245FDCC100EBF6A4 /* Storage.framework */,
+				ECD83810245FDCBD00EBF6A4 /* Service.framework */,
+				ECD8380D245FDCB800EBF6A4 /* Networking.framework */,
+				ECD83809245FDCB500EBF6A4 /* Models.framework */,
 				53CD970D654B8A06066EC038 /* Pods_Screens.framework */,
 			);
 			name = Frameworks;
@@ -116,6 +155,7 @@
 			children = (
 				EC51087B245B0E59005B902F /* CurrenciesViewController.swift */,
 				EC1A156F245C3F6B00F20499 /* CurrenciesTableViewController.swift */,
+				ECD83807245FDBB500EBF6A4 /* CurrienciesViewModel.swift */,
 			);
 			name = Currencies;
 			sourceTree = "<group>";
@@ -232,6 +272,7 @@
 				EC7E088024599DC000D74D42 /* Frameworks */,
 				EC7E088124599DC000D74D42 /* Resources */,
 				F6BE372F0B99FB0461558C65 /* [CP] Embed Pods Frameworks */,
+				ECD8380C245FDCB500EBF6A4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -346,6 +387,7 @@
 				EC355398245F71A40023502B /* String+Fuse.swift in Sources */,
 				EC355396245F71710023502B /* FuseUtilities.swift in Sources */,
 				EC7E088724599DC100D74D42 /* AppDelegate.swift in Sources */,
+				ECD83808245FDBB500EBF6A4 /* CurrienciesViewModel.swift in Sources */,
 				EC7E088924599DC100D74D42 /* SceneDelegate.swift in Sources */,
 				EC7E08A62459B56B00D74D42 /* Drawable.swift in Sources */,
 				EC355393245F6FC80023502B /* Fuse.swift in Sources */,

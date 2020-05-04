@@ -21,7 +21,7 @@ public class SQLiteStorage: Storage {
             .eraseToAnyPublisher()
     }
     
-    public func write(_ currencies: [Currency]) -> AnyPublisher<Void, StorageError> {
+    public func write(_ currencies: [Currency]) -> AnyPublisher<[Currency], StorageError> {
         return connection
             .tryMap { db in
                 do {
@@ -35,30 +35,30 @@ public class SQLiteStorage: Storage {
                 } catch {
                     throw StorageError.insertion(error)
                 }
+            return currencies
         }
         .mapError { $0 as? StorageError ?? .unknown($0) }
-        .map { () }
         .eraseToAnyPublisher()
     }
     
-    public func write(_ quotas: [Quote]) -> AnyPublisher<Void, StorageError> {
+    public func write(_ quotes: [Quote]) -> AnyPublisher<[Quote], StorageError> {
         return connection
             .tryMap { db in
                 do {
-                    try quotas.forEach { quota in
+                    try quotes.forEach { quote in
                         try db.run(quotesTable.insert(
                             or: .replace,
-                            firstCurrencyExpr <- quota.first,
-                            secondCurrencyExpr <- quota.second,
-                            valueExpr <- quota.value,
+                            firstCurrencyExpr <- quote.first,
+                            secondCurrencyExpr <- quote.second,
+                            valueExpr <- quote.value,
                             updatedAtExpr <- Date()))
                     }
                 } catch {
                     throw StorageError.insertion(error)
                 }
+            return quotes
         }
         .mapError { $0 as? StorageError ?? .unknown($0) }
-        .map { () }
         .eraseToAnyPublisher()
     }
     

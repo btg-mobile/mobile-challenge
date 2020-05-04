@@ -8,6 +8,7 @@
 
 import XCTest
 import Combine
+import Service
 @testable import Networking
 
 class RequisitionsTests: XCTestCase {
@@ -16,11 +17,12 @@ class RequisitionsTests: XCTestCase {
         let url = URL(string: "https://example.com")!
         let data = "abc".data(using: .utf8)
         let request = URLRequest(url: url)
-        let sentResponse = R.RequestResponse(data: data, status: .ok, request: request)
-        R.mockedResponse = Future { $0(.success(sentResponse)) }
+        let sentResponse = RequestResponse(data: data, status: .ok, request: request)
+        Services.default.register(Requester.self) { MockedRequester(mock: .success(sentResponse)) }
+        let requester: Requester = Services.make(Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
-        _ = R.request(at: url, method: .get)
+        _ = requester.request(at: url, method: .get, headers: [:], queryParameters: [:], body: nil)
             .sink(receiveCompletion: { _ in }) { receivedResponse in
                 XCTAssert(receivedResponse == sentResponse, "The mocked response sent to the request isn't the same as the received.")
                 expectation.fulfill()
@@ -30,14 +32,15 @@ class RequisitionsTests: XCTestCase {
     }
     
     func testFailedResponseEqualToSent() {
-        R.mockedResponse = Future { $0(.failure(.notHTTPURLResponse)) }
+        Services.default.register(Requester.self) { MockedRequester(mock: .failure(.notHTTPURLResponse)) }
+        let requester: Requester = Services.make(Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
-        _ = R.request(at: URL(string: "https://example.com")!, method: .get)
+        _ = requester.request(at: URL(string: "https://example.com")!, method: .get, headers: [:], queryParameters: [:], body: nil)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    XCTAssert(error == R.RequestError.notHTTPURLResponse, "The mocked sent error isn't the same as the received.")
+                    XCTAssert(error == RequestError.notHTTPURLResponse, "The mocked sent error isn't the same as the received.")
                     expectation.fulfill()
                 default: break
                 }

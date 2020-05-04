@@ -7,7 +7,24 @@
 //
 
 import UIKit
+import Storage
+import Networking
+import Service
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate { }
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        return true
+    }
+    
+    private func registerServices() {
+        Services.register(Storage.self) {
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+            return SQLiteStorage(.uri("\(path)/db.sqlite3"))
+        }
+        
+        Services.register(Requester.self) { URLSessionRequester() }
+    }
+}
 

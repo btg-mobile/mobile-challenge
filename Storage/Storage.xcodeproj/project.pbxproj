@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,9 @@
 		EC35543C245FA75D0023502B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC35543B245FA75D0023502B /* Storage.swift */; };
 		EC983C25245FC0450072B3B0 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC983C24245FC0450072B3B0 /* Models.framework */; };
 		EC983C26245FC0450072B3B0 /* Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC983C24245FC0450072B3B0 /* Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC983C27245FC0AB0072B3B0 /* Pods_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DDAC7D230A51C6FD886839 /* Pods_Storage.framework */; };
 		ECB11C4D245FB6AF00EE6D01 /* Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB11C4C245FB6AF00EE6D01 /* Service.framework */; };
 		ECB11C4E245FB6AF00EE6D01 /* Service.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECB11C4C245FB6AF00EE6D01 /* Service.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECD83816245FE45200EBF6A4 /* Pods_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DDAC7D230A51C6FD886839 /* Pods_Storage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,7 @@
 			files = (
 				ECB11C4D245FB6AF00EE6D01 /* Service.framework in Frameworks */,
 				EC983C25245FC0450072B3B0 /* Models.framework in Frameworks */,
-				EC983C27245FC0AB0072B3B0 /* Pods_Storage.framework in Frameworks */,
+				ECD83816245FE45200EBF6A4 /* Pods_Storage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

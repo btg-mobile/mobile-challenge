@@ -9,6 +9,7 @@
 import XCTest
 import Models
 import Combine
+import Service
 @testable import Networking
 
 fileprivate let testCurrencies = [
@@ -32,9 +33,11 @@ class CurrencyLayerTests: XCTestCase {
         let bundle = Bundle(identifier: "com.almeidaws.Currency.NetworkingTests")!
         let fileURL = bundle.url(forResource: "supported_currencies_successful", withExtension: "txt")!
         let data = try! Data(contentsOf: fileURL)
-        R.mockedResponse = Future { promise in promise(.success(R.RequestResponse(data: data, status: .ok, request: URLRequest(url: fileURL)))) }
+        Services.default.register(Requester.self) { MockedRequester(mock: .success(RequestResponse(data: data, status: .ok, request: URLRequest(url: fileURL)))) }
+        let requester: Requester = Services.make(Requester.self)
+        
         let expectation = self.expectation(description: "Wait response")
-        _ = supportedCurrencies(bundle).sink(receiveCompletion: { completion in }) { currencies in
+        _ = requester.supportedCurrencies(bundle).sink(receiveCompletion: { completion in }) { currencies in
             assert(testCurrencies == currencies.sorted(), "Read currencies aren't equal to the expected.")
             expectation.fulfill()
         }
@@ -46,9 +49,11 @@ class CurrencyLayerTests: XCTestCase {
         let bundle = Bundle(identifier: "com.almeidaws.Currency.NetworkingTests")!
         let fileURL = bundle.url(forResource: "real_time_rates_successful", withExtension: "txt")!
         let data = try! Data(contentsOf: fileURL)
-        R.mockedResponse = Future { promise in promise(.success(R.RequestResponse(data: data, status: .ok, request: URLRequest(url: fileURL)))) }
+        Services.default.register(Requester.self) { MockedRequester(mock: .success(RequestResponse(data: data, status: .ok, request: URLRequest(url: fileURL)))) }
+        let requester: Requester = Services.make(Requester.self)
+        
         let expectation = self.expectation(description: "Wait response")
-        _ = realTimeRates(bundle).sink(receiveCompletion: { completion in }) { quotes in
+        _ = requester.realTimeRates(bundle).sink(receiveCompletion: { completion in }) { quotes in
             assert(testQuotes == quotes.sorted(), "Read quotes aren't equal to the expected.")
             expectation.fulfill()
         }
