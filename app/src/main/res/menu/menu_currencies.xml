@@ -13,13 +13,13 @@
                     app:showAsAction="never"
                     android:orderInCategory="100"
                     android:id="@+id/menu_order_code"
-                    android:title="Code"
+                    android:title="@string/code"
                     android:icon="@drawable/ic_eraser"/>
             <item
                     app:showAsAction="never"
                     android:orderInCategory="100"
                     android:id="@+id/menu_order_descriptiont"
-                    android:title="Description"
+                    android:title="@string/description"
                     android:icon="@drawable/ic_eraser"/>
         </menu>
 

@@ -29,5 +29,6 @@
     <string name="description">Descrição</string>
     <string name="no_coins_found">Nenhum moeda encontrada</string>
     <string name="insert_text">Insira o texto</string>
+    <string name="code">Código</string>
 
 </resources>

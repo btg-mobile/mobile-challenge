@@ -1,10 +1,10 @@
 package com.hotmail.fignunes.btg.presentation.currencies.actions
 
 import android.content.Context
+import android.os.Build
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.hotmail.fignunes.btg.model.Currency
-import com.hotmail.fignunes.btg.repository.Repository
 import com.hotmail.fignunes.btg.repository.local.LocalCurrencyRepository
 import com.hotmail.fignunes.btg.repository.local.currency.entity.CurrencyDatabase
 import com.hotmail.fignunes.desafio_mobile.repository.remote.TestApp
@@ -17,13 +17,13 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(application = TestApp::class)
+@Config(application = TestApp::class, sdk = [Build.VERSION_CODES.P])
 class GetCurrenciesLocalTest {
 
-    private lateinit var applicationContext: Context
-    private lateinit var repository: Repository
     private lateinit var currencyDatabase: CurrencyDatabase
+    private lateinit var applicationContext: Context
     private lateinit var currencyRepository: LocalCurrencyRepository
+
     private val currencies = listOf(
         Currency("BRL","Brazilian Real"),
         Currency("ARS","Argentine Peso")
@@ -33,7 +33,6 @@ class GetCurrenciesLocalTest {
     fun before() {
         stopKoin()
         applicationContext = InstrumentationRegistry.getInstrumentation().targetContext.applicationContext
-        repository = Repository(applicationContext)
         currencyDatabase = Room.inMemoryDatabaseBuilder(applicationContext, CurrencyDatabase::class.java)
             .allowMainThreadQueries()
             .build()
@@ -41,16 +40,16 @@ class GetCurrenciesLocalTest {
     }
 
     @After
-    fun `delete currenc`() {
-        currencyRepository.deleteAll()
+    fun `close database`() {
         currencyDatabase.close()
     }
+
 
     @Test
     fun `get Currency when no Currency inserted`() {
         currencyRepository.getCurrencyAll()
             .test()
-            .assertNoValues()
+            .assertValue(listOf())
     }
 
     @Test
@@ -70,7 +69,7 @@ class GetCurrenciesLocalTest {
                 .andThen(deleteAll())
                 .andThen(getCurrencyAll())
                 .test()
-                .assertNoValues()
+                .assertValue(listOf())
         }
     }
 
