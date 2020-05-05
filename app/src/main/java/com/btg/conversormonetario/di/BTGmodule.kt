@@ -2,9 +2,9 @@ package com.btg.conversormonetario.di
 
 import android.app.Application
 import android.content.SharedPreferences
+import com.btg.conversormonetario.BuildConfig
 import com.btg.conversormonetario.business.database.DataManager
 import com.btg.conversormonetario.business.repository.BaseRepository
-import com.btg.conversormonetario.business.repository.ChooseCurrencyRepository
 import com.btg.conversormonetario.business.repository.CurrencyRepository
 import com.btg.conversormonetario.business.repository.WelcomeRepository
 import com.btg.conversormonetario.view.viewmodel.BaseViewModel
@@ -16,7 +16,7 @@ import com.btg.conversormonetario.view.adapter.SpinnerAdapter
 import com.btg.conversormonetario.view.fragment.BottomSheetOptionFragment
 import com.btg.conversormonetario.view.viewmodel.ConverterCurrencyViewModel
 import com.btg.conversormonetario.view.viewmodel.WelcomeViewModel
-import com.tim.comobile.data.service.CoroutineCallAdapterFactory
+import com.btg.conversormonetario.data.service.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -57,7 +57,6 @@ val repositoryModules = module {
     single { BaseRepository(get()) }
     single { WelcomeRepository(get()) }
     single { CurrencyRepository(get()) }
-    single { ChooseCurrencyRepository(get()) }
 }
 
 val dataManagerModules = module {
@@ -138,7 +137,7 @@ inline fun <reified T> createWebService(
 
 private fun configDebugLog(): HttpLoggingInterceptor {
     val log = HttpLoggingInterceptor()
-//    if (BuildConfig.DEBUG && BuildConfig.FLAVOR != "prdRelease")
-    log.level = HttpLoggingInterceptor.Level.BODY
+    if (BuildConfig.DEBUG)
+        log.level = HttpLoggingInterceptor.Level.BODY
     return log
 }

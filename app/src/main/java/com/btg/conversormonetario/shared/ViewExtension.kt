@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.btg.conversormonetario.R
 import com.btg.conversormonetario.view.listener.OnSingleClickListener
 import kotlinx.android.synthetic.main.custom_dialog.view.*

@@ -1,11 +1,9 @@
 package com.btg.conversormonetario.view.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.cardview.widget.CardView
@@ -15,9 +13,6 @@ import com.btg.conversormonetario.R
 import com.btg.conversormonetario.data.model.InfoCurrencyModel
 import com.btg.conversormonetario.view.viewmodel.ChooseCurrencyViewModel
 import kotlinx.android.synthetic.main.item_currency.view.*
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 open class ListCurrencyAdapter(
     var context: Context,

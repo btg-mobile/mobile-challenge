@@ -1,7 +1,6 @@
 package com.btg.conversormonetario.view.activity
 
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import com.btg.conversormonetario.R
 import com.btg.conversormonetario.shared.observeNonNull
 import com.btg.conversormonetario.view.viewmodel.WelcomeViewModel
