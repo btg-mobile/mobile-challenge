@@ -49,6 +49,14 @@ class CurrenciesViewController: UINavigationController, Drawable {
         let refreshControl = UIRefreshControl()
         tableViewController.tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(handleGoBack(_:)))
+        backButton.tintColor = .white
+        tableViewController.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc private func handleGoBack(_ sender: UIBarButtonItem) {
+        coordinator.dismiss(from: self)
     }
 }
 
