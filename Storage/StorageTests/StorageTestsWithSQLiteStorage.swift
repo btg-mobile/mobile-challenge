@@ -30,33 +30,39 @@ fileprivate let testQuotes = [
 class StorageTestsWithSQLiteStorage: XCTestCase {
 
     override func setUp() {
-        let services = Services.default
-        services.register(Storage.self) { SQLiteStorage(.inMemory) }
+        Services.register(Storage.self) { SQLiteStorage(.inMemory) }
     }
+    
+    var cancellables = Set<AnyCancellable>()
     
     func testWritingAndReadingCurrenciesBack() {
         let storage: Storage = Services.default.make(for: Storage.self)
         let expectation = self.expectation(description: "Wait write and read")
-        _ = storage.write(testCurrencies)
+        storage.write(testCurrencies)
             .flatMap { currencies -> AnyPublisher<[Row<Currency>], StorageError> in storage.read() }
             .map { $0.map { $0.model } }
-            .sink(receiveCompletion: { completion in }) { currencies in
+            .sink(receiveCompletion: { completion in
+                print(completion)
+            }) { currencies in
+                print(self)
                 XCTAssert(testCurrencies == currencies.sorted(), "Read currencies aren't equal to the written.")
                 expectation.fulfill()
-        }
+        }.store(in: &cancellables)
+        
         self.wait(for: [expectation], timeout: 0.1)
     }
     
     func testWritingAndReadingQuotesBack() {
         let storage: Storage = Services.default.make(for: Storage.self)
         let expectation = self.expectation(description: "Wait write and read")
-        _ = storage.write(testQuotes)
+        storage.write(testQuotes)
             .flatMap { quotes -> AnyPublisher<[Row<Quote>], StorageError> in storage.read() }
             .map { $0.map { $0.model } }
             .sink(receiveCompletion: { completion in }) { quotes in
                 XCTAssert(testQuotes == quotes.sorted(), "Read quotes aren't equal to the written.")
                 expectation.fulfill()
-        }
+        }.store(in: &cancellables)
+        
         self.wait(for: [expectation], timeout: 0.1)
     }
 
