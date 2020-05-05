@@ -44,6 +44,9 @@
 		ECD83812245FDCBD00EBF6A4 /* Service.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83810245FDCBD00EBF6A4 /* Service.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECD83814245FDCC100EBF6A4 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83813245FDCC100EBF6A4 /* Storage.framework */; };
 		ECD83815245FDCC100EBF6A4 /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECD83813245FDCC100EBF6A4 /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECE3C567246181260040F266 /* supported_currencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECE3C564246181260040F266 /* supported_currencies.txt */; };
+		ECE3C568246181260040F266 /* StaticRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3C565246181260040F266 /* StaticRequester.swift */; };
+		ECE3C569246181260040F266 /* real_time_rates.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECE3C566246181260040F266 /* real_time_rates.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -100,6 +103,9 @@
 		ECD8380D245FDCB800EBF6A4 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD83810245FDCBD00EBF6A4 /* Service.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Service.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD83813245FDCC100EBF6A4 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE3C564246181260040F266 /* supported_currencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = supported_currencies.txt; sourceTree = "<group>"; };
+		ECE3C565246181260040F266 /* StaticRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticRequester.swift; sourceTree = "<group>"; };
+		ECE3C566246181260040F266 /* real_time_rates.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = real_time_rates.txt; sourceTree = "<group>"; };
 		F36F9FA876BD56A18E9D1D98 /* Pods-Screens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screens.debug.xcconfig"; path = "Target Support Files/Pods-Screens/Pods-Screens.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +250,7 @@
 		EC7E08A42459B55A00D74D42 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				ECE3C563246181020040F266 /* StaticRequester */,
 				EC355394245F71640023502B /* Fuse */,
 				EC7E08A52459B56B00D74D42 /* Drawable.swift */,
 				EC195941246059C2002DB0C9 /* Configured.swift */,
@@ -273,6 +280,16 @@
 				EC7E08BB2459CF1A00D74D42 /* SF-Pro-Text-SemiboldItalic.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		ECE3C563246181020040F266 /* StaticRequester */ = {
+			isa = PBXGroup;
+			children = (
+				ECE3C566246181260040F266 /* real_time_rates.txt */,
+				ECE3C565246181260040F266 /* StaticRequester.swift */,
+				ECE3C564246181260040F266 /* supported_currencies.txt */,
+			);
+			name = StaticRequester;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,7 +360,9 @@
 				EC7E08BA2459CF0100D74D42 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				EC7E08B92459CF0100D74D42 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				EC7E08B52459CC0F00D74D42 /* SF-Pro-Text-Regular.otf in Resources */,
+				ECE3C567246181260040F266 /* supported_currencies.txt in Resources */,
 				EC7E08B12459CBF600D74D42 /* SF-Pro-Display-Regular.otf in Resources */,
+				ECE3C569246181260040F266 /* real_time_rates.txt in Resources */,
 				EC7E08B22459CBF600D74D42 /* SF-Pro-Display-Bold.otf in Resources */,
 				EC7E089024599DC300D74D42 /* Assets.xcassets in Resources */,
 			);
@@ -413,6 +432,7 @@
 				EC7E08A82459B5A900D74D42 /* HomeView.swift in Sources */,
 				EC7E08A32459B17F00D74D42 /* UIFont+SFProText.swift in Sources */,
 				EC7E08AA2459B91E00D74D42 /* UIView+addSubviews.swift in Sources */,
+				ECE3C568246181260040F266 /* StaticRequester.swift in Sources */,
 				EC19594624606C26002DB0C9 /* Date+formattedHour.swift in Sources */,
 				EC19594024604314002DB0C9 /* HomeViewModel.swift in Sources */,
 				EC7E089E2459AC4500D74D42 /* HomeViewController.swift in Sources */,

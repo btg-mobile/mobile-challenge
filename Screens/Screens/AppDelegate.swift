@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return SQLiteStorage(.uri("\(path)/db.sqlite3"))
         }
         
-        Services.register(Requester.self) { URLSessionRequester() }
+        Services.register(Requester.self) { StaticRequester() }
     }
 }
 

@@ -88,20 +88,6 @@ extension HomeView: UITableViewDelegate, UIScrollViewDelegate {
         return 283/734 * tableView.frame.height
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = abs(min(0, scrollView.contentOffset.y))
-//        increaseStatusBarBackgroundBy(offset: offset)
-    }
-    
-    private func increaseStatusBarBackgroundBy(offset: CGFloat) {
-        statusBarBackground.snp.remakeConstraints { make in
-            make.top.equalTo(snp.top)
-            make.leading.equalTo(snp.leading)
-            make.trailing.equalTo(snp.trailing)
-            make.bottom.equalTo(otherCurrenciesTableView.snp.top).inset(offset)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 77
     }

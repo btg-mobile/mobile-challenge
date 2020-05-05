@@ -12,4 +12,10 @@ public struct RequestResponse: Hashable {
     public let data: Data?
     public let status: HTTPStatusCode
     public let request: URLRequest
+    
+    public init(data: Data?, status: HTTPStatusCode, request: URLRequest) {
+        self.data = data
+        self.status = status
+        self.request = request
+    }
 }
