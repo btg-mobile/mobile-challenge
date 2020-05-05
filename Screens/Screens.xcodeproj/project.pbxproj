@@ -81,7 +81,7 @@
 		EC355395245F71710023502B /* FuseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuseUtilities.swift; sourceTree = "<group>"; };
 		EC355397245F71A40023502B /* String+Fuse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Fuse.swift"; sourceTree = "<group>"; };
 		EC51087B245B0E59005B902F /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
-		EC7E088324599DC000D74D42 /* Screens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Screens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC7E088324599DC000D74D42 /* Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7E088624599DC100D74D42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC7E088824599DC100D74D42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EC7E088F24599DC300D74D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		EC7E088424599DC000D74D42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EC7E088324599DC000D74D42 /* Screens.app */,
+				EC7E088324599DC000D74D42 /* Currency.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 			);
 			name = Screens;
 			productName = Screens;
-			productReference = EC7E088324599DC000D74D42 /* Screens.app */;
+			productReference = EC7E088324599DC000D74D42 /* Currency.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -596,7 +596,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.almeidaws.Currency.Screens;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Currency;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -615,7 +615,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.almeidaws.Currency.Screens;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Currency;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
