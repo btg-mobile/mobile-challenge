@@ -39,43 +39,8 @@ class CurrenciesViewModel: Publisher {
             .map { $0.map { $0.model }}
             .merge(with: networkPublisher)
             .flatMap { self.storage.write($0).mapError { CurrenciesViewModelError.storage($0) } }
-            .sink(receiveCompletion: { completion in self.publisher.send(completion: completion) }, receiveValue: { currencies in _ = self.publisher.send(currencies) })
-    }
-}
-
-fileprivate class CurrenciesViewModelSubscription: Subscription {
-    
-    private let subscriber: AnySubscriber<[Currency], CurrenciesViewModelError>
-    private let storage = Services.make(Storage.self)
-    private let requester = Services.make(Requester.self)
-    private var cancellables = Set<AnyCancellable>()
-    
-    init<S>(_ subscriber: S) where S : Subscriber, CurrenciesViewModelError == S.Failure, [Currency] == S.Input {
-        self.subscriber = .init(subscriber)
-    }
-    
-    func request(_ demand: Subscribers.Demand) {
-        switch demand {
-        case .unlimited:
-            let networkPublisher = requester.supportedCurrencies()
-                .mapError { CurrenciesViewModelError.network($0) }
-                .eraseToAnyPublisher()
-            
-            let publisher: AnyPublisher<[Row<Currency>], StorageError> = storage.read()
-            publisher
-                .map { $0.map { $0.model }}
-                .mapError { CurrenciesViewModelError.storage($0) }
-                .merge(with: networkPublisher)
-                .flatMap { self.storage.write($0).mapError { CurrenciesViewModelError.storage($0) } }
-            .sink(receiveCompletion: { completion in self.subscriber.receive(completion: completion) }, receiveValue: { currencies in _ = self.subscriber.receive(currencies) }).store(in: &cancellables)
-//            .subscribe(subscriber)
-        default:
-            fatalError("Not implemented")
-        }
-    }
-    
-    func cancel() {
-        fatalError("Not implemented")
+            .sink(receiveCompletion: { completion in self.publisher.send(completion: completion) },
+                  receiveValue: { currencies in _ = self.publisher.send(currencies) })
     }
 }
 

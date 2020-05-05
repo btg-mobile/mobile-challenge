@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9E16FD91BF9B5EDF2099A4F8 /* Pods_Screens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CD970D654B8A06066EC038 /* Pods_Screens.framework */; };
 		EC19593E2460381F002DB0C9 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593D2460381F002DB0C9 /* UIViewController+alert.swift */; };
+		EC19594024604314002DB0C9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19593F24604314002DB0C9 /* HomeViewModel.swift */; };
+		EC195942246059C2002DB0C9 /* Configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC195941246059C2002DB0C9 /* Configured.swift */; };
+		EC195944246069B4002DB0C9 /* Date+elapsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC195943246069B4002DB0C9 /* Date+elapsedTime.swift */; };
+		EC19594624606C26002DB0C9 /* Date+formattedHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19594524606C26002DB0C9 /* Date+formattedHour.swift */; };
 		EC1A1570245C3F6B00F20499 /* CurrenciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1A156F245C3F6B00F20499 /* CurrenciesTableViewController.swift */; };
 		EC355393245F6FC80023502B /* Fuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC355392245F6FC80023502B /* Fuse.swift */; };
 		EC355396245F71710023502B /* FuseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC355395245F71710023502B /* FuseUtilities.swift */; };
@@ -63,6 +67,10 @@
 		53CD970D654B8A06066EC038 /* Pods_Screens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Screens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D987B858B28A0CD1CED64D91 /* Pods-Screens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screens.release.xcconfig"; path = "Target Support Files/Pods-Screens/Pods-Screens.release.xcconfig"; sourceTree = "<group>"; };
 		EC19593D2460381F002DB0C9 /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
+		EC19593F24604314002DB0C9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EC195941246059C2002DB0C9 /* Configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configured.swift; sourceTree = "<group>"; };
+		EC195943246069B4002DB0C9 /* Date+elapsedTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+elapsedTime.swift"; sourceTree = "<group>"; };
+		EC19594524606C26002DB0C9 /* Date+formattedHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+formattedHour.swift"; sourceTree = "<group>"; };
 		EC1A156F245C3F6B00F20499 /* CurrenciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableViewController.swift; sourceTree = "<group>"; };
 		EC355392245F6FC80023502B /* Fuse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuse.swift; sourceTree = "<group>"; };
 		EC355395245F71710023502B /* FuseUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuseUtilities.swift; sourceTree = "<group>"; };
@@ -216,6 +224,7 @@
 			children = (
 				EC7E089D2459AC4500D74D42 /* HomeViewController.swift */,
 				EC7E08A72459B5A900D74D42 /* HomeView.swift */,
+				EC19593F24604314002DB0C9 /* HomeViewModel.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -226,6 +235,8 @@
 				EC7E08A22459B17F00D74D42 /* UIFont+SFProText.swift */,
 				EC7E08A92459B91E00D74D42 /* UIView+addSubviews.swift */,
 				EC19593D2460381F002DB0C9 /* UIViewController+alert.swift */,
+				EC195943246069B4002DB0C9 /* Date+elapsedTime.swift */,
+				EC19594524606C26002DB0C9 /* Date+formattedHour.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -235,6 +246,7 @@
 			children = (
 				EC355394245F71640023502B /* Fuse */,
 				EC7E08A52459B56B00D74D42 /* Drawable.swift */,
+				EC195941246059C2002DB0C9 /* Configured.swift */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -387,6 +399,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC1A1570245C3F6B00F20499 /* CurrenciesTableViewController.swift in Sources */,
+				EC195942246059C2002DB0C9 /* Configured.swift in Sources */,
+				EC195944246069B4002DB0C9 /* Date+elapsedTime.swift in Sources */,
 				EC355398245F71A40023502B /* String+Fuse.swift in Sources */,
 				EC355396245F71710023502B /* FuseUtilities.swift in Sources */,
 				EC19593E2460381F002DB0C9 /* UIViewController+alert.swift in Sources */,
@@ -399,6 +413,8 @@
 				EC7E08A82459B5A900D74D42 /* HomeView.swift in Sources */,
 				EC7E08A32459B17F00D74D42 /* UIFont+SFProText.swift in Sources */,
 				EC7E08AA2459B91E00D74D42 /* UIView+addSubviews.swift in Sources */,
+				EC19594624606C26002DB0C9 /* Date+formattedHour.swift in Sources */,
+				EC19594024604314002DB0C9 /* HomeViewModel.swift in Sources */,
 				EC7E089E2459AC4500D74D42 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

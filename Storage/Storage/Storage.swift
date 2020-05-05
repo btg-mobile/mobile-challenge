@@ -21,6 +21,11 @@ public protocol Storage {
 public struct Row<Model> {
     public let model: Model
     public let updatedAt: Date
+    
+    public init(model: Model, updatedAt: Date) {
+        self.model = model
+        self.updatedAt = updatedAt
+    }
 }
 
 public enum StorageError: Error, CustomStringConvertible {
