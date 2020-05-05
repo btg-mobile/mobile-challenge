@@ -41,6 +41,7 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
     func createViewsHierarchy() {
         tableView.register(Cell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.allowsSelection = true
+        tableView.separatorStyle = .none
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

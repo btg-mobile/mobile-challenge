@@ -45,6 +45,7 @@ class HomeViewModel {
             guard let viewModel = self.viewModel else { return }
             cancellable = readQuotes()
                 .merge(with: fetchQuotes())
+                .filter { !$0.isEmpty }
                 .map { quotes in
                     let first = viewModel.quote.first
                     let second = viewModel.quote.second

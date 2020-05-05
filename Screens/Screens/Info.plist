@@ -6,23 +6,23 @@
 	<string>http://apilayer.net/api</string>
 	<key>API_KEY</key>
 	<string>97ebe63935f61b39289cacfaecf6e0af</string>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>apilayer.com</key>
-            <dict>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>apilayer.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
+	<string>Dark</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Text-SemiboldItalic.otf</string>
