@@ -19,7 +19,7 @@ class RequisitionsTests_get: XCTestCase {
         let request = URLRequest(url: url)
         let sentResponse = RequestResponse(data: data, status: .ok, request: request)
         Services.default.register(Requester.self) { MockedRequester(mock: .success(sentResponse)) }
-        let requester: Requester = Services.make(Requester.self)
+        let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
         _ = requester.get(from: url)
@@ -44,7 +44,7 @@ class RequisitionsTests_get: XCTestCase {
         let request = URLRequest(url: url)
         let sentResponse = RequestResponse(data: data, status: .ok, request: request)
         Services.default.register(Requester.self) { MockedRequester(mock: .success(sentResponse)) }
-        let requester: Requester = Services.make(Requester.self)
+        let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
         let getPublisher: AnyPublisher<RequestDecodedResponse<Person>, RequestError> = requester.get(from: url, decoder: JSONDecoder())

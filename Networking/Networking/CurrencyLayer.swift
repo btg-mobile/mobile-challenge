@@ -35,7 +35,7 @@ extension Requester {
         return get(from: .supportedCurrencies(bundle), queryParameters: parameters, decoder: JSONDecoder())
             .map { (decodedResponse: RequestDecodedResponse<CurrencyLayer.SupportedCurrencies>) -> [Currency] in
                 decodedResponse.data.currencies.map { Currency(abbreviation: $0.key, fullName: $0.value) }
-            }.eraseToAnyPublisher()
+        }.eraseToAnyPublisher()
     }
 
     public func realTimeRates(_ bundle: Bundle = .main) -> AnyPublisher<[Quote], RequestError> {

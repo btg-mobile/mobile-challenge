@@ -34,7 +34,7 @@ class CurrencyLayerTests: XCTestCase {
         let fileURL = bundle.url(forResource: "supported_currencies_successful", withExtension: "txt")!
         let data = try! Data(contentsOf: fileURL)
         Services.default.register(Requester.self) { MockedRequester(mock: .success(RequestResponse(data: data, status: .ok, request: URLRequest(url: fileURL)))) }
-        let requester: Requester = Services.make(Requester.self)
+        let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
         _ = requester.supportedCurrencies(bundle).sink(receiveCompletion: { completion in }) { currencies in
@@ -50,7 +50,7 @@ class CurrencyLayerTests: XCTestCase {
         let fileURL = bundle.url(forResource: "real_time_rates_successful", withExtension: "txt")!
         let data = try! Data(contentsOf: fileURL)
         Services.default.register(Requester.self) { MockedRequester(mock: .success(RequestResponse(data: data, status: .ok, request: URLRequest(url: fileURL)))) }
-        let requester: Requester = Services.make(Requester.self)
+        let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
         _ = requester.realTimeRates(bundle).sink(receiveCompletion: { completion in }) { quotes in

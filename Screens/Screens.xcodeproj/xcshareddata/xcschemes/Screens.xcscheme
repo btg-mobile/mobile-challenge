@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EC7E088224599DC000D74D42"
-               BuildableName = "Screens.app"
+               BuildableName = "Currency.app"
                BlueprintName = "Screens"
                ReferencedContainer = "container:Screens.xcodeproj">
             </BuildableReference>
@@ -58,6 +58,16 @@
                ReferencedContainer = "container:../Storage/Storage.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ECE3C5722461BD990040F266"
+               BuildableName = "ScreensUITests.xctest"
+               BlueprintName = "ScreensUITests"
+               ReferencedContainer = "container:Screens.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -75,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EC7E088224599DC000D74D42"
-            BuildableName = "Screens.app"
+            BuildableName = "Currency.app"
             BlueprintName = "Screens"
             ReferencedContainer = "container:Screens.xcodeproj">
          </BuildableReference>
@@ -92,7 +102,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EC7E088224599DC000D74D42"
-            BuildableName = "Screens.app"
+            BuildableName = "Currency.app"
             BlueprintName = "Screens"
             ReferencedContainer = "container:Screens.xcodeproj">
          </BuildableReference>

@@ -19,14 +19,14 @@ class ServicesTests: XCTestCase {
     func testMakingService() {
         let services = Services.default
         services.register(SomeService.self) { SomeService.type1 }
-        let instance = services.make(SomeService.self)
+        let instance: SomeService = services.make(for: SomeService.self)
         XCTAssert(instance == SomeService.type1, "Service instance isn't the same as the registered.")
     }
 
     func testMakingServiceAndReadingAnother() {
         let services = Services.default
         services.register(SomeService.self) { SomeService.type2 }
-        let instance = services.make(SomeService.self)
+        let instance: SomeService = services.make(for: SomeService.self)
         XCTAssert(instance != SomeService.type1, "Service instance is the same as the registered.")
     }
 }

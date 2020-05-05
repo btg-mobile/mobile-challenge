@@ -19,7 +19,7 @@ class RequisitionsTests: XCTestCase {
         let request = URLRequest(url: url)
         let sentResponse = RequestResponse(data: data, status: .ok, request: request)
         Services.default.register(Requester.self) { MockedRequester(mock: .success(sentResponse)) }
-        let requester: Requester = Services.make(Requester.self)
+        let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
         _ = requester.request(at: url, method: .get, headers: [:], queryParameters: [:], body: nil)
@@ -33,7 +33,7 @@ class RequisitionsTests: XCTestCase {
     
     func testFailedResponseEqualToSent() {
         Services.default.register(Requester.self) { MockedRequester(mock: .failure(.notHTTPURLResponse)) }
-        let requester: Requester = Services.make(Requester.self)
+        let requester: Requester = Services.make(for: Requester.self)
         
         let expectation = self.expectation(description: "Wait response")
         _ = requester.request(at: URL(string: "https://example.com")!, method: .get, headers: [:], queryParameters: [:], body: nil)

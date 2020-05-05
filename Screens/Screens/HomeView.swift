@@ -353,6 +353,7 @@ extension HomeView: UITableViewDataSource {
                 firstCurrency.isUserInteractionEnabled = true
                 let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(handleFirstCurrencyTap(_:)))
                 firstCurrency.addGestureRecognizer(tapGesture1)
+                firstCurrency.accessibilityIdentifier = "firstCurrency"
                 self.firstCurrency = firstCurrency
                 
                 let firstDashedLine = UIImageView(image: #imageLiteral(resourceName: "DashedLine"))
@@ -367,6 +368,7 @@ extension HomeView: UITableViewDataSource {
                 secondCurrency.isUserInteractionEnabled = true
                 let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(handleSecondCurrencyTap(_:)))
                 secondCurrency.addGestureRecognizer(tapGesture2)
+                secondCurrency.accessibilityIdentifier = "secondCurrency"
                 self.secondCurrency = secondCurrency
                 
                 let secondDashedLine = UIImageView(image: #imageLiteral(resourceName: "DashedLine"))

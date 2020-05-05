@@ -8,12 +8,14 @@
 
 import UIKit
 import Models
+import Combine
 
 class CurrenciesTableViewController: UITableViewController, Drawable {
     
     var currencies = [Currency]() { didSet { filteredCurrencies = currencies } }
     private var filteredCurrencies = [Currency]() { didSet { tableView.reloadData() } }
     weak var delegate: CurrenciesTableViewControllerDelegate?
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,7 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
         
         let currency = filteredCurrencies[indexPath.row]
         cell.abbreviation.text = currency.abbreviation
+        cell.abbreviation.accessibilityIdentifier = currency.abbreviation
         cell.fullName.text = currency.fullName
         
         return cell
@@ -93,10 +96,10 @@ extension CurrenciesTableViewController: UISearchResultsUpdating {
             return
         }
         
-        let fuse = Fuse()
-        fuse.search(searchText, in: currencies) { results in
-            self.filteredCurrencies = results.map { self.currencies[$0.index] }
-        }
+        currencies.search(for: searchText, at: (\Currency.abbreviation, 2), (\Currency.fullName, 1))
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.filteredCurrencies, on: self)
+            .store(in: &cancellables)
     }
 }
 
@@ -151,15 +154,6 @@ fileprivate class Cell: UITableViewCell, Drawable {
         let bottomLine = UILabel()
         self.bottomLine = bottomLine
         addSubview(bottomLine)
-    }
-}
-
-extension Currency: Fuseable {
-    public var properties: [FuseProperty] {
-        return [
-            FuseProperty(name: abbreviation),
-            FuseProperty(name: fullName)
-        ]
     }
 }
 
