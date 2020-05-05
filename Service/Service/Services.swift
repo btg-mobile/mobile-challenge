@@ -13,28 +13,28 @@ public class Services {
     public static let `default` = Services()
     private var registers = [ObjectIdentifier : () -> Any]()
     
-    public func register<S>(_ service: S.Type, maker: @escaping () -> S) {
+    public func register<S, R>(_ service: S.Type, maker: @escaping () -> R) {
         registers[ObjectIdentifier(service)] = maker
     }
     
-    public func make<S>(_ service: S.Type) -> S {
+    public func make<S, R>(for service: S.Type) -> R {
         let id = ObjectIdentifier(service)
         guard let maker = registers[id] else {
             fatalError("Service '\(service)' wasn't previously registered")
         }
-        guard let casted = maker() as? S else {
-            fatalError("Service '\(service)' can't be downcasted to '\(S.self)'.")
+        guard let casted = maker() as? R else {
+            fatalError("Service '\(service)' can't be downcasted to '\(R.self)'.")
         }
         return casted
     }
 }
 
 public extension Services {
-    static func register<S>(_ service: S.Type, maker: @escaping () -> S) {
+    static func register<S, R>(_ service: S.Type, maker: @escaping () -> R) {
         Services.default.register(service, maker: maker)
     }
     
-    static func make<S>(_ service: S.Type) -> S {
-        return Services.default.make(service)
+    static func make<S, R>(for service: S.Type) -> R {
+        return Services.default.make(for: service)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Service
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let winScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: winScene)
-        window?.rootViewController = HomeViewController()
+        let homeController = HomeViewController()
+        homeController.coordinator = Services.make(for: HomeViewController.self)
+        window?.rootViewController = homeController
         window?.makeKeyAndVisible()
     }
 }

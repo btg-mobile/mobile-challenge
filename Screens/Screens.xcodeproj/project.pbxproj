@@ -47,6 +47,8 @@
 		ECE3C567246181260040F266 /* supported_currencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECE3C564246181260040F266 /* supported_currencies.txt */; };
 		ECE3C568246181260040F266 /* StaticRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3C565246181260040F266 /* StaticRequester.swift */; };
 		ECE3C569246181260040F266 /* real_time_rates.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECE3C566246181260040F266 /* real_time_rates.txt */; };
+		ECE3C56C24619E840040F266 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3C56B24619E840040F266 /* Coordinator.swift */; };
+		ECE3C56E24619FD40040F266 /* HomeToCurrenciesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3C56D24619FD40040F266 /* HomeToCurrenciesCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -106,6 +108,8 @@
 		ECE3C564246181260040F266 /* supported_currencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = supported_currencies.txt; sourceTree = "<group>"; };
 		ECE3C565246181260040F266 /* StaticRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticRequester.swift; sourceTree = "<group>"; };
 		ECE3C566246181260040F266 /* real_time_rates.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = real_time_rates.txt; sourceTree = "<group>"; };
+		ECE3C56B24619E840040F266 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		ECE3C56D24619FD40040F266 /* HomeToCurrenciesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToCurrenciesCoordinator.swift; sourceTree = "<group>"; };
 		F36F9FA876BD56A18E9D1D98 /* Pods-Screens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screens.debug.xcconfig"; path = "Target Support Files/Pods-Screens/Pods-Screens.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +201,7 @@
 		EC7E088524599DC100D74D42 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				ECE3C56A24619E6E0040F266 /* Coordinator */,
 				EC510877245B0E21005B902F /* Screens */,
 				EC7E08AD2459CB8600D74D42 /* Resources */,
 				EC7E08A42459B55A00D74D42 /* Supporting */,
@@ -285,11 +290,20 @@
 		ECE3C563246181020040F266 /* StaticRequester */ = {
 			isa = PBXGroup;
 			children = (
-				ECE3C566246181260040F266 /* real_time_rates.txt */,
 				ECE3C565246181260040F266 /* StaticRequester.swift */,
+				ECE3C566246181260040F266 /* real_time_rates.txt */,
 				ECE3C564246181260040F266 /* supported_currencies.txt */,
 			);
 			name = StaticRequester;
+			sourceTree = "<group>";
+		};
+		ECE3C56A24619E6E0040F266 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				ECE3C56B24619E840040F266 /* Coordinator.swift */,
+				ECE3C56D24619FD40040F266 /* HomeToCurrenciesCoordinator.swift */,
+			);
+			name = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,10 +443,12 @@
 				EC7E08A62459B56B00D74D42 /* Drawable.swift in Sources */,
 				EC355393245F6FC80023502B /* Fuse.swift in Sources */,
 				EC51087C245B0E59005B902F /* CurrenciesViewController.swift in Sources */,
+				ECE3C56C24619E840040F266 /* Coordinator.swift in Sources */,
 				EC7E08A82459B5A900D74D42 /* HomeView.swift in Sources */,
 				EC7E08A32459B17F00D74D42 /* UIFont+SFProText.swift in Sources */,
 				EC7E08AA2459B91E00D74D42 /* UIView+addSubviews.swift in Sources */,
 				ECE3C568246181260040F266 /* StaticRequester.swift in Sources */,
+				ECE3C56E24619FD40040F266 /* HomeToCurrenciesCoordinator.swift in Sources */,
 				EC19594624606C26002DB0C9 /* Date+formattedHour.swift in Sources */,
 				EC19594024604314002DB0C9 /* HomeViewModel.swift in Sources */,
 				EC7E089E2459AC4500D74D42 /* HomeViewController.swift in Sources */,

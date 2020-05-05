@@ -19,12 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func registerServices() {
-        Services.register(Storage.self) {
+        Services.register(Storage.self) { () -> SQLiteStorage in
             let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
             return SQLiteStorage(.uri("\(path)/db.sqlite3"))
         }
         
         Services.register(Requester.self) { StaticRequester() }
+        Services.register(HomeViewController.self) { HomeToCurrenciesCoordinator() }
     }
 }
 

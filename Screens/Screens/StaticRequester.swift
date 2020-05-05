@@ -13,38 +13,28 @@ import Networking
 
 class StaticRequester: Requester {
     
-    private var response: AnyPublisher<RequestResponse, RequestError>!
-    
     func request(at url: URL, method: HTTPMethod, headers: [String : String], queryParameters: [String : Any], body: Data?) -> AnyPublisher<RequestResponse, RequestError> {
-        let bundle = Bundle(identifier: "com.almeidaws.Currency.Screens")!
-        let url = bundle.url(forResource: "supported_currencies", withExtension: "txt")!
-        let data = try! Data(contentsOf: url)
-        return Just(RequestResponse.init(data: data, status: .ok, request: URLRequest(url: url)))
-            .setFailureType(to: RequestError.self)
-            .eraseToAnyPublisher()
-    }
-    
-    func supportedCurrencies(_ bundle: Bundle = .main) -> AnyPublisher<[Currency], RequestError> {
-        response = supportedCurrenciesResponse()
-        return (self as Requester).supportedCurrencies(bundle)
-    }
-    
-    func realTimeRates(_ bundle: Bundle = .main) -> AnyPublisher<[Quote], RequestError> {
-        response = realTimeRatesResponse()
-        return (self as Requester).realTimeRates(bundle)
+        switch url.absoluteString {
+        case "http://apilayer.net/api/live":
+            return realTimeRatesResponse()
+        case "http://apilayer.net/api/list":
+            return supportedCurrenciesResponse()
+        default:
+            fatalError("Unsupported URL")
+        }
     }
 }
 
-fileprivate func supportedCurrenciesResponse() -> AnyPublisher<RequestResponse, RequestError> {
-    let url = Bundle.main.url(forResource: "supported_currencies", withExtension: "txt")!
+fileprivate func supportedCurrenciesResponse(_ bundle: Bundle = .main) -> AnyPublisher<RequestResponse, RequestError> {
+    let url = bundle.url(forResource: "supported_currencies", withExtension: "txt")!
     let data = try! Data(contentsOf: url)
     return Just(RequestResponse.init(data: data, status: .ok, request: URLRequest(url: url)))
         .setFailureType(to: RequestError.self)
         .eraseToAnyPublisher()
 }
 
-fileprivate func realTimeRatesResponse() -> AnyPublisher<RequestResponse, RequestError> {
-    let url = Bundle.main.url(forResource: "supported_currencies", withExtension: "txt")!
+fileprivate func realTimeRatesResponse(_ bundle: Bundle = .main) -> AnyPublisher<RequestResponse, RequestError> {
+    let url = bundle.url(forResource: "real_time_rates", withExtension: "txt")!
     let data = try! Data(contentsOf: url)
     return Just(RequestResponse.init(data: data, status: .ok, request: URLRequest(url: url)))
         .setFailureType(to: RequestError.self)

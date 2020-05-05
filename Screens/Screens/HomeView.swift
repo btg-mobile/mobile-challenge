@@ -14,8 +14,10 @@ import Models
 class HomeView: UIView, Drawable {
     
     private(set) weak var otherCurrenciesTableView: UITableView!
+    private weak var selectedCurrencyPair: Header.SelectedCurrencyPair!
     private weak var statusBarBackground: UIView!
     private weak var bottomBackground: UIView!
+    weak var delegate: CurrencyPairDelegate?
     
     var quote: Header.SelectedCurrencyPair.Model?
     var otherCurrencies = [Cell.Model]() { didSet { otherCurrenciesTableView.reloadData() } }
@@ -81,6 +83,7 @@ extension HomeView: UITableViewDelegate, UIScrollViewDelegate {
         }
         header.draw()
         header.quote = quote
+        header.selectedCurrencyPair.delegate = delegate
         return header
     }
     
@@ -200,7 +203,7 @@ extension HomeView: UITableViewDataSource {
     
     class Header: UITableViewHeaderFooterView, Drawable {
         
-        private weak var selectedCurrencyPair: SelectedCurrencyPair!
+        private(set) weak var selectedCurrencyPair: SelectedCurrencyPair!
         private weak var footer: Footer!
         private weak var gridBackground: UIImageView!
         
@@ -258,12 +261,13 @@ extension HomeView: UITableViewDataSource {
             
             private weak var linearContainer: UIView!
             private weak var amount: UILabel!
-            private weak var firstCurrency: UILabel!
+            private(set) weak var firstCurrency: UILabel!
             private weak var firstCurrencyDashedLine: UIImageView!
             private weak var to: UILabel!
-            private weak var secondCurrency: UILabel!
+            private(set) weak var secondCurrency: UILabel!
             private weak var secondCurrencyDashedLine: UIImageView!
             private weak var lastUpdate: UILabel!
+            weak var delegate: CurrencyPairDelegate?
             
             var quote: Model? {
                 didSet {
@@ -346,6 +350,9 @@ extension HomeView: UITableViewDataSource {
                 self.amount = amount
                 
                 let firstCurrency = UILabel()
+                firstCurrency.isUserInteractionEnabled = true
+                let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(handleFirstCurrencyTap(_:)))
+                firstCurrency.addGestureRecognizer(tapGesture1)
                 self.firstCurrency = firstCurrency
                 
                 let firstDashedLine = UIImageView(image: #imageLiteral(resourceName: "DashedLine"))
@@ -357,6 +364,9 @@ extension HomeView: UITableViewDataSource {
                 self.to = to
                 
                 let secondCurrency = UILabel()
+                secondCurrency.isUserInteractionEnabled = true
+                let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(handleSecondCurrencyTap(_:)))
+                secondCurrency.addGestureRecognizer(tapGesture2)
                 self.secondCurrency = secondCurrency
                 
                 let secondDashedLine = UIImageView(image: #imageLiteral(resourceName: "DashedLine"))
@@ -372,6 +382,18 @@ extension HomeView: UITableViewDataSource {
                 self.linearContainer = linearContainer
                 addSubview(linearContainer)
             }
+            
+            @objc private func handleFirstCurrencyTap(_ sender: UITapGestureRecognizer) {
+                guard let first = firstCurrency.text else { return }
+                delegate?.currencyPair(self, didTouch: .first(first))
+            }
+            
+            @objc private func handleSecondCurrencyTap(_ sender: UITapGestureRecognizer) {
+                guard let second = secondCurrency.text else { return }
+                delegate?.currencyPair(self, didTouch: .second(second))
+            }
+            
+            
             
             struct Model {
                 let value: String
@@ -413,6 +435,10 @@ extension HomeView: UITableViewDataSource {
             }
         }
     }
+}
+
+protocol CurrencyPairDelegate: AnyObject {
+    func currencyPair(_ sender: HomeView.Header.SelectedCurrencyPair, didTouch currency: CurrencyPairElement)
 }
 
 fileprivate let headerIdentifier = "headerIdentifier"

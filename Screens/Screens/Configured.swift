@@ -9,15 +9,21 @@
 import Foundation
 
 @propertyWrapper
-struct Configured<Value> {
+struct Configured<Value> where Value: Codable {
     
     private let valueKey: String
     private let storage: UserDefaults = .standard
     private let defaultValue: Value
     
     var wrappedValue: Value {
-        set { storage.set(newValue, forKey: valueKey) }
-        get { storage.value(forKey: valueKey) as? Value ?? defaultValue  }
+        set { storage.set(try! JSONEncoder().encode(newValue), forKey: valueKey) }
+        get {
+            if let data = storage.data(forKey: valueKey) {
+                return try! JSONDecoder().decode(Value.self, from: data)
+            }
+            
+            return defaultValue
+        }
     }
     
     init(valueKey: String, defaultValue: Value) {

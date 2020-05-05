@@ -13,6 +13,7 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
     
     var currencies = [Currency]() { didSet { filteredCurrencies = currencies } }
     private var filteredCurrencies = [Currency]() { didSet { tableView.reloadData() } }
+    weak var delegate: CurrenciesTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +40,21 @@ class CurrenciesTableViewController: UITableViewController, Drawable {
     
     func createViewsHierarchy() {
         tableView.register(Cell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocorrectionType = .yes
         searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
         
         navigationItem.searchController = searchController
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currency = filteredCurrencies[indexPath.row]
+        delegate?.controller(self, didSelect: currency)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -153,6 +160,10 @@ extension Currency: Fuseable {
             FuseProperty(name: fullName)
         ]
     }
+}
+
+protocol CurrenciesTableViewControllerDelegate: AnyObject {
+    func controller(_ controller: CurrenciesTableViewController, didSelect currency: Currency)
 }
 
 fileprivate let cellIdentifier = "cellIdentifier"

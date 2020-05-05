@@ -8,14 +8,17 @@
 
 import UIKit
 import Combine
+import Models
+import Service
 
 class HomeViewController: UIViewController, Drawable {
     
     private let homeView = HomeView()
     override func loadView() { view = homeView }
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
-    private let viewModel = HomeViewModel()
+    let viewModel = HomeViewModel()
     private var cancellables = Set<AnyCancellable>()
+    var coordinator: Coordinator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class HomeViewController: UIViewController, Drawable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refresh()
+        homeView.delegate = self
     }
     
     func stylizeViews() {
@@ -38,15 +42,28 @@ class HomeViewController: UIViewController, Drawable {
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
     }
     
+    
+    @objc private func handleRefresh(_ sender: UIRefreshControl) {
+        refresh()
+    }
+}
+
+extension HomeViewController: CurrencyPairDelegate {
+    func currencyPair(_ sender: HomeView.Header.SelectedCurrencyPair, didTouch currency: CurrencyPairElement) {
+        viewModel.selectedCurrencyPair = currency
+        coordinator.present(from: self)
+    }
+}
+
+extension HomeViewController {
     private func refresh() {
-        
-        if !(homeView.otherCurrenciesTableView.refreshControl?.isRefreshing ?? false) {
+        if !(homeView.otherCurrenciesTableView.refreshControl?.isRefreshing ?? false) && homeView.otherCurrencies.isEmpty {
             let refreshControl = homeView.otherCurrenciesTableView.refreshControl!
             refreshControl.beginRefreshing()
             homeView.otherCurrenciesTableView.setContentOffset(CGPoint(x: 0, y: -refreshControl.frame.height), animated: true)
         }
         
-        viewModel
+        viewModel.quotesPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -72,7 +89,4 @@ class HomeViewController: UIViewController, Drawable {
             }.store(in: &cancellables)
     }
     
-    @objc private func handleRefresh(_ control: UIRefreshControl) {
-        refresh()
-    }
 }
