@@ -19,7 +19,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class ListCurrencyAdapter(
+open class ListCurrencyAdapter(
     var context: Context,
     var viewModel: ChooseCurrencyViewModel,
     var currencies: ArrayList<InfoCurrencyModel.DTO>

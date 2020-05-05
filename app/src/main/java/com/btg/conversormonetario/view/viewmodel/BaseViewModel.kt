@@ -36,7 +36,6 @@ open class BaseViewModel(dataManager: DataManager, application: Application) :
     var originalCurrenciesSingleton = MutableLiveData<ArrayList<InfoCurrencyModel.DTO>>()
     var appHasInternet = MutableLiveData<Boolean>()
     var showLoader = MutableLiveData<Boolean>()
-    var backgroundColorLoading = MutableLiveData<Int>()
 
     protected val webServiceException = CoroutineExceptionHandler { _, exception ->
         Log.v(
@@ -67,16 +66,8 @@ open class BaseViewModel(dataManager: DataManager, application: Application) :
         originalCurrenciesSingleton.value = App.getInfoCurrencyData()?.currencies
     }
 
-    fun showLoading(isLoadingTransparent: Boolean? = null) {
-        decideBackgroundColorLoading(isLoadingTransparent)
+    fun showLoading() {
         showLoader.postValue(true)
-    }
-
-    private fun decideBackgroundColorLoading(isLoadingTransparent: Boolean?) {
-        if (isLoadingTransparent == true)
-            backgroundColorLoading.value = android.R.color.transparent
-        else
-            backgroundColorLoading.value = R.color.black75
     }
 
     fun hideLoading() {

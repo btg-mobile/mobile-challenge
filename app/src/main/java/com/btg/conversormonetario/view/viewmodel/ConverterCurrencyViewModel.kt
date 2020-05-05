@@ -15,7 +15,7 @@ import com.btg.conversormonetario.view.activity.ChooseCurrencyActivity
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
-class ConverterCurrencyViewModel(
+open class ConverterCurrencyViewModel(
     private val currencyRepository: CurrencyRepository,
     val dataManager: DataManager,
     application: Application

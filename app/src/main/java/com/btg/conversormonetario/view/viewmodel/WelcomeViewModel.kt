@@ -2,7 +2,6 @@ package com.btg.conversormonetario.view.viewmodel
 
 import android.app.Application
 import android.os.Handler
-import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +13,7 @@ import com.btg.conversormonetario.data.model.InfoCurrencyModel
 import com.btg.conversormonetario.view.activity.ConverterCurrencyActivity
 import kotlinx.coroutines.launch
 
-class WelcomeViewModel(
+open class WelcomeViewModel(
     private val infoCurrency: WelcomeRepository, dataManager: DataManager, application: Application
 ) :
     BaseViewModel(dataManager, application) {
@@ -31,7 +30,7 @@ class WelcomeViewModel(
 
     private fun callServiceGetKeyNameCurrencies() {
         shouldChangeLayout.value = WelcomeLayout(GONE, VISIBLE)
-        showLoading(true)
+        showLoading()
         viewModelScope.launch(webServiceException) {
             infoCurrency.getInfoCurrencies({
                 if (it.success == true) {
@@ -40,11 +39,9 @@ class WelcomeViewModel(
                     navigateTo(ConverterCurrencyActivity::class.java)
                 } else {
                     hideLoading()
-                    //  alerta de erro
-                    Log.v("LOG", "WelcomeViewModel: getInfoCurrencies() -> ERRO ")
+                    navigateTo(ConverterCurrencyActivity::class.java)
                 }
             }, {
-                Log.v("LOG", "WelcomeViewModel: getInfoCurrencies() -> ${it.serviceErrorModel?.httpCode} ")
                 onErrorResponse(currentContext.value!!, it)
             })
         }

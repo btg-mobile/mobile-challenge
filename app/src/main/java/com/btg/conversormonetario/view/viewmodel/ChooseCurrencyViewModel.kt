@@ -10,7 +10,7 @@ import com.btg.conversormonetario.view.activity.ConverterCurrencyActivity
 import com.btg.conversormonetario.view.adapter.SpinnerAdapter
 import com.btg.conversormonetario.view.fragment.BottomSheetOptionFragment
 
-class ChooseCurrencyViewModel(val dataManager: DataManager, application: Application) :
+open class ChooseCurrencyViewModel(val dataManager: DataManager, application: Application) :
     BaseViewModel(dataManager, application) {
     private var cardTouchable = MutableLiveData<ItemSpinnerDecoration>()
     private var extras = MutableLiveData<String>()

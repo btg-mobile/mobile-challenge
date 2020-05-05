@@ -137,10 +137,6 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
             if (it) showLoading() else hideLoading()
         }
 
-        viewModel.backgroundColorLoading.observeNonNull(this) {
-            lltBaseLoading.setBackgroundColor(it)
-        }
-
         viewModel.appHasInternet.observeNonNull(this) { showInternetSnackbar(it) }
 
         viewModel.startConnectionListener()

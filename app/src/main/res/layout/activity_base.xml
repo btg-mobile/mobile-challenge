@@ -19,7 +19,7 @@
         android:id="@+id/lltBaseLoading"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/black75"
+        android:background="@android:color/transparent"
         android:clickable="false"
         android:focusable="false"
         android:focusableInTouchMode="false"

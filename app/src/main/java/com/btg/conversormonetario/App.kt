@@ -8,7 +8,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class App : Application() {
+open class App : Application() {
     var hasInternet: Boolean = true
 
     override fun onCreate() {
