@@ -23,18 +23,18 @@ class ScreenUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        let firstCurrency = XCUIApplication().tables.buttons["firstCurrency"].firstMatch
+        let firstCurrency = app.tables.buttons["firstCurrency"].firstMatch
         let firstCoordinate = firstCurrency.coordinate(withNormalizedOffset: .zero)
         firstCoordinate.tap()
         
-        let searchBar = XCUIApplication().searchFields.element(boundBy: 0)
+        let searchBar = app.searchFields.element(boundBy: 0)
         searchBar.tap()
         searchBar.typeText("BRL")
         
-        let firstRow = XCUIApplication().tables.cells.element(boundBy: 0)
+        let firstRow = app.tables.cells.element(boundBy: 0)
         firstRow.tap()
         
-        let secondCurrency = XCUIApplication().tables.buttons["secondCurrency"].firstMatch
+        let secondCurrency = app.tables.buttons["secondCurrency"].firstMatch
         let secondCoordinate = secondCurrency.coordinate(withNormalizedOffset: .zero)
         secondCoordinate.tap()
         searchBar.tap()
