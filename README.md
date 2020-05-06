@@ -14,7 +14,9 @@ Following is a presentation of its key points.
 
 ## Continuous Integration
 
-## Continuous Delivery
+Code regression is an important aspect of an application. All the tests on every module are checked with [Travis CI](https://travis-ci.org/). You can check build status clicking on the following badge:
+
+[![Build Status](https://travis-ci.org/almeidaws/mobile-challenge.svg?branch=master)](https://travis-ci.org/almeidaws/mobile-challenge)
 
 ## Dependency Injection
 
