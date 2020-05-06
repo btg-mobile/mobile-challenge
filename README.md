@@ -14,7 +14,15 @@ Following is a presentation of its key points.
 
 ## Continuous Integration
 
-## Continuous Delivery
+Code regression is an important aspect of an application. All the tests on every module are checked with [Travis CI](https://travis-ci.org/). You can check build status clicking on the following badge:
+
+[![Build Status](https://travis-ci.org/almeidaws/mobile-challenge.svg?branch=master)](https://travis-ci.org/almeidaws/mobile-challenge)
+
+## Tasks management
+
+This was a standalone project, but there's no reason to keep all tasks in mind while coding. To solve this, a board on Trello was created. That [board is public](https://trello.com/b/3q6A7FDi/currency)
+
+![Trello Board](https://github.com/almeidaws/mobile-challenge/blob/master/docs/trello.png?raw=true)
 
 ## Dependency Injection
 
