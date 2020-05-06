@@ -46,8 +46,6 @@ class ScreenUITests: XCTestCase {
         
         let firstRow = XCUIApplication().tables.cells.element(boundBy: 0)
         firstRow.tap()
-                
-        XCTAssert(firstCurrency.label == "BRL")
         
         let secondCurrency = XCUIApplication().tables.buttons["secondCurrency"].firstMatch
         let secondCoordinate = secondCurrency.coordinate(withNormalizedOffset: .zero)
@@ -60,6 +58,8 @@ class ScreenUITests: XCTestCase {
         searchBar.tap()
         searchBar.typeText("AED")
         firstRow.tap()
+        
+        XCTAssert(firstCurrency.label == "BRL")
         XCTAssert(secondCurrency.label == "AED")
     }
 }
