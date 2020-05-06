@@ -18,6 +18,12 @@ Code regression is an important aspect of an application. All the tests on every
 
 [![Build Status](https://travis-ci.org/almeidaws/mobile-challenge.svg?branch=master)](https://travis-ci.org/almeidaws/mobile-challenge)
 
+## Tasks management
+
+This was a standalone project, but there's no reason to keep all tasks in mind while coding. To solve this, a board on Trello was created. That [board is public](https://trello.com/b/3q6A7FDi/currency)
+
+![Trello Board](https://github.com/almeidaws/mobile-challenge/blob/master/docs/trello.png?raw=true)
+
 ## Dependency Injection
 
 Controllers are completely independent of each other, and screens has no ideia about how data is persisted or what is used to fetch data from the Internet. In fact, on tests, an in-memory database is created and local files are read to ensure tests' quality.
