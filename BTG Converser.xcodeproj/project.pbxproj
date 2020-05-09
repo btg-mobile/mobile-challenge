@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A097931C2466DD8800605774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931B2466DD8800605774 /* AppDelegate.swift */; };
+		A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931D2466DD8800605774 /* SceneDelegate.swift */; };
+		A09793202466DD8800605774 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931F2466DD8800605774 /* ViewController.swift */; };
+		A09793232466DD8800605774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09793212466DD8800605774 /* Main.storyboard */; };
+		A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */; };
+		A09793282466DD8900605774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09793272466DD8900605774 /* Assets.xcassets */; };
+		A097932B2466DD8900605774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09793292466DD8900605774 /* LaunchScreen.storyboard */; };
+		A09793362466DD8A00605774 /* BTG_ConverserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09793352466DD8A00605774 /* BTG_ConverserTests.swift */; };
+		A09793412466DD8A00605774 /* BTG_ConverserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A09793322466DD8A00605774 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A09793102466DD8800605774 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A09793172466DD8800605774;
+			remoteInfo = "BTG Converser";
+		};
+		A097933D2466DD8A00605774 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A09793102466DD8800605774 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A09793172466DD8800605774;
+			remoteInfo = "BTG Converser";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A09793182466DD8800605774 /* BTG Converser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTG Converser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A097931B2466DD8800605774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A097931D2466DD8800605774 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A097931F2466DD8800605774 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A09793222466DD8800605774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTG_Converser.xcdatamodel; sourceTree = "<group>"; };
+		A09793272466DD8900605774 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A097932A2466DD8900605774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A097932C2466DD8900605774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A09793312466DD8A00605774 /* BTG ConverserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG ConverserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09793352466DD8A00605774 /* BTG_ConverserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_ConverserTests.swift; sourceTree = "<group>"; };
+		A09793372466DD8A00605774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A097933C2466DD8A00605774 /* BTG ConverserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG ConverserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_ConverserUITests.swift; sourceTree = "<group>"; };
+		A09793422466DD8A00605774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A09793152466DD8800605774 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A097932E2466DD8A00605774 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A09793392466DD8A00605774 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A097930F2466DD8800605774 = {
+			isa = PBXGroup;
+			children = (
+				A097931A2466DD8800605774 /* BTG Converser */,
+				A09793342466DD8A00605774 /* BTG ConverserTests */,
+				A097933F2466DD8A00605774 /* BTG ConverserUITests */,
+				A09793192466DD8800605774 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A09793192466DD8800605774 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A09793182466DD8800605774 /* BTG Converser.app */,
+				A09793312466DD8A00605774 /* BTG ConverserTests.xctest */,
+				A097933C2466DD8A00605774 /* BTG ConverserUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A097931A2466DD8800605774 /* BTG Converser */ = {
+			isa = PBXGroup;
+			children = (
+				A097931B2466DD8800605774 /* AppDelegate.swift */,
+				A097931D2466DD8800605774 /* SceneDelegate.swift */,
+				A097931F2466DD8800605774 /* ViewController.swift */,
+				A09793212466DD8800605774 /* Main.storyboard */,
+				A09793272466DD8900605774 /* Assets.xcassets */,
+				A09793292466DD8900605774 /* LaunchScreen.storyboard */,
+				A097932C2466DD8900605774 /* Info.plist */,
+				A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */,
+			);
+			path = "BTG Converser";
+			sourceTree = "<group>";
+		};
+		A09793342466DD8A00605774 /* BTG ConverserTests */ = {
+			isa = PBXGroup;
+			children = (
+				A09793352466DD8A00605774 /* BTG_ConverserTests.swift */,
+				A09793372466DD8A00605774 /* Info.plist */,
+			);
+			path = "BTG ConverserTests";
+			sourceTree = "<group>";
+		};
+		A097933F2466DD8A00605774 /* BTG ConverserUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */,
+				A09793422466DD8A00605774 /* Info.plist */,
+			);
+			path = "BTG ConverserUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A09793172466DD8800605774 /* BTG Converser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A09793452466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG Converser" */;
+			buildPhases = (
+				A09793142466DD8800605774 /* Sources */,
+				A09793152466DD8800605774 /* Frameworks */,
+				A09793162466DD8800605774 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BTG Converser";
+			productName = "BTG Converser";
+			productReference = A09793182466DD8800605774 /* BTG Converser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A09793302466DD8A00605774 /* BTG ConverserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A09793482466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG ConverserTests" */;
+			buildPhases = (
+				A097932D2466DD8A00605774 /* Sources */,
+				A097932E2466DD8A00605774 /* Frameworks */,
+				A097932F2466DD8A00605774 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A09793332466DD8A00605774 /* PBXTargetDependency */,
+			);
+			name = "BTG ConverserTests";
+			productName = "BTG ConverserTests";
+			productReference = A09793312466DD8A00605774 /* BTG ConverserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A097933B2466DD8A00605774 /* BTG ConverserUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A097934B2466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG ConverserUITests" */;
+			buildPhases = (
+				A09793382466DD8A00605774 /* Sources */,
+				A09793392466DD8A00605774 /* Frameworks */,
+				A097933A2466DD8A00605774 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A097933E2466DD8A00605774 /* PBXTargetDependency */,
+			);
+			name = "BTG ConverserUITests";
+			productName = "BTG ConverserUITests";
+			productReference = A097933C2466DD8A00605774 /* BTG ConverserUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A09793102466DD8800605774 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Vandcarlos Mouzinho Sandes Junior";
+				TargetAttributes = {
+					A09793172466DD8800605774 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					A09793302466DD8A00605774 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = A09793172466DD8800605774;
+					};
+					A097933B2466DD8A00605774 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = A09793172466DD8800605774;
+					};
+				};
+			};
+			buildConfigurationList = A09793132466DD8800605774 /* Build configuration list for PBXProject "BTG Converser" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A097930F2466DD8800605774;
+			productRefGroup = A09793192466DD8800605774 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A09793172466DD8800605774 /* BTG Converser */,
+				A09793302466DD8A00605774 /* BTG ConverserTests */,
+				A097933B2466DD8A00605774 /* BTG ConverserUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A09793162466DD8800605774 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A097932B2466DD8900605774 /* LaunchScreen.storyboard in Resources */,
+				A09793282466DD8900605774 /* Assets.xcassets in Resources */,
+				A09793232466DD8800605774 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A097932F2466DD8A00605774 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A097933A2466DD8A00605774 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A09793142466DD8800605774 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A09793202466DD8800605774 /* ViewController.swift in Sources */,
+				A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */,
+				A097931C2466DD8800605774 /* AppDelegate.swift in Sources */,
+				A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A097932D2466DD8A00605774 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A09793362466DD8A00605774 /* BTG_ConverserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A09793382466DD8A00605774 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A09793412466DD8A00605774 /* BTG_ConverserUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A09793332466DD8A00605774 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A09793172466DD8800605774 /* BTG Converser */;
+			targetProxy = A09793322466DD8A00605774 /* PBXContainerItemProxy */;
+		};
+		A097933E2466DD8A00605774 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A09793172466DD8800605774 /* BTG Converser */;
+			targetProxy = A097933D2466DD8A00605774 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A09793212466DD8800605774 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A09793222466DD8800605774 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A09793292466DD8900605774 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A097932A2466DD8900605774 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A09793432466DD8A00605774 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A09793442466DD8A00605774 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A09793462466DD8A00605774 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U82JV2PDFM;
+				INFOPLIST_FILE = "BTG Converser/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vandcarlos.BTG-Converser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A09793472466DD8A00605774 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U82JV2PDFM;
+				INFOPLIST_FILE = "BTG Converser/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vandcarlos.BTG-Converser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A09793492466DD8A00605774 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U82JV2PDFM;
+				INFOPLIST_FILE = "BTG ConverserTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vandcarlos.BTG-ConverserTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTG Converser.app/BTG Converser";
+			};
+			name = Debug;
+		};
+		A097934A2466DD8A00605774 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U82JV2PDFM;
+				INFOPLIST_FILE = "BTG ConverserTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vandcarlos.BTG-ConverserTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTG Converser.app/BTG Converser";
+			};
+			name = Release;
+		};
+		A097934C2466DD8A00605774 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U82JV2PDFM;
+				INFOPLIST_FILE = "BTG ConverserUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vandcarlos.BTG-ConverserUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "BTG Converser";
+			};
+			name = Debug;
+		};
+		A097934D2466DD8A00605774 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U82JV2PDFM;
+				INFOPLIST_FILE = "BTG ConverserUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vandcarlos.BTG-ConverserUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "BTG Converser";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A09793132466DD8800605774 /* Build configuration list for PBXProject "BTG Converser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A09793432466DD8A00605774 /* Debug */,
+				A09793442466DD8A00605774 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A09793452466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG Converser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A09793462466DD8A00605774 /* Debug */,
+				A09793472466DD8A00605774 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A09793482466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG ConverserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A09793492466DD8A00605774 /* Debug */,
+				A097934A2466DD8A00605774 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A097934B2466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG ConverserUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A097934C2466DD8A00605774 /* Debug */,
+				A097934D2466DD8A00605774 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */,
+			);
+			currentVersion = A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */;
+			path = BTG_Converser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A09793102466DD8800605774 /* Project object */;
+}
