@@ -26,6 +26,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iMq-Xx-00H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="primary_color"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                            <color key="textColor" name="white_color"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fHm-Up-m5S"/>
@@ -35,7 +40,7 @@
             </objects>
             <point key="canvasLocation" x="-1257" y="48"/>
         </scene>
-        <!--Main View Controller-->
+        <!--BTG Converter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="BTG_Converser" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,12 +88,12 @@
                                     <segue destination="EDi-V6-Ww8" kind="show" identifier="toToList" id="Qfs-oi-fCO"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="select the source currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaE-cQ-7Jn">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="select the source currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaE-cQ-7Jn" customClass="NumberInput" customModule="BTG_Converser" customModuleProvider="target">
                                 <rect key="frame" x="40" y="124" width="295" height="34"/>
                                 <color key="backgroundColor" name="white_color"/>
                                 <color key="textColor" name="text_color"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjr-F7-7Mt">
                                 <rect key="frame" x="325" y="141" width="0.0" height="0.0"/>
@@ -188,7 +193,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nNX-ni-3DT"/>
+                    <navigationItem key="navigationItem" title="BTG Converter" id="nNX-ni-3DT"/>
                     <connections>
                         <outlet property="convertButton" destination="xoa-0w-Sy4" id="fuQ-nq-Jfb"/>
                         <outlet property="destinationLabel" destination="adi-Pc-qdn" id="lOE-hV-Nbg"/>
@@ -217,7 +222,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qfs-oi-fCO"/>
+        <segue reference="p3o-cd-4Ou"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="background_color">

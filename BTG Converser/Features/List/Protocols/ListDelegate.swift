@@ -1,5 +1,5 @@
 //
-//  MainPresenterToInteractor.swift
+//  ListDelegate.swift
 //  BTG Converser
 //
 //  Created by Vandcarlos Mouzinho Sandes Junior on 11/05/20.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-protocol MainPresenterToInteractor: class {
+protocol ListDelegate: class {
 
-    func failToFetchDataInAPI(lastUpdate: Date?)
-    func successOnFetchDataInAPI()
+    func didSelectCode(_ code: String)
 
 }

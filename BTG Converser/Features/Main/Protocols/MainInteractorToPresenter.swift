@@ -10,4 +10,5 @@ protocol MainInteractorToPresenter: class {
 
     func fetchTaxesAndCurrenciesInAPI()
 
+    func convertValue(_ value: Double, from fromCode: String, to toCode: String)
 }

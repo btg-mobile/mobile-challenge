@@ -84,17 +84,17 @@ final class MainInteractor {
     }
 
     private func saveCurrenciesResponse(_ response: CurrenciesResponse) {
-           for currency in response.currencies {
-               let success = CurrencyModel.createOrUpdate(code: currency.key, name: currency.value)
-               guard success else {
-                   self.getLastUpdateDate()
-                   break
-               }
-           }
+        for currency in response.currencies {
+            let success = CurrencyModel.createOrUpdate(code: currency.key, name: currency.value)
+            guard success else {
+                self.getLastUpdateDate()
+                break
+            }
+        }
 
-           LocalData.instance.apiLastUpdateDate = Date()
-           self.presenter.successOnFetchDataInAPI()
-       }
+        LocalData.instance.apiLastUpdateDate = Date()
+        self.presenter.successOnFetchDataInAPI()
+    }
 
 }
 
@@ -104,6 +104,9 @@ extension MainInteractor: MainInteractorToPresenter {
 
     func fetchTaxesAndCurrenciesInAPI() {
         self.fetchTaxes()
+    }
 
+    func convertValue(_ value: Double, from fromCode: String, to toCode: String) {
+        debugPrint(value)
     }
 }

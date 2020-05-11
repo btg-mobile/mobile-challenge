@@ -23,6 +23,8 @@ final class MainPresenter {
     private var fromCode: String?
     private var toCode: String?
 
+    private var editingType = EditingType.from
+
     private func checkIfSourceInputAndConverterButtonStatus() {
         self.view.toggleEnableSourceTextField(to: self.fromCode != nil)
         self.view.toggleEnableConverterButton(to: self.fromCode != nil && self.toCode != nil)
@@ -34,12 +36,61 @@ final class MainPresenter {
 
 extension MainPresenter: MainPresenterToView {
 
+    var currentEditing: EditingType {
+        get {
+            self.editingType
+        }
+        set(newVal) {
+            self.editingType = newVal
+        }
+    }
+
+    var currentFromCode: String? {
+        self.fromCode
+    }
+
+    var currentToCode: String? {
+        self.toCode
+    }
+
     func viewDidLoad() {
         self.interactor.fetchTaxesAndCurrenciesInAPI()
     }
 
     func updateDataTapped() {
         self.interactor.fetchTaxesAndCurrenciesInAPI()
+    }
+
+    func didSelectCode(_ code: String) {
+        switch self.editingType {
+        case .from:
+            self.fromCode = code
+            self.view.updateFromCode(code)
+        case .to:
+            self.toCode = code
+            self.view.updateToValue(code)
+        }
+
+        self.checkIfSourceInputAndConverterButtonStatus()
+    }
+
+    func convertButtonTapped() {
+        guard let fromCode = self.fromCode else {
+            self.view.showError(with: "key")
+            return
+        }
+
+        guard let toCode = self.toCode else {
+            self.view.showError(with: "key")
+            return
+        }
+
+        guard let valueToConverter = self.view.valueToConverter, let value = Double(valueToConverter) else {
+            self.view.showError(with: "key")
+            return
+        }
+
+        self.interactor.convertValue(value, from: fromCode, to: toCode)
     }
 
 }

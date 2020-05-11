@@ -8,7 +8,13 @@
 
 protocol MainPresenterToView: class {
 
+    var currentEditing: EditingType { get set }
+    var currentFromCode: String? { get }
+    var currentToCode: String? { get }
+
     func viewDidLoad()
     func updateDataTapped()
+    func didSelectCode(_ code: String)
+    func convertButtonTapped()
 
 }

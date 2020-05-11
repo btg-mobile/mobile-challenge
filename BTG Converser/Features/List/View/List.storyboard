@@ -23,14 +23,15 @@
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="code or name" translatesAutoresizingMaskIntoConstraints="NO" id="j7y-Yn-bog">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                <color key="barTintColor" name="background_color"/>
+                                <color key="backgroundColor" name="white_color"/>
+                                <color key="barTintColor" name="white_color"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="7zA-VX-YQM" id="gCc-jP-uEb"/>
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqn-45-hkP">
-                                <rect key="frame" x="20" y="66" width="57" height="40"/>
+                                <rect key="frame" x="20" y="66" width="53" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="B7b-2e-CID"/>
                                 </constraints>
@@ -44,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyX-bf-7uF">
-                                <rect key="frame" x="97" y="66" width="47" height="40"/>
+                                <rect key="frame" x="93" y="66" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Jrf-6e-0VF"/>
                                 </constraints>
@@ -61,20 +62,20 @@
                                 <rect key="frame" x="10" y="116" width="355" height="541"/>
                                 <color key="backgroundColor" name="background_color"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="uvl-nY-KMN">
-                                    <rect key="frame" x="0.0" y="97.5" width="355" height="128"/>
+                                    <rect key="frame" x="0.0" y="96.5" width="355" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" name="background_color"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCodeCell" id="Qmx-B3-kb0" customClass="ListCodeCell" customModule="BTG_Converser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="355" height="40.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qmx-B3-kb0" id="8DW-Vn-dgz">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="41.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="40.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code - Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-NZ-QTQ">
-                                                    <rect key="frame" x="5" y="10" width="345" height="21.5"/>
+                                                    <rect key="frame" x="5" y="10" width="345" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                     <color key="textColor" name="text_color"/>
                                                     <nil key="highlightedColor"/>

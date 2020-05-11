@@ -49,6 +49,9 @@
 		A0B2F5E82469A95600513255 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5E72469A95600513255 /* List.storyboard */; };
 		A0B2F5EA2469AB7900513255 /* ListCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5E92469AB7900513255 /* ListCodeCell.swift */; };
 		A0B2F5ED2469AC6900513255 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5EC2469AC6900513255 /* ListItem.swift */; };
+		A0B2F5EF2469BEF100513255 /* ListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5EE2469BEF000513255 /* ListDelegate.swift */; };
+		A0B2F5F12469C0A200513255 /* EditingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5F02469C0A200513255 /* EditingType.swift */; };
+		A0B2F5F32469C9E800513255 /* NumberInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5F22469C9E800513255 /* NumberInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +120,9 @@
 		A0B2F5E72469A95600513255 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		A0B2F5E92469AB7900513255 /* ListCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCodeCell.swift; sourceTree = "<group>"; };
 		A0B2F5EC2469AC6900513255 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		A0B2F5EE2469BEF000513255 /* ListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDelegate.swift; sourceTree = "<group>"; };
+		A0B2F5F02469C0A200513255 /* EditingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingType.swift; sourceTree = "<group>"; };
+		A0B2F5F22469C9E800513255 /* NumberInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +285,7 @@
 			children = (
 				A0B2F5AD24697F9F00513255 /* TaxesResponse.swift */,
 				A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */,
+				A0B2F5F02469C0A200513255 /* EditingType.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -311,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B2F5C624698E8900513255 /* DateExtensions.swift */,
+				A0B2F5F22469C9E800513255 /* NumberInput.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -370,6 +378,7 @@
 				A0B2F5DB2469A94100513255 /* ListPresenterToView.swift */,
 				A0B2F5DC2469A94100513255 /* ListInteractorToPresenter.swift */,
 				A0B2F5DD2469A94100513255 /* ListViewToPresenter.swift */,
+				A0B2F5EE2469BEF000513255 /* ListDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -542,6 +551,7 @@
 				A0B2F5C92469930200513255 /* Database.swift in Sources */,
 				A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */,
 				A0B2F5A424697D2E00513255 /* MainInteractorToPresenter.swift in Sources */,
+				A0B2F5F12469C0A200513255 /* EditingType.swift in Sources */,
 				A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */,
 				A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */,
 				A0B2F5E02469A94100513255 /* ListPresenter.swift in Sources */,
@@ -549,12 +559,14 @@
 				A0B2F5A324697D2E00513255 /* MainViewController.swift in Sources */,
 				A0B2F5AE24697F9F00513255 /* TaxesResponse.swift in Sources */,
 				A0B2F5B02469800500513255 /* LocalData.swift in Sources */,
+				A0B2F5F32469C9E800513255 /* NumberInput.swift in Sources */,
 				A0B2F5C724698E8900513255 /* DateExtensions.swift in Sources */,
 				A0B2F5D12469971200513255 /* CurrencyModel.swift in Sources */,
 				A097931C2466DD8800605774 /* AppDelegate.swift in Sources */,
 				A0B2F5ED2469AC6900513255 /* ListItem.swift in Sources */,
 				A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */,
 				A0B2F5E12469A94100513255 /* ListViewController.swift in Sources */,
+				A0B2F5EF2469BEF100513255 /* ListDelegate.swift in Sources */,
 				A0B2F5A524697D2E00513255 /* MainPresenterToView.swift in Sources */,
 				A0B2F5E52469A94100513255 /* ListViewToPresenter.swift in Sources */,
 				A0B2F5E22469A94100513255 /* ListPresenterToInteractor.swift in Sources */,

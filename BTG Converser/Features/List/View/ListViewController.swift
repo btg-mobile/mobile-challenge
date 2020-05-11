@@ -15,6 +15,9 @@ final class ListViewController: UIViewController {
     @IBOutlet weak var orderNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
+    weak var delegate: ListDelegate?
+    var currentCode: String?
+
     private var listItems: [ListItem] = []
 
     private lazy var presenter: ListPresenterToView = {
@@ -63,12 +66,23 @@ extension ListViewController: UITableViewDataSource {
 
         cell.codeNameLabel.text = "\(listItem.code) - \(listItem.name)"
 
+        if listItem.code == self.currentCode {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+
         return cell
     }
 
 }
 
 extension ListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.didSelectCode(self.listItems[indexPath.row].code)
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }
 
