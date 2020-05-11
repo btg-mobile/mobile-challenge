@@ -20,6 +20,14 @@ final class MainPresenter {
         self.view = view
     }
 
+    private var fromCode: String?
+    private var toCode: String?
+
+    private func checkIfSourceInputAndConverterButtonStatus() {
+        self.view.toggleEnableSourceTextField(to: self.fromCode != nil)
+        self.view.toggleEnableConverterButton(to: self.fromCode != nil && self.toCode != nil)
+    }
+
 }
 
 // MARK: - MainPresenterToView
@@ -41,6 +49,8 @@ extension MainPresenter: MainPresenterToView {
 extension MainPresenter: MainPresenterToInteractor {
 
     func failToFetchDataInAPI(lastUpdate: Date?) {
+        self.checkIfSourceInputAndConverterButtonStatus()
+
         if let lastUpdate = lastUpdate {
             self.view.showWarningFailToUpdate(with: lastUpdate.parseToString())
         } else {
@@ -50,6 +60,7 @@ extension MainPresenter: MainPresenterToInteractor {
 
     func successOnFetchDataInAPI() {
         self.view.showSuccessState()
+        self.checkIfSourceInputAndConverterButtonStatus()
     }
 
 }

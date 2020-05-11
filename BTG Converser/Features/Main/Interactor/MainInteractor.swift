@@ -23,33 +23,6 @@ final class MainInteractor {
         self.presenter.failToFetchDataInAPI(lastUpdate: LocalData.instance.apiLastUpdateDate)
     }
 
-    private func saveTaxesResponse(_ response: TaxesResponse) {
-        for quote in response.quotes {
-            let fromCode = String(quote.key.prefix(3))
-            let toCode = String(quote.key.suffix(3))
-            let success = TaxModel.createOrUpdate(fromCode: fromCode, toCode: toCode, value: quote.value)
-            guard success else {
-                self.getLastUpdateDate()
-                break
-            }
-        }
-
-        self.fetchCurrencies()
-    }
-
-    private func saveCurrenciesResponse(_ response: CurrenciesResponse) {
-        for currency in response.currencies {
-            let success = CurrencyModel.createOrUpdate(code: currency.key, name: currency.value)
-            guard success else {
-                self.getLastUpdateDate()
-                break
-            }
-        }
-
-        LocalData.instance.apiLastUpdateDate = Date()
-        self.presenter.successOnFetchDataInAPI()
-    }
-
     private func fetchTaxes() {
         API.instance.get(path: self.taxsPath) { [weak self] (data, _, error) in
             if let error = error {
@@ -73,6 +46,20 @@ final class MainInteractor {
         }
     }
 
+    private func saveTaxesResponse(_ response: TaxesResponse) {
+           for quote in response.quotes {
+               let fromCode = String(quote.key.prefix(3))
+               let toCode = String(quote.key.suffix(3))
+               let success = TaxModel.createOrUpdate(fromCode: fromCode, toCode: toCode, value: quote.value)
+               guard success else {
+                   self.getLastUpdateDate()
+                   break
+               }
+           }
+
+           self.fetchCurrencies()
+       }
+
     private func fetchCurrencies() {
         API.instance.get(path: self.currenciesPath) { [weak self] (data, _, error) in
             if let error = error {
@@ -95,6 +82,19 @@ final class MainInteractor {
             }
         }
     }
+
+    private func saveCurrenciesResponse(_ response: CurrenciesResponse) {
+           for currency in response.currencies {
+               let success = CurrencyModel.createOrUpdate(code: currency.key, name: currency.value)
+               guard success else {
+                   self.getLastUpdateDate()
+                   break
+               }
+           }
+
+           LocalData.instance.apiLastUpdateDate = Date()
+           self.presenter.successOnFetchDataInAPI()
+       }
 
 }
 

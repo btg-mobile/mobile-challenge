@@ -52,8 +52,7 @@ final class MainViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.fromButton.isEnabled = true
             self?.toButton.isEnabled = true
-            self?.sourceTextField.isEnabled = true
-            self?.convertButton.isEnabled = true
+
 
             self?.updateButton.isHidden = false
 
@@ -106,6 +105,18 @@ extension MainViewController: MainViewToPresenter {
         self.showEnableState(lastUpdateDate: "now")
         DispatchQueue.main.async { [weak self] in
             self?.updateButton.setTitle("update again", for: .normal)
+        }
+    }
+
+    func toggleEnableSourceTextField(to status: Bool) {
+        DispatchQueue.main.async {
+            self.sourceTextField.isEnabled = status
+        }
+    }
+
+    func toggleEnableConverterButton(to status: Bool) {
+        DispatchQueue.main.async {
+            self.convertButton.isEnabled = status
         }
     }
 

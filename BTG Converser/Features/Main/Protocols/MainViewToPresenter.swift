@@ -15,4 +15,7 @@ protocol MainViewToPresenter: class {
 
     func showSuccessState()
 
+    func toggleEnableSourceTextField(to status: Bool)
+    func toggleEnableConverterButton(to status: Bool)
+
 }
