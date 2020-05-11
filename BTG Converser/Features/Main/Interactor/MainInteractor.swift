@@ -24,7 +24,8 @@ final class MainInteractor {
     }
 
     private func saveTaxReponse(_ response: TaxResponse) {
-        
+        LocalData.instance.apiLastUpdateDate = Date()
+        self.getLastUpdateDate()
     }
 
 }

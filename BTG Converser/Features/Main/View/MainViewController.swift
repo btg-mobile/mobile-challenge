@@ -33,30 +33,34 @@ final class MainViewController: UIViewController {
     }
 
     private func updateDataTapped() {
-        self.fromButton.isEnabled = false
-        self.toButton.isEnabled = false
-        self.sourceTextField.isEnabled = false
-        self.convertButton.isEnabled = false
-        
-        self.updateButton.isHidden = true
+        DispatchQueue.main.async { [weak self] in
+            self?.fromButton.isEnabled = false
+            self?.toButton.isEnabled = false
+            self?.sourceTextField.isEnabled = false
+            self?.convertButton.isEnabled = false
 
-        self.lastUpdateLabel.text = "Updating data"
+            self?.updateButton.isHidden = true
 
-        self.loadingIndicator.startAnimating()
-        self.presenter.updateDataTapped()
+            self?.lastUpdateLabel.text = "Updating data"
+
+            self?.loadingIndicator.startAnimating()
+            self?.presenter.updateDataTapped()
+        }
     }
 
     private func showEnableState(lastUpdateDate: String) {
-        self.fromButton.isEnabled = true
-        self.toButton.isEnabled = true
-        self.sourceTextField.isEnabled = true
-        self.convertButton.isEnabled = true
+        DispatchQueue.main.async { [weak self] in
+            self?.fromButton.isEnabled = true
+            self?.toButton.isEnabled = true
+            self?.sourceTextField.isEnabled = true
+            self?.convertButton.isEnabled = true
 
-        self.updateButton.isHidden = false
+            self?.updateButton.isHidden = false
 
-        self.lastUpdateLabel.text = "Last update: \(lastUpdateDate)"
+            self?.lastUpdateLabel.text = "Last update: \(lastUpdateDate)"
 
-        self.loadingIndicator.stopAnimating()
+            self?.loadingIndicator.stopAnimating()
+        }
     }
 
     @IBAction func updateButtonTapped(_ sender: Any) {
@@ -74,7 +78,11 @@ extension MainViewController: MainViewToPresenter {
 
     func showWarningFailToUpdate(with lastUpdateDate: String) {
         self.showEnableState(lastUpdateDate: lastUpdateDate)
-        self.updateButton.setTitle("failed to update, try again", for: .normal)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.updateButton.setTitle("failed to update, try again", for: .normal)
+        }
+
     }
 
     func showErrorFailToUpdate() {
@@ -82,15 +90,15 @@ extension MainViewController: MainViewToPresenter {
             title: "Error on fetch currencies and taxes",
             message: "Check your internet connection and try again", preferredStyle: .alert)
 
-        let tryAgainButton = UIAlertAction(title: "try again", style: .default) { _ in
-            self.updateDataTapped()
+        let tryAgainButton = UIAlertAction(title: "try again", style: .default) { [weak self] _ in
+            self?.updateDataTapped()
         }
 
         alertController.addAction(tryAgainButton)
 
-        DispatchQueue.main.async {
-            self.loadingIndicator.stopAnimating()
-            self.present(alertController, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.present(alertController, animated: true)
         }
     }
 
