@@ -8,7 +8,7 @@ import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
 import com.lucasnav.desafiobtg.modules.currencyConverter.view.CurrencyViewHolder
 
 class CurrenciesAdapter(
-    private val clickListener: (movieId: String) -> Unit
+    private val clickListener: (currecyId: String) -> Unit
 ) : RecyclerView.Adapter<CurrencyViewHolder>() {
 
     private var currencies: List<Currency> = emptyList()

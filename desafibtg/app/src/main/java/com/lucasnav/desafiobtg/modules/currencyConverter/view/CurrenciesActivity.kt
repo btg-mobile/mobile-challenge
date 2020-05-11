@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.lucasnav.desafiobtg.R
 import com.lucasnav.desafiobtg.modules.currencyConverter.adapter.CurrenciesAdapter
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
+import com.lucasnav.desafiobtg.modules.currencyConverter.util.CURRENCY_INPUT
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.CurrencyViewmodel
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.CurrencyViewmodelFactory
 import kotlinx.android.synthetic.main.activity_currencies.*
@@ -20,13 +21,17 @@ class CurrenciesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_currencies)
 
-        currenciesAdapter = CurrenciesAdapter {}
+        currenciesAdapter = CurrenciesAdapter(clickListener = {
+            intent.putExtra(CURRENCY_INPUT, it)
+            setResult(RESULT_OK, intent)
+            finish()
+        })
 
         setupRecyclerView()
 
-        subscribeUI()
-
         setupViewmodel()
+
+        subscribeUI()
 
         currencyViewmodel.getCurrencies()
     }
@@ -66,7 +71,10 @@ class CurrenciesActivity : AppCompatActivity() {
             })
 
             currencies.observe(this@CurrenciesActivity, Observer { newCurrencies ->
+                currenciesAdapter.update(newCurrencies)
             })
         }
     }
+
+
 }
