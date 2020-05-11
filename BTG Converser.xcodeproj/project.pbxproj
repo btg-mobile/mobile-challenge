@@ -9,13 +9,19 @@
 /* Begin PBXBuildFile section */
 		A097931C2466DD8800605774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931B2466DD8800605774 /* AppDelegate.swift */; };
 		A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931D2466DD8800605774 /* SceneDelegate.swift */; };
-		A09793202466DD8800605774 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931F2466DD8800605774 /* ViewController.swift */; };
 		A09793232466DD8800605774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09793212466DD8800605774 /* Main.storyboard */; };
 		A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */; };
 		A09793282466DD8900605774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09793272466DD8900605774 /* Assets.xcassets */; };
 		A097932B2466DD8900605774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09793292466DD8900605774 /* LaunchScreen.storyboard */; };
 		A09793362466DD8A00605774 /* BTG_ConverserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09793352466DD8A00605774 /* BTG_ConverserTests.swift */; };
 		A09793412466DD8A00605774 /* BTG_ConverserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */; };
+		A0B2F5A224697D2E00513255 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59824697D2E00513255 /* MainPresenter.swift */; };
+		A0B2F5A324697D2E00513255 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59A24697D2E00513255 /* MainViewController.swift */; };
+		A0B2F5A424697D2E00513255 /* MainInteractorToPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59C24697D2E00513255 /* MainInteractorToPresenter.swift */; };
+		A0B2F5A524697D2E00513255 /* MainPresenterToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59D24697D2E00513255 /* MainPresenterToView.swift */; };
+		A0B2F5A624697D2E00513255 /* MainViewToPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59E24697D2E00513255 /* MainViewToPresenter.swift */; };
+		A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59F24697D2E00513255 /* MainPresenterToInteractor.swift */; };
+		A0B2F5A824697D2E00513255 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5A124697D2E00513255 /* MainInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +45,6 @@
 		A09793182466DD8800605774 /* BTG Converser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTG Converser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097931B2466DD8800605774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A097931D2466DD8800605774 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A097931F2466DD8800605774 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A09793222466DD8800605774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTG_Converser.xcdatamodel; sourceTree = "<group>"; };
 		A09793272466DD8900605774 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +56,13 @@
 		A097933C2466DD8A00605774 /* BTG ConverserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG ConverserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_ConverserUITests.swift; sourceTree = "<group>"; };
 		A09793422466DD8A00605774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0B2F59824697D2E00513255 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		A0B2F59A24697D2E00513255 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A0B2F59C24697D2E00513255 /* MainInteractorToPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractorToPresenter.swift; sourceTree = "<group>"; };
+		A0B2F59D24697D2E00513255 /* MainPresenterToView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenterToView.swift; sourceTree = "<group>"; };
+		A0B2F59E24697D2E00513255 /* MainViewToPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewToPresenter.swift; sourceTree = "<group>"; };
+		A0B2F59F24697D2E00513255 /* MainPresenterToInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenterToInteractor.swift; sourceTree = "<group>"; };
+		A0B2F5A124697D2E00513255 /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +113,8 @@
 		A097931A2466DD8800605774 /* BTG Converser */ = {
 			isa = PBXGroup;
 			children = (
-				A097931B2466DD8800605774 /* AppDelegate.swift */,
-				A097931D2466DD8800605774 /* SceneDelegate.swift */,
-				A097931F2466DD8800605774 /* ViewController.swift */,
-				A09793212466DD8800605774 /* Main.storyboard */,
-				A09793272466DD8900605774 /* Assets.xcassets */,
-				A09793292466DD8900605774 /* LaunchScreen.storyboard */,
-				A097932C2466DD8900605774 /* Info.plist */,
-				A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */,
+				A0B2F59324697D0800513255 /* Features */,
+				A0B2F59224697CF700513255 /* Supporting Files */,
 			);
 			path = "BTG Converser";
 			sourceTree = "<group>";
@@ -129,6 +135,74 @@
 				A09793422466DD8A00605774 /* Info.plist */,
 			);
 			path = "BTG ConverserUITests";
+			sourceTree = "<group>";
+		};
+		A0B2F59224697CF700513255 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A097931B2466DD8800605774 /* AppDelegate.swift */,
+				A097931D2466DD8800605774 /* SceneDelegate.swift */,
+				A09793272466DD8900605774 /* Assets.xcassets */,
+				A09793292466DD8900605774 /* LaunchScreen.storyboard */,
+				A097932C2466DD8900605774 /* Info.plist */,
+				A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0B2F59324697D0800513255 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F59624697D2E00513255 /* Main */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A0B2F59624697D2E00513255 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F59724697D2E00513255 /* Presenter */,
+				A0B2F59924697D2E00513255 /* View */,
+				A0B2F59B24697D2E00513255 /* Protocols */,
+				A0B2F5A024697D2E00513255 /* Interactor */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A0B2F59724697D2E00513255 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F59824697D2E00513255 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A0B2F59924697D2E00513255 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A09793212466DD8800605774 /* Main.storyboard */,
+				A0B2F59A24697D2E00513255 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0B2F59B24697D2E00513255 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F59C24697D2E00513255 /* MainInteractorToPresenter.swift */,
+				A0B2F59D24697D2E00513255 /* MainPresenterToView.swift */,
+				A0B2F59E24697D2E00513255 /* MainViewToPresenter.swift */,
+				A0B2F59F24697D2E00513255 /* MainPresenterToInteractor.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A0B2F5A024697D2E00513255 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5A124697D2E00513255 /* MainInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,10 +336,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A09793202466DD8800605774 /* ViewController.swift in Sources */,
+				A0B2F5A224697D2E00513255 /* MainPresenter.swift in Sources */,
+				A0B2F5A624697D2E00513255 /* MainViewToPresenter.swift in Sources */,
+				A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */,
+				A0B2F5A424697D2E00513255 /* MainInteractorToPresenter.swift in Sources */,
 				A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */,
+				A0B2F5A824697D2E00513255 /* MainInteractor.swift in Sources */,
+				A0B2F5A324697D2E00513255 /* MainViewController.swift in Sources */,
 				A097931C2466DD8800605774 /* AppDelegate.swift in Sources */,
 				A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */,
+				A0B2F5A524697D2E00513255 /* MainPresenterToView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +520,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U82JV2PDFM;
-				INFOPLIST_FILE = "BTG Converser/Info.plist";
+				INFOPLIST_FILE = "BTG Converser/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U82JV2PDFM;
-				INFOPLIST_FILE = "BTG Converser/Info.plist";
+				INFOPLIST_FILE = "BTG Converser/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
