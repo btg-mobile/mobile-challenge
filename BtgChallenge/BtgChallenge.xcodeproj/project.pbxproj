@@ -19,6 +19,17 @@
 		C60EA8F0246896F600CADCDA /* BtgChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA8EF246896F600CADCDA /* BtgChallengeUITests.swift */; };
 		C60EA900246898DF00CADCDA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA8FF246898DF00CADCDA /* Coordinator.swift */; };
 		C60EA9022468994800CADCDA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA9012468994800CADCDA /* AppCoordinator.swift */; };
+		C60EA9072468E0BB00CADCDA /* CoinConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA9062468E0BB00CADCDA /* CoinConvertViewController.swift */; };
+		C60EA90B2468E0F400CADCDA /* CoinConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA90A2468E0F400CADCDA /* CoinConvertView.swift */; };
+		C60EA90E2468E21100CADCDA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA90D2468E21100CADCDA /* BaseView.swift */; };
+		C60EA9102468E52A00CADCDA /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA90F2468E52A00CADCDA /* CoinView.swift */; };
+		C60EA9142468EA1600CADCDA /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA9132468EA1600CADCDA /* UIColor+extensions.swift */; };
+		C60EA9162468EFC500CADCDA /* BtgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA9152468EFC500CADCDA /* BtgButton.swift */; };
+		C60EA918246957B500CADCDA /* UIFont+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA917246957B500CADCDA /* UIFont+extensions.swift */; };
+		C60EA91A24695C1400CADCDA /* BtgCoinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA91924695C1400CADCDA /* BtgCoinButton.swift */; };
+		C60EA91C24695D4800CADCDA /* BtgLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA91B24695D4800CADCDA /* BtgLabel.swift */; };
+		C60EA91E2469624500CADCDA /* BtgLabelLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA91D2469624500CADCDA /* BtgLabelLarge.swift */; };
+		C60EA9212469676600CADCDA /* BtgImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA9202469676600CADCDA /* BtgImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +72,17 @@
 		C60EA8F1246896F600CADCDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60EA8FF246898DF00CADCDA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C60EA9012468994800CADCDA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C60EA9062468E0BB00CADCDA /* CoinConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConvertViewController.swift; sourceTree = "<group>"; };
+		C60EA90A2468E0F400CADCDA /* CoinConvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConvertView.swift; sourceTree = "<group>"; };
+		C60EA90D2468E21100CADCDA /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C60EA90F2468E52A00CADCDA /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
+		C60EA9132468EA1600CADCDA /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
+		C60EA9152468EFC500CADCDA /* BtgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgButton.swift; sourceTree = "<group>"; };
+		C60EA917246957B500CADCDA /* UIFont+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extensions.swift"; sourceTree = "<group>"; };
+		C60EA91924695C1400CADCDA /* BtgCoinButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgCoinButton.swift; sourceTree = "<group>"; };
+		C60EA91B24695D4800CADCDA /* BtgLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgLabel.swift; sourceTree = "<group>"; };
+		C60EA91D2469624500CADCDA /* BtgLabelLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgLabelLarge.swift; sourceTree = "<group>"; };
+		C60EA9202469676600CADCDA /* BtgImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgImageView.swift; sourceTree = "<group>"; };
 		C9B7070C0AF1A074B9EEBCD2 /* Pods_BtgChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BtgChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7EA62092A501B1597B9F7D /* Pods-BtgChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BtgChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BtgChallengeTests/Pods-BtgChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +140,7 @@
 		C60EA8CC246896F100CADCDA /* BtgChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				C60EA9112468E69100CADCDA /* Utils */,
 				C60EA8FE246898C500CADCDA /* Coordinator */,
 				C60EA8FD246898B800CADCDA /* Modules */,
 				C60EA8CD246896F100CADCDA /* AppDelegate.swift */,
@@ -151,6 +174,9 @@
 		C60EA8FD246898B800CADCDA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C60EA90C2468E1EC00CADCDA /* Base */,
+				C60EA9052468E08500CADCDA /* CoinList */,
+				C60EA9042468E06F00CADCDA /* CoinConvert */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -162,6 +188,69 @@
 				C60EA9012468994800CADCDA /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C60EA9042468E06F00CADCDA /* CoinConvert */ = {
+			isa = PBXGroup;
+			children = (
+				C60EA9092468E0DB00CADCDA /* ViewModel */,
+				C60EA9082468E0D700CADCDA /* View */,
+				C60EA9062468E0BB00CADCDA /* CoinConvertViewController.swift */,
+			);
+			path = CoinConvert;
+			sourceTree = "<group>";
+		};
+		C60EA9052468E08500CADCDA /* CoinList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoinList;
+			sourceTree = "<group>";
+		};
+		C60EA9082468E0D700CADCDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C60EA90A2468E0F400CADCDA /* CoinConvertView.swift */,
+				C60EA90F2468E52A00CADCDA /* CoinView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C60EA9092468E0DB00CADCDA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C60EA90C2468E1EC00CADCDA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C60EA90D2468E21100CADCDA /* BaseView.swift */,
+				C60EA9152468EFC500CADCDA /* BtgButton.swift */,
+				C60EA91924695C1400CADCDA /* BtgCoinButton.swift */,
+				C60EA91B24695D4800CADCDA /* BtgLabel.swift */,
+				C60EA91D2469624500CADCDA /* BtgLabelLarge.swift */,
+				C60EA9202469676600CADCDA /* BtgImageView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C60EA9112468E69100CADCDA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C60EA9122468EA0800CADCDA /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C60EA9122468EA0800CADCDA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C60EA9132468EA1600CADCDA /* UIColor+extensions.swift */,
+				C60EA917246957B500CADCDA /* UIFont+extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C90AE39D01A5B5B1337D35F7 /* Frameworks */ = {
@@ -199,6 +288,7 @@
 				C60EA8C7246896F100CADCDA /* Frameworks */,
 				C60EA8C8246896F100CADCDA /* Resources */,
 				C60EA9032468A25800CADCDA /* ShellScript */,
+				633BE2FA433C639CFF6EA133 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -339,6 +429,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		633BE2FA433C639CFF6EA133 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BtgChallenge/Pods-BtgChallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BtgChallenge/Pods-BtgChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8FE7E31A2E203E3EED9A6402 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,8 +522,19 @@
 				C60EA900246898DF00CADCDA /* Coordinator.swift in Sources */,
 				C60EA8D2246896F100CADCDA /* ViewController.swift in Sources */,
 				C60EA9022468994800CADCDA /* AppCoordinator.swift in Sources */,
+				C60EA9102468E52A00CADCDA /* CoinView.swift in Sources */,
+				C60EA90B2468E0F400CADCDA /* CoinConvertView.swift in Sources */,
+				C60EA9212469676600CADCDA /* BtgImageView.swift in Sources */,
 				C60EA8CE246896F100CADCDA /* AppDelegate.swift in Sources */,
 				C60EA8D0246896F100CADCDA /* SceneDelegate.swift in Sources */,
+				C60EA9142468EA1600CADCDA /* UIColor+extensions.swift in Sources */,
+				C60EA91C24695D4800CADCDA /* BtgLabel.swift in Sources */,
+				C60EA91E2469624500CADCDA /* BtgLabelLarge.swift in Sources */,
+				C60EA9162468EFC500CADCDA /* BtgButton.swift in Sources */,
+				C60EA9072468E0BB00CADCDA /* CoinConvertViewController.swift in Sources */,
+				C60EA918246957B500CADCDA /* UIFont+extensions.swift in Sources */,
+				C60EA90E2468E21100CADCDA /* BaseView.swift in Sources */,
+				C60EA91A24695C1400CADCDA /* BtgCoinButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

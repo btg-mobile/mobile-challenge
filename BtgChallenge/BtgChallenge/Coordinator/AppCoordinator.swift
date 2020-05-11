@@ -16,7 +16,19 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        window.rootViewController = ViewController()
+        let viewController = CoinConvertViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.barTintColor = UIColor.darkBlue
+        navigationController.navigationBar.tintColor = .white
+        navigationController.navigationBar.isTranslucent = false
+        if let font = UIFont.btgLabelSmall() {
+            navigationController.navigationBar.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: font
+            ]
+        }
+        
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 }

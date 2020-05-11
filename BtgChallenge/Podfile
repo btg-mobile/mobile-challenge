@@ -7,6 +7,7 @@ target 'BtgChallenge' do
 
   # Pods for BtgChallenge
   pod 'SwiftLint'
+  pod 'SnapKit'
 
   target 'BtgChallengeTests' do
     inherit! :search_paths
