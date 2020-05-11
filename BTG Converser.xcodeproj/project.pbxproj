@@ -39,6 +39,16 @@
 		A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5CC246993B200513255 /* TaxModel.swift */; };
 		A0B2F5CF2469969000513255 /* CurrenciesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */; };
 		A0B2F5D12469971200513255 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5D02469971200513255 /* CurrencyModel.swift */; };
+		A0B2F5E02469A94100513255 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5D62469A94100513255 /* ListPresenter.swift */; };
+		A0B2F5E12469A94100513255 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5D82469A94100513255 /* ListViewController.swift */; };
+		A0B2F5E22469A94100513255 /* ListPresenterToInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5DA2469A94100513255 /* ListPresenterToInteractor.swift */; };
+		A0B2F5E32469A94100513255 /* ListPresenterToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5DB2469A94100513255 /* ListPresenterToView.swift */; };
+		A0B2F5E42469A94100513255 /* ListInteractorToPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5DC2469A94100513255 /* ListInteractorToPresenter.swift */; };
+		A0B2F5E52469A94100513255 /* ListViewToPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5DD2469A94100513255 /* ListViewToPresenter.swift */; };
+		A0B2F5E62469A94100513255 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5DF2469A94100513255 /* ListInteractor.swift */; };
+		A0B2F5E82469A95600513255 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5E72469A95600513255 /* List.storyboard */; };
+		A0B2F5EA2469AB7900513255 /* ListCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5E92469AB7900513255 /* ListCodeCell.swift */; };
+		A0B2F5ED2469AC6900513255 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5EC2469AC6900513255 /* ListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +107,16 @@
 		A0B2F5CC246993B200513255 /* TaxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxModel.swift; sourceTree = "<group>"; };
 		A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesResponse.swift; sourceTree = "<group>"; };
 		A0B2F5D02469971200513255 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		A0B2F5D62469A94100513255 /* ListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		A0B2F5D82469A94100513255 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		A0B2F5DA2469A94100513255 /* ListPresenterToInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPresenterToInteractor.swift; sourceTree = "<group>"; };
+		A0B2F5DB2469A94100513255 /* ListPresenterToView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPresenterToView.swift; sourceTree = "<group>"; };
+		A0B2F5DC2469A94100513255 /* ListInteractorToPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractorToPresenter.swift; sourceTree = "<group>"; };
+		A0B2F5DD2469A94100513255 /* ListViewToPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewToPresenter.swift; sourceTree = "<group>"; };
+		A0B2F5DF2469A94100513255 /* ListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		A0B2F5E72469A95600513255 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
+		A0B2F5E92469AB7900513255 /* ListCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCodeCell.swift; sourceTree = "<group>"; };
+		A0B2F5EC2469AC6900513255 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B2F59624697D2E00513255 /* Main */,
+				A0B2F5D42469A94100513255 /* List */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -312,6 +333,63 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A0B2F5D42469A94100513255 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5EB2469AC6100513255 /* Entity */,
+				A0B2F5D52469A94100513255 /* Presenter */,
+				A0B2F5D72469A94100513255 /* View */,
+				A0B2F5D92469A94100513255 /* Protocols */,
+				A0B2F5DE2469A94100513255 /* Interactor */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		A0B2F5D52469A94100513255 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5D62469A94100513255 /* ListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A0B2F5D72469A94100513255 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5E72469A95600513255 /* List.storyboard */,
+				A0B2F5D82469A94100513255 /* ListViewController.swift */,
+				A0B2F5E92469AB7900513255 /* ListCodeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0B2F5D92469A94100513255 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5DA2469A94100513255 /* ListPresenterToInteractor.swift */,
+				A0B2F5DB2469A94100513255 /* ListPresenterToView.swift */,
+				A0B2F5DC2469A94100513255 /* ListInteractorToPresenter.swift */,
+				A0B2F5DD2469A94100513255 /* ListViewToPresenter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A0B2F5DE2469A94100513255 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5DF2469A94100513255 /* ListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A0B2F5EB2469AC6100513255 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5EC2469AC6900513255 /* ListItem.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -419,6 +497,7 @@
 				A0B2F5C42469832700513255 /* Montserrat-Regular.ttf in Resources */,
 				A0B2F5C22469832700513255 /* OFL.txt in Resources */,
 				A0B2F5BD2469832700513255 /* Montserrat-Light.ttf in Resources */,
+				A0B2F5E82469A95600513255 /* List.storyboard in Resources */,
 				A0B2F5BE2469832700513255 /* Montserrat-ExtraLight.ttf in Resources */,
 				A097932B2466DD8900605774 /* LaunchScreen.storyboard in Resources */,
 				A09793282466DD8900605774 /* Assets.xcassets in Resources */,
@@ -452,15 +531,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B2F5EA2469AB7900513255 /* ListCodeCell.swift in Sources */,
+				A0B2F5E42469A94100513255 /* ListInteractorToPresenter.swift in Sources */,
 				A0B2F5CF2469969000513255 /* CurrenciesResponse.swift in Sources */,
 				A0B2F5AB24697E1F00513255 /* API.swift in Sources */,
+				A0B2F5E32469A94100513255 /* ListPresenterToView.swift in Sources */,
 				A0B2F5A224697D2E00513255 /* MainPresenter.swift in Sources */,
+				A0B2F5E62469A94100513255 /* ListInteractor.swift in Sources */,
 				A0B2F5A624697D2E00513255 /* MainViewToPresenter.swift in Sources */,
 				A0B2F5C92469930200513255 /* Database.swift in Sources */,
 				A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */,
 				A0B2F5A424697D2E00513255 /* MainInteractorToPresenter.swift in Sources */,
 				A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */,
 				A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */,
+				A0B2F5E02469A94100513255 /* ListPresenter.swift in Sources */,
 				A0B2F5A824697D2E00513255 /* MainInteractor.swift in Sources */,
 				A0B2F5A324697D2E00513255 /* MainViewController.swift in Sources */,
 				A0B2F5AE24697F9F00513255 /* TaxesResponse.swift in Sources */,
@@ -468,8 +552,12 @@
 				A0B2F5C724698E8900513255 /* DateExtensions.swift in Sources */,
 				A0B2F5D12469971200513255 /* CurrencyModel.swift in Sources */,
 				A097931C2466DD8800605774 /* AppDelegate.swift in Sources */,
+				A0B2F5ED2469AC6900513255 /* ListItem.swift in Sources */,
 				A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */,
+				A0B2F5E12469A94100513255 /* ListViewController.swift in Sources */,
 				A0B2F5A524697D2E00513255 /* MainPresenterToView.swift in Sources */,
+				A0B2F5E52469A94100513255 /* ListViewToPresenter.swift in Sources */,
+				A0B2F5E22469A94100513255 /* ListPresenterToInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

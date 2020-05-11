@@ -12,10 +12,16 @@ import CoreData
 final class Database {
 
     static var context: NSManagedObjectContext {
-        DispatchQueue.main.sync {
+        if Thread.isMainThread {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             return appDelegate.persistentContainer.viewContext
+        } else {
+            return DispatchQueue.main.sync {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                return appDelegate.persistentContainer.viewContext
+            }
         }
+
     }
 
 }

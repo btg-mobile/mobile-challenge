@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 final class CurrencyModel {
 
@@ -44,6 +45,15 @@ final class CurrencyModel {
         } catch {
             return nil
         }
+    }
+
+    static func getAll() -> [Currency] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+        request.returnsObjectsAsFaults = false
+
+        guard let currencies = try? Database.context.fetch(request) as? [Currency] else { return [] }
+
+        return currencies
     }
 
 }
