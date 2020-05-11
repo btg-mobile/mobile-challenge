@@ -23,7 +23,7 @@
 		A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59F24697D2E00513255 /* MainPresenterToInteractor.swift */; };
 		A0B2F5A824697D2E00513255 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5A124697D2E00513255 /* MainInteractor.swift */; };
 		A0B2F5AB24697E1F00513255 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5AA24697E1F00513255 /* API.swift */; };
-		A0B2F5AE24697F9F00513255 /* TaxResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5AD24697F9F00513255 /* TaxResponse.swift */; };
+		A0B2F5AE24697F9F00513255 /* TaxesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5AD24697F9F00513255 /* TaxesResponse.swift */; };
 		A0B2F5B02469800500513255 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5AF2469800500513255 /* LocalData.swift */; };
 		A0B2F5BC2469832700513255 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5B32469832700513255 /* Montserrat-Medium.ttf */; };
 		A0B2F5BD2469832700513255 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5B42469832700513255 /* Montserrat-Light.ttf */; };
@@ -35,6 +35,10 @@
 		A0B2F5C32469832700513255 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5BA2469832700513255 /* Montserrat-Black.ttf */; };
 		A0B2F5C42469832700513255 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5BB2469832700513255 /* Montserrat-Regular.ttf */; };
 		A0B2F5C724698E8900513255 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5C624698E8900513255 /* DateExtensions.swift */; };
+		A0B2F5C92469930200513255 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5C82469930200513255 /* Database.swift */; };
+		A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5CC246993B200513255 /* TaxModel.swift */; };
+		A0B2F5CF2469969000513255 /* CurrenciesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */; };
+		A0B2F5D12469971200513255 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5D02469971200513255 /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +81,7 @@
 		A0B2F59F24697D2E00513255 /* MainPresenterToInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenterToInteractor.swift; sourceTree = "<group>"; };
 		A0B2F5A124697D2E00513255 /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		A0B2F5AA24697E1F00513255 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		A0B2F5AD24697F9F00513255 /* TaxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxResponse.swift; sourceTree = "<group>"; };
+		A0B2F5AD24697F9F00513255 /* TaxesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxesResponse.swift; sourceTree = "<group>"; };
 		A0B2F5AF2469800500513255 /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		A0B2F5B32469832700513255 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A0B2F5B42469832700513255 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
@@ -89,6 +93,10 @@
 		A0B2F5BA2469832700513255 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		A0B2F5BB2469832700513255 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		A0B2F5C624698E8900513255 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		A0B2F5C82469930200513255 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		A0B2F5CC246993B200513255 /* TaxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxModel.swift; sourceTree = "<group>"; };
+		A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesResponse.swift; sourceTree = "<group>"; };
+		A0B2F5D02469971200513255 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +246,7 @@
 		A0B2F5A924697E1200513255 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A0B2F5CA246993A200513255 /* Database */,
 				A0B2F5AA24697E1F00513255 /* API.swift */,
 				A0B2F5AF2469800500513255 /* LocalData.swift */,
 			);
@@ -247,7 +256,8 @@
 		A0B2F5AC24697F6D00513255 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				A0B2F5AD24697F9F00513255 /* TaxResponse.swift */,
+				A0B2F5AD24697F9F00513255 /* TaxesResponse.swift */,
+				A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -282,6 +292,24 @@
 				A0B2F5C624698E8900513255 /* DateExtensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A0B2F5CA246993A200513255 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5CB246993A900513255 /* Models */,
+				A0B2F5C82469930200513255 /* Database.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		A0B2F5CB246993A900513255 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2F5CC246993B200513255 /* TaxModel.swift */,
+				A0B2F5D02469971200513255 /* CurrencyModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,17 +452,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B2F5CF2469969000513255 /* CurrenciesResponse.swift in Sources */,
 				A0B2F5AB24697E1F00513255 /* API.swift in Sources */,
 				A0B2F5A224697D2E00513255 /* MainPresenter.swift in Sources */,
 				A0B2F5A624697D2E00513255 /* MainViewToPresenter.swift in Sources */,
+				A0B2F5C92469930200513255 /* Database.swift in Sources */,
 				A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */,
 				A0B2F5A424697D2E00513255 /* MainInteractorToPresenter.swift in Sources */,
 				A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */,
+				A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */,
 				A0B2F5A824697D2E00513255 /* MainInteractor.swift in Sources */,
 				A0B2F5A324697D2E00513255 /* MainViewController.swift in Sources */,
-				A0B2F5AE24697F9F00513255 /* TaxResponse.swift in Sources */,
+				A0B2F5AE24697F9F00513255 /* TaxesResponse.swift in Sources */,
 				A0B2F5B02469800500513255 /* LocalData.swift in Sources */,
 				A0B2F5C724698E8900513255 /* DateExtensions.swift in Sources */,
+				A0B2F5D12469971200513255 /* CurrencyModel.swift in Sources */,
 				A097931C2466DD8800605774 /* AppDelegate.swift in Sources */,
 				A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */,
 				A0B2F5A524697D2E00513255 /* MainPresenterToView.swift in Sources */,

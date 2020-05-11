@@ -13,4 +13,6 @@ protocol MainViewToPresenter: class {
     func showWarningFailToUpdate(with lastUpdateDate: String)
     func showErrorFailToUpdate()
 
+    func showSuccessState()
+
 }

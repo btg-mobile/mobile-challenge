@@ -11,5 +11,5 @@ import Foundation
 protocol MainPresenterToInteractor: class {
 
     func failToFetchDataInAPI(lastUpdate: Date?)
-
+    func successOnFetchDataInAPI()
 }

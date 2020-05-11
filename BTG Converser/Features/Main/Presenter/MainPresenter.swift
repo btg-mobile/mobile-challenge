@@ -27,11 +27,11 @@ final class MainPresenter {
 extension MainPresenter: MainPresenterToView {
 
     func viewDidLoad() {
-        self.interactor.fetchTaxsAndCurrenciesInAPI()
+        self.interactor.fetchTaxesAndCurrenciesInAPI()
     }
 
     func updateDataTapped() {
-        self.interactor.fetchTaxsAndCurrenciesInAPI()
+        self.interactor.fetchTaxesAndCurrenciesInAPI()
     }
 
 }
@@ -46,6 +46,10 @@ extension MainPresenter: MainPresenterToInteractor {
         } else {
             self.view.showErrorFailToUpdate()
         }
+    }
+
+    func successOnFetchDataInAPI() {
+        self.view.showSuccessState()
     }
 
 }

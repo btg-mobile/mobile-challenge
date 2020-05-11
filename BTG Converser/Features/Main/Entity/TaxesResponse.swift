@@ -1,5 +1,5 @@
 //
-//  TaxResponse.swift
+//  TaxesResponse.swift
 //  BTG Converser
 //
 //  Created by Vandcarlos Mouzinho Sandes Junior on 11/05/20.

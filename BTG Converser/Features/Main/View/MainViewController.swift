@@ -102,4 +102,11 @@ extension MainViewController: MainViewToPresenter {
         }
     }
 
+    func showSuccessState() {
+        self.showEnableState(lastUpdateDate: "now")
+        DispatchQueue.main.async { [weak self] in
+            self?.updateButton.setTitle("update again", for: .normal)
+        }
+    }
+
 }
