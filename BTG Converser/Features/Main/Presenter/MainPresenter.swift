@@ -30,6 +30,10 @@ final class MainPresenter {
         self.view.toggleEnableConverterButton(to: self.fromCode != nil && self.toCode != nil)
     }
 
+    private func parseValueToConvert() -> Double? {
+        guard let valueToConverter = self.view.valueToConverter else { return nil }
+        return Double(valueToConverter)
+    }
 }
 
 // MARK: - MainPresenterToView
@@ -76,17 +80,17 @@ extension MainPresenter: MainPresenterToView {
 
     func convertButtonTapped() {
         guard let fromCode = self.fromCode else {
-            self.view.showError(with: "key")
+            self.view.showError(with: "main.error.from_code")
             return
         }
 
         guard let toCode = self.toCode else {
-            self.view.showError(with: "key")
+            self.view.showError(with: "main.error.to_code")
             return
         }
 
-        guard let valueToConverter = self.view.valueToConverter, let value = Double(valueToConverter) else {
-            self.view.showError(with: "key")
+        guard let value = self.parseValueToConvert() else {
+            self.view.showError(with: "main.error.value")
             return
         }
 
@@ -112,6 +116,20 @@ extension MainPresenter: MainPresenterToInteractor {
     func successOnFetchDataInAPI() {
         self.view.showSuccessState()
         self.checkIfSourceInputAndConverterButtonStatus()
+    }
+
+    func didConvertValue(_ valueConverted: Double) {
+        guard let code = self.toCode else {
+            self.view.showError(with: "main.error.convert")
+            return
+        }
+
+        let valueConvertedString = String(format: "%.3f", valueConverted)
+        self.view.updateToValue("\(valueConvertedString) \(code)")
+    }
+
+    func didFailConverValue() {
+        self.view.showError(with: "main.error.convert")
     }
 
 }

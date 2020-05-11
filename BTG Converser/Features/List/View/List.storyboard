@@ -89,6 +89,7 @@
                                                 <constraint firstItem="SsD-NZ-QTQ" firstAttribute="leading" secondItem="8DW-Vn-dgz" secondAttribute="leading" constant="5" id="wJM-Nf-vhU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" name="primary_color"/>
                                         <connections>
                                             <outlet property="codeNameLabel" destination="SsD-NZ-QTQ" id="dEM-k1-cjI"/>
                                         </connections>

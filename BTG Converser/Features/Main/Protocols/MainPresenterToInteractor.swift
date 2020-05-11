@@ -13,4 +13,7 @@ protocol MainPresenterToInteractor: class {
     func failToFetchDataInAPI(lastUpdate: Date?)
     func successOnFetchDataInAPI()
 
+    func didConvertValue(_ valueConverted: Double)
+    func didFailConverValue()
+
 }

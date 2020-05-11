@@ -107,6 +107,11 @@ extension MainInteractor: MainInteractorToPresenter {
     }
 
     func convertValue(_ value: Double, from fromCode: String, to toCode: String) {
-        debugPrint(value)
+        if let valueConverted = CurrencyConverter(fromCode: fromCode, toCode: toCode).convertValue(value) {
+            self.presenter.didConvertValue(valueConverted)
+        } else {
+            self.presenter.didFailConverValue()
+        }
     }
+
 }

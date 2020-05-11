@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  BTG Converser
+
+  Created by Vandcarlos Mouzinho Sandes Junior on 11/05/20.
+  Copyright © 2020 Vandcarlos Mouzinho Sandes Junior. All rights reserved.
+*/
+
+"main.error.title" = "Error on convert";
+"main.error.from_code" = "Check if you set from code";
+"main.error.to_code" = "Check if you set to code";
+"main.error.value" = "Check if you put a valid value";
+"main.error.convert" = "Make sure your entries are correct";

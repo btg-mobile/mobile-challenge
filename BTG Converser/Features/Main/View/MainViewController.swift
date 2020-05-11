@@ -110,7 +110,6 @@ extension MainViewController: MainViewToPresenter {
         DispatchQueue.main.async { [weak self] in
             self?.updateButton.setTitle("failed to update, try again", for: .normal)
         }
-
     }
 
     func showErrorFailToUpdate() {
@@ -160,8 +159,9 @@ extension MainViewController: MainViewToPresenter {
 
     func showError(with keyMessage: String) {
         let alertController = UIAlertController(
-            title: "Error on convert",
-            message: keyMessage, preferredStyle: .alert
+            title: NSLocalizedString("main.error.title", comment: "Convert error title") ,
+            message: NSLocalizedString(keyMessage, comment: "Convert error message"),
+            preferredStyle: .alert
         )
 
         let closeButton = UIAlertAction(title: "close", style: .default)

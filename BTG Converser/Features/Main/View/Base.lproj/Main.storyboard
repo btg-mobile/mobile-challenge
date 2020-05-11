@@ -121,27 +121,27 @@
                                     <action selector="convertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DwE-OU-c2K"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="select to currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adi-Pc-qdn">
-                                <rect key="frame" x="48" y="248" width="279" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="select to currency" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adi-Pc-qdn">
+                                <rect key="frame" x="29.5" y="248" width="316.5" height="43"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="35"/>
                                 <color key="textColor" name="text_color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="WYx-uq-piW">
-                                <rect key="frame" x="169" y="329" width="37" height="37"/>
+                                <rect key="frame" x="169" y="331" width="37" height="37"/>
                                 <color key="color" name="primary_color"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctg-LD-jUI">
                                 <rect key="frame" x="40" y="567" width="295" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-Bc-7x3">
-                                        <rect key="frame" x="5" y="5" width="67.5" height="14"/>
+                                        <rect key="frame" x="5" y="5" width="74" height="15"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="text_color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boe-Pn-67d">
-                                        <rect key="frame" x="5" y="29" width="191" height="26"/>
+                                        <rect key="frame" x="5" y="28" width="220" height="27"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                         <state key="normal" title="falha ao atualizar, tentar novamente">
                                             <color key="titleColor" name="primary_color"/>
@@ -172,16 +172,17 @@
                         <constraints>
                             <constraint firstItem="adi-Pc-qdn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1vp-lw-jSu"/>
                             <constraint firstItem="Zjr-F7-7Mt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iaE-cQ-7Jn" secondAttribute="leading" id="5cg-bB-7nd"/>
-                            <constraint firstItem="xoa-0w-Sy4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ctk-CA-Rb3"/>
                             <constraint firstItem="iaE-cQ-7Jn" firstAttribute="leading" secondItem="DSZ-Ko-wOc" secondAttribute="leading" id="EfP-iO-1pH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rfl-iW-Fuh" secondAttribute="trailing" constant="40" id="HOT-nL-44j"/>
                             <constraint firstItem="adi-Pc-qdn" firstAttribute="top" secondItem="xoa-0w-Sy4" secondAttribute="bottom" constant="40" id="Hd7-Ev-2HW"/>
+                            <constraint firstItem="adi-Pc-qdn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MUa-vF-jCv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ctg-LD-jUI" secondAttribute="bottom" constant="40" id="O0x-Sq-X0H"/>
                             <constraint firstItem="xoa-0w-Sy4" firstAttribute="top" secondItem="iaE-cQ-7Jn" secondAttribute="bottom" constant="10" id="QVu-R7-U0e"/>
                             <constraint firstItem="DSZ-Ko-wOc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="QrW-Pz-nse"/>
                             <constraint firstItem="Rfl-iW-Fuh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Twu-Ga-Qay"/>
                             <constraint firstItem="Rfl-iW-Fuh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DSZ-Ko-wOc" secondAttribute="trailing" constant="8" symbolic="YES" id="Xxw-4S-JuL"/>
                             <constraint firstItem="WYx-uq-piW" firstAttribute="top" secondItem="adi-Pc-qdn" secondAttribute="bottom" constant="40" id="eZj-do-zIz"/>
+                            <constraint firstItem="xoa-0w-Sy4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gUs-3b-9Mz"/>
                             <constraint firstItem="iaE-cQ-7Jn" firstAttribute="trailing" secondItem="Rfl-iW-Fuh" secondAttribute="trailing" id="hXm-vf-dLq"/>
                             <constraint firstItem="WYx-uq-piW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nF2-ee-OcB"/>
                             <constraint firstItem="DSZ-Ko-wOc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ntL-4W-GRn"/>
@@ -190,6 +191,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ctg-LD-jUI" secondAttribute="trailing" constant="40" id="sna-JP-pYn"/>
                             <constraint firstItem="Ctg-LD-jUI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="v5l-Fo-3mW"/>
                             <constraint firstItem="Zjr-F7-7Mt" firstAttribute="trailing" secondItem="iaE-cQ-7Jn" secondAttribute="trailing" constant="-10" id="wGO-0P-7b3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="adi-Pc-qdn" secondAttribute="trailing" constant="20" id="xsd-ff-P1l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
