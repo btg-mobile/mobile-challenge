@@ -54,6 +54,8 @@
 		A0B2F5F32469C9E800513255 /* NumberInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5F22469C9E800513255 /* NumberInput.swift */; };
 		A0B2F5F62469D11300513255 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5F82469D11300513255 /* Localizable.strings */; };
 		A0B2F5FA2469D46D00513255 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5F92469D46D00513255 /* CurrencyConverter.swift */; };
+		A0B2F5FC2469EF8800513255 /* MainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5FB2469EF8800513255 /* MainTests.swift */; };
+		A0B2F5FE2469FF1100513255 /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5FD2469FF1100513255 /* ConverterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		A0B2F5F22469C9E800513255 /* NumberInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInput.swift; sourceTree = "<group>"; };
 		A0B2F5F72469D11300513255 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0B2F5F92469D46D00513255 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		A0B2F5FB2469EF8800513255 /* MainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTests.swift; sourceTree = "<group>"; };
+		A0B2F5FD2469FF1100513255 /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 			children = (
 				A09793352466DD8A00605774 /* BTG_ConverserTests.swift */,
 				A09793372466DD8A00605774 /* Info.plist */,
+				A0B2F5FB2469EF8800513255 /* MainTests.swift */,
+				A0B2F5FD2469FF1100513255 /* ConverterTests.swift */,
 			);
 			path = "BTG ConverserTests";
 			sourceTree = "<group>";
@@ -585,6 +591,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B2F5FE2469FF1100513255 /* ConverterTests.swift in Sources */,
+				A0B2F5FC2469EF8800513255 /* MainTests.swift in Sources */,
 				A09793362466DD8A00605774 /* BTG_ConverserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

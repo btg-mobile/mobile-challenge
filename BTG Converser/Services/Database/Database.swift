@@ -11,7 +11,13 @@ import CoreData
 
 final class Database {
 
+    static var currentContext: NSManagedObjectContext?
+
     static var context: NSManagedObjectContext {
+        if let currentContext = self.currentContext {
+            return currentContext
+        }
+        
         if Thread.isMainThread {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             return appDelegate.persistentContainer.viewContext
@@ -21,7 +27,6 @@ final class Database {
                 return appDelegate.persistentContainer.viewContext
             }
         }
-
     }
 
 }

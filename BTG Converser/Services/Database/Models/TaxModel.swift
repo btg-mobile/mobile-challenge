@@ -47,4 +47,13 @@ final class TaxModel {
         }
     }
 
+    static func getAll() -> [Tax] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+        request.returnsObjectsAsFaults = false
+
+        guard let currencies = try? Database.context.fetch(request) as? [Tax] else { return [] }
+
+        return currencies
+    }
+
 }
