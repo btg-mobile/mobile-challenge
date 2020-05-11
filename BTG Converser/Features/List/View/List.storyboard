@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
@@ -100,10 +103,28 @@
                                     <outlet property="delegate" destination="7zA-VX-YQM" id="wEr-bS-yCY"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPt-Gz-5UB">
+                                <rect key="frame" x="10" y="116" width="355" height="541"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No currencies found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-w3-KL9">
+                                        <rect key="frame" x="105" y="60" width="145" height="19"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                        <color key="textColor" name="text_color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="background_color"/>
+                                <constraints>
+                                    <constraint firstItem="BVi-w3-KL9" firstAttribute="top" secondItem="SPt-Gz-5UB" secondAttribute="top" constant="60" id="Emg-sR-vTz"/>
+                                    <constraint firstItem="BVi-w3-KL9" firstAttribute="centerX" secondItem="SPt-Gz-5UB" secondAttribute="centerX" id="RhP-fQ-jOu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="background_color"/>
                         <constraints>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="trailing" secondItem="TLw-hr-SMG" secondAttribute="trailing" id="3oJ-ee-d45"/>
                             <constraint firstItem="pa7-NC-zAZ" firstAttribute="bottom" secondItem="TLw-hr-SMG" secondAttribute="bottom" constant="10" id="7o8-38-ahE"/>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="bottom" secondItem="TLw-hr-SMG" secondAttribute="bottom" id="HNE-e9-F30"/>
                             <constraint firstItem="TLw-hr-SMG" firstAttribute="top" secondItem="Cqn-45-hkP" secondAttribute="bottom" constant="10" id="IfR-32-Mh0"/>
                             <constraint firstItem="j7y-Yn-bog" firstAttribute="leading" secondItem="pa7-NC-zAZ" secondAttribute="leading" id="Moy-MU-OMC"/>
                             <constraint firstItem="cyX-bf-7uF" firstAttribute="centerY" secondItem="Cqn-45-hkP" secondAttribute="centerY" id="Oip-z5-1eW"/>
@@ -112,12 +133,15 @@
                             <constraint firstItem="Cqn-45-hkP" firstAttribute="top" secondItem="j7y-Yn-bog" secondAttribute="bottom" constant="10" id="YRD-G3-E1M"/>
                             <constraint firstItem="Cqn-45-hkP" firstAttribute="leading" secondItem="pa7-NC-zAZ" secondAttribute="leading" constant="20" id="dNh-vU-W5Q"/>
                             <constraint firstItem="pa7-NC-zAZ" firstAttribute="trailing" secondItem="j7y-Yn-bog" secondAttribute="trailing" id="efV-ft-lQW"/>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="leading" secondItem="TLw-hr-SMG" secondAttribute="leading" id="ibL-ic-w5S"/>
                             <constraint firstItem="cyX-bf-7uF" firstAttribute="leading" secondItem="Cqn-45-hkP" secondAttribute="trailing" constant="20" id="o2x-fr-YQz"/>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="top" secondItem="TLw-hr-SMG" secondAttribute="top" id="uFh-nQ-RRu"/>
                             <constraint firstItem="TLw-hr-SMG" firstAttribute="leading" secondItem="pa7-NC-zAZ" secondAttribute="leading" constant="10" id="zkE-Mc-9lg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pa7-NC-zAZ"/>
                     </view>
                     <connections>
+                        <outlet property="emptyState" destination="SPt-Gz-5UB" id="FLM-ek-Omh"/>
                         <outlet property="orderCodeButton" destination="Cqn-45-hkP" id="5GI-Ih-8d8"/>
                         <outlet property="orderNameButton" destination="cyX-bf-7uF" id="wmc-qN-91X"/>
                         <outlet property="searchBar" destination="j7y-Yn-bog" id="SfL-nc-qHd"/>

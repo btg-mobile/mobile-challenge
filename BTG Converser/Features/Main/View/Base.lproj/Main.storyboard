@@ -26,6 +26,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iMq-Xx-00H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="white_color"/>
                         <color key="barTintColor" name="primary_color"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
@@ -122,26 +123,26 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="select to currency" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adi-Pc-qdn">
-                                <rect key="frame" x="29.5" y="248" width="316.5" height="43"/>
+                                <rect key="frame" x="48" y="248" width="279" height="41"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="35"/>
                                 <color key="textColor" name="text_color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="WYx-uq-piW">
-                                <rect key="frame" x="169" y="331" width="37" height="37"/>
+                                <rect key="frame" x="169" y="329" width="37" height="37"/>
                                 <color key="color" name="primary_color"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctg-LD-jUI">
                                 <rect key="frame" x="40" y="567" width="295" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-Bc-7x3">
-                                        <rect key="frame" x="5" y="5" width="74" height="15"/>
+                                        <rect key="frame" x="5" y="5" width="67.5" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="text_color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boe-Pn-67d">
-                                        <rect key="frame" x="5" y="28" width="220" height="27"/>
+                                        <rect key="frame" x="5" y="29" width="191" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                         <state key="normal" title="falha ao atualizar, tentar novamente">
                                             <color key="titleColor" name="primary_color"/>

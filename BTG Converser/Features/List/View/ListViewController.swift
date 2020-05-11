@@ -14,6 +14,7 @@ final class ListViewController: UIViewController {
     @IBOutlet weak var orderCodeButton: UIButton!
     @IBOutlet weak var orderNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyState: UIView!
 
     weak var delegate: ListDelegate?
     var currentCode: String?
@@ -93,6 +94,12 @@ extension ListViewController: ListViewToPresenter {
     func updateListItems(_ listItems: [ListItem]) {
         self.listItems = listItems
         self.tableView.reloadData()
+
+        if listItems.isEmpty {
+            self.emptyState.isHidden = false
+        } else {
+            self.emptyState.isHidden = true
+        }
     }
 
     func showStateSortByCodeAsc() {
