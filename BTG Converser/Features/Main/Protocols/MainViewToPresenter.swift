@@ -6,6 +6,11 @@
 //  Copyright © 2020 Vandcarlos Mouzinho Sandes Junior. All rights reserved.
 //
 
+import Foundation
+
 protocol MainViewToPresenter: class {
+
+    func showWarningFailToUpdate(with lastUpdateDate: String)
+    func showErrorFailToUpdate()
 
 }

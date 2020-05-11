@@ -8,4 +8,6 @@
 
 protocol MainInteractorToPresenter: class {
 
+    func fetchTaxsAndCurrenciesInAPI()
+
 }

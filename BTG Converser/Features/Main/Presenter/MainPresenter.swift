@@ -27,7 +27,11 @@ final class MainPresenter {
 extension MainPresenter: MainPresenterToView {
 
     func viewDidLoad() {
+        self.interactor.fetchTaxsAndCurrenciesInAPI()
+    }
 
+    func updateDataTapped() {
+        self.interactor.fetchTaxsAndCurrenciesInAPI()
     }
 
 }
@@ -35,5 +39,13 @@ extension MainPresenter: MainPresenterToView {
 // MARK: - MainPresenterToInteractor
 
 extension MainPresenter: MainPresenterToInteractor {
+
+    func failToFetchDataInAPI(lastUpdate: Date?) {
+        if let lastUpdate = lastUpdate {
+            self.view.showWarningFailToUpdate(with: lastUpdate.parseToString())
+        } else {
+            self.view.showErrorFailToUpdate()
+        }
+    }
 
 }

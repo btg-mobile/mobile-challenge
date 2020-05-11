@@ -9,5 +9,6 @@
 protocol MainPresenterToView: class {
 
     func viewDidLoad()
+    func updateDataTapped()
 
 }
