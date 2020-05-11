@@ -11,7 +11,7 @@ import Foundation
 extension Date {
 
     func parseToString(
-        withFormat format: String = "dd/MM/yyyy HH:mm"
+        withFormat format: String = "yyyy-MM-dd HH:mm"
     ) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

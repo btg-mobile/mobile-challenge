@@ -35,44 +35,6 @@ final class MainViewController: UIViewController {
         self.presenter.viewDidLoad()
     }
 
-    private func updateDataTapped() {
-        DispatchQueue.main.async { [weak self] in
-            self?.fromButton.isEnabled = false
-            self?.toButton.isEnabled = false
-            self?.sourceTextField.isEnabled = false
-            self?.convertButton.isEnabled = false
-
-            self?.updateButton.isHidden = true
-
-            self?.lastUpdateLabel.text = "Updating data"
-
-            self?.loadingIndicator.startAnimating()
-            self?.presenter.updateDataTapped()
-        }
-    }
-
-    private func showEnableState(lastUpdateDate: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.fromButton.isEnabled = true
-            self?.toButton.isEnabled = true
-
-
-            self?.updateButton.isHidden = false
-
-            self?.lastUpdateLabel.text = "Last update: \(lastUpdateDate)"
-
-            self?.loadingIndicator.stopAnimating()
-        }
-    }
-
-    @IBAction func updateButtonTapped(_ sender: Any) {
-        self.updateDataTapped()
-    }
-
-    @IBAction func convertButtonTapped(_ sender: Any) {
-        self.presenter.convertButtonTapped()
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case self.segueToFromListIdentifier: self.prepareFromList(segue.destination)
@@ -80,6 +42,12 @@ final class MainViewController: UIViewController {
         default: break
         }
     }
+
+}
+
+// MARK: - Private methods
+
+extension MainViewController {
 
     private func prepareFromList(_ destination: UIViewController?) {
         guard let viewController = destination as? ListViewController else { return }
@@ -94,6 +62,51 @@ final class MainViewController: UIViewController {
         viewController.currentCode = self.presenter.currentToCode
         viewController.delegate = self
     }
+
+    private func showEnableState(lastUpdateDate: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.fromButton.isEnabled = true
+            self?.toButton.isEnabled = true
+
+            self?.updateButton.isHidden = false
+
+            let lastUpdateMessage = NSLocalizedString("main.update.last_update", comment: "Last update message")
+            self?.lastUpdateLabel.text = "\(lastUpdateMessage) \(lastUpdateDate)"
+
+            self?.loadingIndicator.stopAnimating()
+        }
+    }
+
+    private func updateDataTapped() {
+        DispatchQueue.main.async { [weak self] in
+            self?.fromButton.isEnabled = false
+            self?.toButton.isEnabled = false
+            self?.sourceTextField.isEnabled = false
+            self?.convertButton.isEnabled = false
+
+            self?.updateButton.isHidden = true
+
+            self?.lastUpdateLabel.text = NSLocalizedString("main.update.updating", comment: "Updating message")
+
+            self?.loadingIndicator.startAnimating()
+            self?.presenter.updateDataTapped()
+        }
+    }
+
+}
+
+// MARK: - View actions
+
+extension MainViewController {
+
+    @IBAction func updateButtonTapped(_ sender: Any) {
+        self.updateDataTapped()
+    }
+
+    @IBAction func convertButtonTapped(_ sender: Any) {
+        self.presenter.convertButtonTapped()
+    }
+
 }
 
 // MARK: - MainViewToPresenter
@@ -108,16 +121,19 @@ extension MainViewController: MainViewToPresenter {
         self.showEnableState(lastUpdateDate: lastUpdateDate)
 
         DispatchQueue.main.async { [weak self] in
-            self?.updateButton.setTitle("failed to update, try again", for: .normal)
+            let title = NSLocalizedString("main.update.error.try_again_button", comment: "Try again button")
+            self?.updateButton.setTitle(title, for: .normal)
         }
     }
 
     func showErrorFailToUpdate() {
-        let alertController = UIAlertController(
-            title: "Error on fetch currencies and taxes",
-            message: "Check your internet connection and try again", preferredStyle: .alert)
+        let alertTitle = NSLocalizedString("main.update.error.alert_title", comment: "Update error title")
+        let alertMessage = NSLocalizedString("main.update.error.alert_message", comment: "Update error message")
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
 
-        let tryAgainButton = UIAlertAction(title: "try again", style: .default) { [weak self] _ in
+        let tryAgainTitle = NSLocalizedString("try_gain", comment: "Try again button")
+
+        let tryAgainButton = UIAlertAction(title: tryAgainTitle, style: .default) { [weak self] _ in
             self?.updateDataTapped()
         }
 
@@ -130,9 +146,12 @@ extension MainViewController: MainViewToPresenter {
     }
 
     func showSuccessState() {
-        self.showEnableState(lastUpdateDate: "now")
+        let lastUpdate = NSLocalizedString("now", comment: "Now message")
+        self.showEnableState(lastUpdateDate: lastUpdate)
+
         DispatchQueue.main.async { [weak self] in
-            self?.updateButton.setTitle("update again", for: .normal)
+            let title = NSLocalizedString("main.update.update_again", comment: "Update again button")
+            self?.updateButton.setTitle(title, for: .normal)
         }
     }
 
@@ -158,13 +177,12 @@ extension MainViewController: MainViewToPresenter {
     }
 
     func showError(with keyMessage: String) {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("main.error.title", comment: "Convert error title") ,
-            message: NSLocalizedString(keyMessage, comment: "Convert error message"),
-            preferredStyle: .alert
-        )
+        let alertTitle = NSLocalizedString("main.error.title", comment: "Convert error title")
+        let alertMessage = NSLocalizedString(keyMessage, comment: "Convert error message")
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
 
-        let closeButton = UIAlertAction(title: "close", style: .default)
+        let closeTitle = NSLocalizedString("close", comment: "Close button")
+        let closeButton = UIAlertAction(title: closeTitle, style: .default)
 
         alertController.addAction(closeButton)
 
@@ -174,6 +192,8 @@ extension MainViewController: MainViewToPresenter {
     }
 
 }
+
+// MARK: - ListDelegate
 
 extension MainViewController: ListDelegate {
 

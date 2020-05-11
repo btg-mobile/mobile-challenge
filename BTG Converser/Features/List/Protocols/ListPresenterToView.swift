@@ -13,4 +13,5 @@ protocol ListPresenterToView: class {
 
     func sortByCodeTapped()
     func sortByNameTapped()
+
 }

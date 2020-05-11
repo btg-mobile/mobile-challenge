@@ -11,3 +11,13 @@
 "main.error.to_code" = "Check if you set to code";
 "main.error.value" = "Check if you put a valid value";
 "main.error.convert" = "Make sure your entries are correct";
+"main.update.error.try_again_button" = "failed to update, try again";
+"main.update.error.alert_title" = "Error on fetch currencies and taxes";
+"main.update.error.alert_message" = "Check your internet connection and try again";
+"main.update.update_again" = "update again";
+"main.update.last_update" = "Last update:";
+"main.update.updating" = "Updating data";
+
+"try_gain" = "try again";
+"close" = "close";
+"now" = "now";

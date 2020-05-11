@@ -30,6 +30,12 @@ final class ListViewController: UIViewController {
         self.presenter.viewDidLoad()
     }
 
+}
+
+// MARK: - View actions
+
+extension ListViewController {
+
     @IBAction func sortByCodeTapped(_ sender: Any) {
         self.presenter.sortByCodeTapped()
     }
@@ -37,7 +43,10 @@ final class ListViewController: UIViewController {
     @IBAction func sortByNameTapped(_ sender: Any) {
         self.presenter.sortByNameTapped()
     }
+
 }
+
+// MARK: - UISearchBarDelegate
 
 extension ListViewController: UISearchBarDelegate {
 
@@ -50,6 +59,8 @@ extension ListViewController: UISearchBarDelegate {
     }
 
 }
+
+// MARK: - UITableViewDataSource
 
 extension ListViewController: UITableViewDataSource {
 
@@ -77,6 +88,8 @@ extension ListViewController: UITableViewDataSource {
     }
 
 }
+
+// MARK: - UITableViewDelegate
 
 extension ListViewController: UITableViewDelegate {
 
