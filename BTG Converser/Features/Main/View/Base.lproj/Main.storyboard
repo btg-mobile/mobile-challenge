@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SbS-kf-Q5J">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="6Vy-b2-8wW">
+            <objects>
+                <navigationController id="SbS-kf-Q5J" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iMq-Xx-00H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="white_color"/>
+                        <color key="barTintColor" name="primary_color"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                            <color key="textColor" name="white_color"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fHm-Up-m5S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W3R-wk-UHO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1257" y="48"/>
+        </scene>
+        <!--BTG Converter-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="BTG_Converser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSZ-Ko-wOc">
+                                <rect key="frame" x="40" y="64" width="70" height="40"/>
+                                <color key="backgroundColor" name="primary_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="S9a-Df-btt"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="WDq-Pw-dDw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <state key="normal" title="from">
+                                    <color key="titleColor" name="white_color"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="EDi-V6-Ww8" kind="show" identifier="toFromList" id="p3o-cd-4Ou"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfl-iW-Fuh">
+                                <rect key="frame" x="265" y="64" width="70" height="40"/>
+                                <color key="backgroundColor" name="primary_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2Jq-3b-69x"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="O1c-7B-HBA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                <state key="normal" title="to">
+                                    <color key="titleColor" name="white_color"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="EDi-V6-Ww8" kind="show" identifier="toToList" id="Qfs-oi-fCO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="select the source currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaE-cQ-7Jn" customClass="NumberInput" customModule="BTG_Converser" customModuleProvider="target">
+                                <rect key="frame" x="40" y="124" width="295" height="34"/>
+                                <color key="backgroundColor" name="white_color"/>
+                                <accessibility key="accessibilityConfiguration" identifier="From Input"/>
+                                <color key="textColor" name="text_color"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjr-F7-7Mt">
+                                <rect key="frame" x="325" y="141" width="0.0" height="0.0"/>
+                                <accessibility key="accessibilityConfiguration" identifier="From Code"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" name="text_color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoa-0w-Sy4">
+                                <rect key="frame" x="87.5" y="168" width="200" height="40"/>
+                                <color key="backgroundColor" name="secondary_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6Ud-f6-cQW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="eUN-xF-VPd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                                <state key="normal" title="CONVERT">
+                                    <color key="titleColor" name="white_color"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="convertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DwE-OU-c2K"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="select to currency" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adi-Pc-qdn">
+                                <rect key="frame" x="48" y="248" width="279" height="41"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Convert Value"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="35"/>
+                                <color key="textColor" name="text_color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="WYx-uq-piW">
+                                <rect key="frame" x="169" y="329" width="37" height="37"/>
+                                <color key="color" name="primary_color"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctg-LD-jUI">
+                                <rect key="frame" x="40" y="567" width="295" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-Bc-7x3">
+                                        <rect key="frame" x="5" y="5" width="67.5" height="14"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                        <color key="textColor" name="text_color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boe-Pn-67d">
+                                        <rect key="frame" x="5" y="29" width="191" height="26"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                        <state key="normal" title="falha ao atualizar, tentar novamente">
+                                            <color key="titleColor" name="primary_color"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PiT-lL-sQz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="white_color"/>
+                                <constraints>
+                                    <constraint firstItem="zIV-Bc-7x3" firstAttribute="top" secondItem="Ctg-LD-jUI" secondAttribute="top" constant="5" id="2Uq-nI-99K"/>
+                                    <constraint firstAttribute="bottom" secondItem="boe-Pn-67d" secondAttribute="bottom" constant="5" id="4mY-uG-GMl"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="boe-Pn-67d" secondAttribute="trailing" constant="5" id="4p9-9W-sW1"/>
+                                    <constraint firstAttribute="height" constant="60" id="7Ew-5d-SFO"/>
+                                    <constraint firstItem="boe-Pn-67d" firstAttribute="leading" secondItem="Ctg-LD-jUI" secondAttribute="leading" constant="5" id="OT7-NK-N7x"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIV-Bc-7x3" secondAttribute="trailing" constant="5" id="RQd-DW-jnZ"/>
+                                    <constraint firstItem="zIV-Bc-7x3" firstAttribute="leading" secondItem="Ctg-LD-jUI" secondAttribute="leading" constant="5" id="p0B-18-djm"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="background_color"/>
+                        <constraints>
+                            <constraint firstItem="adi-Pc-qdn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1vp-lw-jSu"/>
+                            <constraint firstItem="Zjr-F7-7Mt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iaE-cQ-7Jn" secondAttribute="leading" id="5cg-bB-7nd"/>
+                            <constraint firstItem="iaE-cQ-7Jn" firstAttribute="leading" secondItem="DSZ-Ko-wOc" secondAttribute="leading" id="EfP-iO-1pH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rfl-iW-Fuh" secondAttribute="trailing" constant="40" id="HOT-nL-44j"/>
+                            <constraint firstItem="adi-Pc-qdn" firstAttribute="top" secondItem="xoa-0w-Sy4" secondAttribute="bottom" constant="40" id="Hd7-Ev-2HW"/>
+                            <constraint firstItem="adi-Pc-qdn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MUa-vF-jCv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ctg-LD-jUI" secondAttribute="bottom" constant="40" id="O0x-Sq-X0H"/>
+                            <constraint firstItem="xoa-0w-Sy4" firstAttribute="top" secondItem="iaE-cQ-7Jn" secondAttribute="bottom" constant="10" id="QVu-R7-U0e"/>
+                            <constraint firstItem="DSZ-Ko-wOc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="QrW-Pz-nse"/>
+                            <constraint firstItem="Rfl-iW-Fuh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Twu-Ga-Qay"/>
+                            <constraint firstItem="Rfl-iW-Fuh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DSZ-Ko-wOc" secondAttribute="trailing" constant="8" symbolic="YES" id="Xxw-4S-JuL"/>
+                            <constraint firstItem="WYx-uq-piW" firstAttribute="top" secondItem="adi-Pc-qdn" secondAttribute="bottom" constant="40" id="eZj-do-zIz"/>
+                            <constraint firstItem="xoa-0w-Sy4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gUs-3b-9Mz"/>
+                            <constraint firstItem="iaE-cQ-7Jn" firstAttribute="trailing" secondItem="Rfl-iW-Fuh" secondAttribute="trailing" id="hXm-vf-dLq"/>
+                            <constraint firstItem="WYx-uq-piW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nF2-ee-OcB"/>
+                            <constraint firstItem="DSZ-Ko-wOc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ntL-4W-GRn"/>
+                            <constraint firstItem="iaE-cQ-7Jn" firstAttribute="top" secondItem="DSZ-Ko-wOc" secondAttribute="bottom" constant="20" id="rpa-LB-DVQ"/>
+                            <constraint firstItem="Zjr-F7-7Mt" firstAttribute="centerY" secondItem="iaE-cQ-7Jn" secondAttribute="centerY" id="rux-4l-Snm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ctg-LD-jUI" secondAttribute="trailing" constant="40" id="sna-JP-pYn"/>
+                            <constraint firstItem="Ctg-LD-jUI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="v5l-Fo-3mW"/>
+                            <constraint firstItem="Zjr-F7-7Mt" firstAttribute="trailing" secondItem="iaE-cQ-7Jn" secondAttribute="trailing" constant="-10" id="wGO-0P-7b3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="adi-Pc-qdn" secondAttribute="trailing" constant="20" id="xsd-ff-P1l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="BTG Converter" id="nNX-ni-3DT"/>
+                    <connections>
+                        <outlet property="convertButton" destination="xoa-0w-Sy4" id="fuQ-nq-Jfb"/>
+                        <outlet property="destinationLabel" destination="adi-Pc-qdn" id="lOE-hV-Nbg"/>
+                        <outlet property="fromButton" destination="DSZ-Ko-wOc" id="Nf3-x1-MRU"/>
+                        <outlet property="lastUpdateLabel" destination="zIV-Bc-7x3" id="wYj-yQ-P0t"/>
+                        <outlet property="loadingIndicator" destination="WYx-uq-piW" id="VS1-M3-i8T"/>
+                        <outlet property="sourceCode" destination="Zjr-F7-7Mt" id="k5o-o2-296"/>
+                        <outlet property="sourceTextField" destination="iaE-cQ-7Jn" id="rC8-2z-PwZ"/>
+                        <outlet property="toButton" destination="Rfl-iW-Fuh" id="WAF-fS-AIh"/>
+                        <outlet property="updateButton" destination="boe-Pn-67d" id="gyS-DG-0q2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-52" y="47"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="XDv-ZK-byb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="List" id="EDi-V6-Ww8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wgt-zU-Oi8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vzc-pR-7hT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850" y="47"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="p3o-cd-4Ou"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <namedColor name="background_color">
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary_color">
+            <color red="0.20399999618530273" green="0.082000002264976501" blue="0.68999999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary_color">
+            <color red="1" green="0.6470000147819519" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text_color">
+            <color red="0.18799999356269836" green="0.18799999356269836" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white_color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

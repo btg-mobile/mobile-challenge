@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7zA-VX-YQM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--List View Controller-->
+        <scene sceneID="h4d-bi-TEo">
+            <objects>
+                <viewController id="7zA-VX-YQM" customClass="ListViewController" customModule="BTG_Converser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xTk-UZ-HIr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="code or name" translatesAutoresizingMaskIntoConstraints="NO" id="j7y-Yn-bog">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <color key="backgroundColor" name="white_color"/>
+                                <color key="barTintColor" name="white_color"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="7zA-VX-YQM" id="gCc-jP-uEb"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqn-45-hkP">
+                                <rect key="frame" x="20" y="66" width="53" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="B7b-2e-CID"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="tintColor" name="primary_color"/>
+                                <state key="normal" title="code" image="arrow.up" catalog="system">
+                                    <color key="titleColor" name="primary_color"/>
+                                </state>
+                                <connections>
+                                    <action selector="sortByCodeTapped:" destination="7zA-VX-YQM" eventType="touchUpInside" id="PaT-qM-nc6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyX-bf-7uF">
+                                <rect key="frame" x="93" y="66" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Jrf-6e-0VF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="tintColor" name="primary_color"/>
+                                <state key="normal" title="name">
+                                    <color key="titleColor" name="primary_color"/>
+                                </state>
+                                <connections>
+                                    <action selector="sortByNameTapped:" destination="7zA-VX-YQM" eventType="touchUpInside" id="ylH-qt-ZqP"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TLw-hr-SMG">
+                                <rect key="frame" x="10" y="116" width="355" height="541"/>
+                                <color key="backgroundColor" name="background_color"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="uvl-nY-KMN">
+                                    <rect key="frame" x="0.0" y="96.5" width="355" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" name="background_color"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCodeCell" id="Qmx-B3-kb0" customClass="ListCodeCell" customModule="BTG_Converser" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="40.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qmx-B3-kb0" id="8DW-Vn-dgz">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="40.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code - Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-NZ-QTQ">
+                                                    <rect key="frame" x="5" y="10" width="345" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                                    <color key="textColor" name="text_color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="white_color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="SsD-NZ-QTQ" secondAttribute="trailing" constant="5" id="Flx-EA-RyK"/>
+                                                <constraint firstAttribute="bottom" secondItem="SsD-NZ-QTQ" secondAttribute="bottom" constant="10" id="N2Q-Z7-aXV"/>
+                                                <constraint firstItem="SsD-NZ-QTQ" firstAttribute="top" secondItem="8DW-Vn-dgz" secondAttribute="top" constant="10" id="vXZ-8q-r7B"/>
+                                                <constraint firstItem="SsD-NZ-QTQ" firstAttribute="leading" secondItem="8DW-Vn-dgz" secondAttribute="leading" constant="5" id="wJM-Nf-vhU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" name="primary_color"/>
+                                        <connections>
+                                            <outlet property="codeNameLabel" destination="SsD-NZ-QTQ" id="dEM-k1-cjI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7zA-VX-YQM" id="3A9-2D-u8u"/>
+                                    <outlet property="delegate" destination="7zA-VX-YQM" id="wEr-bS-yCY"/>
+                                </connections>
+                            </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPt-Gz-5UB">
+                                <rect key="frame" x="10" y="116" width="355" height="541"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No currencies found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-w3-KL9">
+                                        <rect key="frame" x="105" y="60" width="145" height="19"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                        <color key="textColor" name="text_color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="background_color"/>
+                                <constraints>
+                                    <constraint firstItem="BVi-w3-KL9" firstAttribute="top" secondItem="SPt-Gz-5UB" secondAttribute="top" constant="60" id="Emg-sR-vTz"/>
+                                    <constraint firstItem="BVi-w3-KL9" firstAttribute="centerX" secondItem="SPt-Gz-5UB" secondAttribute="centerX" id="RhP-fQ-jOu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="background_color"/>
+                        <constraints>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="trailing" secondItem="TLw-hr-SMG" secondAttribute="trailing" id="3oJ-ee-d45"/>
+                            <constraint firstItem="pa7-NC-zAZ" firstAttribute="bottom" secondItem="TLw-hr-SMG" secondAttribute="bottom" constant="10" id="7o8-38-ahE"/>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="bottom" secondItem="TLw-hr-SMG" secondAttribute="bottom" id="HNE-e9-F30"/>
+                            <constraint firstItem="TLw-hr-SMG" firstAttribute="top" secondItem="Cqn-45-hkP" secondAttribute="bottom" constant="10" id="IfR-32-Mh0"/>
+                            <constraint firstItem="j7y-Yn-bog" firstAttribute="leading" secondItem="pa7-NC-zAZ" secondAttribute="leading" id="Moy-MU-OMC"/>
+                            <constraint firstItem="cyX-bf-7uF" firstAttribute="centerY" secondItem="Cqn-45-hkP" secondAttribute="centerY" id="Oip-z5-1eW"/>
+                            <constraint firstItem="pa7-NC-zAZ" firstAttribute="trailing" secondItem="TLw-hr-SMG" secondAttribute="trailing" constant="10" id="PL1-UK-F2H"/>
+                            <constraint firstItem="j7y-Yn-bog" firstAttribute="top" secondItem="pa7-NC-zAZ" secondAttribute="top" id="QuZ-I4-xiU"/>
+                            <constraint firstItem="Cqn-45-hkP" firstAttribute="top" secondItem="j7y-Yn-bog" secondAttribute="bottom" constant="10" id="YRD-G3-E1M"/>
+                            <constraint firstItem="Cqn-45-hkP" firstAttribute="leading" secondItem="pa7-NC-zAZ" secondAttribute="leading" constant="20" id="dNh-vU-W5Q"/>
+                            <constraint firstItem="pa7-NC-zAZ" firstAttribute="trailing" secondItem="j7y-Yn-bog" secondAttribute="trailing" id="efV-ft-lQW"/>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="leading" secondItem="TLw-hr-SMG" secondAttribute="leading" id="ibL-ic-w5S"/>
+                            <constraint firstItem="cyX-bf-7uF" firstAttribute="leading" secondItem="Cqn-45-hkP" secondAttribute="trailing" constant="20" id="o2x-fr-YQz"/>
+                            <constraint firstItem="SPt-Gz-5UB" firstAttribute="top" secondItem="TLw-hr-SMG" secondAttribute="top" id="uFh-nQ-RRu"/>
+                            <constraint firstItem="TLw-hr-SMG" firstAttribute="leading" secondItem="pa7-NC-zAZ" secondAttribute="leading" constant="10" id="zkE-Mc-9lg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pa7-NC-zAZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="emptyState" destination="SPt-Gz-5UB" id="FLM-ek-Omh"/>
+                        <outlet property="orderCodeButton" destination="Cqn-45-hkP" id="5GI-Ih-8d8"/>
+                        <outlet property="orderNameButton" destination="cyX-bf-7uF" id="wmc-qN-91X"/>
+                        <outlet property="searchBar" destination="j7y-Yn-bog" id="SfL-nc-qHd"/>
+                        <outlet property="tableView" destination="TLw-hr-SMG" id="GF3-QV-Zz4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovk-Ds-0Rj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111" y="-35"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
+        <namedColor name="background_color">
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary_color">
+            <color red="0.20399999618530273" green="0.082000002264976501" blue="0.68999999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text_color">
+            <color red="0.18799999356269836" green="0.18799999356269836" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white_color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
