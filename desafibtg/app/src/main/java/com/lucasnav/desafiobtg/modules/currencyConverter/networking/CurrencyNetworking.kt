@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.lucasnav.desafiobtg.core.network.BaseNetwork
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Quote
+import com.lucasnav.desafiobtg.modules.currencyConverter.model.RequestError
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -14,27 +15,28 @@ object CurrencyNetworking : BaseNetwork() {
     @SuppressLint("CheckResult")
     fun getCurrenciesFromApi(
         onSuccess: (currencieResponse: List<Currency>) -> Unit,
-        onError: (error: Throwable) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
         API.getCurrenciesFromApi()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ currencyResponse ->
-                currencyResponse.let {
+            .subscribe({
 
+                if (it.success) {
                     val currencies = it.currencies?.map {
-                        Currency(
-                            0,
-                            it.key,
-                            it.value
-                        )
+                        Currency(0, it.key, it.value)
                     }
 
                     if (currencies != null) {
                         onSuccess(currencies)
                     }
+                } else {
+                    val error = RequestError(it.requestError.code, it.requestError.info)
+                    onError(error)
                 }
-            }, { error ->
+
+            }, {
+                val error = RequestError(-1, it.message.toString())
                 onError(error)
             })
     }
@@ -44,10 +46,10 @@ object CurrencyNetworking : BaseNetwork() {
         firsCurrency: String,
         secondCurrency: String,
         onSuccess: (quotesResponse: List<Quote>) -> Unit,
-        onError: (error: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
 
-        val currencies = if(firsCurrency.isNotEmpty()) "${firsCurrency},${secondCurrency}" else ""
+        val currencies = if (firsCurrency.isNotEmpty()) "${firsCurrency},${secondCurrency}" else ""
 
         API.getQuotesFromApi(currencies)
             .subscribeOn(Schedulers.io())
@@ -68,11 +70,12 @@ object CurrencyNetworking : BaseNetwork() {
                             onSuccess(quotes)
                         }
                     } else {
-                        onError(it.error.code.toString())
+                        val error = RequestError(it.requestError.code, it.requestError.info)
+                        onError(error)
                     }
                 }
             }, { error ->
-                onError(error.message.toString())
+                onError(RequestError(-1, error.message.toString()))
             })
     }
 }

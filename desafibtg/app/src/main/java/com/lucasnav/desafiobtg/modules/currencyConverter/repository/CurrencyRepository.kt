@@ -5,6 +5,7 @@ import android.util.Log
 import com.lucasnav.desafiobtg.modules.currencyConverter.database.CurrenciesDatabase
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Quote
+import com.lucasnav.desafiobtg.modules.currencyConverter.model.RequestError
 import com.lucasnav.desafiobtg.modules.currencyConverter.networking.CurrencyNetworking
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.hasInternet
 
@@ -14,7 +15,7 @@ open class CurrencyRepository(
 ) {
     fun getCurrencies(
         onSuccess: (currencies: List<Currency>) -> Unit,
-        onError: (error: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
 
         currenciesDatabase.getCurrencies(
@@ -27,8 +28,8 @@ open class CurrencyRepository(
                 currenciesDatabase.saveCurrencies(currenciesReponse)
                 onSuccess(currenciesReponse)
             },
-            onError = { error ->
-                onError(error.message.toString())
+            onError = {
+                onError(it)
             }
         )
     }
@@ -49,7 +50,7 @@ open class CurrencyRepository(
         fisrtCurrency: String,
         secondCurrency: String,
         onSuccess: (quotes: List<Quote>) -> Unit,
-        onError: (error: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
 
         if (hasInternet(context)) {
@@ -85,7 +86,7 @@ open class CurrencyRepository(
                 currenciesDatabase.saveQuotes(it)
             },
             onError = {
-                Log.d("ERROR-GET-QUOTES", it)
+                Log.d("ERROR-GET-QUOTES", it.info)
             }
         )
     }

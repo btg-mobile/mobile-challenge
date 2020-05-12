@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Quote
+import com.lucasnav.desafiobtg.modules.currencyConverter.model.RequestError
 import io.reactivex.Completable
 import io.reactivex.CompletableObserver
 import io.reactivex.Observable
@@ -20,7 +21,7 @@ class CurrenciesDatabase(
     @SuppressLint("CheckResult")
     fun getCurrencies(
         onSuccess: (currencies: List<Currency>) -> Unit,
-        onError: (message: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
 
         currenciesDao.getCurrencies()
@@ -30,8 +31,9 @@ class CurrenciesDatabase(
                 currencies?.let {
                     onSuccess(it)
                 }
-            }, { error ->
-                onError(error.message.toString())
+            }, {
+                val requestError = RequestError(-1, it.message.toString())
+                onError(requestError)
             })
 
     }
@@ -58,7 +60,7 @@ class CurrenciesDatabase(
     fun searchCurrencies(
         query: String,
         onSuccess: (currencies: List<Currency>) -> Unit,
-        onError: (message: String) -> Unit
+        onError: (error: String) -> Unit
     ) {
         val likeQuery = "%$query%"
 
@@ -98,7 +100,7 @@ class CurrenciesDatabase(
         firstSymbol: String,
         secondSymbol: String,
         onSuccess: (quotes: List<Quote>) -> Unit,
-        onError: (message: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
         val symbol1 = "USD${firstSymbol}"
         val symbol2 = "USD${secondSymbol}"
@@ -107,8 +109,9 @@ class CurrenciesDatabase(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                     onSuccess(it)
-            }, { error ->
-                onError(error.message.toString())
+            }, {
+                val requestError = RequestError(-1, it.message.toString())
+                onError(requestError)
             })
     }
 }

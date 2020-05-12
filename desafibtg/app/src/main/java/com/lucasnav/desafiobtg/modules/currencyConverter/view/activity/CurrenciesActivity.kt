@@ -13,6 +13,7 @@ import com.lucasnav.desafiobtg.modules.currencyConverter.database.CurrenciesData
 import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.CURRENCY_INPUT
+import com.lucasnav.desafiobtg.modules.currencyConverter.util.showErrorToast
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.CurrencyViewmodel
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.viewmodelFactory.CurrencyViewmodelFactory
 import kotlinx.android.synthetic.main.activity_currencies.*
@@ -73,14 +74,21 @@ class CurrenciesActivity : AppCompatActivity() {
             })
 
             onError.observe(this@CurrenciesActivity, Observer { errorMessage ->
-                android.widget.Toast.makeText(
-                    applicationContext,
-                    "Nao foi possivel carregar",
-                    android.widget.Toast.LENGTH_SHORT
-                )
-                    .show()
 
-                android.util.Log.e("GET-CURRENCIES-ERROR", "error: $errorMessage")
+                when (errorMessage.code) {
+                    404 -> {
+                        showErrorToast(getString(R.string.clientError), applicationContext)
+                    }
+                    101 -> {
+                        showErrorToast(getString(R.string.wrong_key), applicationContext)
+                    }
+                    104 -> {
+                        showErrorToast(getString(R.string.montlhy_limit), applicationContext)
+                    }
+                    else -> {
+                        showErrorToast(getString(R.string.not_possible_refresh), applicationContext)
+                    }
+                }
             })
 
             currencies.observe(this@CurrenciesActivity, Observer { newCurrencies ->

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,7 @@ import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepo
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.CURRENCY_INPUT
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.SELECT_I_HAVE_CURRENCY
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.SELECT_I_WANT_CURRENCY
+import com.lucasnav.desafiobtg.modules.currencyConverter.util.showErrorToast
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.I_HAVE_FOCUSED
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.I_WANT_FOCUSED
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.QuotesViewmodel
@@ -109,18 +111,32 @@ class MainActivity : AppCompatActivity() {
     private fun subscribeUI() {
         with(quotesViewmodel) {
 
+            onloadStarted.observe(this@MainActivity, Observer {
+                progressBarMain.visibility = View.VISIBLE
+            })
+
             onLoadFinished.observe(this@MainActivity, Observer {
+                progressBarMain.visibility = View.GONE
             })
 
             onError.observe(this@MainActivity, Observer { errorMessage ->
-                android.widget.Toast.makeText(
-                    applicationContext,
-                    "Nao foi possivel carregar",
-                    android.widget.Toast.LENGTH_SHORT
-                )
-                    .show()
-
-                android.util.Log.e("GET-QUOTES-ERROR", "error: $errorMessage")
+                when (errorMessage.code) {
+                    404 -> {
+                        showErrorToast(getString(R.string.clientError), applicationContext)
+                    }
+                    101 -> {
+                        showErrorToast(getString(R.string.wrong_key), applicationContext)
+                    }
+                    104 -> {
+                        showErrorToast(getString(R.string.montlhy_limit), applicationContext)
+                    }
+                    403 -> {
+                        showErrorToast(getString(R.string.invalid_amount), applicationContext)
+                    }
+                    else -> {
+                        showErrorToast(getString(R.string.not_possible_refresh), applicationContext)
+                    }
+                }
             })
 
             amount.observe(this@MainActivity, Observer { newAmount ->

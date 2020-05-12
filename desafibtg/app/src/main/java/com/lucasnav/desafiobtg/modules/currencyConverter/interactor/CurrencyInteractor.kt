@@ -1,6 +1,7 @@
 package com.lucasnav.desafiobtg.modules.currencyConverter.interactor
 
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
+import com.lucasnav.desafiobtg.modules.currencyConverter.model.RequestError
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -14,7 +15,7 @@ class CurrencyInteractor(
         firstCurrency: String,
         secondCurrency: String,
         onSuccess: (result: BigDecimal) -> Unit,
-        onError: (error: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
         currencyRepository.getQuotes(
             firstCurrency,
@@ -30,7 +31,7 @@ class CurrencyInteractor(
 
     fun getCurrencies(
         onSuccess: (currencies: List<Currency>) -> Unit,
-        onError: (message: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
         currencyRepository.getCurrencies(
             onSuccess = { onSuccess(it) },
@@ -41,12 +42,15 @@ class CurrencyInteractor(
     fun searchCurrencies(
         query: String,
         onSuccess: (currencies: List<Currency>) -> Unit,
-        onError: (message: String) -> Unit
+        onError: (error: RequestError) -> Unit
     ) {
         currencyRepository.searchCurrencies(
             query,
             onSuccess = { onSuccess(it) },
-            onError = { onError(it) }
+            onError = {
+                val error = RequestError(-1, it)
+                onError(error)
+            }
         )
     }
 
