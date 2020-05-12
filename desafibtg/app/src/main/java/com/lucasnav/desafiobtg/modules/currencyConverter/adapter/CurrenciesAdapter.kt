@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasnav.desafiobtg.R
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
-import com.lucasnav.desafiobtg.modules.currencyConverter.view.CurrencyViewHolder
+import com.lucasnav.desafiobtg.modules.currencyConverter.view.holder.CurrencyViewHolder
 
 class CurrenciesAdapter(
     private val clickListener: (currecyId: String) -> Unit
@@ -15,7 +15,9 @@ class CurrenciesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_currency, parent, false)
-        return CurrencyViewHolder(view)
+        return CurrencyViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {

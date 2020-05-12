@@ -1,4 +1,4 @@
-package com.lucasnav.desafiobtg.modules.currencyConverter.view
+package com.lucasnav.desafiobtg.modules.currencyConverter.view.holder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

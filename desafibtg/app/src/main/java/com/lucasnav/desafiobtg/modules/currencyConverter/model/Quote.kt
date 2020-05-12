@@ -9,7 +9,7 @@ data class Quote(
 
     @PrimaryKey(autoGenerate = true)
     @field:SerializedName("id")
-    var id: String,
+    var id: Int,
 
     @field:SerializedName("symbol")
     val symbol: String,

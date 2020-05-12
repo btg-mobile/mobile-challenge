@@ -19,6 +19,10 @@ class QuotesViewmodel(
     var onLoadFinished = SingleLiveEvent<Void>()
     var onError = SingleLiveEvent<String>()
 
+    init {
+        currencyInteractor.getAllQuotesFromApiAndSave()
+    }
+
     fun getQuotesAndCalculateAmount(
         amount: String,
         firstCurrency: String,

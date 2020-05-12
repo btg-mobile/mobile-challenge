@@ -1,15 +1,16 @@
-package com.lucasnav.desafiobtg.modules.currencyConverter.view
+package com.lucasnav.desafiobtg.modules.currencyConverter.view.activity
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucasnav.desafiobtg.R
+import com.lucasnav.desafiobtg.modules.currencyConverter.database.CurrenciesDatabase
+import com.lucasnav.desafiobtg.modules.currencyConverter.database.CurrenciesDatabaseFactory
 import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.CURRENCY_INPUT
@@ -18,7 +19,7 @@ import com.lucasnav.desafiobtg.modules.currencyConverter.util.SELECT_I_WANT_CURR
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.I_HAVE_FOCUSED
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.I_WANT_FOCUSED
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.QuotesViewmodel
-import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.QuotesViewmodelFactory
+import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.viewmodelFactory.QuotesViewmodelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         subscribeUI()
 
         configTexts()
+
     }
 
     private fun configTexts() {
@@ -89,10 +91,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewmodel() {
+
+        val currenciesDb = CurrenciesDatabaseFactory.create(this).currenciesDao()
+        val quotesDb = CurrenciesDatabaseFactory.create(this).quotesDao()
+        val db = CurrenciesDatabase(currenciesDb, quotesDb)
+
         quotesViewmodel = ViewModelProvider(
             this,
             QuotesViewmodelFactory(
-                CurrencyInteractor(CurrencyRepository())
+                CurrencyInteractor(
+                    CurrencyRepository(db, this)
+                )
             )
         ).get(QuotesViewmodel::class.java)
     }
@@ -115,7 +124,7 @@ class MainActivity : AppCompatActivity() {
             })
 
             amount.observe(this@MainActivity, Observer { newAmount ->
-                if(quotesViewmodel.currentFocused == I_HAVE_FOCUSED) {
+                if (quotesViewmodel.currentFocused == I_HAVE_FOCUSED) {
                     editTextIwant.setText(newAmount)
                 } else {
                     editTextIHave.setText(newAmount)

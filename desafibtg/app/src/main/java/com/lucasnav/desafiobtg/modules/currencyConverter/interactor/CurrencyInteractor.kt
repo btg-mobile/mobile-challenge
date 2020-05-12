@@ -32,11 +32,25 @@ class CurrencyInteractor(
         onSuccess: (currencies: List<Currency>) -> Unit,
         onError: (message: String) -> Unit
     ) {
-
         currencyRepository.getCurrencies(
             onSuccess = { onSuccess(it) },
             onError = { onError(it) }
         )
     }
 
+    fun searchCurrencies(
+        query: String,
+        onSuccess: (currencies: List<Currency>) -> Unit,
+        onError: (message: String) -> Unit
+    ) {
+        currencyRepository.searchCurrencies(
+            query,
+            onSuccess = { onSuccess(it) },
+            onError = { onError(it) }
+        )
+    }
+
+    fun getAllQuotesFromApiAndSave() {
+        currencyRepository.getAllQuotesFromApiAndSave()
+    }
 }

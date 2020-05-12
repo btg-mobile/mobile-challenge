@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 class Currency(
     @PrimaryKey(autoGenerate = true)
     @field:SerializedName("id")
-    var id: String,
+    var id: Int,
 
     @field:SerializedName("symbol")
     val symbol: String,

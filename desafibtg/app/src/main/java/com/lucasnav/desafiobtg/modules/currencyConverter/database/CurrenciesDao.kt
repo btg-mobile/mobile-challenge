@@ -25,4 +25,6 @@ interface CurrenciesDao {
     @Query("SELECT * FROM currencies WHERE ID=:id")
     fun getCurrency(id: String): Observable<Currency>
 
+    @Query("SELECT * FROM currencies WHERE name LIKE :query OR symbol LIKE :query")
+    fun searchCurrencies(query: String): Observable<List<Currency>>
 }

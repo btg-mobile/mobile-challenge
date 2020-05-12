@@ -15,7 +15,6 @@ class CurrencyViewmodel(
     var onError = SingleLiveEvent<String>()
 
     fun getCurrencies() {
-
         currencyInteractor.getCurrencies(
             onSuccess = { currencies ->
                 this.currencies.value = currencies
@@ -23,6 +22,22 @@ class CurrencyViewmodel(
             },
             onError = { errorMessage ->
                 onError.value = errorMessage
+                onError.call()
+                onLoadFinished.call()
+            }
+        )
+    }
+
+    fun searchCurrencies(
+        query: String
+    ) {
+        currencyInteractor.searchCurrencies(
+            query,
+            onSuccess = {
+                currencies.value = it
+            },
+            onError = {
+                onError.value = it
                 onError.call()
                 onLoadFinished.call()
             }

@@ -21,6 +21,6 @@ interface QuotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(quotes: List<Quote>)
 
-    @Query("SELECT * FROM quotes WHERE ID=:id")
-    fun getQuote(id: String): Observable<Quote>
+    @Query("SELECT * FROM quotes WHERE symbol=:symbol2 OR symbol=:symbol1")
+    fun getTwoQuotes(symbol1: String, symbol2: String): Observable<List<Quote>>
 }

@@ -1,17 +1,21 @@
-package com.lucasnav.desafiobtg.modules.currencyConverter.view
+package com.lucasnav.desafiobtg.modules.currencyConverter.view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucasnav.desafiobtg.R
 import com.lucasnav.desafiobtg.modules.currencyConverter.adapter.CurrenciesAdapter
+import com.lucasnav.desafiobtg.modules.currencyConverter.database.CurrenciesDatabase
+import com.lucasnav.desafiobtg.modules.currencyConverter.database.CurrenciesDatabaseFactory
 import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.CURRENCY_INPUT
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.CurrencyViewmodel
-import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.CurrencyViewmodelFactory
+import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.viewmodelFactory.CurrencyViewmodelFactory
 import kotlinx.android.synthetic.main.activity_currencies.*
+import kotlinx.android.synthetic.main.activity_currencies.view.*
 
 class CurrenciesActivity : AppCompatActivity() {
 
@@ -27,6 +31,8 @@ class CurrenciesActivity : AppCompatActivity() {
             setResult(RESULT_OK, intent)
             finish()
         })
+
+        configSearchView()
 
         setupRecyclerView()
 
@@ -46,10 +52,14 @@ class CurrenciesActivity : AppCompatActivity() {
 
     private fun setupViewmodel() {
 
+        val currenciesDb = CurrenciesDatabaseFactory.create(this).currenciesDao()
+        val quotesDb = CurrenciesDatabaseFactory.create(this).quotesDao()
+        val db = CurrenciesDatabase(currenciesDb, quotesDb)
+
         currencyViewmodel = ViewModelProvider(
             this,
             CurrencyViewmodelFactory(
-                CurrencyInteractor(CurrencyRepository())
+                CurrencyInteractor(CurrencyRepository(db, this))
             )
         ).get(CurrencyViewmodel::class.java)
     }
@@ -74,6 +84,26 @@ class CurrenciesActivity : AppCompatActivity() {
             currencies.observe(this@CurrenciesActivity, Observer { newCurrencies ->
                 currenciesAdapter.update(newCurrencies)
             })
+        }
+    }
+
+    private fun configSearchView() {
+        toolbar.searchview.setOnQueryTextListener(onQueryTextListener)
+    }
+
+    private val onQueryTextListener = object : SearchView.OnQueryTextListener,
+        android.widget.SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String): Boolean {
+            return true
+        }
+
+        override fun onQueryTextChange(query: String): Boolean {
+            if (query.trim() == "") {
+                currencyViewmodel.getCurrencies()
+            } else {
+                currencyViewmodel.searchCurrencies(query)
+            }
+            return true
         }
     }
 }

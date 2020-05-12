@@ -17,6 +17,6 @@ interface CurrencyApi {
 
     @GET("${BASE_URL}live?access_key=$ACCESS_KEY")
     fun getQuotesFromApi(
-        @Query("currencies") currencies: String
+        @Query("currencies") currencies: String = ""
     ): Observable<QuoteResponse>
 }

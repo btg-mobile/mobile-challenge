@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".modules.currencyConverter.view.MainActivity">
+    tools:context=".modules.currencyConverter.view.activity.MainActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview"
