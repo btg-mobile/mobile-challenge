@@ -6,54 +6,52 @@
 //  Copyright © 2020 Vandcarlos Mouzinho Sandes Junior. All rights reserved.
 //
 
-import Foundation
-import CoreData
-import UIKit
+import RealmSwift
 
-final class CurrencyModel {
+class CurrencyModel: Object  {
 
-    static private let entityName = "Currency"
+    @objc dynamic var code: String = ""
+    @objc dynamic var name: String = ""
 
-    static func createOrUpdate(code: String, name: String) -> Bool {
-        if let currency = self.get(byCode: code) {
-            currency.setValue(name, forKey: "name")
-            return true
-        }
+}
 
-        let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: Database.context)
-        let newTax = NSManagedObject(entity: entity!, insertInto: Database.context)
+extension CurrencyModel {
 
-        newTax.setValue(code, forKey: "code")
-        newTax.setValue(name, forKey: "name")
-
-        do {
-            try Database.context.save()
-            return true
-        } catch {
-            print("Error on save Currency")
-            return false
+    static func createOrUpdate(code: String, name: String) {
+        if let currencyModel = CurrencyModel.get(byCode: code) {
+            currencyModel.update(name: name)
+        } else {
+            return CurrencyModel.create(code: code, name: name)
         }
     }
 
-    static func get(byCode code: String) -> Currency? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
-        request.predicate = NSPredicate(format: "code == %@", code)
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try Database.context.fetch(request) as? [Currency]
-            return result?.first
-        } catch {
-            return nil
+    static func create(code: String, name: String) {
+        let currencyModel = CurrencyModel()
+        currencyModel.code = code
+        currencyModel.name = name
+
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(currencyModel)
         }
     }
 
-    static func getAll() -> [Currency] {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
-        request.returnsObjectsAsFaults = false
+    func update(name: String) {
+        let realm = try! Realm()
+        try! realm.write {
+            self.name = name
+        }
+    }
 
-        guard let currencies = try? Database.context.fetch(request) as? [Currency] else { return [] }
+    static func get(byCode code: String) -> CurrencyModel? {
+        return try! Realm()
+            .objects(CurrencyModel.self)
+            .filter("code == '\(code)'")
+            .first
+    }
 
-        return currencies
+    static func getAll() -> [CurrencyModel] {
+        return try! Realm().objects(CurrencyModel.self).compactMap { $0 }
     }
 
 }

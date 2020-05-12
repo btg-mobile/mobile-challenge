@@ -47,18 +47,14 @@ final class MainInteractor {
     }
 
     private func saveTaxesResponse(_ response: TaxesResponse) {
-           for quote in response.quotes {
-               let fromCode = String(quote.key.prefix(3))
-               let toCode = String(quote.key.suffix(3))
-               let success = TaxModel.createOrUpdate(fromCode: fromCode, toCode: toCode, value: quote.value)
-               guard success else {
-                   self.getLastUpdateDate()
-                   break
-               }
-           }
+        for quote in response.quotes {
+            let fromCode = String(quote.key.prefix(3))
+            let toCode = String(quote.key.suffix(3))
+            TaxModel.createOrUpdate(fromCode: fromCode, toCode: toCode, value: quote.value)
+        }
 
-           self.fetchCurrencies()
-       }
+        self.fetchCurrencies()
+   }
 
     private func fetchCurrencies() {
         API.instance.get(path: self.currenciesPath) { [weak self] (data, _, error) in
@@ -85,11 +81,7 @@ final class MainInteractor {
 
     private func saveCurrenciesResponse(_ response: CurrenciesResponse) {
         for currency in response.currencies {
-            let success = CurrencyModel.createOrUpdate(code: currency.key, name: currency.value)
-            guard success else {
-                self.getLastUpdateDate()
-                break
-            }
+            CurrencyModel.createOrUpdate(code: currency.key, name: currency.value)
         }
 
         LocalData.instance.apiLastUpdateDate = Date()
