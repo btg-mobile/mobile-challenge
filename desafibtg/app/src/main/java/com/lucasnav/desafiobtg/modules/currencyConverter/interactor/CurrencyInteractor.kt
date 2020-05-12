@@ -6,7 +6,7 @@ import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepo
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-class CurrencyInteractor(
+open class CurrencyInteractor(
     private val currencyRepository: CurrencyRepository
 ) {
 
