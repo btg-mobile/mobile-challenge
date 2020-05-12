@@ -33,7 +33,7 @@
                 android:layout_marginEnd="8dp"
                 android:hint="@string/eu_tenho"
                 app:layout_constraintBottom_toTopOf="@+id/textField34"
-                app:layout_constraintEnd_toStartOf="@+id/textCurrencyIHave"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCurrencyIHave"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_weight="2"
@@ -42,18 +42,20 @@
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextIHave"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/textCurrencyIHave"
+                android:id="@+id/buttonCurrencyIHave"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="BRL"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
-                android:text="USD"
                 app:layout_constraintBottom_toBottomOf="@+id/textField"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -72,27 +74,29 @@
                 android:layout_marginBottom="32dp"
                 android:hint="@string/eu_quero"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textCurrencyIWant"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCurrencyIWant"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textField">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextIwant"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/textCurrencyIWant"
+                android:id="@+id/buttonCurrencyIWant"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="BRL"
+                android:text="USD"
                 app:layout_constraintBottom_toBottomOf="@+id/textField34"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

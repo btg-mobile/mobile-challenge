@@ -4,12 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 
-class CurrencyViewmodelFactory(
+class QuotesViewmodelFactory(
     private val currencyInteractor: CurrencyInteractor
 ) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return CurrencyViewmodel(
+        return QuotesViewmodel(
             currencyInteractor
         ) as T
     }

@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".modules.currencyConverter.view.CurrenciesActivity"></activity>
-        <activity android:name=".modules.currencyConverter.view.MainActivity">
+        <activity android:name=".modules.currencyConverter.view.CurrenciesActivity" />
+        <activity android:name=".modules.currencyConverter.view.MainActivity"
+            android:windowSoftInputMode="adjustResize"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

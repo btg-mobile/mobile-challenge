@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucasnav.desafiobtg.R
 import com.lucasnav.desafiobtg.modules.currencyConverter.adapter.CurrenciesAdapter
+import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 import com.lucasnav.desafiobtg.modules.currencyConverter.util.CURRENCY_INPUT
 import com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel.CurrencyViewmodel
@@ -48,7 +49,7 @@ class CurrenciesActivity : AppCompatActivity() {
         currencyViewmodel = ViewModelProvider(
             this,
             CurrencyViewmodelFactory(
-                CurrencyRepository()
+                CurrencyInteractor(CurrencyRepository())
             )
         ).get(CurrencyViewmodel::class.java)
     }
@@ -75,6 +76,4 @@ class CurrenciesActivity : AppCompatActivity() {
             })
         }
     }
-
-
 }

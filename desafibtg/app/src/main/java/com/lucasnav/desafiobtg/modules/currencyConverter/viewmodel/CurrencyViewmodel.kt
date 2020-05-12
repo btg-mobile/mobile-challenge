@@ -3,22 +3,21 @@ package com.lucasnav.desafiobtg.modules.currencyConverter.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lucasnav.desafiobtg.core.livedata.SingleLiveEvent
+import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
 import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 
 class CurrencyViewmodel(
-    private val currencyRepository: CurrencyRepository
+    private val currencyInteractor: CurrencyInteractor
 ) : ViewModel() {
 
     var currencies: MutableLiveData<List<Currency>> = MutableLiveData()
-
     var onLoadFinished = SingleLiveEvent<Void>()
-
     var onError = SingleLiveEvent<String>()
 
     fun getCurrencies() {
 
-        currencyRepository.getCurrencies(
+        currencyInteractor.getCurrencies(
             onSuccess = { currencies ->
                 this.currencies.value = currencies
                 onLoadFinished.call()
