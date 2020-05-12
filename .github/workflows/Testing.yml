@@ -12,5 +12,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Force XCode 11.4.1
         run: sudo xcode-select -switch /Applications/Xcode_11.4.1.app
+      - name: Install pods
+        run: Pod install
       - name: Testing iOS app
         run: exec ./.github/scripts/test_app.sh
