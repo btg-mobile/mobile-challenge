@@ -35,6 +35,7 @@ class CurrencyViewmodel(
             query,
             onSuccess = {
                 currencies.value = it
+                onLoadFinished.call()
             },
             onError = {
                 onError.value = it

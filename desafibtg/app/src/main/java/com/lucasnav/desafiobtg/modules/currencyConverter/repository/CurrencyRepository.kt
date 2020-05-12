@@ -85,7 +85,7 @@ open class CurrencyRepository(
                 currenciesDatabase.saveQuotes(it)
             },
             onError = {
-                Log.d("ERROR-GET-QUOTES", it.toString())
+                Log.d("ERROR-GET-QUOTES", it)
             }
         )
     }

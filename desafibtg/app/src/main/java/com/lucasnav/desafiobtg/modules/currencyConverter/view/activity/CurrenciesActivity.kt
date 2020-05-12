@@ -1,6 +1,7 @@
 package com.lucasnav.desafiobtg.modules.currencyConverter.view.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
@@ -68,6 +69,7 @@ class CurrenciesActivity : AppCompatActivity() {
         with(currencyViewmodel) {
 
             onLoadFinished.observe(this@CurrenciesActivity, Observer {
+                progressBar.visibility = View.GONE
             })
 
             onError.observe(this@CurrenciesActivity, Observer { errorMessage ->
