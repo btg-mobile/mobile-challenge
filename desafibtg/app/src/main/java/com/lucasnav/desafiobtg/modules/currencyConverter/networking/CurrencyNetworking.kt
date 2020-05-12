@@ -5,7 +5,6 @@ import com.lucasnav.desafiobtg.core.network.BaseNetwork
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
-import com.lucasnav.desafiobtg.modules.currencyConverter.model.Quote
 
 object CurrencyNetworking : BaseNetwork() {
 
@@ -42,7 +41,7 @@ object CurrencyNetworking : BaseNetwork() {
     fun getQuotesFromApi(
         firsCurrency: String,
         secondCurrency: String,
-        onSuccess: (quotesResponse: List<Quote>) -> Unit,
+        onSuccess: (quotesResponse: List<Currency>) -> Unit,
         onError: (error: String) -> Unit
     ) {
 
@@ -56,7 +55,7 @@ object CurrencyNetworking : BaseNetwork() {
 
                     if(it.success) {
                         val quotes = it.quotes?.map {
-                            Quote(
+                            Currency(
                                 it.key,
                                 it.value
                             )

@@ -117,4 +117,17 @@
         app:layout_constraintTop_toBottomOf="@+id/cardview"
         app:srcCompat="@drawable/btcpacicon" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Conversor de Moedas"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardview"
+        app:layout_constraintEnd_toEndOf="@+id/cardview"
+        app:layout_constraintStart_toStartOf="@+id/cardview" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

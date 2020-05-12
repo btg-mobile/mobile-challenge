@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.lucasnav.desafiobtg.core.livedata.SingleLiveEvent
 import com.lucasnav.desafiobtg.modules.currencyConverter.interactor.CurrencyInteractor
 import com.lucasnav.desafiobtg.modules.currencyConverter.model.Currency
-import com.lucasnav.desafiobtg.modules.currencyConverter.repository.CurrencyRepository
 
 class CurrencyViewmodel(
     private val currencyInteractor: CurrencyInteractor
