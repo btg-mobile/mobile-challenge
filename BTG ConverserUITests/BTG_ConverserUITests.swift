@@ -20,8 +20,7 @@ class BTG_ConverserUITests: XCTestCase {
         app.launch()
         app.buttons["from"].tap()
 
-        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
 
         let thirdCell = app.tables.firstMatch.cells.element(boundBy: 3)
         let fromCode = thirdCell.staticTexts.firstMatch.label.prefix(3).description
@@ -31,21 +30,18 @@ class BTG_ConverserUITests: XCTestCase {
         let fromCodeLabel = app.staticTexts["From Code"]
         let fromInput = app.textFields["From Input"]
 
-        expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: fromCodeLabel, handler: nil)
-        expectation(for: NSPredicate(format: "label == %@", fromCode), evaluatedWith: fromCodeLabel, handler: nil)
-        expectation(for: NSPredicate(format: "isEnabled == true"), evaluatedWith: fromInput, handler: nil)
+        XCTAssertTrue(fromCodeLabel.waitForExistence(timeout: 10))
 
-        waitForExpectations(timeout: 3, handler: nil)
+        XCTAssertEqual(fromCodeLabel.label, fromCode)
+        XCTAssertTrue(fromInput.isEnabled)
     }
 
     func testSelectToCode() throws {
         let app = XCUIApplication()
-
         app.launch()
-        app.buttons["to"].tap()
 
-        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        app.buttons["to"].tap()
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
 
         let fifth = app.tables.firstMatch.cells.element(boundBy: 5)
         let toCode = fifth.staticTexts.firstMatch.label.prefix(3).description
@@ -54,10 +50,8 @@ class BTG_ConverserUITests: XCTestCase {
 
         let toLabel = app.staticTexts["Convert Value"]
 
-        expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: toLabel, handler: nil)
-        expectation(for: NSPredicate(format: "label == %@", toCode), evaluatedWith: toLabel, handler: nil)
-
-        waitForExpectations(timeout: 3, handler: nil)
+        XCTAssertTrue(toLabel.waitForExistence(timeout: 10))
+        XCTAssertEqual(toLabel.label, toCode)
     }
 
     func testInputAcceptOnlyDecimalNumber() throws {
@@ -65,16 +59,12 @@ class BTG_ConverserUITests: XCTestCase {
         app.launch()
 
         app.buttons["from"].tap()
-
-        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
 
         app.tables.cells.element(boundBy: 3).tap()
 
         app.buttons["to"].tap()
-
-        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
 
         app.tables.cells.element(boundBy: 5).tap()
 
@@ -96,16 +86,12 @@ class BTG_ConverserUITests: XCTestCase {
         app.launch()
 
         app.buttons["from"].tap()
-
-        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
 
         app.tables.cells.element(boundBy: 3).tap()
 
         app.buttons["to"].tap()
-
-        expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
 
         let fifthCurrency = app.tables.firstMatch.cells.element(boundBy: 5)
         let toCode = fifthCurrency.staticTexts.firstMatch.label.prefix(3).description
@@ -114,9 +100,8 @@ class BTG_ConverserUITests: XCTestCase {
 
         let toLabel = app.staticTexts["Convert Value"]
 
-        expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: toLabel, handler: nil)
-        expectation(for: NSPredicate(format: "label == %@", toCode), evaluatedWith: toLabel, handler: nil)
-        waitForExpectations(timeout: 3, handler: nil)
+        XCTAssertTrue(toLabel.waitForExistence(timeout: 10))
+        XCTAssertEqual(toLabel.label, toCode)
 
         let fromInput = app.textFields["From Input"]
 
