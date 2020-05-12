@@ -13,7 +13,7 @@ final class CurrencyConverter {
     let fromCode: String
     let toCode: String
 
-    private let defaultCurrencyCode = "USD"
+    static let defaultCurrencyCode = "USD"
 
     init(fromCode: String, toCode: String) {
         self.fromCode = fromCode
@@ -53,8 +53,8 @@ final class CurrencyConverter {
     }
 
     private func convertValueUsingDefaultCurrency(_ value: Double) -> Double? {
-        guard let fromTax = TaxModel.get(byFromCode: self.defaultCurrencyCode, andToCode: self.fromCode),
-            let toTax = TaxModel.get(byFromCode: self.defaultCurrencyCode, andToCode: self.toCode)
+        guard let fromTax = TaxModel.get(byFromCode: CurrencyConverter.defaultCurrencyCode, andToCode: self.fromCode),
+            let toTax = TaxModel.get(byFromCode: CurrencyConverter.defaultCurrencyCode, andToCode: self.toCode)
             else { return nil }
 
         return value / fromTax.value * toTax.value

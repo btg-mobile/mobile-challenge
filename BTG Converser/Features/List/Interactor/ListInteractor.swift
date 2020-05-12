@@ -28,8 +28,7 @@ extension ListInteractor: ListInteractorToPresenter {
         var listItems: [ListItem] = []
 
         for currency in currencies {
-            guard let code = currency.code, let name = currency.name else { continue }
-            listItems.append(ListItem(code: code, name: name))
+            listItems.append(ListItem(code: currency.code, name: currency.name))
         }
 
         self.presenter.didFetchCurrencies(listItems)

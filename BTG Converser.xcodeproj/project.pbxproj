@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		229632CEB4665FD14D19A6D4 /* Pods_BTG_ConverserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBBA700CC4CE0CB8DC534BC2 /* Pods_BTG_ConverserTests.framework */; };
+		A021411A246A274300A6EBEE /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0214119246A274300A6EBEE /* RealmDB.swift */; };
 		A097931C2466DD8800605774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931B2466DD8800605774 /* AppDelegate.swift */; };
 		A097931E2466DD8800605774 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097931D2466DD8800605774 /* SceneDelegate.swift */; };
 		A09793232466DD8800605774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09793212466DD8800605774 /* Main.storyboard */; };
-		A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */; };
 		A09793282466DD8900605774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09793272466DD8900605774 /* Assets.xcassets */; };
 		A097932B2466DD8900605774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09793292466DD8900605774 /* LaunchScreen.storyboard */; };
-		A09793362466DD8A00605774 /* BTG_ConverserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09793352466DD8A00605774 /* BTG_ConverserTests.swift */; };
 		A09793412466DD8A00605774 /* BTG_ConverserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */; };
 		A0B2F5A224697D2E00513255 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59824697D2E00513255 /* MainPresenter.swift */; };
 		A0B2F5A324697D2E00513255 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F59A24697D2E00513255 /* MainViewController.swift */; };
@@ -35,7 +35,6 @@
 		A0B2F5C32469832700513255 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5BA2469832700513255 /* Montserrat-Black.ttf */; };
 		A0B2F5C42469832700513255 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5BB2469832700513255 /* Montserrat-Regular.ttf */; };
 		A0B2F5C724698E8900513255 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5C624698E8900513255 /* DateExtensions.swift */; };
-		A0B2F5C92469930200513255 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5C82469930200513255 /* Database.swift */; };
 		A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5CC246993B200513255 /* TaxModel.swift */; };
 		A0B2F5CF2469969000513255 /* CurrenciesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */; };
 		A0B2F5D12469971200513255 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5D02469971200513255 /* CurrencyModel.swift */; };
@@ -54,6 +53,11 @@
 		A0B2F5F32469C9E800513255 /* NumberInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5F22469C9E800513255 /* NumberInput.swift */; };
 		A0B2F5F62469D11300513255 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0B2F5F82469D11300513255 /* Localizable.strings */; };
 		A0B2F5FA2469D46D00513255 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5F92469D46D00513255 /* CurrencyConverter.swift */; };
+		A0B2F5FC2469EF8800513255 /* MainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5FB2469EF8800513255 /* MainTests.swift */; };
+		A0B2F5FE2469FF1100513255 /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5FD2469FF1100513255 /* ConverterTests.swift */; };
+		A0B2F600246A064D00513255 /* ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2F5FF246A064D00513255 /* ListTests.swift */; };
+		B4DBA32A4804324746C7B932 /* Pods_BTG_Converser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A5764B557E2501E757568B /* Pods_BTG_Converser.framework */; };
+		C2E4BBC3E2498C704D6E230E /* Pods_BTG_Converser_BTG_ConverserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34B249E198B2CE37E4D6D3B /* Pods_BTG_Converser_BTG_ConverserUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,16 +78,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071020A97FEFD49A871EAA5C /* Pods-BTG Converser-BTG ConverserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTG Converser-BTG ConverserUITests.debug.xcconfig"; path = "Target Support Files/Pods-BTG Converser-BTG ConverserUITests/Pods-BTG Converser-BTG ConverserUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		225F38461534283033A1D2F4 /* Pods-BTG ConverserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTG ConverserTests.release.xcconfig"; path = "Target Support Files/Pods-BTG ConverserTests/Pods-BTG ConverserTests.release.xcconfig"; sourceTree = "<group>"; };
+		51D2D394AB7F9EA1A15DFEC5 /* Pods-BTG Converser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTG Converser.release.xcconfig"; path = "Target Support Files/Pods-BTG Converser/Pods-BTG Converser.release.xcconfig"; sourceTree = "<group>"; };
+		579BA3DB0F8047227DFB50B7 /* Pods-BTG ConverserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTG ConverserTests.debug.xcconfig"; path = "Target Support Files/Pods-BTG ConverserTests/Pods-BTG ConverserTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7459175C0438CFC684298C92 /* Pods-BTG Converser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTG Converser.debug.xcconfig"; path = "Target Support Files/Pods-BTG Converser/Pods-BTG Converser.debug.xcconfig"; sourceTree = "<group>"; };
+		A0214119246A274300A6EBEE /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		A09793182466DD8800605774 /* BTG Converser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTG Converser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097931B2466DD8800605774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A097931D2466DD8800605774 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A09793222466DD8800605774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTG_Converser.xcdatamodel; sourceTree = "<group>"; };
 		A09793272466DD8900605774 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A097932A2466DD8900605774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A097932C2466DD8900605774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A09793312466DD8A00605774 /* BTG ConverserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG ConverserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A09793352466DD8A00605774 /* BTG_ConverserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_ConverserTests.swift; sourceTree = "<group>"; };
 		A09793372466DD8A00605774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A097933C2466DD8A00605774 /* BTG ConverserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG ConverserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09793402466DD8A00605774 /* BTG_ConverserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_ConverserUITests.swift; sourceTree = "<group>"; };
@@ -108,7 +116,6 @@
 		A0B2F5BA2469832700513255 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		A0B2F5BB2469832700513255 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		A0B2F5C624698E8900513255 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		A0B2F5C82469930200513255 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		A0B2F5CC246993B200513255 /* TaxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxModel.swift; sourceTree = "<group>"; };
 		A0B2F5CE2469969000513255 /* CurrenciesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesResponse.swift; sourceTree = "<group>"; };
 		A0B2F5D02469971200513255 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
@@ -127,6 +134,13 @@
 		A0B2F5F22469C9E800513255 /* NumberInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInput.swift; sourceTree = "<group>"; };
 		A0B2F5F72469D11300513255 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0B2F5F92469D46D00513255 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		A0B2F5FB2469EF8800513255 /* MainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTests.swift; sourceTree = "<group>"; };
+		A0B2F5FD2469FF1100513255 /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
+		A0B2F5FF246A064D00513255 /* ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTests.swift; sourceTree = "<group>"; };
+		A2A5764B557E2501E757568B /* Pods_BTG_Converser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTG_Converser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A34B249E198B2CE37E4D6D3B /* Pods_BTG_Converser_BTG_ConverserUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTG_Converser_BTG_ConverserUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBBA700CC4CE0CB8DC534BC2 /* Pods_BTG_ConverserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTG_ConverserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4D87E7B147A1866DAB357A2 /* Pods-BTG Converser-BTG ConverserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTG Converser-BTG ConverserUITests.release.xcconfig"; path = "Target Support Files/Pods-BTG Converser-BTG ConverserUITests/Pods-BTG Converser-BTG ConverserUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4DBA32A4804324746C7B932 /* Pods_BTG_Converser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229632CEB4665FD14D19A6D4 /* Pods_BTG_ConverserTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,12 +164,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2E4BBC3E2498C704D6E230E /* Pods_BTG_Converser_BTG_ConverserUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03C949AF6174D074BC24486F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7459175C0438CFC684298C92 /* Pods-BTG Converser.debug.xcconfig */,
+				51D2D394AB7F9EA1A15DFEC5 /* Pods-BTG Converser.release.xcconfig */,
+				071020A97FEFD49A871EAA5C /* Pods-BTG Converser-BTG ConverserUITests.debug.xcconfig */,
+				F4D87E7B147A1866DAB357A2 /* Pods-BTG Converser-BTG ConverserUITests.release.xcconfig */,
+				579BA3DB0F8047227DFB50B7 /* Pods-BTG ConverserTests.debug.xcconfig */,
+				225F38461534283033A1D2F4 /* Pods-BTG ConverserTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A097930F2466DD8800605774 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +191,8 @@
 				A09793342466DD8A00605774 /* BTG ConverserTests */,
 				A097933F2466DD8A00605774 /* BTG ConverserUITests */,
 				A09793192466DD8800605774 /* Products */,
+				03C949AF6174D074BC24486F /* Pods */,
+				D2ED7B2FC71F625B3E092354 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,8 +220,10 @@
 		A09793342466DD8A00605774 /* BTG ConverserTests */ = {
 			isa = PBXGroup;
 			children = (
-				A09793352466DD8A00605774 /* BTG_ConverserTests.swift */,
 				A09793372466DD8A00605774 /* Info.plist */,
+				A0B2F5FB2469EF8800513255 /* MainTests.swift */,
+				A0B2F5FD2469FF1100513255 /* ConverterTests.swift */,
+				A0B2F5FF246A064D00513255 /* ListTests.swift */,
 			);
 			path = "BTG ConverserTests";
 			sourceTree = "<group>";
@@ -212,7 +246,6 @@
 				A09793272466DD8900605774 /* Assets.xcassets */,
 				A09793292466DD8900605774 /* LaunchScreen.storyboard */,
 				A097932C2466DD8900605774 /* Info.plist */,
-				A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */,
 				A0B2F5F82469D11300513255 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
@@ -333,7 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B2F5CB246993A900513255 /* Models */,
-				A0B2F5C82469930200513255 /* Database.swift */,
+				A0214119246A274300A6EBEE /* RealmDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -405,6 +438,16 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		D2ED7B2FC71F625B3E092354 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2A5764B557E2501E757568B /* Pods_BTG_Converser.framework */,
+				A34B249E198B2CE37E4D6D3B /* Pods_BTG_Converser_BTG_ConverserUITests.framework */,
+				EBBA700CC4CE0CB8DC534BC2 /* Pods_BTG_ConverserTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,9 +455,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A09793452466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG Converser" */;
 			buildPhases = (
+				AC017EAC901AB4D6AF679BA6 /* [CP] Check Pods Manifest.lock */,
 				A09793142466DD8800605774 /* Sources */,
 				A09793152466DD8800605774 /* Frameworks */,
 				A09793162466DD8800605774 /* Resources */,
+				522DD7AD9AEC0A27B0A4E53C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -429,6 +474,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A09793482466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG ConverserTests" */;
 			buildPhases = (
+				45F0FA5A0A92861C80E9C973 /* [CP] Check Pods Manifest.lock */,
 				A097932D2466DD8A00605774 /* Sources */,
 				A097932E2466DD8A00605774 /* Frameworks */,
 				A097932F2466DD8A00605774 /* Resources */,
@@ -447,9 +493,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A097934B2466DD8A00605774 /* Build configuration list for PBXNativeTarget "BTG ConverserUITests" */;
 			buildPhases = (
+				0F07E6E145641CC55A80A0F6 /* [CP] Check Pods Manifest.lock */,
 				A09793382466DD8A00605774 /* Sources */,
 				A09793392466DD8A00605774 /* Frameworks */,
 				A097933A2466DD8A00605774 /* Resources */,
+				9C0B267AABC557453888453A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -542,6 +590,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F07E6E145641CC55A80A0F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BTG Converser-BTG ConverserUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45F0FA5A0A92861C80E9C973 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BTG ConverserTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		522DD7AD9AEC0A27B0A4E53C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BTG Converser/Pods-BTG Converser-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BTG Converser/Pods-BTG Converser-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BTG Converser/Pods-BTG Converser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C0B267AABC557453888453A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BTG Converser-BTG ConverserUITests/Pods-BTG Converser-BTG ConverserUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BTG Converser-BTG ConverserUITests/Pods-BTG Converser-BTG ConverserUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BTG Converser-BTG ConverserUITests/Pods-BTG Converser-BTG ConverserUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC017EAC901AB4D6AF679BA6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BTG Converser-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A09793142466DD8800605774 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -555,12 +706,10 @@
 				A0B2F5A224697D2E00513255 /* MainPresenter.swift in Sources */,
 				A0B2F5E62469A94100513255 /* ListInteractor.swift in Sources */,
 				A0B2F5A624697D2E00513255 /* MainViewToPresenter.swift in Sources */,
-				A0B2F5C92469930200513255 /* Database.swift in Sources */,
 				A0B2F5A724697D2E00513255 /* MainPresenterToInteractor.swift in Sources */,
 				A0B2F5A424697D2E00513255 /* MainInteractorToPresenter.swift in Sources */,
 				A0B2F5F12469C0A200513255 /* EditingType.swift in Sources */,
 				A0B2F5FA2469D46D00513255 /* CurrencyConverter.swift in Sources */,
-				A09793262466DD8800605774 /* BTG_Converser.xcdatamodeld in Sources */,
 				A0B2F5CD246993B200513255 /* TaxModel.swift in Sources */,
 				A0B2F5E02469A94100513255 /* ListPresenter.swift in Sources */,
 				A0B2F5A824697D2E00513255 /* MainInteractor.swift in Sources */,
@@ -578,6 +727,7 @@
 				A0B2F5A524697D2E00513255 /* MainPresenterToView.swift in Sources */,
 				A0B2F5E52469A94100513255 /* ListViewToPresenter.swift in Sources */,
 				A0B2F5E22469A94100513255 /* ListPresenterToInteractor.swift in Sources */,
+				A021411A246A274300A6EBEE /* RealmDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +735,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A09793362466DD8A00605774 /* BTG_ConverserTests.swift in Sources */,
+				A0B2F5FE2469FF1100513255 /* ConverterTests.swift in Sources */,
+				A0B2F5FC2469EF8800513255 /* MainTests.swift in Sources */,
+				A0B2F600246A064D00513255 /* ListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +908,7 @@
 		};
 		A09793462466DD8A00605774 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7459175C0438CFC684298C92 /* Pods-BTG Converser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -774,6 +927,7 @@
 		};
 		A09793472466DD8A00605774 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51D2D394AB7F9EA1A15DFEC5 /* Pods-BTG Converser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -792,6 +946,7 @@
 		};
 		A09793492466DD8A00605774 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 579BA3DB0F8047227DFB50B7 /* Pods-BTG ConverserTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -814,6 +969,7 @@
 		};
 		A097934A2466DD8A00605774 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 225F38461534283033A1D2F4 /* Pods-BTG ConverserTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -836,6 +992,7 @@
 		};
 		A097934C2466DD8A00605774 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 071020A97FEFD49A871EAA5C /* Pods-BTG Converser-BTG ConverserUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -856,6 +1013,7 @@
 		};
 		A097934D2466DD8A00605774 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D87E7B147A1866DAB357A2 /* Pods-BTG Converser-BTG ConverserUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -914,19 +1072,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A09793242466DD8800605774 /* BTG_Converser.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */,
-			);
-			currentVersion = A09793252466DD8800605774 /* BTG_Converser.xcdatamodel */;
-			path = BTG_Converser.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A09793102466DD8800605774 /* Project object */;
 }

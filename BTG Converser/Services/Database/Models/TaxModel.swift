@@ -6,45 +6,55 @@
 //  Copyright © 2020 Vandcarlos Mouzinho Sandes Junior. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
 
-final class TaxModel {
+class TaxModel: Object {
 
-    static private let entityName = "Tax"
+    @objc dynamic var fromCode: String = ""
+    @objc dynamic var toCode: String = ""
+    @objc dynamic var value: Double = 0
 
-    static func createOrUpdate(fromCode: String, toCode: String, value: Double) -> Bool {
-        if let currency = self.get(byFromCode: fromCode, andToCode: toCode) {
-            currency.setValue(value, forKey: "value")
-            return true
-        }
+}
 
-        let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: Database.context)
-        let newTax = NSManagedObject(entity: entity!, insertInto: Database.context)
+extension TaxModel {
 
-        newTax.setValue(fromCode, forKey: "from_code")
-        newTax.setValue(toCode, forKey: "to_code")
-        newTax.setValue(value, forKey: "value")
-
-        do {
-            try Database.context.save()
-            return true
-        } catch {
-            print("Error on save Tax")
-            return false
+    static func createOrUpdate(fromCode: String, toCode: String, value: Double) {
+        if TaxModel.get(byFromCode: fromCode, andToCode: toCode) != nil {
+            TaxModel.update(fromCode: fromCode, toCode: toCode, value: value)
+        } else {
+            TaxModel.create(fromCode: fromCode, toCode: toCode, value: value)
         }
     }
 
-    static func get(byFromCode fromCode: String, andToCode toCode: String) -> Tax? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
-        request.predicate = NSPredicate(format: "from_code == %@ AND to_code == %@", fromCode, toCode)
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try Database.context.fetch(request) as? [Tax]
-            return result?.first
-        } catch {
-            return nil
+    static func create(fromCode: String, toCode: String, value: Double) {
+        let taxModel = TaxModel()
+        taxModel.fromCode = fromCode
+        taxModel.toCode = toCode
+        taxModel.value = value
+
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(taxModel)
         }
+    }
+
+    static func update(fromCode: String, toCode: String, value: Double) {
+        let realm = try! Realm()
+
+        let tax = realm.objects(TaxModel.self)
+            .filter("fromCode == '\(fromCode)' AND toCode == '\(toCode)'")
+            .first
+
+        try! realm.write {
+            tax?.value = value
+        }
+    }
+
+    static func get(byFromCode fromCode: String, andToCode toCode: String) -> TaxModel? {
+        return try! Realm()
+            .objects(TaxModel.self)
+            .filter("fromCode == '\(fromCode)' AND toCode == '\(toCode)'")
+            .first
     }
 
 }
