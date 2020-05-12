@@ -19,8 +19,8 @@ class TaxModel: Object {
 extension TaxModel {
 
     static func createOrUpdate(fromCode: String, toCode: String, value: Double) {
-        if let taxModel = TaxModel.get(byFromCode: fromCode, andToCode: toCode) {
-            taxModel.update(value: value)
+        if TaxModel.get(byFromCode: fromCode, andToCode: toCode) != nil {
+            TaxModel.update(fromCode: fromCode, toCode: toCode, value: value)
         } else {
             TaxModel.create(fromCode: fromCode, toCode: toCode, value: value)
         }
@@ -38,10 +38,15 @@ extension TaxModel {
         }
     }
 
-    func update(value: Double) {
+    static func update(fromCode: String, toCode: String, value: Double) {
         let realm = try! Realm()
+
+        let tax = realm.objects(TaxModel.self)
+            .filter("fromCode == '\(fromCode)' AND toCode == '\(toCode)'")
+            .first
+
         try! realm.write {
-            self.value = value
+            tax?.value = value
         }
     }
 
@@ -50,10 +55,6 @@ extension TaxModel {
             .objects(TaxModel.self)
             .filter("fromCode == '\(fromCode)' AND toCode == '\(toCode)'")
             .first
-    }
-
-    static func getAll() -> [TaxModel] {
-        return try! Realm().objects(TaxModel.self).compactMap { $0 }
     }
 
 }

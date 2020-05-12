@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import BTG_Converser
-import CoreData
+import RealmSwift
 
 class MainTests: XCTestCase {
 
@@ -17,29 +17,8 @@ class MainTests: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
-        Database.currentContext = setUpInMemoryManagedObjectContext()
         self.presenter = MainPresenter(view: viewToPresenter)
-    }
-
-    override func tearDownWithError() throws {
-        Database.currentContext = setUpInMemoryManagedObjectContext()
-    }
-
-    func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
-
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-
-        do {
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
-        } catch {
-            print("Adding in-memory persistent store failed")
-        }
-
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
-
-        return managedObjectContext
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = "testing-db"
     }
 
 }
@@ -50,7 +29,7 @@ extension MainTests {
         let expectation = self.expectation(description: "Returns from API")
 
         self.viewToPresenter.showSuccessStateCompletion = {
-            XCTAssertGreaterThan(TaxModel.getAll().count, 0)
+            XCTAssertGreaterThan(CurrencyModel.getAll().count, 0)
             expectation.fulfill()
         }
 

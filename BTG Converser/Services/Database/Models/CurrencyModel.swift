@@ -18,8 +18,8 @@ class CurrencyModel: Object  {
 extension CurrencyModel {
 
     static func createOrUpdate(code: String, name: String) {
-        if let currencyModel = CurrencyModel.get(byCode: code) {
-            currencyModel.update(name: name)
+        if CurrencyModel.get(byCode: code) != nil {
+            CurrencyModel.update(code: code, name: name)
         } else {
             return CurrencyModel.create(code: code, name: name)
         }
@@ -36,10 +36,15 @@ extension CurrencyModel {
         }
     }
 
-    func update(name: String) {
+    static func update(code: String, name: String) {
         let realm = try! Realm()
+
+        let currency = realm.objects(CurrencyModel.self)
+            .filter("code == '\(code)'")
+            .first
+
         try! realm.write {
-            self.name = name
+            currency?.name = name
         }
     }
 

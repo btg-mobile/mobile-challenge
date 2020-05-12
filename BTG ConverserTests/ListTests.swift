@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import BTG_Converser
-import CoreData
+import RealmSwift
 
 class ListTests: XCTestCase {
 
@@ -17,29 +17,9 @@ class ListTests: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
-        Database.currentContext = setUpInMemoryManagedObjectContext()
         self.presenter = ListPresenter(view: viewToPresenter)
-    }
-
-    override func tearDownWithError() throws {
-        Database.currentContext = setUpInMemoryManagedObjectContext()
-    }
-
-    func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
-
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-
-        do {
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
-        } catch {
-            print("Adding in-memory persistent store failed")
-        }
-
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
-
-        return managedObjectContext
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = "testing-db"
+        sleep(1)
     }
 
 }
@@ -50,10 +30,10 @@ extension ListTests {
         let expectation = self.expectation(description: "Get all elements")
 
         let expectedCode1 = "a"
-        _ = CurrencyModel.createOrUpdate(code: expectedCode1, name: "foo")
+        _ = CurrencyModel.createOrUpdate(code: expectedCode1, name: "foo3")
 
         let expectedCode2 = "b"
-        _ = CurrencyModel.createOrUpdate(code: expectedCode2, name: "bar")
+        _ = CurrencyModel.createOrUpdate(code: expectedCode2, name: "bar3")
 
         self.viewToPresenter.updateListItemsCompletion = { listItems in
             XCTAssertEqual(listItems.count, 2)
@@ -71,10 +51,10 @@ extension ListTests {
         let expectation = self.expectation(description: "Get all elements")
 
         let expectedCodeA = "a"
-        _ = CurrencyModel.createOrUpdate(code: expectedCodeA, name: "foo")
+        _ = CurrencyModel.createOrUpdate(code: expectedCodeA, name: "foo1")
 
         let expectedCodeB = "b"
-        _ = CurrencyModel.createOrUpdate(code: expectedCodeB, name: "bar")
+        _ = CurrencyModel.createOrUpdate(code: expectedCodeB, name: "bar1")
 
         self.viewToPresenter.updateListItemsCompletion = { listItems in
             XCTAssertEqual(listItems[0].code, expectedCodeA)
@@ -91,10 +71,10 @@ extension ListTests {
         let expectation = self.expectation(description: "Get all elements")
 
         let expectedCodeA = "a"
-        _ = CurrencyModel.createOrUpdate(code: expectedCodeA, name: "for")
+        _ = CurrencyModel.createOrUpdate(code: expectedCodeA, name: "for2")
 
         let expectedCodeB = "b"
-        _ = CurrencyModel.createOrUpdate(code: expectedCodeB, name: "bar")
+        _ = CurrencyModel.createOrUpdate(code: expectedCodeB, name: "bar2")
 
         self.presenter.viewDidLoad()
 
