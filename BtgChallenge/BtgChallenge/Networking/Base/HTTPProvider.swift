@@ -44,16 +44,18 @@ class HTTPProvider<Router: HTTPRouter> {
         let request = endpoint(router: router)
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
-            if let error = error {
-                completion?(.failure(error))
-            }
-            
-            if let data = data {
-                do {
-                    let decodedObject = try self.decoder.decode(T.self, from: data)
-                    completion?(.success(decodedObject))
-                } catch {
+            DispatchQueue.main.async {
+                if let error = error {
                     completion?(.failure(error))
+                }
+                
+                if let data = data {
+                    do {
+                        let decodedObject = try self.decoder.decode(T.self, from: data)
+                        completion?(.success(decodedObject))
+                    } catch {
+                        completion?(.failure(error))
+                    }
                 }
             }
         }

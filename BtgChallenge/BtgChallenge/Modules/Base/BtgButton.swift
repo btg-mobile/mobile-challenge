@@ -8,18 +8,33 @@
 
 import UIKit
 
+protocol BtgButtonDelegate: class {
+    func didTapButton(view: BtgButton)
+}
+
 class BtgButton: UIButton {
 
+    // MARK: - Properties
+    
+    weak var delegate: BtgButtonDelegate?
+    
     init() {
         super.init(frame: .zero)
         
         backgroundColor = UIColor.darkBlue
         layer.cornerRadius = 30
         clipsToBounds = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    @objc fileprivate func handleTap() {
+        delegate?.didTapButton(view: self)
     }
     
     // MARK: - Scale Animation

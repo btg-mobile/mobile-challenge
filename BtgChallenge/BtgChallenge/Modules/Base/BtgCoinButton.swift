@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BtgCoinButtonDelegate: class {
+    func didTapButton(view: BtgCoinButton)
+}
+
 class BtgCoinButton: UIView {
 
     // MARK: - Constants
@@ -30,6 +34,8 @@ class BtgCoinButton: UIView {
         return BtgImageView(imageName: "Caret")
     }()
     
+    weak var delegate: BtgCoinButtonDelegate?
+    
     // MARK: - View Lyfe Cycle
     
     init() {
@@ -39,6 +45,10 @@ class BtgCoinButton: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    @objc fileprivate func handleTap() {
+        delegate?.didTapButton(view: self)
     }
     
 }
@@ -69,6 +79,7 @@ extension BtgCoinButton: ViewCoded {
     }
     
     func setupAdditionalConfiguration() {
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        addGestureRecognizer(tapGesture)
     }
 }

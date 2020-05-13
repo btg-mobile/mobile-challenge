@@ -17,7 +17,9 @@ class CoinConvertView: UIView {
     static let containerViewPadding: CGFloat = 20
     static let coinsStackViewSpacing: CGFloat = 32
     static let convertButtonHeight: CGFloat = 60
-    static let convertButtonTitle = "Converter"
+    static let convertButtonTitle = "Convert"
+    static let fromCoinTitle = "You are converting from"
+    static let toCoinTitle = "You will receive"
     
     // MARK: - Properties
     
@@ -49,21 +51,31 @@ class CoinConvertView: UIView {
     
     lazy var fromCoinView: CoinView = {
         let view = CoinView(coinType: .from)
+        view.coinButton.coinTypeLabel.text = "BRL"
+        view.titleLabel.text = CoinConvertView.fromCoinTitle
+        view.delegate = viewController
         return view
     }()
     
     lazy var toCoinView: CoinView = {
         let view = CoinView(coinType: .to)
+        view.coinButton.coinTypeLabel.text = "USD"
+        view.titleLabel.text = CoinConvertView.toCoinTitle
+        view.valueTextField.isUserInteractionEnabled = false
         return view
     }()
     
     lazy var convertButton: BtgButton = {
         let button = BtgButton()
+        button.delegate = viewController
         button.setTitle(CoinConvertView.convertButtonTitle, for: .normal)
         return button
     }()
     
-    init() {
+    weak var viewController: CoinConvertViewController?
+    
+    init(viewController: CoinConvertViewController) {
+        self.viewController = viewController
         super.init(frame: UIScreen.main.bounds)
         setupView()
     }

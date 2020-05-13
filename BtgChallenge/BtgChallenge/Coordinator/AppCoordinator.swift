@@ -16,7 +16,14 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = CoinConvertViewController()
+        let service = CurrencyServiceImpl()
+        let repository = CurrencyRepositoryImpl(service: service)
+        let viewModel = CoinConvertViewModel(repository: repository)
+        let viewController = CoinConvertViewController(viewModel: viewModel)
+        viewModel.viewController = viewController
+        print(viewModel)
+        print(viewController)
+        
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.barTintColor = UIColor.darkBlue
         navigationController.navigationBar.tintColor = .white

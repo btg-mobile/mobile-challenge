@@ -1,19 +1,20 @@
 //
-//  BtgLabelLarge.swift
+//  BtgTextField.swift
 //  BtgChallenge
 //
-//  Created by Felipe Alexander Silva Melo on 13/05/20.
+//  Created by Felipe Alexander Silva Melo on 11/05/20.
 //  Copyright © 2020 Felipe Alexander Silva Melo. All rights reserved.
 //
 
 import UIKit
 
-final class BtgLabelLarge: BtgLabel {
+class BtgTextField: UITextField {
 
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
         
         textColor = .darkGray
+        keyboardType = .numberPad
         if let font = UIFont.btgLabelLarge() {
             self.font = font
         }

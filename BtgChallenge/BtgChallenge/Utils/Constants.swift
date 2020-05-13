@@ -9,13 +9,22 @@
 import Foundation
 
 struct Constants {
+    struct Strings {
+        static let alertTitle = "Atenção"
+        static let alertButton = "Ok"
+    }
+    
     struct Networking {
         static let baseUrl = "http://apilayer.net/api"
         static let accessKey = "ce7cc9678c03f001a7066496d5d10455"
     }
     
     struct Errors {
-        static let apiDefaultMessage = "Erro ao tentar se conectar com o servidor."
-        static let failToBuildUrl = "Erro ao tentar montar a URL."
+        static let apiDefaultMessage = "Error trying to connect to the server."
+        static let failToBuildUrl = "Error tryind to build url."
+    }
+    
+    struct Notifications {
+        static let appTimeout = Notification.Name("AppTimeOut")
     }
 }
