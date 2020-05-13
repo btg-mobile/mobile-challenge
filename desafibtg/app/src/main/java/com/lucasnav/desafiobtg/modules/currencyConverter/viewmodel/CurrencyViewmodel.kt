@@ -23,7 +23,6 @@ class CurrencyViewmodel(
             },
             onError = { errorMessage ->
                 onError.value = errorMessage
-                onError.call()
                 onLoadFinished.call()
             }
         )
@@ -40,7 +39,6 @@ class CurrencyViewmodel(
             },
             onError = {
                 onError.value = it
-                onError.call()
                 onLoadFinished.call()
             }
         )
