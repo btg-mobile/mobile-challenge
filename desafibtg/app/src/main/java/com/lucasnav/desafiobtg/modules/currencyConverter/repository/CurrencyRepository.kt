@@ -71,7 +71,6 @@ open class CurrencyRepository(
                     } else {
                         onSuccess(it)
                     }
-
                 },
                 onError = { onError(it) }
             )

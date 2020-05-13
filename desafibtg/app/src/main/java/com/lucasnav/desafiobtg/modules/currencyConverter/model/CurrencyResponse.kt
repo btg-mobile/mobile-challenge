@@ -4,5 +4,5 @@ data class CurrencyResponse(
     val success: Boolean = false,
     val source: String = "",
     val currencies: Map<String, String>? = null,
-    val requestError: RequestError
+    val error: RequestError
 )

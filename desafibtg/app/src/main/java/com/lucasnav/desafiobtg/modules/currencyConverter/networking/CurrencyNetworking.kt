@@ -31,7 +31,7 @@ object CurrencyNetworking : BaseNetwork() {
                         onSuccess(currencies)
                     }
                 } else {
-                    val error = RequestError(it.requestError.code, it.requestError.info)
+                    val error = RequestError(it.error.code, it.error.info)
                     onError(error)
                 }
 
@@ -70,7 +70,7 @@ object CurrencyNetworking : BaseNetwork() {
                             onSuccess(quotes)
                         }
                     } else {
-                        val error = RequestError(it.requestError.code, it.requestError.info)
+                        val error = RequestError(it.error.code, it.error.info)
                         onError(error)
                     }
                 }

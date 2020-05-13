@@ -4,5 +4,5 @@ data class QuoteResponse(
     val success: Boolean = false,
     val source: String = "",
     val quotes: Map<String, Double>? = null,
-    val requestError: RequestError
+    val error: RequestError
 )
