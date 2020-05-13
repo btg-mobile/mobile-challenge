@@ -22,20 +22,6 @@ class CoinConvertViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Conversor de moedas"
-        
-//        let repository = TestRep()
-//        repository.performRequest(endpoint: "live", success: { (data) in
-//            print(data)
-//        }) { (errorMessage) in
-//            print(errorMessage)
-//        }
-        
-        let provider = HTTPProvider<Router>()
-        provider.request(router: .convert("USD", "GPB", "10.00"))
     }
 
-}
-
-class TestRep: Repository {
-    
 }

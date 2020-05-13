@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
     struct Networking {
-        static let baseUrl = "http://api.currencylayer.com/"
+        static let baseUrl = "http://apilayer.net/api"
         static let accessKey = "ce7cc9678c03f001a7066496d5d10455"
     }
     

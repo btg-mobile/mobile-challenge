@@ -12,5 +12,6 @@ protocol HTTPRouter {
     var baseUrl: URL { get }
     var path: String { get }
     var method: HTTPMethod { get }
+    var parameters: [String: String] { get }
     var headers: [String: String]? { get }
 }
