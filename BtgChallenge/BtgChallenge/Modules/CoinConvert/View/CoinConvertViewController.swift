@@ -8,15 +8,20 @@
 
 import UIKit
 
+protocol CoinConvertCoordinatorDelegate: class {
+    func showCoinList()
+}
+
 final class CoinConvertViewController: UIViewController {
 
     // MARK: - Properties
     var coinConvertView: CoinConvertView?
-    
     var viewModel: CoinConvertViewModelInput?
+    var coordinator: CoinConvertCoordinatorDelegate?
     
-    init(viewModel: CoinConvertViewModelInput) {
+    init(viewModel: CoinConvertViewModelInput, coordinator: CoinConvertCoordinatorDelegate) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,12 +33,11 @@ final class CoinConvertViewController: UIViewController {
         super.loadView()
         coinConvertView = CoinConvertView(viewController: self)
         view = coinConvertView
+        title = "Convert"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Convert"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -46,14 +50,6 @@ final class CoinConvertViewController: UIViewController {
 // MARK: - Output
 
 extension CoinConvertViewController: CoinConvertViewModelOutput {
-    func displayLoadingView() {
-        BtgLoadingView.start()
-    }
-    
-    func hideLoadingView() {
-        BtgLoadingView.stop()
-    }
-    
     func displayAlertMessage(message: String) {
         presentAlert(message: message)
     }
@@ -82,5 +78,9 @@ extension CoinConvertViewController: BtgButtonDelegate {
 extension CoinConvertViewController: CoinViewDelegate {
     func didUpdateCurrency(view: CoinView, value: String) {
         viewModel?.updateFromCoinValue(value: value)
+    }
+    
+    func didTapCoinButton(view: CoinView) {
+        coordinator?.showCoinList()
     }
 }

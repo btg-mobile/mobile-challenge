@@ -14,13 +14,12 @@ protocol CoinConvertViewModelDataStore: class {
     var toCoinNickname: String { get set }
 }
 
-protocol CoinConvertViewModelInput: class {
-    func getInitialScreenValues()
+protocol CoinConvertViewModelInput: ViewModelInput {
     func getConversionQuote()
     func updateFromCoinValue(value: String)
 }
 
-protocol CoinConvertViewModelOutput: class {
+protocol CoinConvertViewModelOutput: ViewModelOutput {
     func displayLoadingView()
     func hideLoadingView()
     func displayAlertMessage(message: String)
@@ -31,6 +30,8 @@ protocol CoinConvertViewModelOutput: class {
 }
 
 final class CoinConvertViewModel: CoinConvertViewModelDataStore {
+    
+    // MARK: - Properties
     
     var fromCoinNickname = "BRL"
     var fromCoinValue = "0.00"
@@ -47,7 +48,7 @@ final class CoinConvertViewModel: CoinConvertViewModelDataStore {
 
 // MARK: - Inputs
 extension CoinConvertViewModel: CoinConvertViewModelInput {
-    func getInitialScreenValues() {
+    func viewDidLoad() {
         
     }
     

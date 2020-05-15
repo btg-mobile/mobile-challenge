@@ -14,6 +14,10 @@ extension UIFont {
         return UIFont(name: "HelveticaNeue", size: 14)
     }
     
+    static func btgLabelMedium() -> UIFont? {
+        return UIFont(name: "HelveticaNeue-Bold", size: 16)
+    }
+    
     static func btgLabelLarge() -> UIFont? {
         return UIFont(name: "HelveticaNeue-Bold", size: 20)
     }

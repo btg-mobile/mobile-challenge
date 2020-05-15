@@ -11,6 +11,7 @@ import Foundation
 enum CurrencyRouter {
     case live(String, String)
     case convert(String, String, String)
+    case list
 }
 
 extension CurrencyRouter: HTTPRouter {
@@ -24,6 +25,8 @@ extension CurrencyRouter: HTTPRouter {
             return "/live"
         case .convert:
             return "/convert"
+        case .list:
+            return "/list"
         }
     }
     
@@ -46,6 +49,8 @@ extension CurrencyRouter: HTTPRouter {
                 "to": toCoin,
                 "amount": amount
             ]
+        case .list:
+            return [:]
         }
     }
     

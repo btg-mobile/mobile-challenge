@@ -10,18 +10,18 @@ import Foundation
 
 final class CurrencyRepositoryImpl: CurrencyRepository {
     
-    var service: CurrencyService
+    let provider: HTTPProvider<CurrencyRouter>
     
-    init(service: CurrencyService) {
-        self.service = service
+    init(provider: HTTPProvider<CurrencyRouter>) {
+        self.provider = provider
     }
     
     func live(_ currencies: String,
               _ source: String,
               _ callback: @escaping (LiveResult) -> Void
     ) {
-        service.live(currencies, source) { (liveResult) in
-            callback(liveResult)
+        provider.request(router: .live(currencies, source)) { result in
+            callback(result)
         }
     }
     
@@ -30,8 +30,14 @@ final class CurrencyRepositoryImpl: CurrencyRepository {
                  _ amount: String,
                  _ callback: @escaping (ConvertResult) -> Void
     ) {
-        service.convert(fromCoin, toCoin, amount) { (convertResult) in
-            callback(convertResult)
+        provider.request(router: .convert(fromCoin, toCoin, amount)) { result in
+            callback(result)
+        }
+    }
+    
+    func list(_ callback: @escaping (ListResult) -> Void) {
+        provider.request(router: .list) { result in
+            callback(result)
         }
     }
     

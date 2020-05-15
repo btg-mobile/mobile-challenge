@@ -62,6 +62,7 @@ class CoinConvertView: UIView {
         view.coinButton.coinTypeLabel.text = "USD"
         view.titleLabel.text = CoinConvertView.toCoinTitle
         view.valueTextField.isUserInteractionEnabled = false
+        view.delegate = viewController
         return view
     }()
     

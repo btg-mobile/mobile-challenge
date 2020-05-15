@@ -6,8 +6,10 @@
 //  Copyright © 2020 Felipe Alexander Silva Melo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol Coordinator: class {
+    var parentCoordinator: Coordinator? { get set }
+    var parentViewController: UIViewController? { get set }
     func start()
 }

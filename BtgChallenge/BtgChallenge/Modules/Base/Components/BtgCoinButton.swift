@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BtgCoinButtonDelegate: class {
-    func didTapButton(view: BtgCoinButton)
+    func didTapCoinButton(view: BtgCoinButton)
 }
 
 class BtgCoinButton: UIView {
@@ -48,7 +48,7 @@ class BtgCoinButton: UIView {
     }
     
     @objc fileprivate func handleTap() {
-        delegate?.didTapButton(view: self)
+        delegate?.didTapCoinButton(view: self)
     }
     
 }

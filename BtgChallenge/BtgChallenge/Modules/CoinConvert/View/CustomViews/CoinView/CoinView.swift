@@ -15,6 +15,7 @@ enum CoinType {
 
 protocol CoinViewDelegate: class {
     func didUpdateCurrency(view: CoinView, value: String)
+    func didTapCoinButton(view: CoinView)
 }
 
 class CoinView: UIView {
@@ -32,6 +33,7 @@ class CoinView: UIView {
     
     lazy var coinButton: BtgCoinButton = {
         let button = BtgCoinButton()
+        button.delegate = self
         return button
     }()
     
@@ -102,7 +104,10 @@ extension CoinView: ViewCoded {
 }
 
 extension CoinView: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String
+    ) -> Bool {
         if string.count > 0 {
             amountTypedString += string
             let decNumber = NSDecimalNumber(string: amountTypedString).multiplying(by: 0.01)
@@ -122,9 +127,15 @@ extension CoinView: UITextFieldDelegate {
         return false
     }
     
-    func textFieldShouldClear(textField: UITextField) -> Bool {
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
         amountTypedString = ""
         return true
+    }
+}
+
+extension CoinView: BtgCoinButtonDelegate {
+    func didTapCoinButton(view: BtgCoinButton) {
+        delegate?.didTapCoinButton(view: self)
     }
 }
 

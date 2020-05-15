@@ -10,13 +10,15 @@ import UIKit
 
 class BtgLabel: UILabel {
 
+    var labelFont: UIFont {
+        return UIFont.btgLabelSmall() ?? UIFont()
+    }
+    
     init() {
         super.init(frame: .zero)
         
         textColor = .darkGray
-        if let font = UIFont.btgLabelSmall() {
-            self.font = font
-        }
+        font = labelFont
     }
     
     required init?(coder: NSCoder) {
