@@ -13,7 +13,8 @@ task jacocoTestReport(type: JacocoReport) {
         csv.enabled = true
     }
     def fileFilter = ['**/R.class',
-                      '**/R$*.class', '**/*$InjectAdapter.*',
+                      '**/R$*.class',
+                      '**/*$InjectAdapter.*',
                       '**/*$ModuleAdapter.*',
                       '**/Dao*.*',
                       '**/*$ViewInjector*.*',
@@ -25,10 +26,12 @@ task jacocoTestReport(type: JacocoReport) {
                       '**/*Factory*.',
                       '**/*$Builder*',
                       '**/*$Parcelable*.*',
-                      '**/**.*',
+                      '**/*Activity.*',
+                      '**/*Fragment.*',
                       '**/api',
                       '**/android/**/*.*',
-                      '**/me/**/*.*', '**/org/**/*.*', '**/org/**/*.*']
+                      '**/org/**/*.*',
+                      '**/org/**/*.*']
 
     def debugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug/classes/br", excludes: fileFilter)
     def mainSrc = "${project.projectDir}/src/main/java/br"

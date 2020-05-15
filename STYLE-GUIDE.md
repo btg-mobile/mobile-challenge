@@ -11,6 +11,6 @@
 - [X] Desenvolver testes unitários e/ou funcionais.
 - [ ] Desenvolver o app seguindo a arquitetura MVVM.
 (A arquitetura utilizada foi o VIPER (Clean architecture), para facilitar os testes unitários em cima da lógica de programação e segmentar cada parte do projeto, seguindo os princípios de SOLID)
-- [ ] Pipeline automatizado.
+- [ ] Pipeline automatizado (Apenas com a implementação do sonar).
 
 ### Obrigado.
