@@ -2,7 +2,6 @@ package com.accenture.santander
 
 import android.app.Activity
 import org.junit.Assert.*
-import org.robolectric.Robolectric
 import android.view.View
 import com.btg.teste.moneyConvert.MoneyConvertContracts
 import com.btg.teste.moneyConvert.MoneyConvertPresenter
@@ -11,7 +10,6 @@ import com.btg.teste.viewmodel.MoneyConvert
 import org.junit.*
 import org.mockito.*
 import org.mockito.Mockito.*
-import org.robolectric.RobolectricTestRunner
 
 class TestMoneyConvertPresenter {
 

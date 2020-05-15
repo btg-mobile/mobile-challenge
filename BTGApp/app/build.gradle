@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply from: 'sonar.gradle'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -45,9 +47,26 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+            all {
+                // Sets JVM argument(s) for the test JVM(s).
+                jvmArgs '-XX:MaxPermSize=256m'
+
+                // You can also check the task name to apply options to only the tests you specify.
+                if (it.name == 'testDebugUnitTest') {
+                    systemProperty 'debug', 'true'
+                }
+            }
         }
+
     }
 }
+
+tasks.withType(Test) {
+    afterTest { desc, result ->
+        println "${result.resultType} on test ${desc.name} [${desc.className}]"
+    }
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
