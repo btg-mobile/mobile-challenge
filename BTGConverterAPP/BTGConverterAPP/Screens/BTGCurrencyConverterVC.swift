@@ -34,12 +34,10 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
     let cardTitleLabelFontSize : CGFloat = 26
     
     var currencyListModalView : BTGCurrencyListVC?
-    
     var controller : CurrencyConverterController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .systemBackground
         configure()
     }

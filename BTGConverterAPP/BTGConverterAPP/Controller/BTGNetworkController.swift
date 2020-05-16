@@ -13,7 +13,7 @@ struct BTGNetworkController {
     static let shared = BTGNetworkController()
     
     private let baseUrl = "http://api.currencylayer.com/"
-    private let accessKey = ""
+    private let accessKey = "d08516ac6a935236c4e28e375849eb3a"
     private let accessKeyQueryParam = "access_key"
     private let livePath = "live"
     private let listPath = "list"

@@ -118,7 +118,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     }
     
     @objc func showSortAlertController() {
-        let alertController = UIAlertController(title: "Order", message: "Como você gostaria de ordenar as moedas?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Ordenar", message: "Como você gostaria de ordenar as moedas?", preferredStyle: .actionSheet)
         
         
         let orderByAbbreviationButton = UIAlertAction(title: "Por sigla", style: .default, handler: {
@@ -132,15 +132,21 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
             
         })
         
-        //        let  deleteButton = UIAlertAction(title: "Delete forever", style: .Destructive, handler: { (action) -> Void in
-        //            print("Delete button tapped")
-        //        })
+        let orderByFullDescriptionButton = UIAlertAction(title: "Por nome completo", style: .default, handler: {
+            [weak self] _ -> Void in
+            guard let self = self else { return }
+            self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in
+                d1.fullDescription < d2.fullDescription
+            })
+            self.updateDataSource()
+            
+        })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         
         
         alertController.addAction(orderByAbbreviationButton)
-        //alertController.addAction(deleteButton)
+        alertController.addAction(orderByFullDescriptionButton)
         alertController.addAction(cancelButton)
         
         present(alertController, animated: true) // here there's a bug on apple's native alertController framework that break the constraints, the workaround is using animated false and setting directly the alertController to the view.
