@@ -18,6 +18,7 @@ class CoinListTableView: UITableView {
     
     weak var listDelegate: CoinListTableViewDelegate?
     fileprivate var viewModel = CoinListTableViewModel()
+    fileprivate var firstUpdate = true
     
     init(delegate: CoinListTableViewDelegate?) {
         listDelegate = delegate
@@ -31,7 +32,11 @@ class CoinListTableView: UITableView {
     
     func update(viewModel: CoinListTableViewModel) {
         self.viewModel = viewModel
-        reloadData()
+        
+        firstUpdate ?
+            reloadSections(IndexSet(integer: 0), with: .automatic) :
+            reloadData()
+        firstUpdate = false
     }
     
     fileprivate func setup() {

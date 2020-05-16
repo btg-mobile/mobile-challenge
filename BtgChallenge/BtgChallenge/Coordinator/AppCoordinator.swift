@@ -21,13 +21,11 @@ class AppCoordinator: Coordinator {
         navigationController.navigationBar.barTintColor = UIColor.darkBlue
         navigationController.navigationBar.tintColor = .white
         navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.prefersLargeTitles = true
         
-        if let font = UIFont.btgLabelMedium() {
-            navigationController.navigationBar.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor.white,
-                NSAttributedString.Key.font: font
-            ]
-        }
+        let titleAttrs = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = titleAttrs
+        navigationController.navigationBar.largeTitleTextAttributes = titleAttrs
         
         return navigationController
     }()
