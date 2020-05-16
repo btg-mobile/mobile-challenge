@@ -16,5 +16,4 @@ struct CurrencyDescription: Hashable, Codable {
     static func ==(lhs: CurrencyDescription, rhs: CurrencyDescription) -> Bool {
         return lhs.abbreviation == rhs.abbreviation && lhs.fullDescription == rhs.fullDescription
     }
-    
 }

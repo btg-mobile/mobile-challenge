@@ -15,6 +15,7 @@ protocol CurrencyResultHandler: UIViewController {
 protocol CurrencySelectionHandler: UIViewController {
     func setBaseCurrency(currencyAbbreviation: String)
     func setTargetCurrency(currencyAbbreviation: String)
+    func setKeyboardNecessary(to : Bool)
 }
 
 enum AvaliableCurrencySelection {
@@ -31,6 +32,7 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
     let horizontalPadding : CGFloat = 15
     let verticalPadding : CGFloat = 15
     let cardTitleLabelFontSize : CGFloat = 26
+    var isKeyboardChangeNecessary = true
     
     var currencyListModalView : BTGCurrencyListVC?
     var controller : CurrencyConverterController!
@@ -43,6 +45,11 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isKeyboardChangeNecessary = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        isKeyboardChangeNecessary = false
     }
     
     private func configure() {
@@ -149,6 +156,7 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         currencyListModalView?.modalSelection = avaliableCurrencySelection
         let navController = UINavigationController(rootViewController: currencyListModalView!)
         present(navController,animated: true)
+        isKeyboardChangeNecessary = false
     }
     
     @objc private func convertValueButtonTap() {
@@ -164,11 +172,10 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
     }
     
     @objc private func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, isKeyboardChangeNecessary else { return }
 
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         // view.safeAreaLayoutGuide.layoutFrame.origin.y
-        #warning("testar isso depois ")
         if notification.name != UIResponder.keyboardWillHideNotification &&
             self.view.frame.origin.y == 0 {
             self.view.frame.origin.y = 0 - keyboardScreenEndFrame.height + 120
@@ -189,6 +196,11 @@ extension BTGCurrencyConverterVC: UITextFieldDelegate {
 }
 
 extension BTGCurrencyConverterVC: CurrencySelectionHandler {
+    
+    func setKeyboardNecessary(to value: Bool) {
+        isKeyboardChangeNecessary = value
+    }
+    
     
     func setBaseCurrency(currencyAbbreviation: String) {
         baseCurrencyCardView.currencyLabel.text = currencyAbbreviation

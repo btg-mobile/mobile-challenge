@@ -41,6 +41,11 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         print("view will appear")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        currencySelectionDelegate?.setKeyboardNecessary(to: true)
+    }
+    
     init(isModalView: Bool = false, currencySelectionHandler : CurrencySelectionHandler? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.isModalView = isModalView
@@ -71,7 +76,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         } else {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showSortAlertController))
         
     }
@@ -89,7 +93,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            
         ])
         
     }
@@ -109,7 +112,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
-        
     }
     
     func configureSearchController() {
@@ -120,9 +122,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         searchController.searchBar.placeholder = "Procure moedas aqui. Ex: USD"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        
-        //        searchController.obscuresBackgroundDuringPresentation = false this change the look when user touch the search bar
-        
     }
     
     func setCurrencyDescriptions(currencyDescriptions : [CurrencyDescription]) {
@@ -161,7 +160,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         
-        
         alertController.addAction(orderByAbbreviationButton)
         alertController.addAction(orderByFullDescriptionButton)
         alertController.addAction(cancelButton)
@@ -183,7 +181,9 @@ extension BTGCurrencyListVC: UITableViewDelegate {
             case .target:
                 currencySelectionDelegate?.setTargetCurrency(currencyAbbreviation: isSearching ? currencyDescriptionsFiltered[indexPath.row].abbreviation : currencyDescriptions[indexPath.row].abbreviation)
             }
+            currencySelectionDelegate?.setKeyboardNecessary(to : true)
             dismiss(animated: true)
+            
         }
     }
     
