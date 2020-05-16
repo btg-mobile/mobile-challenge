@@ -32,11 +32,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return currencyConverterVC
     }
     
-    func createFavoritesVC() -> UIViewController {
+    func createFavoritesVC() -> UINavigationController {
         let currencyListVC = BTGCurrencyListVC()
-        currencyListVC.title = "BTG Currency List"
+        let navController = UINavigationController(rootViewController: currencyListVC)
+        currencyListVC.title = "Avaliable Currency"
         currencyListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent , tag: 1)
-        return currencyListVC
+        return navController
     }
     
     func createTabbar() -> UITabBarController {

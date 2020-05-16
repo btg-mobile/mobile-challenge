@@ -79,8 +79,6 @@ class BTGConverterResultCardItem: UIView {
     
     private func configureConvertResultLabel() {
         addSubview(convertResultLabel)
-        convertResultLabel.backgroundColor = .systemRed
-        convertResultLabel.text = "Resultado: 234234234 USD"
         
         NSLayoutConstraint.activate([
             convertResultLabel.topAnchor.constraint(equalTo: userInputValueTitleLabel.bottomAnchor, constant: verticalPadding),
