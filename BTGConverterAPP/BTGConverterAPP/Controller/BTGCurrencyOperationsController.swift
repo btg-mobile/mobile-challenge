@@ -8,19 +8,59 @@
 
 import Foundation
 
+enum OperationType {
+    case toBaseType
+    case fromBaseType
+    case noBaseTypeConversion
+}
+
 struct BTGCurrencyOperationsController {
     
-    static func currencyToUSD(inputBaseDecimal: Decimal,to quotesToUsd: Double) -> String {
-        
+    static func currencyToUSDFormatted(inputBaseDecimal: Decimal,to quotesToUsd: Double) -> String {
+        return formatNumberToCurrencyConverterVC(BTGCurrencyOperationsController.currencyToBaseCurrencyUnformatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd))
+    }
+    
+    static func currencyToBaseCurrencyUnformatted(inputBaseDecimal: Decimal,to quotesToUsd: Double) -> Decimal {
         let quotesDecimal : Decimal = NSNumber(floatLiteral: quotesToUsd).decimalValue
-        let resultToUSDDecimal = inputBaseDecimal/quotesDecimal
+        return inputBaseDecimal/quotesDecimal
+    }
+    
+    static private func formatNumberToCurrencyConverterVC(_ number: Decimal) -> String {
+        var components = number.description.components(separatedBy: ".")
+        var formatedString = ""
+        
+        if components.count > 1 && components[1].count > 1 {
+            formatedString =  components[0] + ".\(components[1].removeFirst())\(components[1].removeFirst())"
+        } else if components.count > 1 && components[1].count == 1 {
+            formatedString = components[0] + ".\(components[1].removeFirst())0"
+        } else {
+            formatedString = components[0] + ".00"
+        }
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale.current
+        return numberFormatter.string(from: NSNumber(value: Double(formatedString)!))!
+    }
+    
+    static func baseCurrencytoTarget(dolarQuantity: Decimal,to dolarQuoteToTarget: Double) -> String {
+        
+        let quotesDecimal : Decimal = NSNumber(floatLiteral: dolarQuoteToTarget).decimalValue
+        let resultToUSDDecimal = dolarQuantity*quotesDecimal
         
         return formatNumberToCurrencyConverterVC(resultToUSDDecimal)
     }
     
-    static private func formatNumberToCurrencyConverterVC(_ number: Decimal) -> String {
-        var compoments = number.description.components(separatedBy: ".")
-        return compoments[0] + ".\(compoments[1].removeFirst())\(compoments[1].removeFirst())"
+    
+    static func getOperationType(baseCurrency: String, targetCurrency: String) -> OperationType {
+        let baseType = BTGCurrencyQuotesConstants.baseCurrencyAbbreviation.rawValue
+        if baseCurrency != baseType && targetCurrency == baseType {
+            return .toBaseType
+        } else if baseCurrency == baseType && targetCurrency != baseType {
+            return .fromBaseType
+        } else {
+            return .noBaseTypeConversion
+        }
     }
     
 }

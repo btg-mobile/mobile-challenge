@@ -23,3 +23,7 @@ enum BTGCurrencyErrorConstants: String {
     case currenciesAreTheSame = "As duas moedas são iguais. Por favor selecione duas moedas diferentes"
     case currencyPairNotFound = "Desculpe mas não achamos o seu par na nossa base. Vamos atualizar tudo por aqui e tente novamente por favor"
 }
+
+enum BTGCurrencyQuotesConstants: String {
+    case baseCurrencyAbbreviation = "USD"
+}

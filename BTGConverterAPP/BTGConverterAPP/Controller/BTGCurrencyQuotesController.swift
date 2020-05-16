@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class BTGCurrencyQuotesController {
     
     private let networkController = BTGNetworkController.shared

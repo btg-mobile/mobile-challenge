@@ -17,7 +17,7 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
     
     weak var view : CurrencyResultHandler?
     var quotesController = BTGCurrencyQuotesController()
-    
+    var baseCurrencyAbbreviation =  BTGCurrencyQuotesConstants.baseCurrencyAbbreviation.rawValue
     
     init(view: CurrencyResultHandler) {
         self.view = view
@@ -33,16 +33,33 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
         
         if let quotes = quotesController.getQuotes() {
             
-            if baseCurrency != "USD" && targetCurrency == "USD" {
-                guard let quotesToUsd = quotes[targetCurrency+baseCurrency] else {
+            var currencyResult = ""
+            switch BTGCurrencyOperationsController.getOperationType(baseCurrency: baseCurrency,
+                                                                    targetCurrency: targetCurrency) {
+            case .toBaseType:
+                guard let quotesToUsd = quotes[baseCurrencyAbbreviation+baseCurrency] else {
                     view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
                     return
                 }
-                let currencyResult = BTGCurrencyOperationsController.currencyToUSD(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
-
-                view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
+                currencyResult = BTGCurrencyOperationsController.currencyToUSDFormatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
+            case .fromBaseType:
+                guard let dolartoTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency] else {
+                    view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
+                    return
+                }
+                currencyResult = BTGCurrencyOperationsController.baseCurrencytoTarget(dolarQuantity: inputBaseDecimal,
+                                                                                 to: dolartoTargetQuote)
+            case .noBaseTypeConversion:
+                
+                guard let quotesToUsd = quotes[baseCurrencyAbbreviation+baseCurrency], let dolartoTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency]  else {
+                    view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
+                    return
+                }
+                let currencyResultToDolar = BTGCurrencyOperationsController.currencyToBaseCurrencyUnformatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
+                currencyResult = BTGCurrencyOperationsController.baseCurrencytoTarget(dolarQuantity: currencyResultToDolar, to: dolartoTargetQuote)
             }
             
+            view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
         } else {
             view?.showErrorMessage(message: quotesController.getLastError())
         }

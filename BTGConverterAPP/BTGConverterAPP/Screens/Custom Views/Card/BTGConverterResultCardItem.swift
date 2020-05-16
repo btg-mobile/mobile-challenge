@@ -79,6 +79,7 @@ class BTGConverterResultCardItem: UIView {
     
     private func configureConvertResultLabel() {
         addSubview(convertResultLabel)
+        convertResultLabel.minimumScaleFactor = 0.7
         
         NSLayoutConstraint.activate([
             convertResultLabel.topAnchor.constraint(equalTo: userInputValueTitleLabel.bottomAnchor, constant: verticalPadding),
