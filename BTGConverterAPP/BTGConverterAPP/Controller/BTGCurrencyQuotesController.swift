@@ -20,19 +20,6 @@ class BTGCurrencyQuotesController {
     }
     private var error : String = ""
     
-    init() {
-        #warning("fix me later - uncomment ")
-//        networkController.getLiveCurrencies { [weak self] in
-//            switch $0 {
-//            case .success(let resultQuotes):
-//                print(resultQuotes)
-//                self?.quotes = resultQuotes.quotes
-//            case .failure(let resultError):
-//                self?.error = resultError
-//            }
-//        }
-    }
-    
     func getQuotes() -> [String: Double]? {
         return quotes
     }

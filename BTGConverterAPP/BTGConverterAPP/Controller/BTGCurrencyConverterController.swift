@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CurrencyConverterController {
-    func getCurrencyConversion(baseCurrency: String, targetCurrency: String, inputDecimal: Decimal)
+    func getCurrencyConversion(baseCurrency: String, targetCurrency: String, inputBaseDecimal: Decimal)
     func validateUserInput(userValueInput: String?, baseCurrency: String? , targetCurrency: String?) -> Bool
 }
 
@@ -18,28 +18,29 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
     weak var view : CurrencyResultHandler?
     var quotesController = BTGCurrencyQuotesController()
     
+    
     init(view: CurrencyResultHandler) {
         self.view = view
         quotesController.loadQuotes()
     }
     
-    func getCurrencyConversion(baseCurrency: String, targetCurrency: String, inputDecimal: Decimal) {
-        print("\(baseCurrency) + \(targetCurrency) + \(inputDecimal)")
+    func getCurrencyConversion(baseCurrency: String, targetCurrency: String, inputBaseDecimal: Decimal) {
+        print("\(baseCurrency) + \(targetCurrency) + \(inputBaseDecimal)")
         
         if quotesController.getQuotes() == nil {
             quotesController.loadQuotes()
         }
         
         if let quotes = quotesController.getQuotes() {
+            
             if baseCurrency != "USD" && targetCurrency == "USD" {
-                let quotesDecimal : Decimal = NSNumber(floatLiteral: quotes[targetCurrency+baseCurrency]!).decimalValue
-                
+                guard let quotesToUsd = quotes[targetCurrency+baseCurrency] else {
+                    view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
+                    return
+                }
+                let currencyResult = BTGCurrencyOperationsController.currencyToUSD(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
 
-                let resultToUSDDecimal = inputDecimal/quotesDecimal
-                var compoments = resultToUSDDecimal.description.components(separatedBy: ".")
-                let formatted = compoments[0] + ".\(compoments[1].removeFirst())\(compoments[1].removeFirst())"
-                
-                view?.setCurrencyConversionResult(currencyConvertedResult: "\(formatted) \(targetCurrency)")
+                view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
             }
             
         } else {

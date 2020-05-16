@@ -21,4 +21,5 @@ enum BTGCurrencyErrorConstants: String {
     case invalidCurrency = "O valor digitado não é valido. Por favor tente algum número. Ex: 23"
     case currenciesAreEmpty = "Existe moeda sem seleção. Por favor selecione duas moedas diferentes"
     case currenciesAreTheSame = "As duas moedas são iguais. Por favor selecione duas moedas diferentes"
+    case currencyPairNotFound = "Desculpe mas não achamos o seu par na nossa base. Vamos atualizar tudo por aqui e tente novamente por favor"
 }

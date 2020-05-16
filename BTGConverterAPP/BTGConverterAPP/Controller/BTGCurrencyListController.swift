@@ -18,23 +18,14 @@ class BTGCurrencyListController: CurrencyListController {
     private let networkController = BTGNetworkController.shared
     weak private var currencyListReceiver : CurrencyListReceiver?
     
-    private var currencyDescriptionList : [CurrencyDescription] = [] {
-        didSet {
-            error = ""
-        }
-    }
+    private var currencyDescriptionList : [CurrencyDescription] = []
     
     init(currencyListReceiver: CurrencyListReceiver) {
         self.currencyListReceiver = currencyListReceiver
     }
     
-    private var error : String = ""
-    
     func getCurrencyToCurrencyReceiver() {
         
-        //        currencyDescriptionList += [CurrencyDescription(abbreviation: "BRL", fullDescription: "Aqui é BR"),
-        //                                    CurrencyDescription(abbreviation: "BRL", fullDescription: "Aqui é BR"),
-        //                                    CurrencyDescription(abbreviation: "USD", fullDescription: "USA USA USA")]
         if currencyDescriptionList.isEmpty {
             networkController.getAvaliableCurrencies {[weak self] result in
                 switch result {
@@ -44,21 +35,19 @@ class BTGCurrencyListController: CurrencyListController {
                           let currencyDescriptionList = self?.currencyDescriptionList else { return }
                     currencyListReceiver.setCurrencyDescriptions(currencyDescriptions: currencyDescriptionList)
                 case .failure(let error):
-                    #warning("tratar os erros aqui")
-                    print("\(error)")
+                    self?.currencyListReceiver?.showErrorMessage(message: error.rawValue)
                 }
             }
         }
     }
     
-    func loadCurrency() {        
+    func loadCurrency() {
         networkController.getAvaliableCurrencies {[weak self] result in
             switch result {
             case .success(let avaliableCurrencies):
                 self?.setCurrencyDescription(from: avaliableCurrencies)
             case .failure(let error):
-                #warning("tratar os erros aqui")
-                print("\(error)")
+                self?.currencyListReceiver?.showErrorMessage(message: error.rawValue)
             }
         }
     }

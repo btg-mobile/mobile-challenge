@@ -10,7 +10,6 @@ import UIKit
 
 protocol CurrencyResultHandler: UIViewController {
     func setCurrencyConversionResult(currencyConvertedResult: String)
-    func showErrorMessage(message: String)
 }
 
 protocol CurrencySelectionHandler: UIViewController {
@@ -136,19 +135,13 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         resultCurrencyView.convertResultLabel.text = currencyConvertedResult
     }
     
-    func showErrorMessage(message: String) {
-        let ac = UIAlertController(title: "Error Occured!", message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Ok", style: .cancel))
-        present(ac,animated: true)
-    }
-    
     private func convertValueControllerCall() {
         if controller.validateUserInput(userValueInput: resultCurrencyView.currencyTextField.text,
                                         baseCurrency: baseCurrencyCardView.currencyLabel.text,
                                         targetCurrency: targetCurrencyCardView.currencyLabel.text) {
             resultCurrencyView.currencyTextField.resignFirstResponder()
             let decimal = Decimal(string: resultCurrencyView.currencyTextField.text!)!
-            controller.getCurrencyConversion(baseCurrency: baseCurrencyCardView.currencyLabel.text!, targetCurrency: targetCurrencyCardView.currencyLabel.text!, inputDecimal: decimal)
+            controller.getCurrencyConversion(baseCurrency: baseCurrencyCardView.currencyLabel.text!, targetCurrency: targetCurrencyCardView.currencyLabel.text!, inputBaseDecimal: decimal)
         }
     }
     
