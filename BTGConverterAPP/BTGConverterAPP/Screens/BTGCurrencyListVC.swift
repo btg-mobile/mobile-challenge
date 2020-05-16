@@ -19,12 +19,14 @@ protocol CurrencyListReceiver: UIViewController {
 class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     
     var isModalView = false
+    var isSearching = false
     
     var tableView : UITableView!
     var dataSource : UITableViewDiffableDataSource<Section,CurrencyDescription>!
     var modalSelection: AvaliableCurrencySelection?
     
     var currencyDescriptions : [CurrencyDescription] = []
+    var currencyDescriptionsFiltered : [CurrencyDescription] = []
     weak var currencySelectionDelegate : CurrencySelectionHandler?
     
     var controller : CurrencyListController?
@@ -57,6 +59,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         configureViewController()
         configureTableView()
         configureDataSource()
+        configureSearchController()
     }
     
     func configureViewController() {
@@ -102,10 +105,24 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     private func updateDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section,CurrencyDescription>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(currencyDescriptions)
+        snapshot.appendItems(!isSearching ? currencyDescriptions : currencyDescriptionsFiltered)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
+        
+    }
+    
+    func configureSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
+        searchController.searchBar.placeholder = "Procure moedas aqui. Ex: USD"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        //        searchController.obscuresBackgroundDuringPresentation = false this change the look when user touch the search bar
+        
     }
     
     func setCurrencyDescriptions(currencyDescriptions : [CurrencyDescription]) {
@@ -161,11 +178,40 @@ extension BTGCurrencyListVC: UITableViewDelegate {
         if isModalView {
             switch modalSelection! {
             case .base:
-                currencySelectionDelegate?.setBaseCurrency(currencyAbbreviation: currencyDescriptions[indexPath.row].abbreviation)
+                currencySelectionDelegate?.setBaseCurrency(currencyAbbreviation:
+                    isSearching ? currencyDescriptionsFiltered[indexPath.row].abbreviation : currencyDescriptions[indexPath.row].abbreviation  )
             case .target:
-                currencySelectionDelegate?.setTargetCurrency(currencyAbbreviation: currencyDescriptions[indexPath.row].abbreviation)
+                currencySelectionDelegate?.setTargetCurrency(currencyAbbreviation: isSearching ? currencyDescriptionsFiltered[indexPath.row].abbreviation : currencyDescriptions[indexPath.row].abbreviation)
             }
             dismiss(animated: true)
+        }
+    }
+    
+}
+
+extension BTGCurrencyListVC: UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        isSearching = true
+        currencyDescriptionsFiltered = currencyDescriptions.filter {
+            $0.abbreviation.lowercased().contains(filter.lowercased()) ||
+                $0.fullDescription.lowercased().contains(filter.lowercased())
+        }
+        print(currencyDescriptionsFiltered)
+        updateDataSource()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        updateDataSource()
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            isSearching = false
+            updateDataSource()
         }
     }
 }
