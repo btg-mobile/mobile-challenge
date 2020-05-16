@@ -82,8 +82,10 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
             view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyEmptyTextField.rawValue)
             return false
         }
+        CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: userValueInput))
         
-        if Decimal(string: userValueInput) != nil {
+        if Decimal(string: userValueInput) != nil &&
+            CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: userValueInput)) {
             return true
         } else if userValueInput.isEmpty {
             view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyEmptyTextField.rawValue)
