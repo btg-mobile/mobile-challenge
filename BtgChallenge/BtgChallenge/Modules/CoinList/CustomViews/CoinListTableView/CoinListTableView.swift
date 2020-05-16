@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol CoinListTableViewDelegate: class {
+    func didSelectRow(viewModelSelected: CoinListCellViewModel)
+}
+
 class CoinListTableView: UITableView {
 
     // MARK: - Properties
     
+    weak var listDelegate: CoinListTableViewDelegate?
     fileprivate var viewModel = CoinListTableViewModel()
     
-    init() {
+    init(delegate: CoinListTableViewDelegate?) {
+        listDelegate = delegate
         super.init(frame: .zero, style: .plain)
         setup()
     }
@@ -33,7 +39,12 @@ class CoinListTableView: UITableView {
         dataSource = self
         
         tableFooterView = UIView()
-        separatorInset = UIEdgeInsets(top: 0, left: CoinListCell.labelMargin, bottom: 0, right: CoinListCell.labelMargin)
+        separatorInset = UIEdgeInsets(
+            top: 0,
+            left: CoinListCell.labelMargin,
+            bottom: 0,
+            right: CoinListCell.labelMargin
+        )
         
         registerClass(CoinListCell.self)
     }
@@ -51,5 +62,11 @@ extension CoinListTableView: UITableViewDelegate, UITableViewDataSource {
         cell.update(viewModel: cellViewModel)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModelSelected = viewModel.cellViewModels[indexPath.row]
+        
+        listDelegate?.didSelectRow(viewModelSelected: viewModelSelected)
     }
 }

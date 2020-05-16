@@ -9,8 +9,11 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
+    
+    // MARK: - Properties
+    
     var parentCoordinator: Coordinator?
-    var parentViewController: UIViewController?
+    var currentViewController: UIViewController?
     
     let window: UIWindow
     lazy var navigationController: UINavigationController = {
@@ -40,25 +43,30 @@ class AppCoordinator: Coordinator {
         let viewController = CoinConvertViewController(viewModel: viewModel, coordinator: self)
         viewModel.viewController = viewController
         
+        currentViewController = viewController
         navigationController.pushViewController(viewController, animated: false)
         
         window.rootViewController = navigationController
+        window.backgroundColor = .darkBlue
         window.makeKeyAndVisible()
     }
 }
 
 extension AppCoordinator: CoinConvertCoordinatorDelegate {
-    func showCoinList() {
+    func showCoinList(delegate: CoinListViewControllerDelegate?) {
         let provider = HTTPProvider<CurrencyRouter>()
         let repository = CurrencyRepositoryImpl(provider: provider)
         let viewModel = CoinListViewModel(repository: repository)
-        let coinListViewController = CoinListViewController(viewModel: viewModel, coordinator: self)
+        let coinListViewController = CoinListViewController(viewModel: viewModel, coordinator: self, delegate: delegate)
         viewModel.viewController = coinListViewController
         
+        currentViewController = coinListViewController
         navigationController.pushViewController(coinListViewController, animated: true)
     }
 }
 
 extension AppCoordinator: CoinListCoordinatorDelegate {
-    
+    func close() {
+        navigationController.popViewController(animated: true)
+    }
 }

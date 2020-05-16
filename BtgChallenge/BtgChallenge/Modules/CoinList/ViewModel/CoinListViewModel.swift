@@ -57,12 +57,12 @@ extension CoinListViewModel: CoinListViewModelInput {
     func searchForCoin(string: String) {
         let lowercasedString = string.lowercased()
         let filteredCellViewModels = string.isEmpty ?
-                                        cellViewModels :
-                                        cellViewModels
-                                            .filter({
-                                                $0.shortCoinName.lowercased().contains(lowercasedString) ||
-                                                $0.fullCoinName.lowercased().contains(lowercasedString)
-                                            })
+            cellViewModels :
+            cellViewModels
+                .filter({
+                    $0.shortCoinName.lowercased().contains(lowercasedString) ||
+                    $0.fullCoinName.lowercased().contains(lowercasedString)
+                })
         
         displayFilteredCoinList(filteredCellViewModels: filteredCellViewModels)
     }

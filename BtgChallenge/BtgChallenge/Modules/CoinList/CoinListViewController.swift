@@ -9,14 +9,18 @@
 import UIKit
 
 protocol CoinListCoordinatorDelegate: class {
-    
+    func close()
+}
+
+protocol CoinListViewControllerDelegate: class {
+    func updateCoin(viewModel: CoinListCellViewModel)
 }
 
 class CoinListViewController: UIViewController {
 
     // MARK: - Constants
     
-    static let searchBarPlaceholder = "Search coin..."
+    static let searchBarPlaceholder = "Search..."
     
     // MARK: - Properties
     
@@ -24,22 +28,27 @@ class CoinListViewController: UIViewController {
     var viewModel: CoinListViewModelInput?
     var coordinator: CoinListCoordinatorDelegate?
     
+    weak var delegate: CoinListViewControllerDelegate?
+    
     lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = CoinListViewController.searchBarPlaceholder
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.backgroundColor = .darkBlue
+        searchController.searchBar.searchTextField.backgroundColor = .white
         
         return searchController
     }()
     
-    var isSearchEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    init(viewModel: CoinListViewModelInput, coordinator: CoinListCoordinatorDelegate) {
+    init(viewModel: CoinListViewModelInput,
+         coordinator: CoinListCoordinatorDelegate,
+         delegate: CoinListViewControllerDelegate?
+    ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -73,5 +82,12 @@ extension CoinListViewController: UISearchResultsUpdating {
 extension CoinListViewController: CoinListViewModelOutput {
     func displayCoinList(viewModel: CoinListTableViewModel) {
         coinListView?.coinListTableView.update(viewModel: viewModel)
+    }
+}
+
+extension CoinListViewController: CoinListTableViewDelegate {
+    func didSelectRow(viewModelSelected: CoinListCellViewModel) {
+        coordinator?.close()
+        delegate?.updateCoin(viewModel: viewModelSelected)
     }
 }

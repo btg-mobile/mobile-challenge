@@ -12,11 +12,14 @@ protocol CoinConvertViewModelDataStore: class {
     var fromCoinNickname: String { get set }
     var fromCoinValue: String { get set }
     var toCoinNickname: String { get set }
+    var selectedCoinType: CoinType? { get set }
 }
 
 protocol CoinConvertViewModelInput: ViewModelInput {
     func getConversionQuote()
     func updateFromCoinValue(value: String)
+    func updateSelectedCoinType(type: CoinType)
+    func updateCoinNickname(nickname: String)
 }
 
 protocol CoinConvertViewModelOutput: ViewModelOutput {
@@ -36,6 +39,7 @@ final class CoinConvertViewModel: CoinConvertViewModelDataStore {
     var fromCoinNickname = "BRL"
     var fromCoinValue = "0.00"
     var toCoinNickname = "USD"
+    var selectedCoinType: CoinType?
     
     fileprivate let repository: CurrencyRepository
     weak var viewController: CoinConvertViewModelOutput?
@@ -61,7 +65,7 @@ extension CoinConvertViewModel: CoinConvertViewModelInput {
                 switch liveResult {
                 case .success(let liveResponse):
                     self?.displayConversionValue(liveResponse: liveResponse)
-                case .failure(_):
+                case .failure:
                     self?.displayAlertMessage(message: Constants.Errors.apiDefaultMessage)
                 }
             }
@@ -70,16 +74,30 @@ extension CoinConvertViewModel: CoinConvertViewModelInput {
     func updateFromCoinValue(value: String) {
         fromCoinValue = value
     }
+    
+    func updateSelectedCoinType(type: CoinType) {
+        selectedCoinType = type
+    }
+    
+    func updateCoinNickname(nickname: String) {
+        if selectedCoinType == .to {
+            toCoinNickname = nickname
+            displayToCoinNickname(coinNickname: nickname)
+        } else {
+            fromCoinNickname = nickname
+            displayFromCoinNickname(coinNickname: nickname)
+        }
+    }
 }
 
 // MARK: - Outputs
 extension CoinConvertViewModel {
     func displayFromCoinNickname(coinNickname: String) {
-        
+        viewController?.displayFromCoinNickname(coinNickname: coinNickname)
     }
     
     func displayToCoinNickname(coinNickname: String) {
-        
+        viewController?.displayToCoinNickname(coinNickname: coinNickname)
     }
     
     func displayConversionValue(liveResponse: LiveResponse) {

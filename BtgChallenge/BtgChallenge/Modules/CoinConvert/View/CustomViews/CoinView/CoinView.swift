@@ -45,6 +45,7 @@ class CoinView: UIView {
     }()
     
     let coinType: CoinType
+    var valueTypedString = ""
     weak var delegate: CoinViewDelegate?
     
     // MARK: - View Lyfe Cycle
@@ -64,7 +65,9 @@ class CoinView: UIView {
         valueTextField.text = value
     }
     
-    var amountTypedString = ""
+    func updateNickname(nickname: String) {
+        coinButton.coinTypeLabel.text = nickname
+    }
 }
 
 // MARK: - View Coded
@@ -109,26 +112,20 @@ extension CoinView: UITextFieldDelegate {
                    replacementString string: String
     ) -> Bool {
         if string.count > 0 {
-            amountTypedString += string
-            let decNumber = NSDecimalNumber(string: amountTypedString).multiplying(by: 0.01)
-            textField.text = BtgCurrencyFormatter().format(number: decNumber)
+            valueTypedString += string
         } else {
-            amountTypedString = String(amountTypedString.dropLast())
-            if amountTypedString.count > 0 {
-                let decNumber = NSDecimalNumber(string: amountTypedString).multiplying(by: 0.01)
-                textField.text = BtgCurrencyFormatter().format(number: decNumber)
-            } else {
-                textField.text = "0.00"
-            }
-            
+            valueTypedString = String(valueTypedString.dropLast())
         }
+        
+        textField.text = valueTypedString.count > 0 ?
+            BtgCurrencyFormatter().format(string: valueTypedString) : "0.00"
         
         delegate?.didUpdateCurrency(view: self, value: textField.text ?? "0.00")
         return false
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        amountTypedString = ""
+        valueTypedString = ""
         return true
     }
 }
@@ -149,13 +146,14 @@ class BtgCurrencyFormatter {
     }
     
     func format(string: String) -> String {
-        let number = NSNumber(value: Double(string) ?? 0.0)
-        return format(number: number)
+        let decNumber = NSDecimalNumber(string: string).multiplying(by: 0.01)
+        return format(number: decNumber)
     }
     
     func format(number: NSNumber) -> String {
-        let newString = formatter.string(from: number)!
-        return newString
+        let newString = formatter.string(from: number)
+        
+        return newString ?? ""
     }
     
 }

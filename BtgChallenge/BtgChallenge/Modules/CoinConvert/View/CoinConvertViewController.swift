@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CoinConvertCoordinatorDelegate: class {
-    func showCoinList()
+    func showCoinList(delegate: CoinListViewControllerDelegate?)
 }
 
 final class CoinConvertViewController: UIViewController {
@@ -55,11 +55,11 @@ extension CoinConvertViewController: CoinConvertViewModelOutput {
     }
     
     func displayFromCoinNickname(coinNickname: String) {
-        // TODO: Get from local database
+        coinConvertView?.fromCoinView.updateNickname(nickname: coinNickname)
     }
     
     func displayToCoinNickname(coinNickname: String) {
-        // TODO: Get from local database
+        coinConvertView?.toCoinView.updateNickname(nickname: coinNickname)
     }
     
     func displayConversionValue(conversionValue: String) {
@@ -81,6 +81,13 @@ extension CoinConvertViewController: CoinViewDelegate {
     }
     
     func didTapCoinButton(view: CoinView) {
-        coordinator?.showCoinList()
+        viewModel?.updateSelectedCoinType(type: view.coinType)
+        coordinator?.showCoinList(delegate: self)
+    }
+}
+
+extension CoinConvertViewController: CoinListViewControllerDelegate {
+    func updateCoin(viewModel: CoinListCellViewModel) {
+        self.viewModel?.updateCoinNickname(nickname: viewModel.shortCoinName)
     }
 }

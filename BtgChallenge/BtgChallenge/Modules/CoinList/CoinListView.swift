@@ -14,7 +14,7 @@ class CoinListView: UIView {
     // MARK: - Properties
     
     lazy var coinListTableView: CoinListTableView = {
-        return CoinListTableView()
+        return CoinListTableView(delegate: viewController)
     }()
     
     weak var viewController: CoinListViewController?
