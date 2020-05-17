@@ -30,6 +30,12 @@ class BTGCurrencyQuotesController {
     }
     
     func getLastTimeUpdatedFormatted() -> String {
+        guard let liveQuotes = localStorage.getLiveQuoteRates(),
+            let liveQuoteLastUpdateDate = localStorage.getTimeToLive(ofType: .liveQuoteRates) else { return lastTimeUpdated}
+        
+        let components =  getLastUpdatedFormattedDate(liveQuoteRates: liveQuotes, lastUpdated: liveQuoteLastUpdateDate)
+        lastTimeUpdated = "\(components[0]) \(components[1])"
+
         return lastTimeUpdated
     }
     
@@ -42,7 +48,7 @@ class BTGCurrencyQuotesController {
                 case .success(let result):
                     self?.localStorage.setLiveQuoteRates(result)
                     self?.quotes = result.quotes
-                    let components =  self!.getFormattedDate(liveQuoteRates: result)
+                    let components =  self!.getNewFormattedDate(liveQuoteRates: result)
                     self?.lastTimeUpdated = "\(components[0]) \(components[1])"
                 case .failure(let resultError):
                     self?.error = resultError.rawValue
@@ -51,11 +57,20 @@ class BTGCurrencyQuotesController {
         }
     }
     
-    func getFormattedDate(liveQuoteRates: LiveQuoteRates) -> [String] {
+    func getNewFormattedDate(liveQuoteRates: LiveQuoteRates) -> [String] {
         let newDate = liveQuoteRates.timestamp
         return newDate.addingTimeInterval(liveQuoteRates.timestamp
             .distance(to: Date()))
             .addingTimeInterval(TimeInterval(integerLiteral: -3600*3))
             .description.components(separatedBy: " ")
     }
+    
+    func getLastUpdatedFormattedDate(liveQuoteRates: LiveQuoteRates, lastUpdated: Date) -> [String] {
+        let newDate = liveQuoteRates.timestamp
+        return newDate.addingTimeInterval(liveQuoteRates.timestamp
+            .distance(to: lastUpdated))
+        .addingTimeInterval(TimeInterval(integerLiteral: -3600*3))
+        .description.components(separatedBy: " ")
+    }
+    
 }

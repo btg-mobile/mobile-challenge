@@ -66,8 +66,6 @@ class BTGConverterTitleCard: UIView {
     func configureLastUpdatedLabel() {
         
         addSubview(lastTimeUpdatedLabel)
-        lastTimeUpdatedLabel.text =
-            ViewsConstants.BTGConverterTitleCardDefaultLastTimeUpdateMessage.rawValue + lastUpdated
         lastTimeUpdatedLabel.backgroundColor = .systemBackground
         lastTimeUpdatedLabel.textColor = .systemGreen
         

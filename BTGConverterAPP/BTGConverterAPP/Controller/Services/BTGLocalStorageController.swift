@@ -15,6 +15,7 @@ protocol LocalStorage {
     func setAvaliableQuotes(_ avaliableDescriptions: [CurrencyDescription])
     
     func isLocalStorageValid(ofType type: LocalStorageDataType) -> Bool
+    func getTimeToLive(ofType type: LocalStorageDataType) -> Date?
 }
 
 enum LocalStorageDataType {
@@ -53,6 +54,16 @@ struct BTGLocalStorage : LocalStorage {
         saveToLocalStorage(data: avaliableDescriptions, ofType: .avaliableCurrencies)
         saveToLocalStorage(data: Date(), ofType: .timeToLiveAvaliableQuoteDate)
     }
+    
+    func getTimeToLive(ofType type: LocalStorageDataType) -> Date? {
+        switch type {
+        case .liveQuoteRates:
+            return getFromLocalStorage(ofType: .timeToLiveLiveQuoteDate)
+        case .avaliableQuotes:
+            return getFromLocalStorage(ofType: .timeToLiveAvaliableQuoteDate)
+        }
+    }
+
     
     private func saveToLocalStorage<T:Encodable>(data: T,ofType localCacheKeys: LocalCacheKeys ) {
         let jsonEncoder = JSONEncoder()
