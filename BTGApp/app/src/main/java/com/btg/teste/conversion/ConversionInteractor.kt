@@ -79,14 +79,11 @@ class ConversionInteractor(
                         val currencyLayer = it.body()
                         if (currencyLayer.notNull()) {
                             if (currencyLayer.success) {
-
                                 GlobalScope.launch {
-
                                     withContext(context = Dispatchers.IO) {
                                         currencies?.currencies?.forEach { convert ->
                                             currencyLayer.quotes.forEach { mapto ->
                                                 if (mapto.key.contains(convert.key)) {
-
                                                     val backup =
                                                         iCurrenciesRepository.findViewByCurrency(convert.key)
                                                     if (backup.notNull()) {
@@ -138,13 +135,13 @@ class ConversionInteractor(
 
     private fun returnBackUp() {
         val finds = iCurrenciesRepository.find()
-        if (finds.isNullOrEmpty()) {
+        if (!finds.isNullOrEmpty()) {
             iConversionInteractorOutput.resultCurrencyLayer(
                 CurrencyLayer(
-                    quotes = finds?.associate { Pair(it.currency, it.value) } ?: HashMap()
+                    quotes = finds.associate { Pair(it.currency, it.value) } ?: HashMap()
                 ),
                 Currencies(
-                    currencies = finds?.associate { Pair(it.currency, it.name) } ?: HashMap()
+                    currencies = finds.associate { Pair(it.currency, it.name) } ?: HashMap()
                 )
             )
         }
