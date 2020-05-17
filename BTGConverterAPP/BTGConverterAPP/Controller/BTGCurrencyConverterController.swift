@@ -22,6 +22,7 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
     init(view: CurrencyResultHandler) {
         self.view = view
         quotesController.loadQuotes()
+        view.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
     }
     
     func getCurrencyConversion(baseCurrency: String, targetCurrency: String, inputBaseDecimal: Decimal) {
@@ -29,6 +30,7 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
         
         if quotesController.getQuotes() == nil {
             quotesController.loadQuotes()
+            view?.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
         }
         
         if let quotes = quotesController.getQuotes() {
@@ -43,23 +45,26 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
                 }
                 currencyResult = BTGCurrencyOperationsController.currencyToUSDFormatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
             case .fromBaseType:
-                guard let dolartoTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency] else {
+                guard let baseCurrencytoTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency] else {
                     view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
                     return
                 }
-                currencyResult = BTGCurrencyOperationsController.baseCurrencytoTarget(dolarQuantity: inputBaseDecimal,
-                                                                                 to: dolartoTargetQuote)
+                currencyResult = BTGCurrencyOperationsController.baseCurrencytoTarget(
+                    baseCurrencyQuantity: inputBaseDecimal, to: baseCurrencytoTargetQuote)
             case .noBaseTypeConversion:
                 
-                guard let quotesToUsd = quotes[baseCurrencyAbbreviation+baseCurrency], let dolartoTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency]  else {
+                guard let quotesToBaseCurrency = quotes[baseCurrencyAbbreviation+baseCurrency],
+                    let baseCurrencyToTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency]  else {
                     view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
                     return
                 }
-                let currencyResultToDolar = BTGCurrencyOperationsController.currencyToBaseCurrencyUnformatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
-                currencyResult = BTGCurrencyOperationsController.baseCurrencytoTarget(dolarQuantity: currencyResultToDolar, to: dolartoTargetQuote)
+                let currencyResultToBaseCurrency = BTGCurrencyOperationsController.currencyToBaseCurrencyUnformatted(
+                    inputBaseDecimal: inputBaseDecimal, to: quotesToBaseCurrency)
+                currencyResult = BTGCurrencyOperationsController.baseCurrencytoTarget(baseCurrencyQuantity: currencyResultToBaseCurrency, to: baseCurrencyToTargetQuote)
             }
             
             view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
+            view?.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
         } else {
             view?.showErrorMessage(message: quotesController.getLastError())
         }
@@ -82,7 +87,6 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
             view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyEmptyTextField.rawValue)
             return false
         }
-        CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: userValueInput))
         
         if Decimal(string: userValueInput) != nil &&
             CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: userValueInput)) {

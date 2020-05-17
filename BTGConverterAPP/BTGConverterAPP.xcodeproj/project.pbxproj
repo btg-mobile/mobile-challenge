@@ -29,6 +29,7 @@
 		3F743BE924704794006D8026 /* AvaliableQuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE824704794006D8026 /* AvaliableQuotesModel.swift */; };
 		3F743BEC24706F8F006D8026 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BEB24706F8F006D8026 /* UIViewControllerExtensions.swift */; };
 		3F743BEE2470721B006D8026 /* BTGCurrencyOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */; };
+		3F743BF024709D53006D8026 /* BTGConverterTitleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		3F743BE824704794006D8026 /* AvaliableQuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableQuotesModel.swift; sourceTree = "<group>"; };
 		3F743BEB24706F8F006D8026 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyOperationsController.swift; sourceTree = "<group>"; };
+		3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGConverterTitleCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				3F743BC3246ECC72006D8026 /* BTGConverterCardItem.swift */,
 				3F743BCB246F1894006D8026 /* BTGConverterResultCardItem.swift */,
+				3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				3F743BE124702F5B006D8026 /* BTGCurrencyDescriptionModel.swift in Sources */,
 				3F743BBC246EB3D4006D8026 /* BTGCurrencyListVC.swift in Sources */,
 				3F743BC0246EB7E4006D8026 /* BTGTitleLabel.swift in Sources */,
+				3F743BF024709D53006D8026 /* BTGConverterTitleCard.swift in Sources */,
 				3F743BCA246F126E006D8026 /* BTGSecondaryTitleLabel.swift in Sources */,
 				3F743BC4246ECC72006D8026 /* BTGConverterCardItem.swift in Sources */,
 			);

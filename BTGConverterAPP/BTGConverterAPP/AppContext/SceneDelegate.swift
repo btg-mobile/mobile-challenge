@@ -25,18 +25,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         configureNavigationBar()
     }
     
-    func createSearchVC() -> UIViewController {
+    func createBTGCurrencyConverterVC() -> UIViewController {
         let currencyConverterVC = BTGCurrencyConverterVC()
-        currencyConverterVC.title = "BTG Currency Converter"
-        currencyConverterVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        currencyConverterVC.title = BTGSceneDelegateConstants.converterViewTitle.rawValue
+        currencyConverterVC.tabBarItem = UITabBarItem(
+            title: BTGSceneDelegateConstants.tabBarConverterItemTitle.rawValue,
+            image: UIImage(systemName: SFSymbolsConstants.globe.rawValue), tag: 0)
         return currencyConverterVC
     }
     
-    func createFavoritesVC() -> UINavigationController {
+    func createBTGCurrencyListVC() -> UINavigationController {
         let currencyListVC = BTGCurrencyListVC()
         let navController = UINavigationController(rootViewController: currencyListVC)
-        currencyListVC.title = "Avaliable Currency"
-        currencyListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent , tag: 1)
+        currencyListVC.title = BTGSceneDelegateConstants.listViewTitle.rawValue
+        currencyListVC.tabBarItem = UITabBarItem(
+            title: BTGSceneDelegateConstants.tabBarListItemTitle.rawValue,
+            image: UIImage(systemName: SFSymbolsConstants.list.rawValue), tag: 1)
         return navController
     }
     
@@ -44,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabbar = UITabBarController()
         UITabBar.appearance().tintColor = .systemGreen
-        tabbar.viewControllers = [createSearchVC(),createFavoritesVC()]
+        tabbar.viewControllers = [createBTGCurrencyConverterVC(),createBTGCurrencyListVC()]
         return tabbar
         
     }

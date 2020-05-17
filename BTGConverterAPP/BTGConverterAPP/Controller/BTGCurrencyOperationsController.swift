@@ -2,7 +2,7 @@
 //  BTGCurrencyOperationsController.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 16/05/20.
+//  Created by Leonardo Maia Pugliese on 16/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
@@ -43,10 +43,10 @@ struct BTGCurrencyOperationsController {
         return numberFormatter.string(from: NSNumber(value: Double(formatedString)!))!
     }
     
-    static func baseCurrencytoTarget(dolarQuantity: Decimal,to dolarQuoteToTarget: Double) -> String {
+    static func baseCurrencytoTarget(baseCurrencyQuantity: Decimal,to baseCurrencyQuoteToTarget: Double) -> String {
         
-        let quotesDecimal : Decimal = NSNumber(floatLiteral: dolarQuoteToTarget).decimalValue
-        let resultToUSDDecimal = dolarQuantity*quotesDecimal
+        let quotesDecimal : Decimal = NSNumber(floatLiteral: baseCurrencyQuoteToTarget).decimalValue
+        let resultToUSDDecimal = baseCurrencyQuantity*quotesDecimal
         
         return formatNumberToCurrencyConverterVC(resultToUSDDecimal)
     }

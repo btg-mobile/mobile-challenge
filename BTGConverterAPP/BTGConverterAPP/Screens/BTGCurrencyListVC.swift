@@ -38,7 +38,8 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     
     override func viewWillAppear(_ animated: Bool) {
         controller?.getCurrencyToCurrencyReceiver()
-        print("view will appear")
+        isSearching = false
+        updateDataSource()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,7 +77,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         } else {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showSortAlertController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(showSortAlertController))
         
     }
     
@@ -134,10 +135,10 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     }
     
     @objc func showSortAlertController() {
-        let alertController = UIAlertController(title: "Ordenar", message: "Como você gostaria de ordenar as moedas?", preferredStyle: .actionSheet)
-        
-        
-        let orderByAbbreviationButton = UIAlertAction(title: "Por sigla", style: .default, handler: {
+        let alertController = UIAlertController(title: "Sorting Currencies", message: "How do you like to sort your Currencies?", preferredStyle: .actionSheet)
+        alertController.isSpringLoaded = true
+
+        let orderByAbbreviationButton = UIAlertAction(title: "Abbreviation", style: .default, handler: {
             [weak self] _ -> Void in
             guard let self = self else { return }
             self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in
@@ -148,7 +149,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
             
         })
         
-        let orderByFullDescriptionButton = UIAlertAction(title: "Por nome completo", style: .default, handler: {
+        let orderByFullDescriptionButton = UIAlertAction(title: "Full Name", style: .default, handler: {
             [weak self] _ -> Void in
             guard let self = self else { return }
             self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in
@@ -172,7 +173,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
 extension BTGCurrencyListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(currencyDescriptions[indexPath.row].abbreviation)")
         if isModalView {
             switch modalSelection! {
             case .base:
@@ -183,7 +183,6 @@ extension BTGCurrencyListVC: UITableViewDelegate {
             }
             currencySelectionDelegate?.setKeyboardNecessary(to : true)
             dismiss(animated: true)
-            
         }
     }
     
@@ -198,7 +197,6 @@ extension BTGCurrencyListVC: UISearchBarDelegate, UISearchControllerDelegate, UI
             $0.abbreviation.lowercased().contains(filter.lowercased()) ||
                 $0.fullDescription.lowercased().contains(filter.lowercased())
         }
-        print(currencyDescriptionsFiltered)
         updateDataSource()
     }
     

@@ -17,13 +17,43 @@ enum BTGNetworkErrorConstants: String, Error {
 }
 
 enum BTGCurrencyErrorConstants: String {
-    case currencyEmptyTextField = "O valor está vazio. Por favor tente algum número. Ex: 23"
-    case invalidCurrency = "O valor digitado não é valido. Por favor tente algum número. Ex: 23"
-    case currenciesAreEmpty = "Existe moeda sem seleção. Por favor selecione duas moedas diferentes"
-    case currenciesAreTheSame = "As duas moedas são iguais. Por favor selecione duas moedas diferentes"
-    case currencyPairNotFound = "Desculpe mas não achamos o seu par na nossa base. Vamos atualizar tudo por aqui e tente novamente por favor"
+    case currencyEmptyTextField = "Value is empty. Please try a number. Ex: 23"
+    case invalidCurrency = "Invalid user input. Please try a number. Ex: 23"
+    case currenciesAreEmpty = "Please select two different currencies"
+    case currenciesAreTheSame = "The Currencies are the same. Please choose two differents."
+    case currencyPairNotFound = "Sorry we couldn't find your current in our database."
+    case alertControllerErrorTitle = "Error Occured!"
 }
 
 enum BTGCurrencyQuotesConstants: String {
     case baseCurrencyAbbreviation = "USD"
+}
+
+enum BTGSceneDelegateConstants: String {
+    case converterViewTitle = "BTG Currency Converter"
+    case tabBarConverterItemTitle = "Exchange"
+    case listViewTitle = "Avaliable Currency"
+    case tabBarListItemTitle = "List"
+}
+
+enum SFSymbolsConstants: String {
+    case globe = "globe"
+    case list = "list.dash"
+    case arrowUpDown = "arrow.up.arrow.down"
+}
+
+enum BTGNetworkControllerConstants: String {
+    case baseUrl = "http://api.currencylayer.com/"
+    case accessKeyQueryParam = "access_key"
+    case livePath = "live"
+    case listPath = "list"
+}
+
+enum ViewsConstants: String {
+    case BTGTextField = "Ex: 149"
+    case BTGConverterCardItemBaseTitle = "Base Currency"
+    case BTGConverterCardItemBaseTargetTitle = "Target Currency"
+    case BTGConverterResultLabelTitle = "Value"
+    case BTGConverterTitleCardTitle = "BTG Converter"
+    case BTGConverterTitleCardDefaultLastTimeUpdateMessage = "Last Update"
 }

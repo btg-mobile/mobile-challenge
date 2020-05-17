@@ -12,16 +12,15 @@ struct BTGNetworkController {
     
     static let shared = BTGNetworkController()
     
-    private let baseUrl = "http://api.currencylayer.com/"
-    private let accessKey = "d08516ac6a935236c4e28e375849eb3a"
-    private let accessKeyQueryParam = "access_key"
-    private let livePath = "live"
-    private let listPath = "list"
+    private let baseUrl = BTGNetworkControllerConstants.baseUrl.rawValue
+    let accessKey = "d08516ac6a935236c4e28e375849eb3a"
+    private let accessKeyQueryParam = BTGNetworkControllerConstants.accessKeyQueryParam.rawValue
+    private let livePath = BTGNetworkControllerConstants.livePath.rawValue
+    private let listPath = BTGNetworkControllerConstants.listPath.rawValue
     
     //let cache = NSCache<NSString, UIImage>()
     #warning("add cache later")
-    #warning("colocar tudo em portugues para o cliente")
-    #warning("passar para constantes as coisas acima")
+    #warning("add criptografia e obfuscação para o access key")
     
     private init(){}
     
@@ -70,7 +69,6 @@ struct BTGNetworkController {
     
     func getAvaliableCurrencies(completed: @escaping (Result<AvaliableCurrencies, BTGNetworkErrorConstants>) -> Void ) {
         let endpoint = "\(baseUrl)\(listPath)?\(accessKeyQueryParam)=\(accessKey)"
-        
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUrl))
             return

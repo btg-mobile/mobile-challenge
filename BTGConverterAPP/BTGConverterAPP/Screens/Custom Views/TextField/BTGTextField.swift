@@ -37,7 +37,7 @@ class BTGTextField: UITextField {
         autocorrectionType = .no
         returnKeyType = .go
         
-        placeholder = "Ex: 149"
+        placeholder =  ViewsConstants.BTGTextField.rawValue
     }
 
 }

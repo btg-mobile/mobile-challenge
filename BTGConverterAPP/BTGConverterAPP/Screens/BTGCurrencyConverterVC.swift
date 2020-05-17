@@ -10,6 +10,7 @@ import UIKit
 
 protocol CurrencyResultHandler: UIViewController {
     func setCurrencyConversionResult(currencyConvertedResult: String)
+    func setLastTimeUpdated(date: String)
 }
 
 protocol CurrencySelectionHandler: UIViewController {
@@ -22,12 +23,13 @@ enum AvaliableCurrencySelection {
     case base, target
 }
 
-class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
+class BTGCurrencyConverterVC: UIViewController {
     
-    let titleView = UIView()
+    let titleView = BTGConverterTitleCard()
     let baseCurrencyCardView = BTGConverterCardItem(itemType: .base)
     let targetCurrencyCardView = BTGConverterCardItem(itemType: .target)
     let resultCurrencyView = BTGConverterResultCardItem()
+    let changeBaseTargetButton = UIButton(type: .roundedRect)
     
     let horizontalPadding : CGFloat = 15
     let verticalPadding : CGFloat = 15
@@ -60,6 +62,28 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         configureTargetCurrencyView()
         configureResultCurrencyView()
         createKeyboardGesture()
+        configureChangeBaseTargetCurrenciesButtom()
+    }
+    
+    func configureChangeBaseTargetCurrenciesButtom() {
+        view.addSubview(changeBaseTargetButton)
+        changeBaseTargetButton.translatesAutoresizingMaskIntoConstraints = false
+        let configuration = UIImage.SymbolConfiguration(pointSize: 45, weight: .black, scale: .large )
+        let symbol = UIImage(systemName: SFSymbolsConstants.arrowUpDown.rawValue)
+        changeBaseTargetButton.setImage(symbol, for: .normal)
+        //changeBaseTargetButton.imageView?.sizeToFit()
+        changeBaseTargetButton.tintColor = .systemGreen
+        changeBaseTargetButton.setPreferredSymbolConfiguration(configuration, forImageIn: .normal)
+        changeBaseTargetButton.addTarget(self, action: #selector(changeBaseTargetTap), for: .touchUpInside)
+                
+        NSLayoutConstraint.activate([
+            
+            changeBaseTargetButton.heightAnchor.constraint(equalTo: baseCurrencyCardView.heightAnchor, multiplier: 0.5),
+            changeBaseTargetButton.widthAnchor.constraint(equalTo: baseCurrencyCardView.heightAnchor, multiplier: 0.5),
+            changeBaseTargetButton.bottomAnchor.constraint(equalTo: targetCurrencyCardView.topAnchor, constant: 35),
+            changeBaseTargetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding)
+            
+        ])
     }
     
     private func configureCurrencyListModalView() {
@@ -95,7 +119,7 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         view.addSubview(resultCurrencyView)
         resultCurrencyView.translatesAutoresizingMaskIntoConstraints = false
         resultCurrencyView.layer.cornerRadius = 13
-        resultCurrencyView.backgroundColor = .systemBlue
+        resultCurrencyView.backgroundColor = .systemGray4
         resultCurrencyView.convertButton.addTarget(self, action: #selector(convertValueButtonTap), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -110,12 +134,6 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         
         view.addSubview(titleView)
         titleView.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleView.backgroundColor = .systemPink
-        
-        let btgLabel = BTGTitleLabel(textAlignment: .left, fontSize: 36)
-        titleView.addSubview(btgLabel)
-        btgLabel.text = "BTG Converter"
         
         NSLayoutConstraint.activate([
             titleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
@@ -138,10 +156,6 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         controller = BTGCurrencyConverterController(view: self)
     }
     
-    func setCurrencyConversionResult(currencyConvertedResult: String) {
-        resultCurrencyView.convertResultLabel.text = currencyConvertedResult
-    }
-    
     private func convertValueControllerCall() {
         if controller.validateUserInput(userValueInput: resultCurrencyView.currencyTextField.text,
                                         baseCurrency: baseCurrencyCardView.currencyLabel.text,
@@ -159,8 +173,16 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
         isKeyboardChangeNecessary = false
     }
     
+    @objc func changeBaseTargetTap() {
+        let tempBaseText = baseCurrencyCardView.currencyLabel.text
+        baseCurrencyCardView.currencyLabel.text = targetCurrencyCardView.currencyLabel.text
+        targetCurrencyCardView.currencyLabel.text = tempBaseText
+    }
+    
     @objc private func convertValueButtonTap() {
+        showLoadingView()
         convertValueControllerCall()
+        dismissLoadingView()
     }
     
     @objc private func showTargetCurrencyListButtonTap() {
@@ -186,8 +208,17 @@ class BTGCurrencyConverterVC: UIViewController, CurrencyResultHandler {
     }
 }
 
-extension BTGCurrencyConverterVC: UITextFieldDelegate {
+extension BTGCurrencyConverterVC: CurrencyResultHandler {
+    func setCurrencyConversionResult(currencyConvertedResult: String) {
+        resultCurrencyView.convertResultLabel.text = currencyConvertedResult
+    }
+    func setLastTimeUpdated(date: String) {
+        titleView.lastTimeUpdatedLabel.text = "Last Updated: \(date)"
+    }
     
+}
+
+extension BTGCurrencyConverterVC: UITextFieldDelegate {
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         convertValueControllerCall()
         textField.resignFirstResponder()
@@ -209,6 +240,4 @@ extension BTGCurrencyConverterVC: CurrencySelectionHandler {
     func setTargetCurrency(currencyAbbreviation: String) {
         targetCurrencyCardView.currencyLabel.text = currencyAbbreviation
     }
-    
-    
 }

@@ -16,8 +16,8 @@ enum ConverterItemType {
 class BTGConverterCardItem: UIView {
 
     let selectCurrencyButton = BTGButton(backgroundColor: .systemGreen, title: "+")
-    let titleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 24)
-    let currencyLabel = BTGSecondaryTitleLabel(fontSize: 23)
+    let titleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 26)
+    let currencyLabel = BTGSecondaryTitleLabel(fontSize: 46)
     
     let verticalPadding : CGFloat = 10
     let horizontalPadding : CGFloat = 10
@@ -34,7 +34,7 @@ class BTGConverterCardItem: UIView {
     private func configure(_ itemType: ConverterItemType) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 13
-        backgroundColor = .systemGreen
+        backgroundColor = .systemGray4
         
         configureTitleLabel()
         configureCurrencyLabel()
@@ -45,7 +45,7 @@ class BTGConverterCardItem: UIView {
     
     private func configureTitleLabel() {
         addSubview(titleLabel)
-        titleLabel.backgroundColor = .blue
+        titleLabel.backgroundColor = .systemGray4
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
@@ -58,10 +58,13 @@ class BTGConverterCardItem: UIView {
     
     private func configureCurrencyLabel() {
         addSubview(currencyLabel)
-        currencyLabel.backgroundColor = .systemRed
+        currencyLabel.backgroundColor = .systemGray4
+        currencyLabel.textAlignment = .center
+        currencyLabel.textColor = .secondaryLabel
+        currencyLabel.font = UIFont.systemFont(ofSize: 46, weight: .bold)
         
         NSLayoutConstraint.activate([
-            currencyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: verticalPadding),
+            currencyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -verticalPadding),
             currencyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             currencyLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.65),
             currencyLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45)
@@ -72,7 +75,7 @@ class BTGConverterCardItem: UIView {
     private func configureSelectCurrencyButton() {
         addSubview(selectCurrencyButton)
         
-        selectCurrencyButton.backgroundColor = .systemBackground
+        selectCurrencyButton.backgroundColor = .tertiarySystemBackground
         selectCurrencyButton.titleLabel?.font = UIFont.systemFont(ofSize: 44, weight: .bold)
         
         NSLayoutConstraint.activate([
@@ -87,9 +90,9 @@ class BTGConverterCardItem: UIView {
     private func configureItemType(_ itemType: ConverterItemType) {
         switch itemType {
         case .base:
-            self.titleLabel.text = "Base Currency"
+            self.titleLabel.text = ViewsConstants.BTGConverterCardItemBaseTitle.rawValue
         case .target:
-            self.titleLabel.text = "Target Currency"
+            self.titleLabel.text = ViewsConstants.BTGConverterCardItemBaseTargetTitle.rawValue
         }
     }
     

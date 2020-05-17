@@ -2,7 +2,7 @@
 //  BTGConverterResultCardItem.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 15/05/20.
+//  Created by Leonardo Maia Pugliese on 15/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ class BTGConverterResultCardItem: UIView {
     
     let userInputValueTitleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 24)
     let currencyTextField = BTGTextField(frame: .zero)
-    let convertResultLabel = BTGSecondaryTitleLabel(fontSize: 24)
+    let convertResultLabel = BTGSecondaryTitleLabel(fontSize: 30)
     let convertButton = BTGButton(backgroundColor: .brown, title: "=")
     
     let verticalPadding : CGFloat = 10
@@ -38,8 +38,8 @@ class BTGConverterResultCardItem: UIView {
 
     private func configureValueTitleLabel() {
         addSubview(userInputValueTitleLabel)
-        userInputValueTitleLabel.backgroundColor = .blue
-        userInputValueTitleLabel.text = "Valor"
+        userInputValueTitleLabel.backgroundColor = .systemGray4
+        userInputValueTitleLabel.text = ViewsConstants.BTGConverterResultLabelTitle.rawValue
         
         NSLayoutConstraint.activate([
             userInputValueTitleLabel.topAnchor.constraint(equalTo: self.topAnchor),
@@ -53,8 +53,8 @@ class BTGConverterResultCardItem: UIView {
     private func configureConvertButton() {
         addSubview(convertButton)
         
-        convertButton.backgroundColor = .systemBackground
-        convertButton.titleLabel?.font = UIFont.systemFont(ofSize: 36, weight: .bold)
+        convertButton.titleLabel?.font = UIFont.systemFont(ofSize: 38, weight: .bold)
+        convertButton.backgroundColor = .tertiarySystemBackground
         
         NSLayoutConstraint.activate([
             convertButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
@@ -67,19 +67,19 @@ class BTGConverterResultCardItem: UIView {
     
     private func configureValueTextField() {
         addSubview(currencyTextField)
-        
+        currencyTextField.tintColor = .systemGreen
         NSLayoutConstraint.activate([
-            currencyTextField.topAnchor.constraint(equalTo: self.topAnchor),
-            currencyTextField.leadingAnchor.constraint(equalTo: userInputValueTitleLabel.trailingAnchor, constant: horizontalPadding),
+            currencyTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: verticalPadding),
+            currencyTextField.leadingAnchor.constraint(equalTo: userInputValueTitleLabel.trailingAnchor),
             currencyTextField.trailingAnchor.constraint(equalTo: convertButton.leadingAnchor, constant: -horizontalPadding),
-            currencyTextField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45)
+            currencyTextField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35)
         
         ])
     }
     
     private func configureConvertResultLabel() {
         addSubview(convertResultLabel)
-        convertResultLabel.minimumScaleFactor = 0.7
+        convertResultLabel.minimumScaleFactor = 0.6
         
         NSLayoutConstraint.activate([
             convertResultLabel.topAnchor.constraint(equalTo: userInputValueTitleLabel.bottomAnchor, constant: verticalPadding),
