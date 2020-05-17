@@ -80,12 +80,14 @@ class ConversionInteractor(
                         if (currencyLayer.notNull()) {
                             if (currencyLayer.success) {
                                 GlobalScope.launch {
-                                    withContext(context = Dispatchers.IO) {
-                                        currencies?.currencies?.forEach { convert ->
-                                            currencyLayer.quotes.forEach { mapto ->
-                                                if (mapto.key.contains(convert.key)) {
+                                    currencies?.currencies?.forEach { convert ->
+                                        currencyLayer.quotes.forEach { mapto ->
+                                            if (mapto.key.contains(convert.key)) {
+                                                withContext(context = Dispatchers.IO) {
                                                     val backup =
-                                                        iCurrenciesRepository.findViewByCurrency(convert.key)
+                                                        iCurrenciesRepository.findViewByCurrency(
+                                                            convert.key
+                                                        )
                                                     if (backup.notNull()) {
                                                         backup.currency = convert.key
                                                         backup.name = convert.value
@@ -100,8 +102,8 @@ class ConversionInteractor(
                                                             )
                                                         )
                                                     }
-                                                    return@forEach
                                                 }
+                                                return@forEach
                                             }
                                         }
                                     }
