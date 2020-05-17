@@ -62,17 +62,16 @@ class ConversionPresenter(
             Conversion().mapper(it.key, it.value)
         }?.toMutableList() ?: ArrayList()
 
-        currencyLayerMap.forEach { convert ->
+        currencyLayerMap.sortedBy {
+            it.name
+            it.currency
+        }.forEach { convert ->
             conversion.quotes.forEach {
                 if (it.key.contains(convert.currency)) {
                     convert.value = it.value
                     return@forEach
                 }
             }
-        }
-
-        currencyLayerMap.sortedBy {
-            it.name
         }
 
         iConversionPresenterOutput.apresentationConversions(currencyLayerMap)
@@ -82,10 +81,16 @@ class ConversionPresenter(
 
     override fun filter(filter: String, conversions: MutableList<Conversion>) {
 
-        val filterCollection = conversions.filter {
-            it.currency.toLowerCase(Locale.getDefault()).contains(filter.toLowerCase(Locale.getDefault())) ||
-                    it.name.toLowerCase(Locale.getDefault()).contains(filter.toLowerCase(Locale.getDefault()))
-        }.toMutableList()
+        var filterCollection = conversions
+        if(filter.isNotEmpty()) {
+            filterCollection = conversions.filter {
+                it.currency.toLowerCase(Locale.getDefault()).contains(filter.toLowerCase(Locale.getDefault())) ||
+                        it.name.toLowerCase(Locale.getDefault()).contains(filter.toLowerCase(Locale.getDefault()))
+            }.sortedBy {
+                it.name
+                it.currency
+            }.toMutableList()
+        }
 
         iConversionPresenterOutput.apresentationConversionsFilter(filterCollection)
     }
