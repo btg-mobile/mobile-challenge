@@ -1,5 +1,5 @@
 //
-//  Currencies.swift
+//  CurrenciesResponse.swift
 //  BtgChallenge
 //
 //  Created by Felipe Alexander Silva Melo on 15/05/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Currencies: Codable {
+struct CurrenciesResponse: Codable {
     let AED: String?
     let AFN: String?
     let ALL: String?
@@ -178,7 +178,7 @@ struct Currencies: Codable {
     let ZWL: String?
 }
 
-extension Currencies {
+extension CurrenciesResponse {
     var coinStrategy: [String: String?] {
         return [
             "AED": AED,

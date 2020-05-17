@@ -101,9 +101,9 @@ extension CoinConvertViewModel {
     }
     
     func displayConversionValue(liveResponse: LiveResponse) {
-        let quote = liveResponse.quotes[toCoinNickname + fromCoinNickname] ?? 0.0
-        let conversionValue = String(fromCoinValue.double * quote)
-        let formatedValue = BtgCurrencyFormatter().format(string: conversionValue)
+        let quote = liveResponse.quotes?[toCoinNickname + fromCoinNickname] ?? 0.0
+        let conversionValue = fromCoinValue.double * quote
+        let formatedValue = BtgCurrencyFormatter.format(double: conversionValue)
         
         viewController?.displayConversionValue(conversionValue: formatedValue)
     }

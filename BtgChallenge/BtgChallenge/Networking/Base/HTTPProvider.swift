@@ -47,6 +47,7 @@ class HTTPProvider<Router: HTTPRouter> {
             DispatchQueue.main.async {
                 if let error = error {
                     completion?(.failure(error))
+                    return
                 }
                 
                 if let data = data {

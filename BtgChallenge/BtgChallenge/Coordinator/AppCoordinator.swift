@@ -13,7 +13,6 @@ class AppCoordinator: Coordinator {
     // MARK: - Properties
     
     var parentCoordinator: Coordinator?
-    var currentViewController: UIViewController?
     
     let window: UIWindow
     lazy var navigationController: UINavigationController = {
@@ -36,12 +35,12 @@ class AppCoordinator: Coordinator {
     
     func start() {
         let provider = HTTPProvider<CurrencyRouter>()
-        let repository = CurrencyRepositoryImpl(provider: provider)
+        let localStorage = LocalStorageImpl()
+        let repository = CurrencyRepositoryImpl(provider: provider, localStorage: localStorage)
         let viewModel = CoinConvertViewModel(repository: repository)
         let viewController = CoinConvertViewController(viewModel: viewModel, coordinator: self)
         viewModel.viewController = viewController
         
-        currentViewController = viewController
         navigationController.pushViewController(viewController, animated: false)
         
         window.rootViewController = navigationController
@@ -53,12 +52,12 @@ class AppCoordinator: Coordinator {
 extension AppCoordinator: CoinConvertCoordinatorDelegate {
     func showCoinList(delegate: CoinListViewControllerDelegate?) {
         let provider = HTTPProvider<CurrencyRouter>()
-        let repository = CurrencyRepositoryImpl(provider: provider)
+        let localStorage = LocalStorageImpl()
+        let repository = CurrencyRepositoryImpl(provider: provider, localStorage: localStorage)
         let viewModel = CoinListViewModel(repository: repository)
         let coinListViewController = CoinListViewController(viewModel: viewModel, coordinator: self, delegate: delegate)
         viewModel.viewController = coinListViewController
         
-        currentViewController = coinListViewController
         navigationController.pushViewController(coinListViewController, animated: true)
     }
 }

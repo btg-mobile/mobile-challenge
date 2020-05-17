@@ -10,6 +10,5 @@ import UIKit
 
 protocol Coordinator: class {
     var parentCoordinator: Coordinator? { get set }
-    var currentViewController: UIViewController? { get set }
     func start()
 }

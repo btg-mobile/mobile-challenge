@@ -118,7 +118,7 @@ extension CoinView: UITextFieldDelegate {
         }
         
         textField.text = valueTypedString.count > 0 ?
-            BtgCurrencyFormatter().format(string: valueTypedString) : "0.00"
+            BtgCurrencyFormatter.format(string: valueTypedString) : "0.00"
         
         delegate?.didUpdateCurrency(view: self, value: textField.text ?? "0.00")
         return false
@@ -138,19 +138,24 @@ extension CoinView: BtgCoinButtonDelegate {
 
 class BtgCurrencyFormatter {
     
-    var formatter = NumberFormatter()
+    static var shared = BtgCurrencyFormatter()
+    fileprivate var formatter = NumberFormatter()
     
     init() {
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
     }
     
-    func format(string: String) -> String {
+    static func format(string: String) -> String {
         let decNumber = NSDecimalNumber(string: string).multiplying(by: 0.01)
-        return format(number: decNumber)
+        return shared.format(number: decNumber)
     }
     
-    func format(number: NSNumber) -> String {
+    static func format(double: Double) -> String {
+        return shared.format(number: NSNumber(value: double))
+    }
+    
+    fileprivate func format(number: NSNumber) -> String {
         let newString = formatter.string(from: number)
         
         return newString ?? ""
