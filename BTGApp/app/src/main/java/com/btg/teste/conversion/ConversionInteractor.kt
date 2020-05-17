@@ -83,24 +83,22 @@ class ConversionInteractor(
                                 GlobalScope.launch {
 
                                     withContext(context = Dispatchers.IO) {
-                                        currencies?.currencies?.map {
-                                            Conversion().mapper(it.key, it.value)
-                                        }?.toMutableList()?.forEach { convert ->
+                                        currencies?.currencies?.forEach { convert ->
                                             currencyLayer.quotes.forEach { mapto ->
-                                                if (mapto.key.contains(convert.currency)) {
+                                                if (mapto.key.contains(convert.key)) {
 
                                                     val backup =
-                                                        iCurrenciesRepository.findViewByCurrency(convert.currency)
+                                                        iCurrenciesRepository.findViewByCurrency(convert.key)
                                                     if (backup.notNull()) {
-                                                        backup.currency = convert.currency
-                                                        backup.name = convert.name
+                                                        backup.currency = convert.key
+                                                        backup.name = convert.value
                                                         backup.value = mapto.value
                                                         iCurrenciesRepository.update(backup)
                                                     } else {
                                                         iCurrenciesRepository.insert(
                                                             CurrenciesEntity(
-                                                                currency = convert.currency,
-                                                                name = convert.name,
+                                                                currency = convert.key,
+                                                                name = convert.value,
                                                                 value = mapto.value
                                                             )
                                                         )
