@@ -34,21 +34,22 @@ class BTGCurrencyQuotesController {
     }
     
     func loadQuotes() {
-        if localStorage.isValid() {
+        if localStorage.isLocalStorageValid(ofType: .liveQuoteRates) {
             quotes = localStorage.getLiveQuoteRates()?.quotes
-            //print(quotes)
+            print("got from the cacheeee live quotes")
         } else {
-                networkController.getLiveCurrencies { [weak self] in
-                    switch $0 {
-                    case .success(let result):
-                        self?.localStorage.setLiveQuoteRates(result)
-                        self?.quotes = result.quotes
-                        let components =  self!.getFormattedDate(liveQuoteRates: result)
-                        self?.lastTimeUpdated = "\(components[0]) \(components[1])"
-                    case .failure(let resultError):
-                        self?.error = resultError.rawValue
-                    }
+            print("got from the webeee live quotes")
+            networkController.getLiveCurrencies { [weak self] in
+                switch $0 {
+                case .success(let result):
+                    self?.localStorage.setLiveQuoteRates(result)
+                    self?.quotes = result.quotes
+                    let components =  self!.getFormattedDate(liveQuoteRates: result)
+                    self?.lastTimeUpdated = "\(components[0]) \(components[1])"
+                case .failure(let resultError):
+                    self?.error = resultError.rawValue
                 }
+            }
         }
     }
     

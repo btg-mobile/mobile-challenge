@@ -10,7 +10,6 @@ import UIKit
 
 class BTGConverterResultCardItem: UIView {
     
-    
     let userInputValueTitleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 24)
     let currencyTextField = BTGTextField(frame: .zero)
     let convertResultLabel = BTGSecondaryTitleLabel(fontSize: 30)

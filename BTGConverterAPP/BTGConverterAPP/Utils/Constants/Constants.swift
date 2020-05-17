@@ -2,7 +2,7 @@
 //  NetworkErrorConstants.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 15/05/20.
+//  Created by Leonardo Maia Pugliese on 15/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
@@ -23,6 +23,7 @@ enum BTGCurrencyErrorConstants: String {
     case currenciesAreTheSame = "The Currencies are the same. Please choose two differents."
     case currencyPairNotFound = "Sorry we couldn't find your current in our database."
     case alertControllerErrorTitle = "Error Occured!"
+    case unknown = "Unknown error. Please Try Again"
 }
 
 enum BTGCurrencyQuotesConstants: String {
@@ -61,5 +62,6 @@ enum ViewsConstants: String {
 enum LocalCacheKeys: String {
     case liveQuoteRates = "LiveQuotesRates"
     case avaliableCurrencies = "AvaliableCurrencies"
-    case timeToLiveDate = "TimeToLiveDate"
+    case timeToLiveLiveQuoteDate = "TimeToLiveLiveQuoteDate"
+    case timeToLiveAvaliableQuoteDate = "TimeToLiveAvaliableQuoteDate"
 }

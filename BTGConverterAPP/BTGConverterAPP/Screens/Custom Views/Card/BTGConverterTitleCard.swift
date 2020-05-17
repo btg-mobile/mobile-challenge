@@ -9,7 +9,7 @@
 import UIKit
 
 class BTGConverterTitleCard: UIView {
-
+    
     var titleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 33)
     var lastTimeUpdatedLabel = BTGSecondaryTitleLabel(frame: .zero)
     let verticalPadding : CGFloat = 10
@@ -40,15 +40,14 @@ class BTGConverterTitleCard: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
             titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
-            
-            
         ])
     }
     
     func configureLastUpdatedLabel() {
         
         addSubview(lastTimeUpdatedLabel)
-        lastTimeUpdatedLabel.text = ViewsConstants.BTGConverterTitleCardDefaultLastTimeUpdateMessage.rawValue + lastUpdated
+        lastTimeUpdatedLabel.text =
+            ViewsConstants.BTGConverterTitleCardDefaultLastTimeUpdateMessage.rawValue + lastUpdated
         lastTimeUpdatedLabel.backgroundColor = .systemBackground
         lastTimeUpdatedLabel.textColor = .systemGreen
         
@@ -57,9 +56,9 @@ class BTGConverterTitleCard: UIView {
             lastTimeUpdatedLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             lastTimeUpdatedLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
             lastTimeUpdatedLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45)
-        
+            
         ])
         
     }
-
+    
 }

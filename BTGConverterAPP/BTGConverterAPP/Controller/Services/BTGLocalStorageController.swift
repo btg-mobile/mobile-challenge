@@ -2,20 +2,19 @@
 //  LocalStorageController.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 17/05/20.
+//  Created by Leonardo Maia Pugliese on 17/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
 import Foundation
 
 protocol LocalStorage {
-    
-    func isValid()-> Bool
     func getLiveQuoteRates() -> LiveQuoteRates?
     func setLiveQuoteRates(_ liveQuoteRates: LiveQuoteRates)
     func getAvaliableQuotes() -> [CurrencyDescription]?
     func setAvaliableQuotes(_ avaliableDescriptions: [CurrencyDescription])
     
+    func isLocalStorageValid(ofType type: LocalStorageDataType) -> Bool
 }
 
 enum LocalStorageDataType {
@@ -25,37 +24,40 @@ enum LocalStorageDataType {
 
 struct BTGLocalStorage : LocalStorage {
     
-    func isValid() -> Bool {
-        guard let dateFromCache : Date = getFromLocalStorage(ofType: .timeToLiveDate) else { return false }
+    func isLocalStorageValid(ofType type: LocalStorageDataType) -> Bool {
+        let secondsToLive : Double = 10
         
-        print(dateFromCache.distance(to: Date()),"is valid distance from cache")
-        let secondsToLive : Double = 300
-        
-        return dateFromCache.distance(to: Date()) > secondsToLive
+        switch type {
+        case .liveQuoteRates:
+            guard let dateFromCache : Date = getFromLocalStorage(ofType: .timeToLiveLiveQuoteDate) else { return false }
+            return dateFromCache.distance(to: Date()) < secondsToLive
+        case .avaliableQuotes:
+            guard let dateFromCache : Date = getFromLocalStorage(ofType: .timeToLiveAvaliableQuoteDate) else { return false }
+            return dateFromCache.distance(to: Date()) < secondsToLive
+        }
     }
     
     func getLiveQuoteRates() -> LiveQuoteRates? {
-        print("get live quote cached")
+        print("get live quote rates cache")
         return getFromLocalStorage(ofType: .liveQuoteRates)
     }
     
     func setLiveQuoteRates(_ liveQuoteRates: LiveQuoteRates) {
-        print("setLive quote rates")
+        print("set live quote rates cache")
         saveToLocalStorage(data: liveQuoteRates, ofType: .liveQuoteRates)
-        saveToLocalStorage(data: Date(), ofType: .timeToLiveDate)
+        saveToLocalStorage(data: Date(), ofType: .timeToLiveLiveQuoteDate)
     }
     
     func getAvaliableQuotes() -> [CurrencyDescription]? {
-        print("get avaliable quotes")
+        print("get avaliable quotes cache")
         return getFromLocalStorage(ofType: .avaliableCurrencies)
     }
     
     func setAvaliableQuotes(_ avaliableDescriptions: [CurrencyDescription]) {
-        print("set avaliable quotes")
+        print("set avaliable quotes cache")
         saveToLocalStorage(data: avaliableDescriptions, ofType: .avaliableCurrencies)
-        saveToLocalStorage(data: Date(), ofType: .timeToLiveDate)
+        saveToLocalStorage(data: Date(), ofType: .timeToLiveAvaliableQuoteDate)
     }
-    
     
     private func saveToLocalStorage<T:Encodable>(data: T,ofType localCacheKeys: LocalCacheKeys ) {
         let jsonEncoder = JSONEncoder()
@@ -76,7 +78,6 @@ struct BTGLocalStorage : LocalStorage {
         } catch {
             print("data couldn't be retrieved")
         }
-        //print(data)
         return data
     }
 }

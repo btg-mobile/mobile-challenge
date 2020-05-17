@@ -2,14 +2,13 @@
 //  BTGCurrencyListController.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 16/05/20.
+//  Created by Leonardo Maia Pugliese on 16/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
 import Foundation
 
 protocol CurrencyListController {
-    func loadCurrency()
     func getCurrencyToCurrencyReceiver()
 }
 
@@ -17,6 +16,7 @@ class BTGCurrencyListController: CurrencyListController {
 
     private let networkController = BTGNetworkController.shared
     weak private var currencyListReceiver : CurrencyListReceiver?
+    private let localStorage : LocalStorage = BTGLocalStorage()
     
     private var currencyDescriptionList : [CurrencyDescription] = []
     
@@ -26,28 +26,23 @@ class BTGCurrencyListController: CurrencyListController {
     
     func getCurrencyToCurrencyReceiver() {
         
-        if currencyDescriptionList.isEmpty {
+        if localStorage.isLocalStorageValid(ofType: .avaliableQuotes) {
+            currencyDescriptionList = localStorage.getAvaliableQuotes()!
+            print("got from the cacheeee avaliable currencies")
+        } else {
+            print("got from the weeeb avaliable currencies")
             networkController.getAvaliableCurrencies {[weak self] result in
                 switch result {
                 case .success(let avaliableCurrencies):
                     self?.setCurrencyDescription(from: avaliableCurrencies)
+                    
                     guard let currencyListReceiver    = self?.currencyListReceiver ,
                           let currencyDescriptionList = self?.currencyDescriptionList else { return }
                     currencyListReceiver.setCurrencyDescriptions(currencyDescriptions: currencyDescriptionList)
+                    self?.localStorage.setAvaliableQuotes(self!.currencyDescriptionList)
                 case .failure(let error):
                     self?.currencyListReceiver?.showErrorMessage(message: error.rawValue)
                 }
-            }
-        }
-    }
-    
-    func loadCurrency() {
-        networkController.getAvaliableCurrencies {[weak self] result in
-            switch result {
-            case .success(let avaliableCurrencies):
-                self?.setCurrencyDescription(from: avaliableCurrencies)
-            case .failure(let error):
-                self?.currencyListReceiver?.showErrorMessage(message: error.rawValue)
             }
         }
     }

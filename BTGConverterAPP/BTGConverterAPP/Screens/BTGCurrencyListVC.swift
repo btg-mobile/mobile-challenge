@@ -38,7 +38,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     
     override func viewWillAppear(_ animated: Bool) {
         controller?.getCurrencyToCurrencyReceiver()
-        isSearching = false
+        //isSearching = false
         updateDataSource()
     }
     
@@ -109,7 +109,14 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     private func updateDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section,CurrencyDescription>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(!isSearching ? currencyDescriptions : currencyDescriptionsFiltered)
+//        print(currencyDescriptions,"ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ", currencyDescriptionsFiltered)
+        if isSearching && !currencyDescriptionsFiltered.isEmpty {
+            snapshot.appendItems(currencyDescriptionsFiltered)
+        } else if !currencyDescriptions.isEmpty && !isSearching {
+            snapshot.appendItems(currencyDescriptions)
+        } else {
+            return
+        }
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }

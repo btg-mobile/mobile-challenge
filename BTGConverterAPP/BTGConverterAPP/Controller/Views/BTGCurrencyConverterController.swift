@@ -2,7 +2,7 @@
 //  BTGCurrencyConverterVCController.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 15/05/20.
+//  Created by Leonardo Maia Pugliese on 15/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
@@ -66,7 +66,7 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
             view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
             view?.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
         } else {
-            view?.showErrorMessage(message: quotesController.getLastError())
+            view?.showErrorMessage(message: quotesController.getLastError().isEmpty ? BTGCurrencyErrorConstants.unknown.rawValue : quotesController.getLastError())
         }
         
     }

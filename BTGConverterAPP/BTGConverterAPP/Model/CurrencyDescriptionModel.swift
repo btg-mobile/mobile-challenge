@@ -2,7 +2,7 @@
 //  BTGCurrencyDescriptionModel.swift
 //  BTGConverterAPP
 //
-//  Created by Ana Caroline de Souza on 16/05/20.
+//  Created by Leonardo Maia Pugliese on 16/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 
@@ -16,4 +16,9 @@ struct CurrencyDescription: Hashable, Codable {
     static func ==(lhs: CurrencyDescription, rhs: CurrencyDescription) -> Bool {
         return lhs.abbreviation == rhs.abbreviation && lhs.fullDescription == rhs.fullDescription
     }
+    
+    static func !=(lhs: CurrencyDescription, rhs: CurrencyDescription) -> Bool {
+        return lhs.abbreviation != rhs.abbreviation || lhs.fullDescription != rhs.fullDescription
+    }
+    
 }
