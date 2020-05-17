@@ -68,11 +68,10 @@ class BTGCurrencyConverterVC: UIViewController {
     func configureChangeBaseTargetCurrenciesButtom() {
         view.addSubview(changeBaseTargetButton)
         changeBaseTargetButton.translatesAutoresizingMaskIntoConstraints = false
-        let configuration = UIImage.SymbolConfiguration(pointSize: 45, weight: .black, scale: .large )
+        let configuration = UIImage.SymbolConfiguration(pointSize: 41, weight: .black, scale: .large )
         let symbol = UIImage(systemName: SFSymbolsConstants.arrowUpDown.rawValue)
         changeBaseTargetButton.setImage(symbol, for: .normal)
-        //changeBaseTargetButton.imageView?.sizeToFit()
-        changeBaseTargetButton.tintColor = .systemGreen
+        changeBaseTargetButton.tintColor = .systemGray
         changeBaseTargetButton.setPreferredSymbolConfiguration(configuration, forImageIn: .normal)
         changeBaseTargetButton.addTarget(self, action: #selector(changeBaseTargetTap), for: .touchUpInside)
                 

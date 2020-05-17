@@ -18,8 +18,10 @@ class BTGCurrencyQuotesController {
     }
     private var error : String = ""
     private var lastTimeUpdated = ""
+    private let localStorage : LocalStorage = BTGLocalStorage()
     
     func getQuotes() -> [String: Double]? {
+        loadQuotes()
         return quotes
     }
     
@@ -32,27 +34,30 @@ class BTGCurrencyQuotesController {
     }
     
     func loadQuotes() {
+        if localStorage.isValid() {
+            quotes = localStorage.getLiveQuoteRates()?.quotes
+            //print(quotes)
+        } else {
                 networkController.getLiveCurrencies { [weak self] in
                     switch $0 {
                     case .success(let result):
+                        self?.localStorage.setLiveQuoteRates(result)
                         self?.quotes = result.quotes
-                        let newDate = result.timestamp
-                        let components =  newDate.addingTimeInterval(result.timestamp.distance(to: Date())).addingTimeInterval(TimeInterval(integerLiteral: -3600*3)).description.components(separatedBy: " ")
+                        let components =  self!.getFormattedDate(liveQuoteRates: result)
                         self?.lastTimeUpdated = "\(components[0]) \(components[1])"
                     case .failure(let resultError):
                         self?.error = resultError.rawValue
                     }
                 }
+        }
     }
     
-}
-
-extension Date {
-    var millisecondsSince1970:Int64 {
-        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    func getFormattedDate(liveQuoteRates: LiveQuoteRates) -> [String] {
+        let newDate = liveQuoteRates.timestamp
+        return newDate.addingTimeInterval(liveQuoteRates.timestamp
+            .distance(to: Date()))
+            .addingTimeInterval(TimeInterval(integerLiteral: -3600*3))
+            .description.components(separatedBy: " ")
     }
-
-    init(milliseconds:Int64) {
-        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
-    }
+    
 }

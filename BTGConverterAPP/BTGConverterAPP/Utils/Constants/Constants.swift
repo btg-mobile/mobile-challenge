@@ -57,3 +57,9 @@ enum ViewsConstants: String {
     case BTGConverterTitleCardTitle = "BTG Converter"
     case BTGConverterTitleCardDefaultLastTimeUpdateMessage = "Last Update"
 }
+
+enum LocalCacheKeys: String {
+    case liveQuoteRates = "LiveQuotesRates"
+    case avaliableCurrencies = "AvaliableCurrencies"
+    case timeToLiveDate = "TimeToLiveDate"
+}

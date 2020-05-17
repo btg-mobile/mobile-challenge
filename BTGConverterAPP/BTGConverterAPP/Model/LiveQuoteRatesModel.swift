@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LiveQuoteRates: Decodable, Hashable {
+struct LiveQuoteRates: Codable, Hashable {
         let success: Bool
         let terms: URL
         let privacy: URL

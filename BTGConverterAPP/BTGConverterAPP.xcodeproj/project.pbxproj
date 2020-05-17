@@ -21,15 +21,16 @@
 		3F743BD2246F3DC0006D8026 /* BTGCurrencyConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BD1246F3DC0006D8026 /* BTGCurrencyConverterController.swift */; };
 		3F743BD9246F44DB006D8026 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BD8246F44DB006D8026 /* Constants.swift */; };
 		3F743BDB246F4912006D8026 /* BTGNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BDA246F4912006D8026 /* BTGNetworkController.swift */; };
-		3F743BDD246F6835006D8026 /* LiveQuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BDC246F6835006D8026 /* LiveQuoteModel.swift */; };
+		3F743BDD246F6835006D8026 /* LiveQuoteRatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BDC246F6835006D8026 /* LiveQuoteRatesModel.swift */; };
 		3F743BDF246F6AAA006D8026 /* BTGCurrencyQuotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BDE246F6AAA006D8026 /* BTGCurrencyQuotesController.swift */; };
-		3F743BE124702F5B006D8026 /* BTGCurrencyDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE024702F5B006D8026 /* BTGCurrencyDescriptionModel.swift */; };
+		3F743BE124702F5B006D8026 /* CurrencyDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE024702F5B006D8026 /* CurrencyDescriptionModel.swift */; };
 		3F743BE52470307D006D8026 /* CurrencyDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE42470307D006D8026 /* CurrencyDescriptionCell.swift */; };
 		3F743BE7247034E7006D8026 /* BTGCurrencyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE6247034E7006D8026 /* BTGCurrencyListController.swift */; };
-		3F743BE924704794006D8026 /* AvaliableQuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE824704794006D8026 /* AvaliableQuotesModel.swift */; };
+		3F743BE924704794006D8026 /* AvaliableCurrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BE824704794006D8026 /* AvaliableCurrenciesModel.swift */; };
 		3F743BEC24706F8F006D8026 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BEB24706F8F006D8026 /* UIViewControllerExtensions.swift */; };
 		3F743BEE2470721B006D8026 /* BTGCurrencyOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */; };
 		3F743BF024709D53006D8026 /* BTGConverterTitleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */; };
+		3F743BF4247173C8006D8026 /* BTGLocalStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BF3247173C8006D8026 /* BTGLocalStorageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,15 +50,16 @@
 		3F743BD1246F3DC0006D8026 /* BTGCurrencyConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyConverterController.swift; sourceTree = "<group>"; };
 		3F743BD8246F44DB006D8026 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3F743BDA246F4912006D8026 /* BTGNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGNetworkController.swift; sourceTree = "<group>"; };
-		3F743BDC246F6835006D8026 /* LiveQuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveQuoteModel.swift; sourceTree = "<group>"; };
+		3F743BDC246F6835006D8026 /* LiveQuoteRatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveQuoteRatesModel.swift; sourceTree = "<group>"; };
 		3F743BDE246F6AAA006D8026 /* BTGCurrencyQuotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyQuotesController.swift; sourceTree = "<group>"; };
-		3F743BE024702F5B006D8026 /* BTGCurrencyDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyDescriptionModel.swift; sourceTree = "<group>"; };
+		3F743BE024702F5B006D8026 /* CurrencyDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDescriptionModel.swift; sourceTree = "<group>"; };
 		3F743BE42470307D006D8026 /* CurrencyDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDescriptionCell.swift; sourceTree = "<group>"; };
 		3F743BE6247034E7006D8026 /* BTGCurrencyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyListController.swift; sourceTree = "<group>"; };
-		3F743BE824704794006D8026 /* AvaliableQuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableQuotesModel.swift; sourceTree = "<group>"; };
+		3F743BE824704794006D8026 /* AvaliableCurrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableCurrenciesModel.swift; sourceTree = "<group>"; };
 		3F743BEB24706F8F006D8026 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyOperationsController.swift; sourceTree = "<group>"; };
 		3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGConverterTitleCard.swift; sourceTree = "<group>"; };
+		3F743BF3247173C8006D8026 /* BTGLocalStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGLocalStorageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,11 +172,8 @@
 		3F743BD0246F3D89006D8026 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3F743BD1246F3DC0006D8026 /* BTGCurrencyConverterController.swift */,
-				3F743BDA246F4912006D8026 /* BTGNetworkController.swift */,
-				3F743BDE246F6AAA006D8026 /* BTGCurrencyQuotesController.swift */,
-				3F743BE6247034E7006D8026 /* BTGCurrencyListController.swift */,
-				3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */,
+				3F743BF1247172E4006D8026 /* Views */,
+				3F743BF224717359006D8026 /* Services */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,9 +181,9 @@
 		3F743BD3246F3E47006D8026 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3F743BDC246F6835006D8026 /* LiveQuoteModel.swift */,
-				3F743BE024702F5B006D8026 /* BTGCurrencyDescriptionModel.swift */,
-				3F743BE824704794006D8026 /* AvaliableQuotesModel.swift */,
+				3F743BDC246F6835006D8026 /* LiveQuoteRatesModel.swift */,
+				3F743BE024702F5B006D8026 /* CurrencyDescriptionModel.swift */,
+				3F743BE824704794006D8026 /* AvaliableCurrenciesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +219,26 @@
 				3F743BEB24706F8F006D8026 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3F743BF1247172E4006D8026 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F743BD1246F3DC0006D8026 /* BTGCurrencyConverterController.swift */,
+				3F743BE6247034E7006D8026 /* BTGCurrencyListController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3F743BF224717359006D8026 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3F743BDA246F4912006D8026 /* BTGNetworkController.swift */,
+				3F743BDE246F6AAA006D8026 /* BTGCurrencyQuotesController.swift */,
+				3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */,
+				3F743BF3247173C8006D8026 /* BTGLocalStorageController.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F743BE7247034E7006D8026 /* BTGCurrencyListController.swift in Sources */,
-				3F743BE924704794006D8026 /* AvaliableQuotesModel.swift in Sources */,
+				3F743BE924704794006D8026 /* AvaliableCurrenciesModel.swift in Sources */,
 				3F743BCC246F1894006D8026 /* BTGConverterResultCardItem.swift in Sources */,
 				3F743BDF246F6AAA006D8026 /* BTGCurrencyQuotesController.swift in Sources */,
 				3F743BD2246F3DC0006D8026 /* BTGCurrencyConverterController.swift in Sources */,
@@ -303,14 +322,15 @@
 				3F743BBA246EB2A2006D8026 /* BTGCurrencyConverterVC.swift in Sources */,
 				3F743BDB246F4912006D8026 /* BTGNetworkController.swift in Sources */,
 				3F743BA7246EB1C0006D8026 /* SceneDelegate.swift in Sources */,
-				3F743BDD246F6835006D8026 /* LiveQuoteModel.swift in Sources */,
+				3F743BDD246F6835006D8026 /* LiveQuoteRatesModel.swift in Sources */,
 				3F743BEC24706F8F006D8026 /* UIViewControllerExtensions.swift in Sources */,
 				3F743BE52470307D006D8026 /* CurrencyDescriptionCell.swift in Sources */,
 				3F743BD9246F44DB006D8026 /* Constants.swift in Sources */,
-				3F743BE124702F5B006D8026 /* BTGCurrencyDescriptionModel.swift in Sources */,
+				3F743BE124702F5B006D8026 /* CurrencyDescriptionModel.swift in Sources */,
 				3F743BBC246EB3D4006D8026 /* BTGCurrencyListVC.swift in Sources */,
 				3F743BC0246EB7E4006D8026 /* BTGTitleLabel.swift in Sources */,
 				3F743BF024709D53006D8026 /* BTGConverterTitleCard.swift in Sources */,
+				3F743BF4247173C8006D8026 /* BTGLocalStorageController.swift in Sources */,
 				3F743BCA246F126E006D8026 /* BTGSecondaryTitleLabel.swift in Sources */,
 				3F743BC4246ECC72006D8026 /* BTGConverterCardItem.swift in Sources */,
 			);
