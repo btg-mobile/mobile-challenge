@@ -16,7 +16,7 @@ enum OperationType {
 
 struct BTGCurrencyOperationsController {
     
-    static func currencyToUSDFormatted(inputBaseDecimal: Decimal,to quotesToUsd: Double) -> String {
+    static func currencyToBaseCurrencyFormatted(inputBaseDecimal: Decimal,to quotesToUsd: Double) -> String {
         return formatNumberToCurrencyConverterVC(BTGCurrencyOperationsController.currencyToBaseCurrencyUnformatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd))
     }
     

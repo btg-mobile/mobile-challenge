@@ -117,8 +117,11 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         } else {
             return
         }
+        
         DispatchQueue.main.async {
-            self.dataSource.apply(snapshot, animatingDifferences: true)
+            if self.dataSource.snapshot().itemIdentifiers != snapshot.itemIdentifiers {
+                self.dataSource.apply(snapshot, animatingDifferences: true)
+            }
         }
     }
     

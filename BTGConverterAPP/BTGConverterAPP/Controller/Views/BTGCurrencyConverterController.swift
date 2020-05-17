@@ -43,7 +43,7 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
                     view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
                     return
                 }
-                currencyResult = BTGCurrencyOperationsController.currencyToUSDFormatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
+                currencyResult = BTGCurrencyOperationsController.currencyToBaseCurrencyFormatted(inputBaseDecimal: inputBaseDecimal, to: quotesToUsd)
             case .fromBaseType:
                 guard let baseCurrencytoTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency] else {
                     view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
