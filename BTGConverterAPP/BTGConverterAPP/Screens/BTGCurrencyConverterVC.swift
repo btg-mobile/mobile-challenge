@@ -28,17 +28,17 @@ final class BTGCurrencyConverterVC: UIViewController {
     
     private let titleView = BTGConverterTitleCard()
     private let baseCurrencyCardView = BTGConverterCardItem(itemType: .base)
-    let targetCurrencyCardView = BTGConverterCardItem(itemType: .target)
-    let resultCurrencyView = BTGConverterResultCardItem()
-    let changeBaseTargetButton = UIButton(type: .roundedRect)
+    private let targetCurrencyCardView = BTGConverterCardItem(itemType: .target)
+    private let resultCurrencyView = BTGConverterResultCardItem()
+    private let changeBaseTargetButton = UIButton(type: .roundedRect)
     
-    let horizontalPadding : CGFloat = 15
-    let verticalPadding : CGFloat = 15
-    let cardTitleLabelFontSize : CGFloat = 26
-    var isKeyboardChangeNecessary = true
+    private let horizontalPadding : CGFloat = 15
+    private let verticalPadding : CGFloat = 15
+    private let cardTitleLabelFontSize : CGFloat = 26
+    private var isKeyboardChangeNecessary = true
     
-    var currencyListModalView : BTGCurrencyListVC?
-    var controller : CurrencyConverterController!
+    private var currencyListModalView : BTGCurrencyListVC?
+    private var controller : CurrencyConverterController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,7 +167,7 @@ final class BTGCurrencyConverterVC: UIViewController {
     }
     
     private func showCurrencyListButtonTap(_ avaliableCurrencySelection :AvaliableCurrencySelection) {
-        currencyListModalView?.modalSelection = avaliableCurrencySelection
+        currencyListModalView?.setModalSelection(avaliableCurrencySelection)
         let navController = UINavigationController(rootViewController: currencyListModalView!)
         present(navController,animated: true)
         isKeyboardChangeNecessary = false

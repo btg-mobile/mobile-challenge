@@ -16,8 +16,8 @@ protocol CurrencyConverterController {
 struct BTGCurrencyConverterController: CurrencyConverterController {
     
     weak var view : CurrencyResultHandler?
-    var quotesController = BTGCurrencyQuotesController()
-    var baseCurrencyAbbreviation =  BTGCurrencyQuotesConstants.baseCurrencyAbbreviation.rawValue
+    private var quotesController = BTGCurrencyQuotesController()
+    private var baseCurrencyAbbreviation =  BTGCurrencyQuotesConstants.baseCurrencyAbbreviation.rawValue
     
     init(view: CurrencyResultHandler) {
         self.view = view

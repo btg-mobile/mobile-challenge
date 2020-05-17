@@ -24,7 +24,7 @@ enum LocalStorageDataType {
 }
 
 struct BTGLocalStorage : LocalStorage {
-    let secondsToLive : Double = 300
+    private let secondsToLive : Double = 300
     
     func isLocalStorageValid(ofType type: LocalStorageDataType) -> Bool {
         switch type {

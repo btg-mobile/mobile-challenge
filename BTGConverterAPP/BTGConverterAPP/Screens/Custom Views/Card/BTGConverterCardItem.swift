@@ -19,8 +19,8 @@ class BTGConverterCardItem: UIView {
     let titleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 26)
     let currencyLabel = BTGSecondaryTitleLabel(fontSize: 46)
     
-    let verticalPadding : CGFloat = 10
-    let horizontalPadding : CGFloat = 10
+    private let verticalPadding : CGFloat = 10
+    private let horizontalPadding : CGFloat = 10
     
     init(itemType: ConverterItemType) {
         super.init(frame: .zero)

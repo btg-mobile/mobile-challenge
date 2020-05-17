@@ -12,7 +12,7 @@ struct BTGNetworkController {
     static let shared = BTGNetworkController()
     
     private let baseUrl = BTGNetworkControllerConstants.baseUrl.rawValue
-    let accessKey = "d08516ac6a935236c4e28e375849eb3a"
+    private let accessKey = "d08516ac6a935236c4e28e375849eb3a"
     private let accessKeyQueryParam = BTGNetworkControllerConstants.accessKeyQueryParam.rawValue
     private let livePath = BTGNetworkControllerConstants.livePath.rawValue
     private let listPath = BTGNetworkControllerConstants.listPath.rawValue

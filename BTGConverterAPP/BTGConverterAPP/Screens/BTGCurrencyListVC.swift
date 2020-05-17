@@ -18,22 +18,26 @@ protocol CurrencyListReceiver: UIViewController {
 
 class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     
-    var isModalView = false
-    var isSearching = false
+    private var isModalView = false
+    private var isSearching = false
     
-    var tableView : UITableView!
-    var dataSource : UITableViewDiffableDataSource<Section,CurrencyDescription>!
-    var modalSelection: AvaliableCurrencySelection?
+    private var tableView : UITableView!
+    private var dataSource : UITableViewDiffableDataSource<Section,CurrencyDescription>!
+    private var modalSelection: AvaliableCurrencySelection?
     
-    var currencyDescriptions : [CurrencyDescription] = []
-    var currencyDescriptionsFiltered : [CurrencyDescription] = []
-    weak var currencySelectionDelegate : CurrencySelectionHandler?
+    private var currencyDescriptions : [CurrencyDescription] = []
+    private var currencyDescriptionsFiltered : [CurrencyDescription] = []
+    private weak var currencySelectionDelegate : CurrencySelectionHandler?
     
-    var controller : CurrencyListController?
+    private var controller : CurrencyListController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    func setModalSelection(_ modalSelection: AvaliableCurrencySelection) {
+        self.modalSelection = modalSelection
     }
     
     override func viewWillAppear(_ animated: Bool) {

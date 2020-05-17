@@ -13,9 +13,9 @@ class BTGConverterTitleCard: UIView {
     var titleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 33)
     var lastTimeUpdatedLabel = BTGSecondaryTitleLabel(frame: .zero)
     var shareButton = BTGButton()
-    let verticalPadding : CGFloat = 10
-    let horizontalPadding : CGFloat = 10
-    var lastUpdated : String = ""
+    private let verticalPadding : CGFloat = 10
+    private let horizontalPadding : CGFloat = 10
+    private var lastUpdated : String = ""
     
     init() {
         super.init(frame: .zero)
