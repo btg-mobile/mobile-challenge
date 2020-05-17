@@ -2,7 +2,7 @@
 //  BTGConverterAPPTests.swift
 //  BTGConverterAPPTests
 //
-//  Created by Ana Caroline de Souza on 17/05/20.
+//  Created by Leonardo Maia Pugliese on 17/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
 //
 

@@ -28,6 +28,7 @@ class BTGCurrencyListController: CurrencyListController {
         
         if localStorage.isLocalStorageValid(ofType: .avaliableQuotes) {
             currencyDescriptionList = localStorage.getAvaliableQuotes()!
+            currencyListReceiver?.setCurrencyDescriptions(currencyDescriptions: currencyDescriptionList)
             print("got from the cacheeee avaliable currencies")
         } else {
             print("got from the weeeb avaliable currencies")

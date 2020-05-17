@@ -14,11 +14,14 @@ struct CurrencyDescription: Hashable, Codable {
     let fullDescription: String
     
     static func ==(lhs: CurrencyDescription, rhs: CurrencyDescription) -> Bool {
-        return lhs.abbreviation == rhs.abbreviation && lhs.fullDescription == rhs.fullDescription
+        return lhs.abbreviation == rhs.abbreviation &&
+            lhs.fullDescription == rhs.fullDescription &&
+            lhs.hashValue == rhs.hashValue
     }
     
     static func !=(lhs: CurrencyDescription, rhs: CurrencyDescription) -> Bool {
-        return lhs.abbreviation != rhs.abbreviation || lhs.fullDescription != rhs.fullDescription
+        return lhs.abbreviation != rhs.abbreviation ||
+            lhs.fullDescription != rhs.fullDescription ||
+            lhs.hashValue != rhs.hashValue
     }
-    
 }

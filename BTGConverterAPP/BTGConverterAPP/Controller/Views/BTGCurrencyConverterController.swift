@@ -26,15 +26,12 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
     }
     
     func getCurrencyConversion(baseCurrency: String, targetCurrency: String, inputBaseDecimal: Decimal) {
-        print("\(baseCurrency) + \(targetCurrency) + \(inputBaseDecimal)")
-        
         if quotesController.getQuotes() == nil {
             quotesController.loadQuotes()
             view?.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
         }
         
         if let quotes = quotesController.getQuotes() {
-            
             var currencyResult = ""
             switch BTGCurrencyOperationsController.getOperationType(baseCurrency: baseCurrency,
                                                                     targetCurrency: targetCurrency) {
@@ -62,9 +59,9 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
                     inputBaseDecimal: inputBaseDecimal, to: quotesToBaseCurrency)
                 currencyResult = BTGCurrencyOperationsController.baseCurrencytoTargetFormatted(baseCurrencyQuantity: currencyResultToBaseCurrency, to: baseCurrencyToTargetQuote)
             }
-            
             view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
             view?.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
+        
         } else {
             view?.showErrorMessage(message: quotesController.getLastError().isEmpty ? BTGCurrencyErrorConstants.unknown.rawValue : quotesController.getLastError())
         }
