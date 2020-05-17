@@ -137,13 +137,13 @@ class ConversionInteractor(
 
     private fun returnBackUp() {
         val finds = iCurrenciesRepository.find()
-        if (!finds.isNullOrEmpty()) {
+        if (finds.notNull() && finds.isNotEmpty()) {
             iConversionInteractorOutput.resultCurrencyLayer(
                 CurrencyLayer(
-                    quotes = finds.associate { Pair(it.currency, it.value) } ?: HashMap()
+                    quotes = finds.associate { Pair(it.currency, it.value) }
                 ),
                 Currencies(
-                    currencies = finds.associate { Pair(it.currency, it.name) } ?: HashMap()
+                    currencies = finds.associate { Pair(it.currency, it.name) }
                 )
             )
         }
