@@ -16,7 +16,7 @@ struct BTGNetworkController {
     private let accessKeyQueryParam = BTGNetworkControllerConstants.accessKeyQueryParam.rawValue
     private let livePath = BTGNetworkControllerConstants.livePath.rawValue
     private let listPath = BTGNetworkControllerConstants.listPath.rawValue
-
+    
     private init(){}
     
     func getLiveCurrencies(completed: @escaping (Result<LiveQuoteRates, BTGNetworkErrorConstants>) -> Void ) {
@@ -56,9 +56,7 @@ struct BTGNetworkController {
             } catch {
                 completed(.failure(.invalidData))
             }
-            
         }
-        
         task.resume()
     }
     
@@ -98,8 +96,6 @@ struct BTGNetworkController {
                 completed(.failure(.invalidData))
             }
         }
-        
         task.resume()
     }
-    
 }

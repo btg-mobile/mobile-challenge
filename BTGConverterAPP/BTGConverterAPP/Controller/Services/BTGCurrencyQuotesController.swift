@@ -36,9 +36,7 @@ class BTGCurrencyQuotesController {
     func loadQuotes() {
         if localStorage.isLocalStorageValid(ofType: .liveQuoteRates) {
             quotes = localStorage.getLiveQuoteRates()?.quotes
-            print("got from the cacheeee live quotes")
         } else {
-            print("got from the webeee live quotes")
             networkController.getLiveCurrencies { [weak self] in
                 switch $0 {
                 case .success(let result):
@@ -60,5 +58,4 @@ class BTGCurrencyQuotesController {
             .addingTimeInterval(TimeInterval(integerLiteral: -3600*3))
             .description.components(separatedBy: " ")
     }
-    
 }

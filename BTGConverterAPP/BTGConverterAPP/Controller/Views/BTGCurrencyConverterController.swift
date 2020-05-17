@@ -52,8 +52,8 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
                 
                 guard let quotesToBaseCurrency = quotes[baseCurrencyAbbreviation+baseCurrency],
                     let baseCurrencyToTargetQuote = quotes[baseCurrencyAbbreviation+targetCurrency]  else {
-                    view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
-                    return
+                        view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyPairNotFound.rawValue)
+                        return
                 }
                 let currencyResultToBaseCurrency = BTGCurrencyOperationsController.currencyToBaseCurrencyUnformatted(
                     inputBaseDecimal: inputBaseDecimal, to: quotesToBaseCurrency)
@@ -61,11 +61,10 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
             }
             view?.setCurrencyConversionResult(currencyConvertedResult: "\(currencyResult) \(targetCurrency)")
             view?.setLastTimeUpdated(date: quotesController.getLastTimeUpdatedFormatted())
-        
+            
         } else {
             view?.showErrorMessage(message: quotesController.getLastError().isEmpty ? BTGCurrencyErrorConstants.unknown.rawValue : quotesController.getLastError())
         }
-        
     }
     
     func validateUserInput(userValueInput: String?, baseCurrency: String? , targetCurrency: String?) -> Bool {
@@ -96,7 +95,6 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
             return false
         }
     }
-    
 }
 
 

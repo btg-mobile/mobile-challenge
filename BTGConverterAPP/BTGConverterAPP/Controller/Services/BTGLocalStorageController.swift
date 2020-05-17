@@ -23,10 +23,9 @@ enum LocalStorageDataType {
 }
 
 struct BTGLocalStorage : LocalStorage {
+    let secondsToLive : Double = 300
     
     func isLocalStorageValid(ofType type: LocalStorageDataType) -> Bool {
-        let secondsToLive : Double = 300
-        
         switch type {
         case .liveQuoteRates:
             guard let dateFromCache : Date = getFromLocalStorage(ofType: .timeToLiveLiveQuoteDate) else { return false }
@@ -38,23 +37,19 @@ struct BTGLocalStorage : LocalStorage {
     }
     
     func getLiveQuoteRates() -> LiveQuoteRates? {
-        print("get live quote rates cache")
         return getFromLocalStorage(ofType: .liveQuoteRates)
     }
     
     func setLiveQuoteRates(_ liveQuoteRates: LiveQuoteRates) {
-        print("set live quote rates cache")
         saveToLocalStorage(data: liveQuoteRates, ofType: .liveQuoteRates)
         saveToLocalStorage(data: Date(), ofType: .timeToLiveLiveQuoteDate)
     }
     
     func getAvaliableQuotes() -> [CurrencyDescription]? {
-        print("get avaliable quotes cache")
         return getFromLocalStorage(ofType: .avaliableCurrencies)
     }
     
     func setAvaliableQuotes(_ avaliableDescriptions: [CurrencyDescription]) {
-        print("set avaliable quotes cache")
         saveToLocalStorage(data: avaliableDescriptions, ofType: .avaliableCurrencies)
         saveToLocalStorage(data: Date(), ofType: .timeToLiveAvaliableQuoteDate)
     }
@@ -67,7 +62,6 @@ struct BTGLocalStorage : LocalStorage {
     }
     
     private func getFromLocalStorage<T:Decodable>(ofType localCacheKeys: LocalCacheKeys) -> T? {
-        
         var data: T? = nil
         
         let defaults = UserDefaults.standard
@@ -76,7 +70,7 @@ struct BTGLocalStorage : LocalStorage {
         do {
             data = try jsonDecoder.decode(T.self, from: savedData)
         } catch {
-            print("data couldn't be retrieved")
+            print("Data couldn't be retrieved")
         }
         return data
     }

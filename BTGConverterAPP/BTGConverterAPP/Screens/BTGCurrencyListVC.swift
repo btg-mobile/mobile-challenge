@@ -126,7 +126,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.delegate = self
-        searchController.searchBar.placeholder = "Procure moedas aqui. Ex: USD"
+        searchController.searchBar.placeholder = ViewsConstants.BTGCurrencyListVCSearchBarPlaceholder.rawValue
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -141,10 +141,10 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
     }
     
     @objc func showSortAlertController() {
-        let alertController = UIAlertController(title: "Sorting Currencies", message: "How do you like to sort your Currencies?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: ViewsConstants.BTGSortAlertControllerTitle.rawValue, message: ViewsConstants.BTGSortAlertControllerMessage.rawValue, preferredStyle: .actionSheet)
         alertController.isSpringLoaded = true
 
-        let orderByAbbreviationButton = UIAlertAction(title: "Abbreviation", style: .default, handler: {
+        let orderByAbbreviationButton = UIAlertAction(title: ViewsConstants.BTGOrderByAbbreviationButtonTitle.rawValue, style: .default, handler: {
             [weak self] _ -> Void in
             guard let self = self else { return }
             self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in
@@ -155,7 +155,7 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
             
         })
         
-        let orderByFullDescriptionButton = UIAlertAction(title: "Full Name", style: .default, handler: {
+        let orderByFullDescriptionButton = UIAlertAction(title: ViewsConstants.BTGOrderByFullDescriptionButtonTitle.rawValue, style: .default, handler: {
             [weak self] _ -> Void in
             guard let self = self else { return }
             self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in

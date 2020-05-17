@@ -28,7 +28,6 @@ class BTGConverterResultCardItem: UIView {
     }
     
     private func configure(){
-        
         configureValueTitleLabel()
         configureConvertButton()
         configureValueTextField()
@@ -45,7 +44,6 @@ class BTGConverterResultCardItem: UIView {
             userInputValueTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             userInputValueTitleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.20),
             userInputValueTitleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45)
-        
         ])
     }
     
@@ -60,7 +58,6 @@ class BTGConverterResultCardItem: UIView {
             convertButton.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.39),
             convertButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.39),
             convertButton.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        
         ])
     }
     
@@ -72,7 +69,6 @@ class BTGConverterResultCardItem: UIView {
             currencyTextField.leadingAnchor.constraint(equalTo: userInputValueTitleLabel.trailingAnchor),
             currencyTextField.trailingAnchor.constraint(equalTo: convertButton.leadingAnchor, constant: -horizontalPadding),
             currencyTextField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35)
-        
         ])
     }
     
@@ -85,8 +81,6 @@ class BTGConverterResultCardItem: UIView {
             convertResultLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             convertResultLabel.trailingAnchor.constraint(equalTo: convertButton.leadingAnchor),
             convertResultLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalPadding)
-        
         ])
     }
-    
 }

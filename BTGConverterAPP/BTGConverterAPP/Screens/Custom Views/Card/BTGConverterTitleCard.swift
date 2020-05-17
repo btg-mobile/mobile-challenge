@@ -47,8 +47,6 @@ class BTGConverterTitleCard: UIView {
             shareButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
             shareButton.heightAnchor.constraint(equalToConstant: 44),
             shareButton.widthAnchor.constraint(equalToConstant: 44)
-            
-        
         ])
     }
     

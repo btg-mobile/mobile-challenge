@@ -21,7 +21,6 @@ extension UIViewController {
     }
     
     func showLoadingView() {
-        
         containerView = UIView(frame: view.bounds)
         view.addSubview(containerView)
         
@@ -40,9 +39,7 @@ extension UIViewController {
         NSLayoutConstraint.activate([
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        
         ])
-        
         activityIndicator.startAnimating()
     }
     

@@ -12,7 +12,7 @@ class CurrencyDescriptionCell: UITableViewCell {
     
     static let reuseID = "currencyID"
     let currencyDescriptionLabel = BTGTitleLabel(textAlignment: .left, fontSize: 16)
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -34,9 +34,9 @@ class CurrencyDescriptionCell: UITableViewCell {
     func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         let padding : CGFloat = 8
-                
+        
         addSubview(currencyDescriptionLabel)
-
+        
         NSLayoutConstraint.activate([
             currencyDescriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             currencyDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),

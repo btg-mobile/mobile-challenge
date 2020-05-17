@@ -59,6 +59,11 @@ enum ViewsConstants: String {
     case BTGConverterResultLabelTitle = "Value"
     case BTGConverterTitleCardTitle = "BTG Converter"
     case BTGConverterTitleCardDefaultLastTimeUpdateMessage = "Last Update"
+    case BTGCurrencyListVCSearchBarPlaceholder = "Search currencies. Ex: USD or Dolar"
+    case BTGSortAlertControllerTitle = "Sorting Currencies"
+    case BTGSortAlertControllerMessage = "How do you like to sort your Currencies?"
+    case BTGOrderByAbbreviationButtonTitle = "Abbreviation"
+    case BTGOrderByFullDescriptionButtonTitle = "Full name"
 }
 
 enum LocalCacheKeys: String {

@@ -13,7 +13,7 @@ protocol CurrencyListController {
 }
 
 class BTGCurrencyListController: CurrencyListController {
-
+    
     private let networkController = BTGNetworkController.shared
     weak private var currencyListReceiver : CurrencyListReceiver?
     private let localStorage : LocalStorage = BTGLocalStorage()
@@ -29,16 +29,15 @@ class BTGCurrencyListController: CurrencyListController {
         if localStorage.isLocalStorageValid(ofType: .avaliableQuotes) {
             currencyDescriptionList = localStorage.getAvaliableQuotes()!
             currencyListReceiver?.setCurrencyDescriptions(currencyDescriptions: currencyDescriptionList)
-            print("got from the cacheeee avaliable currencies")
         } else {
-            print("got from the weeeb avaliable currencies")
             networkController.getAvaliableCurrencies {[weak self] result in
                 switch result {
                 case .success(let avaliableCurrencies):
                     self?.setCurrencyDescription(from: avaliableCurrencies)
                     
                     guard let currencyListReceiver    = self?.currencyListReceiver ,
-                          let currencyDescriptionList = self?.currencyDescriptionList else { return }
+                        let currencyDescriptionList = self?.currencyDescriptionList else { return }
+                    
                     currencyListReceiver.setCurrencyDescriptions(currencyDescriptions: currencyDescriptionList)
                     self?.localStorage.setAvaliableQuotes(self!.currencyDescriptionList)
                 case .failure(let error):
@@ -52,9 +51,8 @@ class BTGCurrencyListController: CurrencyListController {
         for (abbreviation, fullDescription) in avaliableCurrencies.currencies {
             let currencyDescription = CurrencyDescription(abbreviation: abbreviation, fullDescription: fullDescription)
             if !currencyDescriptionList.contains(currencyDescription) {
-               currencyDescriptionList.append(CurrencyDescription(abbreviation: abbreviation, fullDescription: fullDescription))
+                currencyDescriptionList.append(CurrencyDescription(abbreviation: abbreviation, fullDescription: fullDescription))
             }
         }
     }
-    
 }

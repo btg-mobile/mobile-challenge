@@ -14,7 +14,7 @@ enum ConverterItemType {
 }
 
 class BTGConverterCardItem: UIView {
-
+    
     let selectCurrencyButton = BTGButton(backgroundColor: .systemGreen, title: "+")
     let titleLabel = BTGTitleLabel(textAlignment: .left, fontSize: 26)
     let currencyLabel = BTGSecondaryTitleLabel(fontSize: 46)
@@ -30,7 +30,7 @@ class BTGConverterCardItem: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func configure(_ itemType: ConverterItemType) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 13
@@ -40,7 +40,6 @@ class BTGConverterCardItem: UIView {
         configureCurrencyLabel()
         configureSelectCurrencyButton()
         configureItemType(itemType)
-        
     }
     
     private func configureTitleLabel() {
@@ -52,7 +51,6 @@ class BTGConverterCardItem: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.65),
             titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45)
-        
         ])
     }
     
@@ -68,7 +66,6 @@ class BTGConverterCardItem: UIView {
             currencyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             currencyLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.65),
             currencyLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45)
-        
         ])
     }
     
@@ -83,7 +80,6 @@ class BTGConverterCardItem: UIView {
             selectCurrencyButton.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45),
             selectCurrencyButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45),
             selectCurrencyButton.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        
         ])
     }
     
@@ -95,5 +91,4 @@ class BTGConverterCardItem: UIView {
             self.titleLabel.text = ViewsConstants.BTGConverterCardItemBaseTargetTitle.rawValue
         }
     }
-    
 }

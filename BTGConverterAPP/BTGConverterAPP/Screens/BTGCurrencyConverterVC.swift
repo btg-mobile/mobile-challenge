@@ -20,13 +20,14 @@ protocol CurrencySelectionHandler: UIViewController {
 }
 
 enum AvaliableCurrencySelection {
-    case base, target
+    case base
+    case target
 }
 
-class BTGCurrencyConverterVC: UIViewController {
+final class BTGCurrencyConverterVC: UIViewController {
     
-    let titleView = BTGConverterTitleCard()
-    let baseCurrencyCardView = BTGConverterCardItem(itemType: .base)
+    private let titleView = BTGConverterTitleCard()
+    private let baseCurrencyCardView = BTGConverterCardItem(itemType: .base)
     let targetCurrencyCardView = BTGConverterCardItem(itemType: .target)
     let resultCurrencyView = BTGConverterResultCardItem()
     let changeBaseTargetButton = UIButton(type: .roundedRect)
@@ -74,14 +75,12 @@ class BTGCurrencyConverterVC: UIViewController {
         changeBaseTargetButton.tintColor = .systemGray
         changeBaseTargetButton.setPreferredSymbolConfiguration(configuration, forImageIn: .normal)
         changeBaseTargetButton.addTarget(self, action: #selector(changeBaseTargetTap), for: .touchUpInside)
-                
+        
         NSLayoutConstraint.activate([
-            
             changeBaseTargetButton.heightAnchor.constraint(equalTo: baseCurrencyCardView.heightAnchor, multiplier: 0.5),
             changeBaseTargetButton.widthAnchor.constraint(equalTo: baseCurrencyCardView.heightAnchor, multiplier: 0.5),
             changeBaseTargetButton.bottomAnchor.constraint(equalTo: targetCurrencyCardView.topAnchor, constant: 35),
             changeBaseTargetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding)
-            
         ])
     }
     
@@ -135,7 +134,6 @@ class BTGCurrencyConverterVC: UIViewController {
         titleView.translatesAutoresizingMaskIntoConstraints = false
         
         titleView.shareButton.addTarget(self, action: #selector(shareToFriendsCurrencyTap), for: .touchUpInside)
-
         
         NSLayoutConstraint.activate([
             titleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
@@ -150,7 +148,7 @@ class BTGCurrencyConverterVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-
+        
         resultCurrencyView.currencyTextField.delegate = self
     }
     
@@ -197,7 +195,7 @@ class BTGCurrencyConverterVC: UIViewController {
     
     @objc private func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, isKeyboardChangeNecessary else { return }
-
+        
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         // view.safeAreaLayoutGuide.layoutFrame.origin.y
         if notification.name != UIResponder.keyboardWillHideNotification &&
@@ -211,7 +209,7 @@ class BTGCurrencyConverterVC: UIViewController {
     
     @objc func shareToFriendsCurrencyTap() {
         guard let currencyResult = resultCurrencyView.convertResultLabel.text,
-              let baseCurrecy = baseCurrencyCardView.currencyLabel.text,
+            let baseCurrecy = baseCurrencyCardView.currencyLabel.text,
             let targetCurrency = targetCurrencyCardView.currencyLabel.text,
             let inputValue = resultCurrencyView.currencyTextField.text else {
                 showErrorMessage(message: BTGCurrencyErrorConstants.shareTappedBeforeAnyConversion.rawValue)

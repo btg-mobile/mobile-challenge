@@ -9,7 +9,7 @@
 import UIKit
 
 class BTGTextField: UITextField {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -28,16 +28,15 @@ class BTGTextField: UITextField {
         
         textColor = .label
         tintColor = .label
+        backgroundColor = .tertiarySystemBackground
         textAlignment = .center
         font = UIFont.preferredFont(forTextStyle: .title2)
         adjustsFontSizeToFitWidth = true
         minimumFontSize = 12
-            
-        backgroundColor = .tertiarySystemBackground
+        
         autocorrectionType = .no
         returnKeyType = .go
         
         placeholder =  ViewsConstants.BTGTextField.rawValue
     }
-
 }

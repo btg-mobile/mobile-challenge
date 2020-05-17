@@ -51,7 +51,6 @@ struct BTGCurrencyOperationsController {
         return formatNumberToCurrencyConverterVC(resultToUSDDecimal)
     }
     
-    
     static func getOperationType(baseCurrency: String, targetCurrency: String) -> OperationType {
         let baseType = BTGCurrencyQuotesConstants.baseCurrencyAbbreviation.rawValue
         if baseCurrency != baseType && targetCurrency == baseType {

@@ -13,7 +13,6 @@ import XCTest
 class BTGConverterAPPTests: XCTestCase {
 
     func testBaseCurrencytoTargetFormatted() throws {
-        
         XCTAssertEqual(BTGCurrencyOperationsController.baseCurrencytoTargetFormatted(
             baseCurrencyQuantity: 100, to: 10),"$1,000.00")
         XCTAssertEqual(BTGCurrencyOperationsController.baseCurrencytoTargetFormatted(
@@ -43,6 +42,4 @@ class BTGConverterAPPTests: XCTestCase {
         XCTAssertEqual(BTGCurrencyOperationsController.currencyToBaseCurrencyFormatted(
             inputBaseDecimal: 1, to: 2), "$0.50")
     }
-
-
 }
