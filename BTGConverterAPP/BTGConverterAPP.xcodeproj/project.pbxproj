@@ -31,7 +31,18 @@
 		3F743BEE2470721B006D8026 /* BTGCurrencyOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */; };
 		3F743BF024709D53006D8026 /* BTGConverterTitleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */; };
 		3F743BF4247173C8006D8026 /* BTGLocalStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BF3247173C8006D8026 /* BTGLocalStorageController.swift */; };
+		3F743BFC2471AC9E006D8026 /* BTGConverterAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F743BFB2471AC9E006D8026 /* BTGConverterAPPTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F743BFE2471AC9E006D8026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F743B99246EB1BF006D8026 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F743BA0246EB1C0006D8026;
+			remoteInfo = BTGConverterAPP;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3F743BA1246EB1C0006D8026 /* BTGConverterAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTGConverterAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,10 +71,20 @@
 		3F743BED2470721B006D8026 /* BTGCurrencyOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyOperationsController.swift; sourceTree = "<group>"; };
 		3F743BEF24709D53006D8026 /* BTGConverterTitleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGConverterTitleCard.swift; sourceTree = "<group>"; };
 		3F743BF3247173C8006D8026 /* BTGLocalStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGLocalStorageController.swift; sourceTree = "<group>"; };
+		3F743BF92471AC9E006D8026 /* BTGConverterAPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTGConverterAPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F743BFB2471AC9E006D8026 /* BTGConverterAPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGConverterAPPTests.swift; sourceTree = "<group>"; };
+		3F743BFD2471AC9E006D8026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3F743B9E246EB1C0006D8026 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F743BF62471AC9E006D8026 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				3F743BA3246EB1C0006D8026 /* BTGConverterAPP */,
+				3F743BFA2471AC9E006D8026 /* BTGConverterAPPTests */,
 				3F743BA2246EB1C0006D8026 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				3F743BA1246EB1C0006D8026 /* BTGConverterAPP.app */,
+				3F743BF92471AC9E006D8026 /* BTGConverterAPPTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,6 +264,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		3F743BFA2471AC9E006D8026 /* BTGConverterAPPTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F743BFB2471AC9E006D8026 /* BTGConverterAPPTests.swift */,
+				3F743BFD2471AC9E006D8026 /* Info.plist */,
+			);
+			path = BTGConverterAPPTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,6 +293,24 @@
 			productReference = 3F743BA1246EB1C0006D8026 /* BTGConverterAPP.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3F743BF82471AC9E006D8026 /* BTGConverterAPPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F743C022471AC9E006D8026 /* Build configuration list for PBXNativeTarget "BTGConverterAPPTests" */;
+			buildPhases = (
+				3F743BF52471AC9E006D8026 /* Sources */,
+				3F743BF62471AC9E006D8026 /* Frameworks */,
+				3F743BF72471AC9E006D8026 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F743BFF2471AC9E006D8026 /* PBXTargetDependency */,
+			);
+			name = BTGConverterAPPTests;
+			productName = BTGConverterAPPTests;
+			productReference = 3F743BF92471AC9E006D8026 /* BTGConverterAPPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -273,6 +323,10 @@
 				TargetAttributes = {
 					3F743BA0246EB1C0006D8026 = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					3F743BF82471AC9E006D8026 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 3F743BA0246EB1C0006D8026;
 					};
 				};
 			};
@@ -290,6 +344,7 @@
 			projectRoot = "";
 			targets = (
 				3F743BA0246EB1C0006D8026 /* BTGConverterAPP */,
+				3F743BF82471AC9E006D8026 /* BTGConverterAPPTests */,
 			);
 		};
 /* End PBXProject section */
@@ -300,6 +355,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F743BAE246EB1CC006D8026 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F743BF72471AC9E006D8026 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +398,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F743BF52471AC9E006D8026 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F743BFC2471AC9E006D8026 /* BTGConverterAPPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F743BFF2471AC9E006D8026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F743BA0246EB1C0006D8026 /* BTGConverterAPP */;
+			targetProxy = 3F743BFE2471AC9E006D8026 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3F743BB3246EB1CC006D8026 /* Debug */ = {
@@ -489,6 +567,46 @@
 			};
 			name = Release;
 		};
+		3F743C002471AC9E006D8026 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V53CJ86VCG;
+				INFOPLIST_FILE = BTGConverterAPPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.currencyConverter.BTGConverterAPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTGConverterAPP.app/BTGConverterAPP";
+			};
+			name = Debug;
+		};
+		3F743C012471AC9E006D8026 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V53CJ86VCG;
+				INFOPLIST_FILE = BTGConverterAPPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.currencyConverter.BTGConverterAPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTGConverterAPP.app/BTGConverterAPP";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -506,6 +624,15 @@
 			buildConfigurations = (
 				3F743BB6246EB1CC006D8026 /* Debug */,
 				3F743BB7246EB1CC006D8026 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F743C022471AC9E006D8026 /* Build configuration list for PBXNativeTarget "BTGConverterAPPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F743C002471AC9E006D8026 /* Debug */,
+				3F743C012471AC9E006D8026 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

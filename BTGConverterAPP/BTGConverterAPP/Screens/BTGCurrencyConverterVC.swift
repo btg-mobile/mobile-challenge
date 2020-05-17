@@ -134,6 +134,9 @@ class BTGCurrencyConverterVC: UIViewController {
         view.addSubview(titleView)
         titleView.translatesAutoresizingMaskIntoConstraints = false
         
+        titleView.shareButton.addTarget(self, action: #selector(shareToFriendsCurrencyTap), for: .touchUpInside)
+
+        
         NSLayoutConstraint.activate([
             titleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             titleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding ),
@@ -205,6 +208,22 @@ class BTGCurrencyConverterVC: UIViewController {
             self.view.frame.origin.y += keyboardScreenEndFrame.height - 120
         }
     }
+    
+    @objc func shareToFriendsCurrencyTap() {
+        guard let currencyResult = resultCurrencyView.convertResultLabel.text,
+              let baseCurrecy = baseCurrencyCardView.currencyLabel.text,
+            let targetCurrency = targetCurrencyCardView.currencyLabel.text,
+            let inputValue = resultCurrencyView.currencyTextField.text else {
+                showErrorMessage(message: BTGCurrencyErrorConstants.shareTappedBeforeAnyConversion.rawValue)
+                return
+        }
+        
+        let recommendationMessage = "I've converted \(inputValue) \(baseCurrecy) to \(currencyResult) \(targetCurrency). With this awesome app, you should try!"
+        let vc = UIActivityViewController(activityItems: [recommendationMessage], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc,animated:true)
+    }
+    
 }
 
 extension BTGCurrencyConverterVC: CurrencyResultHandler {

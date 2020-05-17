@@ -24,6 +24,7 @@ enum BTGCurrencyErrorConstants: String {
     case currencyPairNotFound = "Sorry we couldn't find your current in our database."
     case alertControllerErrorTitle = "Error Occured!"
     case unknown = "Unknown error. Please Try Again"
+    case shareTappedBeforeAnyConversion = "To share to your friends you must first do a currency conversion. Please do a conversion."
 }
 
 enum BTGCurrencyQuotesConstants: String {
@@ -33,7 +34,7 @@ enum BTGCurrencyQuotesConstants: String {
 enum BTGSceneDelegateConstants: String {
     case converterViewTitle = "BTG Currency Converter"
     case tabBarConverterItemTitle = "Exchange"
-    case listViewTitle = "Avaliable Currency"
+    case listViewTitle = "Avaliable Currencies"
     case tabBarListItemTitle = "List"
 }
 
@@ -41,6 +42,7 @@ enum SFSymbolsConstants: String {
     case globe = "globe"
     case list = "list.dash"
     case arrowUpDown = "arrow.up.arrow.down"
+    case squareAndArrowUp = "square.and.arrow.up"
 }
 
 enum BTGNetworkControllerConstants: String {

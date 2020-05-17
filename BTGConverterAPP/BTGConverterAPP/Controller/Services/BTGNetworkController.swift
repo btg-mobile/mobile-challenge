@@ -9,7 +9,6 @@
 import Foundation
 
 struct BTGNetworkController {
-    
     static let shared = BTGNetworkController()
     
     private let baseUrl = BTGNetworkControllerConstants.baseUrl.rawValue
@@ -17,11 +16,7 @@ struct BTGNetworkController {
     private let accessKeyQueryParam = BTGNetworkControllerConstants.accessKeyQueryParam.rawValue
     private let livePath = BTGNetworkControllerConstants.livePath.rawValue
     private let listPath = BTGNetworkControllerConstants.listPath.rawValue
-    
-    //let cache = NSCache<NSString, UIImage>()
-    #warning("add cache later")
-    #warning("add criptografia e obfuscação para o access key")
-    
+
     private init(){}
     
     func getLiveCurrencies(completed: @escaping (Result<LiveQuoteRates, BTGNetworkErrorConstants>) -> Void ) {
@@ -75,7 +70,6 @@ struct BTGNetworkController {
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
             if let _ = error {
                 completed(.failure(.unableToComplete))
                 return

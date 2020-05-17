@@ -43,7 +43,7 @@ struct BTGCurrencyOperationsController {
         return numberFormatter.string(from: NSNumber(value: Double(formatedString)!))!
     }
     
-    static func baseCurrencytoTarget(baseCurrencyQuantity: Decimal,to baseCurrencyQuoteToTarget: Double) -> String {
+    static func baseCurrencytoTargetFormatted(baseCurrencyQuantity: Decimal,to baseCurrencyQuoteToTarget: Double) -> String {
         
         let quotesDecimal : Decimal = NSNumber(floatLiteral: baseCurrencyQuoteToTarget).decimalValue
         let resultToUSDDecimal = baseCurrencyQuantity*quotesDecimal
