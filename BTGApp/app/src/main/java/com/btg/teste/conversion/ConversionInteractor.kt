@@ -10,11 +10,15 @@ import com.btg.teste.repository.remote.service.currency.IServiceCurrencyLayer
 import com.btg.teste.repository.remote.service.IConnect
 import com.btg.teste.utils.Coroutine
 import com.btg.teste.viewmodel.Conversion
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 import javax.inject.Inject
 
 class ConversionInteractor(
-    activity: Activity,
+    private val activity: Activity,
     private val iConversionInteractorOutput: ConversionContracts.ConversionInteractorOutput,
     private val iServiceCurrencyLayer: IServiceCurrencyLayer
 ) : ConversionContracts.ConversionInteractorInput {
@@ -76,40 +80,44 @@ class ConversionInteractor(
                         if (currencyLayer.notNull()) {
                             if (currencyLayer.success) {
 
-                                Thread(Runnable {
-                                    currencies?.currencies?.map {
-                                        Conversion().mapper(it.key, it.value)
-                                    }?.toMutableList()?.forEach { convert ->
-                                        currencyLayer.quotes.forEach { mapto ->
-                                            if (mapto.key.contains(convert.currency)) {
+                                GlobalScope.launch {
 
-                                                val backup =
-                                                    iCurrenciesRepository.findViewByCurrency(convert.currency)
-                                                if (backup.notNull()) {
-                                                    backup.currency = convert.currency
-                                                    backup.name = convert.name
-                                                    backup.value = mapto.value
-                                                    iCurrenciesRepository.update(backup)
-                                                } else {
-                                                    iCurrenciesRepository.insert(
-                                                        CurrenciesEntity(
-                                                            currency = convert.currency,
-                                                            name = convert.name,
-                                                            value = mapto.value
+                                    withContext(context = Dispatchers.IO) {
+                                        currencies?.currencies?.map {
+                                            Conversion().mapper(it.key, it.value)
+                                        }?.toMutableList()?.forEach { convert ->
+                                            currencyLayer.quotes.forEach { mapto ->
+                                                if (mapto.key.contains(convert.currency)) {
+
+                                                    val backup =
+                                                        iCurrenciesRepository.findViewByCurrency(convert.currency)
+                                                    if (backup.notNull()) {
+                                                        backup.currency = convert.currency
+                                                        backup.name = convert.name
+                                                        backup.value = mapto.value
+                                                        iCurrenciesRepository.update(backup)
+                                                    } else {
+                                                        iCurrenciesRepository.insert(
+                                                            CurrenciesEntity(
+                                                                currency = convert.currency,
+                                                                name = convert.name,
+                                                                value = mapto.value
+                                                            )
                                                         )
-                                                    )
+                                                    }
+                                                    return@forEach
                                                 }
-                                                return@forEach
                                             }
                                         }
                                     }
-                                }).start()
 
-                                iConversionInteractorOutput.resultCurrencyLayer(
-                                    currencyLayer,
-                                    currencies
-                                )
-
+                                    withContext(context = Dispatchers.Main) {
+                                        iConversionInteractorOutput.resultCurrencyLayer(
+                                            currencyLayer,
+                                            currencies
+                                        )
+                                    }
+                                }
                             } else {
                                 iConversionInteractorOutput.errorMensage("error")
                             }
