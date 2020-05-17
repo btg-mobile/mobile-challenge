@@ -50,7 +50,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="16dp"
                     android:layout_weight="5"
-                    android:maxLength="20"
+                    android:maxLength="30"
                     android:afterTextChanged="@{click::calculate}"
                     android:background="@drawable/background_edittext_default"
                     android:contentDescription="@{@string/acessibility_edt_money_convert_step_one(moneyConvert.value)}"
