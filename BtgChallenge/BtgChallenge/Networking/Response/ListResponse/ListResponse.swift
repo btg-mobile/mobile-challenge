@@ -9,7 +9,8 @@
 import Foundation
 
 struct ListResponse: Codable {
-    let success: Bool
-    let terms, privacy: String
-    let currencies: CurrenciesResponse
+    var success: Bool?
+    var terms: String?
+    var privacy: String?
+    var currencies: CurrenciesResponse?
 }

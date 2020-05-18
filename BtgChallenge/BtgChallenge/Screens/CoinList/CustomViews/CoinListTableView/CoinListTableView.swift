@@ -17,8 +17,8 @@ class CoinListTableView: UITableView {
     // MARK: - Properties
     
     weak var listDelegate: CoinListTableViewDelegate?
-    fileprivate var viewModel = CoinListTableViewModel()
-    fileprivate var firstUpdate = true
+    var viewModel = CoinListTableViewModel()
+    var firstUpdate = true
     
     init(delegate: CoinListTableViewDelegate?) {
         listDelegate = delegate

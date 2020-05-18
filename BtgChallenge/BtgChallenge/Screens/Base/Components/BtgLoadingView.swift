@@ -10,12 +10,12 @@ import UIKit
 
 class BtgLoadingView: UIView {
     
-    enum LoadingStatus : Int {
+    enum LoadingStatus: Int {
         case stopped
         case running
     }
     
-    private var loadingStatus : LoadingStatus = .stopped
+    private var loadingStatus: LoadingStatus = .stopped
     static let shared = BtgLoadingView()
     
     private var presenterView: UIView?

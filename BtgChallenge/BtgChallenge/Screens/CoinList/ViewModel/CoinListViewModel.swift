@@ -75,7 +75,7 @@ extension CoinListViewModel {
         viewModel.selectedCoin = selectedCoin ?? ""
         
         cellViewModels = listResponse
-            .currencies
+            .currencies?
             .coinStrategy
             .compactMap { element in
                 guard let value = element.value else {
@@ -88,7 +88,7 @@ extension CoinListViewModel {
                 
                 return cellViewModel
             }
-            .sorted(by: { $0.shortCoinName < $1.shortCoinName })
+            .sorted(by: { $0.shortCoinName < $1.shortCoinName }) ?? []
         
         viewModel.cellViewModels = cellViewModels
         

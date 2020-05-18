@@ -14,7 +14,6 @@
 		C60EA8D0246896F100CADCDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA8CF246896F100CADCDA /* SceneDelegate.swift */; };
 		C60EA8D7246896F500CADCDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60EA8D6246896F500CADCDA /* Assets.xcassets */; };
 		C60EA8DA246896F500CADCDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60EA8D8246896F500CADCDA /* LaunchScreen.storyboard */; };
-		C60EA8E5246896F600CADCDA /* BtgChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA8E4246896F600CADCDA /* BtgChallengeTests.swift */; };
 		C60EA8F0246896F600CADCDA /* BtgChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA8EF246896F600CADCDA /* BtgChallengeUITests.swift */; };
 		C60EA900246898DF00CADCDA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA8FF246898DF00CADCDA /* Coordinator.swift */; };
 		C60EA9022468994800CADCDA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EA9012468994800CADCDA /* AppCoordinator.swift */; };
@@ -62,6 +61,14 @@
 		C62A5BB524707C0400CCC912 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BB424707C0400CCC912 /* LocalStorage.swift */; };
 		C62A5BB72470BCD700CCC912 /* LiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BB62470BCD700CCC912 /* LiveResponse.swift */; };
 		C62A5BB92470CA1300CCC912 /* LocalStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BB82470CA1300CCC912 /* LocalStorageImpl.swift */; };
+		C62A5BBC2471F10200CCC912 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BBB2471F10200CCC912 /* AppCoordinatorTests.swift */; };
+		C62A5BC12471F82C00CCC912 /* CoinConvertViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BC02471F82C00CCC912 /* CoinConvertViewControllerTests.swift */; };
+		C62A5BC4247207BF00CCC912 /* MockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BC3247207BF00CCC912 /* MockFactory.swift */; };
+		C62A5BC924720BDA00CCC912 /* LocalStorageSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BC824720BDA00CCC912 /* LocalStorageSpy.swift */; };
+		C62A5BCB24720BFC00CCC912 /* CurrencyRepositorySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BCA24720BFC00CCC912 /* CurrencyRepositorySpy.swift */; };
+		C62A5BCF2472215200CCC912 /* CoinConvertViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BCE2472215200CCC912 /* CoinConvertViewModelTests.swift */; };
+		C62A5BD124722E2900CCC912 /* CoinListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BD024722E2900CCC912 /* CoinListViewControllerTests.swift */; };
+		C62A5BD3247236D700CCC912 /* CoinListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BD2247236D700CCC912 /* CoinListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +103,6 @@
 		C60EA8D9246896F500CADCDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C60EA8DB246896F500CADCDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60EA8E0246896F600CADCDA /* BtgChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BtgChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C60EA8E4246896F600CADCDA /* BtgChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgChallengeTests.swift; sourceTree = "<group>"; };
 		C60EA8E6246896F600CADCDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60EA8EB246896F600CADCDA /* BtgChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BtgChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60EA8EF246896F600CADCDA /* BtgChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtgChallengeUITests.swift; sourceTree = "<group>"; };
@@ -147,6 +153,14 @@
 		C62A5BB424707C0400CCC912 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		C62A5BB62470BCD700CCC912 /* LiveResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveResponse.swift; sourceTree = "<group>"; };
 		C62A5BB82470CA1300CCC912 /* LocalStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageImpl.swift; sourceTree = "<group>"; };
+		C62A5BBB2471F10200CCC912 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		C62A5BC02471F82C00CCC912 /* CoinConvertViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConvertViewControllerTests.swift; sourceTree = "<group>"; };
+		C62A5BC3247207BF00CCC912 /* MockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactory.swift; sourceTree = "<group>"; };
+		C62A5BC824720BDA00CCC912 /* LocalStorageSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageSpy.swift; sourceTree = "<group>"; };
+		C62A5BCA24720BFC00CCC912 /* CurrencyRepositorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRepositorySpy.swift; sourceTree = "<group>"; };
+		C62A5BCE2472215200CCC912 /* CoinConvertViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConvertViewModelTests.swift; sourceTree = "<group>"; };
+		C62A5BD024722E2900CCC912 /* CoinListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListViewControllerTests.swift; sourceTree = "<group>"; };
+		C62A5BD2247236D700CCC912 /* CoinListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListViewModelTests.swift; sourceTree = "<group>"; };
 		C9B7070C0AF1A074B9EEBCD2 /* Pods_BtgChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BtgChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7EA62092A501B1597B9F7D /* Pods-BtgChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BtgChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BtgChallengeTests/Pods-BtgChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +222,7 @@
 				C60EA92224696B6C00CADCDA /* Networking */,
 				C60EA9112468E69100CADCDA /* Utils */,
 				C60EA8FE246898C500CADCDA /* Coordinator */,
-				C60EA8FD246898B800CADCDA /* Modules */,
+				C60EA8FD246898B800CADCDA /* Screens */,
 				C60EA8CD246896F100CADCDA /* AppDelegate.swift */,
 				C60EA8CF246896F100CADCDA /* SceneDelegate.swift */,
 				C60EA8D6246896F500CADCDA /* Assets.xcassets */,
@@ -221,7 +235,10 @@
 		C60EA8E3246896F600CADCDA /* BtgChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				C60EA8E4246896F600CADCDA /* BtgChallengeTests.swift */,
+				C62A5BC724720BCB00CCC912 /* Spy */,
+				C62A5BC2247207A400CCC912 /* Utils */,
+				C62A5BBA2471F0CF00CCC912 /* Coordinator */,
+				C62A5BBD2471F7AF00CCC912 /* Screens */,
 				C60EA8E6246896F600CADCDA /* Info.plist */,
 			);
 			path = BtgChallengeTests;
@@ -236,14 +253,14 @@
 			path = BtgChallengeUITests;
 			sourceTree = "<group>";
 		};
-		C60EA8FD246898B800CADCDA /* Modules */ = {
+		C60EA8FD246898B800CADCDA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				C60EA90C2468E1EC00CADCDA /* Base */,
 				C60EA9052468E08500CADCDA /* CoinList */,
 				C60EA9042468E06F00CADCDA /* CoinConvert */,
 			);
-			path = Modules;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		C60EA8FE246898C500CADCDA /* Coordinator */ = {
@@ -483,6 +500,58 @@
 				C62A5BB82470CA1300CCC912 /* LocalStorageImpl.swift */,
 			);
 			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		C62A5BBA2471F0CF00CCC912 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C62A5BBB2471F10200CCC912 /* AppCoordinatorTests.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C62A5BBD2471F7AF00CCC912 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C62A5BBF2471F7D400CCC912 /* CoinList */,
+				C62A5BBE2471F7C900CCC912 /* CoinConvert */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C62A5BBE2471F7C900CCC912 /* CoinConvert */ = {
+			isa = PBXGroup;
+			children = (
+				C62A5BC02471F82C00CCC912 /* CoinConvertViewControllerTests.swift */,
+				C62A5BCE2472215200CCC912 /* CoinConvertViewModelTests.swift */,
+			);
+			path = CoinConvert;
+			sourceTree = "<group>";
+		};
+		C62A5BBF2471F7D400CCC912 /* CoinList */ = {
+			isa = PBXGroup;
+			children = (
+				C62A5BD024722E2900CCC912 /* CoinListViewControllerTests.swift */,
+				C62A5BD2247236D700CCC912 /* CoinListViewModelTests.swift */,
+			);
+			path = CoinList;
+			sourceTree = "<group>";
+		};
+		C62A5BC2247207A400CCC912 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C62A5BC3247207BF00CCC912 /* MockFactory.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C62A5BC724720BCB00CCC912 /* Spy */ = {
+			isa = PBXGroup;
+			children = (
+				C62A5BC824720BDA00CCC912 /* LocalStorageSpy.swift */,
+				C62A5BCA24720BFC00CCC912 /* CurrencyRepositorySpy.swift */,
+			);
+			path = Spy;
 			sourceTree = "<group>";
 		};
 		C90AE39D01A5B5B1337D35F7 /* Frameworks */ = {
@@ -806,7 +875,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C60EA8E5246896F600CADCDA /* BtgChallengeTests.swift in Sources */,
+				C62A5BBC2471F10200CCC912 /* AppCoordinatorTests.swift in Sources */,
+				C62A5BCB24720BFC00CCC912 /* CurrencyRepositorySpy.swift in Sources */,
+				C62A5BC12471F82C00CCC912 /* CoinConvertViewControllerTests.swift in Sources */,
+				C62A5BD3247236D700CCC912 /* CoinListViewModelTests.swift in Sources */,
+				C62A5BCF2472215200CCC912 /* CoinConvertViewModelTests.swift in Sources */,
+				C62A5BC924720BDA00CCC912 /* LocalStorageSpy.swift in Sources */,
+				C62A5BD124722E2900CCC912 /* CoinListViewControllerTests.swift in Sources */,
+				C62A5BC4247207BF00CCC912 /* MockFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
