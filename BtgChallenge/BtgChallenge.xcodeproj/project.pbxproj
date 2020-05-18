@@ -69,6 +69,7 @@
 		C62A5BCF2472215200CCC912 /* CoinConvertViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BCE2472215200CCC912 /* CoinConvertViewModelTests.swift */; };
 		C62A5BD124722E2900CCC912 /* CoinListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BD024722E2900CCC912 /* CoinListViewControllerTests.swift */; };
 		C62A5BD3247236D700CCC912 /* CoinListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BD2247236D700CCC912 /* CoinListViewModelTests.swift */; };
+		C62A5BD52472BBEA00CCC912 /* BigCurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A5BD42472BBEA00CCC912 /* BigCurrencyFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		C62A5BCE2472215200CCC912 /* CoinConvertViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConvertViewModelTests.swift; sourceTree = "<group>"; };
 		C62A5BD024722E2900CCC912 /* CoinListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListViewControllerTests.swift; sourceTree = "<group>"; };
 		C62A5BD2247236D700CCC912 /* CoinListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListViewModelTests.swift; sourceTree = "<group>"; };
+		C62A5BD42472BBEA00CCC912 /* BigCurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCurrencyFormatter.swift; sourceTree = "<group>"; };
 		C9B7070C0AF1A074B9EEBCD2 /* Pods_BtgChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BtgChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7EA62092A501B1597B9F7D /* Pods-BtgChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BtgChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BtgChallengeTests/Pods-BtgChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +327,7 @@
 			children = (
 				C60EA9122468EA0800CADCDA /* Extensions */,
 				C60EA925246970B600CADCDA /* Constants.swift */,
+				C62A5BD42472BBEA00CCC912 /* BigCurrencyFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				C60EA9162468EFC500CADCDA /* BtgButton.swift in Sources */,
 				C62A5B88246C5D3F00CCC912 /* CoinListTableView.swift in Sources */,
 				C62A5B9C246E3C7800CCC912 /* CoinListCellViewModel.swift in Sources */,
+				C62A5BD52472BBEA00CCC912 /* BigCurrencyFormatter.swift in Sources */,
 				C62A5BB72470BCD700CCC912 /* LiveResponse.swift in Sources */,
 				C60EA9242469706600CADCDA /* CurrencyRepository.swift in Sources */,
 				C62A5B7A246C2EC900CCC912 /* BtgLoadingView.swift in Sources */,

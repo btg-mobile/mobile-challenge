@@ -19,6 +19,7 @@ protocol CoinListViewModelInput: ViewModelInput {
 
 protocol CoinListViewModelOutput: ViewModelOutput {
     func displayCoinList(viewModel: CoinListTableViewModel)
+    func displayListError(message: String)
 }
 
 final class CoinListViewModel: CoinListViewModelDataStore {
@@ -49,7 +50,7 @@ extension CoinListViewModel: CoinListViewModelInput {
             case .success(let listResponse):
                 self?.displayCoinList(listResponse: listResponse)
             case .failure(let error):
-                print(error)
+                self?.displayListError(message: Constants.Errors.apiDefaultMessage)
             }
         }
     }
@@ -93,6 +94,10 @@ extension CoinListViewModel {
         viewModel.cellViewModels = cellViewModels
         
         viewController?.displayCoinList(viewModel: viewModel)
+    }
+    
+    func displayListError(message: String) {
+        viewController?.displayListError(message: message)
     }
     
     func displayFilteredCoinList(filteredCellViewModels: [CoinListCellViewModel]) {

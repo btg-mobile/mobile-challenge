@@ -23,8 +23,6 @@ protocol CoinConvertViewModelInput: ViewModelInput {
 }
 
 protocol CoinConvertViewModelOutput: ViewModelOutput {
-    func displayLoadingView()
-    func hideLoadingView()
     func displayAlertMessage(message: String)
     
     func displayFromCoinNickname(coinNickname: String)

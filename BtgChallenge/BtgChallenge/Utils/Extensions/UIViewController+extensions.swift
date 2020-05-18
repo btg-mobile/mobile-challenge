@@ -9,20 +9,21 @@
 import UIKit
 
 extension UIViewController {
-    func presentAlert(message: String) {
+    func presentAlert(message: String, callback: (() -> Void)? = nil) {
         let alertController = UIAlertController(
             title: Constants.Strings.alertTitle,
             message: message,
             preferredStyle: .alert
         )
         
-        alertController.addAction(
-            UIAlertAction(
-                title: Constants.Strings.alertButton,
-                style: .default,
-                handler: nil
-            )
-        )
+        let action = UIAlertAction(
+            title: Constants.Strings.alertButton,
+            style: .default
+        ) { (_) in
+            callback?()
+        }
+        
+        alertController.addAction(action)
         
         present(alertController, animated: true, completion: nil)
     }

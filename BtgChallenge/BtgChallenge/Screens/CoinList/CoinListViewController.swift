@@ -83,6 +83,12 @@ extension CoinListViewController: CoinListViewModelOutput {
     func displayCoinList(viewModel: CoinListTableViewModel) {
         coinListView?.coinListTableView.update(viewModel: viewModel)
     }
+    
+    func displayListError(message: String) {
+        presentAlert(message: message) { [weak self] in
+            self?.coordinator?.close()
+        }
+    }
 }
 
 extension CoinListViewController: CoinListTableViewDelegate {

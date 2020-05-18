@@ -23,6 +23,7 @@ class CoinView: UIView {
     // MARK: - Constants
     
     static let height: CGFloat = 52
+    static let maxDigits: Int = 10
     
     // MARK: - Properties
     
@@ -112,6 +113,10 @@ extension CoinView: UITextFieldDelegate {
                    replacementString string: String
     ) -> Bool {
         if string.count > 0 {
+            if valueTypedString.count > CoinView.maxDigits {
+                return false
+            }
+            
             valueTypedString += string
         } else {
             valueTypedString = String(valueTypedString.dropLast())
@@ -134,31 +139,4 @@ extension CoinView: BtgCoinButtonDelegate {
     func didTapCoinButton(view: BtgCoinButton) {
         delegate?.didTapCoinButton(view: self)
     }
-}
-
-class BtgCurrencyFormatter {
-    
-    static var shared = BtgCurrencyFormatter()
-    fileprivate var formatter = NumberFormatter()
-    
-    init() {
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-    }
-    
-    static func format(string: String) -> String {
-        let decNumber = NSDecimalNumber(string: string).multiplying(by: 0.01)
-        return shared.format(number: decNumber)
-    }
-    
-    static func format(double: Double) -> String {
-        return shared.format(number: NSNumber(value: double))
-    }
-    
-    fileprivate func format(number: NSNumber) -> String {
-        let newString = formatter.string(from: number)
-        
-        return newString ?? ""
-    }
-    
 }

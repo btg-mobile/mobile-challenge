@@ -9,8 +9,7 @@
 import Foundation
 
 protocol ViewModelOutput: class {
-    func displayLoadingView()
-    func hideLoadingView()
+    
 }
 
 extension ViewModelOutput {
