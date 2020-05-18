@@ -1,5 +1,6 @@
 # Desafio BTG
-![](https://app.bitrise.io/app/857ca0635d3804be/status.svg?token=rLLsxDOw-fXx6fqIRLOQKA&branch=develop)
+[![Build Status](https://app.bitrise.io/app/857ca0635d3804be/status.svg?token=rLLsxDOw-fXx6fqIRLOQKA&branch=develop)](https://app.bitrise.io/app/857ca0635d3804be)
+
 Seja bem-vindo ao meu desafio! Espero que gostem.
 
 ## Breve descrição
