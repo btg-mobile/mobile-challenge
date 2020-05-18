@@ -52,7 +52,7 @@ class BtgLoadingView: UIView {
         )
     }
     
-    @objc func onAppTimeout(notification: NSNotification){
+    @objc func onAppTimeout(notification: NSNotification) {
         close()
     }
     
@@ -60,7 +60,7 @@ class BtgLoadingView: UIView {
         loadingStatus = .running
         activity.startAnimating()
         
-        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        let currentWindow: UIWindow? = UIApplication.shared.windows.first
         currentWindow?.addSubview(self)
         
         activity.frame = UIScreen.main.bounds

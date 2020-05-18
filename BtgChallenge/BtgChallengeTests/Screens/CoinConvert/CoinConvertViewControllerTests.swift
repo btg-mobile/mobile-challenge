@@ -178,7 +178,10 @@ class CoinConvertViewControllerTests: XCTestCase {
     
     func testDidUpdateCurrency() {
         // When
-        coinConvertViewController.didUpdateCurrency(view: CoinView(coinType: MockFactory.coinType), value: MockFactory.coinValue)
+        coinConvertViewController.didUpdateCurrency(
+            view: CoinView(coinType: MockFactory.coinType),
+            value: MockFactory.coinValue
+        )
         
         // Then
         XCTAssertTrue(viewModel.updateFromCoinValueCalled)

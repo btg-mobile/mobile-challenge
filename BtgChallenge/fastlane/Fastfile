@@ -18,11 +18,16 @@ default_platform(:ios)
 platform :ios do
   desc "Run unit tests"
   lane :test do
+    cocoapods(
+        clean: true,
+   	podfile: "./Podfile"
+    )
+
     run_tests(
       scheme: "BtgChallengeTests",
       code_coverage: true,
       derived_data_path: "unitTestDerivedData",
-      fail_build: false,
+      fail_build: true,
       device: "iPhone 8"
     )
   end
@@ -37,10 +42,11 @@ platform :ios do
 		verbose: true,
 		show: true,
 		ignore:[
-			"../**/*Repository*.swift",
-			"../**/*Request*.swift",
-			"../**/*Response*.swift",
-			"../**/*Model*.swift"
+			"/**/*Repository*.swift",
+			"/**/*LocalStorage*.swift",
+			"/**/*Request*.swift",
+			"/**/*Response*.swift",
+			"/**/*Model*.swift"
 			]
 	)
   end
@@ -53,6 +59,12 @@ platform :ios do
 
   desc "Test swiftlint rules"
   lane :lint do 
+    sh(
+	"rm", 
+	"-rf", 
+	"./Reports"
+    )
+
     sh(
 	"mkdir", 
 	"./Reports"
