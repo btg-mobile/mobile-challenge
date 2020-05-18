@@ -18,11 +18,6 @@ default_platform(:ios)
 platform :ios do
   desc "Run unit tests"
   lane :test do
-    cocoapods(
-        clean: true,
-   	podfile: "./Podfile"
-    )
-
     run_tests(
       scheme: "BtgChallengeTests",
       code_coverage: true,
