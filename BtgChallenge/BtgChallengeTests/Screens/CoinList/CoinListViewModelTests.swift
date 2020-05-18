@@ -31,11 +31,19 @@ class CoinListViewModelTests: XCTestCase {
     
     class ViewModelOutputSpy: CoinListViewModelOutput {
         var displayCoinListCalled = false
+        var displayListErrorCalled = false
+        
         var viewModel: CoinListTableViewModel?
+        var message = ""
         
         func displayCoinList(viewModel: CoinListTableViewModel) {
             self.viewModel = viewModel
             displayCoinListCalled = true
+        }
+        
+        func displayListError(message: String) {
+            self.message = message
+            displayListErrorCalled = true
         }
     }
     
@@ -51,6 +59,18 @@ class CoinListViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(viewController.displayCoinListCalled)
         XCTAssertEqual(viewController.viewModel?.cellViewModels.first?.fullCoinName, listResponse.currencies?.EUR)
+    }
+    
+    func testViewDidLoad_WithFail() {
+        // Given
+        setup(withSuccessRepository: false)
+        
+        // When
+        viewModel.viewDidLoad()
+        
+        // Then
+        XCTAssertTrue(viewController.displayListErrorCalled)
+        XCTAssertEqual(viewController.message, Constants.Errors.apiDefaultMessage)
     }
 
     func testSearchForCoin() {
