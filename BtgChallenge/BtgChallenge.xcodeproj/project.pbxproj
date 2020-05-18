@@ -1040,6 +1040,7 @@
 			baseConfigurationReference = 05B6067E9E337BEC6657A70F /* Pods-BtgChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4XWMMXB4KD;
 				INFOPLIST_FILE = BtgChallenge/Info.plist;
@@ -1049,6 +1050,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.feasm.BtgChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1059,6 +1061,7 @@
 			baseConfigurationReference = C31A16853E7973C27BDDCBCD /* Pods-BtgChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4XWMMXB4KD;
 				INFOPLIST_FILE = BtgChallenge/Info.plist;
@@ -1068,6 +1071,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.feasm.BtgChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

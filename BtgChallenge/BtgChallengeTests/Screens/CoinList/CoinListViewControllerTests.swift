@@ -17,7 +17,7 @@ class CoinListViewControllerTests: XCTestCase {
     var repository: CurrencyRepositorySpy!
     var viewModel: CoinListViewModelSpy!
     var coordinator: CoinListCoordinatorSpy!
-    weak var delegate: CoinListViewControllerDelegateSpy!
+    var delegate: CoinListViewControllerDelegateSpy! //swiftlint:disable:this weak_delegate
     
     override func setUp() {
         window = UIWindow()
