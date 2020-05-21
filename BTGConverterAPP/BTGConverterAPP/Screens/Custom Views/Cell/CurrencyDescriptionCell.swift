@@ -45,5 +45,4 @@ class CurrencyDescriptionCell: UITableViewCell {
             currencyDescriptionLabel.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
-    
 }

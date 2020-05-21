@@ -91,6 +91,7 @@ struct BTGCurrencyConverterController: CurrencyConverterController {
             view?.showErrorMessage(message: BTGCurrencyErrorConstants.currencyEmptyTextField.rawValue)
             return false
         } else {
+            print("o erro foi aqui \(Double(userValueInput))") 
             view?.showErrorMessage(message: BTGCurrencyErrorConstants.invalidCurrency.rawValue)
             return false
         }

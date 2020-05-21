@@ -197,7 +197,6 @@ final class BTGCurrencyConverterVC: UIViewController {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, isKeyboardChangeNecessary else { return }
         
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        // view.safeAreaLayoutGuide.layoutFrame.origin.y
         if notification.name != UIResponder.keyboardWillHideNotification &&
             self.view.frame.origin.y == 0 {
             self.view.frame.origin.y = 0 - keyboardScreenEndFrame.height + 120
@@ -247,8 +246,7 @@ extension BTGCurrencyConverterVC: CurrencySelectionHandler {
     func setKeyboardNecessary(to value: Bool) {
         isKeyboardChangeNecessary = value
     }
-    
-    
+
     func setBaseCurrency(currencyAbbreviation: String) {
         baseCurrencyCardView.currencyLabel.text = currencyAbbreviation
     }

@@ -115,11 +115,18 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         snapshot.appendSections([.main])
         if isSearching && !currencyDescriptionsFiltered.isEmpty {
             snapshot.appendItems(currencyDescriptionsFiltered)
-        } else if !currencyDescriptions.isEmpty && !isSearching {
+            updateDataSourceMainAsync(snapshot)
+        } else if !isSearching && !currencyDescriptions.isEmpty  {
             snapshot.appendItems(currencyDescriptions)
+            updateDataSourceMainAsync(snapshot)
         } else {
+            snapshot.appendItems([])
+            updateDataSourceMainAsync(snapshot)
             return
         }
+    }
+    
+    private func updateDataSourceMainAsync(_ snapshot: NSDiffableDataSourceSnapshot<Section, CurrencyDescription>) {
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
@@ -186,6 +193,7 @@ extension BTGCurrencyListVC: UITableViewDelegate {
         if isModalView {
             switch modalSelection! {
             case .base:
+                print("\(isSearching) is searching ")
                 currencySelectionDelegate?.setBaseCurrency(currencyAbbreviation:
                     isSearching ? currencyDescriptionsFiltered[indexPath.row].abbreviation : currencyDescriptions[indexPath.row].abbreviation  )
             case .target:
