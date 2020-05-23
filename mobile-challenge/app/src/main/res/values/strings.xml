@@ -25,5 +25,8 @@
     <string name="error_unprocessable">Não foi possível completar a operação. Os seguintes problemas foram encontrados:\n\n%s</string>
     <string name="error_unauthorized_login_now">Não foi possível completar a operação. Sua sessão expirou. Por favor faça login novamente.</string>
     <!--List Currency-->
+    <string name="hint_origin_currency">Escolha uma moeda de origem</string>
+    <string name="hint_destination_currency">Escolha uma moeda de destino</string>
+    <!--List Currency-->
     <string name="currency_template">%s (%s)</string>
 </resources>

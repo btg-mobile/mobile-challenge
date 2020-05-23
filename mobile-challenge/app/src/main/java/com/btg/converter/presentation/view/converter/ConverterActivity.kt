@@ -33,6 +33,7 @@ class ConverterActivity : BaseActivity() {
     override fun subscribeUi() {
         super.subscribeUi()
         _viewModel.currencyQuotes.observe(this, ::onCurrencyQuotesReceived)
+        _viewModel.placeholder.observe(this) { binding.placeholderView.setPlaceholder(it) }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -53,13 +54,13 @@ class ConverterActivity : BaseActivity() {
     }
 
     private fun setupUi() {
-        with(binding) {
-            originCoinChooser.root.setSafeClickListener {
-                chooseCurrency(ORIGIN_CURRENCY_CODE)
-            }
-            destinationCoinChooser.root.setSafeClickListener {
-                chooseCurrency(DESTINATION_CURRENCY_CODE)
-            }
+        with(binding.originCoinChooser) {
+            root.setSafeClickListener { chooseCurrency(ORIGIN_CURRENCY_CODE) }
+            binding.originCurrencyText = getString(R.string.hint_origin_currency)
+        }
+        with(binding.destinationCoinChooser) {
+            root.setSafeClickListener { chooseCurrency(DESTINATION_CURRENCY_CODE) }
+            binding.destinationCurrencyText = getString(R.string.hint_destination_currency)
         }
     }
 

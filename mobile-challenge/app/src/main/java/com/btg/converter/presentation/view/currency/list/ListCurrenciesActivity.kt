@@ -30,6 +30,7 @@ class ListCurrenciesActivity : BaseActivity() {
     override fun subscribeUi() {
         super.subscribeUi()
         _viewModel.currencyList.observe(this, ::onCurrencyListReceived)
+        _viewModel.placeholder.observe(this) { binding.placeholderView.setPlaceholder(it) }
     }
 
     private fun setupAdapter() {

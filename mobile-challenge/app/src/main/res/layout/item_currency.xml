@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,8 +13,8 @@
             android:id="@+id/text_view_currency_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dolares Americanos (USD)"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Dolares Americanos (USD)" />
     </LinearLayout>
 </layout>
