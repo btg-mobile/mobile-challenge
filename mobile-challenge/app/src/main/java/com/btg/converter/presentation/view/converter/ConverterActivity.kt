@@ -8,10 +8,11 @@ import androidx.databinding.DataBindingUtil
 import com.btg.converter.R
 import com.btg.converter.databinding.ActivityConverterBinding
 import com.btg.converter.domain.entity.currency.Currency
-import com.btg.converter.domain.entity.quote.CurrentQuotes
 import com.btg.converter.presentation.util.base.BaseActivity
 import com.btg.converter.presentation.util.base.BaseViewModel
+import com.btg.converter.presentation.util.constants.TWO_DECIMAL_NUMBER
 import com.btg.converter.presentation.util.extension.observe
+import com.btg.converter.presentation.util.extension.onTextChanges
 import com.btg.converter.presentation.util.extension.setSafeClickListener
 import com.btg.converter.presentation.view.currency.list.ListCurrenciesActivity
 import com.btg.converter.presentation.view.currency.list.ListCurrenciesActivity.Companion.CURRENCY_EXTRA
@@ -32,8 +33,8 @@ class ConverterActivity : BaseActivity() {
 
     override fun subscribeUi() {
         super.subscribeUi()
-        _viewModel.currencyQuotes.observe(this, ::onCurrencyQuotesReceived)
         _viewModel.placeholder.observe(this) { binding.placeholderView.setPlaceholder(it) }
+        _viewModel.conversionPair.observe(this, ::onConversionPairReceived)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -42,11 +43,13 @@ class ConverterActivity : BaseActivity() {
             when (requestCode) {
                 ORIGIN_CURRENCY_CODE -> {
                     val originCurrency = data?.getSerializableExtra(CURRENCY_EXTRA) as? Currency
+                    _viewModel.conversionForm.originCurrency = originCurrency
                     binding.originCurrencyText = originCurrency?.getFormattedString(this)
                 }
                 DESTINATION_CURRENCY_CODE -> {
                     val destinationCurrency =
                         data?.getSerializableExtra(CURRENCY_EXTRA) as? Currency
+                    _viewModel.conversionForm.destinationCurrency = destinationCurrency
                     binding.destinationCurrencyText = destinationCurrency?.getFormattedString(this)
                 }
             }
@@ -54,13 +57,17 @@ class ConverterActivity : BaseActivity() {
     }
 
     private fun setupUi() {
-        with(binding.originCoinChooser) {
-            root.setSafeClickListener { chooseCurrency(ORIGIN_CURRENCY_CODE) }
-            binding.originCurrencyText = getString(R.string.hint_origin_currency)
-        }
-        with(binding.destinationCoinChooser) {
-            root.setSafeClickListener { chooseCurrency(DESTINATION_CURRENCY_CODE) }
-            binding.destinationCurrencyText = getString(R.string.hint_destination_currency)
+        with(binding) {
+            textInputConversionValue.onTextChanges(_viewModel::setConversionValue)
+            originCoinChooser.root.setSafeClickListener { chooseCurrency(ORIGIN_CURRENCY_CODE) }
+            originCurrencyText = getString(R.string.hint_origin_currency)
+            destinationCoinChooser.root.setSafeClickListener {
+                chooseCurrency(
+                    DESTINATION_CURRENCY_CODE
+                )
+            }
+            destinationCurrencyText = getString(R.string.hint_destination_currency)
+            buttonConvert.setSafeClickListener { _viewModel.performConversion() }
         }
     }
 
@@ -71,9 +78,10 @@ class ConverterActivity : BaseActivity() {
         )
     }
 
-    private fun onCurrencyQuotesReceived(currentQuotes: CurrentQuotes?) {
-        currentQuotes?.let {
-
+    private fun onConversionPairReceived(conversionPair: Pair<Currency?, Double>?) {
+        conversionPair?.let {
+            binding.textViewConvertedValue.text = String.format(TWO_DECIMAL_NUMBER, it.second)
+            binding.textViewConvertedCurrency.text = it.first?.name ?: ""
         }
     }
 

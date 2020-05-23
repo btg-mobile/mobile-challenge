@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.btg.converter.R
 
-class Strings constructor(private val context: Context) {
+class
+
+Strings constructor(private val context: Context) {
 
     val errorTitle: String get() = res(R.string.error_title)
     val errorUnknown: String get() = res(R.string.error_unknown)

@@ -27,6 +27,8 @@
     <!--List Currency-->
     <string name="hint_origin_currency">Escolha uma moeda de origem</string>
     <string name="hint_destination_currency">Escolha uma moeda de destino</string>
-    <!--List Currency-->
+    <!--Convert Currency-->
     <string name="currency_template">%s (%s)</string>
+    <string name="converted_value_hint">0</string>
+    <string name="converted_currency_hint">Moeda Convertida</string>
 </resources>

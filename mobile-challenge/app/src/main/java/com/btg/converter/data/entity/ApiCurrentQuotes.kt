@@ -19,6 +19,11 @@ data class ApiCurrentQuotes(
         privacy = privacy,
         timestamp = timestamp,
         sourceCurrencyCode = sourceCurrencyCode,
-        quotes = quotes.map { Quote(it.key, it.value) }
+        quotes = quotes.map {
+            Quote(
+                it.key.removePrefix(sourceCurrencyCode),
+                it.value
+            )
+        }
     )
 }
