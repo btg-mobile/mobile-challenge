@@ -6,7 +6,7 @@
     <string name="global_or">Ou</string>
     <string name="global_yes">Sim</string>
     <string name="global_no">Não</string>
-    <string name="global_wait">Aguarde...</string>
+    <string name="global_wait">Aguarde…</string>
     <string name="global_try_again">Tentar novamente</string>
     <string name="global_warning">Aviso</string>
     <string name="global_cancel">Cancelar</string>
@@ -27,6 +27,12 @@
     <!--List Currency-->
     <string name="hint_origin_currency">Escolha uma moeda de origem</string>
     <string name="hint_destination_currency">Escolha uma moeda de destino</string>
+    <string name="action_search">Procurar</string>
+    <string name="action_filter">Filtrar</string>
+    <string name="filter_by_name">Filtrar por nome</string>
+    <string name="filter_by_code">Filtrar por código</string>
+    <string name="sort_by_name">Ordenar por nome</string>
+    <string name="sort_by_code">Ordenar por código</string>
     <!--Convert Currency-->
     <string name="currency_template">%s (%s)</string>
     <string name="converted_value_hint">0</string>

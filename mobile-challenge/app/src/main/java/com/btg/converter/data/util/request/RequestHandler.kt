@@ -1,6 +1,6 @@
 package com.btg.converter.data.util.request
 
-import com.btg.converter.data.entity.ApiErrors
+import com.btg.converter.data.remote.entity.ApiErrors
 import com.btg.converter.domain.entity.error.RequestException
 import com.google.gson.Gson
 import kotlinx.coroutines.coroutineScope

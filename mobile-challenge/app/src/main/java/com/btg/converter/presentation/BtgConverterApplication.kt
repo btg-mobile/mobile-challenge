@@ -1,10 +1,7 @@
 package com.btg.converter.presentation
 
 import android.app.Application
-import com.btg.converter.presentation.di.interactorModule
-import com.btg.converter.presentation.di.networkingModule
-import com.btg.converter.presentation.di.repositoryModule
-import com.btg.converter.presentation.di.viewModelModule
+import com.btg.converter.presentation.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,8 +15,10 @@ class BtgConverterApplication : Application() {
                 listOf(
                     networkingModule(),
                     viewModelModule(),
+                    databaseModule(),
                     repositoryModule(),
-                    interactorModule()
+                    interactorModule(),
+                    resourceModule()
                 )
             )
         }

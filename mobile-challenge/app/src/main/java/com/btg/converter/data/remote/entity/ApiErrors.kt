@@ -1,4 +1,4 @@
-package com.btg.converter.data.entity
+package com.btg.converter.data.remote.entity
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

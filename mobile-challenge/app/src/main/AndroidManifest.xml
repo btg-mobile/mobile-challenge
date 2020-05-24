@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.btg.converter.presentation.view.main.MainActivity" />
         <activity
             android:name=".presentation.view.converter.ConverterActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -29,6 +28,6 @@
         <activity
             android:name=".presentation.view.currency.list.ListCurrenciesActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionbar" />
+            android:theme="@style/AppTheme" />
     </application>
 </manifest>

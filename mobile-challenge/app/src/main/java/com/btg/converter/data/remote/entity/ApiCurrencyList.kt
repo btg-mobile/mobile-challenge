@@ -1,4 +1,4 @@
-package com.btg.converter.data.entity
+package com.btg.converter.data.remote.entity
 
 import com.btg.converter.domain.entity.currency.Currency
 import com.btg.converter.domain.entity.currency.CurrencyList
@@ -14,8 +14,6 @@ data class ApiCurrencyList(
     fun toDomainObject(): CurrencyList {
         return CurrencyList(
             success = success,
-            terms = terms,
-            privacy = privacy,
             currencies = currencies
                 .map { Currency(code = it.key, name = it.value) }
                 .sortedBy { it.name }

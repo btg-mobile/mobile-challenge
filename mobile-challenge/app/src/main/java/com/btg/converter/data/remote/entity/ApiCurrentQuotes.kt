@@ -1,4 +1,4 @@
-package com.btg.converter.data.entity
+package com.btg.converter.data.remote.entity
 
 import com.btg.converter.domain.entity.quote.CurrentQuotes
 import com.btg.converter.domain.entity.quote.Quote
@@ -15,10 +15,6 @@ data class ApiCurrentQuotes(
 
     fun toDomainObject() = CurrentQuotes(
         success = success,
-        terms = terms,
-        privacy = privacy,
-        timestamp = timestamp,
-        sourceCurrencyCode = sourceCurrencyCode,
         quotes = quotes.map {
             Quote(
                 it.key.removePrefix(sourceCurrencyCode),

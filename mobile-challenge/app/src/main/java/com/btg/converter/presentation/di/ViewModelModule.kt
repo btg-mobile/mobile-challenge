@@ -8,7 +8,7 @@ import org.koin.dsl.module
 fun viewModelModule() = module {
 
     viewModel {
-        ConverterViewModel(get(), get())
+        ConverterViewModel(get(), get(), get())
     }
 
     viewModel {

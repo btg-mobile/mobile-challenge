@@ -1,7 +1,7 @@
 package com.btg.converter.presentation.di
 
-import com.btg.converter.data.client.ApiClient
-import com.btg.converter.data.client.ApiService
+import com.btg.converter.data.remote.client.ApiClient
+import com.btg.converter.data.remote.client.ApiService
 import com.btg.converter.data.util.resource.API_DATE_FORMAT
 import com.btg.converter.data.util.resource.API_ENDPOINT_NAMED
 import com.google.gson.Gson

@@ -1,11 +1,11 @@
 package com.btg.converter.domain.interactor
 
-import com.btg.converter.domain.boundary.CurrencyRepository
+import com.btg.converter.domain.boundary.QuoteRepository
 
 
 class GetCurrentQuotes constructor(
-    private val currencyRepository: CurrencyRepository
+    private val quoteRepository: QuoteRepository
 ) {
 
-    suspend fun execute() = currencyRepository.getCurrentQuotes()
+    suspend fun execute() = quoteRepository.getCurrentQuotes()
 }

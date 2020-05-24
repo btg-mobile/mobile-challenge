@@ -19,6 +19,7 @@ android {
         versionName "1.0"
         buildConfigField "String", "API_ENDPOINT", "\"http://api.currencylayer.com\""
         buildConfigField "String", "ACCESS_KEY", "\"af2ae4059d0939008cd173ff39ec0e4d\""
+        buildConfigField "String", "DATABASE_NAME", "\"app-currency-converter\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -58,6 +59,11 @@ dependencies {
     implementation "org.koin:koin-android:$koinVersion"
     implementation "org.koin:koin-android-scope:$koinVersion"
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
+
+    // room
+    kapt "androidx.room:room-compiler:$roomVersion"
+    api "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     //Tests
     testImplementation 'junit:junit:4.12'

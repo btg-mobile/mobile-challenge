@@ -45,6 +45,10 @@ class ConverterViewModel constructor(
         conversionForm.conversionValue = conversionValue.toDoubleOrNull()
     }
 
+    private fun getCurrentQuotes() {
+        launchDataLoad { currentQuotes = getCurrentQuotes.execute() }
+    }
+
     private fun sendConversionResult(convertedValue: Double?) {
         if (convertedValue == null) {
             showConversionErrorDialog()
@@ -87,9 +91,5 @@ class ConverterViewModel constructor(
                 true
             )
         )
-    }
-
-    private fun getCurrentQuotes() {
-        launchDataLoad { currentQuotes = getCurrentQuotes.execute() }
     }
 }

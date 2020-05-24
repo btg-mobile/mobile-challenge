@@ -1,7 +1,7 @@
-package com.btg.converter.data.client
+package com.btg.converter.data.remote.client
 
-import com.btg.converter.data.entity.ApiCurrencyList
-import com.btg.converter.data.entity.ApiCurrentQuotes
+import com.btg.converter.data.remote.entity.ApiCurrencyList
+import com.btg.converter.data.remote.entity.ApiCurrentQuotes
 import com.btg.converter.data.util.request.RequestHandler
 
 class ApiClient constructor(
