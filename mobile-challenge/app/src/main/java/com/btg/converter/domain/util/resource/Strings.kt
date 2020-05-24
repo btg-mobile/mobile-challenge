@@ -27,6 +27,10 @@ Strings constructor(private val context: Context) {
     val globalCancel: String get() = res(R.string.global_cancel)
     val globalDoLogin: String get() = res(R.string.global_do_login)
     val globalOk: String get() = res(R.string.global_ok)
+    val emptyFieldsErrorTitle:String = res(R.string.empty_currencies_error)
+    val emptyCurrenciesError:String = res(R.string.empty_currencies_error)
+    val emptyValueError:String = res(R.string.empty_value_error)
+    val conversionError:String = res(R.string.conversion_error)
 
     private fun res(@StringRes stringId: Int) = context.getString(stringId)
 }

@@ -13,6 +13,16 @@ class DialogData(
 ) {
     companion object {
 
+        fun confirm(
+            title: String,
+            message: String,
+            onConfirm: () -> Unit,
+            confirmButtonText: String? = null,
+            cancelable: Boolean? = true
+        ): DialogData {
+            return DialogData(title, message, confirmButtonText, onConfirm, null, null, cancelable)
+        }
+
         fun error(
             strings: Strings,
             message: String,
