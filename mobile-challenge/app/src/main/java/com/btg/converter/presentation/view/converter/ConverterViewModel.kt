@@ -2,7 +2,7 @@ package com.btg.converter.presentation.view.converter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.btg.converter.domain.entity.currency.Currency
+import com.btg.converter.domain.entity.currency.Conversion
 import com.btg.converter.domain.entity.quote.CurrentQuotes
 import com.btg.converter.domain.interactor.GetCurrentQuotes
 import com.btg.converter.domain.interactor.PerformConversion
@@ -17,9 +17,9 @@ class ConverterViewModel constructor(
     private val strings: Strings
 ) : BaseViewModel() {
 
-    val conversionPair: LiveData<Pair<Currency?, Double>> get() = _conversionPair
+    val conversion: LiveData<Conversion> get() = _conversion
 
-    private val _conversionPair by lazy { MutableLiveData<Pair<Currency?, Double>>() }
+    private val _conversion by lazy { MutableLiveData<Conversion>() }
 
     private var currentQuotes: CurrentQuotes? = null
     val conversionForm = ConversionForm()
@@ -53,7 +53,11 @@ class ConverterViewModel constructor(
         if (convertedValue == null) {
             showConversionErrorDialog()
         } else {
-            _conversionPair.value = conversionForm.destinationCurrency to convertedValue
+            _conversion.value = Conversion(
+                conversionForm.originCurrency,
+                conversionForm.destinationCurrency,
+                convertedValue
+            )
         }
     }
 

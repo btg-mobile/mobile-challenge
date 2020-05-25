@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.btg.converter.R
 import com.btg.converter.databinding.ActivityConverterBinding
+import com.btg.converter.domain.entity.currency.Conversion
 import com.btg.converter.domain.entity.currency.Currency
 import com.btg.converter.presentation.util.base.BaseActivity
 import com.btg.converter.presentation.util.base.BaseViewModel
@@ -34,7 +35,7 @@ class ConverterActivity : BaseActivity() {
     override fun subscribeUi() {
         super.subscribeUi()
         _viewModel.placeholder.observe(this) { binding.placeholderView.setPlaceholder(it) }
-        _viewModel.conversionPair.observe(this, ::onConversionPairReceived)
+        _viewModel.conversion.observe(this, ::onConversionReceived)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -78,10 +79,13 @@ class ConverterActivity : BaseActivity() {
         )
     }
 
-    private fun onConversionPairReceived(conversionPair: Pair<Currency?, Double>?) {
-        conversionPair?.let {
-            binding.textViewConvertedValue.text = String.format(TWO_DECIMAL_NUMBER, it.second)
-            binding.textViewConvertedCurrency.text = it.first?.name ?: ""
+    private fun onConversionReceived(conversion: Conversion?) {
+        conversion?.let {
+            with(binding) {
+                textViewConvertedValue.text = String.format(TWO_DECIMAL_NUMBER, it.convertedValue)
+                textViewOriginCurrency.text = it.originCurrency?.name ?: ""
+                textViewDestinationCurrency.text = it.destinationCurrency?.name ?: ""
+            }
         }
     }
 

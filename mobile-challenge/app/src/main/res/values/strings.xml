@@ -31,7 +31,8 @@
     <!--Convert Currency-->
     <string name="currency_template">%s (%s)</string>
     <string name="converted_value_hint">0</string>
-    <string name="converted_currency_hint">Moeda Convertida</string>
+    <string name="origin_currency_hint">Moeda Origem</string>
+    <string name="destination_currency_hint">Moeda De destino</string>
     <string name="button_convert_text">Converter</string>
     <string name="conversion_value_hint">Valor a ser convertido</string>
     <string name="empty_fields_error_title">Campos vazios</string>
