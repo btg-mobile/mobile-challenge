@@ -27,6 +27,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/background_light"
         android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="24dp"

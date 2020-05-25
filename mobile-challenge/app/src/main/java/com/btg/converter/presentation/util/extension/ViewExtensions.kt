@@ -30,7 +30,8 @@ fun EditText.onTextChanges(callback: (String) -> Unit) {
 
 // transparent
 fun transparentStatusAndNavigation(window: Window) {
-    window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    window.decorView.systemUiVisibility =
+        (View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false, window)
     window.statusBarColor = Color.TRANSPARENT
 }

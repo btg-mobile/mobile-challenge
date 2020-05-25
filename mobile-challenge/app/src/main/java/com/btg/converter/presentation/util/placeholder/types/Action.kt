@@ -7,14 +7,10 @@ class Action(
     val buttonText: String,
     val action: () -> Unit
 ) : Placeholder {
-    override val progressVisible: Boolean
-        get() = false
-    override val visible: Boolean
-        get() = true
-    override val buttonVisible: Boolean
-        get() = true
-    override val messageVisible: Boolean
-        get() = true
+    override val progressVisible: Boolean get() = false
+    override val visible: Boolean get() = true
+    override val buttonVisible: Boolean get() = true
+    override val messageVisible: Boolean get() = true
 
     fun onActionButtonClicked() {
         action.invoke()

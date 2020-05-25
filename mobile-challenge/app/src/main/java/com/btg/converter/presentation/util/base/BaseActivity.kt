@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.btg.converter.presentation.util.dialog.DialogData
 import com.btg.converter.presentation.util.extension.consume
 import com.btg.converter.presentation.util.extension.observe
-import com.btg.converter.presentation.util.extension.shortToast
 import com.btg.converter.presentation.util.extension.showDialog
 import com.btg.converter.presentation.util.navigation.NavData
 
@@ -22,8 +21,8 @@ abstract class BaseActivity : AppCompatActivity() {
         subscribeUi()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             android.R.id.home -> consume { onBackPressed() }
             else -> super.onOptionsItemSelected(item)
         }
@@ -32,7 +31,6 @@ abstract class BaseActivity : AppCompatActivity() {
     open fun subscribeUi() {
         baseViewModel.dialog.observe(this, ::onNextDialog)
         baseViewModel.goTo.observe(this, ::onGoTo)
-        baseViewModel.toast.observe(this, ::onNextToast)
     }
 
     private fun onNextDialog(dialogData: DialogData?) {
@@ -42,11 +40,5 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private fun onGoTo(navData: NavData?) {
         navData?.navigate(this)
-    }
-
-    private fun onNextToast(text: String?) {
-        text?.let {
-            shortToast(it)
-        }
     }
 }

@@ -1,29 +1,24 @@
 <resources>
     <string name="app_name">Conversor de Moedas</string>
     <!--Global Strings-->
-    <string name="global_facebook">Facebook</string>
-    <string name="global_google">Google</string>
-    <string name="global_or">Ou</string>
-    <string name="global_yes">Sim</string>
-    <string name="global_no">Não</string>
-    <string name="global_wait">Aguarde…</string>
     <string name="global_try_again">Tentar novamente</string>
-    <string name="global_warning">Aviso</string>
-    <string name="global_cancel">Cancelar</string>
-    <string name="global_do_login">Fazer login</string>
     <string name="global_ok">OK</string>
     <string name="global_send">Enviar</string>
     <string name="global_error">Erro</string>
-    <string name="global_pick_avatar_using">Escolher imagem usando:</string>
+    <string name="global_cancel">Cancelar</string>
     <!--Error Strings-->
     <string name="error_title">Oops!</string>
     <string name="error_socket_timeout">Não foi possível completar a operação. Conexão expirada.</string>
-    <string name="error_not_processable">Não foi possível realizar esta operação</string>
-    <string name="error_not_found">Não encontrado</string>
+    <string name="error_not_found">Não foi possível completar a operação. Destino não encontrado</string>
+    <string name="error_internal_server">Não foi possível completar a operação. Houve um erro interno</string>
+    <string name="error_bad_request">Não foi possível completar a operação. A requisição falhou</string>
+    <string name="error_conflict">Não foi possível completar a operação. Houve conflitos nos dados</string>
+    <string name="error_forbidden">Não foi possível completar a operação. Acesso proibido</string>
+    <string name="error_unauthorized">Não foi possível completar a operação. É necessário renovar o cadastro</string>
+    <string name="error_unexpected">Não foi possível completar a operação. Houve um erro inesperado</string>
+    <string name="error_unprocessable_entity">Não foi possível completar a operação. Verifique as informações</string>
     <string name="error_unknown">Não foi possível completar a operação. Tente novamente mais tarde. Se o problema persistir entre em contato conosco.</string>
     <string name="error_network">Não foi possível completar a operação. Verifique sua conexão e tente novamente.</string>
-    <string name="error_unprocessable">Não foi possível completar a operação. Os seguintes problemas foram encontrados:\n\n%s</string>
-    <string name="error_unauthorized_login_now">Não foi possível completar a operação. Sua sessão expirou. Por favor faça login novamente.</string>
     <!--List Currency-->
     <string name="hint_origin_currency">Escolha uma moeda de origem</string>
     <string name="hint_destination_currency">Escolha uma moeda de destino</string>

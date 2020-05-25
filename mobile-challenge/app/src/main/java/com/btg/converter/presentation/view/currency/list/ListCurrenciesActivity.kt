@@ -14,7 +14,6 @@ import com.btg.converter.domain.entity.currency.Currency
 import com.btg.converter.presentation.util.base.BaseActivity
 import com.btg.converter.presentation.util.base.BaseViewModel
 import com.btg.converter.presentation.util.extension.observe
-import com.btg.converter.presentation.util.extension.transparentStatusAndNavigation
 import com.btg.converter.presentation.util.query.QueryChangesHelper
 import com.btg.converter.presentation.view.currency.CurrencyFilterType
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -45,8 +44,8 @@ class ListCurrenciesActivity : BaseActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             R.id.filter_by_name -> {
                 _viewModel.filterFullList(CurrencyFilterType.FilterByName)
                 true
@@ -78,7 +77,7 @@ class ListCurrenciesActivity : BaseActivity() {
 
     private fun showQueryPopUpMenu(searchView: SearchView) {
         val popUpMenu = PopupMenu(this, searchView)
-        popUpMenu.inflate(R.menu.code_name_menu)
+        popUpMenu.inflate(R.menu.filter_currency_menu)
         popUpMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.by_name -> {

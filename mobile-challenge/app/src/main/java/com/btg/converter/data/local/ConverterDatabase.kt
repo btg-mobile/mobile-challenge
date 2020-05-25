@@ -18,8 +18,11 @@ abstract class ConverterDatabase : RoomDatabase() {
 
     companion object {
         fun build(context: Context): ConverterDatabase {
-            return Room.databaseBuilder(context, ConverterDatabase::class.java, BuildConfig.DATABASE_NAME)
-                .build()
+            return Room.databaseBuilder(
+                context,
+                ConverterDatabase::class.java,
+                BuildConfig.DATABASE_NAME
+            ).build()
         }
     }
 }

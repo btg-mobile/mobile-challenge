@@ -1,7 +1,7 @@
 package com.btg.converter.presentation.util.error
 
 import com.btg.converter.domain.entity.error.ErrorData
-import com.btg.converter.domain.entity.error.HttpError
+import com.btg.converter.domain.entity.error.HttpErrorType
 import com.btg.converter.domain.entity.error.RequestException
 import com.btg.converter.domain.util.resource.Strings
 import com.btg.converter.presentation.util.dialog.DialogData
@@ -38,22 +38,18 @@ class ErrorHandler constructor(
         exception: RequestException,
         tryAgainAction: (() -> Unit)? = null
     ): ErrorData {
-        return when {
-            exception.isUnProcessableEntity() ->
-                ErrorData.UnProcessableEntityErrorData(
-                    exception.errorMessage ?: strings.errorUnknown
-                )
-            exception.isTimeOutException() ->
+        return when (exception) {
+            is RequestException.TimeoutError ->
                 ErrorData.TimeOutErrorData(strings.errorSocketTimeout, tryAgainAction)
-            exception.isNetworkError() -> ErrorData.NetworkErrorData(
+            is RequestException.NetworkError -> ErrorData.NetworkErrorData(
                 strings.errorNetwork,
                 tryAgainAction
             )
-            exception.isUnauthorizedError() -> ErrorData.UnauthorizedErrorData(
-                exception.errorMessage ?: strings.errorUnknown
+            is RequestException.UnexpectedError -> ErrorData.UnexpectedErrorData(
+                exception.errorMessage ?: strings.errorUnknown,
+                tryAgainAction
             )
-            exception.isHttpError() -> resolveHttpError(exception, tryAgainAction)
-            else -> ErrorData.UnexpectedErrorData(strings.errorUnknown, tryAgainAction)
+            is RequestException.HttpError -> resolveHttpError(exception, tryAgainAction)
         }
     }
 
@@ -61,23 +57,32 @@ class ErrorHandler constructor(
         exception: RequestException,
         tryAgainAction: (() -> Unit)?
     ): ErrorData {
-        return when (HttpError.getErrorForCode(exception.errorCode)) {
-            HttpError.NOT_FOUND -> ErrorData.NotFoundErrorData(
+        return when (exception.httpErrorType) {
+            HttpErrorType.NOT_FOUND -> ErrorData.ClientEndHttpErrorData(
                 exception.errorMessage ?: strings.errorNotFound
             )
-            HttpError.TIMEOUT -> ErrorData.TimeOutErrorData(
+            HttpErrorType.TIMEOUT -> ErrorData.HttpErrorData(
                 strings.errorSocketTimeout,
                 tryAgainAction
             )
-            HttpError.INTERNAL_SERVER_ERROR -> ErrorData.HttpErrorData(
-                strings.errorUnknown,
+            HttpErrorType.INTERNAL_SERVER_ERROR -> ErrorData.HttpErrorData(
+                strings.errorInternalServer,
                 tryAgainAction
             )
+            HttpErrorType.UNEXPECTED_ERROR -> ErrorData.HttpErrorData(
+                strings.errorUnexpected,
+                tryAgainAction
+            )
+            HttpErrorType.BAD_REQUEST -> ErrorData.ClientEndHttpErrorData(strings.errorBadRequest)
+            HttpErrorType.CONFLICT -> ErrorData.ClientEndHttpErrorData(strings.errorConflict)
+            HttpErrorType.FORBIDDEN -> ErrorData.ClientEndHttpErrorData(strings.errorForbidden)
+            HttpErrorType.UNAUTHORIZED -> ErrorData.ClientEndHttpErrorData(strings.errorUnauthorized)
+            HttpErrorType.UN_PROCESSABLE_ENTITY -> ErrorData.ClientEndHttpErrorData(strings.errorUnprocessableEntity)
             else -> ErrorData.HttpErrorData(
                 exception.errorMessage
                     ?: exception.message
                     ?: strings.errorUnknown,
-                null
+                tryAgainAction
             )
         }
     }

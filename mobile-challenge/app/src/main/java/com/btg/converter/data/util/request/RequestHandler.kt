@@ -18,7 +18,7 @@ open class RequestHandler {
                     if (isSuccessful) {
                         body()
                     } else {
-                        throw RequestException.httpError(
+                        throw RequestException.HttpError(
                             code(),
                             extractErrorBody(errorBody())
                         )
@@ -27,10 +27,10 @@ open class RequestHandler {
             } catch (t: Exception) {
                 throw when (t) {
                     is RequestException -> t
-                    is SocketTimeoutException -> RequestException.timeoutError(t)
-                    is UnknownHostException -> RequestException.unexpectedError(t)
-                    is IOException -> RequestException.networkError(t)
-                    else -> RequestException.unexpectedError(t)
+                    is SocketTimeoutException -> RequestException.TimeoutError()
+                    is UnknownHostException -> RequestException.UnexpectedError(t)
+                    is IOException -> RequestException.NetworkError()
+                    else -> RequestException.UnexpectedError(t)
                 }
             }
         }

@@ -22,12 +22,10 @@ abstract class BaseViewModel : ViewModel(), KoinComponent {
     val placeholder: LiveData<Placeholder> get() = _placeholder
     val goTo: LiveData<NavData> get() = _goTo
     val dialog: LiveData<DialogData> get() = _dialog
-    val toast: LiveData<String> get() = _toast
 
     private val _placeholder by lazy { MutableLiveData<Placeholder>() }
     private val _goTo by lazy { MutableLiveData<NavData>() }
     private val _dialog by lazy { MutableLiveData<DialogData>() }
-    private val _toast by lazy { MutableLiveData<String>() }
 
     protected fun setPlaceholder(placeholder: Placeholder) {
         _placeholder.postValue(placeholder)

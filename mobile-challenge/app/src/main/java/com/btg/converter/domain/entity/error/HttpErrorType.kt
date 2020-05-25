@@ -1,6 +1,6 @@
 package com.btg.converter.domain.entity.error
 
-enum class HttpError {
+enum class HttpErrorType {
     BAD_REQUEST,
     UNAUTHORIZED,
     FORBIDDEN,
@@ -12,7 +12,7 @@ enum class HttpError {
     UNEXPECTED_ERROR;
 
     companion object {
-        fun getErrorForCode(errorCode: Int?): HttpError {
+        fun getErrorForCode(errorCode: Int?): HttpErrorType {
             errorCode?.let {
                 return when (it) {
                     400 -> BAD_REQUEST

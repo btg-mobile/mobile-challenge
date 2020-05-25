@@ -39,6 +39,3 @@ fun AlertDialog.Builder.setNegativeButton(buttonText: String?, onClick: (() -> U
         buttonText ?: context.getString(R.string.global_cancel),
         onClick?.let { { _: DialogInterface, _: Int -> it() } }
     )
-
-fun Context.shortToast(message: String) =
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
