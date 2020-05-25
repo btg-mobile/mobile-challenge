@@ -29,13 +29,16 @@ class ConverterViewModel constructor(
     }
 
     fun performConversion() {
-        when {
-            conversionForm.isCurrenciesEmpty() -> showEmptyCurrenciesDialog()
-            conversionForm.isValueEmpty() -> showEmptyValueDialog()
-            else -> {
-                currentQuotes?.let {
-                    val convertedValue = performConversion.execute(conversionForm, it)
-                    sendConversionResult(convertedValue)
+        if (currentQuotes == null) getCurrentQuotes()
+        else {
+            when {
+                conversionForm.isCurrenciesEmpty() -> showEmptyCurrenciesDialog()
+                conversionForm.isValueEmpty() -> showEmptyValueDialog()
+                else -> {
+                    currentQuotes?.let {
+                        val convertedValue = performConversion.execute(conversionForm, it)
+                        sendConversionResult(convertedValue)
+                    }
                 }
             }
         }
@@ -46,7 +49,13 @@ class ConverterViewModel constructor(
     }
 
     private fun getCurrentQuotes() {
-        launchDataLoad { currentQuotes = getCurrentQuotes.execute() }
+        launchDataLoad(onFailure = ::onFailure) {
+            val currentQuotes = getCurrentQuotes.execute()
+            if (currentQuotes?.success == false)
+                showCurrentQuotesErrorDialog()
+            else
+                this.currentQuotes = currentQuotes
+        }
     }
 
     private fun sendConversionResult(convertedValue: Double?) {
@@ -95,5 +104,21 @@ class ConverterViewModel constructor(
                 true
             )
         )
+    }
+
+    private fun showCurrentQuotesErrorDialog() {
+        setDialog(
+            DialogData.confirm(
+                strings.errorTitle,
+                strings.currentQuotesError,
+                { /* Do Nothing */ },
+                strings.globalOk,
+                true
+            )
+        )
+    }
+
+    private fun onFailure(throwable: Throwable) {
+        setDialog(throwable, ::getCurrentQuotes)
     }
 }

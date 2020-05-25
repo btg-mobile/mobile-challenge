@@ -13,7 +13,7 @@ fun viewModelModule() = module {
     }
 
     viewModel {
-        ListCurrenciesViewModel(get())
+        ListCurrenciesViewModel(get(), get())
     }
 
     viewModel { SplashViewModel() }

@@ -17,7 +17,7 @@
     <string name="error_unauthorized">Não foi possível completar a operação. É necessário renovar o cadastro</string>
     <string name="error_unexpected">Não foi possível completar a operação. Houve um erro inesperado</string>
     <string name="error_unprocessable_entity">Não foi possível completar a operação. Verifique as informações</string>
-    <string name="error_unknown">Não foi possível completar a operação. Tente novamente mais tarde. Se o problema persistir entre em contato conosco.</string>
+    <string name="error_unknown">Não foi possível completar a operação. Tente novamente mais tarde.</string>
     <string name="error_network">Não foi possível completar a operação. Verifique sua conexão e tente novamente.</string>
     <!--List Currency-->
     <string name="hint_origin_currency">Escolha uma moeda de origem</string>
@@ -32,11 +32,13 @@
     <string name="currency_template">%s (%s)</string>
     <string name="converted_value_hint">0</string>
     <string name="origin_currency_hint">Moeda Origem</string>
-    <string name="destination_currency_hint">Moeda De destino</string>
+    <string name="destination_currency_hint">Moeda de destino</string>
     <string name="button_convert_text">Converter</string>
     <string name="conversion_value_hint">Valor a ser convertido</string>
     <string name="empty_fields_error_title">Campos vazios</string>
     <string name="empty_currencies_error">Por favor, escolha uma moeda de origem e uma de destino</string>
     <string name="empty_value_error">Por favor, insira o valor a ser convertido</string>
     <string name="conversion_error">Houve um erro na conversão. Por favor, tente novamente</string>
+    <string name="current_quotes_error">Houve um erro ao pegar as cotações atuais. Por favor, tente novamente</string>
+    <string name="currency_list_error">Houve um erro ao pegar a lista de moedas. Por favor, tente novamente</string>
 </resources>

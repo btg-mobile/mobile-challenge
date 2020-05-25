@@ -5,11 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import com.btg.converter.domain.entity.currency.Currency
 import com.btg.converter.domain.entity.currency.CurrencyList
 import com.btg.converter.domain.interactor.GetCurrencyList
+import com.btg.converter.domain.util.resource.Strings
 import com.btg.converter.presentation.util.base.BaseViewModel
+import com.btg.converter.presentation.util.dialog.DialogData
 import com.btg.converter.presentation.view.currency.CurrencyFilterType
 
 class ListCurrenciesViewModel constructor(
-    private val getCurrencyList: GetCurrencyList
+    private val getCurrencyList: GetCurrencyList,
+    private val strings: Strings
 ) : BaseViewModel() {
 
     val currencyList: LiveData<List<Currency>> get() = _currencyList
@@ -42,9 +45,26 @@ class ListCurrenciesViewModel constructor(
 
     private fun getCurrencyList() {
         launchDataLoad(onFailure = ::onFailure) {
-            fullCurrencyList = getCurrencyList.execute()
-            _currencyList.value = fullCurrencyList?.currencies
+            val currencyList = getCurrencyList.execute()
+            if (currencyList?.success == false) {
+                showCurrencyListErrorDialog()
+            } else {
+                fullCurrencyList = currencyList
+                _currencyList.value = fullCurrencyList?.currencies
+            }
         }
+    }
+
+    private fun showCurrencyListErrorDialog() {
+        setDialog(
+            DialogData.confirm(
+                strings.errorTitle,
+                strings.currencyListError,
+                { /* Do Nothing */ },
+                strings.globalOk,
+                true
+            )
+        )
     }
 
     private fun onFailure(throwable: Throwable) {
