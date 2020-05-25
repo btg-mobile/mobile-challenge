@@ -20,6 +20,7 @@
     <string name="error_unknown">Não foi possível completar a operação. Tente novamente mais tarde.</string>
     <string name="error_network">Não foi possível completar a operação. Verifique sua conexão e tente novamente.</string>
     <!--List Currency-->
+    <string name="list_currency_title">Escolha uma moeda</string>
     <string name="hint_origin_currency">Escolha uma moeda de origem</string>
     <string name="hint_destination_currency">Escolha uma moeda de destino</string>
     <string name="action_search">Procurar</string>
