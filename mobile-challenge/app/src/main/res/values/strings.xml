@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Monetary Converter</string>
+    <string name="app_name">Conversor de Moedas</string>
     <!--Global Strings-->
     <string name="global_facebook">Facebook</string>
     <string name="global_google">Google</string>

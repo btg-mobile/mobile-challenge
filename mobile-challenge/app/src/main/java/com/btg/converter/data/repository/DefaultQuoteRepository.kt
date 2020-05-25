@@ -3,10 +3,10 @@ package com.btg.converter.data.repository
 import com.btg.converter.data.local.dao.QuoteDao
 import com.btg.converter.data.local.entity.DbQuote
 import com.btg.converter.data.remote.client.ApiClient
+import com.btg.converter.data.util.request.handleException
 import com.btg.converter.domain.boundary.QuoteRepository
 import com.btg.converter.domain.entity.quote.CurrentQuotes
 import com.btg.converter.domain.entity.quote.Quote
-import com.btg.converter.presentation.util.extension.handleException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

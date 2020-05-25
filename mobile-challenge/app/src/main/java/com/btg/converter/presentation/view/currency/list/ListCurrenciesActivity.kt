@@ -14,6 +14,7 @@ import com.btg.converter.domain.entity.currency.Currency
 import com.btg.converter.presentation.util.base.BaseActivity
 import com.btg.converter.presentation.util.base.BaseViewModel
 import com.btg.converter.presentation.util.extension.observe
+import com.btg.converter.presentation.util.extension.transparentStatusAndNavigation
 import com.btg.converter.presentation.util.query.QueryChangesHelper
 import com.btg.converter.presentation.view.currency.CurrencyFilterType
 import org.koin.android.viewmodel.ext.android.viewModel

@@ -14,6 +14,7 @@ import com.btg.converter.presentation.util.constants.TWO_DECIMAL_NUMBER
 import com.btg.converter.presentation.util.extension.observe
 import com.btg.converter.presentation.util.extension.onTextChanges
 import com.btg.converter.presentation.util.extension.setSafeClickListener
+import com.btg.converter.presentation.util.extension.transparentStatusAndNavigation
 import com.btg.converter.presentation.view.currency.list.ListCurrenciesActivity
 import com.btg.converter.presentation.view.currency.list.ListCurrenciesActivity.Companion.CURRENCY_EXTRA
 import org.koin.android.viewmodel.ext.android.viewModel

@@ -13,9 +13,9 @@ class CurrencyViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun setupBinding(item: Currency, callback: (Currency) -> Unit) {
-        with(binding.textViewCurrencyName) {
-            text = item.getFormattedString(context)
-            setOnClickListener { callback(item) }
+        with(binding) {
+            textViewCurrencyName.text = item.getFormattedString(root.context)
+            root.setOnClickListener { callback(item) }
         }
     }
 

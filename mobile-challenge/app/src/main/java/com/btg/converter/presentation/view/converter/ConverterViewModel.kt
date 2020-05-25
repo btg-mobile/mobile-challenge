@@ -72,8 +72,8 @@ class ConverterViewModel constructor(
     private fun showEmptyValueDialog() {
         setDialog(
             DialogData.confirm(
+                strings.errorTitle,
                 strings.emptyValueError,
-                strings.emptyCurrenciesError,
                 { /* Do Nothing */ },
                 strings.globalOk,
                 true

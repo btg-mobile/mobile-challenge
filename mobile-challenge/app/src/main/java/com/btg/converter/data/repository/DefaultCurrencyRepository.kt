@@ -3,10 +3,10 @@ package com.btg.converter.data.repository
 import com.btg.converter.data.local.dao.CurrencyDao
 import com.btg.converter.data.local.entity.DbCurrency
 import com.btg.converter.data.remote.client.ApiClient
+import com.btg.converter.data.util.request.handleException
 import com.btg.converter.domain.boundary.CurrencyRepository
 import com.btg.converter.domain.entity.currency.Currency
 import com.btg.converter.domain.entity.currency.CurrencyList
-import com.btg.converter.presentation.util.extension.handleException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
