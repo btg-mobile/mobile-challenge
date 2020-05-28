@@ -19,6 +19,8 @@
 		DECE0509247FF84400321ED9 /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0508247FF84400321ED9 /* APILoader.swift */; };
 		DECE050C247FF8A800321ED9 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE050B247FF8A800321ED9 /* ServiceError.swift */; };
 		DECE0513247FFB0700321ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0512247FFB0700321ED9 /* Constants.swift */; };
+		DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0514247FFBB900321ED9 /* Localizer.swift */; };
+		DECE0517247FFC0E00321ED9 /* Constants.plist in Resources */ = {isa = PBXBuildFile; fileRef = DECE0516247FFC0E00321ED9 /* Constants.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		DECE0508247FF84400321ED9 /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
 		DECE050B247FF8A800321ED9 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		DECE0512247FFB0700321ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DECE0514247FFBB900321ED9 /* Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		DECE0516247FFC0E00321ED9 /* Constants.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Constants.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 				DE228180247FEF5300265E5E /* LaunchScreen.storyboard */,
 				DE228183247FEF5300265E5E /* Info.plist */,
 				DE22817B247FEF5100265E5E /* Desafio_iOS.xcdatamodeld */,
+				DECE0516247FFC0E00321ED9 /* Constants.plist */,
 			);
 			path = "Desafio iOS";
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				DECE0512247FFB0700321ED9 /* Constants.swift */,
+				DECE0514247FFBB900321ED9 /* Localizer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 			files = (
 				DECE0504247FF40F00321ED9 /* CoinConversionViewController.xib in Resources */,
 				DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */,
+				DECE0517247FFC0E00321ED9 /* Constants.plist in Resources */,
 				DE22817F247FEF5300265E5E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */,
 				DE22817D247FEF5100265E5E /* Desafio_iOS.xcdatamodeld in Sources */,
 				DE228173247FEF5100265E5E /* AppDelegate.swift in Sources */,
 				DECE0507247FF55000321ED9 /* APIHandler.swift in Sources */,
