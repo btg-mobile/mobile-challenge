@@ -7,9 +7,9 @@
 //
 
 import Foundation
-struct Constants {
-    struct Network {
-        static let baseUrl = "Networking.baseURL".localized
-        static let accessKey = "Networking.accessKey".localized
+public struct Constants {
+    public struct Network {
+        public static let baseUrl = "Networking.baseUrl".localized
+        public static let accessKey = "Networking.accessKey".localized
     }
 }
