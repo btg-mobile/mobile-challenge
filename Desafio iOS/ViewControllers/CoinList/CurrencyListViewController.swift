@@ -10,13 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CoinConversionViewController: UIViewController {
+class CurrencyListViewController: UIViewController {
 
     // MARK: - Properties
-    let viewModel: CoinConversionViewModelProtocol
+    let viewModel: CurrencyListViewModelProtocol
     
     // MARK: - Initializer
-    init(viewModel: CoinConversionViewModelProtocol) {
+    init(viewModel: CurrencyListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,7 +43,7 @@ class CoinConversionViewController: UIViewController {
     
     private func setupObservable() {
         self.viewModel.currencyListObservable.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { result in
-            result?.currencies?.coinsDictionary.forEach( {print($0.value )})
+//            result?.currencies?.coinsDictionary.forEach( {print($0.value )})
         }).disposed(by: viewModel.disposeBag)
     }
 }

@@ -15,9 +15,9 @@
 		DE22817F247FEF5300265E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE22817E247FEF5300265E5E /* Assets.xcassets */; };
 		DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE228180247FEF5300265E5E /* LaunchScreen.storyboard */; };
 		DE22818D247FEF5300265E5E /* Desafio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */; };
-		DE7581E72480143A006BB53E /* CoinConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7581E62480143A006BB53E /* CoinConversionViewModel.swift */; };
-		DECE0503247FF40F00321ED9 /* CoinConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0501247FF40F00321ED9 /* CoinConversionViewController.swift */; };
-		DECE0504247FF40F00321ED9 /* CoinConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECE0502247FF40F00321ED9 /* CoinConversionViewController.xib */; };
+		DE7581E72480143A006BB53E /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */; };
+		DECE0503247FF40F00321ED9 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */; };
+		DECE0504247FF40F00321ED9 /* CurrencyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */; };
 		DECE0513247FFB0700321ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0512247FFB0700321ED9 /* Constants.swift */; };
 		DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0514247FFBB900321ED9 /* Localizer.swift */; };
 		DECE0517247FFC0E00321ED9 /* Constants.plist in Resources */ = {isa = PBXBuildFile; fileRef = DECE0516247FFC0E00321ED9 /* Constants.plist */; };
@@ -29,6 +29,9 @@
 		DEF128EC2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF128EB2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift */; };
 		DEF128EE24802A5600EE0A4E /* CurrencyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF128ED24802A5600EE0A4E /* CurrencyRouter.swift */; };
 		DEF128F124802CD800EE0A4E /* CurrencyLayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF128F024802CD800EE0A4E /* CurrencyLayerService.swift */; };
+		DEF128F424803AD100EE0A4E /* CoinConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF128F224803AD100EE0A4E /* CoinConversionViewController.swift */; };
+		DEF128F524803AD100EE0A4E /* CoinConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF128F324803AD100EE0A4E /* CoinConversionViewController.xib */; };
+		DEF128F724803AE300EE0A4E /* CoinConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF128F624803AE300EE0A4E /* CoinConversionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +61,9 @@
 		DE228188247FEF5300265E5E /* Desafio iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSTests.swift; sourceTree = "<group>"; };
 		DE22818E247FEF5300265E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE7581E62480143A006BB53E /* CoinConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewModel.swift; sourceTree = "<group>"; };
-		DECE0501247FF40F00321ED9 /* CoinConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewController.swift; sourceTree = "<group>"; };
-		DECE0502247FF40F00321ED9 /* CoinConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinConversionViewController.xib; sourceTree = "<group>"; };
+		DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
+		DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListViewController.xib; sourceTree = "<group>"; };
 		DECE0512247FFB0700321ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DECE0514247FFBB900321ED9 /* Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		DECE0516247FFC0E00321ED9 /* Constants.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Constants.plist; sourceTree = "<group>"; };
@@ -72,6 +75,9 @@
 		DEF128EB2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerServiceProtocol.swift; sourceTree = "<group>"; };
 		DEF128ED24802A5600EE0A4E /* CurrencyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRouter.swift; sourceTree = "<group>"; };
 		DEF128F024802CD800EE0A4E /* CurrencyLayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerService.swift; sourceTree = "<group>"; };
+		DEF128F224803AD100EE0A4E /* CoinConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewController.swift; sourceTree = "<group>"; };
+		DEF128F324803AD100EE0A4E /* CoinConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinConversionViewController.xib; sourceTree = "<group>"; };
+		DEF128F624803AE300EE0A4E /* CoinConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,27 +164,30 @@
 		DECE04FE247FF3D000321ED9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DECE0500247FF3E700321ED9 /* Coin Conversion */,
-				DECE04FF247FF3E000321ED9 /* CoinList */,
+				DECE0500247FF3E700321ED9 /* CoinList */,
+				DECE04FF247FF3E000321ED9 /* CoinConversion */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		DECE04FF247FF3E000321ED9 /* CoinList */ = {
+		DECE04FF247FF3E000321ED9 /* CoinConversion */ = {
 			isa = PBXGroup;
 			children = (
+				DEF128F224803AD100EE0A4E /* CoinConversionViewController.swift */,
+				DEF128F324803AD100EE0A4E /* CoinConversionViewController.xib */,
+				DEF128F624803AE300EE0A4E /* CoinConversionViewModel.swift */,
 			);
-			path = CoinList;
+			path = CoinConversion;
 			sourceTree = "<group>";
 		};
-		DECE0500247FF3E700321ED9 /* Coin Conversion */ = {
+		DECE0500247FF3E700321ED9 /* CoinList */ = {
 			isa = PBXGroup;
 			children = (
-				DECE0501247FF40F00321ED9 /* CoinConversionViewController.swift */,
-				DECE0502247FF40F00321ED9 /* CoinConversionViewController.xib */,
-				DE7581E62480143A006BB53E /* CoinConversionViewModel.swift */,
+				DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */,
+				DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */,
+				DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */,
 			);
-			path = "Coin Conversion";
+			path = CoinList;
 			sourceTree = "<group>";
 		};
 		DECE0511247FFAFE00321ED9 /* Utils */ = {
@@ -342,9 +351,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DECE0504247FF40F00321ED9 /* CoinConversionViewController.xib in Resources */,
+				DECE0504247FF40F00321ED9 /* CurrencyListViewController.xib in Resources */,
 				DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */,
 				DECE0517247FFC0E00321ED9 /* Constants.plist in Resources */,
+				DEF128F524803AD100EE0A4E /* CoinConversionViewController.xib in Resources */,
 				DE22817F247FEF5300265E5E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,18 +439,20 @@
 			files = (
 				DEF128E9248028E300EE0A4E /* Currency.swift in Sources */,
 				DEF128F124802CD800EE0A4E /* CurrencyLayerService.swift in Sources */,
-				DE7581E72480143A006BB53E /* CoinConversionViewModel.swift in Sources */,
+				DE7581E72480143A006BB53E /* CurrencyListViewModel.swift in Sources */,
 				DEF128E72480288500EE0A4E /* CurrenciesListResponse.swift in Sources */,
 				DEF128EE24802A5600EE0A4E /* CurrencyRouter.swift in Sources */,
 				DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */,
 				DEF128E2248026DE00EE0A4E /* HTTPManager.swift in Sources */,
+				DEF128F424803AD100EE0A4E /* CoinConversionViewController.swift in Sources */,
 				DE22817D247FEF5100265E5E /* Desafio_iOS.xcdatamodeld in Sources */,
 				DE228173247FEF5100265E5E /* AppDelegate.swift in Sources */,
 				DEF128DE2480264700EE0A4E /* HTTPRouter.swift in Sources */,
 				DEF128E0248026B300EE0A4E /* HTTPMethod.swift in Sources */,
+				DEF128F724803AE300EE0A4E /* CoinConversionViewModel.swift in Sources */,
 				DEF128EC2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift in Sources */,
 				DE228175247FEF5100265E5E /* SceneDelegate.swift in Sources */,
-				DECE0503247FF40F00321ED9 /* CoinConversionViewController.swift in Sources */,
+				DECE0503247FF40F00321ED9 /* CurrencyListViewController.swift in Sources */,
 				DECE0513247FFB0700321ED9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

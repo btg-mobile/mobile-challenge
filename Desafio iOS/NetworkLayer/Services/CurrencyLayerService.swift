@@ -17,7 +17,7 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
     
     func getCurrenciesList(onCompletion: @escaping((CurrencyListResult) -> Void)) {
         
-        httpManager.request(router: .list) { [weak self] (result: CurrencyListResult) in
+        httpManager.request(router: .list) { (result: CurrencyListResult) in
             onCompletion(result)
         }
         

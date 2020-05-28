@@ -10,20 +10,20 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol CoinConversionViewModelProtocol {
+protocol CurrencyListViewModelProtocol {
     var currencyListObservable: Observable<CurrenciesListResponse?> { get }
     var disposeBag: DisposeBag { get }
     func getList()
 }
 
 
-class CoinConversionViewModel {
+class CurrencyListViewModel {
     
     private let _disposeBag = DisposeBag()
     private let currencyList = BehaviorRelay<CurrenciesListResponse?>(value: nil)
     
 }
-extension CoinConversionViewModel: CoinConversionViewModelProtocol {
+extension CurrencyListViewModel: CurrencyListViewModelProtocol {
     
     var disposeBag: DisposeBag {
         return _disposeBag
