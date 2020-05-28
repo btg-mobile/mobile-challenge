@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		DE228173247FEF5100265E5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE228172247FEF5100265E5E /* AppDelegate.swift */; };
 		DE228175247FEF5100265E5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE228174247FEF5100265E5E /* SceneDelegate.swift */; };
-		DE228177247FEF5100265E5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE228176247FEF5100265E5E /* ViewController.swift */; };
-		DE22817A247FEF5100265E5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE228178247FEF5100265E5E /* Main.storyboard */; };
 		DE22817D247FEF5100265E5E /* Desafio_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE22817B247FEF5100265E5E /* Desafio_iOS.xcdatamodeld */; };
 		DE22817F247FEF5300265E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE22817E247FEF5300265E5E /* Assets.xcassets */; };
 		DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE228180247FEF5300265E5E /* LaunchScreen.storyboard */; };
 		DE22818D247FEF5300265E5E /* Desafio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */; };
+		DECE0503247FF40F00321ED9 /* CoinConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0501247FF40F00321ED9 /* CoinConversionViewController.swift */; };
+		DECE0504247FF40F00321ED9 /* CoinConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECE0502247FF40F00321ED9 /* CoinConversionViewController.xib */; };
+		DECE0507247FF55000321ED9 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0506247FF55000321ED9 /* APIHandler.swift */; };
+		DECE0509247FF84400321ED9 /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0508247FF84400321ED9 /* APILoader.swift */; };
+		DECE050C247FF8A800321ED9 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE050B247FF8A800321ED9 /* ServiceError.swift */; };
+		DECE0513247FFB0700321ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0512247FFB0700321ED9 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +35,6 @@
 		DE22816F247FEF5100265E5E /* Desafio iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE228172247FEF5100265E5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE228174247FEF5100265E5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE228176247FEF5100265E5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DE228179247FEF5100265E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE22817C247FEF5100265E5E /* Desafio_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Desafio_iOS.xcdatamodel; sourceTree = "<group>"; };
 		DE22817E247FEF5300265E5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE228181247FEF5300265E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +42,12 @@
 		DE228188247FEF5300265E5E /* Desafio iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSTests.swift; sourceTree = "<group>"; };
 		DE22818E247FEF5300265E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DECE0501247FF40F00321ED9 /* CoinConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewController.swift; sourceTree = "<group>"; };
+		DECE0502247FF40F00321ED9 /* CoinConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinConversionViewController.xib; sourceTree = "<group>"; };
+		DECE0506247FF55000321ED9 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		DECE0508247FF84400321ED9 /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
+		DECE050B247FF8A800321ED9 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		DECE0512247FFB0700321ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +89,14 @@
 		DE228171247FEF5100265E5E /* Desafio iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DECE0511247FFAFE00321ED9 /* Utils */,
+				DECE050E247FF93000321ED9 /* Services */,
+				DECE050D247FF92600321ED9 /* Business */,
+				DECE050A247FF8A000321ED9 /* Model */,
+				DECE0505247FF53100321ED9 /* NetworkLayer */,
+				DECE04FE247FF3D000321ED9 /* ViewControllers */,
 				DE228172247FEF5100265E5E /* AppDelegate.swift */,
 				DE228174247FEF5100265E5E /* SceneDelegate.swift */,
-				DE228176247FEF5100265E5E /* ViewController.swift */,
-				DE228178247FEF5100265E5E /* Main.storyboard */,
 				DE22817E247FEF5300265E5E /* Assets.xcassets */,
 				DE228180247FEF5300265E5E /* LaunchScreen.storyboard */,
 				DE228183247FEF5300265E5E /* Info.plist */,
@@ -100,6 +112,70 @@
 				DE22818E247FEF5300265E5E /* Info.plist */,
 			);
 			path = "Desafio iOSTests";
+			sourceTree = "<group>";
+		};
+		DECE04FE247FF3D000321ED9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DECE0500247FF3E700321ED9 /* Coin Conversion */,
+				DECE04FF247FF3E000321ED9 /* CoinList */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DECE04FF247FF3E000321ED9 /* CoinList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoinList;
+			sourceTree = "<group>";
+		};
+		DECE0500247FF3E700321ED9 /* Coin Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				DECE0501247FF40F00321ED9 /* CoinConversionViewController.swift */,
+				DECE0502247FF40F00321ED9 /* CoinConversionViewController.xib */,
+			);
+			path = "Coin Conversion";
+			sourceTree = "<group>";
+		};
+		DECE0505247FF53100321ED9 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				DECE0506247FF55000321ED9 /* APIHandler.swift */,
+				DECE0508247FF84400321ED9 /* APILoader.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		DECE050A247FF8A000321ED9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DECE050B247FF8A800321ED9 /* ServiceError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DECE050D247FF92600321ED9 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		DECE050E247FF93000321ED9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DECE0511247FFAFE00321ED9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DECE0512247FFB0700321ED9 /* Constants.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +259,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECE0504247FF40F00321ED9 /* CoinConversionViewController.xib in Resources */,
 				DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */,
 				DE22817F247FEF5300265E5E /* Assets.xcassets in Resources */,
-				DE22817A247FEF5100265E5E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,10 +279,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE228177247FEF5100265E5E /* ViewController.swift in Sources */,
 				DE22817D247FEF5100265E5E /* Desafio_iOS.xcdatamodeld in Sources */,
 				DE228173247FEF5100265E5E /* AppDelegate.swift in Sources */,
+				DECE0507247FF55000321ED9 /* APIHandler.swift in Sources */,
 				DE228175247FEF5100265E5E /* SceneDelegate.swift in Sources */,
+				DECE0503247FF40F00321ED9 /* CoinConversionViewController.swift in Sources */,
+				DECE050C247FF8A800321ED9 /* ServiceError.swift in Sources */,
+				DECE0509247FF84400321ED9 /* APILoader.swift in Sources */,
+				DECE0513247FFB0700321ED9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,14 +309,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DE228178247FEF5100265E5E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE228179247FEF5100265E5E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DE228180247FEF5300265E5E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
