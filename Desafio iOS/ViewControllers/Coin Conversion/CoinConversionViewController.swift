@@ -25,12 +25,25 @@ class CoinConversionViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.getList()
+        self.setup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.viewModel.getList()
+    }
+    
+   // MARK: - Setups
+    private func setup() {
+        setupObservable()
+    }
+    
+    private func setupObservable() {
+        self.viewModel.currencyListObservable.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { result in
+            result?.currencies?.coinsDictionary.forEach( {print($0.value )})
+        }).disposed(by: viewModel.disposeBag)
     }
 }
