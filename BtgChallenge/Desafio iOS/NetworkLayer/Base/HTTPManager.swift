@@ -16,7 +16,7 @@ class HTTPManager<Router: HTTPRouter> {
     
     // MARK: - Instance Properties
     
-    private var timeoutInterval: TimeInterval = 10
+    private var timeout: TimeInterval = 10
     private var decoder = JSONDecoder()
     
     // MARK: - Public Methods
@@ -36,7 +36,7 @@ class HTTPManager<Router: HTTPRouter> {
         
         var request = URLRequest(url: components.url!)
         request.httpMethod = router.method.rawValue
-        request.timeoutInterval = timeoutInterval
+        request.timeoutInterval = timeout
         request.allHTTPHeaderFields = router.headers
         
         return request

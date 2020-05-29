@@ -4,14 +4,14 @@
 target 'Desafio iOS' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for Desafio iOS
-
- 	pod 'RxSwift'
-    pod 'RxCocoa'
+  
+  pod 'RxSwift'
+  pod 'RxCocoa'
   target 'Desafio iOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
 end

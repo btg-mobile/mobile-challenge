@@ -1,0 +1,92 @@
+//
+//  CoinConversionViewModel.swift
+//  Desafio iOS
+//
+//  Created by Lucas Soares on 28/05/20.
+//  Copyright © 2020 Lucas Soares. All rights reserved.
+//
+
+import Foundation
+import RxSwift
+import RxCocoa
+
+enum CurrencySource: String {
+    case to = "to"
+    case from = "from"
+}
+
+protocol CurrencyListViewModelProtocol {
+    var errorObservable: BehaviorRelay<String?> { get }
+    var disposeBag: DisposeBag { get }
+    var currencySource: CurrencySource { get }
+    func getList()
+    func filterList(predicate: String) -> Observable<[FormattedCurrency]>
+    
+}
+
+
+class CurrencyListViewModel {
+    
+    private let _disposeBag = DisposeBag()
+    private let _currencyList = BehaviorRelay<[FormattedCurrency]>(value: [])
+    private let _error = BehaviorRelay<String?>(value: nil)
+    private let _currencySource: CurrencySource
+    
+    init(currencySource: CurrencySource) {
+        self._currencySource = currencySource
+    }
+    
+    
+}
+
+extension CurrencyListViewModel: CurrencyListViewModelProtocol {
+    
+    
+    var currencySource: CurrencySource {
+        return _currencySource
+    }
+    
+    var disposeBag: DisposeBag {
+        return _disposeBag
+    }
+    
+    var errorObservable: BehaviorRelay<String?> {
+        return _error
+    }
+    
+    func getList() {
+        let httpManager = HTTPManager<CurrencyRouter>()
+        CurrencyLayerService(httpManager: httpManager).getCurrenciesList { (result) in
+            if let response = result.result, let currencies = response.currencies {
+                self._currencyList.accept(self.setupFormattedListWith(dictionary: currencies.coinsDictionary))
+            } else if let errorDesc = result.failure?.localizedDescription {
+                self.errorObservable.accept(errorDesc)
+            }
+            
+        }
+    }
+    
+    private func setupFormattedListWith(dictionary currencies: [String: String?]) -> [FormattedCurrency] {
+        return currencies.compactMap { element in
+            guard let value = element.value else {
+                return nil
+            }
+            let formattedCurrency = FormattedCurrency(currencyCode: element.key, currencyName: value)
+            return formattedCurrency
+        
+        }.sorted(by: { $0.currencyCode < $1.currencyCode })
+    
+    }
+    
+    func filterList(predicate: String) -> Observable<[FormattedCurrency]> {
+        
+        if predicate == "" {
+            return self._currencyList.asObservable()
+        } else {
+            var list = self._currencyList.value
+            list = list.filter( { $0.currencyCode.lowercased().contains(predicate.lowercased()) || $0.currencyFullName.lowercased().contains(predicate.lowercased())})
+            return .just(list)
+        }
+        
+    }
+ }

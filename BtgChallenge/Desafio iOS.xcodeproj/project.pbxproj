@@ -16,6 +16,9 @@
 		DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE228180247FEF5300265E5E /* LaunchScreen.storyboard */; };
 		DE22818D247FEF5300265E5E /* Desafio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */; };
 		DE7581E72480143A006BB53E /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */; };
+		DE988B39248146420055F1BE /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B38248146420055F1BE /* CurrencyButton.swift */; };
+		DE988B3C248160FB0055F1BE /* FormattedCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */; };
+		DE988B3F248170C50055F1BE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B3E248170C50055F1BE /* StringExtension.swift */; };
 		DECE0503247FF40F00321ED9 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */; };
 		DECE0504247FF40F00321ED9 /* CurrencyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */; };
 		DECE0513247FFB0700321ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0512247FFB0700321ED9 /* Constants.swift */; };
@@ -62,6 +65,9 @@
 		DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSTests.swift; sourceTree = "<group>"; };
 		DE22818E247FEF5300265E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
+		DE988B38248146420055F1BE /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
+		DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedCurrency.swift; sourceTree = "<group>"; };
+		DE988B3E248170C50055F1BE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
 		DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListViewController.xib; sourceTree = "<group>"; };
 		DECE0512247FFB0700321ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		DE228171247FEF5100265E5E /* Desafio iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DE988B3A248160ED0055F1BE /* Model */,
 				DEF128DB2480261F00EE0A4E /* NetworkLayer */,
 				DEF128DA248025B000EE0A4E /* Support Files */,
 				DECE0511247FFAFE00321ED9 /* Utils */,
@@ -159,6 +166,30 @@
 				DE22818E247FEF5300265E5E /* Info.plist */,
 			);
 			path = "Desafio iOSTests";
+			sourceTree = "<group>";
+		};
+		DE988B352481424F0055F1BE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DE988B38248146420055F1BE /* CurrencyButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DE988B3A248160ED0055F1BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE988B3D248170BB0055F1BE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE988B3E248170C50055F1BE /* StringExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DECE04FE247FF3D000321ED9 /* ViewControllers */ = {
@@ -193,6 +224,8 @@
 		DECE0511247FFAFE00321ED9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DE988B3D248170BB0055F1BE /* Extensions */,
+				DE988B352481424F0055F1BE /* Components */,
 				DECE0516247FFC0E00321ED9 /* Constants.plist */,
 				DECE0512247FFB0700321ED9 /* Constants.swift */,
 				DECE0514247FFBB900321ED9 /* Localizer.swift */,
@@ -441,6 +474,7 @@
 				DEF128F124802CD800EE0A4E /* CurrencyLayerService.swift in Sources */,
 				DE7581E72480143A006BB53E /* CurrencyListViewModel.swift in Sources */,
 				DEF128E72480288500EE0A4E /* CurrenciesListResponse.swift in Sources */,
+				DE988B39248146420055F1BE /* CurrencyButton.swift in Sources */,
 				DEF128EE24802A5600EE0A4E /* CurrencyRouter.swift in Sources */,
 				DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */,
 				DEF128E2248026DE00EE0A4E /* HTTPManager.swift in Sources */,
@@ -448,11 +482,13 @@
 				DE22817D247FEF5100265E5E /* Desafio_iOS.xcdatamodeld in Sources */,
 				DE228173247FEF5100265E5E /* AppDelegate.swift in Sources */,
 				DEF128DE2480264700EE0A4E /* HTTPRouter.swift in Sources */,
+				DE988B3F248170C50055F1BE /* StringExtension.swift in Sources */,
 				DEF128E0248026B300EE0A4E /* HTTPMethod.swift in Sources */,
 				DEF128F724803AE300EE0A4E /* CoinConversionViewModel.swift in Sources */,
 				DEF128EC2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift in Sources */,
 				DE228175247FEF5100265E5E /* SceneDelegate.swift in Sources */,
 				DECE0503247FF40F00321ED9 /* CurrencyListViewController.swift in Sources */,
+				DE988B3C248160FB0055F1BE /* FormattedCurrency.swift in Sources */,
 				DECE0513247FFB0700321ED9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
