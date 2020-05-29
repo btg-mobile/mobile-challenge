@@ -19,6 +19,9 @@
 		DE988B39248146420055F1BE /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B38248146420055F1BE /* CurrencyButton.swift */; };
 		DE988B3C248160FB0055F1BE /* FormattedCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */; };
 		DE988B3F248170C50055F1BE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B3E248170C50055F1BE /* StringExtension.swift */; };
+		DE988B412481755D0055F1BE /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B402481755D0055F1BE /* ExtensionUIViewController.swift */; };
+		DE988B4C2481817D0055F1BE /* CurrencyLiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B4B2481817D0055F1BE /* CurrencyLiveResponse.swift */; };
+		DE988B4E248184A40055F1BE /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B4D248184A40055F1BE /* DoubleExtension.swift */; };
 		DECE0503247FF40F00321ED9 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */; };
 		DECE0504247FF40F00321ED9 /* CurrencyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */; };
 		DECE0513247FFB0700321ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECE0512247FFB0700321ED9 /* Constants.swift */; };
@@ -68,6 +71,9 @@
 		DE988B38248146420055F1BE /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedCurrency.swift; sourceTree = "<group>"; };
 		DE988B3E248170C50055F1BE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		DE988B402481755D0055F1BE /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
+		DE988B4B2481817D0055F1BE /* CurrencyLiveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLiveResponse.swift; sourceTree = "<group>"; };
+		DE988B4D248184A40055F1BE /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		DECE0501247FF40F00321ED9 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
 		DECE0502247FF40F00321ED9 /* CurrencyListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListViewController.xib; sourceTree = "<group>"; };
 		DECE0512247FFB0700321ED9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -188,8 +194,18 @@
 			isa = PBXGroup;
 			children = (
 				DE988B3E248170C50055F1BE /* StringExtension.swift */,
+				DE988B402481755D0055F1BE /* ExtensionUIViewController.swift */,
+				DE988B4D248184A40055F1BE /* DoubleExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DE988B4A248181710055F1BE /* CurrencyLiveResponse */ = {
+			isa = PBXGroup;
+			children = (
+				DE988B4B2481817D0055F1BE /* CurrencyLiveResponse.swift */,
+			);
+			path = CurrencyLiveResponse;
 			sourceTree = "<group>";
 		};
 		DECE04FE247FF3D000321ED9 /* ViewControllers */ = {
@@ -276,6 +292,7 @@
 		DEF128E42480285800EE0A4E /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				DE988B4A248181710055F1BE /* CurrencyLiveResponse */,
 				DEF128E52480286D00EE0A4E /* CurrenciesListResponse */,
 			);
 			path = Response;
@@ -293,8 +310,8 @@
 		DEF128EA2480295700EE0A4E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DEF128EB2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift */,
 				DEF128ED24802A5600EE0A4E /* CurrencyRouter.swift */,
+				DEF128EB2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift */,
 				DEF128F024802CD800EE0A4E /* CurrencyLayerService.swift */,
 			);
 			path = Services;
@@ -475,7 +492,9 @@
 				DE7581E72480143A006BB53E /* CurrencyListViewModel.swift in Sources */,
 				DEF128E72480288500EE0A4E /* CurrenciesListResponse.swift in Sources */,
 				DE988B39248146420055F1BE /* CurrencyButton.swift in Sources */,
+				DE988B4C2481817D0055F1BE /* CurrencyLiveResponse.swift in Sources */,
 				DEF128EE24802A5600EE0A4E /* CurrencyRouter.swift in Sources */,
+				DE988B412481755D0055F1BE /* ExtensionUIViewController.swift in Sources */,
 				DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */,
 				DEF128E2248026DE00EE0A4E /* HTTPManager.swift in Sources */,
 				DEF128F424803AD100EE0A4E /* CoinConversionViewController.swift in Sources */,
@@ -484,6 +503,7 @@
 				DEF128DE2480264700EE0A4E /* HTTPRouter.swift in Sources */,
 				DE988B3F248170C50055F1BE /* StringExtension.swift in Sources */,
 				DEF128E0248026B300EE0A4E /* HTTPMethod.swift in Sources */,
+				DE988B4E248184A40055F1BE /* DoubleExtension.swift in Sources */,
 				DEF128F724803AE300EE0A4E /* CoinConversionViewModel.swift in Sources */,
 				DEF128EC2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift in Sources */,
 				DE228175247FEF5100265E5E /* SceneDelegate.swift in Sources */,

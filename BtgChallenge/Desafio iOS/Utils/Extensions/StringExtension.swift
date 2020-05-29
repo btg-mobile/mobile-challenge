@@ -32,4 +32,21 @@ extension String {
         
         return formatter.string(from: number)!
     }
+    
+    var double: Double {
+        get {
+            return Double(self) ?? 0.0
+        }
+    }
+    
+    var currencyFormatted: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.currencySymbol = ""
+        let number = NSDecimalNumber(string: self)
+        
+        return numberFormatter.string(from: number) ?? "0.00"
+    }
 }

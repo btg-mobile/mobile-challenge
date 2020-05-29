@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "329988F9-9BBA-4833-9CDB-AA00BD1070BB"
+            uuid = "27C0F3CE-BC1A-4766-A8E8-532C53E3FAA2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Desafio iOS/NetworkLayer/API/APILoader.swift"
+            filePath = "Desafio iOS/ViewControllers/CoinConversion/CoinConversionViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "loadAPIRequest(requestData:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "623D5E99-4FF3-4E9C-9E0D-A8FCD4EE4433"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Desafio iOS/Utils/Components/CurrencyLayerButton.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "drawTriangle(_:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "calculateFinalValue(response:fromCoin:toCoin:amount:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

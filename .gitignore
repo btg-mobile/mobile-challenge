@@ -1,4 +1,4 @@
 BtgChallange/*.xcworkspace/
-BtgChallange/Pods/
+BtgChallange/Pods/*
 BtgChallange/Podfile.lock
 

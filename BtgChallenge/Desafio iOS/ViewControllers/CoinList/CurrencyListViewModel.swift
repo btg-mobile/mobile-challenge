@@ -19,6 +19,7 @@ protocol CurrencyListViewModelProtocol {
     var errorObservable: BehaviorRelay<String?> { get }
     var disposeBag: DisposeBag { get }
     var currencySource: CurrencySource { get }
+    var isLoading: BehaviorRelay<Bool> { get }
     func getList()
     func filterList(predicate: String) -> Observable<[FormattedCurrency]>
     
@@ -31,9 +32,13 @@ class CurrencyListViewModel {
     private let _currencyList = BehaviorRelay<[FormattedCurrency]>(value: [])
     private let _error = BehaviorRelay<String?>(value: nil)
     private let _currencySource: CurrencySource
-    
-    init(currencySource: CurrencySource) {
+    private let httpManager: HTTPManager<CurrencyRouter>
+    private let _isLoading = BehaviorRelay<Bool>(value: false)
+    private var service: CurrencyLayerService
+    init(currencySource: CurrencySource, httpManager: HTTPManager<CurrencyRouter> = HTTPManager<CurrencyRouter>()) {
         self._currencySource = currencySource
+        self.httpManager = httpManager
+        service = CurrencyLayerService(httpManager: httpManager)
     }
     
     
@@ -41,6 +46,9 @@ class CurrencyListViewModel {
 
 extension CurrencyListViewModel: CurrencyListViewModelProtocol {
     
+    var isLoading: BehaviorRelay<Bool> {
+        return _isLoading
+    }
     
     var currencySource: CurrencySource {
         return _currencySource
@@ -55,11 +63,13 @@ extension CurrencyListViewModel: CurrencyListViewModelProtocol {
     }
     
     func getList() {
-        let httpManager = HTTPManager<CurrencyRouter>()
-        CurrencyLayerService(httpManager: httpManager).getCurrenciesList { (result) in
+        _isLoading.accept(true)
+        service.getCurrenciesList { (result) in
+            self._isLoading.accept(false)
             if let response = result.result, let currencies = response.currencies {
                 self._currencyList.accept(self.setupFormattedListWith(dictionary: currencies.coinsDictionary))
             } else if let errorDesc = result.failure?.localizedDescription {
+                self._isLoading.accept(false)
                 self.errorObservable.accept(errorDesc)
             }
             

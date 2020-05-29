@@ -91,6 +91,9 @@
                                     <state key="normal" title="Converter">
                                         <color key="titleColor" red="1" green="1" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="convertButtonTap:" destination="-1" eventType="touchUpInside" id="hWa-2H-GTP"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

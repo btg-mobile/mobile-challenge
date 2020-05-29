@@ -5,7 +5,7 @@
 	<key>Networking</key>
 	<dict>
 		<key>baseUrl</key>
-		<string>http://api.currencylayer.com</string>
+		<string>http://apilayer.net/api</string>
 		<key>accessKey</key>
 		<string>6ffef73883416f4562f97320d90e45e9</string>
 	</dict>

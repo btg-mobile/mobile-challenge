@@ -9,6 +9,7 @@ target 'Desafio iOS' do
   
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'NVActivityIndicatorView'
   target 'Desafio iOSTests' do
     inherit! :search_paths
     # Pods for testing

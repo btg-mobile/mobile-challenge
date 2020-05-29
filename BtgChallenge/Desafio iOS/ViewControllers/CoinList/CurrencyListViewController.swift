@@ -50,7 +50,9 @@ class CurrencyListViewController: UIViewController {
     
    // MARK: - Setups
     private func setup() {
+        self.title = "Moedas"
         setupTableView()
+        setupObservable()
     }
     
     private func setupTableView() {
@@ -77,6 +79,10 @@ class CurrencyListViewController: UIViewController {
             self.handleModelSelection(formatedCurrency: model)
         }).disposed(by: viewModel.disposeBag)
         
+    }
+    
+    private func setupObservable() {
+        self.viewModel.isLoading.asObservable().bind(to: self.rx.animating).disposed(by: viewModel.disposeBag)
     }
     
     // MARK: - Handle model selection

@@ -9,8 +9,11 @@
 import Foundation
 import RxSwift
 import RxCocoa
+
 typealias CurrencyListResult = (result: CurrenciesListResponse?, failure: Error?)
+typealias CurrencyLiveResult = (result: CurrencyLiveResponse?, failure: Error?)
 
 protocol CurrencyLayerServiceProtocol {
     func getCurrenciesList(onCompletion: @escaping((CurrencyListResult) -> Void))
+    func getConversionRate(fromCoin: String, toCoin: String, onCompletion: @escaping ((CurrencyLiveResult) -> Void))
 }

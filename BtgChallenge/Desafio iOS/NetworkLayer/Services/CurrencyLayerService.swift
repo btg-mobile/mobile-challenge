@@ -16,10 +16,17 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
     }
     
     func getCurrenciesList(onCompletion: @escaping((CurrencyListResult) -> Void)) {
-        
         httpManager.request(router: .list) { (result: CurrencyListResult) in
             onCompletion(result)
         }
-        
     }
+    
+    func getConversionRate(fromCoin: String, toCoin: String, onCompletion: @escaping ((CurrencyLiveResult) -> Void)) {
+        httpManager.request(router: .live(fromCoin, toCoin)) { (result: CurrencyLiveResult) in
+            onCompletion(result)
+        }
+    }
+    
+    
+    
 }
