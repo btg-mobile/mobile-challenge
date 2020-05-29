@@ -95,15 +95,20 @@ extension CoinConversionViewModel: CoinConversionViewModelProtocol {
             self._isLoading.accept(false)
             return
         }
-        
-        service.getConversionRate(fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode) { (result) in
-            self._isLoading.accept(false)
-            if let conversionRate = result.result {
-                self.calculateFinalValue(response: conversionRate, fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode, amount: amount)
-            } else if let error = result.failure {
-                self.error.accept(error.localizedDescription)
-            }
+        if toCoin.currencyCode == "USD" {
+            //all coins convert to USD
+        } else {
+            // converter toCoin para USD
+            //
         }
+//        service.getConversionRate(fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode) { (result) in
+//            self._isLoading.accept(false)
+//            if let conversionRate = result.result {
+//                self.calculateFinalValue(response: conversionRate, fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode, amount: amount)
+//            } else if let error = result.failure {
+//                self.error.accept(error.localizedDescription)
+//            }
+//        }
     }
     
     func calculateFinalValue(response: CurrencyLiveResponse, fromCoin: String, toCoin: String, amount: String) {
