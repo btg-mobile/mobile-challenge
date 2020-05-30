@@ -10,4 +10,5 @@ import Foundation
 protocol StorageProtocol {
     func saveCurrencyList(response: CurrenciesListResponse)
     func saveCurrentRate(response: CurrencyLiveResponse)
+    func getSavedInformation<T: Decodable>() -> T?
 }

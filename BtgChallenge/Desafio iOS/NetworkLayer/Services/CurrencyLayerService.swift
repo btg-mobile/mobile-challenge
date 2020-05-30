@@ -22,8 +22,14 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
             if let unwrappedResult = result.result, unwrappedResult.success! {
                 self.storage.saveCurrencyList(response: unwrappedResult)
             }
+            if result.result?.success ?? false {
+                onCompletion(result)
+            } else {
+                if let savedList: CurrenciesListResponse = self.storage.getSavedInformation() {
+                    onCompletion(CurrencyListResult(savedList, nil))
+                }
+            }
             
-            onCompletion(result)
         }
     }
     
@@ -32,7 +38,13 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
             if let unwrappedResult = result.result, unwrappedResult.success! {
                 self.storage.saveCurrentRate(response: unwrappedResult)
             }
-            onCompletion(result)
+            if result.result?.success ?? false {
+                onCompletion(result)
+            } else {
+                if let savedRate: CurrencyLiveResponse = self.storage.getSavedInformation() {
+                    onCompletion(CurrencyLiveResult(savedRate, nil))
+                }
+            }
         }
     }
     

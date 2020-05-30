@@ -16,16 +16,6 @@ class Storage {
     
     init () {}
     
-    func getSavedInformation<T: Decodable>() -> T? {
-        if let object  = userDefaults.data(forKey: T.className) {
-            let decodedObject = try? decoder.decode(T.self, from: object)
-            
-            return decodedObject
-        }
-        
-        return nil
-    }
-    
     private func saveToDisk<T: Codable>(currency: T) {
         if let encodedData = try? encoder.encode(currency) {
             userDefaults.set(encodedData, forKey: T.className)
@@ -50,5 +40,15 @@ extension Storage: StorageProtocol {
         }
         
         saveToDisk(currency: response)
+    }
+    
+    func getSavedInformation<T: Decodable>() -> T? {
+        if let object  = userDefaults.data(forKey: T.className) {
+            let decodedObject = try? decoder.decode(T.self, from: object)
+            
+            return decodedObject
+        }
+        
+        return nil
     }
 }
