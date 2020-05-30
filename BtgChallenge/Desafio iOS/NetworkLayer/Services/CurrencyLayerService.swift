@@ -27,6 +27,8 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
             } else {
                 if let savedList: CurrenciesListResponse = self.storage.getSavedInformation() {
                     onCompletion(CurrencyListResult(savedList, nil))
+                } else {
+                    onCompletion(result)
                 }
             }
             
@@ -43,6 +45,8 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
             } else {
                 if let savedRate: CurrencyLiveResponse = self.storage.getSavedInformation() {
                     onCompletion(CurrencyLiveResult(savedRate, nil))
+                } else {
+                    onCompletion(result)
                 }
             }
         }

@@ -90,7 +90,9 @@ class CurrencyListViewController: UIViewController {
             .filter {$0 != nil && $0 != ""}
             .subscribe(onNext: { errorMessage in
                 let alert = UIAlertController(title: "Erro", message: errorMessage, preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                })
                 alert.addAction(alertAction)
                 self.present(alert, animated: true)
             }).disposed(by: viewModel.disposeBag)
