@@ -34,15 +34,48 @@ class CoinConversionViewModel {
     private let _error = BehaviorRelay<String?>(value: nil)
     private let service: CurrencyLayerService
     private let _finalValue = BehaviorRelay<String?>(value: "0")
+    private let USD_CURRENCY: FormattedCurrency
+    private var intermediaryRate: Double?
     
     init(httpManager: HTTPManager<CurrencyRouter> = HTTPManager<CurrencyRouter>()) {
+        self.USD_CURRENCY = FormattedCurrency(currencyCode: "USD", currencyName: "United State Dollar")
         _selectedCurrencyFrom.accept(FormattedCurrency(currencyCode: "BRL", currencyName: "Brazilian Real"))
-        _selectedCurrencyTo.accept(FormattedCurrency(currencyCode: "USD", currencyName: "United States Dollar"))
+        _selectedCurrencyTo.accept(USD_CURRENCY)
         self.httpManager = httpManager
         self.service = CurrencyLayerService(httpManager: httpManager)
+        
     }
     
-    
+    func calculateFinalValue(response: CurrencyLiveResponse, fromCoin: String, toCoin: String, amount: String) {
+        
+        let fixedAmount = amount.replacingOccurrences(of: ",", with: "").double
+        var firstValue: Double = 0
+        var finalValue: Double = 0
+        if let intermediaryRate = intermediaryRate, intermediaryRate > 0.0 {
+            let usdRate = response.quotes?[USD_CURRENCY.currencyCode + fromCoin] ?? 0.0 //fromCoin to Dollar Rate
+            
+            firstValue = usdRate >= 1.0 ? (fixedAmount / usdRate) : (fixedAmount * usdRate)
+            
+            if intermediaryRate >= 1 {
+                if intermediaryRate > usdRate {
+                    finalValue = firstValue * intermediaryRate
+                } else {
+                    finalValue = firstValue / intermediaryRate
+                }
+            } else {
+                finalValue = firstValue / intermediaryRate
+            }
+            
+        } else {
+            let rate = response.quotes?[toCoin + fromCoin] ?? 0.0
+            if rate == 0.0 {
+                finalValue = 0
+            } else {
+                finalValue = (fixedAmount / rate)
+            }
+        }
+        self.finalValue.accept(finalValue.stringValue.currencyFormatted)
+    }
 }
 extension CoinConversionViewModel: CoinConversionViewModelProtocol {
     
@@ -78,7 +111,7 @@ extension CoinConversionViewModel: CoinConversionViewModelProtocol {
     var disposeBag: DisposeBag {
         return _disposeBag
     }
- 
+    
     func didSelectNewCurrency(formattedCurrency: FormattedCurrency, source: CurrencySource) {
         if source == .from {
             self.selectedCurrencyFrom.accept(formattedCurrency)
@@ -90,37 +123,57 @@ extension CoinConversionViewModel: CoinConversionViewModelProtocol {
     func getConversionValue() {
         self._isLoading.accept(true)
         guard let fromCoin = self.selectedCurrencyFrom.value, let toCoin = self.selectedCurrencyTo.value, let amount = self.amount.value, amount != "" else {
-            //fire error on observable
             self.error.accept("Os campos de moeda de origem, destino e valor desejado para conversão são de preenchimento obrigatório.")
             self._isLoading.accept(false)
             return
         }
-        if toCoin.currencyCode == "USD" {
+        
+        if toCoin.currencyCode == USD_CURRENCY.currencyCode {
+            
             //all coins convert to USD
+            service.getConversionRate(fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode) { (result) in
+                self._isLoading.accept(false)
+                if let conversionRate = result.result {
+                    //resets previous information from intermediaryRate
+                    self.intermediaryRate = nil
+                    if !(conversionRate.success ?? false), let conversionError = conversionRate.error {
+                        self.error.accept(conversionError.getErrorMessageByCode())
+                    } else {
+                        self.calculateFinalValue(response: conversionRate, fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode, amount: amount)
+                    }
+                } else if let error = result.failure {
+                    self.error.accept(error.localizedDescription)
+                }
+            }
+            
         } else {
-            // converter toCoin para USD
-            //
+            // converter toCoin to USD
+            service.getConversionRate(fromCoin: toCoin.currencyCode, toCoin: USD_CURRENCY.currencyCode) { (result) in
+                if let conversionRate = result.result {
+                    self.intermediaryRate = conversionRate.quotes?[self.USD_CURRENCY.currencyCode + toCoin.currencyCode]
+                    if !(conversionRate.success ?? false), let conversionError = conversionRate.error {
+                        self.error.accept(conversionError.getErrorMessageByCode())
+                    }else {
+                        //chain request if there is no error.
+                        self.service.getConversionRate(fromCoin: fromCoin.currencyCode, toCoin: self.USD_CURRENCY.currencyCode) { (secondResult) in
+                            self.isLoading.accept(false)
+                            if let secondConversionRate = secondResult.result {
+                                if !(conversionRate.success ?? false), let conversionError = conversionRate.error {
+                                    self.error.accept(conversionError.getErrorMessageByCode())
+                                } else {
+                                    self.calculateFinalValue(response: secondConversionRate, fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode, amount: amount)
+                                }
+                            } else if let secondError = secondResult.failure {
+                                self.error.accept(secondError.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                    
+                } else if let error = result.failure {
+                    self.error.accept(error.localizedDescription)
+                }
+            }
         }
-//        service.getConversionRate(fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode) { (result) in
-//            self._isLoading.accept(false)
-//            if let conversionRate = result.result {
-//                self.calculateFinalValue(response: conversionRate, fromCoin: fromCoin.currencyCode, toCoin: toCoin.currencyCode, amount: amount)
-//            } else if let error = result.failure {
-//                self.error.accept(error.localizedDescription)
-//            }
-//        }
-    }
-    
-    func calculateFinalValue(response: CurrencyLiveResponse, fromCoin: String, toCoin: String, amount: String) {
-        let fixedAmount = amount.replacingOccurrences(of: ",", with: "")
-        let rate = response.quotes?[toCoin + fromCoin] ?? 0.0
-        if rate == 0.0 {
-            finalValue.accept("0.00".currencyInputFormatting())
-        } else {
-            let value = (fixedAmount.double / rate).stringValue.currencyFormatted
-            finalValue.accept(value)
-        }
-        
-        
     }
 }

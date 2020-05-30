@@ -15,6 +15,10 @@
 		DE22817F247FEF5300265E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE22817E247FEF5300265E5E /* Assets.xcassets */; };
 		DE228182247FEF5300265E5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE228180247FEF5300265E5E /* LaunchScreen.storyboard */; };
 		DE22818D247FEF5300265E5E /* Desafio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */; };
+		DE5666892482B2B3003D8289 /* CurrencyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5666882482B2B3003D8289 /* CurrencyError.swift */; };
+		DE56668C2482BA6F003D8289 /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56668B2482BA6F003D8289 /* StorageProtocol.swift */; };
+		DE56668E2482BAD4003D8289 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56668D2482BAD4003D8289 /* Storage.swift */; };
+		DE5666902482BBA6003D8289 /* DecodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56668F2482BBA6003D8289 /* DecodableExtension.swift */; };
 		DE7581E72480143A006BB53E /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */; };
 		DE988B39248146420055F1BE /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B38248146420055F1BE /* CurrencyButton.swift */; };
 		DE988B3C248160FB0055F1BE /* FormattedCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */; };
@@ -67,6 +71,10 @@
 		DE228188247FEF5300265E5E /* Desafio iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE22818C247FEF5300265E5E /* Desafio_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSTests.swift; sourceTree = "<group>"; };
 		DE22818E247FEF5300265E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE5666882482B2B3003D8289 /* CurrencyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyError.swift; sourceTree = "<group>"; };
+		DE56668B2482BA6F003D8289 /* StorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
+		DE56668D2482BAD4003D8289 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		DE56668F2482BBA6003D8289 /* DecodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableExtension.swift; sourceTree = "<group>"; };
 		DE7581E62480143A006BB53E /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		DE988B38248146420055F1BE /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		DE988B3B248160FB0055F1BE /* FormattedCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedCurrency.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 		DE228171247FEF5100265E5E /* Desafio iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DE56668A2482BA4F003D8289 /* Storage */,
 				DE988B3A248160ED0055F1BE /* Model */,
 				DEF128DB2480261F00EE0A4E /* NetworkLayer */,
 				DEF128DA248025B000EE0A4E /* Support Files */,
@@ -172,6 +181,15 @@
 				DE22818E247FEF5300265E5E /* Info.plist */,
 			);
 			path = "Desafio iOSTests";
+			sourceTree = "<group>";
+		};
+		DE56668A2482BA4F003D8289 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				DE56668B2482BA6F003D8289 /* StorageProtocol.swift */,
+				DE56668D2482BAD4003D8289 /* Storage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		DE988B352481424F0055F1BE /* Components */ = {
@@ -196,6 +214,7 @@
 				DE988B3E248170C50055F1BE /* StringExtension.swift */,
 				DE988B402481755D0055F1BE /* ExtensionUIViewController.swift */,
 				DE988B4D248184A40055F1BE /* DoubleExtension.swift */,
+				DE56668F2482BBA6003D8289 /* DecodableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				DE988B4B2481817D0055F1BE /* CurrencyLiveResponse.swift */,
+				DE5666882482B2B3003D8289 /* CurrencyError.swift */,
 			);
 			path = CurrencyLiveResponse;
 			sourceTree = "<group>";
@@ -494,6 +514,7 @@
 				DE988B39248146420055F1BE /* CurrencyButton.swift in Sources */,
 				DE988B4C2481817D0055F1BE /* CurrencyLiveResponse.swift in Sources */,
 				DEF128EE24802A5600EE0A4E /* CurrencyRouter.swift in Sources */,
+				DE5666902482BBA6003D8289 /* DecodableExtension.swift in Sources */,
 				DE988B412481755D0055F1BE /* ExtensionUIViewController.swift in Sources */,
 				DECE0515247FFBB900321ED9 /* Localizer.swift in Sources */,
 				DEF128E2248026DE00EE0A4E /* HTTPManager.swift in Sources */,
@@ -501,6 +522,7 @@
 				DE22817D247FEF5100265E5E /* Desafio_iOS.xcdatamodeld in Sources */,
 				DE228173247FEF5100265E5E /* AppDelegate.swift in Sources */,
 				DEF128DE2480264700EE0A4E /* HTTPRouter.swift in Sources */,
+				DE5666892482B2B3003D8289 /* CurrencyError.swift in Sources */,
 				DE988B3F248170C50055F1BE /* StringExtension.swift in Sources */,
 				DEF128E0248026B300EE0A4E /* HTTPMethod.swift in Sources */,
 				DE988B4E248184A40055F1BE /* DoubleExtension.swift in Sources */,
@@ -508,8 +530,10 @@
 				DEF128EC2480297B00EE0A4E /* CurrencyLayerServiceProtocol.swift in Sources */,
 				DE228175247FEF5100265E5E /* SceneDelegate.swift in Sources */,
 				DECE0503247FF40F00321ED9 /* CurrencyListViewController.swift in Sources */,
+				DE56668C2482BA6F003D8289 /* StorageProtocol.swift in Sources */,
 				DE988B3C248160FB0055F1BE /* FormattedCurrency.swift in Sources */,
 				DECE0513247FFB0700321ED9 /* Constants.swift in Sources */,
+				DE56668E2482BAD4003D8289 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

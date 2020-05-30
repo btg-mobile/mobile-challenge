@@ -15,7 +15,7 @@ protocol CurrencyListViewControllerDelegate: class {
 }
 
 class CurrencyListViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var tbCurrencies: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -48,7 +48,7 @@ class CurrencyListViewController: UIViewController {
         self.viewModel.getList()
     }
     
-   // MARK: - Setups
+    // MARK: - Setups
     private func setup() {
         self.title = "Moedas"
         setupTableView()
@@ -69,8 +69,9 @@ class CurrencyListViewController: UIViewController {
             })
             .bind(to: self.tbCurrencies.rx.items(cellIdentifier: CELL_IDENTIFIER, cellType: UITableViewCell.self)) { row, model, cell in
                 cell.selectionStyle = .none
+                cell.backgroundColor = UIColor.systemTeal
                 cell.textLabel?.text = String(format: "%@ - %@", model.currencyCode, model.currencyFullName)
-            }.disposed(by: viewModel.disposeBag)
+        }.disposed(by: viewModel.disposeBag)
         
         self.tbCurrencies.rx.modelSelected(FormattedCurrency.self).observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] model in
             guard let self = self else {
@@ -83,6 +84,16 @@ class CurrencyListViewController: UIViewController {
     
     private func setupObservable() {
         self.viewModel.isLoading.asObservable().bind(to: self.rx.animating).disposed(by: viewModel.disposeBag)
+        
+        self.viewModel.errorObservable
+            .asObservable()
+            .filter {$0 != nil && $0 != ""}
+            .subscribe(onNext: { errorMessage in
+                let alert = UIAlertController(title: "Erro", message: errorMessage, preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                self.present(alert, animated: true)
+            }).disposed(by: viewModel.disposeBag)
     }
     
     // MARK: - Handle model selection

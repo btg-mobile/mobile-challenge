@@ -7,9 +7,10 @@
 //
 
 import Foundation
-class CurrenciesListResponse: Decodable {
+class CurrenciesListResponse: Codable {
     var success: Bool?
     var terms: String?
     var privacy: String?
     var currencies: Currency?
+    var error: CurrencyError?
 }

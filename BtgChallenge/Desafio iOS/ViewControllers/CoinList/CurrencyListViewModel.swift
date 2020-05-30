@@ -68,8 +68,9 @@ extension CurrencyListViewModel: CurrencyListViewModelProtocol {
             self._isLoading.accept(false)
             if let response = result.result, let currencies = response.currencies {
                 self._currencyList.accept(self.setupFormattedListWith(dictionary: currencies.coinsDictionary))
+            } else if let apiError = result.result?.error {
+                self.errorObservable.accept(apiError.getErrorMessageByCode())
             } else if let errorDesc = result.failure?.localizedDescription {
-                self._isLoading.accept(false)
                 self.errorObservable.accept(errorDesc)
             }
             
@@ -89,7 +90,6 @@ extension CurrencyListViewModel: CurrencyListViewModelProtocol {
     }
     
     func filterList(predicate: String) -> Observable<[FormattedCurrency]> {
-        
         if predicate == "" {
             return self._currencyList.asObservable()
         } else {

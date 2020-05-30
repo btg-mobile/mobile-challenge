@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let nav = UINavigationController(rootViewController: CoinConversionViewController(viewModel: CoinConversionViewModel()))
+        nav.navigationBar.barTintColor = UIColor.systemTeal
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }

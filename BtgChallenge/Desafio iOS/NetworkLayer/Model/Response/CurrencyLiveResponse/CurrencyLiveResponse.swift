@@ -15,6 +15,7 @@ class CurrencyLiveResponse: NSObject, Codable, NSCoding  {
     var timestamp: Int?
     var source: String?
     var quotes: [String: Double]?
+    var error: CurrencyError?
     
     required convenience init(coder aDecoder: NSCoder) {
         self.init()
@@ -25,6 +26,7 @@ class CurrencyLiveResponse: NSObject, Codable, NSCoding  {
         timestamp = aDecoder.decodeInteger(forKey: "timestamp")
         source = aDecoder.decodeObject(forKey: "source") as? String
         quotes = aDecoder.decodeObject(forKey: "quotes") as? [String: Double]
+        error = aDecoder.decodeObject(forKey: "error") as? CurrencyError
     }
     
     func encode(with aCoder: NSCoder) {
@@ -34,5 +36,6 @@ class CurrencyLiveResponse: NSObject, Codable, NSCoding  {
         aCoder.encode(timestamp, forKey: "timestamp")
         aCoder.encode(source, forKey: "source")
         aCoder.encode(quotes, forKey: "quotes")
+        aCoder.encode(error, forKey: "error")
     }
 }
