@@ -12,4 +12,8 @@ public struct Constants {
         public static let baseUrl = "Networking.baseUrl".localized
         public static let accessKey = "Networking.accessKey".localized
     }
+    
+    public struct Messages {
+        public static let coinConversionError = "Messages.conversionError".localized
+    }
 }

@@ -54,24 +54,29 @@ class CoinConversionViewModel {
         if let intermediaryRate = intermediaryRate, intermediaryRate > 0.0 {
             let usdRate = response.quotes?[USD_CURRENCY.currencyCode + fromCoin] ?? 0.0 //fromCoin to Dollar Rate
             
-            firstValue = usdRate >= 1.0 ? (fixedAmount / usdRate) : (fixedAmount * usdRate)
+            firstValue = usdRate >= 1.0 ? (fixedAmount / usdRate) : (fixedAmount * usdRate) //value from fromCoin to USD
             
             if intermediaryRate >= 1 {
                 if intermediaryRate > usdRate {
-                    finalValue = firstValue * intermediaryRate
+                    finalValue = firstValue * intermediaryRate //value from USD to toCoin
                 } else {
-                    finalValue = firstValue / intermediaryRate
+                    finalValue = firstValue / intermediaryRate //value from USD to toCoin
                 }
             } else {
-                finalValue = firstValue / intermediaryRate
+                finalValue = firstValue / intermediaryRate //value from USD to toCoin
             }
             
         } else {
             let rate = response.quotes?[toCoin + fromCoin] ?? 0.0
             if rate == 0.0 {
-                finalValue = 0
+                finalValue = 0 //value from fromCoin to toCoin if toCOin is USD
             } else {
-                finalValue = (fixedAmount / rate)
+                if rate >= 1 {
+                    finalValue = (fixedAmount / rate) //value from fromCoin to toCoin if toCOin is USD
+                } else {
+                    finalValue = (fixedAmount * rate) //value from fromCoin to toCoin if toCOin is USD
+                }
+                
             }
         }
         self.finalValue.accept(finalValue.stringValue.currencyFormatted)
@@ -123,7 +128,7 @@ extension CoinConversionViewModel: CoinConversionViewModelProtocol {
     func getConversionValue() {
         self._isLoading.accept(true)
         guard let fromCoin = self.selectedCurrencyFrom.value, let toCoin = self.selectedCurrencyTo.value, let amount = self.amount.value, amount != "" else {
-            self.error.accept("Os campos de moeda de origem, destino e valor desejado para conversão são de preenchimento obrigatório.")
+            self.error.accept(Constants.Messages.coinConversionError)
             self._isLoading.accept(false)
             return
         }

@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Messages</key>
+	<dict>
+		<key>conversionError</key>
+		<string>Os campos de moeda de origem, destino e valor desejado para conversão são de preenchimento obrigatório.</string>
+	</dict>
 	<key>Networking</key>
 	<dict>
 		<key>baseUrl</key>
