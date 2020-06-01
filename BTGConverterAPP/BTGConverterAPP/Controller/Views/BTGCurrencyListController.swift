@@ -15,12 +15,12 @@ protocol CurrencyListController {
 class BTGCurrencyListController: CurrencyListController {
     
     private let networkController = BTGNetworkController.shared
-    weak private var currencyListReceiver : CurrencyListReceiver?
+    weak private var currencyListReceiver : CurrencyListDelegate?
     private let localStorage : LocalStorage = BTGLocalStorage()
     
     private var currencyDescriptionList : [CurrencyDescription] = []
     
-    init(currencyListReceiver: CurrencyListReceiver) {
+    init(currencyListReceiver: CurrencyListDelegate) {
         self.currencyListReceiver = currencyListReceiver
     }
     

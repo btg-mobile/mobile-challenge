@@ -12,11 +12,11 @@ enum Section {
     case main
 }
 
-protocol CurrencyListReceiver: UIViewController {
+protocol CurrencyListDelegate: UIViewController {
     func setCurrencyDescriptions(currencyDescriptions : [CurrencyDescription])
 }
 
-class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
+class BTGCurrencyListVC: UIViewController {
     
     private var isModalView = false
     private var isSearching = false
@@ -142,11 +142,6 @@ class BTGCurrencyListVC: UIViewController, CurrencyListReceiver {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func setCurrencyDescriptions(currencyDescriptions : [CurrencyDescription]) {
-        self.currencyDescriptions = currencyDescriptions
-        updateDataSource()
-    }
-    
     @objc func dismissModal() {
         dismiss(animated: true)
     }
@@ -202,6 +197,15 @@ extension BTGCurrencyListVC: UITableViewDelegate {
             currencySelectionDelegate?.setKeyboardNecessary(to : true)
             dismiss(animated: true)
         }
+    }
+    
+}
+
+extension BTGCurrencyListVC : CurrencyListDelegate {
+    
+    func setCurrencyDescriptions(currencyDescriptions : [CurrencyDescription]) {
+        self.currencyDescriptions = currencyDescriptions
+        updateDataSource()
     }
     
 }
