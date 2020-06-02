@@ -188,7 +188,6 @@ extension BTGCurrencyListVC: UITableViewDelegate {
         if isModalView {
             switch modalSelection! {
             case .base:
-                print("\(isSearching) is searching ")
                 currencySelectionDelegate?.setBaseCurrency(currencyAbbreviation:
                     isSearching ? currencyDescriptionsFiltered[indexPath.row].abbreviation : currencyDescriptions[indexPath.row].abbreviation  )
             case .target:

@@ -81,7 +81,7 @@ struct BTGLocalStorage : LocalStorage {
         do {
             data = try jsonDecoder.decode(T.self, from: savedData)
         } catch {
-            print("Data couldn't be retrieved")
+            return nil
         }
         return data
     }
