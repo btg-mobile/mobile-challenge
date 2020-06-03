@@ -4,7 +4,6 @@
 //
 //  Created by Leonardo Maia Pugliese on 15/05/20.
 //  Copyright © 2020 Leonardo Maia Pugliese. All rights reserved.
-//
 
 import UIKit
 
@@ -153,10 +152,15 @@ class BTGCurrencyListVC: UIViewController {
         let orderByAbbreviationButton = UIAlertAction(title: ViewsConstants.BTGOrderByAbbreviationButtonTitle.rawValue, style: .default, handler: {
             [weak self] _ -> Void in
             guard let self = self else { return }
-            self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in
-                d1.abbreviation < d2.abbreviation
-                
-            })
+            if self.isSearching {
+                self.currencyDescriptionsFiltered.sort(by: { d1, d2 -> Bool in
+                    d1.abbreviation < d2.abbreviation
+                })
+            } else {
+                self.currencyDescriptions.sort(by: { d1, d2 -> Bool in
+                    d1.abbreviation < d2.abbreviation
+                })
+            }
             self.updateDataSource()
             
         })
@@ -164,9 +168,15 @@ class BTGCurrencyListVC: UIViewController {
         let orderByFullDescriptionButton = UIAlertAction(title: ViewsConstants.BTGOrderByFullDescriptionButtonTitle.rawValue, style: .default, handler: {
             [weak self] _ -> Void in
             guard let self = self else { return }
-            self.currencyDescriptions = self.currencyDescriptions.sorted(by: { d1, d2 -> Bool in
-                d1.fullDescription < d2.fullDescription
-            })
+            if self.isSearching {
+                self.currencyDescriptionsFiltered.sort(by: { d1, d2 -> Bool in
+                    d1.fullDescription < d2.fullDescription
+                })
+            } else {
+                self.currencyDescriptions.sort(by: { d1, d2 -> Bool in
+                    d1.fullDescription < d2.fullDescription
+                })
+            }
             self.updateDataSource()
             
         })
