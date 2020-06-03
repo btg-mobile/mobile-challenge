@@ -25,16 +25,13 @@ enum LocalStorageDataType {
 
 struct BTGLocalStorage : LocalStorage {
     private let secondsToLive : Double = 10
+    let typeDict = [LocalStorageDataType.liveQuoteRates: LocalCacheKeys.timeToLiveLiveQuoteDate,
+                    LocalStorageDataType.avaliableQuotes: LocalCacheKeys.avaliableCurrencies]
     
     func isLocalStorageValid(ofType type: LocalStorageDataType) -> Bool {
-        switch type {
-        case .liveQuoteRates:
-            guard let dateFromCache : Date = getFromLocalStorage(ofType: .timeToLiveLiveQuoteDate) else { return false }
-            return dateFromCache.distance(to: Date()) < secondsToLive
-        case .avaliableQuotes:
-            guard let dateFromCache : Date = getFromLocalStorage(ofType: .timeToLiveAvaliableQuoteDate) else { return false }
-            return dateFromCache.distance(to: Date()) < secondsToLive
-        }
+        guard let localStorageType = typeDict[type],
+            let dateFromCache = getFromLocalStorage(ofType: localStorageType) as Date? else { return false }
+         return dateFromCache.distance(to: Date()) < secondsToLive
     }
     
     func getLiveQuoteRates() -> LiveQuoteRates? {
