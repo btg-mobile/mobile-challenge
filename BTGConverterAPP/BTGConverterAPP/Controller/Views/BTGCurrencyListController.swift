@@ -25,9 +25,16 @@ class BTGCurrencyListController: CurrencyListController {
     }
     
     func getCurrencyToCurrencyReceiver() {
-        
+        currencyDescriptionList = []
         if localStorage.isLocalStorageValid(ofType: .avaliableQuotes) {
-            currencyDescriptionList = localStorage.getAvaliableQuotes()!
+            let currencyDescriptionListTemp = localStorage.getAvaliableQuotes()!
+            
+            for currencyDescription in currencyDescriptionListTemp {
+                if !currencyDescriptionList.contains(currencyDescription) {
+                    currencyDescriptionList.append(currencyDescription)
+                }
+            }
+            
             currencyListReceiver?.setCurrencyDescriptions(currencyDescriptions: currencyDescriptionList)
         } else {
             networkController.getAvaliableCurrencies {[weak self] result in
@@ -52,6 +59,7 @@ class BTGCurrencyListController: CurrencyListController {
             let currencyDescription = CurrencyDescription(abbreviation: abbreviation, fullDescription: fullDescription)
             if !currencyDescriptionList.contains(currencyDescription) {
                 currencyDescriptionList.append(CurrencyDescription(abbreviation: abbreviation, fullDescription: fullDescription))
+
             }
         }
     }
