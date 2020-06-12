@@ -31,7 +31,7 @@ Funciona em todos os iPhones e mantém o mesmo layout por conta do auto layout.
 - [ ] Desenvolver o app seguindo a arquitetura MVVM.
 - [ ] Pipeline automatizado.
 
-### Fiz algumas também as seguintes features extras: 
+### Fiz as seguintes features extras: 
 
 - mostrar os dados da última atualização das cotações para o usuário
 - botão para compartilhar a cotação buscada para outros apps
