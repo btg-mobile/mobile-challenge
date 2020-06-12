@@ -39,7 +39,7 @@ class Model(private val presenter: MVP.Presenter): MVP.Model {
                     val quotes = JSONObject(it.getString("quotes"))
                     val valueFrom: Double = quotes.getDouble("USD${codeFrom?.code}")
                     val valueTo: Double = quotes.getDouble("USD${codeTo?.code}")
-                    val calcFrom: Double = amount * valueFrom
+                    val calcFrom: Double = amount / valueFrom
                     val calcTo: Double = calcFrom * valueTo
 
                     saveLive(0, codeFrom?.id, codeFrom?.code, valueFrom)

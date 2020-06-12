@@ -79,7 +79,10 @@ class MainActivity : DefaultActivity(), MVP.View {
     }
 
     private fun actionDone() {
-        var amount: Double = editValueFrom.editableText.toString().replace("$","").toDouble()
+        var amount: Double = editValueFrom.editableText.toString()
+            .replace("$","")
+            .replace(",","")
+            .toDouble()
         var from: String = editItemFrom.editableText.toString()
         var to: String = editItemTo.editableText.toString()
 
