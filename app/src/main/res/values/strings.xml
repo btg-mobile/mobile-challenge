@@ -16,4 +16,5 @@
     <string name="txt_error1">Favor informar o valor a ser convertido</string>
     <string name="txt_error2">Favor informar a moeda origem</string>
     <string name="txt_error3">Favor informar a moeda destino</string>
+    <string name="action_clear">Clear Fields</string>
 </resources>

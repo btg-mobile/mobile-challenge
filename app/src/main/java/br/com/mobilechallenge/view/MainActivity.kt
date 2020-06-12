@@ -3,6 +3,8 @@ package br.com.mobilechallenge.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -138,6 +140,29 @@ class MainActivity : DefaultActivity(), MVP.View {
 
         if (resultCode == Activity.RESULT_OK) {
             presenter.resultData(requestCode, data)
+        }
+    }
+
+    /**
+     * Menu
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_clear -> {
+                itemFrom = null
+                itemTo   = null
+                editItemFrom.setText("")
+                editItemTo.setText("")
+                editValueTo.setText("$0.00")
+                editValueFrom.setText("$0.00")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
