@@ -11,8 +11,9 @@ import UIKit
 class CurrencyListViewController: UIViewController {
     
     
-    @IBOutlet weak var mainStack: UIStackView!
+    @IBOutlet weak var tableView: UITableView!
     
+    var viewData: [CurrencyListViewData] = []
     var viewModel: CurrencyListViewModelContract!
     
     init (with viewModel: CurrencyListViewModelContract) {
@@ -26,7 +27,8 @@ class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loading()
+        self.registerNib()
+        self.sheetViewController?.resize(to: .fixed(300))
         self.fetch()
     }
     
@@ -34,33 +36,34 @@ class CurrencyListViewController: UIViewController {
         self.viewModel.fetch { result in
             switch result {
             case .success(let data):
-                self.setupUI(data: data)
+                self.viewData = data
+                self.setupUI()
             case .failure(let error):
                 print("Error: \(error)")
             }
         }
     }
     
-    func setupUI(data: [CurrencyListViewData]) {
-        self.mainStack.removeAllArrangedSubviews()
+    func setupUI() {
+        self.tableView.reloadData()
         self.sheetViewController?.resize(to: .fullScreen)
-        data.forEach({
-            self.mainStack.addArrangedSubview(CurrencyList(with: $0))
-        })
     }
     
-    func loading() {
-        self.mainStack.removeAllArrangedSubviews()
-        var viewData: [CurrencyListViewData] = []
-        for _ in 1...5 {
-            viewData.append(CurrencyListViewData(currencyCode: "Loading", currencyName: "Just for Loading"))
+    private func registerNib() {
+        tableView.registerNibForTableViewCell(CurrencyListCell.self)
+    }
+    
+}
+extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyListCell.reusableIdentifier, for: indexPath) as? CurrencyListCell else {
+            return UITableViewCell()
         }
-        viewData.forEach({
-            let view = CurrencyList(with: $0)
-            view.startLoading()
-            self.mainStack.addArrangedSubview(view)
-        })
-        
+        cell.setLabels(data: viewData[indexPath.row])
+        return cell
     }
-    
 }

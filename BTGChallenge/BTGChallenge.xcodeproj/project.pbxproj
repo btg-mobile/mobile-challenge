@@ -23,6 +23,8 @@
 		75AD89822496DC5400266CC7 /* Stack+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD89812496DC5400266CC7 /* Stack+.swift */; };
 		75AD89852496E08900266CC7 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD89842496E08900266CC7 /* UIView+Shimmer.swift */; };
 		75AD89872496E32300266CC7 /* ShimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD89862496E32300266CC7 /* ShimerHelper.swift */; };
+		75AD8989249705B900266CC7 /* TableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD8988249705B900266CC7 /* TableViewCell+.swift */; };
+		75AD898B2497081200266CC7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD898A2497081200266CC7 /* UITableView+.swift */; };
 		75DA6948248EDC4F00B6BE00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DA6947248EDC4F00B6BE00 /* Main.storyboard */; };
 		75E9A21324930DF500C3D89C /* InitialTouchPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A20E24930DF500C3D89C /* InitialTouchPanGestureRecognizer.swift */; };
 		75E9A21424930DF500C3D89C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A20F24930DF500C3D89C /* UIViewControllerExtension.swift */; };
@@ -31,7 +33,7 @@
 		75E9A21724930DF500C3D89C /* SheetSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A21224930DF500C3D89C /* SheetSize.swift */; };
 		75E9A21924930E2E00C3D89C /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A21824930E2E00C3D89C /* CurrencyListViewController.swift */; };
 		75E9A21B24930ED000C3D89C /* CurrencyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E9A21A24930ED000C3D89C /* CurrencyListViewController.xib */; };
-		75E9A21F24930F9F00C3D89C /* CurrencyList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E9A21E24930F9F00C3D89C /* CurrencyList.xib */; };
+		75E9A21F24930F9F00C3D89C /* CurrencyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E9A21E24930F9F00C3D89C /* CurrencyListCell.xib */; };
 		75E9A22124930FB000C3D89C /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A22024930FB000C3D89C /* CurrencyListCell.swift */; };
 		75E9A2232493110400C3D89C /* UIView+NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A2222493110400C3D89C /* UIView+NibView.swift */; };
 		75E9A227249334D900C3D89C /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9A226249334D900C3D89C /* TargetType.swift */; };
@@ -76,6 +78,8 @@
 		75AD89812496DC5400266CC7 /* Stack+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stack+.swift"; sourceTree = "<group>"; };
 		75AD89842496E08900266CC7 /* UIView+Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmer.swift"; sourceTree = "<group>"; };
 		75AD89862496E32300266CC7 /* ShimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimerHelper.swift; sourceTree = "<group>"; };
+		75AD8988249705B900266CC7 /* TableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+.swift"; sourceTree = "<group>"; };
+		75AD898A2497081200266CC7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		75DA6947248EDC4F00B6BE00 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		75DA696C248F03E900B6BE00 /* SFUIText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularItalic.ttf"; sourceTree = "<group>"; };
 		75DA696D248F03EA00B6BE00 /* SFUIText-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -96,7 +100,7 @@
 		75E9A21224930DF500C3D89C /* SheetSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetSize.swift; sourceTree = "<group>"; };
 		75E9A21824930E2E00C3D89C /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
 		75E9A21A24930ED000C3D89C /* CurrencyListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListViewController.xib; sourceTree = "<group>"; };
-		75E9A21E24930F9F00C3D89C /* CurrencyList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyList.xib; sourceTree = "<group>"; };
+		75E9A21E24930F9F00C3D89C /* CurrencyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListCell.xib; sourceTree = "<group>"; };
 		75E9A22024930FB000C3D89C /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
 		75E9A2222493110400C3D89C /* UIView+NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NibView.swift"; sourceTree = "<group>"; };
 		75E9A226249334D900C3D89C /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				75AD89812496DC5400266CC7 /* Stack+.swift */,
+				75AD8988249705B900266CC7 /* TableViewCell+.swift */,
+				75AD898A2497081200266CC7 /* UITableView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -412,7 +418,7 @@
 		75E9A21C24930F8500C3D89C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				75E9A21E24930F9F00C3D89C /* CurrencyList.xib */,
+				75E9A21E24930F9F00C3D89C /* CurrencyListCell.xib */,
 				75E9A22024930FB000C3D89C /* CurrencyListCell.swift */,
 			);
 			path = Cell;
@@ -554,7 +560,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75E9A21F24930F9F00C3D89C /* CurrencyList.xib in Resources */,
+				75E9A21F24930F9F00C3D89C /* CurrencyListCell.xib in Resources */,
 				75121D70248ED5F8000CE27C /* LaunchScreen.storyboard in Resources */,
 				75E9A21B24930ED000C3D89C /* CurrencyListViewController.xib in Resources */,
 				75121D8E248ED699000CE27C /* MainViewController.xib in Resources */,
@@ -644,6 +650,7 @@
 				75E9A21924930E2E00C3D89C /* CurrencyListViewController.swift in Sources */,
 				75121D90248ED6CF000CE27C /* AppCoordinator.swift in Sources */,
 				75E9A2352495E93700C3D89C /* Result.swift in Sources */,
+				75AD898B2497081200266CC7 /* UITableView+.swift in Sources */,
 				75E9A22F2495E73100C3D89C /* CurrencyListService.swift in Sources */,
 				75E9A2232493110400C3D89C /* UIView+NibView.swift in Sources */,
 				75E9A21524930DF500C3D89C /* Yalta.swift in Sources */,
@@ -652,6 +659,7 @@
 				75AD89852496E08900266CC7 /* UIView+Shimmer.swift in Sources */,
 				75E9A21624930DF500C3D89C /* SheetViewController.swift in Sources */,
 				75E9A21724930DF500C3D89C /* SheetSize.swift in Sources */,
+				75AD8989249705B900266CC7 /* TableViewCell+.swift in Sources */,
 				75121D88248ED660000CE27C /* Coordinator.swift in Sources */,
 				75E9A227249334D900C3D89C /* TargetType.swift in Sources */,
 				75E9A22C2493419D00C3D89C /* CurrencyListModel.swift in Sources */,
