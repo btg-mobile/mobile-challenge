@@ -24,7 +24,8 @@ class CurrencyListViewModel: CurrencyListViewModelContract {
         self.service.fetch { result in
             switch result {
             case .success(let model):
-                let viewData = self.formartList(currencies: model.currencies.CurrenciesDict)
+                guard let currencies = model.currencies else { return }
+                let viewData = self.formartList(currencies: currencies)
                 completion(.success(viewData))
             case .failure(let error):
                 completion(.failure(error))
@@ -32,10 +33,9 @@ class CurrencyListViewModel: CurrencyListViewModelContract {
         }
     }
     
-    private func formartList(currencies: [String: String?]) -> [CurrencyListViewData]{
+    private func formartList(currencies: [String: String]) -> [CurrencyListViewData]{
         return currencies.compactMap { element in
-            guard let value = element.value else { return nil }
-            let formattedCurrency = CurrencyListViewData(currencyCode: element.key, currencyName: value)
+            let formattedCurrency = CurrencyListViewData(currencyCode: element.key, currencyName: element.value)
             return formattedCurrency
             
         }.sorted(by: { $0.currencyCode < $1.currencyCode })

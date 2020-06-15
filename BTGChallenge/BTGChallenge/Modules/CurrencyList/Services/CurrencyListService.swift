@@ -25,8 +25,12 @@ class CurrencyListService: CurrencyListServiceContract {
         provider.request(.list) { result in
             switch result {
             case let .success(moyaresponse):
-                let result = try? moyaresponse.map(CurrencyListModel.self, atKeyPath: nil, using: JSONDecoder())
-                completion(.success(result!))
+                do {
+                    let result = try moyaresponse.map(CurrencyListModel.self, atKeyPath: nil, using: JSONDecoder())
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
             case let .failure(error):
                 completion(.failure(error))
             }

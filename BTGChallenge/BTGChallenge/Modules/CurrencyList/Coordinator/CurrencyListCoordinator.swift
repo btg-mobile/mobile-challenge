@@ -39,7 +39,7 @@ class CurrencyListCoordinator: Coordinator {
         case .sheetView(animated: let animated):
             let sheetController = SheetViewController(controller: viewController, sizes: [.fullScreen])
             sheetController.adjustForBottomSafeArea = false
-            sheetController.blurBottomSafeArea = true
+            sheetController.blurBottomSafeArea = false
             sheetController.dismissOnBackgroundTap = true
             sheetController.extendBackgroundBehindHandle = false
             sheetController.topCornersRadius = 15

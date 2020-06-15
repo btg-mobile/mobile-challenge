@@ -6,8 +6,7 @@
 //  Copyright © 2020 Gerson Vieira. All rights reserved.
 //
 
-import Foundation
-
+import Moya
 import UIKit
 
 class MainCoordinator: Coordinator {
@@ -17,7 +16,10 @@ class MainCoordinator: Coordinator {
     
     init(with navigation: UINavigationController) {
         self.navigation = navigation
-        self.controller = MainViewController()
+        let provider = MoyaProvider<ConvertCurrencyRouter>()
+        let service = CurrencyLiveService(provider: provider)
+        let viewModel = CurrencyLiveViewModel(service: service)
+        self.controller = MainViewController(with: viewModel)
     }
     
     func start(presentation: Presentation) {

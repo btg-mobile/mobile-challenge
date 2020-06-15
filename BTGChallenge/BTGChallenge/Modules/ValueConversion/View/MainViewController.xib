@@ -10,6 +10,9 @@
         <array key="SFUIText-Light.ttf">
             <string>SFUIText-Light</string>
         </array>
+        <array key="SFUIText-Medium.ttf">
+            <string>SFUIText-Medium</string>
+        </array>
         <array key="SFUIText-Semibold.ttf">
             <string>SFUIText-Semibold</string>
         </array>
@@ -17,8 +20,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="BTGChallenge" customModuleProvider="target">
             <connections>
+                <outlet property="buttonConvert" destination="wPh-vn-GIx" id="SiN-0u-Eba"/>
+                <outlet property="buttonToBetConverted" destination="fHJ-RZ-dJ0" id="kfK-sG-k3D"/>
+                <outlet property="buttonToConvert" destination="6dH-rY-8fY" id="Vh9-e5-WOQ"/>
                 <outlet property="toBeConvertedLbl" destination="ef7-o8-qru" id="x0J-yi-6oL"/>
-                <outlet property="toConvertLbl" destination="yFF-cp-doA" id="ht1-EY-XEl"/>
                 <outlet property="view" destination="iN0-l3-epB" id="O3w-UQ-PeE"/>
             </connections>
         </placeholder>
@@ -33,13 +38,25 @@
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XEW-p4-OV5">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-cp-doA">
-                                    <rect key="frame" x="0.0" y="17" width="310" height="26.5"/>
-                                    <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="22"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-rY-8fY">
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TXz-sm-o2E">
+                                    <rect key="frame" x="0.0" y="15.5" width="310" height="29"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQf-Rd-aRj">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="28"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                            <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="22"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                        </textField>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-X7-25r">
+                                            <rect key="frame" x="0.0" y="28" width="310" height="1"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="gYm-VS-tud"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-rY-8fY" customClass="CustomButton" customModule="BTGChallenge" customModuleProvider="target">
                                     <rect key="frame" x="322" y="0.0" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="d51-Df-nf4"/>
@@ -62,7 +79,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHJ-RZ-dJ0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHJ-RZ-dJ0" customClass="CustomButton" customModule="BTGChallenge" customModuleProvider="target">
                                     <rect key="frame" x="322" y="0.0" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="GhV-Xv-mgG"/>
@@ -78,9 +95,14 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPh-vn-GIx">
-                    <rect key="frame" x="184" y="300" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPh-vn-GIx" customClass="CustomButton" customModule="BTGChallenge" customModuleProvider="target">
+                    <rect key="frame" x="142" y="300" width="130" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="A8A-2L-Bhb"/>
+                        <constraint firstAttribute="height" constant="36" id="VVh-Mg-2sL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="22"/>
+                    <state key="normal" title="Converter"/>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
