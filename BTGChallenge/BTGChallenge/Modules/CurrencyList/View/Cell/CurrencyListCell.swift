@@ -24,9 +24,16 @@ class CurrencyList: NibView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setLabels(data: CurrencyListViewData) {
+    private func setLabels(data: CurrencyListViewData) {
         self.currencyCodeLbl.text = data.currencyCode
         self.currencyNameLbl.text = data.currencyName
+    }
+    
+    func startLoading() {
+//        currencyCodeLbl.startShimmer()
+//        currencyNameLbl.startShimmer()
+        ShimmerHelper.startLoadingSkeleton(with: currencyCodeLbl)
+        ShimmerHelper.startLoadingSkeleton(with: currencyNameLbl)
     }
     
 }

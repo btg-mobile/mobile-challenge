@@ -26,6 +26,7 @@ class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loading()
         self.fetch()
     }
     
@@ -42,8 +43,22 @@ class CurrencyListViewController: UIViewController {
     
     func setupUI(data: [CurrencyListViewData]) {
         self.mainStack.removeAllArrangedSubviews()
+        self.sheetViewController?.resize(to: .fullScreen)
         data.forEach({
             self.mainStack.addArrangedSubview(CurrencyList(with: $0))
+        })
+    }
+    
+    func loading() {
+        self.mainStack.removeAllArrangedSubviews()
+        var viewData: [CurrencyListViewData] = []
+        for _ in 1...5 {
+            viewData.append(CurrencyListViewData(currencyCode: "Loading", currencyName: "Just for Loading"))
+        }
+        viewData.forEach({
+            let view = CurrencyList(with: $0)
+            view.startLoading()
+            self.mainStack.addArrangedSubview(view)
         })
         
     }

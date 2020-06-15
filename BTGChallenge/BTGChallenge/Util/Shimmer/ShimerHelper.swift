@@ -57,7 +57,7 @@ internal class ViewShimmering: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black
+        self.backgroundColor = UIColor.darkGray
         self.layer.cornerRadius = 4
         self.layer.masksToBounds = true
     }

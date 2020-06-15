@@ -14,9 +14,10 @@ let kStartPoint: CGPoint = CGPoint(x: 0.0, y: 0.5)
 let kEndPoint: CGPoint = CGPoint(x: 1, y: 0.5)
 let kShimmerDuration = 0.9
 let kKeyPathAnimation = "locations"
-let kAnimationShimmer = "shimer"
+let kAnimationShimmer = "shimmer"
 
 internal extension UIView {
+    // MARK: - shimmer
     func startShimmer() {
         let light = UIColor.white.withAlphaComponent(kAlphaColor).cgColor
         let dark = UIColor.black.withAlphaComponent(kAlphaDarkColor).cgColor
@@ -29,11 +30,11 @@ internal extension UIView {
         gradient.locations = [0.3, 0.4, 0.5, 0.6]
         self.layer.mask = gradient
         
-        let animation = CABasicAnimation(keyPath: kKeyPathAnimation)
-        animation.fromValue = [0.0, 0.1, 0.2, 0.3]
-        animation.toValue = [0.7, 0.8, 0.9, 0.1]
-        animation.duration = kShimmerDuration
+        let animation = CABasicAnimation(keyPath: "locations")
+        animation.fromValue = [0.0, 0.1, 0.2]
+        animation.toValue = [0.8, 0.9, 1.0]
+        animation.duration = 1.5
         animation.repeatCount = HUGE
-        gradient.add(animation, forKey: kAnimationShimmer)
+        gradient.add(animation, forKey: "shimmer")
     }
 }
