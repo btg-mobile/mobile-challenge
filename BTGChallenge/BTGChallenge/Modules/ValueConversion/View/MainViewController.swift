@@ -28,24 +28,19 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
-        
+        self.fetch()
+    }
+    
+    func fetch() {
         self.viewModel.fetch { result in
             switch result {
             case .success(let success):
                 print("Sucess: \(success)")
                 return
             case .failure(let error):
-                return
+                self.showAlert(title: "Atenção", message: error.localizedDescription)
             }
         }
-    }
-    
-    func setupUI() {
-//        self.buttonToConvert.customButton()
-//        self.buttonToBetConverted.customButton()
-       // self.buttonConvert.customButton()
-        
     }
     
     @IBAction func openCurrencyListToBeConverted(_ sender: Any) {

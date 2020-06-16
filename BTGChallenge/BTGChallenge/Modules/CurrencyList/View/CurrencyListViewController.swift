@@ -39,7 +39,9 @@ class CurrencyListViewController: UIViewController {
                 self.viewData = data
                 self.setupUI()
             case .failure(let error):
-                print("Error: \(error)")
+                self.showAlert(title: "Atenção", message: error.localizedDescription) {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
