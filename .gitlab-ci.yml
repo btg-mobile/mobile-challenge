@@ -1,0 +1,4 @@
+run_unit_test: false
+run_build: true
+run_quality_gate: true
+run_fortify: true
