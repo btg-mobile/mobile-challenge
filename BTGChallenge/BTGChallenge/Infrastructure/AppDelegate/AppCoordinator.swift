@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
     func start(with presentation: Presentation) -> UIViewController {
         window.rootViewController = navigation
         window.makeKeyAndVisible()
-        let main = MainCoordinator(with: self.navigation)
+        let main = CurrencyLiveCoordinator(with: self.navigation)
         self.addChildCoordinator(main)
         return main.start(with: presentation)
     }

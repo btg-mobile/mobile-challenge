@@ -10,22 +10,34 @@ import UIKit
 import Moya
 
 enum ConvertCurrencyRouter {
-    case live
+    case live(String, String)
 }
 
 extension ConvertCurrencyRouter: TargetType {
     var path: String {
-        return Paths.live.rawValue
+        switch self {
+        case .live:
+            return Paths.live.rawValue
+        }
     }
     
     var method: Moya.Method {
-        return .get
+        switch self {
+        case .live:
+            return .get
+        }
     }
     
     var task: Task {
-        var parameters: [String: Any] = [:]
-        parameters[Keys.accessKey.rawValue] = Values.ApiKey.rawValue
-        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        switch self {
+        case let .live(currencies, source):
+            var parameters: [String: Any] = [:]
+            parameters[Keys.accessKey.rawValue] = Values.ApiKey.rawValue
+//            parameters[Keys.currencies.rawValue] = currencies
+//            parameters[Keys.source.rawValue] = source
+//            parameters[Keys.format.rawValue] = 1
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        }
     }
     
     

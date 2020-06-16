@@ -6,4 +6,9 @@
 //  Copyright © 2020 Gerson Vieira. All rights reserved.
 //
 
-import Foundation
+import UIKit
+extension Double {
+    var stringValue: String {
+        return "\(self)"
+    }
+}

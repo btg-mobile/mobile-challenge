@@ -15,9 +15,13 @@ class CurrencyListViewController: UIViewController {
     
     var viewData: [CurrencyListViewData] = []
     var viewModel: CurrencyListViewModelContract!
+    var callback: ((_ currency: CurrencyListViewData )-> Void)?
     
-    init (with viewModel: CurrencyListViewModelContract) {
+    init (with viewModel: CurrencyListViewModelContract, completion: ((_ currency: CurrencyListViewData)-> Void)? = nil) {
         self.viewModel = viewModel
+        if let cb = completion {
+            self.callback = cb
+        }
         super.init(nibName: "CurrencyListViewController", bundle: nil)
     }
     
@@ -67,5 +71,11 @@ extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate
         }
         cell.setLabels(data: viewData[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cb = self.callback else { return }
+        cb(viewData[indexPath.row])
+        self.dismiss(animated: true, completion: nil)
     }
 }

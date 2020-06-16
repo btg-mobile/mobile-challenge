@@ -19,7 +19,7 @@ class CurrencyLiveCoordinator: Coordinator {
         let provider = MoyaProvider<ConvertCurrencyRouter>()
         let service = CurrencyLiveService(provider: provider)
         let viewModel = CurrencyLiveViewModel(service: service)
-        self.controller = CurrencyLiveViewController//CurrencyLiveViewController(with: viewModel)
+        self.controller = CurrencyLiveViewController(with: viewModel)
     }
     
     func start(presentation: Presentation) {

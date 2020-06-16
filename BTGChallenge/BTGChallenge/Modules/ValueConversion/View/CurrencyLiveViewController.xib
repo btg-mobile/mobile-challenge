@@ -18,12 +18,13 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="BTGChallenge" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencyLiveViewController">
             <connections>
                 <outlet property="buttonConvert" destination="wPh-vn-GIx" id="SiN-0u-Eba"/>
-                <outlet property="buttonToBetConverted" destination="fHJ-RZ-dJ0" id="kfK-sG-k3D"/>
-                <outlet property="buttonToConvert" destination="6dH-rY-8fY" id="Vh9-e5-WOQ"/>
-                <outlet property="toBeConvertedLbl" destination="ef7-o8-qru" id="x0J-yi-6oL"/>
+                <outlet property="buttonFromCurrency" destination="6dH-rY-8fY" id="KZJ-qp-Xqq"/>
+                <outlet property="buttonToCurrency" destination="fHJ-RZ-dJ0" id="5RM-0F-UtX"/>
+                <outlet property="currencyTextField" destination="jQf-Rd-aRj" id="JyZ-Ex-GHG"/>
+                <outlet property="toCurrencyLbl" destination="ef7-o8-qru" id="C6Q-Up-TGN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="O3w-UQ-PeE"/>
             </connections>
         </placeholder>
@@ -46,6 +47,9 @@
                                             <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="22"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                            <connections>
+                                                <action selector="currencyText:" destination="-1" eventType="editingChanged" id="NrK-Ue-oxu"/>
+                                            </connections>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-X7-25r">
                                             <rect key="frame" x="0.0" y="28" width="310" height="1"/>
@@ -103,6 +107,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="22"/>
                     <state key="normal" title="Converter"/>
+                    <connections>
+                        <action selector="convertAction:" destination="-1" eventType="touchUpInside" id="Vqg-sh-W0q"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

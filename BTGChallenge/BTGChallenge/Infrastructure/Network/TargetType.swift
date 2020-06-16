@@ -20,6 +20,8 @@ enum Keys: String {
     case to = "to"
     case amount = "amount"
     case format = "format"
+    case currencies = "currencies"
+    case source = "source"
 }
 
 enum Values: String {

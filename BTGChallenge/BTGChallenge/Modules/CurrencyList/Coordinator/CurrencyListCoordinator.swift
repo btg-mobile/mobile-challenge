@@ -16,13 +16,16 @@ class CurrencyListCoordinator: Coordinator {
     let viewController: CurrencyListViewController
     let targertViewController: UIViewController
     
-    init(navigation: UINavigationController, targertViewController: UIViewController) {
+    init(navigation: UINavigationController, targertViewController: UIViewController, completion: ((_ currency: CurrencyListViewData)-> Void)? = nil) {
+        self.navigation = navigation
+           self.targertViewController = targertViewController
         let provider = MoyaProvider<CurrencyListRoute>()
         let service = CurrencyListService(provider: provider)
         let viewModel = CurrencyListViewModel(service: service)
-        self.viewController = CurrencyListViewController(with: viewModel)
-        self.navigation = navigation
-        self.targertViewController = targertViewController
+        self.viewController = CurrencyListViewController(with: viewModel, completion: { currency in
+            guard let cb = completion else { return }
+            cb(currency)
+        })
     }
     
     func start(with presentation: Presentation) -> UIViewController {

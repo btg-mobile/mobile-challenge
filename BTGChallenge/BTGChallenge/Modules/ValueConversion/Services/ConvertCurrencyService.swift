@@ -11,7 +11,7 @@ import Moya
 
 protocol CurrencyLiveServiceContract {
     var provider: MoyaProvider<ConvertCurrencyRouter> { get set }
-    func fetch(completion: @escaping(Result<CurrencyLiveModel>) -> Void)
+    func fetch(fromCurrency: String, toCurrency: String,completion: @escaping(Result<CurrencyLiveModel>) -> Void)
 }
 
 class CurrencyLiveService: CurrencyLiveServiceContract {
@@ -21,8 +21,8 @@ class CurrencyLiveService: CurrencyLiveServiceContract {
         self.provider = provider
     }
     
-    func fetch(completion: @escaping (Result<CurrencyLiveModel>) -> Void) {
-        provider.request(.live) { result in
+    func fetch(fromCurrency: String, toCurrency: String, completion: @escaping (Result<CurrencyLiveModel>) -> Void) {
+        provider.request(.live(fromCurrency, toCurrency)) { result in
             switch result {
             case .success(let moyaResponse):
                 do {
