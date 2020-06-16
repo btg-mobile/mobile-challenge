@@ -9,7 +9,7 @@
 import Moya
 import UIKit
 
-class MainCoordinator: Coordinator {
+class CurrencyLiveCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigation: UINavigationController
     let controller: UIViewController
@@ -19,7 +19,7 @@ class MainCoordinator: Coordinator {
         let provider = MoyaProvider<ConvertCurrencyRouter>()
         let service = CurrencyLiveService(provider: provider)
         let viewModel = CurrencyLiveViewModel(service: service)
-        self.controller = MainViewController(with: viewModel)
+        self.controller = CurrencyLiveViewController//CurrencyLiveViewController(with: viewModel)
     }
     
     func start(presentation: Presentation) {
