@@ -11,7 +11,7 @@ import Nimble
 import Moya
 @testable import BTGChallenge
 
-class ConvertCurrencyViewModelSpec: QuickSpec {
+class ConvertCurrencyViewModelTest: QuickSpec {
     
     var convertCurrencyServiceMock: CurrencyLiveServiceContract!
     var convertCurrencyViewModel: CurrencyLiveViewModel!

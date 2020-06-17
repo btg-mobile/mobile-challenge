@@ -1,12 +1,10 @@
 import Foundation
 
 #if canImport(Darwin)
-// swiftlint:disable type_name
 @objcMembers
 public class _ExampleBase: NSObject {}
 #else
 public class _ExampleBase: NSObject {}
-// swiftlint:enable type_name
 #endif
 
 /**
@@ -30,10 +28,10 @@ final public class Example: _ExampleBase {
     weak internal var group: ExampleGroup?
 
     private let internalDescription: String
-    private let closure: () throws -> Void
+    private let closure: () -> Void
     private let flags: FilterFlags
 
-    internal init(description: String, callsite: Callsite, flags: FilterFlags, closure: @escaping () throws -> Void) {
+    internal init(description: String, callsite: Callsite, flags: FilterFlags, closure: @escaping () -> Void) {
         self.internalDescription = description
         self.closure = closure
         self.callsite = callsite
@@ -81,22 +79,7 @@ final public class Example: _ExampleBase {
         }
         group!.phase = .beforesFinished
 
-        do {
-            try closure()
-        } catch {
-            let description = "Test \(name) threw unexpected error: \(error.localizedDescription)"
-            #if SWIFT_PACKAGE
-            let file = callsite.file.description
-            #else
-            let file = callsite.file
-            #endif
-            QuickSpec.current.recordFailure(
-                withDescription: description,
-                inFile: file,
-                atLine: Int(callsite.line),
-                expected: false
-            )
-        }
+        closure()
 
         group!.phase = .aftersExecuting
         for after in group!.afters {

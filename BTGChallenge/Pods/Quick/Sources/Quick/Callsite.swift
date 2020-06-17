@@ -1,12 +1,10 @@
 import Foundation
 
 #if canImport(Darwin)
-// swiftlint:disable type_name
 @objcMembers
 public class _CallsiteBase: NSObject {}
 #else
 public class _CallsiteBase: NSObject {}
-// swiftlint:enable type_name
 #endif
 
 // Ideally we would always use `StaticString` as the type for tracking the file name

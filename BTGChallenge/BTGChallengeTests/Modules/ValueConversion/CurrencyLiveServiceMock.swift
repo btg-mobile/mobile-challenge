@@ -11,11 +11,7 @@ import UIKit
 @testable import BTGChallenge
 
 class CurrencyLiveServiceMock: CurrencyLiveServiceContract {
-    var provider: MoyaProvider<ConvertCurrencyRouter>
-    
-    init(provider: MoyaProvider<ConvertCurrencyRouter>) {
-        self.provider = provider
-    }
+    var provider: MoyaProvider<ConvertCurrencyRouter> = MoyaProvider<ConvertCurrencyRouter>()
     
     func fetch(completion: @escaping (Result<CurrencyLiveModel>) -> Void) {
         

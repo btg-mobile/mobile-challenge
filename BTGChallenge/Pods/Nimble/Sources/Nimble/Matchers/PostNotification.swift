@@ -29,7 +29,7 @@ private let mainThread = pthread_self()
 
 public func postNotifications(
     _ predicate: Predicate<[Notification]>,
-    from center: NotificationCenter = .default
+    fromNotificationCenter center: NotificationCenter = .default
 ) -> Predicate<Any> {
     _ = mainThread // Force lazy-loading of this value
     let collector = NotificationCollector(notificationCenter: center)
@@ -66,18 +66,12 @@ public func postNotifications(
     }
 }
 
-@available(*, deprecated, renamed: "postNotifications(_:from:)")
-public func postNotifications(
-    _ predicate: Predicate<[Notification]>,
-    fromNotificationCenter center: NotificationCenter
-) -> Predicate<Any> {
-    return postNotifications(predicate, from: center)
-}
-
 public func postNotifications<T>(
     _ notificationsMatcher: T,
-    from center: NotificationCenter = .default
-)-> Predicate<Any> where T: Matcher, T.ValueType == [Notification] {
+    fromNotificationCenter center: NotificationCenter = .default)
+    -> Predicate<Any>
+    where T: Matcher, T.ValueType == [Notification]
+{
     _ = mainThread // Force lazy-loading of this value
     let collector = NotificationCollector(notificationCenter: center)
     collector.startObserving()
@@ -103,12 +97,4 @@ public func postNotifications<T>(
         }
         return PredicateResult(bool: match, message: failureMessage.toExpectationMessage())
     }
-}
-
-@available(*, deprecated, renamed: "postNotifications(_:from:)")
-public func postNotifications<T>(
-    _ notificationsMatcher: T,
-    fromNotificationCenter center: NotificationCenter
-)-> Predicate<Any> where T: Matcher, T.ValueType == [Notification] {
-    return postNotifications(notificationsMatcher, from: center)
 }

@@ -1,12 +1,10 @@
 import Foundation
 
 #if canImport(Darwin)
-// swiftlint:disable type_name
 @objcMembers
 public class _ExampleMetadataBase: NSObject {}
 #else
 public class _ExampleMetadataBase: NSObject {}
-// swiftlint:enable type_name
 #endif
 
 /**

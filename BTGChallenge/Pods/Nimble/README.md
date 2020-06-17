@@ -1186,7 +1186,7 @@ expect {
 let notificationCenter = NotificationCenter()
 expect {
     notificationCenter.postNotification(testNotification)
-}.to(postNotifications(equal([testNotification]), from: notificationCenter))
+}.to(postNotifications(equal([testNotification]), fromNotificationCenter: notificationCenter))
 ```
 
 > This matcher is only available in Swift.

@@ -21,7 +21,7 @@ extension QuickConfiguration {
     ///                    This block will be executed once for each subclass of QuickConfiguration.
     private static func enumerateSubclasses(_ block: (QuickConfiguration.Type) -> Void) {
         #if canImport(Darwin)
-        let classesCount = objc_getClassList(nil, 0)
+        var classesCount = objc_getClassList(nil, 0)
 
         guard classesCount > 0 else {
             return
@@ -30,14 +30,14 @@ extension QuickConfiguration {
         let classes = UnsafeMutablePointer<AnyClass?>.allocate(capacity: Int(classesCount))
         defer { free(classes) }
 
-        objc_getClassList(AutoreleasingUnsafeMutablePointer(classes), classesCount)
+        classesCount = objc_getClassList(AutoreleasingUnsafeMutablePointer(classes), classesCount)
 
         var configurationSubclasses: [QuickConfiguration.Type] = []
-        for index in 0..<classesCount {
+        for i in 0..<classesCount {
             guard
-                let subclass = classes[Int(index)],
+                let subclass = classes[Int(i)],
                 let superclass = class_getSuperclass(subclass),
-                superclass is QuickConfiguration.Type
+                superclass == QuickConfiguration.self
                 else { continue }
 
             // swiftlint:disable:next force_cast

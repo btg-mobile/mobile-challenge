@@ -6,13 +6,12 @@
 //  Copyright © 2020 Gerson Vieira. All rights reserved.
 //
 
-import UIKit
 import Quick
 import Nimble
 import Moya
 @testable import BTGChallenge
 
-class CurrencyLiveViewDataSpec: QuickSpec {
+class CurrencyLiveViewDataTest: QuickSpec {
     
     var convertCurrencyServiceMock: CurrencyLiveServiceContract!
     var convertCurrencyViewModel: CurrencyLiveViewModel!

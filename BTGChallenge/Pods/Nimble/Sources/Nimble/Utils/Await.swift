@@ -98,7 +98,7 @@ internal enum AwaitResult<T> {
 
 /// Holds the resulting value from an asynchronous expectation.
 /// This class is thread-safe at receiving an "response" to this promise.
-internal final class AwaitPromise<T> {
+internal class AwaitPromise<T> {
     private(set) internal var asyncResult: AwaitResult<T> = .incomplete
     private var signal: DispatchSemaphore
 
@@ -301,19 +301,11 @@ internal class Awaiter {
             let timeoutSource = createTimerSource(timeoutQueue)
             var completionCount = 0
             let trigger = AwaitTrigger(timeoutSource: timeoutSource, actionSource: nil) {
-                try closure { result in
+                try closure {
                     completionCount += 1
                     if completionCount < 2 {
-                        func completeBlock() {
-                            if promise.resolveResult(.completed(result)) {
-                                CFRunLoopStop(CFRunLoopGetMain())
-                            }
-                        }
-
-                        if Thread.isMainThread {
-                            completeBlock()
-                        } else {
-                            DispatchQueue.main.async { completeBlock() }
+                        if promise.resolveResult(.completed($0)) {
+                            CFRunLoopStop(CFRunLoopGetMain())
                         }
                     } else {
                         fail("waitUntil(..) expects its completion closure to be only called once",

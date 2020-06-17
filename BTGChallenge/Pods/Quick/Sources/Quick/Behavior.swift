@@ -1,5 +1,7 @@
-/// A `Behavior` encapsulates a set of examples that can be re-used in several locations using the `itBehavesLike`
-/// function with a context instance of the generic type.
+/**
+ A `Behavior` encapsulates a set of examples that can be re-used in several locations using the `itBehavesLike` function with a context instance of the generic type.
+ */
+
 open class Behavior<Context> {
 
     /**
