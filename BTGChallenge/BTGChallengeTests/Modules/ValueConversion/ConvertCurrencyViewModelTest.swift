@@ -20,8 +20,7 @@ class ConvertCurrencyViewModelSpec: QuickSpec {
         
         describe("ConvertCurrencyViewModelSpec") {
             beforeEach {
-                let provider = MoyaProvider<ConvertCurrencyRouter>()
-                self.convertCurrencyServiceMock = CurrencyLiveServiceMock(provider: provider)
+                self.convertCurrencyServiceMock = CurrencyLiveServiceMock()
                 self.convertCurrencyViewModel  = CurrencyLiveViewModel(service: self.convertCurrencyServiceMock)
             }
             
