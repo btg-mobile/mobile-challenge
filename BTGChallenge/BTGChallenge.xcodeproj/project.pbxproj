@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		59C1779C01918E5F3CDBE32C /* Pods_BTGChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD02D418A8B341AA06ABA448 /* Pods_BTGChallenge.framework */; };
 		750A55A0249A87DC00CCFDD4 /* CoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A559F249A87DC00CCFDD4 /* CoordinatorSpec.swift */; };
+		750A55A5249AA73B00CCFDD4 /* ConvertCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A55A4249AA73B00CCFDD4 /* ConvertCurrencyViewModel.swift */; };
+		750A55A7249AA83600CCFDD4 /* CurrencyLiveServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A55A6249AA83600CCFDD4 /* CurrencyLiveServiceMock.swift */; };
+		750A55AA249AB3F100CCFDD4 /* CurrencyLiveViewDataSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A55A9249AB3F100CCFDD4 /* CurrencyLiveViewDataSpec.swift */; };
 		75121D64248ED5F6000CE27C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75121D63248ED5F6000CE27C /* AppDelegate.swift */; };
 		75121D6D248ED5F8000CE27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75121D6C248ED5F8000CE27C /* Assets.xcassets */; };
 		75121D70248ED5F8000CE27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75121D6E248ED5F8000CE27C /* LaunchScreen.storyboard */; };
@@ -70,6 +73,9 @@
 		0831123E90266EE1862ACC08 /* Pods-BTGChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTGChallenge.release.xcconfig"; path = "Target Support Files/Pods-BTGChallenge/Pods-BTGChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		472F4A55DBB45C909BEAF4E3 /* Pods-BTGChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTGChallenge.debug.xcconfig"; path = "Target Support Files/Pods-BTGChallenge/Pods-BTGChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		750A559F249A87DC00CCFDD4 /* CoordinatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSpec.swift; sourceTree = "<group>"; };
+		750A55A4249AA73B00CCFDD4 /* ConvertCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewModel.swift; sourceTree = "<group>"; };
+		750A55A6249AA83600CCFDD4 /* CurrencyLiveServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLiveServiceMock.swift; sourceTree = "<group>"; };
+		750A55A9249AB3F100CCFDD4 /* CurrencyLiveViewDataSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLiveViewDataSpec.swift; sourceTree = "<group>"; };
 		75103DAFA78CF4173AB7B811 /* Pods-BTGChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTGChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-BTGChallengeTests/Pods-BTGChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		75121D60248ED5F6000CE27C /* BTGChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTGChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75121D63248ED5F6000CE27C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +170,32 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		750A55A1249AA6F400CCFDD4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				750A55A2249AA70100CCFDD4 /* ValueConversion */,
+				750A55A3249AA70900CCFDD4 /* CurrencyList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		750A55A2249AA70100CCFDD4 /* ValueConversion */ = {
+			isa = PBXGroup;
+			children = (
+				750A55A4249AA73B00CCFDD4 /* ConvertCurrencyViewModel.swift */,
+				750A55A6249AA83600CCFDD4 /* CurrencyLiveServiceMock.swift */,
+				750A55A9249AB3F100CCFDD4 /* CurrencyLiveViewDataSpec.swift */,
+			);
+			path = ValueConversion;
+			sourceTree = "<group>";
+		};
+		750A55A3249AA70900CCFDD4 /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
 		75121D57248ED5F6000CE27C = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +230,7 @@
 		75121D79248ED5F9000CE27C /* BTGChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				750A55A1249AA6F400CCFDD4 /* Modules */,
 				750A559E249A878400CCFDD4 /* Coordinator */,
 				75121D7A248ED5F9000CE27C /* BTGChallengeTests.swift */,
 				75121D7C248ED5F9000CE27C /* Info.plist */,
@@ -734,6 +767,9 @@
 			files = (
 				75121D7B248ED5F9000CE27C /* BTGChallengeTests.swift in Sources */,
 				750A55A0249A87DC00CCFDD4 /* CoordinatorSpec.swift in Sources */,
+				750A55A7249AA83600CCFDD4 /* CurrencyLiveServiceMock.swift in Sources */,
+				750A55A5249AA73B00CCFDD4 /* ConvertCurrencyViewModel.swift in Sources */,
+				750A55AA249AB3F100CCFDD4 /* CurrencyLiveViewDataSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

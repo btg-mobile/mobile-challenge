@@ -1,4 +1,5 @@
 import Foundation
+import Result
 
 /// Closure to be executed when a request has completed.
 public typealias Completion = (_ result: Result<Moya.Response, MoyaError>) -> Void
@@ -23,20 +24,12 @@ public struct ProgressResponse {
 
     /// The fraction of the overall work completed by the progress object.
     public var progress: Double {
-        if completed {
-            return 1.0
-        } else if let progressObject = progressObject, progressObject.totalUnitCount > 0 {
-            // if the Content-Length is specified we can rely on `fractionCompleted`
-            return progressObject.fractionCompleted
-        } else {
-            // if the Content-Length is not specified, return progress 0.0 until it's completed
-            return 0.0
-        }
+        return progressObject?.fractionCompleted ?? 1.0
     }
 
     /// A Boolean value stating whether the request is completed.
     public var completed: Bool {
-        return response != nil
+        return progress == 1.0 && response != nil
     }
 }
 
@@ -75,7 +68,8 @@ open class MoyaProvider<Target: TargetType>: MoyaProviderType {
     /// of a request for a given `TargetType`.
     public let stubClosure: StubClosure
 
-    public let session: Session
+    /// The manager for the session.
+    public let manager: Manager
 
     /// A list of plugins.
     /// e.g. for logging, network activity indicator or credentials.
@@ -88,21 +82,19 @@ open class MoyaProvider<Target: TargetType>: MoyaProviderType {
     /// Propagated to Alamofire as callback queue. If nil - the Alamofire default (as of their API in 2017 - the main queue) will be used.
     let callbackQueue: DispatchQueue?
 
-    let lock: NSRecursiveLock = NSRecursiveLock()
-
     /// Initializes a provider.
     public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
                 requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
                 stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
                 callbackQueue: DispatchQueue? = nil,
-                session: Session = MoyaProvider<Target>.defaultAlamofireSession(),
+                manager: Manager = MoyaProvider<Target>.defaultAlamofireManager(),
                 plugins: [PluginType] = [],
                 trackInflights: Bool = false) {
 
         self.endpointClosure = endpointClosure
         self.requestClosure = requestClosure
         self.stubClosure = stubClosure
-        self.session = session
+        self.manager = manager
         self.plugins = plugins
         self.trackInflights = trackInflights
         self.callbackQueue = callbackQueue
@@ -125,16 +117,15 @@ open class MoyaProvider<Target: TargetType>: MoyaProviderType {
     }
 
     // swiftlint:disable function_parameter_count
-    /// When overriding this method, call `notifyPluginsOfImpendingStub` to prepare your request
-    /// and then use the returned `URLRequest` in the `createStubFunction` method.
+    /// When overriding this method, take care to `notifyPluginsOfImpendingStub` and to perform the stub using the `createStubFunction` method.
     /// Note: this was previously in an extension, however it must be in the original class declaration to allow subclasses to override.
     @discardableResult
     open func stubRequest(_ target: Target, request: URLRequest, callbackQueue: DispatchQueue?, completion: @escaping Moya.Completion, endpoint: Endpoint, stubBehavior: Moya.StubBehavior) -> CancellableToken {
         let callbackQueue = callbackQueue ?? self.callbackQueue
         let cancellableToken = CancellableToken { }
-        let preparedRequest = notifyPluginsOfImpendingStub(for: request, target: target)
+        notifyPluginsOfImpendingStub(for: request, target: target)
         let plugins = self.plugins
-        let stub: () -> Void = createStubFunction(cancellableToken, forTarget: target, withCompletion: completion, endpoint: endpoint, plugins: plugins, request: preparedRequest)
+        let stub: () -> Void = createStubFunction(cancellableToken, forTarget: target, withCompletion: completion, endpoint: endpoint, plugins: plugins, request: request)
         switch stubBehavior {
         case .immediate:
             switch callbackQueue {
@@ -158,7 +149,7 @@ open class MoyaProvider<Target: TargetType>: MoyaProviderType {
     // swiftlint:enable function_parameter_count
 }
 
-// MARK: Stubbing
+/// Mark: Stubbing
 
 /// Controls how stub responses are returned.
 public enum StubBehavior {
@@ -179,17 +170,17 @@ public extension MoyaProvider {
     // at least add some class functions to allow easy access to common stubbing closures.
 
     /// Do not stub.
-    final class func neverStub(_: Target) -> Moya.StubBehavior {
+    public final class func neverStub(_: Target) -> Moya.StubBehavior {
         return .never
     }
 
     /// Return a response immediately.
-    final class func immediatelyStub(_: Target) -> Moya.StubBehavior {
+    public final class func immediatelyStub(_: Target) -> Moya.StubBehavior {
         return .immediate
     }
 
     /// Return a response after a delay.
-    final class func delayedStub(_ seconds: TimeInterval) -> (Target) -> Moya.StubBehavior {
+    public final class func delayedStub(_ seconds: TimeInterval) -> (Target) -> Moya.StubBehavior {
         return { _ in return .delayed(seconds: seconds) }
     }
 }

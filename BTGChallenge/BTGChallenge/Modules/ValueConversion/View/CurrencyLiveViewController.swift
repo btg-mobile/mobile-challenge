@@ -41,7 +41,7 @@ class CurrencyLiveViewController: UIViewController {
     }
     
     func fetch() {
-        self.viewModel.fetch(fromCurrency: self.fromCurrency, toCurrency: self.tocurrency) { result in
+        self.viewModel.fetch { result in
             switch result {
             case .success(let viewData):
                 self.convertAmount(data: viewData)

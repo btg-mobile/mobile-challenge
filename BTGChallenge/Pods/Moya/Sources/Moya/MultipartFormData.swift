@@ -35,7 +35,15 @@ public struct MultipartFormData {
 // MARK: RequestMultipartFormData appending
 internal extension RequestMultipartFormData {
     func append(data: Data, bodyPart: MultipartFormData) {
-        append(data, withName: bodyPart.name, fileName: bodyPart.fileName, mimeType: bodyPart.mimeType)
+        if let mimeType = bodyPart.mimeType {
+            if let fileName = bodyPart.fileName {
+                append(data, withName: bodyPart.name, fileName: fileName, mimeType: mimeType)
+            } else {
+                append(data, withName: bodyPart.name, mimeType: mimeType)
+            }
+        } else {
+            append(data, withName: bodyPart.name)
+        }
     }
 
     func append(fileURL url: URL, bodyPart: MultipartFormData) {

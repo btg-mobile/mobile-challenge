@@ -52,10 +52,3 @@ public enum MultiTarget: TargetType {
         }
     }
 }
-
-extension MultiTarget: AccessTokenAuthorizable {
-    public var authorizationType: AuthorizationType? {
-        guard let authorizableTarget = target as? AccessTokenAuthorizable else { return nil }
-        return authorizableTarget.authorizationType
-    }
-}

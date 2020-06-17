@@ -3,7 +3,7 @@
 
 def defaultPods
   inhibit_all_warnings!
-  pod 'Moya'
+  pod 'Moya', '~> 12.0'
 end
 
 def testPods
@@ -20,6 +20,7 @@ end
 
 target 'BTGChallengeTests' do
   inherit! :search_paths
+  defaultPods
   testPods
   # Pods for testing
 end

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CurrencyLiveViewModelContract {
-    func fetch(fromCurrency: String, toCurrency: String, completion: @escaping(Result<[CurrencyLiveViewData]>) -> Void)
+    func fetch(completion: @escaping(Result<[CurrencyLiveViewData]>) -> Void)
 }
 
 class CurrencyLiveViewModel: CurrencyLiveViewModelContract {
@@ -20,8 +20,8 @@ class CurrencyLiveViewModel: CurrencyLiveViewModelContract {
         self.service = service
     }
     
-    func fetch(fromCurrency: String, toCurrency: String, completion: @escaping (Result<[CurrencyLiveViewData]>) -> Void) {
-        self.service.fetch(fromCurrency: fromCurrency, toCurrency: toCurrency) { result in
+    func fetch(completion: @escaping (Result<[CurrencyLiveViewData]>) -> Void) {
+        self.service.fetch{ result in
             switch result {
             case .success(let model):
                 guard let quotes = model.quotes else { return }
@@ -33,7 +33,7 @@ class CurrencyLiveViewModel: CurrencyLiveViewModelContract {
         }
     }
     
-    private func formartList(currencies: [String: Double]) -> [CurrencyLiveViewData]{
+   func formartList(currencies: [String: Double]) -> [CurrencyLiveViewData]{
         return currencies.compactMap { element in
             let formattedCurrency = CurrencyLiveViewData(currencyCode: element.key, currencyQuote: element.value)
             return formattedCurrency
