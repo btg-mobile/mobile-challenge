@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41833787249D3A5700F44826 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41833785249D3A5700F44826 /* CurrencyTableViewCell.swift */; };
+		41833788249D3A5700F44826 /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41833786249D3A5700F44826 /* CurrencyTableViewCell.xib */; };
 		8C639DF3249C3819001EF94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C639DF2249C3819001EF94D /* AppDelegate.swift */; };
 		8C639DFD249C3819001EF94D /* CurrencyConverterBTG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C639DFB249C3819001EF94D /* CurrencyConverterBTG.xcdatamodeld */; };
 		8C639DFF249C381A001EF94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C639DFE249C381A001EF94D /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41833785249D3A5700F44826 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		41833786249D3A5700F44826 /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
 		8C639DEF249C3819001EF94D /* CurrencyConverterBTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverterBTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C639DF2249C3819001EF94D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C639DFC249C3819001EF94D /* CurrencyConverterBTG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyConverterBTG.xcdatamodel; sourceTree = "<group>"; };
@@ -62,6 +66,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41833782249D36FA00F44826 /* Currency List */ = {
+			isa = PBXGroup;
+			children = (
+				8C639E1B249C5427001EF94D /* CurrencyListViewController.swift */,
+				8C639E1C249C5427001EF94D /* CurrencyListViewController.xib */,
+				41833785249D3A5700F44826 /* CurrencyTableViewCell.swift */,
+				41833786249D3A5700F44826 /* CurrencyTableViewCell.xib */,
+			);
+			path = "Currency List";
+			sourceTree = "<group>";
+		};
+		41833783249D370D00F44826 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				8C639E17249C540B001EF94D /* ConversionViewController.swift */,
+				8C639E18249C540B001EF94D /* ConversionViewController.xib */,
+			);
+			path = Conversion;
+			sourceTree = "<group>";
+		};
+		41833784249D371800F44826 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				41833783249D370D00F44826 /* Conversion */,
+				41833782249D36FA00F44826 /* Currency List */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		8C639DE6249C3818001EF94D = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +121,7 @@
 				8C639E00249C381A001EF94D /* LaunchScreen.storyboard */,
 				8C639E03249C381A001EF94D /* Info.plist */,
 				8C639DFB249C3819001EF94D /* CurrencyConverterBTG.xcdatamodeld */,
-				8C639E17249C540B001EF94D /* ConversionViewController.swift */,
-				8C639E18249C540B001EF94D /* ConversionViewController.xib */,
-				8C639E1B249C5427001EF94D /* CurrencyListViewController.swift */,
-				8C639E1C249C5427001EF94D /* CurrencyListViewController.xib */,
+				41833784249D371800F44826 /* Scenes */,
 			);
 			path = CurrencyConverterBTG;
 			sourceTree = "<group>";
@@ -187,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C639E02249C381A001EF94D /* LaunchScreen.storyboard in Resources */,
+				41833788249D3A5700F44826 /* CurrencyTableViewCell.xib in Resources */,
 				8C639E1E249C5427001EF94D /* CurrencyListViewController.xib in Resources */,
 				8C639E1A249C540B001EF94D /* ConversionViewController.xib in Resources */,
 				8C639DFF249C381A001EF94D /* Assets.xcassets in Resources */,
@@ -210,6 +241,7 @@
 				8C639E1D249C5427001EF94D /* CurrencyListViewController.swift in Sources */,
 				8C639DF3249C3819001EF94D /* AppDelegate.swift in Sources */,
 				8C639E19249C540B001EF94D /* ConversionViewController.swift in Sources */,
+				41833787249D3A5700F44826 /* CurrencyTableViewCell.swift in Sources */,
 				8C639DFD249C3819001EF94D /* CurrencyConverterBTG.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
