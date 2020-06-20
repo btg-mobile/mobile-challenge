@@ -30,8 +30,17 @@ class Conversion: NSObject {
         return from && to
     }
     
-    
-    func convert(quotesList: QuotesList) -> Decimal?  {
+    func convert() -> Decimal?  {
+        
+        // get quotes from api or cache
+        
+        
+//        if let conversion = cache.convesion {
+//            return conversion
+//        }
+//        repo.quotesList
+        let quotesList = QuotesList()
+        
         if conversionType == .baseUSD {
             let quotes = quotesList.getFreeQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
             guard let usdFrom = quotes.usdFrom, let usdTo = quotes.usdTo else {
@@ -45,7 +54,6 @@ class Conversion: NSObject {
         } else {
             return nil
         }
-        
     }
     
     /*
@@ -88,13 +96,13 @@ class Quote: NSObject {
 }
 
 
-struct QuotesList {
-    let baseCurrency: Currency = Currency(code: "USD", name: "American Dollars")
-    let quotes: [Quote]
-    let date: Date
-    let timeStamp: Date
+class QuotesList: NSObject {
+    var baseCurrency: Currency = Currency(code: "USD", name: "American Dollars")
+    var quotes: [Quote] = [Quote]()
+    var date: Date = Date()
+    var timeStamp: Date = Date()
     
-
+    
     func getFreeQuotes(fromCurrency: Currency, toCurrency: Currency) -> (usdFrom: Quote?, usdTo: Quote?) {
         let usdFromQuote = getQuote(fromCurrency: baseCurrency, toCurrency: fromCurrency)
         let usdToQuote = getQuote(fromCurrency: baseCurrency, toCurrency: toCurrency)
