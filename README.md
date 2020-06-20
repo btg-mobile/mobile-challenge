@@ -23,4 +23,5 @@ We can see in the picture below that the project code is structured in packages,
 * Se use the "Entity" package, where we store our models, and this package is only Kotlin, not aware of what other data sources or devices and platforms we are using.
 * Also, wrapping the models, we have the business user cases, as interactors in a package called "Logic"
 * And in the most external layer we have our view related content in a package called "Presentation" and the Database and Networking related classes in another package called Infrastructure"
+
 ![project structure image](pictures/structure.png)
