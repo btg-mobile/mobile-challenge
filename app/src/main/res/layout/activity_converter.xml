@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".presentation.converter.ConverterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/originalCurrencyButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="$"
+            android:layout_weight="2"
+            android:onClick="onOriginalCurrencyButtonClick"
+            />
+
+        <EditText
+            android:id="@+id/originalValueEditText"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:hint="Valor a converter"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:text="="
+        android:padding="16dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/convertedCurrencyButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="$"
+            android:layout_weight="2"
+            android:onClick="onConvertedCurrencyButtonClick"
+            />
+
+        <TextView
+            android:id="@+id/convertedValueTextView"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/convertButton"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:text="Converter"
+        android:onClick="onConvertButtonClick"
+        />
+
+</LinearLayout>
