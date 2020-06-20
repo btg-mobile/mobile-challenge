@@ -10,6 +10,8 @@ import UIKit
 
 class ConversionViewController: UIViewController {
 
+    weak var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +19,12 @@ class ConversionViewController: UIViewController {
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func selectFromCurrancy(_ sender: UIButton) {
+        coordinator?.selectCurrency()
     }
-    */
-
+    
+    
+    @IBAction func selectToCurrency(_ sender: UIButton) {
+        coordinator?.selectCurrency()
+    }
 }

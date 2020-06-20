@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var coordinator: MainCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navController = UINavigationController(rootViewController: ConversionViewController())
-        
-//        let router = HearthstoneRouter(navigationController: navController)
-//        router.start()
+        let navController = UINavigationController()
+        coordinator = MainCoordinator(navigationController: navController)
+        coordinator?.start()    
         
 //        let appearance = UINavigationBar.appearance()
 //        appearance.barTintColor = .black

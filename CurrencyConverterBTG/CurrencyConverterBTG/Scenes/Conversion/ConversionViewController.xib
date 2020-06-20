@@ -59,6 +59,9 @@
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLZ-if-BpA">
                                     <rect key="frame" x="0.0" y="0.0" width="274" height="68"/>
+                                    <connections>
+                                        <action selector="selectToCurrency:" destination="-1" eventType="touchUpInside" id="WAc-6F-Ajt"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -136,6 +139,9 @@
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI4-f7-MGA">
                                     <rect key="frame" x="0.0" y="0.0" width="274" height="68"/>
+                                    <connections>
+                                        <action selector="selectFromCurrancy:" destination="-1" eventType="touchUpInside" id="zUL-XL-CN6"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

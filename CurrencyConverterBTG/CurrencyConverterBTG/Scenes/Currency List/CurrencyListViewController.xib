@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencyListViewController" customModule="CurrencyConverterBTG" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="Wgf-gW-uk6" id="o4j-lH-mCQ"/>
+                <outlet property="tableView" destination="TOY-d2-QJs" id="Xfq-Gx-bD0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
