@@ -39,15 +39,15 @@ class Conversion: NSObject {
 //            return conversion
 //        }
 //        repo.quotesList
-        let quotesList = QuotesList()
+//        let quotesList = QuotesList()
         
         if conversionType == .baseUSD {
-            let quotes = quotesList.getFreeQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
-            guard let usdFrom = quotes.usdFrom, let usdTo = quotes.usdTo else {
-                return nil  // Error  no quotes available for this conversion
-            }
-            toAmount = (usdTo.quote / usdFrom.quote) * fromAmount
-            
+//            let quotes = quotesList.getFreeQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
+//            guard let usdFrom = quotes.usdFrom, let usdTo = quotes.usdTo else {
+//                return nil  // Error  no quotes available for this conversion
+//            }
+//            toAmount = (usdTo.quote / usdFrom.quote) * fromAmount
+//            
             // save to history
             
             return toAmount
@@ -70,50 +70,4 @@ class Conversion: NSObject {
 enum ConversionType {
     case baseUSD
     case direct
-}
-
-
-class Quote: NSObject {
-    let fromCurrency: Currency  // BRL
-    let toCurrency: Currency  // EUR
-    let quote: Decimal  //  USDAUD 1.278342    1 USD = 1.278342 AUD
-    let date: Date
-    let timestamp: Date
-    
-    init(from: Currency, to: Currency, fromAmount: Decimal, quote: Decimal, date: Date, timestamp: Date) {
-        self.fromCurrency = from
-        self.toCurrency = to
-        self.quote = quote
-        self.date = date
-        self.timestamp = timestamp
-    }
-    
-    static func == (lhs: Quote, rhs: Quote) -> Bool {
-        let from = lhs.fromCurrency.code == rhs.fromCurrency.code
-        let to = lhs.toCurrency.code == rhs.toCurrency.code
-        return from && to
-    }
-}
-
-
-class QuotesList: NSObject {
-    var baseCurrency: Currency = Currency(code: "USD", name: "American Dollars")
-    var quotes: [Quote] = [Quote]()
-    var date: Date = Date()
-    var timeStamp: Date = Date()
-    
-    
-    func getFreeQuotes(fromCurrency: Currency, toCurrency: Currency) -> (usdFrom: Quote?, usdTo: Quote?) {
-        let usdFromQuote = getQuote(fromCurrency: baseCurrency, toCurrency: fromCurrency)
-        let usdToQuote = getQuote(fromCurrency: baseCurrency, toCurrency: toCurrency)
-        return (usdFromQuote, usdToQuote)
-    }
-    
-    
-    func getQuote(fromCurrency: Currency, toCurrency: Currency) -> Quote? {
-        return quotes.first { (quote) -> Bool in
-            quote.fromCurrency == fromCurrency && quote.toCurrency == toCurrency
-        }
-    }
-    
 }
