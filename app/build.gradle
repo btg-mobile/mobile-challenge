@@ -12,6 +12,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "API_BASE_ENDPOINT", "\"http://api.currencyLayer.com\""
+        buildConfigField "String", "ACCESS_TOKEN", "\"bbe3dbced288820c41b08583c2866095\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +40,7 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 
     /*Material Desing*/
     implementation 'com.google.android.material:material:1.1.0'
