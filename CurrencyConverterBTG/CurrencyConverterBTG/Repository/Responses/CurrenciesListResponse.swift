@@ -1,5 +1,5 @@
 //
-//  LiveQuotesResponse.swift
+//  CurrenciesListResponse.swift
 //  CurrencyConverterBTG
 //
 //  Created by Silvia Florido on 20/06/20.
@@ -8,11 +8,9 @@
 
 import Foundation
 
-class LiveQuotesResponse: Decodable {
+class CurrenciesListResponse: Decodable {
     let success: Bool
     let terms: String
     let privacy: String
-    let timestamp: Double
-    let source: String
-    let quotes: Dictionary<String,Double>
+    let currencies: Dictionary<String,String>
 }

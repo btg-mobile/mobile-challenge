@@ -49,14 +49,14 @@ class BaseRequester: NSObject {
                 if self.debugMode {
                     Logger.logResponse(response, data: data)
                 }
-                  DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     completionHandlerForGET(jsonResponse, nil)
                 }
             } catch {
                 if self.debugMode {
                     Logger.logResponse(response, data: data)
                 }
-                  DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     completionHandlerForGET(nil, self.parseError)
                 }
             }
@@ -65,23 +65,25 @@ class BaseRequester: NSObject {
         task.resume()
     }
     
-//    private func urlFromParameters(_ parameters: [String:AnyObject]?, pathExtension: String? = nil) -> URL? {
-//        var components = URLComponents()
-//
-////        components.scheme = GithubService.Constants.ApiScheme
-////        components.host = GithubService.Constants.ApiHost
-////        components.path = GithubService.Constants.ApiPath + (pathExtension ?? "")
-////        components.queryItems = [URLQueryItem]()
-////
-////        if let parameters = parameters {
-////            for (key, value) in parameters {
-////                let queryItem = URLQueryItem(name: key, value: "\(value)")
-////                components.queryItems?.append(queryItem)
-////            }
-////        }
-//
-//        return components.url
-//    }
+    // MARK: - Query Parameters
+    
+    // BTG Test : Added this as an example if there were more parameters to add to service queries
+    private func urlFromParameters(_ parameters: [String:AnyObject]?, pathExtension: String? = nil) -> URL? {
+        var components = URLComponents()
+//        components.scheme = CurrencyLayerService.Constants.ApiScheme
+//        components.host = CurrencyLayerService.Constants.ApiHost
+//        components.path = CurrencyLayerService.Constants.ApiPath + (pathExtension ?? "")
+        components.queryItems = [URLQueryItem]()
+        
+        if let parameters = parameters {
+            for (key, value) in parameters {
+                let queryItem = URLQueryItem(name: key, value: "\(value)")
+                components.queryItems?.append(queryItem)
+            }
+        }
+
+        return components.url
+    }
     
     
     func replaceKeysInMethod(_ method: String, keyValues: [String:String]) -> String?  {
@@ -95,12 +97,15 @@ class BaseRequester: NSObject {
         return mutableMethod
     }
     
+    
     // MARK: - Images
+    
+    // BTG Test : Added this as an example if the flags images were to be downloaded
     static let cache = NSCache<NSString, UIImage>()
     
     static func getImage(withURL url:URL, completion: @escaping (_ image:UIImage?)->()) {
         if let image = cache.object(forKey: url.absoluteString as NSString) {
-              DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 completion(image)
             }
         } else {
