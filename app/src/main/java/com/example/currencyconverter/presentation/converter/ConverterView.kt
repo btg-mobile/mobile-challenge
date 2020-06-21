@@ -10,12 +10,12 @@ interface ConverterView {
 
     fun onConvertButtonClick(view: View)
 
-    fun setOriginalCurrencyButtonText()
+    fun setOriginalCurrencyButtonText(text : String)
 
-    fun setTargetCurrencyButtonText()
+    fun setConvertedCurrencyButtonText(text : String)
 
-    fun setTargetValueText()
+    fun setConvertedValueText(text : String)
 
-    fun showCurrencyList()
+    fun showCurrencyList(requestCode : Int)
 
 }
