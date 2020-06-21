@@ -1,4 +1,4 @@
-package com.example.currencyconverter.infrastructure
+package com.example.currencyconverter.infrastructure.network
 
 import android.content.Context
 import android.net.ConnectivityManager

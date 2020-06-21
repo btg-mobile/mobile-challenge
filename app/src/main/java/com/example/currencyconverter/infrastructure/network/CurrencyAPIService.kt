@@ -1,4 +1,4 @@
-package com.example.currencyconverter.infrastructure
+package com.example.currencyconverter.infrastructure.network
 
 import io.reactivex.Observable
 import okhttp3.OkHttpClient

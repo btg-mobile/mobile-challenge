@@ -3,7 +3,10 @@ package com.example.currencyconverter.logic
 import android.content.Intent
 import android.util.Log
 import com.example.currencyconverter.entity.Currency
-import com.example.currencyconverter.infrastructure.*
+import com.example.currencyconverter.infrastructure.database.CurrenciesDatabase
+import com.example.currencyconverter.infrastructure.network.CurrencyAPIService
+import com.example.currencyconverter.infrastructure.network.ListRetrofitResponse
+import com.example.currencyconverter.infrastructure.network.LiveRetrofitResponse
 import com.example.currencyconverter.presentation.converter.ConverterView
 import com.example.currencyconverter.presentation.converter.ErrorTreatmentView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,7 +15,7 @@ import io.reactivex.schedulers.Schedulers
 
 class ConverterInteractor (val converterView : ConverterView,
                            val errorTreatmentView : ErrorTreatmentView,
-                           val database: CurrenciesDB,
+                           val database: CurrenciesDatabase,
                            val compositeDisposable: CompositeDisposable) {
 
     val ORIGINAL_REQUEST_CODE = 101
@@ -24,7 +27,8 @@ class ConverterInteractor (val converterView : ConverterView,
 
     fun refreshCurrencies() {
         //first call get the currencies symbols and names
-        compositeDisposable.add(CurrencyAPIService.create().getCurrencyList()
+        compositeDisposable.add(
+            CurrencyAPIService.create().getCurrencyList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -32,7 +36,8 @@ class ConverterInteractor (val converterView : ConverterView,
                 val listResponse = it
 
                 //second call to get the quotes for all the currencies
-                compositeDisposable.add(CurrencyAPIService.create().getLiveQuotes()
+                compositeDisposable.add(
+                    CurrencyAPIService.create().getLiveQuotes()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ liveResponse ->
@@ -69,20 +74,9 @@ class ConverterInteractor (val converterView : ConverterView,
         }
     }
 
-
-    fun toCurrencyDatabaseList(currencyList : List<Currency>) : Array<DatabaseCurrency> {
-        return currencyList.map{
-            DatabaseCurrency(
-                symbol = it.symbol,
-                name = it.name,
-                quote = it.quote)
-        }.toTypedArray()
-    }
-
     fun saveToDatabase(list : List<Currency>) {
-        val currenciesToDatabase = toCurrencyDatabaseList(list)
-        database.currencyDao.insertAll(*currenciesToDatabase)
-        Log.i("Currencies persisted! ", currenciesToDatabase.toString())
+        list.forEach { database.currencyDao.insertCurrency(it) }
+        Log.i("Currencies persisted!", " OK")
     }
 
     fun treatActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
