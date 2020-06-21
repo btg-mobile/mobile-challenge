@@ -24,6 +24,9 @@
                     <state key="normal" title="Converter">
                         <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="convertButton:" destination="-1" eventType="touchUpInside" id="bv5-UT-ygA"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TbZ-o4-aWK">
                     <rect key="frame" x="20" y="414" width="374" height="68"/>

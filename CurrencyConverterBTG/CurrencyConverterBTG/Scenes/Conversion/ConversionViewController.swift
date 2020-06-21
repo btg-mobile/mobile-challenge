@@ -14,8 +14,6 @@ class ConversionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
 
@@ -26,5 +24,13 @@ class ConversionViewController: UIViewController {
     
     @IBAction func selectToCurrency(_ sender: UIButton) {
         coordinator?.selectCurrency()
+    }
+    
+    @IBAction func convertButton(_ sender: UIButton) {
+        CurrencyLayerRepository.sharedInstance().getLiveQuotes{ (response, erro) in
+            print("First quote: \(response?.quotes.first?.quote)")
+            print("Response: \(String(describing: response))")
+            print("Erro: \(String(describing: erro))")
+        }
     }
 }

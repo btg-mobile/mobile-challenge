@@ -16,8 +16,8 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
     weak var coordinator: MainCoordinator?
     
     private let currencyCellId = "currencyCell"
-    var currencyList: [String] = ["A", "B", "C"]//[String]()
-    var filteredCurrencyList: [String] = [String]()
+    var currencyList: [Currency] = [Currency]()
+    var filteredCurrencyList: [Currency] = [Currency]()
     
     
     override func viewDidLoad() {
@@ -25,6 +25,15 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
         title = "Moedas"
         configTableView()
         searchBar.delegate = self
+        CurrencyLayerRepository.sharedInstance().getCurrenciesList { (response, error) in
+            if let currencies = response?.currencies {
+                self.currencyList = currencies
+                self.filteredCurrencyList = currencies
+                self.tableView.reloadData()
+            } else {
+                //display error
+            }
+        }
     }
     
     private func configTableView() {
@@ -33,7 +42,6 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
         
         let currencyCellNib = UINib(nibName: "CurrencyTableViewCell", bundle: Bundle(for: type(of: self)))
         tableView.register(currencyCellNib, forCellReuseIdentifier: currencyCellId)
-        filteredCurrencyList = currencyList
     }
     
     
@@ -46,7 +54,7 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: currencyCellId, for: indexPath) as! CurrencyTableViewCell
-        cell.currencyCodeLabel.text = filteredCurrencyList[indexPath.row]
+        cell.currencyCodeLabel.text = filteredCurrencyList[indexPath.row].code
         //            guard indexPath.row < filteredDestiniesList.count else {
         //                return cell
         //            }
@@ -90,7 +98,7 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
     
     private func filterCurrencies(by searchText: String) {
         let text = searchText.uppercased().folding(options: .diacriticInsensitive, locale: nil).trimmingCharacters(in: .whitespaces)
-        let filtered = currencyList.filter{ $0.folding(options: .diacriticInsensitive, locale: nil).localizedCaseInsensitiveContains(text) }
+        let filtered = currencyList.filter{ $0.code.folding(options: .diacriticInsensitive, locale: nil).localizedCaseInsensitiveContains(text) || $0.name.folding(options: .diacriticInsensitive, locale: nil).localizedCaseInsensitiveContains(text)}
         
         filteredCurrencyList = text.count > 0 ? filtered : currencyList
         tableView.reloadData()
