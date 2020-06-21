@@ -11,8 +11,10 @@ object QuotesHelper {
             it.code.contentEquals("USD${to.code}")
         }.map { it.value }.firstOrNull() ?: 0.0
 
-        return amountInDolars * quote
+        return formatWithTwoDecimalPlaces(amountInDolars * quote)
     }
+
+    private fun formatWithTwoDecimalPlaces(amount: Double) = "%.2f".format(amount).toDouble()
 
     private fun convertToDolar(amount: Double, from: Currency, quotes : List<Quote>) : Double{
         return quotes.filter {it.code.contentEquals("USD${from.code}")}

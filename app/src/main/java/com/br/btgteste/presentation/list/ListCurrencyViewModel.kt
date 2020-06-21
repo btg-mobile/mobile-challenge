@@ -12,13 +12,12 @@ class ListCurrencyViewModel(private val currencyListUseCase: CurrencyListUseCase
 
     fun getCurrencies(){
         currencyListUseCase { response ->
-            if (response is ApiResult.Success) {
-                val sortedList = response.data.sortedBy { it.name }
-                response.data = sortedList
-            }
+            if (response is ApiResult.Success) { response.data = sortList(response.data) }
             liveDataResponse.value = response
         }
     }
+
+    private fun sortList(list: List<Currency>) = list.sortedBy { it.name }
 
     fun performFiltering(query: CharSequence, currenciesList: List<Currency>): List<Currency> {
         val filteredList = currenciesList.subList(0, currenciesList.size)

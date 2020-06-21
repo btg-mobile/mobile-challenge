@@ -12,7 +12,7 @@
         android:id="@+id/currencyTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="sans-serif-thin"
         android:padding="8dp"
         android:textSize="18sp"
         tools:text="USD - Dólar Americano"

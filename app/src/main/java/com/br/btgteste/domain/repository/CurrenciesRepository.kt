@@ -1,9 +1,9 @@
 package com.br.btgteste.domain.repository
 
-import com.br.btgteste.data.model.CurrencyList
-import com.br.btgteste.data.model.CurrencyLive
+import com.br.btgteste.data.model.CurrencyListDTO
+import com.br.btgteste.data.model.CurrencyLiveDTO
 
 interface CurrenciesRepository {
-    suspend fun getCurrencies() : CurrencyList
-    suspend fun convertCurrencies() : CurrencyLive
+    suspend fun getCurrencies() : CurrencyListDTO
+    suspend fun convertCurrencies() : CurrencyLiveDTO
 }

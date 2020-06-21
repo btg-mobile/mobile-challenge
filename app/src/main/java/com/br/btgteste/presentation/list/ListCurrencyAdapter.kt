@@ -32,7 +32,7 @@ class ListCurrencyAdapter(private val context: Context)
         holder.bindView(listCurrencies[position])
     }
 
-    inner class CurrencyViewHolder(val item: View) : RecyclerView.ViewHolder(item) {
+    inner class CurrencyViewHolder(private val item: View) : RecyclerView.ViewHolder(item) {
 
         private val txtCurrency: TextView by lazy { item.findViewById<TextView>(R.id.currencyTextView) }
 

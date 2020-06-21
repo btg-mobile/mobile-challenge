@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.Observer
 import com.br.btgteste.R
@@ -17,6 +18,7 @@ import com.br.btgteste.domain.model.ApiResult
 import com.br.btgteste.domain.model.Currency
 import com.br.btgteste.infrastructure.isVisible
 import com.br.btgteste.infrastructure.setAllOnClickListener
+import com.br.btgteste.infrastructure.showSnack
 import com.br.btgteste.presentation.list.ListCurrencyActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -31,6 +33,7 @@ class ConvertCurrencyActivity : AppCompatActivity() {
     private val tvToResult: TextView by lazy { findViewById<TextView>(R.id.tvToResult) }
     private val edtCurrencyValue: EditText by lazy { findViewById<EditText>(R.id.edtCurrencyValue) }
     private val pbList: ProgressBar by lazy { findViewById<ProgressBar>(R.id.pbList) }
+    private val container: ConstraintLayout by lazy { findViewById<ConstraintLayout>(R.id.container) }
 
     private val viewModel: ConvertCurrencyViewModel by viewModel()
 
@@ -47,7 +50,9 @@ class ConvertCurrencyActivity : AppCompatActivity() {
             if (it is ApiResult.Success) {
                 fillResultText(it.data)
             } else if (it is ApiResult.Error) {
-
+                it.throwable.message?.let {message ->
+                    container.showSnack(message)
+                }
             }
         })
     }
@@ -68,9 +73,16 @@ class ConvertCurrencyActivity : AppCompatActivity() {
         })
 
         btnConvert.setOnClickListener {
-            pbList.isVisible(true)
-            val amount = edtCurrencyValue.text.toString().toDouble()
-            viewModel.convertCurrencyAmount(amount)
+            val amount = edtCurrencyValue.text.toString()
+            if (amount.isBlank()) {
+                container.showSnack(getString(R.string.convert_currencies_error_amount_blank_or_null))
+                edtCurrencyValue.error = getString(R.string.convert_currencies_error_amount_blank_or_null)
+            } else if (viewModel.currencyFrom.value == null || viewModel.currencyTo.value == null) {
+                container.showSnack(getString(R.string.convert_currencies_error_currencies_blank_or_null))
+            } else {
+                pbList.isVisible(true)
+                viewModel.convertCurrencyAmount(amount.toDouble())
+            }
         }
     }
 

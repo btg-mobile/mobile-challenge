@@ -9,14 +9,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseUseCase <Type, in Params, out Response> where Type : Any, Response : Any {
+@Suppress("UNCHECKED_CAST")
+abstract class BaseUseCase <Result, in Params, out Response> where Result : Any, Response : Any {
 
     private var parentJob: Job = Job()
     private var backgroundContext = Dispatchers.IO
     private var foregroundContext = Dispatchers.Main
 
-    abstract suspend fun run(request: Params?): Type
-    abstract fun interceptor(request: Params?, response: Type, onResult: (ApiResult<Response>)->Unit)
+    abstract suspend fun run(request: Params?): Any
+    abstract fun interceptor(request: Params?, response: Result, onResult: (ApiResult<Response>)->Unit)
+    fun runAsync(block: () -> Unit) = CoroutineScope(backgroundContext).launch { block() }
 
     operator fun invoke(params: Params? = null, onResult: (ApiResult<Response>) -> Unit) {
         val exceptionHandler = CoroutineExceptionHandler {
@@ -26,7 +28,7 @@ abstract class BaseUseCase <Type, in Params, out Response> where Type : Any, Res
         parentJob = Job()
         CoroutineScope(foregroundContext + parentJob + exceptionHandler).launch {
             val result = withContext(backgroundContext) { run(params) }
-            interceptor(params, result, onResult)
+            interceptor(params, result as Result, onResult)
         }
     }
 }

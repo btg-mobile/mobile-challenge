@@ -15,10 +15,10 @@ class ConvertCurrencyViewModel(val currencyLiveUseCase: CurrencyLiveUseCase): Vi
     fun convertCurrencyAmount(amount: Double) {
 
         val currencyFrom = currencyFrom.value
-        val currentTo = currencyTo.value
+        val currencyTo = currencyTo.value
 
-        if (currencyFrom != null && currentTo != null) {
-            currencyLiveUseCase(CurrencyLiveUseCase.Params(amount, currencyFrom, currentTo)) {
+        if (currencyFrom != null && currencyTo != null) {
+            currencyLiveUseCase(CurrencyLiveUseCase.Params(amount, currencyFrom, currencyTo)) {
                 liveDataResponse.value = it
             }
         }

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class CurrencyList(
+data class CurrencyListDTO(
     val success : Boolean,
     val terms : String?,
     val privacy : String?,
