@@ -10,6 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK - Variables
+    var numbersArray : [(num : Double, sign : Bool)] = [(0,true)]
+    var pointExist : Bool = false
+    var numbersStringArray : [String] = ["0"]
+    var numberExist : Bool = false
+    var inputText : String = "0"
+    var currentSign : Bool = true
+    
     // MARK - Outlets
     @IBOutlet weak var inputCurrencyButton: UIButton!
     @IBOutlet weak var resultCurrencyButton: UIButton!
@@ -24,6 +32,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    // MARK - Actions
     
     @IBAction func inputCurrencyButtonTapped(_ sender: Any) {
         
@@ -56,6 +66,20 @@ class ViewController: UIViewController {
         inputCurrencyLabel.text = "0"
         resultCurrencyLabel.text = "0"
     }
+    
+    @IBAction func digitButtonTapped(_ sender: UIButton) {
+        
+        //get number that clicked
+        guard let inputString : String = sender.titleLabel?.text else {return}
+        guard let currentInput = inputCurrencyLabel.text else {return}
+        
+        if currentInput == "0" {
+            inputCurrencyLabel.text = "\(inputString)"
+        } else {
+            inputCurrencyLabel.text = "\(currentInput)\(inputString)"
+        }
+    }
+    
     
     @IBAction func convertCurrencyButtonTapped(_ sender: Any) {
         
