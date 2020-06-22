@@ -10,7 +10,7 @@ class CurrencyDataSourceImp(private val currencyDao: CurrencyDao): CurrencyDataS
     override fun getCurrencies(): List<Currency> = BusinessMapper.convertCurrencyDbToCurrency(
         currencyDao.retrieve())
 
-    override fun updateCurrencies(currencies: List<Currency>) {
+    override suspend fun updateCurrencies(currencies: List<Currency>) {
         currencyDao.deleteAll()
         currencyDao.save(BusinessMapper.convertCurrencyToCurrencyDb(currencies))
     }

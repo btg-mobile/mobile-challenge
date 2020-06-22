@@ -8,22 +8,19 @@ import com.br.btgteste.domain.repository.CurrenciesRepository
 
 class CurrencyLiveUseCase(
     private val currenciesRepository: CurrenciesRepository):
-    BaseUseCase<CurrencyLiveDTO, CurrencyLiveUseCase.Params, Double>() {
+    BaseUseCase<CurrencyLiveUseCase.Params, Double>() {
 
     data class Params(val amount: Double, val from : Currency, val to : Currency)
 
-    override fun interceptor(
-        request: Params?,
-        response: CurrencyLiveDTO,
-        onResult: (ApiResult<Double>) -> Unit
-    ) {
+    override suspend fun executeAsyncTasks(request: Params): ApiResult<Double> {
+        val response = runAsync { currenciesRepository.convertCurrencies() }.await()
         if (response.success) {
-            request?.apply {
-                onResult(ApiResult.Success(QuotesHelper.convert(
-                    request.amount, request.from, request.to, response.quotes.payloads)))
-            }
-        } else { onResult(ApiResult.Error(Throwable(response.error?.info))) }
+            return ApiResult.Success(convertResponse(request, response))
+        } else {
+            throw Throwable(response.error?.info)
+        }
     }
 
-    override suspend fun run(request: Params?) = currenciesRepository.convertCurrencies()
+    internal fun convertResponse(request: Params, response: CurrencyLiveDTO) : Double = QuotesHelper.convert(
+        request.amount, request.from, request.to, response.quotes.payloads)
 }

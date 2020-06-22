@@ -3,7 +3,6 @@ package com.br.btgteste.data.local.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Transaction
 import com.br.btgteste.data.local.entity.CurrencyTb
 
 @Dao

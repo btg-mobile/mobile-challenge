@@ -23,4 +23,9 @@ class ConvertCurrencyViewModel(val currencyLiveUseCase: CurrencyLiveUseCase): Vi
             }
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        currencyLiveUseCase.unsubscribe()
+    }
 }
