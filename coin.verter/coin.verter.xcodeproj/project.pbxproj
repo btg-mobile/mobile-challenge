@@ -37,6 +37,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6D48B9A24A040AF004A719C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6D48B9B24A040BA004A719C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B6D48B9C24A040D0004A719C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B6D48B9F24A040FA004A719C /* Network */,
+				B6D48B9E24A040EC004A719C /* Helper */,
+				B6D48B9D24A040E3004A719C /* Constant */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		B6D48B9D24A040E3004A719C /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		B6D48B9E24A040EC004A719C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B6D48B9F24A040FA004A719C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		B6EB18B324A02C030072EEC8 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +101,9 @@
 		B6EB18BE24A02C030072EEC8 /* coin.verter */ = {
 			isa = PBXGroup;
 			children = (
+				B6D48B9B24A040BA004A719C /* Model */,
+				B6D48B9A24A040AF004A719C /* Views */,
+				B6D48B9C24A040D0004A719C /* Utility */,
 				B6EB18BF24A02C030072EEC8 /* AppDelegate.swift */,
 				B6EB18C124A02C030072EEC8 /* SceneDelegate.swift */,
 				B6EB18C324A02C030072EEC8 /* ViewController.swift */,
@@ -294,7 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "caioberkley.coin-verter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "caioberkley.coin-verter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
