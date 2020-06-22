@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol CurrencyListViewControllerDelegate: class {
+    func didSelectCurrency(_ currency: Currency)
+}
+
 class CurrencyListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     weak var coordinator: MainCoordinator?
+    weak var delegate: CurrencyListViewControllerDelegate?
     
     private let currencyCellId = "currencyCell"
     var currencyList: [Currency] = [Currency]()
@@ -22,8 +27,9 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Moedas"
+        title = "Moedas Disponíveis"
         configTableView()
+        configureBackButton()
         searchBar.delegate = self
         CurrencyLayerRepository.sharedInstance().getCurrenciesList { (response, error) in
             if let currencies = response?.currencies {
@@ -31,7 +37,7 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
                 self.filteredCurrencyList = currencies
                 self.tableView.reloadData()
             } else {
-                //display error
+                //display error - was implemented in the Conversion screen, sorry, not enough time. Should be a reusable component.
             }
         }
     }
@@ -44,6 +50,19 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
         tableView.register(currencyCellNib, forCellReuseIdentifier: currencyCellId)
     }
     
+    private func configureBackButton() {
+        let closeButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backAction))
+        let bundle = Bundle(for: CurrencyListViewController.self)
+        if let image = UIImage(named: "ico-back-button", in: bundle, compatibleWith: nil)  {
+            closeButton.image = image
+            closeButton.tintColor = .black
+            self.navigationItem.leftBarButtonItem = closeButton
+        }
+    }
+    
+    @objc func backAction(sender: UIBarButtonItem) {
+        coordinator?.didFinishSelectingCurrency()
+    }
     
     
     // MARK: - Table View
@@ -54,34 +73,21 @@ class CurrencyListViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: currencyCellId, for: indexPath) as! CurrencyTableViewCell
-        cell.currencyCodeLabel.text = filteredCurrencyList[indexPath.row].code
-        //            guard indexPath.row < filteredDestiniesList.count else {
-        //                return cell
-        //            }
-        //            let destiny = filteredDestiniesList[indexPath.row]
-        //
-        //            cell.destView.title = destiny.name
-        //            cell.destView.isSelected = destiny.selected
-        //    //        cell.destView.tag = indexPath.row
-        //            cell.destView.addTarget(self, action: #selector(didTapDestination), for: .touchUpInside)
+        
+        let currency = filteredCurrencyList[indexPath.row]
+        let viewModel = CurrencyViewModel(code: currency.code, name: currency.name, imageName: currency.code)
+        cell.config(with: viewModel)
         
         return cell
     }
     
-    //        @objc func didTapDestination(_ sender: DestinationView) {
-    //            guard let title = sender.title else { return }
-    //            interactor?.updateDestiny(with: title, selected: sender.isSelected)
-    //        }
-    //
-    //        // MARK: - InsuranceTagListViewDelegate
-    //        func didRemoveTagWithTitle(_ title: String) {
-    //    //        if let index = destiniesList.firstIndex(where: {  $0.name == title }) {
-    //                interactor?.updateDestiny(with: title, selected: true)
-    //    //        }
-    //
-    //        }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard indexPath.row < filteredCurrencyList.count else {
+            return
+        }
+        let selectedCurrency = filteredCurrencyList[indexPath.row]
+        delegate?.didSelectCurrency(selectedCurrency)
+        coordinator?.didFinishSelectingCurrency()
     }
     
     // MARK: - Search Bar - UISearchBarDelegate

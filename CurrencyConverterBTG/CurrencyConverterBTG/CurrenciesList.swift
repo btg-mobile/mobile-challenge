@@ -27,4 +27,16 @@ class CurrenciesList: NSObject {
         return currencies.first{ $0.code == fromCode }
     }
     
+    func getDefaultCurrencies() -> [Currency]? {
+        guard currencies.count > 1 else {
+            return nil
+        }
+        
+        let defaultCurrencies = ["BRL", "USD", "EUR", "GBP"]
+        
+        return defaultCurrencies.compactMap { (currencyCode) -> Currency? in
+            return getCurrency(fromCode: currencyCode)
+        }
+    }
+    
 }

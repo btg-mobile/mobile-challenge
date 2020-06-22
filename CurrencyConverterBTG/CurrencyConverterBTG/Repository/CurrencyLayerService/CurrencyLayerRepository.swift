@@ -17,7 +17,7 @@ enum CurrencyLayerServiceErrors: String {
 class CurrencyLayerRepository {
     
     var session = URLSession.shared
-    var currenciesList: CurrenciesList?   //  cache, save this !!
+    var currenciesList: CurrenciesList?   //  improvements: save this to Core Date or Realm !! Check timestamp often to see if its stale and need to refetch !!
     
     // MARK: Shared
     class func sharedInstance() -> CurrencyLayerRepository {
@@ -73,6 +73,22 @@ class CurrencyLayerRepository {
             }
         }
     }
+    
+    // MARK: - HELPERS
+    func getDefaultCurrencies(_ completionHandler: @escaping (_ response: [Currency]?, _ error: NSError?) -> Void) {
+           getCurrenciesList { (currencieslist, error) in
+               if error != nil {
+                   completionHandler(nil, error)
+               } else {
+                   if let defaultCurrencies = self.currenciesList?.getDefaultCurrencies(), defaultCurrencies.count > 1 {
+                       completionHandler(defaultCurrencies, nil)
+                   } else {
+                       completionHandler(nil, self.createError(.emptyCurrencies))
+                   }
+                   
+               }
+           }
+       }
     
 }
 

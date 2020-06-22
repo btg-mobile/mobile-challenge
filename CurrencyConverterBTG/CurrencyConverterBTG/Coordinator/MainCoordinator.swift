@@ -30,13 +30,18 @@ class MainCoordinator: Coordinator {
     func start() {
         let vc = ConversionViewController()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
     
-    func selectCurrency() {
+    func selectCurrency(with delegate: CurrencyListViewControllerDelegate) {
         let vc = CurrencyListViewController()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        vc.delegate = delegate
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func didFinishSelectingCurrency() {
+        navigationController.popViewController(animated: true)
     }
     
 }

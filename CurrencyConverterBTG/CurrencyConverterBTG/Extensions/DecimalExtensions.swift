@@ -15,10 +15,9 @@ extension Decimal {
         return decimal
     }
     
-    
     static func fromString(_ value: String) -> Decimal? {
         let formatter = NumberFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "pt_BR")
         formatter.numberStyle = .decimal
 
         if let number = formatter.number(from: value) {
@@ -27,6 +26,14 @@ extension Decimal {
         } else {
             return nil
         }
+    }
+    
+    func toString() -> String? {
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: self as NSDecimalNumber)
     }
     
 }

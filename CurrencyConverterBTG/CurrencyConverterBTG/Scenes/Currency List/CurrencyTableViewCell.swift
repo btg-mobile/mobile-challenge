@@ -10,19 +10,15 @@ import UIKit
 
 class CurrencyTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var currencyImageView: UIImageView!
-    @IBOutlet weak var currencyCodeLabel: UILabel!
-    @IBOutlet weak var currencyNameLabel: UILabel!
-    
+    @IBOutlet weak var currencyView: CurrencyView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        currencyView.isUserInteractionEnabled = false
     }
     
+    func config(with viewModel: CurrencyViewModel) {
+        currencyView.config(with: viewModel)
+    }
+  
 }
+
