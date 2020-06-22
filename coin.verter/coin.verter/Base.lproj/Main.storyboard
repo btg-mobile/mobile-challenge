@@ -71,6 +71,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="convertCurrencyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QAf-p7-gMo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGg-Sw-59B">
                                 <rect key="frame" x="239.66666666666663" y="489" width="88" height="88"/>
@@ -224,6 +227,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cleanCurrencyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RJt-kh-mHm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74e-L6-XZn">
                                 <rect key="frame" x="47.666666666666657" y="335" width="88" height="50"/>
@@ -241,6 +247,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="helpButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UUp-n5-SwM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUK-yK-ume">
                                 <rect key="frame" x="143.66666666666666" y="259" width="183.99999999999997" height="36"/>
@@ -269,6 +278,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resultCurrencyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eEM-Gs-4aY"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGg-Rt-Bx2">
                                 <rect key="frame" x="143.66666666666666" y="215" width="183.99999999999997" height="36"/>
@@ -297,6 +309,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="inputCurrencyButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I3b-2U-UlO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -343,6 +358,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="cleanCurrencyButton" destination="iN7-tT-DeW" id="ucg-BL-tNN"/>
+                        <outlet property="convertCurrencyButton" destination="Idf-TR-3lf" id="OpP-v8-vzv"/>
+                        <outlet property="helpButton" destination="74e-L6-XZn" id="09k-zj-FX9"/>
+                        <outlet property="inputCurrencyButton" destination="3qR-gK-9HA" id="H9S-ja-Uxy"/>
+                        <outlet property="inputCurrencyLabel" destination="QGg-Rt-Bx2" id="XEK-dv-SEJ"/>
+                        <outlet property="pointButton" destination="PoZ-T5-r6F" id="6g2-25-C4o"/>
+                        <outlet property="resultCurrencyButton" destination="cak-6W-tA2" id="g19-ez-xHj"/>
+                        <outlet property="resultCurrencyLabel" destination="lUK-yK-ume" id="oF7-eZ-Cof"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
