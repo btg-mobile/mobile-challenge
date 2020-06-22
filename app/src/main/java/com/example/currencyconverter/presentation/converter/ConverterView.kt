@@ -4,6 +4,8 @@ import android.view.View
 
 interface ConverterView {
 
+    fun setOriginalValueText(text: String)
+
     fun onOriginalCurrencyButtonClick(view : View)
 
     fun onConvertedCurrencyButtonClick(view: View)
@@ -17,5 +19,7 @@ interface ConverterView {
     fun setConvertedValueText(text : String)
 
     fun showCurrencyList(requestCode : Int)
+
+    fun showToast(message: String)
 
 }

@@ -8,26 +8,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-data class ListRetrofitResponse(
-    val success: Boolean,
-    val terms: String,
-    val privacy: String,
-    val currencies: Map<String,String>)
-
-data class LiveRetrofitResponse(
-    val success: Boolean,
-    val terms: String,
-    val privacy: String,
-    val quotes: Map<String,Double>)
-
-
 interface CurrencyAPIService {
 
     @GET("list?access_key=$API_KEY")
-    fun getCurrencyList(): Observable<ListRetrofitResponse>
+    fun getCurrencyList(): Observable<ListAPIResponseModel>
 
     @GET("live?access_key=$API_KEY")
-    fun getLiveQuotes(): Observable<LiveRetrofitResponse>
+    fun getLiveQuotes(): Observable<LiveAPIResponseModel>
 
 
     companion object {

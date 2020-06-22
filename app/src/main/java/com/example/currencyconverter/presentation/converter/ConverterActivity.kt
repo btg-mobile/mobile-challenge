@@ -1,19 +1,20 @@
 package com.example.currencyconverter.presentation.converter
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.currencyconverter.R
-import com.example.currencyconverter.infrastructure.database.CurrenciesDatabase
-import com.example.currencyconverter.infrastructure.network.isOnline
+import com.example.currencyconverter.infrastructure.database.DatabaseInstance
 import com.example.currencyconverter.logic.ConverterInteractor
 import com.example.currencyconverter.presentation.currencies.CurrenciesActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_converter.*
 
-class ConverterActivity : AppCompatActivity(), ConverterView, ErrorTreatmentView {
+class ConverterActivity : AppCompatActivity(), ConverterView, MessageView {
 
     private var converterInteractor : ConverterInteractor? = null
     private val compositeDisposable = CompositeDisposable()
@@ -23,20 +24,29 @@ class ConverterActivity : AppCompatActivity(), ConverterView, ErrorTreatmentView
         setContentView(R.layout.activity_converter)
 
         //Scene setup and Dependency injection
-        val database = CurrenciesDatabase.getInstance(this)
-        converterInteractor = ConverterInteractor(this as ConverterView, this as ErrorTreatmentView, database, compositeDisposable)
-    }
+        converterInteractor = ConverterInteractor(this as ConverterView, this as MessageView, DatabaseInstance(), compositeDisposable)
+        converterInteractor?.onCreate(this)
 
-    override fun onStart() {
-        super.onStart()
-        if(isOnline(this)) {
-            converterInteractor?.refreshCurrencies()
-        }
+        originalValueEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                converterInteractor?.originalValueChanged(p0?.toString() ?: "")
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         converterInteractor?.treatActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun setOriginalValueText(text: String) {
+        originalValueEditText.setText(text)
     }
 
     override fun onOriginalCurrencyButtonClick(view: View) {
@@ -67,12 +77,13 @@ class ConverterActivity : AppCompatActivity(), ConverterView, ErrorTreatmentView
         startActivityForResult(Intent(this, CurrenciesActivity::class.java), requestCode)
     }
 
-    override fun showErrorMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {
         compositeDisposable.dispose()
+        converterInteractor?.onDestroy()
         super.onDestroy()
     }
 }

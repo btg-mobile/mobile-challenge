@@ -25,11 +25,13 @@
 
         <EditText
             android:id="@+id/originalValueEditText"
+            android:layout_marginStart="8dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:hint="Amount to be converted"
             android:inputType="numberDecimal"
+            android:textAlignment="center"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -59,10 +61,13 @@
 
         <TextView
             android:id="@+id/convertedValueTextView"
+            android:layout_marginStart="8dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="40sp"
             />
     </LinearLayout>
 

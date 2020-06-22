@@ -24,7 +24,8 @@ class CurrencyAdapter(private val context: Context, private val currencyList: Ar
 
     fun bindCellViewHolder(holder: ViewHolder, index: Int) {
         holder.cellLayout.tag = currencyList[index]
-
+        holder.currencySymbol.text = currencyList[index].symbol
+        holder.currencyName.text = currencyList[index].name
     }
 
     override fun getItemCount(): Int {
