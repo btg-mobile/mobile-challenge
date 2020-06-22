@@ -26,7 +26,6 @@ abstract class BaseUseCase <in Params, Response> where Response : Any, Params : 
         CoroutineScope(backgroundContext).async { block() }
 
     operator fun invoke (params: Params = Any() as Params, onResult: (ApiResult<Response>) -> Unit) {
-        System.out.println("INVOKE 1")
 
         val exceptionHandler = CoroutineExceptionHandler {
                 _: CoroutineContext, throwable: Throwable ->
@@ -34,7 +33,6 @@ abstract class BaseUseCase <in Params, Response> where Response : Any, Params : 
         }
         unsubscribe()
         parentJob = Job()
-        System.out.println("INVOKE 2")
         CoroutineScope(foregroundContext + parentJob + exceptionHandler).launch {
             val result = withContext(backgroundContext) {
                 executeAsyncTasks(params)
