@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.currencyconverter.R
 import com.example.currencyconverter.entity.Currency
@@ -25,12 +27,27 @@ class CurrenciesActivity : AppCompatActivity(), MessageView, CurrencyListView {
         setContentView(R.layout.activity_currencies)
         currenciesRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        val service = DatabaseInstance()
-        service.onCreate()
-        currenciesRecyclerView.adapter = CurrencyAdapter(this, ArrayList(service.getCurrencies()))
-        service.onDestroy()
+        val database = DatabaseInstance()
 
-        currenciesInteractor = CurrenciesInteractor(this as CurrencyListView)
+        currenciesInteractor = CurrenciesInteractor(this as CurrencyListView, this as MessageView, database)
+        currenciesInteractor?.onCreate()
+        configureSearchWidget()
+    }
+
+    fun configureSearchWidget() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String) = false
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (newText == "") currenciesInteractor?.clearSearch()
+                else currenciesInteractor?.search(newText)
+                return true
+            }
+        })
+    }
+
+    override  fun setRecyclerViewArray(array: ArrayList<Currency>) {
+        currenciesRecyclerView?.adapter = CurrencyAdapter(this, array)
     }
 
     fun onCurrencySelected(view: View) {
@@ -43,6 +60,14 @@ class CurrenciesActivity : AppCompatActivity(), MessageView, CurrencyListView {
         resultIntent.putExtra("selectedCurrency", currency)
         setResult(Activity.RESULT_OK, resultIntent)
         finish()
+    }
+
+    fun orderButtonClick(view: View) {
+        currenciesInteractor?.reorderList()
+    }
+
+    override fun setOrderButtonText(text: String) {
+        orderButton.text = text
     }
 
     override fun showToast(message: String) {

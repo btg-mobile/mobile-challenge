@@ -1,5 +1,6 @@
 package com.example.currencyconverter.presentation.converter
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -42,7 +43,7 @@ class ConverterActivity : AppCompatActivity(), ConverterView, MessageView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        converterInteractor?.treatActivityResult(requestCode, resultCode, data)
+        if(resultCode== Activity.RESULT_OK) converterInteractor?.treatActivityResult(requestCode, resultCode, data)
     }
 
     override fun setOriginalValueText(text: String) {

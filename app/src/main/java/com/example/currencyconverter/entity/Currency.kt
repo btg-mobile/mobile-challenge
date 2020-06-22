@@ -7,4 +7,10 @@ import kotlinx.android.parcel.Parcelize
 data class Currency(
     val symbol: String,
     val name: String,
-    var quote: Double): Parcelable
+    var quote: Double): Parcelable {
+
+    fun matchesQuery(query: String): Boolean {
+        return (symbol.toLowerCase().contains(query.toLowerCase()) || name.toLowerCase().contains(query.toLowerCase()))
+    }
+}
+
