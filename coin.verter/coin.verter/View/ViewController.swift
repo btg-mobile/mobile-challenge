@@ -38,9 +38,25 @@ class ViewController: UIViewController {
     
     @IBAction func inputCurrencyButtonTapped(_ sender: Any) {
         
+        let listView = storyboard?.instantiateViewController(identifier: "currencyList") as! CurrencyListTableTableViewController
+        
+        listView.didSelectValue = { (selectedCurrency) in
+            self.inputCurrencyButton.titleLabel?.text = selectedCurrency
+        }
+        
+        present(listView,animated: true)
+        
     }
     
     @IBAction func resultCurrencyButtonTapped(_ sender: Any) {
+        
+        let listView = storyboard?.instantiateViewController(identifier: "currencyList") as! CurrencyListTableTableViewController
+        
+        listView.didSelectValue = { (selectedCurrency) in
+            self.resultCurrencyButton.titleLabel?.text = selectedCurrency
+        }
+        
+        present(listView,animated: true)
         
     }
     
@@ -104,10 +120,5 @@ class ViewController: UIViewController {
                 }
                 
             }, amount: amount, from: inputCurrency, to: resultCurrency)
-        
     }
-    
-    
-
 }
-
