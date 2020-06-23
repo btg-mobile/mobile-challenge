@@ -16,7 +16,6 @@ interface CurrencyAPIService {
     @GET("live?access_key=$API_KEY")
     fun getLiveQuotes(): Observable<LiveAPIResponseModel>
 
-
     companion object {
 
         fun create(): CurrencyAPIService {

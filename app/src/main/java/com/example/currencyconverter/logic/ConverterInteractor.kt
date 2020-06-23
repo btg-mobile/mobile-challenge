@@ -94,12 +94,10 @@ class ConverterInteractor (val converterView : ConverterView,
             ORIGINAL_REQUEST_CODE -> {
                 originalCurrency = data?.getParcelableExtra("selectedCurrency") as Currency
                 originalCurrency?.let { converterView.setOriginalCurrencyButtonText(it.symbol) }
-
             }
             CONVERTED_REQUEST_CODE -> {
                 convertedCurrency = data?.getParcelableExtra("selectedCurrency") as Currency
                 convertedCurrency?.let { converterView.setConvertedCurrencyButtonText(it.symbol) }
-
             }
         }
     }

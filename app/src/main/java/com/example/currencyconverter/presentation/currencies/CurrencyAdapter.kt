@@ -32,7 +32,6 @@ class CurrencyAdapter(private val context: Context, private val currencyList: Ar
         return currencyList.size
     }
 
-
     class ViewHolder internal constructor(v: View) : RecyclerView.ViewHolder(v) {
         internal var currencySymbol: TextView
         internal var currencyName: TextView

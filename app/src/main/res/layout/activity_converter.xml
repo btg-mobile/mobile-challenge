@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".presentation.converter.ConverterActivity">
+    
     <TextView
         android:background="@color/md_amber_900"
         android:padding="24dp"
@@ -28,8 +29,7 @@
             android:layout_height="64dp"
             android:text="From $"
             android:layout_weight="2"
-            android:onClick="onOriginalCurrencyButtonClick"
-            />
+            android:onClick="onOriginalCurrencyButtonClick"/>
 
         <EditText
             android:id="@+id/originalValueEditText"
@@ -49,8 +49,7 @@
         android:layout_height="wrap_content"
         android:textSize="40dp"
         android:textAlignment="center"
-        android:text="="
-        />
+        android:text="="/>
 
     <LinearLayout
         android:padding="24dp"
@@ -64,8 +63,7 @@
             android:layout_height="64dp"
             android:text="To $"
             android:layout_weight="2"
-            android:onClick="onConvertedCurrencyButtonClick"
-            />
+            android:onClick="onConvertedCurrencyButtonClick"/>
 
         <TextView
             android:id="@+id/convertedValueTextView"
@@ -75,8 +73,8 @@
             android:layout_height="64dp"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textSize="40sp"
-            />
+            android:textSize="40sp"/>
+
     </LinearLayout>
 
     <Button
@@ -86,7 +84,6 @@
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
         android:text="Convert"
-        android:onClick="onConvertButtonClick"
-        />
+        android:onClick="onConvertButtonClick"/>
 
 </LinearLayout>

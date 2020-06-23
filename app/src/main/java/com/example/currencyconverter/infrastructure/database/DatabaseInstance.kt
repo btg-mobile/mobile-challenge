@@ -30,7 +30,6 @@ class DatabaseInstance: Database {
             realm.insertOrUpdate(currencyToAdd)
             realm.commitTransaction()
         }
-
     }
 
     override fun onDestroy() {
