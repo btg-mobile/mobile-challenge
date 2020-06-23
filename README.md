@@ -3,15 +3,14 @@
 This sample Android app is made using *Kotlin* and *Clean Architecture*.
 The objective is to implement a *Currency Converter* using the [API CurrencyLayer](https://currencylayer.com/documentation)
 The app has only two screens: 
-   * The convertion screen
+   * The Convertion screen
    * The List of all available currencies screen
 
 We are using Gradle as dependency manager and the following dependencies:
    * Retrofit for managing the API requests
-   * Room for persisting offline data
-   * Couroutines when dealing with threads
+   * Realm for persisting offline data (tried room but got some crashes)
+   * RxJava for dealing with threads (tried coroutines but got some crashes)
    * JUnit for Unit testing
-
 
 ## Clean Architecture Design Pattern
 

@@ -19,12 +19,15 @@
             android:layout_height="wrap_content"
             android:background="@color/md_amber_900">
             <Button
+                app:layout_scrollFlags="scroll"
                 android:id="@+id/orderButton"
                 android:layout_gravity="end"
                 android:textAlignment="center"
-                android:text="ordered by ticker"
+                android:layout_marginEnd="8dp"
+                android:paddingHorizontal="16dp"
+                android:text="Ordered by Ticker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="64dp"
                 android:onClick="orderButtonClick"/>
 
             <androidx.appcompat.widget.SearchView

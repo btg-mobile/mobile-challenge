@@ -2,15 +2,13 @@ package com.example.currencyconverter.logic
 
 import com.example.currencyconverter.entity.Currency
 import com.example.currencyconverter.infrastructure.database.Database
-import com.example.currencyconverter.presentation.converter.MessageView
 import com.example.currencyconverter.presentation.currencies.CurrencyListView
 
-const val ORDER_TICKER = "ORDERED BY TICKER"
-const val ORDER_NAME = "ORDERED BY NAME"
-
 class CurrenciesInteractor(val view : CurrencyListView,
-                           val messageView : MessageView,
                            val database: Database) {
+
+    val ORDER_TICKER = "ORDERED BY TICKER"
+    val ORDER_NAME = "ORDERED BY NAME"
 
     private var currentOrder = ORDER_TICKER
     private var currentQuery = ""

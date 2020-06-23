@@ -29,7 +29,7 @@ class CurrenciesActivity : AppCompatActivity(), MessageView, CurrencyListView {
 
         val database = DatabaseInstance()
 
-        currenciesInteractor = CurrenciesInteractor(this as CurrencyListView, this as MessageView, database)
+        currenciesInteractor = CurrenciesInteractor(this as CurrencyListView, database)
         currenciesInteractor?.onCreate()
         configureSearchWidget()
     }
