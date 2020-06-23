@@ -11,5 +11,4 @@ interface ConverterView {
     fun setConvertedCurrencyButtonText(text : String)
     fun setConvertedValueText(text : String)
     fun showCurrencyList(requestCode : Int)
-    fun showToast(message: String)
 }
