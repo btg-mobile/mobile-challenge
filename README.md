@@ -124,33 +124,33 @@ When the user fulfills the fields and tap on "Convert", the converted value appe
 The Converter screen is shown below, the user needs to fulfill all the fields to be able to convert. 
 If the user presses the "From $" and "To $" buttons, he/she is redirected to a currency list to select the desired currency.
 
-<img src="pictures/convert-done.jpg"  width="116" height="432">
+<img src="pictures/convert-done.jpg"  width="216" height="432">
 
 ## The currencies list (CurrenciesActivity)
 
 When the user is selecting the desired currency, he/she will be able to see a list of all the available currency with tickers and names as presented in the picture below.
 The user is also able to search and order the names/tickers.
 
-<img src="pictures/full-list.jpg"  width="116" height="432">
+<img src="pictures/full-list.jpg"  width="216" height="432">
 
 ## Searching for currencies
 
 User can search for currency ticker (symbol) or by name as shown in picture below:
 
-<img src="pictures/search.jpg"  width="116" height="432">
+<img src="pictures/search.jpg"  width="216" height="432">
 
 ## Ordering the search list
 
 The search result (or the entire list) can be ordered by the currency ticker (Symbol) or Name by clicking in the button above the searchbar, as show in the picture below:
 
-<img src="pictures/order-ticker.jpg"  width="116" height="432"><img src="pictures/order-name.jpg"  width="116" height="432">
+<img src="pictures/order-ticker.jpg"  width="216" height="432"> <img src="pictures/order-name.jpg"  width="216" height="432">
 
 ## Error treatment
 
 If the user is offline or if any field is missing when he/she taps "Convert", the user will be presented a "Toast" saying what is missing.
 There is also a "Toast" everytime the database is refreshed with live quotes from the API. This occurs, by economy, everytime the ConverterActivity gets created.
 
-<img src="pictures/error-treatment.jpg"  width="116" height="432"><img src="pictures/updated-list.jpg"  width="116" height="432">
+<img src="pictures/error-treatment.jpg"  width="216" height="432"> <img src="pictures/updated-list.jpg"  width="216" height="432">
 
 
 ## Problems faced
