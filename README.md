@@ -116,35 +116,41 @@ Inside the test project we can find those examples. The purpose is to call some 
 
 ## How the app works
 
-Basically the app presents the user
+Basically the app presents the user two buttons for selecting the original and target currencies, a field for entering the original ammount to be converted, and a larg "Convert" button.
+When the user fulfills the fields and tap on "Convert", the converted value appears in the screen with in highlight.
 
 ## The home screen (ConverterActivity)
 
-![project structure image](pictures/convert-done.jpg)
+The Converter screen is shown below, the user needs to fulfill all the fields to be able to convert. 
+If the user presses the "From $" and "To $" buttons, he/she is redirected to a currency list to select the desired currency.
+
+<img src="pictures/convert-done.jpg"  width="116" height="432">
 
 ## The currencies list (CurrenciesActivity)
 
+When the user is selecting the desired currency, he/she will be able to see a list of all the available currency with tickers and names as presented in the picture below.
+The user is also able to search and order the names/tickers.
 
-![project structure image](pictures/full-list.jpg)
+<img src="pictures/full-list.jpg"  width="116" height="432">
 
 ## Searching for currencies
 
 User can search for currency ticker (symbol) or by name as shown in picture below:
 
-![project structure image](pictures/search.jpg)
+<img src="pictures/search.jpg"  width="116" height="432">
 
 ## Ordering the search list
 
 The search result (or the entire list) can be ordered by the currency ticker (Symbol) or Name by clicking in the button above the searchbar, as show in the picture below:
 
-![project structure image](pictures/order-ticker.jpg) ![project structure image](pictures/order-name.jpg)
+<img src="pictures/order-ticker.jpg"  width="116" height="432"><img src="pictures/order-name.jpg"  width="116" height="432">
 
 ## Error treatment
 
 If the user is offline or if any field is missing when he/she taps "Convert", the user will be presented a "Toast" saying what is missing.
 There is also a "Toast" everytime the database is refreshed with live quotes from the API. This occurs, by economy, everytime the ConverterActivity gets created.
 
-![project structure image](pictures/error-treatment.jpg) ![project structure image](pictures/updated-list.jpg)
+<img src="pictures/error-treatment.jpg"  width="116" height="432"><img src="pictures/updated-list.jpg"  width="116" height="432">
 
 
 ## Problems faced
