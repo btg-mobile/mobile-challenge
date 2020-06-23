@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         let listView = storyboard?.instantiateViewController(identifier: "currencyList") as! CurrencyListTableTableViewController
         
         listView.didSelectValue = { (selectedCurrency) in
-            self.inputCurrencyButton.titleLabel?.text = selectedCurrency
+            self.inputCurrencyButton.setTitle(selectedCurrency, for: .normal)
         }
         
         present(listView,animated: true)
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         let listView = storyboard?.instantiateViewController(identifier: "currencyList") as! CurrencyListTableTableViewController
         
         listView.didSelectValue = { (selectedCurrency) in
-            self.resultCurrencyButton.titleLabel?.text = selectedCurrency
+            self.resultCurrencyButton.setTitle(selectedCurrency, for: .normal)
         }
         
         present(listView,animated: true)
