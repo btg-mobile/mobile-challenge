@@ -14,7 +14,7 @@ We are using Gradle as dependency manager and the following dependencies:
 
 ## Clean Architecture Design Pattern
 
-Clean architecture provides a modular implementation of the features, making code decoupled with this design pattern will help if we need to change technology in future, also helps in code reuse and unit-test writing.
+The **Clean Architecture** provides a modular implementation of the features, making code decoupled with this design pattern will help if we need to change technology in the future, also helps in code reuse and unit-test writing.
 
 ![clean architecture image](pictures/clean-architecture.png)
 
@@ -36,7 +36,7 @@ We can see in the picture below that the project code is structured in packages,
 ![project structure image](pictures/structure.png)
 
 * We use the "Entity" package, where we store our models, and this package is only Kotlin, not aware of what other data sources or devices and platforms we are using.
-* Also, wrapping the models, we have the business user cases, as interactors in a package called "Logic"
+* Also, wrapping the models, we have the business use cases, as interactors in a package called "Logic"
 * And in the most external layer we have our view related content in a package called "Presentation" and the Database and Networking related classes in another package called Infrastructure"
 
 ## Code details
@@ -44,7 +44,7 @@ We can see in the picture below that the project code is structured in packages,
 ### Decoupling using interfaces
 
 Using interfaces makes the code decoupled because we don't define big overloaded classes anymore. We first define which are the behaviors of each module and then objects can implement one or more interfaces. For simplicity, I have used interfaces only for the **Presentation** and **Infrastructure** layers, but it could also be extended to Interactors in the **Logic** layer.
-See below an example of interface for something called ConverterView, which is a piece of UI responsible for converting the currencies:
+See below an example of an interface for something called ConverterView, which is a piece of UI responsible for converting the currencies:
 
 *Example from ConverterView.kt*
 ```java
@@ -61,11 +61,9 @@ interface ConverterView {
 }
 ```
 
-
 ### Dumb Views with single responsability
 
-Our Activities are the Views of the UI. That's all they do. Their responsability is to show things to user and recieve inputs from him/her.
-See the code below, extracted from our Activities, how simple their methods became:
+Our Activities are the Views of the UI. That's all they do. Their responsibility is to show things to the user and recieve inputs from him/her. See the code below, extracted from our Activities, how simple their methods became:
 
 *Example from ConverterActivity.kt*
 ```java
@@ -106,7 +104,7 @@ See the code below, extracted from our Activities, how simple their methods beca
 
 ### Testable logic with the Interactors
 
-Decoupling the app logic from the Activities is useful not only because makes it easier to replace layers and methods, but also makes the code more testable. That's what we want to achieve with the Interactors being called in a layer that is different from the Views. Below are some methods written in the Interactors, note how they only do singular things and don't deal with the UI. When any UI action is needed, they call the Views in the presentation layer.
+Decoupling the app logic from the Activities is useful not only because it makes it easier to replace layers and methods, but also makes the code more testable. That's what we want to achieve with the Interactors being called in a layer that is different from the Views. Below are some methods written in the Interactors, note how they only do singular things and don't deal with the UI. When any UI action is needed, they call the Views in the presentation layer.
 
 *Example from CurrenciesInteractor.kt*
 ```java
@@ -126,15 +124,15 @@ Decoupling the app logic from the Activities is useful not only because makes it
 
 ### Unit-Testing the logic
 
-The objective here is not give full code coverage, which would be time-consuming, but only exemplify how we structure the unit tests and mocks to work with the interactors.
-Inside the test project we can find those examples. The purpose is to call some methods in the interactors and test their behaviors in terms of processed data or their outputs to other mocked units. We can apply this kind of test in pratically all the app structure given the app is very decoupled and our methods do just few things in their given scope.
+The objective here is not to give full code coverage, which would be time-consuming, but only exemplify how we structure the unit tests and mocks to work with the interactors.
+Inside the test project, we can find those examples. The purpose is to call some methods in the interactors and test their behaviors in terms of processed data or their outputs to other mocked units. We can apply this kind of test in practically all the app structures, given the app is very decoupled and our methods do just a few things in their given scope.
 
 ![project structure image](pictures/tests.png)
 
 ## How the app works
 
-Basically the app presents the user two buttons for selecting the original and target currencies, a field for entering the original ammount to be converted, and a larg "Convert" button.
-When the user fulfills the fields and tap on "Convert", the converted value appears in the screen with in highlight.
+Basically the app presents the user two buttons for selecting the original and target currencies, a field for entering the original amount to be converted, and a large "Convert" button.
+When the user fulfills the fields and tap on "Convert", the converted value appears on the screen within highlight.
 
 ### The home screen (ConverterActivity)
 
@@ -165,7 +163,7 @@ The search result (or the entire list) can be ordered by the currency ticker (Sy
 ### Error treatment
 
 If the user is offline or if any field is missing when he/she taps "Convert", the user will be presented a "Toast" saying what is missing.
-There is also a "Toast" everytime the database is refreshed with live quotes from the API. This occurs, by economy, everytime the ConverterActivity gets created.
+There is also a "Toast" when the database gets refreshed with live quotes from the API. This occurs, by the economy, every time the ConverterActivity gets created.
 
 <img src="pictures/error-treatment.jpg"  width="216" height="432"> <img src="pictures/updated-list.jpg"  width="216" height="432">
 
@@ -173,8 +171,8 @@ There is also a "Toast" everytime the database is refreshed with live quotes fro
 
 To run this project you will need the software Android Studio.
 - Just Clone or Download the project, then open its directory with Android Studio.
-- Wait a little for Android Studio to find the packages and gradle to install de dependencies.
-- You should be prompted to install missing APIs, thats ok, you can download them.
+- Wait for a little for Android Studio to find the packages and Gradle to install de dependencies.
+- You should be prompted to install missing APIs, that's ok, you can download them.
 - After syncing and package installations, you should be able to click in the RUN the app on Emulator or attached Device.
 
 *If you have trouble, refer to [developer.android.com/studio/run](https://developer.android.com/studio/run)*
@@ -183,10 +181,10 @@ To run this project you will need the software Android Studio.
 
 ### Using room and coroutines
 
-I really tried to make androidx's room for data persistence and coroutines for dealing with async threads. Although my code worked, I had some stability issues when running the app for a couple of seconds. The app suddenly crashed. So I preferred to replce room with Realm and coroutines with Rx (ReactiveX), which were more in my professional confort zone.
+I really tried to make androidx's room for data persistence and coroutines for dealing with async threads. Although my code worked, I had some stability issues when running the app for a couple of seconds. The app suddenly crashed. So I preferred to replace room with Realm and coroutines with Rx (ReactiveX), which were more in my professional comfort zone.
 Because the app is really made on modules, it was not difficult to replace both. In case we find a good choice in the future, we could try any other solutions, but for the moment it is working fine.
 
 ### Troubleshooting
 
-* Sometimes I had problems with the Android Emulator when trying to get the data from api.currencylayer.com. (No address associated with hostname). This is probably because in the free account we cannot call https access, only http. I was able to correctly get the currencies by running on a real Device.
+* Sometimes I had problems with the Android Emulator when trying to get the data from api.currencylayer.com. (No address associated with hostname). This is probably because in the free account we cannot call https access, only http. I was able to correctly get the currencies by running on a real device.
 
