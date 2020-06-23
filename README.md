@@ -1,9 +1,9 @@
 # Currency Converter
 
-This sample Android app is made using *Kotlin* and *Clean Architecture*.
-The objective is to implement a *Currency Converter* using the [API CurrencyLayer](https://currencylayer.com/documentation)
+This sample Android app is made using **Kotlin** and **Clean Architecture**.
+The objective is to implement a **Currency Converter** using the [API CurrencyLayer](https://currencylayer.com/documentation)
 The app has only two screens: 
-   * The Convertion screen
+   * The Conversion screen
    * The List of all available currencies screen
 
 We are using Gradle as dependency manager and the following dependencies:
