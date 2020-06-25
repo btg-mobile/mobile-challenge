@@ -95,6 +95,12 @@
 		3F6224FB24A423C00051FDA1 /* mobile-challenge-pedro-alvarez */ = {
 			isa = PBXGroup;
 			children = (
+				3F62253C24A426C60051FDA1 /* Common */,
+				3F62253A24A426AE0051FDA1 /* Provider */,
+				3F62253924A426A80051FDA1 /* Business */,
+				3F62253824A426A40051FDA1 /* Model */,
+				3F62253724A4269E0051FDA1 /* View Model */,
+				3F62253624A426990051FDA1 /* View */,
 				3F6224FC24A423C00051FDA1 /* AppDelegate.swift */,
 				3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */,
 				3F62250524A423C10051FDA1 /* Assets.xcassets */,
@@ -120,6 +126,48 @@
 				3F62252024A423C10051FDA1 /* Info.plist */,
 			);
 			path = "mobile-challenge-pedro-alvarezUITests";
+			sourceTree = "<group>";
+		};
+		3F62253624A426990051FDA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F62253724A4269E0051FDA1 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		3F62253824A426A40051FDA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3F62253924A426A80051FDA1 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		3F62253A24A426AE0051FDA1 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		3F62253C24A426C60051FDA1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
