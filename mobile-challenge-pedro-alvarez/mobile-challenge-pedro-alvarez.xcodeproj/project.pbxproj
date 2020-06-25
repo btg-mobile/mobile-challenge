@@ -101,10 +101,7 @@
 				3F62253824A426A40051FDA1 /* Model */,
 				3F62253724A4269E0051FDA1 /* View Model */,
 				3F62253624A426990051FDA1 /* View */,
-				3F6224FC24A423C00051FDA1 /* AppDelegate.swift */,
-				3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */,
-				3F62250524A423C10051FDA1 /* Assets.xcassets */,
-				3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */,
+				3F62254024A427CF0051FDA1 /* App */,
 				3F62250A24A423C10051FDA1 /* Info.plist */,
 			);
 			path = "mobile-challenge-pedro-alvarez";
@@ -166,8 +163,43 @@
 		3F62253C24A426C60051FDA1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3F62253F24A427B50051FDA1 /* Extensions */,
+				3F62253E24A427AE0051FDA1 /* Protocols */,
+				3F62253D24A427A70051FDA1 /* API */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		3F62253D24A427A70051FDA1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		3F62253E24A427AE0051FDA1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3F62253F24A427B50051FDA1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3F62254024A427CF0051FDA1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3F62250524A423C10051FDA1 /* Assets.xcassets */,
+				3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */,
+				3F6224FC24A423C00051FDA1 /* AppDelegate.swift */,
+				3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
