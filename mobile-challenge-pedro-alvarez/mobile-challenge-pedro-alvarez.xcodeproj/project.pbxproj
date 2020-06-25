@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F6224FD24A423C00051FDA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6224FC24A423C00051FDA1 /* AppDelegate.swift */; };
+		3F6224FF24A423C00051FDA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */; };
+		3F62250124A423C00051FDA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62250024A423C00051FDA1 /* ViewController.swift */; };
+		3F62250424A423C00051FDA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250224A423C00051FDA1 /* Main.storyboard */; };
+		3F62250624A423C10051FDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250524A423C10051FDA1 /* Assets.xcassets */; };
+		3F62250924A423C10051FDA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */; };
+		3F62251424A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62251324A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift */; };
+		3F62251F24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62251E24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F62251024A423C10051FDA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F6224F124A423C00051FDA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F6224F824A423C00051FDA1;
+			remoteInfo = "mobile-challenge-pedro-alvarez";
+		};
+		3F62251B24A423C10051FDA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F6224F124A423C00051FDA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F6224F824A423C00051FDA1;
+			remoteInfo = "mobile-challenge-pedro-alvarez";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F6224F924A423C00051FDA1 /* mobile-challenge-pedro-alvarez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge-pedro-alvarez.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F6224FC24A423C00051FDA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3F62250024A423C00051FDA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F62250324A423C00051FDA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F62250524A423C10051FDA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F62250824A423C10051FDA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F62250A24A423C10051FDA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F62250F24A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-challenge-pedro-alvarezTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F62251324A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challenge_pedro_alvarezTests.swift; sourceTree = "<group>"; };
+		3F62251524A423C10051FDA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F62251A24A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-challenge-pedro-alvarezUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F62251E24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challenge_pedro_alvarezUITests.swift; sourceTree = "<group>"; };
+		3F62252024A423C10051FDA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F6224F624A423C00051FDA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F62250C24A423C10051FDA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F62251724A423C10051FDA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F6224F024A423C00051FDA1 = {
+			isa = PBXGroup;
+			children = (
+				3F6224FB24A423C00051FDA1 /* mobile-challenge-pedro-alvarez */,
+				3F62251224A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests */,
+				3F62251D24A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests */,
+				3F6224FA24A423C00051FDA1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F6224FA24A423C00051FDA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F6224F924A423C00051FDA1 /* mobile-challenge-pedro-alvarez.app */,
+				3F62250F24A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests.xctest */,
+				3F62251A24A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F6224FB24A423C00051FDA1 /* mobile-challenge-pedro-alvarez */ = {
+			isa = PBXGroup;
+			children = (
+				3F6224FC24A423C00051FDA1 /* AppDelegate.swift */,
+				3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */,
+				3F62250024A423C00051FDA1 /* ViewController.swift */,
+				3F62250224A423C00051FDA1 /* Main.storyboard */,
+				3F62250524A423C10051FDA1 /* Assets.xcassets */,
+				3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */,
+				3F62250A24A423C10051FDA1 /* Info.plist */,
+			);
+			path = "mobile-challenge-pedro-alvarez";
+			sourceTree = "<group>";
+		};
+		3F62251224A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F62251324A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift */,
+				3F62251524A423C10051FDA1 /* Info.plist */,
+			);
+			path = "mobile-challenge-pedro-alvarezTests";
+			sourceTree = "<group>";
+		};
+		3F62251D24A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3F62251E24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift */,
+				3F62252024A423C10051FDA1 /* Info.plist */,
+			);
+			path = "mobile-challenge-pedro-alvarezUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F6224F824A423C00051FDA1 /* mobile-challenge-pedro-alvarez */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F62252324A423C10051FDA1 /* Build configuration list for PBXNativeTarget "mobile-challenge-pedro-alvarez" */;
+			buildPhases = (
+				3F6224F524A423C00051FDA1 /* Sources */,
+				3F6224F624A423C00051FDA1 /* Frameworks */,
+				3F6224F724A423C00051FDA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mobile-challenge-pedro-alvarez";
+			productName = "mobile-challenge-pedro-alvarez";
+			productReference = 3F6224F924A423C00051FDA1 /* mobile-challenge-pedro-alvarez.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F62250E24A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F62252624A423C10051FDA1 /* Build configuration list for PBXNativeTarget "mobile-challenge-pedro-alvarezTests" */;
+			buildPhases = (
+				3F62250B24A423C10051FDA1 /* Sources */,
+				3F62250C24A423C10051FDA1 /* Frameworks */,
+				3F62250D24A423C10051FDA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F62251124A423C10051FDA1 /* PBXTargetDependency */,
+			);
+			name = "mobile-challenge-pedro-alvarezTests";
+			productName = "mobile-challenge-pedro-alvarezTests";
+			productReference = 3F62250F24A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3F62251924A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F62252924A423C10051FDA1 /* Build configuration list for PBXNativeTarget "mobile-challenge-pedro-alvarezUITests" */;
+			buildPhases = (
+				3F62251624A423C10051FDA1 /* Sources */,
+				3F62251724A423C10051FDA1 /* Frameworks */,
+				3F62251824A423C10051FDA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F62251C24A423C10051FDA1 /* PBXTargetDependency */,
+			);
+			name = "mobile-challenge-pedro-alvarezUITests";
+			productName = "mobile-challenge-pedro-alvarezUITests";
+			productReference = 3F62251A24A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F6224F124A423C00051FDA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Pedro Alvarez";
+				TargetAttributes = {
+					3F6224F824A423C00051FDA1 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					3F62250E24A423C10051FDA1 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 3F6224F824A423C00051FDA1;
+					};
+					3F62251924A423C10051FDA1 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 3F6224F824A423C00051FDA1;
+					};
+				};
+			};
+			buildConfigurationList = 3F6224F424A423C00051FDA1 /* Build configuration list for PBXProject "mobile-challenge-pedro-alvarez" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F6224F024A423C00051FDA1;
+			productRefGroup = 3F6224FA24A423C00051FDA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F6224F824A423C00051FDA1 /* mobile-challenge-pedro-alvarez */,
+				3F62250E24A423C10051FDA1 /* mobile-challenge-pedro-alvarezTests */,
+				3F62251924A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F6224F724A423C00051FDA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F62250924A423C10051FDA1 /* LaunchScreen.storyboard in Resources */,
+				3F62250624A423C10051FDA1 /* Assets.xcassets in Resources */,
+				3F62250424A423C00051FDA1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F62250D24A423C10051FDA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F62251824A423C10051FDA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F6224F524A423C00051FDA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F62250124A423C00051FDA1 /* ViewController.swift in Sources */,
+				3F6224FD24A423C00051FDA1 /* AppDelegate.swift in Sources */,
+				3F6224FF24A423C00051FDA1 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F62250B24A423C10051FDA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F62251424A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F62251624A423C10051FDA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F62251F24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F62251124A423C10051FDA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F6224F824A423C00051FDA1 /* mobile-challenge-pedro-alvarez */;
+			targetProxy = 3F62251024A423C10051FDA1 /* PBXContainerItemProxy */;
+		};
+		3F62251C24A423C10051FDA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F6224F824A423C00051FDA1 /* mobile-challenge-pedro-alvarez */;
+			targetProxy = 3F62251B24A423C10051FDA1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F62250224A423C00051FDA1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F62250324A423C00051FDA1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F62250824A423C10051FDA1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F62252124A423C10051FDA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3F62252224A423C10051FDA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F62252424A423C10051FDA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L332B28T9P;
+				INFOPLIST_FILE = "mobile-challenge-pedro-alvarez/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarez";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F62252524A423C10051FDA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L332B28T9P;
+				INFOPLIST_FILE = "mobile-challenge-pedro-alvarez/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarez";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F62252724A423C10051FDA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L332B28T9P;
+				INFOPLIST_FILE = "mobile-challenge-pedro-alvarezTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarezTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile-challenge-pedro-alvarez.app/mobile-challenge-pedro-alvarez";
+			};
+			name = Debug;
+		};
+		3F62252824A423C10051FDA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L332B28T9P;
+				INFOPLIST_FILE = "mobile-challenge-pedro-alvarezTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarezTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile-challenge-pedro-alvarez.app/mobile-challenge-pedro-alvarez";
+			};
+			name = Release;
+		};
+		3F62252A24A423C10051FDA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L332B28T9P;
+				INFOPLIST_FILE = "mobile-challenge-pedro-alvarezUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarezUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mobile-challenge-pedro-alvarez";
+			};
+			name = Debug;
+		};
+		3F62252B24A423C10051FDA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L332B28T9P;
+				INFOPLIST_FILE = "mobile-challenge-pedro-alvarezUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarezUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mobile-challenge-pedro-alvarez";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F6224F424A423C00051FDA1 /* Build configuration list for PBXProject "mobile-challenge-pedro-alvarez" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F62252124A423C10051FDA1 /* Debug */,
+				3F62252224A423C10051FDA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F62252324A423C10051FDA1 /* Build configuration list for PBXNativeTarget "mobile-challenge-pedro-alvarez" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F62252424A423C10051FDA1 /* Debug */,
+				3F62252524A423C10051FDA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F62252624A423C10051FDA1 /* Build configuration list for PBXNativeTarget "mobile-challenge-pedro-alvarezTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F62252724A423C10051FDA1 /* Debug */,
+				3F62252824A423C10051FDA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F62252924A423C10051FDA1 /* Build configuration list for PBXNativeTarget "mobile-challenge-pedro-alvarezUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F62252A24A423C10051FDA1 /* Debug */,
+				3F62252B24A423C10051FDA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F6224F124A423C00051FDA1 /* Project object */;
+}
