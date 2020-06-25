@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3F6224FD24A423C00051FDA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6224FC24A423C00051FDA1 /* AppDelegate.swift */; };
 		3F6224FF24A423C00051FDA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */; };
-		3F62250124A423C00051FDA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62250024A423C00051FDA1 /* ViewController.swift */; };
-		3F62250424A423C00051FDA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250224A423C00051FDA1 /* Main.storyboard */; };
 		3F62250624A423C10051FDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250524A423C10051FDA1 /* Assets.xcassets */; };
 		3F62250924A423C10051FDA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */; };
 		3F62251424A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62251324A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift */; };
@@ -38,8 +36,6 @@
 		3F6224F924A423C00051FDA1 /* mobile-challenge-pedro-alvarez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge-pedro-alvarez.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6224FC24A423C00051FDA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F62250024A423C00051FDA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3F62250324A423C00051FDA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F62250524A423C10051FDA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F62250824A423C10051FDA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F62250A24A423C10051FDA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,8 +97,6 @@
 			children = (
 				3F6224FC24A423C00051FDA1 /* AppDelegate.swift */,
 				3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */,
-				3F62250024A423C00051FDA1 /* ViewController.swift */,
-				3F62250224A423C00051FDA1 /* Main.storyboard */,
 				3F62250524A423C10051FDA1 /* Assets.xcassets */,
 				3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */,
 				3F62250A24A423C10051FDA1 /* Info.plist */,
@@ -234,7 +228,6 @@
 			files = (
 				3F62250924A423C10051FDA1 /* LaunchScreen.storyboard in Resources */,
 				3F62250624A423C10051FDA1 /* Assets.xcassets in Resources */,
-				3F62250424A423C00051FDA1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F62250124A423C00051FDA1 /* ViewController.swift in Sources */,
 				3F6224FD24A423C00051FDA1 /* AppDelegate.swift in Sources */,
 				3F6224FF24A423C00051FDA1 /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +289,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3F62250224A423C00051FDA1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F62250324A423C00051FDA1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,7 +428,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarez";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -462,7 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "pedro.alvarez.mobile-challenge-pedro-alvarez";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
