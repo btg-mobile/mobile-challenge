@@ -6,4 +6,9 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+class CurrencyTableViewFactory: TableViewFactoryProtocol {
+    
+    func buildSections() -> [TableViewSectionProtocol] {
+        return [BaseSection(builders: [])]
+    }
+}

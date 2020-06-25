@@ -6,4 +6,19 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+protocol ViewCodeProtocol {
+    func buildHierarchy()
+    func setupConstraints()
+    func configureViews()
+}
+
+extension ViewCodeProtocol {
+    
+    func configureViews() { }
+    
+    func applyViewCode() {
+        buildHierarchy()
+        setupConstraints()
+        configureViews()
+    }
+}

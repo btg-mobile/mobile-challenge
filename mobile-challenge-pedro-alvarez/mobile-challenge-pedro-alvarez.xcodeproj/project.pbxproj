@@ -13,6 +13,21 @@
 		3F62250924A423C10051FDA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F62250724A423C10051FDA1 /* LaunchScreen.storyboard */; };
 		3F62251424A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62251324A423C10051FDA1 /* mobile_challenge_pedro_alvarezTests.swift */; };
 		3F62251F24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62251E24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift */; };
+		3F62254624A42C3E0051FDA1 /* CurrencyConvertionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62254524A42C3E0051FDA1 /* CurrencyConvertionViewController.swift */; };
+		3F62254824A42CCC0051FDA1 /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62254724A42CCC0051FDA1 /* ViewCodeProtocol.swift */; };
+		3F62254A24A42D5A0051FDA1 /* TableViewFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62254924A42D5A0051FDA1 /* TableViewFactoryProtocol.swift */; };
+		3F62254C24A42D780051FDA1 /* TableViewCellBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62254B24A42D780051FDA1 /* TableViewCellBuilderProtocol.swift */; };
+		3F62254E24A42DAB0051FDA1 /* TableViewSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62254D24A42DAB0051FDA1 /* TableViewSectionProtocol.swift */; };
+		3F62255124A42E240051FDA1 /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255024A42E240051FDA1 /* CurrencyButton.swift */; };
+		3F62255524A42E8C0051FDA1 /* BaseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255424A42E8C0051FDA1 /* BaseSection.swift */; };
+		3F62255824A42EF80051FDA1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255724A42EF80051FDA1 /* Typealiases.swift */; };
+		3F62255A24A42F110051FDA1 /* DefaultTableViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255924A42F110051FDA1 /* DefaultTableViewOutput.swift */; };
+		3F62255C24A42FDC0051FDA1 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255B24A42FDC0051FDA1 /* UITableViewCell+Extension.swift */; };
+		3F62255E24A430010051FDA1 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255D24A430010051FDA1 /* UITableView+Extension.swift */; };
+		3F62256024A430560051FDA1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62255F24A430560051FDA1 /* String+Extension.swift */; };
+		3F62256224A430700051FDA1 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62256124A430700051FDA1 /* UINavigationBar+Extension.swift */; };
+		3F62256424A430890051FDA1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62256324A430890051FDA1 /* UIColor+Extension.swift */; };
+		3F62256624A430CE0051FDA1 /* CurrencyTableViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62256524A430CE0051FDA1 /* CurrencyTableViewFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +60,21 @@
 		3F62251A24A423C10051FDA1 /* mobile-challenge-pedro-alvarezUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-challenge-pedro-alvarezUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F62251E24A423C10051FDA1 /* mobile_challenge_pedro_alvarezUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challenge_pedro_alvarezUITests.swift; sourceTree = "<group>"; };
 		3F62252024A423C10051FDA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F62254524A42C3E0051FDA1 /* CurrencyConvertionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertionViewController.swift; sourceTree = "<group>"; };
+		3F62254724A42CCC0051FDA1 /* ViewCodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocol.swift; sourceTree = "<group>"; };
+		3F62254924A42D5A0051FDA1 /* TableViewFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFactoryProtocol.swift; sourceTree = "<group>"; };
+		3F62254B24A42D780051FDA1 /* TableViewCellBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellBuilderProtocol.swift; sourceTree = "<group>"; };
+		3F62254D24A42DAB0051FDA1 /* TableViewSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionProtocol.swift; sourceTree = "<group>"; };
+		3F62255024A42E240051FDA1 /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
+		3F62255424A42E8C0051FDA1 /* BaseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSection.swift; sourceTree = "<group>"; };
+		3F62255724A42EF80051FDA1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		3F62255924A42F110051FDA1 /* DefaultTableViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewOutput.swift; sourceTree = "<group>"; };
+		3F62255B24A42FDC0051FDA1 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		3F62255D24A430010051FDA1 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		3F62255F24A430560051FDA1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3F62256124A430700051FDA1 /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
+		3F62256324A430890051FDA1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3F62256524A430CE0051FDA1 /* CurrencyTableViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +158,10 @@
 		3F62253624A426990051FDA1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F62254424A42C1A0051FDA1 /* Factory */,
+				3F62254324A42C110051FDA1 /* Cell */,
+				3F62254224A42C0C0051FDA1 /* View */,
+				3F62254124A42C030051FDA1 /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -163,6 +197,8 @@
 		3F62253C24A426C60051FDA1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3F62255624A42EF00051FDA1 /* Utilities */,
+				3F62254F24A42E160051FDA1 /* UI */,
 				3F62253F24A427B50051FDA1 /* Extensions */,
 				3F62253E24A427AE0051FDA1 /* Protocols */,
 				3F62253D24A427A70051FDA1 /* API */,
@@ -180,6 +216,10 @@
 		3F62253E24A427AE0051FDA1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				3F62254724A42CCC0051FDA1 /* ViewCodeProtocol.swift */,
+				3F62254924A42D5A0051FDA1 /* TableViewFactoryProtocol.swift */,
+				3F62254B24A42D780051FDA1 /* TableViewCellBuilderProtocol.swift */,
+				3F62254D24A42DAB0051FDA1 /* TableViewSectionProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -187,6 +227,11 @@
 		3F62253F24A427B50051FDA1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3F62255B24A42FDC0051FDA1 /* UITableViewCell+Extension.swift */,
+				3F62255D24A430010051FDA1 /* UITableView+Extension.swift */,
+				3F62255F24A430560051FDA1 /* String+Extension.swift */,
+				3F62256124A430700051FDA1 /* UINavigationBar+Extension.swift */,
+				3F62256324A430890051FDA1 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +245,70 @@
 				3F6224FE24A423C00051FDA1 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		3F62254124A42C030051FDA1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F62254524A42C3E0051FDA1 /* CurrencyConvertionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3F62254224A42C0C0051FDA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F62254324A42C110051FDA1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3F62254424A42C1A0051FDA1 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				3F62256524A430CE0051FDA1 /* CurrencyTableViewFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		3F62254F24A42E160051FDA1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3F62255324A42E7D0051FDA1 /* Sections */,
+				3F62255224A42E780051FDA1 /* Generic */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3F62255224A42E780051FDA1 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				3F62255024A42E240051FDA1 /* CurrencyButton.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		3F62255324A42E7D0051FDA1 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				3F62255424A42E8C0051FDA1 /* BaseSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		3F62255624A42EF00051FDA1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3F62255724A42EF80051FDA1 /* Typealiases.swift */,
+				3F62255924A42F110051FDA1 /* DefaultTableViewOutput.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,8 +441,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F62255A24A42F110051FDA1 /* DefaultTableViewOutput.swift in Sources */,
+				3F62254A24A42D5A0051FDA1 /* TableViewFactoryProtocol.swift in Sources */,
+				3F62254624A42C3E0051FDA1 /* CurrencyConvertionViewController.swift in Sources */,
+				3F62255824A42EF80051FDA1 /* Typealiases.swift in Sources */,
+				3F62254824A42CCC0051FDA1 /* ViewCodeProtocol.swift in Sources */,
+				3F62256624A430CE0051FDA1 /* CurrencyTableViewFactory.swift in Sources */,
+				3F62254C24A42D780051FDA1 /* TableViewCellBuilderProtocol.swift in Sources */,
+				3F62254E24A42DAB0051FDA1 /* TableViewSectionProtocol.swift in Sources */,
+				3F62256424A430890051FDA1 /* UIColor+Extension.swift in Sources */,
 				3F6224FD24A423C00051FDA1 /* AppDelegate.swift in Sources */,
+				3F62256024A430560051FDA1 /* String+Extension.swift in Sources */,
+				3F62255124A42E240051FDA1 /* CurrencyButton.swift in Sources */,
+				3F62255524A42E8C0051FDA1 /* BaseSection.swift in Sources */,
+				3F62256224A430700051FDA1 /* UINavigationBar+Extension.swift in Sources */,
 				3F6224FF24A423C00051FDA1 /* SceneDelegate.swift in Sources */,
+				3F62255C24A42FDC0051FDA1 /* UITableViewCell+Extension.swift in Sources */,
+				3F62255E24A430010051FDA1 /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

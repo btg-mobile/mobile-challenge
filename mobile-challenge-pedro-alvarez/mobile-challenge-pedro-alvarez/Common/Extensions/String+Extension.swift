@@ -6,4 +6,13 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+extension String {
+    
+    static var empty: String {
+        return ""
+    }
+    
+    static var dot: String {
+        return "."
+    }
+}

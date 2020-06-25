@@ -6,4 +6,8 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIColor {
+    
+}

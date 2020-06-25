@@ -6,4 +6,6 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+protocol TableViewFactoryProtocol {
+    func buildSections() -> [TableViewSectionProtocol]
+}
