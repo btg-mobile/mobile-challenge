@@ -21,6 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             vc.view.backgroundColor = .blue
             vc.title = "Title"
             window.rootViewController = UINavigationController(rootViewController: vc)
+            
+            APIProvider().fetch(withEndpoint: .list) { result in
+                print(result)
+            }
         }
     }
 }

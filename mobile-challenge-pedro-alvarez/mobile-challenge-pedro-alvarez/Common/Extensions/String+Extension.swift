@@ -15,4 +15,8 @@ extension String {
     static var dot: String {
         return "."
     }
+    
+    static var interrogation: String {
+        return "?"
+    }
 }

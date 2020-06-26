@@ -9,3 +9,4 @@ import UIKit
 
 typealias TableViewOutput = NSObject & UITableViewDataSource & UITableViewDelegate
 typealias SimpleCallbackType = () -> Void
+typealias DataResponseCallback = (APIProvider.DataResponse) -> ()
