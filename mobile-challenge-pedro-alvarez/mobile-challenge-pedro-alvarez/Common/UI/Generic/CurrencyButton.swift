@@ -10,4 +10,34 @@ import UIKit
 
 class CurrencyButton: UIButton {
     
+    private let defaultWidth: CGFloat = 1
+    
+    private var title: String {
+        didSet {
+            setTitle(title, for: .normal)
+        }
+    }
+    
+    init(frame: CGRect = .zero, title: String = .empty) {
+        self.title = title
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.title = .empty
+        super.init(coder: coder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = self.bounds.height / 2
+        clipsToBounds = true
+    }
+    
+    private func setup() {
+        layer.borderColor = UIColor.convertionButtonLayerColor.cgColor
+        layer.borderWidth = defaultWidth
+        backgroundColor = UIColor.convertionButtonBackgroundColor
+        titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
+    }
 }
