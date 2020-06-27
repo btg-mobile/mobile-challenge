@@ -11,5 +11,6 @@ typealias TableViewOutput = NSObject & UITableViewDataSource & UITableViewDelega
 typealias SimpleCallbackType = () -> Void
 typealias DataResponseCallback = (APIProvider.DataResponse) -> ()
 typealias CurrencyConvertionJSONCallback = (CurrencyConvertionResponse) -> ()
+typealias CurrencyListJSONCallback = (CurrencyListResponse) -> ()
 typealias CurrencyValueRelation = [String : Double]
 typealias CurrencyNameRelation = [String : String]

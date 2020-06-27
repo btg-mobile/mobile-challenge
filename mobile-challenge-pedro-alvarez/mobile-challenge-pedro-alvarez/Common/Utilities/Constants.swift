@@ -16,4 +16,8 @@ struct Constants {
     struct Errors {
         static let genericError = "Erro genérico"
     }
+    
+    struct UserDefaults {
+        static let firstTime = "IsFirstTime"
+    }
 }

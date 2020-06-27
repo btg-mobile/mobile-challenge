@@ -1,5 +1,5 @@
 //
-//  CurrencyConvertionProvider.swift
+//  CurrencyListProvider.swift
 //  mobile-challenge-pedro-alvarez
 //
 //  Created by Pedro Alvarez on 27/06/20.
@@ -7,24 +7,24 @@
 //
 import Foundation
 
-protocol CurrencyConvertionProviderProtocol {
-    func fetchLive(completion: @escaping CurrencyConvertionJSONCallback)
+protocol CurrencyListProviderProtocol {
+    func fetchList(completion: @escaping CurrencyListJSONCallback)
 }
 
-enum CurrencyConvertionResponse {
-    case success(CurrencyConvertionJSONModel)
+enum CurrencyListResponse {
+    case success(CurrencyListJSONModel)
     case error(Error)
     case genericError
 }
 
-class CurrencyConvertionProvider: CurrencyConvertionProviderProtocol {
+class CurrencyListProvider: CurrencyListProviderProtocol {
     
-    func fetchLive(completion: @escaping CurrencyConvertionJSONCallback) {
-        APIProvider.shared.fetch(withEndpoint: .live) { response in
-            switch response {
+    func fetchList(completion: @escaping CurrencyListJSONCallback) {
+        APIProvider.shared.fetch(withEndpoint: .list) { result in
+            switch result {
             case .success(let data):
                 do {
-                    let jsonModel = try JSONDecoder().decode(CurrencyConvertionJSONModel.self, from: data)
+                    let jsonModel = try JSONDecoder().decode(CurrencyListJSONModel.self, from: data)
                     completion(.success(jsonModel))
                 } catch {
                     completion(.genericError)
