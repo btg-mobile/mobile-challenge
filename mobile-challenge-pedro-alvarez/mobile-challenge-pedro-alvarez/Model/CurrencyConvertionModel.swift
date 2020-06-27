@@ -10,7 +10,7 @@ struct CurrencyConvertionModel {
     let id: String
     let dolarValue: Double
     
-    static func getCurrencyConvertions(fromJson json: CurrencyValueRelation) -> [CurrencyConvertionModel] {
+    static func getCurrencyConvertions(_ json: CurrencyValueRelation) -> [CurrencyConvertionModel] {
         var list: [CurrencyConvertionModel] = []
         for (key, value) in json {
             let currencyRelation = CurrencyConvertionModel(id: key, dolarValue: value)
@@ -19,7 +19,7 @@ struct CurrencyConvertionModel {
         return list
     }
 
-    static func convert(value: Double, from currency1: CurrencyConvertionModel, to currency2: CurrencyConvertionModel) -> Double {
+    static func convert(value: Double, first currency1: CurrencyConvertionModel, second currency2: CurrencyConvertionModel) -> Double {
         let fromDolarCurrency = currency1.dolarValue
         let toDolarCurrency = currency2.dolarValue
         

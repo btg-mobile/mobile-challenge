@@ -26,7 +26,11 @@ extension UIColor {
         )
     }
     
-    static let convertionButtonBackgroundColor: UIColor = UIColor(rgb: 0x00994c)
-    static let convertionButtonLayerColor: UIColor = UIColor(rgb: 0xa8bf4e)
-    static let convertionButtonFontColor: UIColor = UIColor(rgb: 0xa8bf4e)
+    static let currencyButtonBackgroundColor: UIColor = UIColor(rgb: 0x00994c)
+    static let currencyButtonLayerColor: UIColor = UIColor(rgb: 0xa8bf4e)
+    static let currencyButtonFontColor: UIColor = UIColor(rgb: 0xa8bf4e)
+    
+    static let convertButtonBackgroundColor: UIColor = UIColor(rgb: 0x00cccc)
+    static let convertButtonLayerColor: UIColor = UIColor(rgb: 0xe0e0e0)
+    static let convertButtonFontColor: UIColor = UIColor(rgb: 0xffffff)
 }

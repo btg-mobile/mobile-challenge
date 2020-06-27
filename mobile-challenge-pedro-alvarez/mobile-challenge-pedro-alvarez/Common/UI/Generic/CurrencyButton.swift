@@ -21,6 +21,7 @@ class CurrencyButton: UIButton {
     init(frame: CGRect = .zero, title: String = .empty) {
         self.title = title
         super.init(frame: frame)
+        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -35,9 +36,9 @@ class CurrencyButton: UIButton {
     }
     
     private func setup() {
-        layer.borderColor = UIColor.convertionButtonLayerColor.cgColor
+        layer.borderColor = UIColor.currencyButtonLayerColor.cgColor
         layer.borderWidth = defaultWidth
-        backgroundColor = UIColor.convertionButtonBackgroundColor
+        backgroundColor = UIColor.currencyButtonBackgroundColor
         titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
     }
 }

@@ -9,7 +9,7 @@
 
 final class CurrencyConvertionJSONModel: Decodable {
     
-    var quotes: CurrencyValueRelation = CurrencyValueRelation()
+    var quotes: CurrencyValueRelation
     
     private enum CodingKeys: String, CodingKey {
         case quotes = "quotes"

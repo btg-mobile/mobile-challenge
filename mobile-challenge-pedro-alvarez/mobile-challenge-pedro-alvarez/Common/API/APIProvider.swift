@@ -21,6 +21,8 @@ class APIProvider {
         case errorToFetchData
     }
     
+    static let shared: APIProvider = APIProvider()
+    
     private let baseURL = "http://api.currencylayer.com/"
     private let accessKey = "cd74d98d74f757a573c927a7070568b5"
     private let accessKeyHeader = "access_key="
