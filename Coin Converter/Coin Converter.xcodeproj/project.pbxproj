@@ -14,6 +14,10 @@
 		A055362324A7E658008CAA14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055362224A7E658008CAA14 /* Assets.xcassets */; };
 		A055362624A7E658008CAA14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A055362424A7E658008CAA14 /* LaunchScreen.storyboard */; };
 		A055363124A7E659008CAA14 /* Coin_ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055363024A7E659008CAA14 /* Coin_ConverterTests.swift */; };
+		A055364424A7E975008CAA14 /* QuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055364324A7E975008CAA14 /* QuotesModel.swift */; };
+		A055364724A7EA4E008CAA14 /* Quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = A055364624A7EA4E008CAA14 /* Quotes.json */; };
+		A055364924A7EA8A008CAA14 /* CurrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055364824A7EA8A008CAA14 /* CurrenciesModel.swift */; };
+		A055364B24A7EB00008CAA14 /* Currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = A055364A24A7EB00008CAA14 /* Currencies.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		A055362C24A7E659008CAA14 /* Coin ConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coin ConverterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A055363024A7E659008CAA14 /* Coin_ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin_ConverterTests.swift; sourceTree = "<group>"; };
 		A055363224A7E659008CAA14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A055364324A7E975008CAA14 /* QuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModel.swift; sourceTree = "<group>"; };
+		A055364624A7EA4E008CAA14 /* Quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Quotes.json; sourceTree = "<group>"; };
+		A055364824A7EA8A008CAA14 /* CurrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesModel.swift; sourceTree = "<group>"; };
+		A055364A24A7EB00008CAA14 /* Currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Currencies.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 				A055363B24A7E773008CAA14 /* App */,
 				A055363C24A7E77E008CAA14 /* Features */,
 				A055363D24A7E789008CAA14 /* Repositories */,
+				A055364C24A7EF03008CAA14 /* Shared */,
 			);
 			path = "Coin Converter";
 			sourceTree = "<group>";
@@ -111,6 +120,8 @@
 		A055363C24A7E77E008CAA14 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A055364524A7EA40008CAA14 /* Resources */,
+				A055364024A7E8BC008CAA14 /* Model */,
 				A055363F24A7E7D8008CAA14 /* CoinConversion */,
 				A055363E24A7E7CA008CAA14 /* ListCoins */,
 			);
@@ -137,6 +148,39 @@
 			children = (
 			);
 			path = CoinConversion;
+			sourceTree = "<group>";
+		};
+		A055364024A7E8BC008CAA14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A055364324A7E975008CAA14 /* QuotesModel.swift */,
+				A055364824A7EA8A008CAA14 /* CurrenciesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A055364524A7EA40008CAA14 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A055364624A7EA4E008CAA14 /* Quotes.json */,
+				A055364A24A7EB00008CAA14 /* Currencies.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A055364C24A7EF03008CAA14 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A055364D24A7EF0B008CAA14 /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A055364D24A7EF0B008CAA14 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +264,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A055364B24A7EB00008CAA14 /* Currencies.json in Resources */,
+				A055364724A7EA4E008CAA14 /* Quotes.json in Resources */,
 				A055362624A7E658008CAA14 /* LaunchScreen.storyboard in Resources */,
 				A055362324A7E658008CAA14 /* Assets.xcassets in Resources */,
 				A055361E24A7E656008CAA14 /* Main.storyboard in Resources */,
@@ -241,7 +287,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A055361B24A7E656008CAA14 /* ViewController.swift in Sources */,
+				A055364924A7EA8A008CAA14 /* CurrenciesModel.swift in Sources */,
 				A055361724A7E656008CAA14 /* AppDelegate.swift in Sources */,
+				A055364424A7E975008CAA14 /* QuotesModel.swift in Sources */,
 				A055362124A7E656008CAA14 /* Coin_Converter.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Coin Converter/Info.plist";
+				INFOPLIST_FILE = "Coin Converter/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Coin Converter/Info.plist";
+				INFOPLIST_FILE = "Coin Converter/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
