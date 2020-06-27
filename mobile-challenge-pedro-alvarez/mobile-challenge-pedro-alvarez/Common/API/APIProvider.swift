@@ -5,7 +5,8 @@
 //  Created by Pedro Alvarez on 25/06/20.
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
-import Foundation
+import ObjectMapper
+import Alamofire
 
 class APIProvider {
     
