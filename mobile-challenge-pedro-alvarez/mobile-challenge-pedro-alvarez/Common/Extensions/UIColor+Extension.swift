@@ -33,4 +33,8 @@ extension UIColor {
     static let convertButtonBackgroundColor: UIColor = UIColor(rgb: 0x00cccc)
     static let convertButtonLayerColor: UIColor = UIColor(rgb: 0xe0e0e0)
     static let convertButtonFontColor: UIColor = UIColor(rgb: 0xffffff)
+    
+    static let currencyTableViewCellLayerColor: UIColor = UIColor(rgb: 0xa8bf4e)
+    static let currencyTableViewCellBackgrouncColor: UIColor = UIColor(rgb: 0x00994c)
+    static let currencyLblColor: UIColor = UIColor(rgb: 0xa8bf4e)
 }

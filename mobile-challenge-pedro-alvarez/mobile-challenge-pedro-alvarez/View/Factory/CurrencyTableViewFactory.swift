@@ -8,7 +8,15 @@
 
 class CurrencyTableViewFactory: TableViewFactoryProtocol {
     
+    private(set) var viewModel: CurrencyListViewModelProtocol
+    
+    init(viewModel: CurrencyListViewModelProtocol) {
+        self.viewModel = viewModel
+    }
+    
     func buildSections() -> [TableViewSectionProtocol] {
         return [BaseSection(builders: [])]
     }
+    
+    
 }

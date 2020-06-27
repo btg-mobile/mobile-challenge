@@ -7,13 +7,8 @@
 //
 import UIKit
 
-protocol DefaultTableViewOutputDelegate: class {
-    func cellWillDisplay(at indexPath: IndexPath)
-}
-
 class DefaultTableViewOutput: TableViewOutput {
     
-    weak var delegate: DefaultTableViewOutputDelegate?
     var sections: [TableViewSectionProtocol]
     
     init(sections: [TableViewSectionProtocol]) {
@@ -42,9 +37,5 @@ class DefaultTableViewOutput: TableViewOutput {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return sections[indexPath.section].cellAt(indexPath: indexPath, tableView: tableView)
-    }
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        delegate?.cellWillDisplay(at: indexPath)
     }
 }

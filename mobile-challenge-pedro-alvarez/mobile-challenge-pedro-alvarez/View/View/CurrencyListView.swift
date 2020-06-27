@@ -10,15 +10,15 @@ import UIKit
 
 class CurrencyListView: UIView {
     
-    private lazy var tableView: CurrencyListTableView = {
-        return CurrencyListTableView(frame: .zero)
-    }()
+    private unowned var tableView: CurrencyListTableView
     
     private lazy var activityView: UIActivityIndicatorView = {
         return UIActivityIndicatorView(frame: .zero)
     }()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect,
+                  tableView: CurrencyListTableView) {
+        self.tableView = tableView
         super.init(frame: .zero)
     }
     

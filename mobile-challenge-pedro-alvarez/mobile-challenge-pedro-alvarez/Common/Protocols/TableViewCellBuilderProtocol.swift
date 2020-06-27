@@ -8,6 +8,7 @@
 import UIKit
 
 protocol TableViewCellBuilderProtocol {
+    func registerCell(tableView: UITableView)
     func cellHeight() -> CGFloat
     func cellAt(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
 }
