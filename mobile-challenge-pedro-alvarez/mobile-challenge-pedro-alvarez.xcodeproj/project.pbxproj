@@ -47,6 +47,7 @@
 		3F9577F124A7E7B700B79818 /* CurrencyListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F024A7E7B700B79818 /* CurrencyListProvider.swift */; };
 		3F9577F324A7EEFA00B79818 /* CurrencyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F224A7EEFA00B79818 /* CurrencyListTableViewCell.swift */; };
 		3F9577F724A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */; };
+		3F9577F924A80CEE00B79818 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F824A80CEE00B79818 /* ErrorView.swift */; };
 		D7A8ABEC69B8AD81EC708D43 /* Pods_mobile_challenge_pedro_alvarez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929A784F27C0EA61C428201 /* Pods_mobile_challenge_pedro_alvarez.framework */; };
 		E9C95498E4CD26CA8D376736 /* Pods_mobile_challenge_pedro_alvarezTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EF6BD9474979D7243CFA88 /* Pods_mobile_challenge_pedro_alvarezTests.framework */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		3F9577F024A7E7B700B79818 /* CurrencyListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListProvider.swift; sourceTree = "<group>"; };
 		3F9577F224A7EEFA00B79818 /* CurrencyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewCell.swift; sourceTree = "<group>"; };
 		3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewCellBuilder.swift; sourceTree = "<group>"; };
+		3F9577F824A80CEE00B79818 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		66990D605FFB305603589D98 /* Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988725F8CB7E1A1299C06DD0 /* Pods-mobile-challenge-pedro-alvarez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; sourceTree = "<group>"; };
 		B639C88659D8065BCBEC96BC /* Pods-mobile-challenge-pedro-alvarez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				3F62255024A42E240051FDA1 /* CurrencyButton.swift */,
 				3F62257324A7C5270051FDA1 /* ConvertAtionButton.swift */,
+				3F9577F824A80CEE00B79818 /* ErrorView.swift */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				3F62256E24A79D0A0051FDA1 /* APIModels.swift in Sources */,
 				3F62255824A42EF80051FDA1 /* Typealiases.swift in Sources */,
 				3F62254824A42CCC0051FDA1 /* ViewCodeProtocol.swift in Sources */,
+				3F9577F924A80CEE00B79818 /* ErrorView.swift in Sources */,
 				3F62256624A430CE0051FDA1 /* CurrencyTableViewFactory.swift in Sources */,
 				3F9577ED24A7E5A600B79818 /* CurrencyListView.swift in Sources */,
 				3F9577E324A7D92800B79818 /* Constants.swift in Sources */,

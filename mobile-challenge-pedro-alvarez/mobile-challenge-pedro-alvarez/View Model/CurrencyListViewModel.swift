@@ -5,13 +5,14 @@
 //  Created by Pedro Alvarez on 27/06/20.
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
+import UIKit
 
 protocol CurrencyListViewModelProtocol {
-    var currencyList: [CurrencyListModel] { get }
     var delegate: CurrencyListViewModelDelegate? { get set }
+    var currenciesViewModel: [NSAttributedString] { get  }
     
     func fetchCurrencies()
-    func didSelectCurrency(id: String)
+    func didSelectCurrency(index: Int)
 }
 
 protocol CurrencyListViewModelDelegate: class {
@@ -22,9 +23,9 @@ protocol CurrencyListViewModelDelegate: class {
 
 class CurrencyListViewModel: CurrencyListViewModelProtocol {
     
-    private(set) var currencyList: [CurrencyListModel] = [] {
+    private var currencyList: [CurrencyListModel] = [] {
         didSet {
-            delegate?.didFetchCurrencies()
+            currenciesViewModel = convertCurrencyViewModel(currencyList)
         }
     }
     
@@ -32,6 +33,12 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
         didSet {
             guard let id = selectedCurrencyId else { return }
             delegate?.didFetchSelectedCurrency(id: id)
+        }
+    }
+    
+    private(set) var currenciesViewModel: [NSAttributedString] = [] {
+        didSet {
+            delegate?.didFetchCurrencies()
         }
     }
     
@@ -61,7 +68,20 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
         }
     }
     
-    func didSelectCurrency(id: String) {
+    func didSelectCurrency(index: Int) {
+        let id = currencyList[index].id
         delegate?.didFetchSelectedCurrency(id: id)
+    }
+}
+
+extension CurrencyListViewModel {
+    
+    private func convertCurrencyViewModel(_ currencies: [CurrencyListModel]) -> [NSAttributedString] {
+        var attributesStrings: [NSAttributedString] = []
+        for currency in currencies {
+            attributesStrings.append(NSAttributedString(string: currency.id + .space + currency.fullName,
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.currencyLblColor, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)]))
+        }
+        return attributesStrings
     }
 }

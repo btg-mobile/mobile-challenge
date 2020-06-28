@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum CurrencyConvertionButtonIdentifier {
+    case first
+    case second
+}
+
 class CurrencyConvertionViewController: UIViewController {
     
     private lazy var firstCurrencyButton: CurrencyButton = {

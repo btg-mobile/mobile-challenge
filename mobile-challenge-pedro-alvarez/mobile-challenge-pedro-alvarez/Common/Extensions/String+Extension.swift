@@ -19,4 +19,8 @@ extension String {
     static var interrogation: String {
         return "?"
     }
+    
+    static var space: String {
+        return " "
+    }
 }

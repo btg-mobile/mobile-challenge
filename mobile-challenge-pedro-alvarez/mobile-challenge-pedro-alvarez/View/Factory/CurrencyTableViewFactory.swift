@@ -5,17 +5,32 @@
 //  Created by Pedro Alvarez on 24/06/20.
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
+import UIKit
 
 class CurrencyTableViewFactory: TableViewFactoryProtocol {
     
     private(set) var viewModel: CurrencyListViewModelProtocol
     
-    init(viewModel: CurrencyListViewModelProtocol) {
+    private let tableView: UITableView
+    
+    init(viewModel: CurrencyListViewModelProtocol,
+         tableView: UITableView) {
         self.viewModel = viewModel
+        self.tableView = tableView
     }
     
     func buildSections() -> [TableViewSectionProtocol] {
-        return [BaseSection(builders: [])]
+        return [BaseSection(builders: [],
+                            tableView: tableView)]
+    }
+    
+    private var mainSection: BaseSection {
+        var builders: [CurrencyListTableViewCellBuilder] = []
+        let list = viewModel.currenciesViewModel
+        for currency in list {
+            builders.append(CurrencyListTableViewCellBuilder(currencyAttrString: currency))
+        }
+        return BaseSection(builders: builders, tableView: tableView)
     }
     
     
