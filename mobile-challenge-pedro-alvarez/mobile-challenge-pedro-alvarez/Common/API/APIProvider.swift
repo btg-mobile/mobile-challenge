@@ -27,6 +27,8 @@ class APIProvider {
     private let accessKey = "cd74d98d74f757a573c927a7070568b5"
     private let accessKeyHeader = "access_key="
     
+    private init() { }
+    
     func fetch(withEndpoint endpoint: Endpoints, completion: @escaping DataResponseCallback) {
         guard let url = getCompletedURL(forEndpoint: endpoint) else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in

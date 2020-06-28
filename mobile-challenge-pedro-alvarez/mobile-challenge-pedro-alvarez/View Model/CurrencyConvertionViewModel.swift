@@ -66,10 +66,14 @@ class CurrencyConvertionViewModel: CurrencyConvertionViewModelProtocol {
                               second: String) {
         guard let firstModel = currencyValues.first(where: {
             $0.id == first
-        }) else { return }
+        }) else {
+            return
+        }
         guard let secondModel = currencyValues.first(where: {
             $0.id == second
-        }) else { return }
+        }) else {
+            return
+        }
         let result = CurrencyConvertionModel.convert(value: value,
                                                      first: firstModel,
                                                      second: secondModel)

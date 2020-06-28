@@ -49,6 +49,8 @@
 		3F9577F724A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */; };
 		3F9577F924A80CEE00B79818 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F824A80CEE00B79818 /* ErrorView.swift */; };
 		3F9577FB24A90AB800B79818 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FA24A90AB800B79818 /* Double+Extension.swift */; };
+		3F9577FD24A9170B00B79818 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FC24A9170B00B79818 /* InternetConnection.swift */; };
+		3F9577FF24A91A0600B79818 /* CurrencySaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FE24A91A0600B79818 /* CurrencySaves.swift */; };
 		D7A8ABEC69B8AD81EC708D43 /* Pods_mobile_challenge_pedro_alvarez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929A784F27C0EA61C428201 /* Pods_mobile_challenge_pedro_alvarez.framework */; };
 		E9C95498E4CD26CA8D376736 /* Pods_mobile_challenge_pedro_alvarezTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EF6BD9474979D7243CFA88 /* Pods_mobile_challenge_pedro_alvarezTests.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +123,8 @@
 		3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewCellBuilder.swift; sourceTree = "<group>"; };
 		3F9577F824A80CEE00B79818 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3F9577FA24A90AB800B79818 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		3F9577FC24A9170B00B79818 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
+		3F9577FE24A91A0600B79818 /* CurrencySaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySaves.swift; sourceTree = "<group>"; };
 		66990D605FFB305603589D98 /* Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988725F8CB7E1A1299C06DD0 /* Pods-mobile-challenge-pedro-alvarez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; sourceTree = "<group>"; };
 		B639C88659D8065BCBEC96BC /* Pods-mobile-challenge-pedro-alvarez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		3F62253C24A426C60051FDA1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3F95780024A91A0900B79818 /* Saves */,
 				3F62255624A42EF00051FDA1 /* Utilities */,
 				3F62254F24A42E160051FDA1 /* UI */,
 				3F62253F24A427B50051FDA1 /* Extensions */,
@@ -384,6 +389,7 @@
 				3F62255924A42F110051FDA1 /* DefaultTableViewOutput.swift */,
 				3F9577E224A7D92800B79818 /* Constants.swift */,
 				3F9577E624A7E1B800B79818 /* AppMetadata.swift */,
+				3F9577FC24A9170B00B79818 /* InternetConnection.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -402,6 +408,14 @@
 				3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */,
 			);
 			path = Builders;
+			sourceTree = "<group>";
+		};
+		3F95780024A91A0900B79818 /* Saves */ = {
+			isa = PBXGroup;
+			children = (
+				3F9577FE24A91A0600B79818 /* CurrencySaves.swift */,
+			);
+			path = Saves;
 			sourceTree = "<group>";
 		};
 		8E56DAB6924BFBE7CF53D076 /* Pods */ = {
@@ -677,11 +691,13 @@
 				3F62256624A430CE0051FDA1 /* CurrencyTableViewFactory.swift in Sources */,
 				3F9577ED24A7E5A600B79818 /* CurrencyListView.swift in Sources */,
 				3F9577E324A7D92800B79818 /* Constants.swift in Sources */,
+				3F9577FD24A9170B00B79818 /* InternetConnection.swift in Sources */,
 				3F9577EF24A7E62800B79818 /* CurrencyListViewModel.swift in Sources */,
 				3F62257024A7BB6D0051FDA1 /* KeyedDecodingContainer+Extensoon.swift in Sources */,
 				3F62257224A7C1300051FDA1 /* CurrencyConvertionView.swift in Sources */,
 				3F62254C24A42D780051FDA1 /* TableViewCellBuilderProtocol.swift in Sources */,
 				3F62254E24A42DAB0051FDA1 /* TableViewSectionProtocol.swift in Sources */,
+				3F9577FF24A91A0600B79818 /* CurrencySaves.swift in Sources */,
 				3F9577EB24A7E4CD00B79818 /* CurrencyListTableView.swift in Sources */,
 				3F62256424A430890051FDA1 /* UIColor+Extension.swift in Sources */,
 				3F6224FD24A423C00051FDA1 /* AppDelegate.swift in Sources */,

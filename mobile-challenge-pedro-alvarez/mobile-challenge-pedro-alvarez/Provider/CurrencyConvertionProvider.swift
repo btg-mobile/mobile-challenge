@@ -20,10 +20,23 @@ enum CurrencyConvertionResponse {
 class CurrencyConvertionProvider: CurrencyConvertionProviderProtocol {
     
     func fetchLive(completion: @escaping CurrencyConvertionJSONCallback) {
+        guard InternetConnection.shared.isConnected else {
+            guard let data = CurrencySaves.shared.retrieve(file: .convertions) else {
+                return
+            }
+            do {
+                let jsonModel = try JSONDecoder().decode(CurrencyConvertionJSONModel.self, from: data)
+                completion(.success(jsonModel))
+            } catch {
+                completion(.genericError)
+            }
+            return
+        }
         APIProvider.shared.fetch(withEndpoint: .live) { response in
             switch response {
             case .success(let data):
                 do {
+                    CurrencySaves.shared.save(data: data, file: .convertions)
                     let jsonModel = try JSONDecoder().decode(CurrencyConvertionJSONModel.self, from: data)
                     completion(.success(jsonModel))
                 } catch {
