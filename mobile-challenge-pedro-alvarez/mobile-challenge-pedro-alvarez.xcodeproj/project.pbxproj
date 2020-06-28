@@ -51,6 +51,7 @@
 		3F9577FB24A90AB800B79818 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FA24A90AB800B79818 /* Double+Extension.swift */; };
 		3F9577FD24A9170B00B79818 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FC24A9170B00B79818 /* InternetConnection.swift */; };
 		3F9577FF24A91A0600B79818 /* CurrencySaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FE24A91A0600B79818 /* CurrencySaves.swift */; };
+		3F95780224A9244F00B79818 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95780124A9244F00B79818 /* SortView.swift */; };
 		D7A8ABEC69B8AD81EC708D43 /* Pods_mobile_challenge_pedro_alvarez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929A784F27C0EA61C428201 /* Pods_mobile_challenge_pedro_alvarez.framework */; };
 		E9C95498E4CD26CA8D376736 /* Pods_mobile_challenge_pedro_alvarezTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EF6BD9474979D7243CFA88 /* Pods_mobile_challenge_pedro_alvarezTests.framework */; };
 /* End PBXBuildFile section */
@@ -125,6 +126,7 @@
 		3F9577FA24A90AB800B79818 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		3F9577FC24A9170B00B79818 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		3F9577FE24A91A0600B79818 /* CurrencySaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySaves.swift; sourceTree = "<group>"; };
+		3F95780124A9244F00B79818 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		66990D605FFB305603589D98 /* Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988725F8CB7E1A1299C06DD0 /* Pods-mobile-challenge-pedro-alvarez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; sourceTree = "<group>"; };
 		B639C88659D8065BCBEC96BC /* Pods-mobile-challenge-pedro-alvarez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,7 +190,6 @@
 			children = (
 				3F62250A24A423C10051FDA1 /* Info.plist */,
 				3F62254024A427CF0051FDA1 /* App */,
-				3F62253924A426A80051FDA1 /* Business */,
 				3F62253C24A426C60051FDA1 /* Common */,
 				3F62253824A426A40051FDA1 /* Model */,
 				3F62253A24A426AE0051FDA1 /* Provider */,
@@ -243,13 +244,6 @@
 				3F62256B24A58E5A0051FDA1 /* CurrencyListModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		3F62253924A426A80051FDA1 /* Business */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Business;
 			sourceTree = "<group>";
 		};
 		3F62253A24A426AE0051FDA1 /* Provider */ = {
@@ -370,6 +364,7 @@
 				3F62255024A42E240051FDA1 /* CurrencyButton.swift */,
 				3F62257324A7C5270051FDA1 /* ConvertAtionButton.swift */,
 				3F9577F824A80CEE00B79818 /* ErrorView.swift */,
+				3F95780124A9244F00B79818 /* SortView.swift */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -713,6 +708,7 @@
 				3F62257424A7C5270051FDA1 /* ConvertAtionButton.swift in Sources */,
 				3F9577E524A7D9F700B79818 /* CurrencyConvertionProvider.swift in Sources */,
 				3F62255C24A42FDC0051FDA1 /* UITableViewCell+Extension.swift in Sources */,
+				3F95780224A9244F00B79818 /* SortView.swift in Sources */,
 				3F9577F724A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift in Sources */,
 				3F62255E24A430010051FDA1 /* UITableView+Extension.swift in Sources */,
 				3F62256824A523B10051FDA1 /* APIProvider.swift in Sources */,

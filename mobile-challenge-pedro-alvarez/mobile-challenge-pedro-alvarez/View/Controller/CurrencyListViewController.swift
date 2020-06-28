@@ -22,6 +22,12 @@ class CurrencyListViewController: UIViewController {
         return CurrencyListTableView(frame: .zero)
     }()
     
+    private lazy var sortSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(frame: .zero)
+        segmentedControl.addTarget(self, action: #selector(didChangeSegmentedControlValue), for: .valueChanged)
+        return segmentedControl
+    }()
+    
     private lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapCloseButton))
     }()
@@ -35,10 +41,13 @@ class CurrencyListViewController: UIViewController {
     }()
     
     private lazy var mainView: CurrencyListView = {
+        let sortView = SortView(frame: .zero,
+                                segmentedControl: sortSegmentedControl)
         return CurrencyListView(frame: .zero,
                                 tableView: tableView,
                                 errorView: errorView,
-                                activityView: activityView)
+                                activityView: activityView,
+                                sortView: sortView)
     }()
     
     init(finishCallback: @escaping CurrencyIdCallback) {
@@ -117,6 +126,11 @@ extension CurrencyListViewController {
     @objc
     private func didTapCloseButton() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    private func didChangeSegmentedControlValue() {
+        viewModel?.sortCurrencyList(withTag: sortSegmentedControl.selectedSegmentIndex)
     }
 }
 

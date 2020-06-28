@@ -13,6 +13,7 @@ class CurrencyListView: UIView {
     private unowned var tableView: CurrencyListTableView
     private unowned var errorView: ErrorView
     private unowned var activityView: UIActivityIndicatorView
+    private unowned var sortView: SortView
     
     var animating: Bool = false {
         didSet {
@@ -23,10 +24,12 @@ class CurrencyListView: UIView {
     init(frame: CGRect,
          tableView: CurrencyListTableView,
          errorView: ErrorView,
-         activityView: UIActivityIndicatorView) {
+         activityView: UIActivityIndicatorView,
+         sortView: SortView) {
         self.tableView = tableView
         self.errorView = errorView
         self.activityView = activityView
+        self.sortView = sortView
         super.init(frame: .zero)
         applyViewCode()
     }
@@ -47,9 +50,40 @@ extension CurrencyListView: ViewCodeProtocol {
         addSubview(tableView)
         addSubview(activityView)
         addSubview(errorView)
+        addSubview(sortView)
     }
     
     func setupConstraints() {
+        sortView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: sortView,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .top,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: sortView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: tableView,
+                           attribute: .top,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: sortView,
+                           attribute: .left,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .left,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: sortView,
+                           attribute: .right,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .right,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint(item: tableView,
                            attribute: .top,
@@ -57,7 +91,7 @@ extension CurrencyListView: ViewCodeProtocol {
                            toItem: self,
                            attribute: .top,
                            multiplier: 1.0,
-                           constant: 0).isActive = true
+                           constant: 180).isActive = true
         NSLayoutConstraint(item: tableView,
                            attribute: .bottom,
                            relatedBy: .equal,
@@ -146,5 +180,7 @@ extension CurrencyListView: ViewCodeProtocol {
         activityView.color = .white
         activityView.startAnimating()
         activityView.isHidden = true
+        
+        sortView.backgroundColor = .currencyTableViewCellBackgrouncColor
     }
 }

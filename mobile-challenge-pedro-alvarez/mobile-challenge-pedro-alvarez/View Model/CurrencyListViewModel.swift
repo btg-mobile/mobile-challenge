@@ -13,6 +13,7 @@ protocol CurrencyListViewModelProtocol {
     
     func fetchCurrencies()
     func didSelectCurrency(index: Int)
+    func sortCurrencyList(withTag tag: Int)
 }
 
 protocol CurrencyListViewModelDelegate: class {
@@ -25,7 +26,6 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
     
     private var currencyList: [CurrencyListModel] = [] {
         didSet {
-            currencyList.sort(by: { $0.id < $1.id })
             currenciesViewModel = convertCurrencyViewModel(currencyList)
         }
     }
@@ -57,7 +57,7 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
         provider.fetchList { response in
             switch response {
             case .success(let model):
-                self.currencyList = CurrencyListModel.getCurrencyList(fromJson: model.currencies)
+                self.currencyList = CurrencyListModel.getCurrencyList(fromJson: model.currencies).sorted(by: { $0.id < $1.id })
                 break
             case .error(let error):
                 self.delegate?.didGetError(error.localizedDescription)
@@ -72,6 +72,19 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
     func didSelectCurrency(index: Int) {
         let id = currencyList[index].id
         delegate?.didFetchSelectedCurrency(id: id)
+    }
+    
+    func sortCurrencyList(withTag tag: Int) {
+        if tag == 0 {
+            currencyList.sort(by: {
+                $0.id < $1.id
+            })
+        } else {
+            currencyList.sort(by: {
+                $0.fullName < $1.fullName
+            })
+        }
+        currenciesViewModel = convertCurrencyViewModel(currencyList)
     }
 }
 
