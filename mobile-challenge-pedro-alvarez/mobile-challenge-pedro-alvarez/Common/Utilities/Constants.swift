@@ -20,4 +20,18 @@ struct Constants {
     struct UserDefaults {
         static let firstTime = "IsFirstTime"
     }
+    
+    struct Labels {
+        static let firstCurrencyLbl = "Converter de"
+        static let secondCurrencyLbl = "Para"
+    }
+    
+    struct Button {
+        static let firstCurrencyButton = "-"
+        static let secondCurrencyButton = "-"
+    }
+    
+    struct TextField {
+        static let currencyTextFieldPlaceHolder = "Insira um valor numérico"
+    }
 }

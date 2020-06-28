@@ -11,7 +11,7 @@ import UIKit
 class ConvertActionButton: UIButton {
     
     private let defaultWidth: CGFloat = 1
-    private let defaultText: String = "Apply Convertion"
+    private let defaultText: String = "Aplicar conversão"
     private let fontSize: CGFloat = 14
     
     override init(frame: CGRect) {

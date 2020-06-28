@@ -10,7 +10,7 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
     
-    private(set) var finishCallback: SimpleCallbackType
+    private(set) var finishCallback: CurrencyIdCallback
     
     private(set) var factory: CurrencyTableViewFactory?
     
@@ -36,7 +36,7 @@ class CurrencyListViewController: UIViewController {
                                 errorView: errorView)
     }()
     
-    init(finishCallback: @escaping SimpleCallbackType) {
+    init(finishCallback: @escaping CurrencyIdCallback) {
         self.finishCallback = finishCallback
         super.init(nibName: nil, bundle: nil)
     }
@@ -111,7 +111,7 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
     
     func didFetchSelectedCurrency(id: String) {
         dismiss(animated: true, completion: nil)
-        finishCallback()
+        finishCallback(id)
     }
     
     func didGetError(_ error: String) {

@@ -9,6 +9,7 @@ import UIKit
 
 typealias TableViewOutput = NSObject & UITableViewDataSource & UITableViewDelegate
 typealias SimpleCallbackType = () -> Void
+typealias CurrencyIdCallback = (String) -> Void
 typealias DataResponseCallback = (APIProvider.DataResponse) -> ()
 typealias CurrencyConvertionJSONCallback = (CurrencyConvertionResponse) -> ()
 typealias CurrencyListJSONCallback = (CurrencyListResponse) -> ()

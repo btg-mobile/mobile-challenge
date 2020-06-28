@@ -17,10 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.makeKeyAndVisible()
             self.window = window
-            let vc = UIViewController()
-            vc.view.backgroundColor = .blue
-            vc.title = "Title"
-            window.rootViewController = UINavigationController(rootViewController: vc)
+            let currencyConvertionVc = CurrencyConvertionViewController()
+            window.rootViewController = UINavigationController(rootViewController: currencyConvertionVc)
         }
     }
 }

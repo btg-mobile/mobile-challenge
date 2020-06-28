@@ -46,6 +46,7 @@ extension CurrencyListView: ViewCodeProtocol {
     func buildHierarchy() {
         addSubview(tableView)
         addSubview(activityView)
+        addSubview(errorView)
     }
     
     func setupConstraints() {

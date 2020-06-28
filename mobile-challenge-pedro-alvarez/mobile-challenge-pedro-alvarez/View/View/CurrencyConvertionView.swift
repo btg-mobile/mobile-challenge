@@ -14,6 +14,7 @@ class CurrencyConvertionView: UIView {
     private unowned var secondCurrencyButton: CurrencyButton
     private unowned var convertActionButton: ConvertActionButton
     private unowned var resultLbl: UILabel
+    private unowned var errorView: ErrorView
     
     private lazy var firstCurrencyLbl: UILabel = {
         return UILabel(frame: .zero)
@@ -35,20 +36,20 @@ class CurrencyConvertionView: UIView {
          firstCurrencyButton: CurrencyButton,
          secondCurrencyButton: CurrencyButton,
          convertActionButton: ConvertActionButton,
-         resultLbl: UILabel) {
+         resultLbl: UILabel,
+         errorView: ErrorView) {
         self.firstCurrencyButton = firstCurrencyButton
         self.secondCurrencyButton = secondCurrencyButton
         self.convertActionButton = convertActionButton
         self.resultLbl = resultLbl
+        self.errorView = errorView
         super.init(frame: frame)
-        
+        applyViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
 
 extension CurrencyConvertionView: ViewCodeProtocol {
@@ -66,10 +67,132 @@ extension CurrencyConvertionView: ViewCodeProtocol {
     
     func setupConstraints() {
         firstCurrencyLbl.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint(item: firstCurrencyLbl, attribute: .top, relatedBy: .equal, toItem: topAnchor, attribute: .top, multiplier: 1.0, constant: <#T##CGFloat#>)
+        NSLayoutConstraint(item: firstCurrencyLbl,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .top,
+                           multiplier: 1.0,
+                           constant: 60).isActive = true
+        NSLayoutConstraint(item: firstCurrencyLbl,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        firstCurrencyLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        firstCurrencyLbl.widthAnchor.constraint(equalToConstant: 180).isActive = true
+        
+        firstCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: firstCurrencyButton,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: firstCurrencyLbl,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 5).isActive = true
+        NSLayoutConstraint(item: firstCurrencyButton,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: firstCurrencyLbl,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        firstCurrencyButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        firstCurrencyButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        secondCurrencyLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: secondCurrencyLbl,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: firstCurrencyButton,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 15).isActive = true
+        NSLayoutConstraint(item: secondCurrencyLbl,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: firstCurrencyButton,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        secondCurrencyLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        secondCurrencyLbl.widthAnchor.constraint(equalToConstant: 180).isActive = true
+        
+        secondCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: secondCurrencyButton,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: secondCurrencyLbl,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 15).isActive = true
+        NSLayoutConstraint(item: secondCurrencyButton,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: secondCurrencyLbl,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        secondCurrencyButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        secondCurrencyButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        currencyTextField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: currencyTextField,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: secondCurrencyButton,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 30).isActive = true
+        NSLayoutConstraint(item: currencyTextField,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: secondCurrencyButton,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        currencyTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        currencyTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        convertActionButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: convertActionButton,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: currencyTextField,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 30).isActive = true
+        NSLayoutConstraint(item: convertActionButton,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: currencyTextField,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        convertActionButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        convertActionButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
     }
     
     func configureViews() {
+        firstCurrencyLbl.text = Constants.Labels.firstCurrencyLbl
+        firstCurrencyLbl.font = UIFont(name: "HelveticaNeue-Regular", size: 14)
+        firstCurrencyLbl.textColor = .gray
+        firstCurrencyLbl.textAlignment = .center
+
+        secondCurrencyLbl.text = Constants.Labels.secondCurrencyLbl
+        secondCurrencyLbl.font = UIFont(name: "HelveticaNeue-Regular", size: 14)
+        secondCurrencyLbl.textColor = .gray
+        secondCurrencyLbl.textAlignment = .center
         
+        currencyTextField.keyboardType = .decimalPad
+        currencyTextField.layer.borderWidth = 2
+        currencyTextField.layer.borderColor = UIColor.black.cgColor
+        currencyTextField.layer.cornerRadius = 4
+        currencyTextField.placeholder = Constants.TextField.currencyTextFieldPlaceHolder
+        currencyTextField.textAlignment = .center
+        
+        backgroundColor = .white
     }
 }

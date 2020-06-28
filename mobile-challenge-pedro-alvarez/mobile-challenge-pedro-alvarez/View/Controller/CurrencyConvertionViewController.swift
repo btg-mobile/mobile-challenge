@@ -8,34 +8,49 @@
 
 import UIKit
 
-enum CurrencyConvertionButtonIdentifier {
-    case first
-    case second
-}
-
 class CurrencyConvertionViewController: UIViewController {
     
     private lazy var firstCurrencyButton: CurrencyButton = {
-        return CurrencyButton(frame: .zero, title: .empty)
+        let button = CurrencyButton(frame: .zero,
+                                    title: Constants.Button.firstCurrencyButton)
+        button.addTarget(self,
+                         action: #selector(didTapFirstCurrencyButton),
+                         for: .touchUpInside)
+        return button
     }()
     
     private lazy var secondCurrencyButton: CurrencyButton = {
-        return CurrencyButton(frame: .zero, title: .empty)
+        let button = CurrencyButton(frame: .zero,
+                                    title: Constants.Button.secondCurrencyButton)
+        button.addTarget(self,
+                         action: #selector(didTapSecondCurrencyButton),
+                         for: .touchUpInside)
+        return button
     }()
     
     private lazy var convertActionButton: ConvertActionButton = {
-        return ConvertActionButton(frame: .zero)
+        let button = ConvertActionButton(frame: .zero)
+        button.addTarget(self,
+                         action: #selector(didTapConvertActionButton),
+                         for: .touchUpInside)
+        return button
     }()
     
     private lazy var resultLbl: UILabel = {
         return UILabel(frame: .zero)
     }()
     
+    private lazy var errorView: ErrorView = {
+        let view = ErrorView(frame: .zero, errorMessage: .empty)
+        return view
+    }()
+    
     private lazy var mainView: CurrencyConvertionView = {
         return CurrencyConvertionView(firstCurrencyButton: firstCurrencyButton,
                                       secondCurrencyButton: secondCurrencyButton,
                                       convertActionButton: convertActionButton,
-                                      resultLbl: resultLbl)
+                                      resultLbl: resultLbl,
+                                      errorView: errorView)
     }()
     
     private var viewModel: CurrencyConvertionViewModelProtocol?
@@ -68,8 +83,28 @@ extension CurrencyConvertionViewController {
     
     private func setupController() {
         title = Constants.Titles.convertionTitle
-        tabBarItem = UITabBarItem(title: "Converter", image: nil, tag: 1)
         self.viewModel = CurrencyConvertionViewModel(delegate: self)
+    }
+    
+    @objc
+    private func didTapFirstCurrencyButton() {
+        let currentyListVC = CurrencyListViewController(finishCallback: {
+            self.firstCurrencyButton.setTitle($0, for: .normal)
+        })
+        present(currentyListVC, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func didTapSecondCurrencyButton() {
+        let currentyListVC = CurrencyListViewController(finishCallback: {
+            self.secondCurrencyButton.setTitle($0, for: .normal)
+        })
+        present(currentyListVC, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func didTapConvertActionButton() {
+        
     }
 }
 
@@ -88,6 +123,7 @@ extension CurrencyConvertionViewController: CurrencyConvertionViewModelDelegate 
     }
     
     func didGetError(_ error: String) {
-        
+        errorView.errorMessage = error
+        errorView.isHidden = false
     }
 }

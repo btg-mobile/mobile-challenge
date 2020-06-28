@@ -44,10 +44,52 @@ extension ErrorView: ViewCodeProtocol {
     }
     
     func setupConstraints() {
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: imageView,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0.0).isActive = true
+        NSLayoutConstraint(item: imageView,
+                           attribute: .centerY,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .centerY,
+                           multiplier: 1.0,
+                           constant: 0.0).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
+        errorLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: errorLbl,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: imageView,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 18).isActive = true
+        NSLayoutConstraint(item: errorLbl,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        errorLbl.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        errorLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func configureViews() {
+        backgroundColor = .black
         
+        errorLbl.text = errorMessage
+        errorLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
+        errorLbl.textAlignment = .center
+        errorLbl.textColor = .white
+        
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "alerticon")
     }
 }
