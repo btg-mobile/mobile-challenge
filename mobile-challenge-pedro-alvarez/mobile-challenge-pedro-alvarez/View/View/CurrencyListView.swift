@@ -91,7 +91,7 @@ extension CurrencyListView: ViewCodeProtocol {
                            toItem: self,
                            attribute: .top,
                            multiplier: 1.0,
-                           constant: 180).isActive = true
+                           constant: 140).isActive = true
         NSLayoutConstraint(item: tableView,
                            attribute: .bottom,
                            relatedBy: .equal,
@@ -176,8 +176,8 @@ extension CurrencyListView: ViewCodeProtocol {
     }
     
     func configureViews() {
-        activityView.backgroundColor = .black
-        activityView.color = .white
+        activityView.backgroundColor = .currencyTableViewCellBackgrouncColor
+        activityView.color = .currencyTableViewCellLayerColor
         activityView.startAnimating()
         activityView.isHidden = true
         

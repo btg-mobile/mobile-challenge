@@ -10,7 +10,7 @@ import UIKit
 
 class SortView: UIView {
     
-    private var segmentedControl: UISegmentedControl
+    private unowned var segmentedControl: UISegmentedControl
     
     private let idText = "Por código"
     private let fullNameText = "Por nome"
@@ -35,8 +35,20 @@ extension SortView: ViewCodeProtocol {
     
     func setupConstraints() {
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: segmentedControl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: segmentedControl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: segmentedControl,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .centerX,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: segmentedControl,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: -30).isActive = true
         segmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         segmentedControl.widthAnchor.constraint(equalToConstant: 180).isActive = true
     }

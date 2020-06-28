@@ -9,11 +9,14 @@ import UIKit
 
 protocol CurrencyListViewModelProtocol {
     var delegate: CurrencyListViewModelDelegate? { get set }
+    var currencyList: [CurrencyListModel] { get }
     var currenciesViewModel: [NSAttributedString] { get  }
+    var filteredCurrencyList: [CurrencyListModel] { get }
     
     func fetchCurrencies()
     func didSelectCurrency(index: Int)
     func sortCurrencyList(withTag tag: Int)
+    func filterContentForSearchText(_ text: String)
 }
 
 protocol CurrencyListViewModelDelegate: class {
@@ -24,9 +27,15 @@ protocol CurrencyListViewModelDelegate: class {
 
 class CurrencyListViewModel: CurrencyListViewModelProtocol {
     
-    private var currencyList: [CurrencyListModel] = [] {
+    private(set) var currencyList: [CurrencyListModel] = [] {
         didSet {
             currenciesViewModel = convertCurrencyViewModel(currencyList)
+        }
+    }
+    
+    private(set) var filteredCurrencyList: [CurrencyListModel] = [] {
+        didSet {
+            
         }
     }
     
@@ -85,6 +94,10 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
             })
         }
         currenciesViewModel = convertCurrencyViewModel(currencyList)
+    }
+    
+    func filterContentForSearchText(_ text: String) {
+        filteredCurrencyList = currencyList.filter({ $0.fullName.lowercased().contains(text.lowercased())})
     }
 }
 

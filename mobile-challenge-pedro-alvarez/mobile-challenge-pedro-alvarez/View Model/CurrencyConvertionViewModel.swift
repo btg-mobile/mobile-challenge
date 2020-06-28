@@ -79,7 +79,7 @@ class CurrencyConvertionViewModel: CurrencyConvertionViewModelProtocol {
                                                      second: secondModel)
         let resultString = NSAttributedString(string: "\(result.rounded(places: 2))",
                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
-                                                           NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 18)])
+                                                           NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 30)])
         resultValue = resultString
     }
 }

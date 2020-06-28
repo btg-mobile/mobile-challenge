@@ -28,6 +28,16 @@ class CurrencyListViewController: UIViewController {
         return segmentedControl
     }()
     
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Procure uma moeda"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        return searchController
+    }()
+    
     private lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapCloseButton))
     }()
@@ -131,6 +141,13 @@ extension CurrencyListViewController {
     @objc
     private func didChangeSegmentedControlValue() {
         viewModel?.sortCurrencyList(withTag: sortSegmentedControl.selectedSegmentIndex)
+    }
+}
+
+extension CurrencyListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }
 
