@@ -20,8 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navController = UINavigationController()
         
-        let coinConversionViewController = CoinConversionViewController()
+        let viewModel: CoinConversionViewModel = CoinConversionViewModel(currencyLayerService: CurrencyLayerService())
+        
+        let coinConversionViewController: CoinConversionViewController = CoinConversionViewController()
+        coinConversionViewController.viewModel = viewModel
+        
         navController.pushViewController(coinConversionViewController, animated: true)
+        
         window!.rootViewController = navController
         window!.makeKeyAndVisible()
         

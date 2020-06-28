@@ -22,11 +22,24 @@
 		A055365924A80C3E008CAA14 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055365824A80C3E008CAA14 /* Reachability.swift */; };
 		A055365B24A8EE5F008CAA14 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055365A24A8EE5F008CAA14 /* CurrencyModel.swift */; };
 		A055365D24A8EE90008CAA14 /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055365C24A8EE90008CAA14 /* QuoteModel.swift */; };
-		A055366524A8F541008CAA14 /* CodingUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055366424A8F541008CAA14 /* CodingUserInfoKey.swift */; };
 		A055366724A8F7B6008CAA14 /* CurrencyLayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055366624A8F7B6008CAA14 /* CurrencyLayerService.swift */; };
 		A055366A24A8F96F008CAA14 /* CoinConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055366824A8F96F008CAA14 /* CoinConversionViewController.swift */; };
 		A055366B24A8F96F008CAA14 /* CoinConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A055366924A8F96F008CAA14 /* CoinConversionViewController.xib */; };
 		A055366E24A8FD1C008CAA14 /* CoinConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A055366C24A8FD1C008CAA14 /* CoinConverter.xcdatamodeld */; };
+		A055367024A90028008CAA14 /* CoinConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055366F24A90028008CAA14 /* CoinConversionViewModel.swift */; };
+		A055367424A934E4008CAA14 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055367324A934E4008CAA14 /* String.swift */; };
+		A055367624A9388D008CAA14 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055367524A9388D008CAA14 /* UIAlertController.swift */; };
+		A055367924A93A5F008CAA14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055367824A93A5F008CAA14 /* CustomTextField.swift */; };
+		A055367C24A9431F008CAA14 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055367A24A9431F008CAA14 /* CurrencyListViewController.swift */; };
+		A055367D24A9431F008CAA14 /* CurrencyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A055367B24A9431F008CAA14 /* CurrencyListViewController.xib */; };
+		A055367F24A943CE008CAA14 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055367E24A943CE008CAA14 /* CustomButton.swift */; };
+		A055368124A94588008CAA14 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055368024A94588008CAA14 /* UIView.swift */; };
+		A055368324A946AB008CAA14 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055368224A946AB008CAA14 /* Color.swift */; };
+		A055368624A94FF0008CAA14 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055368524A94FF0008CAA14 /* CurrencyListViewModel.swift */; };
+		A055368C24A95171008CAA14 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055368A24A95171008CAA14 /* CurrencyCell.swift */; };
+		A055368D24A95171008CAA14 /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A055368B24A95171008CAA14 /* CurrencyCell.xib */; };
+		A055368F24A952AC008CAA14 /* CurrencyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055368E24A952AC008CAA14 /* CurrencyCellViewModel.swift */; };
+		A055369124A954EB008CAA14 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055369024A954EB008CAA14 /* ReusableProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,11 +72,24 @@
 		A055365824A80C3E008CAA14 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A055365A24A8EE5F008CAA14 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		A055365C24A8EE90008CAA14 /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
-		A055366424A8F541008CAA14 /* CodingUserInfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingUserInfoKey.swift; sourceTree = "<group>"; };
 		A055366624A8F7B6008CAA14 /* CurrencyLayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerService.swift; sourceTree = "<group>"; };
 		A055366824A8F96F008CAA14 /* CoinConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewController.swift; sourceTree = "<group>"; };
 		A055366924A8F96F008CAA14 /* CoinConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinConversionViewController.xib; sourceTree = "<group>"; };
 		A055366D24A8FD1C008CAA14 /* Coin_Converter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Coin_Converter.xcdatamodel; sourceTree = "<group>"; };
+		A055366F24A90028008CAA14 /* CoinConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinConversionViewModel.swift; sourceTree = "<group>"; };
+		A055367324A934E4008CAA14 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A055367524A9388D008CAA14 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		A055367824A93A5F008CAA14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		A055367A24A9431F008CAA14 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		A055367B24A9431F008CAA14 /* CurrencyListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListViewController.xib; sourceTree = "<group>"; };
+		A055367E24A943CE008CAA14 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		A055368024A94588008CAA14 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		A055368224A946AB008CAA14 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		A055368524A94FF0008CAA14 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
+		A055368A24A95171008CAA14 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		A055368B24A95171008CAA14 /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
+		A055368E24A952AC008CAA14 /* CurrencyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellViewModel.swift; sourceTree = "<group>"; };
+		A055369024A954EB008CAA14 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +182,10 @@
 		A055363E24A7E7CA008CAA14 /* ListCoins */ = {
 			isa = PBXGroup;
 			children = (
+				A055368424A94FB5008CAA14 /* Components */,
+				A055368524A94FF0008CAA14 /* CurrencyListViewModel.swift */,
+				A055367A24A9431F008CAA14 /* CurrencyListViewController.swift */,
+				A055367B24A9431F008CAA14 /* CurrencyListViewController.xib */,
 			);
 			path = ListCoins;
 			sourceTree = "<group>";
@@ -163,6 +193,7 @@
 		A055363F24A7E7D8008CAA14 /* CoinConversion */ = {
 			isa = PBXGroup;
 			children = (
+				A055366F24A90028008CAA14 /* CoinConversionViewModel.swift */,
 				A055366824A8F96F008CAA14 /* CoinConversionViewController.swift */,
 				A055366924A8F96F008CAA14 /* CoinConversionViewController.xib */,
 			);
@@ -192,6 +223,7 @@
 		A055364C24A7EF03008CAA14 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A055367724A93A52008CAA14 /* Components */,
 				A055366324A8F52F008CAA14 /* Extensions */,
 				A055365724A80C1F008CAA14 /* Utils */,
 				A055364E24A7F223008CAA14 /* Endpoints */,
@@ -222,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				A055365824A80C3E008CAA14 /* Reachability.swift */,
+				A055369024A954EB008CAA14 /* ReusableProtocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,9 +270,39 @@
 		A055366324A8F52F008CAA14 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A055366424A8F541008CAA14 /* CodingUserInfoKey.swift */,
+				A055367324A934E4008CAA14 /* String.swift */,
+				A055367524A9388D008CAA14 /* UIAlertController.swift */,
+				A055368024A94588008CAA14 /* UIView.swift */,
+				A055368224A946AB008CAA14 /* Color.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A055367724A93A52008CAA14 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A055367824A93A5F008CAA14 /* CustomTextField.swift */,
+				A055367E24A943CE008CAA14 /* CustomButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A055368424A94FB5008CAA14 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A055368724A95128008CAA14 /* Cell */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A055368724A95128008CAA14 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A055368A24A95171008CAA14 /* CurrencyCell.swift */,
+				A055368B24A95171008CAA14 /* CurrencyCell.xib */,
+				A055368E24A952AC008CAA14 /* CurrencyCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,10 +387,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A055366B24A8F96F008CAA14 /* CoinConversionViewController.xib in Resources */,
+				A055367D24A9431F008CAA14 /* CurrencyListViewController.xib in Resources */,
 				A055364B24A7EB00008CAA14 /* Currencies.json in Resources */,
 				A055364724A7EA4E008CAA14 /* Quotes.json in Resources */,
 				A055362624A7E658008CAA14 /* LaunchScreen.storyboard in Resources */,
 				A055362324A7E658008CAA14 /* Assets.xcassets in Resources */,
+				A055368D24A95171008CAA14 /* CurrencyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,20 +410,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A055366524A8F541008CAA14 /* CodingUserInfoKey.swift in Sources */,
+				A055367024A90028008CAA14 /* CoinConversionViewModel.swift in Sources */,
 				A055365424A7FFCB008CAA14 /* HTTPMethods.swift in Sources */,
 				A055364924A7EA8A008CAA14 /* CurrenciesContainerModel.swift in Sources */,
+				A055367F24A943CE008CAA14 /* CustomButton.swift in Sources */,
+				A055369124A954EB008CAA14 /* ReusableProtocol.swift in Sources */,
 				A055366E24A8FD1C008CAA14 /* CoinConverter.xcdatamodeld in Sources */,
+				A055368624A94FF0008CAA14 /* CurrencyListViewModel.swift in Sources */,
 				A055365624A8030E008CAA14 /* Requestable.swift in Sources */,
 				A055361724A7E656008CAA14 /* AppDelegate.swift in Sources */,
 				A055364424A7E975008CAA14 /* QuotesContainerModel.swift in Sources */,
+				A055367924A93A5F008CAA14 /* CustomTextField.swift in Sources */,
+				A055368124A94588008CAA14 /* UIView.swift in Sources */,
 				A055366A24A8F96F008CAA14 /* CoinConversionViewController.swift in Sources */,
 				A055365D24A8EE90008CAA14 /* QuoteModel.swift in Sources */,
+				A055368F24A952AC008CAA14 /* CurrencyCellViewModel.swift in Sources */,
+				A055368324A946AB008CAA14 /* Color.swift in Sources */,
 				A055366724A8F7B6008CAA14 /* CurrencyLayerService.swift in Sources */,
 				A055365024A7F275008CAA14 /* EndpointCurrencyLayer.swift in Sources */,
 				A055365B24A8EE5F008CAA14 /* CurrencyModel.swift in Sources */,
 				A055365924A80C3E008CAA14 /* Reachability.swift in Sources */,
+				A055367424A934E4008CAA14 /* String.swift in Sources */,
 				A055365224A7F32E008CAA14 /* NetworkService.swift in Sources */,
+				A055367C24A9431F008CAA14 /* CurrencyListViewController.swift in Sources */,
+				A055367624A9388D008CAA14 /* UIAlertController.swift in Sources */,
+				A055368C24A95171008CAA14 /* CurrencyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,3 +10,10 @@ struct CurrencyModel: Decodable {
     let symbol: String
     let descriptionCurrency: String
 }
+
+extension CurrencyModel: CustomStringConvertible {
+    
+    var description: String {
+        return "\(symbol.uppercased()) / \(descriptionCurrency)"
+    }
+}

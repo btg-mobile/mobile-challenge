@@ -8,12 +8,17 @@
 
 import Foundation
 
+/// protocol responsible for implementing calls from the Currency Layer
 protocol CurrencyLayerServiceProtocol {
+    
+    /// request the currencies
     func requestCurrencies(completion: @escaping ([CurrencyModel]?, Error?) -> Void)
+    
+    /// request the quotes
     func requestQuotes(completion: @escaping ([QuoteModel]?, Error?) -> Void)
 }
 
-class CurrencyLayerService {
+class CurrencyLayerService: CurrencyLayerServiceProtocol {
     
     let networkService: NetworkService = NetworkService()
     
@@ -24,9 +29,10 @@ class CurrencyLayerService {
             switch result {
             case .success(let container):
                 if container.success {
+                    //TODO: implement save data base
                     completion(container.currencies, nil)
                 } else {
-                    let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "Não foi possível ler os dados."])
+                    let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "The data could not be read."])
                     completion(nil, error)
                 }
             case .failure(let error):
@@ -42,9 +48,10 @@ class CurrencyLayerService {
             switch result {
             case .success(let container):
                 if container.success {
+                    //TODO: implement save data base
                     completion(container.quotes, nil)
                 } else {
-                    let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "Não foi possível ler os dados."])
+                    let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "The data could not be read."])
                     completion(nil, error)
                 }
             case .failure(let error):
