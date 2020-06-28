@@ -48,6 +48,7 @@
 		3F9577F324A7EEFA00B79818 /* CurrencyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F224A7EEFA00B79818 /* CurrencyListTableViewCell.swift */; };
 		3F9577F724A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */; };
 		3F9577F924A80CEE00B79818 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577F824A80CEE00B79818 /* ErrorView.swift */; };
+		3F9577FB24A90AB800B79818 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9577FA24A90AB800B79818 /* Double+Extension.swift */; };
 		D7A8ABEC69B8AD81EC708D43 /* Pods_mobile_challenge_pedro_alvarez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929A784F27C0EA61C428201 /* Pods_mobile_challenge_pedro_alvarez.framework */; };
 		E9C95498E4CD26CA8D376736 /* Pods_mobile_challenge_pedro_alvarezTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EF6BD9474979D7243CFA88 /* Pods_mobile_challenge_pedro_alvarezTests.framework */; };
 /* End PBXBuildFile section */
@@ -119,6 +120,7 @@
 		3F9577F224A7EEFA00B79818 /* CurrencyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewCell.swift; sourceTree = "<group>"; };
 		3F9577F624A8026A00B79818 /* CurrencyListTableViewCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewCellBuilder.swift; sourceTree = "<group>"; };
 		3F9577F824A80CEE00B79818 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		3F9577FA24A90AB800B79818 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		66990D605FFB305603589D98 /* Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_challenge_pedro_alvarez_mobile_challenge_pedro_alvarezUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988725F8CB7E1A1299C06DD0 /* Pods-mobile-challenge-pedro-alvarez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.release.xcconfig"; sourceTree = "<group>"; };
 		B639C88659D8065BCBEC96BC /* Pods-mobile-challenge-pedro-alvarez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; path = "Target Support Files/Pods-mobile-challenge-pedro-alvarez/Pods-mobile-challenge-pedro-alvarez.debug.xcconfig"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				3F62256124A430700051FDA1 /* UINavigationBar+Extension.swift */,
 				3F62256324A430890051FDA1 /* UIColor+Extension.swift */,
 				3F62256F24A7BB6D0051FDA1 /* KeyedDecodingContainer+Extensoon.swift */,
+				3F9577FA24A90AB800B79818 /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				3F9577F324A7EEFA00B79818 /* CurrencyListTableViewCell.swift in Sources */,
 				3F62254624A42C3E0051FDA1 /* CurrencyConvertionViewController.swift in Sources */,
 				3F62256E24A79D0A0051FDA1 /* APIModels.swift in Sources */,
+				3F9577FB24A90AB800B79818 /* Double+Extension.swift in Sources */,
 				3F62255824A42EF80051FDA1 /* Typealiases.swift in Sources */,
 				3F62254824A42CCC0051FDA1 /* ViewCodeProtocol.swift in Sources */,
 				3F9577F924A80CEE00B79818 /* ErrorView.swift in Sources */,

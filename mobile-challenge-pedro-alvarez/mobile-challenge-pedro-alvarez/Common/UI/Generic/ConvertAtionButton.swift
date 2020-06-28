@@ -14,6 +14,17 @@ class ConvertActionButton: UIButton {
     private let defaultText: String = "Aplicar conversão"
     private let fontSize: CGFloat = 14
     
+    override var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                enableButton()
+            }
+            else {
+                disableButton()
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -32,8 +43,16 @@ class ConvertActionButton: UIButton {
     private func setup() {
         layer.borderWidth = defaultWidth
         layer.borderColor = UIColor.convertButtonLayerColor.cgColor
-        backgroundColor = .convertButtonBackgroundColor
+        disableButton()
         titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
         setTitle(defaultText, for: .normal)
+    }
+    
+    private func enableButton() {
+        backgroundColor = .convertButtonBackgroundColor
+    }
+    
+    private func disableButton() {
+        backgroundColor = .convertionButtonDeactivactedBackground
     }
 }

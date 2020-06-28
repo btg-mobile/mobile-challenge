@@ -37,4 +37,8 @@ extension UIColor {
     static let currencyTableViewCellLayerColor: UIColor = UIColor(rgb: 0xa8bf4e)
     static let currencyTableViewCellBackgrouncColor: UIColor = UIColor(rgb: 0x00994c)
     static let currencyLblColor: UIColor = UIColor(rgb: 0xa8bf4e)
+    
+    static let convertionButtonDeactivactedBackground: UIColor = UIColor(rgb: 0xccffff)
+    
+    static let convertionBackGroundColor: UIColor = UIColor(rgb: 0x00994c)
 }

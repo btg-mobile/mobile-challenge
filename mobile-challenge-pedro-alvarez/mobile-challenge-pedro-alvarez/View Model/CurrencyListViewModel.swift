@@ -25,6 +25,7 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
     
     private var currencyList: [CurrencyListModel] = [] {
         didSet {
+            currencyList.sort(by: { $0.id < $1.id })
             currenciesViewModel = convertCurrencyViewModel(currencyList)
         }
     }

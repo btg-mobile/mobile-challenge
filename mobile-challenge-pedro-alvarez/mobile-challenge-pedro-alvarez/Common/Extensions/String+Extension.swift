@@ -5,6 +5,7 @@
 //  Created by Pedro Alvarez on 24/06/20.
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
+import Foundation
 
 extension String {
     
@@ -22,5 +23,13 @@ extension String {
     
     static var space: String {
         return " "
+    }
+    
+    static var usd: String {
+        return "USD"
+    }
+    
+    func toDouble() -> Double? {
+        return NumberFormatter().number(from: self)?.doubleValue
     }
 }

@@ -15,6 +15,7 @@ class CurrencyConvertionView: UIView {
     private unowned var convertActionButton: ConvertActionButton
     private unowned var resultLbl: UILabel
     private unowned var errorView: ErrorView
+    private unowned var currencyTextField: UITextField
     
     private lazy var firstCurrencyLbl: UILabel = {
         return UILabel(frame: .zero)
@@ -22,10 +23,6 @@ class CurrencyConvertionView: UIView {
     
     private lazy var secondCurrencyLbl: UILabel = {
         return UILabel(frame: .zero)
-    }()
-    
-    private lazy var currencyTextField: UITextField = {
-        return UITextField(frame: .zero)
     }()
     
     private lazy var imageView: UIImageView = {
@@ -37,12 +34,14 @@ class CurrencyConvertionView: UIView {
          secondCurrencyButton: CurrencyButton,
          convertActionButton: ConvertActionButton,
          resultLbl: UILabel,
-         errorView: ErrorView) {
+         errorView: ErrorView,
+         currencyTextField: UITextField) {
         self.firstCurrencyButton = firstCurrencyButton
         self.secondCurrencyButton = secondCurrencyButton
         self.convertActionButton = convertActionButton
         self.resultLbl = resultLbl
         self.errorView = errorView
+        self.currencyTextField = currencyTextField
         super.init(frame: frame)
         applyViewCode()
     }
@@ -173,6 +172,24 @@ extension CurrencyConvertionView: ViewCodeProtocol {
                            constant: 0).isActive = true
         convertActionButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         convertActionButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        
+        resultLbl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: resultLbl,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .bottom,
+                           multiplier: 1,
+                           constant: 18).isActive = true
+        NSLayoutConstraint(item: resultLbl,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: convertActionButton,
+                           attribute: .centerX,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        resultLbl.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        resultLbl.widthAnchor.constraint(equalToConstant: 180).isActive = true
     }
     
     func configureViews() {
@@ -192,6 +209,8 @@ extension CurrencyConvertionView: ViewCodeProtocol {
         currencyTextField.layer.cornerRadius = 4
         currencyTextField.placeholder = Constants.TextField.currencyTextFieldPlaceHolder
         currencyTextField.textAlignment = .center
+        
+        resultLbl.textAlignment = .center
         
         backgroundColor = .white
     }

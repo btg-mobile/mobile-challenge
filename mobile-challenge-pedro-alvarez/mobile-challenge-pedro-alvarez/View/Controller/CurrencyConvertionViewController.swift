@@ -19,6 +19,12 @@ class CurrencyConvertionViewController: UIViewController {
         return button
     }()
     
+    private lazy var currencyTextField: UITextField = {
+        let textfield = UITextField(frame: .zero)
+        textfield.addTarget(self, action: #selector(didChangeTextField), for: .editingChanged)
+        return textfield
+    }()
+    
     private lazy var secondCurrencyButton: CurrencyButton = {
         let button = CurrencyButton(frame: .zero,
                                     title: Constants.Button.secondCurrencyButton)
@@ -50,7 +56,8 @@ class CurrencyConvertionViewController: UIViewController {
                                       secondCurrencyButton: secondCurrencyButton,
                                       convertActionButton: convertActionButton,
                                       resultLbl: resultLbl,
-                                      errorView: errorView)
+                                      errorView: errorView,
+                                      currencyTextField: currencyTextField)
     }()
     
     private var viewModel: CurrencyConvertionViewModelProtocol?
@@ -83,6 +90,7 @@ extension CurrencyConvertionViewController {
     
     private func setupController() {
         title = Constants.Titles.convertionTitle
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: .empty, style: .plain, target: self, action: nil)
         self.viewModel = CurrencyConvertionViewModel(delegate: self)
     }
     
@@ -90,6 +98,7 @@ extension CurrencyConvertionViewController {
     private func didTapFirstCurrencyButton() {
         let currentyListVC = CurrencyListViewController(finishCallback: {
             self.firstCurrencyButton.setTitle($0, for: .normal)
+            self.checkAvailabilityForConvertion()
         })
         navigationController?.pushViewController(currentyListVC, animated: true)
     }
@@ -98,13 +107,37 @@ extension CurrencyConvertionViewController {
     private func didTapSecondCurrencyButton() {
         let currentyListVC = CurrencyListViewController(finishCallback: {
             self.secondCurrencyButton.setTitle($0, for: .normal)
+            self.checkAvailabilityForConvertion()
         })
         navigationController?.pushViewController(currentyListVC, animated: true)
     }
     
     @objc
     private func didTapConvertActionButton() {
-        
+        let firstCurrency: String = .usd + (firstCurrencyButton.titleLabel?.text ?? .empty)
+        let secondCurrency: String = .usd + (secondCurrencyButton.titleLabel?.text ?? .empty)
+        guard let value = currencyTextField.text,
+            let double = value.toDouble() else { return }
+        viewModel?.fetchConvertionResult(value: double, first: firstCurrency, second: secondCurrency)
+    }
+    
+    @objc
+    private func didChangeTextField() {
+        if let text = currencyTextField.text, !text.isEmpty {
+            checkAvailabilityForConvertion()
+        } else {
+            convertActionButton.isEnabled = false
+        }
+    }
+    
+    private func checkAvailabilityForConvertion() {
+        if let firstId = self.firstCurrencyButton.titleLabel?.text,
+            let secondId = self.secondCurrencyButton.titleLabel?.text,
+        firstId != Constants.Button.firstCurrencyButton,
+        secondId != Constants.Button.secondCurrencyButton,
+            self.currencyTextField.text != .empty{
+            self.convertActionButton.isEnabled = true
+        }
     }
 }
 
@@ -127,3 +160,4 @@ extension CurrencyConvertionViewController: CurrencyConvertionViewModelDelegate 
         errorView.isHidden = false
     }
 }
+

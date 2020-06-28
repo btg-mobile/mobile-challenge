@@ -11,12 +11,16 @@ import UIKit
 extension UITableView {
     
     func assignProtocols(to output: TableViewOutput) {
-        delegate = output
-        dataSource = output
+        DispatchQueue.main.async {
+            self.delegate = output
+            self.dataSource = output
+        }
     }
     
     func registerCell<T: UITableViewCell>(cellType: T.Type) {
-        register(cellType, forCellReuseIdentifier: T.defaultReuseIdentifier)
+        DispatchQueue.main.async {
+            self.register(cellType, forCellReuseIdentifier: T.defaultReuseIdentifier)
+        }
     }
     
     func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath, type: T.Type) -> T {

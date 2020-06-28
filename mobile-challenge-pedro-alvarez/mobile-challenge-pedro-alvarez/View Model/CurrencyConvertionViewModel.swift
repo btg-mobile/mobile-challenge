@@ -8,8 +8,6 @@
 import UIKit
 
 protocol CurrencyConvertionViewModelProtocol {
-    var firstCurrencyId: String? { get set }
-    var secondCurrencyId: String? { get set }
     var resultValue: NSAttributedString? { get set }
     var currencyValues: [CurrencyConvertionModel] { get }
     var delegate: CurrencyConvertionViewModelDelegate? { get set }
@@ -28,20 +26,6 @@ protocol CurrencyConvertionViewModelDelegate: class {
 }
 
 class CurrencyConvertionViewModel: CurrencyConvertionViewModelProtocol {
-    
-    var firstCurrencyId: String? {
-        didSet {
-            guard let currency = firstCurrencyId else { return }
-            delegate?.didFetchFirstCurrency(currency)
-        }
-    }
-    
-    var secondCurrencyId: String? {
-        didSet {
-            guard let currency = secondCurrencyId else { return }
-            delegate?.didFetchSecondCurrency(currency)
-        }
-    }
      
     var resultValue: NSAttributedString? {
         didSet {
@@ -89,7 +73,7 @@ class CurrencyConvertionViewModel: CurrencyConvertionViewModelProtocol {
         let result = CurrencyConvertionModel.convert(value: value,
                                                      first: firstModel,
                                                      second: secondModel)
-        let resultString = NSAttributedString(string: "\(result)",
+        let resultString = NSAttributedString(string: "\(result.rounded(places: 2))",
                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
                                                            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 18)])
         resultValue = resultString
