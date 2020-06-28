@@ -112,22 +112,6 @@ extension CustomTextField {
 
 extension CustomTextField {
     
-    func setAccessoryButton(withTitle title: String, target: Any, action: Selector, for event: UIControl.Event) {
-//        let customRightView = UIButton
-//        customRightView.setTitle(title, for: .normal)
-//        customRightView.style = .clean(UIColor.FAST.blue)
-//        customRightView.addTarget(target, action: action, for: event)
-//        self.rightView = customRightView
-//        self.rightViewMode = .always
-//        layoutIfNeeded()
-//
-//        guard let customRightViewSuperview = self.rightView?.superview else { return }
-//        customRightView.translatesAutoresizingMaskIntoConstraints = false
-//        customRightView.topAnchor.constraint(equalTo: customRightViewSuperview.topAnchor).isActive = true
-//        customRightView.trailingAnchor.constraint(equalTo: customRightViewSuperview.trailingAnchor).isActive = true
-//        customRightView.bottomAnchor.constraint(equalTo: customRightViewSuperview.bottomAnchor).isActive = true
-    }
-    
     func configureCustomButton(image: UIImage, imageSize: CGFloat = 0) {
         customButton.setImage(image, for: .normal)
         customButton.contentEdgeInsets =  UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
@@ -151,6 +135,7 @@ extension CustomTextField {
 
         setupCustomPlaceholder()
         setupBottomBorder()
+        backgroundColor = UIColor(hexadecimal: 0xFAFAFA)
         font = UIFont.systemFont(ofSize: 14)
         layer.masksToBounds = true
     }
