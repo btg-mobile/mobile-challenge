@@ -21,6 +21,7 @@ class CurrencyButton: UIButton {
     init(frame: CGRect = .zero, title: String = .empty) {
         self.title = title
         super.init(frame: frame)
+        setTitle(title, for: .normal)
         setup()
     }
     

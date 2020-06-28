@@ -15,7 +15,7 @@ class CurrencyListTableView: UITableView {
         bounces = false
         alwaysBounceVertical = false
         backgroundColor = .clear
-        separatorStyle = .singleLine
+        separatorStyle = .none
     }
     
     required init?(coder: NSCoder) {

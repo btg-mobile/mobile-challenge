@@ -91,7 +91,7 @@ extension CurrencyConvertionViewController {
         let currentyListVC = CurrencyListViewController(finishCallback: {
             self.firstCurrencyButton.setTitle($0, for: .normal)
         })
-        present(currentyListVC, animated: true, completion: nil)
+        navigationController?.pushViewController(currentyListVC, animated: true)
     }
     
     @objc
@@ -99,7 +99,7 @@ extension CurrencyConvertionViewController {
         let currentyListVC = CurrencyListViewController(finishCallback: {
             self.secondCurrencyButton.setTitle($0, for: .normal)
         })
-        present(currentyListVC, animated: true, completion: nil)
+        navigationController?.pushViewController(currentyListVC, animated: true)
     }
     
     @objc

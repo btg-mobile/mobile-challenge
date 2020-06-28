@@ -20,8 +20,7 @@ class CurrencyTableViewFactory: TableViewFactoryProtocol {
     }
     
     func buildSections() -> [TableViewSectionProtocol] {
-        return [BaseSection(builders: [],
-                            tableView: tableView)]
+        return [mainSection]
     }
     
     private var mainSection: BaseSection {
@@ -32,6 +31,4 @@ class CurrencyTableViewFactory: TableViewFactoryProtocol {
         }
         return BaseSection(builders: builders, tableView: tableView)
     }
-    
-    
 }

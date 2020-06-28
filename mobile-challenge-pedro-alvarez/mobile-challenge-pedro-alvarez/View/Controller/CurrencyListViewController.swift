@@ -30,15 +30,21 @@ class CurrencyListViewController: UIViewController {
         return ErrorView(frame: .zero, errorMessage: .empty)
     }()
     
+    private lazy var activityView: UIActivityIndicatorView = {
+        return UIActivityIndicatorView(frame: .zero)
+    }()
+    
     private lazy var mainView: CurrencyListView = {
         return CurrencyListView(frame: .zero,
                                 tableView: tableView,
-                                errorView: errorView)
+                                errorView: errorView,
+                                activityView: activityView)
     }()
     
     init(finishCallback: @escaping CurrencyIdCallback) {
         self.finishCallback = finishCallback
         super.init(nibName: nil, bundle: nil)
+        setupController()
     }
     
     required init?(coder: NSCoder) {
@@ -47,8 +53,7 @@ class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel?.fetchCurrencies()
+        fetchCurrencies()
     }
     
     override func loadView() {
@@ -66,9 +71,19 @@ extension CurrencyListViewController: DefaultTableViewOutputDelegate {
 
 extension CurrencyListViewController {
     
+    private func fetchCurrencies() {
+        activityView.isHidden = false
+        viewModel?.fetchCurrencies()
+    }
+    private func setupController() {
+        title = Constants.Titles.currencyListTitle
+        viewModel = CurrencyListViewModel(                                          delegate: self)
+    }
+    
     private func setupDataSource() {
         guard let sections = factory?.buildSections() else { return }
         dataSource = DefaultTableViewOutput(sections: sections)
+        dataSource?.delegate = self
     }
     
     private func setupTableView() {
@@ -79,15 +94,17 @@ extension CurrencyListViewController {
     private func setupFactory() {
         guard let viewModel = viewModel else { return }
         factory = CurrencyTableViewFactory(viewModel: viewModel, tableView: tableView)
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     private func refreshList() {
-        setupDataSource()
         setupFactory()
+        setupDataSource()
+        setupTableView()
+        
+        DispatchQueue.main.async {
+            self.activityView.isHidden = true
+            self.tableView.reloadData()
+        }
     }
     
     private func setup() {
@@ -110,7 +127,7 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
     }
     
     func didFetchSelectedCurrency(id: String) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
         finishCallback(id)
     }
     
@@ -118,3 +135,4 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
         mainView.displayError(withMessage: error)
     }
 }
+

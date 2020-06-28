@@ -82,6 +82,7 @@ extension ErrorView: ViewCodeProtocol {
     }
     
     func configureViews() {
+        isHidden = true
         backgroundColor = .black
         
         errorLbl.text = errorMessage

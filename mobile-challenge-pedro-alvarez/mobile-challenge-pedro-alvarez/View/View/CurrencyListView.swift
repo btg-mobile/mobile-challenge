@@ -12,10 +12,7 @@ class CurrencyListView: UIView {
     
     private unowned var tableView: CurrencyListTableView
     private unowned var errorView: ErrorView
-    
-    private lazy var activityView: UIActivityIndicatorView = {
-        return UIActivityIndicatorView(frame: .zero)
-    }()
+    private unowned var activityView: UIActivityIndicatorView
     
     var animating: Bool = false {
         didSet {
@@ -25,10 +22,13 @@ class CurrencyListView: UIView {
     
     init(frame: CGRect,
          tableView: CurrencyListTableView,
-         errorView: ErrorView) {
+         errorView: ErrorView,
+         activityView: UIActivityIndicatorView) {
         self.tableView = tableView
         self.errorView = errorView
+        self.activityView = activityView
         super.init(frame: .zero)
+        applyViewCode()
     }
     
     required init?(coder: NSCoder) {
@@ -51,22 +51,94 @@ extension CurrencyListView: ViewCodeProtocol {
     
     func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: tableView,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .top,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: tableView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: tableView,
+                           attribute: .left,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .left,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: tableView,
+                           attribute: .right,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .right,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
         
         activityView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: activityView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: activityView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: activityView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: activityView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: activityView,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .top,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: activityView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: activityView,
+                           attribute: .left,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .left,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: activityView,
+                           attribute: .right,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .right,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
         
         errorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: errorView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: errorView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: errorView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: errorView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: errorView,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .top,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: errorView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .bottom,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: errorView,
+                           attribute: .left,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .left,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: errorView,
+                           attribute: .right,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .right,
+                           multiplier: 1.0,
+                           constant: 0).isActive = true
     }
     
     func configureViews() {
