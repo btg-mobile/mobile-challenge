@@ -7,7 +7,20 @@
 		<key>mobile-challenge.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>AC934C3524A9063A003945B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC934C4B24A90640003945B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
