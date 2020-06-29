@@ -114,6 +114,7 @@ extension CurrencyConversionViewController {
     
     @objc
     private func didTapConvertActionButton() {
+        mainView.endEditing(true)
         let firstCurrency: String = .usd + (firstCurrencyButton.titleLabel?.text ?? .empty)
         let secondCurrency: String = .usd + (secondCurrencyButton.titleLabel?.text ?? .empty)
         guard let value = currencyTextField.text,
