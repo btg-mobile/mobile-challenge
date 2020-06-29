@@ -81,12 +81,12 @@ extension SortView: ViewCodeProtocol {
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint(item: textField,
-                           attribute: .bottom,
+                           attribute: .top,
                            relatedBy: .equal,
-                           toItem: sortLbl,
+                           toItem: self,
                            attribute: .top,
                            multiplier: 1.0,
-                           constant: -1).isActive = true
+                           constant: 100).isActive = true
         NSLayoutConstraint(item: textField,
                            attribute: .centerX,
                            relatedBy: .equal,

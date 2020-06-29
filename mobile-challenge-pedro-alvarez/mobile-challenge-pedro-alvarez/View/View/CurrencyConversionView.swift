@@ -77,7 +77,7 @@ extension CurrencyConversionView: ViewCodeProtocol {
                            toItem: self,
                            attribute: .top,
                            multiplier: 1.0,
-                           constant: 60).isActive = true
+                           constant: 100).isActive = true
         NSLayoutConstraint(item: firstCurrencyLbl,
                            attribute: .centerX,
                            relatedBy: .equal,
