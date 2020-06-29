@@ -24,6 +24,8 @@ class CoinConversionViewModel {
     
     var selectedOriginCurrency: CurrencyModel?
     var selectedDestinyCurrency: CurrencyModel?
+    var priceDate: String = ""
+    var onePrice: Double = 0
     
     //*************************************************
     // MARK: - Inits
@@ -74,6 +76,9 @@ extension CoinConversionViewModel {
         
         convetedValue /= 100
         
+        self.priceDate = ""
+        self.onePrice = 0
+        
         currencyLayerService.requestQuotes { [weak self] (quotes, error) in
             guard let self: CoinConversionViewModel = self else { return }
             
@@ -91,12 +96,16 @@ extension CoinConversionViewModel {
             
             if originSymbol != self.sourceSymbol,
                 let quote: QuoteModel = quotes?.filter({ $0.symbol.uppercased() == originSymbol }).first {
+                self.priceDate = quote.updateDate.dateFormatted
                 convetedValue = convetedValue / quote.price
+                self.onePrice = 1 / quote.price
             }
             
             if destinySymbol != self.sourceSymbol {
                 if let quote: QuoteModel = quotes?.filter({ $0.symbol.uppercased() == destinySymbol }).first {
+                    self.priceDate = quote.updateDate.dateFormatted
                     convetedValue = convetedValue * quote.price
+                    self.onePrice = self.onePrice * quote.price
                 } else {
                     let error: Error = NSError(domain: #file, code: -1, userInfo: [NSLocalizedDescriptionKey: "There was a problem converting"])
                     completion?(nil, error)

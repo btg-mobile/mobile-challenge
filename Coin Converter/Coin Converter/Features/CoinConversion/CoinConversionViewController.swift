@@ -39,6 +39,8 @@ class CoinConversionViewController: UIViewController {
     @IBOutlet private weak var destinyButton: CustomButton!
     @IBOutlet private weak var convertButton: CustomButton!
     @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var errorView: UIView!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var tryAgainButton: CustomButton!
@@ -121,6 +123,19 @@ class CoinConversionViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self?.resultLabel.text = "\(valueString) \(originSymbol) / \(valueConvertedString) \(destinySymbol)"
+                    
+                    if let onePrice: Double = self?.viewModel?.onePrice,
+                        onePrice > 0 {
+                        self?.valueLabel.text = "1 \(originSymbol) - \(String(format: "%.6f", onePrice)) \(destinySymbol)"
+                    } else {
+                        self?.valueLabel.text = ""
+                    }
+                    
+                    if let priceDate: String = self?.viewModel?.priceDate {
+                        self?.dateLabel.text = "Date Price: \(priceDate)"
+                    } else {
+                        self?.dateLabel.text = ""
+                    }
                     self?.viewInteraction(.unlock)
                 }
             })
@@ -236,13 +251,14 @@ extension CoinConversionViewController {
 extension CoinConversionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if let text: String = textField.text {
+        let newString: String = string.digits
+        
+        if !newString.isEmpty,
+            let text: String = textField.text {
             let nsText: NSString = NSString(string: text)
-            let newText: String = nsText.replacingCharacters(in: range, with: string)
+            let newText: String = nsText.replacingCharacters(in: range, with: newString)
             
             textField.text = newText.toCurrency()
-        } else {
-            textField.text = nil
         }
         return false
     }

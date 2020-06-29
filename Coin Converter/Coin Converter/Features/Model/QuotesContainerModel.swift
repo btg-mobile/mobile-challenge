@@ -33,7 +33,7 @@ struct QuotesContainerModel: Decodable {
         timestamp = try container.decode(Int.self, forKey: .timestamp)
         source = try container.decode(String.self, forKey: .source)
         
-        let date: Date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let date: Date = Date.timestampToDate(timestamp: timestamp)
         
         let quotesObject: [String: Double] = try container.decode([String: Double].self, forKey: .quotes)
         var quotes: [QuoteModel] = []

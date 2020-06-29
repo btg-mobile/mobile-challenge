@@ -43,6 +43,7 @@
 		A055369F24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055369E24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift */; };
 		A05536A224AA6760008CAA14 /* CurrencyListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536A124AA6760008CAA14 /* CurrencyListViewModelTests.swift */; };
 		A05536A424AA7AEF008CAA14 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536A324AA7AEF008CAA14 /* currencies.json */; };
+		A05536A624AA9F11008CAA14 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536A524AA9F11008CAA14 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		A055369E24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellViewModelTests.swift; sourceTree = "<group>"; };
 		A05536A124AA6760008CAA14 /* CurrencyListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTests.swift; sourceTree = "<group>"; };
 		A05536A324AA7AEF008CAA14 /* currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
+		A05536A524AA9F11008CAA14 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 				A055367524A9388D008CAA14 /* UIAlertController.swift */,
 				A055368024A94588008CAA14 /* UIView.swift */,
 				A055368224A946AB008CAA14 /* Color.swift */,
+				A05536A524AA9F11008CAA14 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				A055361724A7E656008CAA14 /* AppDelegate.swift in Sources */,
 				A055364424A7E975008CAA14 /* QuotesContainerModel.swift in Sources */,
 				A055367924A93A5F008CAA14 /* CustomTextField.swift in Sources */,
+				A05536A624AA9F11008CAA14 /* Date.swift in Sources */,
 				A055368124A94588008CAA14 /* UIView.swift in Sources */,
 				A055366A24A8F96F008CAA14 /* CoinConversionViewController.swift in Sources */,
 				A055365D24A8EE90008CAA14 /* QuoteModel.swift in Sources */,
