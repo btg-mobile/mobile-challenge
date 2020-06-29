@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CurrencyConvertionViewController: UIViewController {
+class CurrencyConversionViewController: UIViewController {
     
-    private lazy var firstCurrencyButton: CurrencyButton = {
+    private(set) lazy var firstCurrencyButton: CurrencyButton = {
         let button = CurrencyButton(frame: .zero,
                                     title: Constants.Button.firstCurrencyButton)
         button.addTarget(self,
@@ -19,13 +19,13 @@ class CurrencyConvertionViewController: UIViewController {
         return button
     }()
     
-    private lazy var currencyTextField: UITextField = {
+    private(set) lazy var currencyTextField: UITextField = {
         let textfield = UITextField(frame: .zero)
         textfield.addTarget(self, action: #selector(didChangeTextField), for: .editingChanged)
         return textfield
     }()
     
-    private lazy var secondCurrencyButton: CurrencyButton = {
+    private(set) lazy var secondCurrencyButton: CurrencyButton = {
         let button = CurrencyButton(frame: .zero,
                                     title: Constants.Button.secondCurrencyButton)
         button.addTarget(self,
@@ -34,7 +34,7 @@ class CurrencyConvertionViewController: UIViewController {
         return button
     }()
     
-    private lazy var convertActionButton: ConvertActionButton = {
+    private(set) lazy var convertActionButton: ConvertActionButton = {
         let button = ConvertActionButton(frame: .zero)
         button.addTarget(self,
                          action: #selector(didTapConvertActionButton),
@@ -51,8 +51,8 @@ class CurrencyConvertionViewController: UIViewController {
         return view
     }()
     
-    private lazy var mainView: CurrencyConvertionView = {
-        return CurrencyConvertionView(firstCurrencyButton: firstCurrencyButton,
+    private lazy var mainView: CurrencyConversionView = {
+        return CurrencyConversionView(firstCurrencyButton: firstCurrencyButton,
                                       secondCurrencyButton: secondCurrencyButton,
                                       convertActionButton: convertActionButton,
                                       resultLbl: resultLbl,
@@ -60,7 +60,7 @@ class CurrencyConvertionViewController: UIViewController {
                                       currencyTextField: currencyTextField)
     }()
     
-    private var viewModel: CurrencyConvertionViewModelProtocol?
+    private var viewModel: CurrencyConversionViewModelProtocol?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -86,12 +86,12 @@ class CurrencyConvertionViewController: UIViewController {
     }
 }
 
-extension CurrencyConvertionViewController {
+extension CurrencyConversionViewController {
     
     private func setupController() {
         title = Constants.Titles.convertionTitle
         navigationItem.backBarButtonItem = UIBarButtonItem(title: .empty, style: .plain, target: self, action: nil)
-        self.viewModel = CurrencyConvertionViewModel(delegate: self)
+        self.viewModel = CurrencyConversionViewModel(delegate: self)
     }
     
     @objc
@@ -141,7 +141,7 @@ extension CurrencyConvertionViewController {
     }
 }
 
-extension CurrencyConvertionViewController: CurrencyConvertionViewModelDelegate {
+extension CurrencyConversionViewController: CurrencyConversionViewModelDelegate {
     
     func didFetchFirstCurrency(_ currency: String) {
         firstCurrencyButton.setTitle(currency, for: .normal)

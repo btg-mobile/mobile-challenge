@@ -9,13 +9,13 @@
 @testable import mobile_challenge_pedro_alvarez
 import Foundation
 
-class CurrencyConvertionViewModelMock: CurrencyConvertionViewModelProtocol {
+class CurrencyConvertionViewModelMock: CurrencyConversionViewModelProtocol {
     
     var resultValue: NSAttributedString?
     
-    var currencyValues: [CurrencyConvertionModel] = []
+    var currencyValues: [CurrencyConversionModel] = []
     
-    weak var delegate: CurrencyConvertionViewModelDelegate?
+    weak var delegate: CurrencyConversionViewModelDelegate?
     
     func fetchCurrencyValues() {
 

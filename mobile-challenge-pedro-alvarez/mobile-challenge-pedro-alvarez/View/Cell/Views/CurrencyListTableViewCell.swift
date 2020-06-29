@@ -85,7 +85,7 @@ extension CurrencyListTableViewCell: ViewCodeProtocol {
         containerView.layer.cornerRadius = 4
         containerView.layer.borderColor = UIColor.currencyTableViewCellLayerColor.cgColor
         containerView.layer.borderWidth = 1
-        containerView.backgroundColor = UIColor.currencyButtonBackgroundColor
+        containerView.backgroundColor = UIColor.currencyTableViewCellBackgrouncColor
         currencyLbl.textColor = UIColor.currencyLblColor
         backgroundColor = UIColor.currencyTableViewCellBackgrouncColor
         currencyLbl.attributedText = currencyAttrString

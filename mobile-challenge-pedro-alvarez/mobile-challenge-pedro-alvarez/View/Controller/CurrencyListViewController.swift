@@ -33,7 +33,7 @@ class CurrencyListViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Procure uma moeda"
-        navigationItem.searchController = searchController
+        searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         return searchController
     }()
@@ -63,6 +63,7 @@ class CurrencyListViewController: UIViewController {
     init(finishCallback: @escaping CurrencyIdCallback) {
         self.finishCallback = finishCallback
         super.init(nibName: nil, bundle: nil)
+        navigationItem.searchController = searchController
         setupController()
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyConvertionView: UIView {
+class CurrencyConversionView: UIView {
     
     private unowned var firstCurrencyButton: CurrencyButton
     private unowned var secondCurrencyButton: CurrencyButton
@@ -55,7 +55,7 @@ class CurrencyConvertionView: UIView {
     }
 }
 
-extension CurrencyConvertionView: ViewCodeProtocol {
+extension CurrencyConversionView: ViewCodeProtocol {
      
     func buildHierarchy() {
         resultContainerView.addSubview(resultLbl)
@@ -218,20 +218,22 @@ extension CurrencyConvertionView: ViewCodeProtocol {
     func configureViews() {
         firstCurrencyLbl.text = Constants.Labels.firstCurrencyLbl
         firstCurrencyLbl.font = UIFont(name: "HelveticaNeue-Regular", size: 14)
-        firstCurrencyLbl.textColor = .gray
+        firstCurrencyLbl.textColor = .yellow
         firstCurrencyLbl.textAlignment = .center
 
         secondCurrencyLbl.text = Constants.Labels.secondCurrencyLbl
         secondCurrencyLbl.font = UIFont(name: "HelveticaNeue-Regular", size: 14)
-        secondCurrencyLbl.textColor = .gray
+        secondCurrencyLbl.textColor = .yellow
         secondCurrencyLbl.textAlignment = .center
         
         currencyTextField.keyboardType = .decimalPad
         currencyTextField.layer.borderWidth = 2
         currencyTextField.layer.borderColor = UIColor.black.cgColor
         currencyTextField.layer.cornerRadius = 4
-        currencyTextField.placeholder = Constants.TextField.currencyTextFieldPlaceHolder
         currencyTextField.textAlignment = .center
+        currencyTextField.backgroundColor = .currencyMainButtonBackgroundColor
+        currencyTextField.textColor = .yellow
+        currencyTextField.attributedPlaceholder = NSAttributedString(string: Constants.TextField.currencyTextFieldPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.convertButtonLayerColor])
         
         resultContainerView.layer.cornerRadius = 4
         resultContainerView.layer.borderWidth = 2
@@ -241,6 +243,6 @@ extension CurrencyConvertionView: ViewCodeProtocol {
         
         resultLbl.textAlignment = .center
         
-        backgroundColor = .white
+        backgroundColor = .currencyTableViewCellBackgrouncColor
     }
 }

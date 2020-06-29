@@ -37,9 +37,9 @@ class CurrencyButton: UIButton {
     }
     
     private func setup() {
-        layer.borderColor = UIColor.currencyButtonLayerColor.cgColor
+        layer.borderColor = UIColor.yellow.cgColor
         layer.borderWidth = defaultWidth
-        backgroundColor = UIColor.currencyButtonBackgroundColor
+        backgroundColor = UIColor.currencyMainButtonBackgroundColor
         titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
     }
 }

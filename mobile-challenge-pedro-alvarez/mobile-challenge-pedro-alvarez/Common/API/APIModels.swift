@@ -7,7 +7,7 @@
 //
 
 
-final class CurrencyConvertionJSONModel: Decodable {
+final class CurrencyConversionJSONModel: Decodable {
     
     var quotes: CurrencyValueRelation
     

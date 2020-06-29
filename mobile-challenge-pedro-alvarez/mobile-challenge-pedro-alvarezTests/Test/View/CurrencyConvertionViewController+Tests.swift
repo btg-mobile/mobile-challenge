@@ -11,15 +11,13 @@ import XCTest
 
 class CurrencyConvertionViewController_Tests: XCTestCase {
 
-    var sut: CurrencyConvertionViewController!
+    var sut: CurrencyConversionViewController!
     
     override func setUp() {
-        sut = CurrencyConvertionViewController()
+        sut = CurrencyConversionViewController()
     }
     
     override func tearDown() {
         sut = nil
     }
-    
-    func
 }

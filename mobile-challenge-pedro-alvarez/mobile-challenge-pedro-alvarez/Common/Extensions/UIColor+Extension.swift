@@ -41,4 +41,6 @@ extension UIColor {
     static let convertionButtonDeactivactedBackground: UIColor = UIColor(rgb: 0xccffff)
     
     static let convertionBackGroundColor: UIColor = UIColor(rgb: 0x00994c)
+    
+    static let currencyMainButtonBackgroundColor: UIColor = UIColor(rgb: 0x00cc66)
 }

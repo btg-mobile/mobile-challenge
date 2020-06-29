@@ -8,7 +8,7 @@
 
 @testable import mobile_challenge_pedro_alvarez
 
-class CurrencyConvertionProviderMock: CurrencyConvertionProviderProtocol {
+class CurrencyConvertionProviderMock: CurrencyConversionProviderProtocol {
     
     func fetchLive(completion: @escaping CurrencyConvertionJSONCallback) {
         
