@@ -16,7 +16,9 @@ class CurrencySaves {
     
     static var shared = CurrencySaves()
     
-    private static let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+    private static let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                                 .userDomainMask,
+                                                                 true)[0] as NSString
     
     private init() { }
     

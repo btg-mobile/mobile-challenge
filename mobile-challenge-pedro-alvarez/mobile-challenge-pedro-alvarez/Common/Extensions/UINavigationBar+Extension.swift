@@ -10,7 +10,6 @@ import UIKit
 extension UINavigationBar {
     
     static func setAppearance(){
-           
            UINavigationBar.appearance().barTintColor = UIColor.black
            UINavigationBar.appearance().tintColor = UIColor.white
            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
