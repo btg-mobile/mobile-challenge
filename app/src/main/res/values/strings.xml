@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Converter Moedas</string>
+
+
+    <!-- ERROR -->
+    <string name="error_not_exchange_rates">As taxas de câmbio não estão disponíveis!</string>
+    <string name="field_required">Este campo é obrigatório</string>
+
+
+</resources>
