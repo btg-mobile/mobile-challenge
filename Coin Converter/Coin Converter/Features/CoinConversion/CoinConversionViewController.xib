@@ -13,6 +13,8 @@
                 <outlet property="destinyButton" destination="mSi-Rd-nhP" id="ox4-kZ-KX0"/>
                 <outlet property="errorLabel" destination="ZpR-29-B91" id="zHu-Nt-MfJ"/>
                 <outlet property="errorView" destination="thf-aR-0LX" id="j9f-ZB-50m"/>
+                <outlet property="loadingIndicatorView" destination="Qyj-gh-m6m" id="Dzt-Ge-76c"/>
+                <outlet property="loadingView" destination="l6h-T4-afC" id="D5B-xV-kqN"/>
                 <outlet property="originButton" destination="blB-BP-P4q" id="3HH-41-kCS"/>
                 <outlet property="resultLabel" destination="HYc-Tc-ve5" id="F9w-AM-iR7"/>
                 <outlet property="tryAgainButton" destination="iZ3-7y-xr5" id="d9z-ae-LZc"/>
@@ -118,15 +120,32 @@
                         <constraint firstItem="iZ3-7y-xr5" firstAttribute="top" secondItem="ZpR-29-B91" secondAttribute="bottom" constant="16" id="iXc-qe-CgG"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6h-T4-afC">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qyj-gh-m6m">
+                            <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstItem="Qyj-gh-m6m" firstAttribute="centerX" secondItem="l6h-T4-afC" secondAttribute="centerX" id="GZf-Mk-SIm"/>
+                        <constraint firstItem="Qyj-gh-m6m" firstAttribute="centerY" secondItem="l6h-T4-afC" secondAttribute="centerY" id="Vi5-Nf-sCu"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1d5-te-Mbv" secondAttribute="trailing" constant="16" id="1NR-Id-CkI"/>
+                <constraint firstItem="l6h-T4-afC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5ov-11-j7j"/>
+                <constraint firstItem="l6h-T4-afC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Dn6-M7-4Qc"/>
                 <constraint firstItem="1d5-te-Mbv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Xni-9w-oL8"/>
                 <constraint firstItem="1d5-te-Mbv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="dzb-6t-Iaq"/>
                 <constraint firstItem="thf-aR-0LX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hN0-Iw-zDU"/>
                 <constraint firstAttribute="bottom" secondItem="thf-aR-0LX" secondAttribute="bottom" id="oQI-DF-ytm"/>
                 <constraint firstItem="thf-aR-0LX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qLe-33-IHq"/>
+                <constraint firstAttribute="trailing" secondItem="l6h-T4-afC" secondAttribute="trailing" id="uEW-iI-0bR"/>
+                <constraint firstAttribute="bottom" secondItem="l6h-T4-afC" secondAttribute="bottom" id="xe2-G1-qxO"/>
                 <constraint firstAttribute="trailing" secondItem="thf-aR-0LX" secondAttribute="trailing" id="yeZ-KW-9xy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

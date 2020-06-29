@@ -19,6 +19,11 @@ enum CurrencyType {
     case destiny
 }
 
+enum LockState {
+    case lock
+    case unlock
+}
+
 protocol CoinConversionViewControllerDelegate: AnyObject {
     func updateSelectedCurrency(currencyModel: CurrencyModel)
 }
@@ -37,6 +42,8 @@ class CoinConversionViewController: UIViewController {
     @IBOutlet private weak var errorView: UIView!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var tryAgainButton: CustomButton!
+    @IBOutlet private weak var loadingView: UIView!
+    @IBOutlet private weak var loadingIndicatorView: UIActivityIndicatorView!
     
     //*************************************************
     // MARK: - Private properties
@@ -51,10 +58,13 @@ class CoinConversionViewController: UIViewController {
             DispatchQueue.main.async {
                 switch self.viewState {
                 case .loading:
+                    self.viewInteraction(.lock)
                     self.errorView.isHidden = true
                 case .show:
+                    self.viewInteraction(.unlock)
                     self.errorView.isHidden = true
                 case .error:
+                     self.viewInteraction(.unlock)
                     self.errorView.isHidden = false
                 }
             }
@@ -94,6 +104,7 @@ class CoinConversionViewController: UIViewController {
             ignoreAlert = false
         } else {
             guard let valueString: String = valueTextField.text else { return }
+            viewInteraction(.lock)
             viewModel?.convertCurrency(value: valueString, completion: { [weak self] (valueConverted, error) in
                 guard error == nil,
                     let originSymbol: String = self?.viewModel?.selectedOriginCurrency?.symbol,
@@ -110,6 +121,7 @@ class CoinConversionViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self?.resultLabel.text = "\(valueString) \(originSymbol) / \(valueConvertedString) \(destinySymbol)"
+                    self?.viewInteraction(.unlock)
                 }
             })
         }
@@ -151,6 +163,8 @@ extension CoinConversionViewController {
         destinyButton.configure(style: .line)
         convertButton.configure(style: .normal)
         tryAgainButton.configure(style: .line)
+        
+        loadingView.alpha = 0.3
     }
     
     private func showAlert(error: Error?, message: String? = nil) {
@@ -198,6 +212,19 @@ extension CoinConversionViewController {
             errorLabel.text = error.localizedDescription
         } else {
             errorLabel.text = "An unexpected error has occurred"
+        }
+    }
+    
+    private func viewInteraction(_ lockState: LockState) {
+        DispatchQueue.main.async {
+            switch lockState {
+            case .lock:
+                self.loadingView.isHidden = false
+                self.loadingIndicatorView.startAnimating()
+            case .unlock:
+                self.loadingView.isHidden = true
+                self.loadingIndicatorView.stopAnimating()
+            }
         }
     }
 }
