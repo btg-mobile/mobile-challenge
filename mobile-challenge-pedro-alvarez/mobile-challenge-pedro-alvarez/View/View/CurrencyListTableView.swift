@@ -16,6 +16,7 @@ class CurrencyListTableView: UITableView {
         alwaysBounceVertical = false
         backgroundColor = .clear
         separatorStyle = .none
+        backgroundColor = .currencyTableViewCellBackgrouncColor
     }
     
     required init?(coder: NSCoder) {

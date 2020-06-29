@@ -91,7 +91,7 @@ extension CurrencyListView: ViewCodeProtocol {
                            toItem: self,
                            attribute: .top,
                            multiplier: 1.0,
-                           constant: 140).isActive = true
+                           constant: 188).isActive = true
         NSLayoutConstraint(item: tableView,
                            attribute: .bottom,
                            relatedBy: .equal,

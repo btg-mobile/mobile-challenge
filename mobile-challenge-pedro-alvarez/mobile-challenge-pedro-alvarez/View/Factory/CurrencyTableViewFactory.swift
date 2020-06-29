@@ -25,7 +25,7 @@ class CurrencyTableViewFactory: TableViewFactoryProtocol {
     
     private var mainSection: BaseSection {
         var builders: [CurrencyListTableViewCellBuilder] = []
-        let list = viewModel.currenciesViewModel
+        let list = viewModel.filteredCurrencyList
         for currency in list {
             builders.append(CurrencyListTableViewCellBuilder(currencyAttrString: currency))
         }

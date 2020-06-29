@@ -28,14 +28,10 @@ class CurrencyListViewController: UIViewController {
         return segmentedControl
     }()
     
-    private lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Procure uma moeda"
-        searchController.hidesNavigationBarDuringPresentation = false
-        definesPresentationContext = true
-        return searchController
+    private lazy var searchTextField: UITextField = {
+        let textField = UITextField(frame: .zero)
+        textField.addTarget(self, action: #selector(didSearchTextFieldChange), for: .editingChanged)
+        return textField
     }()
     
     private lazy var closeButton: UIBarButtonItem = {
@@ -52,7 +48,8 @@ class CurrencyListViewController: UIViewController {
     
     private lazy var mainView: CurrencyListView = {
         let sortView = SortView(frame: .zero,
-                                segmentedControl: sortSegmentedControl)
+                                segmentedControl: sortSegmentedControl,
+                                textField: searchTextField)
         return CurrencyListView(frame: .zero,
                                 tableView: tableView,
                                 errorView: errorView,
@@ -63,7 +60,6 @@ class CurrencyListViewController: UIViewController {
     init(finishCallback: @escaping CurrencyIdCallback) {
         self.finishCallback = finishCallback
         super.init(nibName: nil, bundle: nil)
-        navigationItem.searchController = searchController
         setupController()
     }
     
@@ -140,15 +136,14 @@ extension CurrencyListViewController {
     }
     
     @objc
+    private func didSearchTextFieldChange() {
+        guard let text = searchTextField.text else { return }
+        viewModel?.filterContentForSearchText(text)
+    }
+    
+    @objc
     private func didChangeSegmentedControlValue() {
         viewModel?.sortCurrencyList(withTag: sortSegmentedControl.selectedSegmentIndex)
-    }
-}
-
-extension CurrencyListViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
     }
 }
 

@@ -11,7 +11,7 @@ protocol CurrencyListViewModelProtocol {
     var delegate: CurrencyListViewModelDelegate? { get set }
     var currencyList: [CurrencyListModel] { get }
     var currenciesViewModel: [NSAttributedString] { get  }
-    var filteredCurrencyList: [CurrencyListModel] { get }
+    var filteredCurrencyList: [NSAttributedString] { get }
     
     func fetchCurrencies()
     func didSelectCurrency(index: Int)
@@ -33,9 +33,9 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
         }
     }
     
-    private(set) var filteredCurrencyList: [CurrencyListModel] = [] {
+    private(set) var filteredCurrencyList: [NSAttributedString] = [] {
         didSet {
-            
+            delegate?.didFetchCurrencies()
         }
     }
     
@@ -48,7 +48,7 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
     
     private(set) var currenciesViewModel: [NSAttributedString] = [] {
         didSet {
-            delegate?.didFetchCurrencies()
+            filteredCurrencyList = currenciesViewModel
         }
     }
     
@@ -97,7 +97,11 @@ class CurrencyListViewModel: CurrencyListViewModelProtocol {
     }
     
     func filterContentForSearchText(_ text: String) {
-        filteredCurrencyList = currencyList.filter({ $0.fullName.lowercased().contains(text.lowercased())})
+        if text.isEmpty {
+            filteredCurrencyList = currenciesViewModel
+        } else {
+            filteredCurrencyList = currenciesViewModel.filter({ $0.string.lowercased().contains(text.lowercased())})
+        }
     }
 }
 
