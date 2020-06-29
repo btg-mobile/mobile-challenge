@@ -5,6 +5,8 @@
     <!-- ERROR -->
     <string name="error_not_exchange_rates">As taxas de câmbio não estão disponíveis!</string>
     <string name="field_required">Este campo é obrigatório</string>
+    <string name="not_internet">O dispositivo não possui internet</string>
+    <string name="error">Dados indisponíveis no momento!</string>
 
 
 </resources>

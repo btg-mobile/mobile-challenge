@@ -7,3 +7,13 @@ fun <T1, T2> safeLet(value1: T1?, value2: T2?,
         bothNotNull(value1, value2)
     }
 }
+
+
+fun isInternetAvailable(): Boolean {
+    return try {
+        val command = "ping -c 1 google.com"
+        Runtime.getRuntime().exec(command).waitFor() == 0
+    } catch (e: Exception) {
+        false
+    }
+}

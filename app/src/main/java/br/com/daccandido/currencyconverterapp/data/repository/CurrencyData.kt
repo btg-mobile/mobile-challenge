@@ -70,23 +70,30 @@ class CurrencyData: CurrencyRepository {
 
     override suspend fun getQuote(currenciyes: String, callback: (result: ResultRequest) -> Unit) {
 
-        ApiService.service.getQuote(mapOf(KEY_API_CURRENCIES to currenciyes)).enqueue(object : Callback<QuoteRequest> {
-            override fun onFailure(call: Call<QuoteRequest>, t: Throwable) {
-                callback(ResultRequest.SeverError)
-            }
+        withContext(Dispatchers.IO) {
 
-            override fun onResponse(call: Call<QuoteRequest>, response: Response<QuoteRequest>) {
-                when {
-                    response.isSuccessful -> {
-                        response.body()?.let {
-                            callback(ResultRequest.SuccessQuote(it))
-                        } ?: run {
-                            callback(ResultRequest.Error(R.string.error_not_exchange_rates))
+            ApiService.service.getQuote(mapOf(KEY_API_CURRENCIES to currenciyes))
+                .enqueue(object : Callback<QuoteRequest> {
+                    override fun onFailure(call: Call<QuoteRequest>, t: Throwable) {
+                        callback(ResultRequest.SeverError)
+                    }
+
+                    override fun onResponse(
+                        call: Call<QuoteRequest>,
+                        response: Response<QuoteRequest>
+                    ) {
+                        when {
+                            response.isSuccessful -> {
+                                response.body()?.let {
+                                    callback(ResultRequest.SuccessQuote(it))
+                                } ?: run {
+                                    callback(ResultRequest.Error(R.string.error_not_exchange_rates))
+                                }
+                            }
+                            else -> callback(ResultRequest.Error(R.string.error_not_exchange_rates))
                         }
                     }
-                    else -> callback(ResultRequest.Error(R.string.error_not_exchange_rates))
-                }
-            }
-        })
+                })
+        }
     }
 }

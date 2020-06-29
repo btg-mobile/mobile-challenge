@@ -1,17 +1,16 @@
-package br.com.daccandido.currencyconverterapp.ui
+package br.com.daccandido.currencyconverterapp.ui.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import br.com.daccandido.currencyconverterapp.R
+import br.com.daccandido.currencyconverterapp.data.database.CurrencyDAO
 import br.com.daccandido.currencyconverterapp.data.repository.CurrencyData
 import br.com.daccandido.currencyconverterapp.ui.convertcurrency.ConvertCurresncyActivity
-import br.com.daccandido.currencyconverterapp.ui.splashscreen.SplashScreenViewModel
+import br.com.daccandido.currencyconverterapp.utils.isInternetAvailable
 import kotlinx.android.synthetic.main.activity_splash_screen.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -22,17 +21,35 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         viewModel = SplashScreenViewModel
-            .ViewModelFactory(CurrencyData())
+            .ViewModelFactory(CurrencyData(), CurrencyDAO())
             .create(SplashScreenViewModel::class.java)
 
-        loadingInfo()
+        setUpObserve()
+
+        if (isInternetAvailable()) {
+            loadingInfo()
+        } else {
+            viewModel.isLoading.value = false
+            tvError?.text = getString(R.string.not_internet)
+        }
+    }
+
+    private fun setUpObserve () {
+        viewModel.isLoading.observe(this, Observer {
+            if (it) {
+                tvError.visibility = View.GONE
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
+            }
+        })
     }
 
     private fun loadingInfo () {
 
         viewModel.getInfo { error, isSuccess ->
             error?.let {
-                progressBar.visibility = View.GONE
+                tvError.visibility = View.VISIBLE
                 tvError?.text = getString(it)
             } ?: run {
                 if (isSuccess) {
@@ -42,7 +59,8 @@ class SplashScreenActivity : AppCompatActivity() {
                     }
 
                 }  else {
-                    tvError?.text = getString(R.string.error_not_exchange_rates)
+                    tvError.visibility = View.VISIBLE
+                    tvError?.text = getString(R.string.error)
                 }
             }
         }

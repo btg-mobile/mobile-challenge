@@ -5,14 +5,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.daccandido.currencyconverterapp.R
 import br.com.daccandido.currencyconverterapp.data.ResultRequest
+import br.com.daccandido.currencyconverterapp.data.database.CurrencyDAO
+import br.com.daccandido.currencyconverterapp.data.model.Currency
 import br.com.daccandido.currencyconverterapp.data.model.ExchangeRate
 import br.com.daccandido.currencyconverterapp.data.repository.CurrencyData
 import br.com.daccandido.currencyconverterapp.ui.base.BaseViewModel
+import io.realm.RealmResults
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ListCurrentViewModel(private val currencyData: CurrencyData): BaseViewModel() {
+class ListCurrentViewModel(private val currencyData: CurrencyData, private val currencyDAO: CurrencyDAO): BaseViewModel() {
 
     val listCurrency: MutableLiveData<ExchangeRate> = MutableLiveData()
 
@@ -22,6 +26,16 @@ class ListCurrentViewModel(private val currencyData: CurrencyData): BaseViewMode
             currencyData.getListExchangeRate { result ->
                 when (result) {
                     is ResultRequest.SuccessExchangeRate -> {
+                        val quote = result.exchangeRate
+                        for (quoteMap in quote.currencies) {
+                            val currency = Currency(
+                                code = quoteMap.key,
+                                name = quoteMap.value
+                            )
+                            CoroutineScope(Dispatchers.IO).launch {
+                                currencyDAO.insertOrUpdate(currency) {}
+                            }
+                        }
                         isLoading.value = false
                         listCurrency.value = result.exchangeRate
                     }
@@ -36,11 +50,16 @@ class ListCurrentViewModel(private val currencyData: CurrencyData): BaseViewMode
         }
     }
 
-    class ViewModelFactory(private val currencyData: CurrencyData) : ViewModelProvider.Factory {
+    fun getListLocal(sort: String) : RealmResults<Currency> {
+        return currencyDAO.getAllCurrencies(sort)
+    }
+
+
+    class ViewModelFactory(private val currencyData: CurrencyData, private val currencyDAO: CurrencyDAO) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ListCurrentViewModel::class.java)) {
-                return ListCurrentViewModel(currencyData) as T
+                return ListCurrentViewModel(currencyData, currencyDAO) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

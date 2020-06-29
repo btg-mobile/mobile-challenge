@@ -12,6 +12,7 @@ import kotlinx.android.parcel.Parcelize
 open class Currency(
     @PrimaryKey var id: Long = 0,
     var code: String = "",
-    var name: String = ""
+    var name: String = "",
+    var quote: Double = -1.0
 
 ) : RealmObject(), Parcelable

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import br.com.daccandido.currencyconverterapp.R
+import br.com.daccandido.currencyconverterapp.data.database.CurrencyDAO
 import br.com.daccandido.currencyconverterapp.data.model.Currency
 import br.com.daccandido.currencyconverterapp.data.model.KEY_CURRENCIES
 import br.com.daccandido.currencyconverterapp.data.model.KEY_DOLLAR
@@ -13,6 +14,7 @@ import br.com.daccandido.currencyconverterapp.data.repository.CurrencyData
 import br.com.daccandido.currencyconverterapp.extensions.formatCurrency
 import br.com.daccandido.currencyconverterapp.ui.base.BaseActivity
 import br.com.daccandido.currencyconverterapp.ui.listcurrency.ListCurrencyActivity
+import br.com.daccandido.currencyconverterapp.utils.isInternetAvailable
 import br.com.daccandido.currencyconverterapp.utils.safeLet
 import kotlinx.android.synthetic.main.activity_convert_currency.*
 
@@ -34,7 +36,7 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
         setContentView(R.layout.activity_convert_currency)
 
         viewModel = ConvertCurresncyViewModel
-            .ViewModelFactory(CurrencyData())
+            .ViewModelFactory(CurrencyData(), CurrencyDAO())
             .create(ConvertCurresncyViewModel::class.java)
 
         currencyCodeFrom.text = currencyFromCode
@@ -59,11 +61,13 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
             when(it.id) {
                 llCurrencyFrom?.id ->{
                     Intent(this, ListCurrencyActivity::class.java).apply {
+                        putExtra("CODE", codeFrom)
                         startActivityForResult(this, codeFrom)
                     }
                 }
                 llCurrencyTo?.id-> {
                     Intent(this, ListCurrencyActivity::class.java).apply {
+                        putExtra("CODE", codeTo)
                         startActivityForResult(this, codeTo)
                     }
                 }
@@ -112,10 +116,9 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
                 val targetValue = quote.quotes["$KEY_DOLLAR$currencyToCode"]
 
                 safeLet(sourceValue, targetValue) { _sourceValue, _targetValue ->
-                    val sourceValueConverted = _sourceValue * valueText
-                    val targetValueConverted = _targetValue * valueText
+                    val sourceValueConverted = valueText / _sourceValue
                     resultConvert.setText(
-                        (sourceValueConverted * targetValueConverted)
+                        (sourceValueConverted * _targetValue)
                             .formatCurrency(currencyToCode)
                     )
                 }
@@ -129,10 +132,13 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
         if (edValueForConvert.text.isEmpty()) {
             edValueForConvert.error = getString(R.string.field_required)
         } else {
-            progressBar2.visibility = View.VISIBLE
-            viewModel.getQuote("$currencyToCode,$currencyFromCode")
+            if (isInternetAvailable()) {
+                progressBar2.visibility = View.VISIBLE
+                viewModel.getQuote("$currencyToCode,$currencyFromCode")
+            } else {
+
+            }
         }
     }
-
 
 }
