@@ -11,8 +11,11 @@
             <connections>
                 <outlet property="convertButton" destination="Ji2-FG-Bcl" id="8Ek-w2-zVe"/>
                 <outlet property="destinyButton" destination="mSi-Rd-nhP" id="ox4-kZ-KX0"/>
+                <outlet property="errorLabel" destination="ZpR-29-B91" id="zHu-Nt-MfJ"/>
+                <outlet property="errorView" destination="thf-aR-0LX" id="j9f-ZB-50m"/>
                 <outlet property="originButton" destination="blB-BP-P4q" id="3HH-41-kCS"/>
                 <outlet property="resultLabel" destination="HYc-Tc-ve5" id="F9w-AM-iR7"/>
+                <outlet property="tryAgainButton" destination="iZ3-7y-xr5" id="d9z-ae-LZc"/>
                 <outlet property="valueTextField" destination="vqp-at-wf8" id="w11-FU-5Sl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -84,12 +87,47 @@
                         </view>
                     </subviews>
                 </stackView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thf-aR-0LX">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpR-29-B91">
+                            <rect key="frame" x="16" y="438" width="382" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZ3-7y-xr5" customClass="CustomButton" customModule="Coin_Converter" customModuleProvider="target">
+                            <rect key="frame" x="16" y="474.5" width="382" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="U1s-UL-I2d"/>
+                            </constraints>
+                            <state key="normal" title="Tentar Novamente"/>
+                            <connections>
+                                <action selector="didTouchTryAgain:" destination="-1" eventType="touchUpInside" id="K14-TJ-ytA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="iZ3-7y-xr5" firstAttribute="leading" secondItem="thf-aR-0LX" secondAttribute="leading" constant="16" id="2Hz-wO-1TY"/>
+                        <constraint firstItem="ZpR-29-B91" firstAttribute="centerY" secondItem="thf-aR-0LX" secondAttribute="centerY" id="3aN-9k-3m8"/>
+                        <constraint firstItem="ZpR-29-B91" firstAttribute="centerX" secondItem="thf-aR-0LX" secondAttribute="centerX" id="6ep-o6-GWv"/>
+                        <constraint firstAttribute="trailing" secondItem="ZpR-29-B91" secondAttribute="trailing" constant="16" id="8ZO-pA-olj"/>
+                        <constraint firstAttribute="trailing" secondItem="iZ3-7y-xr5" secondAttribute="trailing" constant="16" id="FOm-SH-vNL"/>
+                        <constraint firstItem="ZpR-29-B91" firstAttribute="leading" secondItem="thf-aR-0LX" secondAttribute="leading" constant="16" id="cVx-4W-z57"/>
+                        <constraint firstItem="iZ3-7y-xr5" firstAttribute="top" secondItem="ZpR-29-B91" secondAttribute="bottom" constant="16" id="iXc-qe-CgG"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1d5-te-Mbv" secondAttribute="trailing" constant="16" id="1NR-Id-CkI"/>
                 <constraint firstItem="1d5-te-Mbv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Xni-9w-oL8"/>
                 <constraint firstItem="1d5-te-Mbv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="dzb-6t-Iaq"/>
+                <constraint firstItem="thf-aR-0LX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hN0-Iw-zDU"/>
+                <constraint firstAttribute="bottom" secondItem="thf-aR-0LX" secondAttribute="bottom" id="oQI-DF-ytm"/>
+                <constraint firstItem="thf-aR-0LX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qLe-33-IHq"/>
+                <constraint firstAttribute="trailing" secondItem="thf-aR-0LX" secondAttribute="trailing" id="yeZ-KW-9xy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="153"/>

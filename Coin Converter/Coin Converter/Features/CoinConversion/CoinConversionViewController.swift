@@ -34,6 +34,9 @@ class CoinConversionViewController: UIViewController {
     @IBOutlet private weak var destinyButton: CustomButton!
     @IBOutlet private weak var convertButton: CustomButton!
     @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private weak var errorView: UIView!
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var tryAgainButton: CustomButton!
     
     //*************************************************
     // MARK: - Private properties
@@ -45,13 +48,15 @@ class CoinConversionViewController: UIViewController {
     
     private var viewState: ViewState = .loading {
         didSet {
-            switch viewState {
-            case .loading:
-                break
-            case .show:
-                break
-            case .error:
-                break
+            DispatchQueue.main.async {
+                switch self.viewState {
+                case .loading:
+                    self.errorView.isHidden = true
+                case .show:
+                    self.errorView.isHidden = true
+                case .error:
+                    self.errorView.isHidden = false
+                }
             }
         }
     }
@@ -69,16 +74,9 @@ class CoinConversionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel?.requestCurrencies(completion: { [weak self] (error) in
-            guard error == nil else {
-                self?.showAlert(error: error)
-                return
-            }
-            
-            self?.updateButtonTitle()
-        })
-        
         setupLayout()
+        
+        requestData()
     }
     
     //*************************************************
@@ -92,7 +90,7 @@ class CoinConversionViewController: UIViewController {
             if !ignoreAlert {
                 showAlert(error: nil, message: errorMessage)
             }
-            resultLabel.text = nil
+            self.resultLabel.text = nil
             ignoreAlert = false
         } else {
             guard let valueString: String = valueTextField.text else { return }
@@ -124,6 +122,11 @@ class CoinConversionViewController: UIViewController {
     @IBAction func didTouchDestinyButton(_ sender: Any) {
         openCurrencyList(currencyType: .destiny)
     }
+    
+    @IBAction func didTouchTryAgain(_ sender: Any) {
+        viewState = .loading
+        requestData()
+    }
 }
 
 //*************************************************
@@ -140,12 +143,14 @@ extension CoinConversionViewController {
         valueTextField.onCustomButtonTouch = { [weak self] in
             self?.viewModel?.invertCurrency()
             self?.updateButtonTitle()
+            self?.ignoreAlert = true
             self?.didTouchConverterButton(self?.convertButton as Any)
         }
         
         originButton.configure(style: .line)
         destinyButton.configure(style: .line)
         convertButton.configure(style: .normal)
+        tryAgainButton.configure(style: .line)
     }
     
     private func showAlert(error: Error?, message: String? = nil) {
@@ -174,6 +179,27 @@ extension CoinConversionViewController {
         navigationController?.pushViewController(currencyListViewController, animated: true)
     }
     
+    private func requestData() {
+        viewModel?.requestCurrencies(completion: { [weak self] (error) in
+            guard error == nil else {
+                self?.viewState = .error
+                DispatchQueue.main.async {
+                    self?.setupErrorView(error)
+                }
+                return
+            }
+            self?.viewState = .show
+            self?.updateButtonTitle()
+        })
+    }
+    
+    private func setupErrorView(_ error: Error?) {
+        if let error: Error = error {
+            errorLabel.text = error.localizedDescription
+        } else {
+            errorLabel.text = "An unexpected error has occurred"
+        }
+    }
 }
 
 //*************************************************
