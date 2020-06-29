@@ -10,6 +10,8 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
     
+    //MARK: Logical Properties
+    
     private(set) var finishCallback: CurrencyIdCallback
     
     private(set) var factory: CurrencyTableViewFactory?
@@ -17,6 +19,8 @@ class CurrencyListViewController: UIViewController {
     private(set) var dataSource: DefaultTableViewOutput?
     
     private(set) var viewModel: CurrencyListViewModelProtocol?
+    
+    //MARK: UI Properties
     
     private lazy var tableView: CurrencyListTableView = {
         return CurrencyListTableView(frame: .zero)
@@ -57,6 +61,8 @@ class CurrencyListViewController: UIViewController {
                                 sortView: sortView)
     }()
     
+    //MARK: Lifecycle methods
+    
     init(finishCallback: @escaping CurrencyIdCallback) {
         self.finishCallback = finishCallback
         super.init(nibName: nil, bundle: nil)
@@ -77,6 +83,8 @@ class CurrencyListViewController: UIViewController {
         self.view = mainView
     }
 }
+
+//MARK:
 
 extension CurrencyListViewController: DefaultTableViewOutputDelegate {
     
