@@ -112,6 +112,7 @@ extension SortView: ViewCodeProtocol {
         textField.layer.cornerRadius = 4
         textField.placeholder = "Digite a moeda que deseja buscar"
         textField.textAlignment = .center
+        textField.textColor = .black
         
         sortLbl.text = "Ordenar por"
         sortLbl.textColor = .convertButtonLayerColor

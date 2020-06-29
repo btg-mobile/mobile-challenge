@@ -38,6 +38,10 @@ class CurrencyListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing(true)
+    }
+    
     func displayError(withMessage message: String) {
         errorView.errorMessage = message
         errorView.isHidden = false
