@@ -84,6 +84,10 @@ class CurrencyConversionViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mainView.endEditing(true)
+    }
 }
 
 extension CurrencyConversionViewController {
