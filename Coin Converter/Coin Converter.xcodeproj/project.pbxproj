@@ -10,7 +10,6 @@
 		A055361724A7E656008CAA14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055361624A7E656008CAA14 /* AppDelegate.swift */; };
 		A055362324A7E658008CAA14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055362224A7E658008CAA14 /* Assets.xcassets */; };
 		A055362624A7E658008CAA14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A055362424A7E658008CAA14 /* LaunchScreen.storyboard */; };
-		A055363124A7E659008CAA14 /* Coin_ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055363024A7E659008CAA14 /* Coin_ConverterTests.swift */; };
 		A055364424A7E975008CAA14 /* QuotesContainerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055364324A7E975008CAA14 /* QuotesContainerModel.swift */; };
 		A055364724A7EA4E008CAA14 /* Quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = A055364624A7EA4E008CAA14 /* Quotes.json */; };
 		A055364924A7EA8A008CAA14 /* CurrenciesContainerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055364824A7EA8A008CAA14 /* CurrenciesContainerModel.swift */; };
@@ -40,6 +39,10 @@
 		A055368D24A95171008CAA14 /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A055368B24A95171008CAA14 /* CurrencyCell.xib */; };
 		A055368F24A952AC008CAA14 /* CurrencyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055368E24A952AC008CAA14 /* CurrencyCellViewModel.swift */; };
 		A055369124A954EB008CAA14 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055369024A954EB008CAA14 /* ReusableProtocol.swift */; };
+		A055369624AA60F3008CAA14 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055369524AA60F3008CAA14 /* Utils.swift */; };
+		A055369F24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055369E24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift */; };
+		A05536A224AA6760008CAA14 /* CurrencyListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536A124AA6760008CAA14 /* CurrencyListViewModelTests.swift */; };
+		A05536A424AA7AEF008CAA14 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536A324AA7AEF008CAA14 /* currencies.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +62,6 @@
 		A055362524A7E658008CAA14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A055362724A7E658008CAA14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A055362C24A7E659008CAA14 /* Coin ConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coin ConverterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A055363024A7E659008CAA14 /* Coin_ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin_ConverterTests.swift; sourceTree = "<group>"; };
 		A055363224A7E659008CAA14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A055364324A7E975008CAA14 /* QuotesContainerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesContainerModel.swift; sourceTree = "<group>"; };
 		A055364624A7EA4E008CAA14 /* Quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Quotes.json; sourceTree = "<group>"; };
@@ -90,6 +92,10 @@
 		A055368B24A95171008CAA14 /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
 		A055368E24A952AC008CAA14 /* CurrencyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellViewModel.swift; sourceTree = "<group>"; };
 		A055369024A954EB008CAA14 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		A055369524AA60F3008CAA14 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A055369E24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellViewModelTests.swift; sourceTree = "<group>"; };
+		A05536A124AA6760008CAA14 /* CurrencyListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTests.swift; sourceTree = "<group>"; };
+		A05536A324AA7AEF008CAA14 /* currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +148,9 @@
 		A055362F24A7E659008CAA14 /* Coin ConverterTests */ = {
 			isa = PBXGroup;
 			children = (
-				A055363024A7E659008CAA14 /* Coin_ConverterTests.swift */,
+				A05536A024AA62E5008CAA14 /* Resources */,
+				A055369324AA60C4008CAA14 /* Utils */,
+				A055369224AA6007008CAA14 /* Features */,
 				A055363224A7E659008CAA14 /* Info.plist */,
 			);
 			path = "Coin ConverterTests";
@@ -305,6 +313,71 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A055369224AA6007008CAA14 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A055369924AA628E008CAA14 /* ListCoins */,
+				A055369824AA626F008CAA14 /* CoinConversion */,
+				A055369724AA6105008CAA14 /* Services */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A055369324AA60C4008CAA14 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A055369524AA60F3008CAA14 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A055369724AA6105008CAA14 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A055369824AA626F008CAA14 /* CoinConversion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoinConversion;
+			sourceTree = "<group>";
+		};
+		A055369924AA628E008CAA14 /* ListCoins */ = {
+			isa = PBXGroup;
+			children = (
+				A055369A24AA6299008CAA14 /* Components */,
+				A05536A124AA6760008CAA14 /* CurrencyListViewModelTests.swift */,
+			);
+			path = ListCoins;
+			sourceTree = "<group>";
+		};
+		A055369A24AA6299008CAA14 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A055369B24AA62AD008CAA14 /* Cell */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A055369B24AA62AD008CAA14 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A055369E24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A05536A024AA62E5008CAA14 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A05536A324AA7AEF008CAA14 /* currencies.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -358,6 +431,7 @@
 					};
 					A055362B24A7E659008CAA14 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = A055361224A7E656008CAA14;
 					};
 				};
@@ -400,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05536A424AA7AEF008CAA14 /* currencies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +517,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A055363124A7E659008CAA14 /* Coin_ConverterTests.swift in Sources */,
+				A05536A224AA6760008CAA14 /* CurrencyListViewModelTests.swift in Sources */,
+				A055369F24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift in Sources */,
+				A055369624AA60F3008CAA14 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +700,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Coin ConverterTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -633,6 +711,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.takumi.Coin-ConverterTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coin Converter.app/Coin Converter";
@@ -644,6 +724,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Coin ConverterTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -654,6 +735,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.takumi.Coin-ConverterTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coin Converter.app/Coin Converter";

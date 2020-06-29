@@ -45,6 +45,7 @@ class CurrencyListViewModel {
 //*************************************************
 
 extension CurrencyListViewModel {
+    
     func currencyCellViewModel(row index: Int) -> CurrencyCellViewModel {
         let currencyModel: CurrencyModel = showCurrencies[index]
         return CurrencyCellViewModel(currencyModel: currencyModel, selectedSymbol: selectedCurrency?.symbol.uppercased() ?? "")

@@ -6,14 +6,28 @@
 //  Copyright © 2020 Takumi. All rights reserved.
 //
 
-struct CurrencyModel: Decodable {
+struct CurrencyModel: Codable {
     let symbol: String
     let descriptionCurrency: String
 }
+
+//*************************************************
+// MARK: - CustomStringConvertible
+//*************************************************
 
 extension CurrencyModel: CustomStringConvertible {
     
     var description: String {
         return "\(symbol.uppercased()) / \(descriptionCurrency)"
+    }
+}
+
+//*************************************************
+// MARK: - Equatable
+//*************************************************
+
+extension CurrencyModel: Equatable {
+    static func == (lhs: CurrencyModel, rhs: CurrencyModel) -> Bool {
+        return lhs.symbol.lowercased() == rhs.symbol.lowercased()
     }
 }

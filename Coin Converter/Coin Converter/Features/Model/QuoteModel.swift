@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct QuoteModel: Decodable {
+struct QuoteModel: Codable {
     let symbol: String
     let price: Double
     let source: String
