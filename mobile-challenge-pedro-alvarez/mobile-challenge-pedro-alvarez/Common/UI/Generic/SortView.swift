@@ -110,9 +110,9 @@ extension SortView: ViewCodeProtocol {
         textField.layer.borderWidth = 2
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 4
-        textField.placeholder = "Digite a moeda que deseja buscar"
         textField.textAlignment = .center
         textField.textColor = .black
+        textField.attributedPlaceholder = NSAttributedString(string: "Digite a moeda que deseja buscar", attributes: [NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x808080)])
         
         sortLbl.text = "Ordenar por"
         sortLbl.textColor = .convertButtonLayerColor
