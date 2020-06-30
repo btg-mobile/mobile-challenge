@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
-import br.com.leonamalmeida.mobilechallenge.util.EXTRA_CURRENCY
 import br.com.leonamalmeida.mobilechallenge.R
+import br.com.leonamalmeida.mobilechallenge.util.EXTRA_CURRENCY
 import br.com.leonamalmeida.mobilechallenge.util.haveNetwork
 import br.com.leonamalmeida.mobilechallenge.util.snack
 import dagger.hilt.android.AndroidEntryPoint

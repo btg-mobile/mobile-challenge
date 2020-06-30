@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_currency.view.*
  */
 
 class CurrencyAdapter(private val onCurrencySelected: ((Currency) -> Unit)) :
-    RecyclerView.Adapter<CurrencyAdapter.CurrencyVH>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var currencies = emptyList<Currency>()
         set(value) {
@@ -21,17 +21,30 @@ class CurrencyAdapter(private val onCurrencySelected: ((Currency) -> Unit)) :
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyAdapter.CurrencyVH {
-        return CurrencyVH(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_currency, parent, false)
-        )
+    override fun getItemViewType(position: Int): Int {
+        return if (itemCount == 1 && currencies.isEmpty()) CurrencyAdapterType.EMPTY.ordinal
+        else CurrencyAdapterType.ITEM.ordinal
     }
 
-    override fun getItemCount(): Int = currencies.size
-
-    override fun onBindViewHolder(holder: CurrencyAdapter.CurrencyVH, position: Int) {
-        holder.bind(currencies[position])
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            CurrencyAdapterType.EMPTY.ordinal -> EmptyVH(
+                LayoutInflater.from(parent.context).inflate(R.layout.item_empty, parent, false)
+            )
+            else -> CurrencyVH(
+                LayoutInflater.from(parent.context).inflate(R.layout.item_currency, parent, false)
+            )
+        }
     }
+
+    override fun getItemCount(): Int = if (currencies.isEmpty()) 1 else currencies.size
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is CurrencyVH)
+            holder.bind(currencies[position])
+    }
+
+    inner class EmptyVH(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     inner class CurrencyVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(currency: Currency) {
@@ -40,5 +53,9 @@ class CurrencyAdapter(private val onCurrencySelected: ((Currency) -> Unit)) :
                 setOnClickListener { onCurrencySelected.invoke(currency) }
             }
         }
+    }
+
+    enum class CurrencyAdapterType {
+        EMPTY, ITEM
     }
 }

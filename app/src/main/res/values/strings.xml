@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Mobile Challenge</string>
+    <string name="app_name">Currency Exchange</string>
+
+<!--    SPLASH-->
+    <string name="splash_image_description">A tela apresenta o ícone da aplicação</string>
 
     <!--    CURRENCY ACTIVITY-->
     <string name="activity_currency_title">Lista de Moedas</string>
@@ -22,4 +25,6 @@
     <string name="no_connection_error">Erro de conexão! Verifique sua internet e tente novamente.</string>
     <string name="fetch_currency_default_error_message">Erro ao carregar moedas.</string>
     <string name="fetch_rate_default_error_message">Erro ao atualizar as taxas de câmbio.</string>
+    <string name="invalid_amount">Insira um valor válido!</string>
+    <string name="default_empty_list_text">Nenhum resultado encontrado</string>
 </resources>

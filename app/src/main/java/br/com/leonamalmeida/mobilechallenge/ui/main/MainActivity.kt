@@ -8,11 +8,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
-import br.com.leonamalmeida.mobilechallenge.util.EXTRA_CURRENCY
 import br.com.leonamalmeida.mobilechallenge.R
+import br.com.leonamalmeida.mobilechallenge.ui.currency.CurrencyActivity
+import br.com.leonamalmeida.mobilechallenge.util.EXTRA_CURRENCY
 import br.com.leonamalmeida.mobilechallenge.util.haveNetwork
 import br.com.leonamalmeida.mobilechallenge.util.snack
-import br.com.leonamalmeida.mobilechallenge.ui.currency.CurrencyActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -42,11 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         amountTv.doOnTextChanged { text, _, _, _ ->
             convertBtn.isEnabled = !text.isNullOrBlank()
-            if (text.isNullOrEmpty()) {
-                resultValueLabelTv.visibility = View.GONE
-                resultValueCv.visibility = View.GONE
-                lastUpdateTv.visibility = View.GONE
-            }
+            displayResultValue(false)
         }
     }
 
@@ -54,30 +50,23 @@ class MainActivity : AppCompatActivity() {
         viewModel.run {
             originCurrency.observe(this@MainActivity, Observer {
                 originTv.text = it
-                lastUpdateTv.visibility = View.GONE
-                resultValueLabelTv.visibility = View.GONE
-                resultValueCv.visibility = View.GONE
+                displayResultValue(false)
             })
 
             destinyCurrency.observe(this@MainActivity, Observer {
                 destinyTv.text = it
-                lastUpdateTv.visibility = View.GONE
-                resultValueLabelTv.visibility = View.GONE
-                resultValueCv.visibility = View.GONE
-            })
-
-            value.observe(this@MainActivity, Observer {
-                lastUpdateTv.text = getString(R.string.last_update, it.first)
-                lastUpdateTv.visibility = View.VISIBLE
-                resultValueTv.text = it.second.toString()
-                resultValueLabelTv.visibility = View.VISIBLE
-                resultValueCv.visibility = View.VISIBLE
+                displayResultValue(false)
             })
 
             displayAmountField.observe(this@MainActivity, Observer {
-                amountLabelTv.visibility = if (it) View.VISIBLE else View.GONE
-                amountCv.visibility = if (it) View.VISIBLE else View.GONE
+                displayAmount(it)
                 convertBtn.visibility = if (it) View.VISIBLE else View.GONE
+            })
+
+            resultValue.observe(this@MainActivity, Observer {
+                lastUpdateTv.text = getString(R.string.last_update, it.first)
+                resultValueTv.text = it.second.toString()
+                displayResultValue(true)
             })
 
             openCurrencyActivity.observe(this@MainActivity, Observer { requestCode ->
@@ -87,13 +76,15 @@ class MainActivity : AppCompatActivity() {
                 )
             })
 
-            loading.observe(this@MainActivity, Observer {
-                mainSr.isEnabled = it
-                mainSr.isRefreshing = it
-            })
+            loading.observe(this@MainActivity, Observer { displayLoading(it) })
 
             error.observe(this@MainActivity, Observer { displayError(it) })
         }
+    }
+
+    private fun displayLoading(it: Boolean) {
+        mainSr.isEnabled = it
+        mainSr.isRefreshing = it
     }
 
     private fun displayError(msgRes: Int) {
@@ -102,6 +93,17 @@ class MainActivity : AppCompatActivity() {
             if (haveNetwork()) msgRes else R.string.no_connection_error,
             R.string.action_reload
         ) { convertBtn.performClick() }
+    }
+
+    private fun displayResultValue(display: Boolean) {
+        lastUpdateTv.visibility = if (display) View.VISIBLE else View.GONE
+        resultValueLabelTv.visibility = if (display) View.VISIBLE else View.GONE
+        resultValueCv.visibility = if (display) View.VISIBLE else View.GONE
+    }
+
+    private fun displayAmount(display: Boolean) {
+        amountLabelTv.visibility = if (display) View.VISIBLE else View.GONE
+        amountCv.visibility = if (display) View.VISIBLE else View.GONE
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

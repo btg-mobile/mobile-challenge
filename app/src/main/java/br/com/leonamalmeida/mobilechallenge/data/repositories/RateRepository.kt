@@ -6,10 +6,9 @@ import br.com.leonamalmeida.mobilechallenge.R
 import br.com.leonamalmeida.mobilechallenge.data.Result
 import br.com.leonamalmeida.mobilechallenge.data.source.local.RateLocalDataSource
 import br.com.leonamalmeida.mobilechallenge.data.source.remote.RateRemoteDataSource
+import br.com.leonamalmeida.mobilechallenge.util.formatDecimal
 import br.com.leonamalmeida.mobilechallenge.util.setSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import java.text.SimpleDateFormat
-import java.util.*
 
 /**
  * Created by Leo Almeida on 29/06/20.
@@ -21,7 +20,7 @@ interface RateRepository {
         originCode: String,
         destinyCode: String,
         amount: Float
-    ): LiveData<Result<Pair<String, Float>>>
+    ): LiveData<Result<Pair<String, String>>>
 }
 
 @Suppress("UnstableApiUsage")
@@ -36,8 +35,8 @@ class RateRepositoryImpl(
         originCode: String,
         destinyCode: String,
         amount: Float
-    ): LiveData<Result<Pair<String, Float>>> {
-        val data = MutableLiveData<Result<Pair<String, Float>>>()
+    ): LiveData<Result<Pair<String, String>>> {
+        val data = MutableLiveData<Result<Pair<String, String>>>()
 
         getRealTimeRateFromRemote(data)
 
@@ -61,17 +60,15 @@ class RateRepositoryImpl(
         originCode: String,
         destinyCode: String,
         amount: Float
-    ): Pair<String, Float> {
+    ): Pair<String, String> {
         val origin = localDataSource.getRateByCode(originCode)
-        val destiny = localDataSource.getRateByCode(destinyCode).value
-        val lastUpdate = getFullDateTime(origin.lastUpdate)
-        return Pair(lastUpdate, (amount / origin.value) * destiny)
+        val destiny = localDataSource.getRateByCode(destinyCode)
+        val convertedAmount = (amount / origin.value) * destiny.value
+
+        return Pair(origin.getLastUpdateDate(), convertedAmount.formatDecimal())
     }
 
-    private fun getFullDateTime(dateInMillis: Long): String =
-        SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date(dateInMillis))
-
-    private fun getRealTimeRateFromRemote(data: MutableLiveData<Result<Pair<String, Float>>>) {
+    private fun getRealTimeRateFromRemote(data: MutableLiveData<Result<Pair<String, String>>>) {
         disposable.add(
             remoteDataSource.getRealTimeRate()
                 .doOnSubscribe { data.postValue(Result.Loading(true)) }

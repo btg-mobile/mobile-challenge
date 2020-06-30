@@ -11,6 +11,9 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Leo Almeida on 28/06/20.
@@ -64,3 +67,18 @@ fun Context.snack(
     Snackbar.make(parent, getString(resMsg), Snackbar.LENGTH_LONG)
         .setAction(getString(resBtn)) { action.invoke() }
         .show()
+
+fun Long.getDateTime(): String =
+    SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date(this))
+
+fun Float.formatToLocalDate(): String {
+    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    return currencyFormatter.format(this).removeRange(0, 2)
+}
+
+fun Float.formatDecimal(): String {
+    return toBigDecimal()
+        .setScale(2.coerceAtLeast(toBigDecimal().scale())).toString()
+        .replace(".", ",")
+}
+

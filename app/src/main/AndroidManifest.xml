@@ -18,10 +18,10 @@
         tools:targetApi="n">
 
         <activity android:name=".ui.currency.CurrencyActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
-
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>

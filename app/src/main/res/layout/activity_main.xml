@@ -15,18 +15,18 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/mainSr"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
+        android:layout_margin="@dimen/default_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/mainSr"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,6 +52,7 @@
 
                     <TextView
                         android:id="@+id/originTv"
+                        style="@style/Text.Default"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_arrow_down_24"
@@ -79,6 +80,7 @@
 
                     <TextView
                         android:id="@+id/destinyTv"
+                        style="@style/Text.Default"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_arrow_down_24"
@@ -111,9 +113,12 @@
 
                     <EditText
                         android:id="@+id/amountTv"
+                        style="@style/Text.Default"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
+                        android:digits="0123456789,"
+                        android:imeOptions="actionDone"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:padding="@dimen/default_padding"
@@ -144,6 +149,7 @@
 
                     <TextView
                         android:id="@+id/resultValueTv"
+                        style="@style/Text.Default"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/default_padding"
@@ -178,6 +184,6 @@
                     android:visibility="gone"
                     tools:visibility="visible" />
             </LinearLayout>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </ScrollView>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

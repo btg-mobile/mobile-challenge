@@ -2,6 +2,7 @@ package br.com.leonamalmeida.mobilechallenge.data.source.remote
 
 import br.com.leonamalmeida.mobilechallenge.data.Currency
 import br.com.leonamalmeida.mobilechallenge.data.Rate
+import br.com.leonamalmeida.mobilechallenge.util.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.ResponseBody
@@ -12,7 +13,7 @@ import okhttp3.ResponseBody
 
 fun findRequestStatus(responseString: String): Boolean {
     val booleanToken = TypeToken.get(HashMap<String, Boolean>().javaClass)
-    return Gson().fromJson<Map<String, Boolean>>(responseString, booleanToken.type)["success"]
+    return Gson().fromJson<Map<String, Boolean>>(responseString, booleanToken.type)[SUCCESS_KEY]
         ?: false
 }
 
@@ -22,7 +23,7 @@ fun getErrorMessage(responseString: String): String {
     val error = Gson().fromJson<Map<String, Any>>(
         responseString,
         typeToken.type
-    )["error"] as Map<String, Any>
+    )[ERROR_KEY] as Map<String, Any>
 
     val msgBuilder = StringBuilder()
     error.forEach { (key, value) -> msgBuilder.append("$key: $value\n") }
@@ -35,14 +36,9 @@ fun getCurrencies(responseString: String): List<Currency> {
     val currencies = Gson().fromJson<Map<String, String>>(
         responseString,
         typeToken.type
-    )["currencies"] as Map<String, String>
+    )[CURRENCIES_KEY] as Map<String, String>
 
-    return currencies.map {
-        Currency(
-            it.key,
-            it.value
-        )
-    }
+    return currencies.map { Currency(code = it.key, name = it.value) }
 }
 
 fun getRates(responseString: String): List<Rate> {
@@ -51,7 +47,7 @@ fun getRates(responseString: String): List<Rate> {
     val quotes = Gson().fromJson<Map<String, Any?>>(
         responseString,
         typeToken.type
-    )["quotes"] as Map<String, Float>
+    )[QUOTES_KEY] as Map<String, Float>
 
     val lastUpdate =
         getLastUpdate(
@@ -60,7 +56,7 @@ fun getRates(responseString: String): List<Rate> {
 
     return quotes.map {
         Rate(
-            code = it.key.removePrefix("USD"),
+            code = it.key.removePrefix(USD_CODE),
             value = it.value,
             lastUpdate = lastUpdate
         )
@@ -70,37 +66,19 @@ fun getRates(responseString: String): List<Rate> {
 fun ResponseBody.currencyMap(): List<Currency> {
     val responseString = string()
 
-    val status =
-        findRequestStatus(
-            responseString
-        )
+    val status = findRequestStatus(responseString)
 
-    if (status) return getCurrencies(
-        responseString
-    )
-    else throw Exception(
-        getErrorMessage(
-            responseString
-        )
-    )
+    if (status) return getCurrencies(responseString)
+    else throw Exception(getErrorMessage(responseString))
 }
 
 fun ResponseBody.rateMap(): List<Rate> {
     val responseString = string()
 
-    val status =
-        findRequestStatus(
-            responseString
-        )
+    val status = findRequestStatus(responseString)
 
-    if (status) return getRates(
-        responseString
-    )
-    else throw Exception(
-        getErrorMessage(
-            responseString
-        )
-    )
+    if (status) return getRates(responseString)
+    else throw Exception(getErrorMessage(responseString))
 }
 
 fun getLastUpdate(responseString: String): Long {
@@ -108,8 +86,9 @@ fun getLastUpdate(responseString: String): Long {
     return Gson().fromJson<Map<String, Double>>(
         responseString,
         booleanToken.type
-    )["timestamp"]?.toLong()
+    )[TIMESTAMP_KEY]?.toLong()
         //UNIX format according CurrencyLayer API Doc. That's why we multiple by 1000L
+        //Source: https://www.epochconverter.com/
         ?.let { it * 1000L }
         ?: System.currentTimeMillis()
 }
