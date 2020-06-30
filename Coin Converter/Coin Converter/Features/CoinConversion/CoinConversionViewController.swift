@@ -126,7 +126,7 @@ class CoinConversionViewController: UIViewController {
                     
                     if let onePrice: Double = self?.viewModel?.onePrice,
                         onePrice > 0 {
-                        self?.valueLabel.text = "1 \(originSymbol) - \(String(format: "%.6f", onePrice)) \(destinySymbol)"
+                        self?.valueLabel.text = "1 \(originSymbol) = \(String(format: "%.6f", onePrice)) \(destinySymbol)"
                     } else {
                         self?.valueLabel.text = ""
                     }
