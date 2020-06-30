@@ -10,11 +10,12 @@ import Foundation
 
 struct QuotesContainerModel: Decodable {
     let success: Bool
-    let terms: String
-    let privacy: String
-    let timestamp: Int
-    let source: String
-    let quotes: [QuoteModel]
+    let terms: String?
+    let privacy: String?
+    let timestamp: Int?
+    let source: String?
+    let quotes: [QuoteModel]?
+    let error: ErrorModel?
     
     private enum QuotesModelKey: String, CodingKey {
         case success
@@ -23,25 +24,34 @@ struct QuotesContainerModel: Decodable {
         case timestamp
         case source
         case quotes
+        case error
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: QuotesModelKey.self)
         success = try container.decode(Bool.self, forKey: .success)
-        terms = try container.decode(String.self, forKey: .terms)
-        privacy = try container.decode(String.self, forKey: .privacy)
-        timestamp = try container.decode(Int.self, forKey: .timestamp)
-        source = try container.decode(String.self, forKey: .source)
+        terms = try container.decodeIfPresent(String.self, forKey: .terms)
+        privacy = try container.decodeIfPresent(String.self, forKey: .privacy)
+        timestamp = try container.decodeIfPresent(Int.self, forKey: .timestamp)
+        source = try container.decodeIfPresent(String.self, forKey: .source)
+        error = try container.decodeIfPresent(ErrorModel.self, forKey: .error)
         
-        let date: Date = Date.timestampToDate(timestamp: timestamp)
-        
-        let quotesObject: [String: Double] = try container.decode([String: Double].self, forKey: .quotes)
-        var quotes: [QuoteModel] = []
-        for (key,value) in quotesObject {
-            let newKey: String = String(key.dropFirst(source.count))
-            quotes.append(QuoteModel(symbol: newKey, price: value, source: source, updateDate: date))
+        if error == nil {
+            let date: Date = Date.timestampToDate(timestamp: timestamp!)
+            
+            if let quotesObject: [String: Double] = try container.decodeIfPresent([String: Double].self, forKey: .quotes) {
+                var quotes: [QuoteModel] = []
+                for (key,value) in quotesObject {
+                    let newKey: String = String(key.dropFirst(source!.count))
+                    quotes.append(QuoteModel(symbol: newKey, price: value, source: source!, updateDate: date))
+                }
+                
+                self.quotes = quotes
+            } else {
+                self.quotes = nil
+            }
+        } else {
+            self.quotes = nil
         }
-
-        self.quotes = quotes
     }
 }

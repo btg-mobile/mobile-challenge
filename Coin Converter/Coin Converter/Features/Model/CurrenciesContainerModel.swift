@@ -8,29 +8,36 @@
 
 struct CurrenciesContainerModel: Decodable {
     let success: Bool
-    let terms: String
-    let privacy: String
-    let currencies: [CurrencyModel]
+    let terms: String?
+    let privacy: String?
+    let currencies: [CurrencyModel]?
+    let error: ErrorModel?
     
     private enum QuotesModelKey: String, CodingKey {
         case success
         case terms
         case privacy
         case currencies
+        case error
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: QuotesModelKey.self)
         success = try container.decode(Bool.self, forKey: .success)
-        terms = try container.decode(String.self, forKey: .terms)
-        privacy = try container.decode(String.self, forKey: .privacy)
+        terms = try container.decodeIfPresent(String.self, forKey: .terms)
+        privacy = try container.decodeIfPresent(String.self, forKey: .privacy)
         
-        let currenciesObject: [String: String] = try container.decode([String: String].self, forKey: .currencies)
-        var currencies: [CurrencyModel] = []
-        for (key,value) in currenciesObject {
-            currencies.append(CurrencyModel(symbol: key, descriptionCurrency: value))
+        if let currenciesObject: [String: String] = try container.decodeIfPresent([String: String].self, forKey: .currencies) {
+            var currencies: [CurrencyModel] = []
+            for (key,value) in currenciesObject {
+                currencies.append(CurrencyModel(symbol: key, descriptionCurrency: value))
+            }
+            
+            self.currencies = currencies
+        } else {
+            currencies = nil
         }
-
-        self.currencies = currencies
+        
+        error = try container.decodeIfPresent(ErrorModel.self, forKey: .error)
     }
 }

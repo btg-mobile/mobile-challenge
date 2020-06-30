@@ -32,6 +32,12 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
                     //TODO: implement save data base
                     completion(container.currencies, nil)
                 } else {
+                    
+                    if let errorModel: ErrorModel = container.error {
+                        //TODO: Implement register log
+                        print(errorModel.info)
+                    }
+                    
                     let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "The data could not be read."])
                     completion(nil, error)
                 }
@@ -51,6 +57,12 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
                     //TODO: implement save data base
                     completion(container.quotes, nil)
                 } else {
+                    
+                    if let errorModel: ErrorModel = container.error {
+                        //TODO: Implement register log
+                        print(errorModel.info)
+                    }
+                    
                     let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "The data could not be read."])
                     completion(nil, error)
                 }
