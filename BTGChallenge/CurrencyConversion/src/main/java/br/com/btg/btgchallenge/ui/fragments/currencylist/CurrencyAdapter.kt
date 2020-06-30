@@ -27,7 +27,7 @@ class CurrencyAdapter(private val currencies: Map<String, String>, val context: 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val inflatedView = parent.inflate(R.layout.currency_item, false)
         return CurrencyHolder(inflatedView, context).listen{pos, type ->
-            val item = currencies.toList().get(pos)
+            val item = filteredCurencies.toList().get(pos)
             event.invoke(Currency(item, currencyType))
         }
     }

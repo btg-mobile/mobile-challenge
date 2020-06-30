@@ -67,12 +67,12 @@ class FragmentConversions : FragmentBase() {
                 clearFields()
                 currencyFrom = it
                 setDrawableFlag(image_view_from, it)
-                text_view_from.text = it.currency.second
+                text_view_from.text = it.currency.first + " - "+ it.currency.second
             } else if (currencyType == CurrencyType.TO) {
                 clearFields()
                 currencyTo = it
                 setDrawableFlag(image_view_to, it)
-                text_view_to.text = it.currency.second
+                text_view_to.text = it.currency.first + " - " + it.currency.second
             }
             fragmentCurrencyList.dismiss()
         }

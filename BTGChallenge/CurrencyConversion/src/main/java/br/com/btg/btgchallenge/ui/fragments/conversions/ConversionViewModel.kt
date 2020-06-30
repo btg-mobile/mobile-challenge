@@ -8,6 +8,8 @@ import br.com.btg.btgchallenge.network.api.config.Status
 import br.com.btg.btgchallenge.network.api.currencylayer.CurrencyLayerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.util.*
 
 class ConversionViewModel(val currencyLayerRepository: CurrencyLayerRepository) : ViewModel(){
 
@@ -37,8 +39,8 @@ class ConversionViewModel(val currencyLayerRepository: CurrencyLayerRepository) 
             var valueInDolar = valueToConvert/valueOrigin
 
             var conversion = valueInDolar*valueDestiny
-            var valueFormatted = "$"+String.format("%.4f", conversion)
-            convertedValue.postValue(valueFormatted)
+            val conversionString = NumberFormat.getCurrencyInstance(Locale.US).format(conversion)
+            convertedValue.postValue(conversionString)
         }else{
             convertedValue.postValue("$0.0000")
         }
