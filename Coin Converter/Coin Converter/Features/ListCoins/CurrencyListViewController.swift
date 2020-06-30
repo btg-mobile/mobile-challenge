@@ -80,7 +80,7 @@ extension CurrencyListViewController {
         //searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Currencies"
+        searchController.searchBar.placeholder = "Search Currency"
         navigationItem.searchController = searchController
         definesPresentationContext = true
         self.searchController = searchController

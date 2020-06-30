@@ -34,6 +34,7 @@ class CoinConversionViewController: UIViewController {
     // MARK: - Outlets
     //*************************************************
     
+    @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var valueTextField: CustomTextField!
     @IBOutlet private weak var originButton: CustomButton!
     @IBOutlet private weak var destinyButton: CustomButton!
@@ -180,6 +181,9 @@ extension CoinConversionViewController {
         tryAgainButton.configure(style: .line)
         
         loadingView.alpha = 0.3
+        
+        cardView.cornerRadius = 4.0
+        cardView.dropShadow()
     }
     
     private func showAlert(error: Error?, message: String? = nil) {
