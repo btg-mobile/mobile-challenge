@@ -10,7 +10,8 @@ import UIKit
 
 class CurrencyCell: UITableViewCell {
 
-    @IBOutlet private weak var flagImage: UIImageView!
+    //TODO: Implement image with flag country
+    @IBOutlet private weak var flagImage: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
