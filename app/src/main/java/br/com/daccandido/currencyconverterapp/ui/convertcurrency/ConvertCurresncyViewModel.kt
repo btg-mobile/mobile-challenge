@@ -47,6 +47,10 @@ class ConvertCurresncyViewModel(private val currencyData: CurrencyData, private 
         }
     }
 
+    fun getCurrency(field: String, value: String) : Currency?{
+        return currencyDAO.getCurrency(field, value)
+    }
+
     class ViewModelFactory(private val currencyData: CurrencyData, private val currencyDAO: CurrencyDAO) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

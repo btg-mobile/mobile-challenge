@@ -28,7 +28,8 @@
         </activity>
 
         <activity android:name=".ui.convertcurrency.ConvertCurresncyActivity"/>
-        <activity android:name=".ui.listcurrency.ListCurrencyActivity"/>
+        <activity android:name=".ui.listcurrency.ListCurrencyActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

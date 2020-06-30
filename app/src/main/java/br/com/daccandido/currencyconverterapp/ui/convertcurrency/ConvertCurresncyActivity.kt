@@ -10,6 +10,7 @@ import br.com.daccandido.currencyconverterapp.data.database.CurrencyDAO
 import br.com.daccandido.currencyconverterapp.data.model.Currency
 import br.com.daccandido.currencyconverterapp.data.model.KEY_CURRENCIES
 import br.com.daccandido.currencyconverterapp.data.model.KEY_DOLLAR
+import br.com.daccandido.currencyconverterapp.data.model.KEY_SEARCH_CODE
 import br.com.daccandido.currencyconverterapp.data.repository.CurrencyData
 import br.com.daccandido.currencyconverterapp.extensions.formatCurrency
 import br.com.daccandido.currencyconverterapp.ui.base.BaseActivity
@@ -31,6 +32,9 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
     private var currencyFromName = "Brazilian Real"
     private var currencyToName = "United States Dollar"
 
+    private var currencySource:Currency? = null
+    private var currencyTarget:Currency? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_convert_currency)
@@ -46,6 +50,7 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
         currencyNameTo.text = currencyToName
 
         setObserve()
+        configureCurrentCurrency()
 
     }
 
@@ -88,6 +93,7 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
                         currencyCodeFrom?.text = currency.code
                         currencyNameFrom?.text = currency.name
                         currencyFromCode = currency.code
+                        currencySource = currency
                     }
                 }
             } else {
@@ -96,9 +102,20 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
                         currencyCodeTo?.text = currency.code
                         currencyNameTo?.text = currency.name
                         currencyToCode = currency.code
+                        currencyTarget = currency
                     }
                 }
             }
+        }
+    }
+
+    private fun configureCurrentCurrency () {
+        viewModel.getCurrency(KEY_SEARCH_CODE, currencyFromCode)?.let {
+            currencySource = it
+        }
+
+        viewModel.getCurrency(KEY_SEARCH_CODE, currencyToCode)?.let {
+            currencyTarget = it
         }
     }
 
@@ -136,7 +153,29 @@ class ConvertCurresncyActivity: BaseActivity(), View.OnClickListener{
                 progressBar2.visibility = View.VISIBLE
                 viewModel.getQuote("$currencyToCode,$currencyFromCode")
             } else {
+               convertOffline()
+            }
+        }
+    }
 
+    private fun convertOffline () {
+        safeLet(currencySource, currencyTarget) { _currencySource, _currencyTarget ->
+            if (_currencyTarget.code == KEY_DOLLAR) {
+                val sourceValue = _currencySource.quote
+                val valueConverted = edValueForConvert.text.toString().toDouble() * sourceValue
+                resultConvert.setText(valueConverted.formatCurrency(currencyToCode))
+            } else {
+                val valueText = edValueForConvert.text.toString().toDouble()
+                val sourceValue = _currencySource.quote
+                val targetValue = _currencyTarget.quote
+
+                safeLet(sourceValue, targetValue) { _sourceValue, _targetValue ->
+                    val sourceValueConverted = valueText / _sourceValue
+                    resultConvert.setText(
+                        (sourceValueConverted * _targetValue)
+                            .formatCurrency(currencyToCode)
+                    )
+                }
             }
         }
     }

@@ -6,11 +6,10 @@ const val EXCHANGE_RATE_LIST = "list?access_key=$ACCESS_KEY"
 const val REAL_TIME_RATES = "live?access_key=$ACCESS_KEY"
 
 const val KEY_API_CURRENCIES = "currencies"
-
 const val KEY_CURRENCIES = "currencies"
-
 const val KEY_DOLLAR = "USD"
-
+const val KEY_SEARCH_CODE = "code"
+const val KEY_SEARCH_NAME = "name"
 
 const val PREFS_FILENAME = "testeBTG.prefs"
 const val IS_DOWNLOADING = "IS_DOWNLOADING"

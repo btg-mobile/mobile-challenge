@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_list_currencies.view.*
 
 class ListCurrencyAdapter(private val context: Context, private val auto: Boolean,
                           private val click: ClickItemList,
-                          private val currencies: OrderedRealmCollection<Currency>)
+                          private var currencies: OrderedRealmCollection<Currency>)
 
     : RealmRecyclerViewAdapter<Currency, ListCurrencyAdapter.ViewHolder>(currencies, auto) {
 
@@ -37,6 +37,15 @@ class ListCurrencyAdapter(private val context: Context, private val auto: Boolea
         holder.bindView(currencies[position], click)
     }
 
+    fun setList(newList: OrderedRealmCollection<Currency>) {
+        currencies = newList
+        notifyDataSetChanged()
+    }
+
+    fun sortList (field: String) {
+        currencies = currencies.sort(field)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 

@@ -54,6 +54,9 @@ class ListCurrentViewModel(private val currencyData: CurrencyData, private val c
         return currencyDAO.getAllCurrencies(sort)
     }
 
+    fun searchItem(sort: String, filter:String): RealmResults<Currency>{
+        return  currencyDAO.searchCurrency( sort, filter)
+    }
 
     class ViewModelFactory(private val currencyData: CurrencyData, private val currencyDAO: CurrencyDAO) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")

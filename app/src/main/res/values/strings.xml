@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Converter Moedas</string>
+    <string name="namelist">Moedas</string>
 
+    <string name="lable_ok">OK</string>
+    <string name="not_found">O item não foi encontrado!</string>
 
     <!-- ERROR -->
     <string name="error_not_exchange_rates">As taxas de câmbio não estão disponíveis!</string>

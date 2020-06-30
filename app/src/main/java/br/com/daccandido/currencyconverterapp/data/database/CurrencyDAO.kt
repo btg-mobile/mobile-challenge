@@ -54,9 +54,13 @@ class CurrencyDAO {
         return dataBaseRealm
             .where(Currency::class.java)
             .beginGroup()
-                .contains("code", filter)
-                .or()
+                .contains("code", filter.toUpperCase())
+                    .or()
                 .contains("name", filter)
+                    .or()
+                .equalTo("code", filter.toUpperCase())
+                    .or()
+                .equalTo("name", filter)
             .endGroup()
             .sort(sort).findAll()
     }

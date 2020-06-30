@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import br.com.daccandido.currencyconverterapp.R
 import br.com.daccandido.currencyconverterapp.data.database.CurrencyDAO
 import br.com.daccandido.currencyconverterapp.data.repository.CurrencyData
+import br.com.daccandido.currencyconverterapp.prefs
 import br.com.daccandido.currencyconverterapp.ui.convertcurrency.ConvertCurresncyActivity
 import br.com.daccandido.currencyconverterapp.utils.isInternetAvailable
 import kotlinx.android.synthetic.main.activity_splash_screen.*
@@ -26,12 +27,17 @@ class SplashScreenActivity : AppCompatActivity() {
 
         setUpObserve()
 
-        if (isInternetAvailable()) {
-            loadingInfo()
+        if (prefs.isDownloadingInfo.not()) {
+            if (isInternetAvailable()) {
+                loadingInfo()
+            } else {
+                viewModel.isLoading.value = false
+                tvError?.text = getString(R.string.not_internet)
+            }
         } else {
-            viewModel.isLoading.value = false
-            tvError?.text = getString(R.string.not_internet)
+            callActivity()
         }
+
     }
 
     private fun setUpObserve () {
@@ -53,16 +59,20 @@ class SplashScreenActivity : AppCompatActivity() {
                 tvError?.text = getString(it)
             } ?: run {
                 if (isSuccess) {
-                    Intent(this@SplashScreenActivity, ConvertCurresncyActivity::class.java).apply {
-                        startActivity(this)
-                        finish()
-                    }
-
+                    prefs.isDownloadingInfo = true
+                    callActivity()
                 }  else {
                     tvError.visibility = View.VISIBLE
                     tvError?.text = getString(R.string.error)
                 }
             }
+        }
+    }
+
+    private fun callActivity() {
+        Intent(this@SplashScreenActivity, ConvertCurresncyActivity::class.java).apply {
+            startActivity(this)
+            finish()
         }
     }
 }
