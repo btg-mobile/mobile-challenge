@@ -6,12 +6,27 @@
         <variable
             name="viewModel"
             type="br.com.btg.btgchallenge.ui.fragments.conversions.ConversionViewModel" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/grandient_background">
+
+        <TextView
+            android:id="@+id/step_3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/circle_number"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="3"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -28,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat"
             android:text="@string/currency_conversion"
             android:textColor="@android:color/white"
             android:textSize="24sp"
@@ -61,8 +76,22 @@
                     android:id="@+id/container_from"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_weight=".1">
+
+                    <TextView
+                        android:id="@+id/step_1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_number"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/text_view_from"
@@ -116,8 +145,22 @@
                     android:id="@+id/container_to"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_weight=".1">
+
+                    <TextView
+                        android:id="@+id/step_2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_number"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/image_view_to"
@@ -136,7 +179,7 @@
                         android:fontFamily="@font/montserrat"
                         android:gravity="center_vertical|end"
                         android:maxLines="3"
-                        android:text="@string/select_currency"
+                        android:text="@string/select_another_currency"
                         android:textColor="@android:color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/image_view_to"
@@ -148,7 +191,21 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_weight=".1">
+
+                <TextView
+                    android:id="@+id/step_4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle_number"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="4"
+                    android:visibility="@{viewModel.convertedValue.length()>0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/text_view_converted_value"
@@ -172,6 +229,7 @@
             style="@style/EditTextTransparentEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_weight=".1"
             android:textColorHint="#fff"
             app:errorEnabled="true"
