@@ -17,6 +17,10 @@
         android:theme="@style/AppTheme"
         tools:targetApi="n">
 
+        <uses-library
+            android:name="android.test.runner"
+            android:required="false" />
+
         <activity android:name=".ui.currency.CurrencyActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.splash.SplashActivity">

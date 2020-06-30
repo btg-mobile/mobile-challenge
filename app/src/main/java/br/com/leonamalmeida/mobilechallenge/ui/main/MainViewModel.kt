@@ -34,7 +34,9 @@ class MainViewModel @ViewModelInject constructor(private val repository: RateRep
     }
 
     val resultValue = MediatorLiveData<Pair<String, String>>().apply {
-        addSource(_resultValue) { if (it is Result.Success) value = it.value }
+        addSource(Transformations.distinctUntilChanged(_resultValue)) {
+            if (it is Result.Success) value = it.value
+        }
     }
 
     val loading = MediatorLiveData<Boolean>().apply {
@@ -55,13 +57,11 @@ class MainViewModel @ViewModelInject constructor(private val repository: RateRep
     }
 
     fun onOriginClick() {
-        openCurrencyActivity.value =
-            CURRENCY_ORIGIN_REQUEST
+        openCurrencyActivity.value = CURRENCY_ORIGIN_REQUEST
     }
 
     fun onDestinyClick() {
-        openCurrencyActivity.value =
-            CURRENCY_DESTINY_REQUEST
+        openCurrencyActivity.value = CURRENCY_DESTINY_REQUEST
     }
 
     fun convert(amount: String) {

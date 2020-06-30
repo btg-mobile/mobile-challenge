@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         amountTv.doOnTextChanged { text, _, _, _ ->
             convertBtn.isEnabled = !text.isNullOrBlank()
-            displayResultValue(false)
+            if (text.isNullOrBlank()) displayResultValue(false)
         }
     }
 
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
             resultValue.observe(this@MainActivity, Observer {
                 lastUpdateTv.text = getString(R.string.last_update, it.first)
-                resultValueTv.text = it.second.toString()
+                resultValueTv.text = it.second
                 displayResultValue(true)
             })
 

@@ -17,8 +17,7 @@ class CurrencyViewModel @ViewModelInject constructor(private val repository: Cur
     ViewModel() {
 
     private val fetchEvent = MutableLiveData<FetchEvent>()
-    val onSelectedCurrencyEvent =
-        SingleLiveEvent<Currency>()
+    val onSelectedCurrencyEvent = SingleLiveEvent<Currency>()
 
     private val data = Transformations.switchMap(fetchEvent) {
         when (it) {
@@ -54,7 +53,7 @@ class CurrencyViewModel @ViewModelInject constructor(private val repository: Cur
         else fetchEvent.value = FetchEvent.SearchBy(keyToSearch, false)
     }
 
-    fun filterByCode(keyToSearch: String, orderByName: Boolean) {
+    fun orderBy(keyToSearch: String, orderByName: Boolean) {
         if (fetchEvent.value is FetchEvent.SearchBy)
             fetchEvent.value =
                 (fetchEvent.value as FetchEvent.SearchBy).copy(orderByName = orderByName)

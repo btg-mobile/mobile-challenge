@@ -33,6 +33,15 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    testOptions {
+        testOptions {
+            unitTests.returnDefaultValues = true
+        }
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -49,9 +58,22 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.1.0'
 
+    //Test
     testImplementation 'junit:junit:4.13'
+    testImplementation "com.google.truth:truth:1.0.1"
+    testImplementation 'org.robolectric:robolectric:4.3'
+    testImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+
+    androidTestImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
 
     //Lifecycle
     def lifecycle_version = "2.2.0"
@@ -85,7 +107,7 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    //HILT
+    //HILT (DI)
     implementation "com.google.dagger:hilt-android:2.28-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
     //Hilt ViewModel

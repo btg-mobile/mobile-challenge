@@ -72,8 +72,8 @@ class CurrencyActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
-            R.id.filterByCode -> viewModel.filterByCode(searchTv.text.toString(), false)
-            R.id.filterByName -> viewModel.filterByCode(searchTv.text.toString(), true)
+            R.id.orderByCode -> viewModel.orderBy(searchTv.text.toString(), false)
+            R.id.orderByName -> viewModel.orderBy(searchTv.text.toString(), true)
         }
         return super.onOptionsItemSelected(item)
     }

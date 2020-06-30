@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Currency Exchange</string>
 
-<!--    SPLASH-->
+    <!--    SPLASH-->
     <string name="splash_image_description">A tela apresenta o ícone da aplicação</string>
 
     <!--    CURRENCY ACTIVITY-->
     <string name="activity_currency_title">Lista de Moedas</string>
     <string name="search_currency_hint">Busque pelo código ou nome…</string>
     <string name="search_button_content_description">Botão ilustrativo para a ação de pesquisar moedas</string>
-    <string name="currency_menu_filter_code">Filtrar por Código</string>
-    <string name="currency_menu_filter_name">Filtrar por Nome</string>
+    <string name="currency_menu_filter_code">Ordenar por Código</string>
+    <string name="currency_menu_filter_name">Ordenar por Nome</string>
 
     <!--    MAIN ACTIVITY-->
     <string name="activity_main_title">Conversão de Câmbio</string>
