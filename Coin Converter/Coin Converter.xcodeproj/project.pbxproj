@@ -48,6 +48,10 @@
 		A05536C124AACE93008CAA14 /* QuotesContainerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536BC24AACE92008CAA14 /* QuotesContainerModel.swift */; };
 		A05536C424AACEBD008CAA14 /* QuotesContainer.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536C224AACEBD008CAA14 /* QuotesContainer.json */; };
 		A05536C524AACEBD008CAA14 /* CurrenciesContainer.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536C324AACEBD008CAA14 /* CurrenciesContainer.json */; };
+		A05536CA24AAD6F7008CAA14 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536C924AAD6F7008CAA14 /* NetworkServiceMock.swift */; };
+		A05536CC24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536CB24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift */; };
+		A05536CD24AB921A008CAA14 /* CurrenciesContainer.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536C324AACEBD008CAA14 /* CurrenciesContainer.json */; };
+		A05536CF24AB92EC008CAA14 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536CE24AB92EC008CAA14 /* error.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,9 @@
 		A05536BC24AACE92008CAA14 /* QuotesContainerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesContainerModel.swift; sourceTree = "<group>"; };
 		A05536C224AACEBD008CAA14 /* QuotesContainer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuotesContainer.json; sourceTree = "<group>"; };
 		A05536C324AACEBD008CAA14 /* CurrenciesContainer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrenciesContainer.json; sourceTree = "<group>"; };
+		A05536C924AAD6F7008CAA14 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		A05536CB24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrencyLayerServiceTests.swift; path = "Coin Converter/Shared/Network/CurrencyLayerServiceTests.swift"; sourceTree = SOURCE_ROOT; };
+		A05536CE24AB92EC008CAA14 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +264,7 @@
 			children = (
 				A055365124A7F32E008CAA14 /* NetworkService.swift */,
 				A055365324A7FFCB008CAA14 /* HTTPMethods.swift */,
+				A05536C924AAD6F7008CAA14 /* NetworkServiceMock.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 		A055369724AA6105008CAA14 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A05536CB24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				A05536A324AA7AEF008CAA14 /* currencies.json */,
+				A05536CE24AB92EC008CAA14 /* error.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -513,6 +523,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05536CF24AB92EC008CAA14 /* error.json in Resources */,
+				A05536CD24AB921A008CAA14 /* CurrenciesContainer.json in Resources */,
 				A05536A424AA7AEF008CAA14 /* currencies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +541,7 @@
 				A055367F24A943CE008CAA14 /* CustomButton.swift in Sources */,
 				A055369124A954EB008CAA14 /* ReusableProtocol.swift in Sources */,
 				A055366E24A8FD1C008CAA14 /* CoinConverter.xcdatamodeld in Sources */,
+				A05536CA24AAD6F7008CAA14 /* NetworkServiceMock.swift in Sources */,
 				A055368624A94FF0008CAA14 /* CurrencyListViewModel.swift in Sources */,
 				A055365624A8030E008CAA14 /* Requestable.swift in Sources */,
 				A055361724A7E656008CAA14 /* AppDelegate.swift in Sources */,
@@ -560,6 +573,7 @@
 			files = (
 				A05536AF24AAB847008CAA14 /* EndpointCurrencyLayerTests.swift in Sources */,
 				A05536A224AA6760008CAA14 /* CurrencyListViewModelTests.swift in Sources */,
+				A05536CC24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift in Sources */,
 				A055369F24AA62D4008CAA14 /* CurrencyCellViewModelTests.swift in Sources */,
 				A05536AA24AAB4EC008CAA14 /* StringTests.swift in Sources */,
 				A055369624AA60F3008CAA14 /* Utils.swift in Sources */,

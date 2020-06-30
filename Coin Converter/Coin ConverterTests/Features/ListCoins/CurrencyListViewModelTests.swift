@@ -12,7 +12,7 @@ import XCTest
 class CurrencyListViewModelTests: XCTestCase {
     
     func testNumberItens() {
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
         
@@ -24,7 +24,7 @@ class CurrencyListViewModelTests: XCTestCase {
     }
     
     func testSelectedCurrency() {
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         let currencyModel = currenciesModel.first!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: currencyModel)
@@ -34,7 +34,7 @@ class CurrencyListViewModelTests: XCTestCase {
     
     
     func testBuildCellViewModel() {
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         let currencyModel = currenciesModel.first!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
@@ -47,7 +47,7 @@ class CurrencyListViewModelTests: XCTestCase {
     
     func testFilterSymbolOneCaracter() {
         let expectation: XCTestExpectation = self.expectation(description: "Test Filter Symbol")
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
         
@@ -64,7 +64,7 @@ class CurrencyListViewModelTests: XCTestCase {
     
     func testFilterSymbol() {
         let expectation: XCTestExpectation = self.expectation(description: "Test Filter Symbol")
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
         
@@ -81,7 +81,7 @@ class CurrencyListViewModelTests: XCTestCase {
     
     func testFilterEmptyResult() {
         let expectation: XCTestExpectation = self.expectation(description: "Test Filter Empty Result")
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
         
@@ -98,7 +98,7 @@ class CurrencyListViewModelTests: XCTestCase {
     
     func testFilterDescription() {
         let expectation: XCTestExpectation = self.expectation(description: "Test Filter Description")
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
         
@@ -115,7 +115,7 @@ class CurrencyListViewModelTests: XCTestCase {
     
     func testFilterDescriptionEmptyResult() {
         let expectation: XCTestExpectation = self.expectation(description: "Test Filter Description Empty Result")
-        let currenciesModel: [CurrencyModel] = Utils.loadJson(with: "currencies")!
+        let currenciesModel: [CurrencyModel] = Utils.loadJsonToModel(with: "currencies")!
         
         let viewModel: CurrencyListViewModel = CurrencyListViewModel(currencies: currenciesModel, selectedCurrency: nil)
         

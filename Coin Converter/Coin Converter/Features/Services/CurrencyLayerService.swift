@@ -20,7 +20,23 @@ protocol CurrencyLayerServiceProtocol {
 
 class CurrencyLayerService: CurrencyLayerServiceProtocol {
     
-    let networkService: NetworkService = NetworkService()
+    //*************************************************
+    // MARK: - Private Properties
+    //*************************************************
+    
+    private let networkService: NetworkService
+    
+    //*************************************************
+    // MARK: - Inits
+    //*************************************************
+    
+    init(withSession session: URLSessionProtocol = URLSession.shared) {
+         networkService = NetworkService(withSession: session)
+    }
+    
+    //*************************************************
+    // MARK: - Public Methods
+    //*************************************************
     
     func requestCurrencies(completion: @escaping ([CurrencyModel]?, Error?) -> Void) {
         let endPoint: Endpoint.CurrencyLayer = Endpoint.CurrencyLayer.list
@@ -38,7 +54,7 @@ class CurrencyLayerService: CurrencyLayerServiceProtocol {
                         print(errorModel.info)
                     }
                     
-                    let error: Error = NSError(domain: #file, code: -1, userInfo:  [NSLocalizedDescriptionKey: "The data could not be read."])
+                    let error: Error = NSError(domain: #file, code: -1, userInfo: [NSLocalizedDescriptionKey: "The data could not be read."])
                     completion(nil, error)
                 }
             case .failure(let error):

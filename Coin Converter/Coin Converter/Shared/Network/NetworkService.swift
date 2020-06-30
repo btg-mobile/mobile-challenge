@@ -16,7 +16,15 @@ class NetworkService {
     // MARK: - Private Properties
     //*************************************************
     
-    private let session: URLSession = URLSession.shared
+    private var session: URLSessionProtocol
+    
+    //*************************************************
+    // MARK: - Inits
+    //*************************************************
+
+    init(withSession session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
     
     //*************************************************
     // MARK: - Public Methods
@@ -26,16 +34,21 @@ class NetworkService {
         
         let urlRequest: URLRequest = buildRequest(endpoint.url, method: endpoint.method, headers: endpoint.headers, parameters: endpoint.parameters, customBody: endpoint.customBody)
         
-        let task: URLSessionDataTask = session.dataTask(with: urlRequest) { (data, response, error) in
+        let task: URLSessionDataTaskProtocol = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error: Error = error {
                 completion(.failure(error))
                 return
             }
             
-            do {
-                let jsonObject: T = try JSONDecoder().decode(T.self, from: data!)
-                completion(.success(jsonObject))
-            } catch {
+            if let data: Data = data {
+                do {
+                    let jsonObject: T = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(jsonObject))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else {
+                let error: Error = NSError(domain: #file, code: -1, userInfo: [NSLocalizedDescriptionKey: "Empty data"])
                 completion(.failure(error))
             }
         }
