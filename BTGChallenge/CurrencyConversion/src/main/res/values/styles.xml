@@ -16,4 +16,13 @@
         <item name="android:textColorHint">@android:color/white</item>
         <item name="boxStrokeColor">@color/mtrl_textinput_default_box_stroke_color</item>
     </style>
+
+    <style name="EditTextTransparentEmpty" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="background">@android:color/transparent</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
 </resources>
