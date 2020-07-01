@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A053544D24AC594100BB10D6 /* CurrenciesContainer.json in Resources */ = {isa = PBXBuildFile; fileRef = A053544C24AC594100BB10D6 /* CurrenciesContainer.json */; };
 		A055361724A7E656008CAA14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055361624A7E656008CAA14 /* AppDelegate.swift */; };
 		A055362324A7E658008CAA14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A055362224A7E658008CAA14 /* Assets.xcassets */; };
 		A055362624A7E658008CAA14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A055362424A7E658008CAA14 /* LaunchScreen.storyboard */; };
@@ -50,7 +51,6 @@
 		A05536C524AACEBD008CAA14 /* CurrenciesContainer.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536C324AACEBD008CAA14 /* CurrenciesContainer.json */; };
 		A05536CA24AAD6F7008CAA14 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536C924AAD6F7008CAA14 /* NetworkServiceMock.swift */; };
 		A05536CC24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05536CB24AB8CF8008CAA14 /* CurrencyLayerServiceTests.swift */; };
-		A05536CD24AB921A008CAA14 /* CurrenciesContainer.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536C324AACEBD008CAA14 /* CurrenciesContainer.json */; };
 		A05536CF24AB92EC008CAA14 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = A05536CE24AB92EC008CAA14 /* error.json */; };
 		A07AE3D624ABFAD900085C3A /* CoinConversionViewModelTestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07AE3D524ABFAD900085C3A /* CoinConversionViewModelTestes.swift */; };
 		A07AE3D824ABFB8B00085C3A /* CurrenciesContainer2Symbols.json in Resources */ = {isa = PBXBuildFile; fileRef = A07AE3D724ABFB8B00085C3A /* CurrenciesContainer2Symbols.json */; };
@@ -73,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A053544C24AC594100BB10D6 /* CurrenciesContainer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrenciesContainer.json; sourceTree = "<group>"; };
 		A055361324A7E656008CAA14 /* Coin Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coin Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A055361624A7E656008CAA14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A055362224A7E658008CAA14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -421,6 +422,7 @@
 				A07AE3E124AC1B9500085C3A /* Currencies1Symbol.json */,
 				A07AE3E524AC1F2800085C3A /* empty.json */,
 				A07AE3E724AC202E00085C3A /* CurrenciesContainerEmptCurrency.json */,
+				A053544C24AC594100BB10D6 /* CurrenciesContainer.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -547,13 +549,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A053544D24AC594100BB10D6 /* CurrenciesContainer.json in Resources */,
 				A05536CF24AB92EC008CAA14 /* error.json in Resources */,
 				A07AE3E624AC1F2800085C3A /* empty.json in Resources */,
 				A07AE3DA24ABFDCA00085C3A /* QuotesContainer.json in Resources */,
 				A07AE3E824AC202E00085C3A /* CurrenciesContainerEmptCurrency.json in Resources */,
 				A07AE3E024AC1AB800085C3A /* Currencies2SymbolsOtherUSD.json in Resources */,
 				A07AE3DC24ABFE0800085C3A /* Currencies2Symbols.json in Resources */,
-				A05536CD24AB921A008CAA14 /* CurrenciesContainer.json in Resources */,
 				A07AE3D824ABFB8B00085C3A /* CurrenciesContainer2Symbols.json in Resources */,
 				A05536A424AA7AEF008CAA14 /* currencies.json in Resources */,
 				A07AE3E224AC1B9500085C3A /* Currencies1Symbol.json in Resources */,
