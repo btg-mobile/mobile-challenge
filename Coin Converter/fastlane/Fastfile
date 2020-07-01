@@ -51,7 +51,7 @@ platform :ios do
     ensure_git_status_clean
 
     # Creates a tag for this version.
-    path = "Coin Converter/Coin Converter/App/Info.plist"
+    path = "Coin Converter/App/Info.plist"
     version_number = get_info_plist_value(path: path, key: "CFBundleShortVersionString")
     build_number = get_info_plist_value(path: path, key: "CFBundleVersion")
 
@@ -104,7 +104,7 @@ platform :ios do
     upload_to_testflight(changelog: changelog)
 
     # Creates a tag for this version.
-    path = "Coin Converter/Coin Converter/App/Info.plist"
+    path = "Coin Converter/App/Info.plist"
     version_number = get_info_plist_value(path: path, key: "CFBundleShortVersionString")
     build_number = get_info_plist_value(path: path, key: "CFBundleVersion")
 
@@ -125,7 +125,7 @@ platform :ios do
 
       # Run the tests
       run_tests(
-      	project: "Coin Converter/Coin Converter.xcodeproj",
+      	project: "Coin Converter.xcodeproj",
         scheme: "Coin Converter",
         slack_url: ENV["SLACK_URL"],
         slack_channel: "#ios-integrations",
