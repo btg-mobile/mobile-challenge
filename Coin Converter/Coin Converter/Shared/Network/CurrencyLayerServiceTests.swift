@@ -44,8 +44,29 @@ class CurrencyLayerServiceTests: XCTestCase {
                 XCTFail("Must not have the model")
             } else if let error: Error = error {
                 
-                let expectedErrorMessage: String = "The data could not be read"
-                XCTAssertEqual("", error.localizedDescription)
+                let expectedErrorMessage: String = "The data could not be read."
+                XCTAssertEqual(expectedErrorMessage, error.localizedDescription)
+            }
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 4.0)
+    }
+    
+    func testErrorServerRequestCurrencies() {
+        let expectation = self.expectation(description: "Request Currencies")
+        let session = Utils.createSession(with: "empty", statusCode: 500, error: nil)
+        
+        let currencyLayerService: CurrencyLayerService = CurrencyLayerService(withSession: session!)
+        
+        currencyLayerService.requestCurrencies { (model, error) in
+            if model != nil {
+                XCTFail("Must not have the model")
+            } else if let error: Error = error {
+                
+                let expectedErrorMessage: String = "The data couldn’t be read because it isn’t in the correct format."
+                XCTAssertEqual(expectedErrorMessage, error.localizedDescription)
             }
             
             expectation.fulfill()

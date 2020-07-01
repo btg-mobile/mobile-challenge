@@ -20,11 +20,11 @@ class StringTests: XCTestCase {
     }
     
     func testCurrency(){
-        let fullValue: String = "1.000,00"
-        let digits: String = fullValue.digits
+        let fullValue: String = "1,000.00"
+        let currency: String = fullValue.toCurrency()
         
-        let expectedDigits: String = "100000"
-        XCTAssertEqual(expectedDigits, digits)
+        let expectedCurrency: String = " 1.000,00"
+        XCTAssertEqual(expectedCurrency, currency)
     }
 
 }
