@@ -117,6 +117,7 @@ class CoinConversionViewController: UIViewController {
                             self?.resultLabel.text = nil
                         }
                         self?.showAlert(error: error)
+                        self?.viewInteraction(.unlock)
                         return
                 }
                 
