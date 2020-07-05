@@ -9,10 +9,12 @@
 import UIKit
 
 class HomePresenter: HomePresenterInput {
-
+    
     weak var output: HomePresenterOutput?
     var route: HomeWireframe
     var interactor: HomeInteractorInput
+    var viewModelTo: HomeViewModel!
+    var viewModelFrom: HomeViewModel!
     
     init(route: HomeWireframe, interactor: HomeInteractorInput) {
         self.route = route
@@ -23,18 +25,19 @@ class HomePresenter: HomePresenterInput {
         interactor.loadRequest()
     }
     
-    func send(toCurrency: String, fromCurrency: String, amount: Decimal) {
-        interactor.convert(toCurrency: toCurrency, fromCurrency: fromCurrency, amount: amount)
+    func send(amount: Decimal) {
+        interactor.convert(toCurrency: viewModelTo.currency, fromCurrency: viewModelFrom.currency, amount: amount)
     }
 }
 
 extension HomePresenter: HomeInteractorOutput {
     
     func converted(sum: Decimal) {
-        guard let sumString = sum.toString()?.toCurrency() else {
+        guard let sumString = sum.toString()?.toCurrency()else {
             return
         }
-        self.output?.converted(sum: sumString)
+        let textConvert =  "Valor Convertido é: \(sumString)"
+        self.output?.converted(sum: textConvert)
     }
     
     func fetched(entites: [HomeEntity]) {
@@ -44,9 +47,10 @@ extension HomePresenter: HomeInteractorOutput {
             let imageFrom = UIImage(named: from.currency.lowercased()) else {
                 return
         }
-        
+        viewModelTo = HomeViewModel(name: to.name, currency: to.currency, imageView: imageTo)
+        viewModelFrom = HomeViewModel(name: from.name, currency: from.currency, imageView: imageFrom)
         DispatchQueue.main.async {
-            self.output?.load(toViewModel: HomeViewModel(name: to.name, currency: to.currency, imageView: imageTo), fromViewModel: HomeViewModel(name: from.name, currency: from.currency, imageView: imageFrom))
+            self.output?.load(toViewModel: self.viewModelTo, fromViewModel: self.viewModelFrom)
         }
     }
     

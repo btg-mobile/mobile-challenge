@@ -14,7 +14,7 @@ protocol HomePresenterOutput: class {
 }
 protocol HomePresenterInput {
     func viewDidLoad()
-    func send(toCurrency: String, fromCurrency: String, amount: Decimal)
+    func send(amount: Decimal)
 }
 
 protocol HomeInteractorInput {
