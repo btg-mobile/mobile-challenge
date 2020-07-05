@@ -22,6 +22,11 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
     func viewDidLoad() {
         self.interactor.loadData()
     }
+    
+    func didSelected(viewModel: ListViewModel) {
+        let homeViewModel = HomeViewModel(name: viewModel.name, currency: viewModel.currency, imageView: viewModel.imageView)
+        self.wireframe.updateCurrency(viewModel: homeViewModel)
+    }
 }
 
 extension ListCurrencyPresenter: ListCurrencyInteractorOuput {

@@ -14,6 +14,7 @@ class HomePresenter: HomePresenterInput {
     var interactor: HomeInteractorInput
     var viewModelTo: HomeViewModel!
     var viewModelFrom: HomeViewModel!
+    var changerCurrency: CurrencyChange = .to
     
     init(route: HomeWireframe, interactor: HomeInteractorInput) {
         self.route = route
@@ -51,9 +52,24 @@ extension HomePresenter: HomeInteractorOutput {
         }
     }
     
-    func changeCurrency(currency: CurrencyChange) {
-        switch currency {
+    func updateChanger(viewModel: HomeViewModel) {
+        switch changerCurrency {
         
+        case .to:
+            viewModelTo = viewModel
+        case .from:
+            viewModelFrom = viewModel
+        }
+        
+        DispatchQueue.main.async {
+            self.output?.load(toViewModel: self.viewModelTo, fromViewModel: self.viewModelFrom)
+        }
+    }
+    
+    func changeCurrency(currency: CurrencyChange) {
+        changerCurrency = currency
+        switch changerCurrency {
+    
         case .to:
             route.showList(removeSymbol: viewModelFrom.currency)
         case .from:

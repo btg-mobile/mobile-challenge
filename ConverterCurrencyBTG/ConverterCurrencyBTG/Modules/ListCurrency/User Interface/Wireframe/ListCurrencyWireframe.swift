@@ -6,10 +6,13 @@
 //  Copyright © 2020 Thiago Santos. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class ListCurrencyWireframe {
+    
+    weak var output: ListCurrencyWireframeOuput?
+    weak var viewController: ListViewCurrency?
     
     func makeScreen(removeSymbol: String) -> ListViewCurrency {
         let interactor = ListCurrencyInteractor(manager: CurrencyManager())
@@ -18,6 +21,12 @@ class ListCurrencyWireframe {
         let viewController = ListViewCurrency()
         viewController.presenter = presenter
         presenter.ouput = viewController
+        self.viewController = viewController
         return viewController
+    }
+    
+    func updateCurrency(viewModel: HomeViewModel) {
+        output?.updateCurrency(currency: viewModel)
+        viewController?.dismiss(animated: true, completion: nil)
     }
 }

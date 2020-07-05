@@ -23,9 +23,18 @@ class HomeWireframe {
     }
     
     func showList(removeSymbol: String) {
-        let listView = ListCurrencyWireframe().makeScreen(removeSymbol: removeSymbol)
-        let navigation = UINavigationController(rootViewController: listView)
+        let listWiframe = ListCurrencyWireframe()
+        listWiframe.output = self
+        let navigation = UINavigationController(rootViewController: listWiframe.makeScreen(removeSymbol: removeSymbol))
         navigation.modalPresentationStyle = .fullScreen
         viewController?.present(navigation, animated: true, completion: nil)
     }
+}
+
+extension HomeWireframe: ListCurrencyWireframeOuput {
+    func updateCurrency(currency: HomeViewModel) {
+        viewController?.presenter.updateChanger(viewModel: currency)
+    }
+    
+    
 }

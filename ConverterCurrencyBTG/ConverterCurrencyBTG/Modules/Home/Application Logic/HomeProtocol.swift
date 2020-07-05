@@ -19,6 +19,7 @@ protocol HomePresenterOutput: class {
 }
 protocol HomePresenterInput {
     func viewDidLoad()
+    func updateChanger(viewModel: HomeViewModel)
     func send(amount: Decimal)
     func changeCurrency(currency: CurrencyChange)
 }

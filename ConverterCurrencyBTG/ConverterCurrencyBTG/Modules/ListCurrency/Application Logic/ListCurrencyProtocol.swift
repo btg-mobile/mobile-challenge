@@ -10,6 +10,7 @@ import Foundation
 
 protocol ListCurrencyPresenterInput {
     func viewDidLoad()
+    func didSelected(viewModel: ListViewModel)
 }
 
 protocol ListCurrencyPresenterOuput: class {
@@ -21,4 +22,8 @@ protocol ListCurrencyInteractorInput {
 
 protocol ListCurrencyInteractorOuput: class {
     func fetched(entites: [HomeEntity])
+}
+
+protocol ListCurrencyWireframeOuput: class {
+    func updateCurrency(currency: HomeViewModel)
 }
