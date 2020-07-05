@@ -26,6 +26,9 @@
 		F39C265724B2300B009DA826 /* ListQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C265624B2300B009DA826 /* ListQuotes.swift */; };
 		F39C265924B230E2009DA826 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C265824B230E2009DA826 /* HomeEntity.swift */; };
 		F39C265B24B231A5009DA826 /* HomeEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C265A24B231A5009DA826 /* HomeEntityMapper.swift */; };
+		F39C265E24B2450A009DA826 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C265D24B2450A009DA826 /* HomeViewModel.swift */; };
+		F3A4067B24B25ACF009B173B /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */; };
+		F3A4067D24B25D99009B173B /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4067C24B25D99009B173B /* Extension+String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		F39C265624B2300B009DA826 /* ListQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuotes.swift; sourceTree = "<group>"; };
 		F39C265824B230E2009DA826 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 		F39C265A24B231A5009DA826 /* HomeEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntityMapper.swift; sourceTree = "<group>"; };
+		F39C265D24B2450A009DA826 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Decimal.swift"; sourceTree = "<group>"; };
+		F3A4067C24B25D99009B173B /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 		F39C260D24AC020A009DA826 /* ConverterCurrencyBTG */ = {
 			isa = PBXGroup;
 			children = (
+				F39C264724B229D3009DA826 /* Modules */,
 				F39C263324AC2D41009DA826 /* Commom */,
 				F39C260E24AC020A009DA826 /* AppDelegate.swift */,
 				F39C261024AC020A009DA826 /* SceneDelegate.swift */,
@@ -127,7 +134,7 @@
 		F39C263324AC2D41009DA826 /* Commom */ = {
 			isa = PBXGroup;
 			children = (
-				F39C264724B229D3009DA826 /* Modules */,
+				F3A4067924B24B7A009B173B /* Extension */,
 				F39C263B24AC468A009DA826 /* Model */,
 				F39C263424AC2D4A009DA826 /* Manager */,
 			);
@@ -176,6 +183,7 @@
 		F39C264924B22A3B009DA826 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				F39C265C24B24356009DA826 /* ViewModel */,
 				F39C265324B22B3A009DA826 /* Wiframe */,
 				F39C265024B22B0A009DA826 /* Presenter */,
 				F39C264F24B22A75009DA826 /* View */,
@@ -205,6 +213,23 @@
 				F39C265424B22B53009DA826 /* HomeWireframe.swift */,
 			);
 			path = Wiframe;
+			sourceTree = "<group>";
+		};
+		F39C265C24B24356009DA826 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F39C265D24B2450A009DA826 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3A4067924B24B7A009B173B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */,
+				F3A4067C24B25D99009B173B /* Extension+String.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +335,9 @@
 			files = (
 				F39C261324AC020A009DA826 /* HomeController.swift in Sources */,
 				F39C263624AC2D6E009DA826 /* CurrencyManager.swift in Sources */,
+				F3A4067B24B25ACF009B173B /* Extension+Decimal.swift in Sources */,
 				F39C263A24AC3E24009DA826 /* HTTPMethod.swift in Sources */,
+				F39C265E24B2450A009DA826 /* HomeViewModel.swift in Sources */,
 				F39C265724B2300B009DA826 /* ListQuotes.swift in Sources */,
 				F39C260F24AC020A009DA826 /* AppDelegate.swift in Sources */,
 				F39C264E24B22A6D009DA826 /* HomeProtocol.swift in Sources */,
@@ -320,6 +347,7 @@
 				F39C265924B230E2009DA826 /* HomeEntity.swift in Sources */,
 				F39C264C24B22A5D009DA826 /* HomeInteractor.swift in Sources */,
 				F39C265B24B231A5009DA826 /* HomeEntityMapper.swift in Sources */,
+				F3A4067D24B25D99009B173B /* Extension+String.swift in Sources */,
 				F39C261124AC020A009DA826 /* SceneDelegate.swift in Sources */,
 				F39C261924AC020A009DA826 /* ConverterCurrencyBTG.xcdatamodeld in Sources */,
 				F39C265224B22B21009DA826 /* HomePresenter.swift in Sources */,
