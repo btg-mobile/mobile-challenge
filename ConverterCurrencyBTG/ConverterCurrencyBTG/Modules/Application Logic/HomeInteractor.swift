@@ -38,7 +38,7 @@ class HomeInteractor: HomeInteractorInput {
             }
             
             switch result {
-    
+                
             case .success(let listQuotes):
                 strongSelf.entites = HomeEntityMapper.mappingListCurrency(listCurrency: list, listQuotes: listQuotes)
                 strongSelf.output?.fetched(entites: strongSelf.entites)
@@ -50,15 +50,15 @@ class HomeInteractor: HomeInteractorInput {
     
     func convert(toCurrency: String, fromCurrency: String, amount: Decimal) {
         guard let entityTo = entites.first(where: { $0.currency == toCurrency}),
-        let entityFrom = entites.first(where: { $0.currency == fromCurrency}) else {
-            return
+            let entityFrom = entites.first(where: { $0.currency == fromCurrency}) else {
+                return
         }
         var sum: Decimal  = 0.0
         if entityFrom.currency == "USD" {
-            sum = amount * entityTo.quotes
+            sum = amount / entityTo.quotes
         } else {
-
-           let convertDolar =  amount / entityTo.quotes
+            
+            let convertDolar =  amount / entityTo.quotes
             sum = convertDolar * entityFrom.quotes
         }
         self.output?.converted(sum: sum)

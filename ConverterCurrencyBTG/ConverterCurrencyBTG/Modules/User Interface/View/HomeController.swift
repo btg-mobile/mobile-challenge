@@ -20,6 +20,7 @@ class HomeController: UIViewController {
     let titleTo: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
     
@@ -39,7 +40,10 @@ class HomeController: UIViewController {
             imageViewTo.widthAnchor.constraint(equalToConstant: 50),
             imageViewTo.heightAnchor.constraint(equalToConstant: 50),
             imageViewTo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageViewTo.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            imageViewTo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleTo.topAnchor.constraint(equalTo: imageViewTo.bottomAnchor, constant: 8),
+            titleTo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 8),
+            titleTo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8)
         ])
        
     }
@@ -53,6 +57,7 @@ extension HomeController: HomePresenterOutput {
     
     func load(toViewModel: HomeViewModel, fromViewModel: HomeViewModel) {
         imageViewTo.image = toViewModel.imageView
+        titleTo.text = toViewModel.name
         presenter.send(toCurrency: toViewModel.currency, fromCurrency: fromViewModel.currency, amount: 4)
     }
 }
