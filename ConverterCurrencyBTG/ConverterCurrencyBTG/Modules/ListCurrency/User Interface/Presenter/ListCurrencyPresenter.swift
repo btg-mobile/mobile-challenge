@@ -13,6 +13,17 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
     var wireframe: ListCurrencyWireframe
     var interactor: ListCurrencyInteractorInput
     var removeSymbol: String
+    var searchText: String = ""
+    var searchIsActive: Bool = false
+    
+    var isSearchBarEmpty: Bool {
+        return searchText.isEmpty
+    }
+    
+    var isFiltering: Bool {
+      return searchIsActive && !isSearchBarEmpty
+    }
+    
     init(interactor: ListCurrencyInteractorInput, wireframe: ListCurrencyWireframe, removeSymbol: String) {
         self.interactor = interactor
         self.wireframe = wireframe
@@ -26,6 +37,10 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
     func didSelected(viewModel: ListViewModel) {
         let homeViewModel = HomeViewModel(name: viewModel.name, currency: viewModel.currency, imageView: viewModel.imageView)
         self.wireframe.updateCurrency(viewModel: homeViewModel)
+    }
+    
+    func updateSearch() {
+        interactor.searchEntity(text: self.searchText, isActive: isFiltering)
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 class ListViewCurrency: UITableViewController {
     var presenter: ListCurrencyPresenterInput!
     let cellId = "CellID"
+    let searchController = UISearchController(searchResultsController: nil)
     var viewModels: [ListViewModel] = [ListViewModel]() {
         didSet{
             tableView.reloadData()
@@ -29,6 +30,17 @@ class ListViewCurrency: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        
+        // 1
+        searchController.searchResultsUpdater = self
+        // 2
+        searchController.obscuresBackgroundDuringPresentation = false
+        // 3
+        searchController.searchBar.placeholder = "Pesquisar moeda"
+        // 4
+        navigationItem.searchController = searchController
+        // 5
+        definesPresentationContext = true
     }
     
     // MARK: - Table view data source
@@ -50,8 +62,17 @@ class ListViewCurrency: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchController.isActive = false
         presenter.didSelected(viewModel: viewModels[indexPath.row])
     }
+}
+extension ListViewCurrency: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter.searchText = searchController.searchBar.text ?? ""
+        presenter.searchIsActive = searchController.isActive
+        presenter.updateSearch()
+    }
+
 }
 
 extension ListViewCurrency: ListCurrencyPresenterOuput {

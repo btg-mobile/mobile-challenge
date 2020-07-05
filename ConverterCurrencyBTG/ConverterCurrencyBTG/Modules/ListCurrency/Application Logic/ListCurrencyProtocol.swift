@@ -9,8 +9,11 @@
 import Foundation
 
 protocol ListCurrencyPresenterInput {
+    var searchText: String { get set}
+    var searchIsActive: Bool {get set}
     func viewDidLoad()
     func didSelected(viewModel: ListViewModel)
+    func updateSearch()
 }
 
 protocol ListCurrencyPresenterOuput: class {
@@ -18,6 +21,7 @@ protocol ListCurrencyPresenterOuput: class {
 }
 protocol ListCurrencyInteractorInput {
     func loadData()
+    func searchEntity(text: String, isActive: Bool)
 }
 
 protocol ListCurrencyInteractorOuput: class {

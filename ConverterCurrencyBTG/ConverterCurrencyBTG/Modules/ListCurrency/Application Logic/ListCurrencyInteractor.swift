@@ -12,7 +12,7 @@ class ListCurrencyInteractor: ListCurrencyInteractorInput {
     weak var output: ListCurrencyInteractorOuput?
     var manager: CurrencyManager
     var entites: [HomeEntity] = [HomeEntity]()
-    
+    var filteredEntites: [HomeEntity] = [HomeEntity]()
     
     init(manager: CurrencyManager) {
         self.manager = manager
@@ -50,5 +50,18 @@ class ListCurrencyInteractor: ListCurrencyInteractorInput {
                 dump(error)
             }
         }
+    }
+    
+    func searchEntity(text: String, isActive: Bool) {
+        guard isActive else {
+            output?.fetched(entites: entites)
+           return
+        }
+        filteredEntites = entites.filter { (entity: HomeEntity) -> Bool in
+            return entity.name.lowercased().contains(text.lowercased()) || entity.currency.lowercased().contains(text.lowercased())
+        }
+        
+        output?.fetched(entites: filteredEntites)
+        
     }
 }
