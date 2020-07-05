@@ -108,12 +108,11 @@ class HomeController: UIViewController {
     }
     
     @objc func targetViewDidTappedTo(_ sender: UITapGestureRecognizer) {
-        
-        
+        presenter.changeCurrency(currency: .to)
     }
     
     @objc func targetViewDidTappedFrom(_ sender: UITapGestureRecognizer) {
-        
+        presenter.changeCurrency(currency: .from)
     }
 }
 

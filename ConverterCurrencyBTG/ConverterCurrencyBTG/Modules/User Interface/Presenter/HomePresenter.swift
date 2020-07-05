@@ -9,7 +9,6 @@
 import UIKit
 
 class HomePresenter: HomePresenterInput {
-    
     weak var output: HomePresenterOutput?
     var route: HomeWireframe
     var interactor: HomeInteractorInput
@@ -54,4 +53,7 @@ extension HomePresenter: HomeInteractorOutput {
         }
     }
     
+    func changeCurrency(currency: CurrencyChange) {
+        
+    }
 }

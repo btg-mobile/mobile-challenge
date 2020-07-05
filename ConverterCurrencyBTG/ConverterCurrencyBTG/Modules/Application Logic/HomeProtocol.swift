@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum CurrencyChange {
+    case to
+    case from
+}
+
 protocol HomePresenterOutput: class {
     func load(toViewModel: HomeViewModel, fromViewModel: HomeViewModel)
     func converted(sum: String)
@@ -15,6 +20,7 @@ protocol HomePresenterOutput: class {
 protocol HomePresenterInput {
     func viewDidLoad()
     func send(amount: Decimal)
+    func changeCurrency(currency: CurrencyChange)
 }
 
 protocol HomeInteractorInput {
