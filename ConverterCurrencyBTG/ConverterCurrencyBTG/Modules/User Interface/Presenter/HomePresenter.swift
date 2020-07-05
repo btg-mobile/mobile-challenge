@@ -36,7 +36,7 @@ extension HomePresenter: HomeInteractorOutput {
         guard let sumString = sum.toString()?.toCurrency()else {
             return
         }
-        let textConvert =  "Valor Convertido é: \(sumString)"
+        let textConvert = "Valor Convertido é: \(sumString)"
         self.output?.converted(sum: textConvert)
     }
     

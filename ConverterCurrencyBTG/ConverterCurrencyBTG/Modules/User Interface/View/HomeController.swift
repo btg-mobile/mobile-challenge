@@ -64,6 +64,8 @@ class HomeController: UIViewController {
     }
     
     func setupLayout() {
+        title = "Conversão de moeda"
+        
         let gestureTo:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(targetViewDidTappedTo(_:)))
         let gestureFrom:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(targetViewDidTappedFrom(_:)))
         viewTo.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +84,7 @@ class HomeController: UIViewController {
         NSLayoutConstraint.activate([
             viewTo.widthAnchor.constraint(equalToConstant: width),
             viewTo.heightAnchor.constraint(equalToConstant: 100),
-            viewTo.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            viewTo.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             viewTo.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             viewFrom.topAnchor.constraint(equalTo: viewTo.topAnchor),
             viewFrom.leadingAnchor.constraint(equalTo: viewTo.trailingAnchor, constant: 4),
