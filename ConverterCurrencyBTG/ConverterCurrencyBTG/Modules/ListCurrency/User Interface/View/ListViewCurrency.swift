@@ -27,7 +27,7 @@ class ListViewCurrency: UITableViewController {
         title = "Lista de moedas"
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 500
+        tableView.estimatedRowHeight = 80
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
@@ -45,6 +45,7 @@ class ListViewCurrency: UITableViewController {
         cell.imageView?.image = viewModel.imageView
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
