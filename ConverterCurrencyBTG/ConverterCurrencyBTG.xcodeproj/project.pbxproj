@@ -167,8 +167,7 @@
 		F39C264724B229D3009DA826 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F39C264924B22A3B009DA826 /* User Interface */,
-				F39C264824B22A06009DA826 /* Application Logic */,
+				F3A4068224B27B8F009B173B /* Home */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -236,6 +235,15 @@
 				F3A4067C24B25D99009B173B /* Extension+String.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F3A4068224B27B8F009B173B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F39C264924B22A3B009DA826 /* User Interface */,
+				F39C264824B22A06009DA826 /* Application Logic */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
