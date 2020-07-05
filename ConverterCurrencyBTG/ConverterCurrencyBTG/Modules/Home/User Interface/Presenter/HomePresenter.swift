@@ -41,19 +41,23 @@ extension HomePresenter: HomeInteractorOutput {
     
     func fetched(entites: [HomeEntity]) {
         guard let to = entites.first(where: { $0.currency == "BRL"}),
-            let from =  entites.first(where: { $0.currency ==  "USD"}),
-            let imageTo = UIImage(named: to.currency.lowercased()),
-            let imageFrom = UIImage(named: from.currency.lowercased()) else {
+            let from =  entites.first(where: { $0.currency ==  "USD"}) else {
                 return
         }
-        viewModelTo = HomeViewModel(name: to.name, currency: to.currency, imageView: imageTo)
-        viewModelFrom = HomeViewModel(name: from.name, currency: from.currency, imageView: imageFrom)
+        viewModelTo = HomeViewModel(name: to.name, currency: to.currency, imageView: UIImage(named: to.currency.lowercased()))
+        viewModelFrom = HomeViewModel(name: from.name, currency: from.currency, imageView: UIImage(named: from.currency.lowercased()))
         DispatchQueue.main.async {
             self.output?.load(toViewModel: self.viewModelTo, fromViewModel: self.viewModelFrom)
         }
     }
     
     func changeCurrency(currency: CurrencyChange) {
+        switch currency {
         
+        case .to:
+            route.showList(removeSymbol: viewModelFrom.currency)
+        case .from:
+            route.showList(removeSymbol: viewModelTo.currency)
+        }
     }
 }

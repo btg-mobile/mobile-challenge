@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  ListViewModel.swift
 //  ConverterCurrencyBTG
 //
 //  Created by Thiago Vaz on 05/07/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct HomeViewModel {
+struct ListViewModel {
     var name: String
     var currency: String
     var imageView: UIImage?
