@@ -188,10 +188,9 @@
 		F39C264824B22A06009DA826 /* Application Logic */ = {
 			isa = PBXGroup;
 			children = (
-				F39C264B24B22A5D009DA826 /* HomeInteractor.swift */,
-				F39C264D24B22A6D009DA826 /* HomeProtocol.swift */,
-				F39C265824B230E2009DA826 /* HomeEntity.swift */,
-				F39C265A24B231A5009DA826 /* HomeEntityMapper.swift */,
+				F3EB4AD424B29B7300567F12 /* Entity */,
+				F3EB4AD324B29B6800567F12 /* Protocol */,
+				F3EB4AD224B29B5D00567F12 /* Interactor */,
 			);
 			path = "Application Logic";
 			sourceTree = "<group>";
@@ -281,8 +280,8 @@
 		F3A4068524B27C07009B173B /* Application Logic */ = {
 			isa = PBXGroup;
 			children = (
-				F3A4068624B27C20009B173B /* ListCurrencyProtocol.swift */,
-				F3A4068A24B27CE7009B173B /* ListCurrencyInteractor.swift */,
+				F3EB4AD624B29B9B00567F12 /* Interactor */,
+				F3EB4AD524B29B8F00567F12 /* Protocol */,
 			);
 			path = "Application Logic";
 			sourceTree = "<group>";
@@ -310,6 +309,47 @@
 				F3A4069124B27E34009B173B /* ListCurrencyWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		F3EB4AD224B29B5D00567F12 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F39C264B24B22A5D009DA826 /* HomeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F3EB4AD324B29B6800567F12 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F39C264D24B22A6D009DA826 /* HomeProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F3EB4AD424B29B7300567F12 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F39C265824B230E2009DA826 /* HomeEntity.swift */,
+				F39C265A24B231A5009DA826 /* HomeEntityMapper.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F3EB4AD524B29B8F00567F12 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F3A4068A24B27CE7009B173B /* ListCurrencyInteractor.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F3EB4AD624B29B9B00567F12 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F3A4068624B27C20009B173B /* ListCurrencyProtocol.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
