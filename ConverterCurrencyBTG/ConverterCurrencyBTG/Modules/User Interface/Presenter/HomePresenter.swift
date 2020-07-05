@@ -41,7 +41,7 @@ extension HomePresenter: HomeInteractorOutput {
         guard let to = entites.first(where: { $0.currency == "BRL"}),
             let from =  entites.first(where: { $0.currency ==  "USD"}),
             let imageTo = UIImage(named: to.currency.lowercased()),
-            let imageFrom = UIImage(named: to.currency.lowercased()) else {
+            let imageFrom = UIImage(named: from.currency.lowercased()) else {
                 return
         }
         

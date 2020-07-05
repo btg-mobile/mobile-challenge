@@ -9,13 +9,8 @@
 import UIKit
 
 class HomeController: UIViewController {
-    let imageViewTo: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        return imageView
-    }()
+    let viewTo: CurrencyView = CurrencyView.instanceFromNib()
+    let viewFrom: CurrencyView = CurrencyView.instanceFromNib()
     
     let titleTo: UILabel = {
         let label = UILabel(frame: .zero)
@@ -34,31 +29,47 @@ class HomeController: UIViewController {
     }
     
     func setupLayout() {
-        view.addSubview(imageViewTo)
-        view.addSubview(titleTo)
+         let gestureTo:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(targetViewDidTappedTo(_:)))
+        let gestureFrom:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(targetViewDidTappedFrom(_:)))
+        viewTo.translatesAutoresizingMaskIntoConstraints = false
+        viewFrom.translatesAutoresizingMaskIntoConstraints = false
+        viewTo.tag = 0
+        viewFrom.tag = 1
+        viewTo.addGestureRecognizer(gestureTo)
+        viewFrom.addGestureRecognizer(gestureFrom)
+        view.addSubview(viewTo)
+        view.addSubview(viewFrom)
+        let width = (view.frame.width / 2) - 16
         NSLayoutConstraint.activate([
-            imageViewTo.widthAnchor.constraint(equalToConstant: 50),
-            imageViewTo.heightAnchor.constraint(equalToConstant: 50),
-            imageViewTo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageViewTo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleTo.topAnchor.constraint(equalTo: imageViewTo.bottomAnchor, constant: 8),
-            titleTo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 8),
-            titleTo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8)
+            viewTo.widthAnchor.constraint(equalToConstant: width),
+            viewTo.heightAnchor.constraint(equalToConstant: 100),
+            viewTo.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            viewTo.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewFrom.topAnchor.constraint(equalTo: viewTo.topAnchor),
+            viewFrom.leadingAnchor.constraint(equalTo: viewTo.trailingAnchor, constant: 4),
+            viewFrom.heightAnchor.constraint(equalTo: viewTo.heightAnchor),
+            viewFrom.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 4)
         ])
        
+    }
+    
+    @objc func targetViewDidTappedTo(_ sender: UITapGestureRecognizer) {
+        
+        
+    }
+    
+    @objc func targetViewDidTappedFrom(_ sender: UITapGestureRecognizer) {
+        
     }
 }
 
 extension HomeController: HomePresenterOutput {
     
-    func converted(sum: String) {
-        print(sum)
-    }
+    func converted(sum: String) {}
     
     func load(toViewModel: HomeViewModel, fromViewModel: HomeViewModel) {
-        imageViewTo.image = toViewModel.imageView
-        titleTo.text = toViewModel.name
-        presenter.send(toCurrency: toViewModel.currency, fromCurrency: fromViewModel.currency, amount: 4)
+        viewTo.configure(viewModel: toViewModel)
+        viewFrom.configure(viewModel: fromViewModel)
     }
 }
 

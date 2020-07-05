@@ -29,6 +29,8 @@
 		F39C265E24B2450A009DA826 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C265D24B2450A009DA826 /* HomeViewModel.swift */; };
 		F3A4067B24B25ACF009B173B /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */; };
 		F3A4067D24B25D99009B173B /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4067C24B25D99009B173B /* Extension+String.swift */; };
+		F3A4067F24B2609C009B173B /* CurrencyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A4067E24B2609C009B173B /* CurrencyView.xib */; };
+		F3A4068124B26153009B173B /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4068024B26153009B173B /* CurrencyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		F39C265D24B2450A009DA826 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Decimal.swift"; sourceTree = "<group>"; };
 		F3A4067C24B25D99009B173B /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		F3A4067E24B2609C009B173B /* CurrencyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyView.xib; sourceTree = "<group>"; };
+		F3A4068024B26153009B173B /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				F39C261224AC020A009DA826 /* HomeController.swift */,
+				F3A4067E24B2609C009B173B /* CurrencyView.xib */,
+				F3A4068024B26153009B173B /* CurrencyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				F39C261E24AC0210009DA826 /* LaunchScreen.storyboard in Resources */,
 				F39C261B24AC0210009DA826 /* Assets.xcassets in Resources */,
 				F39C261624AC020A009DA826 /* Main.storyboard in Resources */,
+				F3A4067F24B2609C009B173B /* CurrencyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +345,7 @@
 				F3A4067B24B25ACF009B173B /* Extension+Decimal.swift in Sources */,
 				F39C263A24AC3E24009DA826 /* HTTPMethod.swift in Sources */,
 				F39C265E24B2450A009DA826 /* HomeViewModel.swift in Sources */,
+				F3A4068124B26153009B173B /* CurrencyView.swift in Sources */,
 				F39C265724B2300B009DA826 /* ListQuotes.swift in Sources */,
 				F39C260F24AC020A009DA826 /* AppDelegate.swift in Sources */,
 				F39C264E24B22A6D009DA826 /* HomeProtocol.swift in Sources */,
