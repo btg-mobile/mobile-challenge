@@ -13,7 +13,7 @@ public typealias Parameters = [String: String]
 protocol RequestProtocol {
     var baseUrl: String { get }
     var path: String { get }
-    var accessKey: [String: String] { get }
+    var accessKey: String { get }
     var method: HTTPMethod {get}
     func asURLRequest() throws -> URLRequest
     
@@ -21,10 +21,9 @@ protocol RequestProtocol {
 enum CurrencyRouter: RequestProtocol {
     case list
     case live
-    case convert(parameters: Parameters)
     
-    var accessKey: [String: String] {
-        return ["access_key": "f2954fa6f49f6af0b3fe2c631cc821a2"]
+    var accessKey: String {
+        return "f2954fa6f49f6af0b3fe2c631cc821a2"
     }
     
     func asURLRequest() throws -> URLRequest {
@@ -33,14 +32,8 @@ enum CurrencyRouter: RequestProtocol {
             fatalError("URLComponents invalid")
         }
         
-        var baseParameters: Parameters = accessKey
-        switch self {
-            
-        case .convert(let parameters):
-            baseParameters = parameters
-            
-        default:break
-        }
+        var baseParameters: Parameters = [:]
+        baseParameters["access_key"] = accessKey
         urlComp.queryItems = baseParameters.map({ URLQueryItem(name: $0.key, value: $0.value)})
         
         guard let url = urlComp.url else {
@@ -62,8 +55,6 @@ enum CurrencyRouter: RequestProtocol {
             return "/list"
         case .live:
             return  "/live"
-        case .convert:
-            return  "/convert"
         }
     }
     
