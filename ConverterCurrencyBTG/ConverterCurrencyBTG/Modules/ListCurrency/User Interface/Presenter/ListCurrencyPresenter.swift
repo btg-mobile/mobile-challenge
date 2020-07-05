@@ -42,6 +42,10 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
     func updateSearch() {
         interactor.searchEntity(text: self.searchText, isActive: isFiltering)
     }
+    
+    func didTap() {
+        wireframe.dismiss()
+    }
 }
 
 extension ListCurrencyPresenter: ListCurrencyInteractorOuput {

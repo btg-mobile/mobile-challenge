@@ -31,6 +31,8 @@ class ListViewCurrency: UITableViewController {
         tableView.estimatedRowHeight = 80
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(didTap))
+        
         // 1
         searchController.searchResultsUpdater = self
         // 2
@@ -41,6 +43,10 @@ class ListViewCurrency: UITableViewController {
         navigationItem.searchController = searchController
         // 5
         definesPresentationContext = true
+    }
+    
+    @objc func didTap(){
+        presenter.didTap()
     }
     
     // MARK: - Table view data source
@@ -66,6 +72,7 @@ class ListViewCurrency: UITableViewController {
         presenter.didSelected(viewModel: viewModels[indexPath.row])
     }
 }
+
 extension ListViewCurrency: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         presenter.searchText = searchController.searchBar.text ?? ""

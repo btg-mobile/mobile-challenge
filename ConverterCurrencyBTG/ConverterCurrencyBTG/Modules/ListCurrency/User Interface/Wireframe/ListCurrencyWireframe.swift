@@ -29,4 +29,8 @@ class ListCurrencyWireframe {
         output?.updateCurrency(currency: viewModel)
         viewController?.dismiss(animated: true, completion: nil)
     }
+    
+    func dismiss(){
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }

@@ -14,6 +14,7 @@ protocol ListCurrencyPresenterInput {
     func viewDidLoad()
     func didSelected(viewModel: ListViewModel)
     func updateSearch()
+    func didTap()
 }
 
 protocol ListCurrencyPresenterOuput: class {
