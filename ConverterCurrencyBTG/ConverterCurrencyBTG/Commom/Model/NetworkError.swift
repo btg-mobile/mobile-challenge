@@ -14,6 +14,8 @@ enum NetworkError: Error, Equatable {
   case timeout
   case noConnection
   case unknown(nestedError: Error?)
+  case exceededAPI
+  case keyInvalid
   
   static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
         return lhs.description == rhs.description
@@ -46,6 +48,12 @@ extension NetworkError: CustomStringConvertible {
 
     case .noConnection:
       return "no connection"
+        
+    case .exceededAPI:
+        return "Your monthly usage limit has been reached. Please upgrade your Subscription Plan."
+        
+    case .keyInvalid:
+        return "You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]"
 
     case .unknown(let nestedError):
       var desc =  "unknown error"

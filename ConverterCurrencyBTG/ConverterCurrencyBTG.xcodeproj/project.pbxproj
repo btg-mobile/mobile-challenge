@@ -51,6 +51,7 @@
 		F3ED7D6124B37BDF00396871 /* live.json in Resources */ = {isa = PBXBuildFile; fileRef = F3ED7D6024B37BDF00396871 /* live.json */; };
 		F3ED7D6324B37C1600396871 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = F3ED7D6224B37C1600396871 /* list.json */; };
 		F3ED7D6524B37DF900396871 /* LocalDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D6424B37DF900396871 /* LocalDataManagerMock.swift */; };
+		F3ED7D6724B3890D00396871 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D6624B3890D00396871 /* ErrorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		F3ED7D6024B37BDF00396871 /* live.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = live.json; sourceTree = "<group>"; };
 		F3ED7D6224B37C1600396871 /* list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		F3ED7D6424B37DF900396871 /* LocalDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManagerMock.swift; sourceTree = "<group>"; };
+		F3ED7D6624B3890D00396871 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				F39C263C24AC46A5009DA826 /* ListCurrenciesModel.swift */,
 				F39C265624B2300B009DA826 /* ListQuotes.swift */,
 				F3ED7D5824B2BD8B00396871 /* NetworkError.swift */,
+				F3ED7D6624B3890D00396871 /* ErrorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ED7D6724B3890D00396871 /* ErrorModel.swift in Sources */,
 				F39C261324AC020A009DA826 /* HomeController.swift in Sources */,
 				F39C263624AC2D6E009DA826 /* CurrencyManager.swift in Sources */,
 				F3A4067B24B25ACF009B173B /* Extension+Decimal.swift in Sources */,

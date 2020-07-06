@@ -12,7 +12,7 @@ import Foundation
 class CurrencyManager {
     
     @discardableResult
-     func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {
+    func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {
         let session = URLSession(configuration: .ephemeral)
         let request = try! route.asURLRequest()
         let dataTask =  session.dataTask(with:request) { (data, response, error) in
@@ -26,30 +26,66 @@ class CurrencyManager {
     }
     
     @discardableResult
-    func fetchList(route: CurrencyRouter = .list, completion: @escaping  (Result<ListCurrenciesModel, Error>) -> Void) -> URLSessionTask {
+    func fetchList(route: CurrencyRouter = .list, completion: @escaping  (Result<ListCurrenciesModel, NetworkError>) -> Void) -> URLSessionTask {
         return performRequest(route: route) { (dataresponse) in
             if let error = dataresponse.error {
-                completion(.failure(error))
+                completion(.failure(self.errorDefault(error: error, data: dataresponse.data ?? Data())))
                 return
             }
-            guard let data = dataresponse.data, let listModel: ListCurrenciesModel = self.decodeParse(jsonData: data) else {
+            guard let data = dataresponse.data else {
                 return
             }
-            completion(.success(listModel))
+            
+            if let listModel: ListCurrenciesModel = self.decodeParse(jsonData: data)  {
+                completion(.success(listModel))
+            } else if let errorModel: ErrorModel = self.decodeParse(jsonData: data) {
+                completion(.failure(self.errorModel(error: errorModel)))
+            }else{
+                completion(.failure(.jsonDecoding))
+            }
         }
     }
     
-    func currencyQuotes(completion: @escaping  (Result<ListQuotes, Error>) -> Void) {
+    
+    func errorDefault(error: Error, data: Data) -> NetworkError{
+        if let nsError = error as? NSError, nsError.code ==  NSURLErrorNotConnectedToInternet{
+            return .noConnection
+        }else{
+            return .http(statusCode: error._code, rawResponseData: data)
+        }
+    }
+    
+    func errorModel(error: ErrorModel)-> NetworkError {
+        switch error.error.code {
+        case 104:
+            return NetworkError.exceededAPI
+        case 101:
+            return .keyInvalid
+        default:
+            return .timeout
+        }
+    }
+    
+    func currencyQuotes(completion: @escaping  (Result<ListQuotes, NetworkError>) -> Void) {
         performRequest(route: .live) { (dataresponse) in
             if let error = dataresponse.error {
-                completion(.failure(error))
+                completion(.failure(self.errorDefault(error: error, data: dataresponse.data ?? Data())))
                 return
             }
-            guard let data = dataresponse.data, let listModel: ListQuotes = self.decodeParse(jsonData: data) else {
+            
+            guard let data = dataresponse.data else {
                 return
             }
-            completion(.success(listModel))
+            
+            if let listModel: ListQuotes = self.decodeParse(jsonData: data)  {
+                completion(.success(listModel))
+            } else if let errorModel: ErrorModel = self.decodeParse(jsonData: data){
+                completion(.failure(self.errorModel(error: errorModel)))
+            }else {
+                 completion(.failure(.jsonDecoding))
+            }
         }
+        
     }
     
     

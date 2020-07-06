@@ -45,6 +45,10 @@ extension HomePresenter: HomeInteractorOutput {
                 self.output?.error(viewModel: ErrorViewModel(title: "Oppss Error", message: "Estamos com problemas no servidor por favor tente mais tarde", image: #imageLiteral(resourceName: "icoCloud")))
             case .noConnection:
                 self.output?.error(viewModel: ErrorViewModel(title: "Oppss Error", message: "Verifique sua conexão e tente novamente", image: #imageLiteral(resourceName: "icoWifi")))
+            case .exceededAPI:
+                self.output?.error(viewModel: ErrorViewModel(title: "Oppss Error", message: "Você execedeu seu plano mensal de requisição.", image: #imageLiteral(resourceName: "icoAlert")))
+            case .keyInvalid:
+                self.output?.error(viewModel: ErrorViewModel(title: "Oppss Error", message: "Sua chave de acesso e invalida.", image: #imageLiteral(resourceName: "icoAlert")))
             }
         }
     }

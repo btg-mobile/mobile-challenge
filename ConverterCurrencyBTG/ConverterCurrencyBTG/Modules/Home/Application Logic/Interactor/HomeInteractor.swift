@@ -33,13 +33,16 @@ class HomeInteractor: HomeInteractorInput {
         }
     }
     
-    func connectionFailure(error: Error) {
-        if let nsError = error as? NSError, nsError.code ==  NSURLErrorNotConnectedToInternet, !localDataInteractor.load().isEmpty  {
-            self.output?.fetched(entites: localDataInteractor.load())
-        }else if let nsError = error as? NSError, nsError.code ==  NSURLErrorNotConnectedToInternet{
-            self.output?.connectionFailure(error: NetworkError.noConnection)
-        }else {
-            self.output?.connectionFailure(error: .http(statusCode: 200, rawResponseData: Data()))
+    func connectionFailure(error: NetworkError) {
+        switch error {
+        case .noConnection:
+            if !localDataInteractor.load().isEmpty{
+                self.output?.fetched(entites: localDataInteractor.load())
+            }else{
+                self.output?.connectionFailure(error: error)
+            }
+        default:
+             self.output?.connectionFailure(error: error)
         }
     }
     

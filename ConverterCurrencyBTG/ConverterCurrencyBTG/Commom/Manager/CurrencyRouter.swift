@@ -23,7 +23,7 @@ enum CurrencyRouter: RequestProtocol {
     case live
     
     var accessKey: String {
-        return "6e9a7ae3ac297c67a06197109c00ea2d"
+        return "f2954fa6f49f6af0b3fe2c631cc821a2"
     }
 //f2954fa6f49f6af0b3fe2c631cc821a2
     

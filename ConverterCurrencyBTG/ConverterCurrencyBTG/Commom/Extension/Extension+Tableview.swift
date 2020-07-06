@@ -81,7 +81,9 @@ extension UIViewController {
         messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
         
+        
         NSLayoutConstraint.activate([
+            messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             messageButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 20),
             messageButton.widthAnchor.constraint(equalToConstant: 200),
             messageButton.heightAnchor.constraint(equalToConstant: 40),
