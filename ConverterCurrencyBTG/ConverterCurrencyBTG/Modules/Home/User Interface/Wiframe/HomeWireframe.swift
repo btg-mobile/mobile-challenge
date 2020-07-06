@@ -12,7 +12,8 @@ class HomeWireframe {
     weak var viewController: HomeController?
     
     func makeScreen() -> HomeController {
-        let interactor = HomeInteractor(manager: CurrencyManager())
+        let localDataInteractor = LocalDataInteractor(manager: LocalDataManager())
+        let interactor = HomeInteractor(manager: CurrencyManager(), localDataInteractor: localDataInteractor)
         let presenter = HomePresenter(route: self, interactor: interactor)
         interactor.output = presenter
         let homeController = HomeController()

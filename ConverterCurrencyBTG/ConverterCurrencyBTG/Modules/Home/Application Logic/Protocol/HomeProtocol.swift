@@ -30,6 +30,6 @@ protocol HomeInteractorInput {
 }
 
 protocol HomeInteractorOutput: class {
-    func fetched(entites: [HomeEntity])
+    func fetched(entites: [CurrencyEntity])
     func converted(sum: Decimal)
 }

@@ -1,5 +1,5 @@
 //
-//  HomeEntity.swift
+//  CurrencyEntity.swift
 //  ConverterCurrencyBTG
 //
 //  Created by Thiago Vaz on 05/07/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeEntity: NSObject {
+class CurrencyEntity: NSObject {
     var name: String = ""
     var currency: String = ""
     var quotes: Decimal = .zero

@@ -12,10 +12,12 @@ class HomeInteractor: HomeInteractorInput {
     
     weak var output:HomeInteractorOutput?
     var manager: CurrencyManager
-    var entites: [HomeEntity] = [HomeEntity]()
+    var entites: [CurrencyEntity] = [CurrencyEntity]()
+    var localDataInteractor: LocalDataInteractorInput
     
-    init(manager: CurrencyManager) {
+    init(manager: CurrencyManager, localDataInteractor: LocalDataInteractorInput) {
         self.manager = manager
+        self.localDataInteractor = localDataInteractor
     }
     func loadRequest() {
         manager.fetchList { [weak self] (result) in
@@ -40,8 +42,9 @@ class HomeInteractor: HomeInteractorInput {
             switch result {
                 
             case .success(let listQuotes):
-                strongSelf.entites = HomeEntityMapper.mappingListCurrency(listCurrency: list, listQuotes: listQuotes)
+                strongSelf.entites = CurrencyEntityMapper.mappingListCurrency(listCurrency: list, listQuotes: listQuotes)
                 strongSelf.output?.fetched(entites: strongSelf.entites)
+                strongSelf.localDataInteractor.save(entites: strongSelf.entites)
             case .failure(let error):
                 dump(error)
             }

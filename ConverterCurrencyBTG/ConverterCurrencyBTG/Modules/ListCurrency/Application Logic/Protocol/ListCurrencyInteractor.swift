@@ -11,8 +11,8 @@ import Foundation
 class ListCurrencyInteractor: ListCurrencyInteractorInput {
     weak var output: ListCurrencyInteractorOuput?
     var manager: CurrencyManager
-    var entites: [HomeEntity] = [HomeEntity]()
-    var filteredEntites: [HomeEntity] = [HomeEntity]()
+    var entites: [CurrencyEntity] = [CurrencyEntity]()
+    var filteredEntites: [CurrencyEntity] = [CurrencyEntity]()
     
     init(manager: CurrencyManager) {
         self.manager = manager
@@ -44,7 +44,7 @@ class ListCurrencyInteractor: ListCurrencyInteractorInput {
             switch result {
                 
             case .success(let listQuotes):
-                strongSelf.entites = HomeEntityMapper.mappingListCurrency(listCurrency: listModel, listQuotes: listQuotes)
+                strongSelf.entites = CurrencyEntityMapper.mappingListCurrency(listCurrency: listModel, listQuotes: listQuotes)
                 strongSelf.output?.fetched(entites: strongSelf.entites)
             case .failure(let error):
                 dump(error)
@@ -57,7 +57,7 @@ class ListCurrencyInteractor: ListCurrencyInteractorInput {
             output?.fetched(entites: entites)
            return
         }
-        filteredEntites = entites.filter { (entity: HomeEntity) -> Bool in
+        filteredEntites = entites.filter { (entity: CurrencyEntity) -> Bool in
             return entity.name.lowercased().contains(text.lowercased()) || entity.currency.lowercased().contains(text.lowercased())
         }
         

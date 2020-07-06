@@ -40,7 +40,7 @@ extension HomePresenter: HomeInteractorOutput {
         self.output?.converted(sum: textConvert)
     }
     
-    func fetched(entites: [HomeEntity]) {
+    func fetched(entites: [CurrencyEntity]) {
         guard let to = entites.first(where: { $0.currency == "BRL"}),
             let from =  entites.first(where: { $0.currency ==  "USD"}) else {
                 return

@@ -55,7 +55,7 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
 
 extension ListCurrencyPresenter: ListCurrencyInteractorOuput {
     
-    func fetched(entites: [HomeEntity]) {
+    func fetched(entites: [CurrencyEntity]) {
         let filtered = entites.filter({ $0.currency != removeSymbol })
         if filtered.count == .zero {
             title = "Opss Error"

@@ -29,7 +29,7 @@ protocol ListCurrencyInteractorInput {
 }
 
 protocol ListCurrencyInteractorOuput: class {
-    func fetched(entites: [HomeEntity])
+    func fetched(entites: [CurrencyEntity])
 }
 
 protocol ListCurrencyWireframeOuput: class {

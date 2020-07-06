@@ -38,6 +38,12 @@
 		F3A4069224B27E34009B173B /* ListCurrencyWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4069124B27E34009B173B /* ListCurrencyWireframe.swift */; };
 		F3EB4AD124B285EE00567F12 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4AD024B285EE00567F12 /* ListViewModel.swift */; };
 		F3EB4AD824B29D8A00567F12 /* Extension+Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4AD724B29D8A00567F12 /* Extension+Tableview.swift */; };
+		F3EB4ADB24B2A7D300567F12 /* LocalDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4ADA24B2A7D300567F12 /* LocalDataInteractor.swift */; };
+		F3EB4ADE24B2A7FC00567F12 /* LocalDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4ADD24B2A7FC00567F12 /* LocalDataProtocol.swift */; };
+		F3EB4AE024B2A89700567F12 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4ADF24B2A89700567F12 /* LocalDataManager.swift */; };
+		F3ED7D5324B2B07700396871 /* NSManagedObject+Addons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5224B2B07700396871 /* NSManagedObject+Addons.swift */; };
+		F3ED7D5524B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5424B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift */; };
+		F3ED7D5724B2B45A00396871 /* Extension+NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +92,12 @@
 		F3A4069124B27E34009B173B /* ListCurrencyWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyWireframe.swift; sourceTree = "<group>"; };
 		F3EB4AD024B285EE00567F12 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		F3EB4AD724B29D8A00567F12 /* Extension+Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Tableview.swift"; sourceTree = "<group>"; };
+		F3EB4ADA24B2A7D300567F12 /* LocalDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataInteractor.swift; sourceTree = "<group>"; };
+		F3EB4ADD24B2A7FC00567F12 /* LocalDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProtocol.swift; sourceTree = "<group>"; };
+		F3EB4ADF24B2A89700567F12 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
+		F3ED7D5224B2B07700396871 /* NSManagedObject+Addons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Addons.swift"; sourceTree = "<group>"; };
+		F3ED7D5424B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSPersistentStoreCoordinator.swift"; sourceTree = "<group>"; };
+		F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSManagedObject.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +164,8 @@
 		F39C263324AC2D41009DA826 /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F3EB4ADC24B2A7E100567F12 /* protocol */,
+				F3EB4AD924B2A7A200567F12 /* Interactor */,
 				F3A4067924B24B7A009B173B /* Extension */,
 				F39C263B24AC468A009DA826 /* Model */,
 				F39C263424AC2D4A009DA826 /* Manager */,
@@ -165,6 +179,7 @@
 				F39C263524AC2D6E009DA826 /* CurrencyManager.swift */,
 				F39C263724AC2EBE009DA826 /* CurrencyRouter.swift */,
 				F39C263924AC3E24009DA826 /* HTTPMethod.swift */,
+				F3EB4ADF24B2A89700567F12 /* LocalDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -248,6 +263,9 @@
 				F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */,
 				F3A4067C24B25D99009B173B /* Extension+String.swift */,
 				F3EB4AD724B29D8A00567F12 /* Extension+Tableview.swift */,
+				F3ED7D5224B2B07700396871 /* NSManagedObject+Addons.swift */,
+				F3ED7D5424B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift */,
+				F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -353,6 +371,22 @@
 				F3A4068624B27C20009B173B /* ListCurrencyProtocol.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F3EB4AD924B2A7A200567F12 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F3EB4ADA24B2A7D300567F12 /* LocalDataInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F3EB4ADC24B2A7E100567F12 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F3EB4ADD24B2A7FC00567F12 /* LocalDataProtocol.swift */,
+			);
+			path = protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,14 +498,20 @@
 				F39C263A24AC3E24009DA826 /* HTTPMethod.swift in Sources */,
 				F39C265E24B2450A009DA826 /* HomeViewModel.swift in Sources */,
 				F3A4068124B26153009B173B /* CurrencyView.swift in Sources */,
+				F3ED7D5724B2B45A00396871 /* Extension+NSManagedObject.swift in Sources */,
 				F3EB4AD824B29D8A00567F12 /* Extension+Tableview.swift in Sources */,
 				F39C265724B2300B009DA826 /* ListQuotes.swift in Sources */,
+				F3EB4ADE24B2A7FC00567F12 /* LocalDataProtocol.swift in Sources */,
 				F39C260F24AC020A009DA826 /* AppDelegate.swift in Sources */,
 				F39C264E24B22A6D009DA826 /* HomeProtocol.swift in Sources */,
 				F39C265524B22B53009DA826 /* HomeWireframe.swift in Sources */,
+				F3EB4AE024B2A89700567F12 /* LocalDataManager.swift in Sources */,
 				F39C263D24AC46A5009DA826 /* ListCurrenciesModel.swift in Sources */,
 				F3A4068D24B27D93009B173B /* ListViewCurrency.swift in Sources */,
+				F3ED7D5524B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift in Sources */,
 				F39C263824AC2EBE009DA826 /* CurrencyRouter.swift in Sources */,
+				F3EB4ADB24B2A7D300567F12 /* LocalDataInteractor.swift in Sources */,
+				F3ED7D5324B2B07700396871 /* NSManagedObject+Addons.swift in Sources */,
 				F39C265924B230E2009DA826 /* HomeEntity.swift in Sources */,
 				F3EB4AD124B285EE00567F12 /* ListViewModel.swift in Sources */,
 				F3A4069224B27E34009B173B /* ListCurrencyWireframe.swift in Sources */,
