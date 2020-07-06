@@ -12,7 +12,7 @@ import Foundation
 class CurrencyManager {
     
     @discardableResult
-    private func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {
+     func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {
         let session = URLSession(configuration: .ephemeral)
         let request = try! route.asURLRequest()
         let dataTask =  session.dataTask(with:request) { (data, response, error) in

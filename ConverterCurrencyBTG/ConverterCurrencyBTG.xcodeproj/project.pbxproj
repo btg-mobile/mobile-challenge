@@ -46,6 +46,11 @@
 		F3ED7D5724B2B45A00396871 /* Extension+NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */; };
 		F3ED7D5924B2BD8B00396871 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5824B2BD8B00396871 /* NetworkError.swift */; };
 		F3ED7D5B24B35F4900396871 /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5A24B35F4900396871 /* ErrorViewModel.swift */; };
+		F3ED7D5D24B36C1900396871 /* CurrencyManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5C24B36C1900396871 /* CurrencyManagerMock.swift */; };
+		F3ED7D5F24B37B6900396871 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5E24B37B6900396871 /* Loader.swift */; };
+		F3ED7D6124B37BDF00396871 /* live.json in Resources */ = {isa = PBXBuildFile; fileRef = F3ED7D6024B37BDF00396871 /* live.json */; };
+		F3ED7D6324B37C1600396871 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = F3ED7D6224B37C1600396871 /* list.json */; };
+		F3ED7D6524B37DF900396871 /* LocalDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D6424B37DF900396871 /* LocalDataManagerMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +107,11 @@
 		F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSManagedObject.swift"; sourceTree = "<group>"; };
 		F3ED7D5824B2BD8B00396871 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		F3ED7D5A24B35F4900396871 /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
+		F3ED7D5C24B36C1900396871 /* CurrencyManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManagerMock.swift; sourceTree = "<group>"; };
+		F3ED7D5E24B37B6900396871 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		F3ED7D6024B37BDF00396871 /* live.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = live.json; sourceTree = "<group>"; };
+		F3ED7D6224B37C1600396871 /* list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
+		F3ED7D6424B37DF900396871 /* LocalDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManagerMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +171,11 @@
 			children = (
 				F39C262824AC0210009DA826 /* ConverterCurrencyBTGTests.swift */,
 				F39C262A24AC0210009DA826 /* Info.plist */,
+				F3ED7D5C24B36C1900396871 /* CurrencyManagerMock.swift */,
+				F3ED7D5E24B37B6900396871 /* Loader.swift */,
+				F3ED7D6024B37BDF00396871 /* live.json */,
+				F3ED7D6224B37C1600396871 /* list.json */,
+				F3ED7D6424B37DF900396871 /* LocalDataManagerMock.swift */,
 			);
 			path = ConverterCurrencyBTGTests;
 			sourceTree = "<group>";
@@ -487,6 +502,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ED7D6124B37BDF00396871 /* live.json in Resources */,
+				F3ED7D6324B37C1600396871 /* list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +555,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ED7D5D24B36C1900396871 /* CurrencyManagerMock.swift in Sources */,
 				F39C262924AC0210009DA826 /* ConverterCurrencyBTGTests.swift in Sources */,
+				F3ED7D5F24B37B6900396871 /* Loader.swift in Sources */,
+				F3ED7D6524B37DF900396871 /* LocalDataManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

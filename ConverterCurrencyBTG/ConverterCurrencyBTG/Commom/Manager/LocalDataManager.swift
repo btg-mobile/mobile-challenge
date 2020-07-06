@@ -52,13 +52,16 @@ class LocalDataManager {
     }
     
     func save() {
-        let context = LocalDataManager.persistentContainer.viewContext;
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                print("Failure to save context: \(error)")
+        
+        LocalDataManager.persistentContainer.viewContext.performAndWait {
+            if LocalDataManager.persistentContainer.viewContext.hasChanges {
+                do {
+                    try LocalDataManager.persistentContainer.viewContext.save()
+                } catch {
+                    print("Failure to save context: \(error)")
+                }
             }
         }
+        
     }
 }

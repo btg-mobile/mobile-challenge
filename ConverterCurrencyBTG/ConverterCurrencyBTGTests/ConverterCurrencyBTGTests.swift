@@ -11,29 +11,55 @@ import XCTest
 import Foundation
 
 class ConverterCurrencyBTGTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var interactor: HomeInteractor!
+    var presenter: HomePresenter!
+    var view: HomeController!
+    override func tearDown() {
+        super.tearDown()
+        presenter = nil
+        interactor = nil
+        view = nil
+        
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        let localDataInteractor = LocalDataInteractor(manager: LocalDataManagerMock())
+        interactor = HomeInteractor(manager: CurrencyManagerMock(), localDataInteractor: localDataInteractor)
+        presenter = HomePresenter(route: HomeWireframe(), interactor: interactor)
+        interactor.output = presenter
+        view = HomeController()
+        view.presenter = presenter
+        presenter.output = view
+        
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        let session = URLSession(configuration: .ephemeral)
-        session.dataTask(with: URLRequest(url: URL(string: "http://api.currencylayer.com/list?access_key=f2954fa6f49f6af0b3fe2c631cc821a2")!)) { (data, response, error) in
-            dump(String(data: data!, encoding: .utf8))
-        }.resume()
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testViewModel(){
+        presenter.viewDidLoad()
+        let exp = expectation(description: "Test after 5 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if result == XCTWaiter.Result.timedOut {
+            exp.fulfill()
+            XCTAssertEqual(presenter.viewModelTo.currency, "BRL")
+            XCTAssertEqual(presenter.viewModelTo.name, "Brazilian Real")
+            XCTAssertEqual(presenter.viewModelFrom.currency, "USD")
+            XCTAssertEqual(presenter.viewModelFrom.name, "United States Dollar")
+            
         }
     }
+    
+    func testConvert(){
+        if let listLive: ListQuotes = Loader.mock(file: "live"), let listModel: ListCurrenciesModel = Loader.mock(file: "list") {
+            let entites = CurrencyEntityMapper.mappingListCurrency(listCurrency: listModel, listQuotes: listLive)
+            interactor.entites = entites
+            XCTAssert(!interactor.entites.isEmpty)
+            presenter.fetched(entites: interactor.entites)
+            
+            presenter.send(amount: 20)
+            if let textResult = view.resultLabel.text {
+                XCTAssertEqual(textResult, "Valor Convertido é: 3,76")
 
+            }
+        }
+    }
 }
+
