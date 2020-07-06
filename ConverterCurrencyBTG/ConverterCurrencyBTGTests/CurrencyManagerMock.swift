@@ -24,20 +24,20 @@ class CurrencyManagerMock: CurrencyManager {
         dataTask.resume()
         return dataTask
     }
-    
-    override func fetchList(route: CurrencyRouter = .list, completion: @escaping (Result<ListCurrenciesModel, Error>) -> Void) -> URLSessionTask {
+
+    override func fetchList(route: CurrencyRouter = .list, completion: @escaping (Result<ListCurrenciesModel, NetworkError>) -> Void) -> URLSessionTask {
         return performRequest(route: route) { (dataresponse) in
             if let list: ListCurrenciesModel = Loader.mock(file: "list") {
                 completion(.success(list))
             }
         }
     }
-    override func currencyQuotes(completion: @escaping (Result<ListQuotes, Error>) -> Void) {
-         performRequest(route: .live) { (dataresponse) in
+    
+    override func currencyQuotes(completion: @escaping (Result<ListQuotes, NetworkError>) -> Void) {
+        performRequest(route: .live) { (dataresponse) in
             if let list: ListQuotes = Loader.mock(file: "live") {
                 completion(.success(list))
             }
         }
     }
-    
 }

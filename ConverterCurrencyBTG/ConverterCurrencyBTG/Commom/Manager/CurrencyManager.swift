@@ -9,7 +9,7 @@
 import Foundation
 
 
-class CurrencyManager {
+class CurrencyManager: NSObject {
     
     @discardableResult
     func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {

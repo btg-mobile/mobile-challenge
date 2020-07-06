@@ -54,7 +54,7 @@ extension HomePresenter: HomeInteractorOutput {
     }
     
     func converted(sum: Decimal) {
-        guard let sumString = sum.toString()?.toCurrency()else {
+        guard let sumString = sum.toString()?.toCurrency() else {
             return
         }
         let textConvert = "Valor Convertido é: \(sumString)"
