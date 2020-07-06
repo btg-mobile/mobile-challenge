@@ -15,6 +15,9 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
     var removeSymbol: String
     var searchText: String = ""
     var searchIsActive: Bool = false
+    var title: String = ""
+    var message: String = ""
+    var isLoading: Bool = true
     
     var isSearchBarEmpty: Bool {
         return searchText.isEmpty
@@ -31,6 +34,8 @@ class ListCurrencyPresenter: ListCurrencyPresenterInput {
     }
     
     func viewDidLoad() {
+        title = "Carregando dados"
+        message = "Aguarde buscando dados"
         self.interactor.loadData()
     }
     
@@ -52,6 +57,12 @@ extension ListCurrencyPresenter: ListCurrencyInteractorOuput {
     
     func fetched(entites: [HomeEntity]) {
         let filtered = entites.filter({ $0.currency != removeSymbol })
+        if filtered.count == .zero {
+            title = "Opss Error"
+            message = "Parecer que sua busca esta vazia :("
+            isLoading = false
+        }
+        
         DispatchQueue.main.async {
         self.ouput?.loadView(viewModels: filtered.map({ ListViewModel(name: $0.name, currency: $0.currency, imageView: UIImage(named: $0.currency.lowercased())) }))
         }

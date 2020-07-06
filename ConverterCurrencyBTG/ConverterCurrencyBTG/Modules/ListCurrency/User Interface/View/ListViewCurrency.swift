@@ -51,6 +51,11 @@ class ListViewCurrency: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModels.count == .zero {
+            tableView.setEmptyView(title: presenter.title, message: presenter.message, isLoading: presenter.isLoading)
+        }else{
+            tableView.restore()
+        }
         return viewModels.count
     }
     
@@ -79,7 +84,7 @@ extension ListViewCurrency: UISearchResultsUpdating {
         presenter.searchIsActive = searchController.isActive
         presenter.updateSearch()
     }
-
+    
 }
 
 extension ListViewCurrency: ListCurrencyPresenterOuput {

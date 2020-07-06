@@ -37,6 +37,7 @@
 		F3A4068D24B27D93009B173B /* ListViewCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4068C24B27D93009B173B /* ListViewCurrency.swift */; };
 		F3A4069224B27E34009B173B /* ListCurrencyWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4069124B27E34009B173B /* ListCurrencyWireframe.swift */; };
 		F3EB4AD124B285EE00567F12 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4AD024B285EE00567F12 /* ListViewModel.swift */; };
+		F3EB4AD824B29D8A00567F12 /* Extension+Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB4AD724B29D8A00567F12 /* Extension+Tableview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		F3A4068C24B27D93009B173B /* ListViewCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCurrency.swift; sourceTree = "<group>"; };
 		F3A4069124B27E34009B173B /* ListCurrencyWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyWireframe.swift; sourceTree = "<group>"; };
 		F3EB4AD024B285EE00567F12 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		F3EB4AD724B29D8A00567F12 /* Extension+Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Tableview.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 			children = (
 				F3A4067A24B25ACF009B173B /* Extension+Decimal.swift */,
 				F3A4067C24B25D99009B173B /* Extension+String.swift */,
+				F3EB4AD724B29D8A00567F12 /* Extension+Tableview.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				F39C263A24AC3E24009DA826 /* HTTPMethod.swift in Sources */,
 				F39C265E24B2450A009DA826 /* HomeViewModel.swift in Sources */,
 				F3A4068124B26153009B173B /* CurrencyView.swift in Sources */,
+				F3EB4AD824B29D8A00567F12 /* Extension+Tableview.swift in Sources */,
 				F39C265724B2300B009DA826 /* ListQuotes.swift in Sources */,
 				F39C260F24AC020A009DA826 /* AppDelegate.swift in Sources */,
 				F39C264E24B22A6D009DA826 /* HomeProtocol.swift in Sources */,

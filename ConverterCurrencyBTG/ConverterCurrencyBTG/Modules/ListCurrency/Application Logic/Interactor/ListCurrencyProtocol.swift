@@ -11,6 +11,9 @@ import Foundation
 protocol ListCurrencyPresenterInput {
     var searchText: String { get set}
     var searchIsActive: Bool {get set}
+    var title: String { get set}
+    var message: String{ get set }
+    var isLoading: Bool {get set}
     func viewDidLoad()
     func didSelected(viewModel: ListViewModel)
     func updateSearch()
