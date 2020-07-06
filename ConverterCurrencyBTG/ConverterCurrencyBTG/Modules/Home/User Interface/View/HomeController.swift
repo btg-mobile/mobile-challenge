@@ -114,6 +114,9 @@ class HomeController: UIViewController {
     @objc func targetViewDidTappedFrom(_ sender: UITapGestureRecognizer) {
         presenter.changeCurrency(currency: .from)
     }
+    override func retry(){
+        presenter.tryAgain()
+    }
 }
 
 extension HomeController: UITextFieldDelegate {
@@ -133,6 +136,25 @@ extension HomeController: UITextFieldDelegate {
 
 extension HomeController: HomePresenterOutput {
     
+    func loading() {
+        isActiveElement(isActive: true)
+        setEmptyView(title:"Carregando", message: "Buscando dados", isLoading: true, image: #imageLiteral(resourceName: "loading_imgBlue_78x78"))
+    }
+    
+    func error(viewModel: ErrorViewModel) {
+        isActiveElement(isActive: true)
+        setEmptyView(title: viewModel.title, message: viewModel.message, isLoading: false, image: viewModel.image)
+    }
+    
+    fileprivate func isActiveElement(isActive: Bool) {
+        viewTo.isHidden = isActive
+        viewFrom.isHidden = isActive
+        titleDescription.isHidden = isActive
+        amountTextField.isHidden = isActive
+        resultLabel.isHidden = isActive
+        buttonConvert.isHidden = isActive
+    }
+    
     func converted(sum: String) {
         resultLabel.text = sum
     }
@@ -140,7 +162,9 @@ extension HomeController: HomePresenterOutput {
     func load(toViewModel: HomeViewModel, fromViewModel: HomeViewModel) {
         viewTo.configure(viewModel: toViewModel)
         viewFrom.configure(viewModel: fromViewModel)
-        
+        removeEmptyView()
+        isActiveElement(isActive: false)
+
     }
 }
 

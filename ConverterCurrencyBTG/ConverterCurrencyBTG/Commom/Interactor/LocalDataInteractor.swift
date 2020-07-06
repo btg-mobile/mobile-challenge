@@ -17,8 +17,8 @@ class LocalDataInteractor: LocalDataInteractorInput {
         self.manager = manager
     }
 
-    func load() {
-        dump(manager.loadData())
+    func load() -> [CurrencyEntity] {
+        return manager.loadData().map({ CurrencyEntity(name: $0.name ?? "", currency: $0.currency ?? "", quotes: $0.quotes?.decimalValue ?? .zero )})
     }
     
     func save(entites: [CurrencyEntity]) {

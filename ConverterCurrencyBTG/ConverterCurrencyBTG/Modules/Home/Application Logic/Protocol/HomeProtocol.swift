@@ -16,12 +16,16 @@ enum CurrencyChange {
 protocol HomePresenterOutput: class {
     func load(toViewModel: HomeViewModel, fromViewModel: HomeViewModel)
     func converted(sum: String)
+    func error(viewModel: ErrorViewModel)
+    func loading()
 }
 protocol HomePresenterInput {
     func viewDidLoad()
     func updateChanger(viewModel: HomeViewModel)
     func send(amount: Decimal)
     func changeCurrency(currency: CurrencyChange)
+    func tryAgain()
+    
 }
 
 protocol HomeInteractorInput {
@@ -32,4 +36,5 @@ protocol HomeInteractorInput {
 protocol HomeInteractorOutput: class {
     func fetched(entites: [CurrencyEntity])
     func converted(sum: Decimal)
+    func connectionFailure(error: NetworkError)
 }

@@ -28,8 +28,18 @@ class HomeInteractor: HomeInteractorInput {
             case .success(let list):
                 strongSelf.currencyQuotes(list: list)
             case .failure(let error):
-                dump(error)
+                strongSelf.connectionFailure(error: error)
             }
+        }
+    }
+    
+    func connectionFailure(error: Error) {
+        if let nsError = error as? NSError, nsError.code ==  NSURLErrorNotConnectedToInternet, !localDataInteractor.load().isEmpty  {
+            self.output?.fetched(entites: localDataInteractor.load())
+        }else if let nsError = error as? NSError, nsError.code ==  NSURLErrorNotConnectedToInternet{
+            self.output?.connectionFailure(error: NetworkError.noConnection)
+        }else {
+            self.output?.connectionFailure(error: .http(statusCode: 200, rawResponseData: Data()))
         }
     }
     

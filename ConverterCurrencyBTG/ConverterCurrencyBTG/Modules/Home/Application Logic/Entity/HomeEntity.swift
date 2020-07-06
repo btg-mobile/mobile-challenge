@@ -13,8 +13,9 @@ class CurrencyEntity: NSObject {
     var currency: String = ""
     var quotes: Decimal = .zero
     
-    init(name: String, currency: String) {
+    init(name: String, currency: String, quotes: Decimal = .zero) {
         self.name = name
         self.currency = currency
+        self.quotes = quotes
     }
 }

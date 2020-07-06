@@ -9,6 +9,6 @@
 import Foundation
 
 protocol LocalDataInteractorInput {
-    func load()
+    func load() -> [CurrencyEntity]
     func save(entites: [CurrencyEntity])
 }

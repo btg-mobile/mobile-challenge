@@ -44,6 +44,8 @@
 		F3ED7D5324B2B07700396871 /* NSManagedObject+Addons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5224B2B07700396871 /* NSManagedObject+Addons.swift */; };
 		F3ED7D5524B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5424B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift */; };
 		F3ED7D5724B2B45A00396871 /* Extension+NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */; };
+		F3ED7D5924B2BD8B00396871 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5824B2BD8B00396871 /* NetworkError.swift */; };
+		F3ED7D5B24B35F4900396871 /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ED7D5A24B35F4900396871 /* ErrorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		F3ED7D5224B2B07700396871 /* NSManagedObject+Addons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Addons.swift"; sourceTree = "<group>"; };
 		F3ED7D5424B2B1E300396871 /* Extension+NSPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSPersistentStoreCoordinator.swift"; sourceTree = "<group>"; };
 		F3ED7D5624B2B45A00396871 /* Extension+NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSManagedObject.swift"; sourceTree = "<group>"; };
+		F3ED7D5824B2BD8B00396871 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F3ED7D5A24B35F4900396871 /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 			children = (
 				F39C263C24AC46A5009DA826 /* ListCurrenciesModel.swift */,
 				F39C265624B2300B009DA826 /* ListQuotes.swift */,
+				F3ED7D5824B2BD8B00396871 /* NetworkError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				F39C265D24B2450A009DA826 /* HomeViewModel.swift */,
+				F3ED7D5A24B35F4900396871 /* ErrorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -500,6 +506,8 @@
 				F3A4068124B26153009B173B /* CurrencyView.swift in Sources */,
 				F3ED7D5724B2B45A00396871 /* Extension+NSManagedObject.swift in Sources */,
 				F3EB4AD824B29D8A00567F12 /* Extension+Tableview.swift in Sources */,
+				F3ED7D5B24B35F4900396871 /* ErrorViewModel.swift in Sources */,
+				F3ED7D5924B2BD8B00396871 /* NetworkError.swift in Sources */,
 				F39C265724B2300B009DA826 /* ListQuotes.swift in Sources */,
 				F3EB4ADE24B2A7FC00567F12 /* LocalDataProtocol.swift in Sources */,
 				F39C260F24AC020A009DA826 /* AppDelegate.swift in Sources */,

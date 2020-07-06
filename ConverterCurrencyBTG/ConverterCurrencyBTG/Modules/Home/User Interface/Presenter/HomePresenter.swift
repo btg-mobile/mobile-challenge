@@ -22,15 +22,32 @@ class HomePresenter: HomePresenterInput {
     }
     
     func viewDidLoad() {
+        output?.loading()
         interactor.loadRequest()
     }
     
     func send(amount: Decimal) {
         interactor.convert(toCurrency: viewModelTo.currency, fromCurrency: viewModelFrom.currency, amount: amount)
     }
+    
+    func tryAgain() {
+        output?.loading()
+        interactor.loadRequest()
+    }
 }
 
 extension HomePresenter: HomeInteractorOutput {
+    
+    func connectionFailure(error: NetworkError) {
+        DispatchQueue.main.async {
+            switch error {
+            case .http, .jsonDecoding, .timeout, .unknown:
+                self.output?.error(viewModel: ErrorViewModel(title: "Oppss Error", message: "Estamos com problemas no servidor por favor tente mais tarde", image: #imageLiteral(resourceName: "icoCloud")))
+            case .noConnection:
+                self.output?.error(viewModel: ErrorViewModel(title: "Oppss Error", message: "Verifique sua conexão e tente novamente", image: #imageLiteral(resourceName: "icoWifi")))
+            }
+        }
+    }
     
     func converted(sum: Decimal) {
         guard let sumString = sum.toString()?.toCurrency()else {
@@ -54,7 +71,7 @@ extension HomePresenter: HomeInteractorOutput {
     
     func updateChanger(viewModel: HomeViewModel) {
         switch changerCurrency {
-        
+            
         case .to:
             viewModelTo = viewModel
         case .from:
@@ -69,7 +86,7 @@ extension HomePresenter: HomeInteractorOutput {
     func changeCurrency(currency: CurrencyChange) {
         changerCurrency = currency
         switch changerCurrency {
-    
+            
         case .to:
             route.showList(removeSymbol: viewModelFrom.currency)
         case .from:
