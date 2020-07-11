@@ -13,28 +13,6 @@ protocol Client {
     func cancel()
 }
 
-class CurrencyAPIClient: Client {
-    var dataTask: URLSessionDataTask?
-    let session: URLSession
-    
-    init(session: URLSession = URLSession.shared) {
-        self.session = session
-    }
-    
-    func dataTask(with route: CurrencyRouter, completionHandler: @escaping (DataResponse) -> Void) {
-        let request = try! route.asURLRequest()
-        dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            let dataResponse = DataResponse(request: request, response: response, data: data, error: error)
-            completionHandler(dataResponse)
-        })
-        dataTask?.resume()
-    }
-    
-    func cancel() {
-        dataTask?.cancel()
-    }
-}
-
 class CurrencyManager {
     
     let client: Client

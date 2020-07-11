@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F34616C724B963180033005C /* CurrencyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34616C624B963180033005C /* CurrencyAPIClient.swift */; };
 		F39C260F24AC020A009DA826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C260E24AC020A009DA826 /* AppDelegate.swift */; };
 		F39C261124AC020A009DA826 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C261024AC020A009DA826 /* SceneDelegate.swift */; };
 		F39C261324AC020A009DA826 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39C261224AC020A009DA826 /* HomeController.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F34616C624B963180033005C /* CurrencyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIClient.swift; sourceTree = "<group>"; };
 		F39C260B24AC020A009DA826 /* ConverterCurrencyBTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConverterCurrencyBTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39C260E24AC020A009DA826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F39C261024AC020A009DA826 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				F39C263524AC2D6E009DA826 /* CurrencyManager.swift */,
+				F34616C624B963180033005C /* CurrencyAPIClient.swift */,
 				F39C263724AC2EBE009DA826 /* CurrencyRouter.swift */,
 				F39C263924AC3E24009DA826 /* HTTPMethod.swift */,
 				F3EB4ADF24B2A89700567F12 /* LocalDataManager.swift */,
@@ -519,6 +522,7 @@
 			files = (
 				F3ED7D6724B3890D00396871 /* ErrorModel.swift in Sources */,
 				F39C261324AC020A009DA826 /* HomeController.swift in Sources */,
+				F34616C724B963180033005C /* CurrencyAPIClient.swift in Sources */,
 				F39C263624AC2D6E009DA826 /* CurrencyManager.swift in Sources */,
 				F3A4067B24B25ACF009B173B /* Extension+Decimal.swift in Sources */,
 				F3A4068924B27CB3009B173B /* ListCurrencyPresenter.swift in Sources */,
