@@ -23,8 +23,8 @@ class ConverterCurrencyBTGTests: XCTestCase {
     }
     override func setUp() {
         super.setUp()
-        let localDataInteractor = LocalDataInteractor(manager: LocalDataManagerMock())
-        interactor = HomeInteractor(manager: CurrencyManagerMock(), localDataInteractor: localDataInteractor)
+        let localDataInteractor = LocalDataInteractorMock()
+        interactor = HomeInteractor(manager: CurrencyManager(client: CurrencyManagerMock()), localDataInteractor: localDataInteractor)
         presenter = HomePresenter(route: HomeWireframe(), interactor: interactor)
         interactor.output = presenter
         view = HomeController()
@@ -34,7 +34,7 @@ class ConverterCurrencyBTGTests: XCTestCase {
     }
     
     func testViewModel(){
-        presenter.viewDidLoad()
+        interactor.loadRequest()
         let exp = expectation(description: "Test after 5 seconds")
         let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
         if result == XCTWaiter.Result.timedOut {
@@ -63,3 +63,15 @@ class ConverterCurrencyBTGTests: XCTestCase {
     }
 }
 
+class LocalDataInteractorMock: LocalDataInteractorInput {
+    
+    func load() -> [CurrencyEntity] {
+        return []
+    }
+    
+    func save(entites: [CurrencyEntity]) {
+        
+    }
+    
+    
+}

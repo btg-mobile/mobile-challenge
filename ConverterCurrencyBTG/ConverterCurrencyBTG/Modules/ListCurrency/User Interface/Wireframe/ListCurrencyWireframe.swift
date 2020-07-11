@@ -15,7 +15,7 @@ class ListCurrencyWireframe {
     weak var viewController: ListViewCurrency?
     
     func makeScreen(removeSymbol: String) -> ListViewCurrency {
-        let interactor = ListCurrencyInteractor(manager: CurrencyManager())
+        let interactor = ListCurrencyInteractor(manager: CurrencyManager(client: CurrencyAPIClient()))
         let presenter = ListCurrencyPresenter(interactor: interactor, wireframe: self, removeSymbol: removeSymbol)
         interactor.output = presenter
         let viewController = ListViewCurrency()

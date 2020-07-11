@@ -19,7 +19,7 @@ class Loader {
         return result
     }
     
-    private static func loadFile(with name: String) -> Data? {
+    static func loadFile(with name: String) -> Data? {
         guard let urlPath = Bundle(for: Loader.self).path(forResource: name, ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: urlPath), options: .mappedIfSafe) else {
                 return nil

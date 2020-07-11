@@ -10,34 +10,25 @@ import Foundation
 @testable import ConverterCurrencyBTG
 
 
-class CurrencyManagerMock: CurrencyManager {
-    @discardableResult
-    override func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {
-        let session = URLSession(configuration: .ephemeral)
-        let request = try! route.asURLRequest()
-        let dataTask =  session.dataTask(with:request) { (data, response, error) in
-            let dataResponse =  DataResponse(request: request, response: response, data: data, error: error)
-            completion(dataResponse)
-            
+class CurrencyManagerMock: Client {
+    
+    func dataTask(with route: CurrencyRouter, completionHandler: @escaping (DataResponse) -> Void) {
+        let urlrequest =  try! route.asURLRequest()
+        var filename = ""
+        switch route {
+        case .list:
+            filename = "list"
+        case .live:
+            filename = "live"
         }
-        
-        dataTask.resume()
-        return dataTask
-    }
-
-    override func fetchList(route: CurrencyRouter = .list, completion: @escaping (Result<ListCurrenciesModel, NetworkError>) -> Void) -> URLSessionTask {
-        return performRequest(route: route) { (dataresponse) in
-            if let list: ListCurrenciesModel = Loader.mock(file: "list") {
-                completion(.success(list))
-            }
-        }
+        let data = Loader.loadFile(with: filename)
+        let response = HTTPURLResponse(url: urlrequest.url!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let dataresponse = DataResponse(request: urlrequest, response: response, data: data, error: nil)
+        completionHandler(dataresponse)
     }
     
-    override func currencyQuotes(completion: @escaping (Result<ListQuotes, NetworkError>) -> Void) {
-        performRequest(route: .live) { (dataresponse) in
-            if let list: ListQuotes = Loader.mock(file: "live") {
-                completion(.success(list))
-            }
-        }
+    func cancel() {
+        
     }
+
 }

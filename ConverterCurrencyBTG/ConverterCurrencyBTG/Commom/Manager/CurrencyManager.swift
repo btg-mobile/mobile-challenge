@@ -8,26 +8,43 @@
 
 import Foundation
 
+protocol Client {
+    func dataTask(with route: CurrencyRouter, completionHandler: @escaping (DataResponse) -> Void)
+    func cancel()
+}
 
-class CurrencyManager: NSObject {
+class CurrencyAPIClient: Client {
+    var dataTask: URLSessionDataTask?
+    let session: URLSession
     
-    @discardableResult
-    func performRequest(route: CurrencyRouter, completion: @escaping (DataResponse) -> Void) -> URLSessionDataTask {
-        let session = URLSession(configuration: .ephemeral)
-        let request = try! route.asURLRequest()
-        let dataTask =  session.dataTask(with:request) { (data, response, error) in
-            let dataResponse =  DataResponse(request: request, response: response, data: data, error: error)
-            completion(dataResponse)
-            
-        }
-        
-        dataTask.resume()
-        return dataTask
+    init(session: URLSession = URLSession.shared) {
+        self.session = session
     }
     
-    @discardableResult
-    func fetchList(route: CurrencyRouter = .list, completion: @escaping  (Result<ListCurrenciesModel, NetworkError>) -> Void) -> URLSessionTask {
-        return performRequest(route: route) { (dataresponse) in
+    func dataTask(with route: CurrencyRouter, completionHandler: @escaping (DataResponse) -> Void) {
+        let request = try! route.asURLRequest()
+        dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            let dataResponse = DataResponse(request: request, response: response, data: data, error: error)
+            completionHandler(dataResponse)
+        })
+        dataTask?.resume()
+    }
+    
+    func cancel() {
+        dataTask?.cancel()
+    }
+}
+
+class CurrencyManager {
+    
+    let client: Client
+    
+    init(client: Client) {
+        self.client = client
+    }
+    
+    func fetchList(route: CurrencyRouter = .list, completion: @escaping  (Result<ListCurrenciesModel, NetworkError>) -> Void){
+        self.client.dataTask(with: route) { (dataresponse) in
             if let error = dataresponse.error {
                 completion(.failure(self.errorDefault(error: error, data: dataresponse.data ?? Data())))
                 return
@@ -44,10 +61,10 @@ class CurrencyManager: NSObject {
                 completion(.failure(.jsonDecoding))
             }
         }
+        
     }
     
-    
-    func errorDefault(error: Error, data: Data) -> NetworkError{
+   func errorDefault(error: Error, data: Data) -> NetworkError{
         if let nsError = error as? NSError, nsError.code ==  NSURLErrorNotConnectedToInternet{
             return .noConnection
         }else{
@@ -67,7 +84,7 @@ class CurrencyManager: NSObject {
     }
     
     func currencyQuotes(completion: @escaping  (Result<ListQuotes, NetworkError>) -> Void) {
-        performRequest(route: .live) { (dataresponse) in
+        self.client.dataTask(with: .live, completionHandler: { (dataresponse) in
             if let error = dataresponse.error {
                 completion(.failure(self.errorDefault(error: error, data: dataresponse.data ?? Data())))
                 return
@@ -82,10 +99,9 @@ class CurrencyManager: NSObject {
             } else if let errorModel: ErrorModel = self.decodeParse(jsonData: data){
                 completion(.failure(self.errorModel(error: errorModel)))
             }else {
-                 completion(.failure(.jsonDecoding))
+                completion(.failure(.jsonDecoding))
             }
-        }
-        
+        })
     }
     
     

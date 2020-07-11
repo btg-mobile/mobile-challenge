@@ -13,7 +13,7 @@ class HomeWireframe {
     
     func makeScreen() -> HomeController {
         let localDataInteractor = LocalDataInteractor(manager: LocalDataManager())
-        let interactor = HomeInteractor(manager: CurrencyManager(), localDataInteractor: localDataInteractor)
+        let interactor = HomeInteractor(manager: CurrencyManager(client: CurrencyAPIClient()), localDataInteractor: localDataInteractor)
         let presenter = HomePresenter(route: self, interactor: interactor)
         interactor.output = presenter
         let homeController = HomeController()
