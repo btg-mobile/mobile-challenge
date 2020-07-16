@@ -5,33 +5,27 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+
+import kotlinx.android.synthetic.main.activity_list.*
 
 import br.com.mobilechallenge.R
 import br.com.mobilechallenge.model.bean.ListBean
 import br.com.mobilechallenge.presenter.list.MVP
 import br.com.mobilechallenge.presenter.list.Presenter
 import br.com.mobilechallenge.view.adapter.ItemAdapter
-import br.com.mobilechallenge.view.components.Progress
 
-class ListActivity : DefaultActivity(), MVP.View {
-    private lateinit var progress: Progress
+class ListActivity : DefaultActivity(R.layout.activity_list), MVP.View {
     private lateinit var presenter: MVP.Presenter
-    private lateinit var rv: RecyclerView
-    private lateinit var adapter: ItemAdapter
+    private lateinit var itemAdapter: ItemAdapter
     private var item: ListBean? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
-
+    override fun initViews() {
         setupToolBar(R.id.toolbar)
         setActionBarTitle("")
         setActionBarSubTitle("")
         setActionBarHomeButton()
 
-        progress = findViewById(R.id.progressList)
-        progress.hide()
+        progressList.hide()
 
         presenter = Presenter()
         presenter.setView(this)
@@ -40,16 +34,20 @@ class ListActivity : DefaultActivity(), MVP.View {
         onLoad()
     }
 
+    override fun initViewModel() {
+    }
+
     private fun onLoad() {
-        adapter = ItemAdapter(this, presenter.items)
+        itemAdapter = ItemAdapter(this, presenter.items)
 
-        val layoutManager = LinearLayoutManager(this)
-            layoutManager.orientation = LinearLayoutManager.VERTICAL
+        val llayoutManager = LinearLayoutManager(this)
+            llayoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        rv = findViewById(R.id.rv)
-        rv.setHasFixedSize(true)
-        rv.layoutManager = layoutManager
-        rv.adapter = adapter
+        rv.apply {
+            setHasFixedSize(true)
+            layoutManager = llayoutManager
+            adapter = itemAdapter
+        }
     }
 
     fun result(item: ListBean) {
@@ -64,17 +62,17 @@ class ListActivity : DefaultActivity(), MVP.View {
 
     override fun showProgressBar(visible: Int) {
         when(visible) {
-            View.VISIBLE -> progress.show()
-            View.GONE    -> progress.hide()
+            View.VISIBLE -> progressList.show()
+            View.GONE    -> progressList.hide()
         }
     }
 
     override fun updateListRecycler() {
-        adapter.notifyDataSetChanged()
+        itemAdapter.notifyDataSetChanged()
     }
 
     override fun back(resultCode: Int) {
-        var bundle = Bundle()
+        val bundle = Bundle()
             bundle.putParcelable("ITEM_RESULT", this.item)
 
         val intent = Intent(this, MainActivity::class.java)

@@ -35,7 +35,7 @@ class ItemAdapter(private val activity: ListActivity,
 
     fun getItem(position: Int): ListBean = list[position]
 
-    fun resut(item: ListBean) { activity.result(item) }
+    fun result(item: ListBean) { activity.result(item) }
 
     class ViewHolder(itemAdapter: ItemAdapter, itemView: View): RecyclerView.ViewHolder(itemView) {
         val itemText: TextView = itemView.findViewById(R.id.itemText)
@@ -43,8 +43,7 @@ class ItemAdapter(private val activity: ListActivity,
 
         init {
             itemCard.setOnClickListener {
-                val item: ListBean = itemAdapter.getItem(adapterPosition)
-                itemAdapter.resut(item)
+                itemAdapter.result(itemAdapter.getItem(adapterPosition))
             }
         }
     }

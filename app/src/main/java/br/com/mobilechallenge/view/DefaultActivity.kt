@@ -2,19 +2,27 @@ package br.com.mobilechallenge.view
 
 import android.app.Activity
 import android.content.DialogInterface
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.KeyEvent
 
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import br.com.mobilechallenge.R
 
+import br.com.mobilechallenge.R
 import br.com.mobilechallenge.utils.UtilsAnimation
 
-abstract class DefaultActivity : AppCompatActivity() {
+abstract class DefaultActivity(resourceView: Int) : AppCompatActivity(resourceView) {
     private var actionBar: ActionBar? = null
     private var mToolbar: Toolbar? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViews()
+        initViewModel()
+    }
 
     fun setupToolBar(resource: Int) {
         mToolbar = findViewById(resource)
@@ -59,16 +67,17 @@ abstract class DefaultActivity : AppCompatActivity() {
     }
 
     fun msgBox(msg: String) {
-        val dialog = AlertDialog.Builder(this, R.style.AlertDialogTheme)
-            dialog.setTitle(R.string.btn_error)
-            dialog.setMessage(msg)
-            dialog.setCancelable(false)
-            dialog.setPositiveButton("OK") { dialog1: DialogInterface?, whichButton: Int -> {} }
-            dialog.create().show()
+        AlertDialog.Builder(this, R.style.AlertDialogTheme)
+            .apply {
+                setTitle(R.string.btn_error)
+                setMessage(msg)
+                setCancelable(false)
+                setPositiveButton("OK") { dialog1: DialogInterface?, whichButton: Int -> {} }
+                create().show()
+            }
     }
 
-    /**
-     * Method to back old activity or finish application
-     */
     abstract fun back(resultCode: Int)
+    abstract fun initViews()
+    abstract fun initViewModel()
 }

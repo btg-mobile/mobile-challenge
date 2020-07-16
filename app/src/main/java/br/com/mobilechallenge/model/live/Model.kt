@@ -10,14 +10,14 @@ import br.com.mobilechallenge.model.enums.Endpoints
 import org.json.JSONObject
 
 import com.android.volley.RequestQueue
-
-import br.com.mobilechallenge.presenter.live.MVP
-import br.com.mobilechallenge.utils.Constantes
-import br.com.mobilechallenge.utils.Utils
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+
+import br.com.mobilechallenge.presenter.live.MVP
+import br.com.mobilechallenge.utils.Constantes
+import br.com.mobilechallenge.utils.Utils
 
 class Model(private val presenter: MVP.Presenter): MVP.Model {
     private lateinit var requestQueue: RequestQueue
@@ -45,8 +45,10 @@ class Model(private val presenter: MVP.Presenter): MVP.Model {
                     saveLive(0, codeFrom?.id, codeFrom?.code, valueFrom)
                     saveLive(0, codeTo?.id, codeTo?.code, valueTo)
 
-                    presenter.resultCalc(calcTo)
-                    presenter.showProgressBar(false)
+                    presenter.apply {
+                        resultCalc(calcTo)
+                        showProgressBar(false)
+                    }
                 },
                 null
             )
@@ -54,24 +56,32 @@ class Model(private val presenter: MVP.Presenter): MVP.Model {
             requestQueue.add(request)
         }
         else {
-            val repository = PriceDAO(presenter.context)
-            val itemFrom: LiveBean? = repository.get(codeFrom?.id)
-            val itemTo: LiveBean?   = repository.get(codeTo?.id)
+            var itemFrom: LiveBean? = null
+            var itemTo: LiveBean?  = null
 
-            repository.close()
+            PriceDAO(presenter.context)
+                .apply {
+                    itemFrom = get(codeFrom?.id)
+                    itemTo = get(codeTo?.id)
+                    close()
+                }
 
             val calcFrom: Double = amount * itemFrom!!.price
             val calcTo: Double   = calcFrom * itemTo!!.price
 
-            presenter.resultCalc(calcTo)
-            presenter.showProgressBar(false)
+            presenter.apply {
+                resultCalc(calcTo)
+                showProgressBar(false)
+            }
         }
     }
 
     private fun saveLive(id: Int, idCurrencies: Int?, code: String?, price: Double) {
         val bean = LiveBean(id, idCurrencies, code, price)
-        val repository = PriceDAO(presenter.context)
-            repository.save(bean)
-            repository.close()
+        PriceDAO(presenter.context)
+            .apply {
+                save(bean)
+                close()
+            }
     }
 }

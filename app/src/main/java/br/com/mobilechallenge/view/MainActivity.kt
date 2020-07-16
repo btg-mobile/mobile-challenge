@@ -2,16 +2,15 @@ package br.com.mobilechallenge.view
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 
-import kotlin.math.pow
+import kotlinx.android.synthetic.main.activity_main.*
 
 import br.com.mobilechallenge.R
 import br.com.mobilechallenge.model.bean.ListBean
@@ -20,27 +19,19 @@ import br.com.mobilechallenge.presenter.live.Presenter
 import br.com.mobilechallenge.utils.Constantes
 import br.com.mobilechallenge.utils.MaskDecimal
 import br.com.mobilechallenge.utils.Utils
-import br.com.mobilechallenge.view.components.Progress
 
-class MainActivity : DefaultActivity(), MVP.View {
-    private lateinit var progress: Progress
+class MainActivity : DefaultActivity(R.layout.activity_main), MVP.View {
     private lateinit var presenter: MVP.Presenter
 
-    private lateinit var btnItemFrom: ImageView
-    private lateinit var btnItemTo: ImageView
     private lateinit var editItemFrom: EditText
     private lateinit var editItemTo: EditText
     private lateinit var editValueFrom: EditText
     private lateinit var editValueTo: EditText
-    private lateinit var btnConvert: Button
 
     private var itemFrom: ListBean? = null
     private var itemTo: ListBean? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+    override fun initViews() {
         setupToolBar(R.id.toolbar)
         setActionBarTitle("")
         setActionBarSubTitle("")
@@ -48,18 +39,18 @@ class MainActivity : DefaultActivity(), MVP.View {
         editItemFrom = findViewById(R.id.editItemFrom)
         editItemTo   = findViewById(R.id.editItemTo)
         editValueTo  = findViewById(R.id.editValueTo)
-        progress     = findViewById(R.id.progress)
+
         progress.hide()
 
-        btnItemFrom = findViewById(R.id.btnItemFrom)
-        btnItemFrom.setOnClickListener {
-            openList(Constantes.CURRENCY_FROM)
-        }
+        findViewById<ImageView>(R.id.btnItemFrom)
+            .setOnClickListener {
+                openList(Constantes.CURRENCY_FROM)
+            }
 
-        btnItemTo = findViewById(R.id.btnItemTo)
-        btnItemTo.setOnClickListener {
-            openList(Constantes.CURRENCY_TO)
-        }
+        findViewById<ImageView>(R.id.btnItemTo)
+            .setOnClickListener {
+                openList(Constantes.CURRENCY_TO)
+            }
 
         editValueFrom = findViewById(R.id.editValueFrom)
         editValueFrom.addTextChangedListener(MaskDecimal(editValueFrom))
@@ -73,20 +64,22 @@ class MainActivity : DefaultActivity(), MVP.View {
             }
         }
 
-        btnConvert = findViewById(R.id.btnConvert)
         btnConvert.setOnClickListener { actionDone() }
 
         presenter = Presenter()
         presenter.setView(this)
     }
 
+    override fun initViewModel() {
+    }
+
     private fun actionDone() {
-        var amount: Double = editValueFrom.editableText.toString()
+        val amount: Double = editValueFrom.editableText.toString()
             .replace("$","")
             .replace(",","")
             .toDouble()
-        var from: String = editItemFrom.editableText.toString()
-        var to: String = editItemTo.editableText.toString()
+        val from: String = editItemFrom.editableText.toString()
+        val to: String = editItemTo.editableText.toString()
 
         if (from.isBlank() || from.isEmpty()) {
             msgBox(getString(R.string.txt_error2))
@@ -105,6 +98,7 @@ class MainActivity : DefaultActivity(), MVP.View {
     }
 
     override fun back(resultCode: Int) { finish() }
+
     override fun showProgressBar(visible: Int) {
         when(visible) {
             View.VISIBLE -> progress.show()
@@ -121,18 +115,21 @@ class MainActivity : DefaultActivity(), MVP.View {
     override fun resultData(requestCode: Int, item: ListBean?) {
         when(requestCode) {
             Constantes.CURRENCY_FROM -> {
+                val text = "${item?.code} - ${item?.description}"
                 itemFrom = item
-                editItemFrom.setText("${item?.code} - ${item?.description}")
+                editItemFrom.setText(text)
             }
             Constantes.CURRENCY_TO -> {
+                val text = "${item?.code} - ${item?.description}"
                 itemTo = item
-                editItemTo.setText("${item?.code} - ${item?.description}")
+                editItemTo.setText(text)
             }
         }
     }
 
     override fun resultCalc(price: Double) {
-        editValueTo.setText("$${Utils.roundOffDecimal(price)}")
+        val text = "$${Utils.roundOffDecimal(price)}"
+        editValueTo.setText(text)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -158,8 +155,8 @@ class MainActivity : DefaultActivity(), MVP.View {
                 itemTo   = null
                 editItemFrom.setText("")
                 editItemTo.setText("")
-                editValueTo.setText("$0.00")
-                editValueFrom.setText("$0.00")
+                editValueTo.setText(getString(R.string.txt_zero))
+                editValueFrom.setText(getString(R.string.txt_zero))
                 true
             }
             else -> super.onOptionsItemSelected(item)

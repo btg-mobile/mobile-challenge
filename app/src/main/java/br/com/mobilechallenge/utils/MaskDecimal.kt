@@ -30,8 +30,8 @@ class MaskDecimal(val campo: EditText) : TextWatcher {
     }
 
     private fun setValue(s: CharSequence) {
-        var s = s
-        var str = s.toString()
+        var s1 = s
+        var str = s1.toString()
         str = umask(str)
         try {
             // Transformamos o numero que esta escrito no EditText em monetario.
@@ -43,7 +43,7 @@ class MaskDecimal(val campo: EditText) : TextWatcher {
             campo.setSelection(campo.text.length)
         }
         catch (e: NumberFormatException) {
-            s = ""
+            s1 = ""
         }
     }
 
@@ -55,19 +55,19 @@ class MaskDecimal(val campo: EditText) : TextWatcher {
      */
     private fun umask(str: String): String {
         // Verifica se ja existe a mascara no texto.
-        var str = str
+        var str1 = str
         val hasMask =
-            (str.indexOf("US$") > -1 || str.indexOf("$") > -1) && (str.indexOf(".") > -1 || str.indexOf(
+            (str1.indexOf("US$") > -1 || str1.indexOf("$") > -1) && (str1.indexOf(".") > -1 || str1.indexOf(
                 ","
             ) > -1)
 
         // Verificamos se existe mascara
         if (hasMask) {
             // Retiramos a mascara.
-            str = str.replace("[US$]".toRegex(), "").replace("[,]".toRegex(), "")
+            str1 = str1.replace("[US$]".toRegex(), "").replace("[,]".toRegex(), "")
                 .replace("[.]".toRegex(), "")
         }
-        return str
+        return str1
     }
 
     override fun beforeTextChanged(

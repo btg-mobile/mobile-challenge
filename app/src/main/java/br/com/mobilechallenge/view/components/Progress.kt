@@ -15,10 +15,10 @@ class Progress(context: Context, attrs: AttributeSet) : LinearLayout(context, at
     lateinit var textView: TextView
 
     init {
-        start(context, attrs)
+        start()
     }
 
-    private fun start(context: Context, attrs: AttributeSet) {
+    private fun start() {
         // seta o Background
         setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
 

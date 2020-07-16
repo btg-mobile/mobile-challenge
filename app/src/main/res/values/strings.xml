@@ -7,6 +7,8 @@
     <string name="content_description_end_icon">Custom Icon</string>
     <string name="btn_error">ERRO</string>
     <string name="btn_convert">CONVERTER</string>
+    <string name="txt_zero">$0.00</string>
+    <string name="txt_default_value">0.00</string>
 
     <string name="hint_field1">Selecione a moeda origem:</string>
     <string name="hint_field2">Selecione a moeda destino:</string>

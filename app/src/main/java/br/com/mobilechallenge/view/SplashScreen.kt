@@ -1,8 +1,8 @@
 package br.com.mobilechallenge.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Handler
 
 import br.com.mobilechallenge.R
@@ -10,14 +10,12 @@ import br.com.mobilechallenge.presenter.splashscreen.Presenter
 import br.com.mobilechallenge.presenter.splashscreen.MVP
 import br.com.mobilechallenge.utils.UtilsAnimation
 
-class SplashScreen : AppCompatActivity(), MVP.View {
+class SplashScreen : AppCompatActivity(R.layout.activity_splashscreen), MVP.View {
     private val seconds: Long = 2000
     private lateinit var presenter: MVP.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splashscreen)
-
         presenter = Presenter()
         presenter.setView(this)
         presenter.retriveData()
@@ -25,7 +23,7 @@ class SplashScreen : AppCompatActivity(), MVP.View {
 
     override fun loadData() {
         Handler().postDelayed({
-            var intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
 
             startActivity(intent)
             finish()
