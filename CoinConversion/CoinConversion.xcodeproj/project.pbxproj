@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,13 @@
 		D1C92B6B24C3B77D0049E64B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1C92B6924C3B77D0049E64B /* Main.storyboard */; };
 		D1C92B6D24C3B77F0049E64B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1C92B6C24C3B77F0049E64B /* Assets.xcassets */; };
 		D1C92B7024C3B77F0049E64B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1C92B6E24C3B77F0049E64B /* LaunchScreen.storyboard */; };
+		D1C92B7F24C3BC5F0049E64B /* ServiceEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B7E24C3BC5F0049E64B /* ServiceEncoding.swift */; };
+		D1C92B8324C3BC8F0049E64B /* ServiceHTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8224C3BC8F0049E64B /* ServiceHTTPMethod.swift */; };
+		D1C92B8524C3BCBE0049E64B /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8424C3BCBE0049E64B /* ServiceManager.swift */; };
+		D1C92B8724C3BCD90049E64B /* ServiceManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8624C3BCD90049E64B /* ServiceManagerProtocol.swift */; };
+		D1C92B8924C3BCF60049E64B /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8824C3BCF60049E64B /* ServiceRequest.swift */; };
+		D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8A24C3BD810049E64B /* Connectivity.swift */; };
+		D1C92B8D24C3BDA20049E64B /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8C24C3BDA20049E64B /* ServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +35,13 @@
 		D1C92B6C24C3B77F0049E64B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1C92B6F24C3B77F0049E64B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1C92B7124C3B77F0049E64B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1C92B7E24C3BC5F0049E64B /* ServiceEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEncoding.swift; sourceTree = "<group>"; };
+		D1C92B8224C3BC8F0049E64B /* ServiceHTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHTTPMethod.swift; sourceTree = "<group>"; };
+		D1C92B8424C3BCBE0049E64B /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		D1C92B8624C3BCD90049E64B /* ServiceManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerProtocol.swift; sourceTree = "<group>"; };
+		D1C92B8824C3BCF60049E64B /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
+		D1C92B8A24C3BD810049E64B /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		D1C92B8C24C3BDA20049E64B /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +70,6 @@
 				C37A49E9A87E1156E34D1EC5 /* Pods-CoinConversion.debug.xcconfig */,
 				16EB88BABF30B685F8537520 /* Pods-CoinConversion.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +94,70 @@
 		D1C92B6224C3B77D0049E64B /* CoinConversion */ = {
 			isa = PBXGroup;
 			children = (
-				D1C92B6324C3B77D0049E64B /* AppDelegate.swift */,
-				D1C92B6524C3B77D0049E64B /* SceneDelegate.swift */,
-				D1C92B6724C3B77D0049E64B /* ViewController.swift */,
-				D1C92B6924C3B77D0049E64B /* Main.storyboard */,
-				D1C92B6C24C3B77F0049E64B /* Assets.xcassets */,
-				D1C92B6E24C3B77F0049E64B /* LaunchScreen.storyboard */,
-				D1C92B7124C3B77F0049E64B /* Info.plist */,
+				D1C92B7724C3BA970049E64B /* AppResources */,
+				D1C92B7824C3BAA50049E64B /* AppSettings */,
+				D1C92B7924C3BAAE0049E64B /* Helpers */,
+				D1C92B7A24C3BAB90049E64B /* Scene */,
+				D1C92B9024C3BFAD0049E64B /* Services */,
 			);
 			path = CoinConversion;
+			sourceTree = "<group>";
+		};
+		D1C92B7724C3BA970049E64B /* AppResources */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B6C24C3B77F0049E64B /* Assets.xcassets */,
+				D1C92B7124C3B77F0049E64B /* Info.plist */,
+			);
+			path = AppResources;
+			sourceTree = "<group>";
+		};
+		D1C92B7824C3BAA50049E64B /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B6324C3B77D0049E64B /* AppDelegate.swift */,
+				D1C92B6524C3B77D0049E64B /* SceneDelegate.swift */,
+			);
+			path = AppSettings;
+			sourceTree = "<group>";
+		};
+		D1C92B7924C3BAAE0049E64B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B7B24C3BC180049E64B /* ServiceHelper */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D1C92B7A24C3BAB90049E64B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B6724C3B77D0049E64B /* ViewController.swift */,
+				D1C92B6924C3B77D0049E64B /* Main.storyboard */,
+				D1C92B6E24C3B77F0049E64B /* LaunchScreen.storyboard */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		D1C92B7B24C3BC180049E64B /* ServiceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B8A24C3BD810049E64B /* Connectivity.swift */,
+				D1C92B7E24C3BC5F0049E64B /* ServiceEncoding.swift */,
+				D1C92B8C24C3BDA20049E64B /* ServiceError.swift */,
+				D1C92B8224C3BC8F0049E64B /* ServiceHTTPMethod.swift */,
+				D1C92B8424C3BCBE0049E64B /* ServiceManager.swift */,
+				D1C92B8624C3BCD90049E64B /* ServiceManagerProtocol.swift */,
+				D1C92B8824C3BCF60049E64B /* ServiceRequest.swift */,
+			);
+			path = ServiceHelper;
+			sourceTree = "<group>";
+		};
+		D1C92B9024C3BFAD0049E64B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C92B8D24C3BDA20049E64B /* ServiceError.swift in Sources */,
+				D1C92B8724C3BCD90049E64B /* ServiceManagerProtocol.swift in Sources */,
+				D1C92B8324C3BC8F0049E64B /* ServiceHTTPMethod.swift in Sources */,
+				D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */,
+				D1C92B8524C3BCBE0049E64B /* ServiceManager.swift in Sources */,
+				D1C92B8924C3BCF60049E64B /* ServiceRequest.swift in Sources */,
+				D1C92B7F24C3BC5F0049E64B /* ServiceEncoding.swift in Sources */,
 				D1C92B6824C3B77D0049E64B /* ViewController.swift in Sources */,
 				D1C92B6424C3B77D0049E64B /* AppDelegate.swift in Sources */,
 				D1C92B6624C3B77D0049E64B /* SceneDelegate.swift in Sources */,
@@ -355,15 +430,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoinConversion/Info.plist;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6FVWXKY4X6;
+				INFOPLIST_FILE = "$(SRCROOT)/CoinConversion/AppResources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.;
 				PRODUCT_BUNDLE_IDENTIFIER = ronilson.CoinConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -373,15 +451,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoinConversion/Info.plist;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6FVWXKY4X6;
+				INFOPLIST_FILE = "$(SRCROOT)/CoinConversion/AppResources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.;
 				PRODUCT_BUNDLE_IDENTIFIER = ronilson.CoinConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
