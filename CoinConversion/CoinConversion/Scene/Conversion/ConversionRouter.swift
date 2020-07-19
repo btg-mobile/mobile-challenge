@@ -25,12 +25,24 @@ class ConversionRouter {
                 router: self
         ))
         
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let navigationController = UINavigationController(
+            rootViewController: viewController
+        )
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
     func enqueueListCurrencies(_ conversion: Conversion) {
-        print(conversion)
+        let viewController = ListCurrenciesViewController(
+            viewModel: ListCurrenciesViewModel(
+                service: ListCurrenciesService(),
+                conversion: conversion
+        ))
+        
+        if let topViewController = UIApplication.shared.topMostViewController() {
+            topViewController.navigationController?.pushViewController(
+                viewController, animated: true
+          )
+        }
     }
 }

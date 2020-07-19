@@ -16,8 +16,6 @@ enum Conversion {
 
 // MARK: - ConversionViewModelDelegate
 protocol ConversionViewModelDelegate: class {
-    func didSetTitle(_ title: String?)
-    func didSetBarButton()
     func didStartLoading()
     func didHideLoading()
     func didReloadData()
@@ -38,12 +36,7 @@ class ConversionViewModel {
 }
 
 // MARK: - Custom methods
-extension ConversionViewModel {
-    func setInitialInformation() {
-        delegate?.didSetTitle("Conversão")
-        delegate?.didSetBarButton()
-    }
-    
+extension ConversionViewModel {    
     func fetchQuotes()  {
         service?.fetchQuotes(success: { currenciesConversion in
             print(currenciesConversion)

@@ -12,19 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .colorDarkishPink
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white,
-                                               .font: UIFont.systemFont(ofSize: 25) ]
-        
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.prefersLargeTitles = true
-        navigationBarAppearance.tintColor = .white
-        navigationBarAppearance.standardAppearance = appearance
-        navigationBarAppearance.compactAppearance = appearance
-        navigationBarAppearance.scrollEdgeAppearance = appearance
-        navigationBarAppearance.isTranslucent = false
         return true
     }
     

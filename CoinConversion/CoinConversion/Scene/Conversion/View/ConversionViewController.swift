@@ -39,19 +39,29 @@ class ConversionViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - UIViewController lifecycle
+extension ConversionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = .colorBackground
         
+        configureNavigationBar(largeTitleColor: .white,
+                               backgoundColor: .colorDarkishPink,
+                               tintColor: .white,
+                               title: "Conversão",
+                               preferredLargeTitle: true,
+                               isSearch: false,
+                               searchController: nil
+        )
+        setupBarButton()
         viewModel?.delegate = self
-        viewModel?.setInitialInformation()
         viewModel?.fetchQuotes()
     }
 }
 
-// MARK: - Actions methods
+// MARK: - Private methods
 extension ConversionViewController {
     @objc private dynamic func refreshButtonTouched() {
         viewModel?.fetchQuotes()
@@ -62,22 +72,18 @@ extension ConversionViewController {
     }
     
     @objc private dynamic func tapGestureRecognizedFromView(sender: UITapGestureRecognizer) {
-         viewModel?.fetchCurrencies(.from)
+        viewModel?.fetchCurrencies(.from)
+    }
+    
+    private func setupBarButton() {
+        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(self.refreshButtonTouched))
+        button.tintColor = .white
+        navigationItem.rightBarButtonItem = button
     }
 }
 
 // MARK: - ConversionViewModelDelegate
 extension ConversionViewController: ConversionViewModelDelegate {
-    func didSetTitle(_ title: String?) {
-        self.title = title
-    }
-    
-    func didSetBarButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(self.refreshButtonTouched))
-        button.tintColor = .white
-        navigationItem.rightBarButtonItem = button
-    }
-    
     func didStartLoading() {
     }
     
