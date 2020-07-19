@@ -29,6 +29,7 @@
 		D1D51C6F24C3D98B00B8D165 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C6D24C3D98B00B8D165 /* ConversionViewController.swift */; };
 		D1D51C7024C3D98B00B8D165 /* ConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */; };
 		D1D51C7324C3DA6900B8D165 /* ConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */; };
+		D1D51C7624C3DDE700B8D165 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D1D51C6D24C3D98B00B8D165 /* ConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
 		D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversionViewController.xib; sourceTree = "<group>"; };
 		D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
+		D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		D1C92B7924C3BAAE0049E64B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D1D51C7424C3DDD200B8D165 /* Extension */,
 				D1C92B7B24C3BC180049E64B /* ServiceHelper */,
 			);
 			path = Helpers;
@@ -200,9 +203,8 @@
 		D1D51C6124C3D2CC00B8D165 /* Conversion */ = {
 			isa = PBXGroup;
 			children = (
+				D1D51C7724C3E16500B8D165 /* View */,
 				D1D51C6924C3D7A700B8D165 /* ConversionRouter.swift */,
-				D1D51C6D24C3D98B00B8D165 /* ConversionViewController.swift */,
-				D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */,
 				D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */,
 			);
 			path = Conversion;
@@ -238,6 +240,23 @@
 				D1C92B6E24C3B77F0049E64B /* LaunchScreen.storyboard */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		D1D51C7424C3DDD200B8D165 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D1D51C7724C3E16500B8D165 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D1D51C6D24C3D98B00B8D165 /* ConversionViewController.swift */,
+				D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +382,7 @@
 				D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */,
 				D1C92B9824C3CA910049E64B /* ListCurrencies.swift in Sources */,
 				D1C92B8524C3BCBE0049E64B /* ServiceManager.swift in Sources */,
+				D1D51C7624C3DDE700B8D165 /* UIViewController+Extension.swift in Sources */,
 				D1D51C7324C3DA6900B8D165 /* ConversionViewModel.swift in Sources */,
 				D1C92B9624C3C9550049E64B /* AppEnvironment.swift in Sources */,
 				D1D51C6A24C3D7A700B8D165 /* ConversionRouter.swift in Sources */,

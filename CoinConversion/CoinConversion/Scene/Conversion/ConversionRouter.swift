@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ronilson Batista. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 // MARK: - Main
@@ -18,6 +19,14 @@ class ConversionRouter {
     }
     
     func createConversionScreen() {
-        print("dklldld")
+        let viewController = ConversionViewController(
+            viewModel: ConversionViewModel(
+                service: CurrenciesConversionService(),
+                router: self
+        ))
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }
