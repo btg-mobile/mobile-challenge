@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let service = ListCurrenciesService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+     
+        service.fetchListCurrencies(success: { listCurrencies in
+            print(listCurrencies ?? "errrrrooorrrrrr")
+        }) { serviceError in
+            print(serviceError)
+        }
     }
-
-
 }
-

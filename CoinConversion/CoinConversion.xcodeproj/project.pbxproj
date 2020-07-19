@@ -21,6 +21,9 @@
 		D1C92B8924C3BCF60049E64B /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8824C3BCF60049E64B /* ServiceRequest.swift */; };
 		D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8A24C3BD810049E64B /* Connectivity.swift */; };
 		D1C92B8D24C3BDA20049E64B /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B8C24C3BDA20049E64B /* ServiceError.swift */; };
+		D1C92B9324C3C3D10049E64B /* ListCurrenciesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B9224C3C3D10049E64B /* ListCurrenciesService.swift */; };
+		D1C92B9624C3C9550049E64B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B9524C3C9550049E64B /* AppEnvironment.swift */; };
+		D1C92B9824C3CA910049E64B /* ListCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B9724C3CA910049E64B /* ListCurrencies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		D1C92B8824C3BCF60049E64B /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
 		D1C92B8A24C3BD810049E64B /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		D1C92B8C24C3BDA20049E64B /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		D1C92B9224C3C3D10049E64B /* ListCurrenciesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesService.swift; sourceTree = "<group>"; };
+		D1C92B9524C3C9550049E64B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		D1C92B9724C3CA910049E64B /* ListCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 			children = (
 				D1C92B6324C3B77D0049E64B /* AppDelegate.swift */,
 				D1C92B6524C3B77D0049E64B /* SceneDelegate.swift */,
+				D1C92B9524C3C9550049E64B /* AppEnvironment.swift */,
 			);
 			path = AppSettings;
 			sourceTree = "<group>";
@@ -156,8 +163,26 @@
 		D1C92B9024C3BFAD0049E64B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D1C92B9124C3C15F0049E64B /* List */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D1C92B9124C3C15F0049E64B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B9424C3C8400049E64B /* Entity */,
+				D1C92B9224C3C3D10049E64B /* ListCurrenciesService.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D1C92B9424C3C8400049E64B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D1C92B9724C3CA910049E64B /* ListCurrencies.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,12 +304,15 @@
 				D1C92B8724C3BCD90049E64B /* ServiceManagerProtocol.swift in Sources */,
 				D1C92B8324C3BC8F0049E64B /* ServiceHTTPMethod.swift in Sources */,
 				D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */,
+				D1C92B9824C3CA910049E64B /* ListCurrencies.swift in Sources */,
 				D1C92B8524C3BCBE0049E64B /* ServiceManager.swift in Sources */,
+				D1C92B9624C3C9550049E64B /* AppEnvironment.swift in Sources */,
 				D1C92B8924C3BCF60049E64B /* ServiceRequest.swift in Sources */,
 				D1C92B7F24C3BC5F0049E64B /* ServiceEncoding.swift in Sources */,
 				D1C92B6824C3B77D0049E64B /* ViewController.swift in Sources */,
 				D1C92B6424C3B77D0049E64B /* AppDelegate.swift in Sources */,
 				D1C92B6624C3B77D0049E64B /* SceneDelegate.swift in Sources */,
+				D1C92B9324C3C3D10049E64B /* ListCurrenciesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
