@@ -29,4 +29,8 @@ class ConversionRouter {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
+    
+    func enqueueListCurrencies(_ conversion: Conversion) {
+        print(conversion)
+    }
 }

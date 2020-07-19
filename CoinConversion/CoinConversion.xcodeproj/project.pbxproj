@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FAC8FAF1A3B2FB893A316D4 /* Pods_CoinConversion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */; };
+		D19E9C6624C496AE006A5C57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E9C6524C496AE006A5C57 /* UIColor+Extension.swift */; };
 		D1C92B6424C3B77D0049E64B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B6324C3B77D0049E64B /* AppDelegate.swift */; };
 		D1C92B6624C3B77D0049E64B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C92B6524C3B77D0049E64B /* SceneDelegate.swift */; };
 		D1C92B6D24C3B77F0049E64B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1C92B6C24C3B77F0049E64B /* Assets.xcassets */; };
@@ -30,12 +31,14 @@
 		D1D51C7024C3D98B00B8D165 /* ConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */; };
 		D1D51C7324C3DA6900B8D165 /* ConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */; };
 		D1D51C7624C3DDE700B8D165 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */; };
+		D1E9FF2F24C4D8B200FCAD32 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9FF2E24C4D8B200FCAD32 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinConversion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EB88BABF30B685F8537520 /* Pods-CoinConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.release.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.release.xcconfig"; sourceTree = "<group>"; };
 		C37A49E9A87E1156E34D1EC5 /* Pods-CoinConversion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.debug.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.debug.xcconfig"; sourceTree = "<group>"; };
+		D19E9C6524C496AE006A5C57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D1C92B6024C3B77D0049E64B /* CoinConversion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinConversion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C92B6324C3B77D0049E64B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1C92B6524C3B77D0049E64B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversionViewController.xib; sourceTree = "<group>"; };
 		D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
 		D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D1E9FF2E24C4D8B200FCAD32 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +249,8 @@
 		D1D51C7424C3DDD200B8D165 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D19E9C6524C496AE006A5C57 /* UIColor+Extension.swift */,
+				D1E9FF2E24C4D8B200FCAD32 /* UIView+Extension.swift */,
 				D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
@@ -382,12 +388,14 @@
 				D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */,
 				D1C92B9824C3CA910049E64B /* ListCurrencies.swift in Sources */,
 				D1C92B8524C3BCBE0049E64B /* ServiceManager.swift in Sources */,
+				D19E9C6624C496AE006A5C57 /* UIColor+Extension.swift in Sources */,
 				D1D51C7624C3DDE700B8D165 /* UIViewController+Extension.swift in Sources */,
 				D1D51C7324C3DA6900B8D165 /* ConversionViewModel.swift in Sources */,
 				D1C92B9624C3C9550049E64B /* AppEnvironment.swift in Sources */,
 				D1D51C6A24C3D7A700B8D165 /* ConversionRouter.swift in Sources */,
 				D1C92B8924C3BCF60049E64B /* ServiceRequest.swift in Sources */,
 				D1C92B7F24C3BC5F0049E64B /* ServiceEncoding.swift in Sources */,
+				D1E9FF2F24C4D8B200FCAD32 /* UIView+Extension.swift in Sources */,
 				D1C92B6424C3B77D0049E64B /* AppDelegate.swift in Sources */,
 				D1C92B6624C3B77D0049E64B /* SceneDelegate.swift in Sources */,
 				D1D51C6724C3D3E400B8D165 /* CurrenciesConversionService.swift in Sources */,
@@ -460,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -514,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

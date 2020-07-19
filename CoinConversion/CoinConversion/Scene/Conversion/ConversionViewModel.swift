@@ -8,9 +8,20 @@
 
 import Foundation
 
+// MARK: - Conversion
+enum Conversion {
+    case to
+    case from
+}
+
 // MARK: - ConversionViewModelDelegate
 protocol ConversionViewModelDelegate: class {
-    
+    func didSetTitle(_ title: String?)
+    func didSetBarButton()
+    func didStartLoading()
+    func didHideLoading()
+    func didReloadData()
+    func didFail()
 }
 
 // MARK: - Main
@@ -24,6 +35,14 @@ class ConversionViewModel {
         self.service = service
         self.router = router
     }
+}
+
+// MARK: - Custom methods
+extension ConversionViewModel {
+    func setInitialInformation() {
+        delegate?.didSetTitle("Conversão")
+        delegate?.didSetBarButton()
+    }
     
     func fetchQuotes()  {
         service?.fetchQuotes(success: { currenciesConversion in
@@ -31,5 +50,9 @@ class ConversionViewModel {
         }, fail: { serviceError in
             print(serviceError)
         })
+    }
+    
+    func fetchCurrencies(_ conversion: Conversion) {
+        router?.enqueueListCurrencies(conversion)
     }
 }
