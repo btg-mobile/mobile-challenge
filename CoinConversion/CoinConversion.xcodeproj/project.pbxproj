@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0FAC8FAF1A3B2FB893A316D4 /* Pods_CoinConversion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */; };
 		D14786E924C4EDD500F594AC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */; };
+		D14786EC24C5093900F594AC /* ListCurrenciesSectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */; };
+		D14786ED24C5093900F594AC /* ListCurrenciesSectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D14786EB24C5093900F594AC /* ListCurrenciesSectionViewCell.xib */; };
+		D14786EF24C5099C00F594AC /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786EE24C5099C00F594AC /* NSObject+Extension.swift */; };
+		D14786F424C50BA900F594AC /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D14786F224C50BA900F594AC /* RadioButton.m */; };
 		D19E9C6624C496AE006A5C57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E9C6524C496AE006A5C57 /* UIColor+Extension.swift */; };
 		D1A1B12224C4E66D00C88F6F /* ListCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1B12024C4E66D00C88F6F /* ListCurrenciesViewController.swift */; };
 		D1A1B12324C4E66D00C88F6F /* ListCurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1A1B12124C4E66D00C88F6F /* ListCurrenciesViewController.xib */; };
@@ -43,6 +47,12 @@
 		16EB88BABF30B685F8537520 /* Pods-CoinConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.release.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.release.xcconfig"; sourceTree = "<group>"; };
 		C37A49E9A87E1156E34D1EC5 /* Pods-CoinConversion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.debug.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.debug.xcconfig"; sourceTree = "<group>"; };
 		D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesSectionViewCell.swift; sourceTree = "<group>"; };
+		D14786EB24C5093900F594AC /* ListCurrenciesSectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCurrenciesSectionViewCell.xib; sourceTree = "<group>"; };
+		D14786EE24C5099C00F594AC /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		D14786F124C50BA900F594AC /* CoinConversion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoinConversion-Bridging-Header.h"; sourceTree = "<group>"; };
+		D14786F224C50BA900F594AC /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
+		D14786F324C50BA900F594AC /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
 		D19E9C6524C496AE006A5C57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D1A1B12024C4E66D00C88F6F /* ListCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesViewController.swift; sourceTree = "<group>"; };
 		D1A1B12124C4E66D00C88F6F /* ListCurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCurrenciesViewController.xib; sourceTree = "<group>"; };
@@ -103,6 +113,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D14786F024C50B7800F594AC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D14786F324C50BA900F594AC /* RadioButton.h */,
+				D14786F224C50BA900F594AC /* RadioButton.m */,
+				D14786F124C50BA900F594AC /* CoinConversion-Bridging-Header.h */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		D1A1B12624C4E6B300C88F6F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +136,8 @@
 		D1A1B12724C4E6B800C88F6F /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */,
+				D14786EB24C5093900F594AC /* ListCurrenciesSectionViewCell.xib */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -173,6 +195,7 @@
 		D1C92B7924C3BAAE0049E64B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D14786F024C50B7800F594AC /* Components */,
 				D1D51C7424C3DDD200B8D165 /* Extension */,
 				D1C92B7B24C3BC180049E64B /* ServiceHelper */,
 			);
@@ -280,6 +303,7 @@
 				D1E9FF2E24C4D8B200FCAD32 /* UIView+Extension.swift */,
 				D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */,
 				D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */,
+				D14786EE24C5099C00F594AC /* NSObject+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -327,6 +351,7 @@
 				TargetAttributes = {
 					D1C92B5F24C3B77D0049E64B = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -356,6 +381,7 @@
 				D1C92B7024C3B77F0049E64B /* LaunchScreen.storyboard in Resources */,
 				D1C92B6D24C3B77F0049E64B /* Assets.xcassets in Resources */,
 				D1A1B12324C4E66D00C88F6F /* ListCurrenciesViewController.xib in Resources */,
+				D14786ED24C5093900F594AC /* ListCurrenciesSectionViewCell.xib in Resources */,
 				D1D51C7024C3D98B00B8D165 /* ConversionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,17 +436,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D51C6524C3D3CB00B8D165 /* CurrenciesConversion.swift in Sources */,
+				D14786EC24C5093900F594AC /* ListCurrenciesSectionViewCell.swift in Sources */,
 				D1C92B8D24C3BDA20049E64B /* ServiceError.swift in Sources */,
 				D1C92B8724C3BCD90049E64B /* ServiceManagerProtocol.swift in Sources */,
 				D1C92B8324C3BC8F0049E64B /* ServiceHTTPMethod.swift in Sources */,
 				D1D51C6F24C3D98B00B8D165 /* ConversionViewController.swift in Sources */,
 				D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */,
+				D14786EF24C5099C00F594AC /* NSObject+Extension.swift in Sources */,
 				D1C92B9824C3CA910049E64B /* ListCurrencies.swift in Sources */,
 				D1A1B12224C4E66D00C88F6F /* ListCurrenciesViewController.swift in Sources */,
 				D1C92B8524C3BCBE0049E64B /* ServiceManager.swift in Sources */,
 				D19E9C6624C496AE006A5C57 /* UIColor+Extension.swift in Sources */,
 				D14786E924C4EDD500F594AC /* UIApplication+Extension.swift in Sources */,
 				D1D51C7624C3DDE700B8D165 /* UIViewController+Extension.swift in Sources */,
+				D14786F424C50BA900F594AC /* RadioButton.m in Sources */,
 				D1D51C7324C3DA6900B8D165 /* ConversionViewModel.swift in Sources */,
 				D1A1B12524C4E6A300C88F6F /* ListCurrenciesViewModel.swift in Sources */,
 				D1C92B9624C3C9550049E64B /* AppEnvironment.swift in Sources */,
@@ -569,6 +598,7 @@
 			baseConfigurationReference = C37A49E9A87E1156E34D1EC5 /* Pods-CoinConversion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6FVWXKY4X6;
@@ -580,6 +610,8 @@
 				MARKETING_VERSION = 1.0.;
 				PRODUCT_BUNDLE_IDENTIFIER = ronilson.CoinConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoinConversion/Helpers/Components/CoinConversion-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -590,6 +622,7 @@
 			baseConfigurationReference = 16EB88BABF30B685F8537520 /* Pods-CoinConversion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6FVWXKY4X6;
@@ -601,6 +634,7 @@
 				MARKETING_VERSION = 1.0.;
 				PRODUCT_BUNDLE_IDENTIFIER = ronilson.CoinConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoinConversion/Helpers/Components/CoinConversion-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -23,17 +23,6 @@ class ListCurrenciesViewController: UITableViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
-extension ListCurrenciesViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-}
-
 // MARK: - UITableViewController lifecycle
 extension ListCurrenciesViewController {
     override func viewDidLoad() {
@@ -47,18 +36,13 @@ extension ListCurrenciesViewController {
                                isSearch: true,
                                searchController: searchController()
         )
+        tableView.register(
+            UINib(nibName: ListCurrenciesSectionViewCell.identifier, bundle: nil),
+            forHeaderFooterViewReuseIdentifier: ListCurrenciesSectionViewCell.identifier
+        )
         setupBarButton()
         viewModel?.delegate = self
         
-    }
-}
-
-// MARK: - UISearchResultsUpdating
-extension ListCurrenciesViewController: UISearchResultsUpdating, UISearchControllerDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        if let text = searchController.searchBar.text, !text.isEmpty {
-            print(text)
-        }
     }
 }
 
@@ -89,6 +73,39 @@ extension ListCurrenciesViewController {
     
     @objc private dynamic func refreshButtonTouched() {
         
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension ListCurrenciesViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            print(text)
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension ListCurrenciesViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListCurrenciesSectionViewCell.identifier) as? ListCurrenciesSectionViewCell
+            return cell
+
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ListCurrenciesViewController {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 82
     }
 }
 

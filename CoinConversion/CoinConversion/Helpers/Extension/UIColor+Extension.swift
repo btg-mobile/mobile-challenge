@@ -36,6 +36,10 @@ extension UIColor {
     static var colorGrayLighten60: UIColor {
         return UIColor(hexadecimal: 0xdbdbdb)
     }
+    
+     static var colorGrayLighten70: UIColor {
+        return UIColor(hexadecimal: 0xfcfcfc)
+    }
 }
 
 protocol Coloring { }
