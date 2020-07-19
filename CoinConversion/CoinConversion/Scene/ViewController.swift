@@ -10,13 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let service = ListCurrenciesService()
+    let listCurrenciesService = ListCurrenciesService()
+    let currenciesConversionService = CurrenciesConversionService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        service.fetchListCurrencies(success: { listCurrencies in
-            print(listCurrencies ?? "errrrrooorrrrrr")
+        listCurrenciesService.fetchListCurrencies(success: { listCurrencies in
+            print(listCurrencies)
+        }) { serviceError in
+            print(serviceError)
+        }
+        
+        currenciesConversionService.fetchQuotes(success: { currenciesConversion in
+            print(currenciesConversion)
         }) { serviceError in
             print(serviceError)
         }
