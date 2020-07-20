@@ -27,22 +27,14 @@ class ListCurrenciesViewController: UITableViewController {
 extension ListCurrenciesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundColor = .colorBackground
         
-        configureNavigationBar(largeTitleColor: .white,
-                               backgoundColor: .colorDarkishPink,
-                               tintColor: .white,
-                               title: "Lista de moedas",
-                               preferredLargeTitle: true,
-                               isSearch: true,
-                               searchController: searchController()
-        )
-        tableView.register(
-            UINib(nibName: ListCurrenciesSectionViewCell.identifier, bundle: nil),
-            forHeaderFooterViewReuseIdentifier: ListCurrenciesSectionViewCell.identifier
-        )
+        setupNavigationBar()
         setupBarButton()
-        viewModel?.delegate = self
+        registerTableView()
         
+        viewModel?.delegate = self
+        viewModel?.fetchListCurrencies()
     }
 }
 
@@ -65,14 +57,36 @@ extension ListCurrenciesViewController {
         return searchController
     }
     
+    private func setupNavigationBar() {
+        configureNavigationBar(largeTitleColor: .white,
+                               backgoundColor: .colorDarkishPink,
+                               tintColor: .white,
+                               title: "Lista de moedas",
+                               preferredLargeTitle: true,
+                               isSearch: true,
+                               searchController: searchController()
+        )
+    }
+    
+    private func registerTableView() {
+        tableView.register(
+            UINib(nibName: ListCurrenciesSectionViewCell.identifier, bundle: nil),
+            forHeaderFooterViewReuseIdentifier: ListCurrenciesSectionViewCell.identifier
+        )
+        tableView.register(
+            UINib(nibName: ListCurrenciesViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: ListCurrenciesViewCell.identifier
+        )
+    }
+    
     private func setupBarButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(self.refreshButtonTouched))
+        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshButtonTouched(sender:)))
         button.tintColor = .white
         navigationItem.rightBarButtonItem = button
     }
     
-    @objc private dynamic func refreshButtonTouched() {
-        
+    @objc func refreshButtonTouched(sender: UIBarButtonItem) {
+         viewModel?.fetchListCurrencies()
     }
 }
 
@@ -92,13 +106,41 @@ extension ListCurrenciesViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let listCurrencies = viewModel?.listCurrencies else {
+            return 0
+        }
+        return listCurrencies.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCurrenciesViewCell.identifier, for: indexPath) as? ListCurrenciesViewCell else {
+            fatalError("Couldn't dequeue \(ListCurrenciesViewCell.identifier)")
+        }
+        
+        guard let listCurrencies = viewModel?.listCurrencies else {
+            return UITableViewCell()
+        }
+        
+        let currencies = listCurrencies[indexPath.row]
+        cell.bind(
+            name: currencies.name,
+            currency: currencies.currency
+        )
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListCurrenciesSectionViewCell.identifier) as? ListCurrenciesSectionViewCell
-            return cell
+        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListCurrenciesSectionViewCell.identifier) as? ListCurrenciesSectionViewCell else {
+            fatalError("Couldn't dequeue \(ListCurrenciesSectionViewCell.identifier)")
+        }
 
+        if !(viewModel?.isSort ?? false) {
+            cell.setupRadioButtons(tag: 0, buttons: cell.sortByNameButton)
+        }
+        
+        cell.delegate = self
+        return cell
     }
 }
 
@@ -107,20 +149,39 @@ extension ListCurrenciesViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 82
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+// MARK: - ListCurrenciesSectionViewCellDelegate
+extension ListCurrenciesViewController: ListCurrenciesSectionViewCellDelegate {
+    func didTapSortBy(_ sortType: SortType) {
+        
+        guard let listCurrencies = viewModel?.listCurrencies else {
+            fatalError("listCurrencies cannot be null")
+        }
+        
+        viewModel?.sortBy(sortType, with: listCurrencies)
+    }
 }
 
 // MARK: - ListCurrenciesViewModelDelegate
 extension ListCurrenciesViewController: ListCurrenciesViewModelDelegate {
     func didStartLoading() {
-        
+        showActivityIndicator()
     }
     
     func didHideLoading() {
-        
+        hideActivityIndicator()
     }
     
     func didReloadData() {
-        
+        UIView.transition(with: self.tableView, duration: 0.35, options: .transitionCrossDissolve, animations: {
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: NSNotFound, section: 0), at: .top, animated: true)
+        })
     }
     
     func didFail() {

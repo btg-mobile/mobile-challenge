@@ -10,7 +10,6 @@ import UIKit
 
 // MARK: - Main
 class ConversionViewController: UIViewController {
-    
     @IBOutlet private weak var fromView: UIView! {
         didSet {
             let gesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizedFromView(sender:)))
