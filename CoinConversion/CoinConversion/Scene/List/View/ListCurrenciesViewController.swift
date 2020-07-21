@@ -12,6 +12,7 @@ import UIKit
 class ListCurrenciesViewController: UITableViewController {
     
     var viewModel: ListCurrenciesViewModel?
+    private let searchController = UISearchController(searchResultsController: nil)
     
     init(viewModel: ListCurrenciesViewModel) {
         self.viewModel = viewModel
@@ -40,8 +41,32 @@ extension ListCurrenciesViewController {
 
 // MARK: - Private methods
 extension ListCurrenciesViewController {
-    private func searchController() -> UISearchController {
-        let searchController = UISearchController(searchResultsController: nil)
+    private func setupNavigationBar() {
+        configureNavigationBar(largeTitleColor: .white,
+                               backgoundColor: .colorDarkishPink,
+                               tintColor: .white,
+                               title: "Lista de moedas",
+                               preferredLargeTitle: true,
+                               isSearch: true,
+                               searchController: setupSearchController()
+        )
+    }
+    
+    private func setupBarButton() {
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .refresh,
+            target: self,
+            action: #selector(refreshButtonTouched(sender:))
+        )
+        button.tintColor = .white
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc private func refreshButtonTouched(sender: UIBarButtonItem) {
+        viewModel?.fetchListCurrencies()
+    }
+    
+    private func setupSearchController() -> UISearchController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
@@ -58,18 +83,7 @@ extension ListCurrenciesViewController {
         
         return searchController
     }
-    
-    private func setupNavigationBar() {
-        configureNavigationBar(largeTitleColor: .white,
-                               backgoundColor: .colorDarkishPink,
-                               tintColor: .white,
-                               title: "Lista de moedas",
-                               preferredLargeTitle: true,
-                               isSearch: true,
-                               searchController: searchController()
-        )
-    }
-    
+        
     private func registerTableView() {
         tableView.register(
             UINib(nibName: ListCurrenciesSectionViewCell.identifier, bundle: nil),
@@ -83,16 +97,6 @@ extension ListCurrenciesViewController {
             UINib(nibName: EmptySearchViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: EmptySearchViewCell.identifier
         )
-    }
-    
-    private func setupBarButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshButtonTouched(sender:)))
-        button.tintColor = .white
-        navigationItem.rightBarButtonItem = button
-    }
-    
-    @objc func refreshButtonTouched(sender: UIBarButtonItem) {
-        viewModel?.fetchListCurrencies()
     }
 }
 
@@ -171,8 +175,14 @@ extension ListCurrenciesViewController {
             fatalError("listCurrencies can't be nil")
         }
         
-        let currencies = listCurrencies[indexPath.row]
-        viewModel?.chosenCurrencies(code: currencies.code, name: currencies.name)
+        tableView.keyboardDismissMode = .onDrag
+        searchController.searchBar.endEditing(true)
+        searchController.dismiss(animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            let currencies = listCurrencies[indexPath.row]
+            self.viewModel?.chosenCurrencies(code: currencies.code, name: currencies.name)
+        }
     }
 }
 
