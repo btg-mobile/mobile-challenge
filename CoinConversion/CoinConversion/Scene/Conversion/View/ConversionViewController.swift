@@ -10,8 +10,16 @@ import UIKit
 
 // MARK: - Main
 class ConversionViewController: UIViewController {
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var fromCurrencyNameLabel: UILabel!
     @IBOutlet private weak var fromCurrencyCodeLabel: UILabel!
+    
+    @IBOutlet private weak var valueTextField: UITextField! {
+        didSet {
+            valueTextField.delegate = self
+            valueTextField.tintColor = .colorDarkishPink
+        }
+    }
     
     @IBOutlet private weak var fromView: UIView! {
         didSet {
@@ -64,9 +72,9 @@ class ConversionViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var valeuView: UIView! {
+    @IBOutlet private weak var valueView: UIView! {
         didSet {
-            valeuView.setCardLayout()
+            valueView.setCardLayout()
         }
     }
     
@@ -92,8 +100,31 @@ class ConversionViewController: UIViewController {
 extension ConversionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .colorBackground
+        view.backgroundColor = .colorBackground
         
+        setupNavigationBar()
+        setupBarButton()
+        addDoneButtonOnKeyboard()
+        
+        viewModel?.delegate = self
+        viewModel?.fetchQuotes()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: - Private methods
+extension ConversionViewController {
+    private func setupNavigationBar() {
         configureNavigationBar(largeTitleColor: .white,
                                backgoundColor: .colorDarkishPink,
                                tintColor: .white,
@@ -102,14 +133,14 @@ extension ConversionViewController {
                                isSearch: false,
                                searchController: nil
         )
-        setupBarButton()
-        viewModel?.delegate = self
-        viewModel?.fetchQuotes()
     }
-}
-
-// MARK: - Private methods
-extension ConversionViewController {
+    
+    private func setupBarButton() {
+        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(self.refreshButtonTouched))
+        button.tintColor = .white
+        navigationItem.rightBarButtonItem = button
+    }
+    
     @objc private dynamic func refreshButtonTouched() {
         viewModel?.fetchQuotes()
     }
@@ -132,11 +163,59 @@ extension ConversionViewController {
         viewModel?.fetchCurrencies(.from)
     }
     
-    private func setupBarButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(self.refreshButtonTouched))
-        button.tintColor = .white
-        navigationItem.rightBarButtonItem = button
+    @objc private func keyboardWillShow(notification:NSNotification){
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        
+        var keyboardFrame:CGRect = (
+                userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+            ).cgRectValue
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        
+        var contentInset: UIEdgeInsets = scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
     }
+    
+    @objc private func keyboardWillHide(notification:NSNotification){
+        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+    }
+    
+    private func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(
+            frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
+        )
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        let done: UIBarButtonItem = UIBarButtonItem(
+            title: "Done",
+            style: .done,
+            target: self,
+            action: #selector(self.doneButtonAction)
+        )
+        done.title = "Ok"
+        done.tintColor = .colorDarkishPink
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        valueTextField.inputAccessoryView = doneToolbar
+    }
+    
+    @objc private func doneButtonAction(){
+        valueTextField.resignFirstResponder()
+    }
+}
+// MARK: - UITextFieldDelegate
+extension ConversionViewController: UITextFieldDelegate {
 }
 
 // MARK: - ConversionViewModelDelegate
@@ -166,7 +245,6 @@ extension ConversionViewController: ConversionViewModelDelegate {
         if fromView.isHidden && toView.isHidden {
             conversionStackView.isHidden = false
         }
-        
     }
     
     func didFail() {

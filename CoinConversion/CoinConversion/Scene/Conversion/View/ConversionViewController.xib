@@ -16,12 +16,14 @@
                 <outlet property="fromView" destination="b9i-XP-MEw" id="DaZ-CX-Lo5"/>
                 <outlet property="fromWithCurrencyView" destination="DIk-b9-DjU" id="yM6-0D-PDZ"/>
                 <outlet property="resultView" destination="Ohg-PO-gZl" id="MFd-Sx-kgi"/>
+                <outlet property="scrollView" destination="b3c-9s-GhN" id="efg-jZ-UnC"/>
                 <outlet property="toCurrencyCodeLabel" destination="KBq-ve-Jev" id="zWc-yq-YNW"/>
                 <outlet property="toCurrencyNameLabel" destination="kKw-0o-NyE" id="Fbp-ft-UaL"/>
                 <outlet property="toSeparatorView" destination="ufY-3e-8uh" id="3ia-ps-oiH"/>
                 <outlet property="toView" destination="WsX-qd-fi7" id="CeC-Ya-6mU"/>
                 <outlet property="toWithCurrencyView" destination="0qa-yt-gX0" id="aDu-w8-EI4"/>
-                <outlet property="valeuView" destination="KOW-fE-TBI" id="a7L-Rn-GFV"/>
+                <outlet property="valueTextField" destination="BSM-Vp-v4P" id="doL-RT-72w"/>
+                <outlet property="valueView" destination="KOW-fE-TBI" id="Nih-zg-ohJ"/>
                 <outlet property="view" destination="Dki-VR-oMW" id="5Ce-gI-Yrs"/>
             </connections>
         </placeholder>
