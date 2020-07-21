@@ -238,8 +238,8 @@ extension ConversionViewController: ConversionViewModelDelegate {
         case .to:
             toView.isHidden = true
             toWithCurrencyView.isHidden = false
-            fromCurrencyCodeLabel.text = code
-            fromCurrencyNameLabel.text = name
+            toCurrencyCodeLabel.text = code
+            toCurrencyNameLabel.text = name
         }
         
         if fromView.isHidden && toView.isHidden {
