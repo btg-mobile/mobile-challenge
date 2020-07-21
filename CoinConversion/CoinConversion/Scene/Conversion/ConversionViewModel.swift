@@ -18,7 +18,7 @@ enum Conversion {
 protocol ConversionViewModelDelegate: class {
     func didStartLoading()
     func didHideLoading()
-    func didReloadData()
+    func didReloadData(code: String, name: String, conversion: Conversion)
     func didFail()
 }
 
@@ -54,6 +54,6 @@ extension ConversionViewModel {
 // MARK: - Custom methods
 extension ConversionViewModel: ConversionRouterDelegate {
     func currencyFetched(_ code: String, _ name: String, _ conversion: Conversion) {
-        print(" \(code) -  \(name) - \(conversion)")
+        delegate?.didReloadData(code: code, name: name, conversion: conversion)
     }
 }

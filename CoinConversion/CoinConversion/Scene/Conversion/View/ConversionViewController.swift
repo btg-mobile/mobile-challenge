@@ -10,21 +10,69 @@ import UIKit
 
 // MARK: - Main
 class ConversionViewController: UIViewController {
+    @IBOutlet private weak var fromCurrencyNameLabel: UILabel!
+    @IBOutlet private weak var fromCurrencyCodeLabel: UILabel!
+    
     @IBOutlet private weak var fromView: UIView! {
         didSet {
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizedFromView(sender:)))
-            fromView.addGestureRecognizer(gesture)
-            
             fromView.setCardLayout()
+            fromViewTapGestureRecognizer(fromView)
         }
     }
     
+    @IBOutlet private weak var fromWithCurrencyView: UIView! {
+        didSet {
+            fromWithCurrencyView.isHidden = true
+            fromWithCurrencyView.setCardLayout()
+            fromViewTapGestureRecognizer(fromWithCurrencyView)
+        }
+    }
+    
+    @IBOutlet private weak var fromSeparatorView: UIView! {
+        didSet {
+            fromSeparatorView.backgroundColor = .colorGrayLighten60
+        }
+    }
+    
+    @IBOutlet private weak var toCurrencyNameLabel: UILabel!
+    @IBOutlet private weak var toCurrencyCodeLabel: UILabel!
+    
     @IBOutlet private weak var toView: UIView! {
         didSet {
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizedToView(sender:)))
-            toView.addGestureRecognizer(gesture)
-            
             toView.setCardLayout()
+            toViewTapGestureRecognizer(toView)
+        }
+    }
+    
+    @IBOutlet private weak var toWithCurrencyView: UIView! {
+        didSet {
+            toWithCurrencyView.isHidden = true
+            toWithCurrencyView.setCardLayout()
+            toViewTapGestureRecognizer(toWithCurrencyView)
+        }
+    }
+    
+    @IBOutlet private weak var toSeparatorView: UIView! {
+        didSet {
+            toSeparatorView.backgroundColor = .colorGrayLighten60
+        }
+    }
+    
+    @IBOutlet private weak var conversionStackView: UIStackView! {
+        didSet {
+            conversionStackView.isHidden = true
+        }
+    }
+    
+    @IBOutlet private weak var valeuView: UIView! {
+        didSet {
+            valeuView.setCardLayout()
+        }
+    }
+    
+    @IBOutlet private weak var resultView: UIView! {
+        didSet {
+            resultView.setCardLayout()
         }
     }
     
@@ -66,6 +114,16 @@ extension ConversionViewController {
         viewModel?.fetchQuotes()
     }
     
+    private func toViewTapGestureRecognizer(_ view: UIView) {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizedToView(sender:)))
+        view.addGestureRecognizer(gesture)
+    }
+    
+    private func fromViewTapGestureRecognizer(_ view: UIView) {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizedFromView(sender:)))
+        view.addGestureRecognizer(gesture)
+    }
+    
     @objc private dynamic func tapGestureRecognizedToView(sender: UITapGestureRecognizer) {
         viewModel?.fetchCurrencies(.to)
     }
@@ -84,12 +142,31 @@ extension ConversionViewController {
 // MARK: - ConversionViewModelDelegate
 extension ConversionViewController: ConversionViewModelDelegate {
     func didStartLoading() {
+        showActivityIndicator()
     }
     
     func didHideLoading() {
+        hideActivityIndicator()
     }
     
-    func didReloadData() {
+    func didReloadData(code: String, name: String, conversion: Conversion) {
+        switch conversion {
+        case .from:
+            fromView.isHidden = true
+            fromWithCurrencyView.isHidden = false
+            fromCurrencyNameLabel.text = name
+            fromCurrencyCodeLabel.text = code
+        case .to:
+            toView.isHidden = true
+            toWithCurrencyView.isHidden = false
+            fromCurrencyCodeLabel.text = code
+            fromCurrencyNameLabel.text = name
+        }
+        
+        if fromView.isHidden && toView.isHidden {
+            conversionStackView.isHidden = false
+        }
+        
     }
     
     func didFail() {

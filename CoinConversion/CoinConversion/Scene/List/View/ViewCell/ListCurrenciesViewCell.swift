@@ -12,14 +12,12 @@ class ListCurrenciesViewCell: UITableViewCell {
     @IBOutlet private weak var containerView: UIView! {
         didSet {
             containerView.setCardLayout()
-            
         }
     }
     
     @IBOutlet private weak var separatorView: UIView! {
         didSet {
             separatorView.backgroundColor = .colorGrayLighten60
-            
         }
     }
     
