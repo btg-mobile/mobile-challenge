@@ -7,3 +7,42 @@
 //
 
 import Foundation
+import UIKit
+
+// MARK: - ConversionViewModelDelegate
+protocol ListCurrenciesRouterDelegate: class {
+    func currencyFetched(_ code: String, _ name: String, _ conversion: Conversion)
+}
+
+// MARK: - Main
+class ListCurrenciesRouter {
+    weak var delegate: ListCurrenciesRouterDelegate?
+    
+    func createListCurrenciesScreen(conversion: Conversion) {
+        let viewController = ListCurrenciesViewController(
+            viewModel: ListCurrenciesViewModel(
+                service: ListCurrenciesService(),
+                conversion: conversion,
+                router: self
+        ))
+        
+        if let topViewController = UIApplication.shared.topMostViewController() {
+            topViewController.navigationController?.pushViewController(
+                viewController, animated: true
+            )
+        }
+    }
+    
+    func dismissToConversion(_ code: String, _ name: String, _ conversion: Conversion) {
+        delegate?.currencyFetched(
+            code,
+            name,
+            conversion
+        )
+        DispatchQueue.main.async(execute: {
+            if let topViewController = UIApplication.shared.topMostViewController() {
+                topViewController.navigationController?.popViewController(animated: true)
+            }
+        })
+    }
+}

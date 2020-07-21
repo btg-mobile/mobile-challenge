@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
+protocol ConversionRouterDelegate: class {
+    func currencyFetched(_ code: String, _ name: String, _ conversion: Conversion)
+}
+
 // MARK: - Main
 class ConversionRouter {
     
     private let window: UIWindow
+    weak var delegate: ConversionRouterDelegate?
     
     init(window: UIWindow) {
         self.window = window
@@ -33,16 +38,18 @@ class ConversionRouter {
     }
     
     func enqueueListCurrencies(_ conversion: Conversion) {
-        let viewController = ListCurrenciesViewController(
-            viewModel: ListCurrenciesViewModel(
-                service: ListCurrenciesService(),
-                conversion: conversion
-        ))
+        let router = ListCurrenciesRouter()
+        router.delegate = self
         
-        if let topViewController = UIApplication.shared.topMostViewController() {
-            topViewController.navigationController?.pushViewController(
-                viewController, animated: true
-          )
-        }
+        router.createListCurrenciesScreen(
+            conversion: conversion
+        )
+    }
+}
+
+// MARK: - ListCurrenciesRouterDelegate
+extension ConversionRouter: ListCurrenciesRouterDelegate {
+    func currencyFetched(_ code: String, _ name: String, _ conversion: Conversion) {
+        delegate?.currencyFetched(code, name, conversion)
     }
 }

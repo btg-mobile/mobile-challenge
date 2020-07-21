@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FAC8FAF1A3B2FB893A316D4 /* Pods_CoinConversion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */; };
+		D13C62DB24C7676500F76757 /* ListCurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C62DA24C7676500F76757 /* ListCurrenciesRouter.swift */; };
 		D14786E924C4EDD500F594AC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */; };
 		D14786EC24C5093900F594AC /* ListCurrenciesSectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */; };
 		D14786ED24C5093900F594AC /* ListCurrenciesSectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D14786EB24C5093900F594AC /* ListCurrenciesSectionViewCell.xib */; };
@@ -51,6 +52,7 @@
 		03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinConversion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EB88BABF30B685F8537520 /* Pods-CoinConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.release.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.release.xcconfig"; sourceTree = "<group>"; };
 		C37A49E9A87E1156E34D1EC5 /* Pods-CoinConversion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.debug.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.debug.xcconfig"; sourceTree = "<group>"; };
+		D13C62DA24C7676500F76757 /* ListCurrenciesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesRouter.swift; sourceTree = "<group>"; };
 		D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesSectionViewCell.swift; sourceTree = "<group>"; };
 		D14786EB24C5093900F594AC /* ListCurrenciesSectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCurrenciesSectionViewCell.xib; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				D1A1B12624C4E6B300C88F6F /* View */,
 				D1A7E0D724C6201F00A71E91 /* ListCurrenciesModel.swift */,
 				D1A1B12424C4E6A300C88F6F /* ListCurrenciesViewModel.swift */,
+				D13C62DA24C7676500F76757 /* ListCurrenciesRouter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				D1C92B6424C3B77D0049E64B /* AppDelegate.swift in Sources */,
 				D1C92B6624C3B77D0049E64B /* SceneDelegate.swift in Sources */,
 				D1D51C6724C3D3E400B8D165 /* CurrenciesConversionService.swift in Sources */,
+				D13C62DB24C7676500F76757 /* ListCurrenciesRouter.swift in Sources */,
 				D1D51C6C24C3D8E200B8D165 /* AppRouter.swift in Sources */,
 				D1E5FF9724C66C2400B1FD51 /* EmptySearchViewCell.swift in Sources */,
 				D1C92B9324C3C3D10049E64B /* ListCurrenciesService.swift in Sources */,

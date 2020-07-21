@@ -123,6 +123,19 @@ extension ListCurrenciesViewController {
         return listCurrencies.count
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListCurrenciesSectionViewCell.identifier) as? ListCurrenciesSectionViewCell else {
+            fatalError("Couldn't dequeue \(ListCurrenciesSectionViewCell.identifier)")
+        }
+        
+        if !(viewModel?.isSort ?? false) {
+            cell.setupRadioButtons(tag: 0, buttons: cell.sortByNameButton)
+        }
+        
+        cell.delegate = self
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let listCurrencies = viewModel?.listCurrencies else {
             return UITableViewCell()
@@ -152,18 +165,14 @@ extension ListCurrenciesViewController {
         )
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListCurrenciesSectionViewCell.identifier) as? ListCurrenciesSectionViewCell else {
-            fatalError("Couldn't dequeue \(ListCurrenciesSectionViewCell.identifier)")
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let listCurrencies = viewModel?.listCurrencies else {
+            fatalError("listCurrencies can't be nil")
         }
         
-        if !(viewModel?.isSort ?? false) {
-            cell.setupRadioButtons(tag: 0, buttons: cell.sortByNameButton)
-        }
-        
-        cell.delegate = self
-        return cell
+        let currencies = listCurrencies[indexPath.row]
+        viewModel?.chosenCurrencies(code: currencies.code, name: currencies.name)
     }
 }
 

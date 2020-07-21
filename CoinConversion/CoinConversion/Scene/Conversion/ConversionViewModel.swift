@@ -32,6 +32,7 @@ class ConversionViewModel {
     init(service: CurrenciesConversionService, router: ConversionRouter) {
         self.service = service
         self.router = router
+        self.router?.delegate = self
     }
 }
 
@@ -47,5 +48,12 @@ extension ConversionViewModel {
     
     func fetchCurrencies(_ conversion: Conversion) {
         router?.enqueueListCurrencies(conversion)
+    }
+}
+
+// MARK: - Custom methods
+extension ConversionViewModel: ConversionRouterDelegate {
+    func currencyFetched(_ code: String, _ name: String, _ conversion: Conversion) {
+        print(" \(code) -  \(name) - \(conversion)")
     }
 }

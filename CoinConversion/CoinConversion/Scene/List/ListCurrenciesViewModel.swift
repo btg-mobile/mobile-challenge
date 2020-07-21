@@ -28,14 +28,16 @@ class ListCurrenciesViewModel {
     
     private var service: ListCurrenciesService?
     private var conversion: Conversion?
+    private var router: ListCurrenciesRouter?
     private var currencies: [ListCurrenciesModel]?
     
     private(set) var listCurrencies: [ListCurrenciesModel]?
     private(set) var isSort = Bool()
     
-    init(service: ListCurrenciesService, conversion: Conversion) {
+    init(service: ListCurrenciesService, conversion: Conversion, router: ListCurrenciesRouter) {
         self.service = service
         self.conversion = conversion
+        self.router = router
     }
 }
 
@@ -93,9 +95,15 @@ extension ListCurrenciesViewModel {
                 $0.name < $1.name
             }
         }
-        
         isSort = true
         delegate?.didReloadData()
+    }
+    
+    func chosenCurrencies(code: String, name: String) {
+        guard let conversion = conversion else {
+            fatalError("conversion type can't be nil")
+        }
+        router?.dismissToConversion(code, name, conversion)
     }
 }
 
