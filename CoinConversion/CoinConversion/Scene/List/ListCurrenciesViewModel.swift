@@ -28,10 +28,10 @@ class ListCurrenciesViewModel {
     
     private var service: ListCurrenciesService?
     private var conversion: Conversion?
+    private var currencies: [ListCurrenciesModel]?
+    
     private(set) var listCurrencies: [ListCurrenciesModel]?
     private(set) var isSort = Bool()
-    
-    private var currencies: [ListCurrenciesModel]?
     
     init(service: ListCurrenciesService, conversion: Conversion) {
         self.service = service

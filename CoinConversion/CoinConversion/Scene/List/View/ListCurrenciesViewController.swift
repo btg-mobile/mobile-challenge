@@ -79,6 +79,10 @@ extension ListCurrenciesViewController {
             UINib(nibName: ListCurrenciesViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: ListCurrenciesViewCell.identifier
         )
+        tableView.register(
+            UINib(nibName: EmptySearchViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: EmptySearchViewCell.identifier
+        )
     }
     
     private func setupBarButton() {
@@ -88,7 +92,7 @@ extension ListCurrenciesViewController {
     }
     
     @objc func refreshButtonTouched(sender: UIBarButtonItem) {
-         viewModel?.fetchListCurrencies()
+        viewModel?.fetchListCurrencies()
     }
 }
 
@@ -115,16 +119,30 @@ extension ListCurrenciesViewController {
         guard let listCurrencies = viewModel?.listCurrencies else {
             return 0
         }
+        if listCurrencies.count == 0 { return 1 }
         return listCurrencies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCurrenciesViewCell.identifier, for: indexPath) as? ListCurrenciesViewCell else {
-            fatalError("Couldn't dequeue \(ListCurrenciesViewCell.identifier)")
-        }
-        
         guard let listCurrencies = viewModel?.listCurrencies else {
             return UITableViewCell()
+        }
+        
+        if listCurrencies.count == 0 {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: EmptySearchViewCell.identifier, for: indexPath)
+                as? EmptySearchViewCell else {
+                    
+                    fatalError("Couldn't dequeue \(ListCurrenciesViewCell.identifier)")
+            }
+            return cell
+        }
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ListCurrenciesViewCell.identifier, for: indexPath)
+            as? ListCurrenciesViewCell else {
+                
+                fatalError("Couldn't dequeue \(ListCurrenciesViewCell.identifier)")
         }
         
         let currencies = listCurrencies[indexPath.row]
@@ -132,7 +150,6 @@ extension ListCurrenciesViewController {
             name: currencies.name,
             currency: currencies.code
         )
-        
         return cell
     }
     
@@ -140,7 +157,7 @@ extension ListCurrenciesViewController {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListCurrenciesSectionViewCell.identifier) as? ListCurrenciesSectionViewCell else {
             fatalError("Couldn't dequeue \(ListCurrenciesSectionViewCell.identifier)")
         }
-
+        
         if !(viewModel?.isSort ?? false) {
             cell.setupRadioButtons(tag: 0, buttons: cell.sortByNameButton)
         }
@@ -157,6 +174,9 @@ extension ListCurrenciesViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if viewModel?.listCurrencies?.count == 0 {
+            return 230
+        }
         return 100
     }
 }

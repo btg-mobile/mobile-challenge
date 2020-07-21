@@ -42,6 +42,8 @@
 		D1D51C7024C3D98B00B8D165 /* ConversionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */; };
 		D1D51C7324C3DA6900B8D165 /* ConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */; };
 		D1D51C7624C3DDE700B8D165 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */; };
+		D1E5FF9724C66C2400B1FD51 /* EmptySearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5FF9524C66C2400B1FD51 /* EmptySearchViewCell.swift */; };
+		D1E5FF9824C66C2400B1FD51 /* EmptySearchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E5FF9624C66C2400B1FD51 /* EmptySearchViewCell.xib */; };
 		D1E9FF2F24C4D8B200FCAD32 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9FF2E24C4D8B200FCAD32 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		D1D51C6E24C3D98B00B8D165 /* ConversionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversionViewController.xib; sourceTree = "<group>"; };
 		D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
 		D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D1E5FF9524C66C2400B1FD51 /* EmptySearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchViewCell.swift; sourceTree = "<group>"; };
+		D1E5FF9624C66C2400B1FD51 /* EmptySearchViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptySearchViewCell.xib; sourceTree = "<group>"; };
 		D1E9FF2E24C4D8B200FCAD32 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +146,8 @@
 		D1A1B12724C4E6B800C88F6F /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D1E5FF9524C66C2400B1FD51 /* EmptySearchViewCell.swift */,
+				D1E5FF9624C66C2400B1FD51 /* EmptySearchViewCell.xib */,
 				D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */,
 				D14786EB24C5093900F594AC /* ListCurrenciesSectionViewCell.xib */,
 				D1A7E0D324C613F200A71E91 /* ListCurrenciesViewCell.swift */,
@@ -387,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E5FF9824C66C2400B1FD51 /* EmptySearchViewCell.xib in Resources */,
 				D1C92B7024C3B77F0049E64B /* LaunchScreen.storyboard in Resources */,
 				D1C92B6D24C3B77F0049E64B /* Assets.xcassets in Resources */,
 				D1A1B12324C4E66D00C88F6F /* ListCurrenciesViewController.xib in Resources */,
@@ -473,6 +480,7 @@
 				D1C92B6624C3B77D0049E64B /* SceneDelegate.swift in Sources */,
 				D1D51C6724C3D3E400B8D165 /* CurrenciesConversionService.swift in Sources */,
 				D1D51C6C24C3D8E200B8D165 /* AppRouter.swift in Sources */,
+				D1E5FF9724C66C2400B1FD51 /* EmptySearchViewCell.swift in Sources */,
 				D1C92B9324C3C3D10049E64B /* ListCurrenciesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
