@@ -44,7 +44,9 @@ extension ListCurrenciesViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.delegate = self
+        searchController.searchResultsUpdater = self
         
         let searchBar = searchController.searchBar
         searchBar.tintColor = .white
@@ -94,7 +96,11 @@ extension ListCurrenciesViewController {
 extension ListCurrenciesViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
-            print(text)
+            viewModel?.searchListCurrencies(whit: text)
+        }
+        
+        if let text = searchController.searchBar.text, text.isEmpty {
+            viewModel?.searchListCurrencies(whit: "")
         }
     }
 }
@@ -124,7 +130,7 @@ extension ListCurrenciesViewController {
         let currencies = listCurrencies[indexPath.row]
         cell.bind(
             name: currencies.name,
-            currency: currencies.currency
+            currency: currencies.code
         )
         
         return cell

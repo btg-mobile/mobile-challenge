@@ -10,10 +10,10 @@ import Foundation
 
 class ListCurrenciesModel: NSObject {
     var name = String()
-    var currency = String()
+    var code = String()
     
-    init(name: String, currency: String) {
+    init(name: String, code: String) {
         self.name = name
-        self.currency = currency
+        self.code = code
     }
 }

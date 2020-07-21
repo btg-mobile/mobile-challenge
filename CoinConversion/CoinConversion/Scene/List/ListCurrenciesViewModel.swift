@@ -31,6 +31,8 @@ class ListCurrenciesViewModel {
     private(set) var listCurrencies: [ListCurrenciesModel]?
     private(set) var isSort = Bool()
     
+    private var currencies: [ListCurrenciesModel]?
+    
     init(service: ListCurrenciesService, conversion: Conversion) {
         self.service = service
         self.conversion = conversion
@@ -46,6 +48,10 @@ extension ListCurrenciesViewModel {
         service?.fetchListCurrencies(success: { listCurrencies in
             self.delegate?.didHideLoading()
             
+            self.currencies = self.handleListCurrencies(
+                with: listCurrencies
+            )
+            
             self.listCurrencies = self.handleListCurrencies(
                 with: listCurrencies
             )
@@ -55,11 +61,32 @@ extension ListCurrenciesViewModel {
         })
     }
     
+    func searchListCurrencies(whit text: String) {
+        if text.count > 0 {
+            var list = self.listCurrencies
+            list = list?.filter {
+                $0.name.lowercased().folding(options: .diacriticInsensitive, locale: .current).contains(
+                    text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                    ) ||
+                    $0.code.lowercased().folding(options: .diacriticInsensitive, locale: .current).contains(
+                        text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                )
+            }
+            listCurrencies = list
+            delegate?.didReloadData()
+            return
+        }
+        
+        listCurrencies = currencies
+        isSort = false
+        delegate?.didReloadData()
+    }
+    
     func sortBy(_ sortType: SortType, with list: [ListCurrenciesModel]) {
         switch sortType {
         case .code:
             self.listCurrencies = list.sorted {
-                $0.currency < $1.currency
+                $0.code < $1.code
             }
         case .name:
             self.listCurrencies = list.sorted {
@@ -76,7 +103,7 @@ extension ListCurrenciesViewModel {
 extension ListCurrenciesViewModel {
     private func handleListCurrencies(with listCurrencies: ListCurrencies) -> [ListCurrenciesModel] {
         var list = listCurrencies.currencies.map({ (key, value) -> ListCurrenciesModel in
-            return ListCurrenciesModel(name: value, currency: key)
+            return ListCurrenciesModel(name: value, code: key)
         })
         list = list.sorted {
             $0.name < $1.name
