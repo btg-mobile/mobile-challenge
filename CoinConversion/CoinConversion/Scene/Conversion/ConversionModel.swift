@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: - ConversionModel
 class ConversionModel: NSObject {
-    var date = Double()
-    var conversion = [ConversionCurrenciesModel]()
+    var date: Double?
+    var conversion: [ConversionCurrenciesModel]?
     
     init(date: Double, conversion: [ConversionCurrenciesModel]) {
         self.date = date
@@ -21,8 +21,8 @@ class ConversionModel: NSObject {
 
 // MARK: - ConversionCurrenciesModel
 class ConversionCurrenciesModel: NSObject {
-    var code = String()
-    var quotes = Double()
+    var code: String?
+    var quotes: Double?
     
     init(code: String, quotes: Double) {
         self.code = code
