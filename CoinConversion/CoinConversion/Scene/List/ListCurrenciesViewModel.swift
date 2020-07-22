@@ -110,9 +110,12 @@ extension ListCurrenciesViewModel {
 // MARK: - PrivateMethods
 extension ListCurrenciesViewModel {
     private func handleListCurrencies(with listCurrencies: ListCurrencies) -> [ListCurrenciesModel] {
-        var list = listCurrencies.currencies.map({ (key, value) -> ListCurrenciesModel in
-            return ListCurrenciesModel(name: value, code: key)
-        })
+        var list = listCurrencies.currencies.map { list -> ListCurrenciesModel in
+            return ListCurrenciesModel(
+                name: list.value, code: list.key
+            )
+        }
+        
         list = list.sorted {
             $0.name < $1.name
         }

@@ -37,9 +37,18 @@ extension UIColor {
         return UIColor(hexadecimal: 0xdbdbdb)
     }
     
-     static var colorGrayLighten70: UIColor {
+    static var colorGrayLighten70: UIColor {
         return UIColor(hexadecimal: 0xfcfcfc)
     }
+    
+    static var colorSpringGreen: UIColor {
+        return UIColor(hexadecimal: 0x00FF7F)
+    }
+    
+    static var colorDarkRed: UIColor {
+        return UIColor(hexadecimal: 0x8B0000)
+    }
+
 }
 
 protocol Coloring { }

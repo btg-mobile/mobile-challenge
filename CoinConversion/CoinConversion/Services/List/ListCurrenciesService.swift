@@ -11,7 +11,8 @@ import Foundation
 final class ListCurrenciesService: NSObject {
     
     func fetchListCurrencies(success: @escaping (ListCurrencies) -> Void,
-                             fail: @escaping (_ error: ServiceError) -> Void) {
+                             fail: @escaping (_ error: ServiceError) -> Void
+    ) {
         
         let serviceUrl = AppEnvironment.domain.value + AppEnvironment.listCurrencies.value
         

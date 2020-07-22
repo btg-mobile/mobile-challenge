@@ -11,7 +11,8 @@ import Foundation
 final class CurrenciesConversionService: NSObject {
     
     func fetchQuotes(success: @escaping (CurrenciesConversion) -> Void,
-                             fail: @escaping (_ error: ServiceError) -> Void) {
+                     fail: @escaping (_ error: ServiceError) -> Void
+    ) {
         
         let serviceUrl = AppEnvironment.domain.value + AppEnvironment.quotes.value
         
@@ -29,4 +30,3 @@ final class CurrenciesConversionService: NSObject {
         })
     }
 }
-

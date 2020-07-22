@@ -11,6 +11,7 @@ import UIKit
 // MARK: - Main
 class ConversionViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var updateDateLabel: UILabel!
     @IBOutlet private weak var fromCurrencyNameLabel: UILabel!
     @IBOutlet private weak var fromCurrencyCodeLabel: UILabel!
     
@@ -18,6 +19,7 @@ class ConversionViewController: UIViewController {
         didSet {
             valueTextField.delegate = self
             valueTextField.tintColor = .colorDarkishPink
+            valueTextField.keyboardType = .numberPad
         }
     }
     
@@ -84,7 +86,11 @@ class ConversionViewController: UIViewController {
         }
     }
     
+    @IBOutlet private weak var resultLabel: UILabel!
+    
     var viewModel: ConversionViewModel?
+    
+    private var currentString = ""
     
     init(viewModel: ConversionViewModel) {
         self.viewModel = viewModel
@@ -136,7 +142,11 @@ extension ConversionViewController {
     }
     
     private func setupBarButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(self.refreshButtonTouched))
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .refresh,
+            target: self,
+            action: #selector(self.refreshButtonTouched)
+        )
         button.tintColor = .white
         navigationItem.rightBarButtonItem = button
     }
@@ -169,7 +179,7 @@ extension ConversionViewController {
         }
         
         var keyboardFrame:CGRect = (
-                userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+            userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
             ).cgRectValue
         keyboardFrame = view.convert(keyboardFrame, from: nil)
         
@@ -216,6 +226,36 @@ extension ConversionViewController {
 }
 // MARK: - UITextFieldDelegate
 extension ConversionViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let fromCode = fromCurrencyCodeLabel.text,
+              let toCode = toCurrencyCodeLabel.text  else {
+            return true
+        }
+        
+        if (textField.text!.count <= 30 && string == "") || (textField.text!.count < 30 && string != "") {
+            switch string {
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                currentString += string
+                formatCurrency(currentString, textField: textField, currencyCode: fromCode)
+            default:
+                if string.count == 0 && currentString.count != 0 {
+                    currentString = String(currentString.dropLast())
+                    formatCurrency(currentString, textField: textField, currencyCode: fromCode)
+                }
+            }
+        }
+        viewModel?.convertCurrency(fromCode: fromCode, toCode: toCode, value: currentString)
+        return false
+    }
+}
+
+
+// MARK: - Format Currency
+extension ConversionViewController {
+    private func formatCurrency(_ string: String, textField: UITextField, currencyCode: String) {
+        textField.text = viewModel?.formatCurrency(currencyCode: currencyCode, amount: string)!
+    }
 }
 
 // MARK: - ConversionViewModelDelegate
@@ -245,8 +285,23 @@ extension ConversionViewController: ConversionViewModelDelegate {
         if fromView.isHidden && toView.isHidden {
             conversionStackView.isHidden = false
         }
+        resultLabel.text = "-"
+        resultView.setCardLayout()
+        valueTextField.text = ""
+        currentString = ""
+    }
+    
+    func didReloadResult(with value: String, color: UIColor) {
+        resultLabel.text = value
+        resultView.setCardLayout(color)
+    }
+
+    func didUpdateDate(with date: String) {
+        updateDateLabel.text = date
     }
     
     func didFail() {
     }
 }
+
+

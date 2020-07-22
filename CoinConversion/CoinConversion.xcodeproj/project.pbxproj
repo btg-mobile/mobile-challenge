@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FAC8FAF1A3B2FB893A316D4 /* Pods_CoinConversion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */; };
+		D139A4E424C8682A00006ABF /* ConversionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139A4E324C8682A00006ABF /* ConversionModel.swift */; };
+		D139A4E624C86A4500006ABF /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139A4E524C86A4500006ABF /* Double+Extension.swift */; };
 		D13C62DB24C7676500F76757 /* ListCurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C62DA24C7676500F76757 /* ListCurrenciesRouter.swift */; };
 		D14786E924C4EDD500F594AC /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */; };
 		D14786EC24C5093900F594AC /* ListCurrenciesSectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */; };
@@ -52,6 +54,8 @@
 		03581AA25F57C1FE20D9D358 /* Pods_CoinConversion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinConversion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EB88BABF30B685F8537520 /* Pods-CoinConversion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.release.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.release.xcconfig"; sourceTree = "<group>"; };
 		C37A49E9A87E1156E34D1EC5 /* Pods-CoinConversion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinConversion.debug.xcconfig"; path = "Target Support Files/Pods-CoinConversion/Pods-CoinConversion.debug.xcconfig"; sourceTree = "<group>"; };
+		D139A4E324C8682A00006ABF /* ConversionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionModel.swift; sourceTree = "<group>"; };
+		D139A4E524C86A4500006ABF /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		D13C62DA24C7676500F76757 /* ListCurrenciesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesRouter.swift; sourceTree = "<group>"; };
 		D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		D14786EA24C5093900F594AC /* ListCurrenciesSectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesSectionViewCell.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D51C7724C3E16500B8D165 /* View */,
+				D139A4E324C8682A00006ABF /* ConversionModel.swift */,
 				D1D51C6924C3D7A700B8D165 /* ConversionRouter.swift */,
 				D1D51C7224C3DA6900B8D165 /* ConversionViewModel.swift */,
 			);
@@ -322,6 +327,7 @@
 				D1D51C7524C3DDE700B8D165 /* UIViewController+Extension.swift */,
 				D14786E824C4EDD500F594AC /* UIApplication+Extension.swift */,
 				D14786EE24C5099C00F594AC /* NSObject+Extension.swift */,
+				D139A4E524C86A4500006ABF /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -460,8 +466,10 @@
 				D1C92B8D24C3BDA20049E64B /* ServiceError.swift in Sources */,
 				D1C92B8724C3BCD90049E64B /* ServiceManagerProtocol.swift in Sources */,
 				D1C92B8324C3BC8F0049E64B /* ServiceHTTPMethod.swift in Sources */,
+				D139A4E624C86A4500006ABF /* Double+Extension.swift in Sources */,
 				D1D51C6F24C3D98B00B8D165 /* ConversionViewController.swift in Sources */,
 				D1C92B8B24C3BD810049E64B /* Connectivity.swift in Sources */,
+				D139A4E424C8682A00006ABF /* ConversionModel.swift in Sources */,
 				D14786EF24C5099C00F594AC /* NSObject+Extension.swift in Sources */,
 				D1C92B9824C3CA910049E64B /* ListCurrencies.swift in Sources */,
 				D1A1B12224C4E66D00C88F6F /* ListCurrenciesViewController.swift in Sources */,
