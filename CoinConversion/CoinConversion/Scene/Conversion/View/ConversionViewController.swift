@@ -303,5 +303,3 @@ extension ConversionViewController: ConversionViewModelDelegate {
     func didFail() {
     }
 }
-
-

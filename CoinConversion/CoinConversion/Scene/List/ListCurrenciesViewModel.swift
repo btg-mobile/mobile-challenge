@@ -65,7 +65,7 @@ extension ListCurrenciesViewModel {
     
     func searchListCurrencies(whit text: String) {
         if text.count > 0 {
-            var list = self.listCurrencies
+            var list = currencies
             list = list?.filter {
                 $0.name.lowercased().folding(options: .diacriticInsensitive, locale: .current).contains(
                     text.lowercased().folding(options: .diacriticInsensitive, locale: .current)

@@ -140,7 +140,6 @@ extension ConversionViewModel {
     }
 }
 
-
 // MARK: - PrivateMethods
 extension ConversionViewModel {
     private func handleConversionQuotes(
