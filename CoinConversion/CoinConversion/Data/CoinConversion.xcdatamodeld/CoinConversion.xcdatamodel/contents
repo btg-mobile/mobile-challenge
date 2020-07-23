@@ -5,7 +5,12 @@
         <attribute name="quotes" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="CurrenciesEntity" representedClassName="CurrenciesEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="ConversionEntity" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="CurrenciesEntity" positionX="-63" positionY="9" width="128" height="73"/>
     </elements>
 </model>

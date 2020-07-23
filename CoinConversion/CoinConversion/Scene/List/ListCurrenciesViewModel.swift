@@ -30,13 +30,19 @@ class ListCurrenciesViewModel {
     private var conversion: Conversion?
     private var router: ListCurrenciesRouter?
     private var currencies: [ListCurrenciesModel]?
+    private var dataManager: DataManager?
     
     private(set) var listCurrencies: [ListCurrenciesModel]?
     private(set) var isSort = Bool()
     
-    init(service: ListCurrenciesService, conversion: Conversion, router: ListCurrenciesRouter) {
+    init(service: ListCurrenciesService,
+         conversion: Conversion,
+         dataManager: DataManager,
+         router: ListCurrenciesRouter
+    ) {
         self.service = service
         self.conversion = conversion
+        self.dataManager = dataManager
         self.router = router
     }
 }
@@ -57,6 +63,9 @@ extension ListCurrenciesViewModel {
             self.listCurrencies = self.handleListCurrencies(
                 with: listCurrencies
             )
+            
+            self.dataManager?.syncListCurrencies(currencies: self.listCurrencies!)
+            
             self.delegate?.didReloadData()
         }, fail: { serviceError in
             print(serviceError)

@@ -23,6 +23,7 @@ class ListCurrenciesRouter {
             viewModel: ListCurrenciesViewModel(
                 service: ListCurrenciesService(),
                 conversion: conversion,
+                dataManager: DataManager(),
                 router: self
         ))
         

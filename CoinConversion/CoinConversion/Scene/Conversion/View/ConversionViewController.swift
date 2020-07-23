@@ -113,13 +113,25 @@ extension ConversionViewController {
         addDoneButtonOnKeyboard()
         
         viewModel?.delegate = self
-        viewModel?.fetchQuotes()
+        viewModel?.fetchQuotes(isRefresh: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -152,7 +164,7 @@ extension ConversionViewController {
     }
     
     @objc private dynamic func refreshButtonTouched() {
-        viewModel?.fetchQuotes()
+        viewModel?.fetchQuotes(isRefresh: true)
     }
     
     private func toViewTapGestureRecognizer(_ view: UIView) {

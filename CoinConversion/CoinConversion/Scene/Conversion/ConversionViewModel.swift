@@ -47,8 +47,8 @@ class ConversionViewModel {
 
 // MARK: - Custom methods
 extension ConversionViewModel {
-    func fetchQuotes() {
-        if hasDatabaseQuotes() {
+    func fetchQuotes(isRefresh: Bool) {
+        if !hasDatabaseQuotes() || isRefresh {
             delegate?.didStartLoading()
             
             service?.fetchQuotes(success: { currenciesConversion in
