@@ -167,6 +167,10 @@ extension ConversionViewController {
         viewModel?.fetchQuotes(isRefresh: true)
     }
     
+    func doLoading(action: UIAlertAction) {
+        viewModel?.fetchQuotes(isRefresh: true)
+    }
+    
     private func toViewTapGestureRecognizer(_ view: UIView) {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizedToView(sender:)))
         view.addGestureRecognizer(gesture)
@@ -241,8 +245,8 @@ extension ConversionViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let fromCode = fromCurrencyCodeLabel.text,
-              let toCode = toCurrencyCodeLabel.text  else {
-            return true
+            let toCode = toCurrencyCodeLabel.text  else {
+                return true
         }
         
         if (textField.text!.count <= 30 && string == "") || (textField.text!.count < 30 && string != "") {
@@ -307,11 +311,18 @@ extension ConversionViewController: ConversionViewModelDelegate {
         resultLabel.text = value
         resultView.setCardLayout(color)
     }
-
+    
     func didUpdateDate(with date: String) {
         updateDateLabel.text = date
     }
     
-    func didFail() {
+    func didFail(with title: String, message: String, buttonTitle: String, noConnection: Bool, dataSave: Bool) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        if noConnection && !dataSave {
+            alert.addAction(UIAlertAction(title: buttonTitle, style: .cancel, handler: doLoading))
+        } else {
+            alert.addAction(UIAlertAction(title: buttonTitle, style: .cancel, handler: nil))
+        }
+        present(alert, animated: true, completion: nil)
     }
 }

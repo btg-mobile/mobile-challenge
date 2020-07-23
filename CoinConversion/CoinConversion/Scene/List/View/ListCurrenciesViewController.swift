@@ -229,7 +229,9 @@ extension ListCurrenciesViewController: ListCurrenciesViewModelDelegate {
         })
     }
     
-    func didFail() {
-        
+    func didFail(with title: String, message: String, buttonTitle: String, noConnection: Bool, dataSave: Bool) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

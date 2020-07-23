@@ -21,5 +21,4 @@ struct ListCurrencies: Codable {
         case privacy
         case currencies
     }
-    
 }

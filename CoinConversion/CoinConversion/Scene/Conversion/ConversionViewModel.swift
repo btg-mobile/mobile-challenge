@@ -21,7 +21,12 @@ protocol ConversionViewModelDelegate: class {
     func didUpdateDate(with date: String)
     func didReloadData(code: String, name: String, conversion: Conversion)
     func didReloadResult(with value: String, color: UIColor)
-    func didFail()
+    func didFail(with title: String,
+                 message: String,
+                 buttonTitle: String,
+                 noConnection: Bool,
+                 dataSave: Bool
+    )
 }
 
 // MARK: - Main
@@ -50,25 +55,32 @@ class ConversionViewModel {
 extension ConversionViewModel {
     func fetchQuotes(isRefresh: Bool) {
         if !hasDatabaseQuotes() || isRefresh {
+            
             delegate?.didStartLoading()
             
             service?.fetchQuotes(success: { currenciesConversion in
                 self.delegate?.didHideLoading()
                 
-                self.conversionModel = self.handleQuotes(
-                    with: currenciesConversion
-                )
-                
-                self.delegate?.didUpdateDate(
-                    with: self.conversionModel?.date?.getDateStringFromUTC() ?? "-"
-                )
-                
-                self.dataManager?.syncQuotes(with: self.conversionModel!)
+                switch currenciesConversion.success {
+                case false:
+                    self.handleError(whit: .init(type: .noAuthorized))
+                    return
+                default:
+                    self.conversionModel = self.handleQuotes(
+                        with: currenciesConversion
+                    )
+                    
+                    self.delegate?.didUpdateDate(
+                        with: self.conversionModel?.date?.getDateStringFromUTC() ?? "-"
+                    )
+                    
+                    self.dataManager?.syncQuotes(with: self.conversionModel!)
+                }
             }, fail: { serviceError in
-                self.delegate?.didHideLoading()
-                self.delegate?.didFail()
-                
-                print(serviceError)
+                DispatchQueue.main.async {
+                    self.delegate?.didHideLoading()
+                    self.handleError(whit: serviceError)
+                }
             })
         }
     }
@@ -179,6 +191,47 @@ extension ConversionViewModel {
             color: .colorDarkRed
         )
     }
+    
+    private func handleError(whit error: ServiceError) {
+        guard error.type == .noConnection else {
+            guard hasDatabaseQuotes() else {
+                delegate?.didFail(with: "Erro encontrado",
+                                  message: "Desculpe-nos pelo erro. Iremos contorná-lo o mais rápido possível. \nMotivo: \(error.type.description)",
+                    buttonTitle: "OK",
+                    noConnection: false,
+                    dataSave: false
+                )
+                
+                return
+            }
+            
+            delegate?.didFail(with: "Erro encontrado",
+                              message: "Desculpe-nos pelo erro. \nNão conseguimos atualizar as cotas continue navegando com os dados da última atualização.",
+                              buttonTitle: "OK",
+                              noConnection: false,
+                              dataSave: false
+            )
+            return
+        }
+        
+        guard hasDatabaseQuotes() else {
+            delegate?.didFail(with: "Problema na conexão",
+                              message: "Encontramos problemas com a conexão. Tente ajustá-la para continuar navegando.",
+                              buttonTitle: "Tentar novamente",
+                              noConnection: true,
+                              dataSave: false
+            )
+            return
+        }
+        
+        delegate?.didFail(with: "Problema na conexão",
+                          message: "Encontramos problemas com a conexão. \nNão conseguimos atualizar as cotas continue navegando com os dados da última atualização.",
+                          buttonTitle: "OK",
+                          noConnection: true,
+                          dataSave: true
+        )
+        
+    }
 }
 
 // MARK: - Aux Methods
@@ -224,7 +277,11 @@ extension ConversionViewModel: ConversionRouterDelegate {
 // MARK: - DataManagerDelegate
 extension ConversionViewModel: DataManagerDelegate {
     func didDataManagerFail(with reason: String) {
-        print(reason)
+        delegate?.didFail(with: "Erro encontrado",
+                          message: "Desculpe-nos pelo erro. Não conseguimos salvar seus dados para uso off-line. \nMotivo: \(reason)",
+            buttonTitle: "Continuar Navegando",
+            noConnection: false,
+            dataSave: false
+        )
     }
 }
-

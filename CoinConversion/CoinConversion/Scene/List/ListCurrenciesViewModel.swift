@@ -19,7 +19,12 @@ protocol ListCurrenciesViewModelDelegate: class {
     func didStartLoading()
     func didHideLoading()
     func didReloadData()
-    func didFail()
+    func didFail(with title: String,
+                 message: String,
+                 buttonTitle: String,
+                 noConnection: Bool,
+                 dataSave: Bool
+    )
 }
 
 // MARK: - Main
@@ -52,25 +57,36 @@ class ListCurrenciesViewModel {
 extension ListCurrenciesViewModel {
     func fetchListCurrencies(isRefresh: Bool) {
         if !hasDatabaseListCurrencies() || isRefresh {
+            
             delegate?.didStartLoading()
             isSort = false
             
             service?.fetchListCurrencies(success: { listCurrencies in
                 self.delegate?.didHideLoading()
                 
-                self.currencies = self.handleListCurrencies(
-                    with: listCurrencies
-                )
-                
-                self.listCurrencies = self.handleListCurrencies(
-                    with: listCurrencies
-                )
-                
-                self.dataManager?.syncListCurrencies(currencies: self.listCurrencies!)
-                
-                self.delegate?.didReloadData()
+                switch listCurrencies.success {
+                case false:
+                    self.handleError(whit: .init(type: .noAuthorized))
+                    return
+                default:
+                    self.currencies = self.handleListCurrencies(
+                        with: listCurrencies
+                    )
+                    
+                    self.listCurrencies = self.handleListCurrencies(
+                        with: listCurrencies
+                    )
+                    
+                    DispatchQueue.main.async {
+                        self.dataManager?.syncListCurrencies(currencies: self.listCurrencies!)
+                        self.delegate?.didReloadData()
+                    }
+                }
             }, fail: { serviceError in
-                print(serviceError)
+                DispatchQueue.main.async {
+                    self.delegate?.didHideLoading()
+                    self.handleError(whit: serviceError)
+                }
             })
         }
     }
@@ -161,11 +177,54 @@ extension ListCurrenciesViewModel {
             }
         }
     }
+    
+    private func handleError(whit error: ServiceError) {
+        guard error.type == .noConnection else {
+            guard hasDatabaseListCurrencies() else {
+                delegate?.didFail(with: "Erro encontrado",
+                                  message: "Desculpe-nos pelo erro. Iremos contorná-lo o mais rápido possível. \nMotivo: \(error.type.description)",
+                    buttonTitle: "OK",
+                    noConnection: false,
+                    dataSave: false
+                )
+                
+                return
+            }
+            
+            delegate?.didFail(with: "Erro encontrado",
+                              message: "Desculpe-nos pelo erro. \nNão conseguimos atualizar as cotas continue navegando com os dados da última atualização.",
+                              buttonTitle: "OK",
+                              noConnection: false,
+                              dataSave: false
+            )
+            return
+        }
+        
+        if hasDatabaseListCurrencies() {
+            delegate?.didFail(with: "Problema na conexão",
+                              message: "Encontramos problemas com a conexão. \nNão conseguimos atualizar as cotas continue navegando com os dados da última atualização.",
+                              buttonTitle: "OK",
+                              noConnection: true,
+                              dataSave: true
+            )
+            return
+        }
+        delegate?.didFail(with: "Problema na conexão",
+                          message: "Encontramos problemas com a conexão. Tente ajustá-la para continuar navegando.",
+                          buttonTitle: "Tentar novamente",
+                          noConnection: true,
+                          dataSave: false
+        )
+    }
 }
 // MARK: - DataManagerDelegate
 extension ListCurrenciesViewModel: DataManagerDelegate {
     func didDataManagerFail(with reason: String) {
-        print(reason)
+        delegate?.didFail(with: "Erro encontrado",
+                          message: "Desculpe-nos pelo erro. Não conseguimos salvar seus dados para uso off-line. \nMotivo: \(reason)",
+            buttonTitle: "Continuar Navegando",
+            noConnection: false,
+            dataSave: false
+        )
     }
 }
-
