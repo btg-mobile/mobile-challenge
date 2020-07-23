@@ -11,6 +11,7 @@ import CoreData
 protocol DataManagerDelegate: class {
     func didDataManagerFail(with reason: String)
 }
+
 // MARK: Main
 class DataManager: NSObject {
     
@@ -93,7 +94,7 @@ extension DataManager {
                 try viewContext.save()
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
-               delegate?.didDataManagerFail(with: "\(error.userInfo)" )
+                delegate?.didDataManagerFail(with: "\(error.userInfo)" )
             }
         }
     }

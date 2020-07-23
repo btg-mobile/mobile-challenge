@@ -66,6 +66,10 @@ extension ListCurrenciesViewController {
         viewModel?.fetchListCurrencies(isRefresh: true)
     }
     
+    private func doLoading(action: UIAlertAction) {
+        viewModel?.fetchListCurrencies(isRefresh: true)
+    }
+    
     private func setupSearchController() -> UISearchController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.definesPresentationContext = true
@@ -83,7 +87,7 @@ extension ListCurrenciesViewController {
         
         return searchController
     }
-        
+    
     private func registerTableView() {
         tableView.register(
             UINib(nibName: ListCurrenciesSectionViewCell.identifier, bundle: nil),
@@ -169,7 +173,7 @@ extension ListCurrenciesViewController {
         )
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let listCurrencies = viewModel?.listCurrencies else {
             fatalError("listCurrencies can't be nil")
@@ -231,7 +235,11 @@ extension ListCurrenciesViewController: ListCurrenciesViewModelDelegate {
     
     func didFail(with title: String, message: String, buttonTitle: String, noConnection: Bool, dataSave: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: buttonTitle, style: .cancel, handler: nil))
+        if noConnection && !dataSave {
+            alert.addAction(UIAlertAction(title: buttonTitle, style: .cancel, handler: doLoading))
+        } else {
+            alert.addAction(UIAlertAction(title: buttonTitle, style: .cancel, handler: nil))
+        }
         present(alert, animated: true, completion: nil)
     }
 }

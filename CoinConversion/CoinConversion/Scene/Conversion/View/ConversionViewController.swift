@@ -167,7 +167,7 @@ extension ConversionViewController {
         viewModel?.fetchQuotes(isRefresh: true)
     }
     
-    func doLoading(action: UIAlertAction) {
+    private func doLoading(action: UIAlertAction) {
         viewModel?.fetchQuotes(isRefresh: true)
     }
     

@@ -48,7 +48,6 @@ extension UIColor {
     static var colorDarkRed: UIColor {
         return UIColor(hexadecimal: 0x8B0000)
     }
-
 }
 
 protocol Coloring { }
