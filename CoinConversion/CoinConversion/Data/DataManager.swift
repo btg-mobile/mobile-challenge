@@ -8,8 +8,13 @@
 
 import CoreData
 
+protocol DataManagerDelegate: class {
+    func didDataManagerFail(with reason: String)
+}
 // MARK: Main
 class DataManager: NSObject {
+    
+    weak var delegate: DataManagerDelegate?
     private var coreDataStack = CoreDataStack.shared
     
     var viewContext: NSManagedObjectContext {
@@ -25,8 +30,8 @@ class DataManager: NSObject {
                 guard let objectData = object as? NSManagedObject else { continue }
                 viewContext.delete(objectData)
             }
-        } catch let error {
-            print("Detele all data in \(entity) error :", error)
+        } catch {
+            delegate?.didDataManagerFail(with: "Ao Deletar \(entity) ocorreu um error." )
         }
     }
 }
@@ -39,16 +44,17 @@ extension DataManager {
     }
     
     func hasDatabaseQuotes() -> Bool {
-        let personRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConversionEntity")
+        let conversionRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConversionEntity")
         do {
-            let personResult = try viewContext.fetch(personRequest) as? [ConversionEntity]
-            if personResult?.count ?? 0 > 0 {
+            let conversionResult = try viewContext.fetch(conversionRequest) as? [ConversionEntity]
+            if conversionResult?.count ?? 0 > 0 {
                 return true
             } else {
                 return false
             }
         } catch let error as NSError {
             print("error \(error), \(error.userInfo)")
+            delegate?.didDataManagerFail(with: "\(error.userInfo)" )
             return false
         }
     }
@@ -87,6 +93,7 @@ extension DataManager {
                 try viewContext.save()
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
+               delegate?.didDataManagerFail(with: "\(error.userInfo)" )
             }
         }
     }
@@ -100,16 +107,17 @@ extension DataManager {
     }
     
     func hasDatabaseListCurrencies() -> Bool {
-        let personRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrenciesEntity")
+        let currenciesRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrenciesEntity")
         do {
-            let personResult = try viewContext.fetch(personRequest) as? [CurrenciesEntity]
-            if personResult?.count ?? 0 > 0 {
+            let currenciesResult = try viewContext.fetch(currenciesRequest) as? [CurrenciesEntity]
+            if currenciesResult?.count ?? 0 > 0 {
                 return true
             } else {
                 return false
             }
         } catch let error as NSError {
             print("error \(error), \(error.userInfo)")
+            delegate?.didDataManagerFail(with: "\(error.userInfo)" )
             return false
         }
     }
@@ -117,11 +125,11 @@ extension DataManager {
     func fetchDatabaseListCurrencies() -> [ListCurrenciesModel]? {
         var listCurrencies: [ListCurrenciesModel] = []
         let currenciesEntity = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrenciesEntity")
-
+        
         do {
             let currenciesData = try viewContext.fetch(currenciesEntity) as? [CurrenciesEntity]
             guard let objectData = currenciesData else { return nil }
-
+            
             for data in objectData {
                 listCurrencies.append(
                     ListCurrenciesModel(name: data.name ?? "", code: data.code ?? "")
@@ -134,11 +142,11 @@ extension DataManager {
     }
     
     private func savingListCurrencies(with currencies: [ListCurrenciesModel]) {
-        if let quotesEntity = NSEntityDescription.entity(forEntityName: "CurrenciesEntity", in: viewContext) {
+        if let currenciesEntity = NSEntityDescription.entity(forEntityName: "CurrenciesEntity", in: viewContext) {
             
             currencies.forEach { conversionQuotes in
                 
-                let conversion = NSManagedObject(entity: quotesEntity, insertInto: viewContext)
+                let conversion = NSManagedObject(entity: currenciesEntity, insertInto: viewContext)
                 conversion.setValue(conversionQuotes.code, forKeyPath: "code")
                 conversion.setValue(conversionQuotes.name, forKey: "name")
                 
@@ -147,8 +155,8 @@ extension DataManager {
                 try viewContext.save()
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
+                delegate?.didDataManagerFail(with: "\(error.userInfo)" )
             }
         }
     }
 }
-

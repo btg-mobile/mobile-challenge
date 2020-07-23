@@ -40,6 +40,7 @@ class ConversionViewModel {
     ) {
         self.service = service
         self.dataManager = dataManager
+        self.dataManager?.delegate = self
         self.router = router
         self.router?.delegate = self
     }
@@ -231,9 +232,16 @@ extension ConversionViewModel {
     }
 }
 
-// MARK: - Custom methods
+// MARK: - ConversionRouterDelegate
 extension ConversionViewModel: ConversionRouterDelegate {
     func currencyFetched(_ code: String, _ name: String, _ conversion: Conversion) {
         delegate?.didReloadData(code: code, name: name, conversion: conversion)
+    }
+}
+
+// MARK: - DataManagerDelegate
+extension ConversionViewModel: DataManagerDelegate {
+    func didDataManagerFail(with reason: String) {
+        print(reason)
     }
 }

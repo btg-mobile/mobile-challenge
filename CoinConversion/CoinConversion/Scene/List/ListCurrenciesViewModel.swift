@@ -43,33 +43,36 @@ class ListCurrenciesViewModel {
         self.service = service
         self.conversion = conversion
         self.dataManager = dataManager
+        self.dataManager?.delegate = self
         self.router = router
     }
 }
 
 // MARK: - PublicMethods
 extension ListCurrenciesViewModel {
-    func fetchListCurrencies() {
-        delegate?.didStartLoading()
-        isSort = false
-        
-        service?.fetchListCurrencies(success: { listCurrencies in
-            self.delegate?.didHideLoading()
+    func fetchListCurrencies(isRefresh: Bool) {
+        if !hasDatabaseListCurrencies() || isRefresh {
+            delegate?.didStartLoading()
+            isSort = false
             
-            self.currencies = self.handleListCurrencies(
-                with: listCurrencies
-            )
-            
-            self.listCurrencies = self.handleListCurrencies(
-                with: listCurrencies
-            )
-            
-            self.dataManager?.syncListCurrencies(currencies: self.listCurrencies!)
-            
-            self.delegate?.didReloadData()
-        }, fail: { serviceError in
-            print(serviceError)
-        })
+            service?.fetchListCurrencies(success: { listCurrencies in
+                self.delegate?.didHideLoading()
+                
+                self.currencies = self.handleListCurrencies(
+                    with: listCurrencies
+                )
+                
+                self.listCurrencies = self.handleListCurrencies(
+                    with: listCurrencies
+                )
+                
+                self.dataManager?.syncListCurrencies(currencies: self.listCurrencies!)
+                
+                self.delegate?.didReloadData()
+            }, fail: { serviceError in
+                print(serviceError)
+            })
+        }
     }
     
     func searchListCurrencies(whit text: String) {
@@ -130,5 +133,34 @@ extension ListCurrenciesViewModel {
         }
         
         return list
+    }
+    
+    private func hasDatabaseListCurrencies() -> Bool {
+        if dataManager?.hasDatabaseListCurrencies() ?? false {
+            currencies = dataManager?.fetchDatabaseListCurrencies()
+            listCurrencies = currencies
+            
+            guard var currencies = currencies,
+                let _ = listCurrencies else {
+                fatalError("provisorio fazer tratamento")
+            }
+            
+            currencies = currencies.sorted {
+                $0.name < $1.name
+            }
+            
+            self.listCurrencies = currencies
+            self.currencies = currencies
+            isSort = false
+            
+            return true
+        }
+        return false
+    }
+}
+// MARK: - DataManagerDelegate
+extension ListCurrenciesViewModel: DataManagerDelegate {
+    func didDataManagerFail(with reason: String) {
+        print(reason)
     }
 }

@@ -35,7 +35,7 @@ extension ListCurrenciesViewController {
         registerTableView()
         
         viewModel?.delegate = self
-        viewModel?.fetchListCurrencies()
+        viewModel?.fetchListCurrencies(isRefresh: false)
     }
 }
 
@@ -63,7 +63,7 @@ extension ListCurrenciesViewController {
     }
     
     @objc private func refreshButtonTouched(sender: UIBarButtonItem) {
-        viewModel?.fetchListCurrencies()
+        viewModel?.fetchListCurrencies(isRefresh: true)
     }
     
     private func setupSearchController() -> UISearchController {
