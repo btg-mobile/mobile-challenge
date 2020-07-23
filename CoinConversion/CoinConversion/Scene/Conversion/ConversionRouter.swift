@@ -27,6 +27,7 @@ class ConversionRouter {
         let viewController = ConversionViewController(
             viewModel: ConversionViewModel(
                 service: CurrenciesConversionService(),
+                dataManager: DataManager(),
                 router: self
         ))
         

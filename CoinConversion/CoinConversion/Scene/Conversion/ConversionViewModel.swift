@@ -31,9 +31,15 @@ class ConversionViewModel {
     private var service: CurrenciesConversionService?
     private var router: ConversionRouter?
     private var conversionModel: ConversionModel?
+    private var dataManager: DataManager?
     
-    init(service: CurrenciesConversionService, router: ConversionRouter) {
+    init(
+        service: CurrenciesConversionService,
+        dataManager: DataManager,
+        router: ConversionRouter
+    ) {
         self.service = service
+        self.dataManager = dataManager
         self.router = router
         self.router?.delegate = self
     }
@@ -42,24 +48,28 @@ class ConversionViewModel {
 // MARK: - Custom methods
 extension ConversionViewModel {
     func fetchQuotes() {
-        delegate?.didStartLoading()
-        
-        service?.fetchQuotes(success: { currenciesConversion in
-            self.delegate?.didHideLoading()
+        if hasDatabaseQuotes() {
+            delegate?.didStartLoading()
             
-            self.conversionModel = self.handleConversionQuotes(
-                with: currenciesConversion
-            )
-            self.delegate?.didUpdateDate(
-                with: self.conversionModel?.date.getDateStringFromUTC() ?? "-"
-            )
-            
-        }, fail: { serviceError in
-            self.delegate?.didHideLoading()
-            self.delegate?.didFail()
-            
-            print(serviceError)
-        })
+            service?.fetchQuotes(success: { currenciesConversion in
+                self.delegate?.didHideLoading()
+                
+                self.conversionModel = self.handleConversionQuotes(
+                    with: currenciesConversion
+                )
+                self.delegate?.didUpdateDate(
+                    with: self.conversionModel?.date?.getDateStringFromUTC() ?? "-"
+                )
+                
+                self.dataManager?.syncQuotes(with: self.conversionModel!)
+                
+            }, fail: { serviceError in
+                self.delegate?.didHideLoading()
+                self.delegate?.didFail()
+                
+                print(serviceError)
+            })
+        }
     }
     
     func fetchCurrencies(_ conversion: Conversion) {
@@ -73,7 +83,7 @@ extension ConversionViewModel {
         
         let currencyBase = "USD"
         
-        guard let fromQuotes = returnQuotes(
+        guard let fetchFromQuotes = returnQuotes(
             conversion: conversion,
             currencyBase: currencyBase,
             code: fromCode) else {
@@ -82,7 +92,7 @@ extension ConversionViewModel {
                 return
         }
         
-        guard let toQuotes = returnQuotes(
+        guard let fetchToQuotes = returnQuotes(
             conversion: conversion,
             currencyBase: currencyBase,
             code: toCode) else {
@@ -91,9 +101,15 @@ extension ConversionViewModel {
                 return
         }
         
+        guard let toQuotes = fetchToQuotes.quotes,
+            let fromQuotes = fetchFromQuotes.quotes else {
+                didConversionFail()
+                return
+        }
+        
         if let value = Double(value) {
             var amount: Double = 0.0
-            amount =  value * toQuotes.quotes / fromQuotes.quotes
+            amount =  value * toQuotes / fromQuotes
             
             guard let result = formatCurrency(
                 currencyCode: toCode,
@@ -198,6 +214,20 @@ extension ConversionViewModel {
             with: "Ops... Aconteceu um erro na conversão",
             color: .colorDarkRed
         )
+    }
+    
+    private func hasDatabaseQuotes() -> Bool {
+        if dataManager?.hasDatabaseQuotes() ?? false {
+            conversionModel = dataManager?.fetchDatabaseQuotes()
+            guard let conversion = conversionModel else {
+                fatalError("provisorio fazer tratamento")
+            }
+            delegate?.didUpdateDate(
+                with: conversion.date?.getDateStringFromUTC() ?? "-"
+            )
+            return true
+        }
+        return false
     }
 }
 
