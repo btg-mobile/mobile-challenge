@@ -96,17 +96,8 @@ extension ListCurrenciesViewModel {
         delegate?.didReloadData()
     }
     
-    func sortBy(_ sortType: SortType, with list: [ListCurrenciesModel]) {
-        switch sortType {
-        case .code:
-            self.listCurrencies = list.sorted {
-                $0.code < $1.code
-            }
-        case .name:
-            self.listCurrencies = list.sorted {
-                $0.name < $1.name
-            }
-        }
+    func fetchLisSortBy(_ type: SortType, with list: [ListCurrenciesModel]) {
+        self.listCurrencies = sortBy(type: type, with: list)
         isSort = true
         delegate?.didReloadData()
     }
@@ -142,7 +133,7 @@ extension ListCurrenciesViewModel {
             
             guard var currencies = currencies,
                 let _ = listCurrencies else {
-                fatalError("provisorio fazer tratamento")
+                    fatalError("provisorio fazer tratamento")
             }
             
             currencies = currencies.sorted {
@@ -157,6 +148,19 @@ extension ListCurrenciesViewModel {
         }
         return false
     }
+    
+    func sortBy(type: SortType, with list: [ListCurrenciesModel]) -> [ListCurrenciesModel] {
+        switch type {
+        case .code:
+            return list.sorted {
+                $0.code < $1.code
+            }
+        case .name:
+            return list.sorted {
+                $0.name < $1.name
+            }
+        }
+    }
 }
 // MARK: - DataManagerDelegate
 extension ListCurrenciesViewModel: DataManagerDelegate {
@@ -164,3 +168,4 @@ extension ListCurrenciesViewModel: DataManagerDelegate {
         print(reason)
     }
 }
+

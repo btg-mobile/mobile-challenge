@@ -257,7 +257,7 @@ extension ConversionViewController: UITextFieldDelegate {
                 }
             }
         }
-        viewModel?.convertCurrency(fromCode: fromCode, toCode: toCode, value: currentString)
+        viewModel?.fetchConvert(fromCode: fromCode, toCode: toCode, value: currentString)
         return false
     }
 }

@@ -208,7 +208,7 @@ extension ListCurrenciesViewController: ListCurrenciesSectionViewCellDelegate {
             fatalError("listCurrencies cannot be null")
         }
         
-        viewModel?.sortBy(sortType, with: listCurrencies)
+        viewModel?.fetchLisSortBy(sortType, with: listCurrencies)
     }
 }
 

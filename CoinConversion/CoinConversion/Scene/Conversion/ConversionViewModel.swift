@@ -55,15 +55,15 @@ extension ConversionViewModel {
             service?.fetchQuotes(success: { currenciesConversion in
                 self.delegate?.didHideLoading()
                 
-                self.conversionModel = self.handleConversionQuotes(
+                self.conversionModel = self.handleQuotes(
                     with: currenciesConversion
                 )
+                
                 self.delegate?.didUpdateDate(
                     with: self.conversionModel?.date?.getDateStringFromUTC() ?? "-"
                 )
                 
                 self.dataManager?.syncQuotes(with: self.conversionModel!)
-                
             }, fail: { serviceError in
                 self.delegate?.didHideLoading()
                 self.delegate?.didFail()
@@ -73,97 +73,32 @@ extension ConversionViewModel {
         }
     }
     
-    func fetchCurrencies(_ conversion: Conversion) {
-        router?.enqueueListCurrencies(conversion)
-    }
-    
-    func convertCurrency(fromCode: String, toCode: String, value: String) {
-        guard let conversion = conversionModel?.conversion else {
-            return
-        }
-        
-        let currencyBase = "USD"
-        
-        guard let fetchFromQuotes = returnQuotes(
-            conversion: conversion,
-            currencyBase: currencyBase,
-            code: fromCode) else {
-                
-                didConversionFail()
-                return
-        }
-        
-        guard let fetchToQuotes = returnQuotes(
-            conversion: conversion,
-            currencyBase: currencyBase,
-            code: toCode) else {
-                
-                didConversionFail()
-                return
-        }
-        
-        guard let toQuotes = fetchToQuotes.quotes,
-            let fromQuotes = fetchFromQuotes.quotes else {
-                didConversionFail()
-                return
-        }
-        
-        if let value = Double(value) {
-            var amount: Double = 0.0
-            amount =  value * toQuotes / fromQuotes
-            
-            guard let result = formatCurrency(
-                currencyCode: toCode,
-                amount: String(amount)) else {
-                    
-                    didConversionFail()
-                    return
-            }
-            
+    func fetchConvert(fromCode: String, toCode: String, value: String) {
+        let convert = convertCurrency(
+            fromCode: fromCode,
+            toCode: toCode,
+            value: value,
+            conversion: conversionModel?.conversion
+        )
+        guard convert == nil else {
             delegate?.didReloadResult(
-                with: result,
+                with: convert!,
                 color: .colorSpringGreen
             )
             return
         }
-        
-        if !value.isEmpty {
-            didConversionFail()
-            return
-        }
-        
-        delegate?.didReloadResult(
-            with: "-",
-            color: .clear
-        )
+        didConversionFail()
     }
     
-    func formatCurrency(
-        currencyCode: String,
-        amount: String
-    ) -> String? {
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = findLocaleBy(whit: currencyCode)
-        
-        let numberFromField = (
-            NSString(string: amount).doubleValue
-            )/100
-        let result = formatter.string(
-            from: NSNumber(value: numberFromField)
-            )!
-        return result
+    func fetchCurrencies(_ conversion: Conversion) {
+        router?.enqueueListCurrencies(conversion)
     }
 }
 
-// MARK: - PrivateMethods
+// MARK: - Private Methods
 extension ConversionViewModel {
-    private func handleConversionQuotes(
-        with currenciesConversion: CurrenciesConversion
-    ) -> ConversionModel {
-        
-        let currencies = currenciesConversion.quotes.map {
+    private func handleQuotes(with quotes: CurrenciesConversion) -> ConversionModel {
+        let currencies = quotes.quotes.map {
             currencies -> ConversionCurrenciesModel in
             
             return ConversionCurrenciesModel(
@@ -172,28 +107,10 @@ extension ConversionViewModel {
             )
         }
         
-        return ConversionModel(date: currenciesConversion.timestamp, conversion: currencies)
+        return ConversionModel(date: quotes.timestamp, conversion: currencies)
     }
     
-    private func returnQuotes(
-        conversion: [ConversionCurrenciesModel],
-        currencyBase: String,
-        code: String
-    ) -> ConversionCurrenciesModel? {
-        
-        if let quotes = conversion.first(
-            where: { $0.code == currencyBase + code }
-            ) {
-            return quotes
-        }
-        
-        return nil
-    }
-    
-    private func findLocaleBy(
-        whit currencyCode: String
-    ) -> Locale? {
-        
+    private func findLocaleBy(whit currencyCode: String) -> Locale? {
         let locales = Locale.availableIdentifiers
         var locale: Locale?
         
@@ -210,11 +127,36 @@ extension ConversionViewModel {
         return locale
     }
     
-    private func didConversionFail() {
-        delegate?.didReloadResult(
-            with: "Ops... Aconteceu um erro na conversão",
-            color: .colorDarkRed
-        )
+    private func convertCurrency(fromCode: String,toCode: String, value: String, conversion: [ConversionCurrenciesModel]?) -> String? {
+        let currencyBase = "USD"
+        
+        guard let conversion = conversion else {
+            return nil
+        }
+        guard let fetchFromQuotes = returnQuotes(conversion: conversion, currencyBase: currencyBase, code: fromCode) else {
+            return nil
+        }
+        guard let fetchToQuotes = returnQuotes(conversion: conversion, currencyBase: currencyBase, code: toCode) else {
+            return nil
+        }
+        guard let toQuotes = fetchToQuotes.quotes, let fromQuotes = fetchFromQuotes.quotes else {
+            return nil
+        }
+        
+        if let value = Double(value) {
+            let calculate = calculateConversion(value: value, toQuotes: toQuotes, fromQuotes: fromQuotes)
+            
+            guard let result = formatCurrency(currencyCode: toCode, amount: String(calculate)) else {
+                return nil
+            }
+            return result
+        }
+        
+        if !value.isEmpty {
+            return nil
+        }
+        
+        return "-"
     }
     
     private func hasDatabaseQuotes() -> Bool {
@@ -229,6 +171,46 @@ extension ConversionViewModel {
             return true
         }
         return false
+    }
+    
+    private func didConversionFail() {
+        delegate?.didReloadResult(
+            with: "Ops... Aconteceu um erro na conversão",
+            color: .colorDarkRed
+        )
+    }
+}
+
+// MARK: - Aux Methods
+extension ConversionViewModel {
+    func formatCurrency( currencyCode: String, amount: String ) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = findLocaleBy(whit: currencyCode)
+        
+        let numberFromField = (
+            NSString(string: amount).doubleValue
+            )/100
+        let result = formatter.string(
+            from: NSNumber(value: numberFromField)
+            )!
+        return result
+    }
+    
+    func returnQuotes(conversion: [ConversionCurrenciesModel], currencyBase: String, code: String) -> ConversionCurrenciesModel? {
+        if let quotes = conversion.first(
+            where: { $0.code == currencyBase + code }
+            ) {
+            return quotes
+        }
+        
+        return nil
+    }
+    
+    func calculateConversion(value: Double, toQuotes: Double, fromQuotes: Double) -> Double {
+        var result: Double = 0.0
+        result = value * toQuotes / fromQuotes
+        return result
     }
 }
 
@@ -245,3 +227,4 @@ extension ConversionViewModel: DataManagerDelegate {
         print(reason)
     }
 }
+
