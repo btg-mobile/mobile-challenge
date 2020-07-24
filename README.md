@@ -4,9 +4,10 @@ Avaliadores,
 
 Muito obrigado pela oportunidade de fazer esse desafio.
 
-A arquitetura utilizado foi MVVM porem sem utilizar Reactive Programming. N~ao usei nenhum framework externo. O UI do aplicitivo foi escrito 100% em view code sem utilizar Storyboards ou Xibs. Foi criados varios views customizadas para os interfaces para facilitar a montagem das telas
-O aplicativo funciona em iOS 11 - 13 (com DarkMode no 13) e foi testado em iOS 11.4, 12.4 e 13.6, utilizando o iPhone SE, iPhone 8, iPhone 8 Plus, iPhone X, iPhone Xs Max (somente 12.4 e 13.6).
-Em iOS 13 foi utilizado UITableViewDiffableDataSource para fazer o search, no iOS 11 e 12 foi feito um implementação nao otimizado somente para demonstrar o funcionalidade, para produção sera necessario uma melhoria.
+A arquitetura utilizado foi MVVM porém sem utilizar Reactive Programming. Não usei nenhum framework externo. 
+O UI do aplicativo foi escrito 100% em view code sem utilizar Storyboards ou Xibs. Foram criados vários views customizadas para os interfaces para facilitar a montagem das telas. 
+O aplicativo funciona em iOS 11 - 13 (com DarkMode no iOS13) e foi testado em iOS 11.4, 12.4 e 13.6, utilizando o iPhone SE, iPhone 8, iPhone 8 Plus, iPhone X, iPhone Xs Max (somente 12.4 e 13.6). 
+Em iOS 13 foi utilizado UITableViewDiffableDataSource para fazer o search, no iOS 11 e 12 foi feito uma implementação somente para demonstrar o funcionalidade, para produção seria necessário uma melhoria. 
 O Aplicativo esta feito para aceitar dynamic fonts type. Outros features de Accessibility não foram implementadas.
 
 ## Features
@@ -25,8 +26,9 @@ O Aplicativo esta feito para aceitar dynamic fonts type. Outros features de Acce
 
 ### Proximos passos:
 - Melhorar o Accessibility
+- Preparar para localização 
 - Testes unitários
 - Testes de UI
-- Refactorar os ViewControllers de BaseConverter e TargetConverter para ser um view so com polymorphism
-- Utilizar Combine para conicação
+- Refatorar os ViewControllers de BaseConverter e TargetConverter para ser um view so com polymorphism
+- Utilizar Combine para comunicação
 - Criptografar o API Access Key

@@ -17,6 +17,8 @@ class BTGBaseConversionViewController: UIViewController {
     private let button = BTGSelectionButton(title: ButtonTitles.selectCurrency.rawValue)
     private let textField = BTGNumberTextField()
     
+    private var listViewController: ListViewController?
+    
     private var selectedCurrency: Currency? {
         didSet {
             if let selectedCurrency = selectedCurrency {
@@ -42,6 +44,10 @@ class BTGBaseConversionViewController: UIViewController {
     
     func dismissKeyboard() {
         textField.resignFirstResponder()
+    }
+    
+    func dismissViewController() {
+        listViewController?.dismiss(animated: true)
     }
     
     func getValues() -> (currency: String?, amount: String?) {
@@ -91,8 +97,8 @@ class BTGBaseConversionViewController: UIViewController {
     }
     
     @objc private func buttonTapped() {
-        let vc = ListViewController(delegate: self)
-        let navController = UINavigationController(rootViewController: vc)
+        listViewController = ListViewController(delegate: self)
+        let navController = UINavigationController(rootViewController: listViewController!)
             navController.modalPresentationStyle = .overCurrentContext
         
         present(navController, animated: true)

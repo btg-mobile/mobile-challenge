@@ -9,6 +9,8 @@
 import UIKit
 
 class BTGTabBarController: UITabBarController {
+    var converterViewController: ConverterViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,8 +18,12 @@ class BTGTabBarController: UITabBarController {
         viewControllers = [createConverterNavigationController(), createListNavigationController()]
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        converterViewController.dismissListViews()
+    }
+    
     private func createConverterNavigationController() -> UINavigationController {
-        let converterViewController = ConverterViewController()
+        converterViewController = ConverterViewController()
         converterViewController.title = ViewControllerTitles.converter.rawValue
         converterViewController.tabBarItem = UITabBarItem(title: TabBarItems.converter.rawValue,
                                                           image: UIImage(named: "Arrow2SquarePath"),

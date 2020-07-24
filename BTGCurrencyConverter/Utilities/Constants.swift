@@ -53,6 +53,7 @@ enum AlertController: String {
     case byName = "By name"
     case bySymbol = "By symbol"
     case cancelButton = "Cancel"
+    case mustContainNumbers = "The value field may only contain numbers"
 }
 
 enum Colors: String {

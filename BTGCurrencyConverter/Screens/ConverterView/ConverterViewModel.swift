@@ -24,9 +24,9 @@ class ConverterViewModel {
         }
     }
     
-    func convertValue(from baseCurrency: String?, to targetCurrency: String?, amount: String?,
+    func convertValue(from baseCurrency: String, to targetCurrency: String, amount: String,
                  completed: @escaping (String) -> Void) {
-        if let notVerified = verifyValues(from: baseCurrency, to: targetCurrency, amount: amount) {
+        if let notVerified = verifyCurrencies(from: baseCurrency, to: targetCurrency) {
             completed(notVerified)
         }
         
@@ -56,24 +56,13 @@ class ConverterViewModel {
         }
     }
     
-    private func verifyValues(from baseCurrency: String?, to targetCurrency: String?,
-                              amount: String?) -> String? {
-        guard let baseCurrency = baseCurrency,
-            baseCurrency.count == 3 else {
+    private func verifyCurrencies(from baseCurrency: String, to targetCurrency: String) -> String? {
+        guard baseCurrency.count == 3 else {
                 return BTGConversionError.baseCurrencyInvalid.rawValue
         }
         
-        guard let targetCurrency = targetCurrency,
-            targetCurrency.count == 3 else {
+        guard targetCurrency.count == 3 else {
             return BTGConversionError.targetCurrencyInvalid.rawValue
-        }
-        
-        guard let amount = amount else {
-            return BTGConversionError.amountBlank.rawValue
-        }
-        
-        guard Double(amount) != nil else {
-            return BTGConversionError.amountNotNumber.rawValue
         }
         
         return nil

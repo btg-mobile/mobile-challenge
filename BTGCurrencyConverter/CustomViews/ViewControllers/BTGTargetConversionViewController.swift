@@ -13,6 +13,8 @@ class BTGTargetConversionViewController: UIViewController {
     private let button = BTGSelectionButton(title: ButtonTitles.selectCurrency.rawValue)
     private let label = BTGDisplayLabel()
     
+    private var listViewController:  ListViewController?
+    
     private var selectedCurrency: Currency? {
         didSet {
             if let selectedCurrency = selectedCurrency {
@@ -25,6 +27,10 @@ class BTGTargetConversionViewController: UIViewController {
     }
     
     var delegate: ConverterDelegate?
+    
+    func dismissViewController() {
+        listViewController?.dismiss(animated: true)
+    }
     
     func getValues() -> String? {
         selectedCurrency?.symbol
@@ -77,8 +83,8 @@ class BTGTargetConversionViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        let vc = ListViewController(delegate: self)
-        let navController = UINavigationController(rootViewController: vc)
+        listViewController = ListViewController(delegate: self)
+        let navController = UINavigationController(rootViewController: listViewController!)
             navController.modalPresentationStyle = .overCurrentContext
         
         present(navController, animated: true)

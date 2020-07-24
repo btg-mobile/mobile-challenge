@@ -34,6 +34,12 @@ class ConverterViewController: UIViewController {
         createDismissKeyboardTapGesture()
     }
     
+    
+    func dismissListViews() {
+        baseConversion.dismissViewController()
+        targetConversion.dismissViewController()
+    }
+    
     private func configureView() {
         view.backgroundColor = UIColor(named: .background)
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -106,8 +112,18 @@ extension ConverterViewController: ConverterDelegate {
         guard let baseCurrency = baseConversion.getValues().currency,
             let targetCurrency = targetConversion.getValues(),
             let amount = baseConversion.getValues().amount,
-            Double(amount) != nil else {
+            !amount.isEmpty else {
                 return
+        }
+        
+        guard Double(amount) != nil else {
+            let alertVC = UIAlertController(title: AlertController.errorTitle.rawValue,
+                                            message: AlertController.mustContainNumbers.rawValue,
+                                            preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: AlertController.cancelButton.rawValue,
+                                            style: .cancel))
+            present(alertVC, animated: true)
+            return
         }
         
         viewModel.convertValue(from: baseCurrency, to: targetCurrency,
