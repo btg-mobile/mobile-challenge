@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Coins Converter</string>
+    <string name="layer_key">adda6e652ea6971d2b561074d78f02fc</string>
+    <string name="title_list_avaiable">Lista de moedas disponíveis para conversão</string>
+    <string name="title_value_to_convert">Insira um valor para conversão</string>
+    <string name="btn_converter_title">Converter valor</string>
+    <string name="title_coin_destiny">Moeda de destino:</string>
+    <string name="title_coin_origin">Moeda de origem:</string>
+    <string name="title_destiny">Destino</string>
+    <string name="title_origin">Origem</string>
+    <string name="title_choose_coins">Escolha as moedas:</string>
+    <string name="title_code">Sigla:</string>
+    <string name="title_country">País:</string>
+    <string name="title_failed_to_show_data">Não foi possível exibir os dados, verifique sua conexão, e tente novamente.</string>
+    <string name="title_fill_coins_value">Por favor preencha o campo de valor da conversão.</string>
+    <string name="title_choose_origin_coin">Por favor, selecione uma moeda de origem para a conversão</string>
+    <string name="title_choose_destiny_coin">Por favor, selecione uma moeda de destino para a conversão</string>
+    <string name="title_validate_dot">Por favor, troque a vírgula (,) por ponto (.)</string>
+    <string name="title_fail_to_connect">Não foi possível conectar com o servidor, tente novamente mais tarde.</string>
+</resources>
