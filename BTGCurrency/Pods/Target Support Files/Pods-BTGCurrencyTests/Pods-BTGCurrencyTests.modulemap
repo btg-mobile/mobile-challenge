@@ -1,0 +1,6 @@
+framework module Pods_BTGCurrencyTests {
+  umbrella header "Pods-BTGCurrencyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
