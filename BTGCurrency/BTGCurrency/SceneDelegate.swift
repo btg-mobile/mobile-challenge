@@ -9,14 +9,20 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    private(set) static var shared: SceneDelegate?
+    
     var window: UIWindow?
+    var navigationVC: UINavigationController?
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        Self.shared = self
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let navigationVC = UINavigationController()
+        navigationVC = UINavigationController()
         window?.rootViewController = navigationVC
-        navigationVC.pushViewController(HomeViewController(), animated: false)
+        navigationVC?.pushViewController(SplashViewController(), animated: false)
         window?.makeKeyAndVisible()
     }
 }
