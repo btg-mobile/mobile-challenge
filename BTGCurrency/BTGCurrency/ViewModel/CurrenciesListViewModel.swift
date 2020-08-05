@@ -16,11 +16,19 @@ class CurrenciesListViewModel {
         currencies = CurrencyData.getAll()
     }
     
-    func getNumberOfRowsInSection() -> Int {
-        return currencies.count
+    func getNumberOfRowsInSection(search: String?) -> Int {
+        var _currencies = currencies
+        if let search = search {
+            _currencies = currencies.filter("name LIKE[c] %@ OR abbreviation LIKE[c] %@", "*\(search)*", "*\(search)*")
+        }
+        return _currencies.count
     }
     
-    func getCurrency(at index: Int) -> Currency {
-        return currencies[index]
+    func getCurrency(at index: Int, search: String?) -> Currency {
+        var _currencies = currencies
+        if let search = search {
+            _currencies = currencies.filter("name LIKE[c] %@ OR abbreviation LIKE[c] %@", "*\(search)*", "*\(search)*")
+        }
+        return _currencies[index]
     }
 }

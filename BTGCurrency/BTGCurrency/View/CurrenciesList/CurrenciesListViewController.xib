@@ -11,6 +11,8 @@
             <connections>
                 <outlet property="currenciesFromTableView" destination="QvI-o1-wYH" id="XEE-Q7-XPy"/>
                 <outlet property="currenciesToTableView" destination="oNq-yb-hMb" id="c3P-pZ-jR9"/>
+                <outlet property="fromSearchBar" destination="ZzW-fS-6Kn" id="rXA-Yu-tX6"/>
+                <outlet property="toSearchBar" destination="mZ0-ma-33N" id="IwJ-EI-qgi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -64,11 +66,14 @@
                                             </constraints>
                                         </view>
                                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZzW-fS-6Kn" userLabel="De - Search Bar">
-                                            <rect key="frame" x="0.0" y="37" width="320" height="50"/>
+                                            <rect key="frame" x="0.0" y="36.5" width="320" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="RkP-N5-Idl"/>
                                             </constraints>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="1I6-bY-b2y"/>
+                                            </connections>
                                         </searchBar>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QvI-o1-wYH" userLabel="De - Table View">
                                             <rect key="frame" x="0.0" y="86.5" width="320" height="111.5"/>
@@ -105,6 +110,9 @@
                                                 <constraint firstAttribute="height" constant="50" id="1cL-OU-5Io"/>
                                             </constraints>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="FMA-06-OyD"/>
+                                            </connections>
                                         </searchBar>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oNq-yb-hMb" userLabel="Para - Table View">
                                             <rect key="frame" x="0.0" y="86.5" width="320" height="111.5"/>
@@ -127,7 +135,7 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aKV-mO-lMR" secondAttribute="bottom" constant="8" id="LEZ-ra-Xvg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aKV-mO-lMR" secondAttribute="trailing" id="NGI-1y-gze"/>
