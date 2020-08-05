@@ -9,22 +9,35 @@
 import UIKit
 
 class CurrenciesListViewController: UIViewController {
-
+    @IBOutlet weak var currenciesFromTableView: UITableView!
+    @IBOutlet weak var currenciesToTableView: UITableView!
+    
+    var viewModel: CurrenciesListViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configTableViews()
+        viewModel = CurrenciesListViewModel()
     }
 
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension CurrenciesListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.getNumberOfRowsInSection() ?? 0
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyViewCell.className, for: indexPath) as! CurrencyViewCell
+        let currency = viewModel!.getCurrency(at: indexPath.row)
+        cell.title.text = currency.name
+        return cell
+    }
+}
 
+extension CurrenciesListViewController {
+    func configTableViews() {
+        currenciesFromTableView.register(UINib(nibName: CurrencyViewCell.className, bundle: nil), forCellReuseIdentifier: CurrencyViewCell.className)
+        currenciesToTableView.register(UINib(nibName: CurrencyViewCell.className, bundle: nil), forCellReuseIdentifier: CurrencyViewCell.className)
+    }
 }

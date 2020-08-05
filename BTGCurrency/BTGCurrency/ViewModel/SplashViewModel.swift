@@ -24,8 +24,23 @@ class SplashViewModel {
         if let lastUpdate = userDefaults.getDate(key: .LastUpdate), !isDateExpired(date: lastUpdate, expirationHours: updateExpirationHours) {
             checkFavoriteCurrencies()
         } else {
-            currencyClient.synchronizeQuotes {
-                checkFavoriteCurrencies()
+            currencyClient.synchronizeQuotes { result in
+                switch result {
+                case .success():
+                    self.checkFavoriteCurrencies()
+                case .failure(let error):
+                    var msg = ""
+                    switch error {
+                    case .InvalidURL:
+                        msg = "Não foi possível encontrar o serviço de câmbio."
+                    case .ServerError:
+                        msg = "Estamos melhorando nossos serviços."
+                    case .InvalidResponse:
+                        msg = "Não foi possível ler os valores de câmbio recebidos."
+                    }
+                    msg += " Tente novamente mais tarde"
+                    alert(title: "Atenção!", message: msg)
+                }
             }
         }
     }
@@ -37,8 +52,11 @@ class SplashViewModel {
     }
     
     fileprivate func checkFavoriteCurrencies() {
-        if let localCurrency = userDefaults.getString(key: .LocalCurrency), let foreignCurrency = userDefaults.getString(key: .ForeignCurrency) {
-            
+        if let localCurrencyAbbreviation = userDefaults.getString(key: .LocalCurrency),
+            let foreignCurrencyAbbreviation = userDefaults.getString(key: .ForeignCurrency),
+            let localCurrency = CurrencyData.get(forAbbreviation: localCurrencyAbbreviation),
+            let foreignCurrency = CurrencyData.get(forAbbreviation: foreignCurrencyAbbreviation) {
+            goToExchange(localCurrency: localCurrency, foreignCurrency: foreignCurrency)
         } else {
             goToList()
         }
@@ -49,6 +67,6 @@ class SplashViewModel {
     }
     
     fileprivate func goToExchange(localCurrency: Currency, foreignCurrency: Currency) {
-        
+        Router.shared.setViewController(viewController: ExchangeViewController(localCurrency: localCurrency, foreignCurrency: foreignCurrency))
     }
 }

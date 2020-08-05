@@ -13,7 +13,7 @@ class MockCurrencyClient {
 }
 
 extension MockCurrencyClient: CurrencyClientProtocol {
-    func synchronizeQuotes(result: () -> Void) {
+    func synchronizeQuotes(result: @escaping SynchronyzeQuotesResponse) {
         synchronizeQuotesIsCalled = true
     }
 }

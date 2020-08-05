@@ -12,4 +12,8 @@ class Currency: Object {
     @objc dynamic var abbreviation = ""
     @objc dynamic var name = ""
     @objc dynamic var usdQuote = 0.0
+    
+    override class func primaryKey() -> String? {
+        return "abbreviation"
+    }
 }
