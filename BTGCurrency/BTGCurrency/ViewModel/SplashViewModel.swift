@@ -27,6 +27,7 @@ class SplashViewModel {
             currencyClient.synchronizeQuotes { result in
                 switch result {
                 case .success():
+                    self.setSynchronized()
                     self.checkFavoriteCurrencies()
                 case .failure(let error):
                     var msg = ""
@@ -49,6 +50,10 @@ class SplashViewModel {
         let now = Date()
         let expiratedDate = Calendar.current.date(byAdding: .hour, value: expirationHours, to: date)!
         return now > expiratedDate
+    }
+    
+    fileprivate func setSynchronized() {
+        userDefaults.putDate(key: .LastUpdate, value: Date())
     }
     
     fileprivate func checkFavoriteCurrencies() {

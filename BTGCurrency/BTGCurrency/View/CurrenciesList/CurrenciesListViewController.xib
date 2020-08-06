@@ -131,6 +131,9 @@
                                 <constraint firstAttribute="height" constant="40" id="NyK-fP-FGe"/>
                             </constraints>
                             <state key="normal" title="Avançar"/>
+                            <connections>
+                                <action selector="confirm:" destination="-1" eventType="touchUpInside" id="LV4-RD-msR"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

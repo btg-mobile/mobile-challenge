@@ -31,4 +31,22 @@ class CurrenciesListViewModel {
         }
         return _currencies[index]
     }
+    
+    func goToExchange(localCurrency: Currency, foreignCurrency: Currency) {
+        Router.shared.setViewController(viewController: ExchangeViewController(localCurrency: localCurrency, foreignCurrency: foreignCurrency))
+    }
+    
+    func isSelectionValid(currenciesFromTableView: UITableView, currenciesToTableView: UITableView) -> Bool {
+        if let _ = currenciesFromTableView.indexPathForSelectedRow {
+            if let _ = currenciesToTableView.indexPathForSelectedRow {
+                return true
+            } else {
+                alert(title: "Atenção!", message: "Selecione a moeda para que deseja converter")
+                return false
+            }
+        } else {
+            alert(title: "Atenção!", message: "Selecione a moeda de origem")
+            return false
+        }
+    }
 }

@@ -21,6 +21,17 @@ class CurrenciesListViewController: UIViewController {
         configTableViews()
         viewModel = CurrenciesListViewModel()
     }
+    
+    @IBAction func confirm(_ sender: Any) {
+        if viewModel!.isSelectionValid(currenciesFromTableView: currenciesFromTableView, currenciesToTableView: currenciesToTableView) {
+            let localSelected = currenciesFromTableView.indexPathForSelectedRow!
+            let foreignSelected = currenciesToTableView.indexPathForSelectedRow!
+            
+            let localCurrency = viewModel!.getCurrency(at: localSelected.row, search: fromSearchBar.text)
+            let foreignCurrency = viewModel!.getCurrency(at: foreignSelected.row, search: toSearchBar.text)
+            viewModel?.goToExchange(localCurrency: localCurrency, foreignCurrency: foreignCurrency)
+        }
+    }
 }
 
 extension CurrenciesListViewController: UITableViewDataSource {
