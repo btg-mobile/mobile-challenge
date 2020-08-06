@@ -56,6 +56,7 @@ class CurrencyData {
                 return quote
             }
         }
-        return 0
+        // Se não encontrou é por que é o próprio USD
+        return 1
     }
 }

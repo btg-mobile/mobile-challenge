@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in HttpClient.request&lt;A&gt;(method:completion:):HttpClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "T.self">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CurrenciesListViewController.configTableViews():CurrenciesListViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,10 +19,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in HttpClient.request&lt;A&gt;(method:completion:):HttpClient.swift">
+         contextName = "ExchangeViewModel.convertLocalToForeign(value:):ExchangeViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "T.self">
+               value = "localCurrency.usdQuote">
+            </PersistentString>
+            <PersistentString
+               value = "foreignCurrency">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CurrenciesListViewModel.saveFavorites(localCurrency:foreignCurrency:):CurrenciesListViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "foreignCurrency.abbreviation">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

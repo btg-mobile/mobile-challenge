@@ -17,7 +17,7 @@ enum UserDefaultKey: String {
 protocol UserDefaultsProtocol {
     func getString(key: UserDefaultKey) -> String?
     func getDate(key: UserDefaultKey) -> Date?
-    func putInt(key: UserDefaultKey, value: Int) -> Void
+    func putString(key: UserDefaultKey, value: String) -> Void
     func putDate(key: UserDefaultKey, value: Date) -> Void
 }
 
@@ -38,7 +38,7 @@ class AppUserDefaults: UserDefaultsProtocol {
         return nil
     }
     
-    func putInt(key: UserDefaultKey, value: Int) {
+    func putString(key: UserDefaultKey, value: String) {
         preferences.set(value, forKey: key.rawValue)
     }
     

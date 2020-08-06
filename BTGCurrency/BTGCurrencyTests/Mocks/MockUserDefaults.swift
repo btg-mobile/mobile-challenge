@@ -17,7 +17,7 @@ class MockUserDefaults: UserDefaultsProtocol {
         return nil
     }
     
-    func putInt(key: UserDefaultKey, value: Int) {
+    func putString(key: UserDefaultKey, value: String) {
         // Do nothing
     }
     

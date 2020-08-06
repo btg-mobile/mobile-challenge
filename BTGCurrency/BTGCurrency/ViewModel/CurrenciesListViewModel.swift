@@ -49,4 +49,10 @@ class CurrenciesListViewModel {
             return false
         }
     }
+    
+    func saveFavorites(localCurrency: Currency, foreignCurrency: Currency) {
+        let userDefaults = AppUserDefaults()
+        userDefaults.putString(key: .LocalCurrency, value: localCurrency.abbreviation)
+        userDefaults.putString(key: .ForeignCurrency, value: foreignCurrency.abbreviation)
+    }
 }

@@ -29,6 +29,7 @@ class CurrenciesListViewController: UIViewController {
             
             let localCurrency = viewModel!.getCurrency(at: localSelected.row, search: fromSearchBar.text)
             let foreignCurrency = viewModel!.getCurrency(at: foreignSelected.row, search: toSearchBar.text)
+            viewModel?.saveFavorites(localCurrency: localCurrency, foreignCurrency: foreignCurrency)
             viewModel?.goToExchange(localCurrency: localCurrency, foreignCurrency: foreignCurrency)
         }
     }
