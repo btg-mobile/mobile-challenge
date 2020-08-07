@@ -15,6 +15,8 @@
 		BD172B9D24DDBE3400163DAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172B9C24DDBE3400163DAA /* HomeViewController.swift */; };
 		BD172B9F24DDBE4B00163DAA /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD172B9E24DDBE4B00163DAA /* HomeViewController.storyboard */; };
 		BD172BA424DDBEAB00163DAA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BA324DDBEAB00163DAA /* UIViewController+Extensions.swift */; };
+		BD172BA824DDCF5600163DAA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BA724DDCF5600163DAA /* Network.swift */; };
+		BD172BAA24DDD5D000163DAA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BA924DDD5D000163DAA /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		BD172B9C24DDBE3400163DAA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BD172B9E24DDBE4B00163DAA /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		BD172BA324DDBEAB00163DAA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		BD172BA724DDCF5600163DAA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		BD172BA924DDD5D000163DAA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,9 @@
 		BD172B9B24DDBE2800163DAA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BD172BAB24DDD5D600163DAA /* Service */,
+				BD172BAC24DDD5DE00163DAA /* Model */,
+				BD172BA924DDD5D000163DAA /* HomeViewModel.swift */,
 				BD172B9C24DDBE3400163DAA /* HomeViewController.swift */,
 				BD172B9E24DDBE4B00163DAA /* HomeViewController.storyboard */,
 			);
@@ -96,6 +103,7 @@
 		BD172BA024DDBE8D00163DAA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				BD172BA624DDCF4700163DAA /* Network */,
 				BD172B8324DDBDC800163DAA /* AppDelegate.swift */,
 				BD172BA124DDBE9400163DAA /* Commons */,
 			);
@@ -127,6 +135,28 @@
 				BD172B9124DDBDC900163DAA /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BD172BA624DDCF4700163DAA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BD172BA724DDCF5600163DAA /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BD172BAB24DDD5D600163DAA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BD172BAC24DDD5DE00163DAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD172BA824DDCF5600163DAA /* Network.swift in Sources */,
+				BD172BAA24DDD5D000163DAA /* HomeViewModel.swift in Sources */,
 				BD172B8424DDBDC800163DAA /* AppDelegate.swift in Sources */,
 				BD172BA424DDBEAB00163DAA /* UIViewController+Extensions.swift in Sources */,
 				BD172B9A24DDBE1200163DAA /* BaseViewController.swift in Sources */,
