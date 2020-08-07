@@ -35,13 +35,14 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="PtX-cN-xCw"/>
                                     </constraints>
-                                    <state key="normal" title="Trocar Moedas"/>
+                                    <state key="normal" title="Trocar Moedas">
+                                        <color key="titleColor" red="0.82745098039215681" green="0.78823529411764703" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="changeCurrencies:" destination="-1" eventType="touchUpInside" id="BYg-gQ-v2g"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="A8K-1k-9PC" firstAttribute="leading" secondItem="hzl-1X-UH1" secondAttribute="leading" constant="16" id="Cbr-g6-Wuc"/>
                                 <constraint firstItem="A8K-1k-9PC" firstAttribute="top" secondItem="hzl-1X-UH1" secondAttribute="top" id="q6O-uK-0VH"/>
@@ -54,7 +55,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversão" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EG7-Ki-9v7" userLabel="Título - Label">
                                     <rect key="frame" x="16" y="0.0" width="382" height="28"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -69,7 +70,7 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QpZ-Gz-Nei" userLabel="Info Offline - View">
                             <rect key="frame" x="0.0" y="92" width="414" height="4"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dados podem estar desatualizados. Ultima atualização feita em: " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epY-9S-XKQ" userLabel="Info Offline - Label">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultima atualização em: " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epY-9S-XKQ" userLabel="Info Offline - Label">
                                     <rect key="frame" x="16" y="0.0" width="382" height="0.0"/>
                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,11 +100,10 @@
                                                         <constraint firstAttribute="height" constant="21" id="8qK-xZ-x1D"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="IXi-O3-1tM" firstAttribute="top" secondItem="oOF-Xp-epQ" secondAttribute="top" constant="8" id="75y-97-uVa"/>
                                                 <constraint firstAttribute="bottom" secondItem="IXi-O3-1tM" secondAttribute="bottom" id="DJp-Fq-n25"/>
@@ -113,6 +113,8 @@
                                         </view>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-IT-YM5">
                                             <rect key="frame" x="0.0" y="37" width="414" height="316"/>
+                                            <color key="backgroundColor" red="0.3293799758" green="0.32943210010000001" blue="0.32936853170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             <connections>
@@ -133,11 +135,10 @@
                                                         <constraint firstAttribute="height" constant="21" id="hjP-LB-lyM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="1og-ZA-y0O" secondAttribute="trailing" constant="16" id="IuG-nH-p8i"/>
                                                 <constraint firstItem="1og-ZA-y0O" firstAttribute="leading" secondItem="KYU-NH-pgK" secondAttribute="leading" constant="16" id="eQ8-Lc-YYx"/>
@@ -147,7 +148,8 @@
                                         </view>
                                         <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5vj-Ba-J79">
                                             <rect key="frame" x="0.0" y="37" width="414" height="316"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.3293799758" green="0.32943210010000001" blue="0.32936853170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.71814482654264455" green="0.72525517135989848" blue="0.72525517135989848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             <connections>
@@ -161,7 +163,7 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" red="0.3293799758" green="0.32943210010000001" blue="0.32936853170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Cgf-WU-kwa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="2vO-SP-6Rg"/>
                 <constraint firstItem="Cgf-WU-kwa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KOh-jQ-WFS"/>

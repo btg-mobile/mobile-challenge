@@ -49,6 +49,9 @@ extension CurrenciesListViewController: UITableViewDataSource {
         let search = searchBar.text
         let currency = viewModel!.getCurrency(at: indexPath.row, search: search)
         cell.setCurrency(currency)
+        cell.selectedBackgroundView = UIView()
+        cell.selectedBackgroundView?.backgroundColor = UIColor(rgb: 0xD3C94E)
+        cell.backgroundColor = UIColor(rgb: 0x545454)
         return cell
     }
 }

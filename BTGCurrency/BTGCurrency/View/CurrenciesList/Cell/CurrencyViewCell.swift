@@ -9,7 +9,7 @@
 import UIKit
 
 class CurrencyViewCell: UITableViewCell {
-    @IBOutlet fileprivate weak var title: UILabel!
+    @IBOutlet weak var title: UILabel!
     
     func setCurrency(_ currency: Currency) {
         title.text = "\(currency.abbreviation) - \(currency.name)"

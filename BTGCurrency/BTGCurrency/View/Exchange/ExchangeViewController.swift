@@ -52,10 +52,10 @@ extension ExchangeViewController: UITextFieldDelegate {
         localTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
     @objc func textFieldDidChange(textField: UITextField){
-        if let value = Double(textField.text!) {
+        if let value = Double(textField.text!.replacingOccurrences(of: ",", with: ".")) {
             textField.text = textField.text?.noLeadingZeros
             let convertedValue = viewModel.convertLocalToForeign(value: value)
-            foreignTextField.text = "\(convertedValue)"
+            foreignTextField.text = "\(convertedValue)".replacingOccurrences(of: ".", with: ",")
         } else {
             foreignTextField.text = "0"
         }

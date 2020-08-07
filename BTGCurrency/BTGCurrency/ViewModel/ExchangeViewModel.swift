@@ -29,13 +29,13 @@ class ExchangeViewModel {
     }
     
     func convertLocalToForeign(value: Double) -> Double {
-        let localInUsd = value * localCurrency.usdQuote
-        return localInUsd / foreignCurrency.usdQuote
+        let localInUsd = value / localCurrency.usdQuote
+        return localInUsd * foreignCurrency.usdQuote
     }
     
     func isValueDecimal(textField: UITextField, typedValue: String) -> Bool {
         let currentValue = textField.text ?? ""
-        let changedValue = currentValue + typedValue
+        let changedValue = (currentValue + typedValue).replacingOccurrences(of: ",", with: ".")
         return changedValue == "" || (Double(changedValue) != nil)
     }
     
