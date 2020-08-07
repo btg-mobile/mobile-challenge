@@ -1,0 +1,8 @@
+.DS_Store
+UserInterfaceState.xcuserstate
+
+## Build generated
+DerivedData/
+Podfile.lock
+Pods/
+CurrencyLayer.rtf

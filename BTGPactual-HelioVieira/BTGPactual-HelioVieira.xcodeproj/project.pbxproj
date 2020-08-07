@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD172B8424DDBDC800163DAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172B8324DDBDC800163DAA /* AppDelegate.swift */; };
+		BD172B8B24DDBDC800163DAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD172B8924DDBDC800163DAA /* Main.storyboard */; };
+		BD172B8D24DDBDC900163DAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD172B8C24DDBDC900163DAA /* Assets.xcassets */; };
+		BD172B9024DDBDC900163DAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD172B8E24DDBDC900163DAA /* LaunchScreen.storyboard */; };
+		BD172B9A24DDBE1200163DAA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172B9924DDBE1200163DAA /* BaseViewController.swift */; };
+		BD172B9D24DDBE3400163DAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172B9C24DDBE3400163DAA /* HomeViewController.swift */; };
+		BD172B9F24DDBE4B00163DAA /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD172B9E24DDBE4B00163DAA /* HomeViewController.storyboard */; };
+		BD172BA424DDBEAB00163DAA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BA324DDBEAB00163DAA /* UIViewController+Extensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BD172B8024DDBDC800163DAA /* BTGPactual-HelioVieira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTGPactual-HelioVieira.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD172B8324DDBDC800163DAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BD172B8A24DDBDC800163DAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD172B8C24DDBDC900163DAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD172B8F24DDBDC900163DAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BD172B9124DDBDC900163DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD172B9924DDBE1200163DAA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BD172B9C24DDBE3400163DAA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BD172B9E24DDBE4B00163DAA /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		BD172BA324DDBEAB00163DAA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD172B7D24DDBDC800163DAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD172B7724DDBDC800163DAA = {
+			isa = PBXGroup;
+			children = (
+				BD172B8224DDBDC800163DAA /* BTGPactual-HelioVieira */,
+				BD172B8124DDBDC800163DAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD172B8124DDBDC800163DAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B8024DDBDC800163DAA /* BTGPactual-HelioVieira.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD172B8224DDBDC800163DAA /* BTGPactual-HelioVieira */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B9724DDBDF900163DAA /* Scenes */,
+				BD172BA024DDBE8D00163DAA /* Sources */,
+				BD172BA524DDC03200163DAA /* Resources */,
+			);
+			path = "BTGPactual-HelioVieira";
+			sourceTree = "<group>";
+		};
+		BD172B9724DDBDF900163DAA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B9824DDBE0500163DAA /* Base */,
+				BD172B9B24DDBE2800163DAA /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		BD172B9824DDBE0500163DAA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B9924DDBE1200163DAA /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BD172B9B24DDBE2800163DAA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B9C24DDBE3400163DAA /* HomeViewController.swift */,
+				BD172B9E24DDBE4B00163DAA /* HomeViewController.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BD172BA024DDBE8D00163DAA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B8324DDBDC800163DAA /* AppDelegate.swift */,
+				BD172BA124DDBE9400163DAA /* Commons */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BD172BA124DDBE9400163DAA /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				BD172BA224DDBE9900163DAA /* Extensions */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		BD172BA224DDBE9900163DAA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BD172BA324DDBEAB00163DAA /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD172BA524DDC03200163DAA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD172B8C24DDBDC900163DAA /* Assets.xcassets */,
+				BD172B8E24DDBDC900163DAA /* LaunchScreen.storyboard */,
+				BD172B8924DDBDC800163DAA /* Main.storyboard */,
+				BD172B9124DDBDC900163DAA /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD172B7F24DDBDC800163DAA /* BTGPactual-HelioVieira */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD172B9424DDBDC900163DAA /* Build configuration list for PBXNativeTarget "BTGPactual-HelioVieira" */;
+			buildPhases = (
+				BD172B7C24DDBDC800163DAA /* Sources */,
+				BD172B7D24DDBDC800163DAA /* Frameworks */,
+				BD172B7E24DDBDC800163DAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BTGPactual-HelioVieira";
+			productName = "BTGPactual-HelioVieira";
+			productReference = BD172B8024DDBDC800163DAA /* BTGPactual-HelioVieira.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD172B7824DDBDC800163DAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = HelioTecnologia;
+				TargetAttributes = {
+					BD172B7F24DDBDC800163DAA = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = BD172B7B24DDBDC800163DAA /* Build configuration list for PBXProject "BTGPactual-HelioVieira" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD172B7724DDBDC800163DAA;
+			productRefGroup = BD172B8124DDBDC800163DAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD172B7F24DDBDC800163DAA /* BTGPactual-HelioVieira */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD172B7E24DDBDC800163DAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD172B9F24DDBE4B00163DAA /* HomeViewController.storyboard in Resources */,
+				BD172B9024DDBDC900163DAA /* LaunchScreen.storyboard in Resources */,
+				BD172B8D24DDBDC900163DAA /* Assets.xcassets in Resources */,
+				BD172B8B24DDBDC800163DAA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD172B7C24DDBDC800163DAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD172B8424DDBDC800163DAA /* AppDelegate.swift in Sources */,
+				BD172BA424DDBEAB00163DAA /* UIViewController+Extensions.swift in Sources */,
+				BD172B9A24DDBE1200163DAA /* BaseViewController.swift in Sources */,
+				BD172B9D24DDBE3400163DAA /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BD172B8924DDBDC800163DAA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD172B8A24DDBDC800163DAA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD172B8E24DDBDC900163DAA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD172B8F24DDBDC900163DAA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD172B9224DDBDC900163DAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BD172B9324DDBDC900163DAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD172B9524DDBDC900163DAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6K3965APXT;
+				INFOPLIST_FILE = "BTGPactual-HelioVieira/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "heliotecnologia.com.br.BTGPactual-HelioVieira";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BD172B9624DDBDC900163DAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6K3965APXT;
+				INFOPLIST_FILE = "BTGPactual-HelioVieira/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "heliotecnologia.com.br.BTGPactual-HelioVieira";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD172B7B24DDBDC800163DAA /* Build configuration list for PBXProject "BTGPactual-HelioVieira" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD172B9224DDBDC900163DAA /* Debug */,
+				BD172B9324DDBDC900163DAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD172B9424DDBDC900163DAA /* Build configuration list for PBXNativeTarget "BTGPactual-HelioVieira" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD172B9524DDBDC900163DAA /* Debug */,
+				BD172B9624DDBDC900163DAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD172B7824DDBDC800163DAA /* Project object */;
+}
