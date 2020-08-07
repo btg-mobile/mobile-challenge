@@ -9,9 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExchangeViewController" customModule="BTGCurrency" customModuleProvider="target">
             <connections>
-                <outlet property="contentBottomConstraint" destination="O46-pD-Yo9" id="z5H-vt-eK4"/>
+                <outlet property="contentBottomConstraint" destination="O46-pD-Yo9" id="KQL-cr-k7v"/>
                 <outlet property="foreignLabel" destination="1og-ZA-y0O" id="q1n-Ij-ZzC"/>
                 <outlet property="foreignTextField" destination="5vj-Ba-J79" id="iJ0-d3-fb5"/>
+                <outlet property="infoOfflineContainer" destination="QpZ-Gz-Nei" id="AMH-Xn-JL0"/>
+                <outlet property="infoOfflineLabel" destination="epY-9S-XKQ" id="l0e-9m-p4r"/>
                 <outlet property="localLabel" destination="IXi-O3-1tM" id="5d0-os-EBn"/>
                 <outlet property="localTextField" destination="KTs-IT-YM5" id="pDX-gh-y7I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -64,6 +66,24 @@
                                 <constraint firstAttribute="bottom" secondItem="EG7-Ki-9v7" secondAttribute="bottom" constant="4" id="mob-Zt-gf3"/>
                             </constraints>
                         </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QpZ-Gz-Nei" userLabel="Info Offline - View">
+                            <rect key="frame" x="0.0" y="92" width="414" height="4"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dados podem estar desatualizados. Ultima atualização feita em: " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epY-9S-XKQ" userLabel="Info Offline - Label">
+                                    <rect key="frame" x="16" y="0.0" width="382" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="epY-9S-XKQ" firstAttribute="top" secondItem="QpZ-Gz-Nei" secondAttribute="top" id="6OY-gR-KTM"/>
+                                <constraint firstAttribute="trailing" secondItem="epY-9S-XKQ" secondAttribute="trailing" constant="16" id="T0h-XF-yfU"/>
+                                <constraint firstAttribute="bottom" secondItem="epY-9S-XKQ" secondAttribute="bottom" constant="4" id="ZsX-Bl-4X8"/>
+                                <constraint firstItem="epY-9S-XKQ" firstAttribute="leading" secondItem="QpZ-Gz-Nei" secondAttribute="leading" constant="16" id="rgr-Ll-AOu"/>
+                                <constraint firstAttribute="trailing" secondItem="epY-9S-XKQ" secondAttribute="trailing" constant="16" id="sgz-b1-DDm"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NWe-B7-EHK" userLabel="Valores - Stack View">
                             <rect key="frame" x="0.0" y="92" width="414" height="710"/>
                             <subviews>
@@ -94,7 +114,10 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-IT-YM5">
                                             <rect key="frame" x="0.0" y="37" width="414" height="316"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="Wl8-Wb-AU5"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </stackView>
@@ -126,7 +149,10 @@
                                             <rect key="frame" x="0.0" y="37" width="414" height="316"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="8hX-GF-rFv"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </stackView>

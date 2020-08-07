@@ -12,6 +12,7 @@ import UIKit
 class ExchangeViewModel {
     fileprivate let localCurrency: Currency
     fileprivate let foreignCurrency: Currency
+    let labelText = "Ultima atualização em:"
     
     init(localCurrency: Currency, foreignCurrency: Currency) {
         self.localCurrency = localCurrency
@@ -30,5 +31,19 @@ class ExchangeViewModel {
     func convertLocalToForeign(value: Double) -> Double {
         let localInUsd = value * localCurrency.usdQuote
         return localInUsd / foreignCurrency.usdQuote
+    }
+    
+    func isValueDecimal(textField: UITextField, typedValue: String) -> Bool {
+        let currentValue = textField.text ?? ""
+        let changedValue = currentValue + typedValue
+        return changedValue == "" || (Double(changedValue) != nil)
+    }
+    
+    func checkConnection(container: UIView, label: UILabel) {
+        if !NetworkHelper().isConnected() {
+            let lastUpdate = AppUserDefaults().getDate(key: .LastUpdate)!
+            container.isHidden = false
+            label.text = "\(labelText) \(lastUpdate)"
+        }
     }
 }

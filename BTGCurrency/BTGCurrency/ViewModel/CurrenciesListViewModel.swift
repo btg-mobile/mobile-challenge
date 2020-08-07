@@ -11,6 +11,14 @@ import RealmSwift
 
 class CurrenciesListViewModel {
     fileprivate let currencies: Results<Currency>
+    var localCurrency: Currency? = nil
+    var foreignCurrency: Currency? = nil
+    
+    enum Behavior {
+        case InputLocalCurrency
+        case InputForeignCurrency
+        case Advance
+    }
     
     init() {
         currencies = CurrencyData.getAll()
@@ -32,27 +40,47 @@ class CurrenciesListViewModel {
         return _currencies[index]
     }
     
-    func goToExchange(localCurrency: Currency, foreignCurrency: Currency) {
-        Router.shared.setViewController(viewController: ExchangeViewController(localCurrency: localCurrency, foreignCurrency: foreignCurrency))
+    func goToExchange() {
+        Router.shared.setViewController(viewController: ExchangeViewController(localCurrency: localCurrency!, foreignCurrency: foreignCurrency!))
     }
     
-    func isSelectionValid(currenciesFromTableView: UITableView, currenciesToTableView: UITableView) -> Bool {
-        if let _ = currenciesFromTableView.indexPathForSelectedRow {
-            if let _ = currenciesToTableView.indexPathForSelectedRow {
-                return true
-            } else {
-                alert(title: "Atenção!", message: "Selecione a moeda para que deseja converter")
-                return false
-            }
+    func isSelectionValid(currenciesTableView: UITableView) -> Bool {
+        if let _ = currenciesTableView.indexPathForSelectedRow {
+            return true
         } else {
-            alert(title: "Atenção!", message: "Selecione a moeda de origem")
+            alert(title: "Atenção!", message: "Selecione uma moeda para continuar")
             return false
         }
     }
     
-    func saveFavorites(localCurrency: Currency, foreignCurrency: Currency) {
+    func getCurrentBehavior() -> Behavior {
+        if localCurrency == nil {
+            return .InputLocalCurrency
+        } else if foreignCurrency == nil {
+            return .InputForeignCurrency
+        } else {
+            return .Advance
+        }
+    }
+    
+    func setCurrency(currency: Currency) {
+        if localCurrency == nil {
+            localCurrency = currency
+        } else {
+            foreignCurrency = currency
+            saveFavorites()
+        }
+    }
+    
+    func clearTableView(tableView: UITableView) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    fileprivate func saveFavorites() {
         let userDefaults = AppUserDefaults()
-        userDefaults.putString(key: .LocalCurrency, value: localCurrency.abbreviation)
-        userDefaults.putString(key: .ForeignCurrency, value: foreignCurrency.abbreviation)
+        userDefaults.putString(key: .LocalCurrency, value: localCurrency!.abbreviation)
+        userDefaults.putString(key: .ForeignCurrency, value: foreignCurrency!.abbreviation)
     }
 }

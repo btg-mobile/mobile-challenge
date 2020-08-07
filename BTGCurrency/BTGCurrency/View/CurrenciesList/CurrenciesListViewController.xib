@@ -9,10 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrenciesListViewController" customModule="BTGCurrency" customModuleProvider="target">
             <connections>
-                <outlet property="currenciesFromTableView" destination="QvI-o1-wYH" id="XEE-Q7-XPy"/>
-                <outlet property="currenciesToTableView" destination="oNq-yb-hMb" id="c3P-pZ-jR9"/>
-                <outlet property="fromSearchBar" destination="ZzW-fS-6Kn" id="rXA-Yu-tX6"/>
-                <outlet property="toSearchBar" destination="mZ0-ma-33N" id="IwJ-EI-qgi"/>
+                <outlet property="contentBottomConstraint" destination="LEZ-ra-Xvg" id="OLT-VV-UsG"/>
+                <outlet property="currenciesTableView" destination="QvI-o1-wYH" id="XEE-Q7-XPy"/>
+                <outlet property="label" destination="D87-gA-OLc" id="GOh-Eh-4r4"/>
+                <outlet property="searchBar" destination="ZzW-fS-6Kn" id="rXA-Yu-tX6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,13 +46,13 @@
                             <rect key="frame" x="0.0" y="40" width="320" height="412"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xFT-Uh-5rp" userLabel="De - Stack View">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="412"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uej-xq-ynA" userLabel="Label De - View">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="36.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converter de" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D87-gA-OLc" userLabel="De - Label">
-                                                    <rect key="frame" x="16" y="8" width="288" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converter de" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D87-gA-OLc" userLabel="Label">
+                                                    <rect key="frame" x="16" y="8" width="288" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -66,59 +66,20 @@
                                             </constraints>
                                         </view>
                                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZzW-fS-6Kn" userLabel="De - Search Bar">
-                                            <rect key="frame" x="0.0" y="36.5" width="320" height="50"/>
+                                            <rect key="frame" x="0.0" y="50" width="320" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="RkP-N5-Idl"/>
                                             </constraints>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="continue"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="1I6-bY-b2y"/>
                                             </connections>
                                         </searchBar>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QvI-o1-wYH" userLabel="De - Table View">
-                                            <rect key="frame" x="0.0" y="86.5" width="320" height="111.5"/>
+                                            <rect key="frame" x="0.0" y="100" width="320" height="312"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="-1" id="Mgb-aC-9xx"/>
-                                            </connections>
-                                        </tableView>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uhG-Qu-7j2" userLabel="Para - Stack View">
-                                    <rect key="frame" x="0.0" y="214" width="320" height="198"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-q8-E0M" userLabel="Label Para - View">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="36.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIY-IF-cw7" userLabel="Para - Label">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="28.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="fIY-IF-cw7" secondAttribute="trailing" constant="16" id="Emd-uM-SXt"/>
-                                                <constraint firstItem="fIY-IF-cw7" firstAttribute="leading" secondItem="fi4-q8-E0M" secondAttribute="leading" constant="16" id="Oi9-Jm-GCw"/>
-                                                <constraint firstItem="fIY-IF-cw7" firstAttribute="top" secondItem="fi4-q8-E0M" secondAttribute="top" id="SNd-Yf-PUV"/>
-                                                <constraint firstAttribute="bottom" secondItem="fIY-IF-cw7" secondAttribute="bottom" constant="8" id="wwl-aW-ZyH"/>
-                                            </constraints>
-                                        </view>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mZ0-ma-33N" userLabel="Para - Search Bar">
-                                            <rect key="frame" x="0.0" y="36.5" width="320" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="1cL-OU-5Io"/>
-                                            </constraints>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="FMA-06-OyD"/>
-                                            </connections>
-                                        </searchBar>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oNq-yb-hMb" userLabel="Para - Table View">
-                                            <rect key="frame" x="0.0" y="86.5" width="320" height="111.5"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <connections>
-                                                <outlet property="dataSource" destination="-1" id="GTM-86-Wyq"/>
                                             </connections>
                                         </tableView>
                                     </subviews>

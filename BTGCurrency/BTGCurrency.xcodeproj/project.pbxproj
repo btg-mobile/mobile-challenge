@@ -52,6 +52,9 @@
 		64B8A48824DA40F1006AE883 /* CurrencyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B8A48524DA40F1006AE883 /* CurrencyViewCell.xib */; };
 		64B8A48924DA40F1006AE883 /* CurrencyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B8A48524DA40F1006AE883 /* CurrencyViewCell.xib */; };
 		64EF245B24D76D1C0089C5BB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EF245A24D76D1C0089C5BB /* Router.swift */; };
+		64F3A4BC24DCF550001966D6 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64107FB324D9C573008775FA /* Helpers.swift */; };
+		64F3A4BE24DD0094001966D6 /* FloatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3A4BD24DD0094001966D6 /* FloatViewController.swift */; };
+		64F3A4C224DD0CE2001966D6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F3A4C124DD0CE2001966D6 /* Launch Screen.storyboard */; };
 		9D38CF26DA98DE430550C880 /* Pods_BTGCurrencyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA9131AF6EA72FE1DD797D6 /* Pods_BTGCurrencyTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +100,8 @@
 		64B8A48424DA40F1006AE883 /* CurrencyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewCell.swift; sourceTree = "<group>"; };
 		64B8A48524DA40F1006AE883 /* CurrencyViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyViewCell.xib; sourceTree = "<group>"; };
 		64EF245A24D76D1C0089C5BB /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		64F3A4BD24DD0094001966D6 /* FloatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatViewController.swift; sourceTree = "<group>"; };
+		64F3A4C124DD0CE2001966D6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E3E6119466DD71D0212BFB8E /* Pods-BTGCurrencyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTGCurrencyTests.release.xcconfig"; path = "Target Support Files/Pods-BTGCurrencyTests/Pods-BTGCurrencyTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA1DCDFF093E6ABF0FD90ADD /* Pods-BTGCurrency.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTGCurrency.debug.xcconfig"; path = "Target Support Files/Pods-BTGCurrency/Pods-BTGCurrency.debug.xcconfig"; sourceTree = "<group>"; };
 		EBFC96EC5D14C1D88219392B /* Pods-BTGCurrencyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTGCurrencyTests.debug.xcconfig"; path = "Target Support Files/Pods-BTGCurrencyTests/Pods-BTGCurrencyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +190,7 @@
 				64659D4324D62A2B00016575 /* Info.plist */,
 				64EF245A24D76D1C0089C5BB /* Router.swift */,
 				64107FB324D9C573008775FA /* Helpers.swift */,
+				64F3A4C124DD0CE2001966D6 /* Launch Screen.storyboard */,
 			);
 			path = BTGCurrency;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 				64A5FDA624D711830025E4E7 /* Splash */,
 				64A5FD9924D710C10025E4E7 /* Exchange */,
 				64A5FD9824D7109E0025E4E7 /* CurrenciesList */,
+				64F3A4BD24DD0094001966D6 /* FloatViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F3A4C224DD0CE2001966D6 /* Launch Screen.storyboard in Resources */,
 				64A5FD9624D710970025E4E7 /* CurrenciesListViewController.xib in Resources */,
 				64659D3C24D62A2B00016575 /* Assets.xcassets in Resources */,
 				64A5FD9E24D710DD0025E4E7 /* ExchangeViewController.xib in Resources */,
@@ -482,6 +490,7 @@
 				64A5FDC124D728E20025E4E7 /* MockUserDefaults.swift in Sources */,
 				64A5FD9424D710970025E4E7 /* CurrenciesListViewController.swift in Sources */,
 				64B8A48624DA40F1006AE883 /* CurrencyViewCell.swift in Sources */,
+				64F3A4BE24DD0094001966D6 /* FloatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +511,7 @@
 				64A5FD9D24D710DD0025E4E7 /* ExchangeViewController.swift in Sources */,
 				64A5FDAB24D714C70025E4E7 /* SplashViewModel.swift in Sources */,
 				64A5FDA324D7117B0025E4E7 /* SplashViewController.swift in Sources */,
+				64F3A4BC24DCF550001966D6 /* Helpers.swift in Sources */,
 				64A5FDC424D729CC0025E4E7 /* SplashXCTestCase.swift in Sources */,
 				64659D6024D6316D00016575 /* SceneDelegate.swift in Sources */,
 				64A5FDC224D728E20025E4E7 /* MockUserDefaults.swift in Sources */,

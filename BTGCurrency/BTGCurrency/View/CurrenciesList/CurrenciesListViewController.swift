@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CurrenciesListViewController: UIViewController {
-    @IBOutlet weak var currenciesFromTableView: UITableView!
-    @IBOutlet weak var currenciesToTableView: UITableView!
-    @IBOutlet weak var fromSearchBar: UISearchBar!
-    @IBOutlet weak var toSearchBar: UISearchBar!
+class CurrenciesListViewController: FloatViewController {
+    @IBOutlet weak var currenciesTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var contentBottomConstraint: NSLayoutConstraint!
     
     var viewModel: CurrenciesListViewModel?
     
@@ -20,39 +20,33 @@ class CurrenciesListViewController: UIViewController {
         super.viewDidLoad()
         configTableViews()
         viewModel = CurrenciesListViewModel()
+        checkBehavior()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        createKeyboardObserver(contentBottomConstraint: contentBottomConstraint)
     }
     
     @IBAction func confirm(_ sender: Any) {
-        if viewModel!.isSelectionValid(currenciesFromTableView: currenciesFromTableView, currenciesToTableView: currenciesToTableView) {
-            let localSelected = currenciesFromTableView.indexPathForSelectedRow!
-            let foreignSelected = currenciesToTableView.indexPathForSelectedRow!
-            
-            let localCurrency = viewModel!.getCurrency(at: localSelected.row, search: fromSearchBar.text)
-            let foreignCurrency = viewModel!.getCurrency(at: foreignSelected.row, search: toSearchBar.text)
-            viewModel?.saveFavorites(localCurrency: localCurrency, foreignCurrency: foreignCurrency)
-            viewModel?.goToExchange(localCurrency: localCurrency, foreignCurrency: foreignCurrency)
+        if viewModel!.isSelectionValid(currenciesTableView: currenciesTableView) {
+            let selectedIndexPath = currenciesTableView.indexPathForSelectedRow!
+            let selectedCurrency = viewModel!.getCurrency(at: selectedIndexPath.row, search: searchBar.text)
+            viewModel?.setCurrency(currency: selectedCurrency)
+            checkBehavior()
         }
     }
 }
 
 extension CurrenciesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == currenciesFromTableView {
-            return viewModel?.getNumberOfRowsInSection(search: fromSearchBar.text) ?? 0
-        } else {
-            return viewModel?.getNumberOfRowsInSection(search: toSearchBar.text) ?? 0
-        }
+        return viewModel?.getNumberOfRowsInSection(search: searchBar.text) ?? 0
  
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyViewCell.className, for: indexPath) as! CurrencyViewCell
-        var search: String? = nil
-        if tableView == currenciesFromTableView {
-            search = fromSearchBar.text
-        } else {
-            search = toSearchBar.text
-        }
+        let search = searchBar.text
         let currency = viewModel!.getCurrency(at: indexPath.row, search: search)
         cell.setCurrency(currency)
         return cell
@@ -61,17 +55,32 @@ extension CurrenciesListViewController: UITableViewDataSource {
 
 extension CurrenciesListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar == fromSearchBar {
-            currenciesFromTableView.reloadData()
-        } else {
-            currenciesToTableView.reloadData()
-        }
+        currenciesTableView.reloadData()
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }
 
 extension CurrenciesListViewController {
+    func checkBehavior() {
+        switch viewModel!.getCurrentBehavior() {
+        case .InputLocalCurrency:
+            label.text = "Converter de:"
+            clearSearch()
+        case .InputForeignCurrency:
+            label.text = "Para:"
+            clearSearch()
+        case .Advance:
+            viewModel?.goToExchange()
+        }
+    }
     func configTableViews() {
-        currenciesFromTableView.register(UINib(nibName: CurrencyViewCell.className, bundle: nil), forCellReuseIdentifier: CurrencyViewCell.className)
-        currenciesToTableView.register(UINib(nibName: CurrencyViewCell.className, bundle: nil), forCellReuseIdentifier: CurrencyViewCell.className)
+        currenciesTableView.register(UINib(nibName: CurrencyViewCell.className, bundle: nil), forCellReuseIdentifier: CurrencyViewCell.className)
+    }
+    func clearSearch() {
+        searchBar.text = ""
+        viewModel?.clearTableView(tableView: currenciesTableView)
+        currenciesTableView.reloadData()
     }
 }

@@ -13,7 +13,7 @@ class SplashXCTestCase: XCTestCase {
     // Verificação de última consulta na API sem uma última consulta armazenada deve chamar método de sincronização
     func testCheckLastUpdateWithNoDate_shouldCallSynchronizeQuotes() {
         let currencyClient = MockCurrencyClient()
-        let viewModel = SplashViewModel(currencyClient: currencyClient, userDefaults: MockUserDefaults())
+        let viewModel = SplashViewModel(currencyClient: currencyClient, userDefaults: MockUserDefaults(), networkHelper: NetworkHelper())
         viewModel.checkLastUpdate()
         XCTAssertTrue(currencyClient.synchronizeQuotesIsCalled)
     }
@@ -24,7 +24,7 @@ class SplashXCTestCase: XCTestCase {
         
         let currencyClient = MockCurrencyClient()
         let userDefaults = UserDefaultsReturning(mockedDate: yesterday)
-        let viewModel = SplashViewModel(currencyClient: currencyClient, userDefaults: userDefaults)
+        let viewModel = SplashViewModel(currencyClient: currencyClient, userDefaults: userDefaults, networkHelper: NetworkHelper())
         viewModel.checkLastUpdate()
         XCTAssertTrue(currencyClient.synchronizeQuotesIsCalled)
     }
@@ -35,7 +35,7 @@ class SplashXCTestCase: XCTestCase {
         
         let currencyClient = MockCurrencyClient()
         let userDefaults = UserDefaultsReturning(mockedDate: now)
-        let viewModel = SplashViewModel(currencyClient: currencyClient, userDefaults: userDefaults)
+        let viewModel = SplashViewModel(currencyClient: currencyClient, userDefaults: userDefaults, networkHelper: NetworkHelper())
         viewModel.checkLastUpdate()
         XCTAssertFalse(currencyClient.synchronizeQuotesIsCalled)
     }

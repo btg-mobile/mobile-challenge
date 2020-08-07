@@ -9,47 +9,70 @@
 import Foundation
 
 class SplashViewModel {
-    let updateExpirationHours = 2
+    // Em horas
+    let localDataExpirationTime = 2
     
     let currencyClient: CurrencyClientProtocol
     let userDefaults: UserDefaultsProtocol
+    let networkHelper: NetworkHelperProtocol
     
-    init(currencyClient: CurrencyClientProtocol, userDefaults: UserDefaultsProtocol) {
+    init(currencyClient: CurrencyClientProtocol, userDefaults: UserDefaultsProtocol, networkHelper: NetworkHelperProtocol) {
         self.currencyClient = currencyClient
         self.userDefaults = userDefaults
+        self.networkHelper = networkHelper
     }
     
     //MARK: - Métodos principais
     func checkLastUpdate() {
-        if let lastUpdate = userDefaults.getDate(key: .LastUpdate), !isDateExpired(date: lastUpdate, expirationHours: updateExpirationHours) {
-            checkFavoriteCurrencies()
-        } else {
-            currencyClient.synchronizeQuotes { result in
-                switch result {
-                case .success():
-                    self.setSynchronized()
-                    self.checkFavoriteCurrencies()
-                case .failure(let error):
-                    var msg = ""
-                    switch error {
-                    case .InvalidURL:
-                        msg = "Não foi possível encontrar o serviço de câmbio."
-                    case .ServerError:
-                        msg = "Estamos melhorando nossos serviços."
-                    case .InvalidResponse:
-                        msg = "Não foi possível ler os valores de câmbio recebidos."
-                    }
-                    msg += " Tente novamente mais tarde"
-                    alert(title: "Atenção!", message: msg)
-                }
+        if hasStoredData() {
+            if isStoredDataExpirationTimeValid() || !networkHelper.isConnected() {
+                checkFavoriteCurrencies()
+            } else {
+                synchronizeData()
             }
+        } else {
+            guard networkHelper.isConnected() else {
+                alert(title: "Sem conexão", message: "É necessário estar conectado na primeira vez em que o app é aberto")
+                return
+            }
+            synchronizeData()
         }
     }
     
-    fileprivate func isDateExpired(date: Date, expirationHours: Int) -> Bool {
-        let now = Date()
-        let expiratedDate = Calendar.current.date(byAdding: .hour, value: expirationHours, to: date)!
-        return now > expiratedDate
+    func hasStoredData() -> Bool {
+        // Se tem alguma data de última atualização é porque atualizou pelo menos uma vez
+        return userDefaults.getDate(key: .LastUpdate) != nil
+    }
+    
+    func isStoredDataExpirationTimeValid() -> Bool {
+        if let lastUpdate = userDefaults.getDate(key: .LastUpdate) {
+            let now = Date()
+            let expiratedDate = Calendar.current.date(byAdding: .hour, value: localDataExpirationTime, to: lastUpdate)!
+            return now <= expiratedDate
+        }
+        return true
+    }
+    
+    func synchronizeData() {
+        currencyClient.synchronizeQuotes { result in
+            switch result {
+            case .success():
+                self.setSynchronized()
+                self.checkFavoriteCurrencies()
+            case .failure(let error):
+                var msg = ""
+                switch error {
+                case .InvalidURL:
+                    msg = "Não foi possível encontrar o serviço de câmbio."
+                case .ServerError:
+                    msg = "Estamos melhorando nossos serviços."
+                case .InvalidResponse:
+                    msg = "Não foi possível ler os valores de câmbio recebidos."
+                }
+                msg += " Tente novamente mais tarde"
+                alert(title: "Atenção!", message: msg)
+            }
+        }
     }
     
     fileprivate func setSynchronized() {

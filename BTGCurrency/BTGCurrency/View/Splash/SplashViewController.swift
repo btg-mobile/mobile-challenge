@@ -9,7 +9,7 @@
 import UIKit
 
 class SplashViewController: UIViewController {
-    let viewModel = SplashViewModel(currencyClient: CurrencyClient(), userDefaults: AppUserDefaults())
+    let viewModel = SplashViewModel(currencyClient: CurrencyClient(), userDefaults: AppUserDefaults(), networkHelper: NetworkHelper())
     
     override func viewDidLoad() {
         super.viewDidLoad()
