@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="center"
-                tools:text="ERROR {{ 400-499 }}" />
+                tools:text="ERRORS" />
 
     </ViewFlipper>
 

@@ -2,113 +2,118 @@ package com.example.alesefsapps.conversordemoedas.presentation.selectorScreen
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
 import com.example.alesefsapps.conversordemoedas.R
-import com.example.alesefsapps.conversordemoedas.data.ApiService
 import com.example.alesefsapps.conversordemoedas.data.model.Currency
 import com.example.alesefsapps.conversordemoedas.data.model.Quote
 import com.example.alesefsapps.conversordemoedas.data.model.Values
-import com.example.alesefsapps.conversordemoedas.data.response.ListCurrencyBodyResponse
-import com.example.alesefsapps.conversordemoedas.data.response.LiveCurrencyBodyResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.math.BigDecimal
+import com.example.alesefsapps.conversordemoedas.data.repository.CurrencyRepository
+import com.example.alesefsapps.conversordemoedas.data.repository.ValueLiveRepository
+import com.example.alesefsapps.conversordemoedas.data.result.CurrencyResult
+import com.example.alesefsapps.conversordemoedas.data.result.LiveValueResult
 
-class SelectorViewModel : ViewModel() {
-
-    private val apiKey: String = "YOUR_API_KEY"
-
-    private val service = ApiService.service
-    val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
+class SelectorViewModel(private val valueLiveRepository: ValueLiveRepository, private val currencyRepository: CurrencyRepository) : ViewModel() {
 
     val selectorLiveData: MutableLiveData<List<Values>> = MutableLiveData()
-    private val currencies: MutableList<Currency> = mutableListOf()
-    private val quotes: MutableList<Quote> = mutableListOf()
+    val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
     private val values: MutableList<Values> = mutableListOf()
 
+    var quotes: List<Quote> = mutableListOf()
+    var currencies: List<Currency> = mutableListOf()
+    var timestamp: Int = 0
 
+    fun getValueLive() {
+        valueLiveRepository.getValueLive { result: LiveValueResult ->
+            when(result) {
+                is LiveValueResult.Success -> {
+                    quotes = result.quotes
+                    timestamp = result.timestamp
+                    getCurrency(result.quotes, result.timestamp)
+                }
+                is LiveValueResult.ApiError -> {
+                    when (result.statusCode) {
+                        401 -> {
+                            viewFlipperLiveData.value =
+                                Pair(VIEW_FLIPPER_ERROR, R.string.error_401_live)
+                        }
+                        104 -> {
+                            viewFlipperLiveData.value =
+                                Pair(VIEW_FLIPPER_ERROR, R.string.error_104)
+                        }
+                        else -> {
+                            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_live)
+                        }
+                    }
+                }
+                is LiveValueResult.SeverError -> {
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_server_live)
+                }
+            }
+        }
+    }
+
+    fun getCurrency(quotes: List<Quote>, timestamp: Int) {
+        currencyRepository.getCurrency { result: CurrencyResult ->
+            when(result) {
+                is CurrencyResult.Success -> {
+                    this.quotes = quotes
+                    this.timestamp = timestamp
+                    currencies = result.currency
+                    getValues(quotes, result.currency, timestamp)
+                }
+                is CurrencyResult.ApiError -> {
+                    when (result.statusCode) {
+                        401 -> {
+                            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401_list)
+                        }
+                        104 -> {
+                            viewFlipperLiveData.value =
+                                Pair(VIEW_FLIPPER_ERROR, R.string.error_104)
+                        }
+                        else -> {
+                            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_generico_list)
+                        }
+                    }
+                }
+                is CurrencyResult.SeverError -> {
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_server_list)
+                }
+            }
+        }
+    }
+
+    fun getValues(
+        quotes: List<Quote>,
+        currency: List<Currency>,
+        timestamp: Int
+    ) {
+        currency.forEach { c ->
+            quotes.forEach { q ->
+                if (q.code.substring(3,6) == c.code) {
+                    values.add(Values(c.code, c.name, q.value, timestamp))
+                    values.sortBy { values -> values.name }
+                }
+            }
+        }
+
+            selectorLiveData.value = values
+            viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
+    }
 
     companion object {
         private const val VIEW_FLIPPER_CURRENCY_LIST = 1
         private const val VIEW_FLIPPER_ERROR = 2
     }
 
-    fun getCurrency() {
-        val call = service.getListCurrency(apiKey)
 
-        call.enqueue(object : Callback<ListCurrencyBodyResponse> {
-            override fun onResponse(
-                call: Call<ListCurrencyBodyResponse>,
-                response: Response<ListCurrencyBodyResponse>
-            ) {
-                when {
-                    response.isSuccessful -> {
-                        response.body()?.currencies?.let {
-                            setCurrencyList(it)
-                        }
-                    }
-                    response.code() == 401 -> {
-                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401)
-                    }
-                    else -> {
-                        viewFlipperLiveData.value =
-                            Pair(VIEW_FLIPPER_ERROR, R.string.error_generico)
-                    }
-                }
+    class ViewModelFactory(private val valueLiveRepository: ValueLiveRepository, private val currencyRepository: CurrencyRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(SelectorViewModel::class.java)) {
+                return SelectorViewModel(valueLiveRepository, currencyRepository) as T
             }
-
-            override fun onFailure(call: Call<ListCurrencyBodyResponse>, t: Throwable) {
-                viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_500)
-            }
-        })
-    }
-
-    private fun setCurrencyList(currency: HashMap<String, String>) {
-        for (key in currency.keys) {
-            currencies.add(Currency(key, currency[key]))
-
-            this.quotes.forEach {
-                if (it.code.substring(3,6) == key) {
-                    values.add(Values(key, currency[key], it.value))
-                    values.sortBy { values -> values.name }
-                }
-            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
-
-        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_CURRENCY_LIST, null)
-        selectorLiveData.value = values
-    }
-
-
-
-    fun getValueLive() {
-        val call = service.getLiveCurrency(apiKey)
-
-        call.enqueue(object : Callback<LiveCurrencyBodyResponse> {
-            override fun onFailure(call: Call<LiveCurrencyBodyResponse>, t: Throwable) {
-                Log.e("XXXXe", t.message)
-            }
-
-            override fun onResponse(
-                call: Call<LiveCurrencyBodyResponse>,
-                response: Response<LiveCurrencyBodyResponse>
-            ) {
-                if (response.isSuccessful) {
-                    response.body()?.quotes?.let {
-                        setCurrencyLive(it)
-                    }
-                }
-            }
-        })
-    }
-
-    private fun setCurrencyLive(quote: HashMap<String, BigDecimal>/*, code: MutableSet<String>*/) {
-        for (key in quote.keys) {
-            quotes.add(Quote(key, quote[key]))
-        }
-
-        getCurrency()
     }
 
 }

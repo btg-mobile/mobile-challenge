@@ -15,7 +15,7 @@
     </style>
 
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <item name="searchIcon">@drawable/ic_search_black_24dp</item>
+        <item name="searchIcon">@drawable/ic_search</item>
         <item name="queryBackground">@color/white</item>
         <item name="searchHintIcon">@null</item>
         <item name="queryHint">@string/search_hint</item>

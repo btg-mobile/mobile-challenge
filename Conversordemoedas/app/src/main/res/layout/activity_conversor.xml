@@ -80,6 +80,20 @@
 
         </LinearLayout>
 
+        <TextView
+                android:id="@+id/label_date_of_values"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_margin="16dp"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="4dp"
+                android:gravity="center"
+                android:text="data do valor - em breve"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                tools:text="data do valor"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
