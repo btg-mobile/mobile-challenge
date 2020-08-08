@@ -10,7 +10,31 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let loadingView: LoadingView = LoadingView.fromNib()
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            configureLoadingView()
+        }
     }
+
+    // MARK: LoadingView
+    extension BaseViewController {
+        private func configureLoadingView() {
+            loadingView.isHidden = true
+            loadingView.frame = view.bounds
+            view.addSubview(loadingView)
+            loadingView.bringSubviewToFront(view)
+        }
+        
+        func showLoading() {
+            loadingView.isHidden = false
+        }
+        
+        func closeLoading() {
+            DispatchQueue.main.async {
+                self.loadingView.isHidden = true
+            }
+        }
 }

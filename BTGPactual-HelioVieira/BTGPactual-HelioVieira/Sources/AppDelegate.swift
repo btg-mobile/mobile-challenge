@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let homeViewController = HomeViewController().instantiate()
-        window?.rootViewController = homeViewController
+        homeViewController.title = "BTG Pactual - Currency Converter"
+        let nav = UINavigationController(rootViewController: homeViewController)
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
         return true
