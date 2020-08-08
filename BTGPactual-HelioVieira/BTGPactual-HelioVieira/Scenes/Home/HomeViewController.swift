@@ -19,11 +19,13 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var lblInputCurrencyName: UILabel!
     @IBOutlet weak var lblOutputCurrencyCode: UILabel!
     @IBOutlet weak var lblOutputCurrencyName: UILabel!
-    @IBOutlet weak var lblEquatableCurrencys: UILabel!
+    @IBOutlet weak var lblRationCurrencies: UILabel!
     
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        edtInputValue.addTarget(self, action: #selector(didEditingChangeInputValue(_:)), for: .editingChanged)
         
         bindEvents()
         viewModel.fetchData()
@@ -44,15 +46,34 @@ class HomeViewController: BaseViewController {
     
     // MARK: Helpers
     private func bindEvents() {
-        viewModel.didSuccess = { [weak self] in
-            self?.closeLoading()
-            
-            //continua...
+        viewModel.didSuccessFetchData = { [weak self] in
+            DispatchQueue.main.async {
+                self?.closeLoading()
+                self?.edtInputValue.becomeFirstResponder()
+            }
         }
         
         viewModel.didFailure = { [weak self] error in
             self?.closeLoading()
             print("==> Error: \(error)")
         }
+        
+        viewModel.shouldUpdateExchangeValue = { [weak self] in
+            self?.updateUI()
+        }
+    }
+    
+    private func updateUI() {
+        lblInputCurrencyCode.text = viewModel.currencyCodeIn
+        lblInputCurrencyName.text = viewModel.currencyNameIn
+        lblOutputCurrencyCode.text = viewModel.currencyCodeOut
+        lblOutputCurrencyName.text = viewModel.currencyNameOut
+        lblOutputValue.text = String(format: "%.2f", viewModel.valueOutput)
+        lblRationCurrencies.text = viewModel.getRatioBetwen2Currencies()
+    }
+    
+    @objc func didEditingChangeInputValue(_ textField: UITextField) {
+        guard let text = textField.text, let value = Double(text) else {return}
+        viewModel.valueInput = value
     }
 }

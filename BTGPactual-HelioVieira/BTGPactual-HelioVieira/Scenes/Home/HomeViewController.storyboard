@@ -72,7 +72,7 @@
                                         <rect key="frame" x="125" y="53.5" width="274" height="44.5"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="36"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" smartInsertDeleteType="no"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,12 +188,12 @@
                     </view>
                     <connections>
                         <outlet property="edtInputValue" destination="jrF-WP-gSb" id="HHk-bX-rU1"/>
-                        <outlet property="lblEquatableCurrencys" destination="OtZ-GO-fGg" id="kcM-jB-f7j"/>
                         <outlet property="lblInputCurrencyCode" destination="IvN-4w-xVn" id="Hr0-nN-h3B"/>
                         <outlet property="lblInputCurrencyName" destination="NuO-Ck-jzQ" id="Oh0-4h-Qhz"/>
                         <outlet property="lblOutputCurrencyCode" destination="MYH-EW-XMs" id="dSa-qO-t3x"/>
                         <outlet property="lblOutputCurrencyName" destination="q42-wX-bIO" id="2jd-HG-roS"/>
                         <outlet property="lblOutputValue" destination="TM1-Xv-sbF" id="d4X-dj-ze5"/>
+                        <outlet property="lblRationCurrencies" destination="OtZ-GO-fGg" id="GTx-Ki-7iZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkV-eG-XdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

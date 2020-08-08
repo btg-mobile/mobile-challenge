@@ -23,6 +23,7 @@
 		BD172BB524DDFBFF00163DAA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BB424DDFBFF00163DAA /* LoadingView.swift */; };
 		BD172BB924DDFC5C00163DAA /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD172BB824DDFC5C00163DAA /* LoadingView.xib */; };
 		BD172BBB24DDFD0F00163DAA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BBA24DDFD0F00163DAA /* UIView+Extensions.swift */; };
+		BD6F060824DE71C600756E0C /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F060724DE71C600756E0C /* Currencies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BD172BB424DDFBFF00163DAA /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BD172BB824DDFC5C00163DAA /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		BD172BBA24DDFD0F00163DAA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		BD6F060724DE71C600756E0C /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				BD172BAD24DDD7E000163DAA /* Quotes.swift */,
+				BD6F060724DE71C600756E0C /* Currencies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				BD172BB524DDFBFF00163DAA /* LoadingView.swift in Sources */,
 				BD172BA424DDBEAB00163DAA /* UIViewController+Extensions.swift in Sources */,
 				BD172B9A24DDBE1200163DAA /* BaseViewController.swift in Sources */,
+				BD6F060824DE71C600756E0C /* Currencies.swift in Sources */,
 				BD172B9D24DDBE3400163DAA /* HomeViewController.swift in Sources */,
 				BD172BB024DDDFC700163DAA /* HomeService.swift in Sources */,
 				BD172BB224DDEBE100163DAA /* HomeRepository.swift in Sources */,
