@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CoinMaster</string>
+    <string name="clear">limpar</string>
+    <string name="how_much">Quanto deseja trocar?</string>
+    <string name="hint_zero">$ 0,000</string>
+    <string name="result_value_label">Valor convertido:</string>
+</resources>

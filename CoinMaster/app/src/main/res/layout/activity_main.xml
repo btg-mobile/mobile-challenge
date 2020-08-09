@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <Button
+        android:id="@+id/btCoinSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="Moeda origem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btCoinTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moeda destino"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btCoinSource" />
+
+    <Button
+        android:id="@+id/btClear"
+        style="@android:style/Widget.Material.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/clear"
+        android:text="@string/clear"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/tvResultLabel"
+        app:layout_constraintEnd_toEndOf="@id/glEnd"
+        app:layout_constraintTop_toBottomOf="@+id/etValue" />
+
+    <EditText
+        android:id="@+id/etValue"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:hint="@string/hint_zero"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:maxLength="20"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/large_font_size"
+        app:layout_constraintBottom_toTopOf="@+id/btClear"
+        app:layout_constraintEnd_toEndOf="@id/glEnd"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@id/glStart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/tvResult"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:autofillHints="no"
+        android:fontFamily="sans-serif-medium"
+        android:hint="@string/hint_zero"
+        android:inputType="none"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/large_font_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/glEnd"
+        app:layout_constraintStart_toStartOf="@id/glStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultLabel" />
+
+    <TextView
+        android:id="@+id/tvResultLabel"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/result_value_label"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tvResult"
+        app:layout_constraintStart_toStartOf="@id/glStart"
+        app:layout_constraintTop_toBottomOf="@+id/btClear" />
+
+    <TextView
+        android:id="@+id/tvValueLabel"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="wrap_content"
+        android:text="@string/how_much"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/etValue"
+        app:layout_constraintStart_toStartOf="@id/glStart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/large_margin" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/large_margin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
