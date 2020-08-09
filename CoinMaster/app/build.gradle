@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -42,34 +43,34 @@ android {
 }
 
 dependencies {
-    def retrofitVersion = "2.9.0"
-    def gsonVersion = "2.8.6"
-    def gsonConverterVersion = "2.6.0"
-    def okhttpInterceptorVersion = "3.12.0"
-    def junitVersion = "4.12"
+    def retrofit_version = "2.9.0"
+    def gson_version = "2.8.6"
+    def gson_converter_version = "2.6.0"
+    def okhttp_interceptor_version = "3.12.0"
+    def junit_version = "4.12"
     def lifecycle_version = "2.2.0"
-    def rxAndroidVersion = "2.1.1"
-    def rxJavaVersion = "2.2.18"
-    def rxKotlinVersion = "2.4.0"
-    def daggerVersion = "2.28.3"
+    def rx_android_version = "2.1.1"
+    def rx_java_version = "2.2.18"
+    def rx_kotlin_version = "2.4.0"
+    def dagger_version = "2.28.3"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation "junit:junit:$junitVersion"
-    implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
+    testImplementation "junit:junit:$junit_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$gson_converter_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_interceptor_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
-    api "com.google.dagger:dagger-android:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

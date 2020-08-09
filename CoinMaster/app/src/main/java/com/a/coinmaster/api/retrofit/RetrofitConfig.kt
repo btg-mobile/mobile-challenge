@@ -9,6 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class RetrofitConfig {
+
+    fun <T> getServiceApi(apiClass: Class<T>): T =
+        getBuild().create(apiClass)
+
     fun getBuild(): Retrofit =
         Retrofit
             .Builder()
