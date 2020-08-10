@@ -17,25 +17,16 @@ final class HomeViewModel {
     let dispatchGroup = DispatchGroup()
     var quotes: Quotes?
     var currencies: Currencies?
-    var currencyCodeIn: String?
-    var currencyNameIn: String?
-    var currencyCodeOut: String?
-    var currencyNameOut: String?
-    var valueInput: Double = 0 {
-        didSet{
-            valueOutput = (calculateRatio() * valueInput)
-            shouldUpdateExchangeValue?()
-        }
-    }
+    var currencyIn: Currency?
+    var currencyOut: Currency?
+    var valueInput: Double = 0
     var valueOutput: Double = 0
     
     init(_ repository: HomeRepository = HomeRepository()) {
         self.repository = repository
         
-        currencyCodeIn = "BRL"
-        currencyNameIn = "Brazilian Real"
-        currencyCodeOut = "USD"
-        currencyNameOut = "United States Dollar"
+        currencyIn = Currency(code: "BRL", name: "Brazilian Real")
+        currencyOut = Currency(code: "USD", name: "United States Dollar")
     }
     
     func fetchData() {
@@ -67,11 +58,16 @@ final class HomeViewModel {
         }
     }
     
+    func converterCurrencies() {
+        valueOutput = (calculateRatio() * valueInput)
+        shouldUpdateExchangeValue?()
+    }
+    
     func getRatioBetwen2Currencies() -> String {
         let ration = calculateRatio()
         
-        guard let currencyCodeIn = self.currencyCodeIn,
-            let currencyCodeOut = self.currencyCodeOut,
+        guard let currencyCodeIn = self.currencyIn?.code,
+            let currencyCodeOut = self.currencyOut?.code,
             ration > 0
             else {return ""}
         
@@ -79,8 +75,8 @@ final class HomeViewModel {
     }
     
     private func calculateRatio() -> Double {
-        guard let currencyCodeIn = self.currencyCodeIn,
-            let currencyCodeOut = self.currencyCodeOut,
+        guard let currencyCodeIn = self.currencyIn?.code,
+            let currencyCodeOut = self.currencyOut?.code,
             let priceIn = quotes?.getPriceQuote(to: currencyCodeIn),
             let priceOut = quotes?.getPriceQuote(to: currencyCodeOut)
             else {return 0}

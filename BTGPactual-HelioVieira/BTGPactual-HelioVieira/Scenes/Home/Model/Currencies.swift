@@ -15,4 +15,17 @@ protocol CurrenciesResponse: Decodable {
 struct Currencies: CurrenciesResponse {
     let success: Bool
     let currencies: [String:String]
+    
+    func toList() -> [Currency] {
+        var list: [Currency] = []
+        for currency in currencies {
+            list.append(Currency(code: currency.key, name: currency.value))
+        }
+        return list
+    }
+}
+
+struct Currency {
+    let code: String
+    let name: String
 }

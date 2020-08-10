@@ -29,19 +29,32 @@ class HomeViewController: BaseViewController {
         
         bindEvents()
         viewModel.fetchData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         showLoading()
     }
     
     // MARK: Actions
     @IBAction func handlerCurrencyInput(_ sender: Any) {
+        guard let currencies = viewModel.currencies else {return}
+        
+        let currenciesVC = CurrenciesViewController.builder(mode: .input,
+                                                            currencies: currencies.toList())
+        currenciesVC.didSelectCurrency = { [weak self] currency in
+            self?.viewModel.currencyIn = currency
+            self?.viewModel.converterCurrencies()
+        }
+        self.navigationController?.pushViewController(currenciesVC, animated: true)
     }
     
     @IBAction func handlerCurrencyOutput(_ sender: Any) {
+        guard let currencies = viewModel.currencies else {return}
+        
+        let currenciesVC = CurrenciesViewController.builder(mode: .output,
+                                                            currencies: currencies.toList())
+        currenciesVC.didSelectCurrency = { [weak self] currency in
+            self?.viewModel.currencyOut = currency
+            self?.viewModel.converterCurrencies()
+        }
+        self.navigationController?.pushViewController(currenciesVC, animated: true)
     }
     
     // MARK: Helpers
@@ -64,16 +77,18 @@ class HomeViewController: BaseViewController {
     }
     
     private func updateUI() {
-        lblInputCurrencyCode.text = viewModel.currencyCodeIn
-        lblInputCurrencyName.text = viewModel.currencyNameIn
-        lblOutputCurrencyCode.text = viewModel.currencyCodeOut
-        lblOutputCurrencyName.text = viewModel.currencyNameOut
+        lblInputCurrencyCode.text = viewModel.currencyIn?.code
+        lblInputCurrencyName.text = viewModel.currencyIn?.name
+        lblOutputCurrencyCode.text = viewModel.currencyOut?.code
+        lblOutputCurrencyName.text = viewModel.currencyOut?.name
         lblOutputValue.text = String(format: "%.2f", viewModel.valueOutput)
         lblRationCurrencies.text = viewModel.getRatioBetwen2Currencies()
     }
     
     @objc func didEditingChangeInputValue(_ textField: UITextField) {
-        guard let text = textField.text, let value = Double(text) else {return}
-        viewModel.valueInput = value
+        guard let text = textField.text, let value = Int(text) else {return}
+        textField.text = value.description
+        viewModel.valueInput = Double(value)
+        viewModel.converterCurrencies()
     }
 }

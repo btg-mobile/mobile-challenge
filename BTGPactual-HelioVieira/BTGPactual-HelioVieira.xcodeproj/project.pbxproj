@@ -24,6 +24,10 @@
 		BD172BB924DDFC5C00163DAA /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD172BB824DDFC5C00163DAA /* LoadingView.xib */; };
 		BD172BBB24DDFD0F00163DAA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD172BBA24DDFD0F00163DAA /* UIView+Extensions.swift */; };
 		BD6F060824DE71C600756E0C /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F060724DE71C600756E0C /* Currencies.swift */; };
+		BD71E9C324E0FBA9000FAE00 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD71E9C224E0FBA9000FAE00 /* CurrenciesViewController.swift */; };
+		BD71E9C524E0FBD7000FAE00 /* CurrenciesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD71E9C424E0FBD7000FAE00 /* CurrenciesViewController.storyboard */; };
+		BD71E9C924E0FFFA000FAE00 /* CurrencyNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD71E9C724E0FFFA000FAE00 /* CurrencyNameCell.swift */; };
+		BD71E9CA24E0FFFA000FAE00 /* CurrencyNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD71E9C824E0FFFA000FAE00 /* CurrencyNameCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		BD172BB824DDFC5C00163DAA /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		BD172BBA24DDFD0F00163DAA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		BD6F060724DE71C600756E0C /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		BD71E9C224E0FBA9000FAE00 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
+		BD71E9C424E0FBD7000FAE00 /* CurrenciesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrenciesViewController.storyboard; sourceTree = "<group>"; };
+		BD71E9C724E0FFFA000FAE00 /* CurrencyNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyNameCell.swift; sourceTree = "<group>"; };
+		BD71E9C824E0FFFA000FAE00 /* CurrencyNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyNameCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,7 @@
 			children = (
 				BD172B9824DDBE0500163DAA /* Base */,
 				BD172B9B24DDBE2800163DAA /* Home */,
+				BD71E9C124E0FB7B000FAE00 /* Currencies */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -188,6 +197,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BD71E9C124E0FB7B000FAE00 /* Currencies */ = {
+			isa = PBXGroup;
+			children = (
+				BD71E9C624E0FFDA000FAE00 /* View */,
+				BD71E9C224E0FBA9000FAE00 /* CurrenciesViewController.swift */,
+				BD71E9C424E0FBD7000FAE00 /* CurrenciesViewController.storyboard */,
+			);
+			path = Currencies;
+			sourceTree = "<group>";
+		};
+		BD71E9C624E0FFDA000FAE00 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD71E9C724E0FFFA000FAE00 /* CurrencyNameCell.swift */,
+				BD71E9C824E0FFFA000FAE00 /* CurrencyNameCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,7 +277,9 @@
 				BD172B9F24DDBE4B00163DAA /* HomeViewController.storyboard in Resources */,
 				BD172B9024DDBDC900163DAA /* LaunchScreen.storyboard in Resources */,
 				BD172B8D24DDBDC900163DAA /* Assets.xcassets in Resources */,
+				BD71E9CA24E0FFFA000FAE00 /* CurrencyNameCell.xib in Resources */,
 				BD172B8B24DDBDC800163DAA /* Main.storyboard in Resources */,
+				BD71E9C524E0FBD7000FAE00 /* CurrenciesViewController.storyboard in Resources */,
 				BD172BB924DDFC5C00163DAA /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +293,8 @@
 			files = (
 				BD172BA824DDCF5600163DAA /* Network.swift in Sources */,
 				BD172BAA24DDD5D000163DAA /* HomeViewModel.swift in Sources */,
+				BD71E9C324E0FBA9000FAE00 /* CurrenciesViewController.swift in Sources */,
+				BD71E9C924E0FFFA000FAE00 /* CurrencyNameCell.swift in Sources */,
 				BD172B8424DDBDC800163DAA /* AppDelegate.swift in Sources */,
 				BD172BB524DDFBFF00163DAA /* LoadingView.swift in Sources */,
 				BD172BA424DDBEAB00163DAA /* UIViewController+Extensions.swift in Sources */,
