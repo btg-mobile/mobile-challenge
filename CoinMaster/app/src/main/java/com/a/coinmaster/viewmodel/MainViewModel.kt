@@ -23,6 +23,7 @@ class MainViewModel(
 
     var lastSourceInitial = MONEY_FLAG
     var lastTargetInitial = MONEY_FLAG
+    var lastSourceValue: Double = 0.0
 
     private var sourceRate: Double = 0.0
     private var targetRate: Double = 0.0
@@ -36,8 +37,10 @@ class MainViewModel(
     private val _targetValueLiveData = MutableLiveData<Double>()
 
     fun calculateTargetValue(sourceValue: Double) {
+        lastSourceValue = sourceValue
+
         calculateTargetValueUseCase
-            .execute(param = Params(sourceValue, targetRate, sourceRate))
+            .execute(param = Params(lastSourceValue, targetRate, sourceRate))
             .subscribe { result: Double ->
                 _targetValueLiveData.postValue(result)
             }

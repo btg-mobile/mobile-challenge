@@ -13,6 +13,7 @@ import com.a.coinmaster.R
 import com.a.coinmaster.extension.changeVisibility
 import com.a.coinmaster.model.StateError
 import com.a.coinmaster.model.StateLoading
+import com.a.coinmaster.model.StateSuccess
 import com.a.coinmaster.utils.decimalMaskAutoFormat
 import com.a.coinmaster.utils.formatDoubleToString
 import com.a.coinmaster.utils.formatStringToDouble
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                 enableLoading(false)
                 when (state) {
                     is StateLoading -> enableLoading(true)
+                    is StateSuccess -> viewModel.calculateTargetValue(viewModel.lastSourceValue)
                     is StateError -> showError()
                 }
             })
@@ -101,6 +103,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> Unit
             }
+
         }
     }
 

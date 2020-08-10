@@ -15,4 +15,6 @@
     <string name="coin_target">Moeda de destino</string>
     <string name="choose_coin_target">Escolha a moeda de destino</string>
     <string name="welcome_message">Escolha uma moeda de origem e uma de destino!</string>
+    <string name="coin_master_title">Mestre das Moedas</string>
+    <string name="welcome_info_header">Seja bem vido, para utilizar o aplicativo você deve selecionar uma <b>moeda de origem</b> e uma <b>moeda de destino</b> para que possa ser feito a conversão entre as duas moedas.</string>
 </resources>
