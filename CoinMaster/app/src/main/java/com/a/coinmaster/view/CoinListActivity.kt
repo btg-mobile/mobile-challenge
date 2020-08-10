@@ -79,7 +79,7 @@ class CoinListActivity : AppCompatActivity(), OnItemSelected {
             .setAction(getString(R.string.try_again)) {
                 fetchCoinList()
             }
-            .setActionTextColor(ContextCompat.getColor(this, android.R.color.black))
+            .setActionTextColor(ContextCompat.getColor(this, android.R.color.white))
             .show()
     }
 
@@ -93,7 +93,6 @@ class CoinListActivity : AppCompatActivity(), OnItemSelected {
     private fun setupRecyclerView() {
         rvCoins.adapter = adapter
         rvCoins.layoutManager = LinearLayoutManager(this)
-        rvCoins.hasFixedSize()
     }
 
     private fun resetList(coinList: CurrenciesListVO) {
@@ -103,7 +102,7 @@ class CoinListActivity : AppCompatActivity(), OnItemSelected {
     }
 
     private fun enableLoading(isEnable: Boolean) {
-        pbLoading.changeVisibility(isEnable)
+        flLoading.changeVisibility(isEnable)
     }
 
     override fun onSelected(item: Pair<String, String>) {

@@ -11,4 +11,8 @@
     <string name="coin">moeda</string>
     <string name="generic_error">Ops! Ocorreu um erro inesperado</string>
     <string name="try_again">tentar novamente</string>
+    <string name="coin_source">Moeda de origem</string>
+    <string name="coin_target">Moeda de destino</string>
+    <string name="choose_coin_target">Escolha a moeda de destino</string>
+    <string name="welcome_message">Escolha uma moeda de origem e uma de destino!</string>
 </resources>

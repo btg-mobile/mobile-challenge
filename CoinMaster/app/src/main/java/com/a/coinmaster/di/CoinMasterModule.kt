@@ -9,6 +9,7 @@ import com.a.coinmaster.model.response.CurrenciesListResponse
 import com.a.coinmaster.model.response.CurrencyResponse
 import com.a.coinmaster.model.vo.CurrenciesListVO
 import com.a.coinmaster.repository.CoinMasterRepository
+import com.a.coinmaster.usecase.CalculateTargetValueUseCase
 import com.a.coinmaster.usecase.GetCurrenciesListUseCase
 import com.a.coinmaster.usecase.GetCurrencyUseCase
 import com.a.coinmaster.viewmodel.CoinListViewModel
@@ -24,13 +25,17 @@ class CoinMasterModule {
 
     @Provides
     fun providesMainViewModel(
-        currencyUseCase: GetCurrencyUseCase
-    ) = MainViewModel(currencyUseCase)
+        currencyUseCase: GetCurrencyUseCase,
+        calculateTargetValueUseCase: CalculateTargetValueUseCase
+    ) = MainViewModel(currencyUseCase, calculateTargetValueUseCase)
 
     @Provides
     fun providesCoinListViewModel(
         getCurrenciesListUseCase: GetCurrenciesListUseCase
     ) = CoinListViewModel(getCurrenciesListUseCase)
+
+    @Provides
+    fun providesCalculateUseCase() = CalculateTargetValueUseCase()
 
     @Provides
     fun providesCurrencyUseCase(
