@@ -59,7 +59,6 @@
         android:id="@+id/tvResult"
         android:layout_width="@dimen/match_constraints"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_margin"
         android:autofillHints="no"
         android:fontFamily="sans-serif-medium"
         android:hint="@string/hint_zero"

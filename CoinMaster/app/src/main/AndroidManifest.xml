@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.a.coinmaster">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -10,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.CoinListActivity" android:screenOrientation="portrait"/>
         <activity
             android:name=".view.MainActivity"
             android:screenOrientation="portrait">
@@ -20,4 +23,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

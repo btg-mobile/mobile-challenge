@@ -4,4 +4,11 @@
     <string name="how_much">Quanto deseja trocar?</string>
     <string name="hint_zero">$ 0,000</string>
     <string name="result_value_label">Valor convertido:</string>
+    <string name="back">voltar</string>
+    <string name="coins_list">Lista de Moedas</string>
+    <string name="choose_your_coin">Escolha qual moeda deseja converter</string>
+    <string name="initials">sigla</string>
+    <string name="coin">moeda</string>
+    <string name="generic_error">Ops! Ocorreu um erro inesperado</string>
+    <string name="try_again">tentar novamente</string>
 </resources>
