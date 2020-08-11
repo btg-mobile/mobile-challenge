@@ -9,10 +9,12 @@ import com.gft.domain.repository.CurrencyRepository
 class CurrencyRepositoryImpl(
     private val currencyLocalDataSource: CurrencyLocalDataSource,
     private val currencyRemoteDataSource: CurrencyRemoteDataSource,
-    private val networkInfo : NetworkInfo
+    private val networkInfo: NetworkInfo
 ) : CurrencyRepository {
     override fun getAllLabels(): List<CurrencyLabel> {
-        TODO("Not yet implemented")
+        return if (networkInfo.isConnected)
+            currencyRemoteDataSource.getAllLabels()
+        else currencyLocalDataSource.getAllLabels()
     }
 
     override fun convert(from: String, to: String, value: Double): Double {

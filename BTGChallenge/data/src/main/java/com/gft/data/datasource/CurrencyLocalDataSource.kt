@@ -3,6 +3,7 @@ package com.gft.data.datasource
 import com.gft.domain.entities.CurrencyLabel
 
 interface CurrencyLocalDataSource {
-    suspend fun getAll() : List<CurrencyLabel>
-    suspend fun getByString(string: String) : CurrencyLabel
+    fun getAllLabels() : List<CurrencyLabel>
+
+    fun convert(from: String, to: String, value: Double) : Double
 }
