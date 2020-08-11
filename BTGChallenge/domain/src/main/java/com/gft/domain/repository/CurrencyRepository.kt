@@ -1,9 +1,10 @@
 package com.gft.domain.repository
 
-import com.gft.domain.entities.CurrencyLabel
+import com.gft.domain.entities.CurrencyList
+import io.reactivex.Flowable
 
 interface CurrencyRepository {
-    fun getAllLabels() : List<CurrencyLabel>
+    fun getAllLabels(): Flowable<CurrencyList>
 
-    fun convert(from: String, to: String, value: Double) : Double
+    fun convert(from: String, to: String, value: Double): Double
 }

@@ -1,14 +1,10 @@
 package com.gft.data.datasource
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.gft.core.Resource
-import com.gft.data.model.CurrenciesLabelModel
-import com.gft.domain.entities.CurrencyLabel
-import com.gft.domain.entities.CurrencyValue
+import com.gft.domain.entities.CurrencyList
+import io.reactivex.Flowable
 
 interface CurrencyRemoteDataSource {
-    fun getAllLabels() : MutableLiveData<Resource<CurrenciesLabelModel>>
+    fun getAllLabels() : Flowable<CurrencyList>
 
     fun convert(from: String, to: String, value: Double) : Double
 }
