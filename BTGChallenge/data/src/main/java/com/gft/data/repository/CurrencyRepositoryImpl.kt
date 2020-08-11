@@ -13,7 +13,7 @@ class CurrencyRepositoryImpl(
     private val currencyRemoteDataSource: CurrencyRemoteDataSource,
     private val networkInfo: NetworkInfo
 ) : CurrencyRepository {
-    override fun getAllLabels(): Flowable<CurrencyLabelList> {
+    override fun getLabels(): Flowable<CurrencyLabelList> {
         if (networkInfo.isConnected)
             return currencyRemoteDataSource.getLabels()
         throw Error()

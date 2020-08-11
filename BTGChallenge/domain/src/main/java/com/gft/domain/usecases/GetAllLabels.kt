@@ -12,7 +12,7 @@ class GetAllLabels(
 ) : BaseFlowableUseCase<CurrencyLabelList>(transformer) {
 
     override fun createFlowable(data: Map<String, Any>?): Flowable<CurrencyLabelList> {
-        return repository.getAllLabels()
+        return repository.getLabels()
     }
 
     fun getLabels(): Flowable<CurrencyLabelList> {
