@@ -1,6 +1,6 @@
 package com.gft.domain.entities
 
-data class CurrencyList(
+data class CurrencyLabelList(
     val success: Boolean? = null,
     val terms: String? = null,
     val privacy: String? = null,
