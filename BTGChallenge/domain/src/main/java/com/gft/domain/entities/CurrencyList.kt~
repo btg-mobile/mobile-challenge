@@ -1,8 +1,6 @@
-package com.gft.data.model
+package com.gft.domain.entities
 
-import com.gft.domain.entities.CurrencyLabel
-
-data class CurrenciesLabelModel (
+data class CurrencyList (
     val success: Boolean,
     val terms: String,
     val privacy: String,
