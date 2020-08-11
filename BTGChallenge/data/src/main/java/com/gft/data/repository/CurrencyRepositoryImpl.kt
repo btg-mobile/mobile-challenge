@@ -15,7 +15,7 @@ class CurrencyRepositoryImpl(
 ) : CurrencyRepository {
     override fun getAllLabels(): Flowable<CurrencyLabelList> {
         if (networkInfo.isConnected)
-            return currencyRemoteDataSource.getAllLabels()
+            return currencyRemoteDataSource.getLabels()
         throw Error()
     }
 
