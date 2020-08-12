@@ -31,6 +31,8 @@ dependencies {
     implementation rootProject.ext.retrofitLoggingInterceptors
     implementation rootProject.ext.retrofitRxJava2Adapter
 
+    implementation 'com.google.android.material:material:1.2.0'
+
     implementation project(":domain")
     implementation project(":data")
 }
