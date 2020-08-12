@@ -9,25 +9,34 @@
 import Foundation
 import RxSwift
 import Moya
-import ObjectMapper
-import Moya_ObjectMapper
 import SwiftyJSON
 
 final class CurrenciesDataService: CurrenciesRepository {
     private let provider = MoyaProvider<CurrenciesService>()
-    
+    let disposeBag = DisposeBag()
+
     func getCurrencies() -> Single<[CurrencieModel]> {
         return provider.rx
-        .request(.getCurrencies)
-        .filterSuccessfulStatusCodes()
-        .mapArray(CurrencieModel.self)
-        
+            .request(.getCurrencies)
+            .map { single in
+                let json = try JSON(single.mapJSON())
+                var currencies: [CurrencieModel] = []
+
+                for (key, subJson) in json["currencies"] {
+                    currencies.append(CurrencieModel(name: key, nameFull: subJson.string!))
+                }
+
+                return currencies
+        }
+
     }
-    
+
     func getQuotes() -> Single<[QuoteModel]> {
         return provider.rx
-        .request(.getQuotes)
-        .filterSuccessfulStatusCodes()
-        .mapArray(QuoteModel.self)
+            .request(.getQuotes)
+            .map { single in
+                let quotes: [QuoteModel] = []
+                return quotes
+            }
     }
 }

@@ -25,7 +25,7 @@ final class CurrencieCell: UITableViewCell, NibReusable {
             }
 
             titleLabel.text = model.name
-            descriptionLabel.text = model.name
+            descriptionLabel.text = model.nameFull
         }
     }
     
@@ -33,8 +33,5 @@ final class CurrencieCell: UITableViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        titleLabel.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .semibold))
-        titleLabel.adjustsFontForContentSizeCategory = true
     }
 }

@@ -7,19 +7,13 @@
 //
 
 import Foundation
-import ObjectMapper
 
-// MARK: Initializer and Properties
-struct QuoteModel: Mappable {
-    var name: String!
-    var nameFull: String!
-    
-    // MARK: JSON
-    init?(map: Map) {
-    }
-    
-    mutating func mapping(map: Map) {
-        name <- map["name"]
-        nameFull <- map["nameFull"]
+class QuoteModel {
+    let name: String
+    let value: Double
+
+    init(name: String, value: Double) {
+        self.name = name
+        self.value = value
     }
 }

@@ -6,7 +6,6 @@ target 'CurrencyConverter' do
 
   # Pods for CurrencyConverter
   pod 'Moya/RxSwift'
-  pod 'Moya-ObjectMapper/RxSwift'
   pod 'IQKeyboardManager'
   pod 'Reusable'
   pod 'SwiftyJSON'

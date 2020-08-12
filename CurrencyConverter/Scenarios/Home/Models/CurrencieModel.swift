@@ -7,19 +7,13 @@
 //
 
 import Foundation
-import ObjectMapper
 
-// MARK: Initializer and Properties
-struct CurrencieModel: Mappable {
-    var name: String!
-    var value: Double!
-    
-    // MARK: JSON
-    init?(map: Map) {
-    }
-    
-    mutating func mapping(map: Map) {
-        name <- map["name"]
-        value <- map["value"]
+class CurrencieModel {
+    let name: String
+    let nameFull: String
+
+    init(name: String, nameFull: String) {
+        self.name = name
+        self.nameFull = nameFull
     }
 }
