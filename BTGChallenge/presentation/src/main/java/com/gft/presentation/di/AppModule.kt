@@ -7,8 +7,8 @@ import com.gft.data.datasource.CurrencyRemoteDataSource
 import com.gft.data.datasource.CurrencyRemoteDataSourceImpl
 import com.gft.data.repository.CurrencyRepositoryImpl
 import com.gft.domain.repository.CurrencyRepository
-import com.gft.domain.usecases.Convert
-import com.gft.domain.usecases.GetAllLabels
+import com.gft.domain.usecases.ConvertUseCase
+import com.gft.domain.usecases.GetLabelsUseCase
 import com.gft.presentation.common.AsyncFlowableTransformer
 import com.gft.presentation.viewmodel.ChooseCurrencyViewModel
 import com.gft.presentation.viewmodel.CurrencyViewModel
@@ -30,13 +30,13 @@ val repositoryModule = module {
 
 val useCasesModule = module {
     factory(name = GET_LABELS_USE_CASE) {
-        GetAllLabels(
+        GetLabelsUseCase(
             transformer = AsyncFlowableTransformer(),
             repository = get()
         )
     }
     factory(name = CONVERT_USE_CASE) {
-        Convert(
+        ConvertUseCase(
             repository = get()
         )
     }
@@ -51,7 +51,6 @@ val networkModule = module {
 val viewModelModule = module {
     viewModel {
         CurrencyViewModel(
-            getAllLabels = get(GET_LABELS_USE_CASE),
             convert = get(CONVERT_USE_CASE)
         )
     }

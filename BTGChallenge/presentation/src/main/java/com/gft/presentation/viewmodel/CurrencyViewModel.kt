@@ -1,16 +1,10 @@
 package com.gft.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.gft.domain.entities.CurrencyLabelList
-import com.gft.domain.usecases.Convert
-import com.gft.domain.usecases.GetAllLabels
+import com.gft.domain.usecases.ConvertUseCase
 import com.gft.presentation.entities.ConvertEntity
-import com.gft.presentation.entities.Data
-import com.gft.presentation.entities.Error
-import com.gft.presentation.entities.Status
 
-class CurrencyViewModel(private val getAllLabels: GetAllLabels, private val convert: Convert) :
+class CurrencyViewModel(private val convertUseCase: ConvertUseCase) :
     BaseViewModel() {
 
     var data = MutableLiveData<ConvertEntity>()

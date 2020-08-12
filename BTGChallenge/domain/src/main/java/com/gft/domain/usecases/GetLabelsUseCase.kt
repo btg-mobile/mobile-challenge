@@ -6,7 +6,7 @@ import com.gft.domain.entities.CurrencyLabelList
 import com.gft.domain.repository.CurrencyRepository
 import io.reactivex.Flowable
 
-class GetAllLabels(
+class GetLabelsUseCase(
     private val transformer: FlowableRxTransformer<CurrencyLabelList>,
     private val repository: CurrencyRepository
 ) : BaseFlowableUseCase<CurrencyLabelList>(transformer) {
