@@ -1,7 +1,7 @@
 package com.gft.presentation.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.gft.presentation.R
 
 class CurrencyActivity : AppCompatActivity() {
