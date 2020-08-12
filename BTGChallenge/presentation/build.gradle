@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    dataBinding {
+        enabled = true
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -32,6 +36,11 @@ dependencies {
     implementation rootProject.ext.retrofitRxJava2Adapter
 
     implementation 'com.google.android.material:material:1.2.0'
+
+    //ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    kapt 'com.android.databinding:compiler:3.1.4'
 
     implementation project(":domain")
     implementation project(":data")
