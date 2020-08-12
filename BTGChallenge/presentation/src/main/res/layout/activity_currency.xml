@@ -151,6 +151,7 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Valor"
+            android:textColor="#000"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"

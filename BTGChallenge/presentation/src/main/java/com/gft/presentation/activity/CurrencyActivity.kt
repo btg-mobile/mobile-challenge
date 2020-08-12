@@ -1,7 +1,9 @@
 package com.gft.presentation.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -26,6 +28,20 @@ class CurrencyActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         val intent = Intent(this, ChooseCurrencyActivity::class.java)
-        startActivity(intent)
+        intent.putExtra("FROM_TO", view.id)
+
+        startActivityForResult(intent, 1)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val fromTo = data?.getIntExtra("FROM_TO", -1)
+        val codigo = data?.getStringExtra("CODIGO")
+
+        if (fromTo == R.id.fromButton)
+            codigo?.let { viewModel.setFrom(it) }
+        else if (fromTo == R.id.toButton)
+            codigo?.let { viewModel.setTo(it) }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

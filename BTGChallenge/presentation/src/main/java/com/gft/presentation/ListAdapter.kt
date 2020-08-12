@@ -1,13 +1,13 @@
 package com.gft.presentation
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.currency_item.view.*
 
-class ListAdapter : RecyclerView.Adapter<ListAdapter.CurrencyViewHolder>() {
+class ListAdapter(private val onItemClick: ((String)) -> Unit) :
+    RecyclerView.Adapter<ListAdapter.CurrencyViewHolder>() {
 
     var currency = mapOf<String, String>()
 
@@ -22,13 +22,17 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.CurrencyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
-        val nome =  ArrayList<String>(currency.values)[position]
-        val codigo =  ArrayList<String>(currency.keys)[position]
+        val nome = ArrayList<String>(currency.values)[position]
+        val codigo = ArrayList<String>(currency.keys)[position]
 
         holder.bind(nome, codigo)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(codigo)
+        }
     }
 
-    class CurrencyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CurrencyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(nome: String, codigo: String) {
             with(itemView) {
                 itemView.nome.text = nome

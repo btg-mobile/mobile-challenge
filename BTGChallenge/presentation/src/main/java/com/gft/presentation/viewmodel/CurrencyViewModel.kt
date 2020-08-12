@@ -1,5 +1,6 @@
 package com.gft.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.gft.domain.entities.CurrencyLabelList
 import com.gft.domain.usecases.Convert
@@ -12,27 +13,21 @@ import com.gft.presentation.entities.Status
 class CurrencyViewModel(private val getAllLabels: GetAllLabels, private val convert: Convert) :
     BaseViewModel() {
 
-    private var labels = MutableLiveData<Data<CurrencyLabelList>>()
-
     var data = MutableLiveData<ConvertEntity>()
+    private var convertEntity: ConvertEntity =
+        ConvertEntity(from = "USD", to = "BRL", fromValue = 0.0, toValue = 0.0)
 
     init {
-        val convertEntity: ConvertEntity =
-            ConvertEntity(from = "USD", to = "BRL", fromValue = 0.0, toValue = 0.0)
         data.value = convertEntity;
     }
 
-    fun getLabels() {
-        val disposable = getAllLabels.getLabels().subscribe(
-            { response ->
-                labels.value = Data(responseType = Status.SUCCESSFUL, data = response)
-            }, { error ->
-                labels.value = Data(responseType = Status.ERROR, error = Error(error.message))
-            }
-        )
-
-        addDisposable(disposable)
+    fun setFrom(from: String) {
+        convertEntity.from = from
+        data.value = convertEntity
     }
 
-    fun getLabelsLiveData() = labels
+    fun setTo(to: String) {
+        convertEntity.to = to
+        data.value = convertEntity
+    }
 }

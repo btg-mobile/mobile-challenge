@@ -1,12 +1,11 @@
 package com.gft.presentation.activity
 
-import android.content.Context
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,7 +33,7 @@ class ChooseCurrencyActivity : AppCompatActivity() {
 
         binding.viewModel = viewModel
 
-        listAdapter = ListAdapter()
+        listAdapter = ListAdapter(::onItemClick)
         recycler_view.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recycler_view.adapter = listAdapter
 
@@ -45,8 +44,17 @@ class ChooseCurrencyActivity : AppCompatActivity() {
             )
         )
 
-
         viewModel.getLabels()
+    }
+
+    private fun onItemClick(codigo: String) {
+        val fromTo = intent.getIntExtra("FROM_TO", -1)
+
+        intent.putExtra("CODIGO", codigo)
+        intent.putExtra("FROM_TO", fromTo)
+
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 
     override fun onStart() {
