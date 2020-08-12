@@ -10,6 +10,7 @@ import com.gft.domain.repository.CurrencyRepository
 import com.gft.domain.usecases.Convert
 import com.gft.domain.usecases.GetAllLabels
 import com.gft.presentation.common.AsyncFlowableTransformer
+import com.gft.presentation.viewmodel.ChooseCurrencyViewModel
 import com.gft.presentation.viewmodel.CurrencyViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
@@ -52,6 +53,11 @@ val viewModelModule = module {
         CurrencyViewModel(
             getAllLabels = get(GET_LABELS_USE_CASE),
             convert = get(CONVERT_USE_CASE)
+        )
+    }
+    viewModel {
+        ChooseCurrencyViewModel(
+            getAllLabels = get(GET_LABELS_USE_CASE)
         )
     }
 }

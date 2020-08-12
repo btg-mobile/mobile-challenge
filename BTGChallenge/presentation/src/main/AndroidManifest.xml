@@ -11,7 +11,7 @@
         android:label="App"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.gft.presentation.activity.CurrencyActivity">
+        <activity android:name=".activity.ChooseCurrencyActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
