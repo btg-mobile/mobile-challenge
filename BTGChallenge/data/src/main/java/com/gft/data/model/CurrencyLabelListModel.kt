@@ -4,5 +4,5 @@ data class CurrencyLabelListModel (
     var success: Boolean,
     var terms: String,
     var privacy: String,
-    var currencies: List<CurrencyLabelModel>
+    var currencies: Map<String, String>
 )

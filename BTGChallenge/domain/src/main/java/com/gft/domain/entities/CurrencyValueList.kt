@@ -5,5 +5,5 @@ data class CurrencyValueList(
     val terms: String? = null,
     val privacy: String? = null,
     var source: String? = null,
-    val quotes: List<CurrencyValue> = emptyList()
+    val quotes: Map<String, String>? = null
 )

@@ -5,5 +5,5 @@ data class CurrencyValueListModel (
     var terms: String,
     var privacy: String,
     var source: String,
-    var quotes: List<CurrencyValueModel>
+    var quotes: Map<String, String>
 )

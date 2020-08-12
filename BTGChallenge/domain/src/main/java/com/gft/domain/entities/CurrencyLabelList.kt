@@ -4,5 +4,5 @@ data class CurrencyLabelList(
     val success: Boolean? = null,
     val terms: String? = null,
     val privacy: String? = null,
-    val currencies: List<CurrencyLabel> = emptyList()
+    val currencies: Map<String, String>? = null
 )

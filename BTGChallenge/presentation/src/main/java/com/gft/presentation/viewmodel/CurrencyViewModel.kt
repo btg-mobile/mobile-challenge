@@ -19,8 +19,6 @@ class CurrencyViewModel(private val getAllLabels: GetAllLabels, private val conv
                 labels.value = Data(responseType = Status.SUCCESSFUL, data = response)
             }, { error ->
                 labels.value = Data(responseType = Status.ERROR, error = Error(error.message))
-            }, {
-
             }
         )
 
