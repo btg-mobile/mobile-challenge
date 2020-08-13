@@ -11,5 +11,4 @@ import RxSwift
 
 protocol CurrenciesRepository {
     func getCurrencies() -> Single<[CurrencieModel]>
-    func getQuotes() -> Single<[QuoteModel]>
 }

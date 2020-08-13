@@ -15,6 +15,7 @@ final class CurrencieCell: UITableViewCell, NibReusable {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var valueLabel: UILabel!
     
     // MARK: - Properties
 
@@ -26,6 +27,7 @@ final class CurrencieCell: UITableViewCell, NibReusable {
 
             titleLabel.text = model.name
             descriptionLabel.text = model.nameFull
+            valueLabel.text = "Cotação atual de \(String(format: "%.2f", model.quote).replacingOccurrences(of: ".", with: ",")) em relação ao dólar."
         }
     }
     

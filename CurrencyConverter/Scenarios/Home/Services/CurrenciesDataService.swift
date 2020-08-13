@@ -13,30 +13,28 @@ import SwiftyJSON
 
 final class CurrenciesDataService: CurrenciesRepository {
     private let provider = MoyaProvider<CurrenciesService>()
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     func getCurrencies() -> Single<[CurrencieModel]> {
-        return provider.rx
-            .request(.getCurrencies)
-            .map { single in
-                let json = try JSON(single.mapJSON())
-                var currencies: [CurrencieModel] = []
+        return Observable.combineLatest(
+            provider.rx
+                .request(.getCurrencies)
+                .asObservable()
+                .map { single in return try JSON(single.mapJSON()) },
+            provider.rx
+                .request(.getQuotes)
+                .asObservable()
+                .map { single in return try JSON(single.mapJSON()) })
+        { (currenciesJSON: JSON, quotesJSON: JSON) -> [CurrencieModel] in
+            var currencies: [CurrencieModel] = []
 
-                for (key, subJson) in json["currencies"] {
-                    currencies.append(CurrencieModel(name: key, nameFull: subJson.string!))
+            for (key, subJson) in currenciesJSON["currencies"] {
+                if let nameFull = subJson.string, let quote = quotesJSON["quotes"]["USD"  + key].double {
+                    currencies.append(CurrencieModel(name: key, nameFull: nameFull, quote: quote))
                 }
-
-                return currencies
-        }
-
-    }
-
-    func getQuotes() -> Single<[QuoteModel]> {
-        return provider.rx
-            .request(.getQuotes)
-            .map { single in
-                let quotes: [QuoteModel] = []
-                return quotes
             }
+
+            return currencies
+        }.asSingle()
     }
 }

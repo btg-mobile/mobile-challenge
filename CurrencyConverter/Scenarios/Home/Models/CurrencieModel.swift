@@ -11,9 +11,11 @@ import Foundation
 class CurrencieModel {
     let name: String
     let nameFull: String
+    let quote: Double
 
-    init(name: String, nameFull: String) {
+    init(name: String, nameFull: String, quote: Double) {
         self.name = name
         self.nameFull = nameFull
+        self.quote = quote
     }
 }

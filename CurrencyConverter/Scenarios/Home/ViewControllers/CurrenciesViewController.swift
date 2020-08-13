@@ -23,6 +23,8 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
     @IBOutlet private weak var fromLabel: UILabel!
     @IBOutlet private weak var toLabel: UILabel!
     @IBOutlet private weak var sortButton: UIButton!
+    @IBOutlet private weak var tryAgainLabel: UILabel!
+    @IBOutlet private weak var tryAgainButton: UIButton!
 
     // MARK: - Properties
 
@@ -64,7 +66,8 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
         
         //TableView
         tableView.estimatedRowHeight = 0
-        tableView.rowHeight = 60
+        tableView.rowHeight = 80
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         //Search Controller
         navigationItem.searchController = searchController
@@ -112,6 +115,13 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
         //Labels das moedas selecionadas
         viewModel.fromText.observeOn(MainScheduler.instance).bind(to: fromLabel.rx.text).disposed(by: disposeBag)
         viewModel.toText.observeOn(MainScheduler.instance).bind(to: toLabel.rx.text).disposed(by: disposeBag)
+        
+        //Botão e label de tentar novamente
+        viewModel.tryAgainTextHidden.observeOn(MainScheduler.instance).bind(to: tryAgainLabel.rx.isHidden).disposed(by: disposeBag)
+        viewModel.tryAgainButtonHidden.observeOn(MainScheduler.instance).bind(to: tryAgainButton.rx.isHidden).disposed(by: disposeBag)
+        tryAgainButton.rx.tap.bind { [weak self] in
+            self?.viewModel.tapTryAgain()
+        }.disposed(by: disposeBag)
         
         //Search Controller
         searchController.searchBar[keyPath: \.searchTextField].placeholder = "Digite a sigla ou o nome da moeda"

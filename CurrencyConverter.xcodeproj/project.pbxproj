@@ -18,7 +18,6 @@
 		7572FFAF24DE82E800ACFA42 /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572FFAE24DE82E800ACFA42 /* CurrencyConverterUITests.swift */; };
 		7579466624E4ACE900EB2CA6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579466524E4ACE900EB2CA6 /* UIViewController+Extensions.swift */; };
 		75DD592724E19A45001E29D5 /* CurrenciesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD592624E19A45001E29D5 /* CurrenciesService.swift */; };
-		75DD592F24E1E51B001E29D5 /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD592E24E1E51B001E29D5 /* QuoteModel.swift */; };
 		75DD593124E1E534001E29D5 /* CurrencieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD593024E1E534001E29D5 /* CurrencieModel.swift */; };
 		75DD593524E1F568001E29D5 /* CurrenciesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD593424E1F568001E29D5 /* CurrenciesDataService.swift */; };
 		75DD593824E20BCB001E29D5 /* CurrenciesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD593724E20BCB001E29D5 /* CurrenciesRepository.swift */; };
@@ -72,7 +71,6 @@
 		7572FFB024DE82E800ACFA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7579466524E4ACE900EB2CA6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		75DD592624E19A45001E29D5 /* CurrenciesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesService.swift; sourceTree = "<group>"; };
-		75DD592E24E1E51B001E29D5 /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		75DD593024E1E534001E29D5 /* CurrencieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencieModel.swift; sourceTree = "<group>"; };
 		75DD593424E1F568001E29D5 /* CurrenciesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesDataService.swift; sourceTree = "<group>"; };
 		75DD593724E20BCB001E29D5 /* CurrenciesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesRepository.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 		7530145624DF13D100E91EC2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				75DD592E24E1E51B001E29D5 /* QuoteModel.swift */,
 				75DD593024E1E534001E29D5 /* CurrencieModel.swift */,
 			);
 			path = Models;
@@ -595,7 +592,6 @@
 				75DD593524E1F568001E29D5 /* CurrenciesDataService.swift in Sources */,
 				75DD592724E19A45001E29D5 /* CurrenciesService.swift in Sources */,
 				7579466624E4ACE900EB2CA6 /* UIViewController+Extensions.swift in Sources */,
-				75DD592F24E1E51B001E29D5 /* QuoteModel.swift in Sources */,
 				75DD594424E241DE001E29D5 /* Coordinator.swift in Sources */,
 				75DD593A24E211CD001E29D5 /* Service.swift in Sources */,
 				75DD593F24E23A4C001E29D5 /* AppDelegate+Setup.swift in Sources */,

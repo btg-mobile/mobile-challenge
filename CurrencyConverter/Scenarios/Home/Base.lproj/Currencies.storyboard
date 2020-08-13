@@ -66,21 +66,42 @@
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erro ao buscar informações, verifique sua conexão e tente novamente" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b60-dK-fbe">
+                                <rect key="frame" x="30" y="466.5" width="354" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOd-UR-00q">
+                                <rect key="frame" x="107" y="525.5" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="2JM-f0-BaD"/>
+                                    <constraint firstAttribute="height" constant="50" id="98v-kU-H2g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Tentar Novamente"/>
+                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xZE-sF-oyF">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="469.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="xZE-sF-oyF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9eR-5p-tLI"/>
-                            <constraint firstItem="xZE-sF-oyF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DNU-QP-VkN"/>
+                            <constraint firstItem="xZE-sF-oyF" firstAttribute="centerY" secondItem="A9O-xl-WUt" secondAttribute="centerY" id="DNU-QP-VkN"/>
+                            <constraint firstItem="b60-dK-fbe" firstAttribute="centerY" secondItem="A9O-xl-WUt" secondAttribute="centerY" id="DxF-f6-ikS"/>
                             <constraint firstItem="A9O-xl-WUt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="G7R-j6-JdL"/>
                             <constraint firstItem="eh4-2h-YbY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KQv-gn-Zmy"/>
                             <constraint firstItem="A9O-xl-WUt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MWO-jt-M1x"/>
                             <constraint firstItem="A9O-xl-WUt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="U19-Pj-JlK"/>
+                            <constraint firstItem="jOd-UR-00q" firstAttribute="top" secondItem="b60-dK-fbe" secondAttribute="bottom" constant="16" id="YRx-82-OEd"/>
                             <constraint firstItem="eh4-2h-YbY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e92-gM-BIv"/>
                             <constraint firstItem="eh4-2h-YbY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="g7u-WM-2tx"/>
                             <constraint firstItem="A9O-xl-WUt" firstAttribute="top" secondItem="eh4-2h-YbY" secondAttribute="bottom" constant="10" id="gBA-gU-g5N"/>
+                            <constraint firstAttribute="trailing" secondItem="b60-dK-fbe" secondAttribute="trailing" constant="30" id="lrd-oA-z4H"/>
+                            <constraint firstItem="b60-dK-fbe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rXX-ER-ANw"/>
+                            <constraint firstItem="b60-dK-fbe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="sPM-mo-b9Z"/>
+                            <constraint firstItem="jOd-UR-00q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yTh-Uw-yUL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -90,6 +111,8 @@
                         <outlet property="sortButton" destination="gER-AM-WOw" id="Bvv-oS-UTk"/>
                         <outlet property="tableView" destination="A9O-xl-WUt" id="qDD-mn-fWc"/>
                         <outlet property="toLabel" destination="8NR-Sr-Yko" id="zXl-Aq-6T4"/>
+                        <outlet property="tryAgainButton" destination="jOd-UR-00q" id="ut0-MV-cB5"/>
+                        <outlet property="tryAgainLabel" destination="b60-dK-fbe" id="XzB-KE-zT2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
