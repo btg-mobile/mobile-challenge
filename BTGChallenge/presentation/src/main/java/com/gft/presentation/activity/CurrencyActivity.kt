@@ -1,12 +1,11 @@
 package com.gft.presentation.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.gft.presentation.R
 import com.gft.presentation.databinding.ActivityCurrencyBinding
 import com.gft.presentation.viewmodel.CurrencyViewModel
@@ -24,6 +23,15 @@ class CurrencyActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+
+        viewModel.showProgressBar.observe(this, Observer {
+            if (it) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.INVISIBLE
+            }
+        })
+
     }
 
     fun onClick(view: View) {

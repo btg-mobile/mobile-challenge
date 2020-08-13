@@ -51,12 +51,12 @@ val networkModule = module {
 val viewModelModule = module {
     viewModel {
         CurrencyViewModel(
-            convert = get(CONVERT_USE_CASE)
+            convertUseCase = get(CONVERT_USE_CASE)
         )
     }
     viewModel {
         ChooseCurrencyViewModel(
-            getAllLabels = get(GET_LABELS_USE_CASE)
+            getLabelsUseCase = get(GET_LABELS_USE_CASE)
         )
     }
 }
