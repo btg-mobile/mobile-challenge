@@ -1,6 +1,5 @@
 package com.curymorais.moneyconversion.data.remote.model
 
-import com.google.gson.annotations.SerializedName
 import java.math.BigDecimal
 
 data class CurrencyPriceResponse(
