@@ -13,6 +13,7 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) :
     var data = MutableLiveData<ConvertEntity>()
     var fromValue = MutableLiveData<String>()
     var showProgressBar = MutableLiveData<Boolean>()
+    var showToastMessage = MutableLiveData<String>()
 
     private var convertEntity: ConvertEntity =
         ConvertEntity(from = "USD", to = "BRL", fromValue = 0.0, toValue = 0.0)
@@ -32,6 +33,10 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) :
     }
 
     fun convert() {
+        if (fromValue.value.isNullOrEmpty()) {
+            showToastMessage.value = "Digite um valor para começar"
+            return
+        }
         data.value?.fromValue = fromValue.value?.toDouble()!!
 
         val disposable = convertUseCase.execute(
@@ -48,9 +53,9 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) :
                     convertEntity.toValue = response
                     data.value = convertEntity
                 },
-                { error ->
+                {
                     showProgressBar.value = false
-                    Log.i("ERROR", "$error")
+                    showToastMessage.value = "Houve um erro na conversão"
                 }
             )
 
