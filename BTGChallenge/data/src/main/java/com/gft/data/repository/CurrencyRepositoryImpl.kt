@@ -3,6 +3,7 @@ package com.gft.data.repository
 import com.gft.data.datasource.CurrencyLocalDataSource
 import com.gft.data.datasource.CurrencyRemoteDataSource
 import com.gft.domain.entities.CurrencyLabelList
+import com.gft.domain.entities.CurrencyValueList
 import com.gft.domain.repository.CurrencyRepository
 import io.reactivex.Flowable
 
@@ -14,7 +15,8 @@ class CurrencyRepositoryImpl(
         return currencyRemoteDataSource.getLabels()
     }
 
-    override fun convert(from: String, to: String, value: Double): Double {
-        TODO("Not yet implemented")
+    override fun getValues(): Flowable<CurrencyValueList> {
+        return currencyRemoteDataSource.getValues()
     }
+
 }
