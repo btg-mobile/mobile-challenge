@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import SwiftyJSON
 
 protocol CurrenciesRepository {
     func getCurrencies() -> Single<[CurrencieModel]>

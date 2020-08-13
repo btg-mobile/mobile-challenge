@@ -34,10 +34,12 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
     private var disposeBag = DisposeBag()
     private let doneButton: UIBarButtonItem
     private let searchController: UISearchController
+    private let cleanButton: UIBarButtonItem
 
     required init?(coder aDecoder: NSCoder) {
-        doneButton = UIBarButtonItem(title: "Converter", style: .plain, target: nil, action: nil)
         searchController = UISearchController(searchResultsController: nil)
+        doneButton = UIBarButtonItem(title: "Converter", style: .plain, target: nil, action: nil)
+        cleanButton = UIBarButtonItem(title: "Limpar", style: .plain, target: nil, action: nil)
 
         super.init(coder: aDecoder)
     }
@@ -55,11 +57,10 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
     // MARK: - Setup
 
     private func setupUI() {
-        //Title
+        //Header Elements
         title = "Selecione as moedas"
-        
-        //Done Button
         navigationItem.rightBarButtonItem = doneButton
+        navigationItem.leftBarButtonItem = cleanButton
         
         //TableView
         tableView.estimatedRowHeight = 0
@@ -74,26 +75,43 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
         //TableView
         tableView.rx
             .modelSelected(CurrencieModel.self).bind { [weak self] currencie in
-                self?.viewModel.tapCurrencie()
+                if let same = self?.viewModel.sameCurrencie(toCurrencie: currencie), same {
+                    self?.alert(message: "Selecione uma moeda diferente da primeira selecionada \"De\"")
+                } else if let set = self?.viewModel.tapCurrencie(currencie), !set {
+                    self?.alert(message: "Moedas já selecionadas! Caso queira trocar, clique em \"Limpar\"")
+                }
             }.disposed(by: disposeBag)
         tableView.rx
             .itemSelected.bind { [weak self] indexPath in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
             }.disposed(by: disposeBag)
-        doneButton.rx.tap.bind { [weak self] in
-            self?.viewModel.tapConvert()
-        }.disposed(by: disposeBag)
         
         //IndicatorView
         viewModel.isLoading.observeOn(MainScheduler.instance).bind(to: indicatorView.rx.isAnimating).disposed(by: disposeBag)
         
-        //Labels and Buttons
+        //Botão de ordenação
         sortButton.rx.tap.bind { [weak self] in
             self?.viewModel.tapSortButton()
             if let az = self?.viewModel.sortAZ.value {
                 self?.sortButton.setTitle(az ? "Ordenar (A-Z)" : "Ordenar (Z-A)", for: .normal)
             }
         }.disposed(by: disposeBag)
+        
+        //Botão que finaliza a escolha das moedas (caso estiver tudo certo)
+        doneButton.rx.tap.bind { [weak self] in
+            self?.viewModel.tapConvert()
+        }.disposed(by: disposeBag)
+        viewModel.converterEnabled.observeOn(MainScheduler.instance).bind(to: doneButton.rx.isEnabled).disposed(by: disposeBag)
+        
+        //Botão que limpa as moedas selecionadas
+        cleanButton.rx.tap.bind { [weak self] in
+            self?.viewModel.tapClean()
+        }.disposed(by: disposeBag)
+        viewModel.cleanEnabled.observeOn(MainScheduler.instance).bind(to: cleanButton.rx.isEnabled).disposed(by: disposeBag)
+        
+        //Labels das moedas selecionadas
+        viewModel.fromText.observeOn(MainScheduler.instance).bind(to: fromLabel.rx.text).disposed(by: disposeBag)
+        viewModel.toText.observeOn(MainScheduler.instance).bind(to: toLabel.rx.text).disposed(by: disposeBag)
         
         //Search Controller
         searchController.searchBar[keyPath: \.searchTextField].placeholder = "Digite a sigla ou o nome da moeda"
@@ -106,8 +124,8 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
         searchController.searchBar.rx.cancelButtonClicked.bind { [weak self] in
             self?.searchController.searchBar.resignFirstResponder()
             self?.searchController.searchBar.setShowsCancelButton(false, animated: true)
-            self?.viewModel.filter.accept(nil)
-            self?.searchController.searchBar.text = nil
+            self?.viewModel.filter.accept("")
+            self?.searchController.searchBar.text = ""
         }.disposed(by: disposeBag)
     }
 

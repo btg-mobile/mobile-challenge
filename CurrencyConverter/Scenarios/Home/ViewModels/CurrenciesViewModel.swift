@@ -14,12 +14,16 @@ import UIKit
 final class CurrenciesViewModel {
 
     // MARK: - Properties
-    var currencies = BehaviorRelay<[CurrencieModel]>(value: [])
+    private let disposeBag = DisposeBag()
     private let allCurrencies = BehaviorRelay<[CurrencieModel]>(value: [])
+    var currencies = BehaviorRelay<[CurrencieModel]>(value: [])
     var isLoading = BehaviorRelay(value: true)
     let filter = BehaviorRelay<String?>(value: nil)
     let sortAZ = BehaviorRelay<Bool>(value: true)
-    private let disposeBag = DisposeBag()
+    let fromText = BehaviorRelay<String>(value: "")
+    let toText = BehaviorRelay<String>(value: "")
+    let converterEnabled = BehaviorRelay<Bool>(value: false)
+    let cleanEnabled = BehaviorRelay<Bool>(value: false)
 
     init(currenciesRepository: CurrenciesRepository) {
         fetchCurrencies(currenciesRepository)
@@ -50,7 +54,7 @@ final class CurrenciesViewModel {
         Observable.combineLatest(allCurrencies.asObservable(), filter.asObservable()) { (all: [CurrencieModel], text: String?) -> [CurrencieModel] in
             let allSorted = self.sort(self.sortAZ.value, all)
             if let text = text, !text.isEmpty {
-                return allSorted.filter({ $0.name.lowercased().contains(text.lowercased()) })
+                return allSorted.filter({ $0.name.lowercased().contains(text.lowercased()) || $0.nameFull.lowercased().contains(text.lowercased()) })
             } else {
                 return allSorted
             }
@@ -80,11 +84,41 @@ final class CurrenciesViewModel {
         return currencies.sorted { az ? ($0.name < $1.name) : ($0.name > $1.name) }
     }
     
-    func tapCurrencie() {
-        print("currencie selected")
+    //Retorna false se o "De" e "Para" já estivem setado para exibir uma mensagem de alerta na view.
+    func tapCurrencie(_ currencie: CurrencieModel) -> Bool! {
+        let from = fromText.value
+        let to = toText.value
+        let set = from.isEmpty || to.isEmpty
+        
+        if from.isEmpty {
+            fromText.accept(currencie.name)
+        } else if to.isEmpty {
+            toText.accept(currencie.name)
+        }
+        
+        if !fromText.value.isEmpty {
+            cleanEnabled.accept(true)
+            
+            if !toText.value.isEmpty {
+                converterEnabled.accept(true)
+            }
+        }
+        
+        return set
     }
     
     func tapConvert() {
         print("convert currencies")
+    }
+    
+    func tapClean() {
+        fromText.accept("")
+        toText.accept("")
+        converterEnabled.accept(false)
+        cleanEnabled.accept(false)
+    }
+    
+    func sameCurrencie(toCurrencie: CurrencieModel) -> Bool {
+        return fromText.value == toCurrencie.name
     }
 }
