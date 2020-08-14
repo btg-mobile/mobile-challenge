@@ -1,4 +1,4 @@
-package com.kaleniuk2.conversordemoedas.common
+package com.kaleniuk2.conversordemoedas.util
 
 import org.json.JSONArray
 import org.json.JSONException
@@ -15,9 +15,11 @@ object JSONUtil {
             val key = keys.next()
             var value = jsonobj[key]
             if (value is JSONArray) {
-                value = toList(value)
+                value =
+                    toList(value)
             } else if (value is JSONObject) {
-                value = toMap(value)
+                value =
+                    toMap(value)
             }
             map[key] = value
         }
@@ -30,9 +32,11 @@ object JSONUtil {
         for (i in 0 until array.length()) {
             var value = array[i]
             if (value is JSONArray) {
-                value = toList(value)
+                value =
+                    toList(value)
             } else if (value is JSONObject) {
-                value = toMap(value)
+                value =
+                    toMap(value)
             }
             list.add(value)
         }

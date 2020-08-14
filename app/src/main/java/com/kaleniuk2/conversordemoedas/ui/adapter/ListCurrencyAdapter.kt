@@ -8,13 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kaleniuk2.conversordemoedas.R
 import com.kaleniuk2.conversordemoedas.data.model.Currency
 
-class ListCurrencyAdapter(private var listCurrency: List<Currency> = listOf(),
-                          val listener: (Currency) -> Unit) :
+class ListCurrencyAdapter(private val listener: (Currency) -> Unit) :
     RecyclerView.Adapter<ListCurrencyViewHolder>() {
 
-    init {
-        this.listCurrency = makeFakeList()
-    }
+    var listCurrency: List<Currency> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListCurrencyViewHolder {
         return ListCurrencyViewHolder(LayoutInflater.from(parent.context)
@@ -29,15 +30,6 @@ class ListCurrencyAdapter(private var listCurrency: List<Currency> = listOf(),
             itemView.setOnClickListener { listener(currency) }
             bind(currency)
         }
-    }
-
-    private fun makeFakeList(): List<Currency> {
-        val list = mutableListOf<Currency>()
-        (0 until 20).forEach {
-            list.add(Currency("Brazilian Real", "BRL"))
-        }
-
-        return list
     }
 }
 
