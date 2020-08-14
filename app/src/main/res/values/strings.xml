@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Conversor de Moedas</string>
+    <string name="currency_from">Moeda de Origem</string>
+    <string name="currency_to">Moeda Destino</string>
+    <string name="value">Digite o Valor</string>
+    <string name="convert">Converter</string>
+    <string name="search_currency">Buscar Moeda</string>
+    <string name="loading">Carregando</string>
+</resources>
