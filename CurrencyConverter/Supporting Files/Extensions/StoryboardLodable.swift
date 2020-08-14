@@ -1,5 +1,5 @@
 //
-//  SetupStoryboardLodable.swift
+//  StoryboardLodable.swift
 //  CurrencyConverter
 //
 //  Created by Renan Santiago on 11/08/20.

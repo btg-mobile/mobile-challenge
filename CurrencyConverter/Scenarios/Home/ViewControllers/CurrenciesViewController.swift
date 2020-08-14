@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 
 protocol CurrenciesViewControllerDelegate: AnyObject {
-    //func userDidSelectCurrencie(currencie: CurrencieModel)
+    func userDidRequestConvert(fromCurrencie: CurrencieModel, toCurrencie: CurrencieModel)
 }
 
 final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLodable {
@@ -29,7 +29,7 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
     // MARK: - Properties
 
     var viewModel: CurrenciesViewModel!
-    weak var delegate: CurrenciesViewControllerDelegate?
+    var delegate: CurrenciesViewControllerDelegate?
 
     // MARK: - Fields
 
@@ -60,7 +60,7 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
 
     private func setupUI() {
         //Header Elements
-        title = "Selecione as moedas"
+        title = "Selecionar Moedas"
         navigationItem.rightBarButtonItem = doneButton
         navigationItem.leftBarButtonItem = cleanButton
         
@@ -100,9 +100,13 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
             }
         }.disposed(by: disposeBag)
         
-        //Botão que finaliza a escolha das moedas (caso estiver tudo certo)
+        //Botão que finaliza a escolha das moedas (caso estiver tudo certo) e chama a tela de conversão
         doneButton.rx.tap.bind { [weak self] in
-            self?.viewModel.tapConvert()
+            if let fromCurrencie = self?.viewModel.fromCurrencie.value, let toCurrencie = self?.viewModel.toCurrencie.value {
+                if let delegate = self?.delegate {
+                    delegate.userDidRequestConvert(fromCurrencie: fromCurrencie, toCurrencie: toCurrencie)
+                }
+            }
         }.disposed(by: disposeBag)
         viewModel.converterEnabled.observeOn(MainScheduler.instance).bind(to: doneButton.rx.isEnabled).disposed(by: disposeBag)
         

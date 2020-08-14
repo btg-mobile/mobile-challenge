@@ -46,6 +46,6 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: CurrenciesCoordinatorDelegate {
     func currenciesCoordinatorDidFinish() {
-        showCurrencies()
+        //TODO - Novos fluxos
     }
 }

@@ -24,6 +24,8 @@ final class CurrenciesViewModel {
     let sortAZ = BehaviorRelay<Bool>(value: true)
     let fromText = BehaviorRelay<String>(value: "")
     let toText = BehaviorRelay<String>(value: "")
+    let fromCurrencie = BehaviorRelay<CurrencieModel>(value: CurrencieModel())
+    let toCurrencie = BehaviorRelay<CurrencieModel>(value: CurrencieModel())
     let converterEnabled = BehaviorRelay<Bool>(value: false)
     let cleanEnabled = BehaviorRelay<Bool>(value: false)
     let tryAgainTextHidden = BehaviorRelay<Bool>(value: true)
@@ -52,9 +54,9 @@ final class CurrenciesViewModel {
                     self.allCurrencies.accept(currencies)
                 case let .error(error):
                     print(error)
+                    self.isLoading.accept(false)
                     self.tryAgainTextHidden.accept(false)
                     self.tryAgainButtonHidden.accept(false)
-                    self.isLoading.accept(false)
                 }
             }.disposed(by: disposeBag)
     }
@@ -79,8 +81,7 @@ final class CurrenciesViewModel {
                     self.currencies.accept(currencies)
                 case let .error(error):
                     print(error)
-                case .completed:
-                    print("completed")
+                case .completed: break
                 }
             }.disposed(by: disposeBag)
     }
@@ -101,8 +102,10 @@ final class CurrenciesViewModel {
 
         if from.isEmpty {
             fromText.accept(currencie.name)
+            fromCurrencie.accept(currencie)
         } else if to.isEmpty {
             toText.accept(currencie.name)
+            toCurrencie.accept(currencie)
         }
 
         if !fromText.value.isEmpty {
@@ -116,13 +119,11 @@ final class CurrenciesViewModel {
         return set
     }
 
-    func tapConvert() {
-        print("convert currencies")
-    }
-
     func tapClean() {
         fromText.accept("")
         toText.accept("")
+        fromCurrencie.accept(CurrencieModel())
+        toCurrencie.accept(CurrencieModel())
         converterEnabled.accept(false)
         cleanEnabled.accept(false)
     }

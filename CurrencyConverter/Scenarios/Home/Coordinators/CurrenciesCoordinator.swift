@@ -38,7 +38,29 @@ final class CurrenciesCoordinator: NavigationCoordinator {
         vc.delegate = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    private func showConvert(fromCurrencie: CurrencieModel, toCurrencie: CurrencieModel) {
+        let vc = container.resolve(ConvertViewController.self)!
+        vc.delegate = self
+        vc.viewModel.fromCurrencie.accept(fromCurrencie)
+        vc.viewModel.toCurrencie.accept(toCurrencie)
+        vc.viewModel.fromText.accept(fromCurrencie.name)
+        vc.viewModel.toText.accept(toCurrencie.name)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 extension CurrenciesCoordinator: CurrenciesViewControllerDelegate {
+    func userDidRequestConvert(fromCurrencie: CurrencieModel, toCurrencie: CurrencieModel) {
+        showConvert(fromCurrencie: fromCurrencie, toCurrencie: toCurrencie)
+    }
+    
+    //TODO - Novos fluxos
+    func userDidRequestNewFlow() {
+        delegate?.currenciesCoordinatorDidFinish()
+    }
+}
+
+extension CurrenciesCoordinator: ConvertViewControllerDelegate {
+    //TODO - Fluxo a partir da tela de conversão
 }

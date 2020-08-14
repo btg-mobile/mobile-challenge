@@ -18,9 +18,13 @@ extension AppDelegate {
         
         // ViewModels
         container.autoregister(CurrenciesViewModel.self, initializer: CurrenciesViewModel.init)
+        container.autoregister(ConvertViewModel.self, initializer: ConvertViewModel.init)
         
         // ViewControllers
         container.registerViewController(CurrenciesViewController.self) { r, c in
+            c.viewModel = r~>
+        }
+        container.registerViewController(ConvertViewController.self) { r, c in
             c.viewModel = r~>
         }
     }

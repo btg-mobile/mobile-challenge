@@ -13,7 +13,7 @@ class CurrencieModel {
     let nameFull: String
     let quote: Double
 
-    init(name: String, nameFull: String, quote: Double) {
+    init(name: String = "", nameFull: String = "", quote: Double = 0) {
         self.name = name
         self.nameFull = nameFull
         self.quote = quote
