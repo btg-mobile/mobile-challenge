@@ -23,3 +23,10 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md

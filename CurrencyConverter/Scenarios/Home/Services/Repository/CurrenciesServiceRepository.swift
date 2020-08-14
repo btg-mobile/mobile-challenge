@@ -9,6 +9,6 @@
 import Foundation
 import RxSwift
 
-protocol CurrenciesRepository {
+protocol CurrenciesServiceRepository {
     func getCurrencies() -> Single<[CurrencyModel]>
 }

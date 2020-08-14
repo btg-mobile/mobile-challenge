@@ -1,5 +1,5 @@
 //
-//  CurrencieCell.swift
+//  CurrencyCell.swift
 //  CurrencyConverter
 //
 //  Created by Renan Santiago on 11/08/20.
@@ -9,7 +9,7 @@
 import Reusable
 import UIKit
 
-final class CurrencieCell: UITableViewCell, NibReusable {
+final class CurrencyCell: UITableViewCell, NibReusable {
 
     // MARK: - Outlets
 

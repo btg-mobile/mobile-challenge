@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 import SwiftyJSON
 
-final class CurrenciesDataService: CurrenciesRepository {
+final class CurrenciesDataService: CurrenciesServiceRepository {
     private let provider = MoyaProvider<CurrenciesService>()
     private let disposeBag = DisposeBag()
 

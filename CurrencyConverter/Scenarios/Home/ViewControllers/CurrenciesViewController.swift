@@ -144,10 +144,10 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
     }
 
     private func setupData() {
-        tableView.register(cellType: CurrencieCell.self)
+        tableView.register(cellType: CurrencyCell.self)
 
         viewModel.currencies
-            .bind(to: tableView.rx.items(cellIdentifier: CurrencieCell.reuseIdentifier, cellType: CurrencieCell.self)) { _, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: CurrencyCell.reuseIdentifier, cellType: CurrencyCell.self)) { _, element, cell in
                 cell.model = element
             }.disposed(by: disposeBag)
     }

@@ -16,8 +16,8 @@ final class CurrenciesViewModel {
     // MARK: - Properties
 
     private let disposeBag = DisposeBag()
-    private var currenciesRepository: CurrenciesRepository
-    private var currenciesPersistence: CurrenciesPersistence
+    private var currenciesService: CurrenciesServiceRepository
+    private var currenciesPersistence: CurrenciesPersistenceRepository
     private let allCurrencies = BehaviorRelay<[CurrencyModel]>(value: [])
     var currencies = BehaviorRelay<[CurrencyModel]>(value: [])
     var isLoading = BehaviorRelay(value: true)
@@ -32,8 +32,8 @@ final class CurrenciesViewModel {
     let tryAgainTextHidden = BehaviorRelay<Bool>(value: true)
     let tryAgainButtonHidden = BehaviorRelay<Bool>(value: true)
 
-    init(currenciesRepository: CurrenciesRepository, currenciesPersistence: CurrenciesPersistence) {
-        self.currenciesRepository = currenciesRepository
+    init(currenciesService: CurrenciesServiceRepository, currenciesPersistence: CurrenciesPersistenceRepository) {
+        self.currenciesService = currenciesService
         self.currenciesPersistence = currenciesPersistence
         fetchCurrencies()
         searchCurrencies()
@@ -46,7 +46,7 @@ final class CurrenciesViewModel {
         self.isLoading.accept(true)
         self.tryAgainTextHidden.accept(true)
         self.tryAgainButtonHidden.accept(true)
-        currenciesRepository.getCurrencies()
+        currenciesService.getCurrencies()
             .subscribe { event -> Void in
                 switch event {
                 case let .success(next):
@@ -62,7 +62,7 @@ final class CurrenciesViewModel {
                     self.isLoading.accept(false)
                     
                     //Caso der erro ao buscar as moedas por falta de internet, se o usuário já tiver conseguido buscar alguma vez é utilizado a persistência local.
-                    let currencies = Array(self.currenciesPersistence.getAll())
+                    let currencies = Array(self.currenciesPersistence.getCurrencies())
                     if currencies.count > 0 {
                         self.currencies.accept(currencies)
                         self.allCurrencies.accept(currencies)

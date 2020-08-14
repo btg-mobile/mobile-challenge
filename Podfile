@@ -32,10 +32,8 @@ target 'CurrencyConverter' do
   target 'CurrencyConverterTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RxBlocking', '~> 5'
-    pod 'RxTest', '~> 5'
+    pod 'RxNimble', subspecs: ['RxBlocking', 'RxTest']
     pod 'Quick'
-    pod 'Nimble'
   end
 
   target 'CurrencyConverterUITests' do

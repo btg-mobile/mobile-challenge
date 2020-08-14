@@ -8,10 +8,10 @@
 
 import RealmSwift
 
-final class CurrenciesPersistence {
+final class CurrenciesPersistence: CurrenciesPersistenceRepository {
     private let realm = try! Realm()
 
-    func getAll() -> Results<CurrencyModel> {
+    func getCurrencies() -> Results<CurrencyModel> {
         return realm.objects(CurrencyModel.self)
     }
     
