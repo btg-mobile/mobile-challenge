@@ -17,22 +17,24 @@ final class CurrenciesViewModel {
 
     private let disposeBag = DisposeBag()
     private var currenciesRepository: CurrenciesRepository
-    private let allCurrencies = BehaviorRelay<[CurrencieModel]>(value: [])
-    var currencies = BehaviorRelay<[CurrencieModel]>(value: [])
+    private var currenciesPersistence: CurrenciesPersistence
+    private let allCurrencies = BehaviorRelay<[CurrencyModel]>(value: [])
+    var currencies = BehaviorRelay<[CurrencyModel]>(value: [])
     var isLoading = BehaviorRelay(value: true)
     let filter = BehaviorRelay<String?>(value: nil)
     let sortAZ = BehaviorRelay<Bool>(value: true)
     let fromText = BehaviorRelay<String>(value: "")
     let toText = BehaviorRelay<String>(value: "")
-    let fromCurrencie = BehaviorRelay<CurrencieModel>(value: CurrencieModel())
-    let toCurrencie = BehaviorRelay<CurrencieModel>(value: CurrencieModel())
+    let fromCurrency = BehaviorRelay<CurrencyModel>(value: CurrencyModel())
+    let toCurrency = BehaviorRelay<CurrencyModel>(value: CurrencyModel())
     let converterEnabled = BehaviorRelay<Bool>(value: false)
     let cleanEnabled = BehaviorRelay<Bool>(value: false)
     let tryAgainTextHidden = BehaviorRelay<Bool>(value: true)
     let tryAgainButtonHidden = BehaviorRelay<Bool>(value: true)
 
-    init(currenciesRepository: CurrenciesRepository) {
+    init(currenciesRepository: CurrenciesRepository, currenciesPersistence: CurrenciesPersistence) {
         self.currenciesRepository = currenciesRepository
+        self.currenciesPersistence = currenciesPersistence
         fetchCurrencies()
         searchCurrencies()
         sortCurrencies()
@@ -49,20 +51,32 @@ final class CurrenciesViewModel {
                 switch event {
                 case let .success(next):
                     self.isLoading.accept(false)
+                    
+                    //Sempre que conseguir buscar as moedas e cotas atualizadas salva locamente
                     let currencies = self.sort(self.sortAZ.value, next)
+                    self.currenciesPersistence.saveAll(currencies: currencies)
+                    
                     self.currencies.accept(currencies)
                     self.allCurrencies.accept(currencies)
-                case let .error(error):
-                    print(error)
+                case .error:
                     self.isLoading.accept(false)
-                    self.tryAgainTextHidden.accept(false)
-                    self.tryAgainButtonHidden.accept(false)
+                    
+                    //Caso der erro ao buscar as moedas por falta de internet, se o usuário já tiver conseguido buscar alguma vez é utilizado a persistência local.
+                    let currencies = Array(self.currenciesPersistence.getAll())
+                    if currencies.count > 0 {
+                        self.currencies.accept(currencies)
+                        self.allCurrencies.accept(currencies)
+                    } else {
+                        //Se der erro ao buscar pela internet e não tiver salvo nada ainda na persistência, exibida a lógica de try again.
+                        self.tryAgainTextHidden.accept(false)
+                        self.tryAgainButtonHidden.accept(false)
+                    }
                 }
             }.disposed(by: disposeBag)
     }
 
     func searchCurrencies() {
-        Observable.combineLatest(allCurrencies.asObservable(), filter.asObservable()) { (all: [CurrencieModel], text: String?) -> [CurrencieModel] in
+        Observable.combineLatest(allCurrencies.asObservable(), filter.asObservable()) { (all: [CurrencyModel], text: String?) -> [CurrencyModel] in
             let allSorted = self.sort(self.sortAZ.value, all)
             if let text = text, !text.isEmpty {
                 return allSorted.filter({ $0.name.lowercased().contains(text.lowercased()) || $0.nameFull.lowercased().contains(text.lowercased()) })
@@ -90,22 +104,22 @@ final class CurrenciesViewModel {
         sortAZ.accept(!sortAZ.value)
     }
 
-    func sort(_ az: Bool, _ currencies: [CurrencieModel]) -> [CurrencieModel] {
+    func sort(_ az: Bool, _ currencies: [CurrencyModel]) -> [CurrencyModel] {
         return currencies.sorted { az ? ($0.name < $1.name) : ($0.name > $1.name) }
     }
 
     //Retorna false se o "De" e "Para" já estivem setado para exibir uma mensagem de alerta na view.
-    func tapCurrencie(_ currencie: CurrencieModel) -> Bool! {
+    func tapCurrency(_ currency: CurrencyModel) -> Bool! {
         let from = fromText.value
         let to = toText.value
         let set = from.isEmpty || to.isEmpty
 
         if from.isEmpty {
-            fromText.accept(currencie.name)
-            fromCurrencie.accept(currencie)
+            fromText.accept(currency.name)
+            fromCurrency.accept(currency)
         } else if to.isEmpty {
-            toText.accept(currencie.name)
-            toCurrencie.accept(currencie)
+            toText.accept(currency.name)
+            toCurrency.accept(currency)
         }
 
         if !fromText.value.isEmpty {
@@ -122,14 +136,14 @@ final class CurrenciesViewModel {
     func tapClean() {
         fromText.accept("")
         toText.accept("")
-        fromCurrencie.accept(CurrencieModel())
-        toCurrencie.accept(CurrencieModel())
+        fromCurrency.accept(CurrencyModel())
+        toCurrency.accept(CurrencyModel())
         converterEnabled.accept(false)
         cleanEnabled.accept(false)
     }
 
-    func sameCurrencie(toCurrencie: CurrencieModel) -> Bool {
-        return fromText.value == toCurrencie.name
+    func sameCurrency(toCurrency: CurrencyModel) -> Bool {
+        return fromText.value == toCurrency.name
     }
     
     func tapTryAgain() {

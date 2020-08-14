@@ -15,7 +15,7 @@ final class CurrenciesDataService: CurrenciesRepository {
     private let provider = MoyaProvider<CurrenciesService>()
     private let disposeBag = DisposeBag()
 
-    func getCurrencies() -> Single<[CurrencieModel]> {
+    func getCurrencies() -> Single<[CurrencyModel]> {
         return Observable.combineLatest(
             provider.rx
                 .request(.getCurrencies)
@@ -25,12 +25,16 @@ final class CurrenciesDataService: CurrenciesRepository {
                 .request(.getQuotes)
                 .asObservable()
                 .map { single in return try JSON(single.mapJSON()) })
-        { (currenciesJSON: JSON, quotesJSON: JSON) -> [CurrencieModel] in
-            var currencies: [CurrencieModel] = []
+        { (currenciesJSON: JSON, quotesJSON: JSON) -> [CurrencyModel] in
+            var currencies: [CurrencyModel] = []
 
             for (key, subJson) in currenciesJSON["currencies"] {
                 if let nameFull = subJson.string, let quote = quotesJSON["quotes"]["USD"  + key].double {
-                    currencies.append(CurrencieModel(name: key, nameFull: nameFull, quote: quote))
+                    let currency = CurrencyModel()
+                    currency.name = key
+                    currency.nameFull = nameFull
+                    currency.quote = quote
+                    currencies.append(currency)
                 }
             }
 

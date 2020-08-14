@@ -15,6 +15,7 @@ extension AppDelegate {
     internal func setupDependencies() {
         // Services
         container.autoregister(CurrenciesRepository.self, initializer: CurrenciesDataService.init).inObjectScope(ObjectScope.container)
+        container.autoregister(CurrenciesPersistence.self, initializer: CurrenciesPersistence.init).inObjectScope(ObjectScope.container)
         
         // ViewModels
         container.autoregister(CurrenciesViewModel.self, initializer: CurrenciesViewModel.init)

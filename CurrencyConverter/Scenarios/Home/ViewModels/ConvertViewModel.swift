@@ -20,8 +20,8 @@ final class ConvertViewModel {
     let toText = BehaviorRelay<String>(value: "")
     let convertedText = BehaviorRelay<String>(value: "0")
     let changeText = BehaviorRelay<String>(value: "0")
-    var fromCurrencie = BehaviorRelay<CurrencieModel>(value: CurrencieModel())
-    var toCurrencie = BehaviorRelay<CurrencieModel>(value: CurrencieModel())
+    var fromCurrency = BehaviorRelay<CurrencyModel>(value: CurrencyModel())
+    var toCurrency = BehaviorRelay<CurrencyModel>(value: CurrencyModel())
 
     init() {
         handleValueTextChange()
@@ -43,8 +43,8 @@ final class ConvertViewModel {
     }
     
     func convertCurrencies(_ inputValue: String) {
-        let fromQuote = fromCurrencie.value.quote
-        let toQuote = toCurrencie.value.quote
+        let fromQuote = fromCurrency.value.quote
+        let toQuote = toCurrency.value.quote
         var validInputValue = "0"
         
         if !inputValue.isEmpty {

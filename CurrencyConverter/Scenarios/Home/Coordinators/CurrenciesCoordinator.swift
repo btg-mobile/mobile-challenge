@@ -39,20 +39,20 @@ final class CurrenciesCoordinator: NavigationCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    private func showConvert(fromCurrencie: CurrencieModel, toCurrencie: CurrencieModel) {
+    private func showConvert(fromCurrency: CurrencyModel, toCurrency: CurrencyModel) {
         let vc = container.resolve(ConvertViewController.self)!
         vc.delegate = self
-        vc.viewModel.fromCurrencie.accept(fromCurrencie)
-        vc.viewModel.toCurrencie.accept(toCurrencie)
-        vc.viewModel.fromText.accept(fromCurrencie.name)
-        vc.viewModel.toText.accept(toCurrencie.name)
+        vc.viewModel.fromCurrency.accept(fromCurrency)
+        vc.viewModel.toCurrency.accept(toCurrency)
+        vc.viewModel.fromText.accept(fromCurrency.name)
+        vc.viewModel.toText.accept(toCurrency.name)
         navigationController.pushViewController(vc, animated: true)
     }
 }
 
 extension CurrenciesCoordinator: CurrenciesViewControllerDelegate {
-    func userDidRequestConvert(fromCurrencie: CurrencieModel, toCurrencie: CurrencieModel) {
-        showConvert(fromCurrencie: fromCurrencie, toCurrencie: toCurrencie)
+    func userDidRequestConvert(fromCurrency: CurrencyModel, toCurrency: CurrencyModel) {
+        showConvert(fromCurrency: fromCurrency, toCurrency: toCurrency)
     }
     
     //TODO - Novos fluxos

@@ -8,15 +8,17 @@
 
 import Foundation
 import Moya
+import SystemConfiguration
 
 enum CurrenciesService {
     case getCurrencies
     case getQuotes
 }
 
-extension CurrenciesService: TargetType {    
+extension CurrenciesService: TargetType {
     var baseURL: URL {
-        return URL(string: Service.apiURL)!
+        let apiURL = Bundle.main.object(forInfoDictionaryKey: "ApiURL") as! String
+        return URL(string: apiURL)!
     }
     
     var headers: [String: String]? {
@@ -37,8 +39,9 @@ extension CurrenciesService: TargetType {
     }
 
     var task: Task {
+        let apiKey = Bundle.main.object(forInfoDictionaryKey: "ApiKey") as! String
         let params = [
-            "access_key": Service.apiKey
+            "access_key": apiKey
         ]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }

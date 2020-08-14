@@ -5,6 +5,7 @@ target 'CurrencyConverter' do
   use_frameworks!
 
   # Pods for CurrencyConverter
+  pod 'RealmSwift'
   pod 'Moya/RxSwift'
   pod 'IQKeyboardManager'
   pod 'Reusable'

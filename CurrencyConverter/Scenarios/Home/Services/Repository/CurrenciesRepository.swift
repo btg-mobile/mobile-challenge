@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol CurrenciesRepository {
-    func getCurrencies() -> Single<[CurrencieModel]>
+    func getCurrencies() -> Single<[CurrencyModel]>
 }

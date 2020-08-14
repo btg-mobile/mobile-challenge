@@ -19,7 +19,7 @@ final class CurrencieCell: UITableViewCell, NibReusable {
     
     // MARK: - Properties
 
-    var model: CurrencieModel? {
+    var model: CurrencyModel? {
         didSet {
             guard let model = model else {
                 return

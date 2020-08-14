@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 
 protocol CurrenciesViewControllerDelegate: AnyObject {
-    func userDidRequestConvert(fromCurrencie: CurrencieModel, toCurrencie: CurrencieModel)
+    func userDidRequestConvert(fromCurrency: CurrencyModel, toCurrency: CurrencyModel)
 }
 
 final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLodable {
@@ -77,10 +77,10 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
     private func setupBinding() {
         //TableView
         tableView.rx
-            .modelSelected(CurrencieModel.self).bind { [weak self] currencie in
-                if let same = self?.viewModel.sameCurrencie(toCurrencie: currencie), same {
+            .modelSelected(CurrencyModel.self).bind { [weak self] currency in
+                if let same = self?.viewModel.sameCurrency(toCurrency: currency), same {
                     self?.alert(message: "Selecione uma moeda diferente da primeira selecionada \"De\"")
-                } else if let set = self?.viewModel.tapCurrencie(currencie), !set {
+                } else if let set = self?.viewModel.tapCurrency(currency), !set {
                     self?.alert(message: "Moedas já selecionadas! Caso queira trocar, clique em \"Limpar\"")
                 }
             }.disposed(by: disposeBag)
@@ -102,9 +102,9 @@ final class CurrenciesViewController: UIViewController, CurrenciesStoryboardLoda
         
         //Botão que finaliza a escolha das moedas (caso estiver tudo certo) e chama a tela de conversão
         doneButton.rx.tap.bind { [weak self] in
-            if let fromCurrencie = self?.viewModel.fromCurrencie.value, let toCurrencie = self?.viewModel.toCurrencie.value {
+            if let fromCurrency = self?.viewModel.fromCurrency.value, let toCurrency = self?.viewModel.toCurrency.value {
                 if let delegate = self?.delegate {
-                    delegate.userDidRequestConvert(fromCurrencie: fromCurrencie, toCurrencie: toCurrencie)
+                    delegate.userDidRequestConvert(fromCurrency: fromCurrency, toCurrency: toCurrency)
                 }
             }
         }.disposed(by: disposeBag)
