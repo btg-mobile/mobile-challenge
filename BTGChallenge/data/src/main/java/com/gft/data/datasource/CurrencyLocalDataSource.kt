@@ -1,12 +1,10 @@
 package com.gft.data.datasource
 
-import com.gft.domain.entities.CurrencyLabel
-import com.gft.domain.entities.CurrencyValue
-import com.gft.domain.entities.CurrencyValueList
-import io.reactivex.Flowable
+import com.gft.domain.entities.CurrencyLabelList
+import com.gft.domain.entities.Resource
 
 interface CurrencyLocalDataSource {
-    fun getAllLabels() : List<CurrencyLabel>
+    fun getAllLabels() : Resource<CurrencyLabelList>
 
-    fun getValues() : Flowable<CurrencyValueList>
+    fun getValues() : Resource<CurrencyLabelList>
 }
