@@ -9,5 +9,5 @@ import androidx.lifecycle.LiveData
 interface CurrencyRepository {
     suspend fun getLabels(): Resource<CurrencyLabelList>
 
-    fun getValues(): Flowable<CurrencyValueList>
+    suspend fun getValues(): Resource<CurrencyValueList>
 }

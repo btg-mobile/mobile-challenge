@@ -1,35 +1,18 @@
 package com.gft.domain.usecases
 
 import com.gft.domain.repository.CurrencyRepository
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
-import io.reactivex.schedulers.Schedulers
 
 class ConvertUseCase(
     private val repository: CurrencyRepository
 ) {
-    fun execute(from: String?, to: String?, value: Double?): Flowable<Double> {
-        return Flowable.create({ emitter ->
-            repository.getValues().subscribeOn(Schedulers.io())
-                .subscribe(
-                    { response ->
-                        emitter.onNext(
-                            convert(
-                                from = from,
-                                to = to,
-                                value = value,
-                                list = response.quotes!!
-                            )
-                        )
-
-                    },
-                    { error ->
-                        println(error)
-
-                    }
-                )
-        }, BackpressureStrategy.BUFFER)
+    suspend fun execute(from: String?, to: String?, value: Double?): Double? {
+        val values = getValues()
+        return values.data?.quotes?.let { convert(from, to , value, it) }
     }
+
+    private suspend fun getValues() =
+        repository.getValues()
+
 
     private fun convert(
         from: String?,

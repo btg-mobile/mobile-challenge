@@ -1,14 +1,14 @@
 package com.gft.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gft.domain.usecases.ConvertUseCase
 import com.gft.presentation.entities.ConvertEntity
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
-class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel()
-    {
+class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel() {
 
     var data = MutableLiveData<ConvertEntity>()
     var fromValue = MutableLiveData<String>()
@@ -33,10 +33,22 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel(
     }
 
     fun convert() {
+        showProgressBar.value = true
+
         if (fromValue.value.isNullOrEmpty()) {
             showToastMessage.value = "Digite um valor para começar"
             return
         }
         data.value?.fromValue = fromValue.value?.toDouble()!!
+
+        CoroutineScope(IO).launch {
+            val converted = convertUseCase.execute(convertEntity.from, convertEntity.to, convertEntity.fromValue)
+            if (converted != null) {
+                convertEntity.toValue = converted
+                data.postValue(convertEntity)
+                showProgressBar.postValue(false)
+
+            }
+        }
     }
 }

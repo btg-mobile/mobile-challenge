@@ -1,13 +1,13 @@
 package com.gft.presentation.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.gft.domain.entities.CurrencyLabelList
 import com.gft.domain.entities.Resource
 import com.gft.domain.usecases.GetLabelsUseCase
-import com.gft.presentation.entities.Data
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 class ChooseCurrencyViewModel(private val getLabelsUseCase: GetLabelsUseCase) : ViewModel() {
 
