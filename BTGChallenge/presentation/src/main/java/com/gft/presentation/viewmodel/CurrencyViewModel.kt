@@ -7,6 +7,7 @@ import com.gft.presentation.entities.ConvertEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import kotlin.math.round
 
 class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel() {
 

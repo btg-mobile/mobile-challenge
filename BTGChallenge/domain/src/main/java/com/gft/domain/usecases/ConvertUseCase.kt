@@ -7,7 +7,7 @@ class ConvertUseCase(
 ) {
     suspend fun execute(from: String?, to: String?, value: Double?): Double? {
         val values = getValues()
-        return values.data?.quotes?.let { convert(from, to , value, it) }
+        return values.data?.quotes?.let { convert(from, to, value, it) }
     }
 
     private suspend fun getValues() =
@@ -21,9 +21,8 @@ class ConvertUseCase(
         list: Map<String, String>
     ): Double {
         val usdValue = getUsdValue(from, value, list)
-        val usdRelation = getValue(to, usdValue, list)
 
-        return formatDouble(usdRelation)
+        return getValue(to, usdValue, list).round(2)
     }
 
     private fun getValue(to: String?, value: Double?, list: Map<String, String>): Double {
@@ -41,8 +40,10 @@ class ConvertUseCase(
             0.0
         }
     }
+}
 
-    private fun formatDouble(value: Double): Double {
-        return String.format("%.2f", value).toDouble()
-    }
+fun Double.round(decimals: Int): Double {
+    var multiplier = 1.0
+    repeat(decimals) { multiplier *= 10 }
+    return kotlin.math.round(this * multiplier) / multiplier
 }
