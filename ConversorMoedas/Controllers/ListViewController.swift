@@ -8,21 +8,26 @@
 
 import UIKit
 
-class ListagemViewController: UIViewController {
+class ListagemViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var collectionView : UICollectionView?
     
-    var currencies: [String:String] = [:]
+    var currencies: [CurrenciesList.Currencies] = []
+    var searchCurrencies: [CurrenciesList.Currencies] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        CurrenciesList().getList(callback: { list in
-            self.currencies = list
+        CurrenciesList().getList({ list in
+            self.currencies = list.map {c in CurrenciesList.Currencies(key: c.key, value: c.value)}
+            self.currencies = self.currencies.sorted(by: {a, b in a.key.localizedCaseInsensitiveCompare(b.key) == .orderedAscending})
+            self.searchCurrencies = self.currencies
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
             }
+        }, {error in
+            ExchangeViewController().showMessage("Erro", error as! String)
         })
     }
 }
@@ -34,31 +39,26 @@ extension ListagemViewController:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CurrencyCollectionViewCell
-        let value = Array(currencies.values)[indexPath.item]
+        
+        let value = "\(currencies[indexPath.item].key) - \(currencies[indexPath.item].value)"
         cell?.setValue(value: value)
-//        cell?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = presentingViewController as? CotacaoViewController
-        vc?.setCurrency(currencies[indexPath.item])
+        let vc = presentingViewController as? ExchangeViewController
+        let key = currencies[indexPath.item].key
+        let value = currencies[indexPath.item].value
+        let tuple = (key: key, value: value)
+        vc?.setCurrency(tuple)
         dismiss(animated: true, completion: nil)
     }
-//    @objc func tap(_ sender: UITapGestureRecognizer) {
-//
-//        let location = sender.location(in: self.collectionView)
-//        let indexPath = self.collectionView?.indexPathForItem(at: location)
-//
-//        if let index = indexPath {
-//            print("index: \(index.item)!")
-//       }
-//    }
 }
 
 extension ListagemViewController:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 30)
     }
+    
 }

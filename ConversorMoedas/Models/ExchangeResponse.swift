@@ -8,21 +8,14 @@
 
 import Foundation
 
-class Quotation {
+class Exchange {
     
-    let urlLive = "http://api.currencylayer.com/live"
-    let apiKey = "91d7f90d3fdeca18ef6186b9b76943ea"
-    let format = "1"
-    
-    func getLive(_ currencyKeyOrigin:String, _ currencyKeyDestiny:String, _ valueToConvert:Double, _ callBack: @escaping CallBack){
+    func getLive(_ currencyKeyOrigin:String, _ currencyKeyDestiny:String, _ valueToConvert:Double, _ callBack: @escaping CallBack, _ errorCallBack: @escaping ErrorCallBack) {
         
-        var urlRequest:String{
-            "\(urlLive)?access_key=\(apiKey)&currencies=\(currencyKeyOrigin),\(currencyKeyDestiny)&format=\(format)"
-        }
-        
-        let task = URLSession.shared.dataTask(with: URL(string: urlRequest)!, completionHandler: { (data, response, error) in
+        let urlRequest = APIManager().getLiveURL(currencyKeyOrigin, currencyKeyDestiny, valueToConvert)
+        let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             guard let data = data, error == nil else {
-                print("Tratar erro")
+                errorCallBack("Falha na conexão")
                 return
             }
             
@@ -39,15 +32,13 @@ class Quotation {
                 let resultConvert = CurrencyConverter().convertToSelectedCurrency(dollarOrigin, dollarDestiny, valueToConvert)
                 
                 callBack(resultConvert)
-                
             }
             catch {
-                print("falha na conversao \(error.localizedDescription)")
+               errorCallBack("falha na conversão \(error.localizedDescription)")
             }
         })
         task.resume()
     }
-
 
     struct ConversorLive: Codable {
         let success: Bool
@@ -59,5 +50,5 @@ class Quotation {
     }
 
     typealias CallBack = (Double) -> ()
-
+    typealias ErrorCallBack = (Error) -> ()
 }

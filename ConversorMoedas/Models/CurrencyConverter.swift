@@ -14,7 +14,6 @@ class CurrencyConverter {
    
     func convertToSelectedCurrency(_ dollarOrigin:Double, _ dollarDestiny:Double, _ amount:Double) -> Double {
         return (1.0/((1.0/dollarDestiny) * dollarOrigin)) * amount
-      
     }
         
 }

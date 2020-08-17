@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C5333B124E302D0005CD485 /* Quotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5333B024E302D0005CD485 /* Quotation.swift */; };
-		8C54A69624E370B100F74D9B /* CotacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54A69524E370B100F74D9B /* CotacaoViewController.swift */; };
-		8C54A69B24E38BF200F74D9B /* ListagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54A69A24E38BF200F74D9B /* ListagemViewController.swift */; };
-		8C7D525524E4A07B009D3660 /* CurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D525424E4A07B009D3660 /* CurrencyResponse.swift */; };
+		8C5333B124E302D0005CD485 /* ExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5333B024E302D0005CD485 /* ExchangeResponse.swift */; };
+		8C54A69624E370B100F74D9B /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54A69524E370B100F74D9B /* ExchangeViewController.swift */; };
+		8C54A69B24E38BF200F74D9B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54A69A24E38BF200F74D9B /* ListViewController.swift */; };
+		8C7D525524E4A07B009D3660 /* CurrenciesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D525424E4A07B009D3660 /* CurrenciesResponse.swift */; };
 		8C7D525924E4B2D8009D3660 /* CurrencyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D525824E4B2D8009D3660 /* CurrencyCollectionViewCell.swift */; };
 		8C7D525B24E4E695009D3660 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D525A24E4E695009D3660 /* CurrencyConverter.swift */; };
 		8C80C66724E61EF700C9F782 /* dict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80C66624E61EF700C9F782 /* dict.swift */; };
+		8C80C68924E8BFA300C9F782 /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C80C68824E8BFA300C9F782 /* key.plist */; };
+		8C80C68B24E8C12400C9F782 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80C68A24E8C12400C9F782 /* APIManager.swift */; };
+		8C80C68D24E8CFCC00C9F782 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C80C68C24E8CFCC00C9F782 /* String.swift */; };
 		8CC3F9EB24E19FFA00E8CE6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3F9EA24E19FFA00E8CE6A /* AppDelegate.swift */; };
 		8CC3F9ED24E19FFA00E8CE6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3F9EC24E19FFA00E8CE6A /* SceneDelegate.swift */; };
 		8CC3F9F224E19FFA00E8CE6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CC3F9F024E19FFA00E8CE6A /* Main.storyboard */; };
@@ -22,13 +25,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8C5333B024E302D0005CD485 /* Quotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotation.swift; sourceTree = "<group>"; };
-		8C54A69524E370B100F74D9B /* CotacaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CotacaoViewController.swift; sourceTree = "<group>"; };
-		8C54A69A24E38BF200F74D9B /* ListagemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListagemViewController.swift; sourceTree = "<group>"; };
-		8C7D525424E4A07B009D3660 /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
+		8C5333B024E302D0005CD485 /* ExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeResponse.swift; sourceTree = "<group>"; };
+		8C54A69524E370B100F74D9B /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		8C54A69A24E38BF200F74D9B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		8C7D525424E4A07B009D3660 /* CurrenciesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesResponse.swift; sourceTree = "<group>"; };
 		8C7D525824E4B2D8009D3660 /* CurrencyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C7D525A24E4E695009D3660 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		8C80C66624E61EF700C9F782 /* dict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dict.swift; sourceTree = "<group>"; };
+		8C80C68824E8BFA300C9F782 /* key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
+		8C80C68A24E8C12400C9F782 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		8C80C68C24E8CFCC00C9F782 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8CC3F9E724E19FFA00E8CE6A /* ConversorMoedas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConversorMoedas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC3F9EA24E19FFA00E8CE6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CC3F9EC24E19FFA00E8CE6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,10 +58,12 @@
 		8C5333A124E22469005CD485 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8C5333B024E302D0005CD485 /* Quotation.swift */,
-				8C7D525424E4A07B009D3660 /* CurrencyResponse.swift */,
+				8C5333B024E302D0005CD485 /* ExchangeResponse.swift */,
+				8C7D525424E4A07B009D3660 /* CurrenciesResponse.swift */,
 				8C7D525A24E4E695009D3660 /* CurrencyConverter.swift */,
 				8C80C66624E61EF700C9F782 /* dict.swift */,
+				8C80C68A24E8C12400C9F782 /* APIManager.swift */,
+				8C80C68C24E8CFCC00C9F782 /* String.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -73,8 +81,8 @@
 		8C5333A324E2265C005CD485 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8C54A69524E370B100F74D9B /* CotacaoViewController.swift */,
-				8C54A69A24E38BF200F74D9B /* ListagemViewController.swift */,
+				8C54A69524E370B100F74D9B /* ExchangeViewController.swift */,
+				8C54A69A24E38BF200F74D9B /* ListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -105,6 +113,7 @@
 				8C5333A124E22469005CD485 /* Models */,
 				8CC3F9F324E19FFD00E8CE6A /* Assets.xcassets */,
 				8CC3F9F824E19FFD00E8CE6A /* Info.plist */,
+				8C80C68824E8BFA300C9F782 /* key.plist */,
 			);
 			path = ConversorMoedas;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C80C68924E8BFA300C9F782 /* key.plist in Resources */,
 				8CC3F9F724E19FFD00E8CE6A /* LaunchScreen.storyboard in Resources */,
 				8CC3F9F424E19FFD00E8CE6A /* Assets.xcassets in Resources */,
 				8CC3F9F224E19FFA00E8CE6A /* Main.storyboard in Resources */,
@@ -181,14 +191,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C7D525B24E4E695009D3660 /* CurrencyConverter.swift in Sources */,
-				8C5333B124E302D0005CD485 /* Quotation.swift in Sources */,
+				8C80C68D24E8CFCC00C9F782 /* String.swift in Sources */,
+				8C5333B124E302D0005CD485 /* ExchangeResponse.swift in Sources */,
+				8C80C68B24E8C12400C9F782 /* APIManager.swift in Sources */,
 				8CC3F9EB24E19FFA00E8CE6A /* AppDelegate.swift in Sources */,
 				8C7D525924E4B2D8009D3660 /* CurrencyCollectionViewCell.swift in Sources */,
-				8C54A69624E370B100F74D9B /* CotacaoViewController.swift in Sources */,
+				8C54A69624E370B100F74D9B /* ExchangeViewController.swift in Sources */,
 				8CC3F9ED24E19FFA00E8CE6A /* SceneDelegate.swift in Sources */,
 				8C80C66724E61EF700C9F782 /* dict.swift in Sources */,
-				8C54A69B24E38BF200F74D9B /* ListagemViewController.swift in Sources */,
-				8C7D525524E4A07B009D3660 /* CurrencyResponse.swift in Sources */,
+				8C54A69B24E38BF200F74D9B /* ListViewController.swift in Sources */,
+				8C7D525524E4A07B009D3660 /* CurrenciesResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
