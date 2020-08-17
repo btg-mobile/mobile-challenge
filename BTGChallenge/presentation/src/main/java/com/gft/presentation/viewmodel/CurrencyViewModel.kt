@@ -7,21 +7,16 @@ import com.gft.presentation.entities.ConvertEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import kotlin.math.round
 
 class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel() {
-
-    var data = MutableLiveData<ConvertEntity>()
-    var fromValue = MutableLiveData<String>()
-    var showProgressBar = MutableLiveData<Boolean>()
-    var showToastMessage = MutableLiveData<String>()
 
     private var convertEntity: ConvertEntity =
         ConvertEntity(from = "USD", to = "BRL", fromValue = 0.0, toValue = 0.0)
 
-    init {
-        data.value = convertEntity;
-    }
+    val data = MutableLiveData(convertEntity)
+    var fromValue = MutableLiveData<String>()
+    var showProgressBar = MutableLiveData<Boolean>()
+    var showToastMessage = MutableLiveData<String>()
 
     fun setFrom(from: String) {
         convertEntity.from = from
@@ -34,8 +29,6 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel(
     }
 
     fun convert() {
-        showProgressBar.value = true
-
         if (fromValue.value.isNullOrEmpty()) {
             showToastMessage.value = "Digite um valor para começar"
             return
@@ -43,13 +36,20 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel(
         data.value?.fromValue = fromValue.value?.toDouble()!!
 
         CoroutineScope(IO).launch {
-            val converted = convertUseCase.execute(convertEntity.from, convertEntity.to, convertEntity.fromValue)
+            showProgressBar.postValue(true)
+
+            val converted = convertUseCase.execute(
+                convertEntity.from,
+                convertEntity.to,
+                convertEntity.fromValue
+            )
             if (converted != null) {
                 convertEntity.toValue = converted
                 data.postValue(convertEntity)
-                showProgressBar.postValue(false)
-
             }
+
+            showProgressBar.postValue(false)
+
         }
     }
 }

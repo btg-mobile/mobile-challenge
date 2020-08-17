@@ -59,7 +59,6 @@ class ChooseCurrencyActivity : AppCompatActivity() {
         super.onStart()
 
         viewModel.getLabelsLiveData().observe(this, Observer {
-            progress_bar.visibility = View.INVISIBLE
             when (it?.status) {
                 Resource.Status.ERROR -> {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT)
@@ -67,7 +66,7 @@ class ChooseCurrencyActivity : AppCompatActivity() {
                 }
                 Resource.Status.SUCCESS -> {
                     it.data?.currencies?.let { it1 -> listAdapter.updateList(it1) }
-                    progress_bar.visibility = View.VISIBLE
+                    progress_bar.visibility = View.INVISIBLE
                 }
             }
         })
