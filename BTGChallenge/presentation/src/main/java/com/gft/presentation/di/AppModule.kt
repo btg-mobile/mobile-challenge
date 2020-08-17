@@ -9,7 +9,6 @@ import com.gft.data.repository.CurrencyRepositoryImpl
 import com.gft.domain.repository.CurrencyRepository
 import com.gft.domain.usecases.ConvertUseCase
 import com.gft.domain.usecases.GetLabelsUseCase
-import com.gft.presentation.common.AsyncFlowableTransformer
 import com.gft.presentation.viewmodel.ChooseCurrencyViewModel
 import com.gft.presentation.viewmodel.CurrencyViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
@@ -31,7 +30,6 @@ val repositoryModule = module {
 val useCasesModule = module {
     factory(name = GET_LABELS_USE_CASE) {
         GetLabelsUseCase(
-            transformer = AsyncFlowableTransformer(),
             repository = get()
         )
     }

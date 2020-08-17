@@ -1,36 +1,20 @@
 package com.gft.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.gft.domain.entities.CurrencyLabelList
+import com.gft.domain.entities.Resource
 import com.gft.domain.usecases.GetLabelsUseCase
 import com.gft.presentation.entities.Data
-import com.gft.presentation.entities.Error
-import com.gft.presentation.entities.Status
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ChooseCurrencyViewModel(private val getLabelsUseCase: GetLabelsUseCase) :
-    BaseViewModel() {
+class ChooseCurrencyViewModel(private val getLabelsUseCase: GetLabelsUseCase) : ViewModel() {
 
-    private var labels = MutableLiveData<Data<CurrencyLabelList>>()
-
-    fun getLabels() {
-        val disposable = getLabelsUseCase.getLabels().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { response ->
-                    labels.value = Data(responseType = Status.SUCCESSFUL, data = response)
-                },
-                { error ->
-                    labels.value = Data(
-                        responseType = Status.ERROR,
-                        error = Error("Não foi possível realizar a operação")
-                    )
-                }
-            )
-
-        addDisposable(disposable)
-    }
+    private var labels: LiveData<Resource<CurrencyLabelList>> =
+        liveData(context = viewModelScope.coroutineContext + Dispatchers.IO) {
+            emit(getLabelsUseCase.execute())
+        }
 
     fun getLabelsLiveData() = labels
 }

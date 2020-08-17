@@ -2,17 +2,19 @@ package com.gft.data.datasource
 
 import com.gft.data.api.CurrencyApi
 import com.gft.data.mapper.CurrencyDataEntityMapper
+import com.gft.data.utils.SafeApiRequest
 import com.gft.domain.entities.CurrencyLabelList
 import com.gft.domain.entities.CurrencyValueList
+import com.gft.domain.entities.Resource
 import io.reactivex.Flowable
 
 class CurrencyRemoteDataSourceImpl(private val currencyApi: CurrencyApi) :
-    CurrencyRemoteDataSource {
+    CurrencyRemoteDataSource, SafeApiRequest() {
 
     private val mapper = CurrencyDataEntityMapper()
 
-    override fun getLabels(): Flowable<CurrencyLabelList> {
-        return currencyApi.getLabels().map { mapper.mapToEntity(it) }
+    override suspend fun getLabels(): Resource<CurrencyLabelList> {
+        return apiRequest { currencyApi.getLabels() }
     }
 
     override fun getValues(): Flowable<CurrencyValueList> {

@@ -2,10 +2,12 @@ package com.gft.domain.repository
 
 import com.gft.domain.entities.CurrencyLabelList
 import com.gft.domain.entities.CurrencyValueList
+import com.gft.domain.entities.Resource
 import io.reactivex.Flowable
+import androidx.lifecycle.LiveData
 
 interface CurrencyRepository {
-    fun getLabels(): Flowable<CurrencyLabelList>
+    suspend fun getLabels(): Resource<CurrencyLabelList>
 
     fun getValues(): Flowable<CurrencyValueList>
 }

@@ -2,13 +2,13 @@ package com.gft.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.gft.domain.usecases.ConvertUseCase
 import com.gft.presentation.entities.ConvertEntity
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CurrencyViewModel(private val convertUseCase: ConvertUseCase) :
-    BaseViewModel() {
+class CurrencyViewModel(private val convertUseCase: ConvertUseCase) : ViewModel()
+    {
 
     var data = MutableLiveData<ConvertEntity>()
     var fromValue = MutableLiveData<String>()
@@ -38,27 +38,5 @@ class CurrencyViewModel(private val convertUseCase: ConvertUseCase) :
             return
         }
         data.value?.fromValue = fromValue.value?.toDouble()!!
-
-        val disposable = convertUseCase.execute(
-            from = data.value!!.from,
-            to = data.value!!.to,
-            value = data.value!!.fromValue
-        ).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe {
-                showProgressBar.value = true
-            }
-            .subscribe(
-                { response ->
-                    showProgressBar.value = false
-                    convertEntity.toValue = response
-                    data.value = convertEntity
-                },
-                {
-                    showProgressBar.value = false
-                    showToastMessage.value = "Houve um erro na conversão"
-                }
-            )
-
-        addDisposable(disposable)
     }
 }

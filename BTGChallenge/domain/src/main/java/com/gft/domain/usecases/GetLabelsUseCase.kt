@@ -7,16 +7,9 @@ import com.gft.domain.repository.CurrencyRepository
 import io.reactivex.Flowable
 
 class GetLabelsUseCase(
-    private val transformer: FlowableRxTransformer<CurrencyLabelList>,
     private val repository: CurrencyRepository
-) : BaseFlowableUseCase<CurrencyLabelList>(transformer) {
+) {
 
-    override fun createFlowable(data: Map<String, Any>?): Flowable<CurrencyLabelList> {
-        return repository.getLabels()
-    }
+    suspend fun execute() = repository.getLabels()
 
-    fun getLabels(): Flowable<CurrencyLabelList> {
-        val data = HashMap<String, String>()
-        return single(data)
-    }
 }

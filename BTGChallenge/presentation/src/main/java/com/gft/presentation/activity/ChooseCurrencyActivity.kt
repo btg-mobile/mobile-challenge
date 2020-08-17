@@ -11,10 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gft.domain.entities.Resource
 import com.gft.presentation.ListAdapter
 import com.gft.presentation.R
 import com.gft.presentation.databinding.ActivityChooseCurrencyBinding
-import com.gft.presentation.entities.Status
 import com.gft.presentation.viewmodel.ChooseCurrencyViewModel
 import kotlinx.android.synthetic.main.activity_choose_currency.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -43,8 +43,6 @@ class ChooseCurrencyActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL
             )
         )
-
-        viewModel.getLabels()
     }
 
     private fun onItemClick(codigo: String) {
@@ -61,20 +59,16 @@ class ChooseCurrencyActivity : AppCompatActivity() {
         super.onStart()
 
         viewModel.getLabelsLiveData().observe(this, Observer {
-            when (it?.responseType) {
-                Status.ERROR -> {
-                    Toast.makeText(this, it.error?.message, Toast.LENGTH_SHORT)
+            progress_bar.visibility = View.INVISIBLE
+            when (it?.status) {
+                Resource.Status.ERROR -> {
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT)
                         .show()
                 }
-                Status.LOADING -> {
-                    Log.i("LOADING", "$it")
+                Resource.Status.SUCCESS -> {
+                    it.data?.currencies?.let { it1 -> listAdapter.updateList(it1) }
+                    progress_bar.visibility = View.VISIBLE
                 }
-                Status.SUCCESSFUL -> {
-                }
-            }
-            it?.data?.let { response ->
-                response.currencies?.let { it1 -> listAdapter.updateList(it1) }
-                progress_bar.visibility = View.INVISIBLE
             }
         })
     }
