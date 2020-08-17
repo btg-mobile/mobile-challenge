@@ -10,10 +10,15 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -26,6 +31,9 @@ dependencies {
 
     implementation rootProject.ext.liveData
     implementation rootProject.ext.liveDataExtensions
+
+    testImplementation rootProject.mockk
+    testImplementation rootProject.coreTesting
 }
 
 sourceCompatibility = "7"

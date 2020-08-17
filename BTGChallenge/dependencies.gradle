@@ -14,4 +14,7 @@ ext {
     retrofitRxJava2Adapter = "com.squareup.retrofit2:adapter-rxjava2:2.6.0"
 
     koin = "org.koin:koin-android-viewmodel:1.0.1"
+
+    mockk = "io.mockk:mockk:1.10.0"
+    coreTesting = "android.arch.core:core-testing:1.1.1"
 }
