@@ -120,16 +120,27 @@
             </objects>
             <point key="canvasLocation" x="676.81159420289862" y="-537.05357142857144"/>
         </scene>
-        <!--Listagem View Controller-->
+        <!--List View Controller-->
         <scene sceneID="lsv-jW-b9w">
             <objects>
-                <viewController storyboardIdentifier="list" modalPresentationStyle="fullScreen" id="7yl-h3-WrH" customClass="ListagemViewController" customModule="ConversorMoedas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="list" modalPresentationStyle="fullScreen" id="7yl-h3-WrH" customClass="ListViewController" customModule="ConversorMoedas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JeV-Zo-ggY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VFi-GN-TSe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="7yl-h3-WrH" id="nhU-Tv-Lu0"/>
+                                </connections>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jlv-yd-YUZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y6p-7d-o3g">
                                     <size key="itemSize" width="128" height="128"/>
@@ -152,12 +163,22 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="2" height="-1"/>
                                                 </label>
+                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-3a-mgW">
+                                                    <rect key="frame" x="0.0" y="38" width="344" height="1"/>
+                                                    <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="94f-U8-gck"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <constraints>
                                                 <constraint firstItem="kHG-qs-jbk" firstAttribute="leading" secondItem="fgI-c3-LDh" secondAttribute="leading" constant="16" id="4wQ-Yg-7DT"/>
+                                                <constraint firstAttribute="trailing" secondItem="gpa-3a-mgW" secondAttribute="trailing" id="5qS-kK-QM9"/>
                                                 <constraint firstItem="kHG-qs-jbk" firstAttribute="top" secondItem="fgI-c3-LDh" secondAttribute="top" constant="8" id="6Nd-Xn-2hz"/>
+                                                <constraint firstItem="gpa-3a-mgW" firstAttribute="leading" secondItem="fgI-c3-LDh" secondAttribute="leading" id="BFL-dO-LeB"/>
                                                 <constraint firstAttribute="trailing" secondItem="kHG-qs-jbk" secondAttribute="trailing" constant="16" id="SiK-J4-PZa"/>
+                                                <constraint firstAttribute="bottom" secondItem="gpa-3a-mgW" secondAttribute="bottom" id="arf-H8-zY2"/>
                                                 <constraint firstAttribute="bottom" secondItem="kHG-qs-jbk" secondAttribute="bottom" constant="10" id="g6F-db-Rv1"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -173,15 +194,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7ES-9D-thW" firstAttribute="trailing" secondItem="Jlv-yd-YUZ" secondAttribute="trailing" id="Jzz-CY-bxu"/>
-                            <constraint firstItem="Jlv-yd-YUZ" firstAttribute="top" secondItem="7ES-9D-thW" secondAttribute="top" id="XxJ-7M-3un"/>
+                            <constraint firstItem="VFi-GN-TSe" firstAttribute="leading" secondItem="7ES-9D-thW" secondAttribute="leading" id="V2p-Pr-TT4"/>
+                            <constraint firstItem="Jlv-yd-YUZ" firstAttribute="top" secondItem="VFi-GN-TSe" secondAttribute="bottom" id="cnj-AC-Rvu"/>
                             <constraint firstItem="7ES-9D-thW" firstAttribute="bottom" secondItem="Jlv-yd-YUZ" secondAttribute="bottom" id="f2J-Kv-HZR"/>
+                            <constraint firstItem="VFi-GN-TSe" firstAttribute="top" secondItem="7ES-9D-thW" secondAttribute="top" id="nVA-g2-gZK"/>
                             <constraint firstItem="Jlv-yd-YUZ" firstAttribute="leading" secondItem="7ES-9D-thW" secondAttribute="leading" id="vk9-2B-JAS"/>
+                            <constraint firstItem="VFi-GN-TSe" firstAttribute="trailing" secondItem="7ES-9D-thW" secondAttribute="trailing" id="xsi-MU-0Ji"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7ES-9D-thW"/>
                     </view>
                     <navigationItem key="navigationItem" id="Toe-xO-6Mg"/>
                     <connections>
                         <outlet property="collectionView" destination="Jlv-yd-YUZ" id="pvD-ZA-Cii"/>
+                        <outlet property="searchBar" destination="VFi-GN-TSe" id="8lj-P9-2RF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpF-GC-dm4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ListagemViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
+class ListViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
 
-    @IBOutlet var collectionView : UICollectionView?
+    @IBOutlet weak var collectionView : UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var currencies: [CurrenciesList.Currencies] = []
     var searchCurrencies: [CurrenciesList.Currencies] = []
@@ -19,6 +20,7 @@ class ListagemViewController: UIViewController, UICollectionViewDelegate, UISear
         super.viewDidLoad()
         collectionView?.dataSource = self
         collectionView?.delegate = self
+        self.searchBar.delegate = self
         CurrenciesList().getList({ list in
             self.currencies = list.map {c in CurrenciesList.Currencies(key: c.key, value: c.value)}
             self.currencies = self.currencies.sorted(by: {a, b in a.key.localizedCaseInsensitiveCompare(b.key) == .orderedAscending})
@@ -27,12 +29,12 @@ class ListagemViewController: UIViewController, UICollectionViewDelegate, UISear
                 self.collectionView?.reloadData()
             }
         }, {error in
-            ExchangeViewController().showMessage("Erro", error as! String)
+            self.showMessage("Erro", error as! String)
         })
     }
 }
 
-extension ListagemViewController:UICollectionViewDataSource {
+extension ListViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currencies.count
     }
@@ -45,6 +47,26 @@ extension ListagemViewController:UICollectionViewDataSource {
         return cell!
     }
     
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.currencies.removeAll()
+           
+           for item in searchCurrencies {
+               if item.key.lowercased().contains(searchBar.text!.lowercased()) || item.value.lowercased().contains(searchBar.text!.lowercased()){
+                   self.currencies.append(item)
+               }
+           }
+           
+           if (searchBar.text!.isEmpty){
+               self.currencies = self.searchCurrencies
+           }
+           
+           self.collectionView?.reloadData()
+    }
+    
+   
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let vc = presentingViewController as? ExchangeViewController
@@ -56,7 +78,7 @@ extension ListagemViewController:UICollectionViewDataSource {
     }
 }
 
-extension ListagemViewController:UICollectionViewDelegateFlowLayout {
+extension ListViewController:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 30)
     }

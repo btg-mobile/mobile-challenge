@@ -36,12 +36,14 @@ class ExchangeViewController: UIViewController{
         
         if ((currencyDestiny?.key) == nil){
             let message = "Escolha uma moeda de destino"
-            return showMessage(title, message)
+            showMessage(title, message)
+            return
         }
         
         if let valueConvert = tfInputValue.text, valueConvert.isEmpty{
             let message = "Preencha o valor a ser convertido"
-            return showMessage(title, message)
+            showMessage(title, message)
+            return
         }
         
         let formatter = NumberFormatter()
@@ -75,15 +77,7 @@ class ExchangeViewController: UIViewController{
         }
     }
     
-    func showMessage(_ title: String, _ message: String){
 
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-
-        self.present(alert, animated: true, completion: nil)
- 
-    }
     
     private func openCurrenciesList() {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "list")
