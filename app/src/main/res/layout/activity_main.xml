@@ -25,39 +25,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <com.kaleniuk2.conversordemoedas.common.ui.components.LoadingButton
             android:id="@+id/btn_select_currency_from"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/currency_from"/>
+            app:title="@string/currency_from"/>
 
-        <Button
+        <com.kaleniuk2.conversordemoedas.common.ui.components.LoadingButton
             android:id="@+id/btn_select_currency_to"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/btn_select_currency_from"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/currency_to"/>
+            app:title="@string/currency_to"/>
 
         <EditText
             android:id="@+id/et_select_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:inputType="number"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:imeOptions="actionSearch"
             android:textColor="@android:color/black"
             android:textAlignment="center"
             android:hint="@string/value"
             android:layout_below="@id/btn_select_currency_to" />
 
-        <Button
+        <com.kaleniuk2.conversordemoedas.common.ui.components.LoadingButton
             android:id="@+id/btn_convert"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/et_select_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/convert"/>
+            app:title="@string/convert"/>
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_below="@+id/btn_convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="40sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            tools:text="100,00"/>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

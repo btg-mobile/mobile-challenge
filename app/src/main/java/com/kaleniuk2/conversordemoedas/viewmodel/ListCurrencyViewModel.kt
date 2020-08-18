@@ -1,6 +1,5 @@
 package com.kaleniuk2.conversordemoedas.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kaleniuk2.conversordemoedas.data.DataWrapper
@@ -15,11 +14,17 @@ class ListCurrencyViewModel(
     val showError: MutableLiveData<String> = MutableLiveData()
     val showListCurrencies: MutableLiveData<List<Currency>> = MutableLiveData()
     private var listCurrency: List<Currency> = listOf()
+    private var currentOrder: ORDER? = null
+
+    enum class ORDER {
+        DESC, ASC
+    }
 
     fun interact(interact: Interact) {
         when (interact) {
             is Interact.GetCurrencies -> getCurrencies()
             is Interact.SearchCurrency -> searchCurrency(interact.search)
+            is Interact.OrderCurrencies -> orderCurrencies()
         }
     }
 
@@ -47,8 +52,21 @@ class ListCurrencyViewModel(
         }
     }
 
+    private fun orderCurrencies() {
+        if (currentOrder == null || currentOrder == ORDER.DESC) {
+            currentOrder = ORDER.ASC
+
+            showListCurrencies.value = showListCurrencies.value?.sortedBy { it.name }
+        } else {
+            currentOrder = ORDER.DESC
+
+            showListCurrencies.value = showListCurrencies.value?.sortedByDescending { it.name }
+        }
+    }
+
     sealed class Interact {
         object GetCurrencies : Interact()
+        object OrderCurrencies : Interact()
         class SearchCurrency(val search: String) : Interact()
     }
 }

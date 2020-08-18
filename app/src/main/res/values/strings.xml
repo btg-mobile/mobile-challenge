@@ -6,4 +6,7 @@
     <string name="convert">Converter</string>
     <string name="search_currency">Buscar Moeda</string>
     <string name="loading">Carregando</string>
+    <string name="order_desc">Ordem Decrescente</string>
+    <string name="order_asc">Ordem crescente</string>
+    <string name="invert">Inverter</string>
 </resources>

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +19,7 @@ import com.kaleniuk2.conversordemoedas.ui.adapter.ListCurrencyAdapter
 import com.kaleniuk2.conversordemoedas.viewmodel.ListCurrencyViewModel
 import com.kaleniuk2.conversordemoedas.viewmodel.ListCurrencyViewModel.Interact.GetCurrencies
 import com.kaleniuk2.conversordemoedas.viewmodel.ListCurrencyViewModel.Interact.SearchCurrency
+import com.kaleniuk2.conversordemoedas.viewmodel.ListCurrencyViewModel.Interact.OrderCurrencies
 import kotlinx.android.synthetic.main.activity_list_currency.*
 
 class ListCurrencyActivity : BaseActivity() {
@@ -34,7 +37,7 @@ class ListCurrencyActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_currency)
-        setupToolbar(toolbar)
+        setupToolbar(toolbar, true)
         setupObservers()
         setupRecyclerViewCurrency()
         setupTextWatcher()
@@ -90,4 +93,23 @@ class ListCurrencyActivity : BaseActivity() {
         recyclerCurrency.adapter = adapter
         recyclerCurrency.layoutManager = LinearLayoutManager(this)
     }
+
+    private fun orderCurrencies() {
+        viewModel.interact(OrderCurrencies)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_list_currency, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> finish()
+            R.id.order -> orderCurrencies()
+        }
+
+        return true
+    }
+
 }

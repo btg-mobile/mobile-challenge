@@ -6,8 +6,8 @@ import com.kaleniuk2.conversordemoedas.common.network.NetworkRequestManager
 import com.kaleniuk2.conversordemoedas.data.parser.CurrencyParser
 
 class CurrencyRemoteDataSource<T>(val callback: (T) -> Unit) :
-    AsyncTask<CurrencyRemoteDataSource.END_POINT, Unit, T>() {
-    enum class END_POINT {
+    AsyncTask<CurrencyRemoteDataSource.ENDPOINT, Unit, T>() {
+    enum class ENDPOINT(var additionalParams: String = "") {
         LIST, LIVE
     }
 
@@ -18,9 +18,11 @@ class CurrencyRemoteDataSource<T>(val callback: (T) -> Unit) :
         private const val LIVE_ENDPOINT = "live"
     }
 
-    override fun doInBackground(vararg params: END_POINT): T {
-        when (params[0]) {
-            END_POINT.LIST -> {
+    override fun doInBackground(vararg params: ENDPOINT): T {
+        val endPoint = params[0]
+        when (endPoint) {
+
+            ENDPOINT.LIST -> {
 
                 return when (val resultJson =
                     NetworkRequestManager.makeRequest("$API_URL$LIST_ENDPOINT$API_KEY")) {
@@ -30,10 +32,16 @@ class CurrencyRemoteDataSource<T>(val callback: (T) -> Unit) :
                     is DataWrapper.Error ->
                         DataWrapper.Error(resultJson.error) as T
                 }
-
             }
-            END_POINT.LIVE -> {
-                return CurrencyDataResponse(false, 0, null) as T
+            ENDPOINT.LIVE -> {
+                return when (val resultJson =
+                    NetworkRequestManager.makeRequest("$API_URL$LIVE_ENDPOINT$API_KEY&currencies=${endPoint.additionalParams}")) {
+                    is DataWrapper.Success -> {
+                        CurrencyParser.toQuotes(resultJson.value) as T
+                    }
+                    is DataWrapper.Error ->
+                        DataWrapper.Error(resultJson.error) as T
+                }
             }
         }
     }
