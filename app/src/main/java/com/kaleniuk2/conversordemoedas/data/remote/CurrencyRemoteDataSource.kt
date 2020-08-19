@@ -1,8 +1,8 @@
 package com.kaleniuk2.conversordemoedas.data.remote
 
 import android.os.AsyncTask
-import com.kaleniuk2.conversordemoedas.data.DataWrapper
 import com.kaleniuk2.conversordemoedas.common.network.NetworkRequestManager
+import com.kaleniuk2.conversordemoedas.data.DataWrapper
 import com.kaleniuk2.conversordemoedas.data.parser.CurrencyParser
 
 class CurrencyRemoteDataSource<T>(val callback: (T) -> Unit) :
@@ -12,18 +12,19 @@ class CurrencyRemoteDataSource<T>(val callback: (T) -> Unit) :
     }
 
     companion object {
-        private const val API_URL = "http://api.currencylayer.com/"
+        private var API_URL = "http://api.currencylayer.com/"
         private const val API_KEY = "?access_key=1d08dfaeaf855d465642aa490f115c8f"
         private const val LIST_ENDPOINT = "list"
         private const val LIVE_ENDPOINT = "live"
+
+        fun changeUrlForTesting() {
+            API_URL = "http://localhost:8080/"
+        }
     }
 
     override fun doInBackground(vararg params: ENDPOINT): T {
-        val endPoint = params[0]
-        when (endPoint) {
-
+        when (val endPoint = params[0]) {
             ENDPOINT.LIST -> {
-
                 return when (val resultJson =
                     NetworkRequestManager.makeRequest("$API_URL$LIST_ENDPOINT$API_KEY")) {
                     is DataWrapper.Success -> {

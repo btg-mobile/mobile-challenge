@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Conversor de Moedas</string>
+    <string name="app_name">BTG Conversor</string>
     <string name="currency_from">Moeda de Origem</string>
     <string name="currency_to">Moeda Destino</string>
     <string name="value">Digite o Valor</string>

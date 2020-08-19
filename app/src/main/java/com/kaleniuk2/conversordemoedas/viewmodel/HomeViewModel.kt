@@ -56,12 +56,28 @@ class HomeViewModel(private val repository: CurrencyRepository = CurrencyReposit
             }
     }
 
+    private fun adjustAbbreviations(list: List<Currency>) {
+        list[0].abbreviation =
+            if (list[0].abbreviation != "USDUSD") {
+                list[0].abbreviation.replace("USD", "")
+            } else "USD"
+
+        list[1].abbreviation =
+            if (list[1].abbreviation != "USDUSD") {
+                list[1].abbreviation.replace("USD", "")
+            } else "USD"
+    }
+
     private fun convertListToResult(list: List<Currency>, values: Interact.Convert): String {
         val value = NumberUtil.parseStringToBigDecimal(values.value)
-        val from = if (list[0].abbreviation.contains(values.currencyFrom)) list[0].value else list[1].value
-        val to = if (list[0].abbreviation.contains(values.currencyTo)) list[0].value else list[1].value
-        return ((from / to) * value)
-            .setScale(2, BigDecimal.ROUND_FLOOR).toString()
+        adjustAbbreviations(list)
+        val from = if (list[0].abbreviation.contains(values.currencyFrom)) list[0] else list[1]
+        val to = if (list[0].abbreviation.contains(values.currencyTo)) list[0] else list[1]
+
+        return "${to.abbreviation} ${((to.value.divide(
+            from.value, 2, BigDecimal.ROUND_CEILING
+        )) * value)
+            .setScale(2, BigDecimal.ROUND_CEILING)}"
     }
 
     private fun showError(error: String) {

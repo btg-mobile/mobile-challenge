@@ -147,5 +147,4 @@ class HomeActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
-
 }

@@ -5,7 +5,7 @@ import java.math.BigDecimal
 
 data class Currency(
     val name: String,
-    val abbreviation: String,
+    var abbreviation: String,
     val value: BigDecimal = BigDecimal(0)
 ) : Serializable {
     override fun toString(): String {

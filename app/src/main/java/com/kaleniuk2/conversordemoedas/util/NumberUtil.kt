@@ -1,6 +1,5 @@
 package com.kaleniuk2.conversordemoedas.util
 
-import android.util.Log
 import java.math.BigDecimal
 
 object NumberUtil {
@@ -10,10 +9,10 @@ object NumberUtil {
             .replace(".","")
             .trim()
         return try {
-            val value = BigDecimal(cleanString).setScale(
-                decimal, BigDecimal.ROUND_FLOOR
-            ).divide(BigDecimal(100), BigDecimal.ROUND_FLOOR)
-            value
+            val convertedValue = BigDecimal(cleanString).setScale(
+                decimal, BigDecimal.ROUND_CEILING
+            ).divide(BigDecimal(100), BigDecimal.ROUND_CEILING)
+            convertedValue
         } catch (e: NumberFormatException) {
             BigDecimal(0)
         }

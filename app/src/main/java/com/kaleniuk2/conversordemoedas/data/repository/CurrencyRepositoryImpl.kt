@@ -11,7 +11,9 @@ class CurrencyRepositoryImpl : CurrencyRepository {
         }.execute(CurrencyRemoteDataSource.ENDPOINT.LIST)
     }
 
-    override fun convert(currencyFrom: String, currencyTo: String, callback: (DataWrapper<List<Currency>>) -> Unit) {
+    override fun convert(
+        currencyFrom: String,
+        currencyTo: String, callback: (DataWrapper<List<Currency>>) -> Unit) {
         val live = CurrencyRemoteDataSource.ENDPOINT.LIVE
         live.additionalParams = "$currencyFrom,$currencyTo"
         CurrencyRemoteDataSource<DataWrapper<List<Currency>>> {
