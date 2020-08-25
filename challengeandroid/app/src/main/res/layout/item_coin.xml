@@ -12,8 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@id/tv_name"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="AED" />
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toStartOf="@id/btn_to_convert"
         app:layout_constraintStart_toEndOf="@id/tv_code"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,12 +33,14 @@
 
     <Button
         android:id="@+id/btn_to_convert"
-        app:layout_constraintTop_toTopOf="@id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_button_default"
+        android:text="@string/item_coin_btn_select"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_name"
-        android:text="@string/item_coin_btn_select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toTopOf="@id/tv_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

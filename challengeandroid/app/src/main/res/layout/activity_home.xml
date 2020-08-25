@@ -10,101 +10,122 @@
         android:id="@+id/tv_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
         android:text="@string/home_label_value"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_value"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_value"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/home_hint_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:digits="1234567890.,"
+        android:fontFamily="casual"
+        android:hint="@string/home_hint_value"
+        android:layout_marginTop="8dp"
         android:inputType="numberDecimal"
-        android:digits="1234567890.,"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_value" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_source"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/et_value"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/et_value">
 
         <EditText
             android:id="@+id/et_source"
-            android:enabled="false"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
+            android:fontFamily="casual"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp"
             android:hint="@string/list_hint_source_coin"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_show_list_source"/>
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_list_source" />
 
         <Button
             android:id="@+id/btn_show_list_source"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_button_default"
             android:text="Escolher moeda"
-            android:layout_marginLeft="12dp"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/et_source"
-            app:layout_constraintBottom_toBottomOf="@id/et_source"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_destiny"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/cl_source"
+        android:layout_marginTop="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/cl_source">
 
         <EditText
             android:id="@+id/et_destiny"
-            android:enabled="false"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
+            android:fontFamily="casual"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp"
             android:hint="@string/list_hint_destiny_coin"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_show_list_destiny"/>
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_list_destiny" />
 
         <Button
             android:id="@+id/btn_show_list_destiny"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_button_default"
             android:text="Escolher moeda"
-            android:layout_marginLeft="12dp"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/et_destiny"
-            app:layout_constraintBottom_toBottomOf="@id/et_destiny"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/btn_to_converter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/selector_button_default_in_othercolor"
         android:text="Converter"
-        app:layout_constraintTop_toBottomOf="@id/cl_destiny"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_destiny" />
 
     <TextView
         android:id="@+id/tv_result"
-        android:textSize="22sp"
-        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="casual"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_to_converter"
-        tools:text="$320.00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        tools:text="$320.00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
