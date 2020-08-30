@@ -84,19 +84,12 @@ class Quote: Object {
                     try! realm.write {
                         for (key, subJson) in json["quotes"] {
                             
-                            let message1 = "Creating " + key
-                            print(message1)
-                            
                             let quote = Quote.createOrUpdateFromJSON(key, subJson, realm: realm)
-                            print(quote?.objectId)
-                            print(quote?.dollarRatio)
-                            print(quote?.toCurrency)
                             let currency = realm.object(ofType: Currency.self, forPrimaryKey: quote?.toCurrency)
                             currency?.updating = false
                         }
                         
                         try! realm.commitWrite()
-                        print("Commit success")
                     }
                 
                     callback("success", nil)

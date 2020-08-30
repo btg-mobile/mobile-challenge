@@ -57,8 +57,6 @@ class Currency: Object {
         longName = json.string
         active = true
         quoteId = "USD" + shortName!
-        print(shortName)
-        print(quoteId)
     }
     
     func isUpToDate(callback: @escaping (_ target: String?, _ error: NSError?) -> Void) -> Bool {
@@ -66,22 +64,13 @@ class Currency: Object {
         let realm = try! Realm()
         
         let quote = realm.object(ofType: Quote.self, forPrimaryKey: quoteId)
-        
-        print(quoteId)
-        let mess = shortName! + " is " + String(quote?.dollarRatio ?? 0.0)
-        print(mess)
-        
+                
         if let quote = quote {
-            let message = shortName! + " is " + String(quote.isUpToDate())
-            print(message)
             if (quote.isUpToDate()) {
                 return true
             }
         }
-        
-        let message = shortName! + " Updating " + String(updating)
-        print(message)
-        
+                
         if (!updating) {
             try! realm.write {
                 updating = true

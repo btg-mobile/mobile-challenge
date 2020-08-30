@@ -54,14 +54,10 @@ class FirstViewController: UIViewController {
     
     func checkQuotes(fromCurrency: String, toCurrency: String) {
         
-        print("Checking")
-        
         let realm = try! Realm()
         
         let sourceCur = realm.object(ofType: Currency.self, forPrimaryKey: fromCurrency)
         let destinationCur = realm.object(ofType: Currency.self, forPrimaryKey: toCurrency)
-        
-        print(sourceCur != nil)
         
         let sourceOk = sourceCur?.isUpToDate(callback: { (status, error) in
             self.checkQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
@@ -71,9 +67,6 @@ class FirstViewController: UIViewController {
             self.checkQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
         })
         
-//        let message = String(sourceOk) + "|" + String(destinationOk)
-//        print(message)
-              
         if ((sourceOk ?? false) && (destinationOk ?? false)) {
             
             activityIndicator.stopAnimating()
