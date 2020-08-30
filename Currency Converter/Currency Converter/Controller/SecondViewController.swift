@@ -62,13 +62,10 @@ class SecondViewController: UIViewController {
     }
     
     func searchFor(text: String) {
-        
-        print(text)
-        
+                
         let realm = try! Realm()
         
         let currencyList = realm.objects(Currency.self).filter("shortName CONTAINS[c] %@ OR longName CONTAINS[c] %@", text, text).sorted(byKeyPath: "shortName")
-        print(currencyList.count)
         populateTableView(currencyList: currencyList)
     }
 }
