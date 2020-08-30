@@ -87,6 +87,7 @@ class Quote: Object {
                             let quote = Quote.createOrUpdateFromJSON(key, subJson, realm: realm)
                             let currency = realm.object(ofType: Currency.self, forPrimaryKey: quote?.toCurrency)
                             currency?.updating = false
+                            currency?.quoteExists = true
                         }
                         
                         try! realm.commitWrite()

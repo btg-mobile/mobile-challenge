@@ -21,10 +21,11 @@ class Currency: Object {
     @objc dynamic var longName: String? = nil
     @objc dynamic var quoteId: String? = nil
     @objc dynamic var updating = false
+    @objc dynamic var quoteExists = false
 
     // This variable exists to allow for an offline database to be built,
     // while still removing currencies in case it ceases to return or ceases to exist
-    @objc dynamic var active: Bool = false
+    @objc dynamic var active: Bool = true
     
     class func createIfNeeded(_ key: String, realm: Realm) -> Currency? {
         
@@ -57,6 +58,14 @@ class Currency: Object {
         longName = json.string
         active = true
         quoteId = "USD" + shortName!
+    }
+    
+    func updateNameForShort() {
+        if shortName == "USD" {
+            longName = "United States Dollar"
+        } else {
+            longName = "Brazilian Real"
+        }
     }
     
     func isUpToDate(callback: @escaping (_ target: String?, _ error: NSError?) -> Void) -> Bool {

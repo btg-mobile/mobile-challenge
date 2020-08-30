@@ -25,14 +25,18 @@ class SecondViewController: UIViewController {
         Currency.listCurrencies { (receivedCurrencies, error) in
             
             let realm = try! Realm()
+            var currencyList: Results<Currency>
             
             if (error != nil) {
                 self.showSimpleAlert(title: error!.userInfo[NSLocalizedDescriptionKey] as! String,
                                      message: error!.userInfo[NSLocalizedRecoverySuggestionErrorKey] as! String)
+                
+                currencyList = realm.objects(Currency.self).filter("active = true AND quoteExists = true").sorted(byKeyPath: "shortName")
+                print(currencyList.count)
             } else {
+                currencyList = realm.objects(Currency.self).filter("active = true").sorted(byKeyPath: "shortName")
             }
             
-            let currencyList = realm.objects(Currency.self).filter("active = true").sorted(byKeyPath: "shortName")
             if (currencyList.count < 1) {
                 self.tableView.isHidden = true
                 self.errorMessage.isHidden = false
