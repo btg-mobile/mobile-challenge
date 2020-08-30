@@ -11,18 +11,23 @@ import RealmSwift
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorMessage: UILabel!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     var currencies = [Currency]()
     var currencyPosition = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        activityIndicator.startAnimating()
         Currency.listCurrencies { (receivedCurrencies, error) in
+            
+            if self.activityIndicator.isAnimating {
+                self.activityIndicator.stopAnimating()
+            }
             
             let realm = try! Realm()
             var currencyList: Results<Currency>
@@ -32,24 +37,39 @@ class SecondViewController: UIViewController {
                                      message: error!.userInfo[NSLocalizedRecoverySuggestionErrorKey] as! String)
                 
                 currencyList = realm.objects(Currency.self).filter("active = true AND quoteExists = true").sorted(byKeyPath: "shortName")
-                print(currencyList.count)
             } else {
                 currencyList = realm.objects(Currency.self).filter("active = true").sorted(byKeyPath: "shortName")
             }
             
-            if (currencyList.count < 1) {
-                self.tableView.isHidden = true
-                self.errorMessage.isHidden = false
-            } else {
-                self.tableView.isHidden = false
-                self.errorMessage.isHidden = true
-            }
-            
-            self.currencies.removeAll()
-            self.currencies.append(contentsOf: currencyList)
-            
-            self.tableView.reloadData()
+            self.populateTableView(currencyList: currencyList)
         }
+    }
+    
+    func populateTableView(currencyList: Results<Currency>) {
+        
+        if (currencyList.count < 1) {
+            tableView.isHidden = true
+            errorMessage.isHidden = false
+        } else {
+            tableView.isHidden = false
+            errorMessage.isHidden = true
+        }
+        
+        currencies.removeAll()
+        currencies.append(contentsOf: currencyList)
+        
+        tableView.reloadData()
+    }
+    
+    func searchFor(text: String) {
+        
+        print(text)
+        
+        let realm = try! Realm()
+        
+        let currencyList = realm.objects(Currency.self).filter("shortName CONTAINS[c] %@ OR longName CONTAINS[c] %@", text, text).sorted(byKeyPath: "shortName")
+        print(currencyList.count)
+        populateTableView(currencyList: currencyList)
     }
 }
 
@@ -86,5 +106,16 @@ extension SecondViewController: UITableViewDelegate {
         dismiss(animated: true) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"), object: nil)
         }
+    }
+}
+
+extension SecondViewController: UISearchBarDelegate {
+        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchFor(text: searchText)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
