@@ -12,6 +12,7 @@ import RealmSwift
 class SecondViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorMessage: UILabel!
     
     var currencies = [Currency]()
     var currencyPosition = 0
@@ -23,14 +24,22 @@ class SecondViewController: UIViewController {
         
         Currency.listCurrencies { (receivedCurrencies, error) in
             
-            if (error != nil) {
-                
-                // Handle error
-            }
-            
             let realm = try! Realm()
             
+            if (error != nil) {
+                self.showSimpleAlert(title: error!.userInfo[NSLocalizedDescriptionKey] as! String,
+                                     message: error!.userInfo[NSLocalizedRecoverySuggestionErrorKey] as! String)
+            } else {
+            }
+            
             let currencyList = realm.objects(Currency.self).filter("active = true").sorted(byKeyPath: "shortName")
+            if (currencyList.count < 1) {
+                self.tableView.isHidden = true
+                self.errorMessage.isHidden = false
+            } else {
+                self.tableView.isHidden = false
+                self.errorMessage.isHidden = true
+            }
             
             self.currencies.removeAll()
             self.currencies.append(contentsOf: currencyList)

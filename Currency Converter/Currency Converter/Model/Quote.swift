@@ -95,8 +95,9 @@ class Quote: Object {
                     callback("success", nil)
 
                 case .failure(let error as NSError):
-                    callback("fail", error)
                     print(error)
+                    let code = response.response != nil ? response.response!.statusCode : error.code
+                    callback(nil, error.parsedErrorForHTTPStatusCode(code))
                 default: break
             }
         }

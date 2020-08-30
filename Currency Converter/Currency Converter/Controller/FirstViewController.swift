@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Network
+import Alamofire
 
 class FirstViewController: UIViewController {
 
@@ -19,6 +21,7 @@ class FirstViewController: UIViewController {
     
     var sourceRatio = 0 as Double
     var destinationRatio = 0 as Double
+    var connected = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +63,22 @@ class FirstViewController: UIViewController {
         let destinationCur = realm.object(ofType: Currency.self, forPrimaryKey: toCurrency)
         
         let sourceOk = sourceCur?.isUpToDate(callback: { (status, error) in
+            if (error != nil) {
+                self.showSimpleAlert(title: error!.userInfo[NSLocalizedDescriptionKey] as! String,
+                                     message: error!.userInfo[NSLocalizedRecoverySuggestionErrorKey] as! String)
+                return
+            }
+            
             self.checkQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
         })
             
         let destinationOk = destinationCur?.isUpToDate(callback: { (status, error) in
+            if (error != nil) {
+                self.showSimpleAlert(title: error!.userInfo[NSLocalizedDescriptionKey] as! String,
+                                     message: error!.userInfo[NSLocalizedRecoverySuggestionErrorKey] as! String)
+                return
+            }
+            
             self.checkQuotes(fromCurrency: fromCurrency, toCurrency: toCurrency)
         })
         
@@ -84,6 +99,21 @@ class FirstViewController: UIViewController {
         }
         
         activityIndicator.startAnimating()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let manager = NetworkReachabilityManager.init()
+        if !(manager?.isReachable ?? false) {
+            if activityIndicator.isAnimating {
+                activityIndicator.stopAnimating()
+            }
+            
+            var error = NSError()
+            error = error.parsedErrorForHTTPStatusCode(13)
+            showSimpleAlert(title: error.userInfo[NSLocalizedDescriptionKey] as! String,
+                            message: error.userInfo[NSLocalizedRecoverySuggestionErrorKey] as! String)
+        }
     }
     
     func updateText() {

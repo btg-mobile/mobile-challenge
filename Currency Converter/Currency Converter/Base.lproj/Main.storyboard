@@ -43,7 +43,7 @@
                                         <rect key="frame" x="304" y="66" width="55" height="34"/>
                                         <state key="normal" title="CUR"/>
                                         <connections>
-                                            <segue destination="dWg-zr-TXm" kind="presentation" id="CpG-QJ-0IL"/>
+                                            <segue destination="dWg-zr-TXm" kind="show" id="CpG-QJ-0IL"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoR-xe-eDL">
@@ -194,6 +194,12 @@ Currency</string>
                                     <outlet property="delegate" destination="dWg-zr-TXm" id="2au-oj-Jnk"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erro ao carregar moedas, verifique sua conexão e tente novamente" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzm-2j-fhq">
+                                <rect key="frame" x="25" y="355" width="325" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YDz-UC-MWJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
@@ -205,10 +211,14 @@ Currency</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YDz-UC-MWJ" firstAttribute="trailing" secondItem="dvV-k6-Wse" secondAttribute="trailing" id="1nC-Yd-4xc"/>
+                            <constraint firstItem="dzm-2j-fhq" firstAttribute="centerX" secondItem="H4k-ZW-LfZ" secondAttribute="centerX" id="FyC-tE-Qyb"/>
+                            <constraint firstAttribute="trailing" secondItem="dzm-2j-fhq" secondAttribute="trailing" constant="25" id="Gug-iA-TrI"/>
                             <constraint firstItem="YDz-UC-MWJ" firstAttribute="top" secondItem="dvV-k6-Wse" secondAttribute="top" id="GvO-pe-QWY"/>
                             <constraint firstItem="dvV-k6-Wse" firstAttribute="bottom" secondItem="aap-ZI-SVV" secondAttribute="bottom" id="Myu-Uh-9ar"/>
                             <constraint firstItem="dvV-k6-Wse" firstAttribute="trailing" secondItem="aap-ZI-SVV" secondAttribute="trailing" id="OBt-IF-bvb"/>
                             <constraint firstItem="aap-ZI-SVV" firstAttribute="leading" secondItem="dvV-k6-Wse" secondAttribute="leading" id="dhV-ib-sHc"/>
+                            <constraint firstItem="dzm-2j-fhq" firstAttribute="leading" secondItem="dvV-k6-Wse" secondAttribute="leading" constant="25" id="ggT-yE-aE5"/>
+                            <constraint firstItem="dzm-2j-fhq" firstAttribute="centerY" secondItem="H4k-ZW-LfZ" secondAttribute="centerY" id="nZS-7g-hW4"/>
                             <constraint firstItem="YDz-UC-MWJ" firstAttribute="leading" secondItem="dvV-k6-Wse" secondAttribute="leading" id="s8D-hL-g8e"/>
                             <constraint firstItem="aap-ZI-SVV" firstAttribute="top" secondItem="YDz-UC-MWJ" secondAttribute="bottom" id="yyu-M5-Zif"/>
                         </constraints>
@@ -216,6 +226,7 @@ Currency</string>
                     </view>
                     <navigationItem key="navigationItem" id="xWP-eG-ttj"/>
                     <connections>
+                        <outlet property="errorMessage" destination="dzm-2j-fhq" id="jLG-8i-NCP"/>
                         <outlet property="tableView" destination="aap-ZI-SVV" id="VIZ-6i-bum"/>
                     </connections>
                 </viewController>

@@ -122,8 +122,8 @@ extension Currency {
 
                 case .failure(let error as NSError):
                     print(error)
-                    let code = response.response != nil ? response.response!.statusCode : error.code                    
-//                    callback(nil, error.parsedErrorForHTTPStatusCode(code))
+                    let code = response.response != nil ? response.response!.statusCode : error.code
+                    callback(nil, error.parsedErrorForHTTPStatusCode(code))
                 default: break
             }
         }

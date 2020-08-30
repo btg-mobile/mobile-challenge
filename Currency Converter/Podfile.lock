@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.2.2)
-  - InputMask (6.0.0)
+  - ReachabilitySwift (5.0.0)
   - Realm (5.3.5):
     - Realm/Headers (= 5.3.5)
   - Realm/Headers (5.3.5)
@@ -10,25 +10,25 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
-  - InputMask
+  - ReachabilitySwift
   - RealmSwift
   - SwiftyJSON (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - InputMask
+    - ReachabilitySwift
     - Realm
     - RealmSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  InputMask: f340bdc905a4c4f377e44d865f129f752ac2383d
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Realm: 2b52fcc86fc0ed3d75a56ac0eb1e73c4f1a60e16
   RealmSwift: a6ea2ea561039fc3833c08dec81371a9a3bb5ca6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 64521852dee42370f1ff2490d410a0d466277294
+PODFILE CHECKSUM: a005e56dc6a1ae07f0ef1f1169cad074cd03cb7d
 
 COCOAPODS: 1.9.3
