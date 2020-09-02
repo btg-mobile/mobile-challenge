@@ -11,6 +11,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,8 @@ class ListaMoedasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_moedas)
 
+        title = "Escolha uma moeda"
+
         bindViews()
         criarObserver()
         configurarRecyclerView()
@@ -61,9 +64,7 @@ class ListaMoedasActivity : AppCompatActivity() {
                     is ListaMoedasState.MoedaEscolihda -> moedaEscolhida(it.item)
                     is ListaMoedasState.ShowLoading -> showLoagind()
                     is ListaMoedasState.HideLoading -> hideLoading()
-                    is ListaMoedasState.IsErro -> {
-                        Log.e("error", "erro ao buscar lista das moedas ${it.error}")
-                    }
+                    is ListaMoedasState.IsErro -> showError(it.error)
                 }
             }
         })
@@ -78,6 +79,10 @@ class ListaMoedasActivity : AppCompatActivity() {
 
     private fun hideLoading() {
         progressBar.visibility = GONE
+    }
+
+    private fun showError(error: String) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
     }
 
     private fun configurarRecyclerView() {

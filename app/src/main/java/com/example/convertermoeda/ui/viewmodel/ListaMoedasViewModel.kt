@@ -3,6 +3,7 @@ package com.example.convertermoeda.ui.viewmodel
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.convertermoeda.helper.NETWORK_ERROR
 import com.example.convertermoeda.model.Currencies
 import com.example.convertermoeda.provider.providerListaMoedasUseCase
 import com.example.convertermoeda.ui.viewmodel.base.BaseViewModel
@@ -27,7 +28,7 @@ class ListaMoedasViewModel : BaseViewModel() {
                 state.value = ListaMoedasState.ShowListsMoedas(resultApi)
                 resultApi?.let { setLocalLista(it) }
             } catch (e: Exception) {
-                state.value = ListaMoedasState.IsErro(e.message.toString())
+                state.value = ListaMoedasState.IsErro(NETWORK_ERROR)
             }
 
             state.value = ListaMoedasState.HideLoading
@@ -42,7 +43,7 @@ class ListaMoedasViewModel : BaseViewModel() {
                 state.value = resultApi?.let { ListaMoedasState.ShowListsMoedas(it) }
                 resultApi?.let { setLocalLista(it) }
             } catch (e: Exception) {
-                state.value = ListaMoedasState.IsErro(e.message.toString())
+                state.value = ListaMoedasState.IsErro(NETWORK_ERROR)
             }
             state.value = ListaMoedasState.HideLoading
         }

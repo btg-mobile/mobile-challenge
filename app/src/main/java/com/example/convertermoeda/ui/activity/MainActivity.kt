@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.convertermoeda.R
 import com.example.convertermoeda.helper.*
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        title = ""
 
         bindViews()
 
@@ -70,14 +73,16 @@ class MainActivity : AppCompatActivity() {
             viewState?.let {
                 when (it) {
                     is MainState.GetCoversao -> showConversao(it.value)
-                    is MainState.IsErro -> {
-                        Log.e("error", "erro ao buscar cotacao ${it.error}")
-                    }
+                    is MainState.IsErro -> showError(it.error)
                 }
             }
         })
 
         viewModel.buscarLive(applicationContext)
+    }
+
+    private fun showError(error: String) {
+        Toast.makeText(this,error,Toast.LENGTH_SHORT).show()
     }
 
     private fun showConversao(value: Double) {
