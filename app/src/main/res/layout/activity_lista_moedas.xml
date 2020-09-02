@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.ListaMoedasActivity">
+
+    <EditText
+        android:id="@+id/et_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:inputType="text"
+        android:padding="5dp"
+        android:background="@drawable/bg_edittext_retangular"
+        android:hint="Buscar por nome ou codigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="Buscar por nome ou codigo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_moedas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_lista_moedas" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_buscar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
