@@ -43,7 +43,7 @@ class MainUseCase(private val repository: MainRepository) {
 
     fun getCotacaoLocal(
         context: Context,
-        value: String,
+        value: Double,
         origem: String,
         destino: String
     ): Double {
@@ -57,8 +57,7 @@ class MainUseCase(private val repository: MainRepository) {
             isDolar(origem) -> converter(value, getQuot(origem + destino))
             isDolar(destino) -> converter(value, getQuot(destino + origem))
             else -> {
-                val quot = getQuot(USD + origem)
-                converter(value, quot)
+                return value * (1 / getQuot(USD + origem)) / ( 1 / getQuot(USD + destino))
             }
         }
     }
@@ -75,8 +74,8 @@ class MainUseCase(private val repository: MainRepository) {
         return quot
     }
 
-    private fun converter(origem: String, destino: Double): Double {
-        return origem.toDouble() * destino
+    private fun converter(origem: Double, destino: Double): Double {
+        return origem * destino
     }
 
     private fun isDolar(moeda: String): Boolean {

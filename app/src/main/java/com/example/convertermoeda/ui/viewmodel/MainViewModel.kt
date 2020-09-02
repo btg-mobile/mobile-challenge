@@ -27,7 +27,7 @@ class MainViewModel : BaseViewModel() {
     }
 
 
-    fun getConverter(context: Context, value: String, origem: String, destino: String) {
+    fun getConverter(context: Context, value: Double, origem: String, destino: String) {
         state.postValue(
             MainState.GetCoversao(
                 useCase.getCotacaoLocal(context, value, origem, destino)

@@ -81,7 +81,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showConversao(value: Double) {
-        tvMoedaConvertida.text = value.toString()
+        tvMoedaConvertida.text = DecimalFormat(value)
+    }
+
+    private fun DecimalFormat(number : Double) : String {
+        var formated = Math.round(number * 100) / 100.0
+        return formated.toString().replace('.',',')
     }
 
     private fun configuraEditText(etMoedaOrigem: EditText) {
@@ -96,9 +101,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
                 if (text.toString() != "") {
+                    val value = etMoedaOrigem.text.toString()
                     viewModel.getConverter(
                         applicationContext,
-                        etMoedaOrigem.text.toString(),
+                        value.toDouble(),
                         btnMoedaOrigem.text.toString(),
                         btnMoedaDestino.text.toString()
                     )
