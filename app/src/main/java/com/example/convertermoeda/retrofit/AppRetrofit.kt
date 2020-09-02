@@ -1,6 +1,5 @@
 package com.example.convertermoeda.retrofit
 
-
 import com.example.convertermoeda.retrofit.service.ServiceApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

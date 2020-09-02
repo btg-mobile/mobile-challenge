@@ -1,4 +1,4 @@
-package com.example.convertermoeda.viewmodel.base
+package com.example.convertermoeda.ui.viewmodel.base
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope

@@ -4,15 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_moeda_origem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Origem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btn_moeda_destino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destino"
+        app:layout_constraintStart_toStartOf="@+id/btn_moeda_origem"
+        app:layout_constraintTop_toBottomOf="@+id/btn_moeda_origem" />
+
+    <EditText
+        android:id="@+id/et_moeda_origem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="numberDecimal"
+        android:hint="150.55"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_moeda_origem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_moeda_origem"
+        app:layout_constraintTop_toTopOf="@+id/btn_moeda_origem" />
+
+    <TextView
+        android:id="@+id/tv_moeda_convertida"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_moeda_destino"
+        app:layout_constraintEnd_toEndOf="@+id/et_moeda_origem"
+        app:layout_constraintStart_toStartOf="@+id/et_moeda_origem"
+        app:layout_constraintTop_toBottomOf="@+id/btn_moeda_origem" />
 </androidx.constraintlayout.widget.ConstraintLayout>
