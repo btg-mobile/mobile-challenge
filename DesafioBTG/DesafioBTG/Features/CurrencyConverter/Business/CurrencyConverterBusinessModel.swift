@@ -13,9 +13,15 @@ import SwiftyJSON
 class CurrencyConverterBusinessModel: CurrencyConversionProtocol, CurrencySelectorProtocol {    
     private let repository: CurrencyConverterRepository = CurrencyConverterRepository()
     
-    var currencies: [Currency] = []
+    var currencies: BehaviorSubject<[Currency]> = BehaviorSubject(value: [])
     var hasCurrencies: Bool {
-        !currencies.isEmpty
+        do {
+            return try !currencies.value().isEmpty
+        } catch {
+            debugPrint(error)
+            return false
+        }
+        
     }
     
     let fistSelectedCurrency:  BehaviorSubject<Currency?> = BehaviorSubject(value: nil)
@@ -36,7 +42,11 @@ class CurrencyConverterBusinessModel: CurrencyConversionProtocol, CurrencySelect
     }
     
     func updateCurrency(value: Double, by code: String) {
-        var currencyByCode = self.currencies.first { $0.code == code }
-        currencyByCode?.valueOfUSD = value
+        do {
+            var currencyByCode = try self.currencies.value().first { $0.code == code }
+            currencyByCode?.valueOfUSD = value
+        } catch {
+            debugPrint(error)
+        }
     }
 }

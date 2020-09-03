@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol CurrencySelectorProtocol {
-    var currencies: [Currency] { get set}
+    var currencies: BehaviorSubject<[Currency]> { get }
     var fistSelectedCurrency:  BehaviorSubject<Currency?> { get }
     var secondSelectedCurrency:  BehaviorSubject<Currency?> { get }
     

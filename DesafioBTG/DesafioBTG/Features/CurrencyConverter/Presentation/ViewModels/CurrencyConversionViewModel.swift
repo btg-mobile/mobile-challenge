@@ -11,6 +11,8 @@ import RxSwift
 
 class CurrencyConversionViewModel: DefaultViewModel<CurrencyConversionProtocol> {
     
+    let disposeBag = DisposeBag()
+    
     func rx_updateListValues() -> Observable<Void> {
         if self.getBusinessModel().hasCurrencies {
             return self.getBusinessModel().rx_liveCurrencyValuesOfUSD().map { json -> Void in
@@ -22,5 +24,19 @@ class CurrencyConversionViewModel: DefaultViewModel<CurrencyConversionProtocol> 
         } else {
             return Observable.just(())
         }
+    }
+    
+    func bindFirstCurrencyTo(label: UILabel) {
+        self.getBusinessModel().fistSelectedCurrency.subscribe { event in
+            guard let currency = event.element else { return }
+            label.text = currency?.name
+        }.disposed(by: self.disposeBag)
+    }
+    
+    func bindSecondCurrencyTo(label: UILabel) {
+        self.getBusinessModel().secondSelectedCurrency.subscribe { event in
+            guard let currency = event.element else { return }
+            label.text = currency?.name
+        }.disposed(by: self.disposeBag)
     }
 }

@@ -10,6 +10,10 @@
 		46DFEE46676C914C724C6D1A /* libPods-DesafioBTGTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83751343754EB68DE14E7CEF /* libPods-DesafioBTGTests.a */; };
 		4B54592AAC3A16F45AAE7FE7 /* libPods-DesafioBTGUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8212BA1003573EBE1C320D29 /* libPods-DesafioBTGUITests.a */; };
 		C92B27FD6D171523077F052B /* Pods_DesafioBTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D2563B3BCE52A7587C1462 /* Pods_DesafioBTG.framework */; };
+		D21EDC982500AAD40081DEFB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EDC972500AAD40081DEFB /* LoadingView.swift */; };
+		D21EDC9A2500AB050081DEFB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EDC992500AB050081DEFB /* UIViewController+Extension.swift */; };
+		D21EDC9C2500B0FC0081DEFB /* CurrencySelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EDC9B2500B0FC0081DEFB /* CurrencySelectorViewModel.swift */; };
+		D21EDC9E2500B30A0081DEFB /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21EDC9D2500B30A0081DEFB /* CurrencySelectorViewController.swift */; };
 		D22B59B424FFE477003FA8EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B59B324FFE477003FA8EC /* AppDelegate.swift */; };
 		D22B59BB24FFE477003FA8EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D22B59B924FFE477003FA8EC /* Main.storyboard */; };
 		D22B59BE24FFE477003FA8EC /* DesafioBTG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D22B59BC24FFE477003FA8EC /* DesafioBTG.xcdatamodeld */; };
@@ -55,6 +59,10 @@
 		8212BA1003573EBE1C320D29 /* libPods-DesafioBTGUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesafioBTGUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83751343754EB68DE14E7CEF /* libPods-DesafioBTGTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesafioBTGTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87F8CED1D25459960CD4898 /* Pods-DesafioBTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioBTG.debug.xcconfig"; path = "Target Support Files/Pods-DesafioBTG/Pods-DesafioBTG.debug.xcconfig"; sourceTree = "<group>"; };
+		D21EDC972500AAD40081DEFB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D21EDC992500AB050081DEFB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D21EDC9B2500B0FC0081DEFB /* CurrencySelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewModel.swift; sourceTree = "<group>"; };
+		D21EDC9D2500B30A0081DEFB /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
 		D22B59B024FFE477003FA8EC /* DesafioBTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22B59B324FFE477003FA8EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D22B59BA24FFE477003FA8EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -220,6 +228,7 @@
 			children = (
 				D22B5A03250010E1003FA8EC /* ViewModels */,
 				D22B5A042500111E003FA8EC /* CurrencyConversionViewController.swift */,
+				D21EDC9D2500B30A0081DEFB /* CurrencySelectorViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -286,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				D22B59FD25000308003FA8EC /* URLRequest+Extension.swift */,
+				D21EDC972500AAD40081DEFB /* LoadingView.swift */,
+				D21EDC992500AB050081DEFB /* UIViewController+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -296,6 +307,7 @@
 				D22B5A0D25002038003FA8EC /* CurrencySelectorProtocol.swift */,
 				D22B5A062500113C003FA8EC /* CurrencyConversionProtocol.swift */,
 				D22B5A082500115E003FA8EC /* CurrencyConversionViewModel.swift */,
+				D21EDC9B2500B0FC0081DEFB /* CurrencySelectorViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -533,9 +545,12 @@
 			files = (
 				D22B5A0B25001554003FA8EC /* Currency.swift in Sources */,
 				D22B5A072500113C003FA8EC /* CurrencyConversionProtocol.swift in Sources */,
+				D21EDC9C2500B0FC0081DEFB /* CurrencySelectorViewModel.swift in Sources */,
 				D22B5A092500115E003FA8EC /* CurrencyConversionViewModel.swift in Sources */,
+				D21EDC9A2500AB050081DEFB /* UIViewController+Extension.swift in Sources */,
 				D22B5A0E25002038003FA8EC /* CurrencySelectorProtocol.swift in Sources */,
 				D22B59FE25000308003FA8EC /* URLRequest+Extension.swift in Sources */,
+				D21EDC982500AAD40081DEFB /* LoadingView.swift in Sources */,
 				D22B59FA24FFF2BC003FA8EC /* CurrencylayerCore.swift in Sources */,
 				D22B59F024FFED7C003FA8EC /* CurrencyConverterRepository.swift in Sources */,
 				D22B5A02250010C0003FA8EC /* CurrencyConverterBusinessModel.swift in Sources */,
@@ -544,6 +559,7 @@
 				D22B59F424FFEEF0003FA8EC /* DefaultViewModel.swift in Sources */,
 				D22B59BE24FFE477003FA8EC /* DesafioBTG.xcdatamodeld in Sources */,
 				D22B5A002500095D003FA8EC /* DefaultRepository.swift in Sources */,
+				D21EDC9E2500B30A0081DEFB /* CurrencySelectorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

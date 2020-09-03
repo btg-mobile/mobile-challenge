@@ -12,6 +12,9 @@ struct Currency {
     var name: String
     var code: String
     var valueOfUSD: Double?
+    var isUSD: Bool {
+        return code == "USD"
+    }
     
     init(name: String, code: String) {
         self.name = name

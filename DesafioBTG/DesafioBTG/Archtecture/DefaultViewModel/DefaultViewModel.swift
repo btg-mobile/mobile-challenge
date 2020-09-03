@@ -11,7 +11,7 @@ import Foundation
 class DefaultViewModel<T> {
     private var businessModel: T!
     
-    init(withProtocol business: T) {
+    init(withBusiness business: T) {
         self.businessModel = business
     }
     
@@ -19,7 +19,8 @@ class DefaultViewModel<T> {
         return self.businessModel
     }
     
-    func businessWithProtocol<T>(_ protocolType: T) -> T? {
-        return self.businessModel as? T
+    func businessWithProtocol<T>(_ protocolType: T.Type) -> T {
+        guard let swappedBusiness = self.businessModel as? T else {preconditionFailure("Passed a Protocol that the business does not inherit")}
+        return swappedBusiness
     }
 }
