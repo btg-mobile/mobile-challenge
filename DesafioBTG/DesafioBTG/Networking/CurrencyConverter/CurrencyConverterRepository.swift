@@ -18,13 +18,13 @@ struct CurrencyConverterRequest {
 class CurrencyConverterRepository {
     
     func currenciesList() -> Observable<JSON> {
-        CurrencylayerCore.sharedInstance.get(CurrencyConverterRequest.list).map { response -> JSON in
+        CurrencylayerCore.get(CurrencyConverterRequest.list).map { response -> JSON in
             JSON(response)
         }
     }
     
     func liveCurrencyValuesOfUSD() -> Observable<JSON> {
-        CurrencylayerCore.sharedInstance.get(CurrencyConverterRequest.live).map { response -> JSON in
+        CurrencylayerCore.get(CurrencyConverterRequest.live).map { response -> JSON in
             JSON(response)
         }
     }

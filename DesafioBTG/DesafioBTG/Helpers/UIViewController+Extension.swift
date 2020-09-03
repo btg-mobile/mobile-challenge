@@ -40,4 +40,10 @@ extension UIViewController {
             overlayView.removeFromSuperview()
         }
     }
+    
+    var wrapedNavigation: UINavigationController {
+        let nav = UINavigationController()
+        nav.viewControllers = [self]
+        return nav
+    }
 }

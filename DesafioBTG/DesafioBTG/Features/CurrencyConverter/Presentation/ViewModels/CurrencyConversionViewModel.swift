@@ -17,12 +17,29 @@ class CurrencyConversionViewModel: DefaultViewModel<CurrencyConversionProtocol> 
         if self.getBusinessModel().hasCurrencies {
             return self.getBusinessModel().rx_liveCurrencyValuesOfUSD().map { json -> Void in
                 for updatedCurrency in json {
-                    guard let code = updatedCurrency.dictionaryValue.first?.key, let value = updatedCurrency.double else { continue }
+                    guard let value = updatedCurrency.1.double else { continue }
+                    let code = String(updatedCurrency.0.dropFirst(3))
                     self.getBusinessModel().updateCurrency(value: value, by: code)
                 }
             }
         } else {
             return Observable.just(())
+        }
+    }
+    
+    func getFirstCurrency() -> Currency? {
+        do {
+            return try self.getBusinessModel().fistSelectedCurrency.value()
+        } catch {
+            return nil
+        }
+    }
+    
+    func getSecondCurrency() -> Currency? {
+        do {
+            return try self.getBusinessModel().secondSelectedCurrency.value()
+        } catch {
+            return nil
         }
     }
     
@@ -38,5 +55,9 @@ class CurrencyConversionViewModel: DefaultViewModel<CurrencyConversionProtocol> 
             guard let currency = event.element else { return }
             label.text = currency?.name
         }.disposed(by: self.disposeBag)
+    }
+    
+    func rx_currencyChanged() -> Observable<(Currency?, Currency?)> {
+        Observable.combineLatest(self.getBusinessModel().fistSelectedCurrency.asObservable(), self.getBusinessModel().secondSelectedCurrency.asObservable())
     }
 }

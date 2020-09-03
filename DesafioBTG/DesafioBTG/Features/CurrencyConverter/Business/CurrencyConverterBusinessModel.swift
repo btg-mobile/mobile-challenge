@@ -27,24 +27,35 @@ class CurrencyConverterBusinessModel: CurrencyConversionProtocol, CurrencySelect
     let fistSelectedCurrency:  BehaviorSubject<Currency?> = BehaviorSubject(value: nil)
     let secondSelectedCurrency:  BehaviorSubject<Currency?> = BehaviorSubject(value: nil)
     
-    func rx_liveCurrencyValuesOfUSD() -> Observable<[JSON]> {
-        repository.liveCurrencyValuesOfUSD().map { json -> [JSON] in
-            json["quotes"].arrayValue
+    func rx_liveCurrencyValuesOfUSD() -> Observable<JSON> {
+        repository.liveCurrencyValuesOfUSD().map { json -> JSON in
+            json["quotes"]
         }
     }
     
     func rx_currenciesList() -> Observable<[Currency]> {
         repository.currenciesList().map { json -> [Currency] in
-            json["currencies"].arrayValue.map { object -> Currency in
-                Currency(json: object.dictionaryValue)
+            json["currencies"].map { object -> Currency in
+                let dictionary: [String: Any] = [object.0: object.1.stringValue]
+                return Currency(json: dictionary)
             }
         }
     }
     
     func updateCurrency(value: Double, by code: String) {
         do {
-            var currencyByCode = try self.currencies.value().first { $0.code == code }
-            currencyByCode?.valueOfUSD = value
+            var currencies = try self.currencies.value()
+            if let row = currencies.firstIndex(where: { $0.code == code }) {
+                currencies[row].valueOfUSD = value
+                self.currencies.onNext(currencies)
+                let firstCurrencyCode = try fistSelectedCurrency.value()?.code
+                let secondCurrencyCode = try secondSelectedCurrency.value()?.code
+                if code == firstCurrencyCode{
+                    self.fistSelectedCurrency.onNext(currencies[row])
+                } else if code == secondCurrencyCode {
+                    self.secondSelectedCurrency.onNext(currencies[row])
+                }
+            }
         } catch {
             debugPrint(error)
         }

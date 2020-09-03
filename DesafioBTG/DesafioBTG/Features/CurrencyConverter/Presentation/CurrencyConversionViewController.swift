@@ -19,8 +19,10 @@ class CurrencyConversionViewController: UIViewController {
     let equalSignalImage = UIImageView()
     let secondCurrencyLabelDescription = UILabel()
     let secondCurrencyTextFieldSelector = UITextField()
-    let firstButton = UIButton()
-    let secondButton = UIButton()
+    let firstButtonInvisible = UIButton()
+    let secondButtonInvisible = UIButton()
+    let firstButtonVisible = UIButton(type: .custom)
+    let secondButtonVisible = UIButton(type: .custom)
     
     // MARK: Variables
     
@@ -30,9 +32,22 @@ class CurrencyConversionViewController: UIViewController {
     var firstCurrencyLabelDescriptionHeightConstraint: NSLayoutConstraint?
     var secondCurrencyLabelDescriptionHeightConstraint: NSLayoutConstraint?
     
+    var firstCurrency: Currency?
+    var secondCurrency: Currency?
+    
     // MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         if firstAppearing {
             self.setupUI()
             self.bindUI()
@@ -43,6 +58,8 @@ class CurrencyConversionViewController: UIViewController {
         self.viewModel.rx_updateListValues().observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
             self.hideObstructiveLoading()
+            self.firstCurrency = self.viewModel.getFirstCurrency()
+            self.secondCurrency = self.viewModel.getSecondCurrency()
         }, onError: { error in
             //TO-DO: TRATAR ERRO
             self.hideObstructiveLoading()
@@ -56,6 +73,7 @@ class CurrencyConversionViewController: UIViewController {
         setupBackground()
         setupContainer()
         setupCurrencyFields()
+        setupButtons()
         self.view.layoutIfNeeded()
     }
     
@@ -77,6 +95,7 @@ class CurrencyConversionViewController: UIViewController {
         field.tintColor = UIColor(red: 0.0, green: 97/255, blue: 188/255, alpha: 1.0)
         field.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
         field.keyboardType = .numberPad
+        field.isUserInteractionEnabled = false
     }
     
     private func setupNavigation() {
@@ -109,6 +128,7 @@ class CurrencyConversionViewController: UIViewController {
         self.containerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.666, constant: 0).isActive = true
         
         self.containerView.backgroundColor = .clear
+        containerView.clipsToBounds = false
         
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -116,7 +136,7 @@ class CurrencyConversionViewController: UIViewController {
     func setupCurrencyFields() {
         self.containerView.addSubview(self.firstCurrencyLabelDescription)
         self.firstCurrencyLabelDescription.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        self.firstCurrencyLabelDescriptionHeightConstraint = self.firstCurrencyLabelDescription.heightAnchor.constraint(equalToConstant: 30)
+        self.firstCurrencyLabelDescriptionHeightConstraint = self.firstCurrencyLabelDescription.heightAnchor.constraint(equalToConstant: 0)
         self.firstCurrencyLabelDescriptionHeightConstraint?.isActive = true
         self.fitViewYAxisToContainer(self.firstCurrencyLabelDescription)
         self.firstCurrencyLabelDescription.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +161,7 @@ class CurrencyConversionViewController: UIViewController {
         
         self.containerView.addSubview(self.secondCurrencyLabelDescription)
         self.secondCurrencyLabelDescription.topAnchor.constraint(equalTo: equalSignalImage.bottomAnchor, constant: 24).isActive = true
-        self.secondCurrencyLabelDescriptionHeightConstraint = self.secondCurrencyLabelDescription.heightAnchor.constraint(equalToConstant: 30)
+        self.secondCurrencyLabelDescriptionHeightConstraint = self.secondCurrencyLabelDescription.heightAnchor.constraint(equalToConstant: 0)
         self.secondCurrencyLabelDescriptionHeightConstraint?.isActive = true
         self.fitViewYAxisToContainer(self.secondCurrencyLabelDescription)
         self.secondCurrencyLabelDescription.translatesAutoresizingMaskIntoConstraints = false
@@ -157,63 +177,110 @@ class CurrencyConversionViewController: UIViewController {
     }
     
     private func setupButtons() {
-        self.containerView.addSubview(firstButton)
-        firstButton.topAnchor.constraint(equalTo: self.firstCurrencyLabelDescription.topAnchor).isActive = true
-        firstButton.leadingAnchor.constraint(equalTo: self.firstCurrencyLabelDescription.leadingAnchor).isActive = true
-        firstButton.trailingAnchor.constraint(equalTo: self.firstCurrencyLabelDescription.trailingAnchor).isActive = true
-        firstButton.bottomAnchor.constraint(equalTo: self.firstCurrencyTextFieldSelector.bottomAnchor).isActive = true
+        self.containerView.addSubview(firstButtonInvisible)
+        firstButtonInvisible.topAnchor.constraint(equalTo: self.containerView.topAnchor).isActive = true
+        firstButtonInvisible.bottomAnchor.constraint(equalTo: self.firstCurrencyTextFieldSelector.bottomAnchor).isActive = true
+        firstButtonInvisible.leadingAnchor.constraint(equalTo: self.firstCurrencyLabelDescription.leadingAnchor).isActive = true
+        firstButtonInvisible.trailingAnchor.constraint(equalTo: self.firstCurrencyLabelDescription.trailingAnchor).isActive = true
+        firstButtonInvisible.translatesAutoresizingMaskIntoConstraints = false
+        self.containerView.bringSubviewToFront(firstButtonInvisible)
         
-        self.containerView.addSubview(secondButton)
-        secondButton.topAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.topAnchor).isActive = true
-        secondButton.leadingAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.leadingAnchor).isActive = true
-        secondButton.trailingAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.trailingAnchor).isActive = true
-        secondButton.bottomAnchor.constraint(equalTo: self.secondCurrencyTextFieldSelector.bottomAnchor).isActive = true
+        self.containerView.addSubview(firstButtonVisible)
+        firstButtonVisible.centerYAnchor.constraint(equalTo: firstCurrencyTextFieldSelector.centerYAnchor).isActive = true
+        firstButtonVisible.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        firstButtonVisible.leadingAnchor.constraint(equalTo: self.firstCurrencyLabelDescription.trailingAnchor, constant: 8).isActive = true
+        firstButtonVisible.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        let changeButtonImage = UIImage(named: "changeCurrencyIcon")
         
-        firstButton.alpha = 0.0
-        firstButton.setTitle(nil, for: .normal)
-        secondButton.alpha = 0.0
-        secondButton.setTitle(nil, for: .normal)
+        firstButtonVisible.setBackgroundImage(changeButtonImage, for: .normal)
+        firstButtonVisible.contentMode = .scaleAspectFit
+        firstButtonVisible.isHidden = true
+        firstButtonVisible.translatesAutoresizingMaskIntoConstraints = false
+        self.containerView.bringSubviewToFront(firstButtonVisible)
+        
+        self.containerView.addSubview(secondButtonInvisible)
+        secondButtonInvisible.topAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.topAnchor).isActive = true
+        secondButtonInvisible.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor).isActive = true
+        secondButtonInvisible.leadingAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.leadingAnchor).isActive = true
+        secondButtonInvisible.trailingAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.trailingAnchor).isActive = true
+        secondButtonInvisible.translatesAutoresizingMaskIntoConstraints = false
+        self.containerView.bringSubviewToFront(secondButtonInvisible)
+        
+        self.containerView.addSubview(secondButtonVisible)
+        secondButtonVisible.centerYAnchor.constraint(equalTo: secondCurrencyTextFieldSelector.centerYAnchor).isActive = true
+        secondButtonVisible.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        secondButtonVisible.leadingAnchor.constraint(equalTo: self.secondCurrencyLabelDescription.trailingAnchor, constant: 8).isActive = true
+        secondButtonVisible.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        secondButtonVisible.setBackgroundImage(changeButtonImage, for: .normal)
+        secondButtonVisible.contentMode = .scaleAspectFit
+        secondButtonVisible.isHidden = true
+        secondButtonVisible.translatesAutoresizingMaskIntoConstraints = false
+        self.containerView.bringSubviewToFront(secondButtonVisible)
+        
+        firstButtonInvisible.setTitle(nil, for: .normal)
+        secondButtonInvisible.setTitle(nil, for: .normal)
     }
     
     // MARK: - Bind UI
     
     func bindUI() {
+        self.viewModel.rx_currencyChanged().subscribe {[weak self] event in
+            guard let self = self, let selectedCurrencies = event.element else {return}
+            self.firstCurrency = selectedCurrencies.0
+            self.secondCurrency = selectedCurrencies.1
+        }.disposed(by: self.disposeUIBag)
+        
         self.firstCurrencyLabelDescription.rx.observe(String.self, "text")
+            .distinctUntilChanged()
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] event in
                 guard let text = event.element, let self = self else { return }
-                let isEmpty = text?.isEmpty ?? false
                 
+                let isEmpty = text?.isEmpty ?? true
                 self.firstCurrencyLabelDescriptionHeightConstraint?.constant = isEmpty ? 0 : 30
+                self.switchFirstButtonLayout(isEmpty: isEmpty)
                 self.view.layoutIfNeeded()
         }.disposed(by: self.disposeUIBag)
         
         self.secondCurrencyLabelDescription.rx.observe(String.self, "text")
+            .distinctUntilChanged()
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] event in
                 guard let text = event.element, let self = self else { return }
-                let isEmpty = text?.isEmpty ?? false
                 
-                self.secondCurrencyLabelDescriptionHeightConstraint?.constant = isEmpty ? 0 : 30
+                let isEmpty = text?.isEmpty ?? true
+                self.secondCurrencyLabelDescriptionHeightConstraint?.constant = (isEmpty) ? 0 : 30
+                self.switchSecondButtonLayout(isEmpty: isEmpty)
                 self.view.layoutIfNeeded()
         }.disposed(by: self.disposeUIBag)
         
-        self.firstButton.rx.tap.observeOn(MainScheduler.instance).subscribe { [weak self] _ in
-            guard let self = self else { return }
-            self.showCurrencySelector(forFirstCurrency: true)
-        }.disposed(by: self.disposeUIBag)
+        self.firstButtonInvisible.addTarget(self, action: #selector(CurrencyConversionViewController.didTouchFirstButton(_:)), for: .touchUpInside)
+        self.firstButtonVisible.addTarget(self, action: #selector(CurrencyConversionViewController.didTouchFirstButton(_:)), for: .touchUpInside)
+        self.secondButtonInvisible.addTarget(self, action: #selector(CurrencyConversionViewController.didTouchSecondButton(_:)), for: .touchUpInside)
+        self.secondButtonVisible.addTarget(self, action: #selector(CurrencyConversionViewController.didTouchSecondButton(_:)), for: .touchUpInside)
         
-        self.secondButton.rx.tap.observeOn(MainScheduler.instance).subscribe { [weak self] _ in
-            guard let self = self else { return }
-            self.showCurrencySelector(forFirstCurrency: false)
-        }.disposed(by: self.disposeUIBag)
-        
-        self.firstCurrencyTextFieldSelector.rx.observe(String.self, "text")
+        self.firstCurrencyTextFieldSelector.rx.controlEvent(.editingChanged)
             .observeOn(MainScheduler.instance)
-            .distinctUntilChanged()
             .subscribe {[weak self] event in
-                guard let text = event.element, let self = self else {return}
+                guard let self = self,
+                    let text = self.firstCurrencyTextFieldSelector.text?.numbersOnly,
+                    let doubleValue = Double(text),
+                    let firstCurrency = self.firstCurrency else {return}
+                self.firstCurrencyTextFieldSelector.text = doubleValue.formatCurrencyFrom(currencyCode: firstCurrency.code)
+                self.recalculateValueForSecondCurrency()
         }.disposed(by: self.disposeUIBag)
+        
+        self.secondCurrencyTextFieldSelector.rx.controlEvent(.editingChanged)
+            .observeOn(MainScheduler.instance)
+            .subscribe {[weak self] event in
+                guard let self = self,
+                    let text = self.secondCurrencyTextFieldSelector.text?.numbersOnly,
+                    let doubleValue = Double(text),
+                    let secondCurrency = self.secondCurrency else {return}
+                self.secondCurrencyTextFieldSelector.text = doubleValue.formatCurrencyFrom(currencyCode: secondCurrency.code)
+                self.recalculateValueForFirstCurrency()
+        }.disposed(by: self.disposeUIBag)
+            
         
         self.viewModel.bindFirstCurrencyTo(label: self.firstCurrencyLabelDescription)
         self.viewModel.bindSecondCurrencyTo(label: self.secondCurrencyLabelDescription)
@@ -221,13 +288,86 @@ class CurrencyConversionViewController: UIViewController {
     
     // MARK: - UI Methods
     
+    func recalculateValueForFirstCurrency() {
+        guard let secondCurrency = self.secondCurrency,
+            let firstCurrency = self.firstCurrency,
+            let secondText = self.secondCurrencyTextFieldSelector.text?.numbersOnly,
+            let secondDouble = Double(secondText),
+            let secondValueOfUSD = secondCurrency.valueOfUSD,
+            let firstValueOfUSD = firstCurrency.valueOfUSD else {return}
+        let secondFieldValueConverted = secondCurrency.isUSD  ? (secondDouble * firstValueOfUSD) : (secondDouble * firstValueOfUSD / secondValueOfUSD)
+        self.firstCurrencyTextFieldSelector.text = secondFieldValueConverted.formatCurrencyFrom(currencyCode: firstCurrency.code)
+    }
+    
+    func recalculateValueForSecondCurrency() {
+        guard let secondCurrency = self.secondCurrency,
+            let firstCurrency = self.firstCurrency,
+            let firstText = self.firstCurrencyTextFieldSelector.text?.numbersOnly,
+            let firstDouble = Double(firstText),
+            let secondValueOfUSD = secondCurrency.valueOfUSD,
+            let firstValueOfUSD = firstCurrency.valueOfUSD else {return}
+        let firstFieldValueConverted = firstCurrency.isUSD  ? (firstDouble * secondValueOfUSD) : (firstDouble * secondValueOfUSD / firstValueOfUSD)
+        self.secondCurrencyTextFieldSelector.text = firstFieldValueConverted.formatCurrencyFrom(currencyCode: secondCurrency.code)
+    }
+    
+    @objc func didTouchFirstButton(_ sender: UIButton) {
+        self.showCurrencySelector(forFirstCurrency: true)
+    }
+    
+    @objc func didTouchSecondButton(_ sender: UIButton) {
+        self.showCurrencySelector(forFirstCurrency: false)
+    }
+    
     func showCurrencySelector(forFirstCurrency: Bool) {
         let selectVC = CurrencySelectorViewController(nibName: nil, bundle: nil)
         selectVC.viewModel = CurrencySelectorViewModel(withBusiness: self.viewModel.businessWithProtocol(CurrencySelectorProtocol.self))
         selectVC.isSelectingFirstCurrency = forFirstCurrency
+        var currenciesToIgnore: [Currency] = []
+        if let currency = self.firstCurrency {
+            currenciesToIgnore.append(currency)
+        }
+        if let currency = self.secondCurrency {
+            currenciesToIgnore.append(currency)
+        }
+        selectVC.currenciesToIgnore = currenciesToIgnore
+        let nav = selectVC.wrapedNavigation
+        nav.modalPresentationStyle = .fullScreen
         
-        self.present(selectVC, animated: true)
+        self.present(nav, animated: true)
     }
     
-    func switchFirstButtonLayout()
+    func switchFirstButtonLayout(isEmpty: Bool){
+        self.firstButtonInvisible.isHidden = !isEmpty
+        self.firstButtonVisible.isHidden = isEmpty
+        firstCurrencyTextFieldSelector.isUserInteractionEnabled = !isEmpty
+    }
+    
+    func switchSecondButtonLayout(isEmpty: Bool){
+        self.secondButtonInvisible.isHidden = !isEmpty
+        self.secondButtonVisible.isHidden = isEmpty
+        secondCurrencyTextFieldSelector.isUserInteractionEnabled = !isEmpty
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.secondCurrencyTextFieldSelector.isFirstResponder && self.view.frame.origin.y == 0{
+                let distanceFromFieldToBottom = self.view.frame.height - self.containerView.frame.maxY
+                if keyboardSize.height + 8 > distanceFromFieldToBottom {
+                    self.view.frame.origin.y -= (keyboardSize.height - distanceFromFieldToBottom) + 8
+                }
+            } else if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

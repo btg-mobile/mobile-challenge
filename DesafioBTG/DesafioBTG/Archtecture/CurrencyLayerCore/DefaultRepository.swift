@@ -9,5 +9,5 @@
 import Foundation
 
 class CurrencylayerRepository {
-    let repository = CurrencylayerCore.sharedInstance
+    let repository = CurrencylayerCore.self
 }

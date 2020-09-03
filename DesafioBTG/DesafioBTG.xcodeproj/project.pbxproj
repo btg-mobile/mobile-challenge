@@ -32,6 +32,9 @@
 		D22B5A092500115E003FA8EC /* CurrencyConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B5A082500115E003FA8EC /* CurrencyConversionViewModel.swift */; };
 		D22B5A0B25001554003FA8EC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B5A0A25001554003FA8EC /* Currency.swift */; };
 		D22B5A0E25002038003FA8EC /* CurrencySelectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B5A0D25002038003FA8EC /* CurrencySelectorProtocol.swift */; };
+		D22D4B922501280F0001A887 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4B912501280F0001A887 /* Double+Extension.swift */; };
+		D22D4B94250128580001A887 /* Locale+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4B93250128580001A887 /* Locale+Extension.swift */; };
+		D22D4B9625017E770001A887 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4B9525017E770001A887 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		D22B5A082500115E003FA8EC /* CurrencyConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionViewModel.swift; sourceTree = "<group>"; };
 		D22B5A0A25001554003FA8EC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		D22B5A0D25002038003FA8EC /* CurrencySelectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorProtocol.swift; sourceTree = "<group>"; };
+		D22D4B912501280F0001A887 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		D22D4B93250128580001A887 /* Locale+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extension.swift"; sourceTree = "<group>"; };
+		D22D4B9525017E770001A887 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F0E88307FE3DE38880A83C66 /* Pods-DesafioBTGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioBTGTests.release.xcconfig"; path = "Target Support Files/Pods-DesafioBTGTests/Pods-DesafioBTGTests.release.xcconfig"; sourceTree = "<group>"; };
 		F7FD65270562601E1EDA1AA5 /* Pods-DesafioBTGUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioBTGUITests.release.xcconfig"; path = "Target Support Files/Pods-DesafioBTGUITests/Pods-DesafioBTGUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -297,6 +303,9 @@
 				D22B59FD25000308003FA8EC /* URLRequest+Extension.swift */,
 				D21EDC972500AAD40081DEFB /* LoadingView.swift */,
 				D21EDC992500AB050081DEFB /* UIViewController+Extension.swift */,
+				D22D4B912501280F0001A887 /* Double+Extension.swift */,
+				D22D4B93250128580001A887 /* Locale+Extension.swift */,
+				D22D4B9525017E770001A887 /* String+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -543,8 +552,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22D4B9625017E770001A887 /* String+Extension.swift in Sources */,
 				D22B5A0B25001554003FA8EC /* Currency.swift in Sources */,
 				D22B5A072500113C003FA8EC /* CurrencyConversionProtocol.swift in Sources */,
+				D22D4B922501280F0001A887 /* Double+Extension.swift in Sources */,
 				D21EDC9C2500B0FC0081DEFB /* CurrencySelectorViewModel.swift in Sources */,
 				D22B5A092500115E003FA8EC /* CurrencyConversionViewModel.swift in Sources */,
 				D21EDC9A2500AB050081DEFB /* UIViewController+Extension.swift in Sources */,
@@ -557,6 +568,7 @@
 				D22B5A052500111E003FA8EC /* CurrencyConversionViewController.swift in Sources */,
 				D22B59B424FFE477003FA8EC /* AppDelegate.swift in Sources */,
 				D22B59F424FFEEF0003FA8EC /* DefaultViewModel.swift in Sources */,
+				D22D4B94250128580001A887 /* Locale+Extension.swift in Sources */,
 				D22B59BE24FFE477003FA8EC /* DesafioBTG.xcdatamodeld in Sources */,
 				D22B5A002500095D003FA8EC /* DefaultRepository.swift in Sources */,
 				D21EDC9E2500B30A0081DEFB /* CurrencySelectorViewController.swift in Sources */,

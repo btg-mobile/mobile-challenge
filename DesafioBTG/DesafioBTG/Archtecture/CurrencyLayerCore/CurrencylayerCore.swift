@@ -9,17 +9,17 @@
 import Foundation
 import RxSwift
 
-class CurrencylayerCore:  URLSession{
+class CurrencylayerCore{
     //MARK: Global variables
     
-    private let mainUrl = "http://api.currencylayer.com"
-    private let key = "acf414ff2dcc25141f7e5a7fa62b4a3e"
+    private static let mainUrl = "http://api.currencylayer.com"
+    private static let key = "acf414ff2dcc25141f7e5a7fa62b4a3e"
     
-    static public let sharedInstance = CurrencylayerCore()
+//    static public let sharedInstance = CurrencylayerCore()
     
     // MARK: - Generic GET
     
-    func get(_ endpoint: String) -> Observable<[String: Any]> {
+    static func get(_ endpoint: String) -> Observable<[String: Any]> {
         guard let url = URL(string: mainUrl + endpoint) else {
             return Observable.error(NSError(domain: "Invalid URL",
                                             code: 400,
@@ -30,7 +30,7 @@ class CurrencylayerCore:  URLSession{
         request.addParameter(key, forKey: "access_key")
         
         let observable: Observable<[String: Any]> = Observable.create { observer -> Disposable in
-            let task = self.dataTask(with: request) { data, response, error in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let e = error {
                     observer.onError(e)
                 } else if let httpResponse = response as? HTTPURLResponse {
@@ -62,7 +62,7 @@ class CurrencylayerCore:  URLSession{
             return Disposables.create {
                 task.cancel()
             }
-        }.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        }.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background)).observeOn(MainScheduler.instance)
         
         return observable
     }

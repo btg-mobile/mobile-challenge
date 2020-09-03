@@ -15,6 +15,6 @@ protocol CurrencyConversionProtocol {
     var fistSelectedCurrency:  BehaviorSubject<Currency?> { get }
     var secondSelectedCurrency:  BehaviorSubject<Currency?> { get }
     
-    func rx_liveCurrencyValuesOfUSD() -> Observable<[JSON]>
+    func rx_liveCurrencyValuesOfUSD() -> Observable<JSON>
     func updateCurrency(value: Double, by code: String)
 }

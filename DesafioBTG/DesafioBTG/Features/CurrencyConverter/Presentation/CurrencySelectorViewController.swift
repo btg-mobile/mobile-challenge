@@ -12,6 +12,7 @@ import RxSwift
 class CurrencySelectorViewController: UIViewController {
     // MARK: UI Components
     let tableView = UITableView()
+    lazy var searchBar: UISearchBar = UISearchBar()
     
     // MARK: Variables
     public var viewModel: CurrencySelectorViewModel!
@@ -20,13 +21,16 @@ class CurrencySelectorViewController: UIViewController {
     public var isSelectingFirstCurrency = true
     
     private var currencies: [Currency] = []
+    private var isSearching = false
+    private var filteredCurrencies: [Currency] = []
+    public var currenciesToIgnore: [Currency] = []
     
     // MARK: - Life Cycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if firstAppearing {
             self.setupUI()
-            self.bindUI()
             self.firstAppearing = false
         }
         
@@ -35,6 +39,8 @@ class CurrencySelectorViewController: UIViewController {
             guard let self = self else {return}
             self.hideObstructiveLoading()
             self.currencies = self.viewModel.getCurrencies()
+            self.filterAlreadySelectedCurrencies()
+            self.ordenateByCode()
             self.tableView.reloadData()
         }, onError: { error in
             //TO-DO: TRATAR ERRO
@@ -45,6 +51,7 @@ class CurrencySelectorViewController: UIViewController {
     // MARK: - Setup UI
     func setupUI(){
         setupTableView()
+        setupSearchBar()
     }
     
     func setupTableView() {
@@ -60,6 +67,7 @@ class CurrencySelectorViewController: UIViewController {
             topAnchor = self.view.topAnchor
             bottomAnchor = self.view.bottomAnchor
         }
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -69,25 +77,71 @@ class CurrencySelectorViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func setupSearchBar() {
+        searchBar.searchBarStyle = .prominent
+        searchBar.placeholder = " Search..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+    }
+    
+    //MARK: UI Methods
+    
+    func filterAlreadySelectedCurrencies() {
+        guard self.currenciesToIgnore.count > 0 else {return}
+        self.currencies = self.currencies.filter({[weak self] currency -> Bool in
+            guard let self = self else {return true}
+            return self.currenciesToIgnore.contains { $0.code != currency.code }
+        })
+    }
+    
+    func ordenateByCode() {
+        self.currencies.sort { $0.code < $1.code }
+    }
 }
 
 extension CurrencySelectorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching {
+            return self.filteredCurrencies.count
+        }
         return self.currencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currencies = isSearching ? self.filteredCurrencies : self.currencies
         let cell = UITableViewCell()
-        cell.textLabel?.text = self.currencies[indexPath.row].code + " - " + self.currencies[indexPath.row].name.capitalized
+        cell.textLabel?.text = currencies[indexPath.row].code + " - " + currencies[indexPath.row].name.capitalized
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currencies = isSearching ? self.filteredCurrencies : self.currencies
         if self.isSelectingFirstCurrency {
-            self.viewModel.setFirstCurrency(self.currencies[indexPath.row])
+            self.viewModel.setFirstCurrency(currencies[indexPath.row])
         } else {
-            self.viewModel.setSecondCurrency(self.currencies[indexPath.row])
+            self.viewModel.setSecondCurrency(currencies[indexPath.row])
         }
+        self.dismiss(animated: true)
+    }
+}
+extension CurrencySelectorViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.isSearching = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredCurrencies = self.currencies.filter({ currency -> Bool in
+            currency.name.lowercased().contains(searchText.lowercased()) || currency.code.lowercased().contains(searchText.lowercased())
+        }).sorted(by: { $0.code < $1.code })
+        self.tableView.reloadData()
     }
 }
