@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMn-aq-xIi">
-                        <rect key="frame" x="8" y="8" width="70" height="24"/>
+                        <rect key="frame" x="16" y="8" width="70" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWb-Lp-jno">
-                        <rect key="frame" x="8" y="40" width="96" height="21"/>
+                        <rect key="frame" x="16" y="40" width="96" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                     <constraint firstItem="zWb-Lp-jno" firstAttribute="leading" secondItem="lMn-aq-xIi" secondAttribute="leading" id="3Vj-Cd-mOw"/>
                     <constraint firstItem="zWb-Lp-jno" firstAttribute="top" secondItem="lMn-aq-xIi" secondAttribute="bottom" constant="8" id="9Q1-BS-uug"/>
                     <constraint firstAttribute="bottom" secondItem="zWb-Lp-jno" secondAttribute="bottom" constant="8" id="Jtk-aT-wBR"/>
-                    <constraint firstItem="lMn-aq-xIi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="NmS-HI-nqU"/>
+                    <constraint firstItem="lMn-aq-xIi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NmS-HI-nqU"/>
                     <constraint firstItem="lMn-aq-xIi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Sfp-bP-SGe"/>
                 </constraints>
             </tableViewCellContentView>

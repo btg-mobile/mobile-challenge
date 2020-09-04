@@ -8,3 +8,24 @@
 
 import Foundation
 
+class CurrencyListViewModel {
+
+    var currencyList: [Dictionary<String, String>.Element]?
+
+    private let serviceProvider: CurrencyListServiceProtocol
+
+    init(servicesProvider: CurrencyListServiceProtocol) {
+        self.serviceProvider = servicesProvider
+        serviceProvider.fetchCurrencyList { response in
+            switch response {
+            case .failure(let error):
+                #if DEBUG
+                print(error)
+                #endif
+            case .success(let data):
+                self.currencyList = data.currencies?.sorted { $0.key < $1.key }
+            }
+        }
+    }
+
+}
