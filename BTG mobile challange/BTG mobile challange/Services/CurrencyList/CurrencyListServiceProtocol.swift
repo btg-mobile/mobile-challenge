@@ -9,7 +9,8 @@
 import Foundation
 
 enum ApiError: Error {
-    case genericError(errorDescription: String?)
+    case genericError
+    case apiError(errorDescription: String?)
 }
 
 typealias CurrencyListServiceCallback = (Result<CurrencyListModel, Error>) -> Void
