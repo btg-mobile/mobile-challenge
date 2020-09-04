@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CurrencyConverterViewController.swift
 //  BTG mobile challange
 //
 //  Created by Uriel Barbosa Pinheiro on 03/09/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CurrencyConverterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
