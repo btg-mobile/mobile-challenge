@@ -43,6 +43,7 @@ class CurrencyConverterViewController: UIViewController {
         super.viewDidLoad()
         setupDelegate()
         setupBindings()
+        setupToHideKeyboardOnTapOnView()
     }
 
     // MARK: - Private functions
