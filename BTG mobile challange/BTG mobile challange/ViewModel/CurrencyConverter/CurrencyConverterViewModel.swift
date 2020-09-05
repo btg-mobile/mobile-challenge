@@ -10,11 +10,19 @@ import Foundation
 
 public class CurrencyConverterViewModel {
 
+    // MARK: - Bindable variables
+
     @Published var convertedValue: Double?
+
+    // MARK: - Constants
 
     private let servicesProvider: CurrencyConverterServiceProtocol
 
+    // MARK: - Variables
+
     private var quotes: [String: Double]?
+
+    // MARK: - Lyfecycle and constructors
 
     init(servicesProvider: CurrencyConverterServiceProtocol) {
         self.servicesProvider = servicesProvider
@@ -27,6 +35,8 @@ public class CurrencyConverterViewModel {
             }
         }
     }
+
+    // MARK: - Public functions
 
     func convert(from origin: String, to destiny: String, value: Double) {
         guard let originRate = quotes?["USD\(origin)"],

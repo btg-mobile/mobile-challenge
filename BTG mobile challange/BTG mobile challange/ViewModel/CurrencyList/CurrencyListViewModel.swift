@@ -10,9 +10,15 @@ import Foundation
 
 public class CurrencyListViewModel {
 
+    // MARK: - Bindable variables
+
     @Published var currencyList: [Dictionary<String, String>.Element]?
 
+    // MARK: - Constants
+
     private let servicesProvider: CurrencyListServiceProtocol
+
+    // MARK: - Lyfecycle and constructors
 
     init(servicesProvider: CurrencyListServiceProtocol) {
         self.servicesProvider = servicesProvider

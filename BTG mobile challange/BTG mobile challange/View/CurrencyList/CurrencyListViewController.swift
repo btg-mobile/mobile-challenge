@@ -12,7 +12,7 @@ class CurrencyListViewController: UIViewController {
 
     // MARK: - IBOutlets
 
-    @IBOutlet weak var currencylistTableView: UITableView!
+    @IBOutlet private weak var currencylistTableView: UITableView!
 
     // MARK: - Constants
 
@@ -22,7 +22,7 @@ class CurrencyListViewController: UIViewController {
     // MARK: - Variables
 
     private var viewModel = CurrencyListViewModel(servicesProvider: CurrencyListServiceProvider())
-    var refreshControl = UIRefreshControl()
+    private var refreshControl = UIRefreshControl()
 
     // MARK: - Lyfecycle and constructors
 

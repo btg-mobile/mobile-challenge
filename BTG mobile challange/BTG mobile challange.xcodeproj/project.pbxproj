@@ -123,6 +123,7 @@
 		7B6755A32501B52700E974F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BFA5E1525035C7300A1D69E /* Storyboards */,
 				7B6755AB2501B80800E974F7 /* CurrencyConverter */,
 				7B6755AC2501B81200E974F7 /* CurrencyList */,
 			);
@@ -246,9 +247,7 @@
 				7B6755A22501B52200E974F7 /* Model */,
 				7BF4F18C25017CD0004033FB /* AppDelegate.swift */,
 				7BF4F18E25017CD0004033FB /* SceneDelegate.swift */,
-				7BF4F19225017CD0004033FB /* Main.storyboard */,
 				7BF4F19525017CD2004033FB /* Assets.xcassets */,
-				7BF4F19725017CD2004033FB /* LaunchScreen.storyboard */,
 				7BF4F19A25017CD2004033FB /* Info.plist */,
 				7B2F28F62502CE9E000396B3 /* api_key.plist */,
 			);
@@ -291,6 +290,15 @@
 				7BFA5E13250359D500A1D69E /* CurrencyListServiceErrorMock.swift */,
 			);
 			path = ServicesMock;
+			sourceTree = "<group>";
+		};
+		7BFA5E1525035C7300A1D69E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7BF4F19225017CD0004033FB /* Main.storyboard */,
+				7BF4F19725017CD2004033FB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

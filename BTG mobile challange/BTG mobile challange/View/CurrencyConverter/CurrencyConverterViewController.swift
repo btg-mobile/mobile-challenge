@@ -12,10 +12,10 @@ import UIKit
 class CurrencyConverterViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var valueInputTextField: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var originCurrencyPickerView: UIPickerView!
-    @IBOutlet weak var destinyCurrencyPickerView: UIPickerView!
+    @IBOutlet private weak var valueInputTextField: UITextField!
+    @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private weak var originCurrencyPickerView: UIPickerView!
+    @IBOutlet private weak var destinyCurrencyPickerView: UIPickerView!
 
     // MARK: - Constants
 
