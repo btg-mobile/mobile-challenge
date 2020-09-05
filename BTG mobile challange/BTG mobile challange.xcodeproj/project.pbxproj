@@ -28,6 +28,9 @@
 		7BF4F19625017CD2004033FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BF4F19525017CD2004033FB /* Assets.xcassets */; };
 		7BF4F19925017CD2004033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF4F19725017CD2004033FB /* LaunchScreen.storyboard */; };
 		7BF4F1A425017CD2004033FB /* BTG_mobile_challangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F1A325017CD2004033FB /* BTG_mobile_challangeTests.swift */; };
+		7BFA5E042503414F00A1D69E /* CurrencyListErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFA5E022503414F00A1D69E /* CurrencyListErrorTableViewCell.swift */; };
+		7BFA5E052503414F00A1D69E /* CurrencyListErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA5E032503414F00A1D69E /* CurrencyListErrorTableViewCell.xib */; };
+		7BFA5E082503454800A1D69E /* DismissKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFA5E072503454800A1D69E /* DismissKeyboardExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		7BF4F19F25017CD2004033FB /* BTG mobile challangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG mobile challangeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF4F1A325017CD2004033FB /* BTG_mobile_challangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_mobile_challangeTests.swift; sourceTree = "<group>"; };
 		7BF4F1A525017CD2004033FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BFA5E022503414F00A1D69E /* CurrencyListErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListErrorTableViewCell.swift; sourceTree = "<group>"; };
+		7BFA5E032503414F00A1D69E /* CurrencyListErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListErrorTableViewCell.xib; sourceTree = "<group>"; };
+		7BFA5E072503454800A1D69E /* DismissKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,8 @@
 				7B6755A02501B24600E974F7 /* CurrencyListViewController.swift */,
 				7B6755AD2501B87E00E974F7 /* CurrencyListItemTableViewCell.swift */,
 				7B6755AE2501B87E00E974F7 /* CurrencyListItemTableViewCell.xib */,
+				7BFA5E022503414F00A1D69E /* CurrencyListErrorTableViewCell.swift */,
+				7BFA5E032503414F00A1D69E /* CurrencyListErrorTableViewCell.xib */,
 			);
 			path = CurrencyList;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 		7BF4F18B25017CD0004033FB /* BTG mobile challange */ = {
 			isa = PBXGroup;
 			children = (
+				7BFA5E062503452E00A1D69E /* Core */,
 				7B6755B52501C28D00E974F7 /* Services */,
 				7B6755A42501B52C00E974F7 /* ViewModel */,
 				7B6755A32501B52700E974F7 /* View */,
@@ -243,6 +252,14 @@
 				7BF4F1A525017CD2004033FB /* Info.plist */,
 			);
 			path = "BTG mobile challangeTests";
+			sourceTree = "<group>";
+		};
+		7BFA5E062503452E00A1D69E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7BFA5E072503454800A1D69E /* DismissKeyboardExtension.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +346,7 @@
 				7BF4F19925017CD2004033FB /* LaunchScreen.storyboard in Resources */,
 				7B6755B02501B87E00E974F7 /* CurrencyListItemTableViewCell.xib in Resources */,
 				7BF4F19625017CD2004033FB /* Assets.xcassets in Resources */,
+				7BFA5E052503414F00A1D69E /* CurrencyListErrorTableViewCell.xib in Resources */,
 				7BF4F19425017CD0004033FB /* Main.storyboard in Resources */,
 				7B2F28F72502CE9E000396B3 /* api_key.plist in Resources */,
 			);
@@ -351,6 +369,7 @@
 				7B2F29032502F61E000396B3 /* CurrencyConverterServiceProvider.swift in Sources */,
 				7BF4F19125017CD0004033FB /* CurrencyConverterViewController.swift in Sources */,
 				7B6755AA2501B57500E974F7 /* CurrencyListViewModel.swift in Sources */,
+				7BFA5E042503414F00A1D69E /* CurrencyListErrorTableViewCell.swift in Sources */,
 				7B2F28FF2502F372000396B3 /* CurrencyConverterModel.swift in Sources */,
 				7B6755B42501BDBD00E974F7 /* CurrencyListModel.swift in Sources */,
 				7B6755BB2501C2D900E974F7 /* CurrencyListServiceProvider.swift in Sources */,
@@ -360,6 +379,7 @@
 				7B6755B92501C2C000E974F7 /* CurrencyListServiceProtocol.swift in Sources */,
 				7B6755AF2501B87E00E974F7 /* CurrencyListItemTableViewCell.swift in Sources */,
 				7B2F29012502F60F000396B3 /* CurrencyConverterServiceProtocol.swift in Sources */,
+				7BFA5E082503454800A1D69E /* DismissKeyboardExtension.swift in Sources */,
 				7B6755A12501B24600E974F7 /* CurrencyListViewController.swift in Sources */,
 				7BF4F18F25017CD0004033FB /* SceneDelegate.swift in Sources */,
 				7B6755A72501B55300E974F7 /* CurrencyConverterViewModel.swift in Sources */,

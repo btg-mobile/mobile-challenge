@@ -18,10 +18,8 @@ public class CurrencyListViewModel {
         self.servicesProvider = servicesProvider
         servicesProvider.fetchCurrencyList { response in
             switch response {
-            case .failure(let error):
-                #if DEBUG
-                print(error)
-                #endif
+            case .failure:
+                self.currencyList = nil
             case .success(let data):
                 self.currencyList = data.currencies?.sorted { $0.key < $1.key }
             }

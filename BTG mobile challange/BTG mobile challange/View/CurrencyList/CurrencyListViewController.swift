@@ -17,6 +17,7 @@ class CurrencyListViewController: UIViewController {
     // MARK: - Constants
 
     let tableViewCellIdentifier = "CurrencyListItemTableViewCell"
+    let errorTableViewCellIdentifier = "CurrencyListErrorTableViewCell"
 
     // MARK: - Variables
 
@@ -33,6 +34,7 @@ class CurrencyListViewController: UIViewController {
 
     private func setupTableViewDelegate() {
         currencylistTableView.register(UINib(nibName: tableViewCellIdentifier, bundle: nil), forCellReuseIdentifier: tableViewCellIdentifier)
+        currencylistTableView.register(UINib(nibName: errorTableViewCellIdentifier, bundle: nil), forCellReuseIdentifier: errorTableViewCellIdentifier)
         currencylistTableView.delegate = self
         currencylistTableView.dataSource = self
     }
@@ -42,16 +44,19 @@ class CurrencyListViewController: UIViewController {
 
 extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.currencyList?.count ?? 0
+        return viewModel.currencyList?.count ?? 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = currencylistTableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as? CurrencyListItemTableViewCell else {
-            return CurrencyListItemTableViewCell()
+        guard let cell = currencylistTableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as? CurrencyListItemTableViewCell,
+            let currency = viewModel.currencyList?[indexPath.row] else {
+                let errorCell = currencylistTableView.dequeueReusableCell(withIdentifier: errorTableViewCellIdentifier, for: indexPath)
+                currencylistTableView.separatorStyle = .none
+                return errorCell
         }
-        let currency = viewModel.currencyList?[indexPath.row]
-        let countryName = currency?.key
-        let currencyCode = currency?.value
+        currencylistTableView.separatorStyle = .singleLine
+        let countryName = currency.key
+        let currencyCode = currency.value
 
         cell.countryNameLabel.text = countryName
         cell.currencyCodeLabel.text = currencyCode
