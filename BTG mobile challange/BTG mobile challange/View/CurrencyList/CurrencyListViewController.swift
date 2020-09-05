@@ -22,12 +22,14 @@ class CurrencyListViewController: UIViewController {
     // MARK: - Variables
 
     private var viewModel = CurrencyListViewModel(servicesProvider: CurrencyListServiceProvider())
+    var refreshControl = UIRefreshControl()
 
     // MARK: - Lyfecycle and constructors
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewDelegate()
+        setupTableViewRefresh()
     }
 
     // MARK: - Private functions
@@ -37,6 +39,17 @@ class CurrencyListViewController: UIViewController {
         currencylistTableView.register(UINib(nibName: errorTableViewCellIdentifier, bundle: nil), forCellReuseIdentifier: errorTableViewCellIdentifier)
         currencylistTableView.delegate = self
         currencylistTableView.dataSource = self
+    }
+
+    private func setupTableViewRefresh() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh data")
+        refreshControl.addTarget(self, action: #selector(self.refreshTableView(_:)), for: .valueChanged)
+        currencylistTableView.addSubview(refreshControl)
+    }
+
+    @objc private func refreshTableView(_ sender: AnyObject) {
+        currencylistTableView.reloadData()
+        refreshControl.endRefreshing()
     }
 }
 

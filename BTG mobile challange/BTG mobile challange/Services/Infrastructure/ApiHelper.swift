@@ -15,8 +15,10 @@ struct ApiKeyModel: Codable {
 struct ApiHelper {
     static var baseURL: String = "http://api.currencylayer.com"
 
+    static var cacheTimeout: Double = 300
+
     static var currencyApiKey: String {
-        guard let apiKeyPlist = Bundle.main.path(forResource: "api_ey", ofType: "plist") else { return "" }
+        guard let apiKeyPlist = Bundle.main.path(forResource: "api_key", ofType: "plist") else { return "" }
         let dictionary = NSDictionary(contentsOfFile: apiKeyPlist)
         guard let value = dictionary?["currencyApiKey"] as? String else { return "" }
         return value

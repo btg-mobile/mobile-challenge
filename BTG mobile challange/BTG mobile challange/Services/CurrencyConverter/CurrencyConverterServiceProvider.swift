@@ -23,7 +23,7 @@ class CurrencyConverterServiceProvider: CurrencyConverterServiceProtocol {
                 completion(.failure(ApiError.genericError))
                 return
             }
-            var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: .infinity)
+            var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: ApiHelper.cacheTimeout)
             request.httpMethod = "POST"
 
             URLSession.shared.dataTask(with: request) { data, response, error in
