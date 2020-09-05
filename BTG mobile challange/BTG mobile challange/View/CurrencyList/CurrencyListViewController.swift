@@ -20,7 +20,7 @@ class CurrencyListViewController: UIViewController {
 
     // MARK: - Variables
 
-    var viewModel = CurrencyListViewModel(servicesProvider: CurrencyListServiceProvider())
+    private var viewModel = CurrencyListViewModel(servicesProvider: CurrencyListServiceProvider())
 
     // MARK: - Lyfecycle and constructors
 

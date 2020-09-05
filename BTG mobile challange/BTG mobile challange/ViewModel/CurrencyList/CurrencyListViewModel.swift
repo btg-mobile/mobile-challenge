@@ -8,15 +8,15 @@
 
 import Foundation
 
-class CurrencyListViewModel {
+public class CurrencyListViewModel {
 
-    var currencyList: [Dictionary<String, String>.Element]?
+    @Published var currencyList: [Dictionary<String, String>.Element]?
 
-    private let serviceProvider: CurrencyListServiceProtocol
+    private let servicesProvider: CurrencyListServiceProtocol
 
     init(servicesProvider: CurrencyListServiceProtocol) {
-        self.serviceProvider = servicesProvider
-        serviceProvider.fetchCurrencyList { response in
+        self.servicesProvider = servicesProvider
+        servicesProvider.fetchCurrencyList { response in
             switch response {
             case .failure(let error):
                 #if DEBUG

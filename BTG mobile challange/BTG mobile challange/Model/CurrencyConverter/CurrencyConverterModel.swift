@@ -12,10 +12,12 @@ struct CurrencyConverterModel: Codable {
     let success: Bool?
     let source: String?
     let quotes: [String: Double]?
+    let error: ModelError?
 
     enum CodingKeys: String, CodingKey {
         case success = "success"
         case source = "source"
         case quotes = "quotes"
+        case error = "error"
     }
 }

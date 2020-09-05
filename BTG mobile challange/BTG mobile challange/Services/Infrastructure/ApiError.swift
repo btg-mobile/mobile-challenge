@@ -1,5 +1,5 @@
 //
-//  CurrencyConverterViewModel.swift
+//  ApiError.swift
 //  BTG mobile challange
 //
 //  Created by Uriel Barbosa Pinheiro on 04/09/20.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-class CurrencyConverterViewModel {
-
+enum ApiError: Error {
+    case genericError
+    case apiError(errorDescription: String?)
 }

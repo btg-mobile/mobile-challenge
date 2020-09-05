@@ -38,7 +38,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="7Tx-9X-y9P"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converted amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APN-l8-z24">
@@ -135,6 +135,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="CsF-Lu-8Pv"/>
                     <size key="freeformSize" width="320" height="650"/>
+                    <connections>
+                        <outlet property="destinyCurrencyPickerView" destination="Rnk-NR-fJQ" id="M1R-7w-9N6"/>
+                        <outlet property="originCurrencyPickerView" destination="gSP-8f-cVw" id="bXH-J2-H8f"/>
+                        <outlet property="resultLabel" destination="3Fh-gE-qtf" id="6Nw-8b-iWr"/>
+                        <outlet property="valueInputTextField" destination="JPC-e8-cTF" id="tHn-Ah-hKj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

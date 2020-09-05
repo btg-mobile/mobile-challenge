@@ -1,18 +1,18 @@
 //
-//  CurrencyListServiceProvider.swift
+//  CurrencyConverterServiceProvider.swift
 //  BTG mobile challange
 //
-//  Created by Uriel Barbosa Pinheiro on 03/09/20.
+//  Created by Uriel Barbosa Pinheiro on 04/09/20.
 //  Copyright © 2020 Uriel Barbosa Pinheiro. All rights reserved.
 //
 
 import Foundation
 
-class CurrencyListServiceProvider: CurrencyListServiceProtocol {
+class CurrencyConverterServiceProvider: CurrencyConverterServiceProtocol {
 
-    let serviceEndpoint = "/list"
+    let serviceEndpoint = "/live"
 
-    func fetchCurrencyList(completion: @escaping CurrencyListServiceCallback) {
+    func fetchCurrencyQuotes(completion: @escaping CurrencyConverterServiceCallback) {
         DispatchQueue.main.async {
             guard let urlComponents = NSURLComponents(string: ApiHelper.baseURL + self.serviceEndpoint) else {
                 completion(.failure(ApiError.genericError))
@@ -36,7 +36,7 @@ class CurrencyListServiceProvider: CurrencyListServiceProtocol {
                     return
                 }
                 do {
-                    let decodedData = try JSONDecoder.init().decode(CurrencyListModel.self, from: data)
+                    let decodedData = try JSONDecoder.init().decode(CurrencyConverterModel.self, from: data)
                     guard decodedData.error == nil, decodedData.error?.info == nil else {
                         completion(.failure(ApiError.apiError(errorDescription: (decodedData.error?.info)!)))
                         return
