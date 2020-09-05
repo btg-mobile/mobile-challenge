@@ -34,7 +34,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JPC-e8-cTF">
-                                                <rect key="frame" x="8" y="35.5" width="272" height="36"/>
+                                                <rect key="frame" x="8" y="31.5" width="272" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="7Tx-9X-y9P"/>
                                                 </constraints>
@@ -42,39 +42,39 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converted amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APN-l8-z24">
-                                                <rect key="frame" x="8" y="79.5" width="272" height="19.5"/>
+                                                <rect key="frame" x="8" y="75.5" width="272" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-gE-qtf" userLabel="Result">
-                                                <rect key="frame" x="8" y="107" width="272" height="29"/>
+                                                <rect key="frame" x="8" y="99" width="272" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-ed-pBS">
-                                                <rect key="frame" x="8" y="144" width="272" height="19.5"/>
+                                                <rect key="frame" x="8" y="136" width="272" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="gSP-8f-cVw" userLabel="Origin Picker View">
-                                                <rect key="frame" x="8" y="171.5" width="272" height="100"/>
+                                                <rect key="frame" x="8" y="159.5" width="272" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="QsF-HP-SuC"/>
+                                                    <constraint firstAttribute="height" constant="80" id="QsF-HP-SuC"/>
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destiny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zX-PN-J1D">
-                                                <rect key="frame" x="8" y="279.5" width="272" height="19.5"/>
+                                                <rect key="frame" x="8" y="247.5" width="272" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="Rnk-NR-fJQ" userLabel="Destiny Picker View">
-                                                <rect key="frame" x="8" y="307" width="272" height="100"/>
+                                                <rect key="frame" x="8" y="271" width="272" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="aNR-2A-N9d"/>
+                                                    <constraint firstAttribute="height" constant="80" id="aNR-2A-N9d"/>
                                                 </constraints>
                                             </pickerView>
                                         </subviews>
@@ -88,13 +88,13 @@
                                             <constraint firstItem="9zX-PN-J1D" firstAttribute="leading" secondItem="gSP-8f-cVw" secondAttribute="leading" id="BJk-s0-4Rg"/>
                                             <constraint firstAttribute="trailing" secondItem="PeH-iX-rfb" secondAttribute="trailing" constant="8" id="Bsg-KC-a6B"/>
                                             <constraint firstItem="JPC-e8-cTF" firstAttribute="trailing" secondItem="PeH-iX-rfb" secondAttribute="trailing" id="D9X-dj-aLi"/>
-                                            <constraint firstItem="JPC-e8-cTF" firstAttribute="top" secondItem="PeH-iX-rfb" secondAttribute="bottom" constant="8" id="Dfr-pE-MAq"/>
-                                            <constraint firstItem="Rnk-NR-fJQ" firstAttribute="top" secondItem="9zX-PN-J1D" secondAttribute="bottom" constant="8" id="Hyx-fG-FPg"/>
+                                            <constraint firstItem="JPC-e8-cTF" firstAttribute="top" secondItem="PeH-iX-rfb" secondAttribute="bottom" constant="4" id="Dfr-pE-MAq"/>
+                                            <constraint firstItem="Rnk-NR-fJQ" firstAttribute="top" secondItem="9zX-PN-J1D" secondAttribute="bottom" constant="4" id="Hyx-fG-FPg"/>
                                             <constraint firstItem="gSP-8f-cVw" firstAttribute="trailing" secondItem="5RA-ed-pBS" secondAttribute="trailing" id="RH6-Lx-ZdZ"/>
                                             <constraint firstItem="5RA-ed-pBS" firstAttribute="leading" secondItem="JPC-e8-cTF" secondAttribute="leading" id="TWe-NN-d07"/>
                                             <constraint firstItem="gSP-8f-cVw" firstAttribute="leading" secondItem="5RA-ed-pBS" secondAttribute="leading" id="UGv-ZY-APh"/>
                                             <constraint firstItem="5RA-ed-pBS" firstAttribute="trailing" secondItem="JPC-e8-cTF" secondAttribute="trailing" id="VBY-D6-biP"/>
-                                            <constraint firstItem="gSP-8f-cVw" firstAttribute="top" secondItem="5RA-ed-pBS" secondAttribute="bottom" constant="8" id="Z9t-ed-ZIV"/>
+                                            <constraint firstItem="gSP-8f-cVw" firstAttribute="top" secondItem="5RA-ed-pBS" secondAttribute="bottom" constant="4" id="Z9t-ed-ZIV"/>
                                             <constraint firstItem="PeH-iX-rfb" firstAttribute="top" secondItem="4DT-z2-xVe" secondAttribute="top" constant="8" id="abK-pG-WRa"/>
                                             <constraint firstItem="9zX-PN-J1D" firstAttribute="top" secondItem="gSP-8f-cVw" secondAttribute="bottom" constant="8" id="cBd-XS-zsh"/>
                                             <constraint firstItem="JPC-e8-cTF" firstAttribute="leading" secondItem="PeH-iX-rfb" secondAttribute="leading" id="dYi-c4-vfc"/>
@@ -103,7 +103,7 @@
                                             <constraint firstItem="3Fh-gE-qtf" firstAttribute="trailing" secondItem="APN-l8-z24" secondAttribute="trailing" id="jWo-ab-q8U"/>
                                             <constraint firstItem="5RA-ed-pBS" firstAttribute="top" secondItem="3Fh-gE-qtf" secondAttribute="bottom" constant="8" id="oUu-yQ-pEr"/>
                                             <constraint firstItem="APN-l8-z24" firstAttribute="trailing" secondItem="JPC-e8-cTF" secondAttribute="trailing" id="oyx-7o-bfd"/>
-                                            <constraint firstItem="3Fh-gE-qtf" firstAttribute="top" secondItem="APN-l8-z24" secondAttribute="bottom" constant="8" id="q5O-Yp-Cg4"/>
+                                            <constraint firstItem="3Fh-gE-qtf" firstAttribute="top" secondItem="APN-l8-z24" secondAttribute="bottom" constant="4" id="q5O-Yp-Cg4"/>
                                             <constraint firstItem="5RA-ed-pBS" firstAttribute="leading" secondItem="4DT-z2-xVe" secondAttribute="leading" constant="8" id="uOL-rA-55t"/>
                                             <constraint firstItem="9zX-PN-J1D" firstAttribute="trailing" secondItem="gSP-8f-cVw" secondAttribute="trailing" id="vNl-q2-e2e"/>
                                         </constraints>

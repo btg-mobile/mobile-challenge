@@ -17,6 +17,10 @@ class CurrencyConverterViewController: UIViewController {
     @IBOutlet weak var originCurrencyPickerView: UIPickerView!
     @IBOutlet weak var destinyCurrencyPickerView: UIPickerView!
 
+    // MARK: - Constants
+
+    private let numberOfDigits: Double = 3
+
     // MARK: - Variables
 
     private var currencyConversionViewModel = CurrencyConverterViewModel(servicesProvider: CurrencyConverterServiceProvider())
@@ -28,6 +32,9 @@ class CurrencyConverterViewController: UIViewController {
             originCurrencyPickerView.reloadComponent(0)
             destinyCurrencyPickerView.reloadComponent(0)
         }
+    }
+    private var roundMultiplier: Double {
+         return pow(10, numberOfDigits)
     }
 
     // MARK: - Lyfecycle and constructors
@@ -50,22 +57,26 @@ class CurrencyConverterViewController: UIViewController {
     }
 
     private func setupBindings() {
-        convertedCurrencySubscriber = currencyConversionViewModel.$convertedValue.receive(on: DispatchQueue.main).map{ "\($0 ?? 0)" }.assign(to: \.resultLabel.text, on: self)
+        convertedCurrencySubscriber = currencyConversionViewModel.$convertedValue.receive(on: DispatchQueue.main).map{ "\(Double(round(self.roundMultiplier * ($0 ?? 0))/self.roundMultiplier))" }.assign(to: \.resultLabel.text, on: self)
         convertedListSubscriber = currencyListviewModel.$currencyList.receive(on: DispatchQueue.main).map { $0.map{ $0.map{ $0.key } } }.assign(to: \.currencyList, on: self)
     }
-}
 
-extension CurrencyConverterViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
+    private func convertValue() {
         let originRow = originCurrencyPickerView.selectedRow(inComponent: 0)
         let destinyRow = destinyCurrencyPickerView.selectedRow(inComponent: 0)
 
-        guard let text = textField.text,
+        guard let text = valueInputTextField.text,
             let value = Double(text),
             let originCurrency = currencyList?[originRow],
             let destinyCurrency = currencyList?[destinyRow] else { return }
 
         currencyConversionViewModel.convert(from: originCurrency, to: destinyCurrency, value: value)
+    }
+}
+
+extension CurrencyConverterViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        convertValue()
     }
 }
 
@@ -80,6 +91,10 @@ extension CurrencyConverterViewController: UIPickerViewDelegate, UIPickerViewDat
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return currencyList?[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        convertValue()
     }
 }
 
