@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Converter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CurrencyConverterViewController" customModule="BTG_mobile_challange" customModuleProvider="target" sceneMemberID="viewController">
@@ -133,7 +133,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="CsF-Lu-8Pv"/>
+                    <tabBarItem key="tabBarItem" title="Converter" image="coloncurrencysign.circle.fill" catalog="system" id="CsF-Lu-8Pv"/>
                     <size key="freeformSize" width="320" height="650"/>
                     <connections>
                         <outlet property="destinyCurrencyPickerView" destination="Rnk-NR-fJQ" id="M1R-7w-9N6"/>
@@ -146,7 +146,7 @@
             </objects>
             <point key="canvasLocation" x="1263.75" y="-159.50704225352112"/>
         </scene>
-        <!--Item-->
+        <!--Available currencies-->
         <scene sceneID="g0N-vM-kpd">
             <objects>
                 <viewController id="Bsh-aN-oPN" customClass="CurrencyListViewController" customModule="BTG_mobile_challange" customModuleProvider="target" sceneMemberID="viewController">
@@ -178,7 +178,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v0j-kO-OQE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ddw-J4-v8G"/>
+                    <tabBarItem key="tabBarItem" title="Available currencies" image="list.dash" catalog="system" id="ddw-J4-v8G"/>
                     <connections>
                         <outlet property="currencylistTableView" destination="OEF-dN-uej" id="v8g-RX-8Xf"/>
                     </connections>
@@ -207,4 +207,8 @@
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="coloncurrencysign.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+    </resources>
 </document>

@@ -29,6 +29,9 @@ class CurrencyConverterViewController: UIViewController {
     private var convertedListSubscriber: AnyCancellable?
     private var currencyList: [String]? {
         didSet {
+            if oldValue == nil {
+                resultLabel.text = "---"
+            }
             originCurrencyPickerView.reloadComponent(0)
             destinyCurrencyPickerView.reloadComponent(0)
         }
@@ -87,11 +90,11 @@ extension CurrencyConverterViewController: UIPickerViewDelegate, UIPickerViewDat
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currencyList?.count ?? 0
+        return currencyList?.count ?? 1
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currencyList?[row]
+        return currencyList?[row] ?? "Unable to load data"
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

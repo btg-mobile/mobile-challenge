@@ -20,10 +20,8 @@ public class CurrencyConverterViewModel {
         self.servicesProvider = servicesProvider
         servicesProvider.fetchCurrencyQuotes { response in
             switch response {
-            case .failure(let error):
-                #if DEBUG
-                print(error)
-                #endif
+            case .failure:
+                self.quotes = nil
             case .success(let data):
                 self.quotes = data.quotes
             }
