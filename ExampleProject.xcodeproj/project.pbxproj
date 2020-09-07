@@ -77,6 +77,7 @@
 		347240CD2505D00C0064BC91 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				340BB2742506B4700044BC61 /* LoadingManager.swift */,
 				347240D32505DE2F0064BC91 /* CoreDataManager */,
 			);
 			path = Manager;
@@ -87,7 +88,6 @@
 			children = (
 				347240D02505DDC10064BC91 /* currencies.xcdatamodeld */,
 				347240CE2505D0190064BC91 /* CoreDataManager.swift */,
-				340BB2742506B4700044BC61 /* LoadingManager.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
