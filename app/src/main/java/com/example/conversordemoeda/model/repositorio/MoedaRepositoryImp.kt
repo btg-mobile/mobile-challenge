@@ -12,11 +12,16 @@ class MoedaRepositoryImp(val retrofitConfig: RetrofitConfig) : MoedaRepository {
 
     override fun getCambio(callbackResponse: CallbackResponse<Cambio>) {
         val call = retrofitConfig.moedaService().getCambio()
-        call.enqueue(object : Callback<Cambio>{
+        call.enqueue(object : Callback<Cambio> {
             override fun onResponse(call: Call<Cambio>, response: Response<Cambio>) {
-                if (response.isSuccessful){
-                    response.body()?.let { callbackResponse.success(it) }
-                }else{
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.success)
+                            callbackResponse.success(it)
+                        else
+                            callbackResponse.failure(it.error.info)
+                    }
+                } else {
                     callbackResponse.failure(response.message())
                 }
             }
@@ -29,11 +34,16 @@ class MoedaRepositoryImp(val retrofitConfig: RetrofitConfig) : MoedaRepository {
 
     override fun getContacao(callbackResponse: CallbackResponse<Cotacao>) {
         val call = retrofitConfig.moedaService().getCotacao()
-        call.enqueue(object :Callback<Cotacao>{
+        call.enqueue(object : Callback<Cotacao> {
             override fun onResponse(call: Call<Cotacao>, response: Response<Cotacao>) {
-                if (response.isSuccessful){
-                    response.body()?.let { callbackResponse.success(it) }
-                }else{
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.success)
+                            callbackResponse.success(it)
+                        else
+                            callbackResponse.failure(it.error.info)
+                    }
+                } else {
                     callbackResponse.failure(response.message())
                 }
             }
