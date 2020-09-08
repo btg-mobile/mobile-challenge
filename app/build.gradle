@@ -20,13 +20,21 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"https://api.currencylayer.com\""
+            buildConfigField "String", "BASE_URL", "\"http://api.currencylayer.com\""
             buildConfigField "String", "ACCESS_KEY", "\"3c80183118bbb1bd111df63d32634648\""
         }
         debug{
-            buildConfigField "String", "BASE_URL", "\"https://api.currencylayer.com\""
+            buildConfigField "String", "BASE_URL", "\"http://api.currencylayer.com\""
             buildConfigField "String", "ACCESS_KEY", "\"3c80183118bbb1bd111df63d32634648\""
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
@@ -45,8 +53,8 @@ dependencies {
     //Coroutines adapter usado na configuração do retrofit
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutines_adapter_vesion"
     //Interceptor para visualizar os logs das requisições do Retrofit
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.8.1"
+    implementation "com.squareup.okhttp3:okhttp:4.8.1"
     // Koin
     implementation "org.koin:koin-android:$koin_version"
     // Koin AndroidX Scope features
@@ -55,6 +63,8 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     // Koin AndroidX Experimental features
     implementation "org.koin:koin-androidx-ext:$koin_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation 'com.google.android.material:material:1.2.1'
 
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.mockito:mockito-core:2.21.0'
