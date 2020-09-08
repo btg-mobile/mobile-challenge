@@ -20,6 +20,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://api.currencylayer.com\""
+            buildConfigField "String", "ACCESS_KEY", "\"3c80183118bbb1bd111df63d32634648\""
+        }
+        debug{
+            buildConfigField "String", "BASE_URL", "\"https://api.currencylayer.com\""
+            buildConfigField "String", "ACCESS_KEY", "\"3c80183118bbb1bd111df63d32634648\""
         }
     }
 }
