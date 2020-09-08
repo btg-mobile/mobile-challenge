@@ -1,8 +1,11 @@
 package com.example.conversordemoeda.model.entidades
 
-class Cambio (
+import com.example.conversordemoeda.model.repositorio.ServerError
+
+class Cambio(
+    var currencies: HashMap<String, String>,
     success: Boolean,
     terms: String,
     privacy: String,
-    var currencies: HashMap<String,String>
-):BaseResponse(success, terms, privacy)
+    error: ServerError
+) : BaseResponse(success, terms, privacy, error)
