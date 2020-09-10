@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     private fun configurarImputDeValor(s: String) {
         if (s.isEmpty()) {
-            viewmodel.setValorInformado(0F)
+            viewmodel.setValor(0F)
             viewmodel.converterMoeda()
         } else {
-            viewmodel.setValorInformado(s.toFloat())
+            viewmodel.setValor(s.toFloat())
             viewmodel.converterMoeda()
         }
     }

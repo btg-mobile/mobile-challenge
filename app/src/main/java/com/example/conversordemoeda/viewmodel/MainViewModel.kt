@@ -1,5 +1,6 @@
 package com.example.conversordemoeda.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,10 +19,14 @@ class MainViewModel(private val moedaRepository: MoedaRepository) : ViewModel(),
     val cotacaoData: MutableLiveData<CotacaoResponseCustom> =
         MutableLiveData(CotacaoResponseCustom(status = STATUS.OPEN_LOADING))
 
-    private var cambioDeOrigem: String = "USD"
-    private var cambioDeDestino: String = "USD"
-    private var cambioPadrao: String = "USD"
-    private var valorInformado: Float = 0F
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    var cambioDeOrigem: String = "USD"
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    var cambioDeDestino: String = "USD"
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    var cambioPadrao: String = "USD"
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    var valorInformado: Float = 0F
 
     private var quotes: HashMap<String, Float> = hashMapOf()
 
@@ -52,15 +57,16 @@ class MainViewModel(private val moedaRepository: MoedaRepository) : ViewModel(),
         }
     }
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun definirCambioDeOrigem(cambio: String) {
         cambioDeOrigem = cambio
     }
-
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun definirCambioDeDestino(cambio: String) {
         cambioDeDestino = cambio
     }
-
-    fun setValorInformado(valor: Float){
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun setValor(valor: Float){
         valorInformado = valor
     }
 
@@ -73,12 +79,18 @@ class MainViewModel(private val moedaRepository: MoedaRepository) : ViewModel(),
     }
 
     private fun preConversaoDeValor(cotacao: Float, valor: Float) {
-        quotes["$cambioPadrao$cambioDeDestino"]?.let { conversaoDeValor(cotacao = it, valor = (valor / cotacao)) }
+        quotes["$cambioPadrao$cambioDeDestino"]?.let { conversaoDeValor(cotacao = it, valor = dividirValor(cotacao, valor)) }
     }
 
-    private fun conversaoDeValor(cotacao: Float, valor: Float){
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun dividirValor(cotacao: Float, valor: Float) = valor / cotacao
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun multiplicarValor(cotacao: Float, valor: Float) = valor * cotacao
+
+    fun conversaoDeValor(cotacao: Float, valor: Float){
         cotacaoData.postValue(cotacaoData.value?.apply {
-            valorConvertido = valor * cotacao
+            valorConvertido = multiplicarValor(cotacao, valor)
             status = STATUS.SUCCESS
         })
     }
