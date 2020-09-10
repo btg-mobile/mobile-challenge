@@ -1,16 +1,16 @@
 package com.example.conversordemoeda
 
-import android.app.Application
 import com.example.conversordemoeda.di.BASE_URL
-import com.example.conversordemoeda.di.setUpDI
 
-open class App: Application() {
+class TestApp : App() {
+    var url = "http://127.0.0.1:8080/"
 
     override fun onCreate() {
         super.onCreate()
         BASE_URL = getUrlBase()
-        setUpDI()
     }
 
-    open fun getUrlBase() = BuildConfig.BASE_URL
+    override fun getUrlBase(): String {
+        return url
+    }
 }
