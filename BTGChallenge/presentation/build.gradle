@@ -16,10 +16,15 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -40,18 +45,20 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.2.0'
 
-    //ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    //Kotlin Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
+    implementation rootProject.viewModel
+
+    implementation rootProject.coroutinesAndroid
+    implementation rootProject.coroutinesCore
 
     implementation rootProject.liveData
 
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation rootProject.liveDataExtensions
 
     kapt 'com.android.databinding:compiler:3.1.4'
 
     implementation project(":domain")
     implementation project(":data")
+
+    testImplementation rootProject.mockk
+    testImplementation rootProject.coreTesting
 }
