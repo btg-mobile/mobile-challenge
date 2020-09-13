@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="uix-6X-Pgl">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestBTG" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3T4-I9-Bih"/>
+                        <viewControllerLayoutGuide type="bottom" id="LMD-nd-OMb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KC-BF-HiR">
+                                <rect key="frame" x="28" y="145" width="317" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="Kgr-ng-6CT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Moeda de origem"/>
+                                <connections>
+                                    <action selector="actionOriginCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KUb-t4-wth"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZD5-f3-j7U">
+                                <rect key="frame" x="28" y="223" width="317" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Moeda de destino"/>
+                                <connections>
+                                    <action selector="actionDestinyCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KC7-0z-JuO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insira o valor a ser convertido" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy5-sL-JUd">
+                                <rect key="frame" x="78.333333333333329" y="300" width="218.33333333333337" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="78a-No-eMk">
+                                <rect key="frame" x="177.66666666666666" y="354" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mS-sz-MEe">
+                                <rect key="frame" x="47" y="399" width="281" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5mS-sz-MEe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="31" id="2gq-Hw-Kbo"/>
+                            <constraint firstItem="Jy5-sL-JUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3nN-lo-7us"/>
+                            <constraint firstItem="5mS-sz-MEe" firstAttribute="top" secondItem="ZD5-f3-j7U" secondAttribute="bottom" constant="141" id="4qH-Nm-PNZ"/>
+                            <constraint firstItem="6KC-BF-HiR" firstAttribute="trailing" secondItem="ZD5-f3-j7U" secondAttribute="trailing" id="CNG-wq-NkW"/>
+                            <constraint firstItem="6KC-BF-HiR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="28" id="Fi0-87-pBs"/>
+                            <constraint firstItem="6KC-BF-HiR" firstAttribute="top" secondItem="3T4-I9-Bih" secondAttribute="bottom" constant="57" id="HnZ-9F-fZo"/>
+                            <constraint firstAttribute="trailing" secondItem="6KC-BF-HiR" secondAttribute="trailing" constant="30" id="JVC-4K-dgF"/>
+                            <constraint firstItem="Jy5-sL-JUd" firstAttribute="top" secondItem="ZD5-f3-j7U" secondAttribute="bottom" constant="42" id="M6g-rh-nVH"/>
+                            <constraint firstItem="ZD5-f3-j7U" firstAttribute="top" secondItem="6KC-BF-HiR" secondAttribute="bottom" constant="31" id="bFJ-n8-Z9q"/>
+                            <constraint firstItem="78a-No-eMk" firstAttribute="centerX" secondItem="Jy5-sL-JUd" secondAttribute="centerX" id="btM-sl-QSN"/>
+                            <constraint firstItem="78a-No-eMk" firstAttribute="top" secondItem="5mS-sz-MEe" secondAttribute="bottom" constant="-66" id="fSZ-ae-9iY"/>
+                            <constraint firstItem="6KC-BF-HiR" firstAttribute="leading" secondItem="ZD5-f3-j7U" secondAttribute="leading" id="g41-ji-wiL"/>
+                            <constraint firstItem="78a-No-eMk" firstAttribute="top" secondItem="Jy5-sL-JUd" secondAttribute="bottom" constant="20" id="tNX-NY-wry"/>
+                            <constraint firstItem="78a-No-eMk" firstAttribute="centerX" secondItem="5mS-sz-MEe" secondAttribute="centerX" id="zqe-qc-dew"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iX0-u8-CYV"/>
+                    <connections>
+                        <outlet property="buttonDestinyCurrency" destination="ZD5-f3-j7U" id="0uB-Gg-Br3"/>
+                        <outlet property="buttonOriginCurrency" destination="6KC-BF-HiR" id="pdg-JP-sLm"/>
+                        <outlet property="labelConvertedValue" destination="5mS-sz-MEe" id="ayn-Ry-SrV"/>
+                        <outlet property="spin" destination="78a-No-eMk" id="rZL-hX-eax"/>
+                        <outlet property="textFieldOriginValue" destination="Jy5-sL-JUd" id="Ehq-5p-yJF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1270" y="101"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JeT-rD-n2s">
+            <objects>
+                <navigationController id="uix-6X-Pgl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M5p-Zc-eMc">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Uld-bI-2b2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XiF-RS-5js" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="499.375" y="101.5"/>
+        </scene>
+    </scenes>
+</document>
