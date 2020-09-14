@@ -14,18 +14,38 @@
 		02C25FCF250EC3680047D00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C25FCE250EC3680047D00A /* Assets.xcassets */; };
 		02C25FD2250EC3680047D00A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C25FD0250EC3680047D00A /* LaunchScreen.storyboard */; };
 		02C25FDD250EC3680047D00A /* btg_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C25FDC250EC3680047D00A /* btg_challengeTests.swift */; };
-		02C25FE8250EC3680047D00A /* btg_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C25FE7250EC3680047D00A /* btg_challengeUITests.swift */; };
+		02C25FF6250EC6860047D00A /* CurrencySearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C25FF5250EC6860047D00A /* CurrencySearchStoryboard.storyboard */; };
+		02C25FF7250EC6860047D00A /* CurrencySearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C25FF5250EC6860047D00A /* CurrencySearchStoryboard.storyboard */; };
+		02C2600B250ECDD20047D00A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2600A250ECDD20047D00A /* MainViewModel.swift */; };
+		02C2600C250ECDD20047D00A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2600A250ECDD20047D00A /* MainViewModel.swift */; };
+		02C2600F250ECE8D0047D00A /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2600E250ECE8D0047D00A /* Live.swift */; };
+		02C26010250ECE8D0047D00A /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2600E250ECE8D0047D00A /* Live.swift */; };
+		02C26013250ECFB10047D00A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26012250ECFB10047D00A /* BaseViewController.swift */; };
+		02C26014250ECFB10047D00A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26012250ECFB10047D00A /* BaseViewController.swift */; };
+		02C26017250ED00D0047D00A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26016250ED00D0047D00A /* ViewModel.swift */; };
+		02C26018250ED00D0047D00A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26016250ED00D0047D00A /* ViewModel.swift */; };
+		02C2601B250EFFEC0047D00A /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2601A250EFFEC0047D00A /* Currencies.swift */; };
+		02C2601F250F04E00047D00A /* MainViewRepresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2601E250F04E00047D00A /* MainViewRepresentationModel.swift */; };
+		02C26022250F06DD0047D00A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26021250F06DD0047D00A /* MainService.swift */; };
+		02C26023250F06DD0047D00A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26021250F06DD0047D00A /* MainService.swift */; };
+		02C26027250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */; };
+		02C26028250F14630047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */; };
+		02C2602D250F16940047D00A /* CurrencySearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602B250F16940047D00A /* CurrencySearchService.swift */; };
+		02C26030250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */; };
+		02C26031250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */; };
+		02C26036250F211E0047D00A /* CurrencyConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26034250F211E0047D00A /* CurrencyConvertTests.swift */; };
+		02C26038250F270A0047D00A /* CurrencySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26006250ECDAB0047D00A /* CurrencySearchViewModel.swift */; };
+		02C26039250F270F0047D00A /* CurrencySearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602B250F16940047D00A /* CurrencySearchService.swift */; };
+		02C2603A250F276C0047D00A /* CurrencySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C25FF9250EC9EB0047D00A /* CurrencySearchViewController.swift */; };
+		02C2603B250F276D0047D00A /* CurrencySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C25FF9250EC9EB0047D00A /* CurrencySearchViewController.swift */; };
+		02C2603C250F27A90047D00A /* CurrencySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26006250ECDAB0047D00A /* CurrencySearchViewModel.swift */; };
+		02C2603D250F27B30047D00A /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2601A250EFFEC0047D00A /* Currencies.swift */; };
+		02C2603F250F44830047D00A /* CurrentAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2603E250F44830047D00A /* CurrentAppState.swift */; };
+		02C26040250F44830047D00A /* CurrentAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2603E250F44830047D00A /* CurrentAppState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		02C25FD9250EC3680047D00A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 02C25FBA250EC3640047D00A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02C25FC1250EC3640047D00A;
-			remoteInfo = "btg-challenge";
-		};
-		02C25FE4250EC3680047D00A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 02C25FBA250EC3640047D00A /* Project object */;
 			proxyType = 1;
@@ -46,9 +66,21 @@
 		02C25FD8250EC3680047D00A /* btg-challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btg-challengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C25FDC250EC3680047D00A /* btg_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btg_challengeTests.swift; sourceTree = "<group>"; };
 		02C25FDE250EC3680047D00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		02C25FE3250EC3680047D00A /* btg-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btg-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		02C25FE7250EC3680047D00A /* btg_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btg_challengeUITests.swift; sourceTree = "<group>"; };
-		02C25FE9250EC3680047D00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02C25FF5250EC6860047D00A /* CurrencySearchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrencySearchStoryboard.storyboard; sourceTree = "<group>"; };
+		02C25FF9250EC9EB0047D00A /* CurrencySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchViewController.swift; sourceTree = "<group>"; };
+		02C26006250ECDAB0047D00A /* CurrencySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchViewModel.swift; sourceTree = "<group>"; };
+		02C2600A250ECDD20047D00A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		02C2600E250ECE8D0047D00A /* Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
+		02C26012250ECFB10047D00A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		02C26016250ED00D0047D00A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		02C2601A250EFFEC0047D00A /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		02C2601E250F04E00047D00A /* MainViewRepresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewRepresentationModel.swift; sourceTree = "<group>"; };
+		02C26021250F06DD0047D00A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		02C26026250F14620047D00A /* QuoteCacheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuoteCacheDataModel.xcdatamodel; sourceTree = "<group>"; };
+		02C2602B250F16940047D00A /* CurrencySearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchService.swift; sourceTree = "<group>"; };
+		02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		02C26034250F211E0047D00A /* CurrencyConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertTests.swift; sourceTree = "<group>"; };
+		02C2603E250F44830047D00A /* CurrentAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAppState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +98,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		02C25FE0250EC3680047D00A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +106,6 @@
 			children = (
 				02C25FC4250EC3640047D00A /* btg-challenge */,
 				02C25FDB250EC3680047D00A /* btg-challengeTests */,
-				02C25FE6250EC3680047D00A /* btg-challengeUITests */,
 				02C25FC3250EC3640047D00A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +115,6 @@
 			children = (
 				02C25FC2250EC3640047D00A /* btg-challenge.app */,
 				02C25FD8250EC3680047D00A /* btg-challengeTests.xctest */,
-				02C25FE3250EC3680047D00A /* btg-challengeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,13 +122,16 @@
 		02C25FC4250EC3640047D00A /* btg-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				02C25FFD250ECC350047D00A /* Features */,
 				02C25FC5250EC3640047D00A /* AppDelegate.swift */,
 				02C25FC7250EC3640047D00A /* SceneDelegate.swift */,
-				02C25FC9250EC3640047D00A /* ViewController.swift */,
-				02C25FCB250EC3640047D00A /* Main.storyboard */,
 				02C25FCE250EC3680047D00A /* Assets.xcassets */,
 				02C25FD0250EC3680047D00A /* LaunchScreen.storyboard */,
 				02C25FD3250EC3680047D00A /* Info.plist */,
+				02C26012250ECFB10047D00A /* BaseViewController.swift */,
+				02C26016250ED00D0047D00A /* ViewModel.swift */,
+				02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */,
+				02C2603E250F44830047D00A /* CurrentAppState.swift */,
 			);
 			path = "btg-challenge";
 			sourceTree = "<group>";
@@ -113,19 +139,118 @@
 		02C25FDB250EC3680047D00A /* btg-challengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				02C26033250F20AF0047D00A /* MainTests */,
 				02C25FDC250EC3680047D00A /* btg_challengeTests.swift */,
 				02C25FDE250EC3680047D00A /* Info.plist */,
 			);
 			path = "btg-challengeTests";
 			sourceTree = "<group>";
 		};
-		02C25FE6250EC3680047D00A /* btg-challengeUITests */ = {
+		02C25FFD250ECC350047D00A /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				02C25FE7250EC3680047D00A /* btg_challengeUITests.swift */,
-				02C25FE9250EC3680047D00A /* Info.plist */,
+				02C26000250ECC5F0047D00A /* CurrencySearch */,
+				02C25FFE250ECC3F0047D00A /* Main */,
 			);
-			path = "btg-challengeUITests";
+			path = Features;
+			sourceTree = "<group>";
+		};
+		02C25FFE250ECC3F0047D00A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				02C26020250F06C20047D00A /* Service */,
+				02C26005250ECD170047D00A /* Model */,
+				02C26003250ECD020047D00A /* ViewModel */,
+				02C25FFF250ECC460047D00A /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		02C25FFF250ECC460047D00A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02C25FC9250EC3640047D00A /* ViewController.swift */,
+				02C25FCB250EC3640047D00A /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02C26000250ECC5F0047D00A /* CurrencySearch */ = {
+			isa = PBXGroup;
+			children = (
+				02C2602A250F16710047D00A /* Service */,
+				02C26004250ECD110047D00A /* Model */,
+				02C26002250ECCF90047D00A /* ViewModel */,
+				02C26001250ECCEA0047D00A /* View */,
+			);
+			path = CurrencySearch;
+			sourceTree = "<group>";
+		};
+		02C26001250ECCEA0047D00A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02C25FF9250EC9EB0047D00A /* CurrencySearchViewController.swift */,
+				02C25FF5250EC6860047D00A /* CurrencySearchStoryboard.storyboard */,
+				02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02C26002250ECCF90047D00A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02C26006250ECDAB0047D00A /* CurrencySearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		02C26003250ECD020047D00A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02C2600A250ECDD20047D00A /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		02C26004250ECD110047D00A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02C2601A250EFFEC0047D00A /* Currencies.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02C26005250ECD170047D00A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02C2600E250ECE8D0047D00A /* Live.swift */,
+				02C2601E250F04E00047D00A /* MainViewRepresentationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02C26020250F06C20047D00A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				02C26021250F06DD0047D00A /* MainService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		02C2602A250F16710047D00A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				02C2602B250F16940047D00A /* CurrencySearchService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		02C26033250F20AF0047D00A /* MainTests */ = {
+			isa = PBXGroup;
+			children = (
+				02C26034250F211E0047D00A /* CurrencyConvertTests.swift */,
+			);
+			path = MainTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,24 +291,6 @@
 			productReference = 02C25FD8250EC3680047D00A /* btg-challengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		02C25FE2250EC3680047D00A /* btg-challengeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 02C25FF2250EC3680047D00A /* Build configuration list for PBXNativeTarget "btg-challengeUITests" */;
-			buildPhases = (
-				02C25FDF250EC3680047D00A /* Sources */,
-				02C25FE0250EC3680047D00A /* Frameworks */,
-				02C25FE1250EC3680047D00A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				02C25FE5250EC3680047D00A /* PBXTargetDependency */,
-			);
-			name = "btg-challengeUITests";
-			productName = "btg-challengeUITests";
-			productReference = 02C25FE3250EC3680047D00A /* btg-challengeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,10 +305,6 @@
 						CreatedOnToolsVersion = 11.6;
 					};
 					02C25FD7250EC3680047D00A = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = 02C25FC1250EC3640047D00A;
-					};
-					02C25FE2250EC3680047D00A = {
 						CreatedOnToolsVersion = 11.6;
 						TestTargetID = 02C25FC1250EC3640047D00A;
 					};
@@ -222,7 +325,6 @@
 			targets = (
 				02C25FC1250EC3640047D00A /* btg-challenge */,
 				02C25FD7250EC3680047D00A /* btg-challengeTests */,
-				02C25FE2250EC3680047D00A /* btg-challengeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02C25FF6250EC6860047D00A /* CurrencySearchStoryboard.storyboard in Resources */,
 				02C25FD2250EC3680047D00A /* LaunchScreen.storyboard in Resources */,
 				02C25FCF250EC3680047D00A /* Assets.xcassets in Resources */,
 				02C25FCD250EC3640047D00A /* Main.storyboard in Resources */,
@@ -242,13 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02C25FE1250EC3680047D00A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				02C25FF7250EC6860047D00A /* CurrencySearchStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +357,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C25FCA250EC3640047D00A /* ViewController.swift in Sources */,
+				02C2603F250F44830047D00A /* CurrentAppState.swift in Sources */,
+				02C26038250F270A0047D00A /* CurrencySearchViewModel.swift in Sources */,
+				02C2603A250F276C0047D00A /* CurrencySearchViewController.swift in Sources */,
+				02C26039250F270F0047D00A /* CurrencySearchService.swift in Sources */,
+				02C2601F250F04E00047D00A /* MainViewRepresentationModel.swift in Sources */,
+				02C2600F250ECE8D0047D00A /* Live.swift in Sources */,
+				02C2601B250EFFEC0047D00A /* Currencies.swift in Sources */,
 				02C25FC6250EC3640047D00A /* AppDelegate.swift in Sources */,
+				02C26017250ED00D0047D00A /* ViewModel.swift in Sources */,
+				02C26013250ECFB10047D00A /* BaseViewController.swift in Sources */,
+				02C26027250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */,
 				02C25FC8250EC3640047D00A /* SceneDelegate.swift in Sources */,
+				02C2600B250ECDD20047D00A /* MainViewModel.swift in Sources */,
+				02C26030250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */,
+				02C26022250F06DD0047D00A /* MainService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,15 +379,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02C26036250F211E0047D00A /* CurrencyConvertTests.swift in Sources */,
+				02C26040250F44830047D00A /* CurrentAppState.swift in Sources */,
+				02C26028250F14630047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */,
+				02C2602D250F16940047D00A /* CurrencySearchService.swift in Sources */,
 				02C25FDD250EC3680047D00A /* btg_challengeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02C25FDF250EC3680047D00A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				02C25FE8250EC3680047D00A /* btg_challengeUITests.swift in Sources */,
+				02C2603B250F276D0047D00A /* CurrencySearchViewController.swift in Sources */,
+				02C26023250F06DD0047D00A /* MainService.swift in Sources */,
+				02C26031250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */,
+				02C26018250ED00D0047D00A /* ViewModel.swift in Sources */,
+				02C2603D250F27B30047D00A /* Currencies.swift in Sources */,
+				02C26010250ECE8D0047D00A /* Live.swift in Sources */,
+				02C2603C250F27A90047D00A /* CurrencySearchViewModel.swift in Sources */,
+				02C2600C250ECDD20047D00A /* MainViewModel.swift in Sources */,
+				02C26014250ECFB10047D00A /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,11 +403,6 @@
 			isa = PBXTargetDependency;
 			target = 02C25FC1250EC3640047D00A /* btg-challenge */;
 			targetProxy = 02C25FD9250EC3680047D00A /* PBXContainerItemProxy */;
-		};
-		02C25FE5250EC3680047D00A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 02C25FC1250EC3640047D00A /* btg-challenge */;
-			targetProxy = 02C25FE4250EC3680047D00A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -510,46 +620,6 @@
 			};
 			name = Release;
 		};
-		02C25FF3250EC3680047D00A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 98G2VY7676;
-				INFOPLIST_FILE = "btg-challengeUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wesley.btg-challengeUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "btg-challenge";
-			};
-			name = Debug;
-		};
-		02C25FF4250EC3680047D00A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 98G2VY7676;
-				INFOPLIST_FILE = "btg-challengeUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wesley.btg-challengeUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "btg-challenge";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -580,16 +650,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		02C25FF2250EC3680047D00A /* Build configuration list for PBXNativeTarget "btg-challengeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				02C25FF3250EC3680047D00A /* Debug */,
-				02C25FF4250EC3680047D00A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				02C26026250F14620047D00A /* QuoteCacheDataModel.xcdatamodel */,
+			);
+			currentVersion = 02C26026250F14620047D00A /* QuoteCacheDataModel.xcdatamodel */;
+			path = QuoteCacheDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 02C25FBA250EC3640047D00A /* Project object */;
 }

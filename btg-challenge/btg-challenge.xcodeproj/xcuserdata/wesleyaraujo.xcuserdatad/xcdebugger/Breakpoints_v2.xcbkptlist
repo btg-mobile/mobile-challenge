@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4017FFCE-E77F-479B-BA99-1BF124DF6D76"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0277BDD-B759-4401-A0A0-4411112484D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "btg-challenge/Features/Main/View/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "didPressOriginCurrencyButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F284C1B-99EB-493E-A614-6B8F5F1E9627"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "btg-challenge/Features/Main/View/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "didPressDestinyCurrencyButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0865863D-A2EC-46CC-BC2E-940F2A5653BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "btg-challenge/Features/CurrencySearch/View/CurrencySearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0865863D-A2EC-46CC-BC2E-940F2A5653BE - ecca68635e24c7bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challenge.CurrencySearchViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "btg-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/CurrencySearch/View/CurrencySearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "130">
+               </Location>
+               <Location
+                  uuid = "0865863D-A2EC-46CC-BC2E-940F2A5653BE - 899ca3001242387d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challengeTests.CurrencySearchViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "btg-challengeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/CurrencySearch/View/CurrencySearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "130">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EAF1DA68-AA70-4F9D-A265-7F845A4282C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "btg-challenge/Features/CurrencySearch/ViewModel/CurrencySearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getAvailableCurrencies()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EAF1DA68-AA70-4F9D-A265-7F845A4282C3 - 1e832eed2d52d21d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challenge.CurrencySearchViewModel.getAvailableCurrencies() -&gt; ()"
+                  moduleName = "btg-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/CurrencySearch/ViewModel/CurrencySearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "EAF1DA68-AA70-4F9D-A265-7F845A4282C3 - 847b7ba01698b78d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challengeTests.CurrencySearchViewModel.getAvailableCurrencies() -&gt; ()"
+                  moduleName = "btg-challengeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/CurrencySearch/ViewModel/CurrencySearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3767D8D1-5B14-42F4-816E-0A47D9CEBB97"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "btg-challenge/Features/CurrencySearch/ViewModel/CurrencySearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "didGetCurrencies(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3767D8D1-5B14-42F4-816E-0A47D9CEBB97 - c4a2ef5740becbaf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challenge.CurrencySearchViewModel.didGetCurrencies(btg_challenge.Currencies) -&gt; ()"
+                  moduleName = "btg-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/CurrencySearch/ViewModel/CurrencySearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "3767D8D1-5B14-42F4-816E-0A47D9CEBB97 - 9c294932a71ad36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challengeTests.CurrencySearchViewModel.didGetCurrencies(btg_challengeTests.Currencies) -&gt; ()"
+                  moduleName = "btg-challengeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/CurrencySearch/ViewModel/CurrencySearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "101">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C67E16DE-F379-4415-AA10-B3F7E9B6E85A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "btg-challenge/Features/Main/ViewModel/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "didGetQuotesCurrency(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C67E16DE-F379-4415-AA10-B3F7E9B6E85A - 36d28c5e7ae58c96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challenge.MainViewModel.didGetQuotesCurrency(btg_challenge.Live) -&gt; ()"
+                  moduleName = "btg-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/Main/ViewModel/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "270">
+               </Location>
+               <Location
+                  uuid = "C67E16DE-F379-4415-AA10-B3F7E9B6E85A - 5c89a9189678706e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "btg_challengeTests.MainViewModel.didGetQuotesCurrency(btg_challengeTests.Live) -&gt; ()"
+                  moduleName = "btg-challengeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wesleyaraujo/Documents/projetos/btg-mobile-challenge/mobile-challenge/btg-challenge/btg-challenge/Features/Main/ViewModel/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "270">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
