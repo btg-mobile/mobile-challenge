@@ -46,17 +46,17 @@ class MainViewModel: ViewModel {
     }
     
     func convertCurrency(from sourceCurrency: String, to destinyCurrency: String, withValue value: Double) -> Double? {
-        guard let quote = selectCurrencyQuote(from: sourceCurrency) else { return nil }
-        
-        if sourceCurrency != "USD" && destinyCurrency != "USD" {
+        let isNotConversionToDollar = sourceCurrency != "USD" && destinyCurrency != "USD"
+        let isConversionDollar = destinyCurrency == "USD" ||  sourceCurrency == "USD"
+        if isNotConversionToDollar {
             let currencySourceQuote = CurrentAppState.shared.getSourceCurrentCurrencyQuote()
             let destinyQuote = CurrentAppState.shared.getDestinyCurrentCurrencyQuote()
-//            guard let quoteDollarValue = quote["USD\(sourceCurrency)"] else { return nil }
-//            guard let quoteCurrencyValue = quote["USD\(destinyCurrency)"] else { return nil }
             let valueDollar = value.convertToDollar(by: currencySourceQuote)
             let convertedValue = valueDollar.convertDollarToCurrency(by: destinyQuote)
             return convertedValue
-            
+        } else if isConversionDollar {
+            let convertedToDollar = value.convertToDollar(by: CurrentAppState.shared.getSourceCurrentCurrencyQuote())
+            return convertedToDollar
         }
         return nil
     }

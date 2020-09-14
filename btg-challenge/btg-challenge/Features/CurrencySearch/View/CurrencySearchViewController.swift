@@ -43,8 +43,9 @@ class CurrencySearchViewController: BaseViewController<CurrencySearchViewModel> 
 }
 
 extension CurrencySearchViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filteredCurrencies.count
+        return filteredCurrencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +65,11 @@ extension CurrencySearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 94.0
+    }
+    
+    // Melhor fazer uma view adequada e customizada para aparecer uma mensagem amigável.
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return filteredCurrencies.count == 0 ? "Resultados não Encontrados" : nil
     }
 }
 
