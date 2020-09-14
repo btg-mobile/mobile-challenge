@@ -70,6 +70,9 @@ REAL</string>
                     </view>
                     <connections>
                         <outlet property="currentCurrencyValueTextField" destination="VDe-ii-btw" id="Cz0-nz-2ix"/>
+                        <outlet property="destinyCurrencyButton" destination="JBJ-cr-ibV" id="jZw-N8-8gL"/>
+                        <outlet property="resultLabel" destination="5UY-5x-0dm" id="1lP-Wn-SME"/>
+                        <outlet property="sourceCurrencyButton" destination="fYb-2T-pEa" id="TiR-rg-wbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

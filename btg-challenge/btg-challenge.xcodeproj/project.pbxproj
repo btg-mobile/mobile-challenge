@@ -28,8 +28,6 @@
 		02C2601F250F04E00047D00A /* MainViewRepresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2601E250F04E00047D00A /* MainViewRepresentationModel.swift */; };
 		02C26022250F06DD0047D00A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26021250F06DD0047D00A /* MainService.swift */; };
 		02C26023250F06DD0047D00A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26021250F06DD0047D00A /* MainService.swift */; };
-		02C26027250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */; };
-		02C26028250F14630047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */; };
 		02C2602D250F16940047D00A /* CurrencySearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602B250F16940047D00A /* CurrencySearchService.swift */; };
 		02C26030250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */; };
 		02C26031250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */; };
@@ -78,7 +76,6 @@
 		02C2601A250EFFEC0047D00A /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		02C2601E250F04E00047D00A /* MainViewRepresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewRepresentationModel.swift; sourceTree = "<group>"; };
 		02C26021250F06DD0047D00A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
-		02C26026250F14620047D00A /* QuoteCacheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuoteCacheDataModel.xcdatamodel; sourceTree = "<group>"; };
 		02C2602B250F16940047D00A /* CurrencySearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchService.swift; sourceTree = "<group>"; };
 		02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		02C26034250F211E0047D00A /* CurrencyConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertTests.swift; sourceTree = "<group>"; };
@@ -133,7 +130,6 @@
 				02C25FD3250EC3680047D00A /* Info.plist */,
 				02C26012250ECFB10047D00A /* BaseViewController.swift */,
 				02C26016250ED00D0047D00A /* ViewModel.swift */,
-				02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */,
 				02C2603E250F44830047D00A /* CurrentAppState.swift */,
 				02C26041250FB8DC0047D00A /* Double+Extension.swift */,
 			);
@@ -372,7 +368,6 @@
 				02C25FC6250EC3640047D00A /* AppDelegate.swift in Sources */,
 				02C26017250ED00D0047D00A /* ViewModel.swift in Sources */,
 				02C26013250ECFB10047D00A /* BaseViewController.swift in Sources */,
-				02C26027250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */,
 				02C25FC8250EC3640047D00A /* SceneDelegate.swift in Sources */,
 				02C2600B250ECDD20047D00A /* MainViewModel.swift in Sources */,
 				02C26030250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */,
@@ -386,7 +381,6 @@
 			files = (
 				02C26036250F211E0047D00A /* CurrencyConvertTests.swift in Sources */,
 				02C26040250F44830047D00A /* CurrentAppState.swift in Sources */,
-				02C26028250F14630047D00A /* QuoteCacheDataModel.xcdatamodeld in Sources */,
 				02C2602D250F16940047D00A /* CurrencySearchService.swift in Sources */,
 				02C25FDD250EC3680047D00A /* btg_challengeTests.swift in Sources */,
 				02C2603B250F276D0047D00A /* CurrencySearchViewController.swift in Sources */,
@@ -657,19 +651,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				02C26026250F14620047D00A /* QuoteCacheDataModel.xcdatamodel */,
-			);
-			currentVersion = 02C26026250F14620047D00A /* QuoteCacheDataModel.xcdatamodel */;
-			path = QuoteCacheDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 02C25FBA250EC3640047D00A /* Project object */;
 }

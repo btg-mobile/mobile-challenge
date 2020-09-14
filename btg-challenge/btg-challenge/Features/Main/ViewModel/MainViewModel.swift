@@ -28,7 +28,7 @@ class MainViewModel: ViewModel {
                       privacy: " ",
                       timestamp: 8777,
                       source: " ",
-                      quotes: ["USDBRL": 5.31, "USDAED": 3.67, "USDEUR": 0.84])
+                      quotes: ["USDBRL": 5.31, "USDEUR": 0.84])
     }
     
     func setViewController(_ viewController: UIViewController) {
@@ -37,6 +37,12 @@ class MainViewModel: ViewModel {
     
     func getQuotesCurrency() {
         service.getQuotesCurrency()
+    }
+    
+    func getSourceCurrencyButtonTitle() {
+        let sourceButtonTitle = "Moeda de Origem\n\(Array(CurrentAppState.shared.getSourceCurrentCurrency())[0].value)"
+        let destinyButtonTitle = "Moeda de Destino\n\(Array(CurrentAppState.shared.getDestinyCurrentCurrency())[0].value)"
+        (viewController as! ViewController).setButtonTitle(for: sourceButtonTitle, destinyButtonTitle: destinyButtonTitle)
     }
     
     func convertCurrency(from sourceCurrency: String, to destinyCurrency: String, withValue value: Double) -> Double? {
@@ -59,11 +65,19 @@ class MainViewModel: ViewModel {
         guard let quoteValue = live?.quotes?["USD\(currency)"] else { return nil }
         return ["USD\(currency)": quoteValue]
     }
+    
+    func setResultToView(value: Double) {
+        let sourceCurrency = Array(CurrentAppState.shared.getSourceCurrentCurrency())[0].key
+        let destinyCurrency = Array(CurrentAppState.shared.getDestinyCurrentCurrency())[0].key
+        guard let result = convertCurrency(from: sourceCurrency, to: destinyCurrency, withValue: value) else { return }
+        (viewController as! ViewController).setResult(result.rounded(toPlaces: 2))
+    }
 }
 
 extension MainViewModel: MainViewModelDelegate {
     func didGetQuotesCurrency(_ quotes: Live) {
-        self.live = quotes
+        guard let quotes = quotes.quotes else { return }
+        CurrentAppState.shared.setQuote(quotes)
     }
     
     func didGetError(_ error: Error) {
