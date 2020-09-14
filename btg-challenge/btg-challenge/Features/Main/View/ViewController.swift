@@ -22,16 +22,19 @@ class ViewController: BaseViewController<MainViewModel> {
     
     @IBAction func didPressOriginCurrencyButton(_ sender: UIButton) {
        if let controller = UIStoryboard(name: "CurrencySearchStoryboard", bundle: nil).instantiateViewController(withIdentifier: "CurrencySearchViewController") as? CurrencySearchViewController {
-       self.present(controller, animated: true)
-          }
+        
+        self.present(controller, animated: true)
+        
+        }
     }
     
     
     @IBAction func didPressDestinyCurrencyButton(_ sender: Any) {
         if let controller = UIStoryboard(name: "CurrencySearchStoryboard", bundle: nil).instantiateViewController(withIdentifier: "CurrencySearchViewController") as? CurrencySearchViewController {
+            
             controller.isSourceCurrencyActionCaller = false
             self.present(controller, animated: true)
-               }
+        }
     }
     
 }

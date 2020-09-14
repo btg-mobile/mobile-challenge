@@ -59,6 +59,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="GCW-iG-5WZ">
+                                <rect key="frame" x="0.0" y="418" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GUk-LY-7c2"/>
+                                </constraints>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-CL-ocS">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -66,9 +73,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="GCW-iG-5WZ" firstAttribute="centerY" secondItem="B4G-zt-xqT" secondAttribute="centerY" id="01B-pa-8N5"/>
                             <constraint firstItem="Quh-gt-8k3" firstAttribute="bottom" secondItem="CmX-ba-cDA" secondAttribute="bottom" id="1gi-B5-gnv"/>
                             <constraint firstItem="Quh-gt-8k3" firstAttribute="trailing" secondItem="CmX-ba-cDA" secondAttribute="trailing" id="HaV-hm-yC7"/>
                             <constraint firstItem="CmX-ba-cDA" firstAttribute="leading" secondItem="Quh-gt-8k3" secondAttribute="leading" id="Lly-yD-ejd"/>
+                            <constraint firstItem="GCW-iG-5WZ" firstAttribute="leading" secondItem="Quh-gt-8k3" secondAttribute="leading" id="Xpv-Wi-bXT"/>
+                            <constraint firstItem="GCW-iG-5WZ" firstAttribute="trailing" secondItem="Quh-gt-8k3" secondAttribute="trailing" id="ZjD-zT-nIa"/>
                             <constraint firstItem="JEH-CL-ocS" firstAttribute="top" secondItem="Quh-gt-8k3" secondAttribute="top" id="ghp-5W-M3a"/>
                             <constraint firstItem="JEH-CL-ocS" firstAttribute="trailing" secondItem="Quh-gt-8k3" secondAttribute="trailing" id="h8q-nY-8ec"/>
                             <constraint firstItem="JEH-CL-ocS" firstAttribute="leading" secondItem="Quh-gt-8k3" secondAttribute="leading" id="jZf-Ob-QHK"/>
@@ -79,6 +89,7 @@
                     <connections>
                         <outlet property="currenciesTableView" destination="CmX-ba-cDA" id="BBS-6A-6At"/>
                         <outlet property="searchBar" destination="JEH-CL-ocS" id="fBr-3s-3Q4"/>
+                        <outlet property="spinner" destination="GCW-iG-5WZ" id="flL-E1-3Bv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4R1-zJ-8oq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

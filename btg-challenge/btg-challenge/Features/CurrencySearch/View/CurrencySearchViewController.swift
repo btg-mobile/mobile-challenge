@@ -12,6 +12,7 @@ class CurrencySearchViewController: BaseViewController<CurrencySearchViewModel> 
 
     @IBOutlet weak var currenciesTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var searchController: UISearchController?
     var mockCurrencies = ["USD": "Dollar", "BRL": "Real"]
@@ -21,10 +22,13 @@ class CurrencySearchViewController: BaseViewController<CurrencySearchViewModel> 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        associetedViewModel?.getAvailableCurrencies()
         searchBar.delegate = self
         currenciesTableView.delegate = self
         currenciesTableView.dataSource = self
+        spinner.startAnimating()
+        DispatchQueue.main.async {
+            self.associetedViewModel?.getAvailableCurrencies()
+        }
     }
     
     func setCurrencies(_ currencies: Currencies) {
@@ -32,6 +36,7 @@ class CurrencySearchViewController: BaseViewController<CurrencySearchViewModel> 
         self.filteredCurrencies = self.currencies!
         DispatchQueue.main.async {
             self.currenciesTableView.reloadData()
+            self.spinner.stopAnimating()
         }
     }
 
@@ -74,7 +79,6 @@ extension CurrencySearchViewController: UISearchBarDelegate {
                 filteredCurrencies = currencies
             }
         }
-        
         currenciesTableView.reloadData()
     }
 }

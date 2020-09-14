@@ -40,8 +40,9 @@ class MainViewModel: ViewModel {
     }
     
     func convertCurrency(from sourceCurrency: String, to destinyCurrency: String, withValue value: Double) -> Double? {
-        guard let quote = live?.quotes?[destinyCurrency] else { return nil }
-        return value / quote
+        guard let quote = selectCurrencyQuote(from: sourceCurrency) else { return nil }
+        guard let quoteValue = quote["USD\(sourceCurrency)"] else { return nil }
+        return value / quoteValue
     }
     
     func selectSourceCurrency(_ sourceCurrency: String) -> [String: Double]? {

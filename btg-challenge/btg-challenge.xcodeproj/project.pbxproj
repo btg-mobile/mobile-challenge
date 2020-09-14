@@ -42,6 +42,8 @@
 		02C2603D250F27B30047D00A /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2601A250EFFEC0047D00A /* Currencies.swift */; };
 		02C2603F250F44830047D00A /* CurrentAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2603E250F44830047D00A /* CurrentAppState.swift */; };
 		02C26040250F44830047D00A /* CurrentAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2603E250F44830047D00A /* CurrentAppState.swift */; };
+		02C26042250FB8DC0047D00A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26041250FB8DC0047D00A /* Double+Extension.swift */; };
+		02C26043250FB8DC0047D00A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C26041250FB8DC0047D00A /* Double+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		02C2602F250F1B070047D00A /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		02C26034250F211E0047D00A /* CurrencyConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertTests.swift; sourceTree = "<group>"; };
 		02C2603E250F44830047D00A /* CurrentAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAppState.swift; sourceTree = "<group>"; };
+		02C26041250FB8DC0047D00A /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,7 @@
 				02C26016250ED00D0047D00A /* ViewModel.swift */,
 				02C26025250F14620047D00A /* QuoteCacheDataModel.xcdatamodeld */,
 				02C2603E250F44830047D00A /* CurrentAppState.swift */,
+				02C26041250FB8DC0047D00A /* Double+Extension.swift */,
 			);
 			path = "btg-challenge";
 			sourceTree = "<group>";
@@ -360,6 +364,7 @@
 				02C2603F250F44830047D00A /* CurrentAppState.swift in Sources */,
 				02C26038250F270A0047D00A /* CurrencySearchViewModel.swift in Sources */,
 				02C2603A250F276C0047D00A /* CurrencySearchViewController.swift in Sources */,
+				02C26042250FB8DC0047D00A /* Double+Extension.swift in Sources */,
 				02C26039250F270F0047D00A /* CurrencySearchService.swift in Sources */,
 				02C2601F250F04E00047D00A /* MainViewRepresentationModel.swift in Sources */,
 				02C2600F250ECE8D0047D00A /* Live.swift in Sources */,
@@ -387,6 +392,7 @@
 				02C2603B250F276D0047D00A /* CurrencySearchViewController.swift in Sources */,
 				02C26023250F06DD0047D00A /* MainService.swift in Sources */,
 				02C26031250F1B070047D00A /* CurrencyTableViewCell.swift in Sources */,
+				02C26043250FB8DC0047D00A /* Double+Extension.swift in Sources */,
 				02C26018250ED00D0047D00A /* ViewModel.swift in Sources */,
 				02C2603D250F27B30047D00A /* Currencies.swift in Sources */,
 				02C26010250ECE8D0047D00A /* Live.swift in Sources */,
