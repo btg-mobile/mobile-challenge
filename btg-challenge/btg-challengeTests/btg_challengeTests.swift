@@ -88,28 +88,6 @@ class btg_challengeTests: XCTestCase {
         XCTAssertEqual(convertedValueAmount, amountCurrency.rounded(toPlaces: 2))
     }
     
-//    func testConvertEURCurrencyToBRLCurrency() {
-//        // Given
-//        let amountBRL = 2.37 // Euros
-//        let quoteUSDBRL = 5.31 // Cotação USD - BRL
-//        let quoteUSDEUR = 0.84 // Cotação USD - Euro
-//        let convertedValueAmount = 15.0 // Valor em Reais
-//
-//        // When
-//        let amountCurrency = amountBRL.convertToCurrency(quoteSource: quoteUSDEUR, quoteDestiny: quoteUSDBRL)
-//
-//        // Then
-//        XCTAssertEqual(convertedValueAmount, amountCurrency.rounded(toPlaces: 2))
-//    }
-    
-//    func testCalculateConvertCurrencyToMainResult {
-//        // Given
-//        let mainViewModel = MainViewModel()
-//
-//        // When
-//        mainViewModel.conver
-//    }
-    
     func testSelectCurrentQuote() {
         // Given
         let mainViewModel = MainViewModel()

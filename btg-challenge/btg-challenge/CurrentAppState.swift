@@ -44,7 +44,7 @@ class CurrentAppState {
     
     func getSourceCurrentCurrencyQuote() -> Double {
         let quoteValue = quotes.filter { key, value -> Bool in
-            key == Array(sourceCurrentCurrency)[0].key
+            key == "USD\(Array(sourceCurrentCurrency)[0].key)"
         }
         let sourceValue = Array(quoteValue)[0].value
         return sourceValue
@@ -52,7 +52,7 @@ class CurrentAppState {
     
     func getDestinyCurrentCurrencyQuote() -> Double {
         let quoteValue = quotes.filter { key, value -> Bool in
-            key == Array(destinyCurrentCurrency)[0].key
+            key == "USD\(Array(destinyCurrentCurrency)[0].key)"
         }
         let destinyValue = Array(quoteValue)[0].value
         return destinyValue
