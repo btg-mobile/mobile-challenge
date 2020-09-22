@@ -15,5 +15,4 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
     func setValue(value: String){
         label?.text = value
     }
-    
 }

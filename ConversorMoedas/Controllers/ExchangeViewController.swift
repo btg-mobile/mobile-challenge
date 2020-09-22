@@ -19,12 +19,27 @@ class ExchangeViewController: UIViewController{
         isButtonOriginTaped = true
     }
     
+    @IBAction func didTapChangeCurrencies(_ sender: Any) {
+        let currencyAux = currencyOrigin
+        currencyOrigin = currencyDestiny
+        currencyDestiny = currencyAux
+        
+        let btOriginTitle = btOrigin.currentTitle ?? "Moeda Origem"
+        let btDestinyTitle = btDestiny.currentTitle ?? "Moeda Destino"
+        btOrigin.setTitle("\(btDestinyTitle)", for: .normal)
+        btDestiny.setTitle("\(btOriginTitle)", for: .normal)
+       
+        
+    }
+    
     @IBAction func didTapDestinyButton(_ sender: Any) {
         openCurrenciesList()
         isButtonOriginTaped = false
     }
     
     @IBAction func didTapToConvert(_ sender: Any) {
+        
+        
         
         let title = "Atenção"
         
@@ -66,7 +81,7 @@ class ExchangeViewController: UIViewController{
     @IBOutlet weak var tfInputValue: UITextField!
     @IBOutlet weak var lbResult: UILabel!
     
-    func setCurrency(_ currency : (key:String,value:String)) {
+    func setCurrency(_ currency: (key:String,value:String)) {
         
         if(isButtonOriginTaped){
             currencyOrigin = currency
@@ -76,8 +91,6 @@ class ExchangeViewController: UIViewController{
             btDestiny.setTitle("\(currency.key) - \(currency.value)", for: .normal)
         }
     }
-    
-
     
     private func openCurrenciesList() {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "list")

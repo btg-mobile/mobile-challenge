@@ -57,14 +57,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C45664424F74ED900C6BBED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		8C5333A124E22469005CD485 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C80C68A24E8C12400C9F782 /* APIManager.swift */,
 				8C5333B024E302D0005CD485 /* ExchangeResponse.swift */,
 				8C7D525424E4A07B009D3660 /* CurrenciesResponse.swift */,
 				8C7D525A24E4E695009D3660 /* CurrencyConverter.swift */,
 				8C80C66624E61EF700C9F782 /* dict.swift */,
-				8C80C68A24E8C12400C9F782 /* APIManager.swift */,
 				8C80C68C24E8CFCC00C9F782 /* String.swift */,
 			);
 			path = Models;
@@ -109,6 +116,7 @@
 		8CC3F9E924E19FFA00E8CE6A /* ConversorMoedas */ = {
 			isa = PBXGroup;
 			children = (
+				8C45664424F74ED900C6BBED /* Services */,
 				8C5333A324E2265C005CD485 /* Controllers */,
 				8C5333A224E22650005CD485 /* Views */,
 				8CC3F9EA24E19FFA00E8CE6A /* AppDelegate.swift */,
