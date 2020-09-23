@@ -15,6 +15,9 @@
 		7B5EC4FF251C098B0020FF6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC4FD251C098B0020FF6F /* LaunchScreen.storyboard */; };
 		7B5EC50A251C098B0020FF6F /* BTG_Mobile_ChallangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC509251C098B0020FF6F /* BTG_Mobile_ChallangeTests.swift */; };
 		7B5EC516251C0B520020FF6F /* DismissKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC515251C0B520020FF6F /* DismissKeyboardExtension.swift */; };
+		7B5EC51D251C0BF20020FF6F /* CurrencyConverterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC51C251C0BF20020FF6F /* CurrencyConverterModel.swift */; };
+		7B5EC51F251C0C170020FF6F /* CurrencyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC51E251C0C170020FF6F /* CurrencyListModel.swift */; };
+		7B5EC522251C0C420020FF6F /* ModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC521251C0C420020FF6F /* ModelError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		7B5EC509251C098B0020FF6F /* BTG_Mobile_ChallangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_Mobile_ChallangeTests.swift; sourceTree = "<group>"; };
 		7B5EC50B251C098B0020FF6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5EC515251C0B520020FF6F /* DismissKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardExtension.swift; sourceTree = "<group>"; };
+		7B5EC51C251C0BF20020FF6F /* CurrencyConverterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterModel.swift; sourceTree = "<group>"; };
+		7B5EC51E251C0C170020FF6F /* CurrencyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListModel.swift; sourceTree = "<group>"; };
+		7B5EC521251C0C420020FF6F /* ModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5EC514251C0B2E0020FF6F /* Core */,
+				7B5EC517251C0BB00020FF6F /* Model */,
 				7B5EC4F2251C09880020FF6F /* AppDelegate.swift */,
 				7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */,
 				7B5EC4F6251C09880020FF6F /* ViewController.swift */,
@@ -108,6 +115,40 @@
 				7B5EC515251C0B520020FF6F /* DismissKeyboardExtension.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		7B5EC517251C0BB00020FF6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC519251C0BC90020FF6F /* CurrencyConverter */,
+				7B5EC518251C0BC10020FF6F /* CurrencyList */,
+				7B5EC520251C0C260020FF6F /* Error */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B5EC518251C0BC10020FF6F /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC51E251C0C170020FF6F /* CurrencyListModel.swift */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		7B5EC519251C0BC90020FF6F /* CurrencyConverter */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC51C251C0BF20020FF6F /* CurrencyConverterModel.swift */,
+			);
+			path = CurrencyConverter;
+			sourceTree = "<group>";
+		};
+		7B5EC520251C0C260020FF6F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC521251C0C420020FF6F /* ModelError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,10 +252,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5EC51F251C0C170020FF6F /* CurrencyListModel.swift in Sources */,
 				7B5EC4F7251C09880020FF6F /* ViewController.swift in Sources */,
+				7B5EC51D251C0BF20020FF6F /* CurrencyConverterModel.swift in Sources */,
 				7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */,
 				7B5EC4F5251C09880020FF6F /* SceneDelegate.swift in Sources */,
 				7B5EC516251C0B520020FF6F /* DismissKeyboardExtension.swift in Sources */,
+				7B5EC522251C0C420020FF6F /* ModelError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
