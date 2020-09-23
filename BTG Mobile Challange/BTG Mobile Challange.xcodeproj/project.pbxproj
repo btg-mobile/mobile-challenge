@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F2251C09880020FF6F /* AppDelegate.swift */; };
 		7B5EC4F5251C09880020FF6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */; };
-		7B5EC4F7251C09880020FF6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F6251C09880020FF6F /* ViewController.swift */; };
 		7B5EC4FA251C09880020FF6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F8251C09880020FF6F /* Main.storyboard */; };
 		7B5EC4FC251C098B0020FF6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC4FB251C098B0020FF6F /* Assets.xcassets */; };
 		7B5EC4FF251C098B0020FF6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC4FD251C098B0020FF6F /* LaunchScreen.storyboard */; };
@@ -50,7 +49,6 @@
 		7B5EC4EF251C09880020FF6F /* BTG Mobile Challange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTG Mobile Challange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5EC4F2251C09880020FF6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7B5EC4F6251C09880020FF6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7B5EC4F9251C09880020FF6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B5EC4FB251C098B0020FF6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B5EC4FE251C098B0020FF6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 				7B5EC547251C13FF0020FF6F /* ViewModel */,
 				7B5EC4F2251C09880020FF6F /* AppDelegate.swift */,
 				7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */,
-				7B5EC4F6251C09880020FF6F /* ViewController.swift */,
 				7B5EC4FB251C098B0020FF6F /* Assets.xcassets */,
 				7B5EC500251C098B0020FF6F /* Info.plist */,
 			);
@@ -397,7 +394,6 @@
 				7B5EC52A251C102F0020FF6F /* ApiKey.swift in Sources */,
 				7B5EC54D251C144E0020FF6F /* CurrencyConverterViewModel.swift in Sources */,
 				7B5EC51F251C0C170020FF6F /* CurrencyListModel.swift in Sources */,
-				7B5EC4F7251C09880020FF6F /* ViewController.swift in Sources */,
 				7B5EC51D251C0BF20020FF6F /* CurrencyConverterModel.swift in Sources */,
 				7B5EC528251C101D0020FF6F /* ApiHelper.swift in Sources */,
 				7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */,
