@@ -32,6 +32,7 @@
 		7B5EC541251C13400020FF6F /* CurrencyListItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC53F251C13400020FF6F /* CurrencyListItemTableViewCell.xib */; };
 		7B5EC543251C13790020FF6F /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC542251C13790020FF6F /* CurrencyListViewController.swift */; };
 		7B5EC546251C13C50020FF6F /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC545251C13C50020FF6F /* CurrencyConverterViewController.swift */; };
+		7B5EC54A251C141E0020FF6F /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC549251C141E0020FF6F /* CurrencyListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		7B5EC53F251C13400020FF6F /* CurrencyListItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListItemTableViewCell.xib; sourceTree = "<group>"; };
 		7B5EC542251C13790020FF6F /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
 		7B5EC545251C13C50020FF6F /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
+		7B5EC549251C141E0020FF6F /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				7B5EC517251C0BB00020FF6F /* Model */,
 				7B5EC523251C0FE60020FF6F /* Services */,
 				7B5EC537251C127E0020FF6F /* View */,
+				7B5EC547251C13FF0020FF6F /* ViewModel */,
 				7B5EC4F2251C09880020FF6F /* AppDelegate.swift */,
 				7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */,
 				7B5EC4F6251C09880020FF6F /* ViewController.swift */,
@@ -257,6 +260,22 @@
 			path = CurrencyConverter;
 			sourceTree = "<group>";
 		};
+		7B5EC547251C13FF0020FF6F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC548251C140A0020FF6F /* CurrencyList */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B5EC548251C140A0020FF6F /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC549251C141E0020FF6F /* CurrencyListViewModel.swift */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,6 +391,7 @@
 				7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */,
 				7B5EC4F5251C09880020FF6F /* SceneDelegate.swift in Sources */,
 				7B5EC53C251C13130020FF6F /* CurrencyListErrorTableViewCell.swift in Sources */,
+				7B5EC54A251C141E0020FF6F /* CurrencyListViewModel.swift in Sources */,
 				7B5EC526251C100B0020FF6F /* ApiError.swift in Sources */,
 				7B5EC546251C13C50020FF6F /* CurrencyConverterViewController.swift in Sources */,
 				7B5EC534251C12280020FF6F /* CurrencyConverterServiceProtocol.swift in Sources */,
