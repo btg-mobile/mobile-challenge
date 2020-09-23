@@ -11,6 +11,8 @@ import Foundation
 struct ApiHelper {
     static var baseURL: String = "http://api.currencylayer.com"
 
+    static let connectionTimeout: Double = 60
+
     static var currencyApiKey: String {
         guard let apiKeyPlist = Bundle.main.path(forResource: "api_key", ofType: "plist") else { return "" }
         let dictionary = NSDictionary(contentsOfFile: apiKeyPlist)

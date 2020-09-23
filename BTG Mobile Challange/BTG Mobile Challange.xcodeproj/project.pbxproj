@@ -22,6 +22,8 @@
 		7B5EC528251C101D0020FF6F /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC527251C101D0020FF6F /* ApiHelper.swift */; };
 		7B5EC52A251C102F0020FF6F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC529251C102F0020FF6F /* ApiKey.swift */; };
 		7B5EC52C251C10BD0020FF6F /* api_key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC52B251C10BD0020FF6F /* api_key.plist */; };
+		7B5EC52F251C11310020FF6F /* CurrencyListServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC52E251C11310020FF6F /* CurrencyListServiceProtocol.swift */; };
+		7B5EC531251C11400020FF6F /* CurrencyListServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC530251C11400020FF6F /* CurrencyListServiceProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		7B5EC527251C101D0020FF6F /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		7B5EC529251C102F0020FF6F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		7B5EC52B251C10BD0020FF6F /* api_key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api_key.plist; sourceTree = "<group>"; };
+		7B5EC52E251C11310020FF6F /* CurrencyListServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListServiceProtocol.swift; sourceTree = "<group>"; };
+		7B5EC530251C11400020FF6F /* CurrencyListServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListServiceProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 		7B5EC523251C0FE60020FF6F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7B5EC52D251C11160020FF6F /* CurrencyList */,
 				7B5EC524251C0FF70020FF6F /* Infrastructure */,
 			);
 			path = Services;
@@ -177,6 +182,15 @@
 				7B5EC52B251C10BD0020FF6F /* api_key.plist */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		7B5EC52D251C11160020FF6F /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC52E251C11310020FF6F /* CurrencyListServiceProtocol.swift */,
+				7B5EC530251C11400020FF6F /* CurrencyListServiceProvider.swift */,
+			);
+			path = CurrencyList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5EC52F251C11310020FF6F /* CurrencyListServiceProtocol.swift in Sources */,
 				7B5EC52A251C102F0020FF6F /* ApiKey.swift in Sources */,
 				7B5EC51F251C0C170020FF6F /* CurrencyListModel.swift in Sources */,
 				7B5EC4F7251C09880020FF6F /* ViewController.swift in Sources */,
@@ -289,6 +304,7 @@
 				7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */,
 				7B5EC4F5251C09880020FF6F /* SceneDelegate.swift in Sources */,
 				7B5EC526251C100B0020FF6F /* ApiError.swift in Sources */,
+				7B5EC531251C11400020FF6F /* CurrencyListServiceProvider.swift in Sources */,
 				7B5EC516251C0B520020FF6F /* DismissKeyboardExtension.swift in Sources */,
 				7B5EC522251C0C420020FF6F /* ModelError.swift in Sources */,
 			);
