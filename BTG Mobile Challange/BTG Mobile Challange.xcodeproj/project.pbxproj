@@ -106,12 +106,11 @@
 				7B5EC514251C0B2E0020FF6F /* Core */,
 				7B5EC517251C0BB00020FF6F /* Model */,
 				7B5EC523251C0FE60020FF6F /* Services */,
+				7B5EC537251C127E0020FF6F /* View */,
 				7B5EC4F2251C09880020FF6F /* AppDelegate.swift */,
 				7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */,
 				7B5EC4F6251C09880020FF6F /* ViewController.swift */,
-				7B5EC4F8251C09880020FF6F /* Main.storyboard */,
 				7B5EC4FB251C098B0020FF6F /* Assets.xcassets */,
-				7B5EC4FD251C098B0020FF6F /* LaunchScreen.storyboard */,
 				7B5EC500251C098B0020FF6F /* Info.plist */,
 			);
 			path = "BTG Mobile Challange";
@@ -205,6 +204,23 @@
 				7B5EC535251C12350020FF6F /* CurrencyConverterServiceProvider.swift */,
 			);
 			path = CurrencyConverter;
+			sourceTree = "<group>";
+		};
+		7B5EC537251C127E0020FF6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC538251C12AB0020FF6F /* Storyboards */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B5EC538251C12AB0020FF6F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC4FD251C098B0020FF6F /* LaunchScreen.storyboard */,
+				7B5EC4F8251C09880020FF6F /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
