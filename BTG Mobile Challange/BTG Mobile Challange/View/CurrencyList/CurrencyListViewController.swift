@@ -24,7 +24,6 @@ class CurrencyListViewController: UIViewController {
     // MARK: - Variables
 
     private var viewModel = CurrencyListViewModel(servicesProvider: CurrencyListServiceProvider())
-    private var refreshControl = UIRefreshControl()
 
     // MARK: - Lyfecycle and constructors
 
@@ -50,11 +49,6 @@ class CurrencyListViewController: UIViewController {
         searchController.searchBar.placeholder = searchBarPlaceholder
         navigationItem.searchController = searchController
         definesPresentationContext = true
-    }
-
-    @objc private func refreshTableView() {
-        currencylistTableView.reloadData()
-        refreshControl.endRefreshing()
     }
 
     private func filterResults() {
