@@ -16,8 +16,10 @@ class CurrencyListViewController: UIViewController {
 
     // MARK: - Constants
 
-    let tableViewCellIdentifier = "CurrencyListItemTableViewCell"
-    let errorTableViewCellIdentifier = "CurrencyListErrorTableViewCell"
+    private let tableViewCellIdentifier = "CurrencyListItemTableViewCell"
+    private let errorTableViewCellIdentifier = "CurrencyListErrorTableViewCell"
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchBarPlaceholder = "Filter your search..."
 
     // MARK: - Variables
 
@@ -29,7 +31,7 @@ class CurrencyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewDelegate()
-        setupTableViewRefresh()
+        setupSearchDelegate()
     }
 
     // MARK: - Private functions
@@ -41,15 +43,29 @@ class CurrencyListViewController: UIViewController {
         currencylistTableView.dataSource = self
     }
 
-    private func setupTableViewRefresh() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh data")
-        refreshControl.addTarget(self, action: #selector(self.refreshTableView(_:)), for: .valueChanged)
-        currencylistTableView.addSubview(refreshControl)
+    private func setupSearchDelegate() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = searchBarPlaceholder
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 
-    @objc private func refreshTableView(_ sender: AnyObject) {
+    @objc private func refreshTableView() {
         currencylistTableView.reloadData()
         refreshControl.endRefreshing()
+    }
+
+    private func filterResults() {
+        guard let text = searchController.searchBar.text else { return }
+        viewModel.filter(by: text)
+        currencylistTableView.reloadData()
+    }
+
+    private func clearFilter() {
+        viewModel.filter(by: String())
+        currencylistTableView.reloadData()
     }
 }
 
@@ -75,5 +91,25 @@ extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource
         cell.currencyCodeLabel.text = currencyCode
 
         return cell
+    }
+}
+
+extension CurrencyListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterResults()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        filterResults()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        clearFilter()
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            clearFilter()
+        }
     }
 }

@@ -14,6 +14,14 @@ public class CurrencyListViewModel {
 
     @Published var currencyList: [Dictionary<String, String>.Element]?
 
+    // MARK: - Variables
+
+    private var originalCurrencyList: [Dictionary<String, String>.Element]? {
+        didSet {
+            currencyList = originalCurrencyList
+        }
+    }
+
     // MARK: - Constants
 
     private let servicesProvider: CurrencyListServiceProtocol
@@ -27,9 +35,18 @@ public class CurrencyListViewModel {
             case .failure:
                 self.currencyList = nil
             case .success(let data):
-                self.currencyList = data.currencies?.sorted { $0.key < $1.key }
+                self.originalCurrencyList = data.currencies?.sorted { $0.key < $1.key }
             }
         }
     }
 
+    // MARK: - Public functions
+
+    func filter(by text: String) {
+        if text.isEmpty {
+            currencyList = originalCurrencyList
+        } else {
+            currencyList = originalCurrencyList?.filter { $0.key.lowercased().contains(text.lowercased()) || $0.value.lowercased().contains(text.lowercased()) }
+        }
+    }
 }
