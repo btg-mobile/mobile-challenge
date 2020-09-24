@@ -19,7 +19,7 @@ class CurrencyListViewController: UIViewController {
     private let tableViewCellIdentifier = "CurrencyListItemTableViewCell"
     private let errorTableViewCellIdentifier = "CurrencyListErrorTableViewCell"
     private let searchController = UISearchController(searchResultsController: nil)
-    private let searchBarPlaceholder = "Filter your search..."
+    private let searchBarPlaceholder = "Filter by name or symbol..."
 
     // MARK: - Variables
 
