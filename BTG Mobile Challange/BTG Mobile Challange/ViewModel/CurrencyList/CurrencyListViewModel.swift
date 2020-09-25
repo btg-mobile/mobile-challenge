@@ -49,4 +49,19 @@ public class CurrencyListViewModel {
             currencyList = originalCurrencyList?.filter { $0.key.lowercased().contains(text.lowercased()) || $0.value.lowercased().contains(text.lowercased()) }
         }
     }
+
+    func sort(sortType: CurrencyListSort) {
+        switch sortType {
+        case .currencyCodeAscending:
+            self.originalCurrencyList?.sort {$0.key < $1.key}
+        case .currencyCodeDescending:
+            self.originalCurrencyList?.sort {$0.key > $1.key}
+        case .nameAscending:
+            self.originalCurrencyList?.sort {$0.value < $1.value}
+        case .nameDescending:
+            self.originalCurrencyList?.sort {$0.value > $1.value}
+        default:
+            return
+        }
+    }
 }

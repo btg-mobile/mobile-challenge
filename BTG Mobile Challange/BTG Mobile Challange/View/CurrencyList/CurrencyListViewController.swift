@@ -20,10 +20,14 @@ class CurrencyListViewController: UIViewController {
     private let errorTableViewCellIdentifier = "CurrencyListErrorTableViewCell"
     private let searchController = UISearchController(searchResultsController: nil)
     private let searchBarPlaceholder = "Filter by name or symbol..."
+    private let sortListModalStoryboard = "CurrencyListSortModalViewController"
+    private let sortListViewController = "CurrencyListSortModalViewController"
+    private let sortButtonTitle = "Sort by"
 
     // MARK: - Variables
 
     private var viewModel = CurrencyListViewModel(servicesProvider: CurrencyListServiceProvider())
+    private var sortListModalViewController: CurrencyListSortModalViewController?
 
     // MARK: - Lyfecycle and constructors
 
@@ -31,6 +35,8 @@ class CurrencyListViewController: UIViewController {
         super.viewDidLoad()
         setupTableViewDelegate()
         setupSearchDelegate()
+        setupSortViewController()
+        setupSortButton()
     }
 
     // MARK: - Private functions
@@ -51,6 +57,18 @@ class CurrencyListViewController: UIViewController {
         definesPresentationContext = true
     }
 
+    private func setupSortViewController() {
+        let storyboard = UIStoryboard(name: sortListModalStoryboard, bundle: nil)
+        guard let sortListModalViewController = storyboard.instantiateViewController(identifier: sortListViewController) as? CurrencyListSortModalViewController else { return }
+        sortListModalViewController.setup(sortDelegate: self)
+        self.sortListModalViewController = sortListModalViewController
+    }
+
+    private func setupSortButton() {
+        let orderButton = UIBarButtonItem(title: sortButtonTitle, style: .plain, target: self, action: #selector(didTapSortButton))
+        navigationItem.rightBarButtonItem = orderButton
+    }
+
     private func filterResults() {
         guard let text = searchController.searchBar.text else { return }
         viewModel.filter(by: text)
@@ -60,6 +78,11 @@ class CurrencyListViewController: UIViewController {
     private func clearFilter() {
         viewModel.filter(by: String())
         currencylistTableView.reloadData()
+    }
+
+    @objc private func didTapSortButton() {
+        guard let sortListModalViewController = sortListModalViewController else { return }
+        present(sortListModalViewController, animated: true, completion: nil)
     }
 }
 
@@ -105,5 +128,12 @@ extension CurrencyListViewController: UISearchResultsUpdating, UISearchBarDelega
         if searchText.isEmpty {
             clearFilter()
         }
+    }
+}
+
+extension CurrencyListViewController: CurrencyListSortProtocol {
+    func didEndSort(sortType: CurrencyListSort) {
+        viewModel.sort(sortType: sortType)
+        currencylistTableView.reloadData()
     }
 }

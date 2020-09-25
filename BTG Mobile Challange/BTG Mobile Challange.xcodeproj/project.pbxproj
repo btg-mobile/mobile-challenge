@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B56E289251E7F5F002409A7 /* CurrencyListSortModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56E288251E7F5F002409A7 /* CurrencyListSortModalViewController.swift */; };
+		7B56E28D251E7F90002409A7 /* CurrencyListSortModalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B56E28C251E7F90002409A7 /* CurrencyListSortModalViewController.storyboard */; };
+		7B56E293251E9150002409A7 /* CurrencyListSortEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56E292251E9150002409A7 /* CurrencyListSortEnum.swift */; };
+		7B56E299251E9BD7002409A7 /* CurrencyListSortProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56E298251E9BD7002409A7 /* CurrencyListSortProtocol.swift */; };
 		7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F2251C09880020FF6F /* AppDelegate.swift */; };
 		7B5EC4F5251C09880020FF6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */; };
 		7B5EC4FA251C09880020FF6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5EC4F8251C09880020FF6F /* Main.storyboard */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B56E288251E7F5F002409A7 /* CurrencyListSortModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListSortModalViewController.swift; sourceTree = "<group>"; };
+		7B56E28C251E7F90002409A7 /* CurrencyListSortModalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrencyListSortModalViewController.storyboard; sourceTree = "<group>"; };
+		7B56E292251E9150002409A7 /* CurrencyListSortEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListSortEnum.swift; sourceTree = "<group>"; };
+		7B56E298251E9BD7002409A7 /* CurrencyListSortProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListSortProtocol.swift; sourceTree = "<group>"; };
 		7B5EC4EF251C09880020FF6F /* BTG Mobile Challange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTG Mobile Challange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5EC4F2251C09880020FF6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5EC4F4251C09880020FF6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B56E290251E912D002409A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7B5EC515251C0B520020FF6F /* DismissKeyboardExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7B56E291251E9137002409A7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				7B56E292251E9150002409A7 /* CurrencyListSortEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		7B56E29C251E9BDE002409A7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B56E298251E9BD7002409A7 /* CurrencyListSortProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		7B5EC4E6251C09880020FF6F = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +174,9 @@
 		7B5EC514251C0B2E0020FF6F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7B5EC515251C0B520020FF6F /* DismissKeyboardExtension.swift */,
+				7B56E29C251E9BDE002409A7 /* Protocol */,
+				7B56E291251E9137002409A7 /* Enums */,
+				7B56E290251E912D002409A7 /* Extensions */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -247,6 +281,8 @@
 				7B5EC53E251C13400020FF6F /* CurrencyListItemTableViewCell.swift */,
 				7B5EC53F251C13400020FF6F /* CurrencyListItemTableViewCell.xib */,
 				7B5EC542251C13790020FF6F /* CurrencyListViewController.swift */,
+				7B56E288251E7F5F002409A7 /* CurrencyListSortModalViewController.swift */,
+				7B56E28C251E7F90002409A7 /* CurrencyListSortModalViewController.storyboard */,
 			);
 			path = CurrencyList;
 			sourceTree = "<group>";
@@ -369,6 +405,7 @@
 				7B5EC52C251C10BD0020FF6F /* api_key.plist in Resources */,
 				7B5EC53D251C13130020FF6F /* CurrencyListErrorTableViewCell.xib in Resources */,
 				7B5EC4FC251C098B0020FF6F /* Assets.xcassets in Resources */,
+				7B56E28D251E7F90002409A7 /* CurrencyListSortModalViewController.storyboard in Resources */,
 				7B5EC4FA251C09880020FF6F /* Main.storyboard in Resources */,
 				7B5EC541251C13400020FF6F /* CurrencyListItemTableViewCell.xib in Resources */,
 			);
@@ -399,10 +436,13 @@
 				7B5EC4F3251C09880020FF6F /* AppDelegate.swift in Sources */,
 				7B5EC4F5251C09880020FF6F /* SceneDelegate.swift in Sources */,
 				7B5EC53C251C13130020FF6F /* CurrencyListErrorTableViewCell.swift in Sources */,
+				7B56E289251E7F5F002409A7 /* CurrencyListSortModalViewController.swift in Sources */,
+				7B56E293251E9150002409A7 /* CurrencyListSortEnum.swift in Sources */,
 				7B5EC54A251C141E0020FF6F /* CurrencyListViewModel.swift in Sources */,
 				7B5EC526251C100B0020FF6F /* ApiError.swift in Sources */,
 				7B5EC546251C13C50020FF6F /* CurrencyConverterViewController.swift in Sources */,
 				7B5EC534251C12280020FF6F /* CurrencyConverterServiceProtocol.swift in Sources */,
+				7B56E299251E9BD7002409A7 /* CurrencyListSortProtocol.swift in Sources */,
 				7B5EC531251C11400020FF6F /* CurrencyListServiceProvider.swift in Sources */,
 				7B5EC516251C0B520020FF6F /* DismissKeyboardExtension.swift in Sources */,
 				7B5EC522251C0C420020FF6F /* ModelError.swift in Sources */,
