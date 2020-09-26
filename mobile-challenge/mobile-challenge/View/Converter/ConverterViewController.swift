@@ -33,7 +33,7 @@ class ConverterViewController: UIViewController, Storyboarded {
     
     @IBAction func converterButtonAction(_ sender: Any) {
         do {
-            try inputValidator()
+            try inputValidator(inputValueTextField.text)
             errorLabel.text = ""
         } catch {
             errorLabel.text = error.localizedDescription
@@ -42,9 +42,16 @@ class ConverterViewController: UIViewController, Storyboarded {
 }
 
 extension ConverterViewController {
-    func inputValidator() throws {
-        guard let input = inputValueTextField.text else { throw InputValueError.inputIsNil }
-        guard input.count > 0 else { throw InputValueError.inputIsEmpty }
+    func inputValidator(_ value: String?) throws {
+        guard var value = value else { throw InputValueError.inputIsNil }
+        guard value.count > 0 else { throw InputValueError.inputIsEmpty }
+        
+        if value.contains(",") {
+            value = value.replacingOccurrences(of: ",", with: ".")
+        }
+        
+        guard let double = Double(value) else { throw InputValueError.inputIsNotDouble }
+        guard double > 0 else { throw InputValueError.valueIsNegative }
     }
 }
 
