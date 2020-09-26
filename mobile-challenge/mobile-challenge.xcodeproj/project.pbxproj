@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		69759B08251EDCB000609EF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B07251EDCB000609EF3 /* AppDelegate.swift */; };
 		69759B0A251EDCB000609EF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B09251EDCB000609EF3 /* SceneDelegate.swift */; };
-		69759B0C251EDCB000609EF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B0B251EDCB000609EF3 /* ViewController.swift */; };
+		69759B0C251EDCB000609EF3 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B0B251EDCB000609EF3 /* ConverterViewController.swift */; };
 		69759B0F251EDCB000609EF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69759B0D251EDCB000609EF3 /* Main.storyboard */; };
 		69759B12251EDCB000609EF3 /* mobile_challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69759B10251EDCB000609EF3 /* mobile_challenge.xcdatamodeld */; };
 		69759B14251EDCB300609EF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69759B13251EDCB300609EF3 /* Assets.xcassets */; };
 		69759B17251EDCB300609EF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69759B15251EDCB300609EF3 /* LaunchScreen.storyboard */; };
 		69759B22251EDCB300609EF3 /* mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B21251EDCB300609EF3 /* mobile_challengeTests.swift */; };
 		69759B2D251EDCB300609EF3 /* mobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B2C251EDCB300609EF3 /* mobile_challengeUITests.swift */; };
+		69759B50251EE4E800609EF3 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759B4F251EE4E800609EF3 /* CurrencyListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 		69759B04251EDCB000609EF3 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69759B07251EDCB000609EF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69759B09251EDCB000609EF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		69759B0B251EDCB000609EF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		69759B0B251EDCB000609EF3 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		69759B0E251EDCB000609EF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69759B11251EDCB000609EF3 /* mobile_challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mobile_challenge.xcdatamodel; sourceTree = "<group>"; };
 		69759B13251EDCB300609EF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		69759B28251EDCB300609EF3 /* mobile-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69759B2C251EDCB300609EF3 /* mobile_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challengeUITests.swift; sourceTree = "<group>"; };
 		69759B2E251EDCB300609EF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69759B4F251EE4E800609EF3 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +103,11 @@
 		69759B06251EDCB000609EF3 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
-				69759B07251EDCB000609EF3 /* AppDelegate.swift */,
-				69759B09251EDCB000609EF3 /* SceneDelegate.swift */,
-				69759B0B251EDCB000609EF3 /* ViewController.swift */,
-				69759B0D251EDCB000609EF3 /* Main.storyboard */,
+				69759B48251EDDFB00609EF3 /* Model */,
+				69759B46251EDD7200609EF3 /* View */,
+				69759B45251EDD6A00609EF3 /* View Model */,
+				69759B47251EDD8900609EF3 /* App */,
 				69759B13251EDCB300609EF3 /* Assets.xcassets */,
-				69759B15251EDCB300609EF3 /* LaunchScreen.storyboard */,
 				69759B18251EDCB300609EF3 /* Info.plist */,
 				69759B10251EDCB000609EF3 /* mobile_challenge.xcdatamodeld */,
 			);
@@ -129,6 +130,40 @@
 				69759B2E251EDCB300609EF3 /* Info.plist */,
 			);
 			path = "mobile-challengeUITests";
+			sourceTree = "<group>";
+		};
+		69759B45251EDD6A00609EF3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		69759B46251EDD7200609EF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				69759B0B251EDCB000609EF3 /* ConverterViewController.swift */,
+				69759B4F251EE4E800609EF3 /* CurrencyListViewController.swift */,
+				69759B0D251EDCB000609EF3 /* Main.storyboard */,
+				69759B15251EDCB300609EF3 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		69759B47251EDD8900609EF3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				69759B07251EDCB000609EF3 /* AppDelegate.swift */,
+				69759B09251EDCB000609EF3 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		69759B48251EDDFB00609EF3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +296,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69759B0C251EDCB000609EF3 /* ViewController.swift in Sources */,
+				69759B50251EE4E800609EF3 /* CurrencyListViewController.swift in Sources */,
+				69759B0C251EDCB000609EF3 /* ConverterViewController.swift in Sources */,
 				69759B08251EDCB000609EF3 /* AppDelegate.swift in Sources */,
 				69759B0A251EDCB000609EF3 /* SceneDelegate.swift in Sources */,
 				69759B12251EDCB000609EF3 /* mobile_challenge.xcdatamodeld in Sources */,
