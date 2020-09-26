@@ -7,24 +7,35 @@
 
 import UIKit
 
-class CurrencyListViewController: UIViewController {
-
-    @IBOutlet weak var navBar: UINavigationBar!
+class CurrencyListViewController: UIViewController, Storyboarded {
     
+    lazy var searchController: UISearchController = {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchBar.placeholder = "Pesquisar moeda"
+        search.searchResultsUpdater = self
+        search.hidesNavigationBarDuringPresentation = false
+        return search
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        isModalInPresentation = true
+        definesPresentationContext = true
+        
+        setupSearchBar()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupSearchBar() {
+        navigationItem.titleView = searchController.searchBar
     }
-    */
 
+}
+
+extension CurrencyListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
 }
