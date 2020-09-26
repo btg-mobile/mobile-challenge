@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-Xc-vFE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="AfG-u7-UNs">
@@ -76,17 +76,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="sPa-23-J6B">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xNO-h7-1N1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sPa-23-J6B" firstAttribute="leading" secondItem="xNO-h7-1N1" secondAttribute="leading" id="4Ym-SU-4AE"/>
+                            <constraint firstItem="sPa-23-J6B" firstAttribute="top" secondItem="xNO-h7-1N1" secondAttribute="top" id="9xU-kG-iQX"/>
                             <constraint firstAttribute="bottom" secondItem="G4f-Xc-vFE" secondAttribute="bottom" id="BUa-np-Zqh"/>
                             <constraint firstItem="G4f-Xc-vFE" firstAttribute="leading" secondItem="xNO-h7-1N1" secondAttribute="leading" id="P7M-0d-zfK"/>
                             <constraint firstItem="G4f-Xc-vFE" firstAttribute="trailing" secondItem="xNO-h7-1N1" secondAttribute="trailing" id="QrG-2B-fpU"/>
-                            <constraint firstItem="G4f-Xc-vFE" firstAttribute="top" secondItem="xNO-h7-1N1" secondAttribute="top" id="fCd-Nb-yLR"/>
+                            <constraint firstItem="G4f-Xc-vFE" firstAttribute="top" secondItem="sPa-23-J6B" secondAttribute="bottom" id="bS6-HK-4SN"/>
+                            <constraint firstItem="sPa-23-J6B" firstAttribute="trailing" secondItem="xNO-h7-1N1" secondAttribute="trailing" id="fhz-8h-m9V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e4a-nX-XdB"/>
+                    <connections>
+                        <outlet property="searchBar" destination="sPa-23-J6B" id="maO-lJ-Edw"/>
+                        <outlet property="tableView" destination="G4f-Xc-vFE" id="rry-zk-L9U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tV0-3F-oDU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
