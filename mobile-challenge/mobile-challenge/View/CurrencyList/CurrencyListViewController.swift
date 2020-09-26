@@ -21,9 +21,7 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         return viewModel
     }()
     
-    lazy var delegate = CurrenciesDelegate()
     lazy var dataSource = CurreenciesDataSource(currencies: viewModel.currencies)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +30,6 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         setupSearchBar()
         
         tableView.dataSource = dataSource
-        tableView.delegate = delegate
     }
 
     func setupNavigationBarBar() {

@@ -30,7 +30,6 @@
 		69759BAE251F950C00609EF3 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BAD251F950C00609EF3 /* CurrencyListViewModel.swift */; };
 		69759BB3251F953B00609EF3 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BB2251F953B00609EF3 /* CurrencyModel.swift */; };
 		69759BB8251F969700609EF3 /* CurreenciesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BB7251F969700609EF3 /* CurreenciesDataSource.swift */; };
-		69759BBD251F974300609EF3 /* CurrenciesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BBC251F974300609EF3 /* CurrenciesDelegate.swift */; };
 		69759BC3251FC9F900609EF3 /* NetworkManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BC2251FC9F900609EF3 /* NetworkManage.swift */; };
 		69759BC8251FCA4000609EF3 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BC7251FCA4000609EF3 /* ServiceProtocol.swift */; };
 		69759BCD251FD12100609EF3 /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69759BCC251FD12100609EF3 /* ConverterService.swift */; };
@@ -84,7 +83,6 @@
 		69759BAD251F950C00609EF3 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		69759BB2251F953B00609EF3 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		69759BB7251F969700609EF3 /* CurreenciesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurreenciesDataSource.swift; sourceTree = "<group>"; };
-		69759BBC251F974300609EF3 /* CurrenciesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesDelegate.swift; sourceTree = "<group>"; };
 		69759BC2251FC9F900609EF3 /* NetworkManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManage.swift; sourceTree = "<group>"; };
 		69759BC7251FCA4000609EF3 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		69759BCC251FD12100609EF3 /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
@@ -184,12 +182,10 @@
 		69759B46251EDD7200609EF3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				69759B0B251EDCB000609EF3 /* ConverterViewController.swift */,
-				69759B4F251EE4E800609EF3 /* CurrencyListViewController.swift */,
+				69759BE0251FE07000609EF3 /* Converter */,
+				69759BDF251FE06300609EF3 /* CurrencyList */,
 				69759B0D251EDCB000609EF3 /* Main.storyboard */,
 				69759B15251EDCB300609EF3 /* LaunchScreen.storyboard */,
-				69759BB7251F969700609EF3 /* CurreenciesDataSource.swift */,
-				69759BBC251F974300609EF3 /* CurrenciesDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +246,23 @@
 				69759BCC251FD12100609EF3 /* ConverterService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		69759BDF251FE06300609EF3 /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				69759B4F251EE4E800609EF3 /* CurrencyListViewController.swift */,
+				69759BB7251F969700609EF3 /* CurreenciesDataSource.swift */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		69759BE0251FE07000609EF3 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				69759B0B251EDCB000609EF3 /* ConverterViewController.swift */,
+			);
+			path = Converter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,7 +403,6 @@
 				69759B7B251EF14000609EF3 /* ConverterViewCoordinator.swift in Sources */,
 				69759B5F251EEB0C00609EF3 /* Coordinator.swift in Sources */,
 				69759B80251EF3D400609EF3 /* ViewCodable.swift in Sources */,
-				69759BBD251F974300609EF3 /* CurrenciesDelegate.swift in Sources */,
 				69759BAE251F950C00609EF3 /* CurrencyListViewModel.swift in Sources */,
 				69759B96251F903300609EF3 /* ConverterViewModel.swift in Sources */,
 				69759BCD251FD12100609EF3 /* ConverterService.swift in Sources */,

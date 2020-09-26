@@ -9,4 +9,10 @@ import Foundation
 
 class ConverterViewModel {
     
+    
+    
+    init() {
+        
+    }
+    
 }
