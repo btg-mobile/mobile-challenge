@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConverterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
