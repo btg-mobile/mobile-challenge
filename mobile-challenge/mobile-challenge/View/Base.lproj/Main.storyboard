@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
@@ -11,7 +11,7 @@
         <!--Converter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ConverterViewController" customModule="mobile_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConverterViewController" id="BYZ-38-t0r" customClass="ConverterViewController" customModule="mobile_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,9 @@
                                 <rect key="frame" x="34" y="405" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="BRL"/>
+                                <connections>
+                                    <action selector="originCurrrencyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uHo-2f-pyT"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jB-K6-X33">
                                 <rect key="frame" x="143" y="403" width="238" height="34"/>
@@ -38,22 +41,14 @@
                                 <rect key="frame" x="34" y="463" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="USD"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-Sy-N99">
-                                <rect key="frame" x="184" y="568" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="FbA-cj-4Ov" kind="show" id="RmH-0x-l9Q"/>
+                                    <action selector="destinyCurrencyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8u8-F8-5hd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <segue destination="FbA-cj-4Ov" kind="show" id="ezp-WB-EsR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,13 +57,13 @@
         <!--Currency List View Controller-->
         <scene sceneID="vOP-al-Rus">
             <objects>
-                <viewController id="FbA-cj-4Ov" customClass="CurrencyListViewController" customModule="mobile_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrencyListViewController" id="FbA-cj-4Ov" customClass="CurrencyListViewController" customModule="mobile_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fyt-f4-2h4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-Xc-vFE">
-                                <rect key="frame" x="0.0" y="112" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="AfG-u7-UNs">
@@ -81,47 +76,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBc-Wq-16u">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                <items>
-                                    <navigationItem title="Moeda" id="KhK-2P-DIP">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="38D-Xc-wCp"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <searchBar contentMode="redraw" placeholder="Pesquisar moeda" translatesAutoresizingMaskIntoConstraints="NO" id="w2t-fv-UWp">
-                                <rect key="frame" x="0.0" y="56" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xNO-h7-1N1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CBc-Wq-16u" firstAttribute="leading" secondItem="xNO-h7-1N1" secondAttribute="leading" id="7EZ-wg-fbR"/>
                             <constraint firstAttribute="bottom" secondItem="G4f-Xc-vFE" secondAttribute="bottom" id="BUa-np-Zqh"/>
-                            <constraint firstItem="CBc-Wq-16u" firstAttribute="top" secondItem="xNO-h7-1N1" secondAttribute="top" id="MoQ-R5-iUQ"/>
                             <constraint firstItem="G4f-Xc-vFE" firstAttribute="leading" secondItem="xNO-h7-1N1" secondAttribute="leading" id="P7M-0d-zfK"/>
-                            <constraint firstItem="w2t-fv-UWp" firstAttribute="leading" secondItem="xNO-h7-1N1" secondAttribute="leading" id="Plc-Ow-Wlf"/>
                             <constraint firstItem="G4f-Xc-vFE" firstAttribute="trailing" secondItem="xNO-h7-1N1" secondAttribute="trailing" id="QrG-2B-fpU"/>
-                            <constraint firstItem="G4f-Xc-vFE" firstAttribute="top" secondItem="w2t-fv-UWp" secondAttribute="bottom" id="Ujk-Gg-O8r"/>
-                            <constraint firstAttribute="trailing" secondItem="w2t-fv-UWp" secondAttribute="trailing" id="bdb-Ro-Yk0"/>
-                            <constraint firstItem="CBc-Wq-16u" firstAttribute="trailing" secondItem="xNO-h7-1N1" secondAttribute="trailing" id="cw3-0j-UKX"/>
-                            <constraint firstItem="w2t-fv-UWp" firstAttribute="top" secondItem="CBc-Wq-16u" secondAttribute="bottom" id="oBJ-q1-kNm"/>
+                            <constraint firstItem="G4f-Xc-vFE" firstAttribute="top" secondItem="xNO-h7-1N1" secondAttribute="top" id="fCd-Nb-yLR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e4a-nX-XdB"/>
-                    <connections>
-                        <outlet property="navBar" destination="CBc-Wq-16u" id="P3h-R7-eoE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tV0-3F-oDU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="831.88405797101461" y="83.705357142857139"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="RmH-0x-l9Q"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -7,13 +7,25 @@
 
 import UIKit
 
-class ConverterViewController: UIViewController {
+protocol ConverterViewControllerCoordinator: AnyObject {
+    func currencyListView()
+}
+
+class ConverterViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: ConverterViewControllerCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func originCurrrencyButton(_ sender: Any) {
+        coordinator?.currencyListView()
+    }
+    
+    @IBAction func destinyCurrencyButton(_ sender: Any) {
+    }
+    
 }
 
