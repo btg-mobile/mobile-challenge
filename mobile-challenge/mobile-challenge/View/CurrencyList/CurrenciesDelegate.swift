@@ -26,10 +26,11 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard viewModel.currencies.count > 0 else { return }
         let currency = viewModel.currencies[indexPath.row]
+        let USD = Identifier.Currency.USD.rawValue
         
         if buttonTapped == .source {
             converterViewModel.source = currency
-            if currency.code != "USD" {
+            if currency.code != USD {
                 converterViewModel.dollar = getDollar()
             }
         }
@@ -39,7 +40,8 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
     }
     
     private func getDollar() -> CurrencyModel? {
-        guard let index = viewModel.currencies.firstIndex(where: { $0.code == "USD" }) else { return nil }
+        let USD = Identifier.Currency.USD.rawValue
+        guard let index = viewModel.currencies.firstIndex(where: { $0.code == USD }) else { return nil }
         return viewModel.currencies[index]
     }
 }

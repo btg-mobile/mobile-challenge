@@ -34,7 +34,7 @@ class CurrenciesDataSource: NSObject, UITableViewDataSource {
         let currency = viewModel.currencies[indexPath.row]
         cell.textLabel?.text = "\(currency.code) - \(currency.name)"
         
-        if let valueDolar = currency.valueInDollar {
+        if let valueDolar = currency.valueDollar {
             cell.detailTextLabel?.text = "USD-\(currency.code): \(valueDolar)"
         }
         else {

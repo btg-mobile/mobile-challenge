@@ -8,7 +8,12 @@
 import Foundation
 
 enum ValidationError: Error {
-    case inputIsNil, inputIsEmpty, inputIsNotDouble, valueIsNegative, unselectedSourceCurrency, unselectedDestinyCurrency
+    case inputIsNil,
+         inputIsEmpty,
+         inputIsNotDouble,
+         valueIsNegative,
+         unselectedSourceCurrency,
+         unselectedDestinyCurrency
 }
 
 extension ValidationError: LocalizedError {

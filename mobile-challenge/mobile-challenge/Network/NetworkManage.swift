@@ -10,7 +10,7 @@ import Foundation
 final class NetworkManage {
     func request<T:Decodable>(service: ServiceProtocol,
                               resposeType: T.Type,
-                              completion: @escaping (Result<T, Error>) -> Void) {
+                              completion: @escaping (Result<T, NetworkError>) -> Void) {
         
         guard let url = URL(string: service.path) else { return }
         
@@ -21,19 +21,29 @@ final class NetworkManage {
             guard let self = self else { return }
             
             guard error == nil else {
-                completion(.failure(error!))
+                var networkError: NetworkError = .unknowError
+                if error!.localizedDescription.uppercased().contains("OFFLINE") {
+                    networkError = .offline
+                }
+                completion(.failure(networkError))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.connectionError))
                 return
             }
             
             guard let mime = response?.mimeType, mime == "application/json" else {
-                completion(.failure(NSError()))
+                completion(.failure(.invalidResponseType))
                 return
             }
             
             guard
                 let data = data,
                 let object: T = self.decode(data: data) else {
-                completion(.failure(NSError()))
+                completion(.failure(.objectNotDecoded))
                 return
             }
             
