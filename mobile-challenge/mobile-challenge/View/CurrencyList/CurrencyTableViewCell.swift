@@ -12,21 +12,21 @@ class CurrencyTableViewCell: UITableViewCell {
     let codeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = label.font.withSize(17)
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
     let nameLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = label.font.withSize(17)
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
     let fromCurrencyLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = label.font.withSize(12)
-        label.textColor = .black
+        label.textColor = .label
         label.text = "USD - "
         return label
     }()
@@ -34,14 +34,14 @@ class CurrencyTableViewCell: UITableViewCell {
     let toCurrencyLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = label.font.withSize(12)
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
     let valueDollarLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = label.font.withSize(12)
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -63,7 +63,7 @@ class CurrencyTableViewCell: UITableViewCell {
 }
 
 extension CurrencyTableViewCell: ViewCodable {
-    var horizontalPadding: CGFloat { 15 }
+    var horizontalPadding: CGFloat { 20 }
     var verticalPadding: CGFloat { 10 }
 
     func setupHierarchyViews() {

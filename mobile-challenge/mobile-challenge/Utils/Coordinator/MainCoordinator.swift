@@ -16,7 +16,8 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        viewController = ConverterViewController.instantiate()
+        let viewModel = ConverterViewModel()
+        viewController = ConverterViewController(viewModel: viewModel)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: false)
     }
@@ -30,7 +31,9 @@ extension MainCoordinator: ConverterViewControllerCoordinator {
         let vc = CurrencyListViewController(viewModel: viewModel,
                                                         converterViewModel: viewController.viewModel,
                                                         buttonTapped: buttonTapped)
+        viewModel.delegate = vc
         navigationController.pushViewController(vc, animated: true)
+        
     }
     
 }

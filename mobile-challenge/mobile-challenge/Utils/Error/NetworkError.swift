@@ -12,7 +12,8 @@ enum NetworkError: Error {
          unknowError,
          invalidResponseType,
          objectNotDecoded,
-         connectionError
+         connectionError,
+         invalidURL
 }
 
 extension NetworkError: LocalizedError {
@@ -23,6 +24,7 @@ extension NetworkError: LocalizedError {
         case .invalidResponseType: return "Tipo de dados retornado é inválido."
         case .objectNotDecoded: return "O objeto retornado não pôde ser decodificado."
         case .connectionError: return "Problema na conexão"
+        case .invalidURL: return "A URL é inválida"
         }
     }
 }

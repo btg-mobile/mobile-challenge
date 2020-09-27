@@ -38,8 +38,7 @@ class CurrenciesDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard
-            let currency = viewModel.currencies.first,
-            let date = currency.date else {
+            let date = viewModel.dateExchange else {
             return ""
         }
         

@@ -41,8 +41,6 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
         else if buttonTapped == .destiny {
             converterViewModel.destiny = currency
         }
-        
-        
     }
     
     private func getDollar() -> CurrencyModel? {

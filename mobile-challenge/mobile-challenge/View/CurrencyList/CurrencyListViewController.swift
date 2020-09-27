@@ -40,6 +40,7 @@ class CurrencyListViewController: UIViewController {
         self.viewModel = viewModel
         self.converterViewModel = converterViewModel
         self.buttonTapped = buttonTapped
+        
         super.init(nibName: nil, bundle: nil)
         
         safearea = view.layoutMarginsGuide
