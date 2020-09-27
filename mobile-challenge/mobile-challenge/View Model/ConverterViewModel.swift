@@ -11,9 +11,8 @@ class ConverterViewModel {
     
     var source: CurrencyModel?
     var destiny: CurrencyModel?
+    var dollar: CurrencyModel?
     
-    init() {
-        
-    }
+    init() { }
     
 }

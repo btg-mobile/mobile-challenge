@@ -65,6 +65,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="converterResultLabel" destination="Foa-4d-0Dy" id="ykj-c8-dYn"/>
                         <outlet property="destinyButton" destination="S4t-Ug-urw" id="8P2-My-cd9"/>
                         <outlet property="errorLabel" destination="ZAL-H7-j0a" id="VLS-jn-7eG"/>
                         <outlet property="inputValueTextField" destination="6jB-K6-X33" id="Jgi-SP-cgU"/>
