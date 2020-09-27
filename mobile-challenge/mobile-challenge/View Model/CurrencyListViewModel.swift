@@ -19,11 +19,22 @@ protocol CurrencyListViewModelDelegate: AnyObject {
 
 class CurrencyListViewModel {
     var currencies: [CurrencyModel] = []
+    var currenciesBackup: [CurrencyModel] = []
     private let networkManage = NetworkManage()
     
     weak var delegate: CurrencyListViewModelDelegate?
     
     init() {
+        self.orderCurrencies(by: .code)
+    }
+    
+    func orderCurrencies(by: OrderButtonTitle) {
+        switch by {
+        case .code:
+            currencies.sort { $0.code < $1.code }
+        case .name:
+            currencies.sort { $0.name < $1.name }
+        }
     }
     
     func fetchCurrencies(errorHandler: @escaping (String?) -> Void) {
@@ -59,6 +70,7 @@ class CurrencyListViewModel {
                         self.currencies[index].date = Date(timeIntervalSince1970: currencyExchangeResponse.timestamp)
                     }
                 }
+                self.currenciesBackup = self.currencies
                 self.delegate?.didFinishLoadCurrencyValuesInDollarWithSuccess(self.currencies)
             case .failure:
                 print("Falha ao buscar valor das moedas em dolar")

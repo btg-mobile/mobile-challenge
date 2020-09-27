@@ -23,6 +23,10 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
         super.init()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        55
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard viewModel.currencies.count > 0 else { return }
         let currency = viewModel.currencies[indexPath.row]
@@ -37,6 +41,8 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
         else if buttonTapped == .destiny {
             converterViewModel.destiny = currency
         }
+        
+        
     }
     
     private func getDollar() -> CurrencyModel? {

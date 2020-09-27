@@ -87,7 +87,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-Xc-vFE">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="2zz-wW-552" detailTextLabel="hqL-5D-2ow" style="IBUITableViewCellStyleSubtitle" id="AfG-u7-UNs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="2zz-wW-552" detailTextLabel="hqL-5D-2ow" style="IBUITableViewCellStyleSubtitle" id="AfG-u7-UNs">
                                         <rect key="frame" x="0.0" y="28" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AfG-u7-UNs" id="0q1-Ff-qtG">
@@ -131,10 +131,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e4a-nX-XdB"/>
-                    <connections>
-                        <outlet property="searchBar" destination="sPa-23-J6B" id="maO-lJ-Edw"/>
-                        <outlet property="tableView" destination="G4f-Xc-vFE" id="rry-zk-L9U"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tV0-3F-oDU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

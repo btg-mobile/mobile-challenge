@@ -13,16 +13,6 @@ class CurrenciesDataSource: NSObject, UITableViewDataSource {
     init(viewModel: CurrencyListViewModel) {
         self.viewModel = viewModel
         super.init()
-        self.orderCurrencies(by: .code)
-    }
-    
-    func orderCurrencies(by: OrderButtonTitle) {
-        switch by {
-        case .code:
-            viewModel.currencies.sort { $0.code < $1.code }
-        case .name:
-            viewModel.currencies.sort { $0.name < $1.name }
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,15 +20,18 @@ class CurrenciesDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CurrencyTableViewCell
         let currency = viewModel.currencies[indexPath.row]
-        cell.textLabel?.text = "\(currency.code) - \(currency.name)"
-        
+        cell.codeLabel.text = currency.code
+        cell.nameLabel.text = currency.name
+
         if let valueDolar = currency.valueDollar {
-            cell.detailTextLabel?.text = "USD-\(currency.code): \(valueDolar)"
+            cell.toCurrencyLabel.text = currency.code
+            cell.valueDollarLabel.text = "\(valueDolar)"
         }
         else {
-            cell.detailTextLabel?.text = ""
+            cell.toCurrencyLabel.text = ""
+            cell.valueDollarLabel.text = ""
         }
         return cell
     }
