@@ -8,27 +8,35 @@
 import UIKit
 
 protocol ConverterViewControllerCoordinator: AnyObject {
-    func currencyListView()
+    func currencyListView(buttonTapped: ButtonTapped)
 }
 
 class ConverterViewController: UIViewController, Storyboarded {
     
+    @IBOutlet weak var sourceButton: UIButton!
+    @IBOutlet weak var destinyButton: UIButton!
     @IBOutlet weak var inputValueTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
     weak var coordinator: ConverterViewControllerCoordinator?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func originCurrrencyButton(_ sender: Any) {
-        coordinator?.currencyListView()
-    }
     
-    @IBAction func destinyCurrencyButton(_ sender: Any) {
-        coordinator?.currencyListView()
+    lazy var viewModel: ConverterViewModel = {
+        let viewModel = ConverterViewModel()
+        return viewModel
+    }()
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupButtons()
+    }
+
+    @IBAction func goToCurrrencyListButton(_ sender: UIButton) {
+        if sender == sourceButton {
+            coordinator?.currencyListView(buttonTapped: .source)
+        }
+        else if sender == destinyButton {
+            coordinator?.currencyListView(buttonTapped: .destiny)
+        }
     }
     
     @IBAction func converterButtonAction(_ sender: Any) {
@@ -37,6 +45,16 @@ class ConverterViewController: UIViewController, Storyboarded {
             errorLabel.text = ""
         } catch {
             errorLabel.text = error.localizedDescription
+        }
+    }
+    
+    func setupButtons() {
+        if let source = viewModel.source {
+            sourceButton.setTitle(source.code, for: .normal)
+        }
+        
+        if let destiny = viewModel.destiny {
+            destinyButton.setTitle(destiny.code, for: .normal)
         }
     }
 }

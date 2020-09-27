@@ -17,12 +17,6 @@ final class NetworkManage {
         var request = URLRequest(url: url)
         request.httpMethod = service.method.value
         
-//        if let parameters = service.parameters {
-//            for (key, value) in parameters {
-//                request.setValue(value, forHTTPHeaderField: key)
-//            }
-//        }
-        
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             

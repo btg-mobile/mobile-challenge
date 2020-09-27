@@ -21,7 +21,11 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         return viewModel
     }()
     
-    lazy var dataSource = CurreenciesDataSource(currencies: viewModel.currencies)
+    var converterViewModel: ConverterViewModel!
+    var buttonTapped: ButtonTapped!
+    
+    lazy var dataSource = CurrenciesDataSource(viewModel: viewModel)
+    lazy var delegate = CurrenciesDelegate(viewModel: viewModel, converterViewModel: converterViewModel, buttonTapped: buttonTapped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,7 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         setupSearchBar()
         
         tableView.dataSource = dataSource
+        tableView.delegate = delegate
     }
 
     func setupNavigationBarBar() {
@@ -58,19 +63,27 @@ class CurrencyListViewController: UIViewController, Storyboarded {
     }
     
     func resetTableView() {
-        dataSource.currencies = viewModel.currencies
+        viewModel.currencies = viewModel.currencies
         dataSource.orderCurrencies(by: orderButtonType)
         tableView.reloadData()
     }
 }
 
 extension CurrencyListViewController: CurrencyListViewModelDelegate {
-    func didFinishLoadCurrenciesWithSuccess(_ currencies: [CurrencyModel]) {
+    func didFinishLoadCurrencyListWithSuccess(_ currencies: [CurrencyModel]) {
         DispatchQueue.main.async {
-            self.dataSource.currencies = currencies
+            self.viewModel.currencies = currencies
             self.tableView.reloadData()
         }
     }
+    
+    func didFinishLoadCurrencyValuesInDollarWithSuccess(_ currencies: [CurrencyModel]) {
+        DispatchQueue.main.async {
+            self.viewModel.currencies = currencies
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
 extension CurrencyListViewController: UISearchBarDelegate {
@@ -82,7 +95,7 @@ extension CurrencyListViewController: UISearchBarDelegate {
             return
         }
         
-        dataSource.currencies = viewModel.currencies.filter({ currency in
+        viewModel.currencies = viewModel.currencies.filter({ currency in
             return currency.code.uppercased().contains(searchText.uppercased()) || currency.name.uppercased().contains(searchText.uppercased())
         })
         
