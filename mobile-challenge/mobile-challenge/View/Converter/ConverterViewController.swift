@@ -98,6 +98,7 @@ class ConverterViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         errorLabel.text = ""
+        title = "Conversor de moedas"
         
         setupViews()
     }
@@ -124,7 +125,8 @@ class ConverterViewController: UIViewController {
         do {
             try viewModel.currenciesValidation()
             let inputValue = try viewModel.inputValidator(inputValueTextField.text)
-            converterResultLabel.text = "\(viewModel.performConversion(inputValue)) "
+            let valueDouble = viewModel.performConversion(inputValue)
+            converterResultLabel.text = String(format: "%.2f", valueDouble)
             
             errorLabel.text = "\(viewModel.source?.code ?? "") -> \(viewModel.destiny?.code ?? "")"
             errorLabel.textColor = .label
