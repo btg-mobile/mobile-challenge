@@ -13,28 +13,20 @@ enum ConverterService {
 }
 
 extension ConverterService: ServiceProtocol {
-    private var url: String { "http://api.currencylayer.com/" }
+    private var url: String { "http://api.currencylayer.com" }
     private var apiKey: String { "access_key=98d190b4ad2ecb4e667cdb821797d622" }
     
     var path: String {
         switch self {
         case .currencyList:
-            return "\(url)list?\(apiKey)"
+            return "\(url)/list?\(apiKey)"
         case .liveConverter:
-            return "\(url)live?\(apiKey)"
+            return "\(url)/live?\(apiKey)"
         }
     }
     
     var method: HttpMethod {
         .get
-    }
-    
-    var parameters: [String : String]? {
-        nil
-    }
-    
-    var headers: [String : String]? {
-        nil
     }
     
     

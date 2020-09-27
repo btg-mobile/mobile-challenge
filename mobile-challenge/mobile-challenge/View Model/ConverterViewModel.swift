@@ -9,7 +9,8 @@ import Foundation
 
 class ConverterViewModel {
     
-    
+    var source: CurrencyModel?
+    var destiny: CurrencyModel?
     
     init() {
         

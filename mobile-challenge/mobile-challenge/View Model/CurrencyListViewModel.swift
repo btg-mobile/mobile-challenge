@@ -13,7 +13,8 @@ enum OrderButtonTitle: String {
 }
 
 protocol CurrencyListViewModelDelegate: AnyObject {
-    func didFinishLoadCurrenciesWithSuccess(_ currencies: [CurrencyModel])
+    func didFinishLoadCurrencyListWithSuccess(_ currencies: [CurrencyModel])
+    func didFinishLoadCurrencyValuesInDollarWithSuccess(_ currencies: [CurrencyModel])
 }
 
 class CurrencyListViewModel {
@@ -27,7 +28,7 @@ class CurrencyListViewModel {
     }
     
     func fetchCurrencies() {
-        let service = ConverterService.currencyList
+        let service: ConverterService = .currencyList
         
         networkManage.request(service: service, resposeType: CurrencyListResponse.self) { result in
             switch result {
@@ -37,9 +38,30 @@ class CurrencyListViewModel {
                     self.currencies.append(CurrencyModel(code: key, name: value))
                 }
                 self.currencies.sort{ $0.code < $1.code }
-                self.delegate?.didFinishLoadCurrenciesWithSuccess(self.currencies)
+                self.delegate?.didFinishLoadCurrencyListWithSuccess(self.currencies)
+                self.fetchValuesInDollar()
             case .failure:
                 print("Falhou ao buscar moedas")
+            }
+        }
+    }
+    
+    func fetchValuesInDollar() {
+        let service: ConverterService = .liveConverter
+        
+        networkManage.request(service: service, resposeType: CurrencyExchangeResponse.self) { result in
+            switch result {
+            case .success(let currencyExchangeResponse):
+                guard let currenciesExchange = currencyExchangeResponse.quotes else { return }
+                for (key, value) in currenciesExchange {
+                    if let index = self.currencies.firstIndex(where: { key == "USD\($0.code)" }) {
+                        self.currencies[index].valueInDollar = value
+                        self.currencies[index].date = Date(timeIntervalSince1970: currencyExchangeResponse.timestamp)
+                    }
+                }
+                self.delegate?.didFinishLoadCurrencyValuesInDollarWithSuccess(self.currencies)
+            case .failure:
+                print("Falha ao buscar valor das moedas em dolar")
             }
         }
     }
