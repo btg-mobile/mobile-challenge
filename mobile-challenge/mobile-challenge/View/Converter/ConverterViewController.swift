@@ -17,6 +17,7 @@ class ConverterViewController: UIViewController, Storyboarded {
     @IBOutlet weak var destinyButton: UIButton!
     @IBOutlet weak var inputValueTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var converterResultLabel: UILabel!
     
     weak var coordinator: ConverterViewControllerCoordinator?
     
@@ -24,6 +25,11 @@ class ConverterViewController: UIViewController, Storyboarded {
         let viewModel = ConverterViewModel()
         return viewModel
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        errorLabel.text = ""
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,11 +47,36 @@ class ConverterViewController: UIViewController, Storyboarded {
     
     @IBAction func converterButtonAction(_ sender: Any) {
         do {
-            try inputValidator(inputValueTextField.text)
-            errorLabel.text = ""
+            let inputValue = try inputValidator(inputValueTextField.text)
+            converterResultLabel.text = "\(performConversion(inputValue))"
         } catch {
             errorLabel.text = error.localizedDescription
+            errorLabel.textColor = .red
         }
+        
+    }
+    
+    func performConversion(_ value: Double) -> Double {
+        guard
+            let source = viewModel.source,
+            let destiny = viewModel.destiny,
+            let sourceDollar = source.valueInDollar,
+            let destinyDollar = destiny.valueInDollar
+        else { return 0 }
+        
+        var returnValue: Double = 0
+        
+        if source.code == "USD" {
+            returnValue = value * destinyDollar
+        }
+        else {
+            returnValue = (value / sourceDollar) * destinyDollar
+        }
+        
+        errorLabel.text = "\(source.code) -> \(destiny.code)"
+        errorLabel.textColor = .black
+        
+        return returnValue
     }
     
     func setupButtons() {
@@ -60,16 +91,20 @@ class ConverterViewController: UIViewController, Storyboarded {
 }
 
 extension ConverterViewController {
-    func inputValidator(_ value: String?) throws {
-        guard var value = value else { throw InputValueError.inputIsNil }
-        guard value.count > 0 else { throw InputValueError.inputIsEmpty }
+    func inputValidator(_ value: String?) throws -> Double {
+        guard var value = value else { throw ValidationError.inputIsNil }
+        guard value.count > 0 else { throw ValidationError.inputIsEmpty }
         
         if value.contains(",") {
             value = value.replacingOccurrences(of: ",", with: ".")
         }
         
-        guard let double = Double(value) else { throw InputValueError.inputIsNotDouble }
-        guard double > 0 else { throw InputValueError.valueIsNegative }
+        guard let double = Double(value) else { throw ValidationError.inputIsNotDouble }
+        guard double > 0 else { throw ValidationError.valueIsNegative }
+        guard let _ = viewModel.source else { throw ValidationError.unselectedSourceCurrency }
+        guard let _ = viewModel.destiny else { throw ValidationError.unselectedDestinyCurrency }
+        
+        return double
     }
 }
 

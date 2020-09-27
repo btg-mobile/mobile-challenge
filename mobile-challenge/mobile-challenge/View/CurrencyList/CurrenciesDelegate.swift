@@ -29,9 +29,17 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
         
         if buttonTapped == .source {
             converterViewModel.source = currency
+            if currency.code != "USD" {
+                converterViewModel.dollar = getDollar()
+            }
         }
         else if buttonTapped == .destiny {
             converterViewModel.destiny = currency
         }
+    }
+    
+    private func getDollar() -> CurrencyModel? {
+        guard let index = viewModel.currencies.firstIndex(where: { $0.code == "USD" }) else { return nil }
+        return viewModel.currencies[index]
     }
 }
