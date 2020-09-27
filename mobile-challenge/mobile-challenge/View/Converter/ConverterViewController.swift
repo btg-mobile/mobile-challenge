@@ -47,36 +47,17 @@ class ConverterViewController: UIViewController, Storyboarded {
     
     @IBAction func converterButtonAction(_ sender: Any) {
         do {
-            let inputValue = try inputValidator(inputValueTextField.text)
-            converterResultLabel.text = "\(performConversion(inputValue))"
+            try viewModel.currenciesValidation()
+            let inputValue = try viewModel.inputValidator(inputValueTextField.text)
+            converterResultLabel.text = "\(viewModel.performConversion(inputValue))"
+            
+            errorLabel.text = "\(viewModel.source?.code ?? "") -> \(viewModel.destiny?.code ?? "")"
+            errorLabel.textColor = .label
         } catch {
             errorLabel.text = error.localizedDescription
-            errorLabel.textColor = .red
+            errorLabel.textColor = .systemRed
         }
         
-    }
-    
-    func performConversion(_ value: Double) -> Double {
-        guard
-            let source = viewModel.source,
-            let destiny = viewModel.destiny,
-            let sourceDollar = source.valueInDollar,
-            let destinyDollar = destiny.valueInDollar
-        else { return 0 }
-        
-        var returnValue: Double = 0
-        
-        if source.code == "USD" {
-            returnValue = value * destinyDollar
-        }
-        else {
-            returnValue = (value / sourceDollar) * destinyDollar
-        }
-        
-        errorLabel.text = "\(source.code) -> \(destiny.code)"
-        errorLabel.textColor = .black
-        
-        return returnValue
     }
     
     func setupButtons() {
@@ -88,23 +69,8 @@ class ConverterViewController: UIViewController, Storyboarded {
             destinyButton.setTitle(destiny.code, for: .normal)
         }
     }
-}
-
-extension ConverterViewController {
-    func inputValidator(_ value: String?) throws -> Double {
-        guard var value = value else { throw ValidationError.inputIsNil }
-        guard value.count > 0 else { throw ValidationError.inputIsEmpty }
-        
-        if value.contains(",") {
-            value = value.replacingOccurrences(of: ",", with: ".")
-        }
-        
-        guard let double = Double(value) else { throw ValidationError.inputIsNotDouble }
-        guard double > 0 else { throw ValidationError.valueIsNegative }
-        guard let _ = viewModel.source else { throw ValidationError.unselectedSourceCurrency }
-        guard let _ = viewModel.destiny else { throw ValidationError.unselectedDestinyCurrency }
-        
-        return double
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
-

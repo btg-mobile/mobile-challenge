@@ -22,65 +22,65 @@ class ConverterViewControllerTests: XCTestCase {
     }
     
     func testInputValueIsNil() {
-        let expectedError: InputValueError = .inputIsNil
-        var testError: InputValueError?
+        let expectedError: ValidationError = .inputIsNil
+        var testError: ValidationError?
         
         do {
             try viewController.inputValidator(nil)
         } catch {
-            testError = error as? InputValueError
+            testError = error as? ValidationError
         }
         
         XCTAssertEqual(expectedError, testError)
     }
     
     func testInputValueIsEmpty() {
-        let expectedError: InputValueError = .inputIsEmpty
-        var testError: InputValueError?
+        let expectedError: ValidationError = .inputIsEmpty
+        var testError: ValidationError?
         
         do {
             try viewController.inputValidator("")
         } catch {
-            testError = error as? InputValueError
+            testError = error as? ValidationError
         }
         
         XCTAssertEqual(expectedError, testError)
     }
     
     func testInputValueIsInvalid() {
-        let expectedError: InputValueError = .inputIsNotDouble
-        var testError: InputValueError?
+        let expectedError: ValidationError = .inputIsNotDouble
+        var testError: ValidationError?
         
         do {
             try viewController.inputValidator("1.2.")
         } catch {
-            testError = error as? InputValueError
+            testError = error as? ValidationError
         }
         
         XCTAssertEqual(expectedError, testError)
     }
     
     func testInputValueFormatContainsComma() {
-        let expectedError: InputValueError? = nil
-        var testError: InputValueError?
+        let expectedError: ValidationError? = nil
+        var testError: ValidationError?
         
         do {
             try viewController.inputValidator("1,2")
         } catch {
-            testError = error as? InputValueError
+            testError = error as? ValidationError
         }
         
         XCTAssertEqual(expectedError, testError)
     }
     
     func testInputValueIsNegative() {
-        let expectedError: InputValueError? = .valueIsNegative
-        var testError: InputValueError?
+        let expectedError: ValidationError? = .valueIsNegative
+        var testError: ValidationError?
         
         do {
             try viewController.inputValidator("-1,2")
         } catch {
-            testError = error as? InputValueError
+            testError = error as? ValidationError
         }
         
         XCTAssertEqual(expectedError, testError)

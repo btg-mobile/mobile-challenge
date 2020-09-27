@@ -36,6 +36,20 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         tableView.dataSource = dataSource
         tableView.delegate = delegate
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchCurrencies()
+    }
+    
+    func fetchCurrencies() {
+        DispatchQueue.main.async {
+            self.viewModel.fetchCurrencies() { error in
+                self.showAlert(title: error)
+            }
+        }
+    }
 
     func setupNavigationBarBar() {
         navigationItem.rightBarButtonItem = orderBarItem
@@ -66,6 +80,24 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         viewModel.currencies = viewModel.currencies
         dataSource.orderCurrencies(by: orderButtonType)
         tableView.reloadData()
+    }
+    
+    func showAlert(title: String? = "", message: String? = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let tryAgainAction = UIAlertAction(title: "Tentar novamente", style: .default) { _ in
+            self.fetchCurrencies()
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(tryAgainAction)
+        alert.addAction(cancelAction)
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
     }
 }
 

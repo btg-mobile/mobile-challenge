@@ -13,15 +13,12 @@ enum ConverterService {
 }
 
 extension ConverterService: ServiceProtocol {
-    private var url: String { "http://api.currencylayer.com" }
-    private var apiKey: String { "access_key=98d190b4ad2ecb4e667cdb821797d622" }
-    
     var path: String {
         switch self {
         case .currencyList:
-            return "\(url)/list?\(apiKey)"
+            return makeUrl("list")
         case .liveConverter:
-            return "\(url)/live?\(apiKey)"
+            return makeUrl("live")
         }
     }
     
@@ -29,5 +26,9 @@ extension ConverterService: ServiceProtocol {
         .get
     }
     
-    
+    private func makeUrl(_ route: String) -> String {
+        let url = "http://api.currencylayer.com"
+        let apiKey = "access_key=98d190b4ad2ecb4e667cdb821797d622"
+        return "\(url)/\(route)?\(apiKey)"
+    }
 }

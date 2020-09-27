@@ -24,10 +24,9 @@ class CurrencyListViewModel {
     weak var delegate: CurrencyListViewModelDelegate?
     
     init() {
-        fetchCurrencies()
     }
     
-    func fetchCurrencies() {
+    func fetchCurrencies(errorHandler: @escaping (String?) -> Void) {
         let service: ConverterService = .currencyList
         
         networkManage.request(service: service, resposeType: CurrencyListResponse.self) { result in
@@ -40,8 +39,9 @@ class CurrencyListViewModel {
                 self.currencies.sort{ $0.code < $1.code }
                 self.delegate?.didFinishLoadCurrencyListWithSuccess(self.currencies)
                 self.fetchValuesInDollar()
-            case .failure:
-                print("Falhou ao buscar moedas")
+                errorHandler(nil)
+            case .failure(let error):
+                errorHandler(error.errorDescription)
             }
         }
     }
@@ -55,7 +55,7 @@ class CurrencyListViewModel {
                 guard let currenciesExchange = currencyExchangeResponse.quotes else { return }
                 for (key, value) in currenciesExchange {
                     if let index = self.currencies.firstIndex(where: { key == "USD\($0.code)" }) {
-                        self.currencies[index].valueInDollar = value
+                        self.currencies[index].valueDollar = value
                         self.currencies[index].date = Date(timeIntervalSince1970: currencyExchangeResponse.timestamp)
                     }
                 }
