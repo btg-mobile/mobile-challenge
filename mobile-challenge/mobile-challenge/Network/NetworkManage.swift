@@ -12,7 +12,10 @@ final class NetworkManage {
                               resposeType: T.Type,
                               completion: @escaping (Result<T, NetworkError>) -> Void) {
         
-        guard let url = URL(string: service.path) else { return }
+        guard let url = URL(string: service.path) else {
+            completion(.failure(.invalidURL))
+            return
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = service.method.value

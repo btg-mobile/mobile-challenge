@@ -39,6 +39,7 @@
 		69DCBD5D25200E6600ED27CF /* CurrenciesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD5C25200E6600ED27CF /* CurrenciesDelegate.swift */; };
 		69DCBD7B252027B900ED27CF /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD7A252027B900ED27CF /* Identifier.swift */; };
 		69DCBD8625202E3800ED27CF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD8525202E3800ED27CF /* NetworkError.swift */; };
+		69DCBD992520D9D900ED27CF /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD982520D9D900ED27CF /* CurrencyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		69DCBD5C25200E6600ED27CF /* CurrenciesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesDelegate.swift; sourceTree = "<group>"; };
 		69DCBD7A252027B900ED27CF /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		69DCBD8525202E3800ED27CF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		69DCBD982520D9D900ED27CF /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 				69759B4F251EE4E800609EF3 /* CurrencyListViewController.swift */,
 				69759BB7251F969700609EF3 /* CurrenciesDataSource.swift */,
 				69DCBD5C25200E6600ED27CF /* CurrenciesDelegate.swift */,
+				69DCBD982520D9D900ED27CF /* CurrencyTableViewCell.swift */,
 			);
 			path = CurrencyList;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				69759B08251EDCB000609EF3 /* AppDelegate.swift in Sources */,
 				69759B0A251EDCB000609EF3 /* SceneDelegate.swift in Sources */,
 				69759B12251EDCB000609EF3 /* mobile_challenge.xcdatamodeld in Sources */,
+				69DCBD992520D9D900ED27CF /* CurrencyTableViewCell.swift in Sources */,
 				69759BB8251F969700609EF3 /* CurrenciesDataSource.swift in Sources */,
 				69DCBD8625202E3800ED27CF /* NetworkError.swift in Sources */,
 				69759BD5251FD8D800609EF3 /* ErrorResponse.swift in Sources */,

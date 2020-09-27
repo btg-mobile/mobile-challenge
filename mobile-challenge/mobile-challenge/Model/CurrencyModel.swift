@@ -10,7 +10,6 @@ import Foundation
 struct CurrencyModel: Decodable {
     let code: String
     let name: String
-    var date: Date?
     var valueDollar: Double?
     
 }

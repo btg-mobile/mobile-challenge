@@ -27,17 +27,11 @@
                                 <rect key="frame" x="20" y="467" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Escolher Destino"/>
-                                <connections>
-                                    <action selector="goToCurrrencyListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Smk-VX-Xu2"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idO-E3-LaA">
                                 <rect key="frame" x="173" y="545" width="69" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Converter"/>
-                                <connections>
-                                    <action selector="converterButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7km-CY-O6T"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Erro label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAL-H7-j0a">
                                 <rect key="frame" x="44" y="509" width="337" height="21"/>
@@ -50,9 +44,6 @@
                                 <rect key="frame" x="20" y="398" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Escolher Origem"/>
-                                <connections>
-                                    <action selector="goToCurrrencyListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDr-xW-ed0"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jB-K6-X33">
                                 <rect key="frame" x="144" y="396" width="250" height="34"/>
@@ -64,13 +55,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="converterResultLabel" destination="Foa-4d-0Dy" id="ykj-c8-dYn"/>
-                        <outlet property="destinyButton" destination="S4t-Ug-urw" id="8P2-My-cd9"/>
-                        <outlet property="errorLabel" destination="ZAL-H7-j0a" id="VLS-jn-7eG"/>
-                        <outlet property="inputValueTextField" destination="6jB-K6-X33" id="Jgi-SP-cgU"/>
-                        <outlet property="sourceButton" destination="g2O-22-a4Z" id="8Ma-H4-8DJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,7 +71,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-Xc-vFE">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="2zz-wW-552" detailTextLabel="hqL-5D-2ow" style="IBUITableViewCellStyleSubtitle" id="AfG-u7-UNs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="2zz-wW-552" detailTextLabel="hqL-5D-2ow" style="IBUITableViewCellStyleSubtitle" id="AfG-u7-UNs">
                                         <rect key="frame" x="0.0" y="28" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AfG-u7-UNs" id="0q1-Ff-qtG">
@@ -131,10 +115,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e4a-nX-XdB"/>
-                    <connections>
-                        <outlet property="searchBar" destination="sPa-23-J6B" id="maO-lJ-Edw"/>
-                        <outlet property="tableView" destination="G4f-Xc-vFE" id="rry-zk-L9U"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tV0-3F-oDU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

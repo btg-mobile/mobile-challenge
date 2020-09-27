@@ -8,6 +8,11 @@
 import Foundation
 
 enum Identifier {
+    
+    enum Storyboard: String {
+        case Main
+    }
+    
     enum Currency: String {
         case USD
     }

@@ -7,34 +7,57 @@
 
 import UIKit
 
-class CurrencyListViewController: UIViewController, Storyboarded {
+class CurrencyListViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(frame: .zero)
+        searchBar.delegate = self
+        searchBar.placeholder = "Pesquisar moeda"
+        return searchBar
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.dataSource = dataSource
+        tableView.delegate = delegate
+        return tableView
+    }()
+    
+    var safearea: UILayoutGuide!
     
     var orderButtonType: OrderButtonTitle = .code
     lazy var orderBarItem: UIBarButtonItem = createOrderButton(orderButtonType)
     
-    lazy var viewModel: CurrencyListViewModel = {
-        let viewModel = CurrencyListViewModel()
-        viewModel.delegate = self
-        return viewModel
-    }()
-    
-    var converterViewModel: ConverterViewModel!
-    var buttonTapped: ButtonTapped!
     
     lazy var dataSource = CurrenciesDataSource(viewModel: viewModel)
     lazy var delegate = CurrenciesDelegate(viewModel: viewModel, converterViewModel: converterViewModel, buttonTapped: buttonTapped)
     
+    let viewModel: CurrencyListViewModel
+    let converterViewModel: ConverterViewModel
+    let buttonTapped: ButtonTapped
+    
+    init(viewModel: CurrencyListViewModel, converterViewModel: ConverterViewModel, buttonTapped: ButtonTapped) {
+        self.viewModel = viewModel
+        self.converterViewModel = converterViewModel
+        self.buttonTapped = buttonTapped
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        safearea = view.layoutMarginsGuide
+        
+        setupViews()
+        setupUI()
+        setupNavigationBarBar()
+        setupTableView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBarBar()
-        setupSearchBar()
-        
-        tableView.dataSource = dataSource
-        tableView.delegate = delegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,18 +69,11 @@ class CurrencyListViewController: UIViewController, Storyboarded {
     func fetchCurrencies() {
         DispatchQueue.main.async {
             self.viewModel.fetchCurrencies() { error in
-                self.showAlert(title: error)
+                if let error = error {
+                    self.showAlert(title: error)
+                }
             }
         }
-    }
-
-    func setupNavigationBarBar() {
-        navigationItem.rightBarButtonItem = orderBarItem
-    }
-    
-    func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.placeholder = "Pesquisar moeda"
     }
     
     func createOrderButton(_ title: OrderButtonTitle) -> UIBarButtonItem {
@@ -72,13 +88,13 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         orderButtonType = orderButtonType == .name ? .code : .name
         navigationItem.rightBarButtonItem = createOrderButton(orderButtonType)
         
-        dataSource.orderCurrencies(by: orderButtonType)
+        viewModel.orderCurrencies(by: orderButtonType)
         tableView.reloadData()
     }
     
     func resetTableView() {
-        viewModel.currencies = viewModel.currencies
-        dataSource.orderCurrencies(by: orderButtonType)
+        viewModel.currencies = viewModel.currenciesBackup
+        viewModel.orderCurrencies(by: orderButtonType)
         tableView.reloadData()
     }
     
@@ -98,6 +114,20 @@ class CurrencyListViewController: UIViewController, Storyboarded {
         DispatchQueue.main.async {
             self.present(alert, animated: true)
         }
+    }
+}
+
+extension CurrencyListViewController {
+    func setupUI() {
+        view.backgroundColor = .white
+    }
+    
+    func setupNavigationBarBar() {
+        navigationItem.rightBarButtonItem = orderBarItem
+    }
+    
+    func setupTableView() {
+        tableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
 
@@ -122,7 +152,7 @@ extension CurrencyListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         guard searchText.count > 0 else {
-            dataSource.orderCurrencies(by: orderButtonType)
+            viewModel.orderCurrencies(by: orderButtonType)
             resetTableView()
             return
         }
@@ -131,7 +161,7 @@ extension CurrencyListViewController: UISearchBarDelegate {
             return currency.code.uppercased().contains(searchText.uppercased()) || currency.name.uppercased().contains(searchText.uppercased())
         })
         
-        dataSource.orderCurrencies(by: orderButtonType)
+        viewModel.orderCurrencies(by: orderButtonType)
         tableView.reloadData()
     }
     
@@ -147,4 +177,40 @@ extension CurrencyListViewController: UISearchBarDelegate {
         searchBar.text = ""
         resetTableView()
     }
+}
+
+extension CurrencyListViewController: ViewCodable {
+    func setupHierarchyViews() {
+        view.addSubview(searchBar)
+        view.addSubview(tableView)
+    }
+    
+    func setupConstraints() {
+        setupSearchBarConstraints()
+        setupTableViewConstraints()
+    }
+    
+    func setupSearchBarConstraints() {
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: safearea.topAnchor),
+            searchBar.leftAnchor.constraint(equalTo: view.leftAnchor),
+            searchBar.rightAnchor.constraint(equalTo: view.rightAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant: 56)
+        ])
+    }
+    
+    func setupTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setupAdditionalConfiguration() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
 }
