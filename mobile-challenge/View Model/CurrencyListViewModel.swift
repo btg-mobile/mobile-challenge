@@ -25,6 +25,8 @@ class CurrencyListViewModel {
     
     weak var delegate: CurrencyListViewModelDelegate?
     
+    let dao = CurrencyDAO()
+    
     init() {
         self.orderCurrencies(by: .code)
     }
@@ -38,7 +40,7 @@ class CurrencyListViewModel {
         }
     }
     
-    func fetchCurrencies(errorHandler: @escaping (String?) -> Void) {
+    func fetchCurrencies(errorHandler: @escaping (NetworkError?) -> Void) {
         let service: ConverterService = .currencyList
 
         networkManage.request(service: service, resposeType: CurrencyListResponse.self) { result in
@@ -53,7 +55,7 @@ class CurrencyListViewModel {
                 self.fetchValuesInDollar()
                 errorHandler(nil)
             case .failure(let error):
-                errorHandler(error.errorDescription)
+                errorHandler(error)
             }
         }
     }
@@ -73,9 +75,27 @@ class CurrencyListViewModel {
                 self.dateExchange = Date(timeIntervalSince1970: currencyExchangeResponse.timestamp)
                 self.currenciesBackup = self.currencies
                 self.delegate?.didFinishLoadCurrencyValuesInDollarWithSuccess(self.currencies)
+                self.saveCurrencies()
             case .failure:
                 print("Falha ao buscar valor das moedas em dolar")
             }
+        }
+    }
+    
+    func saveCurrencies() {
+        guard let date = dateExchange else { return }
+        dao.save(currencies: currencies, dateExchange: date)
+    }
+    
+    func retrieveCurrencies() -> Bool {
+        let result:(currencies: [CurrencyModel], date: Date) = dao.retrieve()
+        if result.currencies.count > 0 {
+            currencies = result.currencies
+            dateExchange = result.date
+            return true
+        }
+        else {
+            return false
         }
     }
 }

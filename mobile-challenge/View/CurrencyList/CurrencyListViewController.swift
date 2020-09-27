@@ -69,8 +69,21 @@ class CurrencyListViewController: UIViewController {
     func fetchCurrencies() {
         DispatchQueue.main.async {
             self.viewModel.fetchCurrencies() { error in
-                if let error = error {
-                    self.showAlert(title: error)
+                guard error == nil else {
+                    switch error {
+                    case .offline:
+                        if self.viewModel.retrieveCurrencies() {
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                        else {
+                            self.showAlert(title: error?.errorDescription)
+                        }
+                    default:
+                        self.showAlert(title: error?.errorDescription)
+                    }
+                    return
                 }
             }
         }
@@ -93,9 +106,11 @@ class CurrencyListViewController: UIViewController {
     }
     
     func resetTableView() {
-        viewModel.currencies = viewModel.currenciesBackup
-        viewModel.orderCurrencies(by: orderButtonType)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.viewModel.currencies = self.viewModel.currenciesBackup
+            self.viewModel.orderCurrencies(by: self.orderButtonType)
+            self.tableView.reloadData()
+        }
     }
     
     func showAlert(title: String? = "", message: String? = "") {

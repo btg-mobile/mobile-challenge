@@ -39,16 +39,6 @@
                ReferencedContainer = "container:mobile-challenge.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "69759B27251EDCB300609EF3"
-               BuildableName = "mobile-challengeUITests.xctest"
-               BlueprintName = "mobile-challengeUITests"
-               ReferencedContainer = "container:mobile-challenge.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

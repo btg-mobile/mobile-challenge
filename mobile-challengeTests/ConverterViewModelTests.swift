@@ -1,5 +1,5 @@
 //
-//  ConveerterViewControllerTests.swift
+//  ConverterViewModelTests.swift
 //  mobile-challengeTests
 //
 //  Created by Murilo Teixeira on 26/09/20.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import mobile_challenge
 
-class ConverterViewControllerTests: XCTestCase {
+class ConverterViewModelTests: XCTestCase {
     var viewModel: ConverterViewModel!
 
     override func setUp() {

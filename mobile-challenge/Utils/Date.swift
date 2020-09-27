@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     var string: String {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current

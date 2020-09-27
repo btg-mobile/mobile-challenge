@@ -16,4 +16,12 @@ enum Identifier {
     enum Currency: String {
         case USD
     }
+    
+    enum CurrencyModel: String {
+        case code, name, valorDollar
+    }
+    
+    enum UserDefaultKey: String {
+        case date
+    }
 }
