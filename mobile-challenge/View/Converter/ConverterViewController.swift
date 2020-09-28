@@ -33,6 +33,7 @@ class ConverterViewController: UIViewController {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.textAlignment = .right
+        textField.keyboardType = .decimalPad
         textField.placeholder = "0"
         return textField
     }()

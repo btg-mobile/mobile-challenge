@@ -40,6 +40,24 @@ class CurrencyListViewModel {
         }
     }
     
+    func search(_ searchText: String) {
+        guard searchText.count > 0 else {
+            resetSearch()
+            return
+        }
+        resetSearch()
+        currencies = currencies.filter({ currency in
+            let code = currency.code.uppercased()
+            let name = currency.name.uppercased()
+            let searchText = searchText.uppercased()
+            return code.contains(searchText) || name.contains(searchText)
+        })
+    }
+    
+    func resetSearch() {
+        currencies = currenciesBackup
+    }
+    
     func fetchCurrencies(errorHandler: @escaping (NetworkError?) -> Void) {
         let service: ConverterService = .currencyList
 
@@ -91,6 +109,7 @@ class CurrencyListViewModel {
         let result:(currencies: [CurrencyModel], date: Date) = dao.retrieve()
         if result.currencies.count > 0 {
             currencies = result.currencies
+            currenciesBackup = result.currencies
             dateExchange = result.date
             return true
         }
