@@ -28,11 +28,10 @@ class MainCoordinator: Coordinator {
 extension MainCoordinator: ConverterViewControllerCoordinator {
     func currencyListView(buttonTapped: ButtonTapped) {
         let viewModel = CurrencyListViewModel()
-        let vc = CurrencyListViewController(viewModel: viewModel,
-                                                        converterViewModel: viewController.viewModel,
-                                                        buttonTapped: buttonTapped)
-        viewModel.delegate = vc
-        navigationController.pushViewController(vc, animated: true)
+        let currenciesVC = CurrencyListViewController(viewModel: viewModel,
+                                                      converterViewModel: viewController.viewModel,
+                                                      buttonTapped: buttonTapped)
+        navigationController.pushViewController(currenciesVC, animated: true)
         
     }
     

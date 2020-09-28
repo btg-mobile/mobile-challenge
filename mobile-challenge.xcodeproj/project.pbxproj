@@ -35,6 +35,7 @@
 		69CAE4B6252117BB00D7C1FC /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CAE4B5252117BB00D7C1FC /* DateTests.swift */; };
 		69CAE4CC25212C3700D7C1FC /* CurrencyDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CAE4CB25212C3700D7C1FC /* CurrencyDAO.swift */; };
 		69CAE4EA2521368200D7C1FC /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CAE4E92521368200D7C1FC /* Identifiable.swift */; };
+		69CAE4F325219E6F00D7C1FC /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CAE4F225219E6F00D7C1FC /* UIViewController.swift */; };
 		69DCBD3C251FF94400ED27CF /* CurenciesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD3B251FF94400ED27CF /* CurenciesViewModelTests.swift */; };
 		69DCBD4D252009B200ED27CF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD4C252009B200ED27CF /* Date.swift */; };
 		69DCBD5D25200E6600ED27CF /* CurrenciesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBD5C25200E6600ED27CF /* CurrenciesDelegate.swift */; };
@@ -95,6 +96,7 @@
 		69CAE4B5252117BB00D7C1FC /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		69CAE4CB25212C3700D7C1FC /* CurrencyDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDAO.swift; sourceTree = "<group>"; };
 		69CAE4E92521368200D7C1FC /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		69CAE4F225219E6F00D7C1FC /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		69DCBD3B251FF94400ED27CF /* CurenciesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurenciesViewModelTests.swift; sourceTree = "<group>"; };
 		69DCBD4C252009B200ED27CF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		69DCBD5C25200E6600ED27CF /* CurrenciesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				69DCBD4C252009B200ED27CF /* Date.swift */,
 				69DCBD7A252027B900ED27CF /* Identifier.swift */,
 				69CAE4E92521368200D7C1FC /* Identifiable.swift */,
+				69CAE4F225219E6F00D7C1FC /* UIViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			files = (
 				69759B50251EE4E800609EF3 /* CurrencyListViewController.swift in Sources */,
 				69759B8C251F8C7800609EF3 /* ValidationError.swift in Sources */,
+				69CAE4F325219E6F00D7C1FC /* UIViewController.swift in Sources */,
 				69759B70251EEDCB00609EF3 /* MainCoordinator.swift in Sources */,
 				69759BC3251FC9F900609EF3 /* NetworkManage.swift in Sources */,
 				69759B0C251EDCB000609EF3 /* ConverterViewController.swift in Sources */,

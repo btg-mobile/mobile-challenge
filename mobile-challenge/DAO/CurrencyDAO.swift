@@ -15,10 +15,10 @@ class CurrencyDAO {
     
     func save(currencies: [CurrencyModel], dateExchange: Date) {
         do {
-            let data = try archive(objects: currencies)
+            let data = try self.archive(objects: currencies)
             let date = dateExchange.timeIntervalSince1970
-            userDefaults.set(data, forKey: CurrencyModel.uniqueIdentifier)
-            userDefaults.set(date, forKey: Identifier.UserDefaultKey.date.rawValue)
+            self.userDefaults.set(data, forKey: CurrencyModel.uniqueIdentifier)
+            self.userDefaults.set(date, forKey: Identifier.UserDefaultKey.date.rawValue)
         } catch {
             print(error)
         }

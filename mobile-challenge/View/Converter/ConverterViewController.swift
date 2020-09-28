@@ -93,6 +93,7 @@ class ConverterViewController: UIViewController {
     weak var coordinator: ConverterViewControllerCoordinator?
     let viewModel: ConverterViewModel
     
+    //MARK:- init
     init(viewModel: ConverterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -153,6 +154,7 @@ class ConverterViewController: UIViewController {
     }
 }
 
+//MARK:- ViewCodable
 extension ConverterViewController: ViewCodable {
     var horizontalPadding: CGFloat { 20 }
 

@@ -7,14 +7,9 @@
 
 import Foundation
 
-enum OrderButtonTitle: String {
+enum OrderCurrencies: String {
     case name = "Ordem: Nome"
     case code = "Ordem: Código"
-}
-
-protocol CurrencyListViewModelDelegate: AnyObject {
-    func didFinishLoadCurrencyListWithSuccess(_ currencies: [CurrencyModel])
-    func didFinishLoadCurrencyValuesInDollarWithSuccess(_ currencies: [CurrencyModel])
 }
 
 class CurrencyListViewModel {
@@ -23,15 +18,13 @@ class CurrencyListViewModel {
     var dateExchange: Date?
     private let networkManage = NetworkManage()
     
-    weak var delegate: CurrencyListViewModelDelegate?
-    
     let dao = CurrencyDAO()
     
     init() {
         self.orderCurrencies(by: .code)
     }
     
-    func orderCurrencies(by: OrderButtonTitle) {
+    func orderCurrencies(by: OrderCurrencies) {
         switch by {
         case .code:
             currencies.sort { $0.code < $1.code }
@@ -40,13 +33,12 @@ class CurrencyListViewModel {
         }
     }
     
-    func search(_ searchText: String) {
+    func search(_ searchText: String, order: OrderCurrencies) -> [CurrencyModel] {
         guard searchText.count > 0 else {
-            resetSearch()
-            return
+            orderCurrencies(by: order)
+            return currencies
         }
-        resetSearch()
-        currencies = currencies.filter({ currency in
+        return currencies.filter({ currency in
             let code = currency.code.uppercased()
             let name = currency.name.uppercased()
             let searchText = searchText.uppercased()
@@ -54,31 +46,26 @@ class CurrencyListViewModel {
         })
     }
     
-    func resetSearch() {
-        currencies = currenciesBackup
-    }
-    
-    func fetchCurrencies(errorHandler: @escaping (NetworkError?) -> Void) {
+    func fetchCurrencies(completion: @escaping (Result<[CurrencyModel], NetworkError>) -> Void) {
         let service: ConverterService = .currencyList
 
-        networkManage.request(service: service, resposeType: CurrencyListResponse.self) { result in
+        networkManage.request(service: service,
+                              resposeType: CurrencyListResponse.self) { result in
             switch result {
             case .success(let currenciesListResponse):
                 guard let currencies = currenciesListResponse.currencies else { return }
                 for (key, value) in currencies {
                     self.currencies.append(CurrencyModel(code: key, name: value))
                 }
-                self.currencies.sort{ $0.code < $1.code }
-                self.delegate?.didFinishLoadCurrencyListWithSuccess(self.currencies)
-                self.fetchValuesInDollar()
-                errorHandler(nil)
+                self.orderCurrencies(by: .code)
+                completion(.success(self.currencies))
             case .failure(let error):
-                errorHandler(error)
+                completion(.failure(error))
             }
         }
     }
     
-    func fetchValuesInDollar() {
+    func fetchValuesInDollar(completion: @escaping (Result<Date, NetworkError>) -> Void) {
         let service: ConverterService = .liveConverter
         
         networkManage.request(service: service, resposeType: CurrencyExchangeResponse.self) { result in
@@ -92,10 +79,10 @@ class CurrencyListViewModel {
                 }
                 self.dateExchange = Date(timeIntervalSince1970: currencyExchangeResponse.timestamp)
                 self.currenciesBackup = self.currencies
-                self.delegate?.didFinishLoadCurrencyValuesInDollarWithSuccess(self.currencies)
                 self.saveCurrencies()
-            case .failure:
-                print("Falha ao buscar valor das moedas em dolar")
+                completion(.success(self.dateExchange ?? Date()))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -105,16 +92,20 @@ class CurrencyListViewModel {
         dao.save(currencies: currencies, dateExchange: date)
     }
     
-    func retrieveCurrencies() -> Bool {
+    func retrieveCurrencies() -> [CurrencyModel]? {
         let result:(currencies: [CurrencyModel], date: Date) = dao.retrieve()
         if result.currencies.count > 0 {
             currencies = result.currencies
             currenciesBackup = result.currencies
             dateExchange = result.date
-            return true
+            return currencies
         }
-        else {
-            return false
-        }
+        return nil
+    }
+    
+    func getDollar() -> CurrencyModel? {
+        let USD = Identifier.Currency.USD.rawValue
+        guard let index = currencies.firstIndex(where: { $0.code == USD }) else { return nil }
+        return currencies[index]
     }
 }

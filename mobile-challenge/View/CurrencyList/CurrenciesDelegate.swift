@@ -15,6 +15,7 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
     let viewModel: CurrencyListViewModel
     let converterViewModel: ConverterViewModel
     let buttonTapped: ButtonTapped
+    var didSelectCurrency: ((CurrencyModel) -> Void)?
     
     init(viewModel: CurrencyListViewModel, converterViewModel: ConverterViewModel, buttonTapped: ButtonTapped) {
         self.viewModel = viewModel
@@ -41,6 +42,7 @@ class CurrenciesDelegate: NSObject, UITableViewDelegate {
         else if buttonTapped == .destiny {
             converterViewModel.destiny = currency
         }
+        didSelectCurrency?(currency)
     }
     
     private func getDollar() -> CurrencyModel? {

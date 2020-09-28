@@ -9,6 +9,7 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
 
+    // MARK:- Attributes
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = self
@@ -18,24 +19,36 @@ class CurrencyListViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-        tableView.dataSource = dataSource
-        tableView.delegate = delegate
         return tableView
     }()
     
+    var dataSource: CurrenciesDataSource? {
+        didSet {
+            guard let dataSource = dataSource else { return }
+            
+            dataSource.didSelectCurrency = { [weak self] selectedCurrency in
+                guard let self = self else { return }
+                self.setSelectedCurrency(selectedCurrency)
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.dataSource = dataSource
+                self.tableView.delegate = dataSource
+                self.reloadTableViewData()
+            }
+        }
+    }
+    
     var safearea: UILayoutGuide!
     
-    var orderButtonType: OrderButtonTitle = .code
-    lazy var orderBarItem: UIBarButtonItem = createOrderButton(orderButtonType)
-    
-    
-    lazy var dataSource = CurrenciesDataSource(viewModel: viewModel)
-    lazy var delegate = CurrenciesDelegate(viewModel: viewModel, converterViewModel: converterViewModel, buttonTapped: buttonTapped)
+    var orderCurrencies: OrderCurrencies = .code
+    lazy var orderBarItem: UIBarButtonItem = createOrderButton(orderCurrencies)
     
     let viewModel: CurrencyListViewModel
     let converterViewModel: ConverterViewModel
     let buttonTapped: ButtonTapped
     
+    //MARK:- init
     init(viewModel: CurrencyListViewModel, converterViewModel: ConverterViewModel, buttonTapped: ButtonTapped) {
         self.viewModel = viewModel
         self.converterViewModel = converterViewModel
@@ -45,8 +58,8 @@ class CurrencyListViewController: UIViewController {
         
         safearea = view.layoutMarginsGuide
         
-        setupViews()
         setupUI()
+        setupViews()
         setupNavigationBarBar()
         setupTableView()
     }
@@ -55,39 +68,56 @@ class CurrencyListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         fetchViewModelCurrencies()
     }
-    
-    lazy var networkErrorHandler: ((NetworkError?) -> Void) = { error in
-        if let error = error {
-            switch error {
-            case .offline:
-                let hasData = self.viewModel.retrieveCurrencies()
-                if hasData {
-                    self.reloadTableViewData()
+        
+    // MARK:- FetchViewModelCurrencies
+    func fetchViewModelCurrencies() {
+        hideActivityIndicator()
+        showActivityIndicator()
+        self.viewModel.fetchCurrencies() { result in
+            switch result {
+            case .success(let currencies):
+                self.dataSource = CurrenciesDataSource(currencies: currencies)
+                self.viewModel.fetchValuesInDollar { result in
+                    switch result {
+                    case .success(let date):
+                        self.dataSource?.dateExchange = date
+                        self.reloadTableViewData()
+                    case .failure(let error):
+                        self.showAlert(title: error.errorDescription)
+                    }
                 }
-                else {
+            case .failure(let error):
+                switch error {
+                case .offline:
+                    guard let dateExchange = self.viewModel.dateExchange else {
+                        DispatchQueue.main.async {
+                            if let currencies = self.viewModel.retrieveCurrencies() {
+                                self.setupDataSource(currencies: currencies,
+                                                     dateExchange: self.viewModel.dateExchange ?? Date())
+                            }
+                            else {
+                                self.showAlert(title: error.errorDescription)
+                            }
+                        }
+                        return
+                    }
+                    
+                    self.setupDataSource(currencies: self.viewModel.currencies,
+                                         dateExchange: dateExchange)
+                default:
                     self.showAlert(title: error.errorDescription)
                 }
-            default:
-                self.showAlert(title: error.errorDescription)
             }
+            self.hideActivityIndicator()
         }
     }
     
-    func fetchViewModelCurrencies() {
-        self.viewModel.fetchCurrencies(errorHandler: self.networkErrorHandler)
-    }
-    
-    func createOrderButton(_ title: OrderButtonTitle) -> UIBarButtonItem {
+    // MARK:- CreateNavigationBatButton
+    func createOrderButton(_ title: OrderCurrencies) -> UIBarButtonItem {
         let button = UIButton()
         button.setTitle(title.rawValue, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -96,26 +126,23 @@ class CurrencyListViewController: UIViewController {
     }
     
     @objc func orderButtonTapped() {
-        orderButtonType = orderButtonType == .name ? .code : .name
-        navigationItem.rightBarButtonItem = createOrderButton(orderButtonType)
+        orderCurrencies = orderCurrencies == .name ? .code : .name
+        navigationItem.rightBarButtonItem = createOrderButton(orderCurrencies)
         
-        viewModel.orderCurrencies(by: orderButtonType)
-        tableView.reloadData()
+        viewModel.orderCurrencies(by: orderCurrencies)
+        setupDataSource(currencies: self.viewModel.currencies, dateExchange: self.viewModel.dateExchange ?? Date())
     }
     
     func reloadTableViewData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.hideActivityIndicator()
         }
     }
     
-    func resetCurrencies() {
-        self.viewModel.currencies = self.viewModel.currenciesBackup
-        self.viewModel.orderCurrencies(by: self.orderButtonType)
-    }
-    
-    func showAlert(title: String? = "", message: String? = "") {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    //MARK:- Show alert
+    func showAlert(title: String?) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         
         let tryAgainAction = UIAlertAction(title: "Tentar novamente", style: .default) { _ in
             self.fetchViewModelCurrencies()
@@ -131,11 +158,43 @@ class CurrencyListViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    func showOkAlert(title: String?) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+    }
+    
+    //MARK:- Set selected currency
+    func setSelectedCurrency(_ currency: CurrencyModel) {
+        let USD = Identifier.Currency.USD.rawValue
+        
+        if buttonTapped == .source {
+            converterViewModel.source = currency
+            if currency.code != USD {
+                converterViewModel.dollar = viewModel.getDollar()
+            }
+        }
+        else if buttonTapped == .destiny {
+            converterViewModel.destiny = currency
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
 }
 
+//MARK:- Setups
 extension CurrencyListViewController {
     func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     func setupNavigationBarBar() {
@@ -145,42 +204,18 @@ extension CurrencyListViewController {
     func setupTableView() {
         tableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
+    func setupDataSource(currencies: [CurrencyModel], dateExchange: Date) {
+        dataSource = CurrenciesDataSource(currencies: currencies)
+        dataSource?.dateExchange = dateExchange
+    }
 }
 
-extension CurrencyListViewController: CurrencyListViewModelDelegate {
-    func didFinishLoadCurrencyListWithSuccess(_ currencies: [CurrencyModel]) {
-        DispatchQueue.main.async {
-            self.viewModel.currencies = currencies
-            self.tableView.reloadData()
-        }
-    }
-    
-    func didFinishLoadCurrencyValuesInDollarWithSuccess(_ currencies: [CurrencyModel]) {
-        DispatchQueue.main.async {
-            self.viewModel.currencies = currencies
-            self.tableView.reloadData()
-        }
-    }
-    
-}
-
+//MARK:- UISearchBarDelegate
 extension CurrencyListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-//        guard searchText.count > 0 else {
-//            viewModel.orderCurrencies(by: orderButtonType)
-//            resetCurrencies()
-//            reloadTableViewData()
-//            return
-//        }
-        
-//        viewModel.currencies = viewModel.currencies.filter({ currency in
-//            return currency.code.uppercased().contains(searchText.uppercased()) || currency.name.uppercased().contains(searchText.uppercased())
-//        })
-//
-        viewModel.search(searchText)
-        viewModel.orderCurrencies(by: orderButtonType)
-        reloadTableViewData()
+        let filteredCurrencies = viewModel.search(searchText, order: orderCurrencies)
+        setupDataSource(currencies: filteredCurrencies, dateExchange: self.viewModel.dateExchange ?? Date())
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -193,11 +228,12 @@ extension CurrencyListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-//        resetCurrencies()
-//        reloadTableViewData()
+        setupDataSource(currencies: self.viewModel.currencies,
+                        dateExchange: self.viewModel.dateExchange ?? Date())
     }
 }
 
+//MARK:- ViewCodable
 extension CurrencyListViewController: ViewCodable {
     func setupHierarchyViews() {
         view.addSubview(searchBar)
