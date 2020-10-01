@@ -11,15 +11,7 @@ final class CurrencyConverterViewController: UIViewController {
     //- MARK: Properties
 
     // Amount UITextField
-    private lazy var amountTextField: UITextField = {
-        let textField = UITextField(frame: .zero)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Amount to be converted"
-        textField.textAlignment = .center
-        textField.keyboardType = .numberPad
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
+    @AutoLayout private var amountTextField: CurrencyTextField
 
     // From currency UILabel and UIButton
     private lazy var fromCurrencyLabel: UILabel = {
@@ -69,6 +61,7 @@ final class CurrencyConverterViewController: UIViewController {
         layoutConstraints()
         fromCurrencyButton.currency = "USD"
         toCurrencyButton.currency = "BRL"
+        amountTextField.placeholder = "Amount to be converted"
     }
 
     private func layoutConstraints() {
