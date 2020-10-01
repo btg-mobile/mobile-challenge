@@ -10,24 +10,23 @@ import UIKit
 final class CurrencyConverterViewController: UIViewController {
     //- MARK: Properties
 
-    // Amount UITextField
     @AutoLayout private var amountTextField: CurrencyTextField
 
-    // From currency UILabel and UIButton
     @AutoLayout private var fromCurrencyLabel: CurrencyLabel
 
     @AutoLayout private var fromCurrencyButton: CurrencyButton
 
-    // To currency UILabel and UIButton
     @AutoLayout private var toCurrencyLabel: CurrencyLabel
 
     @AutoLayout private var toCurrencyButton: CurrencyButton
 
-    // Conversion result UILabel
     @AutoLayout private var conversionResultLabel: CurrencyResultLabel
 
+    private let viewModel: CurrencyConverterViewModel
+
     //- MARK: Init
-    init() {
+    init(viewModel: CurrencyConverterViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -39,13 +38,16 @@ final class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        viewModel.delegate = self
         layoutConstraints()
-        fromCurrencyButton.currency = "USD"
-        toCurrencyButton.currency = "BRL"
+        fromCurrencyButton.setTitle("USD", for: .normal)
+        toCurrencyButton.setTitle("BRL", for: .normal)
         amountTextField.placeholder = "Amount to be converted"
         fromCurrencyLabel.text = "From"
         toCurrencyLabel.text = "To"
         conversionResultLabel.text = "5.47"
+
+        amountTextField.addTarget(self, action: #selector(amountDidChange), for: .editingChanged)
     }
 
     private func layoutConstraints() {
@@ -105,6 +107,19 @@ final class CurrencyConverterViewController: UIViewController {
         ])
     }
 
+    @objc private func amountDidChange() {
+        guard let newAmount = amountTextField.text,
+              newAmount != viewModel.amount else {
+            return
+        }
 
+        viewModel.amount = newAmount
+    }
+}
+
+extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
+    func updateUI() {
+        conversionResultLabel.text = viewModel.convertedAmount
+    }
 }
 
