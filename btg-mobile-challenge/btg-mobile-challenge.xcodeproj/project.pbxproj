@@ -12,6 +12,7 @@
 		A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610F252609160056738E /* CurrencyConverterViewController.swift */; };
 		A4BF6115252609180056738E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BF6114252609180056738E /* Assets.xcassets */; };
 		A4BF6118252609180056738E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4BF6116252609180056738E /* LaunchScreen.storyboard */; };
+		A4BF61292526191E0056738E /* DesignSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF61282526191E0056738E /* DesignSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A4BF6114252609180056738E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4BF6117252609180056738E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4BF6119252609180056738E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4BF61282526191E0056738E /* DesignSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				A4BF61222526099A0056738E /* App */,
 				A4BF6123252609A40056738E /* Resources */,
 				A4BF6124252609E00056738E /* ViewControllers */,
+				A4BF6127252619020056738E /* Enums */,
 			);
 			path = "btg-mobile-challenge";
 			sourceTree = "<group>";
@@ -86,6 +89,14 @@
 				A4BF610F252609160056738E /* CurrencyConverterViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A4BF6127252619020056738E /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A4BF61282526191E0056738E /* DesignSpec.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4BF61292526191E0056738E /* DesignSpec.swift in Sources */,
 				A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */,
 				A4BF610C252609160056738E /* AppDelegate.swift in Sources */,
 				A4BF610E252609160056738E /* SceneDelegate.swift in Sources */,
