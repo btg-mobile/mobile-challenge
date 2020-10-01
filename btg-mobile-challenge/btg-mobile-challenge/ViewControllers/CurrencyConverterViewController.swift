@@ -30,16 +30,7 @@ final class CurrencyConverterViewController: UIViewController {
         return label
     }()
 
-    private lazy var fromCurrencyButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("USD", for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
-        button.layer.cornerRadius = DesignSpec.Button.cornerRadius
-        button.clipsToBounds = true
-        button.backgroundColor = .systemRed
-        return button
-    }()
+    @AutoLayout private var fromCurrencyButton: CurrencyButton
 
     // To currency UILabel and UIButton
     private lazy var toCurrencyLabel: UILabel = {
@@ -50,16 +41,7 @@ final class CurrencyConverterViewController: UIViewController {
         return label
     }()
 
-    private lazy var toCurrencyButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("BRL", for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
-        button.backgroundColor = .systemRed
-        button.layer.cornerRadius = DesignSpec.Button.cornerRadius
-        button.clipsToBounds = true
-        return button
-    }()
+    @AutoLayout private var toCurrencyButton: CurrencyButton
 
     // Conversion result UILabel
     private lazy var conversionResultLabel: UILabel = {
@@ -85,6 +67,8 @@ final class CurrencyConverterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         layoutConstraints()
+        fromCurrencyButton.currency = "USD"
+        toCurrencyButton.currency = "BRL"
     }
 
     private func layoutConstraints() {
