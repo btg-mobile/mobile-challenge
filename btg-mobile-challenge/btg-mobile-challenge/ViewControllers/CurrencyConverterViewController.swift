@@ -14,36 +14,17 @@ final class CurrencyConverterViewController: UIViewController {
     @AutoLayout private var amountTextField: CurrencyTextField
 
     // From currency UILabel and UIButton
-    private lazy var fromCurrencyLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "From"
-        label.textAlignment = .center
-        return label
-    }()
+    @AutoLayout private var fromCurrencyLabel: CurrencyLabel
 
     @AutoLayout private var fromCurrencyButton: CurrencyButton
 
     // To currency UILabel and UIButton
-    private lazy var toCurrencyLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "To"
-        label.textAlignment = .center
-        return label
-    }()
+    @AutoLayout private var toCurrencyLabel: CurrencyLabel
 
     @AutoLayout private var toCurrencyButton: CurrencyButton
 
     // Conversion result UILabel
-    private lazy var conversionResultLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "5.47"
-        label.textAlignment = .center
-        label.font = .preferredFont(forTextStyle: .largeTitle)
-        return label
-    }()
+    @AutoLayout private var conversionResultLabel: CurrencyResultLabel
 
     //- MARK: Init
     init() {
@@ -62,6 +43,9 @@ final class CurrencyConverterViewController: UIViewController {
         fromCurrencyButton.currency = "USD"
         toCurrencyButton.currency = "BRL"
         amountTextField.placeholder = "Amount to be converted"
+        fromCurrencyLabel.text = "From"
+        toCurrencyLabel.text = "To"
+        conversionResultLabel.text = "5.47"
     }
 
     private func layoutConstraints() {

@@ -16,6 +16,8 @@
 		A4BF612D25261E430056738E /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF612C25261E430056738E /* CurrencyButton.swift */; };
 		A4BF613225261F2D0056738E /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613125261F2D0056738E /* AutoLayout.swift */; };
 		A4BF6135252620DD0056738E /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF6134252620DD0056738E /* CurrencyTextField.swift */; };
+		A4BF6138252622890056738E /* CurrencyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF6137252622890056738E /* CurrencyLabel.swift */; };
+		A4BF613B252623460056738E /* CurrencyResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613A252623460056738E /* CurrencyResultLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A4BF612C25261E430056738E /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		A4BF613125261F2D0056738E /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
 		A4BF6134252620DD0056738E /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
+		A4BF6137252622890056738E /* CurrencyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabel.swift; sourceTree = "<group>"; };
+		A4BF613A252623460056738E /* CurrencyResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 			children = (
 				A4BF612C25261E430056738E /* CurrencyButton.swift */,
 				A4BF6134252620DD0056738E /* CurrencyTextField.swift */,
+				A4BF6137252622890056738E /* CurrencyLabel.swift */,
+				A4BF613A252623460056738E /* CurrencyResultLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,10 +200,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4BF613225261F2D0056738E /* AutoLayout.swift in Sources */,
+				A4BF6138252622890056738E /* CurrencyLabel.swift in Sources */,
 				A4BF61292526191E0056738E /* DesignSpec.swift in Sources */,
 				A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */,
 				A4BF610C252609160056738E /* AppDelegate.swift in Sources */,
 				A4BF612D25261E430056738E /* CurrencyButton.swift in Sources */,
+				A4BF613B252623460056738E /* CurrencyResultLabel.swift in Sources */,
 				A4BF610E252609160056738E /* SceneDelegate.swift in Sources */,
 				A4BF6135252620DD0056738E /* CurrencyTextField.swift in Sources */,
 			);
