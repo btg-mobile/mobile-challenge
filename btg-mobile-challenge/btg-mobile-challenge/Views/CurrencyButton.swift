@@ -7,14 +7,11 @@
 
 import UIKit
 
+/// Representation of the app's custom `UIButton`.
+/// It should be used in place of the default implementation.
 final class CurrencyButton: UIButton {
 
-    var currency: String = "" {
-        didSet {
-            self.setTitle(currency, for: .normal)
-        }
-    }
-
+    // - MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         styleButton()
@@ -24,6 +21,7 @@ final class CurrencyButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Styles the button.
     private func styleButton() {
         titleLabel?.font = .preferredFont(forTextStyle: .headline)
         layer.cornerRadius = DesignSpec.Button.cornerRadius
