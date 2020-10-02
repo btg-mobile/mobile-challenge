@@ -49,6 +49,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4219BFA2526948D0024C3F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A4BF60FF252609160056738E = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +77,7 @@
 			children = (
 				A4BF61222526099A0056738E /* App */,
 				A4BF6123252609A40056738E /* Resources */,
+				A4219BFA2526948D0024C3F6 /* Models */,
 				A4BF6124252609E00056738E /* ViewControllers */,
 				A4BF613D252630970056738E /* ViewModels */,
 				A4BF612B25261E220056738E /* Views */,

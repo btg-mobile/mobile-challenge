@@ -7,24 +7,31 @@
 
 import UIKit
 
+/// Representation of the app's conversion screen.
+/// It should be instatiated as part of a `UINavigationController` in the
+/// `AppDelegate` or `SceneDelegate`.
 final class CurrencyConverterViewController: UIViewController {
     //- MARK: Properties
-
+    // Amount
     @AutoLayout private var amountTextField: CurrencyTextField
 
+    // From currency
     @AutoLayout private var fromCurrencyLabel: CurrencyLabel
-
     @AutoLayout private var fromCurrencyButton: CurrencyButton
 
+    // To currency
     @AutoLayout private var toCurrencyLabel: CurrencyLabel
-
     @AutoLayout private var toCurrencyButton: CurrencyButton
 
+    // Conversion result
     @AutoLayout private var conversionResultLabel: CurrencyResultLabel
 
+    /// The `ViewModel` for this type.
     private let viewModel: CurrencyConverterViewModel
 
     //- MARK: Init
+    /// Initializes a new instance of this type.
+    /// - Parameter viewModel: The `ViewModel` for this type.
     init(viewModel: CurrencyConverterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

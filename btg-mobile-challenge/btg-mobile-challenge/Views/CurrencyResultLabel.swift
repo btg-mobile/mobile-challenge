@@ -27,5 +27,7 @@ final class CurrencyResultLabel: UILabel {
     private func styleLabel() {
         textAlignment = .center
         font = .preferredFont(forTextStyle: .largeTitle)
+        adjustsFontSizeToFitWidth = true
+        minimumScaleFactor = 0.7
     }
 }
