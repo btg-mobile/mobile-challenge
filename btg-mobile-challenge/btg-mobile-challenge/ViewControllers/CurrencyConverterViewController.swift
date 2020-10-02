@@ -41,37 +41,80 @@ final class CurrencyConverterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+
+
     //- MARK: Life cycle
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .systemBackground
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        viewModel.delegate = self
+        setUpViewModel()
+        setUpViews()
         layoutConstraints()
-        fromCurrencyButton.setTitle("USD", for: .normal)
-        toCurrencyButton.setTitle("BRL", for: .normal)
-        amountTextField.placeholder = "Amount to be converted"
-        fromCurrencyLabel.text = "From"
-        toCurrencyLabel.text = "To"
-        conversionResultLabel.text = "5.47"
+    }
 
+    // - MARK: @objc
+    @objc private func amountDidChange() {
+        guard let newAmount = amountTextField.text,
+              newAmount != viewModel.amount else {
+            return
+        }
+
+        viewModel.amount = newAmount
+    }
+
+    // - MARK: ViewModel setup
+    private func setUpViewModel() {
+        viewModel.delegate = self
+    }
+
+    //- MARK: Views setup
+
+    private func setUpViews() {
+        setUpFromCurrency()
+        setUpToCurrency()
+        setUpAmountTextField()
+        setUpResultLabel()
+    }
+
+    private func setUpFromCurrency() {
+        fromCurrencyButton.setTitle("USD", for: .normal)
+        fromCurrencyLabel.text = "From"
+    }
+
+    private func setUpToCurrency() {
+        toCurrencyButton.setTitle("BRL", for: .normal)
+        toCurrencyLabel.text = "To"
+    }
+
+    private func setUpAmountTextField() {
+        amountTextField.placeholder = "Amount to be converted"
         amountTextField.addTarget(self, action: #selector(amountDidChange), for: .editingChanged)
     }
 
-    private func layoutConstraints() {
-        view.addSubview(amountTextField)
+    private func setUpResultLabel() {
+        conversionResultLabel.text = "5.47"
+    }
 
+    //- MARK: Layout
+    private func layoutConstraints() {
+        layoutFromCurrency()
+        layoutToCurreny()
+        layoutAmountTextField()
+        layoutResultLabel()
+
+    }
+
+    private func layoutFromCurrency() {
         view.addSubview(fromCurrencyButton)
         view.addSubview(fromCurrencyLabel)
-
-        view.addSubview(toCurrencyButton)
-        view.addSubview(toCurrencyLabel)
-
-        view.addSubview(conversionResultLabel)
 
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            //From currency UILabel and UIButton constraints
             fromCurrencyButton.centerYAnchor.constraint(equalTo: layoutGuides.centerYAnchor),
             fromCurrencyButton.leadingAnchor.constraint(equalTo: layoutGuides.leadingAnchor),
             fromCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSpec.Button.height),
@@ -82,9 +125,17 @@ final class CurrencyConverterViewController: UIViewController {
                                                       constant: -DesignSpec.Spacing.default),
             fromCurrencyLabel.centerXAnchor.constraint(equalTo: fromCurrencyButton.centerXAnchor),
             fromCurrencyLabel.widthAnchor.constraint(equalTo: fromCurrencyButton.widthAnchor),
-            fromCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Label.height),
+            fromCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Label.height)
+        ])
+    }
 
-            //To currency UILabel and UIButton constraints
+    private func layoutToCurreny() {
+        view.addSubview(toCurrencyButton)
+        view.addSubview(toCurrencyLabel)
+
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
             toCurrencyButton.centerYAnchor.constraint(equalTo: layoutGuides.centerYAnchor),
             toCurrencyButton.trailingAnchor.constraint(equalTo: layoutGuides.trailingAnchor),
             toCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSpec.Button.height),
@@ -95,16 +146,30 @@ final class CurrencyConverterViewController: UIViewController {
                                                     constant: -DesignSpec.Spacing.default),
             toCurrencyLabel.centerXAnchor.constraint(equalTo: toCurrencyButton.centerXAnchor),
             toCurrencyLabel.widthAnchor.constraint(equalTo: toCurrencyLabel.widthAnchor),
-            toCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Label.height),
+            toCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Label.height)
+        ])
+    }
 
-            //Amount UITextField constraints
+    private func layoutAmountTextField() {
+        view.addSubview(amountTextField)
+
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
             amountTextField.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor),
             amountTextField.heightAnchor.constraint(equalToConstant: DesignSpec.TextField.height),
             amountTextField.bottomAnchor.constraint(equalTo: fromCurrencyLabel.topAnchor,
                                                     constant: -DesignSpec.Spacing.medium),
-            amountTextField.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
+            amountTextField.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor)
+        ])
+    }
 
-            //Conversion result UILabel constraints
+    private func layoutResultLabel() {
+        view.addSubview(conversionResultLabel)
+
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
             conversionResultLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor,
                                                          multiplier: DesignSpec.Result.widthMultiplier),
             conversionResultLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Result.height),
@@ -113,17 +178,9 @@ final class CurrencyConverterViewController: UIViewController {
             conversionResultLabel.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor)
         ])
     }
-
-    @objc private func amountDidChange() {
-        guard let newAmount = amountTextField.text,
-              newAmount != viewModel.amount else {
-            return
-        }
-
-        viewModel.amount = newAmount
-    }
 }
 
+// - MARK: CurrencyConverterViewModelDelegate
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     func updateUI() {
         conversionResultLabel.text = viewModel.convertedAmount
