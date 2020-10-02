@@ -27,31 +27,31 @@ final class NetworkManager {
     /// - Parameter request: The `URLRequest` used in the request.
     /// - Parameter type: The `Decodable` type expected in the response.
     /// - Parameter completion: The completion block containing the response.
-    func perform<T: Decodable>(_ request: URLRequest, for type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    func perform<T: Decodable>(_ request: URLRequest, for type: T.Type, completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
         service.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
+            if error != nil {
+                completion(.failure(NetworkServiceError.requestFailed))
+                return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                //- TODO: Error handling
+                completion(.failure(NetworkServiceError.unexpectedResponseType))
                 return
             }
 
             if httpResponse.statusCode == 200 {
                 guard let data = data else {
-                    //- TODO: Error handling
+                    completion(.failure(NetworkServiceError.missingData))
                     return
                 }
                 do {
                     let decoded = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(decoded))
                 } catch {
-                    completion(.failure(error))
-                    //- TODO: Error handling
+                    completion(.failure(NetworkServiceError.decodingFailed))
                 }
             } else {
-                //- TODO: Error handling
+                completion(.failure(NetworkServiceError.unexpectedHTTPStatusCode))
             }
         }.resume()
     }

@@ -3,7 +3,7 @@
 //  btg-mobile-challengeTests
 //
 //  Created by Artur Carneiro on 02/10/20.
-//
+// swiftlint:disable all
 
 import Foundation
 

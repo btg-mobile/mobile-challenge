@@ -3,8 +3,7 @@
 //  btg-mobile-challengeTests
 //
 //  Created by Artur Carneiro on 02/10/20.
-// swiftlint:disable force_unwrapping
-// swiftlint:disable force_try
+// swiftlint:disable all
 
 import XCTest
 @testable import btg_mobile_challenge
@@ -21,7 +20,7 @@ final class NetworkManagerTests: XCTestCase {
         sut = NetworkManager(service: service)
     }
 
-    func testPerfomLiveCurrencyDecoding() {
+    func testPerfomLiveCurrency() {
         let urlRequest = URLRequest(url: Endpoint.live.url!)
         let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
         let stubJSONData = try! Data(contentsOf: stubJSONURL!)
@@ -32,10 +31,69 @@ final class NetworkManagerTests: XCTestCase {
                 let stubJSON = try! JSONDecoder().decode(LiveCurrencyReponse.self, from: stubJSONData)
                 XCTAssertEqual(stubJSON, result)
             case .failure(_):
-                XCTFail("Request performed failed.")
+                XCTFail("Expected request to succeed. Request failed")
             }
         }
+    }
 
+    func testPerformFailedLiveCurrency() {
+        let urlRequest = URLRequest(url: Endpoint.live.url!)
+        service.shouldFail = true
+
+        sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
+            switch response {
+            case .failure(let error):
+                XCTAssertNotNil(error)
+                XCTAssertEqual(NetworkServiceError.requestFailed, error)
+            case .success(_):
+                XCTFail("Expected request to fail. Request succeeded.")
+            }
+        }
+    }
+
+    func testPerformUnexpectedResponseLiveCurrency() {
+        let urlRequest = URLRequest(url: Endpoint.live.url!)
+        service.unexpectedResponseType = true
+
+        sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
+            switch response {
+            case .failure(let error):
+                XCTAssertNotNil(error)
+                XCTAssertEqual(NetworkServiceError.unexpectedResponseType, error)
+            case .success(_):
+                XCTFail("Expected request to fail. Request succeeded.")
+            }
+        }
+    }
+
+    func testPerformUnexpectedStatusCodeLiveCurrency() {
+        let urlRequest = URLRequest(url: Endpoint.live.url!)
+        service.statusCode = 404
+
+        sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
+            switch response {
+            case .failure(let error):
+                XCTAssertNotNil(error)
+                XCTAssertEqual(NetworkServiceError.unexpectedHTTPStatusCode, error)
+            case .success(_):
+                XCTFail("Expected request to fail. Request succeeded.")
+            }
+        }
+    }
+
+    func testPerformMissingDataLiveCurrency() {
+        let urlRequest = URLRequest(url: Endpoint.live.url!)
+        service.missinData = true
+
+        sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
+            switch response {
+            case .failure(let error):
+                XCTAssertNotNil(error)
+                XCTAssertEqual(NetworkServiceError.missingData, error)
+            case .success(_):
+                XCTFail("Expected request to fail. Request succeeded.")
+            }
+        }
     }
 
     override func tearDown() {

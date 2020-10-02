@@ -31,6 +31,7 @@
 		A4BF6138252622890056738E /* CurrencyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF6137252622890056738E /* CurrencyLabel.swift */; };
 		A4BF613B252623460056738E /* CurrencyResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613A252623460056738E /* CurrencyResultLabel.swift */; };
 		A4BF613F252630A70056738E /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613E252630A70056738E /* CurrencyConverterViewModel.swift */; };
+		A4F7C0642527E7EC0085974A /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C0632527E7EC0085974A /* NetworkServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		A4BF6137252622890056738E /* CurrencyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabel.swift; sourceTree = "<group>"; };
 		A4BF613A252623460056738E /* CurrencyResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultLabel.swift; sourceTree = "<group>"; };
 		A4BF613E252630A70056738E /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		A4F7C0632527E7EC0085974A /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A4219C012526AB5D0024C3F6 /* NetworkService.swift */,
+				A4F7C0632527E7EC0085974A /* NetworkServiceError.swift */,
 				A4219C042526ADC40024C3F6 /* NetworkManager.swift */,
 			);
 			path = Network;
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A470889325275E900089975B /* Coordinator.swift in Sources */,
+				A4F7C0642527E7EC0085974A /* NetworkServiceError.swift in Sources */,
 				A4219C0C2526AE5B0024C3F6 /* Endpoint.swift in Sources */,
 				A4219C052526ADC40024C3F6 /* NetworkManager.swift in Sources */,
 				A4219C022526AB5D0024C3F6 /* NetworkService.swift in Sources */,
