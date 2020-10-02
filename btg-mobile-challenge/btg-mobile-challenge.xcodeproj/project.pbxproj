@@ -12,6 +12,8 @@
 		A4219C092526AE0C0024C3F6 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4219C082526AE0C0024C3F6 /* URLSession.swift */; };
 		A4219C0C2526AE5B0024C3F6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4219C0B2526AE5B0024C3F6 /* Endpoint.swift */; };
 		A4219C0F2526B4AA0024C3F6 /* LiveCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4219C0E2526B4AA0024C3F6 /* LiveCurrencyResponse.swift */; };
+		A470889325275E900089975B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A470889225275E900089975B /* Coordinator.swift */; };
+		A470889625275F140089975B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A470889525275F140089975B /* CurrencyConverterCoordinator.swift */; };
 		A4BF610C252609160056738E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610B252609160056738E /* AppDelegate.swift */; };
 		A4BF610E252609160056738E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610D252609160056738E /* SceneDelegate.swift */; };
 		A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610F252609160056738E /* CurrencyConverterViewController.swift */; };
@@ -32,6 +34,8 @@
 		A4219C082526AE0C0024C3F6 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		A4219C0B2526AE5B0024C3F6 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		A4219C0E2526B4AA0024C3F6 /* LiveCurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCurrencyResponse.swift; sourceTree = "<group>"; };
+		A470889225275E900089975B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A470889525275F140089975B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
 		A4BF6108252609160056738E /* btg-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "btg-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BF610B252609160056738E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4BF610D252609160056738E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A470889125275E700089975B /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				A470889225275E900089975B /* Coordinator.swift */,
+				A470889525275F140089975B /* CurrencyConverterCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		A4BF60FF252609160056738E = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +118,7 @@
 			children = (
 				A4BF61222526099A0056738E /* App */,
 				A4BF6123252609A40056738E /* Resources */,
+				A470889125275E700089975B /* Coordinators */,
 				A4219C002526AA5A0024C3F6 /* Network */,
 				A4219BFA2526948D0024C3F6 /* Models */,
 				A4BF6124252609E00056738E /* ViewControllers */,
@@ -249,11 +263,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A470889325275E900089975B /* Coordinator.swift in Sources */,
 				A4219C0C2526AE5B0024C3F6 /* Endpoint.swift in Sources */,
 				A4219C052526ADC40024C3F6 /* NetworkManager.swift in Sources */,
 				A4219C022526AB5D0024C3F6 /* NetworkService.swift in Sources */,
 				A4BF613225261F2D0056738E /* AutoLayout.swift in Sources */,
 				A4BF6138252622890056738E /* CurrencyLabel.swift in Sources */,
+				A470889625275F140089975B /* CurrencyConverterCoordinator.swift in Sources */,
 				A4219C0F2526B4AA0024C3F6 /* LiveCurrencyResponse.swift in Sources */,
 				A4BF61292526191E0056738E /* DesignSpec.swift in Sources */,
 				A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */,
