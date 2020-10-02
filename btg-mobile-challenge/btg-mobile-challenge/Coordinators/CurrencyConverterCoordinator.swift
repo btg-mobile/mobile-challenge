@@ -22,5 +22,4 @@ final class CurrencyConverterCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-
 }

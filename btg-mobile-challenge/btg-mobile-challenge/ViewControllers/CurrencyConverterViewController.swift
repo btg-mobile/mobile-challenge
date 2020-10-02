@@ -41,8 +41,6 @@ final class CurrencyConverterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-
-
     //- MARK: Life cycle
     override func loadView() {
         super.loadView()
@@ -186,4 +184,3 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
         conversionResultLabel.text = viewModel.convertedAmount
     }
 }
-
