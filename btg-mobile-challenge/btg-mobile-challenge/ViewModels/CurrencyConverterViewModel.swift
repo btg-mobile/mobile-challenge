@@ -20,10 +20,14 @@ final class CurrencyConverterViewModel {
     /// The delegate responsible for `ViewModel -> View communication`.
     weak var delegate: CurrencyConverterViewModelDelegate?
 
+    /// The manager responsible for network calls.
+    private let networkManager: NetworkManager
+
     //- MARK: Init
     /// Initializes a new instance of this type.
-    init() {
-
+    /// - Parameter networkManager: The manager responsible for network calls.
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
     }
 
     //- MARK: API

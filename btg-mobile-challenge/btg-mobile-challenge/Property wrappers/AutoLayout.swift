@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// Property wrapper responsible for providing a convinient and clean way of
+/// making a `UIView` ready for programmatic Auto layout.
+/// It only applies to `UIView` that make use of `init(frame: .zero)`.
 @propertyWrapper final class AutoLayout<View: UIView> {
     private lazy var view: View = {
         let view = View(frame: .zero)
