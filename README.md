@@ -1,3 +1,19 @@
+# Consideraçoes do Projeto Realizado para BTG
+
+- Switf 5
+- Utilizado PickerViewer para selecionar a moeda fonte e moeda destino
+- Realizado Parse JsonDecoder para os 2 APIs(Lista das moedas e a taxa de cambio para todas as conversoes)
+- AutoLayout considerado no storyboard
+- Mecanismo para utilizar conversoes de De/Para ou Para/De que tenha USD 
+
+estou entregando na data estabelecida pela recrutadora, porem há muitas oportunidades de melhorias.
+
+Pediria que qualquer falha no pull request para receber o pacote devolver comentando.
+
+Gustavo Sousa
+Desenvolvedor Independente iOS 
+
+
 # Desafio BTG
 
 Seja bem-vindo! Este é o seu primeiro passo para fazer parte do time de desenvolvimento do maior banco de investimentos da América Latina.
