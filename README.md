@@ -6,9 +6,7 @@
 - AutoLayout considerado no storyboard
 - Mecanismo para utilizar conversoes de De/Para ou Para/De que tenha USD 
 
-estou entregando na data estabelecida pela recrutadora, porem há muitas oportunidades de melhorias.
-
-Pediria que qualquer falha no pull request para receber o pacote devolver comentando.
+Estou entregando na data estabelecida pela recrutadora, porem entendo que há muitas oportunidades de melhorias.
 
 Gustavo Sousa
 Desenvolvedor Independente iOS 
