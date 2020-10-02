@@ -53,11 +53,10 @@ let accesskey: String = "access_key=3e839fa4e1ee0756b657751b5a8b4277&format=1"
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
     
     //Objetos para Parse Json
     struct cotacao: Codable {
-        var source:String?
         var quotes:[String:Float]
     }
     
@@ -98,13 +97,17 @@ class ViewController: UIViewController {
             display_result.layer.borderWidth=2.0
     }
     
-    //
-    @IBAction func tecladoinicia(_ sender: Any) {
-       esconder()
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        esconder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        esconder()
     }
     
     @IBAction func desapareceteclado(_ sender: Any) {
-        self.resignFirstResponder()
+        valor.resignFirstResponder()
     }
     
     func esconder(){
@@ -121,18 +124,24 @@ class ViewController: UIViewController {
         self.ok_button.isHidden=false
     }
     
+    
+    //Quando clica no botao da moeda fonte
     @IBAction func original(_ sender: Any) {
         aparecer()
+        valor.resignFirstResponder()
         picker.reloadAllComponents()
         self.toolbar_display.text="Moeda Fonte"
     }
     
+    //Quando clica no botao da moeda destino
     @IBAction func result(_ sender: Any) {
         aparecer()
+        valor.resignFirstResponder()
         picker.reloadAllComponents()
         self.toolbar_display.text="Moeda Destino"
     }
     
+    //Qunado clica OK no toolbar do PickerView
     @IBAction func OK(_ sender: Any) {
         if(toolbar_display.text=="Moeda Fonte"){
             if(fonte_button.currentTitle != "USD" && destino_button.currentTitle != "USD"){
@@ -143,9 +152,9 @@ class ViewController: UIViewController {
                    fonte_button.setTitle("USD", for: .normal)
                }
         }
-        
+
+        valor.resignFirstResponder()
         esconder()
-       // self.resignFirstResponder()
  
     }
     
@@ -154,25 +163,8 @@ class ViewController: UIViewController {
         self.calcular()
     }
     
-    func calcular(){
-        let fonte: String=self.fonte_button.currentTitle!
-        let destino:String=self.destino_button.currentTitle!
-        let input=Float(valor.text!)
-        var cotacao: Float
-        var tipo:String
-        
-        if(fonte_button.currentTitle=="USD"){
-            tipo="\(fonte)\(destino)"
-            cotacao=dict_quote![tipo]!*input!
-        } else {
-            tipo="\(destino)\(fonte)"
-            cotacao=input!/dict_quote![tipo]!
-            
-        }
-        display_result.text="\(cotacao)"
-  
-    }
-    
+   
+    //Metodo para obtair o Dictionary das cotações
     func convert_currency(){
     
     let URLString = URL_conversion + accesskey
@@ -196,7 +188,6 @@ class ViewController: UIViewController {
          catch {
              print("Falha ao carregar arquivo JSON")
         }
-        
       }
     }
     
@@ -233,8 +224,31 @@ class ViewController: UIViewController {
       }
       dataTask.resume()
       }
+    
+    //Metodo quando clica no botao calcular
+    func calcular(){
+           
+           let fonte: String=self.fonte_button.currentTitle!
+           let destino:String=self.destino_button.currentTitle!
+           let input=Float(valor.text!)
+           
+           if(input==nil) {return}
+           
+           var cotacao: Float
+           var tipo:String
+           
+           if(fonte_button.currentTitle=="USD"){
+               tipo="\(fonte)\(destino)"
+               cotacao=dict_quote![tipo]!*input!
+           } else {
+               tipo="\(destino)\(fonte)"
+               cotacao=input!/dict_quote![tipo]!
+               
+           }
+           display_result.text=String(format:"%.2f",cotacao)
+     
+       }
 }
-
 
 
 //Metodos do PickerView
@@ -252,8 +266,6 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-       // print(arr_moeda![row]!)
         
         let titulo:String=Array(dict_lista!.keys)[row]
         

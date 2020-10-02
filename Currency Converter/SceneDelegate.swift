@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Currency Converter
 //
-//  Created by Andreza on 9/30/20.
+//  Created by Gustavo on 9/30/20.
 //  Copyright © 2020 Gustavo Sousa. All rights reserved.
 //
 
