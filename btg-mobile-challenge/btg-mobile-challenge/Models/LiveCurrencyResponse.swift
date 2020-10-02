@@ -17,3 +17,14 @@ struct LiveCurrencyReponse: Decodable {
     let source: String
     let quotes: [String: Double]
 }
+
+extension LiveCurrencyReponse: Equatable {
+    static func == (lhs: LiveCurrencyReponse, rhs: LiveCurrencyReponse) -> Bool {
+        return lhs.success == rhs.success
+            && lhs.terms == rhs.terms
+            && lhs.privacy == rhs.privacy
+            && lhs.timestamp == rhs.timestamp
+            && lhs.source == rhs.source
+            && lhs.quotes == rhs.quotes
+    }
+}

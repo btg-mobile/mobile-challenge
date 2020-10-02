@@ -14,6 +14,11 @@
 		A4219C0F2526B4AA0024C3F6 /* LiveCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4219C0E2526B4AA0024C3F6 /* LiveCurrencyResponse.swift */; };
 		A470889325275E900089975B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A470889225275E900089975B /* Coordinator.swift */; };
 		A470889625275F140089975B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A470889525275F140089975B /* CurrencyConverterCoordinator.swift */; };
+		A47088A1252761B20089975B /* btg_mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47088A0252761B20089975B /* btg_mobile_challengeTests.swift */; };
+		A47088AC252761D70089975B /* live-response.json in Resources */ = {isa = PBXBuildFile; fileRef = A47088AB252761D70089975B /* live-response.json */; };
+		A47088B3252761F40089975B /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47088B2252761F40089975B /* NetworkManagerTests.swift */; };
+		A47088B9252762110089975B /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47088B8252762110089975B /* NetworkServiceMock.swift */; };
+		A47088C0252767A60089975B /* NetworkServiceDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47088BF252767A60089975B /* NetworkServiceDataTaskMock.swift */; };
 		A4BF610C252609160056738E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610B252609160056738E /* AppDelegate.swift */; };
 		A4BF610E252609160056738E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610D252609160056738E /* SceneDelegate.swift */; };
 		A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF610F252609160056738E /* CurrencyConverterViewController.swift */; };
@@ -28,6 +33,16 @@
 		A4BF613F252630A70056738E /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613E252630A70056738E /* CurrencyConverterViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A47088A3252761B20089975B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4BF6100252609160056738E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4BF6107252609160056738E;
+			remoteInfo = "btg-mobile-challenge";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		A4219C012526AB5D0024C3F6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A4219C042526ADC40024C3F6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -36,6 +51,13 @@
 		A4219C0E2526B4AA0024C3F6 /* LiveCurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCurrencyResponse.swift; sourceTree = "<group>"; };
 		A470889225275E900089975B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A470889525275F140089975B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
+		A470889E252761B10089975B /* btg-mobile-challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btg-mobile-challengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A47088A0252761B20089975B /* btg_mobile_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btg_mobile_challengeTests.swift; sourceTree = "<group>"; };
+		A47088A2252761B20089975B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A47088AB252761D70089975B /* live-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "live-response.json"; sourceTree = "<group>"; };
+		A47088B2252761F40089975B /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		A47088B8252762110089975B /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		A47088BF252767A60089975B /* NetworkServiceDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDataTaskMock.swift; sourceTree = "<group>"; };
 		A4BF6108252609160056738E /* btg-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "btg-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BF610B252609160056738E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4BF610D252609160056738E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A470889B252761B10089975B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A4BF6105252609160056738E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,10 +126,48 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		A470889F252761B20089975B /* btg-mobile-challengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A47088BE252767930089975B /* Mocks */,
+				A47088AA252761B70089975B /* Stubs */,
+				A47088B1252761E50089975B /* Network */,
+				A47088A0252761B20089975B /* btg_mobile_challengeTests.swift */,
+				A47088A2252761B20089975B /* Info.plist */,
+			);
+			path = "btg-mobile-challengeTests";
+			sourceTree = "<group>";
+		};
+		A47088AA252761B70089975B /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				A47088AB252761D70089975B /* live-response.json */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		A47088B1252761E50089975B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A47088B2252761F40089975B /* NetworkManagerTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A47088BE252767930089975B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A47088B8252762110089975B /* NetworkServiceMock.swift */,
+				A47088BF252767A60089975B /* NetworkServiceDataTaskMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		A4BF60FF252609160056738E = {
 			isa = PBXGroup;
 			children = (
 				A4BF610A252609160056738E /* btg-mobile-challenge */,
+				A470889F252761B20089975B /* btg-mobile-challengeTests */,
 				A4BF6109252609160056738E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A4BF6108252609160056738E /* btg-mobile-challenge.app */,
+				A470889E252761B10089975B /* btg-mobile-challengeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +265,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A470889D252761B10089975B /* btg-mobile-challengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A47088A5252761B20089975B /* Build configuration list for PBXNativeTarget "btg-mobile-challengeTests" */;
+			buildPhases = (
+				A470889A252761B10089975B /* Sources */,
+				A470889B252761B10089975B /* Frameworks */,
+				A470889C252761B10089975B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A47088A4252761B20089975B /* PBXTargetDependency */,
+			);
+			name = "btg-mobile-challengeTests";
+			productName = "btg-mobile-challengeTests";
+			productReference = A470889E252761B10089975B /* btg-mobile-challengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A4BF6107252609160056738E /* btg-mobile-challenge */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4BF611C252609180056738E /* Build configuration list for PBXNativeTarget "btg-mobile-challenge" */;
@@ -224,6 +310,10 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					A470889D252761B10089975B = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = A4BF6107252609160056738E;
+					};
 					A4BF6107252609160056738E = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -243,11 +333,20 @@
 			projectRoot = "";
 			targets = (
 				A4BF6107252609160056738E /* btg-mobile-challenge */,
+				A470889D252761B10089975B /* btg-mobile-challengeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A470889C252761B10089975B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A47088AC252761D70089975B /* live-response.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A4BF6106252609160056738E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +380,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A470889A252761B10089975B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A47088B3252761F40089975B /* NetworkManagerTests.swift in Sources */,
+				A47088A1252761B20089975B /* btg_mobile_challengeTests.swift in Sources */,
+				A47088C0252767A60089975B /* NetworkServiceDataTaskMock.swift in Sources */,
+				A47088B9252762110089975B /* NetworkServiceMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A4BF6104252609160056738E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +417,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A47088A4252761B20089975B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4BF6107252609160056738E /* btg-mobile-challenge */;
+			targetProxy = A47088A3252761B20089975B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		A4BF6116252609180056738E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -319,6 +437,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A47088A6252761B20089975B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L76X5KFZD9;
+				INFOPLIST_FILE = "btg-mobile-challengeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.csfar.btg-mobile-challengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/btg-mobile-challenge.app/btg-mobile-challenge";
+			};
+			name = Debug;
+		};
+		A47088A7252761B20089975B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L76X5KFZD9;
+				INFOPLIST_FILE = "btg-mobile-challengeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.csfar.btg-mobile-challengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/btg-mobile-challenge.app/btg-mobile-challenge";
+			};
+			name = Release;
+		};
 		A4BF611A252609180056738E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -478,6 +636,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A47088A5252761B20089975B /* Build configuration list for PBXNativeTarget "btg-mobile-challengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A47088A6252761B20089975B /* Debug */,
+				A47088A7252761B20089975B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A4BF6103252609160056738E /* Build configuration list for PBXProject "btg-mobile-challenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
