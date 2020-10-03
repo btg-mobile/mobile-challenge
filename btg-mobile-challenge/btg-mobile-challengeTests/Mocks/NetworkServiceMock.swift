@@ -12,6 +12,8 @@ final class NetworkServiceMock: NetworkService {
 
     let bundle: Bundle
 
+    var json: URL?
+
     var shouldFail: Bool = false
     var unexpectedResponseType: Bool = false
     var missinData: Bool = false
@@ -46,9 +48,7 @@ final class NetworkServiceMock: NetworkService {
             return NetworkServiceDataTaskMock()
         }
 
-        let json = bundle.url(forResource: "live-response", withExtension: "json")!
-
-        let data = try! Data(contentsOf: json)
+        let data = try! Data(contentsOf: json!)
 
         completionHandler(data, urlResponse, nil)
 

@@ -13,7 +13,7 @@ enum Endpoint: String {
     /// Endpoint for live rates.
     case live = "live?"
     /// Endpoint for supported currencies.
-    case currencies = "list?"
+    case list = "list?"
 }
 
 // - MARK: Extension
@@ -38,8 +38,8 @@ extension Endpoint {
                 return nil
             }
             return url
-        case .currencies:
-            guard let url = URL(string: "\(base)\(Endpoint.currencies.rawValue)\(accessKey)") else {
+        case .list:
+            guard let url = URL(string: "\(base)\(Endpoint.list.rawValue)\(accessKey)") else {
                 return nil
             }
             return url

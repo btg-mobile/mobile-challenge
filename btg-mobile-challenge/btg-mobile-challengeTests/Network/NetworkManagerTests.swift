@@ -25,6 +25,8 @@ final class NetworkManagerTests: XCTestCase {
         let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
         let stubJSONData = try! Data(contentsOf: stubJSONURL!)
 
+        service.json = stubJSONURL
+
         sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
             switch response {
             case .success(let result):
@@ -36,9 +38,30 @@ final class NetworkManagerTests: XCTestCase {
         }
     }
 
-    func testPerformFailedLiveCurrency() {
+    func testPerfomListCurrency() {
+        let urlRequest = URLRequest(url: Endpoint.list.url!)
+        let stubJSONURL = service.bundle.url(forResource: "list-response", withExtension: "json")
+        let stubJSONData = try! Data(contentsOf: stubJSONURL!)
+
+        service.json = stubJSONURL
+        
+        sut.perform(urlRequest, for: ListCurrencyResponse.self) { (response) in
+            switch response {
+            case .success(let result):
+                let stubJSON = try! JSONDecoder().decode(ListCurrencyResponse.self, from: stubJSONData)
+                XCTAssertEqual(stubJSON, result)
+            case .failure(_):
+                XCTFail("Expected request to succeed. Request failed")
+            }
+        }
+    }
+
+    func testPerformFailed() {
         let urlRequest = URLRequest(url: Endpoint.live.url!)
         service.shouldFail = true
+
+        let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
+        service.json = stubJSONURL
 
         sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
             switch response {
@@ -51,9 +74,12 @@ final class NetworkManagerTests: XCTestCase {
         }
     }
 
-    func testPerformUnexpectedResponseLiveCurrency() {
+    func testPerformUnexpectedResponse() {
         let urlRequest = URLRequest(url: Endpoint.live.url!)
         service.unexpectedResponseType = true
+
+        let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
+        service.json = stubJSONURL
 
         sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
             switch response {
@@ -66,9 +92,12 @@ final class NetworkManagerTests: XCTestCase {
         }
     }
 
-    func testPerformUnexpectedStatusCodeLiveCurrency() {
+    func testPerformUnexpectedStatusCode() {
         let urlRequest = URLRequest(url: Endpoint.live.url!)
         service.statusCode = 404
+
+        let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
+        service.json = stubJSONURL
 
         sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
             switch response {
@@ -81,9 +110,12 @@ final class NetworkManagerTests: XCTestCase {
         }
     }
 
-    func testPerformMissingDataLiveCurrency() {
+    func testPerformMissingData() {
         let urlRequest = URLRequest(url: Endpoint.live.url!)
         service.missinData = true
+
+        let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
+        service.json = stubJSONURL
 
         sut.perform(urlRequest, for: LiveCurrencyReponse.self) { (response) in
             switch response {
