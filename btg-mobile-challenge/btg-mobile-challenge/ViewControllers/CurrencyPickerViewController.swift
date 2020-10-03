@@ -7,12 +7,19 @@
 
 import UIKit
 
+/// Representation of the app's currency picking screen.
 final class CurrencyPickerViewController: UIViewController {
+    // - MARK: Properties
 
+    /// Representation of supported currencies.
     @AutoLayout private var currencyTableView: UITableView
 
+    /// The `ViewModel` for this type.
     private let viewModel: CurrencyPickerViewModel
 
+    //- MARK: Init
+    /// Initializes a new instance of this type.
+    /// - Parameter viewModel: The `ViewModel` for this type.
     init(viewModel: CurrencyPickerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +29,7 @@ final class CurrencyPickerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //- MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewModel()
@@ -29,11 +37,13 @@ final class CurrencyPickerViewController: UIViewController {
         layoutConstraints()
     }
 
+    //- MARK: ViewModel setup
     private func setUpViewModel() {
         viewModel.delegate = self
         title = viewModel.title
     }
 
+    // - MARK: Views setup
     private func setUpViews() {
         view.backgroundColor = .systemBackground
         currencyTableView.backgroundColor = .systemBackground
@@ -41,6 +51,7 @@ final class CurrencyPickerViewController: UIViewController {
         currencyTableView.dataSource = self
     }
 
+    // - Layout
     private func layoutConstraints() {
         view.addSubview(currencyTableView)
 
@@ -55,6 +66,7 @@ final class CurrencyPickerViewController: UIViewController {
     }
 }
 
+// - MARK: UITableViewDelegate
 extension CurrencyPickerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.currentCurrency = indexPath
@@ -63,6 +75,7 @@ extension CurrencyPickerViewController: UITableViewDelegate {
 
 }
 
+//- MARK: UITableViewDataSource
 extension CurrencyPickerViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections
@@ -84,6 +97,7 @@ extension CurrencyPickerViewController: UITableViewDataSource {
     }
 }
 
+//- MARK: ViewModel delegate
 extension CurrencyPickerViewController: CurrencyListViewModelDelegate {
     func didSelectCurrency(_ indexPath: IndexPath, previous: IndexPath) {
         currencyTableView.reloadRows(at: [indexPath, previous], with: .fade)

@@ -8,8 +8,6 @@
 import UIKit
 
 /// Representation of the app's conversion screen.
-/// It should be instatiated as part of a `UINavigationController` in the
-/// `AppDelegate` or `SceneDelegate`.
 final class CurrencyConverterViewController: UIViewController {
     //- MARK: Properties
     // Amount
@@ -188,7 +186,7 @@ final class CurrencyConverterViewController: UIViewController {
     }
 }
 
-// - MARK: CurrencyConverterViewModelDelegate
+// - MARK: ViewModel delegate
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     func updateUI() {
         conversionResultLabel.text = viewModel.convertedAmount

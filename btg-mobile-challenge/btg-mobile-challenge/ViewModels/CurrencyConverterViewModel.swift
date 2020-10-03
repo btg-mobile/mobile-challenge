@@ -14,15 +14,16 @@ protocol CurrencyConverterViewModelDelegate: AnyObject {
     func updateUI()
 }
 
-/// The ViewModel responsible for `CurrencyConverterViewController`.
+/// The `ViewModel` responsible for `CurrencyConverterViewController`.
 final class CurrencyConverterViewModel {
     //- MARK: Properties
-    /// The delegate responsible for `ViewModel -> View communication`.
+    /// The delegate responsible for `ViewModel -> View` binding.
     weak var delegate: CurrencyConverterViewModelDelegate?
 
     /// The manager responsible for network calls.
     private let networkManager: NetworkManager
 
+    /// The `Coordinator` associated with this `ViewModel`.
     private let coordinator: CurrencyConverterCoordinator
 
     //- MARK: Init
@@ -45,6 +46,8 @@ final class CurrencyConverterViewModel {
     /// The converted amount.
     var convertedAmount: String = ""
 
+    /// Warns `Coordinator` to navigate to the currency picker screen.
+    /// - Parameter case: The currency case picked by the user.
     func pickCurrency(_ case: CurrencyPickingCase) {
         coordinator.pickCurrency(`case`)
     }

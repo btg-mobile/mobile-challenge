@@ -39,6 +39,7 @@
 		A4F7C08C2528C8B10085974A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C08B2528C8B10085974A /* Currency.swift */; };
 		A4F7C0942528DA6B0085974A /* UserDefaultsAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C0932528DA6B0085974A /* UserDefaultsAccess.swift */; };
 		A4F7C09B2528DC5A0085974A /* CurrencyPickingCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C09A2528DC5A0085974A /* CurrencyPickingCase.swift */; };
+		A4F7C09F2528E33D0085974A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C09E2528E33D0085974A /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		A4F7C08B2528C8B10085974A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		A4F7C0932528DA6B0085974A /* UserDefaultsAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAccess.swift; sourceTree = "<group>"; };
 		A4F7C09A2528DC5A0085974A /* CurrencyPickingCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickingCase.swift; sourceTree = "<group>"; };
+		A4F7C09E2528E33D0085974A /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				A4219C082526AE0C0024C3F6 /* URLSession.swift */,
+				A4F7C09E2528E33D0085974A /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				A4F7C0642527E7EC0085974A /* NetworkServiceError.swift in Sources */,
 				A4F7C07C2528C66F0085974A /* ListCurrencyResponse.swift in Sources */,
 				A4219C0C2526AE5B0024C3F6 /* Endpoint.swift in Sources */,
+				A4F7C09F2528E33D0085974A /* UserDefaults.swift in Sources */,
 				A4219C052526ADC40024C3F6 /* NetworkManager.swift in Sources */,
 				A4219C022526AB5D0024C3F6 /* NetworkService.swift in Sources */,
 				A4BF613225261F2D0056738E /* AutoLayout.swift in Sources */,
