@@ -43,6 +43,7 @@ final class CurrencyConverterViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view.backgroundColor = .systemBackground
+        title = "Converter"
     }
 
     override func viewDidLoad() {
@@ -50,6 +51,13 @@ final class CurrencyConverterViewController: UIViewController {
         setUpViewModel()
         setUpViews()
         layoutConstraints()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fromCurrencyButton.setTitle(viewModel.fromCurrency, for: .normal)
+        toCurrencyButton.setTitle(viewModel.toCurrency, for: .normal)
+        viewModel.fetch()
     }
 
     // - MARK: @objc
@@ -70,28 +78,35 @@ final class CurrencyConverterViewController: UIViewController {
         viewModel.pickCurrency(.to)
     }
 
+    @objc private func openList() {
+        viewModel.listCurrencies()
+    }
+
+    @objc private func refreshData() {
+        viewModel.refresh()
+    }
+
     // - MARK: ViewModel setup
     private func setUpViewModel() {
+        viewModel.refresh()
         viewModel.delegate = self
     }
 
     //- MARK: Views setup
 
     private func setUpViews() {
+        setUpNavigationItem()
         setUpFromCurrency()
         setUpToCurrency()
         setUpAmountTextField()
-        setUpResultLabel()
     }
 
     private func setUpFromCurrency() {
-        fromCurrencyButton.setTitle("USD", for: .normal)
         fromCurrencyButton.addTarget(self, action: #selector(pickFromCurrency), for: .touchUpInside)
         fromCurrencyLabel.text = "From"
     }
 
     private func setUpToCurrency() {
-        toCurrencyButton.setTitle("BRL", for: .normal)
         toCurrencyButton.addTarget(self, action: #selector(pickToCurrency), for: .touchUpInside)
         toCurrencyLabel.text = "To"
     }
@@ -101,8 +116,16 @@ final class CurrencyConverterViewController: UIViewController {
         amountTextField.addTarget(self, action: #selector(amountDidChange), for: .editingChanged)
     }
 
-    private func setUpResultLabel() {
-        conversionResultLabel.text = "5.47"
+    private func setUpNavigationItem() {
+        let listButton = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+                                         target: self,
+                                         action: #selector(openList))
+        navigationItem.rightBarButtonItem = listButton
+
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                            target: self,
+                                            action: #selector(refreshData))
+        navigationItem.leftBarButtonItem = refreshButton
     }
 
     //- MARK: Layout

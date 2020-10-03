@@ -32,9 +32,14 @@ final class CurrencyPickerViewController: UIViewController {
     //- MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavigationItem()
         setUpViewModel()
         setUpViews()
         layoutConstraints()
+    }
+
+    @objc private func cancelSelection() {
+        dismiss(animated: true, completion: nil)
     }
 
     //- MARK: ViewModel setup
@@ -49,6 +54,13 @@ final class CurrencyPickerViewController: UIViewController {
         currencyTableView.backgroundColor = .systemBackground
         currencyTableView.delegate = self
         currencyTableView.dataSource = self
+    }
+
+    private func setUpNavigationItem() {
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                         target: self,
+                                         action: #selector(cancelSelection))
+        navigationItem.rightBarButtonItem = cancelButton
     }
 
     // - Layout

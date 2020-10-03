@@ -21,38 +21,48 @@ final class CurrencyPickerViewModel {
     weak var delegate: CurrencyListViewModelDelegate?
 
     @UserDefaultAccess(key: CurrencyPickingCase.from.rawValue, defaultValue: "USD")
-    private var fromCurrency: String
+    private var fromCurrencyStorage: String
 
     @UserDefaultAccess(key: CurrencyPickingCase.to.rawValue, defaultValue: "BRL")
-    private var toCurrency: String
+    private var toCurrencyStorage: String
 
     /// The `Coordinator` associated with this `ViewModel`.
-    private let coordinator: CurrencyConverterCoordinator
+    private let coordinator: CurrencyConverterCoordinatorService
 
     /// The currency case of this `ViewModel`.
     private let `case`: CurrencyPickingCase
 
     /// The list of supported currencies.
-    private var currencies: [[Currency]] = [Currency.generate(30)] {
+    private var currencies: [[Currency]] = [[Currency]]() {
         didSet {
-
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.currentCurrency = self.lastSelectedCurrency
+            }
         }
     }
 
+    private var lastSelectedCurrency: IndexPath
+
     //- MARK: Init
     /// Initializes a new instance of this type.
+    /// - Parameter listResponse: The list of supported currencies.
     /// - Parameter coordinator: The `Coordinator` associated with this `ViewModel`.
     /// - Parameter case: The currency case of this `ViewModel`.
-    init(coordinator: CurrencyConverterCoordinator, case: CurrencyPickingCase) {
+    init(currencies: ListCurrencyResponse,
+         coordinator: CurrencyConverterCoordinatorService,
+         case: CurrencyPickingCase) {
         self.coordinator = coordinator
         self.case = `case`
         self.currentCurrency = IndexPath(row: 0, section: 0)
+        self.lastSelectedCurrency = IndexPath(row: 0, section: 0)
         switch `case` {
         case .from:
             self.title = "From"
         case .to:
             self.title = "To"
         }
+        convert(from: currencies)
     }
 
     //- MARK: API
@@ -64,9 +74,9 @@ final class CurrencyPickerViewModel {
         didSet {
             switch `case` {
             case .from:
-                fromCurrency = currencies[currentCurrency.section][currentCurrency.row].code
+                fromCurrencyStorage = currencies[currentCurrency.section][currentCurrency.row].code
             case .to:
-                toCurrency = currencies[currentCurrency.section][currentCurrency.row].code
+                toCurrencyStorage = currencies[currentCurrency.section][currentCurrency.row].code
             }
             delegate?.didSelectCurrency(currentCurrency, previous: oldValue)
         }
@@ -95,4 +105,27 @@ final class CurrencyPickerViewModel {
         return currencies[index.section][index.row].name
     }
 
+    //- MARK: Private
+    private func convert(from response: ListCurrencyResponse) {
+        let currencies = response.currencies.keys.map { Currency(code: $0, name: response.currencies[$0] ?? "") }
+        let sortedCurrencies = currencies.sorted(by: { $0.code < $1.code })
+
+        var currentCurrencyIndex: Int = 0
+        switch self.`case` {
+        case .from:
+            if let lastSelectedIndex = sortedCurrencies.firstIndex(where: { $0.code == self.fromCurrencyStorage }) {
+                currentCurrencyIndex = lastSelectedIndex
+            }
+        case .to:
+            if let lastSelectedIndex = sortedCurrencies.firstIndex(where: { $0.code == self.toCurrencyStorage }) {
+                currentCurrencyIndex = lastSelectedIndex
+            }
+        }
+
+        let result = [sortedCurrencies]
+
+        lastSelectedCurrency = IndexPath(row: currentCurrencyIndex, section: result.count - 1)
+
+        self.currencies = result
+    }
 }

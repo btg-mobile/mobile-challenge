@@ -9,7 +9,7 @@ import Foundation
 
 /// Representation of the service response for live currency rates
 /// based on a source (default: `USD`).
-struct LiveCurrencyReponse: Decodable {
+struct LiveCurrencyReponse: Codable {
     let success: Bool
     let terms: URL
     let privacy: URL

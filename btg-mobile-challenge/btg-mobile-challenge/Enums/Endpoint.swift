@@ -19,7 +19,7 @@ enum Endpoint: String {
 // - MARK: Extension
 extension Endpoint {
     /// The private API key.
-    /// It should **never** be pushed to remote.
+    /// It shouldn't be pushed to remote.
     private var accessKey: String {
         return "access_key="
     }

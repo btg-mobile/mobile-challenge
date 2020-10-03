@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ListCurrencyResponse: Decodable {
+/// Representation of the service response for list supported currencies.
+struct ListCurrencyResponse: Codable {
     let success: Bool
     let terms: URL
     let privacy: URL

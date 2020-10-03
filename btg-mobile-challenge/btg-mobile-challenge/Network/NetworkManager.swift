@@ -38,7 +38,7 @@ final class NetworkManager {
                 completion(.failure(NetworkServiceError.unexpectedResponseType))
                 return
             }
-
+            
             if httpResponse.statusCode == 200 {
                 guard let data = data else {
                     completion(.failure(NetworkServiceError.missingData))
