@@ -10,14 +10,14 @@ import UIKit
 /// The description of the Design Specification.
 enum DesignSpec {
 
-    /// The description of each spacing specification.
+    /// The specification of each spacing.
     enum Spacing {
         static let `default`: CGFloat = 10
         static let medium: CGFloat = 20
         static let large: CGFloat = 30
     }
 
-    /// The description of a Button specification.
+    /// The specification of a Button.
     enum Button {
         static let cornerRadius: CGFloat = UIScreen.main.bounds.height * 0.005
 
@@ -26,19 +26,24 @@ enum DesignSpec {
         static let widthMultiplier: CGFloat = 0.4
     }
 
-    /// The description of a Label specification.
+    /// The specification of a Label.
     enum Label {
         static let height: CGFloat = 30
     }
 
-    /// The description of a TextField specification.
+    /// The specification of a TextField.
     enum TextField {
         static let height: CGFloat = 50
     }
 
-    /// The description of a Result label specification.
+    /// The specification of a Result label.
     enum Result {
         static let widthMultiplier: CGFloat = 0.7
         static let height: CGFloat = 50
+    }
+
+    enum SegmentedControl {
+        static let widthMultiplier: CGFloat = 0.6
+        static let heightMultiplier: CGFloat = 0.15
     }
 }

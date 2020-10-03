@@ -64,6 +64,14 @@ final class CurrencyConverterViewController: UIViewController {
         viewModel.amount = newAmount
     }
 
+    @objc private func pickFromCurrency() {
+        viewModel.pickCurrency(.from)
+    }
+
+    @objc private func pickToCurrency() {
+        viewModel.pickCurrency(.to)
+    }
+
     // - MARK: ViewModel setup
     private func setUpViewModel() {
         viewModel.delegate = self
@@ -80,11 +88,13 @@ final class CurrencyConverterViewController: UIViewController {
 
     private func setUpFromCurrency() {
         fromCurrencyButton.setTitle("USD", for: .normal)
+        fromCurrencyButton.addTarget(self, action: #selector(pickFromCurrency), for: .touchUpInside)
         fromCurrencyLabel.text = "From"
     }
 
     private func setUpToCurrency() {
         toCurrencyButton.setTitle("BRL", for: .normal)
+        toCurrencyButton.addTarget(self, action: #selector(pickToCurrency), for: .touchUpInside)
         toCurrencyLabel.text = "To"
     }
 

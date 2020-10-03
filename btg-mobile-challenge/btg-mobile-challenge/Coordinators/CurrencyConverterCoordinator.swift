@@ -16,10 +16,18 @@ final class CurrencyConverterCoordinator: Coordinator {
 
     func start() {
         let networkManager = NetworkManager()
-        let viewModel = CurrencyConverterViewModel(networkManager: networkManager)
+        let viewModel = CurrencyConverterViewModel(networkManager: networkManager, coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
 
         navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func pickCurrency(_ case: CurrencyPickingCase) {
+        let viewModel = CurrencyPickerViewModel(coordinator: self, case: `case`)
+        let viewController = CurrencyPickerViewController(viewModel: viewModel)
+        let modalNavigationController = UINavigationController(rootViewController: viewController)
+
+        navigationController.present(modalNavigationController, animated: true, completion: nil)
     }
 
 }

@@ -23,11 +23,14 @@ final class CurrencyConverterViewModel {
     /// The manager responsible for network calls.
     private let networkManager: NetworkManager
 
+    private let coordinator: CurrencyConverterCoordinator
+
     //- MARK: Init
     /// Initializes a new instance of this type.
     /// - Parameter networkManager: The manager responsible for network calls.
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager, coordinator: CurrencyConverterCoordinator) {
         self.networkManager = networkManager
+        self.coordinator = coordinator
     }
 
     //- MARK: API
@@ -41,6 +44,10 @@ final class CurrencyConverterViewModel {
 
     /// The converted amount.
     var convertedAmount: String = ""
+
+    func pickCurrency(_ case: CurrencyPickingCase) {
+        coordinator.pickCurrency(`case`)
+    }
 
     //- MARK: Private
     private func convert(_ amount: String) -> String {
