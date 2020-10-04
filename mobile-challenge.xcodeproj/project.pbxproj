@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B105157C252962A7002CCCE0 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105157A252962A7002CCCE0 /* CurrencyConverterViewController.swift */; };
+		B105157D252962A7002CCCE0 /* CurrencyConverterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B105157B252962A7002CCCE0 /* CurrencyConverterViewController.xib */; };
+		B105158B25296CB6002CCCE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B105158A25296CB6002CCCE0 /* Main.storyboard */; };
+		B105159525296D48002CCCE0 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105159425296D48002CCCE0 /* CurrencyConverterViewModel.swift */; };
+		B105159B25297167002CCCE0 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105159A25297167002CCCE0 /* Constraints.swift */; };
+		B10515A125298A0B002CCCE0 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105159F25298A0B002CCCE0 /* CurrencyListViewController.swift */; };
+		B10515A225298A0B002CCCE0 /* CurrencyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10515A025298A0B002CCCE0 /* CurrencyListViewController.xib */; };
+		B10515AC25298B0E002CCCE0 /* CurrencyUiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10515AA25298B0E002CCCE0 /* CurrencyUiTableViewCell.swift */; };
+		B10515AD25298B0E002CCCE0 /* CurrencyUiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10515AB25298B0E002CCCE0 /* CurrencyUiTableViewCell.xib */; };
+		B10515B225298C04002CCCE0 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10515B125298C04002CCCE0 /* CurrencyListViewModel.swift */; };
 		B1FBBB1725282F9A008A4D69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBB1625282F9A008A4D69 /* AppDelegate.swift */; };
 		B1FBBB1925282F9A008A4D69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBB1825282F9A008A4D69 /* SceneDelegate.swift */; };
-		B1FBBB1B25282F9A008A4D69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBB1A25282F9A008A4D69 /* ViewController.swift */; };
-		B1FBBB1E25282F9A008A4D69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1FBBB1C25282F9A008A4D69 /* Main.storyboard */; };
 		B1FBBB2025282F9C008A4D69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1FBBB1F25282F9C008A4D69 /* Assets.xcassets */; };
 		B1FBBB2325282F9C008A4D69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1FBBB2125282F9C008A4D69 /* LaunchScreen.storyboard */; };
 		B1FBBB2E25282F9C008A4D69 /* mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBB2D25282F9C008A4D69 /* mobile_challengeTests.swift */; };
@@ -35,11 +43,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B105157A252962A7002CCCE0 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
+		B105157B252962A7002CCCE0 /* CurrencyConverterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyConverterViewController.xib; sourceTree = "<group>"; };
+		B105158A25296CB6002CCCE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B105159425296D48002CCCE0 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		B105159A25297167002CCCE0 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		B105159F25298A0B002CCCE0 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		B10515A025298A0B002CCCE0 /* CurrencyListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyListViewController.xib; sourceTree = "<group>"; };
+		B10515AA25298B0E002CCCE0 /* CurrencyUiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyUiTableViewCell.swift; sourceTree = "<group>"; };
+		B10515AB25298B0E002CCCE0 /* CurrencyUiTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyUiTableViewCell.xib; sourceTree = "<group>"; };
+		B10515B125298C04002CCCE0 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		B1FBBB1325282F9A008A4D69 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1FBBB1625282F9A008A4D69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1FBBB1825282F9A008A4D69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B1FBBB1A25282F9A008A4D69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B1FBBB1D25282F9A008A4D69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1FBBB1F25282F9C008A4D69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1FBBB2225282F9C008A4D69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1FBBB2425282F9C008A4D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +92,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B105159225296CEF002CCCE0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B105159425296D48002CCCE0 /* CurrencyConverterViewModel.swift */,
+				B10515B125298C04002CCCE0 /* CurrencyListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B105159325296CFD002CCCE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B10515992529712E002CCCE0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B105159A25297167002CCCE0 /* Constraints.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B10515A925298AD5002CCCE0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				B10515AA25298B0E002CCCE0 /* CurrencyUiTableViewCell.swift */,
+				B10515AB25298B0E002CCCE0 /* CurrencyUiTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		B179C9692528373400BDD263 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B1FBBB2125282F9C008A4D69 /* LaunchScreen.storyboard */,
+				B105158A25296CB6002CCCE0 /* Main.storyboard */,
+				B1FBBB1625282F9A008A4D69 /* AppDelegate.swift */,
+				B1FBBB1825282F9A008A4D69 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B179C96D2528374300BDD263 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B105157A252962A7002CCCE0 /* CurrencyConverterViewController.swift */,
+				B105159F25298A0B002CCCE0 /* CurrencyListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B179C96E2528375900BDD263 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B10515A925298AD5002CCCE0 /* cell */,
+				B10515A025298A0B002CCCE0 /* CurrencyListViewController.xib */,
+				B105157B252962A7002CCCE0 /* CurrencyConverterViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B179C97525283A7E00BDD263 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		B1FBBB0A25282F9A008A4D69 = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +185,14 @@
 		B1FBBB1525282F9A008A4D69 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
-				B1FBBB1625282F9A008A4D69 /* AppDelegate.swift */,
-				B1FBBB1825282F9A008A4D69 /* SceneDelegate.swift */,
-				B1FBBB1A25282F9A008A4D69 /* ViewController.swift */,
-				B1FBBB1C25282F9A008A4D69 /* Main.storyboard */,
+				B10515992529712E002CCCE0 /* Utils */,
+				B105159325296CFD002CCCE0 /* Model */,
+				B105159225296CEF002CCCE0 /* ViewModel */,
+				B179C97525283A7E00BDD263 /* Service */,
+				B179C9692528373400BDD263 /* App */,
+				B179C96D2528374300BDD263 /* Controller */,
+				B179C96E2528375900BDD263 /* View */,
 				B1FBBB1F25282F9C008A4D69 /* Assets.xcassets */,
-				B1FBBB2125282F9C008A4D69 /* LaunchScreen.storyboard */,
 				B1FBBB2425282F9C008A4D69 /* Info.plist */,
 			);
 			path = "mobile-challenge";
@@ -232,8 +320,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1FBBB2325282F9C008A4D69 /* LaunchScreen.storyboard in Resources */,
+				B10515A225298A0B002CCCE0 /* CurrencyListViewController.xib in Resources */,
+				B10515AD25298B0E002CCCE0 /* CurrencyUiTableViewCell.xib in Resources */,
 				B1FBBB2025282F9C008A4D69 /* Assets.xcassets in Resources */,
-				B1FBBB1E25282F9A008A4D69 /* Main.storyboard in Resources */,
+				B105157D252962A7002CCCE0 /* CurrencyConverterViewController.xib in Resources */,
+				B105158B25296CB6002CCCE0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +349,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1FBBB1B25282F9A008A4D69 /* ViewController.swift in Sources */,
+				B105159525296D48002CCCE0 /* CurrencyConverterViewModel.swift in Sources */,
+				B10515B225298C04002CCCE0 /* CurrencyListViewModel.swift in Sources */,
 				B1FBBB1725282F9A008A4D69 /* AppDelegate.swift in Sources */,
+				B105159B25297167002CCCE0 /* Constraints.swift in Sources */,
+				B105157C252962A7002CCCE0 /* CurrencyConverterViewController.swift in Sources */,
+				B10515AC25298B0E002CCCE0 /* CurrencyUiTableViewCell.swift in Sources */,
+				B10515A125298A0B002CCCE0 /* CurrencyListViewController.swift in Sources */,
 				B1FBBB1925282F9A008A4D69 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,14 +392,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B1FBBB1C25282F9A008A4D69 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1FBBB1D25282F9A008A4D69 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B1FBBB2125282F9C008A4D69 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -445,7 +533,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.BrunoAndrade.mobile-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -463,7 +551,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.BrunoAndrade.mobile-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
