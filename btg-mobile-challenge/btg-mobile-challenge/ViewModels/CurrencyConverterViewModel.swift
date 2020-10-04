@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os.log
 
 /// The protocol responsible for establishing a communication path
 /// between `CurrencyConverterViewModel` and `CurrencyViewController`.
@@ -17,7 +18,9 @@ protocol CurrencyConverterViewModelDelegate: AnyObject {
 /// The `ViewModel` responsible for `CurrencyConverterViewController`.
 final class CurrencyConverterViewModel {
     //- MARK: Properties
+    /// The quotes with `USD` as source.
     typealias Quotes = [String: Double]
+    
     /// The delegate responsible for `ViewModel -> View` binding.
     weak var delegate: CurrencyConverterViewModelDelegate?
 
@@ -36,9 +39,6 @@ final class CurrencyConverterViewModel {
     /// The `USD` currency quotes.
     private var quotes: Quotes = [:]
 
-    /// The last `LiveCurrencyResponse` request result.
-    private var lastLiveResponse: LiveCurrencyReponse?
-
     /// The last `ListCurrencyResponse` request result.
     private var lastListResponse: ListCurrencyResponse?
     
@@ -51,6 +51,7 @@ final class CurrencyConverterViewModel {
          coordinator: CurrencyConverterCoordinator) {
         self.networkManager = networkManager
         self.coordinator = coordinator
+        os_log("CurrencyConverterViewModel initialized.", log: .appflow, type: .debug)
     }
 
     //- MARK: API
@@ -82,6 +83,8 @@ final class CurrencyConverterViewModel {
             return
         }
 
+        os_log("CurrencyConverterViewModel asked Coordinator to pick currency.", log: .appflow, type: .debug)
+
         coordinator.pickCurrency(`case`, currencies: listResponse)
     }
 
@@ -90,14 +93,16 @@ final class CurrencyConverterViewModel {
         guard let currencies = lastListResponse else {
             return
         }
+
+        os_log("CurrencyConverterViewModel asked Coordinator for list of supported currencies.", log: .appflow, type: .debug)
+
         coordinator.showCurrencies(currencies)
     }
 
     // - MARK: Fetch
     /// Fetches data from `NetworkManager` and caches the result.
-    /// If `NetworkCache.hasCache` is set to `true`, the fetch will return what
-    /// is in cache.
     func fetch() {
+        os_log("CurrencyConverterViewModel requested a fetch for data.", log: .networking, type: .debug)
         fetchLive()
         fetchList()
     }
@@ -107,11 +112,13 @@ final class CurrencyConverterViewModel {
     /// Call this function if you want to invalidate the cache or
     /// get the most up to date data from `NetworkManager`.
     func refresh() {
+        os_log("CurrencyConverterViewModel requested a refresh of data.", log: .networking, type: .debug)
         fetchList(false)
         fetchLive(false)
     }
 
     private func fetchLive(_ cache: Bool = true) {
+        os_log("CurrencyConverterViewModel fetching /live results...", log: .networking, type: .debug)
         guard let endpoint = Endpoint.live.url else {
             return
         }
@@ -133,18 +140,20 @@ final class CurrencyConverterViewModel {
             }
             switch result {
             case .success(let live):
-                self.lastLiveResponse = live
+                os_log("CurrencyConverterViewModel fetched /live results.", log: .networking, type: .debug)
                 let trimmedQuotes = self.trimmedQuotes(live.quotes)
                 self.quotes = trimmedQuotes
             case .failure(let error):
                 if error == .decodingFailed {
                     
                 }
+                os_log("CurrencyConverterViewModel failed to fetch /live results.", log: .networking, type: .debug)
             }
         }
     }
 
     private func fetchList(_ cache: Bool = true) {
+        os_log("CurrencyConverterViewModel fetching /list results...", log: .networking, type: .debug)
         guard let endpoint = Endpoint.list.url else {
             return
         }
@@ -166,10 +175,12 @@ final class CurrencyConverterViewModel {
             }
             switch result {
             case .success(let list):
+                os_log("CurrencyConverterViewModel fetched /list results.", log: .networking, type: .debug)
                 self.lastListResponse = list
             case .failure(let error):
                 if error == .decodingFailed {
                 }
+                os_log("CurrencyConverterViewModel failed to fetch /list results.", log: .networking, type: .debug)
             }
         }
     }

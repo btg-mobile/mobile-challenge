@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os.log
 
 /// The service responsible for managing navigation for picking and converting currencies.
 protocol CurrencyConverterCoordinatorService: Coordinator {
@@ -33,6 +34,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
 
     /// Starts this screen flow.
     func start() {
+        os_log("Coordinator: showing initial screen.", log: .appflow, type: .debug)
         let viewModel = CurrencyConverterViewModel(networkManager: networkManager, coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
 
@@ -41,6 +43,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
 
     /// Navigates to currency picking screen.
     func pickCurrency(_ case: CurrencyPickingCase, currencies: ListCurrencyResponse) {
+        os_log("Coordinator: showing currency picking screen.", log: .appflow, type: .debug)
         let viewModel = CurrencyPickerViewModel(currencies: currencies, coordinator: self, case: `case`)
         let viewController = CurrencyPickerViewController(viewModel: viewModel)
         let modalNavigationController = UINavigationController(rootViewController: viewController)
@@ -50,7 +53,9 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
         navigationController.present(modalNavigationController, animated: true, completion: nil)
     }
 
+    /// Navigates to supported currencies screen.
     func showCurrencies(_ currencies: ListCurrencyResponse) {
+        os_log("Coordinator: showing supported currencies screen.", log: .appflow, type: .debug)
         let viewModel = SupportedCurrenciesViewModel(currencies: currencies)
         let viewController = SupportedCurrenciesViewController(viewModel: viewModel)
 

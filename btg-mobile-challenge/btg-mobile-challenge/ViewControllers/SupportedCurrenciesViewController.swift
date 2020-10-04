@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os.log
 
 /// Representation of the app's supported currencies.
 final class SupportedCurrenciesViewController: UIViewController {
@@ -22,6 +23,7 @@ final class SupportedCurrenciesViewController: UIViewController {
     init(viewModel: SupportedCurrenciesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        os_log("SupportedCurrenciesViewController initialized.", log: .appflow, type: .debug)
     }
 
     required init?(coder: NSCoder) {

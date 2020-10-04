@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os.log
 
 /// Object responsible for managing network requests.
 /// Stubbing `NetworkService` is suggested when testing.
@@ -30,19 +31,20 @@ final class NetworkManager {
     func perform<T: Decodable>(_ request: URLRequest, for type: T.Type, completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
         service.dataTask(with: request) { (data, response, error) in
             if error != nil {
+                os_log("Network request failed", log: .networking, type: .debug)
                 completion(.failure(NetworkServiceError.requestFailed))
                 return
             }
 
-            print(request.cachePolicy.rawValue)
-
             guard let httpResponse = response as? HTTPURLResponse else {
+                os_log("Network received unexpected response type.", log: .networking, type: .debug)
                 completion(.failure(NetworkServiceError.unexpectedResponseType))
                 return
             }
             
             if httpResponse.statusCode == 200 {
                 guard let data = data else {
+                    os_log("Network request is missing data.", log: .networking, type: .debug)
                     completion(.failure(NetworkServiceError.missingData))
                     return
                 }
@@ -50,9 +52,11 @@ final class NetworkManager {
                     let decoded = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(decoded))
                 } catch {
+                    os_log("Network request failed to decode data.", log: .networking, type: .debug)
                     completion(.failure(NetworkServiceError.decodingFailed))
                 }
             } else {
+                os_log("Network request failed due to unexpected HTTP status code.", log: .networking, type: .debug)
                 completion(.failure(NetworkServiceError.unexpectedHTTPStatusCode))
             }
         }.resume()

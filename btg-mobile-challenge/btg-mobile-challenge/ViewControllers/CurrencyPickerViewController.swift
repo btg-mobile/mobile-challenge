@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os.log
 
 /// Representation of the app's currency picking screen.
 final class CurrencyPickerViewController: UIViewController {
@@ -23,6 +24,7 @@ final class CurrencyPickerViewController: UIViewController {
     init(viewModel: CurrencyPickerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        os_log("CurrencyPickerViewController initialized.", log: .appflow, type: .debug)
     }
 
     required init?(coder: NSCoder) {
@@ -39,11 +41,13 @@ final class CurrencyPickerViewController: UIViewController {
     }
 
     @objc private func cancelSelection() {
+        os_log("CurrencyPickerViewController requested for dismissal. No changes to currency.", log: .appflow, type: .debug)
         dismiss(animated: true, completion: nil)
     }
 
     //- MARK: ViewModel setup
     private func setUpViewModel() {
+        os_log("CurrencyPickerViewController's ViewModel setup.", log: .appflow, type: .debug)
         viewModel.delegate = self
         title = viewModel.title
     }
@@ -82,6 +86,7 @@ final class CurrencyPickerViewController: UIViewController {
 // - MARK: UITableViewDelegate
 extension CurrencyPickerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        os_log("CurrencyPickerViewController requested for dismissal after a currency was picked.", log: .appflow, type: .debug)
         viewModel.currentCurrency = indexPath
         dismiss(animated: true, completion: nil)
     }

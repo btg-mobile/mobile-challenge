@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os.log
 
 /// Representation of the app's conversion screen.
 final class CurrencyConverterViewController: UIViewController {
@@ -33,6 +34,7 @@ final class CurrencyConverterViewController: UIViewController {
     init(viewModel: CurrencyConverterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        os_log("CurrencyConverterViewController initialized.", log: .appflow, type: .debug)
     }
 
     required init?(coder: NSCoder) {
@@ -44,6 +46,7 @@ final class CurrencyConverterViewController: UIViewController {
         super.loadView()
         view.backgroundColor = .systemBackground
         title = "Converter"
+        hideKeyboard()
     }
 
     override func viewDidLoad() {
@@ -73,23 +76,28 @@ final class CurrencyConverterViewController: UIViewController {
     }
 
     @objc private func pickFromCurrency() {
+        os_log("CurrencyConverterViewController requested for new FROM currency.", log: .appflow, type: .debug)
         viewModel.pickCurrency(.from)
     }
 
     @objc private func pickToCurrency() {
+        os_log("CurrencyConverterViewController requested for new TO currency.", log: .appflow, type: .debug)
         viewModel.pickCurrency(.to)
     }
 
     @objc private func openList() {
+        os_log("CurrencyConverterViewController requested for list of supported currencies.", log: .appflow, type: .debug)
         viewModel.listCurrencies()
     }
 
     @objc private func refreshData() {
+        os_log("CurrencyConverterViewController requested data refresh.", log: .appflow, type: .debug)
         viewModel.refresh()
     }
 
     // - MARK: ViewModel setup
     private func setUpViewModel() {
+        os_log("CurrencyConverterViewController's ViewModel setup.", log: .appflow, type: .debug)
         viewModel.fetch()
         viewModel.delegate = self
     }
@@ -119,7 +127,8 @@ final class CurrencyConverterViewController: UIViewController {
     }
 
     private func setUpNavigationItem() {
-        let listButton = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+        let listButton = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
+                                         style: .plain,
                                          target: self,
                                          action: #selector(openList))
         navigationItem.rightBarButtonItem = listButton

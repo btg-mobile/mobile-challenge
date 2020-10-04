@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os.log
 
 /// The protocol responsible for establishing a communication path
 /// between `CurrencyPickerViewModel` and `CurrencyPickerViewController`.
@@ -42,6 +43,7 @@ final class CurrencyPickerViewModel {
         }
     }
 
+    /// The last selected currency.
     private var lastSelectedCurrency: IndexPath
 
     //- MARK: Init
@@ -63,6 +65,7 @@ final class CurrencyPickerViewModel {
             self.title = "To"
         }
         convert(from: currencies)
+        os_log("CurrencyPickerViewModel initialized.", log: .appflow, type: .debug)
     }
 
     //- MARK: API
@@ -106,6 +109,8 @@ final class CurrencyPickerViewModel {
     }
 
     //- MARK: Private
+    /// Converts a `ListCurrencyResponse` into `[[Currency]]`, sorted in alphabetical order
+    /// of a currency's code.
     private func convert(from response: ListCurrencyResponse) {
         let currencies = response.currencies.keys.map { Currency(code: $0, name: response.currencies[$0] ?? "") }
         let sortedCurrencies = currencies.sorted(by: { $0.code < $1.code })

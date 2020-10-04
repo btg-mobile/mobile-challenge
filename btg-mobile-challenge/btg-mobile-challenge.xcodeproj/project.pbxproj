@@ -30,6 +30,8 @@
 		A4BF6138252622890056738E /* CurrencyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF6137252622890056738E /* CurrencyLabel.swift */; };
 		A4BF613B252623460056738E /* CurrencyResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613A252623460056738E /* CurrencyResultLabel.swift */; };
 		A4BF613F252630A70056738E /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF613E252630A70056738E /* CurrencyConverterViewModel.swift */; };
+		A4C26627252A7023003FF552 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C26626252A7023003FF552 /* OSLog.swift */; };
+		A4C2662B252A85C9003FF552 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C2662A252A85C9003FF552 /* UIViewController.swift */; };
 		A4F7C0642527E7EC0085974A /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C0632527E7EC0085974A /* NetworkServiceError.swift */; };
 		A4F7C06A2527EAF50085974A /* list-response.json in Resources */ = {isa = PBXBuildFile; fileRef = A4F7C0692527EAF50085974A /* list-response.json */; };
 		A4F7C06E2527EB100085974A /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7C06D2527EB100085974A /* CurrencyPickerViewController.swift */; };
@@ -83,6 +85,8 @@
 		A4BF6137252622890056738E /* CurrencyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabel.swift; sourceTree = "<group>"; };
 		A4BF613A252623460056738E /* CurrencyResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultLabel.swift; sourceTree = "<group>"; };
 		A4BF613E252630A70056738E /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		A4C26626252A7023003FF552 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		A4C2662A252A85C9003FF552 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A4F7C0632527E7EC0085974A /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 		A4F7C0692527EAF50085974A /* list-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "list-response.json"; sourceTree = "<group>"; };
 		A4F7C06D2527EB100085974A /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				A4219C082526AE0C0024C3F6 /* URLSession.swift */,
 				A4F7C09E2528E33D0085974A /* UserDefaults.swift */,
 				A4F7C0BA252920190085974A /* FileManager.swift */,
+				A4C26626252A7023003FF552 /* OSLog.swift */,
+				A4C2662A252A85C9003FF552 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				A4BF6138252622890056738E /* CurrencyLabel.swift in Sources */,
 				A470889625275F140089975B /* CurrencyConverterCoordinator.swift in Sources */,
 				A4219C0F2526B4AA0024C3F6 /* LiveCurrencyResponse.swift in Sources */,
+				A4C26627252A7023003FF552 /* OSLog.swift in Sources */,
 				A4F7C0D8252947C80085974A /* CurrencyCell.swift in Sources */,
 				A4BF61292526191E0056738E /* DesignSpec.swift in Sources */,
 				A4BF6110252609160056738E /* CurrencyConverterViewController.swift in Sources */,
@@ -457,6 +464,7 @@
 				A4BF612D25261E430056738E /* CurrencyButton.swift in Sources */,
 				A4BF613B252623460056738E /* CurrencyResultLabel.swift in Sources */,
 				A4BF610E252609160056738E /* SceneDelegate.swift in Sources */,
+				A4C2662B252A85C9003FF552 /* UIViewController.swift in Sources */,
 				A4F7C0782528C4500085974A /* CurrencyPickerViewModel.swift in Sources */,
 				A4F7C06E2527EB100085974A /* CurrencyPickerViewController.swift in Sources */,
 				A4BF6135252620DD0056738E /* CurrencyTextField.swift in Sources */,
