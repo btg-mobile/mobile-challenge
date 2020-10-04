@@ -111,6 +111,7 @@ final class CurrencyConverterViewController: UIViewController {
         setUpNavigationItem()
         setUpFromCurrency()
         setUpToCurrency()
+        setUpErrorLabel()
         setUpAmountTextField()
     }
 
@@ -127,6 +128,12 @@ final class CurrencyConverterViewController: UIViewController {
     private func setUpAmountTextField() {
         amountTextField.placeholder = "Amount to be converted"
         amountTextField.addTarget(self, action: #selector(amountDidChange), for: .editingChanged)
+    }
+
+    private func setUpErrorLabel() {
+        errorLabel.adjustsFontSizeToFitWidth = true
+        errorLabel.minimumScaleFactor = 0.6
+        errorLabel.font = .preferredFont(forTextStyle: .footnote)
     }
 
     private func setUpNavigationItem() {
@@ -215,7 +222,8 @@ final class CurrencyConverterViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             conversionResultLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            conversionResultLabel.topAnchor.constraint(equalTo: errorLabel.bottomAnchor),
+            conversionResultLabel.topAnchor.constraint(equalTo: errorLabel.bottomAnchor,
+                                                       constant: DesignSpec.Spacing.default),
             conversionResultLabel.bottomAnchor.constraint(equalTo: amountTextField.topAnchor,
                                                           constant: -DesignSpec.Spacing.large),
             conversionResultLabel.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor)
@@ -230,7 +238,7 @@ final class CurrencyConverterViewController: UIViewController {
         NSLayoutConstraint.activate([
             errorLabel.topAnchor.constraint(equalTo: safeAreaGuides.topAnchor,
                                             constant: DesignSpec.Spacing.medium),
-            errorLabel.widthAnchor.constraint(equalTo: safeAreaGuides.widthAnchor),
+            errorLabel.widthAnchor.constraint(equalTo: safeAreaGuides.widthAnchor, multiplier: 0.8),
             errorLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Label.height),
             errorLabel.centerXAnchor.constraint(equalTo: safeAreaGuides.centerXAnchor)
         ])
@@ -241,5 +249,15 @@ final class CurrencyConverterViewController: UIViewController {
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     func updateUI() {
         conversionResultLabel.text = viewModel.convertedAmount
+    }
+
+    func showError(_ error: String) {
+        errorLabel.text = error
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+            self.errorLabel.text = ""
+            self.errorLabel.textColor = .systemBackground
+        }
     }
 }

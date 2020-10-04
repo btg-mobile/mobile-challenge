@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Network
 import os.log
 
 /// The protocol responsible for establishing a communication path
@@ -13,6 +14,7 @@ import os.log
 protocol CurrencyConverterViewModelDelegate: AnyObject {
     /// Updates the UI of the View.
     func updateUI()
+    func showError(_ error: String)
 }
 
 /// The `ViewModel` responsible for `CurrencyConverterViewController`.
@@ -33,6 +35,9 @@ final class CurrencyConverterViewModel {
     /// The manager responsible for network calls.
     private let networkManager: NetworkManager
 
+    /// The monitor responsible for checking connection status.
+    private let networkMonitor: NWPathMonitor
+
     /// The `Coordinator` associated with this `ViewModel`.
     private let coordinator: CurrencyConverterCoordinatorService
 
@@ -46,12 +51,25 @@ final class CurrencyConverterViewModel {
     /// Initializes a new instance of this type.
     /// - Parameter networkManager: The manager responsible for network calls.
     /// - Parameter coordinator: The `Coordinator` associated with this `ViewModel`.
-    /// - Parameter networkCache: The cache for the network responses.
+    /// - Parameter networkMonitor: The monitor responsible for checking conneciton status.
     init(networkManager: NetworkManager,
-         coordinator: CurrencyConverterCoordinator) {
+         coordinator: CurrencyConverterCoordinator,
+         networkMonitor: NWPathMonitor = NWPathMonitor()) {
         self.networkManager = networkManager
         self.coordinator = coordinator
+        self.networkMonitor = networkMonitor
         os_log("CurrencyConverterViewModel initialized.", log: .appflow, type: .debug)
+
+        self.networkMonitor.pathUpdateHandler = { [weak self] path in
+            guard let self = self else { return }
+            if path.status == .satisfied {
+                os_log("CurrencyConverterViewModel has access to internet connection.", log: .networking, type: .debug)
+            } else {
+                self.delegate?.showError("No connection. Displaying cached results, if available.")
+            }
+        }
+
+        self.networkMonitor.start(queue: .main)
     }
 
     //- MARK: API
