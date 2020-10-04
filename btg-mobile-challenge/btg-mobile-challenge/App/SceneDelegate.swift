@@ -15,6 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let navigationController = UINavigationController()
+        navigationController.navigationBar.tintColor = .systemRed
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
         let networkManager = NetworkManager()
         let coordinator = CurrencyConverterCoordinator(navigationController: navigationController, networkManager: networkManager)
         window = UIWindow(windowScene: windowScene)

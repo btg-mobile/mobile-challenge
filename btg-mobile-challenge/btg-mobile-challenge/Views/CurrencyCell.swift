@@ -15,6 +15,7 @@ final class CurrencyCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        setUpContentView()
 
     }
 
@@ -25,5 +26,6 @@ final class CurrencyCell: UITableViewCell {
     private func setUpContentView() {
         contentView.backgroundColor = .systemBackground
         textLabel?.font = .preferredFont(forTextStyle: .headline)
+        tintColor = .systemRed
     }
 }

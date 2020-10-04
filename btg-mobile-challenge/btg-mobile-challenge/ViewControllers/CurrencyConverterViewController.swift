@@ -25,6 +25,9 @@ final class CurrencyConverterViewController: UIViewController {
     // Conversion result
     @AutoLayout private var conversionResultLabel: CurrencyResultLabel
 
+    // Error label
+    @AutoLayout private var errorLabel: CurrencyLabel
+
     /// The `ViewModel` for this type.
     private let viewModel: CurrencyConverterViewModel
 
@@ -141,6 +144,7 @@ final class CurrencyConverterViewController: UIViewController {
 
     //- MARK: Layout
     private func layoutConstraints() {
+        layoutErrorLabel()
         layoutFromCurrency()
         layoutToCurreny()
         layoutAmountTextField()
@@ -210,12 +214,25 @@ final class CurrencyConverterViewController: UIViewController {
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            conversionResultLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor,
-                                                         multiplier: DesignSpec.Result.widthMultiplier),
-            conversionResultLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Result.height),
+            conversionResultLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            conversionResultLabel.topAnchor.constraint(equalTo: errorLabel.bottomAnchor),
             conversionResultLabel.bottomAnchor.constraint(equalTo: amountTextField.topAnchor,
                                                           constant: -DesignSpec.Spacing.large),
             conversionResultLabel.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor)
+        ])
+    }
+
+    private func layoutErrorLabel() {
+        view.addSubview(errorLabel)
+
+        let safeAreaGuides = view.safeAreaLayoutGuide
+
+        NSLayoutConstraint.activate([
+            errorLabel.topAnchor.constraint(equalTo: safeAreaGuides.topAnchor,
+                                            constant: DesignSpec.Spacing.medium),
+            errorLabel.widthAnchor.constraint(equalTo: safeAreaGuides.widthAnchor),
+            errorLabel.heightAnchor.constraint(equalToConstant: DesignSpec.Label.height),
+            errorLabel.centerXAnchor.constraint(equalTo: safeAreaGuides.centerXAnchor)
         ])
     }
 }

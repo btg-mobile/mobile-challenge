@@ -47,6 +47,8 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
         let viewModel = CurrencyPickerViewModel(currencies: currencies, coordinator: self, case: `case`)
         let viewController = CurrencyPickerViewController(viewModel: viewModel)
         let modalNavigationController = UINavigationController(rootViewController: viewController)
+        modalNavigationController.navigationBar.tintColor = .systemRed
+        modalNavigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
 
         modalNavigationController.modalPresentationStyle = .fullScreen
 

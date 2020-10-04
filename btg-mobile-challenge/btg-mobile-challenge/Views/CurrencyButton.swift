@@ -23,7 +23,7 @@ final class CurrencyButton: UIButton {
 
     /// Styles the button.
     private func styleButton() {
-        titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3).bold()
         layer.cornerRadius = DesignSpec.Button.cornerRadius
         backgroundColor = .systemRed
         clipsToBounds = true

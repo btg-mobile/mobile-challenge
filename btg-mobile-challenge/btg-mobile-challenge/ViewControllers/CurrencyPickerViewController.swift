@@ -86,7 +86,7 @@ final class CurrencyPickerViewController: UIViewController {
 // - MARK: UITableViewDelegate
 extension CurrencyPickerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        os_log("CurrencyPickerViewController requested for dismissal after a currency was picked.", log: .appflow, type: .debug)
+        os_log("CurrencyPickerViewController requested for dismissal after currency was picked.", log: .appflow, type: .debug)
         viewModel.currentCurrency = indexPath
         dismiss(animated: true, completion: nil)
     }
