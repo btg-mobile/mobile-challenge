@@ -90,7 +90,7 @@ final class CurrencyConverterViewController: UIViewController {
 
     // - MARK: ViewModel setup
     private func setUpViewModel() {
-        viewModel.refresh()
+        viewModel.fetch()
         viewModel.delegate = self
     }
 

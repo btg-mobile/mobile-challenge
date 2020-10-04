@@ -34,6 +34,8 @@ final class NetworkManager {
                 return
             }
 
+            print(request.cachePolicy.rawValue)
+
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(NetworkServiceError.unexpectedResponseType))
                 return

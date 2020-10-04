@@ -30,22 +30,11 @@ final class CurrencyConverterViewModel {
     /// The manager responsible for network calls.
     private let networkManager: NetworkManager
 
-    /// The cache for the network responses.
-    private let networkCache: Cache
-
     /// The `Coordinator` associated with this `ViewModel`.
     private let coordinator: CurrencyConverterCoordinatorService
 
     /// The `USD` currency quotes.
     private var quotes: Quotes = [:]
-
-    private var hasConnection: Bool = true {
-        didSet {
-            if hasConnection == false {
-                fetch()
-            }
-        }
-    }
 
     /// The last `LiveCurrencyResponse` request result.
     private var lastLiveResponse: LiveCurrencyReponse?
@@ -59,11 +48,9 @@ final class CurrencyConverterViewModel {
     /// - Parameter coordinator: The `Coordinator` associated with this `ViewModel`.
     /// - Parameter networkCache: The cache for the network responses.
     init(networkManager: NetworkManager,
-         coordinator: CurrencyConverterCoordinator,
-         networkCache: Cache = Cache()) {
+         coordinator: CurrencyConverterCoordinator) {
         self.networkManager = networkManager
         self.coordinator = coordinator
-        self.networkCache = networkCache
     }
 
     //- MARK: API
@@ -111,43 +98,34 @@ final class CurrencyConverterViewModel {
     /// If `NetworkCache.hasCache` is set to `true`, the fetch will return what
     /// is in cache.
     func fetch() {
-        if networkCache.hasCache {
-            networkCache.load(.live, for: LiveCurrencyReponse.self) { [weak self] (result) in
-                guard let self = self else { return }
-                switch result {
-                case .success(let live):
-                    let trimmedQuotes = self.trimmedQuotes(live.quotes)
-                    self.quotes = trimmedQuotes
-                case .failure(_):
-                    break
-                    //- TODO: ERROR HANDLING
-                }
-            }
-
-            networkCache.load(.list, for: ListCurrencyResponse.self) { [weak self] (result) in
-                guard let self = self else { return }
-                switch result {
-                case .success(let list):
-                    self.lastListResponse = list
-                case .failure(_):
-                    break
-                    //- TODO: ERROR HANDLING
-                }
-            }
-
-
-        } else {
-            fetchLive()
-            fetchList()
-        }
+        fetchLive()
+        fetchList()
     }
 
-    private func fetchLive() {
+    //- MARK: Refresh
+    /// Refreshes both the data and cache.
+    /// Call this function if you want to invalidate the cache or
+    /// get the most up to date data from `NetworkManager`.
+    func refresh() {
+        fetchList(false)
+        fetchLive(false)
+    }
+
+    private func fetchLive(_ cache: Bool = true) {
         guard let endpoint = Endpoint.live.url else {
             return
         }
 
-        let urlRequest = URLRequest(url: endpoint)
+        var request: URLRequest?
+        if cache {
+            request = URLRequest(url: endpoint, cachePolicy: .returnCacheDataElseLoad)
+        } else {
+            request = URLRequest(url: endpoint, cachePolicy: .reloadIgnoringCacheData)
+        }
+
+        guard let urlRequest = request else {
+            return
+        }
 
         networkManager.perform(urlRequest, for: LiveCurrencyReponse.self) { [weak self] (result) in
             guard let self = self else {
@@ -158,21 +136,29 @@ final class CurrencyConverterViewModel {
                 self.lastLiveResponse = live
                 let trimmedQuotes = self.trimmedQuotes(live.quotes)
                 self.quotes = trimmedQuotes
-                self.hasConnection = true
-                self.cacheResponse()
             case .failure(let error):
                 if error == .decodingFailed {
+                    
                 }
             }
         }
     }
 
-    private func fetchList() {
+    private func fetchList(_ cache: Bool = true) {
         guard let endpoint = Endpoint.list.url else {
             return
         }
 
-        let urlRequest = URLRequest(url: endpoint)
+        var request: URLRequest?
+        if cache {
+            request = URLRequest(url: endpoint, cachePolicy: .returnCacheDataElseLoad)
+        } else {
+            request = URLRequest(url: endpoint, cachePolicy: .reloadIgnoringCacheData)
+        }
+
+        guard let urlRequest = request else {
+            return
+        }
 
         networkManager.perform(urlRequest, for: ListCurrencyResponse.self) { [weak self] (result) in
             guard let self = self else {
@@ -181,22 +167,11 @@ final class CurrencyConverterViewModel {
             switch result {
             case .success(let list):
                 self.lastListResponse = list
-                self.hasConnection = true
             case .failure(let error):
                 if error == .decodingFailed {
-                    self.hasConnection = false
                 }
             }
         }
-    }
-
-    //- MARK: Refresh
-    /// Refreshes both the data and cache.
-    /// Call this function if you want to invalidate the cache or
-    /// get the most up to date data from `NetworkManager`.
-    func refresh() {
-        fetchList()
-        fetchLive()
     }
 
     //- MARK: Conversion
@@ -273,33 +248,4 @@ final class CurrencyConverterViewModel {
         }
         return trimmedQuotes
     }
-
-    // - MARK: Cache
-    /// Caches the response from `NetworkManager`.
-    private func cacheResponse() {
-        guard let liveResponse = lastLiveResponse else {
-            return
-        }
-
-        networkCache.cache(liveResponse, for: LiveCurrencyReponse.self) { (error) in
-            if error != nil {
-
-            } else {
-
-            }
-        }
-
-        guard let listResponse = lastListResponse else {
-            return
-        }
-
-        networkCache.cache(listResponse, for: ListCurrencyResponse.self) { (error) in
-            if error != nil {
-
-            } else {
-
-            }
-        }
-    }
-
 }
