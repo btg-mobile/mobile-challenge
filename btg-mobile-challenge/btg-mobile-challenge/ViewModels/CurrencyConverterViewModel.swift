@@ -30,15 +30,20 @@ final class CurrencyConverterViewModel {
     /// The manager responsible for network calls.
     private let networkManager: NetworkManager
 
+    /// The cache for the network responses.
     private let networkCache: Cache
 
     /// The `Coordinator` associated with this `ViewModel`.
     private let coordinator: CurrencyConverterCoordinatorService
 
     /// The `USD` currency quotes.
-    private var quotes: Quotes = [:] {
+    private var quotes: Quotes = [:]
+
+    private var hasConnection: Bool = true {
         didSet {
-            cacheResponse()
+            if hasConnection == false {
+                fetch()
+            }
         }
     }
 
@@ -51,6 +56,8 @@ final class CurrencyConverterViewModel {
     //- MARK: Init
     /// Initializes a new instance of this type.
     /// - Parameter networkManager: The manager responsible for network calls.
+    /// - Parameter coordinator: The `Coordinator` associated with this `ViewModel`.
+    /// - Parameter networkCache: The cache for the network responses.
     init(networkManager: NetworkManager,
          coordinator: CurrencyConverterCoordinator,
          networkCache: Cache = Cache()) {
@@ -93,7 +100,10 @@ final class CurrencyConverterViewModel {
 
     /// Warns `Coordinator` to navigate to list of currencies screen.
     func listCurrencies() {
-        //-TODO: OPEN CURRENCY LIST
+        guard let currencies = lastListResponse else {
+            return
+        }
+        coordinator.showCurrencies(currencies)
     }
 
     // - MARK: Fetch
@@ -102,43 +112,37 @@ final class CurrencyConverterViewModel {
     /// is in cache.
     func fetch() {
         if networkCache.hasCache {
-            networkCache.load(.live, for: LiveCurrencyReponse.self) { (result) in
+            networkCache.load(.live, for: LiveCurrencyReponse.self) { [weak self] (result) in
+                guard let self = self else { return }
                 switch result {
                 case .success(let live):
                     let trimmedQuotes = self.trimmedQuotes(live.quotes)
                     self.quotes = trimmedQuotes
-                case .failure(let error):
-                    print(error.localizedDescription)
+                case .failure(_):
+                    break
+                    //- TODO: ERROR HANDLING
                 }
             }
+
+            networkCache.load(.list, for: ListCurrencyResponse.self) { [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let list):
+                    self.lastListResponse = list
+                case .failure(_):
+                    break
+                    //- TODO: ERROR HANDLING
+                }
+            }
+
+
         } else {
-            guard let endpoint = Endpoint.live.url else {
-                return
-            }
-
-            let urlRequest = URLRequest(url: endpoint)
-
-            networkManager.perform(urlRequest, for: LiveCurrencyReponse.self) { [weak self] (result) in
-                guard let self = self else {
-                    return
-                }
-                switch result {
-                case .success(let live):
-                    self.lastLiveResponse = live
-                    let trimmedQuotes = self.trimmedQuotes(live.quotes)
-                    self.quotes = trimmedQuotes
-                case .failure(let error):
-                    print(error)
-                }
-            }
+            fetchLive()
+            fetchList()
         }
     }
 
-    //- MARK: Refresh
-    /// Refreshes both the data and cache.
-    /// Call this function if you want to invalidate the cache or
-    /// get the most up to date data from `NetworkManager`.
-    func refresh() {
+    private func fetchLive() {
         guard let endpoint = Endpoint.live.url else {
             return
         }
@@ -154,10 +158,45 @@ final class CurrencyConverterViewModel {
                 self.lastLiveResponse = live
                 let trimmedQuotes = self.trimmedQuotes(live.quotes)
                 self.quotes = trimmedQuotes
+                self.hasConnection = true
+                self.cacheResponse()
             case .failure(let error):
-                print(error)
+                if error == .decodingFailed {
+                }
             }
         }
+    }
+
+    private func fetchList() {
+        guard let endpoint = Endpoint.list.url else {
+            return
+        }
+
+        let urlRequest = URLRequest(url: endpoint)
+
+        networkManager.perform(urlRequest, for: ListCurrencyResponse.self) { [weak self] (result) in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case .success(let list):
+                self.lastListResponse = list
+                self.hasConnection = true
+            case .failure(let error):
+                if error == .decodingFailed {
+                    self.hasConnection = false
+                }
+            }
+        }
+    }
+
+    //- MARK: Refresh
+    /// Refreshes both the data and cache.
+    /// Call this function if you want to invalidate the cache or
+    /// get the most up to date data from `NetworkManager`.
+    func refresh() {
+        fetchList()
+        fetchLive()
     }
 
     //- MARK: Conversion

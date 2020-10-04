@@ -54,6 +54,7 @@ final class CurrencyPickerViewController: UIViewController {
         currencyTableView.backgroundColor = .systemBackground
         currencyTableView.delegate = self
         currencyTableView.dataSource = self
+        currencyTableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.identifier)
     }
 
     private func setUpNavigationItem() {
@@ -98,7 +99,9 @@ extension CurrencyPickerViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.identifier, for: indexPath) as? CurrencyCell else {
+            return UITableViewCell()
+        }
         cell.accessoryType = .none
         cell.textLabel?.text = viewModel.currencyCodeAt(index: indexPath)
         cell.detailTextLabel?.text = viewModel.nameCodeAt(index: indexPath)

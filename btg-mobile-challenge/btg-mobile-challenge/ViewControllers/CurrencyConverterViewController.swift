@@ -57,6 +57,8 @@ final class CurrencyConverterViewController: UIViewController {
         super.viewWillAppear(animated)
         fromCurrencyButton.setTitle(viewModel.fromCurrency, for: .normal)
         toCurrencyButton.setTitle(viewModel.toCurrency, for: .normal)
+        amountTextField.text = ""
+        conversionResultLabel.text = ""
         viewModel.fetch()
     }
 
