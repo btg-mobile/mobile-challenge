@@ -1,10 +1,10 @@
 import Foundation
 
-struct QuotesModel {
+public struct QuotesModel {
     
-    typealias QuotesKey = String
+    public typealias QuotesKey = String
     
-    var timestemp: Date
-    var source: String
-    var quotes: [QuotesKey: Double]
+    public var timestemp: Date
+    public var source: String
+    public var quotes: [QuotesKey: Double]
 }

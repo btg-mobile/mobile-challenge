@@ -1,5 +1,5 @@
 import Foundation
 
-protocol ListQuotes {
+public protocol ListQuotes {
     func list(completion: @escaping (Result<QuotesModel, Error>) -> Void)
 }
