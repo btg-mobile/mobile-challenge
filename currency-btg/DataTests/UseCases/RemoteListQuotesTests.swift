@@ -3,7 +3,7 @@ import Domain
 import Data
 
 class RemoteListQuotesTests: XCTestCase {
-
+    
     func test_list_should_call_httpClient_with_correct_url() throws {
         let url = URL(string: "http://any-url.com")!
         let (sut, httpClientSpy) = makeSut(url: url)
@@ -15,6 +15,7 @@ class RemoteListQuotesTests: XCTestCase {
     
     func test_list_should_complete_with_error_if_client_fails() throws {
         let (sut, httpClientSpy) = makeSut()
+        
         expect(sut, completeWith: .failure(.unexpected)) {
             httpClientSpy.completeWithError(.noConnectivity)
         }
@@ -33,32 +34,34 @@ class RemoteListQuotesTests: XCTestCase {
         let (sut, httpClientSpy) = makeSut()
         
         expect(sut, completeWith: .failure(.unexpected)) {
-            httpClientSpy.completeWithData(Data("invalid_data".utf8))
+            httpClientSpy.completeWithData(makeInvalidData())
         }
     }
 }
 
 extension RemoteListQuotesTests {
     func makeSut(url: URL = URL(string: "http://any-url.com")!) -> (sut: RemoteListQuotes, httpClientSpy: HttpClientSpy) {
-        
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteListQuotes(url: url, httpClient: httpClientSpy)
-        
         return (sut, httpClientSpy)
     }
     
     func makeQuotesModel() -> QuotesModel {
-        QuotesModel(timestemp: Date(), source: "USD", quotes: ["USD": 1.0])
+        return QuotesModel(timestemp: Date(), source: "USD", quotes: ["USD": 1.0])
     }
     
-    func expect(_ sut: RemoteListQuotes, completeWith expectedResult: Result<QuotesModel, DomainError>, when action: () -> Void) {
+    func makeInvalidData() -> Data {
+        return Data("invalid_data".utf8)
+    }
+    
+    func expect(_ sut: RemoteListQuotes, completeWith expectedResult: Result<QuotesModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
        
         let exp = expectation(description: "waiting")
         sut.list() { receivedResult in
             switch (expectedResult, receivedResult) {
-            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError)
-            case (.success(let expectedData), .success(let receivedData)): XCTAssertEqual(expectedData, receivedData)
-            default: XCTFail("Expected \(expectedResult) received \(receivedResult) instead")
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectedData), .success(let receivedData)): XCTAssertEqual(expectedData, receivedData, file: file, line: line)
+            default: XCTFail("Expected \(expectedResult) received \(receivedResult) instead", file: file, line: line)
             }
             exp.fulfill()
         }
