@@ -15,16 +15,11 @@ class AlamofireAdapter {
 class AlamofireAdapterTests: XCTestCase {
 
     func test_get_should_make_request_with_correct_url_and_method() throws {
-        let url = makeUrl()
-        let sut = makeSut()
-        sut.get(to: url)
-        let exp = expectation(description: "waiting")
-        UrlProtocolStub.observerRequest { request in
+        testRequestFor { request in
+            let url = makeUrl()
             XCTAssertEqual(url, request.url)
             XCTAssertEqual("GET", request.httpMethod)
-            exp.fulfill()
         }
-        wait(for: [exp], timeout: 1)
     }
 }
 
@@ -35,7 +30,19 @@ extension AlamofireAdapterTests {
         let session = Session(configuration: configuration)
         return AlamofireAdapter(session: session)
     }
+    
+    func testRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
+        let sut = makeSut()
+        sut.get(to: url)
+        let exp = expectation(description: "waiting")
+        UrlProtocolStub.observerRequest { request in
+            action(request)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+    }
 }
+
 class UrlProtocolStub: URLProtocol {
     static var emit: ((URLRequest) -> Void)?
     
