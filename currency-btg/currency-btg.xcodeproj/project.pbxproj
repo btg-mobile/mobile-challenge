@@ -115,10 +115,9 @@
 		93953D4F252B5DAA008B07BC /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				93953D5D252B61AC008B07BC /* ListQuotes.swift */,
-				93953D60252B6244008B07BC /* QuotesModel.swift */,
+				93953DA3252B686E008B07BC /* UseCases */,
+				93953DA2252B6867008B07BC /* Models */,
 				93953D51252B5DAA008B07BC /* Info.plist */,
-				93953D94252B670B008B07BC /* Model.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -126,8 +125,8 @@
 		93953D69252B630F008B07BC /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				93953D98252B677D008B07BC /* HttpGetClient.swift */,
-				93953D9C252B679D008B07BC /* RemoteListQuotes.swift */,
+				93953DA4252B6883008B07BC /* Http */,
+				93953DA6252B6895008B07BC /* UseCases */,
 				93953D6B252B630F008B07BC /* Info.plist */,
 			);
 			path = Data;
@@ -136,7 +135,7 @@
 		93953D74252B630F008B07BC /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
-				93953D75252B630F008B07BC /* RemoteListQuotesTests.swift */,
+				93953DA9252B68A4008B07BC /* UseCases */,
 				93953D77252B630F008B07BC /* Info.plist */,
 			);
 			path = DataTests;
@@ -147,6 +146,47 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93953DA2252B6867008B07BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				93953D60252B6244008B07BC /* QuotesModel.swift */,
+				93953D94252B670B008B07BC /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		93953DA3252B686E008B07BC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				93953D5D252B61AC008B07BC /* ListQuotes.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		93953DA4252B6883008B07BC /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				93953D98252B677D008B07BC /* HttpGetClient.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		93953DA6252B6895008B07BC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				93953D9C252B679D008B07BC /* RemoteListQuotes.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		93953DA9252B68A4008B07BC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				93953D75252B630F008B07BC /* RemoteListQuotesTests.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
