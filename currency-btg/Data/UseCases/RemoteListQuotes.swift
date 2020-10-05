@@ -1,7 +1,6 @@
 import Foundation
 import Domain
-
-public final class RemoteListQuotes {
+public final class RemoteListQuotes: ListQuotes {
     private let url: URL
     private let httpClient: HttpGetClient
     
@@ -10,9 +9,9 @@ public final class RemoteListQuotes {
         self.httpClient = httpClient
     }
     
-    public func list(completion: @escaping (DomainError) -> Void) {
+    public func list(completion: @escaping (Result<QuotesModel ,DomainError>) -> Void) {
         httpClient.get(to: url) { error in
-            completion(.unexpected)
+            completion(.failure(.unexpected))
         }
     }
 }
