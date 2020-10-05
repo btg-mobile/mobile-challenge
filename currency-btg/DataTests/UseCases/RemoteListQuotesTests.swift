@@ -10,7 +10,7 @@ class RemoteListQuotesTests: XCTestCase {
         
         sut.list()
         
-        XCTAssertEqual(httpClientSpy.url, url)
+        XCTAssertEqual(httpClientSpy.urls, [url])
     }
 }
 
@@ -24,10 +24,10 @@ extension RemoteListQuotesTests {
     }
     
     class HttpClientSpy: HttpGetClient {
-        var url: URL?
+        var urls = [URL]()
         
         func get(to url: URL) {
-            self.url = url
+            self.urls.append(url)
         }
     }
 }
