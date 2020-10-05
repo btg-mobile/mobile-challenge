@@ -45,7 +45,7 @@ class CurrencyUseCaseImpl(private val repository: CurrencyRepository) : Currency
         if (!quantity.isFinite() && quantity <= QUANTITY_TO_NOT_CALC) return Failure(Exception())
 
         val fromValue = fromCurrency.quote?.value ?: return Failure(Exception())
-        val toValue = fromCurrency.quote?.value ?: return Failure(Exception())
+        val toValue = toCurrency.quote?.value ?: return Failure(Exception())
         val result = (quantity / fromValue) * toValue
         return Success(result)
     }
