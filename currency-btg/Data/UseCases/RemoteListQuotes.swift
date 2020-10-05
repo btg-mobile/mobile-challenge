@@ -11,7 +11,8 @@ public final class RemoteListQuotes: ListQuotes {
     }
     
     public func list(completion: @escaping (Result<QuotesModel ,DomainError>) -> Void) {
-        httpClient.get(to: url) { result in
+        httpClient.get(to: url) { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(let data):
                 if let model: QuotesModel = data.toModel() {

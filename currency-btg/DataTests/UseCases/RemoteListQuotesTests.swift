@@ -5,7 +5,7 @@ import Data
 class RemoteListQuotesTests: XCTestCase {
     
     func test_list_should_call_httpClient_with_correct_url() throws {
-        let url = URL(string: "http://any-url.com")!
+        let url = makeUrl()
         let (sut, httpClientSpy) = makeSut(url: url)
         
         sut.list() { _ in }
@@ -37,6 +37,16 @@ class RemoteListQuotesTests: XCTestCase {
             httpClientSpy.completeWithData(makeInvalidData())
         }
     }
+    
+    func test_list_should_not_complete_if_sut_has_been_deallocated() throws {
+        let httpClientSpy = HttpClientSpy()
+        var sut: RemoteListQuotes? = RemoteListQuotes(url: makeUrl(), httpClient: httpClientSpy)
+        var result: Result<QuotesModel, DomainError>?
+        sut?.list { result = $0 }
+        sut = nil
+        httpClientSpy.completeWithData(makeInvalidData())
+        XCTAssertNil(result)
+    }
 }
 
 extension RemoteListQuotesTests {
@@ -48,18 +58,22 @@ extension RemoteListQuotesTests {
         return (sut, httpClientSpy)
     }
     
-    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
-    }
-    
     func makeQuotesModel() -> QuotesModel {
         return QuotesModel(timestemp: Date(), source: "USD", quotes: ["USD": 1.0])
     }
     
     func makeInvalidData() -> Data {
         return Data("invalid_data".utf8)
+    }
+    
+    func makeUrl() -> URL {
+        return URL(string: "http://any-url.com")!
+    }
+    
+    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, file: file, line: line)
+        }
     }
     
     func expect(_ sut: RemoteListQuotes, completeWith expectedResult: Result<QuotesModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
