@@ -8,9 +8,20 @@ class RemoteListQuotesTests: XCTestCase {
         let url = URL(string: "http://any-url.com")!
         let (sut, httpClientSpy) = makeSut(url: url)
         
-        sut.list()
+        sut.list() { _ in }
         
         XCTAssertEqual(httpClientSpy.urls, [url])
+    }
+    
+    func test_list_should_complete_with_error_if_client_fails() throws {
+        let (sut, httpClientSpy) = makeSut()
+        let exp = expectation(description: "waiting")
+        sut.list() { error in
+            XCTAssertEqual(error, .unexpected)
+            exp.fulfill()
+        }
+        httpClientSpy.completeWithError(.noConnectivity)
+        wait(for: [exp], timeout: 1)
     }
 }
 
@@ -25,9 +36,15 @@ extension RemoteListQuotesTests {
     
     class HttpClientSpy: HttpGetClient {
         var urls = [URL]()
+        var completion: ((HttpError) -> Void)?
         
-        func get(to url: URL) {
+        func get(to url: URL, completion: @escaping (HttpError) -> Void) {
             self.urls.append(url)
+            self.completion = completion
+        }
+        
+        func completeWithError(_ error: HttpError) {
+            self.completion?(error)
         }
     }
 }
