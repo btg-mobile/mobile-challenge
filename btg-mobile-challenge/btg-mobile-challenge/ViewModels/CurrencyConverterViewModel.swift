@@ -53,7 +53,7 @@ final class CurrencyConverterViewModel {
     /// - Parameter coordinator: The `Coordinator` associated with this `ViewModel`.
     /// - Parameter networkMonitor: The monitor responsible for checking conneciton status.
     init(networkManager: NetworkManager,
-         coordinator: CurrencyConverterCoordinator,
+         coordinator: CurrencyConverterCoordinatorService,
          networkMonitor: NWPathMonitor = NWPathMonitor()) {
         self.networkManager = networkManager
         self.coordinator = coordinator

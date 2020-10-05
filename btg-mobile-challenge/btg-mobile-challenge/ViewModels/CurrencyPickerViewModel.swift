@@ -10,7 +10,7 @@ import os.log
 
 /// The protocol responsible for establishing a communication path
 /// between `CurrencyPickerViewModel` and `CurrencyPickerViewController`.
-protocol CurrencyListViewModelDelegate: AnyObject {
+protocol CurrencyPickerViewModelDelegate: AnyObject {
     /// Informs the delegate to update its selected currency.
     func didSelectCurrency(_ new: IndexPath, previous: IndexPath)
 }
@@ -19,7 +19,7 @@ protocol CurrencyListViewModelDelegate: AnyObject {
 final class CurrencyPickerViewModel {
     //- MARK: Properties
     /// The delegate responsible for `ViewModel -> View` binding.
-    weak var delegate: CurrencyListViewModelDelegate?
+    weak var delegate: CurrencyPickerViewModelDelegate?
 
     @UserDefaultAccess(key: CurrencyPickingCase.from.rawValue, defaultValue: "USD")
     private var fromCurrencyStorage: String
@@ -104,7 +104,7 @@ final class CurrencyPickerViewModel {
 
     /// Returns a currency's name at a given `IndexPath`.
     /// - Parameter index: The `IndexPath` of a currency.
-    func nameCodeAt(index: IndexPath) -> String {
+    func currencyNameAt(index: IndexPath) -> String {
         return currencies[index.section][index.row].name
     }
 

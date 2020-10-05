@@ -74,7 +74,7 @@ extension SupportedCurrenciesViewController: UITableViewDataSource {
         }
         cell.accessoryType = .none
         cell.textLabel?.text = viewModel.currencyCodeAt(index: indexPath)
-        cell.detailTextLabel?.text = viewModel.nameCodeAt(index: indexPath)
+        cell.detailTextLabel?.text = viewModel.currencyNameAt(index: indexPath)
         return cell
     }
 }

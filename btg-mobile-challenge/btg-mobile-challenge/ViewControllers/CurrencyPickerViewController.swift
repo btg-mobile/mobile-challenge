@@ -109,7 +109,7 @@ extension CurrencyPickerViewController: UITableViewDataSource {
         }
         cell.accessoryType = .none
         cell.textLabel?.text = viewModel.currencyCodeAt(index: indexPath)
-        cell.detailTextLabel?.text = viewModel.nameCodeAt(index: indexPath)
+        cell.detailTextLabel?.text = viewModel.currencyNameAt(index: indexPath)
         if indexPath == viewModel.currentCurrency {
             cell.accessoryType = .checkmark
         }
@@ -118,7 +118,7 @@ extension CurrencyPickerViewController: UITableViewDataSource {
 }
 
 //- MARK: ViewModel delegate
-extension CurrencyPickerViewController: CurrencyListViewModelDelegate {
+extension CurrencyPickerViewController: CurrencyPickerViewModelDelegate {
     func didSelectCurrency(_ indexPath: IndexPath, previous: IndexPath) {
         currencyTableView.reloadRows(at: [indexPath, previous], with: .fade)
     }

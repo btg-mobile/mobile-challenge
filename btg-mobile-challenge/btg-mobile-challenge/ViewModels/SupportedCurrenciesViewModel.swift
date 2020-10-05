@@ -41,7 +41,7 @@ final class SupportedCurrenciesViewModel {
 
     /// Returns a currency's name at a given `IndexPath`.
     /// - Parameter index: The `IndexPath` of a currency.
-    func nameCodeAt(index: IndexPath) -> String {
+    func currencyNameAt(index: IndexPath) -> String {
         return currencies[index.section][index.row].name
     }
 

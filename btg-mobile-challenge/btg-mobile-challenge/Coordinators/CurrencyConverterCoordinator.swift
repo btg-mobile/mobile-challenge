@@ -12,8 +12,6 @@ import os.log
 protocol CurrencyConverterCoordinatorService: Coordinator {
     func pickCurrency(_ case: CurrencyPickingCase, currencies: ListCurrencyResponse)
     func showCurrencies(_ currencies: ListCurrencyResponse)
-    init(navigationController: UINavigationController,
-         networkManager: NetworkManager)
 }
 
 /// `Coordinator` responsible for managing navigation for picking and converting currencies.
