@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		93953DCD252B6E6E008B07BC /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DCC252B6E6E008B07BC /* HttpClientSpy.swift */; };
 		9398D587252B8D4B00F7CC82 /* Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9398D57E252B8D4B00F7CC82 /* Infra.framework */; };
 		9398D58C252B8D4B00F7CC82 /* AlamofireAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398D58B252B8D4B00F7CC82 /* AlamofireAdapterTests.swift */; };
+		9398D5A1252B8DF400F7CC82 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC7252B6E44008B07BC /* TestFactories.swift */; };
+		9398D5A8252B8E9F00F7CC82 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9398D5A7252B8E9F00F7CC82 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9398D5A8252B8E9F00F7CC82 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +392,9 @@
 			dependencies = (
 			);
 			name = Infra;
+			packageProductDependencies = (
+				9398D5A7252B8E9F00F7CC82 /* Alamofire */,
+			);
 			productName = Infra;
 			productReference = 9398D57E252B8D4B00F7CC82 /* Infra.framework */;
 			productType = "com.apple.product-type.framework";
@@ -448,6 +454,9 @@
 				Base,
 			);
 			mainGroup = 93953D33252B5D13008B07BC;
+			packageReferences = (
+				9398D5A6252B8E9F00F7CC82 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 93953D3E252B5D13008B07BC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -545,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9398D5A1252B8DF400F7CC82 /* TestFactories.swift in Sources */,
 				9398D58C252B8D4B00F7CC82 /* AlamofireAdapterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -994,6 +1004,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9398D5A6252B8E9F00F7CC82 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9398D5A7252B8E9F00F7CC82 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9398D5A6252B8E9F00F7CC82 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93953D34252B5D13008B07BC /* Project object */;
 }
