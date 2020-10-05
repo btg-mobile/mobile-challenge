@@ -58,24 +58,6 @@ extension RemoteListQuotesTests {
         return (sut, httpClientSpy)
     }
     
-    func makeQuotesModel() -> QuotesModel {
-        return QuotesModel(timestemp: Date(), source: "USD", quotes: ["USD": 1.0])
-    }
-    
-    func makeInvalidData() -> Data {
-        return Data("invalid_data".utf8)
-    }
-    
-    func makeUrl() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
-    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
-    }
-    
     func expect(_ sut: RemoteListQuotes, completeWith expectedResult: Result<QuotesModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
        
         let exp = expectation(description: "waiting")
@@ -89,23 +71,5 @@ extension RemoteListQuotesTests {
         }
         action()
         wait(for: [exp], timeout: 1)
-    }
-    
-    class HttpClientSpy: HttpGetClient {
-        var urls = [URL]()
-        var completion: ((Result<Data, HttpError>) -> Void)?
-        
-        func get(to url: URL, completion: @escaping (Result<Data, HttpError>) -> Void) {
-            self.urls.append(url)
-            self.completion = completion
-        }
-        
-        func completeWithError(_ error: HttpError) {
-            self.completion?(.failure(error))
-        }
-        
-        func completeWithData(_ data: Data) {
-            self.completion?(.success(data))
-        }
     }
 }
