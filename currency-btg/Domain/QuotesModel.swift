@@ -1,6 +1,6 @@
 import Foundation
 
-public struct QuotesModel {
+public struct QuotesModel: Model {
     
     public typealias QuotesKey = String
     
