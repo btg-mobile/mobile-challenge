@@ -14,6 +14,8 @@
 		93953D83252B6318008B07BC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93953D4E252B5DAA008B07BC /* Domain.framework */; };
 		93953D84252B6318008B07BC /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93953D4E252B5DAA008B07BC /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93953D95252B670B008B07BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953D94252B670B008B07BC /* Model.swift */; };
+		93953D99252B677D008B07BC /* HttpGetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953D98252B677D008B07BC /* HttpGetClient.swift */; };
+		93953D9D252B679D008B07BC /* RemoteListQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953D9C252B679D008B07BC /* RemoteListQuotes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		93953D75252B630F008B07BC /* RemoteListQuotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListQuotesTests.swift; sourceTree = "<group>"; };
 		93953D77252B630F008B07BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93953D94252B670B008B07BC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		93953D98252B677D008B07BC /* HttpGetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpGetClient.swift; sourceTree = "<group>"; };
+		93953D9C252B679D008B07BC /* RemoteListQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListQuotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 		93953D69252B630F008B07BC /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				93953D98252B677D008B07BC /* HttpGetClient.swift */,
+				93953D9C252B679D008B07BC /* RemoteListQuotes.swift */,
 				93953D6B252B630F008B07BC /* Info.plist */,
 			);
 			path = Data;
@@ -234,6 +240,7 @@
 					};
 					93953D67252B630F008B07BC = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
 					};
 					93953D6F252B630F008B07BC = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -299,6 +306,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93953D9D252B679D008B07BC /* RemoteListQuotes.swift in Sources */,
+				93953D99252B677D008B07BC /* HttpGetClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +515,7 @@
 		93953D7A252B630F008B07BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -525,6 +535,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -532,6 +543,7 @@
 		93953D7B252B630F008B07BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -558,6 +570,7 @@
 		93953D7D252B630F008B07BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TV9269UQRR;
@@ -578,6 +591,7 @@
 		93953D7E252B630F008B07BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TV9269UQRR;

@@ -1,22 +1,6 @@
 import XCTest
-
-class RemoteListQuotes {
-    private let url: URL
-    private let httpClient: HttpGetClient
-    
-    init(url: URL, httpClient: HttpGetClient) {
-        self.url = url
-        self.httpClient = httpClient
-    }
-    
-    func list() {
-        httpClient.get(to: url)
-    }
-}
-
-protocol HttpGetClient {
-    func get(to url: URL)
-}
+import Domain
+import Data
 
 class RemoteListQuotesTests: XCTestCase {
 
