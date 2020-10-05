@@ -29,7 +29,9 @@ class RemoteListQuotesTests: XCTestCase {
         
         XCTAssertEqual(httpClientSpy.url, url)
     }
-    
+}
+
+extension RemoteListQuotesTests {
     class HttpClientSpy: HttpGetClient {
         var url: URL?
         
