@@ -19,11 +19,27 @@ class RemoteListQuotesTests: XCTestCase {
         sut.list() { result in
             switch result {
             case .failure(let error): XCTAssertEqual(error, .unexpected)
-            case .success: XCTFail("Expected error receive \(result) instead")
+            case .success: XCTFail("Expected error received \(result) instead")
             }
             exp.fulfill()
         }
         httpClientSpy.completeWithError(.noConnectivity)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_list_should_complete_with_data_if_client_complete_with_data() throws {
+        let (sut, httpClientSpy) = makeSut()
+
+        let expectedData = makeQuotesModel()
+        let exp = expectation(description: "waiting")
+        sut.list() { result in
+            switch result {
+            case .failure: XCTFail("Expected success received \(result) instead")
+            case .success(let receivedData): XCTAssertEqual(receivedData, expectedData)
+            }
+            exp.fulfill()
+        }
+        httpClientSpy.completeWithData(expectedData.toData()!)
         wait(for: [exp], timeout: 1)
     }
 }
@@ -37,6 +53,10 @@ extension RemoteListQuotesTests {
         return (sut, httpClientSpy)
     }
     
+    func makeQuotesModel() -> QuotesModel {
+        QuotesModel(timestemp: Date(), source: "USD", quotes: ["USD": 1.0])
+    }
+    
     class HttpClientSpy: HttpGetClient {
         var urls = [URL]()
         var completion: ((Result<Data, HttpError>) -> Void)?
@@ -48,6 +68,10 @@ extension RemoteListQuotesTests {
         
         func completeWithError(_ error: HttpError) {
             self.completion?(.failure(error))
+        }
+        
+        func completeWithData(_ data: Data) {
+            self.completion?(.success(data))
         }
     }
 }

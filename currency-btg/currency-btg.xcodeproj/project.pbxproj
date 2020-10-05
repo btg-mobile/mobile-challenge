@@ -18,6 +18,7 @@
 		93953D9D252B679D008B07BC /* RemoteListQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953D9C252B679D008B07BC /* RemoteListQuotes.swift */; };
 		93953DAD252B692B008B07BC /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DAC252B692B008B07BC /* HttpError.swift */; };
 		93953DB2252B6984008B07BC /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DB1252B6984008B07BC /* DomainError.swift */; };
+		93953DB9252B6B21008B07BC /* ExtensionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DB8252B6B21008B07BC /* ExtensionHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		93953D9C252B679D008B07BC /* RemoteListQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListQuotes.swift; sourceTree = "<group>"; };
 		93953DAC252B692B008B07BC /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		93953DB1252B6984008B07BC /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		93953DB8252B6B21008B07BC /* ExtensionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		93953D69252B630F008B07BC /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				93953DB7252B6B06008B07BC /* Helpers */,
 				93953DA4252B6883008B07BC /* Http */,
 				93953DA6252B6895008B07BC /* UseCases */,
 				93953D6B252B630F008B07BC /* Info.plist */,
@@ -201,6 +204,14 @@
 				93953DB1252B6984008B07BC /* DomainError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		93953DB7252B6B06008B07BC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				93953DB8252B6B21008B07BC /* ExtensionHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93953D9D252B679D008B07BC /* RemoteListQuotes.swift in Sources */,
+				93953DB9252B6B21008B07BC /* ExtensionHelpers.swift in Sources */,
 				93953DAD252B692B008B07BC /* HttpError.swift in Sources */,
 				93953D99252B677D008B07BC /* HttpGetClient.swift in Sources */,
 			);

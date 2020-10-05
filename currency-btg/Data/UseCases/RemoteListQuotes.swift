@@ -10,8 +10,14 @@ public final class RemoteListQuotes: ListQuotes {
     }
     
     public func list(completion: @escaping (Result<QuotesModel ,DomainError>) -> Void) {
-        httpClient.get(to: url) { error in
-            completion(.failure(.unexpected))
+        httpClient.get(to: url) { result in
+            switch result {
+            case .success(let data):
+                if let model: QuotesModel = data.toModel() {
+                    completion(.success(model))
+                }
+            case .failure: completion(.failure(.unexpected))
+            }
         }
     }
 }
