@@ -21,7 +21,7 @@ extension Endpoint {
     /// The private API key.
     /// It shouldn't be pushed to remote.
     private var accessKey: String {
-        return "access_key="
+        return "access_key=d96d3074cd7cc555c2d3dff3944c855e"
     }
 
     /// The base API URL.
