@@ -27,7 +27,7 @@ class RemoteListQuotesTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_list_should_complete_with_data_if_client_complete_with_data() throws {
+    func test_list_should_complete_with_data_if_client_complete_with_valid_data() throws {
         let (sut, httpClientSpy) = makeSut()
 
         let expectedData = makeQuotesModel()
@@ -40,6 +40,21 @@ class RemoteListQuotesTests: XCTestCase {
             exp.fulfill()
         }
         httpClientSpy.completeWithData(expectedData.toData()!)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_list_should_complete_with_error_if_client_complete_with_invalid_data() throws {
+        let (sut, httpClientSpy) = makeSut()
+        
+        let exp = expectation(description: "waiting")
+        sut.list() { result in
+            switch result {
+            case .failure(let error): XCTAssertEqual(error, .unexpected)
+            case .success: XCTFail("Expected error received \(result) instead")
+            }
+            exp.fulfill()
+        }
+        httpClientSpy.completeWithData(Data("invalid_data".utf8))
         wait(for: [exp], timeout: 1)
     }
 }

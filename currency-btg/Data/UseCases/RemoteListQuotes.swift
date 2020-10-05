@@ -1,5 +1,6 @@
 import Foundation
 import Domain
+
 public final class RemoteListQuotes: ListQuotes {
     private let url: URL
     private let httpClient: HttpGetClient
@@ -15,6 +16,8 @@ public final class RemoteListQuotes: ListQuotes {
             case .success(let data):
                 if let model: QuotesModel = data.toModel() {
                     completion(.success(model))
+                } else {
+                    completion(.failure(.unexpected))
                 }
             case .failure: completion(.failure(.unexpected))
             }
