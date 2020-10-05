@@ -10,4 +10,11 @@ import Foundation
 class CurrencyListViewModel {
     
     let title: String = "Listagem de Moedas"
+    var typeConverter: TypeConverter
+    var currencies: [Currency] = []
+    
+    init(type: TypeConverter) {
+        self.typeConverter = type
+    }
+    
 }

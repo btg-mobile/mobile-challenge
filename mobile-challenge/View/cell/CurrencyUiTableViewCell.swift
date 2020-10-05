@@ -9,12 +9,6 @@ import UIKit
 
 class CurrencyUiTableViewCell: UITableViewCell {
     
-    var viewModel: CurrencyListViewModel? {
-        didSet {
-            textLabel?.text = "USD"
-            detailTextLabel?.text = "5.68"
-        }
-    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,8 +18,8 @@ class CurrencyUiTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setup(vm: CurrencyListViewModel) {
-        self.viewModel = vm
+    func setup(currency: Currency) {
+        textLabel?.text = "\(currency.code) - \(currency.description)"
     }
     
 }

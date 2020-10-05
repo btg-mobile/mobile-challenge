@@ -55,7 +55,7 @@
                                 <action selector="destinyAction:" destination="-1" eventType="touchUpInside" id="LkN-U7-yxA"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o Valor para converter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gh3-Ty-EH5">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite um valor para converter" textAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Gh3-Ty-EH5">
                             <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="a83-he-akL"/>

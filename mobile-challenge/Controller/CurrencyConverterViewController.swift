@@ -29,15 +29,15 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     @IBAction func originAction(_ sender: UIButton) {
-        let vc = CurrencyListViewController(nibName: "CurrencyListViewController", bundle: nil)
-        vc.typeConverter = .origin
+        let vc = CurrencyListViewController(type: .origin)
+        vc.delegate = self
         
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func destinyAction(_ sender: UIButton) {
-        let vc = CurrencyListViewController(nibName: "CurrencyListViewController", bundle: nil)
-        vc.typeConverter = .destiny
+        let vc = CurrencyListViewController(type: .destiny)
+        vc.delegate = self
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -58,4 +58,18 @@ extension CurrencyConverterViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+}
+
+extension CurrencyConverterViewController: SelectCurrencyDelegate {
+    func getSelectCurrency(type: TypeConverter, currency: Currency) {
+        print("Type \(type) Code: \(currency.description)")
+        
+        switch type {
+        case .origin:
+            self.originButton.setTitle(currency.description, for: .normal)
+        case .destiny:
+            self.destinyButton.setTitle(currency.description, for: .normal)
+        }
+    }
+    
 }
