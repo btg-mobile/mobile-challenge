@@ -15,7 +15,7 @@ public final class RemoteListQuotes: ListQuotes {
             guard self != nil else { return }
             switch result {
             case .success(let data):
-                if let model: QuotesModel = data.toModel() {
+                if let model: QuotesModel = data?.toModel() {
                     completion(.success(model))
                 } else {
                     completion(.failure(.unexpected))
