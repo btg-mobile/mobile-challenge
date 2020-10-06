@@ -11,4 +11,10 @@ struct CurrencyList: Codable {
     let success: Bool
     let error: ErrorApi?
     let currencies: [String: String]?
+    
+    init(success: Bool, error: ErrorApi?, currencies: [String: String]?) {
+        self.success = success
+        self.error = error
+        self.currencies = currencies
+    }
 }

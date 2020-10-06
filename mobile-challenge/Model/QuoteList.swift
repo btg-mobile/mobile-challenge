@@ -12,4 +12,11 @@ struct QuoteList: Codable {
     let error: ErrorApi?
     let source: String?
     let quotes: [String: Float]?
+    
+    init(success: Bool, error: ErrorApi?, source: String?, quotes: [String: Float]?) {
+        self.success = success
+        self.error = error
+        self.source = source
+        self.quotes = quotes
+    }
 }
