@@ -9,6 +9,7 @@ import Foundation
 
 protocol CurrencyAPIProtocol {
     func fetchCurrencyList(callback: @escaping (Result<CurrencyList>) -> Void)
+    func fetchQuotes(callback: @escaping (Result<QuoteList>) -> Void)
 }
 
 class CurrencyAPI {
@@ -20,7 +21,7 @@ class CurrencyAPI {
     
 }
 
-extension CurrencyAPI {
+extension CurrencyAPI: CurrencyAPIProtocol {
     
     func fetchCurrencyList(callback: @escaping (Result<CurrencyList>) -> Void)  {
         
@@ -28,6 +29,17 @@ extension CurrencyAPI {
         
         self.network.request(url: url, method: .get, callback: callback)
     }
+    
+    func fetchQuotes(callback: @escaping (Result<QuoteList>) -> Void)  {
+        
+        let url = getURL(path: "live")
+        
+        self.network.request(url: url, method: .get, callback: callback)
+    }
+    
+}
+
+extension CurrencyAPI {
     
     private func getURL(path: String) -> String {
         return "\(Constraints.URI.rawValue)/\(path)?access_key=\(Constraints.acessKey.rawValue)"

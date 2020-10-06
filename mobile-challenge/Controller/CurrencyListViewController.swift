@@ -19,7 +19,9 @@ enum TypeConverter: String {
 class CurrencyListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchCurrencies: UISearchBar!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     var viewModel: CurrencyListViewModel
     private let cellIdentifier = "currencyCell"
     var delegate: SelectCurrencyDelegate?
@@ -33,12 +35,13 @@ class CurrencyListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = viewModel.title
         
+        setupSegmentControl()
         setupTableView()
+        setupSearchBar()
         fetchCurrencyList()
     }
     
@@ -48,38 +51,55 @@ class CurrencyListViewController: UIViewController {
         tableView.delegate = self
     }
     
+    func setupSearchBar() -> Void {
+        self.searchCurrencies.delegate = self
+    }
+    
+    func setupSegmentControl() {
+        segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func segmentChanged(_ sender: UISegmentedControl) {
+
+        switch OrderByCurrency(rawValue: sender.selectedSegmentIndex) {
+        case .code:
+            viewModel.orderBy(order: .code)
+            tableView.reloadData()
+        case .description:
+            viewModel.orderBy(order: .description)
+            tableView.reloadData()
+        case .none:
+            self.showAlert(message: ErrorHandler.notFound.rawValue)
+        }
+    }
+    
     func fetchCurrencyList() {
         
         CurrencyAPI.shared.fetchCurrencyList { (result) in
             switch result {
             case .success(let list):
-                if let currencies = list.currencies {
-                    DispatchQueue.main.async {
-                        self.viewModel.currencies = currencies.map { return Currency(code: $0.key, description: $0.value) }
-
-                        self.tableView.reloadData()
-                    }
+                DispatchQueue.main.async {
+                    self.viewModel.setCurrenciesArray(currencyList: list)
+                    self.tableView.reloadData()
                 }
             case .error(let error):
-                print("List: ", error)
+                self.showAlert(message: error.rawValue)
             }
         }
-        
     }
-    
 }
 
-// MARK: Delegate and DataSource
+// MARK: TablewView
 
 extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.currencies.count
+        return viewModel.currenciesFilter.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let currentSelect = viewModel.currencies[indexPath.row]
+        let currentSelect = viewModel.currenciesFilter[indexPath.row]
         
         delegate?.getSelectCurrency(type: viewModel.typeConverter, currency: currentSelect)
         
@@ -90,13 +110,27 @@ extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CurrencyUiTableViewCell
         else { return CurrencyUiTableViewCell() }
-
-        let currentCurrency = viewModel.currencies[indexPath.row]
+        
+        let currentCurrency = viewModel.currenciesFilter[indexPath.row]
         
         cell.setup(currency: currentCurrency)
         
         return cell
     }
-    
 }
 
+// MARK: SearchBar
+extension CurrencyListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.viewModel.filterCurrencies(search: searchText.uppercased())
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.viewModel.filterCurrencies()
+        tableView.reloadData()
+    }
+}

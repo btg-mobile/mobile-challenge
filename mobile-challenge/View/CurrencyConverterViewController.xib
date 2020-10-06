@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-J4-sOL">
-                    <rect key="frame" x="20" y="253" width="374" height="290"/>
+                    <rect key="frame" x="20" y="233" width="374" height="330"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ba-FM-dFR">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -75,10 +75,10 @@
                                 <action selector="converterAction:" destination="-1" eventType="touchUpInside" id="Ujd-t6-Qog"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsW-IZ-FYv">
-                            <rect key="frame" x="0.0" y="250" width="374" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsW-IZ-FYv">
+                            <rect key="frame" x="0.0" y="250" width="374" height="80"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="inc-Xx-7dR"/>
+                                <constraint firstAttribute="height" constant="80" id="inc-Xx-7dR"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <nil key="textColor"/>

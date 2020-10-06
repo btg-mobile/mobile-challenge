@@ -16,16 +16,38 @@ class CurrencyConverterViewController: UIViewController {
     @IBOutlet weak var convertedLabel: UILabel!
     
     var viewModel = CurrencyConverterViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureView()
         self.title = viewModel.title
+        self.configureView()
+        self.fetchQuotes()
     }
-
     
     @IBAction func converterAction(_ sender: UIButton) {
-        self.convertedLabel.text = "BRL >>> USD : 5,68"
+        
+        guard let _ = viewModel.selectedOrigin else {
+            showAlert(title: "Atenção", message: ErrorHandler.emptyOriginSelected.rawValue)
+            return
+        }
+        
+        guard let _ = viewModel.selectedDestiny,
+           let _ = viewModel.selectedDestiny else {
+            showAlert(title: "Atenção", message: ErrorHandler.emptyDestinySelected.rawValue)
+            return
+        }
+        
+        if let value = currencyTextField.text as? Float {
+            if value <= 0 {
+                showAlert(title: "Atenção", message: ErrorHandler.zeroValueError.rawValue)
+                return
+            } else {
+                self.convertedLabel.text = viewModel.converterCurrency(value)
+            }
+        } else {
+            showAlert(title: "Atenção", message: ErrorHandler.invalidValue.rawValue)
+            return
+        }
     }
     
     @IBAction func originAction(_ sender: UIButton) {
@@ -42,6 +64,19 @@ class CurrencyConverterViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func fetchQuotes() {
+        
+        CurrencyAPI.shared.fetchQuotes { (result) in
+            switch result {
+            case .success(let list):
+                DispatchQueue.main.async {
+                    self.viewModel.setQuotesArray(quoteList: list)
+                }
+            case .error(let error):
+                self.showAlert(message: error.rawValue)
+            }
+        }
+    }
     
     func configureView() {
         self.originButton.layer.cornerRadius = 4
@@ -49,9 +84,7 @@ class CurrencyConverterViewController: UIViewController {
         self.currencyTextField.layer.cornerRadius = 4
         self.converterButton.layer.cornerRadius = 4
     }
-
 }
-
 
 extension CurrencyConverterViewController {
     
@@ -62,13 +95,14 @@ extension CurrencyConverterViewController {
 
 extension CurrencyConverterViewController: SelectCurrencyDelegate {
     func getSelectCurrency(type: TypeConverter, currency: Currency) {
-        print("Type \(type) Code: \(currency.description)")
+        
+        self.viewModel.quoteSelect(type: type, code: currency.code)
         
         switch type {
         case .origin:
-            self.originButton.setTitle(currency.description, for: .normal)
+            self.originButton.setTitle(currency.code, for: .normal)
         case .destiny:
-            self.destinyButton.setTitle(currency.description, for: .normal)
+            self.destinyButton.setTitle(currency.code, for: .normal)
         }
     }
     
