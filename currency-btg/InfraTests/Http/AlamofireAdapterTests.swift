@@ -3,42 +3,6 @@ import Alamofire
 import Data
 import Infra
 
-class AlamofireAdapter: HttpGetClient {
-    private let session: Session
-    
-    init(session: Session = .default) {
-        self.session = session
-    }
-    
-    func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> Void) {
-        session.request(url, method: .get).responseData { dataResponse in
-            guard let statusCode = dataResponse.response?.statusCode else {
-                return completion(.failure(.noConnectivity))
-            }
-            switch dataResponse.result {
-            case .failure: completion(.failure(.noConnectivity))
-            case .success(let data):
-                switch statusCode {
-                case 204:
-                    completion(.success(nil))
-                case 200...299:
-                    completion(.success(data))
-                case 401:
-                    completion(.failure(.unauthorized))
-                case 403:
-                    completion(.failure(.forbidden))
-                case 400...499:
-                    completion(.failure(.badRequest))
-                case 500...599:
-                    completion(.failure(.serverError))
-                default:
-                    completion(.failure(.noConnectivity))
-                }
-            }
-        }
-    }
-}
-
 class AlamofireAdapterTests: XCTestCase {
 
     func test_get_should_make_request_with_correct_url_and_method() throws {
@@ -81,6 +45,8 @@ class AlamofireAdapterTests: XCTestCase {
         expectedResult(.failure(.serverError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 599), error: nil))
         expectedResult(.failure(.unauthorized), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 401), error: nil))
         expectedResult(.failure(.forbidden), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 403), error: nil))
+        expectedResult(.failure(.noConnectivity), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 300), error: nil))
+        expectedResult(.failure(.noConnectivity), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 100), error: nil))
     }
 }
 
