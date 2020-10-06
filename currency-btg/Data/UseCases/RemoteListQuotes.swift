@@ -4,6 +4,7 @@ import Domain
 public final class RemoteListQuotes: ListQuotes {
     private let url: URL
     private let httpClient: HttpGetClient
+    private lazy var decoder = JSONDecoder()
     
     public init(url: URL, httpClient: HttpGetClient) {
         self.url = url
@@ -12,10 +13,13 @@ public final class RemoteListQuotes: ListQuotes {
     
     public func list(completion: @escaping (Result<QuotesModel ,DomainError>) -> Void) {
         httpClient.get(to: url) { [weak self] result in
-            guard self != nil else { return }
+            guard let weakSelf = self else { return }
             switch result {
             case .success(let data):
-                if let model: QuotesModel = data?.toModel() {
+                guard let responseData = data else {
+                    return completion(.failure(.unexpected))
+                }
+                if let model = try? weakSelf.decoder.decode(QuotesModel.self, from: responseData) {
                     completion(.success(model))
                 } else {
                     completion(.failure(.unexpected))
