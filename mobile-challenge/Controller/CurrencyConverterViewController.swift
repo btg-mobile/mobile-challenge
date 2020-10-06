@@ -37,12 +37,17 @@ class CurrencyConverterViewController: UIViewController {
             return
         }
         
-        if let value = currencyTextField.text as? Float {
-            if value <= 0 {
+        if let value = currencyTextField.text {
+            
+            guard let valueFloat = Float(value) else {
+                showAlert(title: "Atenção", message: ErrorHandler.invalidValue.rawValue)
+                return }
+            
+            if valueFloat <= 0 {
                 showAlert(title: "Atenção", message: ErrorHandler.zeroValueError.rawValue)
                 return
             } else {
-                self.convertedLabel.text = viewModel.converterCurrency(value)
+                self.convertedLabel.text = viewModel.converterCurrency(valueFloat)
             }
         } else {
             showAlert(title: "Atenção", message: ErrorHandler.invalidValue.rawValue)

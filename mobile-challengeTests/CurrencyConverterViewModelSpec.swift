@@ -78,5 +78,19 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         
         XCTAssertEqual(value, "20.93")
     }
+    
+    func testConverterCurrencySuccessDollarOrigin() {
+        
+        let quotesMockDolar: QuoteList = QuoteList(success: true, error: nil, source: nil, quotes: ["USDUSD": 1, "USDBRL": 5.690])
+        
+        currencyConverterVM.setQuotesArray(quoteList: quotesMockDolar)
+        
+        currencyConverterVM.quoteSelect(type: .origin, code: "USD")
+        currencyConverterVM.quoteSelect(type: .destiny, code: "BRL")
+   
+        let value = currencyConverterVM.converterCurrency(1.00)
+        
+        XCTAssertEqual(value, "5.69")
+    }
 
 }
