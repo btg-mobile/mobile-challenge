@@ -9,8 +9,8 @@ class RatesTests: XCTestCase {
         let listQuotesSpy = ListQuotesSpy()
         let sut = makeSut(alertView: alertViewSpy, listQuotes: listQuotesSpy)
         let exp = expectation(description: "waiting")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeErrorAlertViewModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeErrorAlertViewModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
             exp.fulfill()
         }
         sut.list()
@@ -43,8 +43,8 @@ class RatesTests: XCTestCase {
         let listQuotesSpy = ListQuotesSpy()
         let sut = makeSut(alertView: alertViewSpy, listQuotes: listQuotesSpy)
         let exp = expectation(description: "waiting")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeSuccessAlertViewModel(message: "Cotas baixadas com sucesso."))
+        alertViewSpy.observer {  viewModel in
+            XCTAssertEqual(viewModel, makeSuccessAlertViewModel(message: "Cotas baixadas com sucesso."))
             exp.fulfill()
         }
         sut.list()
@@ -60,53 +60,5 @@ extension RatesTests {
         let sut = RatesPresenter(alertView: alertView, listQuotes: listQuotes, loadingView: loadingView)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
-    }
-    
-    func makeErrorAlertViewModel(message: String) -> AlertViewModel {
-        return AlertViewModel(title: "Erro", message: message)
-    }
-    
-    func makeSuccessAlertViewModel(message: String) -> AlertViewModel {
-        return AlertViewModel(title: "Sucesso", message: message)
-    }
-    
-    class AlertViewSpy: AlertView {
-        var emit: ((AlertViewModel) -> Void)?
-        
-        func observer(completion: @escaping (AlertViewModel) -> Void) {
-            self.emit = completion
-        }
-        
-        func showMessage(viewModel: AlertViewModel) {
-            self.emit?(viewModel)
-        }
-    }
-    
-    class ListQuotesSpy: ListQuotes {
-        var completion: ((Result<QuotesModel, DomainError>) -> Void)?
-
-        func list(completion: @escaping (Result<QuotesModel, DomainError>) -> Void) {
-            self.completion = completion
-        }
-
-        func completedWithError(_ error: DomainError) {
-            completion?(.failure(error))
-        }
-        
-        func completedWithData(_ quotes: QuotesModel) {
-            completion?(.success(quotes))
-        }
-    }
-    
-    class LoadingViewSpy: LoadingView {
-        var emit: ((LoadingViewModel) -> Void)?
-        
-        func observer(completion: @escaping (LoadingViewModel) -> Void) {
-            self.emit = completion
-        }
-        
-        func display(viewModel: LoadingViewModel) {
-            self.emit?(viewModel)
-        }
-    }
+    }    
 }
