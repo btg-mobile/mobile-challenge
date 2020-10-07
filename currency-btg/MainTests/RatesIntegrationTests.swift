@@ -1,5 +1,6 @@
 import XCTest
 import Main
+
 class RatesIntegrationTests: XCTestCase {
 
     func test_ui_presentation_integration() throws {

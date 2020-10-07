@@ -63,6 +63,7 @@
 		93BA9ED2252E57430002ED43 /* RatesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */; };
 		93BA9EDE252E57A10002ED43 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC3252B6E25008B07BC /* TestExtensions.swift */; };
 		93BA9EEC252E5F3E0002ED43 /* WeakVarProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9EEB252E5F3E0002ED43 /* WeakVarProxy.swift */; };
+		93BA9F26252E630B0002ED43 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9F25252E630B0002ED43 /* Environment.swift */; };
 		93CA4748252C721B00FF7EBB /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */; };
 		93CA4758252C72BD00FF7EBB /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */; };
 		93CA4764252C770E00FF7EBB /* ListQuotesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4763252C770E00FF7EBB /* ListQuotesIntegrationTests.swift */; };
@@ -277,6 +278,9 @@
 		93BA9EAD252E4DC20002ED43 /* RatesComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesComposer.swift; sourceTree = "<group>"; };
 		93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesIntegrationTests.swift; sourceTree = "<group>"; };
 		93BA9EEB252E5F3E0002ED43 /* WeakVarProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakVarProxy.swift; sourceTree = "<group>"; };
+		93BA9F18252E624B0002ED43 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		93BA9F1A252E62900002ED43 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		93BA9F25252E630B0002ED43 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 		93CA4761252C770E00FF7EBB /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -679,6 +683,7 @@
 		93BA9DFD252E47130002ED43 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				93BA9F17252E62360002ED43 /* Env */,
 				93BA9EEA252E5F2F0002ED43 /* Proxis */,
 				93BA9EAC252E4D950002ED43 /* Composers */,
 				93BA9E70252E48AE0002ED43 /* Factories */,
@@ -694,8 +699,8 @@
 		93BA9E14252E47140002ED43 /* MainTests */ = {
 			isa = PBXGroup;
 			children = (
-				93BA9E17252E47140002ED43 /* Info.plist */,
 				93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */,
+				93BA9E17252E47140002ED43 /* Info.plist */,
 			);
 			path = MainTests;
 			sourceTree = "<group>";
@@ -722,6 +727,16 @@
 				93BA9EEB252E5F3E0002ED43 /* WeakVarProxy.swift */,
 			);
 			path = Proxis;
+			sourceTree = "<group>";
+		};
+		93BA9F17252E62360002ED43 /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9F25252E630B0002ED43 /* Environment.swift */,
+				93BA9F18252E624B0002ED43 /* Debug.xcconfig */,
+				93BA9F1A252E62900002ED43 /* Release.xcconfig */,
+			);
+			path = Env;
 			sourceTree = "<group>";
 		};
 		93CA4746252C720F00FF7EBB /* Http */ = {
@@ -1323,6 +1338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BA9E8A252E4C290002ED43 /* UseCaseFactory.swift in Sources */,
+				93BA9F26252E630B0002ED43 /* Environment.swift in Sources */,
 				93BA9DFF252E47130002ED43 /* AppDelegate.swift in Sources */,
 				93BA9EAE252E4DC20002ED43 /* RatesComposer.swift in Sources */,
 				93BA9EEC252E5F3E0002ED43 /* WeakVarProxy.swift in Sources */,
@@ -1958,6 +1974,7 @@
 		};
 		93BA9E24252E47140002ED43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93BA9F18252E624B0002ED43 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1977,6 +1994,7 @@
 		};
 		93BA9E25252E47140002ED43 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93BA9F1A252E62900002ED43 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
