@@ -7,7 +7,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = RatesFactory.makeController()
+        window?.rootViewController = RatesComposer.composeControllerWith(listQuotes: UseCaseFactory.makeRemoteListQuotes())
         window?.makeKeyAndVisible()
     }
 }
