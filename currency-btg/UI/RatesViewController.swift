@@ -5,8 +5,15 @@ import Presenter
 class RatesViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    var listQuotes: (() -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configure()
+    }
+    
+    private func configure() {
+        listQuotes?()
     }
 }
 
