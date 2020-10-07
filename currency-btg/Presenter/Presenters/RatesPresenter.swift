@@ -21,6 +21,7 @@ public class RatesPresenter {
                 self.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
             case .success: break
             }
+            self.loadingView.display(viewModel: LoadingViewModel(isLoading: false))
         }
     }
 }

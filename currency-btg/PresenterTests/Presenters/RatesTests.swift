@@ -18,9 +18,10 @@ class RatesTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_rates_should_show_loading_before_call_listQuotes() throws {
+    func test_rates_should_show_loading_before_and_after_call_listQuotes() throws {
         let loadingViewSpy = LoadingViewSpy()
-        let sut = makeSut(loadingView: loadingViewSpy)
+        let listQuotesSpy = ListQuotesSpy()
+        let sut = makeSut(listQuotes: listQuotesSpy, loadingView: loadingViewSpy)
         let exp = expectation(description: "waiting")
         loadingViewSpy.observer { viewModel in
             XCTAssertEqual(viewModel, LoadingViewModel(isLoading: true))
@@ -28,6 +29,13 @@ class RatesTests: XCTestCase {
         }
         sut.list()
         wait(for: [exp], timeout: 1)
+        let expHiddenLoading = expectation(description: "waiting")
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: false))
+            expHiddenLoading.fulfill()
+        }
+        listQuotesSpy.completedWithError(.unexpected)
+        wait(for: [expHiddenLoading], timeout: 1)
     }
 }
 
