@@ -19,3 +19,9 @@ extension RatesViewController: LoadingView {
         }
     }
 }
+
+extension RatesViewController: AlertView {
+    func showMessage(viewModel: AlertViewModel) {
+        
+    }
+}

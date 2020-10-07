@@ -18,4 +18,11 @@ class RatesViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         XCTAssertNotNil(sut as LoadingView)
     }
+    
+    func test_sut_implements_alertView() throws {
+        let sb = UIStoryboard(name: "Rates", bundle: Bundle(for: RatesViewController.self))
+        let sut = sb.instantiateViewController(identifier: "RatesViewController") as! RatesViewController
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut as AlertView)
+    }
 }
