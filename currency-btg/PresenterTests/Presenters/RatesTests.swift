@@ -19,10 +19,11 @@ class RatesTests: XCTestCase {
 
 extension RatesTests {
     
-    func makeSut() -> (sut: RatesPresenter, alertViewSpy: AlertViewSpy, listQuotesSpy: ListQuotesSpy) {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: RatesPresenter, alertViewSpy: AlertViewSpy, listQuotesSpy: ListQuotesSpy) {
         let alertViewSpy = AlertViewSpy()
         let listQuotesSpy = ListQuotesSpy()
         let sut = RatesPresenter(alertView: alertViewSpy, listQuotes: listQuotesSpy)
+        checkMemoryLeak(for: sut, file: file, line: line)
         return (sut, alertViewSpy, listQuotesSpy)
     }
     

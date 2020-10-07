@@ -27,6 +27,7 @@
 		9398D58C252B8D4B00F7CC82 /* AlamofireAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398D58B252B8D4B00F7CC82 /* AlamofireAdapterTests.swift */; };
 		9398D5A1252B8DF400F7CC82 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC7252B6E44008B07BC /* TestFactories.swift */; };
 		9398D5A8252B8E9F00F7CC82 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9398D5A7252B8E9F00F7CC82 /* Alamofire */; };
+		93999CB0252D5CB600E8EA05 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC3252B6E25008B07BC /* TestExtensions.swift */; };
 		93A67911252B9808002E08CD /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC3252B6E25008B07BC /* TestExtensions.swift */; };
 		93CA4748252C721B00FF7EBB /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */; };
 		93CA4758252C72BD00FF7EBB /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */; };
@@ -59,6 +60,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9398D57D252B8D4B00F7CC82;
 			remoteInfo = Infra;
+		};
+		93999CA7252D5B2500E8EA05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93953D34252B5D13008B07BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93953D67252B630F008B07BC;
+			remoteInfo = Data;
 		};
 		93CA4767252C770E00FF7EBB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -611,6 +619,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				93999CA8252D5B2500E8EA05 /* PBXTargetDependency */,
 				93CA47B6252D4C5700FF7EBB /* PBXTargetDependency */,
 			);
 			name = Presenter;
@@ -838,6 +847,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93CA4795252C879300FF7EBB /* RatesTests.swift in Sources */,
+				93999CB0252D5CB600E8EA05 /* TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +868,11 @@
 			isa = PBXTargetDependency;
 			target = 9398D57D252B8D4B00F7CC82 /* Infra */;
 			targetProxy = 9398D588252B8D4B00F7CC82 /* PBXContainerItemProxy */;
+		};
+		93999CA8252D5B2500E8EA05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93953D67252B630F008B07BC /* Data */;
+			targetProxy = 93999CA7252D5B2500E8EA05 /* PBXContainerItemProxy */;
 		};
 		93CA4768252C770E00FF7EBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

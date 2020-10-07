@@ -11,7 +11,8 @@ public class RatesPresenter {
     }
     
     public func list() {
-        listQuotes.list { result in
+        listQuotes.list { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure:
                 self.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
