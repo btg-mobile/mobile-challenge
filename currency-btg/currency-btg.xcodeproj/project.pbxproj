@@ -60,7 +60,7 @@
 		93BA9E8A252E4C290002ED43 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9E89252E4C290002ED43 /* UseCaseFactory.swift */; };
 		93BA9EAE252E4DC20002ED43 /* RatesComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9EAD252E4DC20002ED43 /* RatesComposer.swift */; };
 		93BA9EC5252E570F0002ED43 /* ListQuotesSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9CC0252E04490002ED43 /* ListQuotesSpy.swift */; };
-		93BA9ED2252E57430002ED43 /* RatesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */; };
+		93BA9ED2252E57430002ED43 /* RatesComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9ED1252E57430002ED43 /* RatesComposerTests.swift */; };
 		93BA9EDE252E57A10002ED43 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC3252B6E25008B07BC /* TestExtensions.swift */; };
 		93BA9EEC252E5F3E0002ED43 /* WeakVarProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9EEB252E5F3E0002ED43 /* WeakVarProxy.swift */; };
 		93BA9F26252E630B0002ED43 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9F25252E630B0002ED43 /* Environment.swift */; };
@@ -276,7 +276,7 @@
 		93BA9E17252E47140002ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BA9E89252E4C290002ED43 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		93BA9EAD252E4DC20002ED43 /* RatesComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesComposer.swift; sourceTree = "<group>"; };
-		93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesIntegrationTests.swift; sourceTree = "<group>"; };
+		93BA9ED1252E57430002ED43 /* RatesComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesComposerTests.swift; sourceTree = "<group>"; };
 		93BA9EEB252E5F3E0002ED43 /* WeakVarProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakVarProxy.swift; sourceTree = "<group>"; };
 		93BA9F18252E624B0002ED43 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		93BA9F1A252E62900002ED43 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -699,7 +699,7 @@
 		93BA9E14252E47140002ED43 /* MainTests */ = {
 			isa = PBXGroup;
 			children = (
-				93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */,
+				93BA9F4F252E66090002ED43 /* Composers */,
 				93BA9E17252E47140002ED43 /* Info.plist */,
 			);
 			path = MainTests;
@@ -737,6 +737,14 @@
 				93BA9F1A252E62900002ED43 /* Release.xcconfig */,
 			);
 			path = Env;
+			sourceTree = "<group>";
+		};
+		93BA9F4F252E66090002ED43 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9ED1252E57430002ED43 /* RatesComposerTests.swift */,
+			);
+			path = Composers;
 			sourceTree = "<group>";
 		};
 		93CA4746252C720F00FF7EBB /* Http */ = {
@@ -1350,7 +1358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93BA9ED2252E57430002ED43 /* RatesIntegrationTests.swift in Sources */,
+				93BA9ED2252E57430002ED43 /* RatesComposerTests.swift in Sources */,
 				93BA9EDE252E57A10002ED43 /* TestExtensions.swift in Sources */,
 				93BA9EC5252E570F0002ED43 /* ListQuotesSpy.swift in Sources */,
 			);
