@@ -488,8 +488,7 @@
 		93BA9CF0252E059E0002ED43 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				93BA9D8C252E25D20002ED43 /* Rates.storyboard */,
-				93BA9D5B252E23990002ED43 /* RatesViewController.swift */,
+				93BA9DB6252E3E980002ED43 /* Scenes */,
 				93BA9CF2252E059E0002ED43 /* Info.plist */,
 			);
 			path = UI;
@@ -498,10 +497,43 @@
 		93BA9CFB252E059E0002ED43 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				93BA9CFC252E059E0002ED43 /* RatesViewControllerTests.swift */,
+				93BA9DB7252E3EA70002ED43 /* Scenes */,
 				93BA9CFE252E059E0002ED43 /* Info.plist */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		93BA9DB4252E3E680002ED43 /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9D8C252E25D20002ED43 /* Rates.storyboard */,
+				93BA9D5B252E23990002ED43 /* RatesViewController.swift */,
+			);
+			path = Rates;
+			sourceTree = "<group>";
+		};
+		93BA9DB5252E3E720002ED43 /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9CFC252E059E0002ED43 /* RatesViewControllerTests.swift */,
+			);
+			path = Rates;
+			sourceTree = "<group>";
+		};
+		93BA9DB6252E3E980002ED43 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9DB4252E3E680002ED43 /* Rates */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		93BA9DB7252E3EA70002ED43 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9DB5252E3E720002ED43 /* Rates */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		93CA4746252C720F00FF7EBB /* Http */ = {
