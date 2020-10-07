@@ -37,6 +37,8 @@
 		93BA9CDB252E04BC0002ED43 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9CDA252E04BC0002ED43 /* TestFactories.swift */; };
 		93BA9CF8252E059E0002ED43 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BA9CEF252E059E0002ED43 /* UI.framework */; };
 		93BA9CFD252E059E0002ED43 /* RatesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9CFC252E059E0002ED43 /* RatesViewControllerTests.swift */; };
+		93BA9D5C252E23990002ED43 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9D5B252E23990002ED43 /* RatesViewController.swift */; };
+		93BA9D8D252E25D20002ED43 /* Rates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BA9D8C252E25D20002ED43 /* Rates.storyboard */; };
 		93CA4748252C721B00FF7EBB /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */; };
 		93CA4758252C72BD00FF7EBB /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */; };
 		93CA4764252C770E00FF7EBB /* ListQuotesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4763252C770E00FF7EBB /* ListQuotesIntegrationTests.swift */; };
@@ -176,6 +178,8 @@
 		93BA9CF7252E059E0002ED43 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BA9CFC252E059E0002ED43 /* RatesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewControllerTests.swift; sourceTree = "<group>"; };
 		93BA9CFE252E059E0002ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93BA9D5B252E23990002ED43 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
+		93BA9D8C252E25D20002ED43 /* Rates.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rates.storyboard; sourceTree = "<group>"; };
 		93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 		93CA4761252C770E00FF7EBB /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -484,6 +488,8 @@
 		93BA9CF0252E059E0002ED43 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				93BA9D8C252E25D20002ED43 /* Rates.storyboard */,
+				93BA9D5B252E23990002ED43 /* RatesViewController.swift */,
 				93BA9CF2252E059E0002ED43 /* Info.plist */,
 			);
 			path = UI;
@@ -831,6 +837,7 @@
 					};
 					93BA9CEE252E059E0002ED43 = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
 					};
 					93BA9CF6252E059E0002ED43 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -917,6 +924,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BA9D8D252E25D20002ED43 /* Rates.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,6 +1016,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BA9D5C252E23990002ED43 /* RatesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1496,6 +1505,7 @@
 		93BA9D01252E059F0002ED43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1516,6 +1526,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1523,6 +1534,7 @@
 		93BA9D02252E059F0002ED43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1550,6 +1562,7 @@
 		93BA9D04252E059F0002ED43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TV9269UQRR;
@@ -1571,6 +1584,7 @@
 		93BA9D05252E059F0002ED43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TV9269UQRR;
