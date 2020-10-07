@@ -4,24 +4,53 @@ import Presenter
 
 class RatesTests: XCTestCase {
 
-    func test_() throws {
-      
+    func test_rates_should_show_error_message_if_listQuotes_fails() throws {
+        let (sut, alertViewSpy, listQuotesSpy) = makeSut()
+        let exp = expectation(description: "waiting")
+        alertViewSpy.observer { [weak self] viewModel in
+            XCTAssertEqual(viewModel, self?.makeErrorAlertViewModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
+            exp.fulfill()
+        }
+        sut.list()
+        listQuotesSpy.completedWithError(.unexpected)
+        wait(for: [exp], timeout: 1)
     }
 }
 
 extension RatesTests {
     
-    func makeSut() -> (sut: RatesPresenter, alertViewSpy: AlertViewSpy) {
+    func makeSut() -> (sut: RatesPresenter, alertViewSpy: AlertViewSpy, listQuotesSpy: ListQuotesSpy) {
         let alertViewSpy = AlertViewSpy()
-        let sut = RatesPresenter(alertView: alertViewSpy)
-        return (sut, alertViewSpy)
+        let listQuotesSpy = ListQuotesSpy()
+        let sut = RatesPresenter(alertView: alertViewSpy, listQuotes: listQuotesSpy)
+        return (sut, alertViewSpy, listQuotesSpy)
+    }
+    
+    func makeErrorAlertViewModel(message: String) -> AlertViewModel {
+        return AlertViewModel(title: "Erro", message: message)
     }
     
     class AlertViewSpy: AlertView {
-        var viewModel: AlertViewModel?
+        var emit: ((AlertViewModel) -> Void)?
+        
+        func observer(completion: @escaping (AlertViewModel) -> Void) {
+            self.emit = completion
+        }
         
         func showMessage(viewModel: AlertViewModel) {
-            self.viewModel = viewModel
+            self.emit?(viewModel)
+        }
+    }
+    
+    class ListQuotesSpy: ListQuotes {
+        var completion: ((Result<QuotesModel, DomainError>) -> Void)?
+
+        func list(completion: @escaping (Result<QuotesModel, DomainError>) -> Void) {
+            self.completion = completion
+        }
+
+        func completedWithError(_ error: DomainError) {
+            completion?(.failure(error))
         }
     }
 }
