@@ -85,7 +85,7 @@
 			remoteGlobalIDString = 93BA9CEE252E059E0002ED43;
 			remoteInfo = UI;
 		};
-		93BA9D2C252E22200002ED43 /* PBXContainerItemProxy */ = {
+		93BA9DA0252E32840002ED43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 93953D34252B5D13008B07BC /* Project object */;
 			proxyType = 1;
@@ -725,7 +725,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				93BA9D2D252E22200002ED43 /* PBXTargetDependency */,
+				93BA9DA1252E32840002ED43 /* PBXTargetDependency */,
 			);
 			name = UI;
 			productName = UI;
@@ -1088,10 +1088,10 @@
 			target = 93BA9CEE252E059E0002ED43 /* UI */;
 			targetProxy = 93BA9CF9252E059E0002ED43 /* PBXContainerItemProxy */;
 		};
-		93BA9D2D252E22200002ED43 /* PBXTargetDependency */ = {
+		93BA9DA1252E32840002ED43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 93CA4786252C879300FF7EBB /* Presenter */;
-			targetProxy = 93BA9D2C252E22200002ED43 /* PBXContainerItemProxy */;
+			targetProxy = 93BA9DA0252E32840002ED43 /* PBXContainerItemProxy */;
 		};
 		93CA4768252C770E00FF7EBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1668,7 +1668,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1697,7 +1697,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
