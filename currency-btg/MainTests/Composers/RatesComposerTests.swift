@@ -5,8 +5,15 @@ import UI
 class RatesComposerTests: XCTestCase {
 
     func test_ui_presentation_integration() throws {
-        let (sut, _) = makeSut()
+        let (sut, listQuotesSpy) = makeSut()
         sut.loadViewIfNeeded()
+        sut.listQuotes?()
+        let exp = expectation(description: "waiting")
+        DispatchQueue.global().async {
+            listQuotesSpy.completedWithError(.unexpected)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
     }
 }
 
