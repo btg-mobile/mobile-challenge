@@ -5,7 +5,9 @@ import Presenter
 class RatesTests: XCTestCase {
 
     func test_rates_should_show_error_message_if_listQuotes_fails() throws {
-        let (sut, alertViewSpy, listQuotesSpy) = makeSut()
+        let alertViewSpy = AlertViewSpy()
+        let listQuotesSpy = ListQuotesSpy()
+        let sut = makeSut(alertView: alertViewSpy, listQuotes: listQuotesSpy)
         let exp = expectation(description: "waiting")
         alertViewSpy.observer { [weak self] viewModel in
             XCTAssertEqual(viewModel, self?.makeErrorAlertViewModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
@@ -15,16 +17,22 @@ class RatesTests: XCTestCase {
         listQuotesSpy.completedWithError(.unexpected)
         wait(for: [exp], timeout: 1)
     }
+    
+    func test_rates_should_show_loading_before_call_listQuotes() throws {
+        let loadingViewSpy = LoadingViewSpy()
+        let sut = makeSut(loadingView: loadingViewSpy)
+        sut.list()
+        XCTAssertEqual(loadingViewSpy.viewModel, LoadingViewModel(isLoading: true))
+    }
 }
 
 extension RatesTests {
     
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: RatesPresenter, alertViewSpy: AlertViewSpy, listQuotesSpy: ListQuotesSpy) {
-        let alertViewSpy = AlertViewSpy()
-        let listQuotesSpy = ListQuotesSpy()
-        let sut = RatesPresenter(alertView: alertViewSpy, listQuotes: listQuotesSpy)
+    func makeSut(alertView: AlertViewSpy = AlertViewSpy(), listQuotes: ListQuotesSpy = ListQuotesSpy(), loadingView: LoadingViewSpy = LoadingViewSpy(), file: StaticString = #filePath, line: UInt = #line) -> RatesPresenter {
+
+        let sut = RatesPresenter(alertView: alertView, listQuotes: listQuotes, loadingView: loadingView)
         checkMemoryLeak(for: sut, file: file, line: line)
-        return (sut, alertViewSpy, listQuotesSpy)
+        return sut
     }
     
     func makeErrorAlertViewModel(message: String) -> AlertViewModel {
@@ -52,6 +60,14 @@ extension RatesTests {
 
         func completedWithError(_ error: DomainError) {
             completion?(.failure(error))
+        }
+    }
+    
+    class LoadingViewSpy: LoadingView {
+        var viewModel: LoadingViewModel?
+        
+        func display(viewModel: LoadingViewModel) {
+            self.viewModel = viewModel
         }
     }
 }

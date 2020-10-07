@@ -21,15 +21,6 @@ class RemoteListQuotesTests: XCTestCase {
         }
     }
     
-//    func test_list_should_complete_with_data_if_client_complete_with_valid_data() throws {
-//        let (sut, httpClientSpy) = makeSut()
-//
-//        let expectedData = makeQuotesModel()
-//        expect(sut, completeWith: .success(expectedData)) {
-//            httpClientSpy.completeWithData(expectedData.toData()!)
-//        }
-//    }
-//    
     func test_list_should_complete_with_error_if_client_complete_with_invalid_data() throws {
         let (sut, httpClientSpy) = makeSut()
         
