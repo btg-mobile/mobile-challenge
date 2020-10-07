@@ -3,7 +3,7 @@ import Domain
 import UI
 
 public final class RatesComposer {
-    static func composeControllerWith(listQuotes: ListQuotes) -> RatesViewController {
+    public static func composeControllerWith(listQuotes: ListQuotes) -> RatesViewController {
         return ControllerFactory.makeController(listQuotes: listQuotes)
     }
 }

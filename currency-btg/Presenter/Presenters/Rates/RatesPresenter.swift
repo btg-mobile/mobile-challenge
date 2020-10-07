@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 public class RatesPresenter {
-    private let alertView: AlertView
+    private var alertView: AlertView
     private let listQuotes: ListQuotes
     private let loadingView: LoadingView
     
