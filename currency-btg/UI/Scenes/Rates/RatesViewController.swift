@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 import Presenter
 
-class RatesViewController: UIViewController, Storyboarded {
+public final class RatesViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    var listQuotes: (() -> Void)?
-    override func viewDidLoad() {
+    public var listQuotes: (() -> Void)?
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
@@ -19,7 +19,7 @@ class RatesViewController: UIViewController, Storyboarded {
 }
 
 extension RatesViewController: LoadingView {
-    func display(viewModel: LoadingViewModel) {
+    public func display(viewModel: LoadingViewModel) {
         if viewModel.isLoading {
             loadingIndicator?.startAnimating()
         } else {
@@ -29,7 +29,7 @@ extension RatesViewController: LoadingView {
 }
 
 extension RatesViewController: AlertView {
-    func showMessage(viewModel: AlertViewModel) {
+    public func showMessage(viewModel: AlertViewModel) {
         let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         present(alert, animated: true, completion: nil)
