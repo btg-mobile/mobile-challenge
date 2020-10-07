@@ -30,6 +30,7 @@
 		93999CB0252D5CB600E8EA05 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC3252B6E25008B07BC /* TestExtensions.swift */; };
 		93999CB9252D5DFC00E8EA05 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93999CB8252D5DFC00E8EA05 /* LoadingView.swift */; };
 		93A67911252B9808002E08CD /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DC3252B6E25008B07BC /* TestExtensions.swift */; };
+		93BA9C8F252E02B20002ED43 /* ListQuotesModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93953DBD252B6E0E008B07BC /* ListQuotesModelFactory.swift */; };
 		93CA4748252C721B00FF7EBB /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */; };
 		93CA4758252C72BD00FF7EBB /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */; };
 		93CA4764252C770E00FF7EBB /* ListQuotesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4763252C770E00FF7EBB /* ListQuotesIntegrationTests.swift */; };
@@ -850,6 +851,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BA9C8F252E02B20002ED43 /* ListQuotesModelFactory.swift in Sources */,
 				93CA4795252C879300FF7EBB /* RatesTests.swift in Sources */,
 				93999CB0252D5CB600E8EA05 /* TestExtensions.swift in Sources */,
 			);

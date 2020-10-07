@@ -37,6 +37,20 @@ class RatesTests: XCTestCase {
         listQuotesSpy.completedWithError(.unexpected)
         wait(for: [expHiddenLoading], timeout: 1)
     }
+    
+    func test_rates_should_show_success_message_if_listQuotes_succeeds() throws {
+        let alertViewSpy = AlertViewSpy()
+        let listQuotesSpy = ListQuotesSpy()
+        let sut = makeSut(alertView: alertViewSpy, listQuotes: listQuotesSpy)
+        let exp = expectation(description: "waiting")
+        alertViewSpy.observer { [weak self] viewModel in
+            XCTAssertEqual(viewModel, self?.makeSuccessAlertViewModel(message: "Cotas baixadas com sucesso."))
+            exp.fulfill()
+        }
+        sut.list()
+        listQuotesSpy.completedWithData(makeQuotesModel())
+        wait(for: [exp], timeout: 1)
+    }
 }
 
 extension RatesTests {
@@ -50,6 +64,10 @@ extension RatesTests {
     
     func makeErrorAlertViewModel(message: String) -> AlertViewModel {
         return AlertViewModel(title: "Erro", message: message)
+    }
+    
+    func makeSuccessAlertViewModel(message: String) -> AlertViewModel {
+        return AlertViewModel(title: "Sucesso", message: message)
     }
     
     class AlertViewSpy: AlertView {
@@ -73,6 +91,10 @@ extension RatesTests {
 
         func completedWithError(_ error: DomainError) {
             completion?(.failure(error))
+        }
+        
+        func completedWithData(_ quotes: QuotesModel) {
+            completion?(.success(quotes))
         }
     }
     
