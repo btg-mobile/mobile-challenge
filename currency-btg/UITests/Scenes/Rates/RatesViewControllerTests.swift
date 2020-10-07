@@ -28,8 +28,7 @@ class RatesViewControllerTests: XCTestCase {
 
 extension RatesViewControllerTests {
     func makeSut(listQuotesSpy: (() -> Void)? = nil) -> RatesViewController {
-        let sb = UIStoryboard(name: "Rates", bundle: Bundle(for: RatesViewController.self))
-        let sut = sb.instantiateViewController(identifier: "RatesViewController") as! RatesViewController
+        let sut = RatesViewController.instantiate()
         sut.listQuotes = listQuotesSpy
         sut.loadViewIfNeeded()
         return sut

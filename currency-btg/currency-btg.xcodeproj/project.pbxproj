@@ -39,6 +39,10 @@
 		93BA9CFD252E059E0002ED43 /* RatesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9CFC252E059E0002ED43 /* RatesViewControllerTests.swift */; };
 		93BA9D5C252E23990002ED43 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9D5B252E23990002ED43 /* RatesViewController.swift */; };
 		93BA9D8D252E25D20002ED43 /* Rates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BA9D8C252E25D20002ED43 /* Rates.storyboard */; };
+		93BA9DCD252E41D10002ED43 /* RatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9DCB252E41D10002ED43 /* RatesTableViewCell.swift */; };
+		93BA9DCE252E41D10002ED43 /* RatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93BA9DCC252E41D10002ED43 /* RatesTableViewCell.xib */; };
+		93BA9DDA252E43B50002ED43 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9DD9252E43B50002ED43 /* UIViewControllerExtensions.swift */; };
+		93BA9DEE252E447E0002ED43 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9DED252E447E0002ED43 /* Storyboarded.swift */; };
 		93CA4748252C721B00FF7EBB /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */; };
 		93CA4758252C72BD00FF7EBB /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */; };
 		93CA4764252C770E00FF7EBB /* ListQuotesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4763252C770E00FF7EBB /* ListQuotesIntegrationTests.swift */; };
@@ -180,6 +184,10 @@
 		93BA9CFE252E059E0002ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BA9D5B252E23990002ED43 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
 		93BA9D8C252E25D20002ED43 /* Rates.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rates.storyboard; sourceTree = "<group>"; };
+		93BA9DCB252E41D10002ED43 /* RatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesTableViewCell.swift; sourceTree = "<group>"; };
+		93BA9DCC252E41D10002ED43 /* RatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatesTableViewCell.xib; sourceTree = "<group>"; };
+		93BA9DD9252E43B50002ED43 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		93BA9DED252E447E0002ED43 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 		93CA4761252C770E00FF7EBB /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -488,6 +496,7 @@
 		93BA9CF0252E059E0002ED43 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				93BA9DD8252E439A0002ED43 /* Helpers */,
 				93BA9DB6252E3E980002ED43 /* Scenes */,
 				93BA9CF2252E059E0002ED43 /* Info.plist */,
 			);
@@ -506,6 +515,7 @@
 		93BA9DB4252E3E680002ED43 /* Rates */ = {
 			isa = PBXGroup;
 			children = (
+				93BA9DCA252E41A70002ED43 /* Views */,
 				93BA9D8C252E25D20002ED43 /* Rates.storyboard */,
 				93BA9D5B252E23990002ED43 /* RatesViewController.swift */,
 			);
@@ -534,6 +544,24 @@
 				93BA9DB5252E3E720002ED43 /* Rates */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		93BA9DCA252E41A70002ED43 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9DCB252E41D10002ED43 /* RatesTableViewCell.swift */,
+				93BA9DCC252E41D10002ED43 /* RatesTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93BA9DD8252E439A0002ED43 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				93BA9DD9252E43B50002ED43 /* UIViewControllerExtensions.swift */,
+				93BA9DED252E447E0002ED43 /* Storyboarded.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		93CA4746252C720F00FF7EBB /* Http */ = {
@@ -957,6 +985,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BA9D8D252E25D20002ED43 /* Rates.storyboard in Resources */,
+				93BA9DCE252E41D10002ED43 /* RatesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,6 +1078,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BA9D5C252E23990002ED43 /* RatesViewController.swift in Sources */,
+				93BA9DDA252E43B50002ED43 /* UIViewControllerExtensions.swift in Sources */,
+				93BA9DCD252E41D10002ED43 /* RatesTableViewCell.swift in Sources */,
+				93BA9DEE252E447E0002ED43 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

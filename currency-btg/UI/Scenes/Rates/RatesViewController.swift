@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 import Presenter
 
-class RatesViewController: UIViewController {
+class RatesViewController: UIViewController, Storyboarded {
+    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var listQuotes: (() -> Void)?
@@ -29,6 +30,8 @@ extension RatesViewController: LoadingView {
 
 extension RatesViewController: AlertView {
     func showMessage(viewModel: AlertViewModel) {
-        
+        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true, completion: nil)
     }
 }
