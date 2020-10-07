@@ -57,7 +57,6 @@
 		93BA9E5D252E47E70002ED43 /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93CA4787252C879300FF7EBB /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93BA9E60252E47E70002ED43 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BA9CEF252E059E0002ED43 /* UI.framework */; };
 		93BA9E61252E47E70002ED43 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93BA9CEF252E059E0002ED43 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		93BA9E72252E48C30002ED43 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9E71252E48C30002ED43 /* ControllerFactory.swift */; };
 		93BA9E8A252E4C290002ED43 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9E89252E4C290002ED43 /* UseCaseFactory.swift */; };
 		93BA9EAE252E4DC20002ED43 /* RatesComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9EAD252E4DC20002ED43 /* RatesComposer.swift */; };
 		93BA9EC5252E570F0002ED43 /* ListQuotesSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9CC0252E04490002ED43 /* ListQuotesSpy.swift */; };
@@ -274,7 +273,6 @@
 		93BA9E0C252E47140002ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BA9E11252E47140002ED43 /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BA9E17252E47140002ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93BA9E71252E48C30002ED43 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		93BA9E89252E4C290002ED43 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		93BA9EAD252E4DC20002ED43 /* RatesComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesComposer.swift; sourceTree = "<group>"; };
 		93BA9ED1252E57430002ED43 /* RatesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesIntegrationTests.swift; sourceTree = "<group>"; };
@@ -705,7 +703,6 @@
 		93BA9E70252E48AE0002ED43 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				93BA9E71252E48C30002ED43 /* ControllerFactory.swift */,
 				93BA9E89252E4C290002ED43 /* UseCaseFactory.swift */,
 			);
 			path = Factories;
@@ -1326,7 +1323,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BA9E8A252E4C290002ED43 /* UseCaseFactory.swift in Sources */,
-				93BA9E72252E48C30002ED43 /* ControllerFactory.swift in Sources */,
 				93BA9DFF252E47130002ED43 /* AppDelegate.swift in Sources */,
 				93BA9EAE252E4DC20002ED43 /* RatesComposer.swift in Sources */,
 				93BA9EEC252E5F3E0002ED43 /* WeakVarProxy.swift in Sources */,
