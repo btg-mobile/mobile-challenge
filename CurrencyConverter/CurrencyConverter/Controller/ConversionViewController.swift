@@ -34,7 +34,15 @@ class ConversionViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
+        valueLabel.addTarget(self, action: #selector(myTextFieldDidChange(_:)), for: .editingChanged)
+        
         title = NSLocalizedString("title_conversion_view_controller", comment: "")
+    }
+    
+    @objc func myTextFieldDidChange(_ textField: UITextField) {
+        if let amountString = textField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
     }
     
     @IBAction func selectCoinAction(_ sender: Any) {
@@ -62,16 +70,14 @@ extension ConversionViewController: ConversionListTableViewDelegate {
 extension ConversionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField.text?.count ?? 0 > 24 {
-            return false
-        }
-        
         let text = textField.text ?? ""
         
-        var newText = string.isEmpty ? (String(text.dropLast())) : (text + string)
-        
-        newText = newText.replacingOccurrences(of: ",", with: ".")
-        
+        if text.digits.count > 15 && !string.isEmpty {
+            return false
+        }
+
+        let newText = string.isEmpty ? (String(text.dropLast())) : (text + string)
+
         guard let value = newText.isEmpty ? 0.00 : Double(newText) else { return false }
         viewModel.setValue(value: value)
         return true

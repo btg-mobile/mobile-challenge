@@ -28,6 +28,7 @@
 		F2B067CF252D405000D01DA4 /* ExchangeRateListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B067CE252D405000D01DA4 /* ExchangeRateListResponseModel.swift */; };
 		F2B067D2252D523300D01DA4 /* CurrentQuoteResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B067D1252D523300D01DA4 /* CurrentQuoteResponseModel.swift */; };
 		F2D72A42252D5723000ECF44 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D72A41252D5723000ECF44 /* CurrencyService.swift */; };
+		F2F56366252F1EF300ACC776 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F56365252F1EF300ACC776 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		F2B067CE252D405000D01DA4 /* ExchangeRateListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateListResponseModel.swift; sourceTree = "<group>"; };
 		F2B067D1252D523300D01DA4 /* CurrentQuoteResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentQuoteResponseModel.swift; sourceTree = "<group>"; };
 		F2D72A41252D5723000ECF44 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		F2F56365252F1EF300ACC776 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				F23E306F252E79D500A4343A /* CoinError.swift */,
 				F23E3074252E8EBE00A4343A /* ViewUtils.swift */,
 				F23E30CE252ECEBB00A4343A /* Date+Extension.swift */,
+				F2F56365252F1EF300ACC776 /* String+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				F23E3070252E79D500A4343A /* CoinError.swift in Sources */,
 				F2B067CF252D405000D01DA4 /* ExchangeRateListResponseModel.swift in Sources */,
 				F23E3075252E8EBE00A4343A /* ViewUtils.swift in Sources */,
+				F2F56366252F1EF300ACC776 /* String+Extensions.swift in Sources */,
 				F2D72A42252D5723000ECF44 /* CurrencyService.swift in Sources */,
 				F23E30CF252ECEBB00A4343A /* Date+Extension.swift in Sources */,
 				F210366E252DF453009C0CA7 /* ConversionListTableCell.swift in Sources */,
