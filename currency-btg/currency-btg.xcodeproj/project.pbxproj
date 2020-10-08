@@ -65,6 +65,7 @@
 		93BA9EEC252E5F3E0002ED43 /* WeakVarProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9EEB252E5F3E0002ED43 /* WeakVarProxy.swift */; };
 		93BA9F26252E630B0002ED43 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9F25252E630B0002ED43 /* Environment.swift */; };
 		93BA9F66252E6DC40002ED43 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA9F65252E6DC40002ED43 /* MainQueueDispatchDecorator.swift */; };
+		93BA9F9D252F4C0F0002ED43 /* Leia-me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93BA9F9C252F4C0F0002ED43 /* Leia-me.rtf */; };
 		93CA4748252C721B00FF7EBB /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */; };
 		93CA4758252C72BD00FF7EBB /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */; };
 		93CA4764252C770E00FF7EBB /* ListQuotesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA4763252C770E00FF7EBB /* ListQuotesIntegrationTests.swift */; };
@@ -283,6 +284,7 @@
 		93BA9F1A252E62900002ED43 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		93BA9F25252E630B0002ED43 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		93BA9F65252E6DC40002ED43 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		93BA9F9C252F4C0F0002ED43 /* Leia-me.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Leia-me.rtf"; sourceTree = "<group>"; };
 		93CA4747252C721B00FF7EBB /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		93CA4757252C72BD00FF7EBB /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 		93CA4761252C770E00FF7EBB /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,6 +402,7 @@
 		93953D33252B5D13008B07BC = {
 			isa = PBXGroup;
 			children = (
+				93BA9F9C252F4C0F0002ED43 /* Leia-me.rtf */,
 				93953D4F252B5DAA008B07BC /* Domain */,
 				93953D69252B630F008B07BC /* Data */,
 				93953D74252B630F008B07BC /* DataTests */,
@@ -1267,6 +1270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BA9F9D252F4C0F0002ED43 /* Leia-me.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
