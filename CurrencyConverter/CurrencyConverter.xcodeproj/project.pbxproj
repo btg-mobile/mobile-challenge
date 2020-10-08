@@ -16,6 +16,9 @@
 		F21A7253252DE18B00FC3336 /* ConversionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A7252252DE18B00FC3336 /* ConversionListTableViewController.swift */; };
 		F23E3070252E79D500A4343A /* CoinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E306F252E79D500A4343A /* CoinError.swift */; };
 		F23E3075252E8EBE00A4343A /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E3074252E8EBE00A4343A /* ViewUtils.swift */; };
+		F23E30A6252EA40100A4343A /* CurrencyConverterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F23E30A4252EA40100A4343A /* CurrencyConverterModel.xcdatamodeld */; };
+		F23E30CC252EC6A400A4343A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F23E30CB252EC6A400A4343A /* Localizable.strings */; };
+		F23E30CF252ECEBB00A4343A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E30CE252ECEBB00A4343A /* Date+Extension.swift */; };
 		F2B067BA252D3BB600D01DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B067B9252D3BB600D01DA4 /* AppDelegate.swift */; };
 		F2B067BC252D3BB600D01DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B067BB252D3BB600D01DA4 /* SceneDelegate.swift */; };
 		F2B067BE252D3BB600D01DA4 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B067BD252D3BB600D01DA4 /* ConversionViewController.swift */; };
@@ -37,6 +40,9 @@
 		F21A7252252DE18B00FC3336 /* ConversionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionListTableViewController.swift; sourceTree = "<group>"; };
 		F23E306F252E79D500A4343A /* CoinError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinError.swift; sourceTree = "<group>"; };
 		F23E3074252E8EBE00A4343A /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		F23E30A5252EA40100A4343A /* CurrencyConverterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyConverterModel.xcdatamodel; sourceTree = "<group>"; };
+		F23E30CB252EC6A400A4343A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		F23E30CE252ECEBB00A4343A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		F2B067B6252D3BB600D01DA4 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B067B9252D3BB600D01DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2B067BB252D3BB600D01DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,8 +89,18 @@
 			children = (
 				F23E306F252E79D500A4343A /* CoinError.swift */,
 				F23E3074252E8EBE00A4343A /* ViewUtils.swift */,
+				F23E30CE252ECEBB00A4343A /* Date+Extension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F23E30AE252EA72400A4343A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				F2B067CE252D405000D01DA4 /* ExchangeRateListResponseModel.swift */,
+				F2B067D1252D523300D01DA4 /* CurrentQuoteResponseModel.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		F2B067AD252D3BB600D01DA4 = {
@@ -119,6 +135,8 @@
 				F2B067C2252D3BB700D01DA4 /* Assets.xcassets */,
 				F2B067C4252D3BB700D01DA4 /* LaunchScreen.storyboard */,
 				F2B067C7252D3BB700D01DA4 /* Info.plist */,
+				F23E30A4252EA40100A4343A /* CurrencyConverterModel.xcdatamodeld */,
+				F23E30CB252EC6A400A4343A /* Localizable.strings */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -126,8 +144,7 @@
 		F2D72A3C252D56BA000ECF44 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2B067CE252D405000D01DA4 /* ExchangeRateListResponseModel.swift */,
-				F2B067D1252D523300D01DA4 /* CurrentQuoteResponseModel.swift */,
+				F23E30AE252EA72400A4343A /* Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2103671252DF46C009C0CA7 /* ConversionListTableCell.xib in Resources */,
+				F23E30CC252EC6A400A4343A /* Localizable.strings in Resources */,
 				F2B067C6252D3BB700D01DA4 /* LaunchScreen.storyboard in Resources */,
 				F21A7250252DE0F500FC3336 /* ConversionListTableViewController.xib in Resources */,
 				F2B067C3252D3BB700D01DA4 /* Assets.xcassets in Resources */,
@@ -244,10 +262,12 @@
 				F2B067CF252D405000D01DA4 /* ExchangeRateListResponseModel.swift in Sources */,
 				F23E3075252E8EBE00A4343A /* ViewUtils.swift in Sources */,
 				F2D72A42252D5723000ECF44 /* CurrencyService.swift in Sources */,
+				F23E30CF252ECEBB00A4343A /* Date+Extension.swift in Sources */,
 				F210366E252DF453009C0CA7 /* ConversionListTableCell.swift in Sources */,
 				F2B067BA252D3BB600D01DA4 /* AppDelegate.swift in Sources */,
 				F2B067D2252D523300D01DA4 /* CurrentQuoteResponseModel.swift in Sources */,
 				F21A7253252DE18B00FC3336 /* ConversionListTableViewController.swift in Sources */,
+				F23E30A6252EA40100A4343A /* CurrencyConverterModel.xcdatamodeld in Sources */,
 				F2103674252DF517009C0CA7 /* CoinListViewModel.swift in Sources */,
 				F210367E252DFF8A009C0CA7 /* CoinViewModel.swift in Sources */,
 				F2B067BC252D3BB600D01DA4 /* SceneDelegate.swift in Sources */,
@@ -453,6 +473,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F23E30A4252EA40100A4343A /* CurrencyConverterModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F23E30A5252EA40100A4343A /* CurrencyConverterModel.xcdatamodel */,
+			);
+			currentVersion = F23E30A5252EA40100A4343A /* CurrencyConverterModel.xcdatamodel */;
+			path = CurrencyConverterModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F2B067AE252D3BB600D01DA4 /* Project object */;
 }

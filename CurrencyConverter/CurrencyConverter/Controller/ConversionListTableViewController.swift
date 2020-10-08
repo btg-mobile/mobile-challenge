@@ -39,7 +39,8 @@ class ConversionListTableViewController: UIViewController {
         
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
-        title = "List Coins"
+        
+        title = NSLocalizedString("title_conversion_list_view_controller", comment: "")
     }
     
 }
@@ -69,7 +70,9 @@ extension ConversionListTableViewController: UITableViewDelegate, UITableViewDat
 
 extension ConversionListTableViewController: CoinListViewModelDelegate {
     func didErrorOcurred(error: String) {
-        ViewUtils.alert(self, title: "Erro", error, btnLabel: "understand", completion: nil, onOK: nil)
+        ViewUtils.alert(self, title: NSLocalizedString("Erro", comment: "") , error, btnLabel: NSLocalizedString("understand", comment: ""), completion: nil) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func didGetListModel() {

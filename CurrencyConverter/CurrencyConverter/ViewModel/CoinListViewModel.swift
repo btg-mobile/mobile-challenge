@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 protocol CoinListViewModelDelegate {
     func didGetListModel()
@@ -15,6 +16,10 @@ protocol CoinListViewModelDelegate {
 class CoinListViewModel {
     
     private var allCoins: [CoinViewModel] = [CoinViewModel]()
+    private let monitor = NWPathMonitor()
+    
+    private let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var exchangeRateListDataModel: [ExchangeRateList]?
     
     public private(set) var listCoins: [CoinViewModel]? {
         didSet {
@@ -25,11 +30,27 @@ class CoinListViewModel {
     var delegate: CoinListViewModelDelegate?
     
     init() {
-        self.getList()
+        monitorNetwork()
     }
     
-    private func getList() {
-        
+    private func monitorNetwork() {
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    self.getListService()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.fetchCurrencies()
+                }
+            }
+        }
+        let queue = DispatchQueue(label: "Network")
+        monitor.start(queue: queue)
+    }
+    
+    private func getListService() {
         CurrencyService.shared.getList { [weak self] result in
             guard let self = self else { return }
             
@@ -45,6 +66,7 @@ class CoinListViewModel {
                     self.allCoins = listCoins.sorted { $0.name < $1.name }
                     
                     self.listCoins = self.allCoins
+                    self.saveCurrencies(response: model)
                 } else {
                     self.delegate?.didErrorOcurred(error: CoinError.invallidData.rawValue)
                 }
@@ -54,6 +76,46 @@ class CoinListViewModel {
             
         }
         
+    }
+    
+    private func saveCurrencies(response: ExchangeRateListResponseModel) {
+        if let exchangeRateListDataModel = exchangeRateListDataModel?.first {
+            exchangeRateListDataModel.currencies = response.currencies
+            self.exchangeRateListDataModel = [exchangeRateListDataModel]
+        } else {
+            let newCurrencie = ExchangeRateList(context: self.viewContext)
+            newCurrencie.currencies = response.currencies
+            self.exchangeRateListDataModel = [newCurrencie]
+        }
+        
+        do {
+            try self.viewContext.save()
+        } catch {
+            self.delegate?.didErrorOcurred(error: NSLocalizedString("save_local_error", comment: ""))
+        }
+    }
+    
+    private func fetchCurrencies() {
+        do {
+            self.exchangeRateListDataModel = try viewContext.fetch(ExchangeRateList.fetchRequest())
+            
+            if let exchangeRateList = exchangeRateListDataModel?.first {
+                var listCoins = [CoinViewModel]()
+                
+                if let currencies = exchangeRateList.currencies {
+                    listCoins = currencies.map({ CoinViewModel(initials: $0.key, name: $0.value) })
+                }
+                
+                self.allCoins = listCoins.sorted { $0.name < $1.name }
+                
+                self.listCoins = self.allCoins
+            } else {
+                self.delegate?.didErrorOcurred(error: NSLocalizedString("local_data_empty", comment: ""))
+            }
+            
+        } catch {
+            self.delegate?.didErrorOcurred(error: NSLocalizedString("load_local_error", comment: ""))
+        }
     }
     
     func filter(by text: String) {

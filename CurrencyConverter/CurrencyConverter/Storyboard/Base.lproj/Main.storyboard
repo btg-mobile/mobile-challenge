@@ -62,6 +62,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hu-pM-skv">
+                                <rect key="frame" x="20" y="826" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZXu-Q4-oig"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -70,14 +79,17 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q10-ZV-6PO" secondAttribute="trailing" constant="20" id="8P9-VL-3k0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bj8-xa-TWC" secondAttribute="trailing" constant="20" id="EEn-d1-Y02"/>
                             <constraint firstItem="nVu-Gz-AmH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GPq-iF-Ue2"/>
+                            <constraint firstItem="2Hu-pM-skv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Gd9-6f-dav"/>
                             <constraint firstItem="q10-ZV-6PO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Hft-Oh-k2y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hUd-VI-zI8" secondAttribute="trailing" constant="20" id="NKc-Lh-81j"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nVu-Gz-AmH" secondAttribute="trailing" constant="20" id="NUO-VH-IS0"/>
                             <constraint firstItem="hUd-VI-zI8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SPY-wf-zfw"/>
+                            <constraint firstAttribute="trailing" secondItem="2Hu-pM-skv" secondAttribute="trailing" constant="20" id="b1I-WF-Qjw"/>
                             <constraint firstItem="hUd-VI-zI8" firstAttribute="top" secondItem="nVu-Gz-AmH" secondAttribute="bottom" constant="40" id="cb5-uz-9IF"/>
                             <constraint firstItem="Bj8-xa-TWC" firstAttribute="top" secondItem="hUd-VI-zI8" secondAttribute="bottom" constant="40" id="cni-uS-OIt"/>
                             <constraint firstItem="Bj8-xa-TWC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jR0-gP-A9b"/>
                             <constraint firstItem="nVu-Gz-AmH" firstAttribute="top" secondItem="q10-ZV-6PO" secondAttribute="bottom" constant="40" id="tCf-LD-IFR"/>
+                            <constraint firstAttribute="bottom" secondItem="2Hu-pM-skv" secondAttribute="bottom" constant="20" id="wa1-uv-z0K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xlX-AC-9ib"/>
@@ -85,6 +97,7 @@
                         <outlet property="coinDestinyButton" destination="hUd-VI-zI8" id="xqo-6h-BhX"/>
                         <outlet property="coinOriginButton" destination="nVu-Gz-AmH" id="jzw-Cp-S74"/>
                         <outlet property="convertedValueLabel" destination="Bj8-xa-TWC" id="Y2b-4u-nQj"/>
+                        <outlet property="lastUpdateLabel" destination="2Hu-pM-skv" id="cnS-rx-4zx"/>
                         <outlet property="valueLabel" destination="q10-ZV-6PO" id="Man-GL-Irr"/>
                     </connections>
                 </viewController>

@@ -17,7 +17,8 @@ class ConversionViewController: UIViewController {
     @IBOutlet weak var coinOriginButton: UIButton!
     @IBOutlet weak var coinDestinyButton: UIButton!
     @IBOutlet weak var convertedValueLabel: UILabel!
-
+    @IBOutlet weak var lastUpdateLabel: UILabel!
+    
     private var buttonTappedTag: Int = 0
     
     var viewModel: ConversionViewModel!
@@ -33,7 +34,7 @@ class ConversionViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
-        title = "Currency Converter"
+        title = NSLocalizedString("title_conversion_view_controller", comment: "")
     }
     
     @IBAction func selectCoinAction(_ sender: Any) {
@@ -80,8 +81,14 @@ extension ConversionViewController: UITextFieldDelegate {
 
 
 extension ConversionViewController: ConversionViewModelDelegate {
+    func setLastUpdate(text: String) {
+        DispatchQueue.main.async {
+            self.lastUpdateLabel.text = NSLocalizedString("last_update", comment: "") + text
+        }
+    }
+    
     func didErrorOcurred(error: String) {
-        ViewUtils.alert(self, title: "Erro", error, btnLabel: "understand", completion: nil, onOK: nil)
+        ViewUtils.alert(self, title: NSLocalizedString("Erro", comment: ""), error, btnLabel: NSLocalizedString("understand", comment: ""), completion: nil, onOK: nil)
     }
     
     func didConvertValue(value: String) {
