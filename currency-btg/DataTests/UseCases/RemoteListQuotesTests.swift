@@ -32,7 +32,7 @@ class RemoteListQuotesTests: XCTestCase {
     func test_list_should_not_complete_if_sut_has_been_deallocated() throws {
         let httpClientSpy = HttpClientSpy()
         var sut: RemoteListQuotes? = RemoteListQuotes(url: makeUrl(), httpClient: httpClientSpy)
-        var result: Result<QuotesModel, DomainError>?
+        var result: ListQuotes.Result?
         sut?.list { result = $0 }
         sut = nil
         httpClientSpy.completeWithData(makeInvalidData())
@@ -49,7 +49,7 @@ extension RemoteListQuotesTests {
         return (sut, httpClientSpy)
     }
     
-    func expect(_ sut: RemoteListQuotes, completeWith expectedResult: Result<QuotesModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    func expect(_ sut: RemoteListQuotes, completeWith expectedResult: ListQuotes.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
        
         let exp = expectation(description: "waiting")
         sut.list() { receivedResult in

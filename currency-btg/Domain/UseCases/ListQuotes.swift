@@ -1,5 +1,6 @@
 import Foundation
 
 public protocol ListQuotes {
-    func list(completion: @escaping (Result<QuotesModel, DomainError>) -> Void)
+    typealias Result = Swift.Result<QuotesModel, DomainError>
+    func list(completion: @escaping (Result) -> Void)
 }

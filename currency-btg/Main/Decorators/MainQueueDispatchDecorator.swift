@@ -17,7 +17,7 @@ public final class MainQueueDipatchDecorator<T> {
 }
 
 extension MainQueueDipatchDecorator: ListQuotes where T: ListQuotes {
-    public func list(completion: @escaping (Result<QuotesModel, DomainError>) -> Void) {
+    public func list(completion: @escaping (ListQuotes.Result) -> Void) {
         instance.list { [weak self] result in
             self?.dispatch {
                 completion(result)

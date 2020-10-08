@@ -2,9 +2,9 @@ import Foundation
 import Domain
 
 class ListQuotesSpy: ListQuotes {
-    var completion: ((Result<QuotesModel, DomainError>) -> Void)?
+    var completion: ((ListQuotes.Result) -> Void)?
 
-    func list(completion: @escaping (Result<QuotesModel, DomainError>) -> Void) {
+    func list(completion: @escaping (ListQuotes.Result) -> Void) {
         self.completion = completion
     }
 
