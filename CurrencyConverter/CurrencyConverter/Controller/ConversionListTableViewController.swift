@@ -30,6 +30,8 @@ class ConversionListTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ViewUtils.showLoading(viewController: self)
+        
         self.viewModel = CoinListViewModel()
         self.viewModel.delegate = self
         
@@ -70,12 +72,16 @@ extension ConversionListTableViewController: UITableViewDelegate, UITableViewDat
 
 extension ConversionListTableViewController: CoinListViewModelDelegate {
     func didErrorOcurred(error: String) {
-        ViewUtils.alert(self, title: NSLocalizedString("Erro", comment: "") , error, btnLabel: NSLocalizedString("understand", comment: ""), completion: nil) {
-            self.navigationController?.popViewController(animated: true)
+        ViewUtils.hideLoading()
+        DispatchQueue.main.async {
+            ViewUtils.alert(self, title: NSLocalizedString("Erro", comment: "") , error, btnLabel: NSLocalizedString("understand", comment: ""), completion: nil) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
     func didGetListModel() {
+        ViewUtils.hideLoading()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

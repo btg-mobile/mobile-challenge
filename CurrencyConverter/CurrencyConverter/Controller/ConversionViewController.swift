@@ -25,9 +25,12 @@ class ConversionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ViewUtils.showLoading(viewController: self)
+        
         self.viewModel = ConversionViewModel()
         self.viewModel.delegate = self
-
+        
         valueLabel.delegate = self
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -75,26 +78,30 @@ extension ConversionViewController: UITextFieldDelegate {
         if text.digits.count > 15 && !string.isEmpty {
             return false
         }
-
-        let newText = string.isEmpty ? (String(text.dropLast())) : (text + string)
-
+        
+        var newText = string.isEmpty ? (String(text.dropLast())) : (text + string)
+        
+        newText = newText.currencyInputFormatting()
+        
         guard let value = newText.isEmpty ? 0.00 : Double(newText) else { return false }
         viewModel.setValue(value: value)
         return true
     }
 }
 
-
-
 extension ConversionViewController: ConversionViewModelDelegate {
     func setLastUpdate(text: String) {
+        ViewUtils.hideLoading()
         DispatchQueue.main.async {
             self.lastUpdateLabel.text = NSLocalizedString("last_update", comment: "") + text
         }
     }
     
     func didErrorOcurred(error: String) {
-        ViewUtils.alert(self, title: NSLocalizedString("Erro", comment: ""), error, btnLabel: NSLocalizedString("understand", comment: ""), completion: nil, onOK: nil)
+        ViewUtils.hideLoading()
+        DispatchQueue.main.async {
+            ViewUtils.alert(self, title: NSLocalizedString("Erro", comment: ""), error, btnLabel: NSLocalizedString("understand", comment: ""), completion: nil, onOK: nil)
+        }
     }
     
     func didConvertValue(value: String) {
