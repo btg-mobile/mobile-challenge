@@ -42,20 +42,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93953D6F252B630F008B07BC"
-               BuildableName = "DataTests.xctest"
-               BlueprintName = "DataTests"
-               ReferencedContainer = "container:currency-btg.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "9398D57D252B8D4B00F7CC82"
                BuildableName = "Infra.framework"
                BlueprintName = "Infra"
@@ -70,9 +56,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9398D585252B8D4B00F7CC82"
-               BuildableName = "InfraTests.xctest"
-               BlueprintName = "InfraTests"
+               BlueprintIdentifier = "93CA4786252C879300FF7EBB"
+               BuildableName = "Presenter.framework"
+               BlueprintName = "Presenter"
                ReferencedContainer = "container:currency-btg.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -83,32 +69,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      enableThreadSanitizer = "YES"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES">
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93953D67252B630F008B07BC"
-            BuildableName = "Data.framework"
-            BlueprintName = "Data"
-            ReferencedContainer = "container:currency-btg.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93953D4D252B5DAA008B07BC"
-            BuildableName = "Domain.framework"
-            BlueprintName = "Domain"
-            ReferencedContainer = "container:currency-btg.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9398D57D252B8D4B00F7CC82"
-            BuildableName = "Infra.framework"
-            BlueprintName = "Infra"
-            ReferencedContainer = "container:currency-btg.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
+      enableThreadSanitizer = "YES">
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -137,31 +98,9 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93BA9E10252E47140002ED43"
-               BuildableName = "MainTests.xctest"
-               BlueprintName = "MainTests"
-               ReferencedContainer = "container:currency-btg.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "93CA478E252C879300FF7EBB"
                BuildableName = "PresenterTests.xctest"
                BlueprintName = "PresenterTests"
-               ReferencedContainer = "container:currency-btg.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93BA9CF6252E059E0002ED43"
-               BuildableName = "UITests.xctest"
-               BlueprintName = "UITests"
                ReferencedContainer = "container:currency-btg.xcodeproj">
             </BuildableReference>
          </TestableReference>

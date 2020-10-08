@@ -20,7 +20,9 @@ public class RatesPresenter {
             switch result {
             case .failure:
                 self.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
-            case .success: self.alertView.showMessage(viewModel: AlertViewModel(title: "Sucesso", message: "Cotas baixadas com sucesso."))
+            case .success(let data):
+                debugPrint(data)
+                self.alertView.showMessage(viewModel: AlertViewModel(title: "Sucesso", message: "Cotas baixadas com sucesso."))
             }
         }
     }
