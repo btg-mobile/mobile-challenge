@@ -147,10 +147,10 @@
 				CB0E592D2531402A00D569EE /* UserDefaults */,
 				CBD8396A252DF57B00D152F1 /* ViewModels */,
 				CB2369F62530A5E3005D869F /* Views */,
+				CBA5220F253885C100764281 /* Tests */,
 				CB195D13252D202700CC120C /* Assets.xcassets */,
 				CB195D15252D202700CC120C /* LaunchScreen.storyboard */,
 				CB195D18252D202700CC120C /* Info.plist */,
-				CBED81432537AE380066E4EB /* InitialViewModelTest.swift */,
 			);
 			path = "BTGmobile-challenge";
 			sourceTree = "<group>";
@@ -227,6 +227,14 @@
 				CB9311EF2534B3C2008E6D48 /* LiveCurrency.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		CBA5220F253885C100764281 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CBED81432537AE380066E4EB /* InitialViewModelTest.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		CBD8396A252DF57B00D152F1 /* ViewModels */ = {

@@ -24,12 +24,11 @@ class InitialViewModelTest: XCTestCase {
 		XCTAssertEqual(sut.initialAmount, "")
 	}
 	func testConverteFromDolar() {
-		XCTAssertEqual(sut.converteFromDolar(currencies: sut.liveCurrencies, currency: "BRL"), 5.0 )
+		XCTAssertEqual(sut.converteFromDolar(currencies: sut.liveCurrencies, currency: "BRL"), 0.0 )
 	}
 	func testConversion() {
-		XCTAssertEqual(sut.converte(firstCurrency: 5.0, secondCurrency: 2.0, amount: 2.5), 1.0)
+		XCTAssertEqual(sut.converte(firstCurrency: 10.0, secondCurrency: 5.0, amount: 5.0), 2.5)
 	}
-	
 	
 	override func tearDown() {
 		super.tearDown()
