@@ -2,6 +2,8 @@ package br.net.easify.currencydroid.di.component
 
 import br.net.easify.currencydroid.MainApplication
 import br.net.easify.currencydroid.di.module.AppModule
+import br.net.easify.currencydroid.viewmodel.CurrenciesViewModel
+import br.net.easify.currencydroid.viewmodel.HomeViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,5 +17,6 @@ interface AppComponent {
     }
 
     fun inject(app: MainApplication)
-
+    fun inject(viewModel: HomeViewModel)
+    fun inject(viewModel: CurrenciesViewModel)
 }
