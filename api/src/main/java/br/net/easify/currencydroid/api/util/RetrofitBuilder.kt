@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitBuilder () {
+class RetrofitBuilder {
 
     fun retrofit(): Retrofit {
         return Retrofit.Builder()
@@ -23,7 +23,7 @@ class RetrofitBuilder () {
         dispatcher.maxRequests = 1
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         okHttpClientBuilder.dispatcher(dispatcher)
-        okHttpClientBuilder.addInterceptor(AuthInterceptor(this))
+        okHttpClientBuilder.addInterceptor(AuthInterceptor())
         return okHttpClientBuilder.build()
     }
 }
