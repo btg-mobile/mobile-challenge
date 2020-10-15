@@ -1,8 +1,8 @@
-package br.net.easify.currencydroid
+package br.net.easify.currencydroid.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
+import br.net.easify.currencydroid.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
