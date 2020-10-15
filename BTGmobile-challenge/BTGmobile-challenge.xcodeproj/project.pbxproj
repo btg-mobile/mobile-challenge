@@ -1,0 +1,748 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB0E5929253130B000D569EE /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E5928253130B000D569EE /* CurrencyManager.swift */; };
+		CB195D0B252D202500CC120C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB195D0A252D202500CC120C /* AppDelegate.swift */; };
+		CB195D0D252D202500CC120C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB195D0C252D202500CC120C /* SceneDelegate.swift */; };
+		CB195D0F252D202500CC120C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB195D0E252D202500CC120C /* InitialViewController.swift */; };
+		CB195D14252D202700CC120C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB195D13252D202700CC120C /* Assets.xcassets */; };
+		CB195D17252D202700CC120C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB195D15252D202700CC120C /* LaunchScreen.storyboard */; };
+		CB195D22252D202700CC120C /* BTGmobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB195D21252D202700CC120C /* BTGmobile_challengeTests.swift */; };
+		CB195D2D252D202700CC120C /* BTGmobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB195D2C252D202700CC120C /* BTGmobile_challengeUITests.swift */; };
+		CB2369DC25309A74005D869F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2369DB25309A74005D869F /* Coordinator.swift */; };
+		CB2369E725309C98005D869F /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2369E625309C98005D869F /* InitialViewModel.swift */; };
+		CB2369EC25309D0D005D869F /* CurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2369EB25309D0D005D869F /* CurrencyCoordinator.swift */; };
+		CB2369FE2530ABF8005D869F /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2369FD2530ABF8005D869F /* CurrencyTextField.swift */; };
+		CB9311F02534B3C2008E6D48 /* LiveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9311EF2534B3C2008E6D48 /* LiveCurrency.swift */; };
+		CB9311F72534E8F7008E6D48 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9311F62534E8F7008E6D48 /* NetworkManager.swift */; };
+		CB9311FF253509DA008E6D48 /* ListedCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9311FE253509DA008E6D48 /* ListedCurrencyResponse.swift */; };
+		CB93120A253524DB008E6D48 /* ListedCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB931209253524DB008E6D48 /* ListedCurrency.swift */; };
+		CBC0B1202535E99C009312AD /* LiveCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0B11F2535E99C009312AD /* LiveCurrencyResponse.swift */; };
+		CBD8396C252DF5AA00D152F1 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8396B252DF5AA00D152F1 /* CurrencyViewController.swift */; };
+		CBD83971252DF74200D152F1 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD83970252DF74200D152F1 /* CurrencyTableViewCell.swift */; };
+		CBD83976252DFB4D00D152F1 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD83975252DFB4D00D152F1 /* Enumerations.swift */; };
+		CBD8397B252E0B6A00D152F1 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8397A252E0B6A00D152F1 /* CurrencyViewModel.swift */; };
+		CBD83991252E24CD00D152F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD83990252E24CD00D152F1 /* Extensions.swift */; };
+		CBED81442537AE380066E4EB /* InitialViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBED81432537AE380066E4EB /* InitialViewModelTest.swift */; };
+		CBF53220252D25C8001B403B /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF5321F252D25C8001B403B /* TemplateView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB195D1E252D202700CC120C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB195CFF252D202500CC120C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB195D06252D202500CC120C;
+			remoteInfo = "BTGmobile-challenge";
+		};
+		CB195D29252D202700CC120C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB195CFF252D202500CC120C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB195D06252D202500CC120C;
+			remoteInfo = "BTGmobile-challenge";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CB0E5928253130B000D569EE /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
+		CB195D07252D202500CC120C /* BTGmobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTGmobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB195D0A252D202500CC120C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CB195D0C252D202500CC120C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CB195D0E252D202500CC120C /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		CB195D13252D202700CC120C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB195D16252D202700CC120C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CB195D18252D202700CC120C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB195D1D252D202700CC120C /* BTGmobile-challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTGmobile-challengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB195D21252D202700CC120C /* BTGmobile_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGmobile_challengeTests.swift; sourceTree = "<group>"; };
+		CB195D23252D202700CC120C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB195D28252D202700CC120C /* BTGmobile-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTGmobile-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB195D2C252D202700CC120C /* BTGmobile_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGmobile_challengeUITests.swift; sourceTree = "<group>"; };
+		CB195D2E252D202700CC120C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB2369DB25309A74005D869F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CB2369E625309C98005D869F /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
+		CB2369EB25309D0D005D869F /* CurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCoordinator.swift; sourceTree = "<group>"; };
+		CB2369FD2530ABF8005D869F /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
+		CB9311EF2534B3C2008E6D48 /* LiveCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCurrency.swift; sourceTree = "<group>"; };
+		CB9311F62534E8F7008E6D48 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CB9311FE253509DA008E6D48 /* ListedCurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedCurrencyResponse.swift; sourceTree = "<group>"; };
+		CB931209253524DB008E6D48 /* ListedCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedCurrency.swift; sourceTree = "<group>"; };
+		CBC0B11F2535E99C009312AD /* LiveCurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCurrencyResponse.swift; sourceTree = "<group>"; };
+		CBD8396B252DF5AA00D152F1 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		CBD83970252DF74200D152F1 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		CBD83975252DFB4D00D152F1 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
+		CBD8397A252E0B6A00D152F1 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		CBD83990252E24CD00D152F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CBED81432537AE380066E4EB /* InitialViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModelTest.swift; sourceTree = "<group>"; };
+		CBF5321F252D25C8001B403B /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB195D04252D202500CC120C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB195D1A252D202700CC120C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB195D25252D202700CC120C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB0E592D2531402A00D569EE /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E5928253130B000D569EE /* CurrencyManager.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		CB195CFE252D202500CC120C = {
+			isa = PBXGroup;
+			children = (
+				CB195D09252D202500CC120C /* BTGmobile-challenge */,
+				CB195D20252D202700CC120C /* BTGmobile-challengeTests */,
+				CB195D2B252D202700CC120C /* BTGmobile-challengeUITests */,
+				CB195D08252D202500CC120C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB195D08252D202500CC120C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB195D07252D202500CC120C /* BTGmobile-challenge.app */,
+				CB195D1D252D202700CC120C /* BTGmobile-challengeTests.xctest */,
+				CB195D28252D202700CC120C /* BTGmobile-challengeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB195D09252D202500CC120C /* BTGmobile-challenge */ = {
+			isa = PBXGroup;
+			children = (
+				CB2369CC253095E2005D869F /* App Defaults */,
+				CBF5321E252D259F001B403B /* Accessories */,
+				CB2369CD25309629005D869F /* Coordinators */,
+				CB9311ED2534B39A008E6D48 /* Models */,
+				CB195D46252D223600CC120C /* ViewControllers */,
+				CB0E592D2531402A00D569EE /* UserDefaults */,
+				CBD8396A252DF57B00D152F1 /* ViewModels */,
+				CB2369F62530A5E3005D869F /* Views */,
+				CB195D13252D202700CC120C /* Assets.xcassets */,
+				CB195D15252D202700CC120C /* LaunchScreen.storyboard */,
+				CB195D18252D202700CC120C /* Info.plist */,
+				CBED81432537AE380066E4EB /* InitialViewModelTest.swift */,
+			);
+			path = "BTGmobile-challenge";
+			sourceTree = "<group>";
+		};
+		CB195D20252D202700CC120C /* BTGmobile-challengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB195D21252D202700CC120C /* BTGmobile_challengeTests.swift */,
+				CB195D23252D202700CC120C /* Info.plist */,
+			);
+			path = "BTGmobile-challengeTests";
+			sourceTree = "<group>";
+		};
+		CB195D2B252D202700CC120C /* BTGmobile-challengeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CB195D2C252D202700CC120C /* BTGmobile_challengeUITests.swift */,
+				CB195D2E252D202700CC120C /* Info.plist */,
+			);
+			path = "BTGmobile-challengeUITests";
+			sourceTree = "<group>";
+		};
+		CB195D46252D223600CC120C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB195D0E252D202500CC120C /* InitialViewController.swift */,
+				CBD8396B252DF5AA00D152F1 /* CurrencyViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CB2369CC253095E2005D869F /* App Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				CB195D0C252D202500CC120C /* SceneDelegate.swift */,
+				CB195D0A252D202500CC120C /* AppDelegate.swift */,
+			);
+			path = "App Defaults";
+			sourceTree = "<group>";
+		};
+		CB2369CD25309629005D869F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				CB2369DB25309A74005D869F /* Coordinator.swift */,
+				CB2369EB25309D0D005D869F /* CurrencyCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		CB2369F62530A5E3005D869F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBD83970252DF74200D152F1 /* CurrencyTableViewCell.swift */,
+				CB2369FD2530ABF8005D869F /* CurrencyTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB9311ED2534B39A008E6D48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB9311EE2534B3AB008E6D48 /* API */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CB9311EE2534B3AB008E6D48 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CB9311F62534E8F7008E6D48 /* NetworkManager.swift */,
+				CB9311FE253509DA008E6D48 /* ListedCurrencyResponse.swift */,
+				CB931209253524DB008E6D48 /* ListedCurrency.swift */,
+				CBC0B11F2535E99C009312AD /* LiveCurrencyResponse.swift */,
+				CB9311EF2534B3C2008E6D48 /* LiveCurrency.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CBD8396A252DF57B00D152F1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CB2369E625309C98005D869F /* InitialViewModel.swift */,
+				CBD8397A252E0B6A00D152F1 /* CurrencyViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CBF5321E252D259F001B403B /* Accessories */ = {
+			isa = PBXGroup;
+			children = (
+				CBF5321F252D25C8001B403B /* TemplateView.swift */,
+				CBD83975252DFB4D00D152F1 /* Enumerations.swift */,
+				CBD83990252E24CD00D152F1 /* Extensions.swift */,
+			);
+			path = Accessories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB195D06252D202500CC120C /* BTGmobile-challenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB195D31252D202700CC120C /* Build configuration list for PBXNativeTarget "BTGmobile-challenge" */;
+			buildPhases = (
+				CB195D03252D202500CC120C /* Sources */,
+				CB195D04252D202500CC120C /* Frameworks */,
+				CB195D05252D202500CC120C /* Resources */,
+				CB2369CE25309838005D869F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BTGmobile-challenge";
+			productName = "BTGmobile-challenge";
+			productReference = CB195D07252D202500CC120C /* BTGmobile-challenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB195D1C252D202700CC120C /* BTGmobile-challengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB195D34252D202700CC120C /* Build configuration list for PBXNativeTarget "BTGmobile-challengeTests" */;
+			buildPhases = (
+				CB195D19252D202700CC120C /* Sources */,
+				CB195D1A252D202700CC120C /* Frameworks */,
+				CB195D1B252D202700CC120C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB195D1F252D202700CC120C /* PBXTargetDependency */,
+			);
+			name = "BTGmobile-challengeTests";
+			productName = "BTGmobile-challengeTests";
+			productReference = CB195D1D252D202700CC120C /* BTGmobile-challengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB195D27252D202700CC120C /* BTGmobile-challengeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB195D37252D202700CC120C /* Build configuration list for PBXNativeTarget "BTGmobile-challengeUITests" */;
+			buildPhases = (
+				CB195D24252D202700CC120C /* Sources */,
+				CB195D25252D202700CC120C /* Frameworks */,
+				CB195D26252D202700CC120C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB195D2A252D202700CC120C /* PBXTargetDependency */,
+			);
+			name = "BTGmobile-challengeUITests";
+			productName = "BTGmobile-challengeUITests";
+			productReference = CB195D28252D202700CC120C /* BTGmobile-challengeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB195CFF252D202500CC120C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					CB195D06252D202500CC120C = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					CB195D1C252D202700CC120C = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = CB195D06252D202500CC120C;
+					};
+					CB195D27252D202700CC120C = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = CB195D06252D202500CC120C;
+					};
+				};
+			};
+			buildConfigurationList = CB195D02252D202500CC120C /* Build configuration list for PBXProject "BTGmobile-challenge" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB195CFE252D202500CC120C;
+			productRefGroup = CB195D08252D202500CC120C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB195D06252D202500CC120C /* BTGmobile-challenge */,
+				CB195D1C252D202700CC120C /* BTGmobile-challengeTests */,
+				CB195D27252D202700CC120C /* BTGmobile-challengeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB195D05252D202500CC120C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB195D17252D202700CC120C /* LaunchScreen.storyboard in Resources */,
+				CB195D14252D202700CC120C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB195D1B252D202700CC120C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB195D26252D202700CC120C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CB2369CE25309838005D869F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB195D03252D202500CC120C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2369FE2530ABF8005D869F /* CurrencyTextField.swift in Sources */,
+				CB195D0F252D202500CC120C /* InitialViewController.swift in Sources */,
+				CB9311F72534E8F7008E6D48 /* NetworkManager.swift in Sources */,
+				CB0E5929253130B000D569EE /* CurrencyManager.swift in Sources */,
+				CBD83991252E24CD00D152F1 /* Extensions.swift in Sources */,
+				CB9311FF253509DA008E6D48 /* ListedCurrencyResponse.swift in Sources */,
+				CB2369DC25309A74005D869F /* Coordinator.swift in Sources */,
+				CBD8397B252E0B6A00D152F1 /* CurrencyViewModel.swift in Sources */,
+				CBC0B1202535E99C009312AD /* LiveCurrencyResponse.swift in Sources */,
+				CB9311F02534B3C2008E6D48 /* LiveCurrency.swift in Sources */,
+				CBF53220252D25C8001B403B /* TemplateView.swift in Sources */,
+				CB195D0B252D202500CC120C /* AppDelegate.swift in Sources */,
+				CB195D0D252D202500CC120C /* SceneDelegate.swift in Sources */,
+				CB2369E725309C98005D869F /* InitialViewModel.swift in Sources */,
+				CBD83971252DF74200D152F1 /* CurrencyTableViewCell.swift in Sources */,
+				CBD8396C252DF5AA00D152F1 /* CurrencyViewController.swift in Sources */,
+				CB93120A253524DB008E6D48 /* ListedCurrency.swift in Sources */,
+				CBD83976252DFB4D00D152F1 /* Enumerations.swift in Sources */,
+				CB2369EC25309D0D005D869F /* CurrencyCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB195D19252D202700CC120C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB195D22252D202700CC120C /* BTGmobile_challengeTests.swift in Sources */,
+				CBED81442537AE380066E4EB /* InitialViewModelTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB195D24252D202700CC120C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB195D2D252D202700CC120C /* BTGmobile_challengeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB195D1F252D202700CC120C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB195D06252D202500CC120C /* BTGmobile-challenge */;
+			targetProxy = CB195D1E252D202700CC120C /* PBXContainerItemProxy */;
+		};
+		CB195D2A252D202700CC120C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB195D06252D202500CC120C /* BTGmobile-challenge */;
+			targetProxy = CB195D29252D202700CC120C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CB195D15252D202700CC120C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB195D16252D202700CC120C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB195D2F252D202700CC120C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB195D30252D202700CC120C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB195D32252D202700CC120C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
+				INFOPLIST_FILE = "BTGmobile-challenge/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CassiaABarbosa.BTGmobile-challenge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB195D33252D202700CC120C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
+				INFOPLIST_FILE = "BTGmobile-challenge/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CassiaABarbosa.BTGmobile-challenge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CB195D35252D202700CC120C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
+				INFOPLIST_FILE = "BTGmobile-challengeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CassiaABarbosa.BTGmobile-challengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTGmobile-challenge.app/BTGmobile-challenge";
+			};
+			name = Debug;
+		};
+		CB195D36252D202700CC120C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
+				INFOPLIST_FILE = "BTGmobile-challengeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CassiaABarbosa.BTGmobile-challengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTGmobile-challenge.app/BTGmobile-challenge";
+			};
+			name = Release;
+		};
+		CB195D38252D202700CC120C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
+				INFOPLIST_FILE = "BTGmobile-challengeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CassiaABarbosa.BTGmobile-challengeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "BTGmobile-challenge";
+			};
+			name = Debug;
+		};
+		CB195D39252D202700CC120C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
+				INFOPLIST_FILE = "BTGmobile-challengeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CassiaABarbosa.BTGmobile-challengeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "BTGmobile-challenge";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB195D02252D202500CC120C /* Build configuration list for PBXProject "BTGmobile-challenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB195D2F252D202700CC120C /* Debug */,
+				CB195D30252D202700CC120C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB195D31252D202700CC120C /* Build configuration list for PBXNativeTarget "BTGmobile-challenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB195D32252D202700CC120C /* Debug */,
+				CB195D33252D202700CC120C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB195D34252D202700CC120C /* Build configuration list for PBXNativeTarget "BTGmobile-challengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB195D35252D202700CC120C /* Debug */,
+				CB195D36252D202700CC120C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB195D37252D202700CC120C /* Build configuration list for PBXNativeTarget "BTGmobile-challengeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB195D38252D202700CC120C /* Debug */,
+				CB195D39252D202700CC120C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB195CFF252D202500CC120C /* Project object */;
+}
