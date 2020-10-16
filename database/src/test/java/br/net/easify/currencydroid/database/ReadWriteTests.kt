@@ -38,8 +38,9 @@ class ReadWriteTests {
     }
 
     private fun insertCurrency() {
-        val currency = Currency(0, "BRL", "Brazilian Real")
-        currencyDao.insert(currency)
+        val currencyList: ArrayList<Currency> = arrayListOf()
+        currencyList.add(Currency(0, "BRL", "Brazilian Real"))
+        currencyDao.insert(currencyList)
     }
 
     @Test

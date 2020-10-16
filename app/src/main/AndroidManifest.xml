@@ -26,7 +26,5 @@
         <service
             android:name=".services.RateService"
             android:enabled="true" />
-
     </application>
-
 </manifest>
