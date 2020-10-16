@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.HomeFragment">
 
+        <TextView
+            android:id="@+id/info"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:singleLine="true"
+            android:text="RATES IN USD"
+            android:gravity="center"
+            android:textSize="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+             />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/banner"
+            android:visibility="gone"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:background="@color/light_blue"
+            android:textColor="@color/white"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="16dp"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            app:layout_constraintTop_toBottomOf="@id/info" />
+
+        <TextView
+            android:id="@+id/lastUpdate"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="1dp"
+            android:singleLine="true"
+            android:textColor="@color/light_white"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/banner" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

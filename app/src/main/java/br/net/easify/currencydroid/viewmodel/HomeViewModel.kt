@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.net.easify.currencydroid.MainApplication
 import br.net.easify.currencydroid.api.CurrencyService
@@ -18,11 +19,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val disposable = CompositeDisposable()
+
+    val bannerText by lazy { MutableLiveData<String>() }
+    val lastUpdateText by lazy { MutableLiveData<String>() }
 
     @Inject
     lateinit var database: AppDatabase
@@ -37,6 +43,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
                 val lastRateUpdate = sharedPreferencesUtil.getLastRateUpdate()
+                bannerText.value = generateBannerText()
+                lastUpdateText.value = formatLastUpdateText(lastRateUpdate)
             }
         }
 
@@ -48,6 +56,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val serviceIntent = IntentFilter(RateService.rateServiceUpdate)
         LocalBroadcastManager.getInstance(getApplication())
             .registerReceiver(onRateServiceUpdate, serviceIntent)
+
+        bannerText.value = generateBannerText()
+        val lastRateUpdate = sharedPreferencesUtil.getLastRateUpdate()
+        if ( lastRateUpdate > 0 )
+            lastUpdateText.value = formatLastUpdateText(lastRateUpdate)
     }
 
     override fun onCleared() {
@@ -80,5 +93,30 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 })
         )
+    }
+
+    private fun generateBannerText(): String {
+        val quotes = database.quoteDao().getAll()
+
+        var bannerText = ""
+
+        for (quote in quotes) {
+            bannerText += quote.convertion.substring(3)
+            bannerText += ": "
+            bannerText += quote.rate.toString()
+            bannerText += " | "
+        }
+
+        return bannerText
+    }
+
+    private fun formatLastUpdateText(timeStamp: Long): String {
+        return try {
+            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
+            val netDate = Date(timeStamp * 1000)
+            sdf.format(netDate)
+        } catch (e: Exception) {
+            e.toString()
+        }
     }
 }
