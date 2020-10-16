@@ -4,6 +4,7 @@ import android.app.Application
 import br.net.easify.currencydroid.api.CurrencyService
 import br.net.easify.currencydroid.api.QuoteService
 import br.net.easify.currencydroid.database.AppDatabase
+import br.net.easify.currencydroid.util.ServiceUtil
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -31,5 +32,11 @@ class AppModule(private var application: Application) {
     @Provides
     fun providesQuoteService(): QuoteService {
         return QuoteService()
+    }
+
+    @Provides
+    @Singleton
+    fun providesServiceUtil(application: Application): ServiceUtil {
+        return ServiceUtil(application)
     }
 }

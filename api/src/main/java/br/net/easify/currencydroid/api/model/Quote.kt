@@ -26,5 +26,5 @@ data class Quote (
 
     @SerializedName("quotes")
     @Expose
-    val quotes: Pair<String, Float>,
+    val quotes: Map<String, Float>,
 )

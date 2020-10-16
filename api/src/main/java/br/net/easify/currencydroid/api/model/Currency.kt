@@ -19,5 +19,5 @@ data class Currency (
 
     @SerializedName("currencies")
     @Expose
-    val currencies: Pair<String, String>,
+    val currencies: Map<String, String>,
 )

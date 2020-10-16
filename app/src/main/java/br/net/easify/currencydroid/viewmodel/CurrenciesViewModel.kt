@@ -13,12 +13,6 @@ class CurrenciesViewModel (application: Application) : AndroidViewModel(applicat
     @Inject
     lateinit var database: AppDatabase
 
-    @Inject
-    lateinit var currencyService: CurrencyService
-
-    @Inject
-    lateinit var quoteService: QuoteService
-
     init {
         (getApplication() as MainApplication).getAppComponent()?.inject(this)
     }
