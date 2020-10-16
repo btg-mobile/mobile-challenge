@@ -7,18 +7,25 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.net.easify.currencydroid.R
 import br.net.easify.currencydroid.database.model.Currency
 import br.net.easify.currencydroid.databinding.FragmentCurrenciesBinding
 import br.net.easify.currencydroid.view.adapters.CurrenciesAdapter
 import br.net.easify.currencydroid.viewmodel.CurrenciesViewModel
+import kotlinx.android.synthetic.main.fragment_currencies.*
 
 class CurrenciesFragment : Fragment(), CurrenciesAdapter.OnItemClick {
     private lateinit var viewModel: CurrenciesViewModel
     private lateinit var dataBinding: FragmentCurrenciesBinding
     private lateinit var currenciesAdapter: CurrenciesAdapter
+
+    private val currenciesObserver = Observer<List<Currency>> {
+        currenciesAdapter.updateData(it)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,9 +64,11 @@ class CurrenciesFragment : Fragment(), CurrenciesAdapter.OnItemClick {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(CurrenciesViewModel::class.java)
+        viewModel.currencies.observe(viewLifecycleOwner, currenciesObserver)
     }
 
     override fun onItemClick(currency: Currency) {
-
+        val action = CurrenciesFragmentDirections.actionHome()
+        Navigation.findNavController(currencies).navigate(action)
     }
 }

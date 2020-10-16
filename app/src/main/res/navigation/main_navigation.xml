@@ -24,6 +24,9 @@
             android:id="@+id/actionHome"
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/slide_in_from_right"
-            app:exitAnim="@anim/slide_out_to_left"/>
+            app:exitAnim="@anim/slide_out_to_left"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
