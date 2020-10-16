@@ -5,6 +5,7 @@ import br.net.easify.currencydroid.api.CurrencyService
 import br.net.easify.currencydroid.api.QuoteService
 import br.net.easify.currencydroid.database.AppDatabase
 import br.net.easify.currencydroid.util.ServiceUtil
+import br.net.easify.currencydroid.util.SharedPreferencesUtil
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -38,5 +39,11 @@ class AppModule(private var application: Application) {
     @Singleton
     fun providesServiceUtil(application: Application): ServiceUtil {
         return ServiceUtil(application)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(application: Application): SharedPreferencesUtil {
+        return SharedPreferencesUtil(application)
     }
 }

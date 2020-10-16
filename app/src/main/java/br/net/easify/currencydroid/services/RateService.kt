@@ -9,6 +9,7 @@ import br.net.easify.currencydroid.api.QuoteService
 import br.net.easify.currencydroid.api.model.Quote
 import br.net.easify.currencydroid.database.AppDatabase
 import br.net.easify.currencydroid.util.DatabaseUtils
+import br.net.easify.currencydroid.util.SharedPreferencesUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -31,6 +32,9 @@ class RateService: Service() {
 
     @Inject
     lateinit var quoteService: QuoteService
+
+    @Inject
+    lateinit var sharedPreferencesUtil: SharedPreferencesUtil
 
     companion object {
         const val rateServiceUpdate =
@@ -83,6 +87,13 @@ class RateService: Service() {
 
                                     database.quoteDao().deleteAll()
                                     database.quoteDao().insert(quotes)
+
+                                    sharedPreferencesUtil.setLastRateUpdate(res.timestamp)
+
+                                    val intent = Intent(rateServiceUpdate)
+                                    val broadcastManager =
+                                        LocalBroadcastManager.getInstance(applicationContext)
+                                    broadcastManager.sendBroadcast(intent)
                                 }
                             }
 
@@ -91,11 +102,6 @@ class RateService: Service() {
                             }
                         })
                 )
-
-                val intent = Intent(rateServiceUpdate)
-                val broadcastManager =
-                    LocalBroadcastManager.getInstance(applicationContext)
-                broadcastManager.sendBroadcast(intent)
             }
         }
     }
