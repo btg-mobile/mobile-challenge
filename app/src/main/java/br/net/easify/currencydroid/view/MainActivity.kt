@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         startRateService()
 
-        //delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES;
+        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES;
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -30,6 +30,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val bannerText by lazy { MutableLiveData<String>() }
     val lastUpdateText by lazy { MutableLiveData<String>() }
 
+    val fromValue by lazy { MutableLiveData<br.net.easify.currencydroid.database.model.Currency>() }
+    val toValue by lazy { MutableLiveData<br.net.easify.currencydroid.database.model.Currency>() }
+
     @Inject
     lateinit var database: AppDatabase
 
@@ -52,15 +55,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         (getApplication() as MainApplication).getAppComponent()?.inject(this)
 
         loadCurrencies()
-
-        val serviceIntent = IntentFilter(RateService.rateServiceUpdate)
-        LocalBroadcastManager.getInstance(getApplication())
-            .registerReceiver(onRateServiceUpdate, serviceIntent)
-
-        bannerText.value = generateBannerText()
-        val lastRateUpdate = sharedPreferencesUtil.getLastRateUpdate()
-        if ( lastRateUpdate > 0 )
-            lastUpdateText.value = formatLastUpdateText(lastRateUpdate)
+        getFromCurrency()
+        getToCurrency()
+        setupBroadcastReceiver()
+        setupInformationData()
     }
 
     override fun onCleared() {
@@ -118,5 +116,28 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         } catch (e: Exception) {
             e.toString()
         }
+    }
+
+    private fun setupInformationData() {
+        bannerText.value = generateBannerText()
+        val lastRateUpdate = sharedPreferencesUtil.getLastRateUpdate()
+        if (lastRateUpdate > 0)
+            lastUpdateText.value = formatLastUpdateText(lastRateUpdate)
+    }
+
+    private fun setupBroadcastReceiver() {
+        val serviceIntent = IntentFilter(RateService.rateServiceUpdate)
+        LocalBroadcastManager.getInstance(getApplication())
+            .registerReceiver(onRateServiceUpdate, serviceIntent)
+    }
+
+    private fun getFromCurrency() {
+        val fromCurrency = sharedPreferencesUtil.getFromCurrency()
+        fromValue.value = database.currencyDao().getCurrency(fromCurrency)
+    }
+
+    private fun getToCurrency() {
+        val toCurrency = sharedPreferencesUtil.getToCurrency()
+        toValue.value = database.currencyDao().getCurrency(toCurrency)
     }
 }

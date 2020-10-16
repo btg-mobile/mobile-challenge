@@ -11,6 +11,9 @@ interface CurrencyDao {
     @Query("SELECT * FROM currency ORDER BY currencyId")
     fun getAll(): List<Currency>
 
+    @Query("SELECT * FROM currency WHERE currencyId = :currencyId")
+    fun getCurrency(currencyId: String): Currency
+
     @Query("SELECT COUNT(*) FROM currency")
     fun getCount(): Long
 
