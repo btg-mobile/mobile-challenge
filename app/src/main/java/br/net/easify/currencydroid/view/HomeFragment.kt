@@ -1,6 +1,8 @@
 package br.net.easify.currencydroid.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import br.net.easify.currencydroid.model.ConversionValues
 import br.net.easify.currencydroid.util.Constants
 import br.net.easify.currencydroid.util.hideKeyboard
 import br.net.easify.currencydroid.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -90,7 +93,8 @@ class HomeFragment : Fragment() {
         setupViewModel()
         setupBanner()
         setupCardListeners()
-        setupCalculateButton()
+        setupInvertCurrenciesButton()
+        setupCurrencyValueListener()
         checkArguments()
 
         //TODO For some yet unknown reason, the default currencies were not updated
@@ -99,14 +103,30 @@ class HomeFragment : Fragment() {
         // Once the default currency values are saved on shared preferences,
         // the problem disappears
         GlobalScope.launch(context = Dispatchers.Main) {
-            delay(1500)
+            delay(3000)
             viewModel.loadDefaultCurrencies()
         }
     }
 
-    private fun setupCalculateButton() {
-        dataBinding.calculate.setOnClickListener(View.OnClickListener {
-            viewModel.calculate()
+    private fun setupCurrencyValueListener() {
+        dataBinding.currencyValue.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.calculate()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.toString().trim { it <= ' ' }.isEmpty())
+                    viewModel.clearConvertedValue()
+            }
+        })
+    }
+
+    private fun setupInvertCurrenciesButton() {
+        dataBinding.invertCurrencies.setOnClickListener(View.OnClickListener {
+            viewModel.invertCurrencies()
         })
     }
 

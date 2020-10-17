@@ -16,7 +16,6 @@ import br.net.easify.currencydroid.model.ConversionValues
 import br.net.easify.currencydroid.services.RateService
 import br.net.easify.currencydroid.util.Constants
 import br.net.easify.currencydroid.util.DatabaseUtils
-import br.net.easify.currencydroid.util.Formatter
 import br.net.easify.currencydroid.util.SharedPreferencesUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -174,10 +173,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val value = values.from
         if ( value.isNotEmpty() ) {
             val exchange = calculateExchange(value.toFloat(), from.currencyId, to.currencyId)
-            values.to = Formatter.decimalFormatterTwoDigits(exchange)
+            values.to = exchange.toString()
             conversionValues.value = values
         } else {
-            values.to = Formatter.decimalFormatterTwoDigits(0.0F)
+            values.to = "0.0"
             conversionValues.value = values
         }
     }
@@ -198,5 +197,24 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val sqliteLikeExpression = "___$currency"
         val quote = database.quoteDao().getQuote(sqliteLikeExpression)
         return quote.rate
+    }
+
+    fun invertCurrencies() {
+        val from = fromValue.value!!
+        val to = toValue.value!!
+        toValue.value = from
+        fromValue.value = to
+        val values = conversionValues.value!!
+        val valueFrom = values.from
+        val valueTo = values.to
+        if ( valueFrom.isNotEmpty() ) {
+            values.from = valueTo
+            values.to = valueFrom
+            conversionValues.value = values
+        }
+    }
+
+    fun clearConvertedValue() {
+        setupInputAndOutputValues()
     }
 }
