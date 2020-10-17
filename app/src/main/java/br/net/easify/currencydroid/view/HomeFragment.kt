@@ -1,11 +1,11 @@
 package br.net.easify.currencydroid.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,9 +13,8 @@ import androidx.navigation.Navigation
 import br.net.easify.currencydroid.R
 import br.net.easify.currencydroid.database.model.Currency
 import br.net.easify.currencydroid.databinding.FragmentHomeBinding
+import br.net.easify.currencydroid.util.Constants
 import br.net.easify.currencydroid.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
-
 
 class HomeFragment : Fragment() {
 
@@ -54,8 +53,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-
         dataBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_home,
@@ -71,16 +68,32 @@ class HomeFragment : Fragment() {
         setupViewModel()
         setupBanner()
         setupCardListeners()
+        checkArguments()
+    }
+
+    private fun checkArguments() {
+        arguments?.let {
+            val id = HomeFragmentArgs.fromBundle(it).currencyId
+            val currencyDestination = HomeFragmentArgs.fromBundle(it).currencyDestination
+            Log.e("currencyId", id.toString())
+            if (id > 0) {
+                if (currencyDestination == Constants.currencyDestinationFrom) {
+                    viewModel.updateFromCurrency(id)
+                } else {
+                    viewModel.updateToCurrency(id)
+                }
+            }
+        }
     }
 
     private fun setupCardListeners() {
         dataBinding.fromCard.setOnClickListener(View.OnClickListener {
-            val action = HomeFragmentDirections.actionCurrencies()
+            val action = HomeFragmentDirections.actionCurrencies(Constants.currencyDestinationFrom)
             Navigation.findNavController(it).navigate(action)
         })
 
         dataBinding.toCard.setOnClickListener(View.OnClickListener {
-            val action = HomeFragmentDirections.actionCurrencies()
+            val action = HomeFragmentDirections.actionCurrencies(Constants.currencyDestinationTo)
             Navigation.findNavController(it).navigate(action)
         })
     }
@@ -96,5 +109,4 @@ class HomeFragment : Fragment() {
     private fun setupBanner() {
         dataBinding.banner.isSelected = true
     }
-
 }

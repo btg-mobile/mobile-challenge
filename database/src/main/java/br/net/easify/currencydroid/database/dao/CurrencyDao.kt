@@ -14,6 +14,9 @@ interface CurrencyDao {
     @Query("SELECT * FROM currency WHERE currencyId = :currencyId")
     fun getCurrency(currencyId: String): Currency
 
+    @Query("SELECT * FROM currency WHERE id = :id")
+    fun getCurrency(id: Long): Currency?
+
     @Query("SELECT COUNT(*) FROM currency")
     fun getCount(): Long
 

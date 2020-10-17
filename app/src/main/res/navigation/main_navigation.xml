@@ -14,7 +14,18 @@
             app:destination="@id/currenciesFragment"
             app:enterAnim="@anim/slide_in_from_left"
             app:exitAnim="@anim/slide_out_to_right"/>
+
+        <argument
+            android:name="currencyId"
+            android:defaultValue="0L"
+            app:argType="long" />
+
+        <argument
+            android:name="currencyDestination"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/currenciesFragment"
         android:name="br.net.easify.currencydroid.view.CurrenciesFragment"
@@ -28,5 +39,10 @@
             app:launchSingleTop="true"
             app:popUpTo="@+id/main_navigation"
             app:popUpToInclusive="true"/>
+
+        <argument
+            android:name="currencyDestination"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>

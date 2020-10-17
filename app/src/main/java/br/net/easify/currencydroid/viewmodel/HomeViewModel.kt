@@ -140,4 +140,20 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val toCurrency = sharedPreferencesUtil.getToCurrency()
         toValue.value = database.currencyDao().getCurrency(toCurrency)
     }
+
+    fun updateFromCurrency(id: Long) {
+        val currency = database.currencyDao().getCurrency(id)
+        currency?.let {
+            sharedPreferencesUtil.setFromCurrency(currency.currencyId)
+            fromValue.value = it
+        }
+    }
+
+    fun updateToCurrency(id: Long) {
+        val currency = database.currencyDao().getCurrency(id)
+        currency?.let {
+            sharedPreferencesUtil.setToCurrency(currency.currencyId)
+            toValue.value = it
+        }
+    }
 }
