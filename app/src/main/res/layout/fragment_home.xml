@@ -11,6 +11,10 @@
         <variable
             name="toValue"
             type="br.net.easify.currencydroid.database.model.Currency" />
+
+        <variable
+            name="conversionValues"
+            type="br.net.easify.currencydroid.model.ConversionValues" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,8 +85,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fromCard"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/dark_gray"
                 app:cardCornerRadius="8dp"
@@ -111,7 +115,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@{fromValue.currencyId}"
                         android:textColor="@color/secondary"
-                        android:textSize="48sp" />
+                        android:textSize="40sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -126,8 +130,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/toCard"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/dark_gray"
                 app:cardCornerRadius="8dp"
@@ -156,7 +160,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@{toValue.currencyId}"
                         android:textColor="@color/secondary"
-                        android:textSize="48sp" />
+                        android:textSize="40sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -174,6 +178,7 @@
         <EditText
             android:id="@+id/currencyValue"
             android:hint="@string/type_here"
+            android:text="@={conversionValues.from}"
             android:inputType="numberDecimal"
             android:textSize="24sp"
             android:fontFamily="@font/roboto_mono_regular"
@@ -196,7 +201,6 @@
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/currencyValue"/>
 
-
         <TextView
             android:id="@+id/calculatedValue"
             android:layout_width="match_parent"
@@ -205,7 +209,7 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="0.00"
+            android:text="@={conversionValues.to}"
             android:textColor="@color/secondary"
             android:textSize="32sp"
             app:layout_constraintTop_toBottomOf="@id/calculate"/>

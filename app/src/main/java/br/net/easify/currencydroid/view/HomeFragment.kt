@@ -1,7 +1,6 @@
 package br.net.easify.currencydroid.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +12,22 @@ import androidx.navigation.Navigation
 import br.net.easify.currencydroid.R
 import br.net.easify.currencydroid.database.model.Currency
 import br.net.easify.currencydroid.databinding.FragmentHomeBinding
+import br.net.easify.currencydroid.model.ConversionValues
 import br.net.easify.currencydroid.util.Constants
+import br.net.easify.currencydroid.util.hideKeyboard
 import br.net.easify.currencydroid.viewmodel.HomeViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var dataBinding: FragmentHomeBinding
+    private lateinit var conversionValues: ConversionValues
+    private lateinit var fromValue: Currency
+    private lateinit var toValue: Currency
 
     private val bannerTextObserver = Observer<String> {
         if (it.isNotEmpty()) {
@@ -42,11 +50,25 @@ class HomeFragment : Fragment() {
     }
 
     private val fromValueObserver = Observer<Currency> {
-        dataBinding.fromValue = it
+        if (it != null) {
+            this.fromValue = it
+            dataBinding.fromValue = this.fromValue
+        }
     }
 
     private val toValueObserver = Observer<Currency> {
-        dataBinding.toValue = it
+        if (it != null) {
+            this.toValue = it
+            dataBinding.toValue = this.toValue
+        }
+    }
+
+    private val conversionValuesObserver = Observer<ConversionValues> {
+        if (it != null) {
+            this.conversionValues = it
+            dataBinding.conversionValues = this.conversionValues
+            hideKeyboard()
+        }
     }
 
     override fun onCreateView(
@@ -68,14 +90,30 @@ class HomeFragment : Fragment() {
         setupViewModel()
         setupBanner()
         setupCardListeners()
+        setupCalculateButton()
         checkArguments()
+
+        //TODO For some yet unknown reason, the default currencies were not updated
+        // when the fragment started. This is a workaround to solve the problem.
+        // I need to investigate it. It happens only on the first launch.
+        // Once the default currency values are saved on shared preferences,
+        // the problem disappears
+        GlobalScope.launch(context = Dispatchers.Main) {
+            delay(1500)
+            viewModel.loadDefaultCurrencies()
+        }
+    }
+
+    private fun setupCalculateButton() {
+        dataBinding.calculate.setOnClickListener(View.OnClickListener {
+            viewModel.calculate()
+        })
     }
 
     private fun checkArguments() {
         arguments?.let {
             val id = HomeFragmentArgs.fromBundle(it).currencyId
             val currencyDestination = HomeFragmentArgs.fromBundle(it).currencyDestination
-            Log.e("currencyId", id.toString())
             if (id > 0) {
                 if (currencyDestination == Constants.currencyDestinationFrom) {
                     viewModel.updateFromCurrency(id)
@@ -104,6 +142,7 @@ class HomeFragment : Fragment() {
         viewModel.lastUpdateText.observe(viewLifecycleOwner, lastUpdateTextObserver)
         viewModel.fromValue.observe(viewLifecycleOwner, fromValueObserver)
         viewModel.toValue.observe(viewLifecycleOwner, toValueObserver)
+        viewModel.conversionValues.observe(viewLifecycleOwner, conversionValuesObserver)
     }
 
     private fun setupBanner() {

@@ -12,8 +12,11 @@ import br.net.easify.currencydroid.MainApplication
 import br.net.easify.currencydroid.api.CurrencyService
 import br.net.easify.currencydroid.api.model.Currency
 import br.net.easify.currencydroid.database.AppDatabase
+import br.net.easify.currencydroid.model.ConversionValues
 import br.net.easify.currencydroid.services.RateService
+import br.net.easify.currencydroid.util.Constants
 import br.net.easify.currencydroid.util.DatabaseUtils
+import br.net.easify.currencydroid.util.Formatter
 import br.net.easify.currencydroid.util.SharedPreferencesUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -29,7 +32,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     val bannerText by lazy { MutableLiveData<String>() }
     val lastUpdateText by lazy { MutableLiveData<String>() }
-
+    val conversionValues by lazy { MutableLiveData<ConversionValues>() }
     val fromValue by lazy { MutableLiveData<br.net.easify.currencydroid.database.model.Currency>() }
     val toValue by lazy { MutableLiveData<br.net.easify.currencydroid.database.model.Currency>() }
 
@@ -53,21 +56,19 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         (getApplication() as MainApplication).getAppComponent()?.inject(this)
-
-        loadCurrencies()
-        getFromCurrency()
-        getToCurrency()
+        loadCurrenciesFromDbOrApi()
         setupBroadcastReceiver()
         setupInformationData()
+        setupInputAndOutputValues()
+        loadDefaultCurrencies()
     }
 
     override fun onCleared() {
         super.onCleared()
-
         disposable.clear()
     }
 
-    private fun loadCurrencies() {
+    private fun loadCurrenciesFromDbOrApi() {
 
         if ( database.currencyDao().getCount() > 0 )
             return
@@ -96,10 +97,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private fun generateBannerText(): String {
         val quotes = database.quoteDao().getAll()
 
-        var bannerText = ""
+        var bannerText = "| "
 
         for (quote in quotes) {
-            bannerText += quote.convertion.substring(3)
+            bannerText += quote.conversion.substring(3)
             bannerText += ": "
             bannerText += quote.rate.toString()
             bannerText += " | "
@@ -131,6 +132,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             .registerReceiver(onRateServiceUpdate, serviceIntent)
     }
 
+    private fun setupInputAndOutputValues() {
+        conversionValues.value = ConversionValues("", "")
+    }
+
+    fun loadDefaultCurrencies() {
+        getFromCurrency()
+        getToCurrency()
+    }
+
     private fun getFromCurrency() {
         val fromCurrency = sharedPreferencesUtil.getFromCurrency()
         fromValue.value = database.currencyDao().getCurrency(fromCurrency)
@@ -155,5 +165,38 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             sharedPreferencesUtil.setToCurrency(currency.currencyId)
             toValue.value = it
         }
+    }
+
+    fun calculate() {
+        val from = fromValue.value!!
+        val to = toValue.value!!
+        val values = conversionValues.value!!
+        val value = values.from
+        if ( value.isNotEmpty() ) {
+            val exchange = calculateExchange(value.toFloat(), from.currencyId, to.currencyId)
+            values.to = Formatter.decimalFormatterTwoDigits(exchange)
+            conversionValues.value = values
+        } else {
+            values.to = Formatter.decimalFormatterTwoDigits(0.0F)
+            conversionValues.value = values
+        }
+    }
+
+    private fun calculateExchange(value: Float, from: String, to: String): Float {
+        return if (from == Constants.usDollar) {
+            val rate = dollarRate(to)
+            (value * rate)
+        } else {
+            val fromRate = dollarRate(from)
+            val toRate = dollarRate(to)
+            val valueInDollar = (value / fromRate)
+            (valueInDollar * toRate)
+        }
+    }
+
+    private fun dollarRate(currency: String): Float {
+        val sqliteLikeExpression = "___$currency"
+        val quote = database.quoteDao().getQuote(sqliteLikeExpression)
+        return quote.rate
     }
 }

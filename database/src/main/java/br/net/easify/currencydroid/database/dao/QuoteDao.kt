@@ -11,6 +11,9 @@ interface QuoteDao {
     @Query("SELECT * FROM quote ORDER BY id")
     fun getAll(): List<Quote>
 
+    @Query("SELECT * FROM quote WHERE conversion LIKE :conversion")
+    fun getQuote(conversion: String): Quote
+
     @Query("SELECT COUNT(*) FROM quote")
     fun getCount(): Long
 

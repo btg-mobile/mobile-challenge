@@ -116,6 +116,4 @@ class CurrenciesFragment : Fragment(), CurrenciesAdapter.OnItemClick {
         val action = CurrenciesFragmentDirections.actionHome(currency.id, currencyDestination)
         Navigation.findNavController(currencies).navigate(action)
     }
-
-
 }
