@@ -82,7 +82,6 @@ class HomeFragment : Fragment() {
         if (it != null) {
             this.conversionValues = it
             dataBinding.conversionValues = this.conversionValues
-            hideKeyboard()
         }
     }
 
