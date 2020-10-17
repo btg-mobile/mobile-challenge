@@ -12,7 +12,7 @@ interface CurrencyDao {
     fun getAll(): List<Currency>
 
     @Query("SELECT * FROM currency WHERE currencyId = :currencyId")
-    fun getCurrency(currencyId: String): Currency
+    fun getCurrency(currencyId: String): Currency?
 
     @Query("SELECT * FROM currency WHERE id = :id")
     fun getCurrency(id: Long): Currency?

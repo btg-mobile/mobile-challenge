@@ -5,7 +5,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import br.net.easify.currencydroid.database.dao.CurrencyDao
+import br.net.easify.currencydroid.database.dao.QuoteDao
 import br.net.easify.currencydroid.database.model.Currency
+import br.net.easify.currencydroid.database.model.Quote
 import org.junit.*
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -20,6 +22,7 @@ class ReadWriteTests {
 
     private lateinit var database: AppDatabase
     private lateinit var currencyDao: CurrencyDao
+    private lateinit var quoteDao: QuoteDao
 
     @Before
     fun createDb() {
@@ -30,6 +33,7 @@ class ReadWriteTests {
             .build()
 
         currencyDao = database.currencyDao()
+        quoteDao = database.quoteDao()
     }
 
     @After
@@ -43,8 +47,14 @@ class ReadWriteTests {
         currencyDao.insert(currencyList)
     }
 
+    private fun insertQuote() {
+        val quoteList: ArrayList<Quote> = arrayListOf()
+        quoteList.add(Quote(0, "USDBRL", 5.6F))
+        quoteDao.insert(quoteList)
+    }
+
     @Test
-    fun `CURRENCY - test Currency Insert`() {
+    fun `CURRENCY - testando inserção de currency`() {
         currencyDao.deleteAll()
         var currencyList = currencyDao.getAll()
         var size = currencyList.size
@@ -53,5 +63,50 @@ class ReadWriteTests {
         currencyList = currencyDao.getAll()
         size = currencyList.size
         Assert.assertTrue(size == 1)
+    }
+
+    @Test
+    fun `CURRENCY - testando getCurrency por currencyId`() {
+        currencyDao.deleteAll()
+        var currencyList = currencyDao.getAll()
+        var size = currencyList.size
+        Assert.assertTrue(size == 0)
+        insertCurrency()
+        val currency = currencyDao.getCurrency("BRL")
+        Assert.assertNotNull(currency)
+    }
+
+    @Test
+    fun `CURRENCY - testando getCurrency por id`() {
+        currencyDao.deleteAll()
+        var currencyList = currencyDao.getAll()
+        var size = currencyList.size
+        Assert.assertTrue(size == 0)
+        insertCurrency()
+        val currency = currencyDao.getCurrency(1)
+        Assert.assertNotNull(currency)
+    }
+
+    @Test
+    fun `QUOTE - testando inserção de quote`() {
+        quoteDao.deleteAll()
+        var quoteList = quoteDao.getAll()
+        var size = quoteList.size
+        Assert.assertTrue(size == 0)
+        insertQuote()
+        quoteList = quoteDao.getAll()
+        size = quoteList.size
+        Assert.assertTrue(size == 1)
+    }
+
+    @Test
+    fun `QUOTE - testando getQuote`() {
+        quoteDao.deleteAll()
+        var quoteList = quoteDao.getAll()
+        var size = quoteList.size
+        Assert.assertTrue(size == 0)
+        insertQuote()
+        val quote = quoteDao.getQuote("___BRL")
+        Assert.assertNotNull(quote)
     }
 }
