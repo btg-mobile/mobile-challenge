@@ -13,8 +13,29 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="230" />
-                            <option name="y" value="3" />
+                            <option name="x" value="233" />
+                            <option name="y" value="-148" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="actionHome">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="errorFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="234" />
+                            <option name="y" value="169" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -27,6 +48,15 @@
                           <Point>
                             <option name="x" value="-106" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="actionCurrencies">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

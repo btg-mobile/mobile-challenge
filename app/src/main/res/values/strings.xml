@@ -8,4 +8,6 @@
     <string name="calculate">Calculate</string>
     <string name="cancel">Cancel</string>
     <string name="search">Search</string>
+    <string name="try_again">Try again</string>
+    <string name="internet_error">Check your internet connection. Couldn\'t retrieve currency data from server.</string>
 </resources>

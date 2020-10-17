@@ -32,6 +32,18 @@ class HomeFragment : Fragment() {
     private lateinit var fromValue: Currency
     private lateinit var toValue: Currency
 
+    private val currenciesFromApiObserver =
+        Observer<br.net.easify.currencydroid.api.model.Currency> {
+        viewModel.saveCurrenciesDataIntoLocalDatabase(it)
+    }
+
+    private val loadingErrorObserver = Observer<Boolean> {
+        if (it) {
+            val action = HomeFragmentDirections.actionError()
+            Navigation.findNavController(requireView()).navigate(action)
+        }
+    }
+
     private val bannerTextObserver = Observer<String> {
         if (it.isNotEmpty()) {
             dataBinding.info.visibility = View.VISIBLE
@@ -163,6 +175,8 @@ class HomeFragment : Fragment() {
         viewModel.fromValue.observe(viewLifecycleOwner, fromValueObserver)
         viewModel.toValue.observe(viewLifecycleOwner, toValueObserver)
         viewModel.conversionValues.observe(viewLifecycleOwner, conversionValuesObserver)
+        viewModel.currenciesFromApi.observe(viewLifecycleOwner, currenciesFromApiObserver)
+        viewModel.loadingError.observe(viewLifecycleOwner, loadingErrorObserver)
     }
 
     private fun setupBanner() {

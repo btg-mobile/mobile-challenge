@@ -15,6 +15,12 @@
             app:enterAnim="@anim/slide_in_from_left"
             app:exitAnim="@anim/slide_out_to_right"/>
 
+        <action
+            android:id="@+id/actionError"
+            app:destination="@id/errorFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
         <argument
             android:name="currencyId"
             android:defaultValue="0L"
@@ -44,5 +50,19 @@
             android:name="currencyDestination"
             android:defaultValue="0"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/errorFragment"
+        tools:layout="@layout/fragment_error"
+        android:name="br.net.easify.currencydroid.view.ErrorFragment"
+        android:label="ErrorFragment" >
+        <action
+            android:id="@+id/actionBackHome"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

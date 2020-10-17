@@ -22,7 +22,7 @@ class RateService: Service() {
     private var timer: Timer? = null
     private var timerTask: TimerTask? = null
 
-    private val oneSecond: Long = 1000
+    private val oneSecond: Long = 1000*5*60
     private val oneHour: Long = 1000*60*60
 
     private val disposable = CompositeDisposable()

@@ -10,7 +10,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.net.easify.currencydroid.MainApplication
 import br.net.easify.currencydroid.api.CurrencyService
+import br.net.easify.currencydroid.api.QuoteService
 import br.net.easify.currencydroid.api.model.Currency
+import br.net.easify.currencydroid.api.model.Quote
 import br.net.easify.currencydroid.database.AppDatabase
 import br.net.easify.currencydroid.model.ConversionValues
 import br.net.easify.currencydroid.services.RateService
@@ -29,6 +31,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val disposable = CompositeDisposable()
 
+    val currenciesFromApi by lazy { MutableLiveData<Currency>() }
+    val loadingError by lazy { MutableLiveData<Boolean>() }
     val bannerText by lazy { MutableLiveData<String>() }
     val lastUpdateText by lazy { MutableLiveData<String>() }
     val conversionValues by lazy { MutableLiveData<ConversionValues>() }
@@ -42,20 +46,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     lateinit var currencyService: CurrencyService
 
     @Inject
+    lateinit var quoteService: QuoteService
+
+    @Inject
     lateinit var sharedPreferencesUtil: SharedPreferencesUtil
 
     private val onRateServiceUpdate: BroadcastReceiver =
         object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                val lastRateUpdate = sharedPreferencesUtil.getLastRateUpdate()
-                bannerText.value = generateBannerText()
-                lastUpdateText.value = formatLastUpdateText(lastRateUpdate)
+                setupBannerInfo()
             }
         }
 
     init {
         (getApplication() as MainApplication).getAppComponent()?.inject(this)
         loadCurrenciesFromDbOrApi()
+        loadRatesDbOrApi()
         setupBroadcastReceiver()
         setupInformationData()
         setupInputAndOutputValues()
@@ -69,20 +75,55 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun loadCurrenciesFromDbOrApi() {
 
-        if ( database.currencyDao().getCount() > 0 )
+        if (database.currencyDao().getCount() > 0)
             return
 
+        loadCurrenciesFromApi()
+    }
+
+    private fun loadCurrenciesFromApi() {
         disposable.add(
             currencyService.list()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Currency>() {
                     override fun onSuccess(res: Currency) {
-                        if (res.success) {
-                            val currencies =
-                                DatabaseUtils.mapToCurrency(res.currencies)
+                        currenciesFromApi.value = res
+                        loadingError.value = false
+                    }
 
-                            database.currencyDao().insert(currencies)
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                        loadingError.value = true
+                    }
+                })
+        )
+    }
+
+    private fun loadRatesDbOrApi() {
+        if (database.quoteDao().getCount() > 0)
+            return
+
+        loadRatesFromApi()
+    }
+
+    private fun loadRatesFromApi() {
+        disposable.add(
+            quoteService.live()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<Quote>() {
+                    override fun onSuccess(res: Quote) {
+                        if (res.success) {
+                            val quotes =
+                                DatabaseUtils.mapToQuote(res.quotes)
+
+                            database.quoteDao().deleteAll()
+                            database.quoteDao().insert(quotes)
+
+                            sharedPreferencesUtil.setLastRateUpdate(res.timestamp)
+
+                            setupBannerInfo()
                         }
                     }
 
@@ -91,6 +132,21 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 })
         )
+    }
+
+    fun saveCurrenciesDataIntoLocalDatabase(data: Currency) {
+        if (data.success) {
+            val currencies =
+                DatabaseUtils.mapToCurrency(data.currencies)
+
+            database.currencyDao().insert(currencies)
+        }
+    }
+
+    private fun setupBannerInfo() {
+        val lastRateUpdate = sharedPreferencesUtil.getLastRateUpdate()
+        bannerText.value = generateBannerText()
+        lastUpdateText.value = formatLastUpdateText(lastRateUpdate)
     }
 
     private fun generateBannerText(): String {
@@ -167,17 +223,25 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun calculate() {
-        val from = fromValue.value!!
-        val to = toValue.value!!
-        val values = conversionValues.value!!
-        val value = values.from
-        if ( value.isNotEmpty() ) {
-            val exchange = calculateExchange(value.toFloat(), from.currencyId, to.currencyId)
-            values.to = exchange.toString()
-            conversionValues.value = values
-        } else {
-            values.to = "0.0"
-            conversionValues.value = values
+        fromValue.value?.let { validFromValue ->
+            toValue.value?.let { validToValue ->
+                conversionValues.value?.let { validConversionValues ->
+                    val value = validConversionValues.from
+                    if (value.isNotEmpty()) {
+                        val exchange =
+                            calculateExchange(
+                                value.toFloat(),
+                                validFromValue.currencyId,
+                                validToValue.currencyId)
+
+                        validConversionValues.to = exchange.toString()
+                        conversionValues.value = validConversionValues
+                    } else {
+                        validConversionValues.to = "0.0"
+                        conversionValues.value = validConversionValues
+                    }
+                }
+            }
         }
     }
 
@@ -207,7 +271,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val values = conversionValues.value!!
         val valueFrom = values.from
         val valueTo = values.to
-        if ( valueFrom.isNotEmpty() ) {
+        if (valueFrom.isNotEmpty()) {
             values.from = valueTo
             values.to = valueFrom
             conversionValues.value = values
