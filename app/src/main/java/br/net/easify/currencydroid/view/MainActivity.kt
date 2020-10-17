@@ -1,12 +1,9 @@
 package br.net.easify.currencydroid.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
 import br.net.easify.currencydroid.MainApplication
 import br.net.easify.currencydroid.R
 import br.net.easify.currencydroid.services.RateService

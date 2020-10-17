@@ -3,11 +3,11 @@ package br.net.easify.currencydroid.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -16,9 +16,7 @@ import br.net.easify.currencydroid.database.model.Currency
 import br.net.easify.currencydroid.databinding.FragmentHomeBinding
 import br.net.easify.currencydroid.model.ConversionValues
 import br.net.easify.currencydroid.util.Constants
-import br.net.easify.currencydroid.util.hideKeyboard
 import br.net.easify.currencydroid.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
