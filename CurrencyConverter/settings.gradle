@@ -1,2 +1,5 @@
+include ':core:network'
+include ':core:database'
+include ':features:converter'
 include ':app'
 rootProject.name = "Currency Converter"
