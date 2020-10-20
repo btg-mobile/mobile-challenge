@@ -1,6 +1,6 @@
 package com.helano.network.responses
 
-data class ListResponse(
+data class CurrenciesResponse(
     val success: Boolean,
     val terms: String,
     val privacy: String,

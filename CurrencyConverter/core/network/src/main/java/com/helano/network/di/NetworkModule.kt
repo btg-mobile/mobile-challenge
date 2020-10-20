@@ -15,7 +15,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder(): Retrofit {
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("http://api.currencylayer.com")
             .addConverterFactory(GsonConverterFactory.create())

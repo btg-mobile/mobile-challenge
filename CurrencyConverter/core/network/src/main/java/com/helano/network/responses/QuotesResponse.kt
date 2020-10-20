@@ -1,6 +1,6 @@
 package com.helano.network.responses
 
-data class LiveResponse(
+data class QuotesResponse(
     val success: Boolean,
     val terms: String,
     val privacy: String,

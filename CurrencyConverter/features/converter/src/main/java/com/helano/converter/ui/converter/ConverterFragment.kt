@@ -11,18 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import com.helano.converter.R
 import com.helano.converter.databinding.FragmentConverterBinding
-import com.helano.network.repositories.Repository
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
 
     private lateinit var binding: FragmentConverterBinding
     private val viewModel by viewModels<ConverterViewModel>()
-
-    @Inject lateinit var repository: Repository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,18 +37,7 @@ class ConverterFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        test()
-    }
-
-    private fun test() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            repository.currencies()
-//        }
-
-        GlobalScope.launch(context = Dispatchers.Main) {
-            repository.currencies()
-            repository.quotes()
-        }
+        viewModel.start()
     }
 
     private fun setClickListeners() {

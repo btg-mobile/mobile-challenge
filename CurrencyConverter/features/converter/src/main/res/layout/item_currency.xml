@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="currency"
+            type="com.helano.converter.model.Currency" />
+    </data>
+
+    <LinearLayout
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/currencyCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{currency.code}"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/currencyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@{currency.name}"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</layout>
