@@ -5,7 +5,11 @@
 
         <variable
             name="currency"
-            type="com.helano.converter.model.Currency" />
+            type="com.helano.shared.model.Currency" />
+
+        <variable
+            name="viewModel"
+            type="com.helano.converter.ui.currencies.CurrenciesViewModel" />
     </data>
 
     <LinearLayout

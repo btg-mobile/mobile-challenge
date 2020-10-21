@@ -1,12 +1,11 @@
-package com.helano.database.entities
+package com.helano.shared.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "quotes")
 data class CurrencyQuote(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val exchange: String,
+    @PrimaryKey
+    val code: String,
     val value: Float
 )

@@ -4,12 +4,12 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.helano.database.entities.CurrencyQuote
+import com.helano.shared.model.CurrencyQuote
 
 @Dao
 interface CurrencyQuoteDao {
 
-    @Query("SELECT * FROM quotes ORDER BY id")
+    @Query("SELECT * FROM quotes ORDER BY code")
     fun getAll(): List<CurrencyQuote>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,8 +18,8 @@ interface CurrencyQuoteDao {
     @Query("DELETE FROM quotes")
     fun deleteAll()
 
-    @Query("SELECT * FROM quotes WHERE id = :id")
-    fun getCurrency(id: String): CurrencyQuote
+    @Query("SELECT * FROM quotes WHERE code = :code")
+    fun getCurrency(code: String): CurrencyQuote
 
     @Query("SELECT count(*) FROM quotes")
     fun getSize(): Int

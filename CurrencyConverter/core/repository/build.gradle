@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation project(':shared')
     implementation project(':core:network')
     implementation project(':core:database')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

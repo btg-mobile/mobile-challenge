@@ -1,3 +1,4 @@
+include ':shared'
 include ':core:repository'
 include ':core:network'
 include ':core:database'

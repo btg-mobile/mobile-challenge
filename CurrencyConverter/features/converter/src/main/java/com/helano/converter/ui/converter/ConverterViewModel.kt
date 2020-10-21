@@ -5,16 +5,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.helano.converter.model.Currency
 import com.helano.repository.CurrencyRepository
+import com.helano.shared.model.Currency
+import com.helano.shared.util.Preferences
 import kotlinx.coroutines.launch
 
 class ConverterViewModel @ViewModelInject constructor(
-    private val repository: CurrencyRepository
+    private val repository: CurrencyRepository,
+    private val prefs: Preferences
 ) : ViewModel() {
 
+    val fromCurrency by lazy { MutableLiveData<Currency>() }
+    val toCurrency by lazy { MutableLiveData<Currency>() }
+
     private val _text = MutableLiveData<String>().apply {
-        value = "100,00"
+        value = "150,00"
     }
     val text: LiveData<String> = _text
 
@@ -23,6 +28,8 @@ class ConverterViewModel @ViewModelInject constructor(
     fun start() {
         viewModelScope.launch {
             repository.currencies()
+            fromCurrency.value = repository.getCurrency(prefs.getFromCurrencyCode())
+            toCurrency.value = repository.getCurrency(prefs.getToCurrencyCode())
         }
     }
 }

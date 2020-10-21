@@ -4,8 +4,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.helano.database.dao.CurrencyDao
 import com.helano.database.dao.CurrencyQuoteDao
-import com.helano.database.entities.Currency
-import com.helano.database.entities.CurrencyQuote
+import com.helano.shared.model.Currency
+import com.helano.shared.model.CurrencyQuote
 
 @Database(
     entities = [Currency::class, CurrencyQuote::class],

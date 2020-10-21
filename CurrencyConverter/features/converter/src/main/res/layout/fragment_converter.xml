@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="data"
-            type="com.helano.converter.model.ConverterData" />
+            name="viewModel"
+            type="com.helano.converter.ui.converter.ConverterViewModel" />
     </data>
 
 
@@ -19,8 +19,8 @@
 
         <LinearLayout
             android:id="@+id/fromContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="90dp"
             android:background="@drawable/btn_currency_selector"
             android:orientation="vertical"
             android:padding="5dp"
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{data.currencyFrom.code}"
+                android:text="@{viewModel.fromCurrency.code}"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 tools:text="USD" />
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{data.currencyFrom.name}"
+                android:text="@{viewModel.fromCurrency.name}"
                 android:textSize="20sp"
                 tools:text="United States of Dollar" />
         </LinearLayout>
@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{data.currencyTo.code}"
+                android:text="@{viewModel.toCurrency.code}"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 tools:text="BRL" />
@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{data.currencyTo.name}"
+                android:text="@{viewModel.toCurrency.name}"
                 android:textSize="20sp"
                 tools:text="Brazilian Real" />
         </LinearLayout>
@@ -113,6 +113,6 @@
             app:layout_constraintStart_toEndOf="@id/swapButton"
             app:layout_constraintTop_toBottomOf="@id/swapButton"
             app:layout_constraintVertical_bias="0.13"
-            tools:text="100,00" />
+            tools:text="@{viewModel.text}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

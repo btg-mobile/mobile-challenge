@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.helano.database.AppDatabase
 import com.helano.database.dao.CurrencyDao
 import com.helano.database.dao.CurrencyQuoteDao
+import com.helano.shared.Constants.DB_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,12 +17,10 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object DatabaseModule {
 
-    private const val dbName = "currencies.db"
-
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, dbName)
+        return Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()

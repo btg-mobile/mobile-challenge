@@ -1,6 +1,6 @@
 package com.helano.repository
 
-import com.helano.database.entities.Currency
+import com.helano.shared.model.Currency
 import com.helano.repository.data.LocalDataSource
 import com.helano.repository.data.RemoteDataSource
 
@@ -9,15 +9,19 @@ class CurrencyRepositoryImpl(
     private val remote: RemoteDataSource
 ) : CurrencyRepository {
 
-    override suspend fun currencies(): Map<String, String> {
+    override suspend fun currencies(): List<Currency> {
         if (local.isCurrenciesEmpty()) {
             val response = remote.currencies()
             if (response.success) {
-                local.currencies = response.currencies.map { Currency(0, it.key, it.value) }
+                local.currencies = response.currencies.map { Currency(it.key, it.value) }
             } else {
                 // TODO: Handle fail response
             }
         }
-        return local.currencies.map { it.currencyCode to it.currencyName }.toMap()
+        return local.currencies
+    }
+
+    override suspend fun getCurrency(code: String): Currency {
+        return local.getCurrency(code)
     }
 }

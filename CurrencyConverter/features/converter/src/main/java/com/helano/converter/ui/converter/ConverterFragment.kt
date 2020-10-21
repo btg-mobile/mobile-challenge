@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import com.helano.converter.R
 import com.helano.converter.databinding.FragmentConverterBinding
+import com.helano.converter.model.Conversion
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,28 +25,34 @@ class ConverterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_converter, container, false)
-
-        viewModel.text.observe(viewLifecycleOwner, Observer {
-            binding.convertedValue.text = it
-        })
-
-        setClickListeners()
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_converter, container, false
+        )
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        binding.viewModel = viewModel
         viewModel.start()
+        setClickListeners()
     }
 
     private fun setClickListeners() {
         binding.fromContainer.setOnClickListener {
-            findNavController(it).navigate(ConverterFragmentDirections.actionSearchCurrency())
+            findNavController(it).navigate(
+                ConverterFragmentDirections.actionSearchCurrency(
+                    Conversion.FROM
+                )
+            )
         }
 
         binding.toContainer.setOnClickListener {
-            findNavController(it).navigate(ConverterFragmentDirections.actionSearchCurrency())
+            findNavController(it).navigate(
+                ConverterFragmentDirections.actionSearchCurrency(
+                    Conversion.TO
+                )
+            )
         }
     }
 }
