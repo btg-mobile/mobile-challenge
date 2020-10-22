@@ -48,10 +48,11 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/value"
+            android:id="@+id/currencyValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:text="@{viewModel.currencyValue}"
             android:inputType="numberDecimal"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toTopOf="@id/swapButton"
@@ -102,7 +103,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/convertedValue"
+            android:id="@+id/currencyConverted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"

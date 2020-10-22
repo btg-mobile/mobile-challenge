@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.helano.converter.R
 import com.helano.converter.adapters.CurrenciesAdapter
 import com.helano.converter.databinding.FragmentCurrenciesBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class CurrenciesFragment : Fragment() {
@@ -28,27 +29,40 @@ class CurrenciesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_currencies, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_currencies, container, false
+        )
         binding.viewModel = viewModel
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.lifecycleOwner = this.viewLifecycleOwner
+        binding.lifecycleOwner = viewLifecycleOwner
         viewModel.start()
         setAdapter()
+        setNavigation()
     }
 
     private fun setAdapter() {
         val viewModel = binding.viewModel
-        Timber.tag("Helano").e("viewmodel: $viewModel")
         if (viewModel != null) {
-            Timber.tag("Helano").e("viewmode: $viewModel")
             adapter = CurrenciesAdapter(viewModel)
             binding.recycler.adapter = adapter
         } else {
-            Timber.w("ViewModel not initialized.")
+            Log.e(TAG, "ViewModel not initialized.")
         }
+    }
+
+    private fun setNavigation() {
+        viewModel.selectedCurrency.observe(viewLifecycleOwner, Observer<String> {
+            findNavController(binding.recycler).navigate(
+                CurrenciesFragmentDirections.actionFoundCurrency(args.info, it)
+            )
+        })
+    }
+
+    companion object {
+        val TAG = CurrenciesFragment::class.simpleName
     }
 }

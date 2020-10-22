@@ -11,21 +11,17 @@ import javax.inject.Singleton
 class Preferences @Inject constructor(@ApplicationContext context: Context) {
     private val prefs = context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun setFromCurrencyCode(code: String) {
-        prefs.edit { putString(FROM_CURRENCY_CODE, code) }
-    }
+    var lastUpdate: Long
+        get() = prefs.getLong(LAST_UPDATE, 0)
+        set(value) = prefs.edit { putLong(LAST_UPDATE, value) }
 
-    fun getFromCurrencyCode(): String {
-        return getCurrencyCode(FROM_CURRENCY_CODE, FROM_CURRENCY_CODE_DEFAULT)
-    }
+    var fromCurrencyCode: String
+        get() = getCurrencyCode(FROM_CURRENCY_CODE, FROM_CURRENCY_CODE_DEFAULT)
+        set(value) = prefs.edit { putString(FROM_CURRENCY_CODE, value) }
 
-    fun setToCurrencyCode(code: String) {
-        prefs.edit { putString(FROM_CURRENCY_CODE, code) }
-    }
-
-    fun getToCurrencyCode(): String {
-        return getCurrencyCode(TO_CURRENCY_CODE, TO_CURRENCY_CODE_DEFAULT)
-    }
+    var toCurrencyCode: String
+        get() = getCurrencyCode(TO_CURRENCY_CODE, TO_CURRENCY_CODE_DEFAULT)
+        set(value) = prefs.edit { putString(TO_CURRENCY_CODE, value) }
 
     private fun getCurrencyCode(code: String, defaultCode: String): String {
         val currency = prefs.getString(code, "")
@@ -42,5 +38,6 @@ class Preferences @Inject constructor(@ApplicationContext context: Context) {
         private const val TO_CURRENCY_CODE_DEFAULT = "BRL"
         private const val FROM_CURRENCY_CODE = "from_currency_code"
         private const val TO_CURRENCY_CODE = "to_currency_code"
+        private const val LAST_UPDATE = "last_update"
     }
 }

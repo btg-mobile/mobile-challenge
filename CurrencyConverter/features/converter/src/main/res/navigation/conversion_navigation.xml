@@ -13,6 +13,14 @@
         <action
             android:id="@+id/actionSearchCurrency"
             app:destination="@id/navigation_currencies" />
+        <argument
+            android:name="info"
+            android:defaultValue="FROM"
+            app:argType="com.helano.converter.model.Info" />
+        <argument
+            android:name="code"
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -22,9 +30,13 @@
         tools:layout="@layout/fragment_currencies">
         <action
             android:id="@+id/actionFoundCurrency"
-            app:destination="@id/navigation_converter" />
+            app:destination="@id/navigation_converter"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/conversion_navigation"
+            app:popUpToInclusive="true" />
         <argument
-            android:name="conversion"
-            app:argType="com.helano.converter.model.Conversion" />
+            android:name="info"
+            android:defaultValue="FROM"
+            app:argType="com.helano.converter.model.Info" />
     </fragment>
 </navigation>

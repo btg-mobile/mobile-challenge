@@ -1,7 +1,6 @@
 package com.helano.converter.ui.currencies
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,12 +12,16 @@ class CurrenciesViewModel @ViewModelInject constructor(
     private val repository: CurrencyRepository
 ): ViewModel() {
 
-    private val _items = MutableLiveData<List<Currency>>()
-    val items: LiveData<List<Currency>> = _items
+    val items by lazy { MutableLiveData<List<Currency>>() }
+    val selectedCurrency by lazy { MutableLiveData<String>() }
 
     fun start() {
         viewModelScope.launch {
-            _items.value = repository.currencies()
+            items.value = repository.currencies()
         }
+    }
+
+    fun onCurrencySelected(code: String) {
+        selectedCurrency.value = code
     }
 }

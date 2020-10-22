@@ -1,5 +1,5 @@
 package com.helano.converter.model
 
-enum class Conversion {
+enum class Info {
     FROM, TO
 }
