@@ -31,9 +31,6 @@ class ConverterViewModel @ViewModelInject constructor(
 
     fun start() {
         viewModelScope.launch {
-            repository.refreshData()?.let {
-                prefs.lastUpdate = it
-            }
             updateCurrencyInfo(prefs.fromCurrencyCode, Info.FROM)
             updateCurrencyInfo(prefs.toCurrencyCode, Info.TO)
         }

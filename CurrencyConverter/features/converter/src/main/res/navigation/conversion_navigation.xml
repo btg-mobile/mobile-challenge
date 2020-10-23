@@ -3,7 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/conversion_navigation"
-    app:startDestination="@+id/navigation_converter">
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.helano.converter.ui.splash.SplashFragment"
+        android:label="@string/title_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/actionStartConverter"
+            app:destination="@id/navigation_converter"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/conversion_navigation"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_converter"
@@ -12,7 +28,9 @@
         tools:layout="@layout/fragment_converter">
         <action
             android:id="@+id/actionSearchCurrency"
-            app:destination="@id/navigation_currencies" />
+            app:destination="@id/navigation_currencies"
+            app:exitAnim="@anim/still_out"
+            app:enterAnim="@anim/slide_in_down" />
         <argument
             android:name="info"
             android:defaultValue="FROM"
@@ -31,6 +49,8 @@
         <action
             android:id="@+id/actionFoundCurrency"
             app:destination="@id/navigation_converter"
+            app:exitAnim="@anim/slide_out_down"
+            app:enterAnim="@anim/still_in"
             app:launchSingleTop="true"
             app:popUpTo="@+id/conversion_navigation"
             app:popUpToInclusive="true" />
