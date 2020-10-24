@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.helano.converter.R
 import com.helano.converter.adapters.CurrenciesAdapter
 import com.helano.converter.databinding.FragmentCurrenciesBinding
+import com.helano.shared.view.ErrorMessageView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,6 +43,7 @@ class CurrenciesFragment : Fragment() {
         viewModel.start()
         setAdapter()
         setNavigation()
+        ErrorMessageView(binding.listContainer, viewLifecycleOwner)
     }
 
     private fun setAdapter() {

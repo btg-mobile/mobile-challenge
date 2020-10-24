@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Currency Converter</string>
     <string name="app_name_splash">converter</string>
+    <string name="title_splash">Splash</string>
+    <string name="title_converter">Converter</string>
+    <string name="title_list">Currencies</string>
+    <string name="title_error">Error</string>
+    <string name="button_leave_text">Leave</string>
+
+    <string name="error_connection_title">Connection error</string>
+    <string name="error_api_server_title">Server error</string>
+    <string name="error_load_data">Currency quotes could not be loaded into the database.</string>
+    <string name="error_api_server_message">Error requesting data from the server!</string>
+    <string name="error_connection_message">Please check your internet connection!</string>
 </resources>

@@ -12,7 +12,8 @@ import androidx.navigation.fragment.navArgs
 import com.helano.converter.R
 import com.helano.converter.databinding.FragmentConverterBinding
 import com.helano.converter.ext.afterTextChanged
-import com.helano.converter.model.Info
+import com.helano.shared.enums.Info
+import com.helano.shared.view.ErrorMessageView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,15 +42,24 @@ class ConverterFragment : Fragment() {
         viewModel.start()
         setBindings()
         handleNavArgs()
+        ErrorMessageView(binding.container, viewLifecycleOwner)
     }
 
     private fun setBindings() {
         binding.fromContainer.setOnClickListener {
-            findNavController(it).navigate(ConverterFragmentDirections.actionSearchCurrency(Info.FROM))
+            findNavController(it).navigate(
+                ConverterFragmentDirections.actionSearchCurrency(
+                    Info.FROM
+                )
+            )
         }
 
         binding.toContainer.setOnClickListener {
-            findNavController(it).navigate(ConverterFragmentDirections.actionSearchCurrency(Info.TO))
+            findNavController(it).navigate(
+                ConverterFragmentDirections.actionSearchCurrency(
+                    Info.TO
+                )
+            )
         }
 
         binding.currencyValue.afterTextChanged { viewModel.onValueChanged(it) }

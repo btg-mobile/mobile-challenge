@@ -19,6 +19,14 @@
             app:popUpTo="@+id/conversion_navigation"
             app:popUpToInclusive="true" />
 
+        <action
+            android:id="@+id/actionError"
+            app:destination="@id/navigation_error"
+            app:enterAnim="@anim/slide_in_down"
+            app:exitAnim="@anim/still_out"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/conversion_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -29,16 +37,37 @@
         <action
             android:id="@+id/actionSearchCurrency"
             app:destination="@id/navigation_currencies"
-            app:exitAnim="@anim/still_out"
-            app:enterAnim="@anim/slide_in_down" />
+            app:enterAnim="@anim/slide_in_down"
+            app:exitAnim="@anim/still_out" />
         <argument
             android:name="info"
             android:defaultValue="FROM"
-            app:argType="com.helano.converter.model.Info" />
+            app:argType="com.helano.shared.enums.Info" />
         <argument
             android:name="code"
             android:defaultValue=""
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_error"
+        android:name="com.helano.converter.ui.error.ErrorFragment"
+        android:label="@string/title_error"
+        tools:layout="@layout/fragment_error">
+        <action
+            android:id="@+id/actionStartConverter"
+            app:destination="@id/navigation_converter"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/conversion_navigation"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="error"
+            android:defaultValue="CONNECTION"
+            app:argType="com.helano.shared.enums.Error" />
+
     </fragment>
 
     <fragment
@@ -49,14 +78,14 @@
         <action
             android:id="@+id/actionFoundCurrency"
             app:destination="@id/navigation_converter"
-            app:exitAnim="@anim/slide_out_down"
             app:enterAnim="@anim/still_in"
+            app:exitAnim="@anim/slide_out_down"
             app:launchSingleTop="true"
             app:popUpTo="@+id/conversion_navigation"
             app:popUpToInclusive="true" />
         <argument
             android:name="info"
             android:defaultValue="FROM"
-            app:argType="com.helano.converter.model.Info" />
+            app:argType="com.helano.shared.enums.Info" />
     </fragment>
 </navigation>

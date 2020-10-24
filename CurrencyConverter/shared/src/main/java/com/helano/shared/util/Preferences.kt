@@ -15,6 +15,10 @@ class Preferences @Inject constructor(@ApplicationContext context: Context) {
         get() = prefs.getLong(LAST_UPDATE, 0)
         set(value) = prefs.edit { putLong(LAST_UPDATE, value) }
 
+    var lastDataUpdate: Long
+        get() = prefs.getLong(LAST_DATA_UPDATE, 0)
+        set(value) = prefs.edit { putLong(LAST_DATA_UPDATE, value) }
+
     var fromCurrencyCode: String
         get() = getCurrencyCode(FROM_CURRENCY_CODE, FROM_CURRENCY_CODE_DEFAULT)
         set(value) = prefs.edit { putString(FROM_CURRENCY_CODE, value) }
@@ -39,5 +43,6 @@ class Preferences @Inject constructor(@ApplicationContext context: Context) {
         private const val FROM_CURRENCY_CODE = "from_currency_code"
         private const val TO_CURRENCY_CODE = "to_currency_code"
         private const val LAST_UPDATE = "last_update"
+        private const val LAST_DATA_UPDATE = "last_data_update"
     }
 }

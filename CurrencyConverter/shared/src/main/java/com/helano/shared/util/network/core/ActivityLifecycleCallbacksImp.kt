@@ -22,7 +22,7 @@ internal class ActivityLifecycleCallbacksImp :
 
     override fun onActivityDestroyed(activity: Activity) {}
 
-    override fun onActivityCreated(activity: Activity, p1: Bundle?) = safeRun(TAG) {
+    override fun onActivityCreated(activity: Activity, p1: Bundle?) {
         if (activity !is LifecycleOwner) return
 
         if (activity is FragmentActivity)
@@ -33,16 +33,14 @@ internal class ActivityLifecycleCallbacksImp :
         activity.onListenerCreated()
     }
 
-    override fun onActivityResumed(activity: Activity) = safeRun {
+    override fun onActivityResumed(activity: Activity) {
         if (activity !is LifecycleOwner) return
         if (activity !is NetworkConnectivityListener) return
 
         activity.onListenerResume()
     }
 
-    private fun addLifecycleCallbackToFragments(activity: FragmentActivity) = safeRun(
-        TAG
-    ) {
+    private fun addLifecycleCallbackToFragments(activity: FragmentActivity) {
 
         val callback = object : FragmentManager.FragmentLifecycleCallbacks() {
 

@@ -10,7 +10,8 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,5 +21,5 @@
             android:layout_height="match_parent"
             app:items="@{viewModel.items}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

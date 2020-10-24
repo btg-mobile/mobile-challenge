@@ -6,15 +6,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/splash_background">
+        android:background="@color/blue_dark">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/errorImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:layout_marginHorizontal="75dp"
+            android:layout_marginHorizontal="@dimen/_73sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
             android:fontFamily="@font/prometo_light"
             android:text="@string/app_name_splash"
             android:textColor="@color/gray_light"
-            android:textSize="22sp"
+            android:textSize="@dimen/_22ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"

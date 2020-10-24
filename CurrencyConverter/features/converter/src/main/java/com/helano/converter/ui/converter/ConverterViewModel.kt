@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.helano.converter.model.ExchangeRates
-import com.helano.converter.model.Info
+import com.helano.shared.enums.Info
 import com.helano.repository.CurrencyRepository
 import com.helano.shared.model.Currency
 import com.helano.shared.util.Preferences
