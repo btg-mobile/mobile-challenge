@@ -14,7 +14,7 @@ extension Double {
         nf.groupingSeparator = "."
         nf.decimalSeparator = ","
         nf.minimumFractionDigits = 2
-        nf.maximumFractionDigits = 2
+        nf.maximumFractionDigits = 4
         nf.usesGroupingSeparator = true
         nf.numberStyle = .decimal
         return "\(currencySymbol) \(nf.string(from: NSNumber(floatLiteral: self)) ?? "\(currencySymbol) \(self)")"

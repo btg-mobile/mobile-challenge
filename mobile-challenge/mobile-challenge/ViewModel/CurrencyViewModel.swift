@@ -38,19 +38,21 @@ public class CurrencyViewModel {
         var formattedTotalAmount: String? = nil
         if originalSymbol == targetSymbol {
             formattedTotalAmount = self.amount.formatCurrency(currencySymbol: originalSymbol)
+            action(formattedTotalAmount)
         } else {
             if let list = currencyListConvertedToDollar {
                 formattedTotalAmount = self.getConvertedValue(originalSymbol, targetSymbol, currencyListConvertedToDollar: list)
+                action(formattedTotalAmount)
             } else {
                 self.getCurrencyListConvertedToDollar() { [weak self] in
                     guard let wSelf = self else { return }
                     if let list = wSelf.currencyListConvertedToDollar {
                         formattedTotalAmount = wSelf.getConvertedValue(originalSymbol, targetSymbol, currencyListConvertedToDollar: list)
+                        action(formattedTotalAmount)
                     }
                 }
             }
         }
-        action(formattedTotalAmount)
     }
     
     fileprivate func getConvertedValue(_ originalSymbol: String, _ targetSymbol: String, currencyListConvertedToDollar list: [CurrencyDollarValue]) -> String? {
