@@ -61,8 +61,4 @@ internal class ActivityLifecycleCallbacksImp :
 
         activity.supportFragmentManager.registerFragmentLifecycleCallbacks(callback, true)
     }
-
-    companion object {
-        const val TAG = "ActivityCallbacks"
-    }
 }

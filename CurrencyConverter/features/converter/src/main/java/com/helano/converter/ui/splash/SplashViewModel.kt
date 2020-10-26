@@ -19,7 +19,7 @@ class SplashViewModel @ViewModelInject constructor(
     private val prefs: Preferences
 ) : ViewModel() {
 
-    val fetchResult by lazy { MutableLiveData<Result>() }
+    val refreshResult by lazy { MutableLiveData<Result>() }
 
     fun start() {
         viewModelScope.launch {
@@ -52,9 +52,9 @@ class SplashViewModel @ViewModelInject constructor(
         val timeLapsed = System.currentTimeMillis() - currentTime
         if (timeLapsed < Constants.TIMEOUT_SPLASH) {
             delay(Constants.TIMEOUT_SPLASH - timeLapsed)
-            fetchResult.value = result
+            refreshResult.value = result
         } else {
-            fetchResult.value = result
+            refreshResult.value = result
         }
     }
 }

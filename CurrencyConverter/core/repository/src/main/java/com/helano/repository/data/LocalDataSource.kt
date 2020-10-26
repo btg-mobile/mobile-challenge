@@ -19,6 +19,14 @@ class LocalDataSource @Inject constructor(
         get() = currencyQuoteDao.getAll()
         set(value) = currencyQuoteDao.insertAll(value)
 
+    fun deleteAllCurrencies() {
+        currencyDao.deleteAll()
+    }
+
+    fun deleteAllCurrenciesQuotes() {
+        currencyQuoteDao.deleteAll()
+    }
+
     fun getCurrency(code: String): Currency {
         return currencyDao.getCurrency(code)
     }
@@ -26,6 +34,4 @@ class LocalDataSource @Inject constructor(
     fun getCurrencyQuote(code: String): CurrencyQuote {
         return currencyQuoteDao.getCurrency(code)
     }
-
-    fun isCurrenciesEmpty() = currencyDao.getSize() == 0
 }

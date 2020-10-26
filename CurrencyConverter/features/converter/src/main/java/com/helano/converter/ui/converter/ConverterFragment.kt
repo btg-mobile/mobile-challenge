@@ -28,7 +28,6 @@ class ConverterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_converter, container, false
         )

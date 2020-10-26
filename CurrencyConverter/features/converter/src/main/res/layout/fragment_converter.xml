@@ -45,18 +45,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            tools:text="Last Update in " />
+            tools:text="@string/last_update" />
 
         <LinearLayout
             android:id="@+id/fromContainer"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            style="@style/CurrencyContainerStyle"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/view_currency_background"
-            android:elevation="@dimen/_5sdp"
-            android:padding="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title">
@@ -68,13 +62,7 @@
                 android:layout_weight="3"
                 android:background="@drawable/btn_selector"
                 android:orientation="vertical"
-                android:padding="@dimen/_5sdp"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toTopOf="@id/swapButton"
-                app:layout_constraintEnd_toStartOf="@id/swapButton"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:padding="@dimen/_5sdp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -129,7 +117,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
             android:adjustViewBounds="true"
-            android:clickable="true"
             android:scaleType="center"
             android:src="@drawable/btn_swap_selector"
             app:layout_constraintEnd_toEndOf="parent"
@@ -139,18 +126,11 @@
 
         <LinearLayout
             android:id="@+id/toContainer"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            style="@style/CurrencyContainerStyle"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/view_currency_background"
-            android:elevation="@dimen/_5sdp"
-            android:padding="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/swapButton"
-            app:layout_constraintVertical_bias="0.5">
+            app:layout_constraintTop_toBottomOf="@id/swapButton">
 
             <LinearLayout
                 android:id="@+id/toView"
@@ -159,13 +139,7 @@
                 android:layout_weight="3"
                 android:background="@drawable/btn_selector"
                 android:orientation="vertical"
-                android:padding="@dimen/_5sdp"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toTopOf="@id/swapButton"
-                app:layout_constraintEnd_toStartOf="@id/swapButton"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:padding="@dimen/_5sdp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -201,8 +175,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/prometo_light"
                 android:gravity="center"
-                android:inputType="numberDecimal"
-                android:text="@{viewModel.text}"
+                android:text="@{viewModel.convertedCurrency}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_shape"
                 android:textSize="@dimen/_25ssp"

@@ -132,7 +132,7 @@
 
             <TextView
                 android:id="@+id/message1"
-                style="@style/ErrorMessageText"
+                style="@style/MessageTextStyle"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:gravity="center"
                 android:text="@string/warning_not_found_message" />

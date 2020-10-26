@@ -32,13 +32,13 @@
 
         <TextView
             android:id="@+id/message1"
-            style="@style/ErrorMessageText"
+            style="@style/MessageTextStyle"
             android:layout_marginTop="@dimen/_70sdp"
             android:text="@string/error_load_data" />
 
         <TextView
             android:id="@+id/message2"
-            style="@style/ErrorMessageText"
+            style="@style/MessageTextStyle"
             android:text="@string/error_connection_message" />
 
         <Button

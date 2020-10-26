@@ -20,7 +20,4 @@ interface CurrencyDao {
 
     @Query("SELECT * FROM currencies WHERE code = :code")
     fun getCurrency(code: String): Currency
-
-    @Query("SELECT count(*) FROM currencies")
-    fun getSize(): Int
 }

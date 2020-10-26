@@ -24,7 +24,7 @@ class ConverterViewModel @ViewModelInject constructor(
     val toCurrency by lazy { MutableLiveData<Currency>() }
     val currencyValue by lazy { MutableLiveData<String>() }
     val lastUpdate by lazy { MutableLiveData<String>() }
-    val text by lazy { MutableLiveData<String>() }
+    val convertedCurrency by lazy { MutableLiveData<String>() }
     private val exchangeRates = ExchangeRates()
 
     val currencies by lazy { MutableLiveData<List<Currency>>() }
@@ -67,7 +67,7 @@ class ConverterViewModel @ViewModelInject constructor(
     }
 
     private fun updateView(value: Float) {
-        text.value = DECIMAL_PLACES.format(value * (exchangeRates.to / exchangeRates.from))
+        convertedCurrency.value = DECIMAL_PLACES.format(value * (exchangeRates.to / exchangeRates.from))
     }
 
     private fun getDate(date: Long): String {

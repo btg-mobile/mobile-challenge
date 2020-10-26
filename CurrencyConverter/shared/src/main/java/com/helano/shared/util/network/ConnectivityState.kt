@@ -1,8 +1,8 @@
 package com.helano.shared.util.network
 
-interface ConnectivityState{
+interface ConnectivityState {
     val isConnected: Boolean
-        get() = networkStats.any{
+        get() = networkStats.any {
             it.isAvailable
         }
 

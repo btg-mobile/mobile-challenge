@@ -20,7 +20,4 @@ interface CurrencyQuoteDao {
 
     @Query("SELECT * FROM quotes WHERE code = :code")
     fun getCurrency(code: String): CurrencyQuote
-
-    @Query("SELECT count(*) FROM quotes")
-    fun getSize(): Int
 }

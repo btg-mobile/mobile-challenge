@@ -18,10 +18,10 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:paddingStart="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@drawable/view_currency_background"
-        android:onClick="@{() -> viewModel.onCurrencySelected(currency.code)}">
+        android:onClick="@{() -> viewModel.onCurrencySelected(currency.code)}"
+        android:paddingStart="@dimen/_10sdp">
 
         <TextView
             android:id="@+id/currencyCode"
@@ -43,10 +43,9 @@
             android:layout_weight="3"
             android:fontFamily="@font/sansprolight"
             android:gravity="center_vertical"
-            android:textColor="@color/blue"
             android:text="@{currency.name}"
-            tools:text="United States Dollar"
-            android:textSize="@dimen/_15ssp" />
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_15ssp"
+            tools:text="United States Dollar" />
     </LinearLayout>
-
 </layout>

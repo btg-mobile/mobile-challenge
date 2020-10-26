@@ -7,7 +7,6 @@ sealed class NetworkEvent {
 
     class AvailabilityEvent(
         override val state: NetworkState,
-        val oldNetworkAvailability: Boolean,
-        val oldConnectivity: Boolean
+        val oldNetworkAvailability: Boolean
     ) : NetworkEvent()
 }

@@ -1,7 +1,6 @@
 package com.helano.converter.ui.currencies
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,12 +48,9 @@ class CurrenciesFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        val viewModel = binding.viewModel
-        if (viewModel != null) {
-            adapter = CurrenciesAdapter(viewModel)
+        binding.viewModel?.let {
+            adapter = CurrenciesAdapter(it)
             binding.recycler.adapter = adapter
-        } else {
-            Log.e(TAG, "ViewModel not initialized.")
         }
     }
 
@@ -72,9 +68,5 @@ class CurrenciesFragment : Fragment() {
                 CurrenciesFragmentDirections.actionFoundCurrency(args.info, it)
             )
         })
-    }
-
-    companion object {
-        val TAG = CurrenciesFragment::class.simpleName
     }
 }
