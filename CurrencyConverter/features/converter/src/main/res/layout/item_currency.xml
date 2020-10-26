@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,26 +14,39 @@
     </data>
 
     <LinearLayout
-        android:layout_margin="10sp"
         android:layout_width="match_parent"
-        android:onClick="@{() -> viewModel.onCurrencySelected(currency.code)}"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/view_currency_background"
+        android:onClick="@{() -> viewModel.onCurrencySelected(currency.code)}">
 
         <TextView
             android:id="@+id/currencyCode"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="@font/prometo"
+            android:gravity="center_vertical"
             android:text="@{currency.code}"
-            android:textSize="25sp" />
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_22ssp"
+            android:textStyle="bold"
+            tools:text="USD" />
 
         <TextView
             android:id="@+id/currencyName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="3"
+            android:fontFamily="@font/sansprolight"
+            android:gravity="center_vertical"
+            android:textColor="@color/blue"
             android:text="@{currency.name}"
-            android:textSize="20sp" />
+            tools:text="United States Dollar"
+            android:textSize="@dimen/_15ssp" />
     </LinearLayout>
 
 </layout>

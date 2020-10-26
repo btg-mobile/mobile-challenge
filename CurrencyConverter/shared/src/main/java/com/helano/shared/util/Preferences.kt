@@ -27,6 +27,14 @@ class Preferences @Inject constructor(@ApplicationContext context: Context) {
         get() = getCurrencyCode(TO_CURRENCY_CODE, TO_CURRENCY_CODE_DEFAULT)
         set(value) = prefs.edit { putString(TO_CURRENCY_CODE, value) }
 
+    var valueToConvert: String
+        get() = prefs.getString(VALUE_TO_CONVERT, "1") ?: "1"
+        set(value) = prefs.edit { putString(VALUE_TO_CONVERT, value) }
+
+    var isAscending: Boolean
+        get() = prefs.getBoolean(IS_ASCENDING, true)
+        set(value) = prefs.edit { putBoolean(IS_ASCENDING, value) }
+
     private fun getCurrencyCode(code: String, defaultCode: String): String {
         val currency = prefs.getString(code, "")
         return if (currency.isNullOrEmpty()) {
@@ -44,5 +52,7 @@ class Preferences @Inject constructor(@ApplicationContext context: Context) {
         private const val TO_CURRENCY_CODE = "to_currency_code"
         private const val LAST_UPDATE = "last_update"
         private const val LAST_DATA_UPDATE = "last_data_update"
+        private const val VALUE_TO_CONVERT = "value_to_convert"
+        private const val IS_ASCENDING = "is_ascending"
     }
 }

@@ -15,115 +15,202 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray_screen_background"
         tools:context=".ui.converter.ConverterFragment">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/prometo"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_25ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lastUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sansprolight"
+            android:gravity="center_horizontal"
+            android:text="@{String.format(@string/last_update, viewModel.lastUpdate)}"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Last Update in " />
 
         <LinearLayout
             android:id="@+id/fromContainer"
-            android:layout_width="140dp"
-            android:layout_height="90dp"
-            android:background="@drawable/btn_currency_selector"
-            android:orientation="vertical"
-            android:padding="5dp"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toTopOf="@id/swapButton"
-            app:layout_constraintEnd_toStartOf="@id/swapButton"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.fromCurrency.code}"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:text="USD" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.fromCurrency.name}"
-                android:textSize="20sp"
-                tools:text="United States of Dollar" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/currencyValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:text="@{viewModel.currencyValue}"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toTopOf="@id/swapButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/view_currency_background"
+            android:elevation="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/swapButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <LinearLayout
+                android:id="@+id/fromView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@drawable/btn_selector"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@id/swapButton"
+                app:layout_constraintEnd_toStartOf="@id/swapButton"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/prometo"
+                    android:text="@{viewModel.fromCurrency.code}"
+                    android:textColor="@color/btn_text_color"
+                    android:textSize="@dimen/_25ssp"
+                    android:textStyle="bold"
+                    tools:text="USD" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/sansproregular"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.fromCurrency.name}"
+                    android:textColor="@color/btn_text_color"
+                    android:textSize="@dimen/_13ssp"
+                    tools:text="United States Dollar" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/currencyValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:backgroundTint="@color/blue"
+                android:ems="10"
+                android:fontFamily="@font/prometo_light"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:text="@{viewModel.currencyValue}"
+                android:textCursorDrawable="@drawable/cursor_shape"
+                android:textSize="@dimen/_25ssp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@id/swapButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/swapButton"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/swapButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:scaleType="center"
             android:src="@drawable/btn_swap_selector"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintTop_toBottomOf="@id/fromContainer"
+            app:layout_constraintVertical_bias="0.35" />
 
         <LinearLayout
             android:id="@+id/toContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_currency_selector"
-            android:orientation="vertical"
-            android:padding="5dp"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/swapButton"
-            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/view_currency_background"
+            android:elevation="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/swapButton"
-            app:layout_constraintVertical_bias="0.08">
+            app:layout_constraintVertical_bias="0.5">
+
+            <LinearLayout
+                android:id="@+id/toView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@drawable/btn_selector"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@id/swapButton"
+                app:layout_constraintEnd_toStartOf="@id/swapButton"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/prometo"
+                    android:text="@{viewModel.toCurrency.code}"
+                    android:textColor="@color/btn_text_color"
+                    android:textSize="@dimen/_25ssp"
+                    android:textStyle="bold"
+                    tools:text="USD" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/sansproregular"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.toCurrency.name}"
+                    android:textColor="@color/btn_text_color"
+                    android:textSize="@dimen/_13ssp"
+                    tools:text="United States Dollar" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/currencyConverted"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.toCurrency.code}"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:text="BRL" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.toCurrency.name}"
-                android:textSize="20sp"
-                tools:text="Brazilian Real" />
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:fontFamily="@font/prometo_light"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:text="@{viewModel.text}"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_shape"
+                android:textSize="@dimen/_25ssp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@id/swapButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/swapButton"
+                app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/currencyConverted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/swapButton"
-            app:layout_constraintTop_toBottomOf="@id/swapButton"
-            app:layout_constraintVertical_bias="0.13"
-            tools:text="@{viewModel.text}" />
-
-<!--        <com.helano.shared.view.ErrorMessageView-->
-<!--            android:id="@+id/errorView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_50sdp"-->
-<!--            android:visibility="visible"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -46,7 +46,7 @@ class ConverterFragment : Fragment() {
     }
 
     private fun setBindings() {
-        binding.fromContainer.setOnClickListener {
+        binding.fromView.setOnClickListener {
             findNavController(it).navigate(
                 ConverterFragmentDirections.actionSearchCurrency(
                     Info.FROM
@@ -54,12 +54,16 @@ class ConverterFragment : Fragment() {
             )
         }
 
-        binding.toContainer.setOnClickListener {
+        binding.toView.setOnClickListener {
             findNavController(it).navigate(
                 ConverterFragmentDirections.actionSearchCurrency(
                     Info.TO
                 )
             )
+        }
+
+        binding.swapButton.setOnClickListener {
+            viewModel.onSwapClicked(binding.currencyValue.text.toString())
         }
 
         binding.currencyValue.afterTextChanged { viewModel.onValueChanged(it) }

@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.helano.converter.R
 import com.helano.converter.adapters.CurrenciesAdapter
 import com.helano.converter.databinding.FragmentCurrenciesBinding
+import com.helano.converter.ext.afterTextChanged
 import com.helano.shared.view.ErrorMessageView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,6 +43,7 @@ class CurrenciesFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.start()
         setAdapter()
+        setBindings()
         setNavigation()
         ErrorMessageView(binding.listContainer, viewLifecycleOwner)
     }
@@ -53,6 +55,14 @@ class CurrenciesFragment : Fragment() {
             binding.recycler.adapter = adapter
         } else {
             Log.e(TAG, "ViewModel not initialized.")
+        }
+    }
+
+    private fun setBindings() {
+        binding.searchView.afterTextChanged { adapter.filter.filter(it) }
+        binding.header.setOnClickListener {
+            binding.recycler.scrollToPosition(0)
+            viewModel.onSortChanged()
         }
     }
 
