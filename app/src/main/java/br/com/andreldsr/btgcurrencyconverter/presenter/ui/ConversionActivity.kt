@@ -7,6 +7,7 @@ import android.view.View
 import androidx.lifecycle.observe
 import br.com.andreldsr.btgcurrencyconverter.R
 import br.com.andreldsr.btgcurrencyconverter.infra.repositories.QuoteRepositoryImpl
+import br.com.andreldsr.btgcurrencyconverter.mock.QuoteMockRepositoryImpl
 import br.com.andreldsr.btgcurrencyconverter.presenter.base.BaseActivity
 import br.com.andreldsr.btgcurrencyconverter.presenter.viewmodel.CurrencyConversionViewModel
 import kotlinx.android.synthetic.main.activity_conversion.*
@@ -16,7 +17,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 
 class ConversionActivity : BaseActivity() {
-    val viewModel = CurrencyConversionViewModel.ViewModelFactory(QuoteRepositoryImpl.build()).create(
+    val viewModel = CurrencyConversionViewModel.ViewModelFactory().create(
         CurrencyConversionViewModel::class.java
     )
     override fun onCreate(savedInstanceState: Bundle?) {

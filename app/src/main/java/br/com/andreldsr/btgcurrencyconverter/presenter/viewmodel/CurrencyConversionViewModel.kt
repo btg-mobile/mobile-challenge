@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.andreldsr.btgcurrencyconverter.domain.entities.Currency
 import br.com.andreldsr.btgcurrencyconverter.domain.repositories.QuoteRepository
 import br.com.andreldsr.btgcurrencyconverter.domain.usecases.GetQuoteFromUsdImpl
+import br.com.andreldsr.btgcurrencyconverter.mock.QuoteMockRepositoryImpl
 import kotlinx.coroutines.launch
 
 class CurrencyConversionViewModel(private val repository: QuoteRepository) : ViewModel() {
@@ -42,9 +43,11 @@ class CurrencyConversionViewModel(private val repository: QuoteRepository) : Vie
     companion object {
         var initialCurrencyFrom = Currency(initials = "CAD", name = "Canadian Dollar")
         var initialCurrencyTo = Currency(initials = "BRL", name = "Brazilian Real")
+
     }
 
-    class ViewModelFactory(private val repository: QuoteRepository) : ViewModelProvider.Factory {
+    class ViewModelFactory() : ViewModelProvider.Factory {
+        private val repository = QuoteMockRepositoryImpl.build()
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CurrencyConversionViewModel::class.java)) return CurrencyConversionViewModel(repository) as T
             throw IllegalArgumentException("Unknown ViewModel class")

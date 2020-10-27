@@ -11,14 +11,15 @@ import kotlinx.android.synthetic.main.adapter_currency_list_item.view.*
 
 
 class CurrencyListItemAdapter(
-    private val currencyList: List<Currency>
+    private val currencyList: List<Currency>,
+    private val onItemClickListener: (currency: Currency) -> Unit
 ) : RecyclerView.Adapter<CurrencyListItemAdapter.CurrencyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.adapter_currency_list_item, parent, false)
-        return CurrencyViewHolder(itemView)
+        return CurrencyViewHolder(itemView, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, index: Int) {
@@ -28,13 +29,18 @@ class CurrencyListItemAdapter(
     override fun getItemCount(): Int = currencyList.size
 
     class CurrencyViewHolder(
-        itemView: View
+        itemView: View,
+        private val onItemClickListener: (currencyModel: Currency) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
         private val initials = itemView.currency_list_item_initials
         private val name = itemView.currency_list_item_name
         fun bindView(currency: Currency){
             initials.text = currency.initials
             name.text = currency.name
+
+            itemView.setOnClickListener {
+                onItemClickListener.invoke(currency)
+            }
         }
     }
 }
