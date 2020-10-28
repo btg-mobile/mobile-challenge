@@ -12,12 +12,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import br.com.andreldsr.btgcurrencyconverter.R
+import br.com.andreldsr.btgcurrencyconverter.presenter.extensions.navigateWithAnimations
 import br.com.andreldsr.btgcurrencyconverter.presenter.viewmodel.CurrencyConversionViewModel
-import kotlinx.android.synthetic.main.activity_conversion.currency_conversion_from_initials
-import kotlinx.android.synthetic.main.activity_conversion.currency_conversion_from_value
-import kotlinx.android.synthetic.main.activity_conversion.currency_conversion_quote_tv
-import kotlinx.android.synthetic.main.activity_conversion.currency_conversion_to_initials
-import kotlinx.android.synthetic.main.activity_conversion.currency_conversion_to_value
 import kotlinx.android.synthetic.main.fragment_currency_conversion.*
 import java.lang.NumberFormatException
 import java.text.DecimalFormat
@@ -80,11 +76,11 @@ class ConversionFragment : Fragment() {
 
         currency_conversion_from_initials.setOnClickListener {
             val bundle = bundleOf("type" to "from")
-            findNavController().navigate(R.id.action_ConversionFragment_to_ListFragment, bundle)
+            findNavController().navigateWithAnimations(R.id.action_ConversionFragment_to_ListFragment, bundle)
         }
         currency_conversion_to_initials.setOnClickListener {
             val bundle = bundleOf("type" to "to")
-            findNavController().navigate(R.id.action_ConversionFragment_to_ListFragment, bundle)
+            findNavController().navigateWithAnimations(R.id.action_ConversionFragment_to_ListFragment, bundle)
         }
         viewModel.loadQuote()
     }

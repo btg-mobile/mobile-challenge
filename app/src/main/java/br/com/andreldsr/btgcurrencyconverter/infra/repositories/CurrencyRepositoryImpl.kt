@@ -1,40 +1,84 @@
 package br.com.andreldsr.btgcurrencyconverter.infra.repositories
 
-import androidx.lifecycle.MutableLiveData
 import br.com.andreldsr.btgcurrencyconverter.domain.entities.Currency
 import br.com.andreldsr.btgcurrencyconverter.domain.repositories.CurrencyRepository
-import br.com.andreldsr.btgcurrencyconverter.infra.response.CurrencyListResponse
+import br.com.andreldsr.btgcurrencyconverter.infra.datasources.CurrencyDatasource
 import br.com.andreldsr.btgcurrencyconverter.infra.services.ApiService
 import br.com.andreldsr.btgcurrencyconverter.infra.services.CurrencyService
-import kotlinx.coroutines.runBlocking
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import br.com.andreldsr.btgcurrencyconverter.util.ConnectionUtil
 import retrofit2.awaitResponse
-import java.lang.Exception
 
-class CurrencyRepositoryImpl(private val currencyService: CurrencyService) : CurrencyRepository {
+class CurrencyRepositoryImpl(private val currencyService: CurrencyService, private val currencyDatasource: CurrencyDatasource?) : CurrencyRepository {
     override suspend fun getCurrency(): List<Currency> {
         val currencies = mutableListOf<Currency>()
-        val response = currencyService.getCurrency().awaitResponse()
-        if(!response.isSuccessful){
-            throw Exception()
-        }
-
-        val currenciesMap = response.body()?.currencies
-        currenciesMap?.map {
-            currencies.add(Currency(initials = it.key, name = it.value))
+        if(ConnectionUtil.isNetworkConnected()){
+            loadCurrenciesFromAPI(currencies)
+            updateCurrenciesDB(currencies)
+        } else {
+            loadCurrenciesFromDB(currencies)
         }
         return currencies
     }
 
-    override fun searchCurrency(searchTerm: String): List<Currency> {
-        return listOf()
+    override suspend fun getQuote(from: String, to: String): Float {
+        var quote = 0f
+        if(ConnectionUtil.isNetworkConnected()) {
+            quote = getQuoteFromAPI(from, to)
+        } else {
+            quote = getQuoteFromDB(from, to)
+        }
+        quote == 0f ?: throw Exception()
+        return quote
+    }
+
+    private suspend fun loadCurrenciesFromAPI(currencyList: MutableList<Currency>){
+        val response = currencyService.getCurrency().awaitResponse()
+        if (!response.isSuccessful) {
+            throw Exception()
+        }
+        val currenciesMap = response.body()?.currencies
+        currenciesMap?.map {
+            currencyList.add(Currency(initials = it.key, name = it.value))
+        }
+    }
+
+    private suspend fun loadCurrenciesFromDB(currencies: MutableList<Currency>) {
+        currencyDatasource?.getCurrencies()?.map {
+            currency -> currencies.add(currency)
+        }
+    }
+
+    private suspend fun updateCurrenciesDB(currencyList: List<Currency>){
+        currencyDatasource?.deleteAll()
+        currencyList.map {
+            currency -> currencyDatasource?.save(currency)
+        }
+    }
+
+    private suspend fun getQuoteFromAPI(from: String, to: String): Float {
+        val response = currencyService.getQuote().awaitResponse()
+        if (!response.isSuccessful)
+            throw Exception()
+        val quoteMap = response.body()?.quotes
+        val quoteFrom = quoteMap?.get("${baseQuoteName}$from")?.toFloat() ?: throw Exception()
+        val quoteTo = quoteMap["${baseQuoteName}$to"]?.toFloat() ?: throw Exception()
+        return quoteFrom / quoteTo
+    }
+
+    private suspend fun getQuoteFromDB(from: String, to: String): Float {
+
+        val quoteFrom = currencyDatasource?.getQuote(from)
+        val quoteTo = currencyDatasource?.getQuote(to)
+        if (quoteFrom != null) {
+            return quoteFrom / quoteTo!!
+        }
+        return 0f
     }
 
     companion object {
+        private const val baseQuoteName = "USD"
         fun build(): CurrencyRepositoryImpl {
-            return CurrencyRepositoryImpl(ApiService.service)
+            return CurrencyRepositoryImpl(ApiService.service, null)
         }
     }
 }

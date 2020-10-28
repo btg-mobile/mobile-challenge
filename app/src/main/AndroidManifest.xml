@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.andreldsr.btgcurrencyconverter">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -21,14 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presenter.ui.ConversionActivity"
-            android:label="@string/title_activity_conversion"
-            android:theme="@style/Theme.BTGCurrencyConverter.NoActionBar">
-        </activity>
-        <activity
-            android:name=".presenter.ui.CurrencyListActivity"
-            android:parentActivityName=".presenter.ui.ConversionActivity" />
     </application>
 
 </manifest>

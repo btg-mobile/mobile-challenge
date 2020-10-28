@@ -8,6 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/primary"
         app:titleTextColor="@color/accent_text"

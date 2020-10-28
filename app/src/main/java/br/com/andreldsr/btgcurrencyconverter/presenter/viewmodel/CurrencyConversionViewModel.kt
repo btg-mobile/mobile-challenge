@@ -5,12 +5,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import br.com.andreldsr.btgcurrencyconverter.domain.entities.Currency
-import br.com.andreldsr.btgcurrencyconverter.domain.repositories.QuoteRepository
+import br.com.andreldsr.btgcurrencyconverter.domain.repositories.CurrencyRepository
 import br.com.andreldsr.btgcurrencyconverter.domain.usecases.GetQuoteFromUsdImpl
-import br.com.andreldsr.btgcurrencyconverter.mock.QuoteMockRepositoryImpl
+import br.com.andreldsr.btgcurrencyconverter.domain.usecases.ListCurrency
+import br.com.andreldsr.btgcurrencyconverter.domain.usecases.ListCurrencyImpl
+import br.com.andreldsr.btgcurrencyconverter.mock.CurrencyMockRepositoryImpl
 import kotlinx.coroutines.launch
 
-class CurrencyConversionViewModel(private val repository: QuoteRepository) : ViewModel() {
+class CurrencyConversionViewModel(private val repository: CurrencyRepository) : ViewModel() {
+    val currencyLiveData: MutableLiveData<List<Currency>> = MutableLiveData()
     val currencyFrom: MutableLiveData<Currency> = MutableLiveData(initialCurrencyFrom)
     val currencyTo: MutableLiveData<Currency> = MutableLiveData(initialCurrencyTo)
     private val currencyFromValue: MutableLiveData<Float> = MutableLiveData(1f)
@@ -39,6 +42,13 @@ class CurrencyConversionViewModel(private val repository: QuoteRepository) : Vie
         loadQuote()
     }
 
+    fun getCurrencies() {
+        val listCurrency: ListCurrency = ListCurrencyImpl(repository)
+        viewModelScope.launch {
+            currencyLiveData.value = listCurrency.getList()
+        }
+    }
+
 
     companion object {
         var initialCurrencyFrom = Currency(initials = "CAD", name = "Canadian Dollar")
@@ -47,7 +57,7 @@ class CurrencyConversionViewModel(private val repository: QuoteRepository) : Vie
     }
 
     class ViewModelFactory() : ViewModelProvider.Factory {
-        private val repository = QuoteMockRepositoryImpl.build()
+        private val repository = CurrencyMockRepositoryImpl.build()
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CurrencyConversionViewModel::class.java)) return CurrencyConversionViewModel(repository) as T
             throw IllegalArgumentException("Unknown ViewModel class")

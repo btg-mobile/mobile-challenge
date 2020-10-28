@@ -2,27 +2,32 @@ package br.com.andreldsr.btgcurrencyconverter.mock
 
 import br.com.andreldsr.btgcurrencyconverter.domain.entities.Currency
 import br.com.andreldsr.btgcurrencyconverter.domain.repositories.CurrencyRepository
-import br.com.andreldsr.btgcurrencyconverter.infra.services.ApiService
-import br.com.andreldsr.btgcurrencyconverter.infra.services.CurrencyService
-import retrofit2.awaitResponse
-import java.lang.Exception
 
 class CurrencyMockRepositoryImpl() : CurrencyRepository {
     override suspend fun getCurrency(): List<Currency> {
         val currencies = mutableListOf<Currency>()
-
-        val currenciesMap = mapOf<String, String>("AED" to "United Arab Emirates Dirham", "CAD" to "Canadian Dollar", "BRL" to "Brazilian Real", "USD" to "United States Dollar")
+        val currenciesMap = mapOf(
+            "AED" to "United Arab Emirates Dirham",
+            "CAD" to "Canadian Dollar",
+            "BRL" to "Brazilian Real",
+            "USD" to "United States Dollar"
+        )
         currenciesMap.map {
             currencies.add(Currency(initials = it.key, name = it.value))
         }
         return currencies
     }
 
-    override fun searchCurrency(searchTerm: String): List<Currency> {
-        return listOf()
+    override suspend fun getQuote(from: String, to: String): Float {
+        val quoteMap =
+            mapOf("USDUSD" to 1f, "USDBRL" to 5.63f, "USDCAD" to 1.32f, "USDAED" to 3.62f)
+        val quoteFrom = quoteMap["${baseQuoteName}$from"] ?: throw Exception()
+        val quoteTo = quoteMap["${baseQuoteName}$to"] ?: throw Exception()
+        return quoteTo / quoteFrom;
     }
 
     companion object {
+        const val baseQuoteName = "USD"
         fun build(): CurrencyMockRepositoryImpl {
             return CurrencyMockRepositoryImpl()
         }

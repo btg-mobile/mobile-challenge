@@ -1,14 +1,17 @@
 package br.com.andreldsr.btgcurrencyconverter.domain.usecases
 
-import br.com.andreldsr.btgcurrencyconverter.domain.repositories.QuoteRepository
+import br.com.andreldsr.btgcurrencyconverter.domain.repositories.CurrencyRepository
 
 interface GetQuote {
     suspend fun getQuote(from: String, to: String): Float
 }
 
-class GetQuoteFromUsdImpl(private val quoteRepository: QuoteRepository) : GetQuote{
+class GetQuoteFromUsdImpl(private val repository: CurrencyRepository) : GetQuote{
     override suspend fun getQuote(from: String, to: String): Float {
-        return quoteRepository.getQuote(from, to)
+        if(from.length != 3 || to.length != 3){
+           throw Exception()
+        }
+        return repository.getQuote(from, to)
     }
 
 }

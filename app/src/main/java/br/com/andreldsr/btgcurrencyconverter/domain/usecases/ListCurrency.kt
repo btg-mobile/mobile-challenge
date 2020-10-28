@@ -1,5 +1,4 @@
 package br.com.andreldsr.btgcurrencyconverter.domain.usecases
-import androidx.lifecycle.MutableLiveData
 import br.com.andreldsr.btgcurrencyconverter.domain.entities.Currency
 import br.com.andreldsr.btgcurrencyconverter.domain.repositories.CurrencyRepository
 
