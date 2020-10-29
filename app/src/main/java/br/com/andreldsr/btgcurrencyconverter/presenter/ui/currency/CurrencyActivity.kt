@@ -1,4 +1,4 @@
-package br.com.andreldsr.btgcurrencyconverter.presenter.ui
+package br.com.andreldsr.btgcurrencyconverter.presenter.ui.currency
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -26,6 +26,10 @@ class CurrencyMockRepositoryImpl() : CurrencyRepository {
         return quoteTo / quoteFrom;
     }
 
+    override suspend fun getQuoteList(): Map<String, String> {
+        return mapOf()
+    }
+
     companion object {
         const val baseQuoteName = "USD"
         fun build(): CurrencyMockRepositoryImpl {

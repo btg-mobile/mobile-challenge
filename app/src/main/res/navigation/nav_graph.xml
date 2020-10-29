@@ -6,7 +6,7 @@
     app:startDestination="@id/ConversionFragment">
     <fragment
         android:id="@+id/ConversionFragment"
-        android:name="br.com.andreldsr.btgcurrencyconverter.presenter.ui.ConversionFragment"
+        android:name="br.com.andreldsr.btgcurrencyconverter.presenter.ui.currency.ConversionFragment"
         android:label="@string/conversion_title"
         tools:layout="@layout/fragment_currency_conversion">
 
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="br.com.andreldsr.btgcurrencyconverter.presenter.ui.ListFragment"
+        android:name="br.com.andreldsr.btgcurrencyconverter.presenter.ui.currency.ListFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_currency_list">
 

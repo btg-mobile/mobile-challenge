@@ -18,4 +18,8 @@
     <string name="number_zero">0.00</string>
     <string name="selected_currency">Selected Currency</string>
     <string name="title_activity_currency">CurrencyActivity</string>
+
+    <string name="conversion_quote_rate">1 %s\n= \n%s %s</string>
+    <string name="logo_btg">Logo BTG</string>
+    <string name="splash_error_message">Error loading the app</string>
 </resources>

@@ -1,4 +1,4 @@
-package br.com.andreldsr.btgcurrencyconverter.presenter.ui
+package br.com.andreldsr.btgcurrencyconverter.presenter.ui.currency
 
 import android.os.Bundle
 import android.text.Editable
@@ -57,7 +57,7 @@ class ConversionFragment : Fragment() {
             val toName = viewModel.currencyTo.value?.name
             val quoteValue = nf.format(viewModel.quote.value)
             fromText.text = null
-            currency_conversion_quote_tv.text = "1 $fromName\n= \n$quoteValue $toName"
+            currency_conversion_quote_tv.text = getString(R.string.conversion_quote_rate, fromName, quoteValue, toName )
         }
 
         fromText.addTextChangedListener(object : TextWatcher {

@@ -9,6 +9,7 @@ import br.com.andreldsr.btgcurrencyconverter.domain.repositories.CurrencyReposit
 import br.com.andreldsr.btgcurrencyconverter.domain.usecases.GetQuoteFromUsdImpl
 import br.com.andreldsr.btgcurrencyconverter.domain.usecases.ListCurrency
 import br.com.andreldsr.btgcurrencyconverter.domain.usecases.ListCurrencyImpl
+import br.com.andreldsr.btgcurrencyconverter.infra.repositories.CurrencyRepositoryImpl
 import br.com.andreldsr.btgcurrencyconverter.mock.CurrencyMockRepositoryImpl
 import kotlinx.coroutines.launch
 
@@ -57,7 +58,7 @@ class CurrencyConversionViewModel(private val repository: CurrencyRepository) : 
     }
 
     class ViewModelFactory() : ViewModelProvider.Factory {
-        private val repository = CurrencyMockRepositoryImpl.build()
+        private val repository = CurrencyRepositoryImpl.build()
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CurrencyConversionViewModel::class.java)) return CurrencyConversionViewModel(repository) as T
             throw IllegalArgumentException("Unknown ViewModel class")
