@@ -18,6 +18,12 @@
 		40167B1D254B61F1007318AA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B1C254B61F1007318AA /* AppCoordinator.swift */; };
 		40167B22254B6541007318AA /* ExchangeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B21254B6541007318AA /* ExchangeCoordinator.swift */; };
 		40167B27254B666A007318AA /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B26254B666A007318AA /* ExchangeViewController.swift */; };
+		40167B2F254B67BD007318AA /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B2E254B67BD007318AA /* ExchangeView.swift */; };
+		40167B34254B67FD007318AA /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B33254B67FD007318AA /* ViewCodable.swift */; };
+		40167B39254B6A26007318AA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B38254B6A26007318AA /* UIViewExtension.swift */; };
+		40167B3E254B6A6F007318AA /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B3D254B6A6F007318AA /* ScreenSize.swift */; };
+		40167B43254B72BC007318AA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B42254B72BC007318AA /* UIViewControllerExtension.swift */; };
+		40167B48254B73BC007318AA /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40167B47254B73BC007318AA /* ExchangeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +61,12 @@
 		40167B1C254B61F1007318AA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		40167B21254B6541007318AA /* ExchangeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCoordinator.swift; sourceTree = "<group>"; };
 		40167B26254B666A007318AA /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		40167B2E254B67BD007318AA /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
+		40167B33254B67FD007318AA /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
+		40167B38254B6A26007318AA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		40167B3D254B6A6F007318AA /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		40167B42254B72BC007318AA /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		40167B47254B73BC007318AA /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +187,7 @@
 				40167B12254B616F007318AA /* Enum */,
 				40167B11254B616A007318AA /* Extension */,
 				40167B0F254B6127007318AA /* Protocol */,
+				40167B3D254B6A6F007318AA /* ScreenSize.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -209,6 +222,7 @@
 		40167B07254B603C007318AA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				40167B47254B73BC007318AA /* ExchangeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -216,6 +230,7 @@
 		40167B08254B6059007318AA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				40167B2E254B67BD007318AA /* ExchangeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +261,7 @@
 		40167B0F254B6127007318AA /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				40167B33254B67FD007318AA /* ViewCodable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -253,6 +269,8 @@
 		40167B11254B616A007318AA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				40167B38254B6A26007318AA /* UIViewExtension.swift */,
+				40167B42254B72BC007318AA /* UIViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -402,13 +420,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40167B39254B6A26007318AA /* UIViewExtension.swift in Sources */,
 				40167B15254B619D007318AA /* Coordinator.swift in Sources */,
 				40167ABB254B5862007318AA /* AppDelegate.swift in Sources */,
 				40167B27254B666A007318AA /* ExchangeViewController.swift in Sources */,
+				40167B2F254B67BD007318AA /* ExchangeView.swift in Sources */,
 				40167B1D254B61F1007318AA /* AppCoordinator.swift in Sources */,
+				40167B3E254B6A6F007318AA /* ScreenSize.swift in Sources */,
 				40167ABD254B5862007318AA /* SceneDelegate.swift in Sources */,
+				40167B43254B72BC007318AA /* UIViewControllerExtension.swift in Sources */,
 				40167AC5254B5862007318AA /* CurrencyExchange.xcdatamodeld in Sources */,
+				40167B48254B73BC007318AA /* ExchangeViewModel.swift in Sources */,
 				40167B22254B6541007318AA /* ExchangeCoordinator.swift in Sources */,
+				40167B34254B67FD007318AA /* ViewCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
