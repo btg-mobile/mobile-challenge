@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol ExchangeViewControllerDelegate: class {
+    func presentCurrencyList()
+}
+
 class ExchangeViewController: UIViewController {
     
     // MARK: - Properties
+    
+    weak var coordinator: ExchangeViewControllerDelegate?
     
     var viewModel: ExchangeViewModel
     
@@ -40,6 +46,7 @@ class ExchangeViewController: UIViewController {
     
     @objc func tappedOnOriginButton(){
         print("DEBUG: Tapped on origin button")
+        self.coordinator?.presentCurrencyList()
     }
     
     @objc func tappedOnDestinationButton(){
