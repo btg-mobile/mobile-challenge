@@ -16,6 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         window?.rootViewController = ConverterViewController()
+        
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().barTintColor = UIColor(displayP3Red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

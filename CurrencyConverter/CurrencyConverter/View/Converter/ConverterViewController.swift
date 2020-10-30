@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CurrencyServices
 
 class ConverterViewController: UIViewController {
 
@@ -84,10 +83,12 @@ class ConverterViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func originList() {
-        
+        let controller = UINavigationController(rootViewController: ListViewController())
+        present(controller, animated: true)
     }
     
     @objc private func targetList() {
-        
+        let controller = UINavigationController(rootViewController: ListViewController())
+        present(controller, animated: true)
     }
 }
