@@ -8,37 +8,48 @@
 import Foundation
 import CurrencyServices
 
+enum CurrencyType {
+    case origin
+    case target
+}
+
 protocol ConverterViewModelDelegate: class {
-    func onListCurrencies()
-    func onError(_ error: NSError)
+    func setOriginCurrency(_ currency: Currecy)
+    func setTargetCurrency(_ currency: Currecy)
 }
 
 class ConverterViewModel {
     
     private let network: CurrencyServices.CurrencylayerNetwork
     
-    var currencies: [Currecy]
     weak var delegate: ConverterViewModelDelegate?
+    var originCurrency: Currecy? {
+        didSet {
+            if let currency = originCurrency {
+                delegate?.setOriginCurrency(currency)
+            }
+         }
+    }
+    var targetCurrency: Currecy? {
+        didSet {
+            if let currency = targetCurrency {
+                delegate?.setTargetCurrency(currency)
+            }
+         }
+    }
     
     // MARK: - Life Cycle
     init() {
         network = CurrencyServices.CurrencylayerNetwork()
-        currencies = []
     }
-}
-
-// MARK: - APIs
-extension ConverterViewModel {
-    func availableCurrrencies() {
-        network.list { [weak self] result in
-            switch result {
-            case .success(let currencies):
-                self?.currencies = currencies.compactMap { try? Currecy(code: $0.key, name: $0.value) }
-                self?.delegate?.onListCurrencies()
-                
-            case .failure(let error):
-                self?.delegate?.onError(error)
-            }
+    
+    // MARK: - Funcs
+    func setCurrency(_ currency: Currecy, type: CurrencyType) {
+        switch type {
+        case .origin:
+            originCurrency = currency
+        case .target:
+            targetCurrency = currency
         }
     }
 }

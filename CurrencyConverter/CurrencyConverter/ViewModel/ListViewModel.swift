@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 import CurrencyServices
 
 protocol ListViewModelDelegate: class {
@@ -19,13 +17,15 @@ class ListViewModel {
     
     private let network: CurrencyServices.CurrencylayerNetwork
     
+    var type: CurrencyType
     var currencies: [Currecy]
     weak var delegate: ListViewModelDelegate?
     
     // MARK: - Life Cycle
-    init() {
-        network = CurrencyServices.CurrencylayerNetwork()
-        currencies = []
+    init(type: CurrencyType) {
+        self.type = type
+        self.network = CurrencyServices.CurrencylayerNetwork()
+        self.currencies = []
     }
 }
 

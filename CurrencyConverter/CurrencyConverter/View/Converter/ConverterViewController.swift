@@ -9,6 +9,8 @@ import UIKit
 
 class ConverterViewController: UIViewController {
 
+    private let viewModel: ConverterViewModel = ConverterViewModel()
+    
     // MARK: - Layout Vars
     private lazy var originCurrencyButton: UIButton = {
         let button = UIButton().cornerRadius(8).useConstraint()
@@ -45,6 +47,7 @@ class ConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        viewModel.delegate = self
     }
     
     // MARK: - Setups
@@ -83,12 +86,34 @@ class ConverterViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func originList() {
-        let controller = UINavigationController(rootViewController: ListViewController())
-        present(controller, animated: true)
+        let controller = ListViewController(type: .origin)
+        controller.delegate = self
+        present(UINavigationController(rootViewController: controller), animated: true)
     }
     
     @objc private func targetList() {
-        let controller = UINavigationController(rootViewController: ListViewController())
-        present(controller, animated: true)
+        let controller = ListViewController(type: .target)
+        controller.delegate = self
+        present(UINavigationController(rootViewController: controller), animated: true)
+    }
+}
+
+// MARK: - ViewModel
+extension ConverterViewController: ConverterViewModelDelegate {
+    func setOriginCurrency(_ currency: Currecy) {
+        let title = createAttributedString(code: currency.code, name: currency.name)
+        originCurrencyButton.setAttributedTitle(title, for: .normal)
+    }
+    
+    func setTargetCurrency(_ currency: Currecy) {
+        let title = createAttributedString(code: currency.code, name: currency.name)
+        targetCurrencyButton.setAttributedTitle(title, for: .normal)
+    }
+}
+
+// MARK: - List Delegate
+extension ConverterViewController: ListDelegate {
+    func didSelectCurrency(_ currency: Currecy, type: CurrencyType) {
+        viewModel.setCurrency(currency, type: type)
     }
 }

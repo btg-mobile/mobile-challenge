@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol ListDelegate: class {
+    func didSelectCurrency(_ currency: Currecy, type: CurrencyType)
+}
+
 class ListViewController: UIViewController {
 
-    private let viewModel: ListViewModel = ListViewModel()
+    private let viewModel: ListViewModel
+    weak var delegate: ListDelegate?
     
     // MARK: - Layout Vars
     private lazy var closeButton: UIBarButtonItem = {
@@ -29,6 +34,16 @@ class ListViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
+    required init?(coder: NSCoder) {
+        viewModel = ListViewModel(type: .origin)
+        super.init(coder: coder)
+    }
+    
+    init(type: CurrencyType) {
+        viewModel = ListViewModel(type: type)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -87,5 +102,11 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         cell?.title = viewModel.currencies[indexPath.row].code
         cell?.subtitle = viewModel.currencies[indexPath.row].name
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currency = viewModel.currencies[indexPath.row]
+        delegate?.didSelectCurrency(currency, type: viewModel.type)
+        dismiss(animated: true)
     }
 }
