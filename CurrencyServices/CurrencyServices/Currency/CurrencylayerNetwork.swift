@@ -1,5 +1,5 @@
 //
-//  ListNetwork.swift
+//  CurrencylayerNetwork.swift
 //  CurrencyServices
 //
 //  Created by Breno Aquino on 29/10/20.
@@ -12,6 +12,10 @@ public class CurrencylayerNetwork {
     private let baseUrl: String = "api.currencylayer.com"
     private let accessKey: String = "ef06b891def0317f86b874f22acf7852"
     
+    // MARK: - Life Cycle
+    public init() {}
+    
+    // MARK: - Network Calls
     public func list(callback: @escaping (Result<Dictionary<String, String>, NSError>) -> Void) {
         Network.request(method: .get, baseUrl: baseUrl, path: "/list", params: ["access_key": accessKey]) { result in
             switch result {

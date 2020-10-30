@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		55E37100254B3F7D0020D3F7 /* CurrencyServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E370F6254B3F7C0020D3F7 /* CurrencyServices.framework */; };
 		55E37107254B3F7D0020D3F7 /* CurrencyServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 55E370F9254B3F7C0020D3F7 /* CurrencyServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		55E37119254B413B0020D3F7 /* ServiceAsd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37118254B413B0020D3F7 /* ServiceAsd.swift */; };
 		55E3712E254B46D40020D3F7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3712D254B46D40020D3F7 /* Network.swift */; };
-		55E3713D254B52CF0020D3F7 /* ListNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3713C254B52CF0020D3F7 /* ListNetwork.swift */; };
+		55E3713D254B52CF0020D3F7 /* CurrencylayerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3713C254B52CF0020D3F7 /* CurrencylayerNetwork.swift */; };
 		55E37142254B558F0020D3F7 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37141254B558F0020D3F7 /* NetworkTests.swift */; };
-		55E3714A254B595C0020D3F7 /* ListNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37149254B595C0020D3F7 /* ListNetworkTests.swift */; };
+		55E3714A254B595C0020D3F7 /* CurrencylayerNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37149254B595C0020D3F7 /* CurrencylayerNetworkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,11 +31,10 @@
 		55E370FA254B3F7C0020D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E370FF254B3F7D0020D3F7 /* CurrencyServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E37106254B3F7D0020D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55E37118254B413B0020D3F7 /* ServiceAsd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAsd.swift; sourceTree = "<group>"; };
 		55E3712D254B46D40020D3F7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		55E3713C254B52CF0020D3F7 /* ListNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNetwork.swift; sourceTree = "<group>"; };
+		55E3713C254B52CF0020D3F7 /* CurrencylayerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencylayerNetwork.swift; sourceTree = "<group>"; };
 		55E37141254B558F0020D3F7 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
-		55E37149254B595C0020D3F7 /* ListNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNetworkTests.swift; sourceTree = "<group>"; };
+		55E37149254B595C0020D3F7 /* CurrencylayerNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencylayerNetworkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				55E3713B254B52C20020D3F7 /* Currency */,
-				55E3712A254B46AF0020D3F7 /* Models */,
 				55E3712B254B46B60020D3F7 /* Utils */,
 				55E37117254B40800020D3F7 /* SupportingFiles */,
-				55E37118254B413B0020D3F7 /* ServiceAsd.swift */,
 			);
 			path = CurrencyServices;
 			sourceTree = "<group>";
@@ -92,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				55E37141254B558F0020D3F7 /* NetworkTests.swift */,
-				55E37149254B595C0020D3F7 /* ListNetworkTests.swift */,
+				55E37149254B595C0020D3F7 /* CurrencylayerNetworkTests.swift */,
 				55E37106254B3F7D0020D3F7 /* Info.plist */,
 			);
 			path = CurrencyServicesTests;
@@ -107,13 +103,6 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		55E3712A254B46AF0020D3F7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		55E3712B254B46B60020D3F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +114,7 @@
 		55E3713B254B52C20020D3F7 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				55E3713C254B52CF0020D3F7 /* ListNetwork.swift */,
+				55E3713C254B52CF0020D3F7 /* CurrencylayerNetwork.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -239,8 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55E37119254B413B0020D3F7 /* ServiceAsd.swift in Sources */,
-				55E3713D254B52CF0020D3F7 /* ListNetwork.swift in Sources */,
+				55E3713D254B52CF0020D3F7 /* CurrencylayerNetwork.swift in Sources */,
 				55E3712E254B46D40020D3F7 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55E3714A254B595C0020D3F7 /* ListNetworkTests.swift in Sources */,
+				55E3714A254B595C0020D3F7 /* CurrencylayerNetworkTests.swift in Sources */,
 				55E37142254B558F0020D3F7 /* NetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

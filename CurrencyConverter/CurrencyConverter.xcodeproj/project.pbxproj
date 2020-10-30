@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558339FA254C530100DEE9B0 /* UIButton+setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */; };
+		558339FE254C578C00DEE9B0 /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339FD254C578C00DEE9B0 /* UIView+Factory.swift */; };
+		55833A02254C5A4E00DEE9B0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A01254C5A4E00DEE9B0 /* TextField.swift */; };
+		558387AD254B6637003D4744 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558387AC254B6637003D4744 /* ConverterViewModel.swift */; };
+		55A61B8B254C4A5500E1E8B6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A61B8A254C4A5500E1E8B6 /* Currency.swift */; };
+		55A61B9C254C4D8100E1E8B6 /* ConverterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A61B9B254C4D8100E1E8B6 /* ConverterStyle.swift */; };
 		55E370A8254B390B0020D3F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E370A7254B390B0020D3F7 /* AppDelegate.swift */; };
 		55E370AA254B390B0020D3F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E370A9254B390B0020D3F7 /* SceneDelegate.swift */; };
 		55E370AC254B390B0020D3F7 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E370AB254B390B0020D3F7 /* ConverterViewController.swift */; };
@@ -51,6 +57,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+setBackgroundColor.swift"; sourceTree = "<group>"; };
+		558339FD254C578C00DEE9B0 /* UIView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Factory.swift"; sourceTree = "<group>"; };
+		55833A01254C5A4E00DEE9B0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		558387AC254B6637003D4744 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
+		55A61B8A254C4A5500E1E8B6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		55A61B9B254C4D8100E1E8B6 /* ConverterStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterStyle.swift; sourceTree = "<group>"; };
 		55E370A4254B390B0020D3F7 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E370A7254B390B0020D3F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55E370A9254B390B0020D3F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +106,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558387A9254B661B003D4744 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55A61B99254C4D5900E1E8B6 /* Converter */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		558387AA254B661F003D4744 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				558387AC254B6637003D4744 /* ConverterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		558387AB254B6624003D4744 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55A61B8A254C4A5500E1E8B6 /* Currency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55A61B99254C4D5900E1E8B6 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				55A61B9A254C4D7000E1E8B6 /* Layout */,
+				55E370AB254B390B0020D3F7 /* ConverterViewController.swift */,
+				55A61B9B254C4D8100E1E8B6 /* ConverterStyle.swift */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		55A61B9A254C4D7000E1E8B6 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				55833A01254C5A4E00DEE9B0 /* TextField.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		55E3709B254B390B0020D3F7 = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +174,9 @@
 			children = (
 				55E370A7254B390B0020D3F7 /* AppDelegate.swift */,
 				55E370A9254B390B0020D3F7 /* SceneDelegate.swift */,
-				55E370DE254B3B9C0020D3F7 /* Converter */,
-				55E370E2254B3BBE0020D3F7 /* CurrencyList */,
+				558387AB254B6624003D4744 /* Model */,
+				558387AA254B661F003D4744 /* ViewModel */,
+				558387A9254B661B003D4744 /* View */,
 				55E37123254B41E90020D3F7 /* Utils */,
 				55E370DD254B3B7E0020D3F7 /* SupportingFiles */,
 			);
@@ -156,21 +211,6 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		55E370DE254B3B9C0020D3F7 /* Converter */ = {
-			isa = PBXGroup;
-			children = (
-				55E370AB254B390B0020D3F7 /* ConverterViewController.swift */,
-			);
-			path = Converter;
-			sourceTree = "<group>";
-		};
-		55E370E2254B3BBE0020D3F7 /* CurrencyList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CurrencyList;
-			sourceTree = "<group>";
-		};
 		55E3711C254B41BC0020D3F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				55E37124254B423B0020D3F7 /* UIView+Constraints.swift */,
+				558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */,
+				558339FD254C578C00DEE9B0 /* UIView+Factory.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -317,7 +359,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A61B8B254C4A5500E1E8B6 /* Currency.swift in Sources */,
+				558339FE254C578C00DEE9B0 /* UIView+Factory.swift in Sources */,
+				55A61B9C254C4D8100E1E8B6 /* ConverterStyle.swift in Sources */,
+				55833A02254C5A4E00DEE9B0 /* TextField.swift in Sources */,
 				55E370AC254B390B0020D3F7 /* ConverterViewController.swift in Sources */,
+				558387AD254B6637003D4744 /* ConverterViewModel.swift in Sources */,
+				558339FA254C530100DEE9B0 /* UIButton+setBackgroundColor.swift in Sources */,
 				55E370A8254B390B0020D3F7 /* AppDelegate.swift in Sources */,
 				55E370AA254B390B0020D3F7 /* SceneDelegate.swift in Sources */,
 				55E37125254B423B0020D3F7 /* UIView+Constraints.swift in Sources */,
