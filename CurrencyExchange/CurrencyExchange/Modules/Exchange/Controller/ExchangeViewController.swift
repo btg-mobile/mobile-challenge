@@ -34,6 +34,8 @@ class ExchangeViewController: UIViewController {
         self.exchangeView.originCurrencyButton.addTarget(self, action: #selector(tappedOnOriginButton), for: .touchUpInside)
         
         self.exchangeView.destinationCurrencyButton.addTarget(self, action: #selector(tappedOnDestinationButton), for: .touchUpInside)
+        
+        self.exchangeView.convertButton.addTarget(self, action: #selector(tappedOnConverterButton), for: .touchUpInside)
         self.hideKeyboardWhenTappedAround()
 
     }
@@ -50,12 +52,30 @@ class ExchangeViewController: UIViewController {
 
     // MARK: - Selectors
     
-    @objc func tappedOnOriginButton(){        
+    @objc private func tappedOnOriginButton(){
         self.coordinator?.presentCurrencyListWithButtonType(.origin)
     }
     
-    @objc func tappedOnDestinationButton(){
+    @objc private func tappedOnDestinationButton(){
         self.coordinator?.presentCurrencyListWithButtonType(.destination)
+    }
+    
+    @objc private func tappedOnConverterButton(){
+        self.viewModel.converter()
+    }
+    
+    // MARK: - Methods
+    
+    func setupOriginButton(){
+        self.exchangeView.originCurrencyButton.setTitle(viewModel.originCurrency?.code, for: .normal)
+    }
+    
+    func setupDestinationButton(){
+        self.exchangeView.destinationCurrencyButton.setTitle(viewModel.destinationCurrency?.code, for: .normal)
+    }
+    
+    private func converter(){
+        
     }
     
 

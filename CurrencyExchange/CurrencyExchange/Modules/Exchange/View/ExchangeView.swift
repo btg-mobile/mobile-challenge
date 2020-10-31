@@ -56,6 +56,13 @@ class ExchangeView: UIView {
         return button
     }()
     
+    let convertButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("Converter", for: .normal)
+        button.backgroundColor = .link
+        return button
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,6 +91,7 @@ extension ExchangeView: ViewCodable {
         self.backgroundView.addSubview(exchangeTextField)
         self.backgroundView.addSubview(originCurrencyButton)
         self.backgroundView.addSubview(destinationCurrencyButton)
+        self.backgroundView.addSubview(convertButton)
     }
     
     func setupConstraints() {
@@ -93,6 +101,7 @@ extension ExchangeView: ViewCodable {
         self.exchangeTextFieldConstraints()
         self.setupOriginCurrencyButton()
         self.setupDestinationCurrencyButton()
+        self.setupConvertButtonConstraints()
     }
     
     private func backgroundViewConstraints(){
@@ -135,6 +144,13 @@ extension ExchangeView: ViewCodable {
         destinationCurrencyButton.anchor(top: exchangeTextField.bottomAnchor, paddingTop: ScreenSize.height * 0.03)
         destinationCurrencyButton.anchor(right: backgroundView.rightAnchor, paddingRight: ScreenSize.width * 0.1)
         destinationCurrencyButton.layer.cornerRadius = ScreenSize.width * 0.03
+    }
+    
+    private func setupConvertButtonConstraints(){
+        convertButton.anchor(width: ScreenSize.width * 0.6, height: ScreenSize.height * 0.06)
+        self.convertButton.anchor(top: destinationCurrencyButton.bottomAnchor, paddingTop: ScreenSize.height * 0.03)
+        self.convertButton.centerX(in: self)
+        self.convertButton.layer.cornerRadius = ScreenSize.width * 0.03
     }
     
     
