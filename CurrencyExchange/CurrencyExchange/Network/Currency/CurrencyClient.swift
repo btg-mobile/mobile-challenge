@@ -10,22 +10,20 @@ import Foundation
 
 struct CurrencyClient: APIClient {
     
-    var session: URLSession
+    var session: URLSessionProtocol
     typealias listFetchCompletion = (Result<CurrencyList, APIError>) -> Void
     
-    init(configuration: URLSessionConfiguration){
-        self.session = URLSession(configuration: configuration)
+    init(session: URLSessionProtocol = URLSession.shared){
+        self.session = session
     }
     
-    init(){
-        self.init(configuration: .default)
-    }
     
     func getListOfCurrencies(completion: @escaping listFetchCompletion){
         
         guard let request = CurrencyProvider.list.request else {
             return completion(.failure(.badRequest))
         }
+        
         
         fetch(withRequest: request, withDecondingType: CurrencyList.self) { (result) in
             

@@ -26,7 +26,7 @@ class CurrencyListViewModel {
     
     func loadData(){
         self.delegate?.willLoadData()
-        let currencyClient = CurrencyClient()
+        let currencyClient = CurrencyClient(session: URLSession.shared)
         currencyClient.getListOfCurrencies { [weak self] (result) in
             guard let self = self else { return }
             switch result {

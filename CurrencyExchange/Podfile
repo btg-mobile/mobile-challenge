@@ -10,12 +10,12 @@ target 'CurrencyExchange' do
   target 'CurrencyExchangeTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'CurrencyExchangeUITests' do
     # Pods for testing
-    pod 'Quick'
-    pod 'Nimble'
   end
 
 end
