@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct CurrencyClient: APIClient {
+struct CurrencyClient: APIClient {    
+    
     
     var session: URLSessionProtocol
     typealias ListFetchCompletion = (Result<CurrencyList, APIError>) -> Void

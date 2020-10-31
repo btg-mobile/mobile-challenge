@@ -37,25 +37,28 @@ class CurrencyClientSpec: QuickSpec {
                 }
             }
             
-//            context("make request"){
-//                it("should return currencies"){
-//
-//                    let expectedData = CurrencyMockData().data
-//
-//                    session.data = expectedData
-//
-//                    var actualData: Data?
-//                    currencyClient.getListOfCurrencies { result in
-//                        switch result {
-//
-//                        case .success(let currencies):
-//                            actualData =
-//                        case .failure:
-//                            print("Error")
-//                        }
-//                    }
-//                }
-//            }
+            context("make request"){
+                it("should return currencies"){
+
+                    let expectedData = CurrencyMockData().data
+
+                    session.data = expectedData
+                    
+                    var actualCurrencies: CurrencyList?
+                    currencyClient.getListOfCurrencies { result in
+                        switch result {
+
+                        case .success(let currencies):
+                            print(currencies)
+                            actualCurrencies = currencies
+                        case .failure(let error):
+                            print("Error: ",error)
+                        }
+                    }
+                    
+                    expect(actualCurrencies).toNot(beNil())
+                }
+            }
         }
     }
 }
