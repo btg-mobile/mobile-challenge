@@ -53,7 +53,7 @@ class CurrencyTableViewCell: UITableViewCell {
     
     // MARK: - Setups
     private func setupLayout() {
-        contentView.backgroundColor = UIColor(displayP3Red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+        contentView.backgroundColor = Style.veryDarkGray
         contentView.addSubview(stackView)
         stackView
             .centerY(contentView.centerYAnchor)

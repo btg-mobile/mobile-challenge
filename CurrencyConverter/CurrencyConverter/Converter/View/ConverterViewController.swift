@@ -13,35 +13,29 @@ class ConverterViewController: UIViewController {
     
     // MARK: - Layout Vars
     private lazy var originCurrencyButton: UIButton = {
-        let button = UIButton().cornerRadius(8).useConstraint()
+        let button = UIButton().cornerRadius(Style.defaultRadius).useConstraint()
         button.addTarget(self, action: #selector(originList), for: .touchUpInside)
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.textAlignment = .center
-        button.setBackgroundColor(color: .darkGray, forState: .normal)
-        button.setAttributedTitle(createAttributedString(code: "USB", name: "United State"), for: .normal)
+        button.setBackgroundColor(color: Style.veryDarkGray, forState: .normal)
         return button
     }()
     
     private lazy var targetCurrencyButton: UIButton = {
-        let button = UIButton().cornerRadius(8).useConstraint()
+        let button = UIButton().cornerRadius(Style.defaultRadius).useConstraint()
         button.addTarget(self, action: #selector(targetList), for: .touchUpInside)
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.textAlignment = .center
-        button.setBackgroundColor(color: .darkGray, forState: .normal)
-        button.setAttributedTitle(createAttributedString(code: "BRL", name: "Brazil"), for: .normal)
+        button.setBackgroundColor(color: Style.veryDarkGray, forState: .normal)
         return button
     }()
     
-    private lazy var inputCurrencyValue: TextField = {
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 12)]
-        let textField = TextField().cornerRadius(8).useConstraint()
-        textField.backgroundColor = .darkGray
-        textField.attributedPlaceholder = NSAttributedString(string: "Currency value to convert", attributes: attributes)
-        textField.textColor = .white
-        textField.font = UIFont.systemFont(ofSize: 13)
-        textField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        return textField
-    }()
+    private lazy var converterView: CurrencyConverterView = {
+        let converterView = CurrencyConverterView().cornerRadius(Style.defaultRadius).useConstraint()
+        converterView.backgroundColor = Style.veryDarkGray
+        converterView.delegate = self
+        return converterView
+    }() 
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -55,30 +49,29 @@ class ConverterViewController: UIViewController {
         view.backgroundColor = .black
         view.addSubview(originCurrencyButton)
         view.addSubview(targetCurrencyButton)
-        view.addSubview(inputCurrencyValue)
+        view.addSubview(converterView)
         
         originCurrencyButton
-            .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: 0)
-            .leading(anchor: view.leadingAnchor, constant: 24)
-            .height(constant: 50)
-            .width(anchor: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: -36)
+            .top(anchor: view.safeAreaLayoutGuide.topAnchor)
+            .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
+            .height(constant: Style.Home.currencyHeight)
+            .width(anchor: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: Style.Home.widthOffset)
         
         targetCurrencyButton
-            .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: 0)
-            .trailing(anchor: view.trailingAnchor, constant: -24)
-            .height(constant: 50)
-            .width(anchor: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: -36)
+            .top(anchor: view.safeAreaLayoutGuide.topAnchor)
+            .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
+            .height(constant: Style.Home.currencyHeight)
+            .width(anchor: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: Style.Home.widthOffset)
         
-        inputCurrencyValue
-            .top(anchor: targetCurrencyButton.bottomAnchor, constant: 24)
-            .leading(anchor: view.leadingAnchor, constant: 24)
-            .trailing(anchor: view.trailingAnchor, constant: -24)
-            .height(constant: 50)
+        converterView
+            .top(anchor: targetCurrencyButton.bottomAnchor, constant: Style.defaultTop)
+            .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
+            .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
     }
     
     private func createAttributedString(code: String, name: String) -> NSMutableAttributedString {
-        let titleAttributed: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 12)]
-        let subtitleAttributed: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 12)]
+        let titleAttributed: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: Style.defaultFont]
+        let subtitleAttributed: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: Style.defaultFont]
         let string = NSMutableAttributedString(string: "\(code)\n", attributes: titleAttributed)
         string.append(NSAttributedString(string: "\(name)", attributes: subtitleAttributed))
         return string
@@ -98,16 +91,25 @@ class ConverterViewController: UIViewController {
     }
 }
 
+// MARK: - ConverterView Delegate
+extension ConverterViewController: CurrencyConverterViewDelegate {
+    func textFormatting(_ text: String?) -> String {
+        return viewModel.textValueFomatter(text)
+    }
+}
+
 // MARK: - ViewModel
 extension ConverterViewController: ConverterViewModelDelegate {
     func setOriginCurrency(_ currency: Currecy) {
         let title = createAttributedString(code: currency.code, name: currency.name)
         originCurrencyButton.setAttributedTitle(title, for: .normal)
+        converterView.setupCurrency(currency, type: .origin)
     }
     
     func setTargetCurrency(_ currency: Currecy) {
         let title = createAttributedString(code: currency.code, name: currency.name)
         targetCurrencyButton.setAttributedTitle(title, for: .normal)
+        converterView.setupCurrency(currency, type: .target)
     }
 }
 

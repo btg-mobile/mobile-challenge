@@ -1,5 +1,5 @@
 //
-//  ConverterStyle.swift
+//  ListStyle.swift
 //  CurrencyConverter
 //
 //  Created by Breno Aquino on 30/10/20.
