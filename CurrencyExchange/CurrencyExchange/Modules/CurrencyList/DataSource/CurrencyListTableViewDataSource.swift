@@ -9,8 +9,14 @@ import UIKit
 
 class CurrencyListTableViewDataSource: NSObject, UITableViewDataSource {
     
+    var currencies: [Currency]
+    
+    init(currencies: [Currency]){
+        self.currencies = currencies
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.currencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -18,8 +24,9 @@ class CurrencyListTableViewDataSource: NSObject, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.setupCurrency(withName: "Testando")
+        let currency = currencies[indexPath.row]
         
+        cell.setupCurrencyWithName(currency.name, withShortName: currency.code)
         
         return cell
     }

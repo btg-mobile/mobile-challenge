@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ExchangeView: UIView {
     
     // MARK: - Properties
@@ -33,7 +34,7 @@ class ExchangeView: UIView {
     
     let exchangeTextField: UITextField = {
         let textField = UITextField(frame: .zero)
-        textField.text = "Informe o valor ..."
+        textField.placeholder = "Informe o valor ..."
         textField.textAlignment = .center
         textField.backgroundColor = .lightGray
         textField.keyboardType = .decimalPad
@@ -63,7 +64,7 @@ class ExchangeView: UIView {
     }
     
     private func setupUI(){
-        self.backgroundColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

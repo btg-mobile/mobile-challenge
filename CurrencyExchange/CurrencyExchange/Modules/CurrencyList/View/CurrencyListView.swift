@@ -11,6 +11,24 @@ class CurrencyListView: UIView {
     
     // MARK: - Properties
     
+    lazy var modalNavigationBar: UINavigationBar = {
+        let navBar = UINavigationBar(frame: .zero)
+        navBar.barTintColor = .white
+        navBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        let navItem = UINavigationItem(title: "Escolha uma moeda")
+        navItem.leftBarButtonItem = cancelBarButton
+        
+        navBar.setItems([navItem], animated: false)
+        return navBar
+    }()
+    
+    lazy var cancelBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+        button.tintColor = .black
+        return button
+    }()
+    
     let tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(CurrencyListTableViewCell.self, forCellReuseIdentifier: CurrencyListTableViewCell.uniqueIdentifier)
@@ -25,7 +43,7 @@ class CurrencyListView: UIView {
     }
     
     private func setupUI(){
-        self.backgroundColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -41,15 +59,24 @@ class CurrencyListView: UIView {
 extension CurrencyListView: ViewCodable {
     
     func setupViewHierarchy() {
-        addSubview(tableView)
+        self.addSubview(modalNavigationBar)
+        self.addSubview(tableView)
     }
     
     func setupConstraints() {
-        setupTableViewConstraints()
+        self.setupTableViewConstraints()
+        self.setupModalNavigationBarConstraints()
+    }
+    
+    private func setupModalNavigationBarConstraints(){
+        self.modalNavigationBar.anchor(top: topAnchor)
+        self.modalNavigationBar.anchor(left: leftAnchor)
+        self.modalNavigationBar.anchor(right: rightAnchor)
+        self.modalNavigationBar.anchor(height: 44)
     }
     
     private func setupTableViewConstraints(){
-        self.tableView.anchor(top: topAnchor)
+        self.tableView.anchor(top: modalNavigationBar.bottomAnchor, paddingTop: ScreenSize.height * 0.01)
         self.tableView.anchor(left: leftAnchor)
         self.tableView.anchor(right: rightAnchor)
         self.tableView.anchor(bottom: bottomAnchor)

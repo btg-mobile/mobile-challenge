@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CurrencyListCoordinatorDelegate: class {
+    func navigateToExchangeViewControllerWithCurrency(_ currency: Currency, withCurrencyButtonType type: CurrencyButtonType)
+}
+
 final class CurrencyListCoordinator: Coordinator {
     
     // MARK: - Properties
@@ -14,11 +18,13 @@ final class CurrencyListCoordinator: Coordinator {
     var presenter: UINavigationController
     private var currencyListViewController: CurrencyListViewController
     private var currencyListViewModel: CurrencyListViewModel
+    weak var currencyListCoordinatorDelegate: CurrencyListCoordinatorDelegate?
     
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, currencyButtonType: CurrencyButtonType) {
         self.presenter = presenter
-        self.currencyListViewModel = CurrencyListViewModel()
+        self.currencyListViewModel = CurrencyListViewModel(currencyButtonType: currencyButtonType)
         self.currencyListViewController = CurrencyListViewController(viewModel: currencyListViewModel)
+        self.currencyListViewController.coordinator = self
     }
     
     // MARK: - Methods
@@ -30,3 +36,14 @@ final class CurrencyListCoordinator: Coordinator {
     
 }
 
+extension CurrencyListCoordinator: CurrencyListViewControllerDelegate {
+    
+    func backToExchangeViewControllerWithCurrency(_ currency: Currency, withCurrencyButtonType type: CurrencyButtonType) {
+        self.presenter.dismiss(animated: true)
+        self.currencyListCoordinatorDelegate?.navigateToExchangeViewControllerWithCurrency(currency, withCurrencyButtonType: type)
+    }
+    
+    func dismissAndBackToExchangeViewController(){
+        self.presenter.dismiss(animated: true)
+    }
+}

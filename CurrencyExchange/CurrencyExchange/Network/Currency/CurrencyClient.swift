@@ -38,4 +38,5 @@ struct CurrencyClient: APIClient {
             }
         }
     }
+    
 }

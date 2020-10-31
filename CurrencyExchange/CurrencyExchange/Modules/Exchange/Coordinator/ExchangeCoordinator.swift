@@ -16,14 +16,13 @@ final class ExchangeCoordinator: Coordinator {
     var presenter: UINavigationController
     private let exchangeViewController: ExchangeViewController
     private let exchangeViewModel: ExchangeViewModel
-    private let currencyListCoordinator: CurrencyListCoordinator
+    private var currencyListCoordinator: CurrencyListCoordinator?
 
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
         self.exchangeViewModel = ExchangeViewModel()
         self.exchangeViewController = ExchangeViewController(viewModel: exchangeViewModel)
-        self.currencyListCoordinator = CurrencyListCoordinator(presenter: presenter)
         self.exchangeViewController.coordinator = self
 
     }
@@ -41,8 +40,18 @@ final class ExchangeCoordinator: Coordinator {
 
 extension ExchangeCoordinator: ExchangeViewControllerDelegate {
     
-    func presentCurrencyList() {
-        self.currencyListCoordinator.start()
+    func presentCurrencyListWithButtonType(_ type: CurrencyButtonType) {
+        self.currencyListCoordinator = CurrencyListCoordinator(presenter: self.presenter, currencyButtonType: type)
+        self.currencyListCoordinator?.currencyListCoordinatorDelegate = self
+        self.currencyListCoordinator?.start()
     }
     
+}
+
+extension ExchangeCoordinator: CurrencyListCoordinatorDelegate {
+    
+    func navigateToExchangeViewControllerWithCurrency(_ currency: Currency, withCurrencyButtonType type: CurrencyButtonType) {
+        print("DEBUG: Currency - ",currency)
+    }
+
 }

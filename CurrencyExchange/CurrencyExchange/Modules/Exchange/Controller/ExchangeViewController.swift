@@ -8,7 +8,11 @@
 import UIKit
 
 protocol ExchangeViewControllerDelegate: class {
-    func presentCurrencyList()
+    func presentCurrencyListWithButtonType(_ type: CurrencyButtonType)
+}
+
+enum CurrencyButtonType {
+    case origin, destination
 }
 
 class ExchangeViewController: UIViewController {
@@ -30,6 +34,8 @@ class ExchangeViewController: UIViewController {
         self.exchangeView.originCurrencyButton.addTarget(self, action: #selector(tappedOnOriginButton), for: .touchUpInside)
         
         self.exchangeView.destinationCurrencyButton.addTarget(self, action: #selector(tappedOnDestinationButton), for: .touchUpInside)
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     // MARK: - Lifecycle
@@ -44,14 +50,12 @@ class ExchangeViewController: UIViewController {
 
     // MARK: - Selectors
     
-    @objc func tappedOnOriginButton(){
-        print("DEBUG: Tapped on origin button")
-        self.coordinator?.presentCurrencyList()
+    @objc func tappedOnOriginButton(){        
+        self.coordinator?.presentCurrencyListWithButtonType(.origin)
     }
     
     @objc func tappedOnDestinationButton(){
-        print("DEBUG: Tapped on destination button")
-
+        self.coordinator?.presentCurrencyListWithButtonType(.destination)
     }
     
 

@@ -9,6 +9,7 @@ import Foundation
 
 enum CurrencyProvider {
     case list
+    case live
 }
 
 extension CurrencyProvider: ServiceProtocol {
@@ -17,6 +18,8 @@ extension CurrencyProvider: ServiceProtocol {
         
         case .list:
             return "\(BaseParameterCurrency.shared.basePath)/list"
+        case .live:
+            return "\(BaseParameterCurrency.shared.basePath)/live"
         }
     }
     
@@ -24,6 +27,10 @@ extension CurrencyProvider: ServiceProtocol {
         switch self {
         
         case .list:
+            return [
+                "access_key": BaseParameterCurrency.shared.apiKey
+            ]
+        case .live:
             return [
                 "access_key": BaseParameterCurrency.shared.apiKey
             ]
