@@ -31,4 +31,21 @@ public class CurrencylayerNetwork {
             }
         }
     }
+    
+    public func values(currenciesCodes: [String], callback: @escaping (Result<Dictionary<String, Double>, NSError>) -> Void) {
+        let codes = currenciesCodes.joined(separator: ",")
+        Network.request(method: .get, baseUrl: baseUrl, path: "/live", params: ["currencies": codes, "access_key": accessKey]) { result in
+            switch result {
+            case .success(let dict):
+                if let values = dict["quotes"] as? [String: Double] {
+                    callback(.success(values))
+                } else {
+                    callback(.failure(NSError()))
+                }
+                
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
 }

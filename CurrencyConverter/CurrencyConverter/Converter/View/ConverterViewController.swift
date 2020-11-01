@@ -35,7 +35,7 @@ class ConverterViewController: UIViewController {
         converterView.backgroundColor = Style.veryDarkGray
         converterView.delegate = self
         return converterView
-    }() 
+    }()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -93,23 +93,28 @@ class ConverterViewController: UIViewController {
 
 // MARK: - ConverterView Delegate
 extension ConverterViewController: CurrencyConverterViewDelegate {
-    func textFormatting(_ text: String?) -> String {
-        return viewModel.textValueFomatter(text)
+    func textFormatting(_ text: String?) -> (input: String, output: String) {
+        let input = viewModel.textValueFomatter(text)
+        let output = String(viewModel.conversor(value: Double(input) ?? 0))
+        return (input, output)
     }
 }
 
 // MARK: - ViewModel
 extension ConverterViewController: ConverterViewModelDelegate {
-    func setOriginCurrency(_ currency: Currecy) {
+    func setCurrency(_ currency: Currecy, type: CurrencyType) {
         let title = createAttributedString(code: currency.code, name: currency.name)
-        originCurrencyButton.setAttributedTitle(title, for: .normal)
-        converterView.setupCurrency(currency, type: .origin)
+        converterView.setupCurrency(currency, type: type)
+        switch type {
+        case .origin:
+            originCurrencyButton.setAttributedTitle(title, for: .normal)
+        case .target:
+            targetCurrencyButton.setAttributedTitle(title, for: .normal)
+        }
     }
     
-    func setTargetCurrency(_ currency: Currecy) {
-        let title = createAttributedString(code: currency.code, name: currency.name)
-        targetCurrencyButton.setAttributedTitle(title, for: .normal)
-        converterView.setupCurrency(currency, type: .target)
+    func onError(_ error: NSError) {
+        
     }
 }
 

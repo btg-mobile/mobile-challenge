@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrencyConverterViewDelegate: class {
-    func textFormatting(_ text: String?) -> String
+    func textFormatting(_ text: String?) -> (input: String, output: String)
 }
 
 class CurrencyConverterView: UIView {
@@ -122,8 +122,9 @@ class CurrencyConverterView: UIView {
 // MARK: - TextField
 extension CurrencyConverterView: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
-        let text = delegate?.textFormatting(textField.text)
-        textField.text = text
+        let texts = delegate?.textFormatting(textField.text)
+        textField.text = texts?.input
+        valueTargetLabel.text = texts?.output
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
