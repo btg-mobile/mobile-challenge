@@ -27,12 +27,21 @@ class ListViewController: UIViewController, StateTransition {
         let searchBar = UISearchBar().useConstraint()
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.tintColor = .white
-        searchBar.backgroundColor = .black
         searchBar.searchTextField.backgroundColor = .darkGray
         searchBar.searchTextField.textColor = .white
         searchBar.searchTextField.keyboardAppearance = .dark
         searchBar.delegate = self
         return searchBar
+    }()
+    
+    private lazy var emptySearch: UILabel = {
+        let label = UILabel().useConstraint()
+        label.font = Style.highlightFont
+        label.textColor = Style.defaultSecondaryTextColor
+        label.text = Style.List.emptySearch
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
     }()
     
     private lazy var tableView: UITableView = {
@@ -74,12 +83,18 @@ class ListViewController: UIViewController, StateTransition {
         view.backgroundColor = .black
         view.addSubview(tableView)
         view.addSubview(searchBar)
+        view.addSubview(emptySearch)
         
         searchBar
             .top(anchor: view.safeAreaLayoutGuide.topAnchor)
             .leading(anchor: view.safeAreaLayoutGuide.leadingAnchor, constant: Style.defaultCloseLeading)
             .trailing(anchor: view.safeAreaLayoutGuide.trailingAnchor, constant: Style.defaultCloseTrailing)
-            .height(constant: 70)
+            .height(constant: Style.List.searchHeight)
+        
+        emptySearch
+            .top(anchor: searchBar.bottomAnchor, constant: Style.defaultCloseTop)
+            .leading(anchor: view.safeAreaLayoutGuide.leadingAnchor, constant: Style.defaultCloseLeading)
+            .trailing(anchor: view.safeAreaLayoutGuide.trailingAnchor, constant: Style.defaultCloseTrailing)
         
         tableView
             .top(anchor: searchBar.bottomAnchor)
@@ -98,6 +113,7 @@ class ListViewController: UIViewController, StateTransition {
 extension ListViewController: ListViewModelDelegate {
     func onListCurrenciesUpdate() {
         DispatchQueue.main.async { [weak self] in
+            self?.emptySearch.isHidden = self?.viewModel.currenciesDisplayed.isEmpty == false
             self?.tableView.reloadData()
             self?.content()
         }
