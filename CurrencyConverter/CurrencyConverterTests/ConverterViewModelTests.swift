@@ -61,6 +61,6 @@ class ConverterViewModelTests: XCTestCase {
         viewModel.originCurrency = originCurrency
         viewModel.targetCurrency = targetCurrency
         
-        XCTAssert(viewModel.conversor(value: 1) == 0.15)
+        XCTAssert(viewModel.conversor(value: 1) == "0.15")
     }
 }

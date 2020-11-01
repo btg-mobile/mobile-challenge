@@ -109,8 +109,8 @@ class ConverterViewController: UIViewController, StateTransition {
 extension ConverterViewController: CurrencyConverterViewDelegate {
     func textFormatting(_ text: String?) -> (input: String, output: String) {
         let input: String = viewModel.textValueFomatter(text)
-        let output: Double = viewModel.conversor(value: Double(input) ?? 0)
-        return (input, String(output))
+        let output: String = viewModel.conversor(value: Double(input) ?? 0)
+        return (input, output)
     }
 }
 

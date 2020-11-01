@@ -60,10 +60,11 @@ class ConverterViewModel {
     }
     
     // MARK: - Handlers
-    func conversor(value: Double) -> Double {
-        guard let originDolarValue = originCurrency?.inDolarValue, let targetDolarValue = targetCurrency?.inDolarValue else { return 0 }
+    func conversor(value: Double) -> String {
+        guard let originDolarValue = originCurrency?.inDolarValue, let targetDolarValue = targetCurrency?.inDolarValue else { return "" }
         let convertedValue = value * targetDolarValue / originDolarValue
-        return (convertedValue * 100).rounded(.toNearestOrAwayFromZero) / 100
+        let roundedValue = (convertedValue * 100).rounded(.toNearestOrAwayFromZero) / 100
+        return String(format: "%.2f", roundedValue)
     }
     
     func textValueFomatter(_ text: String?) -> String {

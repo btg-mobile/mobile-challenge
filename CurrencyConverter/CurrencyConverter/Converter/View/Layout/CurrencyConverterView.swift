@@ -118,6 +118,9 @@ class CurrencyConverterView: UIView {
     }
     
     func setupCurrency(_ currency: Currecy, type: CurrencyType) {
+        valueOriginTextField.text = nil
+        valueTargetLabel.text = nil
+        
         switch type {
         case .origin:
             titleOriginLabel.text = currency.fullDescription
