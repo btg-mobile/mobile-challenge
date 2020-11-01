@@ -49,4 +49,18 @@ class ConverterViewModelTests: XCTestCase {
         let viewModel = ConverterViewModel()
         XCTAssert(viewModel.textValueFomatter("4562312351") == "45623123.51")
     }
+    
+    func testConversor() throws {
+        let originCurrency = try? Currecy(code: "BRL", name: "Brazilian Real")
+        originCurrency?.inDolarValue = 5.742904
+        
+        let targetCurrency = try? Currecy(code: "EUR", name: "Euro")
+        targetCurrency?.inDolarValue = 0.856348
+        
+        let viewModel = ConverterViewModel()
+        viewModel.originCurrency = originCurrency
+        viewModel.targetCurrency = targetCurrency
+        
+        XCTAssert(viewModel.conversor(value: 1) == 0.15)
+    }
 }

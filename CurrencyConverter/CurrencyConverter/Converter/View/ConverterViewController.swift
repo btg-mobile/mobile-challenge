@@ -14,18 +14,18 @@ class ConverterViewController: UIViewController {
     // MARK: - Layout Vars
     private lazy var originCurrencyButton: UIButton = {
         let button = UIButton().cornerRadius(Style.defaultRadius).useConstraint()
-        button.addTarget(self, action: #selector(originList), for: .touchUpInside)
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(originList), for: .touchUpInside)
         button.setBackgroundColor(color: Style.veryDarkGray, forState: .normal)
         return button
     }()
     
     private lazy var targetCurrencyButton: UIButton = {
         let button = UIButton().cornerRadius(Style.defaultRadius).useConstraint()
-        button.addTarget(self, action: #selector(targetList), for: .touchUpInside)
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(targetList), for: .touchUpInside)
         button.setBackgroundColor(color: Style.veryDarkGray, forState: .normal)
         return button
     }()
@@ -94,9 +94,9 @@ class ConverterViewController: UIViewController {
 // MARK: - ConverterView Delegate
 extension ConverterViewController: CurrencyConverterViewDelegate {
     func textFormatting(_ text: String?) -> (input: String, output: String) {
-        let input = viewModel.textValueFomatter(text)
-        let output = String(viewModel.conversor(value: Double(input) ?? 0))
-        return (input, output)
+        let input: String = viewModel.textValueFomatter(text)
+        let output: Double = viewModel.conversor(value: Double(input) ?? 0)
+        return (input, String(output))
     }
 }
 

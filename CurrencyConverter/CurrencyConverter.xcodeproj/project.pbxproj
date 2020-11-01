@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		558339FA254C530100DEE9B0 /* UIButton+setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */; };
 		558339FE254C578C00DEE9B0 /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339FD254C578C00DEE9B0 /* UIView+Factory.swift */; };
-		55833A02254C5A4E00DEE9B0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A01254C5A4E00DEE9B0 /* TextField.swift */; };
 		55833A07254C5B3800DEE9B0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A06254C5B3800DEE9B0 /* ListViewController.swift */; };
 		55833A0B254C5C2A00DEE9B0 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A0A254C5C2A00DEE9B0 /* ListViewModel.swift */; };
 		55833A10254C5CE000DEE9B0 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A0F254C5CE000DEE9B0 /* CurrencyTableViewCell.swift */; };
@@ -66,7 +65,6 @@
 /* Begin PBXFileReference section */
 		558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+setBackgroundColor.swift"; sourceTree = "<group>"; };
 		558339FD254C578C00DEE9B0 /* UIView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Factory.swift"; sourceTree = "<group>"; };
-		55833A01254C5A4E00DEE9B0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		55833A06254C5B3800DEE9B0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		55833A0A254C5C2A00DEE9B0 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		55833A0F254C5CE000DEE9B0 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				55833A1E254C722100DEE9B0 /* CurrencyConverterView.swift */,
-				55833A01254C5A4E00DEE9B0 /* TextField.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -411,7 +408,6 @@
 				55A61B9C254C4D8100E1E8B6 /* ConverterStyle.swift in Sources */,
 				55833A1F254C722100DEE9B0 /* CurrencyConverterView.swift in Sources */,
 				55833A1B254C6F2700DEE9B0 /* Style.swift in Sources */,
-				55833A02254C5A4E00DEE9B0 /* TextField.swift in Sources */,
 				55833A10254C5CE000DEE9B0 /* CurrencyTableViewCell.swift in Sources */,
 				55E370AC254B390B0020D3F7 /* ConverterViewController.swift in Sources */,
 				55833A07254C5B3800DEE9B0 /* ListViewController.swift in Sources */,

@@ -18,21 +18,19 @@ class CurrencyConverterView: UIView {
     // MARK: - Layout Vars
     private lazy var titleOriginLabel: UILabel = {
         let label = UILabel().useConstraint()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .white
-        label.height(constant: 20)
+        label.font = Style.defaultFont
+        label.textColor = Style.defaultTextColor
         return label
     }()
     
     private lazy var valueOriginTextField: UITextField = {
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 20)]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: Style.highlightFont]
         let textField = UITextField().useConstraint()
-        textField.attributedPlaceholder = NSAttributedString(string: "Value", attributes: attributes)
-        textField.textColor = .white
-        textField.font = UIFont.systemFont(ofSize: 20)
+        textField.attributedPlaceholder = NSAttributedString(string: Style.Home.Conversor.inputPlaceholder, attributes: attributes)
+        textField.textColor = Style.defaultTextColor
+        textField.font = Style.highlightFont
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-        textField.height(constant: 26)
         textField.delegate = self
         return textField
     }()
@@ -47,17 +45,15 @@ class CurrencyConverterView: UIView {
     
     private lazy var titleTargetLabel: UILabel = {
         let label = UILabel().useConstraint()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .white
-        label.height(constant: 20)
+        label.font = Style.defaultFont
+        label.textColor = Style.defaultTextColor
         return label
     }()
     
     private lazy var valueTargetLabel: UILabel = {
         let label = UILabel().useConstraint()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .white
-        label.height(constant: 26)
+        label.font = Style.highlightFont
+        label.textColor = Style.defaultTextColor
         return label
     }()
     
@@ -92,21 +88,33 @@ class CurrencyConverterView: UIView {
         addSubview(separatorView)
         
         stackViewOrigin
-            .top(anchor: topAnchor, constant: 8)
-            .leading(anchor: leadingAnchor, constant: 8)
-            .trailing(anchor: trailingAnchor, constant: -8)
+            .top(anchor: topAnchor, constant: Style.defaultCloseTop)
+            .leading(anchor: leadingAnchor, constant: Style.defaultCloseLeading)
+            .trailing(anchor: trailingAnchor, constant: Style.defaultCloseTrailing)
         
         stackViewTarget
-            .top(anchor: stackViewOrigin.bottomAnchor, constant: 24)
-            .leading(anchor: leadingAnchor, constant: 8)
-            .trailing(anchor: trailingAnchor, constant: -8)
-            .bottom(anchor: bottomAnchor, constant: -8)
+            .top(anchor: stackViewOrigin.bottomAnchor, constant: Style.defaultTop)
+            .leading(anchor: leadingAnchor, constant: Style.defaultCloseLeading)
+            .trailing(anchor: trailingAnchor, constant: Style.defaultCloseTrailing)
+            .bottom(anchor: bottomAnchor, constant: Style.defaultCloseBottom)
         
         separatorView
-            .top(anchor: stackViewOrigin.bottomAnchor, constant: 12)
-            .leading(anchor: leadingAnchor, constant: 8)
+            .top(anchor: stackViewOrigin.bottomAnchor, constant: Style.defaultTop / 2)
+            .leading(anchor: leadingAnchor, constant: Style.defaultCloseLeading)
             .trailing(anchor: trailingAnchor)
-            .height(constant: 1)
+            .height(constant: Style.Home.Conversor.separatorHeight)
+        
+        titleOriginLabel
+            .height(constant: Style.Home.Conversor.titleHeight)
+        
+        valueOriginTextField
+            .height(constant: Style.Home.Conversor.valueFieldHeight)
+        
+        titleTargetLabel
+            .height(constant: Style.Home.Conversor.titleHeight)
+        
+        valueTargetLabel
+            .height(constant: Style.Home.Conversor.valueFieldHeight)
     }
     
     func setupCurrency(_ currency: Currecy, type: CurrencyType) {
