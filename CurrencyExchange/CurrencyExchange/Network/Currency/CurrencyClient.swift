@@ -8,24 +8,24 @@
 import Foundation
 
 
-struct CurrencyClient: APIClient {
+struct CurrencyClient: APIClient {    
     
-    var session: URLSession
-    typealias listFetchCompletion = (Result<CurrencyList, APIError>) -> Void
     
-    init(configuration: URLSessionConfiguration){
-        self.session = URLSession(configuration: configuration)
+    var session: URLSessionProtocol
+    typealias ListFetchCompletion = (Result<CurrencyList, APIError>) -> Void
+    typealias LiveFetchByNamesCompletion = (Result<CurrencyLive, APIError>) -> Void
+    
+    init(session: URLSessionProtocol = URLSession.shared){
+        self.session = session
     }
     
-    init(){
-        self.init(configuration: .default)
-    }
     
-    func getListOfCurrencies(completion: @escaping listFetchCompletion){
+    func getListOfCurrencies(completion: @escaping ListFetchCompletion){
         
         guard let request = CurrencyProvider.list.request else {
             return completion(.failure(.badRequest))
         }
+        
         
         fetch(withRequest: request, withDecondingType: CurrencyList.self) { (result) in
             
@@ -35,6 +35,40 @@ struct CurrencyClient: APIClient {
                 completion(.success(currencyList))
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+    
+    func getLiveCurrenciesByNames(origin: String, destination: String, completion: @escaping LiveFetchByNamesCompletion){
+        
+        guard let request = CurrencyProvider.liveByNames(origin: origin, destination: destination).request else {
+            return completion(.failure(.badRequest))
+        }
+        
+        fetch(withRequest: request, withDecondingType: CurrencyLive.self) { (result) in
+            switch result {
+            
+            case .success(let currencyLive):
+                completion(.success(currencyLive))
+            case .failure(let error):
+                return completion(.failure(error))
+            }
+        }
+    }
+    
+    func getLiveCurrencies(completion: @escaping LiveFetchByNamesCompletion){
+        
+        guard let request = CurrencyProvider.live.request else {
+            return completion(.failure(.badRequest))
+        }
+        
+        fetch(withRequest: request, withDecondingType: CurrencyLive.self) { (result) in
+            switch result {
+            
+            case .success(let currencyLive):
+                completion(.success(currencyLive))
+            case .failure(let error):
+                return completion(.failure(error))
             }
         }
     }

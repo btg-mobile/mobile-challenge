@@ -56,6 +56,12 @@ class CurrencyListViewController: UIViewController {
                 self?.setupTableViewDataSourceAndDelegate()
             }
             
+            delegate.didFilteredCurrencies = { [weak self] currencies in
+                guard let self = self else { return }
+                self.currencyListTableViewDelegate = CurrencyListTableViewDelegate(currencies: currencies)
+                self.currencyListTableViewDataSource = CurrencyListTableViewDataSource(currencies: currencies)
+            }
+            
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.searchBarController.searchBar.delegate = delegate
@@ -106,7 +112,7 @@ class CurrencyListViewController: UIViewController {
     private func setupTableViewDataSourceAndDelegate(){
         self.currencyListTableViewDelegate = CurrencyListTableViewDelegate(currencies: viewModel.currencies)
         self.currencyListTableViewDataSource = CurrencyListTableViewDataSource(currencies: viewModel.currencies)
-        self.currencySearchBarDelegate = CurrencySearchBarDelegate(currencies: viewModel.currencies)
+        self.currencySearchBarDelegate = CurrencySearchBarDelegate(viewModel: viewModel)
     }
     
     // MARK: - Selectors

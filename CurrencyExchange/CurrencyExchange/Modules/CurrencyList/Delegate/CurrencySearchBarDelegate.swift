@@ -10,16 +10,18 @@ import UIKit
 class CurrencySearchBarDelegate: NSObject, UISearchBarDelegate {
     
     
-    var currencies: [Currency]
+    var viewModel: CurrencyListViewModel
     var reloadToApplyFilter: (() -> Void)?
+    var didFilteredCurrencies: (([Currency]) -> Void)?
     
-    init(currencies: [Currency]) {
-        self.currencies = currencies
+    init(viewModel: CurrencyListViewModel) {
+        self.viewModel = viewModel
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let filteredData = searchText.isEmpty ? viewModel.currencies : viewModel.currencies.filter( {($0.code.localizedCaseInsensitiveContains(searchText)) || ($0.name.localizedCaseInsensitiveContains(searchText))})
         
-        
+       didFilteredCurrencies?(filteredData)
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -30,9 +32,9 @@ class CurrencySearchBarDelegate: NSObject, UISearchBarDelegate {
         switch currencyFilterSearchBar {
         
         case .nome:
-            self.currencies = currencies.sorted { $0.name.lowercased() < $1.name.lowercased() }
+            self.viewModel.currencies = self.viewModel.currencies.sorted { $0.name.lowercased() < $1.name.lowercased() }
         case .codigo:
-            self.currencies = currencies.sorted { $0.code.lowercased() < $1.code.lowercased() }
+            self.viewModel.currencies = self.viewModel.currencies.sorted { $0.code.lowercased() < $1.code.lowercased() }
         default:
             break
             

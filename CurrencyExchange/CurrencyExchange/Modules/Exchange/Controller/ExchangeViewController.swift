@@ -23,7 +23,7 @@ class ExchangeViewController: UIViewController {
     
     var viewModel: ExchangeViewModel
     
-    private let exchangeView: ExchangeView = {
+    private var exchangeView: ExchangeView = {
         let view = ExchangeView(frame: .zero)
         return view
     }()
@@ -31,9 +31,14 @@ class ExchangeViewController: UIViewController {
     init(viewModel: ExchangeViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        self.viewModel.delegate = self
+        
         self.exchangeView.originCurrencyButton.addTarget(self, action: #selector(tappedOnOriginButton), for: .touchUpInside)
         
         self.exchangeView.destinationCurrencyButton.addTarget(self, action: #selector(tappedOnDestinationButton), for: .touchUpInside)
+        
+        self.exchangeView.convertButton.addTarget(self, action: #selector(tappedOnConverterButton), for: .touchUpInside)
         self.hideKeyboardWhenTappedAround()
 
     }
@@ -50,16 +55,61 @@ class ExchangeViewController: UIViewController {
 
     // MARK: - Selectors
     
-    @objc func tappedOnOriginButton(){        
+    @objc private func tappedOnOriginButton(){
         self.coordinator?.presentCurrencyListWithButtonType(.origin)
     }
     
-    @objc func tappedOnDestinationButton(){
+    @objc private func tappedOnDestinationButton(){
         self.coordinator?.presentCurrencyListWithButtonType(.destination)
     }
+    
+    @objc private func tappedOnConverterButton(){
+        self.viewModel.executeConverterWithExchangeValue(exchangeView.exchangeTextField.text)
+    }
+    
+    // MARK: - Methods
+    
+    func setupOriginButton(){
+        self.exchangeView.originCurrencyButton.setTitle(viewModel.originCurrency?.code, for: .normal)
+    }
+    
+    func setupDestinationButton(){
+        self.exchangeView.destinationCurrencyButton.setTitle(viewModel.destinationCurrency?.code, for: .normal)
+    }
+
     
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ExchangeViewController: ExchangeViewModelDelegate {
+    
+    func willBeginCurrencyExchange() {
+        self.exchangeView.showLoadingIndicator(view: exchangeView)
+    }
+    
+    func didFinishCurrencyExchange(message: String?, convertedValue: Double?) {
+        if let message = message {
+            showErrorWithTitle("Erro", withMessage: message)
+        }else if let convertedValue = convertedValue {
+            DispatchQueue.main.async {
+                guard let originCurrency = self.viewModel.destinationCurrency else {
+                    return
+                }
+                let convertedValueString = "\(originCurrency.code): \(String(format: "%.2f", convertedValue))"
+                self.exchangeView.resultValueOfExchangeLabel.text = convertedValueString
+            }
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.exchangeView.dismissLoadingIndicator()
+        }
+    }
+    
+    func handleConverterError(message: String) {
+        showErrorWithTitle("Erro", withMessage: message)
     }
 }

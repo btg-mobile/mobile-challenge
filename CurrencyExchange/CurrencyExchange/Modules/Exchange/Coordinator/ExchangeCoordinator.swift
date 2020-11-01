@@ -51,7 +51,17 @@ extension ExchangeCoordinator: ExchangeViewControllerDelegate {
 extension ExchangeCoordinator: CurrencyListCoordinatorDelegate {
     
     func navigateToExchangeViewControllerWithCurrency(_ currency: Currency, withCurrencyButtonType type: CurrencyButtonType) {
-        print("DEBUG: Currency - ",currency)
+        
+        switch type {
+        
+        case .origin:
+            self.exchangeViewModel.originCurrency = currency
+            self.exchangeViewController.setupOriginButton()
+        case .destination:
+            self.exchangeViewModel.destinationCurrency = currency
+            self.exchangeViewController.setupDestinationButton()
+        }
+        
     }
 
 }

@@ -17,9 +17,9 @@ extension UIViewController {
     }
     
     
-    func showError(with message: String){
+    func showErrorWithTitle(_ title: String, withMessage message: String){
         let alert = UIAlertController(
-            title: "Error",
+            title: title,
             message: message,
             preferredStyle: .alert
         )
