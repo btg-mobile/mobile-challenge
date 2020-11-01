@@ -27,4 +27,19 @@ class ListNetworkTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10)
     }
+    
+    func testLive() throws {
+        let expectation = XCTestExpectation(description: "Succes request in http://api.currencylayer.com/live with BRL and EUR")
+        CurrencylayerNetwork().values(currenciesCodes: ["BRL", "EUR"]) { result in
+            switch result {
+            case .success(let quotes):
+                XCTAssert(!quotes.isEmpty)
+                expectation.fulfill()
+                
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10)
+    }
 }
