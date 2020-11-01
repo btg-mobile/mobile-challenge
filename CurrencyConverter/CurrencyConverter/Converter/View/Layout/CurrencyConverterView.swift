@@ -19,7 +19,7 @@ class CurrencyConverterView: UIView {
     private lazy var titleOriginLabel: UILabel = {
         let label = UILabel().useConstraint()
         label.font = Style.defaultFont
-        label.textColor = Style.defaultTextColor
+        label.textColor = Style.defaultPrimaryTextColor
         return label
     }()
     
@@ -27,7 +27,7 @@ class CurrencyConverterView: UIView {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.lightGray, .font: Style.highlightFont]
         let textField = UITextField().useConstraint()
         textField.attributedPlaceholder = NSAttributedString(string: Style.Home.Conversor.inputPlaceholder, attributes: attributes)
-        textField.textColor = Style.defaultTextColor
+        textField.textColor = Style.defaultPrimaryTextColor
         textField.font = Style.highlightFont
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
@@ -46,14 +46,14 @@ class CurrencyConverterView: UIView {
     private lazy var titleTargetLabel: UILabel = {
         let label = UILabel().useConstraint()
         label.font = Style.defaultFont
-        label.textColor = Style.defaultTextColor
+        label.textColor = Style.defaultPrimaryTextColor
         return label
     }()
     
     private lazy var valueTargetLabel: UILabel = {
         let label = UILabel().useConstraint()
         label.font = Style.highlightFont
-        label.textColor = Style.defaultTextColor
+        label.textColor = Style.defaultPrimaryTextColor
         return label
     }()
     

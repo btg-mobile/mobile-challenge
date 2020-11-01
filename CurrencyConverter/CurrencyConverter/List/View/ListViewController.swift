@@ -11,15 +11,28 @@ protocol ListDelegate: class {
     func didSelectCurrency(_ currency: Currecy, type: CurrencyType)
 }
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, StateTransition {
 
+    var loadingView: UIView = LoadingView()
     private let viewModel: ListViewModel
     weak var delegate: ListDelegate?
     
     // MARK: - Layout Vars
     private lazy var closeButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "OK", style: .done, target: self, action: #selector(close))
+        let button = UIBarButtonItem(title: Style.List.closeText, style: .done, target: self, action: #selector(close))
         return button
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar().useConstraint()
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        searchBar.tintColor = .white
+        searchBar.backgroundColor = .black
+        searchBar.searchTextField.backgroundColor = .darkGray
+        searchBar.searchTextField.textColor = .white
+        searchBar.searchTextField.keyboardAppearance = .dark
+        searchBar.delegate = self
+        return searchBar
     }()
     
     private lazy var tableView: UITableView = {
@@ -29,7 +42,9 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = .lightGray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+        tableView.separatorInset = Style.List.tableViewSeparatorInset
+        tableView.contentInset = Style.List.tableViewInset
+        tableView.keyboardDismissMode = .onDrag
         return tableView
     }()
     
@@ -47,18 +62,27 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        loading(animated: false)
         viewModel.delegate = self
         viewModel.availableCurrrencies()
     }
     
     // MARK: - Setups
     private func setupLayout() {
-        title = "Currency"
+        title = Style.List.title
         navigationItem.setRightBarButton(closeButton, animated: false)
         view.backgroundColor = .black
         view.addSubview(tableView)
-        tableView
+        view.addSubview(searchBar)
+        
+        searchBar
             .top(anchor: view.safeAreaLayoutGuide.topAnchor)
+            .leading(anchor: view.safeAreaLayoutGuide.leadingAnchor, constant: Style.defaultCloseLeading)
+            .trailing(anchor: view.safeAreaLayoutGuide.trailingAnchor, constant: Style.defaultCloseTrailing)
+            .height(constant: 70)
+        
+        tableView
+            .top(anchor: searchBar.bottomAnchor)
             .leading(anchor: view.safeAreaLayoutGuide.leadingAnchor)
             .trailing(anchor: view.safeAreaLayoutGuide.trailingAnchor)
             .bottom(anchor: view.bottomAnchor)
@@ -72,9 +96,10 @@ class ListViewController: UIViewController {
 
 // MARK: - View Model
 extension ListViewController: ListViewModelDelegate {
-    func onListCurrencies() {
+    func onListCurrenciesUpdate() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            self?.content()
         }
     }
     
@@ -83,29 +108,48 @@ extension ListViewController: ListViewModelDelegate {
     }
 }
 
+// MARK: - Serach
+extension ListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.serach(for: searchText)
+    }
+}
+
 // MARK: - TableView
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.currenciesDisplayed.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.currencies.count
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return Style.List.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.description(), for: indexPath) as? CurrencyTableViewCell
-        cell?.title = viewModel.currencies[indexPath.row].code
-        cell?.subtitle = viewModel.currencies[indexPath.row].name
+        cell?.title = viewModel.currenciesDisplayed[indexPath.row].code
+        cell?.subtitle = viewModel.currenciesDisplayed[indexPath.row].name
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currency = viewModel.currencies[indexPath.row]
+        let currency = viewModel.currenciesDisplayed[indexPath.row]
         delegate?.didSelectCurrency(currency, type: viewModel.type)
         dismiss(animated: true)
     }

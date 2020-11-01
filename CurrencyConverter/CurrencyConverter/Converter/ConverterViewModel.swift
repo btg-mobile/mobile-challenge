@@ -15,6 +15,9 @@ enum CurrencyType {
 
 protocol ConverterViewModelDelegate: class {
     func setCurrency(_ currency: Currecy, type: CurrencyType)
+    
+    func onLoading()
+    func onSetCurrencySuccess()
     func onError(_ error: NSError)
 }
 
@@ -75,11 +78,13 @@ class ConverterViewModel {
 extension ConverterViewModel {
     func dolarValueForCurrencies() {
         guard let origin = originCurrency, let target = targetCurrency else { return }
+        delegate?.onLoading()
         network.values(currenciesCodes: [origin.code, target.code]) { [weak self] result in
             switch result {
             case .success(let dict):
                 self?.originCurrency?.inDolarValue = dict["USD\(origin.code)"]
                 self?.targetCurrency?.inDolarValue = dict["USD\(target.code)"]
+                self?.delegate?.onSetCurrencySuccess()
                 
             case .failure(let error):
                 self?.delegate?.onError(error)

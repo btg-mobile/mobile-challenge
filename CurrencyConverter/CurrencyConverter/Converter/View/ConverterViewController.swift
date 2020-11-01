@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ConverterViewController: UIViewController {
-
+class ConverterViewController: UIViewController, StateTransition {
+    
     private let viewModel: ConverterViewModel = ConverterViewModel()
+    var loadingView: UIView = LoadingView()
     
     // MARK: - Layout Vars
     private lazy var originCurrencyButton: UIButton = {
@@ -52,13 +53,13 @@ class ConverterViewController: UIViewController {
         view.addSubview(converterView)
         
         originCurrencyButton
-            .top(anchor: view.safeAreaLayoutGuide.topAnchor)
+            .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: Style.defaultTop)
             .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
             .height(constant: Style.Home.currencyHeight)
             .width(anchor: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: Style.Home.widthOffset)
         
         targetCurrencyButton
-            .top(anchor: view.safeAreaLayoutGuide.topAnchor)
+            .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: Style.defaultTop)
             .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
             .height(constant: Style.Home.currencyHeight)
             .width(anchor: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5, constant: Style.Home.widthOffset)
@@ -113,8 +114,20 @@ extension ConverterViewController: ConverterViewModelDelegate {
         }
     }
     
+    func onLoading() {
+        loading()
+    }
+    
+    func onSetCurrencySuccess() {
+        DispatchQueue.main.async { [weak self] in
+            self?.content()
+        }
+    }
+    
     func onError(_ error: NSError) {
-        
+        DispatchQueue.main.async { [weak self] in
+            self?.content()
+        }
     }
 }
 

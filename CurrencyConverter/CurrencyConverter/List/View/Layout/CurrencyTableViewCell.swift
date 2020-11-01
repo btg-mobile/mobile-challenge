@@ -22,15 +22,15 @@ class CurrencyTableViewCell: UITableViewCell {
     // MARK: - Layout Vars
     private lazy var titleLabel: UILabel = {
         let label = UILabel().useConstraint()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .white
+        label.font = Style.defaultFont
+        label.textColor = Style.defaultPrimaryTextColor
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel().useConstraint()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .lightGray
+        label.font = Style.defaultFont
+        label.textColor = Style.defaultSecondaryTextColor
         return label
     }()
     
@@ -57,7 +57,7 @@ class CurrencyTableViewCell: UITableViewCell {
         contentView.addSubview(stackView)
         stackView
             .centerY(contentView.centerYAnchor)
-            .leading(anchor: contentView.leadingAnchor, constant: 24)
-            .trailing(anchor: contentView.trailingAnchor, constant: -24)
+            .leading(anchor: contentView.leadingAnchor, constant: Style.defaultLeading)
+            .trailing(anchor: contentView.trailingAnchor, constant: Style.defaultTrailing)
     }
 }

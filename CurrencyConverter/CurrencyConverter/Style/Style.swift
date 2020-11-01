@@ -28,6 +28,7 @@ enum Style {
     static let highlightFont: UIFont = UIFont.systemFont(ofSize: 20)
     
     // MARK: Colors
-    static let defaultTextColor: UIColor = .white
+    static let defaultPrimaryTextColor: UIColor = .white
+    static let defaultSecondaryTextColor: UIColor = .lightGray
     static let veryDarkGray: UIColor = UIColor(displayP3Red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
 }

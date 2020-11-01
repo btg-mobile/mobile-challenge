@@ -9,7 +9,7 @@ import Foundation
 import CurrencyServices
 
 protocol ListViewModelDelegate: class {
-    func onListCurrencies()
+    func onListCurrenciesUpdate()
     func onError(_ error: NSError)
 }
 
@@ -19,24 +19,40 @@ class ListViewModel {
     
     var type: CurrencyType
     var currencies: [Currecy]
+    var currenciesDisplayed: [Currecy] {
+        didSet { delegate?.onListCurrenciesUpdate() }
+    }
     weak var delegate: ListViewModelDelegate?
     
     // MARK: - Life Cycle
     init(type: CurrencyType) {
         self.type = type
-        self.network = CurrencyServices.CurrencylayerNetwork()
-        self.currencies = []
+        network = CurrencyServices.CurrencylayerNetwork()
+        currencies = []
+        currenciesDisplayed = []
+    }
+    
+    // MARK: - Handlers
+    func serach(for text: String) {
+        guard !text.isEmpty else {
+            currenciesDisplayed = currencies
+            return
+        }
+        
+        let lowerText = text.lowercased()
+        currenciesDisplayed = currencies.filter { $0.code.lowercased().contains(lowerText) || $0.name.lowercased().contains(lowerText) }
     }
 }
 
-// MARK: - APIs
+// MARK: - Requests
 extension ListViewModel {
     func availableCurrrencies() {
         network.list { [weak self] result in
             switch result {
             case .success(let currencies):
-                self?.currencies = currencies.compactMap { try? Currecy(code: $0.key, name: $0.value) }.sorted(by: { $0.code < $1.code })
-                self?.delegate?.onListCurrencies()
+                let currencies = currencies.compactMap { try? Currecy(code: $0.key, name: $0.value) }.sorted(by: { $0.code < $1.code })
+                self?.currencies = currencies
+                self?.currenciesDisplayed = currencies
                 
             case .failure(let error):
                 self?.delegate?.onError(error)
