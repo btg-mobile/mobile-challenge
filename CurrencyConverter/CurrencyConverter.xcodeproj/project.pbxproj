@@ -11,6 +11,7 @@
 		557D2283254E739100C31390 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D2282254E739100C31390 /* LoadingView.swift */; };
 		557D2287254E7B1D00C31390 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D2286254E7B1D00C31390 /* ListViewModelTests.swift */; };
 		557D229E254E910B00C31390 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D229D254E910B00C31390 /* ErrorView.swift */; };
+		557D22A2254E98C600C31390 /* EmptyCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D22A1254E98C600C31390 /* EmptyCurrencyView.swift */; };
 		558339FA254C530100DEE9B0 /* UIButton+setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */; };
 		558339FE254C578C00DEE9B0 /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339FD254C578C00DEE9B0 /* UIView+Factory.swift */; };
 		55833A07254C5B3800DEE9B0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A06254C5B3800DEE9B0 /* ListViewController.swift */; };
@@ -71,6 +72,7 @@
 		557D2282254E739100C31390 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		557D2286254E7B1D00C31390 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		557D229D254E910B00C31390 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		557D22A1254E98C600C31390 /* EmptyCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCurrencyView.swift; sourceTree = "<group>"; };
 		558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+setBackgroundColor.swift"; sourceTree = "<group>"; };
 		558339FD254C578C00DEE9B0 /* UIView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Factory.swift"; sourceTree = "<group>"; };
 		55833A06254C5B3800DEE9B0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				55833A1E254C722100DEE9B0 /* CurrencyConverterView.swift */,
+				557D22A1254E98C600C31390 /* EmptyCurrencyView.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				55E370AA254B390B0020D3F7 /* SceneDelegate.swift in Sources */,
 				55E37125254B423B0020D3F7 /* UIView+Constraints.swift in Sources */,
 				557D2283254E739100C31390 /* LoadingView.swift in Sources */,
+				557D22A2254E98C600C31390 /* EmptyCurrencyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

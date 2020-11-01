@@ -38,6 +38,12 @@ class ConverterViewController: UIViewController, StateTransition {
         return converterView
     }()
     
+    private lazy var emptyCurrencyView: EmptyCurrencyView = {
+        let emptyCurrencyView = EmptyCurrencyView().useConstraint()
+        emptyCurrencyView.delegate = self
+        return emptyCurrencyView
+    }()
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +57,7 @@ class ConverterViewController: UIViewController, StateTransition {
         view.addSubview(originCurrencyButton)
         view.addSubview(targetCurrencyButton)
         view.addSubview(converterView)
+        view.addSubview(emptyCurrencyView)
         
         originCurrencyButton
             .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: Style.defaultTop)
@@ -68,6 +75,12 @@ class ConverterViewController: UIViewController, StateTransition {
             .top(anchor: targetCurrencyButton.bottomAnchor, constant: Style.defaultTop)
             .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
             .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
+        
+        emptyCurrencyView
+            .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: Style.defaultTop)
+            .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
+            .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
+            .bottom(anchor: view.bottomAnchor)
     }
     
     private func createAttributedString(code: String, name: String) -> NSMutableAttributedString {
@@ -101,11 +114,26 @@ extension ConverterViewController: CurrencyConverterViewDelegate {
     }
 }
 
+// MARK: - EmptyView Delegate
+extension ConverterViewController: EmptyCurrencyViewDelegate {
+    func didClickToOpenList(type: CurrencyType) {
+        switch type {
+        case .origin:
+            originList()
+        case .target:
+            targetList()
+        }
+    }
+}
+
 // MARK: - ViewModel
 extension ConverterViewController: ConverterViewModelDelegate {
     func setCurrency(_ currency: Currecy, type: CurrencyType) {
         let title = createAttributedString(code: currency.code, name: currency.name)
         converterView.setupCurrency(currency, type: type)
+        emptyCurrencyView.setupCurrency(currency, type: type, title: title)
+        emptyCurrencyView.isHidden = viewModel.isReadyForConversion
+        
         switch type {
         case .origin:
             originCurrencyButton.setAttributedTitle(title, for: .normal)

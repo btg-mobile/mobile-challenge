@@ -27,6 +27,7 @@ class ConverterViewModel {
     private(set) lazy var retry: (() -> Void)? = nil
     
     weak var delegate: ConverterViewModelDelegate?
+    var isReadyForConversion: Bool { originCurrency != nil && targetCurrency != nil }
     var originCurrency: Currecy? {
         didSet {
             if let currency = originCurrency {
