@@ -56,4 +56,21 @@ struct CurrencyClient: APIClient {
         }
     }
     
+    func getLiveCurrencies(completion: @escaping LiveFetchByNamesCompletion){
+        
+        guard let request = CurrencyProvider.live.request else {
+            return completion(.failure(.badRequest))
+        }
+        
+        fetch(withRequest: request, withDecondingType: CurrencyLive.self) { (result) in
+            switch result {
+            
+            case .success(let currencyLive):
+                completion(.success(currencyLive))
+            case .failure(let error):
+                return completion(.failure(error))
+            }
+        }
+    }
+    
 }
