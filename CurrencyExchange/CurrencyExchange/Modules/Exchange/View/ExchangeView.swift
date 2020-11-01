@@ -8,7 +8,9 @@
 import UIKit
 
 
-class ExchangeView: UIView {
+
+
+class ExchangeView: UIView, ActivityIndicator {
     
     // MARK: - Properties
     
@@ -26,8 +28,11 @@ class ExchangeView: UIView {
     
     let resultValueOfExchangeLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "0.0"
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.text = "0"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.textColor = .white
         return label
     }()
@@ -63,6 +68,9 @@ class ExchangeView: UIView {
         return button
     }()
     
+    var loadingIndicatorView: UIView?
+    
+    var activityIndicator: UIActivityIndicatorView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -120,7 +128,8 @@ extension ExchangeView: ViewCodable {
     
     private func resultValueOfExchangeLabelContraints() {
         self.resultValueOfExchangeLabel.centerY(in: resultValueOfExchangeBackgroundView)
-        self.resultValueOfExchangeLabel.centerX(in: resultValueOfExchangeBackgroundView)
+        self.resultValueOfExchangeLabel.anchor(left: resultValueOfExchangeBackgroundView.leftAnchor, paddingLeft: ScreenSize.width * 0.02)
+        self.resultValueOfExchangeLabel.anchor(right: resultValueOfExchangeBackgroundView.rightAnchor, paddingRight: ScreenSize.width * 0.02)
     }
     
     private func exchangeTextFieldConstraints(){
