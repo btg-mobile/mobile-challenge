@@ -18,12 +18,13 @@ protocol ConverterViewModelDelegate: class {
     
     func onLoading()
     func onSetCurrencySuccess()
-    func onError(_ error: NSError)
+    func onError(_ error: String)
 }
 
 class ConverterViewModel {
     
     private let network: CurrencyServices.CurrencylayerNetwork
+    private(set) lazy var retry: (() -> Void)? = nil
     
     weak var delegate: ConverterViewModelDelegate?
     var originCurrency: Currecy? {
@@ -87,7 +88,8 @@ extension ConverterViewModel {
                 self?.delegate?.onSetCurrencySuccess()
                 
             case .failure(let error):
-                self?.delegate?.onError(error)
+                self?.retry = self?.dolarValueForCurrencies
+                self?.delegate?.onError(error.info)
             }
         }
     }

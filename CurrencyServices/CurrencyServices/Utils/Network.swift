@@ -7,6 +7,12 @@
 
 import Foundation
 
+public struct NetworkError: Error {
+    var data: Data?
+    var error: Error?
+    var response: URLResponse?
+}
+
 public class Network {
     
     public enum Scheme: String {
@@ -38,20 +44,25 @@ public class Network {
         return request
     }
     
-    public static func request(scheme: Scheme = .http, method: Method, baseUrl: String, path: String, params: [String: String]? = nil, callback: @escaping (Result<Dictionary<String, Any>, NSError>) -> Void) {
+    public static func request(scheme: Scheme = .http,
+                               method: Method,
+                               baseUrl: String,
+                               path: String,
+                               params: [String: String]? = nil,
+                               callback: @escaping (Result<Dictionary<String, Any>, NetworkError>) -> Void) {
         guard let request = Network.createRequest(scheme: scheme, method: method, baseUrl: baseUrl, path: path, params: params) else { return }
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-
+            
             if (error as NSError?)?.code == -1009 { // The Internet connection appears to be offline.
                 let cachedResponse = URLSession.shared.configuration.urlCache?.cachedResponse(for: request)
-                if let responseCached = cachedResponse?.response, let dataCached = cachedResponse?.data { // User cache if is offline and cache has data and response
+                if let responseCached = cachedResponse?.response, let dataCached = cachedResponse?.data { // Use cache if is offline and cache has data and response
                     Network.dataResponseHandler(dataCached, responseCached, callback: callback)
                     return
                 }
             }
             
             if let error = error {
-                callback(.failure(error as NSError))
+                callback(.failure(NetworkError(data: data, error: error, response: response)))
                 return
             }
             
@@ -60,20 +71,22 @@ public class Network {
         task.resume()
     }
     
-    private static func dataResponseHandler(_ data: Data?, _ response: URLResponse?, callback: @escaping (Result<Dictionary<String, Any>, NSError>) -> Void) {
+    private static func dataResponseHandler(_ data: Data?,
+                                            _ response: URLResponse?,
+                                            callback: @escaping (Result<Dictionary<String, Any>, NetworkError>) -> Void) {
         if let data = data, let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode {
             do {
                 let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 if let dict = dict {
                     callback(.success(dict))
                 } else {
-                    callback(.failure(NSError()))
+                    callback(.failure(NetworkError(data: data, error: nil, response: response)))
                 }
             } catch let error {
-                callback(.failure(error as NSError))
+                callback(.failure(NetworkError(data: data, error: error, response: response)))
             }
         } else {
-            callback(.failure(NSError()))
+            callback(.failure(NetworkError(data: data, error: nil, response: response)))
         }
     }
 }

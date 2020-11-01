@@ -124,9 +124,15 @@ extension ConverterViewController: ConverterViewModelDelegate {
         }
     }
     
-    func onError(_ error: NSError) {
-        DispatchQueue.main.async { [weak self] in
-            self?.content()
+    func onError(_ error: String) {
+        func onError(_ error: String) {
+            DispatchQueue.main.async { [weak self] in
+                let retry = {
+                    self?.loading()
+                    self?.viewModel.retry?()
+                }
+                self?.custom(view: ErrorView(text: error, retry: retry))
+            }
         }
     }
 }

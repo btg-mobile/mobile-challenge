@@ -119,8 +119,14 @@ extension ListViewController: ListViewModelDelegate {
         }
     }
     
-    func onError(_ error: NSError) {
-        print(error.localizedDescription)
+    func onError(_ error: String) {
+        DispatchQueue.main.async { [weak self] in
+            let retry = {
+                self?.loading()
+                self?.viewModel.retry?()
+            }
+            self?.custom(view: ErrorView(text: error, retry: retry))
+        }
     }
 }
 

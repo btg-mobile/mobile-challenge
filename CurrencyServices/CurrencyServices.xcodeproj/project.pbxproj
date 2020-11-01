@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		557D2298254E8CDA00C31390 /* CurrencyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D2297254E8CDA00C31390 /* CurrencyError.swift */; };
 		55E37100254B3F7D0020D3F7 /* CurrencyServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E370F6254B3F7C0020D3F7 /* CurrencyServices.framework */; };
 		55E37107254B3F7D0020D3F7 /* CurrencyServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 55E370F9254B3F7C0020D3F7 /* CurrencyServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55E3712E254B46D40020D3F7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3712D254B46D40020D3F7 /* Network.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		557D2297254E8CDA00C31390 /* CurrencyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyError.swift; sourceTree = "<group>"; };
 		55E370F6254B3F7C0020D3F7 /* CurrencyServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CurrencyServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E370F9254B3F7C0020D3F7 /* CurrencyServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyServices.h; sourceTree = "<group>"; };
 		55E370FA254B3F7C0020D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		557D2296254E8CCD00C31390 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				557D2297254E8CDA00C31390 /* CurrencyError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		55E370EC254B3F7C0020D3F7 = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +87,8 @@
 		55E370F8254B3F7C0020D3F7 /* CurrencyServices */ = {
 			isa = PBXGroup;
 			children = (
-				55E3713B254B52C20020D3F7 /* Currency */,
+				557D2296254E8CCD00C31390 /* Models */,
+				55E3713B254B52C20020D3F7 /* Network */,
 				55E3712B254B46B60020D3F7 /* Utils */,
 				55E37117254B40800020D3F7 /* SupportingFiles */,
 			);
@@ -111,12 +122,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		55E3713B254B52C20020D3F7 /* Currency */ = {
+		55E3713B254B52C20020D3F7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				55E3713C254B52CF0020D3F7 /* CurrencylayerNetwork.swift */,
 			);
-			path = Currency;
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E3713D254B52CF0020D3F7 /* CurrencylayerNetwork.swift in Sources */,
+				557D2298254E8CDA00C31390 /* CurrencyError.swift in Sources */,
 				55E3712E254B46D40020D3F7 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

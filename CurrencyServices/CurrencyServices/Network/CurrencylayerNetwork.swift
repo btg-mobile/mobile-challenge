@@ -16,23 +16,23 @@ public class CurrencylayerNetwork {
     public init() {}
     
     // MARK: - Network Calls
-    public func list(callback: @escaping (Result<Dictionary<String, String>, NSError>) -> Void) {
+    public func list(callback: @escaping (Result<Dictionary<String, String>, CurrencyError>) -> Void) {
         Network.request(method: .get, baseUrl: baseUrl, path: "/list", params: ["access_key": accessKey]) { result in
             switch result {
             case .success(let dict):
                 if let currencies = dict["currencies"] as? [String: String] {
                     callback(.success(currencies))
                 } else {
-                    callback(.failure(NSError()))
+                    callback(.failure(CurrencyError(type: .encodingError, info: "Encoding Error")))
                 }
                 
             case .failure(let error):
-                callback(.failure(error))
+                callback(.failure(CurrencyError(error: error.error, data: error.data)))
             }
         }
     }
     
-    public func values(currenciesCodes: [String], callback: @escaping (Result<Dictionary<String, Double>, NSError>) -> Void) {
+    public func values(currenciesCodes: [String], callback: @escaping (Result<Dictionary<String, Double>, CurrencyError>) -> Void) {
         let codes = currenciesCodes.joined(separator: ",")
         Network.request(method: .get, baseUrl: baseUrl, path: "/live", params: ["currencies": codes, "access_key": accessKey]) { result in
             switch result {
@@ -40,11 +40,11 @@ public class CurrencylayerNetwork {
                 if let values = dict["quotes"] as? [String: Double] {
                     callback(.success(values))
                 } else {
-                    callback(.failure(NSError()))
+                    callback(.failure(CurrencyError(type: .encodingError, info: "Encoding Error")))
                 }
                 
             case .failure(let error):
-                callback(.failure(error))
+                callback(.failure(CurrencyError(error: error.error, data: error.data)))
             }
         }
     }

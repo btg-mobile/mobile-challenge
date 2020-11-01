@@ -10,12 +10,13 @@ import CurrencyServices
 
 protocol ListViewModelDelegate: class {
     func onListCurrenciesUpdate()
-    func onError(_ error: NSError)
+    func onError(_ error: String)
 }
 
 class ListViewModel {
     
     private let network: CurrencyServices.CurrencylayerNetwork
+    private(set) lazy var retry: (() -> Void)? = nil
     
     var type: CurrencyType
     var currencies: [Currecy]
@@ -55,7 +56,8 @@ extension ListViewModel {
                 self?.currenciesDisplayed = currencies
                 
             case .failure(let error):
-                self?.delegate?.onError(error)
+                self?.retry = self?.availableCurrrencies
+                self?.delegate?.onError(error.info)
             }
         }
     }

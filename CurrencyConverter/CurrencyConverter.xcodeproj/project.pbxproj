@@ -10,6 +10,7 @@
 		557C982A254E71410054B849 /* StateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557C9829254E71410054B849 /* StateTransition.swift */; };
 		557D2283254E739100C31390 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D2282254E739100C31390 /* LoadingView.swift */; };
 		557D2287254E7B1D00C31390 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D2286254E7B1D00C31390 /* ListViewModelTests.swift */; };
+		557D229E254E910B00C31390 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557D229D254E910B00C31390 /* ErrorView.swift */; };
 		558339FA254C530100DEE9B0 /* UIButton+setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */; };
 		558339FE254C578C00DEE9B0 /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558339FD254C578C00DEE9B0 /* UIView+Factory.swift */; };
 		55833A07254C5B3800DEE9B0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55833A06254C5B3800DEE9B0 /* ListViewController.swift */; };
@@ -69,6 +70,7 @@
 		557C9829254E71410054B849 /* StateTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTransition.swift; sourceTree = "<group>"; };
 		557D2282254E739100C31390 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		557D2286254E7B1D00C31390 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
+		557D229D254E910B00C31390 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		558339F9254C530100DEE9B0 /* UIButton+setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+setBackgroundColor.swift"; sourceTree = "<group>"; };
 		558339FD254C578C00DEE9B0 /* UIView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Factory.swift"; sourceTree = "<group>"; };
 		55833A06254C5B3800DEE9B0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				557C9829254E71410054B849 /* StateTransition.swift */,
 				557D2282254E739100C31390 /* LoadingView.swift */,
+				557D229D254E910B00C31390 /* ErrorView.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			files = (
 				55A61B8B254C4A5500E1E8B6 /* Currency.swift in Sources */,
 				558B6299254DE58D001E4470 /* String+Regex.swift in Sources */,
+				557D229E254E910B00C31390 /* ErrorView.swift in Sources */,
 				558339FE254C578C00DEE9B0 /* UIView+Factory.swift in Sources */,
 				55833A0B254C5C2A00DEE9B0 /* ListViewModel.swift in Sources */,
 				55A61B9C254C4D8100E1E8B6 /* ConverterStyle.swift in Sources */,

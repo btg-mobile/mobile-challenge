@@ -22,7 +22,7 @@ protocol StateTransition: class {
 }
 
 extension StateTransition {
-    private func showView(_ view: UIView, animated: Bool) {
+    private func showView(_ view: UIView, hide: [UIView?] = [], animated: Bool) {
         referenceView.addSubview(view)
         view
             .top(anchor: referenceView.topAnchor)
@@ -31,25 +31,30 @@ extension StateTransition {
             .bottom(anchor: referenceView.bottomAnchor)
         
         if animated {
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, animations: {
                 view.alpha = 1
-            }
+            }, completion: { _ in
+                hide.forEach { $0?.removeFromSuperview() }
+            })
         } else {
             view.alpha = 1
+            hide.forEach { $0?.removeFromSuperview() }
         }
     }
     
     func loading(animated: Bool = true) {
         loadingView.useConstraint()
         loadingView.alpha = 0
-        showView(loadingView, animated: animated)
+        
+        let customView = referenceView.subviews.first(where: { $0.tag == UIView.customViewTag })
+        showView(loadingView, hide: [customView], animated: animated)
     }
     
     func custom(view: UIView, animated: Bool = true) {
         view.tag = UIView.customViewTag
         view.useConstraint()
         view.alpha = 0
-        showView(view, animated: animated)
+        showView(view, hide: [loadingView], animated: animated)
     }
     
     func content(animated: Bool = true) {
