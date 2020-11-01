@@ -34,6 +34,7 @@ public class Network {
         guard let url = Network.createUrl(scheme: scheme, baseUrl: baseUrl, path: path, params: params) else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
+        request.cachePolicy = .reloadIgnoringLocalCacheData
         return request
     }
     
@@ -41,26 +42,38 @@ public class Network {
         guard let request = Network.createRequest(scheme: scheme, method: method, baseUrl: baseUrl, path: path, params: params) else { return }
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
 
+            if (error as NSError?)?.code == -1009 { // The Internet connection appears to be offline.
+                let cachedResponse = URLSession.shared.configuration.urlCache?.cachedResponse(for: request)
+                if let responseCached = cachedResponse?.response, let dataCached = cachedResponse?.data { // User cache if is offline and cache has data and response
+                    Network.dataResponseHandler(dataCached, responseCached, callback: callback)
+                    return
+                }
+            }
+            
             if let error = error {
                 callback(.failure(error as NSError))
                 return
             }
             
-            if let data = data, let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode {
-                do {
-                    let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                    if let dict = dict {
-                        callback(.success(dict))
-                    } else {
-                        callback(.failure(NSError()))
-                    }
-                } catch let error {
-                    callback(.failure(error as NSError))
-                }
-            } else {
-                callback(.failure(NSError()))
-            }
+            Network.dataResponseHandler(data, response, callback: callback)
         }
         task.resume()
+    }
+    
+    private static func dataResponseHandler(_ data: Data?, _ response: URLResponse?, callback: @escaping (Result<Dictionary<String, Any>, NSError>) -> Void) {
+        if let data = data, let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode {
+            do {
+                let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                if let dict = dict {
+                    callback(.success(dict))
+                } else {
+                    callback(.failure(NSError()))
+                }
+            } catch let error {
+                callback(.failure(error as NSError))
+            }
+        } else {
+            callback(.failure(NSError()))
+        }
     }
 }

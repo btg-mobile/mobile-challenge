@@ -11,6 +11,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // MARK: Setup Cache Limit for Requests
+        let megabyte: Int = 1024 * 1024
+        let memoryCapacity = 4 * megabyte
+        let diskCapacity = 20 * megabyte
+        let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: nil)
+        URLCache.shared = cache
+        
         return true
     }
 
