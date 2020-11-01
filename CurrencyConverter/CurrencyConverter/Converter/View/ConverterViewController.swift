@@ -44,6 +44,13 @@ class ConverterViewController: UIViewController, StateTransition {
         return emptyCurrencyView
     }()
     
+    private lazy var infoLable: UILabel = {
+        let label = UILabel().useConstraint()
+        label.textColor = Style.defaultSecondaryTextColor
+        label.font = Style.defaultFont
+        return label
+    }()
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +65,7 @@ class ConverterViewController: UIViewController, StateTransition {
         view.addSubview(targetCurrencyButton)
         view.addSubview(converterView)
         view.addSubview(emptyCurrencyView)
+        view.addSubview(infoLable)
         
         originCurrencyButton
             .top(anchor: view.safeAreaLayoutGuide.topAnchor, constant: Style.defaultTop)
@@ -73,6 +81,11 @@ class ConverterViewController: UIViewController, StateTransition {
         
         converterView
             .top(anchor: targetCurrencyButton.bottomAnchor, constant: Style.defaultTop)
+            .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
+            .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
+        
+        infoLable
+            .top(anchor: converterView.bottomAnchor, constant: Style.defaultCloseTop)
             .leading(anchor: view.leadingAnchor, constant: Style.defaultLeading)
             .trailing(anchor: view.trailingAnchor, constant: Style.defaultTrailing)
         
@@ -148,19 +161,15 @@ extension ConverterViewController: ConverterViewModelDelegate {
     
     func onSetCurrencySuccess() {
         DispatchQueue.main.async { [weak self] in
+            self?.infoLable.text = self?.viewModel.lastUpdate
             self?.content()
         }
     }
     
     func onError(_ error: String) {
-        func onError(_ error: String) {
-            DispatchQueue.main.async { [weak self] in
-                let retry = {
-                    self?.loading()
-                    self?.viewModel.retry?()
-                }
-                self?.custom(view: ErrorView(text: error, retry: retry))
-            }
+        DispatchQueue.main.async { [weak self] in
+            self?.infoLable.text = error
+            self?.content()
         }
     }
 }

@@ -25,8 +25,9 @@ class ConverterViewModel {
     
     private let network: CurrencyServices.CurrencylayerNetwork
     private(set) lazy var retry: (() -> Void)? = nil
-    
     weak var delegate: ConverterViewModelDelegate?
+    
+    private var timestamp: Double?
     var isReadyForConversion: Bool { originCurrency != nil && targetCurrency != nil }
     var originCurrency: Currecy? {
         didSet {
@@ -41,6 +42,13 @@ class ConverterViewModel {
                 delegate?.setCurrency(currency, type: .target)
             }
          }
+    }
+    var lastUpdate: String? {
+        guard let timestamp = timestamp else { return nil }
+        let date = Date(timeIntervalSince1970: timestamp)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        return "Last update in \(formatter.string(from: date))"
     }
     
     // MARK: - Life Cycle
@@ -84,9 +92,10 @@ extension ConverterViewModel {
         delegate?.onLoading()
         network.values(currenciesCodes: [origin.code, target.code]) { [weak self] result in
             switch result {
-            case .success(let dict):
-                self?.originCurrency?.inDolarValue = dict["USD\(origin.code)"]
-                self?.targetCurrency?.inDolarValue = dict["USD\(target.code)"]
+            case .success(let model):
+                self?.originCurrency?.inDolarValue = model.quotes["USD\(origin.code)"]
+                self?.targetCurrency?.inDolarValue = model.quotes["USD\(target.code)"]
+                self?.timestamp = model.timestamp
                 self?.delegate?.onSetCurrencySuccess()
                 
             case .failure(let error):

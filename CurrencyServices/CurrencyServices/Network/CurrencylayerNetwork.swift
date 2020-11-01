@@ -32,13 +32,13 @@ public class CurrencylayerNetwork {
         }
     }
     
-    public func values(currenciesCodes: [String], callback: @escaping (Result<Dictionary<String, Double>, CurrencyError>) -> Void) {
+    public func values(currenciesCodes: [String], callback: @escaping (Result<(quotes: Dictionary<String, Double>, timestamp: Double), CurrencyError>) -> Void) {
         let codes = currenciesCodes.joined(separator: ",")
         Network.request(method: .get, baseUrl: baseUrl, path: "/live", params: ["currencies": codes, "access_key": accessKey]) { result in
             switch result {
             case .success(let dict):
-                if let values = dict["quotes"] as? [String: Double] {
-                    callback(.success(values))
+                if let values = dict["quotes"] as? [String: Double], let timestamp = dict["timestamp"] as? Double {
+                    callback(.success((values, timestamp)))
                 } else {
                     callback(.failure(CurrencyError(type: .encodingError, info: "Encoding Error")))
                 }
