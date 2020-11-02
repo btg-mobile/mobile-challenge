@@ -15,7 +15,7 @@ class CurrencyDAO: CurrencyInterface {
         self.coreDataStack = coreDataStack
     }
     
-    func fetchWithPredicate(_ predicate: NSPredicate?, with sortDescriptors: [NSSortDescriptor]?, completion: @escaping ([Currency]) -> Void) throws {
+    func fetchWithPredicate(_ predicate: NSPredicate?, withSortDescriptors sortDescriptors: [NSSortDescriptor]?, completion: @escaping ([Currency]) -> Void) throws {
 
         let fetchRequest = NSFetchRequest<CurrencyCD>(entityName: CurrencyCD.uniqueIdentifier)
         
@@ -45,6 +45,27 @@ class CurrencyDAO: CurrencyInterface {
         self.coreDataStack.saveContext()
     }
     
+    func createWithoutRepetitionWithCurrency(_ currency: Currency, withPredicate predicate: NSPredicate?, completion: @escaping () -> Void) {
+        
+        let fetchRequest = NSFetchRequest<CurrencyCD>(entityName: CurrencyCD.uniqueIdentifier)
+        
+        fetchRequest.predicate = predicate
+        
+        do {
+            let currenciesCD = try coreDataStack.viewContext.fetch(fetchRequest)
+            
+            guard currenciesCD.count == 0 else {
+                return completion()
+            }
+            
+            self.createWithCurrency(currency)
+            
+            completion()
+        }catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func deleteAll(completion: @escaping () -> Void) throws {
         let fetchRequest = NSFetchRequest<CurrencyCD>(entityName: CurrencyCD.uniqueIdentifier)
                 
@@ -55,6 +76,7 @@ class CurrencyDAO: CurrencyInterface {
                 self.coreDataStack.viewContext.delete(currencyCD)
             }
             
+            self.coreDataStack.saveContext()
             completion()
         }catch {
             throw CoreDataError.cannotBeDeleted

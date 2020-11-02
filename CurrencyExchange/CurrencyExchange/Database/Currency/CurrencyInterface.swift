@@ -11,9 +11,11 @@ protocol CurrencyInterface {
     
     var coreDataStack: CoreDataStack { get set }
     
-    func fetchWithPredicate(_ predicate: NSPredicate?, with sortDescriptors: [NSSortDescriptor]?, completion: @escaping ([Currency]) -> Void) throws
+    func fetchWithPredicate(_ predicate: NSPredicate?, withSortDescriptors sortDescriptors: [NSSortDescriptor]?, completion: @escaping ([Currency]) -> Void) throws
     
     func createWithCurrency(_ currency: Currency)
     
     func deleteAll(completion: @escaping () -> Void) throws
+    
+    func createWithoutRepetitionWithCurrency(_ currency: Currency, withPredicate predicate: NSPredicate?, completion: @escaping () -> Void)
 }

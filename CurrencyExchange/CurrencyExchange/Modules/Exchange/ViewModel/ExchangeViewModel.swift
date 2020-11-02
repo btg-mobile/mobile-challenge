@@ -42,6 +42,23 @@ final class ExchangeViewModel {
         let destinationCurrency = try unwrappWithCurrency(self.destinationCurrency)
         try verifyCurrenciesAreEqual(withOriginCurrency: originCurrency, andWithDestinationCurrency: destinationCurrency)
         
+        
+        if NetworkMonitor.shared.isConnected {
+            converterWhenNetworkIsAvailable(originCurrency: originCurrency, destinationCurrency: destinationCurrency, value: value)
+        }else {
+            self.converterWhenNetworkIsNotAvailableWithValue(value, withOriginCurrency: originCurrency, withDestinationCurrency: destinationCurrency)
+        }
+        
+    }
+    
+    private func converterWhenNetworkIsNotAvailableWithValue(_ value: Double, withOriginCurrency origin: Currency, withDestinationCurrency destination: Currency){
+        
+        var convertedValue =  destination.value / origin.value
+        convertedValue = value * convertedValue
+        self.delegate?.didFinishCurrencyExchange(message: nil, convertedValue: convertedValue)
+    }
+    
+    private func converterWhenNetworkIsAvailable(originCurrency: Currency, destinationCurrency: Currency, value: Double){
         let currencyClient = CurrencyClient(session: URLSession.shared)
         currencyClient.getLiveCurrenciesByNames(origin: originCurrency.code, destination: destinationCurrency.code) { (result) in
             
