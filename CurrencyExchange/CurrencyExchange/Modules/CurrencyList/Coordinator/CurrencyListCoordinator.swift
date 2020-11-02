@@ -22,7 +22,7 @@ final class CurrencyListCoordinator: Coordinator {
     
     init(presenter: UINavigationController, currencyButtonType: CurrencyButtonType) {
         self.presenter = presenter
-        self.currencyListViewModel = CurrencyListViewModel(currencyButtonType: currencyButtonType, coreDataStack: CoreDataStack.shared)
+        self.currencyListViewModel = CurrencyListViewModel(currencyButtonType: currencyButtonType, context: CoreDataStack.shared.viewContext)
         self.currencyListViewController = CurrencyListViewController(viewModel: currencyListViewModel)
         self.currencyListViewController.coordinator = self
     }

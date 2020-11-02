@@ -9,10 +9,10 @@ import CoreData
 
 class CurrencyDAO: CurrencyInterface {
     
-    var coreDataStack: CoreDataStack
+    var context: NSManagedObjectContext
     
-    init(coreDataStack: CoreDataStack){
-        self.coreDataStack = coreDataStack
+    init(context: NSManagedObjectContext){
+        self.context = context
     }
     
     func fetchWithPredicate(_ predicate: NSPredicate?, withSortDescriptors sortDescriptors: [NSSortDescriptor]?, completion: @escaping ([Currency]) -> Void) throws {
@@ -23,7 +23,7 @@ class CurrencyDAO: CurrencyInterface {
         fetchRequest.sortDescriptors = sortDescriptors
         
         do {
-            let currenciesCD = try coreDataStack.viewContext.fetch(fetchRequest)
+            let currenciesCD = try context.fetch(fetchRequest)
         
             var currencies: [Currency] = []
             currencies = currenciesCD.map {
@@ -37,12 +37,16 @@ class CurrencyDAO: CurrencyInterface {
     }
     
     func createWithCurrency(_ currency: Currency) {
-        let currencyCD = CurrencyCD(context: self.coreDataStack.viewContext)
+        let currencyCD = CurrencyCD(context: self.context)
         currencyCD.name = currency.name
         currencyCD.code = currency.code
         currencyCD.value = currency.value
         
-        self.coreDataStack.saveContext()
+        do {
+            try context.save()
+        }catch {
+            print("Error to save")
+        }
     }
     
     func createWithoutRepetitionWithCurrency(_ currency: Currency, withPredicate predicate: NSPredicate?, completion: @escaping () -> Void) {
@@ -52,7 +56,7 @@ class CurrencyDAO: CurrencyInterface {
         fetchRequest.predicate = predicate
         
         do {
-            let currenciesCD = try coreDataStack.viewContext.fetch(fetchRequest)
+            let currenciesCD = try self.context.fetch(fetchRequest)
             
             guard currenciesCD.count == 0 else {
                 return completion()
@@ -70,13 +74,14 @@ class CurrencyDAO: CurrencyInterface {
         let fetchRequest = NSFetchRequest<CurrencyCD>(entityName: CurrencyCD.uniqueIdentifier)
                 
         do {
-            let currenciesCD = try coreDataStack.viewContext.fetch(fetchRequest)
+            let currenciesCD = try self.context.fetch(fetchRequest)
         
             for currencyCD in currenciesCD {
-                self.coreDataStack.viewContext.delete(currencyCD)
+                self.context.delete(currencyCD)
             }
             
-            self.coreDataStack.saveContext()
+            
+            try context.save()
             completion()
         }catch {
             throw CoreDataError.cannotBeDeleted

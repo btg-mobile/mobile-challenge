@@ -9,7 +9,7 @@ import CoreData
 
 protocol CurrencyInterface {
     
-    var coreDataStack: CoreDataStack { get set }
+    var context: NSManagedObjectContext { get set }
     
     func fetchWithPredicate(_ predicate: NSPredicate?, withSortDescriptors sortDescriptors: [NSSortDescriptor]?, completion: @escaping ([Currency]) -> Void) throws
     

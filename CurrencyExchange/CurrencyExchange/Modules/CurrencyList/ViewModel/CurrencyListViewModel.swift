@@ -21,10 +21,10 @@ class CurrencyListViewModel {
     var currencies: [Currency]
     var currencyDAO: CurrencyDAO
     
-    init(currencyButtonType: CurrencyButtonType, coreDataStack: CoreDataStack){
+    init(currencyButtonType: CurrencyButtonType, context: NSManagedObjectContext){
         self.currencyButtonType = currencyButtonType
         self.currencies = []
-        self.currencyDAO =  CurrencyDAO(coreDataStack: coreDataStack)
+        self.currencyDAO = CurrencyDAO(context: context)
     }
     
     func loadData(){
