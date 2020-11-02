@@ -79,7 +79,7 @@ class CurrencyListViewController: UIViewController {
         return searchController
     }()
     
-    private let currencyListView: CurrencyListView = {
+    private var currencyListView: CurrencyListView = {
         let view = CurrencyListView(frame: .zero)
         return view
     }()
@@ -131,7 +131,7 @@ class CurrencyListViewController: UIViewController {
 
 extension CurrencyListViewController: CurrencyListViewModelDelegate {
     func willLoadData() {
-        
+        self.currencyListView.showLoadingIndicator(view: currencyListView)
     }
     
     func didLoadData(message: String?) {
@@ -139,6 +139,10 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
             print(message)
         }else {
             setupTableViewDataSourceAndDelegate()
+        }
+        
+        DispatchQueue.main.async {
+            self.currencyListView.dismissLoadingIndicator()
         }
     }
     

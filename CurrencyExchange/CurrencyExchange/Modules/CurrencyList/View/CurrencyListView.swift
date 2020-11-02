@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyListView: UIView {
+class CurrencyListView: UIView, ActivityIndicator {
     
     // MARK: - Properties
     
@@ -35,6 +35,10 @@ class CurrencyListView: UIView {
         view.backgroundColor = .clear
         return view
     }()
+    
+    var loadingIndicatorView: UIView?
+    
+    var activityIndicator: UIActivityIndicatorView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
