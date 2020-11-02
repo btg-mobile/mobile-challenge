@@ -10,5 +10,5 @@ import Foundation
 struct Currency {
     let name: String
     let code: String
-    var value: Double?
+    var value: Double
 }

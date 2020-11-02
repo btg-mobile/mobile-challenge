@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol CurrencyListViewModelDelegate: class {
     func willLoadData()
@@ -18,13 +19,20 @@ class CurrencyListViewModel {
     var currencyButtonType: CurrencyButtonType
     weak var delegate: CurrencyListViewModelDelegate?
     var currencies: [Currency]
+    var currencyDAO: CurrencyDAO
     
-    init(currencyButtonType: CurrencyButtonType){
+    init(currencyButtonType: CurrencyButtonType, coreDataStack: CoreDataStack){
         self.currencyButtonType = currencyButtonType
         self.currencies = []
+        self.currencyDAO =  CurrencyDAO(coreDataStack: coreDataStack)
     }
     
     func loadData(){
+        
+    }
+
+    
+    private func loadDataWhenNetworkIsAvailable(){
         self.delegate?.willLoadData()
         let currencyClient = CurrencyClient(session: URLSession.shared)
         
@@ -40,12 +48,15 @@ class CurrencyListViewModel {
         
                     case .success(let currencies):
                         guard let currencies = currencies.currencies else { return }
+                        
                         for (code, name) in currencies {
 
                             if let currencyValue = liveCurrencies.quotes?["USD\(code)"]{
-                                self.currencies.append(Currency(name: name, code: code, value: Double(currencyValue)))
-                            }else {
-                                self.currencies.append(Currency(name: name, code: code))
+                                
+                                let currency = Currency(name: name, code: code, value: Double(currencyValue))
+                                self.currencies.append(currency)
+                                
+                                self.currencyDAO.createWithCurrency(currency)
                             }
                             
                         }
@@ -61,11 +72,6 @@ class CurrencyListViewModel {
                 self.delegate?.didLoadData(message: error.description)
             }
         }
-    }
-
-    
-    private func loadDataWhenNetworkIsAvailable(){
-        
     }
     
     
