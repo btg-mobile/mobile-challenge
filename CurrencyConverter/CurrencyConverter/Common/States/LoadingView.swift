@@ -7,14 +7,69 @@
 
 import UIKit
 
+class CircleLoadingView: UIView {
+    
+    private var cirlceLayer: CAShapeLayer!
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    required init(radius: CGFloat) {
+        super.init(frame: .zero)
+        setupShapeLayer(radius)
+        NotificationCenter.default.addObserver(self, selector: #selector(setupAnimation), name: NSNotification.Name(rawValue: "appDidBecomeActive"), object: nil)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupAnimation()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupShapeLayer(_ radius: CGFloat) {
+        let path = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius, startAngle: -CGFloat.pi / 2, endAngle: -CGFloat.pi * 5 / 2, clockwise: false)
+        cirlceLayer = CAShapeLayer()
+        cirlceLayer.path = path.cgPath
+        cirlceLayer.fillColor = UIColor.clear.cgColor
+        cirlceLayer.strokeColor = UIColor.white.cgColor
+        cirlceLayer.lineWidth = 2.5
+        cirlceLayer.lineJoin = .round
+        cirlceLayer.lineCap =  .round
+        cirlceLayer.strokeEnd = 0
+        cirlceLayer.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
+        cirlceLayer.zPosition = CGFloat.leastNormalMagnitude
+        layer.addSublayer(cirlceLayer)
+    }
+    
+    @objc func setupAnimation() {
+        let animcolor = CABasicAnimation(keyPath: "strokeEnd")
+        animcolor.fromValue         = 0
+        animcolor.toValue           = 0.25
+        animcolor.duration          = 1 / 2
+        animcolor.autoreverses      = true
+        animcolor.repeatCount       = .infinity
+        animcolor.timingFunction    = CAMediaTimingFunction(name: .easeInEaseOut)
+        
+        let rotation = CABasicAnimation(keyPath: "transform.rotation")
+        rotation.byValue            = -CGFloat.pi * 2
+        rotation.duration           = 1
+        rotation.repeatCount        = .infinity
+        rotation.timingFunction     = CAMediaTimingFunction(name: .easeInEaseOut)
+        
+        cirlceLayer.add(animcolor, forKey: "strokeEnd")
+        cirlceLayer.add(rotation, forKey: "transform.rotation")
+    }
+}
+
 class LoadingView: UIView {
     
-    private lazy var loadingText: UILabel = {
-        let label = UILabel().useConstraint()
-        label.text = "Loading"
-        label.textAlignment = .center
-        label.textColor = .white
-        return label
+    private lazy var circleLoadingView: CircleLoadingView = {
+        let circleLoadingView = CircleLoadingView(radius: 25).useConstraint()
+        return circleLoadingView
     }()
     
     // MARK: - Life Cycle
@@ -30,11 +85,11 @@ class LoadingView: UIView {
     // MARK: - Setups
     private func setupLayout() {
         backgroundColor = .black
-        addSubview(loadingText)
-        loadingText
-            .top(anchor: topAnchor)
-            .leading(anchor: leadingAnchor)
-            .trailing(anchor: trailingAnchor)
-            .bottom(anchor: bottomAnchor)
+        addSubview(circleLoadingView)
+        circleLoadingView
+            .height(constant: 50)
+            .width(constant: 50)
+            .centerX(centerXAnchor)
+            .centerY(centerYAnchor)
     }
 }
