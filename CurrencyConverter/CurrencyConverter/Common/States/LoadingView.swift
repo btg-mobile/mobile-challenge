@@ -45,7 +45,7 @@ class CircleLoadingView: UIView {
         let animation = CABasicAnimation(keyPath: "strokeColor")
         animation.fromValue = UIColor.white.cgColor
         animation.toValue = UIColor.darkGray.cgColor
-        animation.duration = 0.75
+        animation.duration = 0.75g
         animation.repeatCount = .infinity
         animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
