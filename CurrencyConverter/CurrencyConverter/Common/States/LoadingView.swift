@@ -26,12 +26,8 @@ class CircleLoadingView: UIView {
         setupAnimation()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private func setupShapeLayer(_ radius: CGFloat) {
-        let path = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius, startAngle: -CGFloat.pi / 2, endAngle: -CGFloat.pi * 5 / 2, clockwise: false)
+        let path = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
         cirlceLayer = CAShapeLayer()
         cirlceLayer.path = path.cgPath
         cirlceLayer.fillColor = UIColor.clear.cgColor
@@ -39,29 +35,21 @@ class CircleLoadingView: UIView {
         cirlceLayer.lineWidth = 2.5
         cirlceLayer.lineJoin = .round
         cirlceLayer.lineCap =  .round
-        cirlceLayer.strokeEnd = 0
+        cirlceLayer.strokeEnd = 1
         cirlceLayer.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
         cirlceLayer.zPosition = CGFloat.leastNormalMagnitude
         layer.addSublayer(cirlceLayer)
     }
     
     @objc func setupAnimation() {
-        let animcolor = CABasicAnimation(keyPath: "strokeEnd")
-        animcolor.fromValue         = 0
-        animcolor.toValue           = 0.25
-        animcolor.duration          = 1 / 2
-        animcolor.autoreverses      = true
-        animcolor.repeatCount       = .infinity
-        animcolor.timingFunction    = CAMediaTimingFunction(name: .easeInEaseOut)
-        
-        let rotation = CABasicAnimation(keyPath: "transform.rotation")
-        rotation.byValue            = -CGFloat.pi * 2
-        rotation.duration           = 1
-        rotation.repeatCount        = .infinity
-        rotation.timingFunction     = CAMediaTimingFunction(name: .easeInEaseOut)
-        
-        cirlceLayer.add(animcolor, forKey: "strokeEnd")
-        cirlceLayer.add(rotation, forKey: "transform.rotation")
+        let animation = CABasicAnimation(keyPath: "strokeColor")
+        animation.fromValue = UIColor.white.cgColor
+        animation.toValue = UIColor.darkGray.cgColor
+        animation.duration = 0.75
+        animation.repeatCount = .infinity
+        animation.autoreverses = true
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        cirlceLayer.add(animation, forKey: "strokeColor")
     }
 }
 
