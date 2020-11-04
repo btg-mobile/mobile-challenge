@@ -16,9 +16,9 @@ class ExchangeViewController: UIViewController {
     lazy var exchangeView: ExchangeView = {
         var view = ExchangeView(frame: self.view.frame)
         
-        view.firstCurrencyButton.addTarget(self, action: #selector(didTappedOnFirstCurrencyButton), for: .touchUpInside)
+        view.firstCurrencyButton.addTarget(self, action: #selector(didTappedOnButton(_:)), for: .touchUpInside)
         
-        view.secondCurrencyButton.addTarget(self, action: #selector(didTappedOnSecondCurrencyButton), for: .touchUpInside)
+        view.secondCurrencyButton.addTarget(self, action: #selector(didTappedOnButton(_:)), for: .touchUpInside)
         
         return view
     }()
@@ -58,19 +58,34 @@ class ExchangeViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    func receiveCoordinatorCallBack(currencyCode: String, callerButtonTag: Int){
+        
+        switch callerButtonTag {
+        
+        case exchangeView.firstCurrencyButton.tag:
+            exchangeView.firstCurrencyButton.setTitle(currencyCode, for: .normal)
+            
+        case exchangeView.secondCurrencyButton.tag:
+            exchangeView.secondCurrencyButton.setTitle(currencyCode, for: .normal)
+            
+        default:
+            break
+        }
+    }
+    
+    @objc func didTappedOnButton(_ sender: Any){
+//        fetchSpecificExchanges(currencyCodes: [])
+        guard let button = sender as? UIButton else{
+            return
+        }
+        
+        coordinator?.goToCurrencies(callerButtonTag: button.tag)
+    }
+    
     func setUp() {
         self.title = "Exchange"
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    @objc func didTappedOnFirstCurrencyButton(){
-        fetchSpecificExchanges(currencyCodes: [])
-//        coordinator?.goToCurrenciesList()
-    }
-    
-    @objc func didTappedOnSecondCurrencyButton(){
-        coordinator?.goToCurrenciesList()
     }
     
     override func viewDidLoad() {

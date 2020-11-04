@@ -35,6 +35,7 @@ class ExchangeView: UIView{
         button.setTitle("Choose a currency", for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.backgroundColor = .yellow
+        button.tag = 1
         
         return button
     }()
@@ -44,6 +45,7 @@ class ExchangeView: UIView{
         button.setTitle("Choose a currency", for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.backgroundColor = .red
+        button.tag = 2
         
         return button
     }()
