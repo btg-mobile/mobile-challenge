@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49238BCC255219DD00B5AA9B /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BCB255219DD00B5AA9B /* ExchangeView.swift */; };
+		49238BD625521CA400B5AA9B /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BD525521CA400B5AA9B /* ViewCodable.swift */; };
+		49238BE525521E2700B5AA9B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BE425521E2700B5AA9B /* UIViewExtension.swift */; };
 		49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB992255214E0009F4DA9 /* AppDelegate.swift */; };
 		49BCB995255214E0009F4DA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB994255214E0009F4DA9 /* SceneDelegate.swift */; };
 		49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB996255214E0009F4DA9 /* ExchangeViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49238BCB255219DD00B5AA9B /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
+		49238BD525521CA400B5AA9B /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
+		49238BE425521E2700B5AA9B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		49BCB98F255214E0009F4DA9 /* MobileChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BCB992255214E0009F4DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49BCB994255214E0009F4DA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +88,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49238BCA255219CF00B5AA9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49238BCB255219DD00B5AA9B /* ExchangeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49238BD325521C9200B5AA9B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49238BE025521DF200B5AA9B /* Extension */,
+				49238BD425521C9800B5AA9B /* Protocol */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		49238BD425521C9800B5AA9B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				49238BD525521CA400B5AA9B /* ViewCodable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		49238BE025521DF200B5AA9B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				49238BE425521E2700B5AA9B /* UIViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		49BCB986255214E0009F4DA9 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +146,7 @@
 			children = (
 				49BCB9C725521518009F4DA9 /* Coordinator */,
 				49BCB9C625521511009F4DA9 /* Module */,
+				49238BD325521C9200B5AA9B /* Helpers */,
 				49BCB9C52552150C009F4DA9 /* Config */,
 				49BCB998255214E0009F4DA9 /* Main.storyboard */,
 				49BCB99D255214E2009F4DA9 /* LaunchScreen.storyboard */,
@@ -164,6 +204,7 @@
 		49BCB9E325521728009F4DA9 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				49238BCA255219CF00B5AA9B /* View */,
 				49BCB9E425521733009F4DA9 /* Controller */,
 			);
 			path = Exchange;
@@ -308,9 +349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BCB9CC25521561009F4DA9 /* AppCoordinator.swift in Sources */,
+				49238BD625521CA400B5AA9B /* ViewCodable.swift in Sources */,
+				49238BCC255219DD00B5AA9B /* ExchangeView.swift in Sources */,
 				49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */,
 				49BCB9D42552158A009F4DA9 /* Coordinator.swift in Sources */,
 				49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */,
+				49238BE525521E2700B5AA9B /* UIViewExtension.swift in Sources */,
 				49BCB995255214E0009F4DA9 /* SceneDelegate.swift in Sources */,
 				49BCB9DC25521604009F4DA9 /* ExchangeCoordinator.swift in Sources */,
 			);
