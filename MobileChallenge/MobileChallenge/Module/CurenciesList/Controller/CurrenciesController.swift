@@ -7,13 +7,21 @@
 
 import UIKit
 
-class CurrenciesController: UIViewController {
+class CurrenciesViewController: UIViewController {
 
+    var coordinator: CurrenciesViewControllerDelegate?
+    
     lazy var currenciesView: CurrenciesView = {
         let view = CurrenciesView(frame: self.view.frame)
+        view.cancelBarButton.action = #selector(didTappedOnCancel)
+        view.cancelBarButton.target = self
         
         return view
     }()
+    
+    @objc private func didTappedOnCancel() {
+        coordinator?.returnToExchangesView()
+    }
     
     func setUp() {
         self.title = "Currencies"

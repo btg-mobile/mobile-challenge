@@ -9,6 +9,8 @@ import UIKit
 
 class ExchangeViewController: UIViewController {
 
+    weak var coordinator: ExchangeViewControllerDelegate?
+    
     lazy var exchangeView: ExchangeView = {
         var view = ExchangeView(frame: self.view.frame)
         
@@ -26,11 +28,11 @@ class ExchangeViewController: UIViewController {
     }
     
     @objc func didTappedOnFirstCurrencyButton(){
-        
+        coordinator?.goToCurrenciesList()
     }
     
     @objc func didTappedOnSecondCurrencyButton(){
-        
+        coordinator?.goToCurrenciesList()
     }
     
     override func viewDidLoad() {

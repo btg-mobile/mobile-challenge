@@ -14,21 +14,24 @@ protocol ExchangeViewControllerDelegate: class {
 final class ExchangeCoordinator: Coordinator {
     
     var presenter: UINavigationController
+    private var exchangeViewController: ExchangeViewController
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
+        self.exchangeViewController = ExchangeViewController()
+        
+        exchangeViewController.coordinator = self
     }
     
     func start() {
-        let viewController = ExchangeViewController()
-        
-        presenter.pushViewController(viewController, animated: true)
+        presenter.pushViewController(exchangeViewController, animated: true)
     }
 }
 
 extension ExchangeCoordinator: ExchangeViewControllerDelegate {
     
     func goToCurrenciesList() {
-    
+        let currenciesCoordinator = CurrenciesCoordinator(presenter: presenter)
+        currenciesCoordinator.start()
     }
 }

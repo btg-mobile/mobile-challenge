@@ -23,6 +23,7 @@
 		49BCB9CC25521561009F4DA9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB9CB25521561009F4DA9 /* AppCoordinator.swift */; };
 		49BCB9D42552158A009F4DA9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB9D32552158A009F4DA9 /* Coordinator.swift */; };
 		49BCB9DC25521604009F4DA9 /* ExchangeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB9DB25521604009F4DA9 /* ExchangeCoordinator.swift */; };
+		49F675C42552331700BF817E /* CurrenciesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F675C32552331700BF817E /* CurrenciesCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		49BCB9CB25521561009F4DA9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		49BCB9D32552158A009F4DA9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		49BCB9DB25521604009F4DA9 /* ExchangeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCoordinator.swift; sourceTree = "<group>"; };
+		49F675C32552331700BF817E /* CurrenciesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				49BCB9D32552158A009F4DA9 /* Coordinator.swift */,
 				49BCB9CB25521561009F4DA9 /* AppCoordinator.swift */,
 				49BCB9DB25521604009F4DA9 /* ExchangeCoordinator.swift */,
+				49F675C32552331700BF817E /* CurrenciesCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				49238BCC255219DD00B5AA9B /* ExchangeView.swift in Sources */,
 				49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */,
 				49BCB9D42552158A009F4DA9 /* Coordinator.swift in Sources */,
+				49F675C42552331700BF817E /* CurrenciesCoordinator.swift in Sources */,
 				49238BFB25522FF300B5AA9B /* CurrenciesView.swift in Sources */,
 				49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */,
 				49238C042552302500B5AA9B /* CurrenciesController.swift in Sources */,
