@@ -10,6 +10,8 @@
 		49238BCC255219DD00B5AA9B /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BCB255219DD00B5AA9B /* ExchangeView.swift */; };
 		49238BD625521CA400B5AA9B /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BD525521CA400B5AA9B /* ViewCodable.swift */; };
 		49238BE525521E2700B5AA9B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BE425521E2700B5AA9B /* UIViewExtension.swift */; };
+		49238BFB25522FF300B5AA9B /* CurrenciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238BFA25522FF300B5AA9B /* CurrenciesView.swift */; };
+		49238C042552302500B5AA9B /* CurrenciesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49238C032552302500B5AA9B /* CurrenciesController.swift */; };
 		49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB992255214E0009F4DA9 /* AppDelegate.swift */; };
 		49BCB995255214E0009F4DA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB994255214E0009F4DA9 /* SceneDelegate.swift */; };
 		49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB996255214E0009F4DA9 /* ExchangeViewController.swift */; };
@@ -44,6 +46,8 @@
 		49238BCB255219DD00B5AA9B /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 		49238BD525521CA400B5AA9B /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		49238BE425521E2700B5AA9B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		49238BFA25522FF300B5AA9B /* CurrenciesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesView.swift; sourceTree = "<group>"; };
+		49238C032552302500B5AA9B /* CurrenciesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesController.swift; sourceTree = "<group>"; };
 		49BCB98F255214E0009F4DA9 /* MobileChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BCB992255214E0009F4DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49BCB994255214E0009F4DA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,31 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		49238BF825522FC400B5AA9B /* CurenciesList */ = {
+			isa = PBXGroup;
+			children = (
+				49238BF925522FE400B5AA9B /* View */,
+				49238C022552301200B5AA9B /* Controller */,
+			);
+			path = CurenciesList;
+			sourceTree = "<group>";
+		};
+		49238BF925522FE400B5AA9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49238BFA25522FF300B5AA9B /* CurrenciesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49238C022552301200B5AA9B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				49238C032552302500B5AA9B /* CurrenciesController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		49BCB986255214E0009F4DA9 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +215,7 @@
 		49BCB9C625521511009F4DA9 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				49238BF825522FC400B5AA9B /* CurenciesList */,
 				49BCB9E325521728009F4DA9 /* Exchange */,
 			);
 			path = Module;
@@ -353,7 +383,9 @@
 				49238BCC255219DD00B5AA9B /* ExchangeView.swift in Sources */,
 				49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */,
 				49BCB9D42552158A009F4DA9 /* Coordinator.swift in Sources */,
+				49238BFB25522FF300B5AA9B /* CurrenciesView.swift in Sources */,
 				49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */,
+				49238C042552302500B5AA9B /* CurrenciesController.swift in Sources */,
 				49238BE525521E2700B5AA9B /* UIViewExtension.swift in Sources */,
 				49BCB995255214E0009F4DA9 /* SceneDelegate.swift in Sources */,
 				49BCB9DC25521604009F4DA9 /* ExchangeCoordinator.swift in Sources */,
