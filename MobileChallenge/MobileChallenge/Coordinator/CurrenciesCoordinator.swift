@@ -21,6 +21,7 @@ final class CurrenciesCoordinator: Coordinator {
     init(presenter: UINavigationController, callerButtonTag: Int) {
         self.presenter = presenter
         self.callerButtonTag = callerButtonTag
+        
         self.currenciesViewController = CurrenciesViewController()
         self.currenciesViewController.coordinator = self
     }
@@ -33,7 +34,7 @@ final class CurrenciesCoordinator: Coordinator {
 extension CurrenciesCoordinator: CurrenciesViewControllerDelegate {
     
     func didSelectedCurrency(currencyCode: String) {
-        guard let controller = presenter.presentingViewController as? ExchangeViewController else {
+        guard let controller = presenter.topViewController as? ExchangeViewController else {
             presenter.dismiss(animated: true)
             return
         }

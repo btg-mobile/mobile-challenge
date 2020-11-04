@@ -15,6 +15,7 @@ final class ExchangeCoordinator: Coordinator {
     
     var presenter: UINavigationController
     private var exchangeViewController: ExchangeViewController
+    private var currenciesCoordinator: CurrenciesCoordinator?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -30,7 +31,7 @@ final class ExchangeCoordinator: Coordinator {
 extension ExchangeCoordinator: ExchangeViewControllerDelegate {
     
     func goToCurrencies(callerButtonTag: Int) {
-        let currenciesCoordinator = CurrenciesCoordinator(presenter: presenter, callerButtonTag: callerButtonTag)
-        currenciesCoordinator.start()
+        self.currenciesCoordinator = CurrenciesCoordinator(presenter: presenter, callerButtonTag: callerButtonTag)
+        currenciesCoordinator?.start()
     }
 }
