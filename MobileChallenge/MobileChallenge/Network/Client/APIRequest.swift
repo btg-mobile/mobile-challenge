@@ -72,4 +72,35 @@ class APIRequest {
         })
         task.resume()
     }
+    
+    func fetchSpecificExchanges(currencyCodes: [String], completionHandler: @escaping (Result<[String: Double]?, APIError>) -> Void) {
+        let url = URL(string: baseUrl + "live?access_key=" + accessKey + "&currencies=BRL,EUR")!
+        
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            
+            if let _ = error {
+                completionHandler(.failure(.urlError))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                completionHandler(.failure(.responseError))
+                return
+            }
+            
+            guard let data = data else{
+                completionHandler(.failure(.dataError))
+                return
+            }
+            
+            guard let currencySumary = try? JSONDecoder().decode(CurrencyExchange.self, from: data) else{
+                completionHandler(.failure(.decodeError))
+                return
+            }
+            
+            completionHandler(.success(currencySumary.quotes))
+        })
+        task.resume()
+    }
 }

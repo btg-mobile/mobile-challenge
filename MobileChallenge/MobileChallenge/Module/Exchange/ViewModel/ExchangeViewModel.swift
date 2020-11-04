@@ -24,4 +24,20 @@ class ExchangeViewModel {
             }
         })
     }
+    
+    func fetchSpecificExchanges(currencyCodes: [String], completionHandler: @escaping (Result<[String: Double], APIError>) -> Void) {
+        let request = APIRequest()
+        
+        request.fetchSpecificExchanges(currencyCodes: currencyCodes, completionHandler: { (result) in
+            
+            switch result {
+            
+            case .success(let exchanges):
+                completionHandler(.success(exchanges ?? [:]))
+                
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        })
+    }
 }

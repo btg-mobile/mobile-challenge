@@ -37,6 +37,20 @@ class ExchangeViewController: UIViewController {
         }
     }
     
+    func fetchSpecificExchanges(currencyCodes: [String]) {
+        
+        exchangeViewModel.fetchSpecificExchanges(currencyCodes: currencyCodes, completionHandler: { [weak self] (result) in
+        
+            switch result {
+            case .success(let exchanges):
+                break
+                
+            case .failure(let error):
+                self?.showError(text: error.errorDescription)
+            }
+        })
+    }
+    
     func showError(text: String) {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default)
@@ -51,7 +65,7 @@ class ExchangeViewController: UIViewController {
     }
     
     @objc func didTappedOnFirstCurrencyButton(){
-        fetchAllExchanges()
+        fetchSpecificExchanges(currencyCodes: [])
 //        coordinator?.goToCurrenciesList()
     }
     
