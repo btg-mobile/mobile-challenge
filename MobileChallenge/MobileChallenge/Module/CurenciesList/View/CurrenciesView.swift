@@ -57,7 +57,6 @@ extension CurrenciesView: ViewCodable{
         self.modalNavigationBar.anchor(top: topAnchor)
         self.modalNavigationBar.anchor(left: leftAnchor)
         self.modalNavigationBar.anchor(right: rightAnchor)
-        self.modalNavigationBar.anchor(height: 44)
         
         // Table View Anchors
         currenciesTableView.anchor(top: self.safeAreaLayoutGuide.topAnchor, paddingTop: 0)

@@ -24,6 +24,8 @@
 		49BCB9D42552158A009F4DA9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB9D32552158A009F4DA9 /* Coordinator.swift */; };
 		49BCB9DC25521604009F4DA9 /* ExchangeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB9DB25521604009F4DA9 /* ExchangeCoordinator.swift */; };
 		49F675C42552331700BF817E /* CurrenciesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F675C32552331700BF817E /* CurrenciesCoordinator.swift */; };
+		49F675CA2552396400BF817E /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F675C92552396400BF817E /* TableViewDelegate.swift */; };
+		49F675D22552397200BF817E /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F675D12552397200BF817E /* TableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		49BCB9D32552158A009F4DA9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		49BCB9DB25521604009F4DA9 /* ExchangeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCoordinator.swift; sourceTree = "<group>"; };
 		49F675C32552331700BF817E /* CurrenciesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesCoordinator.swift; sourceTree = "<group>"; };
+		49F675C92552396400BF817E /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		49F675D12552397200BF817E /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			children = (
 				49238BF925522FE400B5AA9B /* View */,
 				49238C022552301200B5AA9B /* Controller */,
+				49F675C82552393D00BF817E /* Delegate and Datasource */,
 			);
 			path = CurenciesList;
 			sourceTree = "<group>";
@@ -249,6 +254,15 @@
 				49BCB996255214E0009F4DA9 /* ExchangeViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		49F675C82552393D00BF817E /* Delegate and Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				49F675C92552396400BF817E /* TableViewDelegate.swift */,
+				49F675D12552397200BF817E /* TableViewDataSource.swift */,
+			);
+			path = "Delegate and Datasource";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BCB9CC25521561009F4DA9 /* AppCoordinator.swift in Sources */,
+				49F675CA2552396400BF817E /* TableViewDelegate.swift in Sources */,
 				49238BD625521CA400B5AA9B /* ViewCodable.swift in Sources */,
 				49238BCC255219DD00B5AA9B /* ExchangeView.swift in Sources */,
 				49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */,
@@ -392,6 +407,7 @@
 				49238C042552302500B5AA9B /* CurrenciesController.swift in Sources */,
 				49238BE525521E2700B5AA9B /* UIViewExtension.swift in Sources */,
 				49BCB995255214E0009F4DA9 /* SceneDelegate.swift in Sources */,
+				49F675D22552397200BF817E /* TableViewDataSource.swift in Sources */,
 				49BCB9DC25521604009F4DA9 /* ExchangeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
