@@ -11,6 +11,8 @@ class ExchangeViewController: UIViewController {
 
     weak var coordinator: ExchangeViewControllerDelegate?
     
+    var exchangeViewModel: ExchangeViewModel
+    
     lazy var exchangeView: ExchangeView = {
         var view = ExchangeView(frame: self.view.frame)
         
@@ -20,6 +22,13 @@ class ExchangeViewController: UIViewController {
         
         return view
     }()
+    
+    func showError(text: String) {
+        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
     
     func setUp() {
         self.title = "Exchange"
@@ -41,6 +50,16 @@ class ExchangeViewController: UIViewController {
         self.view = exchangeView
         
         setUp()
+    }
+    
+    init() {
+        exchangeViewModel = ExchangeViewModel()
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
