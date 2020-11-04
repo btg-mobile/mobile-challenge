@@ -23,6 +23,20 @@ class ExchangeViewController: UIViewController {
         return view
     }()
     
+    func fetchAllExchanges() {
+        
+        exchangeViewModel.fetchAllExchanges { [weak self] (result) in
+            
+            switch result {
+            case .success(let exchanges):
+                break
+                
+            case .failure(let error):
+                self?.showError(text: error.errorDescription)
+            }
+        }
+    }
+    
     func showError(text: String) {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default)
@@ -37,7 +51,8 @@ class ExchangeViewController: UIViewController {
     }
     
     @objc func didTappedOnFirstCurrencyButton(){
-        coordinator?.goToCurrenciesList()
+        fetchAllExchanges()
+//        coordinator?.goToCurrenciesList()
     }
     
     @objc func didTappedOnSecondCurrencyButton(){

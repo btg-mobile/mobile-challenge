@@ -9,5 +9,19 @@ import Foundation
 
 class ExchangeViewModel {
 
-    
+    func fetchAllExchanges(completionHandler: @escaping (Result<[String: Double], APIError>) -> Void) {
+        let request = APIRequest()
+        
+        request.fetchAllExchanges(completionHandler: { (result) in
+            
+            switch result {
+            
+            case .success(let exchanges):
+                completionHandler(.success(exchanges ?? [:]))
+                
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        })
+    }
 }

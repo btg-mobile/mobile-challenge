@@ -16,7 +16,7 @@ class CurrenciesViewModel {
     func fetchAllCurrencies(completionHandler: @escaping (Result<[String: String], APIError>) -> Void) {
         let request = APIRequest()
         
-        request.fetchCurrencyNames { (result) in
+        request.fetchAllCurrencies { (result) in
             
             switch result {
             
