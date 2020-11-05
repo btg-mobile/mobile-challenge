@@ -17,10 +17,18 @@ class ExchangeViewController: UIViewController {
         var view = ExchangeView(frame: self.view.frame)
         
         view.firstCurrencyButton.addTarget(self, action: #selector(didTappedOnButton(_:)), for: .touchUpInside)
-        
         view.secondCurrencyButton.addTarget(self, action: #selector(didTappedOnButton(_:)), for: .touchUpInside)
         
+        view.valueTextField.delegate = textFieldDelegate
+        view.resultTextField.delegate = textFieldDelegate
+        
         return view
+    }()
+    
+    lazy var textFieldDelegate: TextFieldDelegate = {
+        var delegate = TextFieldDelegate()
+        
+        return delegate
     }()
     
     func fetchAllExchanges() {
@@ -84,7 +92,6 @@ class ExchangeViewController: UIViewController {
     
     func setUp() {
         self.title = "Exchange"
-        self.view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     

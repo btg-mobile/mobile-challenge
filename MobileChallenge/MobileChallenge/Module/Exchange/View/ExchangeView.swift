@@ -15,7 +15,11 @@ class ExchangeView: UIView{
         textField.textAlignment = .center
         textField.keyboardType = .numberPad
         textField.returnKeyType = .done
-        textField.backgroundColor = .blue
+        textField.backgroundColor = .white
+        
+        textField.layer.borderWidth = 2
+        textField.layer.cornerRadius = self.frame.height * 0.02
+        textField.layer.borderColor = UIColor.blue.cgColor
         
         return textField
     }()
@@ -25,28 +29,41 @@ class ExchangeView: UIView{
         textField.placeholder = "Result"
         textField.textAlignment = .center
         textField.isUserInteractionEnabled = false
-        textField.backgroundColor = .green
+        textField.backgroundColor = .white
         
+        textField.layer.borderWidth = 2
+        textField.layer.cornerRadius = self.frame.height * 0.02
+        textField.layer.borderColor = UIColor.blue.cgColor
         return textField
     }()
     
     lazy var firstCurrencyButton: UIButton = {
         var button = UIButton()
-        button.setTitle("Choose a currency", for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.backgroundColor = .yellow
+        button.setTitle("Choose", for: .normal)
         button.tag = 1
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = self.frame.height * 0.02
+        button.layer.borderColor = UIColor.blue.cgColor
         
         return button
     }()
     
     lazy var secondCurrencyButton: UIButton = {
         var button = UIButton()
-        button.setTitle("Choose a currency", for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.backgroundColor = .red
+        button.setTitle("Choose", for: .normal)
         button.tag = 2
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
         
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = self.frame.height * 0.02
+        button.layer.borderColor = UIColor.blue.cgColor
+
         return button
     }()
     
@@ -55,12 +72,12 @@ class ExchangeView: UIView{
         label.text = "TO"
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        label.backgroundColor = .brown
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .lightGray
         
         setupViews()
     }

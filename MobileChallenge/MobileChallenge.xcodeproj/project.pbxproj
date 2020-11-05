@@ -16,6 +16,7 @@
 		494E97F12552F38F00D308E8 /* CurrenciesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E97F02552F38E00D308E8 /* CurrenciesViewCell.swift */; };
 		494E97F62552F60A00D308E8 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E97F52552F60A00D308E8 /* Identifiable.swift */; };
 		494E97FB2552F7BE00D308E8 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E97FA2552F7BE00D308E8 /* DictionaryExtension.swift */; };
+		494E9810255376C800D308E8 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E980F255376C700D308E8 /* TextFieldDelegate.swift */; };
 		49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB992255214E0009F4DA9 /* AppDelegate.swift */; };
 		49BCB995255214E0009F4DA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB994255214E0009F4DA9 /* SceneDelegate.swift */; };
 		49BCB997255214E0009F4DA9 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BCB996255214E0009F4DA9 /* ExchangeViewController.swift */; };
@@ -64,6 +65,7 @@
 		494E97F02552F38E00D308E8 /* CurrenciesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewCell.swift; sourceTree = "<group>"; };
 		494E97F52552F60A00D308E8 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		494E97FA2552F7BE00D308E8 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		494E980F255376C700D308E8 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		49BCB98F255214E0009F4DA9 /* MobileChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BCB992255214E0009F4DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49BCB994255214E0009F4DA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		494E980E255376A900D308E8 /* Delegate and Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				494E980F255376C700D308E8 /* TextFieldDelegate.swift */,
+			);
+			path = "Delegate and Datasource";
+			sourceTree = "<group>";
+		};
 		49BCB986255214E0009F4DA9 = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +279,7 @@
 				49238BCA255219CF00B5AA9B /* View */,
 				49BCB9E425521733009F4DA9 /* Controller */,
 				49F675F12552CF7200BF817E /* ViewModel */,
+				494E980E255376A900D308E8 /* Delegate and Datasource */,
 			);
 			path = Exchange;
 			sourceTree = "<group>";
@@ -484,6 +495,7 @@
 				49F675C42552331700BF817E /* CurrenciesCoordinator.swift in Sources */,
 				49238BFB25522FF300B5AA9B /* CurrenciesView.swift in Sources */,
 				49BCB993255214E0009F4DA9 /* AppDelegate.swift in Sources */,
+				494E9810255376C800D308E8 /* TextFieldDelegate.swift in Sources */,
 				49F675E62552CBDD00BF817E /* CurrencyExchange.swift in Sources */,
 				49238C042552302500B5AA9B /* CurrenciesViewController.swift in Sources */,
 				49238BE525521E2700B5AA9B /* UIViewExtension.swift in Sources */,
