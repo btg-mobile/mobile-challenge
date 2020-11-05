@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol SelectedCell: NSObject {
+protocol SelectedCellDelegate: NSObject {
     func didSelectedCell(currencyCode: String)
 }
 
@@ -16,7 +16,7 @@ class TableViewDelegate: NSObject, UITableViewDelegate{
     
     var currencies: [String: String] = [:]
     
-    weak var selectedCellDelegate: SelectedCell?
+    weak var selectedCellDelegate: SelectedCellDelegate?
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCellDelegate?.didSelectedCell(currencyCode: currencies[indexPath.row].key)

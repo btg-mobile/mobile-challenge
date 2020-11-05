@@ -74,7 +74,7 @@ class APIRequest {
     }
     
     func fetchSpecificExchanges(currencyCodes: [String], completionHandler: @escaping (Result<[String: Double]?, APIError>) -> Void) {
-        let url = URL(string: baseUrl + "live?access_key=" + accessKey + "&currencies=BRL,EUR")!
+        let url = URL(string: baseUrl + "live?access_key=" + accessKey + "&currencies=" + currencyCodes.joined(separator:","))!
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             

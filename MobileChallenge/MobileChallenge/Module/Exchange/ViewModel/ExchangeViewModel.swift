@@ -8,6 +8,9 @@
 import Foundation
 
 class ExchangeViewModel {
+    
+    var usedExchanges: [String: Double] = [:]
+    var allExchanges: [String: Double] = [:]
 
     func fetchAllExchanges(completionHandler: @escaping (Result<[String: Double], APIError>) -> Void) {
         let request = APIRequest()
@@ -39,5 +42,16 @@ class ExchangeViewModel {
                 completionHandler(.failure(error))
             }
         })
+    }
+    
+    func exchangeResult(value: String) -> Double{
+        
+        guard let value = Double(value) else {
+            return 0
+        }
+        
+        let result = (value * (usedExchanges[0].value / usedExchanges[1].value))
+        
+        return result
     }
 }

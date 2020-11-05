@@ -24,6 +24,19 @@ class CurrenciesViewController: UIViewController {
         return view
     }()
     
+//    private lazy var searchBarDelegate: CurrenciesSearchBarDelegate = {
+//        
+//        let delegate = TableCurrencySearchBarDelegate(currencies: currencyViewModel.countries)
+//        
+//        delegate.didFilterCurrencies = { [weak self] filtredCurrencies in
+//            self?.dataSource.coutries = filtredCurrencies
+//            self?.delegate.countries = filtredCurrencies
+//            self?.currencyView.tableView.reloadData()
+//        }
+//        
+//        return delegate
+//    }()
+    
     lazy var currenciesTableViewDelegate: TableViewDelegate = {
         let delegate = TableViewDelegate()
         delegate.currencies = currenciesViewModel.currencies
@@ -104,7 +117,7 @@ class CurrenciesViewController: UIViewController {
     }
 }
 
-extension CurrenciesViewController: SelectedCell{
+extension CurrenciesViewController: SelectedCellDelegate{
     func didSelectedCell(currencyCode: String) {
         coordinator?.didSelectedCurrency(currencyCode: currencyCode)
     }
