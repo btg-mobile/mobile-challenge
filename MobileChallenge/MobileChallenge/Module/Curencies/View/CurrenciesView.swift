@@ -30,8 +30,15 @@ class CurrenciesView: UIView{
     lazy var currenciesTableView: UITableView = {
         let tableView = UITableView(frame: self.frame)
         tableView.register(CurrenciesViewCell.self, forCellReuseIdentifier: CurrenciesViewCell.uniqueIdentifier)
-        
+        tableView.tableHeaderView = searchBarController.searchBar
         return tableView
+    }()
+    
+    lazy var searchBarController: UISearchController = {
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        return searchController
     }()
     
     lazy var loadIndicator: UIActivityIndicatorView = {

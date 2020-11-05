@@ -21,21 +21,18 @@ class CurrenciesViewController: UIViewController {
         view.currenciesTableView.delegate = currenciesTableViewDelegate
         view.currenciesTableView.dataSource = currenciesTableViewDataSource
         
+        view.searchBarController.searchBar.delegate = searchBarDelegate
         return view
     }()
     
-//    private lazy var searchBarDelegate: CurrenciesSearchBarDelegate = {
-//        
-//        let delegate = TableCurrencySearchBarDelegate(currencies: currencyViewModel.countries)
-//        
-//        delegate.didFilterCurrencies = { [weak self] filtredCurrencies in
-//            self?.dataSource.coutries = filtredCurrencies
-//            self?.delegate.countries = filtredCurrencies
-//            self?.currencyView.tableView.reloadData()
-//        }
-//        
-//        return delegate
-//    }()
+    private lazy var searchBarDelegate: CurrenciesSearchBarDelegate = {
+        
+        let delegate = CurrenciesSearchBarDelegate(currencies: currenciesViewModel.currencies)
+        
+        delegate.seachBarFilterDelegate = self
+        
+        return delegate
+    }()
     
     lazy var currenciesTableViewDelegate: TableViewDelegate = {
         let delegate = TableViewDelegate()
@@ -78,6 +75,7 @@ class CurrenciesViewController: UIViewController {
     func updateTableViewData(){
         self.currenciesTableViewDelegate.currencies = currenciesViewModel.currencies
         self.currenciesTableViewDataSource.currencies = currenciesViewModel.currencies
+        self.searchBarDelegate.currencies = currenciesViewModel.currencies
         self.currenciesView.currenciesTableView.reloadData()
     }
     
@@ -120,5 +118,15 @@ class CurrenciesViewController: UIViewController {
 extension CurrenciesViewController: SelectedCellDelegate{
     func didSelectedCell(currencyCode: String) {
         coordinator?.didSelectedCurrency(currencyCode: currencyCode)
+    }
+}
+
+extension CurrenciesViewController: SeachBarFilterDelegate{
+    
+    func didSearchCurrency(currencies: [String : String]) {
+        self.currenciesTableViewDelegate.currencies = currencies
+        self.currenciesTableViewDataSource.currencies = currencies
+        
+        self.currenciesView.currenciesTableView.reloadData()
     }
 }
