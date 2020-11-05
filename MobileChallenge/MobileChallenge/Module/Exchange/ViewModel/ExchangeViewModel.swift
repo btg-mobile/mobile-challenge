@@ -54,4 +54,9 @@ class ExchangeViewModel {
         
         return result
     }
+    
+    func compareTitles(firstTitle: String, secondTitle: String) -> Bool{
+        
+        return firstTitle == secondTitle
+    }
 }

@@ -214,9 +214,9 @@
 		494E983D25541CDD00D308E8 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				494E98752554248E00D308E8 /* Error */,
 				494E986F2554237800D308E8 /* Ropository */,
 				494E984F25541F1900D308E8 /* Entities */,
+				494E98752554248E00D308E8 /* Error */,
 				494E984425541E2C00D308E8 /* CoreDataStack.swift */,
 				494E983E25541D6300D308E8 /* MobileChallenge.xcdatamodeld */,
 			);
