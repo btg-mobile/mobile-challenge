@@ -82,9 +82,19 @@ class ExchangeViewController: UIViewController {
         switch callerButtonTag {
         
         case exchangeView.firstCurrencyButton.tag:
+            
+            if exchangeViewModel.compareTitles(firstTitle: currencyCode, secondTitle: exchangeView.secondCurrencyButton.titleLabel?.text ?? "") {
+                return
+            }
+            
             exchangeView.firstCurrencyButton.setTitle(currencyCode, for: .normal)
             
         case exchangeView.secondCurrencyButton.tag:
+            
+            if exchangeViewModel.compareTitles(firstTitle: currencyCode, secondTitle: exchangeView.firstCurrencyButton.titleLabel?.text ?? "") {
+                return
+            }
+            
             exchangeView.secondCurrencyButton.setTitle(currencyCode, for: .normal)
             
         default:

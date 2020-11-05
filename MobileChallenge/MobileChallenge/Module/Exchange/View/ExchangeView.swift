@@ -14,12 +14,15 @@ class ExchangeView: UIView{
         textField.placeholder = "Value"
         textField.textAlignment = .center
         textField.keyboardType = .numberPad
-        textField.returnKeyType = .done
+        textField.returnKeyType = .default
         textField.backgroundColor = .white
+        textField.textColor = .black
         
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = self.frame.height * 0.02
         textField.layer.borderColor = UIColor.blue.cgColor
+        
+        textField.inputAccessoryView = doneToolbar
         
         return textField
     }()
@@ -30,6 +33,7 @@ class ExchangeView: UIView{
         textField.textAlignment = .center
         textField.isUserInteractionEnabled = false
         textField.backgroundColor = .white
+        textField.textColor = .black
         
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = self.frame.height * 0.02
@@ -74,6 +78,25 @@ class ExchangeView: UIView{
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
+    
+    lazy var doneToolbar: UIToolbar = {
+        var toolBar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        
+        toolBar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        toolBar.items = items
+        toolBar.sizeToFit()
+        
+        return toolBar
+    }()
+
+    @objc func doneButtonAction(){
+        valueTextField.resignFirstResponder()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
