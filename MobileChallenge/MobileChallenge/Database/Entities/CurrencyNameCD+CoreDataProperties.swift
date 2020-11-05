@@ -24,9 +24,9 @@ extension CurrencyNameCD {
 
 extension CurrencyNameCD {
 
-    func toDomainModel() -> CurrencyName {
+    func toDomainModel() -> [String: String] {
         
-        let currencyName = CurrencyName(currencies: [code: name])
+        let currencyName = [code: name]
         
         return currencyName
     }

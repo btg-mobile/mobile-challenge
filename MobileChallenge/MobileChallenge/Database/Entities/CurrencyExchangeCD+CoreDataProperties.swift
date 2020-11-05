@@ -24,9 +24,9 @@ extension CurrencyExchangeCD {
 
 extension CurrencyExchangeCD {
 
-    func toDomainModel() -> CurrencyExchange {
+    func toDomainModel() -> [String: Double] {
         
-        let currencyExchange = CurrencyExchange(quotes: [code: exchange])
+        let currencyExchange = [code: exchange]
         
         return currencyExchange
     }

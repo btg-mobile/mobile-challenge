@@ -1,5 +1,5 @@
 //
-//  CurrencyNameRepository.swift
+//  CurrencyExchangeRepository.swift
 //  MobileChallenge
 //
 //  Created by Jonatas Coutinho de Faria on 05/11/20.
@@ -9,43 +9,43 @@ import Foundation
 import CoreData
 import UIKit
 
-private protocol CurrencyNameRepositoryInterface{
+private protocol CurrencyExchangeRepositoryInterface{
     
-    // Create a CurrencyName on core data
-    func create(currencyName: [String: String], completionHandler: @escaping(Result<[String: String], CoreDataError>)->Void)
+    // Create a CurrencyExchange on core data
+    func create(currencyExchange: [String: Double], completionHandler: @escaping(Result<[String: Double], CoreDataError>)->Void)
     
-    // Get a CurrencyName using a predicate
-    func fetch(predicate: NSPredicate?, sorts: [NSSortDescriptor]?, completionHandler: @escaping(Result<[[String: String]], CoreDataError>)->Void)
+    // Get a CurrencyExchange using a predicate
+    func fetch(predicate: NSPredicate?, sorts: [NSSortDescriptor]?, completionHandler: @escaping(Result<[[String: Double]], CoreDataError>)->Void)
 }
 
-class CurrencyNameRepository{
+class EntryCategoryRepository{
     
-    private let repository: CoreDataRepository<CurrencyNameCD>
+    private let repository: CoreDataRepository<CurrencyExchangeCD>
     private var context: NSManagedObjectContext!
     
     init(context: NSManagedObjectContext) {
         self.context = context
-        self.repository = CoreDataRepository<CurrencyNameCD>(managedObjectContext: context)
+        self.repository = CoreDataRepository<CurrencyExchangeCD>(managedObjectContext: context)
     }
 }
 
-extension CurrencyNameRepository: CurrencyNameRepositoryInterface {
+extension EntryCategoryRepository: CurrencyExchangeRepositoryInterface {
     
-    func create(currencyName: [String: String], completionHandler: @escaping(Result<[String: String], CoreDataError>)->Void){
+    func create(currencyExchange: [String: Double], completionHandler: @escaping(Result<[String: Double], CoreDataError>)->Void){
         
         repository.create(completionHandler: { result in
             
             switch result {
             case .success(let currencyCD):
                 
-                guard let key = currencyName.keys.first, let value = currencyName.values.first else {
+                guard let key = currencyExchange.keys.first, let value = currencyExchange.values.first else {
                     completionHandler(.failure(.invalidCreateData))
                     return
                 }
                 
                 currencyCD.id = UUID()
                 currencyCD.code = key
-                currencyCD.name = value
+                currencyCD.exchange = value
                 
                 do {
                     try self.context.save()
@@ -60,14 +60,14 @@ extension CurrencyNameRepository: CurrencyNameRepositoryInterface {
         })
     }
     
-    func fetch(predicate: NSPredicate?, sorts: [NSSortDescriptor]?, completionHandler: @escaping(Result<[[String: String]], CoreDataError>)->Void){
+    func fetch(predicate: NSPredicate?, sorts: [NSSortDescriptor]?, completionHandler: @escaping(Result<[[String: Double]], CoreDataError>)->Void){
         
         repository.fetch(predicate: predicate, sortDescriptors: sorts, completionHandler: { result in
             
             switch result {
             case .success(let currenciesCD):
                 
-                let currencies = currenciesCD.map { currencyCD -> [String: String] in
+                let currencies = currenciesCD.map { currencyCD -> [String: Double] in
                     return currencyCD.toDomainModel()
                 }
                 

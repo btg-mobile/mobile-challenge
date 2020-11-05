@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+enum CoreDataError: Error{
+    case invalidCreateData
+    case invalidManagedObjectType
+    case invalidFetchData
+    case invalidSaveData
+    case invalidUpdateData
+    case invalidDeleteData
+    case invalidEntityCast
+}
