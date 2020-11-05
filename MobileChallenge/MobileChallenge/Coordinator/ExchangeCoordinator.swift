@@ -8,19 +8,19 @@
 import UIKit
 
 protocol ExchangeViewControllerDelegate: class {
-    func goToCurrenciesList()
+    func goToCurrencies(callerButtonTag: Int)
 }
 
 final class ExchangeCoordinator: Coordinator {
     
     var presenter: UINavigationController
     private var exchangeViewController: ExchangeViewController
+    private var currenciesCoordinator: CurrenciesCoordinator?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
         self.exchangeViewController = ExchangeViewController()
-        
-        exchangeViewController.coordinator = self
+        self.exchangeViewController.coordinator = self
     }
     
     func start() {
@@ -30,8 +30,8 @@ final class ExchangeCoordinator: Coordinator {
 
 extension ExchangeCoordinator: ExchangeViewControllerDelegate {
     
-    func goToCurrenciesList() {
-        let currenciesCoordinator = CurrenciesCoordinator(presenter: presenter)
-        currenciesCoordinator.start()
+    func goToCurrencies(callerButtonTag: Int) {
+        self.currenciesCoordinator = CurrenciesCoordinator(presenter: presenter, callerButtonTag: callerButtonTag)
+        currenciesCoordinator?.start()
     }
 }

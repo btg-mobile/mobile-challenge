@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrenciesViewControllerDelegate: class {
-    func didSelectedCurrency()
+    func didSelectedCurrency(currencyCode: String)
     func returnToExchangesView()
 }
 
@@ -16,11 +16,14 @@ final class CurrenciesCoordinator: Coordinator {
     
     var presenter: UINavigationController
     private var currenciesViewController: CurrenciesViewController
+    private var callerButtonTag: Int
     
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, callerButtonTag: Int) {
         self.presenter = presenter
-        currenciesViewController = CurrenciesViewController()
-        currenciesViewController.coordinator = self
+        self.callerButtonTag = callerButtonTag
+        
+        self.currenciesViewController = CurrenciesViewController()
+        self.currenciesViewController.coordinator = self
     }
     
     func start() {
@@ -29,12 +32,18 @@ final class CurrenciesCoordinator: Coordinator {
 }
 
 extension CurrenciesCoordinator: CurrenciesViewControllerDelegate {
-
-    func returnToExchangesView() {
+    
+    func didSelectedCurrency(currencyCode: String) {
+        guard let controller = presenter.topViewController as? ExchangeViewController else {
+            presenter.dismiss(animated: true)
+            return
+        }
+        
+        controller.receiveCoordinatorCallBack(currencyCode: currencyCode, callerButtonTag: self.callerButtonTag)
         presenter.dismiss(animated: true)
     }
     
-    func didSelectedCurrency() {
+    func returnToExchangesView() {
         presenter.dismiss(animated: true)
     }
 }

@@ -29,10 +29,18 @@ class CurrenciesView: UIView{
     
     lazy var currenciesTableView: UITableView = {
         let tableView = UITableView(frame: self.frame)
+        tableView.register(CurrenciesViewCell.self, forCellReuseIdentifier: CurrenciesViewCell.uniqueIdentifier)
         
         return tableView
     }()
     
+    lazy var loadIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(frame: self.frame)
+        activityIndicator.style = .large
+        
+        return activityIndicator
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -49,6 +57,7 @@ extension CurrenciesView: ViewCodable{
     func setupViewHierarchy() {
         self.addSubview(currenciesTableView)
         self.addSubview(modalNavigationBar)
+        currenciesTableView.addSubview(loadIndicator)
     }
     
     func setupConstraints() {
@@ -59,9 +68,9 @@ extension CurrenciesView: ViewCodable{
         self.modalNavigationBar.anchor(right: rightAnchor)
         
         // Table View Anchors
-        currenciesTableView.anchor(top: self.safeAreaLayoutGuide.topAnchor, paddingTop: 0)
-        currenciesTableView.anchor(bottom: self.bottomAnchor, paddingBottom: 0)
-        currenciesTableView.anchor(left: self.leftAnchor, paddingLeft: 0)
-        currenciesTableView.anchor(right: self.rightAnchor, paddingRight: 0)
+        self.currenciesTableView.anchor(top: self.modalNavigationBar.bottomAnchor, paddingTop: 0)
+        self.currenciesTableView.anchor(bottom: self.bottomAnchor, paddingBottom: 0)
+        self.currenciesTableView.anchor(left: self.leftAnchor, paddingLeft: 0)
+        self.currenciesTableView.anchor(right: self.rightAnchor, paddingRight: 0)
     }
 }
