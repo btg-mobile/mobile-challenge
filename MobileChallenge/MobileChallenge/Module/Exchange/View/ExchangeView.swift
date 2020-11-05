@@ -39,7 +39,7 @@ class ExchangeView: UIView{
     
     lazy var firstCurrencyButton: UIButton = {
         var button = UIButton()
-        button.setTitle("Choose", for: .normal)
+        button.setTitle("USD", for: .normal)
         button.tag = 1
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.setTitleColor(.black, for: .normal)
@@ -54,7 +54,7 @@ class ExchangeView: UIView{
     
     lazy var secondCurrencyButton: UIButton = {
         var button = UIButton()
-        button.setTitle("Choose", for: .normal)
+        button.setTitle("BRL", for: .normal)
         button.tag = 2
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.setTitleColor(.black, for: .normal)
