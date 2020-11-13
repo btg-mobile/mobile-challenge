@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Rh-YN-rS2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Conversor View Controller-->
+        <scene sceneID="pzi-KA-agD">
+            <objects>
+                <viewController storyboardIdentifier="ConversorViewController" id="6Rh-YN-rS2" customClass="ConversorViewController" customModule="CurrencyConversor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h4Q-dr-O2n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O valor é:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADb-Wh-Lta">
+                                <rect key="frame" x="20" y="691.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="cve-Qd-rUO">
+                                <rect key="frame" x="20" y="194" width="374" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ata-ah-Is2">
+                                        <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
+                                        <state key="normal" title="Origem"/>
+                                        <connections>
+                                            <action selector="didTapOriginButton:" destination="6Rh-YN-rS2" eventType="touchUpInside" id="E8p-WV-o8A"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0O-e3-keU">
+                                        <rect key="frame" x="237" y="0.0" width="137" height="50"/>
+                                        <state key="normal" title="Destino"/>
+                                        <connections>
+                                            <action selector="didTapDestinyButton:" destination="6Rh-YN-rS2" eventType="touchUpInside" id="tXc-MT-AfE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="f0O-e3-keU" secondAttribute="bottom" id="807-II-ab6"/>
+                                    <constraint firstAttribute="height" constant="50" id="N0F-AY-Vcf"/>
+                                    <constraint firstAttribute="bottom" secondItem="ata-ah-Is2" secondAttribute="bottom" id="S1J-j1-iEl"/>
+                                    <constraint firstItem="ata-ah-Is2" firstAttribute="leading" secondItem="cve-Qd-rUO" secondAttribute="leading" id="Xp7-7c-xG6"/>
+                                    <constraint firstItem="f0O-e3-keU" firstAttribute="leading" secondItem="ata-ah-Is2" secondAttribute="trailing" constant="100" id="Z8e-ib-aZB"/>
+                                    <constraint firstItem="f0O-e3-keU" firstAttribute="top" secondItem="cve-Qd-rUO" secondAttribute="top" id="dbf-1C-dsf"/>
+                                    <constraint firstAttribute="trailing" secondItem="f0O-e3-keU" secondAttribute="trailing" id="eVm-uA-Ksu"/>
+                                    <constraint firstItem="ata-ah-Is2" firstAttribute="top" secondItem="cve-Qd-rUO" secondAttribute="top" id="vC1-B4-wp3"/>
+                                </constraints>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o valor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20L-dQ-Dc7">
+                                <rect key="frame" x="20" y="436" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="typeValueTextFieldEditingChanged:" destination="6Rh-YN-rS2" eventType="editingChanged" id="JF6-rp-J9s"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NHJ-hQ-m65"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cve-Qd-rUO" firstAttribute="leading" secondItem="NHJ-hQ-m65" secondAttribute="leading" constant="20" id="0bf-yC-2rG"/>
+                            <constraint firstItem="20L-dQ-Dc7" firstAttribute="centerY" secondItem="NHJ-hQ-m65" secondAttribute="centerY" id="GeR-8P-Zjp"/>
+                            <constraint firstItem="ADb-Wh-Lta" firstAttribute="trailing" secondItem="20L-dQ-Dc7" secondAttribute="trailing" id="GuW-W9-qBG"/>
+                            <constraint firstItem="20L-dQ-Dc7" firstAttribute="trailing" secondItem="cve-Qd-rUO" secondAttribute="trailing" id="HcN-y4-dqk"/>
+                            <constraint firstItem="cve-Qd-rUO" firstAttribute="top" secondItem="NHJ-hQ-m65" secondAttribute="top" constant="150" id="Iew-u2-orl"/>
+                            <constraint firstItem="20L-dQ-Dc7" firstAttribute="leading" secondItem="cve-Qd-rUO" secondAttribute="leading" id="Kvn-GH-AuJ"/>
+                            <constraint firstItem="NHJ-hQ-m65" firstAttribute="trailing" secondItem="cve-Qd-rUO" secondAttribute="trailing" constant="20" id="KyA-Yj-Lw6"/>
+                            <constraint firstItem="NHJ-hQ-m65" firstAttribute="bottom" secondItem="ADb-Wh-Lta" secondAttribute="bottom" constant="150" id="Qg3-NB-8bE"/>
+                            <constraint firstItem="ADb-Wh-Lta" firstAttribute="leading" secondItem="20L-dQ-Dc7" secondAttribute="leading" id="xJY-4d-1oQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currencyConvertedLabel" destination="ADb-Wh-Lta" id="Wcp-Hx-mBx"/>
+                        <outlet property="destinyButton" destination="f0O-e3-keU" id="k6O-0c-dJ2"/>
+                        <outlet property="originButton" destination="ata-ah-Is2" id="BWI-ac-IiL"/>
+                        <outlet property="typeValueTextField" destination="20L-dQ-Dc7" id="7to-MI-VBx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81V-cS-Kpr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="818"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
