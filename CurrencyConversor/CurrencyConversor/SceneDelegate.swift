@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  CurrencyConversor
 //
-//  Created by Erick Mitsugui Yamato on 05/11/20.
+//  Created by Erick Mitsugui Yamato on 13/11/20.
 //
 
 import UIKit
