@@ -181,7 +181,7 @@ class ConversorViewController: UIViewController {
     private func formatToCurrencyString(value: Double) -> String {
         
         let formatter = NumberFormatter()
-        formatter.numberStyle               = .decimal
+        formatter.numberStyle               = .currency
         formatter.roundingMode              = .down
         formatter.maximumFractionDigits     = Constants.fractionDigits
         formatter.minimumFractionDigits     = Constants.fractionDigits
