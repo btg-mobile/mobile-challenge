@@ -82,7 +82,7 @@ class ConversorViewController: UIViewController {
     }
     
     private func presentCurrencyViewController() {
-        let storyboard = UIStoryboard(name: Constants.currency, bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.currencyViewController, bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: Constants.currencyViewController) as CurrencyViewController
         vc.delegate = self
         present(vc,
