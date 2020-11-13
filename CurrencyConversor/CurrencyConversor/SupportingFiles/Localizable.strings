@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  CurrencyConversor
+
+  Created by Erick Mitsugui Yamato on 06/11/20.
+  
+*/
+
+// Commons
+ok                   = "Ok";
+cancel               = "Cancelar";
+
+// CurrencyViewController
+currencyies          = "Moedas";
+
+// ConverterViewController
+availableCurrencies  = "Moedas disponíveis";
+origin               = "Origem";
+destiny              = "Destino";
+typeValuePlaceholder = "Digite o valor";
+currencyConverted    = "O valor convertido é:";
+
+// Double Conversion
+doubleSymbol         = ".";
+decimalSymbol        = ",";
