@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainFragment">
+
+    <TextView
+        android:id="@+id/screenTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Conversor de moedas"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/conversionValueTextInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:enabled="true"
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        app:endIconDrawable="@drawable/ic_baseline_close_24"
+        app:endIconMode="custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/screenTitleTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:maxLength="20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Valor de entrada"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/convertButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:enabled="false"
+        android:text="Realizar Conversão"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/inputButton"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/conversionValueTextInput"
+        app:layout_constraintTop_toBottomOf="@+id/conversionValueTextInput"
+        android:text="XXX" />
+
+    <Button
+        android:id="@+id/outputButton"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/conversionValueTextInput"
+        app:layout_constraintTop_toBottomOf="@+id/conversionValueTextInput"
+        android:text="XXX" />
+
+    <ImageView
+        android:id="@+id/changeCurrenciesImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_baseline_swap_horiz_24"
+        app:layout_constraintBottom_toBottomOf="@+id/inputButton"
+        app:layout_constraintEnd_toStartOf="@+id/outputButton"
+        app:layout_constraintStart_toEndOf="@+id/inputButton"
+        app:layout_constraintTop_toTopOf="@+id/inputButton"
+        android:contentDescription="Trocar moedas de lugar" />
+
+    <TextView
+        android:id="@+id/inputDescription"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/inputButton"
+        app:layout_constraintStart_toStartOf="@+id/inputButton"
+        app:layout_constraintTop_toBottomOf="@+id/inputButton"
+        android:text="Entrada" />
+
+    <TextView
+        android:id="@+id/outputDescription"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/outputButton"
+        app:layout_constraintStart_toStartOf="@+id/outputButton"
+        app:layout_constraintTop_toBottomOf="@+id/outputButton"
+        android:text="Saída" />
+
+    <TextView
+        android:id="@+id/outputTextView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/background_shape"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="0,00"
+        android:drawableStart="@drawable/ic_baseline_attach_money_24"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/convertButton"
+        app:layout_constraintEnd_toEndOf="@+id/outputDescription"
+        app:layout_constraintStart_toStartOf="@+id/inputDescription"
+        app:layout_constraintTop_toBottomOf="@+id/changeCurrenciesImage"
+        android:singleLine="true"
+        tools:text="3.225.648.000.000.000.000.000.000,00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
