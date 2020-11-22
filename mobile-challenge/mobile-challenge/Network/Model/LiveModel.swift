@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Struct used to decode API response (/live) with currencies exchange values in relation to USD
 struct LiveModel: DataModelProtocol {
     static let service: ServiceType = .live
     

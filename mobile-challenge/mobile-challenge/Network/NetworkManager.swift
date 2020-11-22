@@ -12,6 +12,10 @@ class NetworkManager {
     let baseURL = "http://api.currencylayer.com"
     let accessKey = "c973339d098633a0d3ec6bb507bb286e"
     
+    /// Method used to make URLRequest to Currency Layer API
+    /// - Parameters:
+    ///   - model: Model cointaining the type of service and Data Model to decode JSON
+    ///   - result: Result of the call with Data Model or error
     func request<T:DataModelProtocol>(model: T.Type, result: @escaping (Result<T, NetworkError>) -> Void) {
         
         guard let url = makeURL(service: T.service.rawValue) else {
@@ -49,6 +53,9 @@ class NetworkManager {
         }.resume()
     }
     
+    /// Method to decode JSON data from URL request
+    /// - Parameter data: data to be decoded
+    /// - Returns: decoded data according to data model
     private func decode<T: Decodable>(data: Data) -> T? {
         let decoder = JSONDecoder()
         
@@ -57,6 +64,9 @@ class NetworkManager {
         return decodedData
     }
     
+    /// Method to build URL
+    /// - Parameter service: String describing service to be called
+    /// - Returns: URL with every component
     private func makeURL(service: String) -> URL? {
         return URL(string: "\(baseURL)/\(service)?access_key=\(accessKey)")
     }

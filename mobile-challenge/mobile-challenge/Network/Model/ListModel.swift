@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Struct used to decode API response (/list) with currencies code and name
 struct ListModel: DataModelProtocol {
     static let service: ServiceType = .list
     

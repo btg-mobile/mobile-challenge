@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Struct used to decode API error response
 struct ErrorDataModel: Decodable {
     let code: Int
     let info: String

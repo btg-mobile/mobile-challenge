@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Enum used to differentiate two different types of API calls
 enum ServiceType: String {
     case live
     case list
