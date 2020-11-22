@@ -10,7 +10,7 @@ import Foundation
 class CurrencyListViewModel {
 
     private let networkManager = NetworkManager()
-    private var currencies = [CurrencyModel]()
+    var currencies = [CurrencyModel]()
     
     var currenciesByName: [CurrencyModel] {
         return currencies.sorted { $0.name < $1.name }

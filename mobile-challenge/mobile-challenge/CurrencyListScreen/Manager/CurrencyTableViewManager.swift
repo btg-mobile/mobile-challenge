@@ -6,12 +6,17 @@
 //
 
 import Foundation
-import UIKit
 
 class CurrencyTableViewManager: NSObject {
     let currencyListViewModel: CurrencyListViewModel
+    var sortType: sortType = .name
     
     init(currencyListViewModel: CurrencyListViewModel){
         self.currencyListViewModel = currencyListViewModel
     }
+}
+
+enum sortType {
+    case code
+    case name
 }
