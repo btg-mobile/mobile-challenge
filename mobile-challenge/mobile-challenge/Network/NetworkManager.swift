@@ -12,16 +12,27 @@ class NetworkManager {
     let baseURL = "http://api.currencylayer.com"
     let accessKey = "c973339d098633a0d3ec6bb507bb286e"
     
-    func request<T:Decodable>(service: String, model: T.Type, result: @escaping (Result<T, Error>) -> Void) {
+    func request<T:DataModelProtocol>(model: T.Type, result: @escaping (Result<T, Error>) -> Void) {
         
-        guard let url = makeURL(service: service) else { return }
+        guard let url = makeURL(service: model.service.rawValue) else { return }
         
         let request = URLRequest(url: url)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(response)
-            print(error)
+            if let data = data, let decodedData: T = self.decode(data: data) {
+                print(decodedData)
+                result(.success(decodedData))
+                return
+            }
         }.resume()
+    }
+    
+    private func decode<T: Decodable>(data: Data) -> T? {
+        let decoder = JSONDecoder()
+        
+        guard let decodedData = try? decoder.decode(T.self, from: data) else { return nil }
+        
+        return decodedData
     }
     
     private func makeURL(service: String) -> URL? {
