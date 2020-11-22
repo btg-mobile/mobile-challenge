@@ -24,6 +24,7 @@
 		492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F99256A9CEE00EA4B36 /* NetworkError.swift */; };
 		492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */; };
 		492B7FB1256AA23A00EA4B36 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FB0256AA23A00EA4B36 /* ExchangeView.swift */; };
+		492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		492B7F99256A9CEE00EA4B36 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		492B7FB0256AA23A00EA4B36 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
+		492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				492B7FB0256AA23A00EA4B36 /* ExchangeView.swift */,
+				492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				492B7F85256A9B2000EA4B36 /* ServiceType.swift in Sources */,
 				492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */,
 				492B7FB1256AA23A00EA4B36 /* ExchangeView.swift in Sources */,
+				492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */,
 				492B7F8A256A9B6400EA4B36 /* ListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
