@@ -20,7 +20,7 @@ class CurrencyListViewModel {
         return currencies.sorted { $0.code < $1.code }
     }
     
-    func fetchCurrencies() {
+    func fetchCurrencies(completion: @escaping ([Error]?) -> Void ) {
         var listModel: ListModel?
         var liveModel: LiveModel?
         var errors = [NetworkError]()
@@ -53,6 +53,7 @@ class CurrencyListViewModel {
         
         dispatchGroup.notify(queue: .main) {
             self.buildCurrencyModel(list: listModel, live: liveModel)
+            completion(errors)
         }
     }
     
