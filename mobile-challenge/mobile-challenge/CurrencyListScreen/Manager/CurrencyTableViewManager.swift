@@ -15,8 +15,3 @@ class CurrencyTableViewManager: NSObject {
         self.currencyListViewModel = currencyListViewModel
     }
 }
-
-enum sortType {
-    case code
-    case name
-}

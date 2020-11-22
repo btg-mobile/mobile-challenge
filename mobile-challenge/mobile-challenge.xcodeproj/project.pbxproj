@@ -31,6 +31,10 @@
 		492B7FD3256AE43F00EA4B36 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */; };
 		492B7FD9256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FD8256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift */; };
 		492B7FE7256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */; };
+		492B7FF1256B236A00EA4B36 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FF0256B236A00EA4B36 /* SortType.swift */; };
+		492B8001256B241200EA4B36 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B8000256B241200EA4B36 /* CurrencyListViewController.swift */; };
+		492B8009256B24EA00EA4B36 /* CurrencyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B8008256B24EA00EA4B36 /* CurrencyTableView.swift */; };
+		492B8012256B26BE00EA4B36 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B8011256B26BE00EA4B36 /* CurrencyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,10 @@
 		492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		492B7FD8256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyTableViewManager+DataSource.swift"; sourceTree = "<group>"; };
 		492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyTableViewManager+Delegate.swift"; sourceTree = "<group>"; };
+		492B7FF0256B236A00EA4B36 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
+		492B8000256B241200EA4B36 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		492B8008256B24EA00EA4B36 /* CurrencyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableView.swift; sourceTree = "<group>"; };
+		492B8011256B26BE00EA4B36 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,9 +247,11 @@
 		492B7FBD256ADE6C00EA4B36 /* CurrencyListScreen */ = {
 			isa = PBXGroup;
 			children = (
+				492B8000256B241200EA4B36 /* CurrencyListViewController.swift */,
+				492B7FEF256B235F00EA4B36 /* Utils */,
 				492B7FBE256ADE9500EA4B36 /* View */,
 				492B7FD7256B208A00EA4B36 /* Manager */,
-				492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */,
+				492B7FEB256B235700EA4B36 /* ViewModel */,
 			);
 			path = CurrencyListScreen;
 			sourceTree = "<group>";
@@ -249,7 +259,8 @@
 		492B7FBE256ADE9500EA4B36 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				492B7FC8256AE0D900EA4B36 /* CurrencyTableViewCell.swift */,
+				492B8011256B26BE00EA4B36 /* CurrencyListView.swift */,
+				492B800D256B26A800EA4B36 /* TableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,6 +281,31 @@
 				492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		492B7FEB256B235700EA4B36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		492B7FEF256B235F00EA4B36 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				492B7FF0256B236A00EA4B36 /* SortType.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		492B800D256B26A800EA4B36 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				492B7FC8256AE0D900EA4B36 /* CurrencyTableViewCell.swift */,
+				492B8008256B24EA00EA4B36 /* CurrencyTableView.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,22 +437,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492B8001256B241200EA4B36 /* CurrencyListViewController.swift in Sources */,
 				492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */,
 				492B7FE7256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift in Sources */,
 				492B7F30256A97EC00EA4B36 /* ExchangeViewController.swift in Sources */,
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
+				492B8009256B24EA00EA4B36 /* CurrencyTableView.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
 				492B7FC9256AE0D900EA4B36 /* CurrencyTableViewCell.swift in Sources */,
 				492B7F2C256A97EC00EA4B36 /* AppDelegate.swift in Sources */,
 				492B7FC1256ADFD400EA4B36 /* CurrencyModel.swift in Sources */,
 				492B7FD3256AE43F00EA4B36 /* CurrencyListViewModel.swift in Sources */,
 				492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */,
+				492B7FF1256B236A00EA4B36 /* SortType.swift in Sources */,
 				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
 				492B7F36256A97EC00EA4B36 /* mobile_challenge.xcdatamodeld in Sources */,
 				492B7F85256A9B2000EA4B36 /* ServiceType.swift in Sources */,
 				492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */,
 				492B7FB1256AA23A00EA4B36 /* ExchangeView.swift in Sources */,
+				492B8012256B26BE00EA4B36 /* CurrencyListView.swift in Sources */,
 				492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */,
 				492B7FCE256AE38500EA4B36 /* CurrencyTableViewManager.swift in Sources */,
 				492B7FD9256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift in Sources */,
