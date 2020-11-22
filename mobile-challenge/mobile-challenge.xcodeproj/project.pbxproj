@@ -21,6 +21,7 @@
 		492B7F8A256A9B6400EA4B36 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F89256A9B6400EA4B36 /* ListModel.swift */; };
 		492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F8E256A9BB400EA4B36 /* LiveModel.swift */; };
 		492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */; };
+		492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F99256A9CEE00EA4B36 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		492B7F89256A9B6400EA4B36 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		492B7F8E256A9BB400EA4B36 /* LiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModel.swift; sourceTree = "<group>"; };
 		492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDataModel.swift; sourceTree = "<group>"; };
+		492B7F99256A9CEE00EA4B36 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				492B7F72256A99A900EA4B36 /* NetworkManager.swift */,
 				492B7F7A256A9ABF00EA4B36 /* Model */,
+				492B7F98256A9CDB00EA4B36 /* Error */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -176,6 +179,14 @@
 				492B7F84256A9B2000EA4B36 /* ServiceType.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		492B7F98256A9CDB00EA4B36 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				492B7F99256A9CEE00EA4B36 /* NetworkError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +327,7 @@
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
 				492B7F36256A97EC00EA4B36 /* mobile_challenge.xcdatamodeld in Sources */,
 				492B7F85256A9B2000EA4B36 /* ServiceType.swift in Sources */,
+				492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */,
 				492B7F8A256A9B6400EA4B36 /* ListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
