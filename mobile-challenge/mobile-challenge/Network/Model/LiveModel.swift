@@ -11,6 +11,7 @@ struct LiveModel: DataModelProtocol {
     static let service: ServiceType = .live
     
     let success: Bool
+    let error: ErrorDataModel?
     let timestamp: Double
     let quotes: [String:Double]?
 }

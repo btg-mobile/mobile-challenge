@@ -11,5 +11,6 @@ struct ListModel: DataModelProtocol {
     static let service: ServiceType = .list
     
     let success: Bool
+    let error: ErrorDataModel?
     let currencies: [String:String]?
 }

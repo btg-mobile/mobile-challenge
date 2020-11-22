@@ -20,6 +20,7 @@
 		492B7F85256A9B2000EA4B36 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F84256A9B2000EA4B36 /* ServiceType.swift */; };
 		492B7F8A256A9B6400EA4B36 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F89256A9B6400EA4B36 /* ListModel.swift */; };
 		492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F8E256A9BB400EA4B36 /* LiveModel.swift */; };
+		492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		492B7F84256A9B2000EA4B36 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		492B7F89256A9B6400EA4B36 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		492B7F8E256A9BB400EA4B36 /* LiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModel.swift; sourceTree = "<group>"; };
+		492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				492B7F7B256A9ACF00EA4B36 /* Protocol */,
 				492B7F89256A9B6400EA4B36 /* ListModel.swift */,
 				492B7F8E256A9BB400EA4B36 /* LiveModel.swift */,
+				492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */,
 				492B7F30256A97EC00EA4B36 /* ExchangeViewController.swift in Sources */,
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
