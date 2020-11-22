@@ -8,15 +8,21 @@
 import Foundation
 import UIKit
 
-class ExchangeView: UIView {
+class ExchangeView: UIStackView {
     
-    var exchangeStackView: UIStackView {
-        let stackView = UIStackView()
-        return stackView
-    }
+    let fromStackView = CurrencyStackView()
+    let toStackView = CurrencyStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        axis = .vertical
+        distribution = .fill
+        spacing = 18
+        alignment = .center
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        setupViews()
     }
     
     required init(coder: NSCoder) {
@@ -27,10 +33,19 @@ class ExchangeView: UIView {
 
 extension ExchangeView: ViewCodable {
     func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            fromStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            fromStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            fromStackView.topAnchor.constraint(equalTo: topAnchor),
+            
+            toStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            toStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            toStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     func setupViewHierarchy() {
-        
+        addArrangedSubview(fromStackView)
+        addArrangedSubview(toStackView)
     }
 }

@@ -10,27 +10,34 @@ import UIKit
 
 class CurrencyStackView: UIStackView {
     
-    var valueTextField: UITextField {
+    var valueTextField: UITextField = {
         let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.keyboardType = .numberPad
+        textField.text = "0.00"
+        textField.borderStyle = .roundedRect
+        textField.textAlignment = .right
         return textField
-    }
+    }()
     
-    var currencyButton: UIButton {
+    var currencyButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Escolha a moeda", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         return button
-    }
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         axis = .horizontal
-        distribution = .fill
-        spacing = 50
-        alignment = .center
+        distribution = .equalSpacing
+        alignment = .fill
+        spacing = 10
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .clear
+       
+        setupViews()
     }
     
     required init(coder: NSCoder) {
@@ -41,11 +48,11 @@ class CurrencyStackView: UIStackView {
 extension CurrencyStackView: ViewCodable {
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            valueTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
+            valueTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             valueTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
             valueTextField.topAnchor.constraint(equalTo: topAnchor),
             
-            currencyButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            currencyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10),
             currencyButton.topAnchor.constraint(equalTo: topAnchor),
             currencyButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
