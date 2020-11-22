@@ -22,6 +22,7 @@
 		492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F8E256A9BB400EA4B36 /* LiveModel.swift */; };
 		492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */; };
 		492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F99256A9CEE00EA4B36 /* NetworkError.swift */; };
+		492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		492B7F8E256A9BB400EA4B36 /* LiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModel.swift; sourceTree = "<group>"; };
 		492B7F93256A9C7800EA4B36 /* ErrorDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDataModel.swift; sourceTree = "<group>"; };
 		492B7F99256A9CEE00EA4B36 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +115,10 @@
 		492B7F2A256A97EC00EA4B36 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				492B7FAA256AA1B900EA4B36 /* Utils */,
 				492B7F61256A983E00EA4B36 /* Application */,
 				492B7F71256A999400EA4B36 /* Network */,
-				492B7F2F256A97EC00EA4B36 /* ExchangeViewController.swift */,
+				492B7FA8256AA18700EA4B36 /* ExchangeScreen */,
 				492B7F37256A97EE00EA4B36 /* Assets.xcassets */,
 				492B7F39256A97EE00EA4B36 /* LaunchScreen.storyboard */,
 				492B7F3C256A97EE00EA4B36 /* Info.plist */,
@@ -187,6 +190,30 @@
 				492B7F99256A9CEE00EA4B36 /* NetworkError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		492B7FA8256AA18700EA4B36 /* ExchangeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				492B7F2F256A97EC00EA4B36 /* ExchangeViewController.swift */,
+				492B7FA9256AA1A200EA4B36 /* View */,
+			);
+			path = ExchangeScreen;
+			sourceTree = "<group>";
+		};
+		492B7FA9256AA1A200EA4B36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		492B7FAA256AA1B900EA4B36 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +350,7 @@
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
 				492B7F2C256A97EC00EA4B36 /* AppDelegate.swift in Sources */,
+				492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */,
 				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
 				492B7F36256A97EC00EA4B36 /* mobile_challenge.xcdatamodeld in Sources */,
