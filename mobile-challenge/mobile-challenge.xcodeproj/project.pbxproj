@@ -30,6 +30,7 @@
 		492B7FCE256AE38500EA4B36 /* CurrencyTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */; };
 		492B7FD3256AE43F00EA4B36 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */; };
 		492B7FD9256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FD8256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift */; };
+		492B7FE7256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewManager.swift; sourceTree = "<group>"; };
 		492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		492B7FD8256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyTableViewManager+DataSource.swift"; sourceTree = "<group>"; };
+		492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyTableViewManager+Delegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 			children = (
 				492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */,
 				492B7FD8256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift */,
+				492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */,
+				492B7FE7256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift in Sources */,
 				492B7F30256A97EC00EA4B36 /* ExchangeViewController.swift in Sources */,
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
