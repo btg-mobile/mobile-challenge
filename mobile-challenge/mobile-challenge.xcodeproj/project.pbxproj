@@ -25,6 +25,7 @@
 		492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */; };
 		492B7FB1256AA23A00EA4B36 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FB0256AA23A00EA4B36 /* ExchangeView.swift */; };
 		492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */; };
+		492B7FC1256ADFD400EA4B36 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FC0256ADFD400EA4B36 /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		492B7FB0256AA23A00EA4B36 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 		492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStackView.swift; sourceTree = "<group>"; };
+		492B7FC0256ADFD400EA4B36 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,8 @@
 				492B7F61256A983E00EA4B36 /* Application */,
 				492B7F71256A999400EA4B36 /* Network */,
 				492B7FA8256AA18700EA4B36 /* ExchangeScreen */,
+				492B7FBD256ADE6C00EA4B36 /* CurrencyListScreen */,
+				492B7FBF256ADFBC00EA4B36 /* Model */,
 				492B7F37256A97EE00EA4B36 /* Assets.xcassets */,
 				492B7F39256A97EE00EA4B36 /* LaunchScreen.storyboard */,
 				492B7F3C256A97EE00EA4B36 /* Info.plist */,
@@ -220,6 +224,29 @@
 				492B7FAB256AA1CA00EA4B36 /* ViewCodable.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		492B7FBD256ADE6C00EA4B36 /* CurrencyListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				492B7FBE256ADE9500EA4B36 /* View */,
+			);
+			path = CurrencyListScreen;
+			sourceTree = "<group>";
+		};
+		492B7FBE256ADE9500EA4B36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		492B7FBF256ADFBC00EA4B36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				492B7FC0256ADFD400EA4B36 /* CurrencyModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +383,7 @@
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
 				492B7F2C256A97EC00EA4B36 /* AppDelegate.swift in Sources */,
+				492B7FC1256ADFD400EA4B36 /* CurrencyModel.swift in Sources */,
 				492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */,
 				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
