@@ -15,6 +15,7 @@
 		492B7F3B256A97EE00EA4B36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492B7F39256A97EE00EA4B36 /* LaunchScreen.storyboard */; };
 		492B7F46256A97EF00EA4B36 /* mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F45256A97EF00EA4B36 /* mobile_challengeTests.swift */; };
 		492B7F51256A97EF00EA4B36 /* mobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F50256A97EF00EA4B36 /* mobile_challengeUITests.swift */; };
+		492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7F72256A99A900EA4B36 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		492B7F4C256A97EF00EA4B36 /* mobile-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492B7F50256A97EF00EA4B36 /* mobile_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challengeUITests.swift; sourceTree = "<group>"; };
 		492B7F52256A97EF00EA4B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		492B7F72256A99A900EA4B36 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				492B7F61256A983E00EA4B36 /* Application */,
+				492B7F71256A999400EA4B36 /* Network */,
 				492B7F2F256A97EC00EA4B36 /* ExchangeViewController.swift */,
 				492B7F37256A97EE00EA4B36 /* Assets.xcassets */,
 				492B7F39256A97EE00EA4B36 /* LaunchScreen.storyboard */,
@@ -134,6 +137,14 @@
 				492B7F2D256A97EC00EA4B36 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		492B7F71256A999400EA4B36 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				492B7F72256A99A900EA4B36 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +278,7 @@
 			files = (
 				492B7F30256A97EC00EA4B36 /* ExchangeViewController.swift in Sources */,
 				492B7F2C256A97EC00EA4B36 /* AppDelegate.swift in Sources */,
+				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
 				492B7F36256A97EC00EA4B36 /* mobile_challenge.xcdatamodeld in Sources */,
 			);
