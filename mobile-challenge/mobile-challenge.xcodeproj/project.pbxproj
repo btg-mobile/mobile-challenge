@@ -27,6 +27,8 @@
 		492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */; };
 		492B7FC1256ADFD400EA4B36 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FC0256ADFD400EA4B36 /* CurrencyModel.swift */; };
 		492B7FC9256AE0D900EA4B36 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FC8256AE0D900EA4B36 /* CurrencyTableViewCell.swift */; };
+		492B7FCE256AE38500EA4B36 /* CurrencyTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */; };
+		492B7FD3256AE43F00EA4B36 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		492B7FB5256ACDA500EA4B36 /* CurrencyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStackView.swift; sourceTree = "<group>"; };
 		492B7FC0256ADFD400EA4B36 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		492B7FC8256AE0D900EA4B36 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewManager.swift; sourceTree = "<group>"; };
+		492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				492B7FBE256ADE9500EA4B36 /* View */,
+				492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */,
+				492B7FD2256AE43F00EA4B36 /* CurrencyListViewModel.swift */,
 			);
 			path = CurrencyListScreen;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				492B7FC9256AE0D900EA4B36 /* CurrencyTableViewCell.swift in Sources */,
 				492B7F2C256A97EC00EA4B36 /* AppDelegate.swift in Sources */,
 				492B7FC1256ADFD400EA4B36 /* CurrencyModel.swift in Sources */,
+				492B7FD3256AE43F00EA4B36 /* CurrencyListViewModel.swift in Sources */,
 				492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */,
 				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
@@ -396,6 +403,7 @@
 				492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */,
 				492B7FB1256AA23A00EA4B36 /* ExchangeView.swift in Sources */,
 				492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */,
+				492B7FCE256AE38500EA4B36 /* CurrencyTableViewManager.swift in Sources */,
 				492B7F8A256A9B6400EA4B36 /* ListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
