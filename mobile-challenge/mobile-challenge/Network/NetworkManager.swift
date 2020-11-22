@@ -9,8 +9,8 @@ import Foundation
 
 class NetworkManager {
     
-    let baseURL = "http://api.currencylayer.com"
-    let accessKey = "c973339d098633a0d3ec6bb507bb286e"
+    private let baseURL = "http://api.currencylayer.com"
+    private let accessKey = "c973339d098633a0d3ec6bb507bb286e"
     
     /// Method used to make URLRequest to Currency Layer API
     /// - Parameters:
