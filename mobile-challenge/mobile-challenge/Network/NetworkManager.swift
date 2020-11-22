@@ -12,18 +12,40 @@ class NetworkManager {
     let baseURL = "http://api.currencylayer.com"
     let accessKey = "c973339d098633a0d3ec6bb507bb286e"
     
-    func request<T:DataModelProtocol>(model: T.Type, result: @escaping (Result<T, Error>) -> Void) {
+    func request<T:DataModelProtocol>(model: T.Type, result: @escaping (Result<T, NetworkError>) -> Void) {
         
-        guard let url = makeURL(service: model.service.rawValue) else { return }
+        guard let url = makeURL(service: T.service.rawValue) else {
+            result(.failure(NetworkError.invalidURL))
+            return
+        }
         
         let request = URLRequest(url: url)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                var networkError: NetworkError = .unknownError
+                if error.localizedDescription.uppercased().contains("OFFLINE") {
+                    networkError = .APIOffline
+                }
+                result(.failure(networkError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                result(.failure(.APIError))
+                return
+            }
+            
             if let data = data, let decodedData: T = self.decode(data: data) {
                 print(decodedData)
                 result(.success(decodedData))
                 return
+            } else {
+                result(.failure(.decodeFailure))
+                return
             }
+            
         }.resume()
     }
     
