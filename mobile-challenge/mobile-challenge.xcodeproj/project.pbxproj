@@ -44,6 +44,7 @@
 		49D7E071256B68B700CCF3BB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E070256B68B700CCF3BB /* CoreDataStack.swift */; };
 		49D7E079256B68CF00CCF3BB /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */; };
 		49D7E07E256B68E800CCF3BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */; };
+		49D7E087256B6B7500CCF3BB /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E086256B6B7500CCF3BB /* DatabaseError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		49D7E070256B68B700CCF3BB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		49D7E086256B6B7500CCF3BB /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,11 +370,20 @@
 		49D7E06F256B68A900CCF3BB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				49D7E085256B6B6700CCF3BB /* Error */,
 				49D7E070256B68B700CCF3BB /* CoreDataStack.swift */,
 				49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */,
 				49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		49D7E085256B6B6700CCF3BB /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				49D7E086256B6B7500CCF3BB /* DatabaseError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,6 +518,7 @@
 				492B8001256B241200EA4B36 /* CurrencyListViewController.swift in Sources */,
 				492B7F94256A9C7800EA4B36 /* ErrorDataModel.swift in Sources */,
 				492B7FE7256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift in Sources */,
+				49D7E087256B6B7500CCF3BB /* DatabaseError.swift in Sources */,
 				492B7F30256A97EC00EA4B36 /* ExchangeViewController.swift in Sources */,
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
 				49D7E059256B61BD00CCF3BB /* ExchangeError.swift in Sources */,

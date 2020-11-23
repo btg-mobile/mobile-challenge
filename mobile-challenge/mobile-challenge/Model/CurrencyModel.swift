@@ -11,4 +11,13 @@ struct CurrencyModel {
     let code: String
     let name: String
     var value: Double
+    
+    func getValuesDict() -> [String: Any] {
+        var dict = [String: Any]()
+        dict["code"] = code
+        dict["name"] = name
+        dict["value"] = value
+        
+        return dict
+    }
 }

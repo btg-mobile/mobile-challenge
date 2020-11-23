@@ -11,7 +11,7 @@ import CoreData
 class CoreDataStack: CoreDataProtocol {
     
     static var standard = CoreDataStack()
-    private static let container = "MacroChallenge"
+    private static let container = "mobile-challenge"
     
     private init() {}
     
