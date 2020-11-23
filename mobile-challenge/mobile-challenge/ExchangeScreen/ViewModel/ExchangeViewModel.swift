@@ -12,10 +12,10 @@ class ExchangeViewModel {
     var fromCurrency: CurrencyModel?
     var toCurrency: CurrencyModel?
     
-    func convertCurrencies(value: String) -> String {
-        guard let value = Double(value) else { return "" }
-        guard let fromValue = fromCurrency?.value else { return "" }
-        guard let toValue = toCurrency?.value else { return "" }
+    func convertCurrencies(value: String) throws -> String {
+        guard let value = Double(value) else { throw ExchangeError.emptyValue }
+        guard let fromValue = fromCurrency?.value else { throw ExchangeError.emptyFrom }
+        guard let toValue = toCurrency?.value else { throw ExchangeError.emptyTo }
         
         let dollarValue = fromValue/value
         let finalValue = toValue/dollarValue

@@ -9,11 +9,11 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
 
-    let currencyListView = CurrencyListView()
+    private let currencyListView = CurrencyListView()
     var manager: CurrencyTableViewManager?
-    let currencyListViewModel = CurrencyListViewModel()
+    private let currencyListViewModel = CurrencyListViewModel()
     weak var selectDelegate: SelectCurrencyDelegate?
-    let alert = UIAlertController(title: "Erro", message: nil, preferredStyle: .alert)
+    private let alert = UIAlertController(title: "Erro", message: nil, preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()

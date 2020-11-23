@@ -12,6 +12,7 @@ class ExchangeViewController: UIViewController {
     private let exchangeView = ExchangeView()
     private var buttonPressed: ButtonType?
     private let exchangeViewModel = ExchangeViewModel()
+    private let alert = UIAlertController(title: "Erro", message: nil, preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class ExchangeViewController: UIViewController {
         view.addSubview(exchangeView)
         view.backgroundColor = .systemBackground
         setupConstraints()
+        setupAction()
         setupClosures()
     }
     
@@ -28,7 +30,6 @@ class ExchangeViewController: UIViewController {
             self?.buttonPressed = buttonType
             let currencyListVC = CurrencyListViewController()
             currencyListVC.selectDelegate = self
-//            self?.present(currencyListVC, animated: true, completion: nil)
             self?.navigationController?.pushViewController(currencyListVC, animated: true)
         }
         
@@ -36,10 +37,31 @@ class ExchangeViewController: UIViewController {
         exchangeView.toStackView.selectCurrency = showCurrencyVC
         
         exchangeView.fromStackView.convertCurrency = { [weak self] value in
-            self?.exchangeView.toStackView.valueTextField.text = self?.exchangeViewModel.convertCurrencies(value: value)
+            DispatchQueue.main.async {
+                var result: String?
+               
+                do {
+                    result = try self?.exchangeViewModel.convertCurrencies(value: value)
+                } catch let error as ExchangeError {
+                    guard let alert = self?.alert  else { return }
+                    alert.message = error.errorDescription
+                    self?.present(alert, animated: true, completion: nil)
+                } catch {
+                    guard let alert = self?.alert  else { return }
+                    alert.message = "Ocorreu um erro."
+                    self?.present(alert, animated: true, completion: nil)
+                }
+               
+                self?.exchangeView.toStackView.valueTextField.text = result
+            }
         }
     }
 
+    private func setupAction() {
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+    }
+    
     private func setupConstraints(){
         NSLayoutConstraint.activate([
             exchangeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
