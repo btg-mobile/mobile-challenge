@@ -10,10 +10,16 @@ import UIKit
 
 extension CurrencyTableViewManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if isFiltering {
+            didSelectCurrency?(filteredCurrencies[indexPath.row])
+        }
+        
+        guard let currencyList = currencyListViewModel else { return }
         if sortType == .code {
-            didSelectCurrency?(currencyListViewModel.currenciesByCode[indexPath.row])
+            didSelectCurrency?(currencyList.currenciesByCode[indexPath.row])
         } else {
-            didSelectCurrency?(currencyListViewModel.currenciesByName[indexPath.row])
+            didSelectCurrency?(currencyList.currenciesByName[indexPath.row])
         }
     }
 }

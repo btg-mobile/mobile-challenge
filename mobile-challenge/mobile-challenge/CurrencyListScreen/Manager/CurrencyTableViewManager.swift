@@ -9,9 +9,13 @@ import Foundation
 
 /// Class used to manage CurrencyTableView
 class CurrencyTableViewManager: NSObject {
-    let currencyListViewModel: CurrencyListViewModel
+    
+    weak var currencyListViewModel: CurrencyListViewModel?
     var sortType: sortType = .name
     var didSelectCurrency: ((CurrencyModel) -> Void)?
+    var refreshSearch: (() -> Void)?
+    var filteredCurrencies = [CurrencyModel]()
+    var isFiltering = false
     
     init(currencyListViewModel: CurrencyListViewModel){
         self.currencyListViewModel = currencyListViewModel
@@ -22,8 +26,7 @@ class CurrencyTableViewManager: NSObject {
         if sortType == .code {
             sortType = .name
         } else {
-            sortType
-                = .code
+            sortType = .code
         }
     }
 }

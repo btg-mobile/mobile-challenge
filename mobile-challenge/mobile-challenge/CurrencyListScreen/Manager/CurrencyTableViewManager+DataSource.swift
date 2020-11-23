@@ -11,16 +11,23 @@ import UIKit
 extension CurrencyTableViewManager: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyListViewModel.currencies.count
+        return isFiltering ? filteredCurrencies.count : currencyListViewModel?.currencies.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier) as! CurrencyTableViewCell
         
+        if isFiltering {
+            cell.currency = filteredCurrencies[indexPath.row]
+            return cell
+        }
+        
+        guard let currencyList = currencyListViewModel else { return cell }
+        
         if sortType == .code {
-            cell.currency = currencyListViewModel.currenciesByCode[indexPath.row]
+            cell.currency = currencyList.currenciesByCode[indexPath.row]
         } else {
-            cell.currency = currencyListViewModel.currenciesByName[indexPath.row]
+            cell.currency = currencyList.currenciesByName[indexPath.row]
         }
         
         cell.setupViews()

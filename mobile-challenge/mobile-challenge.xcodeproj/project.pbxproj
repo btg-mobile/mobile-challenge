@@ -38,6 +38,7 @@
 		49D7E021256B3A7000CCF3BB /* SelectCurrencyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E020256B3A7000CCF3BB /* SelectCurrencyDelegate.swift */; };
 		49D7E02D256B3F3800CCF3BB /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E02C256B3F3800CCF3BB /* ExchangeViewModel.swift */; };
 		49D7E03A256B440200CCF3BB /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E039256B440200CCF3BB /* ButtonType.swift */; };
+		49D7E054256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E053256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		49D7E020256B3A7000CCF3BB /* SelectCurrencyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyDelegate.swift; sourceTree = "<group>"; };
 		49D7E02C256B3F3800CCF3BB /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		49D7E039256B440200CCF3BB /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
+		49D7E053256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyTableViewManager+SearchBarDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 				492B7FCD256AE38500EA4B36 /* CurrencyTableViewManager.swift */,
 				492B7FD8256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift */,
 				492B7FE6256B22FF00EA4B36 /* CurrencyTableViewManager+Delegate.swift */,
+				49D7E053256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
 				492B7F36256A97EC00EA4B36 /* mobile_challenge.xcdatamodeld in Sources */,
+				49D7E054256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift in Sources */,
 				492B7F85256A9B2000EA4B36 /* ServiceType.swift in Sources */,
 				492B7F9A256A9CEE00EA4B36 /* NetworkError.swift in Sources */,
 				492B7FB1256AA23A00EA4B36 /* ExchangeView.swift in Sources */,

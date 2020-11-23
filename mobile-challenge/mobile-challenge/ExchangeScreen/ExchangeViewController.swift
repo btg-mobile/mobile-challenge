@@ -28,7 +28,8 @@ class ExchangeViewController: UIViewController {
             self?.buttonPressed = buttonType
             let currencyListVC = CurrencyListViewController()
             currencyListVC.selectDelegate = self
-            self?.present(currencyListVC, animated: true, completion: nil)
+//            self?.present(currencyListVC, animated: true, completion: nil)
+            self?.navigationController?.pushViewController(currencyListVC, animated: true)
         }
         
         exchangeView.fromStackView.selectCurrency = showCurrencyVC

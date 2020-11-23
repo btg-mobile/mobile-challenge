@@ -24,12 +24,23 @@ class CurrencyListViewController: UIViewController {
         
         setupTableView()
         setupClosures()
+        setupSearchBar()
         
         currencyListViewModel.fetchCurrencies { (errors) in
             DispatchQueue.main.async {
                 self.currencyListView.tableView.reloadData()
             }
         }
+    }
+    
+    private func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = manager
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Buscar"
+        
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = searchController
     }
     
     private func setupClosures() {
@@ -39,9 +50,12 @@ class CurrencyListViewController: UIViewController {
         
         manager?.didSelectCurrency = { [weak self] currency in
             self?.selectDelegate?.getCurrency(currency: currency)
-            self?.dismiss(animated: true, completion: nil)
+            self?.navigationController?.popViewController(animated: true)
         }
         
+        manager?.refreshSearch = { [weak self] in
+            self?.currencyListView.tableView.reloadData()
+        }
     }
     
     private func setupTableView() {        
