@@ -45,6 +45,7 @@
 		49D7E079256B68CF00CCF3BB /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */; };
 		49D7E07E256B68E800CCF3BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */; };
 		49D7E087256B6B7500CCF3BB /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E086256B6B7500CCF3BB /* DatabaseError.swift */; };
+		49D7E08F256B6F0000CCF3BB /* TimeStampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E08E256B6F0000CCF3BB /* TimeStampFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		49D7E086256B6B7500CCF3BB /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+		49D7E08E256B6F0000CCF3BB /* TimeStampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStampFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 		49D7E038256B43F700CCF3BB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				49D7E08E256B6F0000CCF3BB /* TimeStampFormatter.swift */,
 				49D7E039256B440200CCF3BB /* ButtonType.swift */,
 			);
 			path = Utils;
@@ -524,6 +527,7 @@
 				49D7E059256B61BD00CCF3BB /* ExchangeError.swift in Sources */,
 				49D7E079256B68CF00CCF3BB /* CoreDataProtocol.swift in Sources */,
 				492B8009256B24EA00EA4B36 /* CurrencyTableView.swift in Sources */,
+				49D7E08F256B6F0000CCF3BB /* TimeStampFormatter.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
 				492B7FC9256AE0D900EA4B36 /* CurrencyTableViewCell.swift in Sources */,
 				49D7E071256B68B700CCF3BB /* CoreDataStack.swift in Sources */,

@@ -12,6 +12,7 @@ class CurrencyListViewModel {
 
     //Properties
     private let networkManager = NetworkManager()
+    private let coreDataManager = CoreDataManager()
     var currencies = [CurrencyModel]()
     
     var currenciesByName: [CurrencyModel] {
@@ -22,7 +23,7 @@ class CurrencyListViewModel {
         return currencies.sorted { $0.code < $1.code }
     }
     
-    /// Method to fetch Data from API
+    /// Method to fetch Data from API and if fails atribute local data
     /// - Parameter completion: completion indicating if operation is finished and if it is successful
     func fetchCurrencies(completion: @escaping (NetworkError?) -> Void ) {
         var listModel: ListModel?
@@ -46,6 +47,7 @@ class CurrencyListViewModel {
         networkManager.request(model: LiveModel.self) { (result) in
             switch result {
             case .success(let liveModelData):
+                UserDefaults.timeStamp = liveModelData.timestamp
                 liveModel = liveModelData
             case .failure(let error):
                 networkError = error
@@ -57,8 +59,21 @@ class CurrencyListViewModel {
             self.buildCurrencyModel(list: listModel, live: liveModel)
             if self.currencies.isEmpty {
                 networkError = .unknownError
+                self.coreDataManager.fetch(completion: { (result) in
+                    switch result{
+                    case (.success(let currencies)):
+                        self.currencies = currencies
+                    default:
+                        print("default")
+                    }
+                    completion(networkError)
+                })
+            } else {
+                let values = self.currencies.map({$0.getValuesDict()})
+                self.coreDataManager.create(values: values)
+                completion(networkError)
             }
-            completion(networkError)
+            
         }
     }
     

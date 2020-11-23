@@ -41,7 +41,6 @@ class CoreDataManager {
     func fetch(completion: @escaping ((Result<[CurrencyModel], Error>) -> Void)) {
         
         let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: currencyEntity)
-        fetchRequest.predicate = NSPredicate(value: true)
         
         let asyncRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (result) in
             

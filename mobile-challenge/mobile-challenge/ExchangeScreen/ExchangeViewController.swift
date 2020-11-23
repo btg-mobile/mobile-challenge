@@ -52,6 +52,7 @@ class ExchangeViewController: UIViewController {
                     self?.present(alert, animated: true, completion: nil)
                 }
                
+                self?.exchangeView.timeStampLabel.text = "Cotação do dia \(TimeStampFormatter.timeStamp)"
                 self?.exchangeView.toStackView.valueTextField.text = result
             }
         }

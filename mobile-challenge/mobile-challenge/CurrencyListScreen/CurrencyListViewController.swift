@@ -39,13 +39,13 @@ class CurrencyListViewController: UIViewController {
         
         currencyListViewModel.fetchCurrencies { (error) in
             DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
                 if let error = error {
                     self.alert.message = error.errorDescription
                     self.present(self.alert, animated: true, completion: nil)
-                } else {
-                    self.currencyListView.tableView.reloadData()
                 }
-                self.activityIndicator.stopAnimating()
+                self.currencyListView.tableView.reloadData()
+                
             }
         }
     }
