@@ -7,8 +7,10 @@
 
 import Foundation
 
+/// Method to prepare Currency data to be shown in the view
 class CurrencyListViewModel {
 
+    //Properties
     private let networkManager = NetworkManager()
     var currencies = [CurrencyModel]()
     
@@ -20,6 +22,8 @@ class CurrencyListViewModel {
         return currencies.sorted { $0.code < $1.code }
     }
     
+    /// Method to fetch Data from API
+    /// - Parameter completion: completion indicating if operation is finished and if it is successful
     func fetchCurrencies(completion: @escaping ([Error]?) -> Void ) {
         var listModel: ListModel?
         var liveModel: LiveModel?
@@ -57,8 +61,10 @@ class CurrencyListViewModel {
         }
     }
     
-    
-    
+    /// Method to make data from API fit into CurrencyModel
+    /// - Parameters:
+    ///   - list: Struct fetched from API list call
+    ///   - live:  Struct fetched from API live call
     private func buildCurrencyModel(list: ListModel?, live: LiveModel?) {
         guard let currencyNames = list?.currencies else { return }
         guard let currencyValues = live?.quotes else { return }

@@ -29,11 +29,6 @@ class CurrencyListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        axis = .vertical
-//        alignment = .center
-//        distribution = .equalSpacing
-//        spacing = 0
-        
         setupViews()
     }
     

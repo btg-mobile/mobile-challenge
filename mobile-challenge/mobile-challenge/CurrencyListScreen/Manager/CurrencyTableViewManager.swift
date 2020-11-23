@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Class used to manage CurrencyTableView
 class CurrencyTableViewManager: NSObject {
     let currencyListViewModel: CurrencyListViewModel
     var sortType: sortType = .name
@@ -15,6 +16,7 @@ class CurrencyTableViewManager: NSObject {
         self.currencyListViewModel = currencyListViewModel
     }
     
+    /// Method to change the way data is sorted
     func changeOrder() {
         if sortType == .code {
             sortType = .name
