@@ -35,11 +35,15 @@ class CurrencyListViewController: UIViewController {
         currencyListView.changeOrder = { [weak self] in
             self?.manager?.changeOrder()
         }
+        
+        manager?.didSelectCurrency = { [weak self] currency in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     private func setupTableView() {        
         currencyListView.tableView.delegate = manager
         currencyListView.tableView.dataSource = manager
     }
-
 }

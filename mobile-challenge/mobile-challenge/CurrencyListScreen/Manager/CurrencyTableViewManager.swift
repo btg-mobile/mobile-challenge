@@ -11,6 +11,7 @@ import Foundation
 class CurrencyTableViewManager: NSObject {
     let currencyListViewModel: CurrencyListViewModel
     var sortType: sortType = .name
+    var didSelectCurrency: ((CurrencyModel) -> Void)?
     
     init(currencyListViewModel: CurrencyListViewModel){
         self.currencyListViewModel = currencyListViewModel
