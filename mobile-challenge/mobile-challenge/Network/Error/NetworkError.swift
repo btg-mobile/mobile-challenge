@@ -16,11 +16,11 @@ enum NetworkError: Error {
     
     var errorDescription: String? {
         switch self {
-        case .deviceOffline: return "Dispositivo sem conexão."
-        case .unknownError: return "Ocorreu um erro."
-        case .APIError: return "Erro na requisição."
-        case .decodeFailure: return "Erro na intrepretação de dados."
-        case .invalidURL: return "URL inválida."
+        case .deviceOffline: return "Dispositivo sem conexão. Os dados podem estar desatualizados."
+        case .unknownError: return "Ocorreu um erro. Os dados podem estar desatualizados."
+        case .APIError: return "Erro na requisição. Os dados podem estar desatualizados."
+        case .decodeFailure: return "Erro na intrepretação de dados. Os dados podem estar desatualizados."
+        case .invalidURL: return "URL inválida. Os dados podem estar desatualizados."
         }
     }
 }
