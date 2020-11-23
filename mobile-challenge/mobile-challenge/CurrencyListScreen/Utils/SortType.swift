@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum sortType {
+enum sortType: Int {
     case code
     case name
 }

@@ -23,6 +23,8 @@ extension CurrencyTableViewManager: UITableViewDataSource {
             cell.currency = currencyListViewModel.currenciesByName[indexPath.row]
         }
         
+        cell.setupViews()
+        
         return cell
     }
 }

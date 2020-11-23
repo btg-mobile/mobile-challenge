@@ -9,7 +9,7 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
 
-    let tableView = CurrencyTableView()
+    let currencyListView = CurrencyListView()
     var manager: CurrencyTableViewManager?
     let currencyListViewModel = CurrencyListViewModel()
     
@@ -18,17 +18,21 @@ class CurrencyListViewController: UIViewController {
         // Do any additional setup after loading the view.
         manager = CurrencyTableViewManager(currencyListViewModel: currencyListViewModel)
         
+        view = currencyListView
+        view.backgroundColor = .systemBackground
+        
+        setupTableView()
+        
         currencyListViewModel.fetchCurrencies { (errors) in
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.currencyListView.tableView.reloadData()
+            }
         }
     }
     
-    func setupTableView() {
-        view.addSubview(tableView)
-        tableView.frame = view.frame
-        
-        tableView.delegate = manager
-        tableView.dataSource = manager
+    func setupTableView() {        
+        currencyListView.tableView.delegate = manager
+        currencyListView.tableView.dataSource = manager
     }
 
 }

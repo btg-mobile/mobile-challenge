@@ -20,13 +20,13 @@ class CurrencyTableViewCell: UITableViewCell {
     var currencyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setupViews()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,10 +39,9 @@ class CurrencyTableViewCell: UITableViewCell {
 extension CurrencyTableViewCell: ViewCodable {
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            currencyLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            currencyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             currencyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            currencyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10)
+            currencyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
+            currencyLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
