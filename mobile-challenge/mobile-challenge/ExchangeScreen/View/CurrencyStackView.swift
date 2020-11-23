@@ -63,6 +63,7 @@ extension CurrencyStackView: ViewCodable {
             valueTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             valueTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
             valueTextField.topAnchor.constraint(equalTo: topAnchor),
+            valueTextField.widthAnchor.constraint(equalToConstant: 120),
             
             currencyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10),
             currencyButton.topAnchor.constraint(equalTo: topAnchor),
