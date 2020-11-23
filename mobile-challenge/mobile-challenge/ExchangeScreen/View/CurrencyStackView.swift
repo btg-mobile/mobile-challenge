@@ -10,13 +10,21 @@ import UIKit
 
 class CurrencyStackView: UIStackView {
     
-    var buttonType: ButtonType?
+    var buttonType: ButtonType? {
+        didSet {
+            if buttonType == .to {
+                valueTextField.isUserInteractionEnabled = false
+            } else {
+                convertButtonKeyBoard()
+            }
+        }
+    }
     
     var valueTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.keyboardType = .numberPad
-        textField.text = "0.00"
+        textField.text = "00"
         textField.borderStyle = .roundedRect
         textField.textAlignment = .right
         return textField
@@ -35,6 +43,7 @@ class CurrencyStackView: UIStackView {
     }()
     
     var selectCurrency: ((ButtonType?) -> Void)?
+    var convertCurrency: ((String) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,6 +63,25 @@ class CurrencyStackView: UIStackView {
     
     @objc func showCurrencyScreen() {
         selectCurrency?(buttonType)
+    }
+    
+    func convertButtonKeyBoard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismiss))
+        let convertButton = UIBarButtonItem(title: "Converter", style: .done, target: self, action: #selector(didTapConvert))
+        keyboardToolbar.items = [flexSpace, convertButton]
+       
+        valueTextField.inputAccessoryView = keyboardToolbar
+    }
+
+    @objc func dismiss() {
+        endEditing(true)
+    }
+    
+    @objc func didTapConvert() {
+        convertCurrency?(valueTextField.text ?? "")
+        endEditing(true)
     }
 }
 

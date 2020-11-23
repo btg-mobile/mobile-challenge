@@ -17,8 +17,8 @@ class ExchangeViewModel {
         guard let fromValue = fromCurrency?.value else { return "" }
         guard let toValue = toCurrency?.value else { return "" }
         
-        let dollarValue = fromValue*value
-        let finalValue = toValue*dollarValue
+        let dollarValue = fromValue/value
+        let finalValue = toValue/dollarValue
         
         return String(format: "%.2f", finalValue)
     }

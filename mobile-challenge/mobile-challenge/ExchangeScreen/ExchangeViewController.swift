@@ -33,6 +33,10 @@ class ExchangeViewController: UIViewController {
         
         exchangeView.fromStackView.selectCurrency = showCurrencyVC
         exchangeView.toStackView.selectCurrency = showCurrencyVC
+        
+        exchangeView.fromStackView.convertCurrency = { [weak self] value in
+            self?.exchangeView.toStackView.valueTextField.text = self?.exchangeViewModel.convertCurrencies(value: value)
+        }
     }
 
     private func setupConstraints(){
@@ -59,5 +63,3 @@ extension ExchangeViewController: SelectCurrencyDelegate {
         }
     }
 }
-
-
