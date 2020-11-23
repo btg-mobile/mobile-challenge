@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyListView: UIStackView {
+class CurrencyListView: UIView {
 
     var tableView: CurrencyTableView = {
         let tableView = CurrencyTableView()
@@ -17,20 +17,22 @@ class CurrencyListView: UIStackView {
     }()
     
     var sortSegmentedControl: UISegmentedControl {
-        let segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Nome", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Código", at: 1, animated: true)
+        let items = ["Nome", "Código"]
+        let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(didChangeSort), for: .valueChanged)
         return segmentedControl
     }
     
+    var changeOrder: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        axis = .vertical
-        alignment = .center
-        distribution = .equalSpacing
-        spacing = 0
+//        axis = .vertical
+//        alignment = .center
+//        distribution = .equalSpacing
+//        spacing = 0
         
         setupViews()
     }
@@ -40,7 +42,8 @@ class CurrencyListView: UIStackView {
     }
 
     @objc func didChangeSort() {
-        
+        changeOrder?()
+        tableView.reloadData()
     }
     
 }
@@ -48,19 +51,18 @@ class CurrencyListView: UIStackView {
 extension CurrencyListView: ViewCodable {
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: topAnchor)
-                        
-//            sortSegmentedControl.topAnchor.constraint(equalTo: topAnchor),
-//            sortSegmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            sortSegmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor)
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
         ])
     }
     
     func setupViewHierarchy() {
-        addArrangedSubview(sortSegmentedControl)
-        addArrangedSubview(tableView)
+        addSubview(tableView)
+    }
+    
+    func setupAdditionalConfiguration() {
+        tableView.tableHeaderView = sortSegmentedControl
     }
 }

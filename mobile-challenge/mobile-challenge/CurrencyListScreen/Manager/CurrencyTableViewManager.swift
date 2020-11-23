@@ -14,4 +14,13 @@ class CurrencyTableViewManager: NSObject {
     init(currencyListViewModel: CurrencyListViewModel){
         self.currencyListViewModel = currencyListViewModel
     }
+    
+    func changeOrder() {
+        if sortType == .code {
+            sortType = .name
+        } else {
+            sortType
+                = .code
+        }
+    }
 }

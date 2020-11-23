@@ -22,6 +22,7 @@ class CurrencyListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         setupTableView()
+        setupClosures()
         
         currencyListViewModel.fetchCurrencies { (errors) in
             DispatchQueue.main.async {
@@ -30,7 +31,13 @@ class CurrencyListViewController: UIViewController {
         }
     }
     
-    func setupTableView() {        
+    private func setupClosures() {
+        currencyListView.changeOrder = { [weak self] in
+            self?.manager?.changeOrder()
+        }
+    }
+    
+    private func setupTableView() {        
         currencyListView.tableView.delegate = manager
         currencyListView.tableView.dataSource = manager
     }
