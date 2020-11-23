@@ -30,7 +30,7 @@ class NetworkManager {
             if let error = error {
                 var networkError: NetworkError = .unknownError
                 if error.localizedDescription.uppercased().contains("OFFLINE") {
-                    networkError = .APIOffline
+                    networkError = .deviceOffline
                 }
                 result(.failure(networkError))
                 return

@@ -24,10 +24,10 @@ class CurrencyListViewModel {
     
     /// Method to fetch Data from API
     /// - Parameter completion: completion indicating if operation is finished and if it is successful
-    func fetchCurrencies(completion: @escaping ([Error]?) -> Void ) {
+    func fetchCurrencies(completion: @escaping (NetworkError?) -> Void ) {
         var listModel: ListModel?
         var liveModel: LiveModel?
-        var errors = [NetworkError]()
+        var networkError: NetworkError?
         
         let dispatchGroup = DispatchGroup()
         
@@ -37,8 +37,7 @@ class CurrencyListViewModel {
             case .success(let listModelData):
                 listModel = listModelData
             case .failure(let error):
-                errors.append(error)
-                print(error)
+                networkError = error
             }
             dispatchGroup.leave()
         }
@@ -49,15 +48,17 @@ class CurrencyListViewModel {
             case .success(let liveModelData):
                 liveModel = liveModelData
             case .failure(let error):
-                errors.append(error)
-                print(error)
+                networkError = error
             }
             dispatchGroup.leave()
         }
         
         dispatchGroup.notify(queue: .main) {
             self.buildCurrencyModel(list: listModel, live: liveModel)
-            completion(errors)
+            if self.currencies.isEmpty {
+                networkError = .unknownError
+            }
+            completion(networkError)
         }
     }
     

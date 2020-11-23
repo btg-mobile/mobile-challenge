@@ -13,6 +13,7 @@ class CurrencyListViewController: UIViewController {
     var manager: CurrencyTableViewManager?
     let currencyListViewModel = CurrencyListViewModel()
     weak var selectDelegate: SelectCurrencyDelegate?
+    let alert = UIAlertController(title: "Erro", message: nil, preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,23 @@ class CurrencyListViewController: UIViewController {
         setupTableView()
         setupClosures()
         setupSearchBar()
+        setupAction()
         
-        currencyListViewModel.fetchCurrencies { (errors) in
+        currencyListViewModel.fetchCurrencies { (error) in
             DispatchQueue.main.async {
-                self.currencyListView.tableView.reloadData()
+                if let error = error {
+                    self.alert.message = error.errorDescription
+                    self.present(self.alert, animated: true, completion: nil)
+                } else {
+                    self.currencyListView.tableView.reloadData()
+                }
             }
         }
+    }
+    
+    private func setupAction() {
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
     }
     
     private func setupSearchBar() {
