@@ -10,6 +10,8 @@ import UIKit
 
 class CurrencyStackView: UIStackView {
     
+    var buttonType: ButtonType?
+    
     var valueTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -32,11 +34,11 @@ class CurrencyStackView: UIStackView {
         return button
     }()
     
-    var selectCurrency: (() -> Void)?
+    var selectCurrency: ((ButtonType?) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+    
         axis = .horizontal
         distribution = .fillProportionally
         alignment = .center
@@ -51,7 +53,7 @@ class CurrencyStackView: UIStackView {
     }
     
     @objc func showCurrencyScreen() {
-        selectCurrency?()
+        selectCurrency?(buttonType)
     }
 }
 

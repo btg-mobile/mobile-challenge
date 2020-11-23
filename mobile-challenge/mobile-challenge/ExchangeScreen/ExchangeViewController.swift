@@ -10,6 +10,8 @@ import UIKit
 class ExchangeViewController: UIViewController {
 
     private let exchangeView = ExchangeView()
+    private var buttonPressed: ButtonType?
+    private let exchangeViewModel = ExchangeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,8 @@ class ExchangeViewController: UIViewController {
     }
     
     private func setupClosures() {
-        let showCurrencyVC = { [weak self] in
+        let showCurrencyVC: (ButtonType?) -> Void = { [weak self] buttonType in
+            self?.buttonPressed = buttonType
             let currencyListVC = CurrencyListViewController()
             currencyListVC.selectDelegate = self
             self?.present(currencyListVC, animated: true, completion: nil)
@@ -44,7 +47,17 @@ class ExchangeViewController: UIViewController {
 
 extension ExchangeViewController: SelectCurrencyDelegate {
     func getCurrency(currency: CurrencyModel) {
-        
+        switch buttonPressed {
+        case .from:
+            exchangeView.fromStackView.currencyButton.setTitle(currency.name, for: .normal)
+            exchangeViewModel.fromCurrency = currency
+        case .to:
+            exchangeView.toStackView.currencyButton.setTitle(currency.name, for: .normal)
+            exchangeViewModel.toCurrency = currency
+        case .none:
+            buttonPressed = nil
+        }
     }
 }
+
 

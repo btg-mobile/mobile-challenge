@@ -38,6 +38,7 @@ class CurrencyListViewController: UIViewController {
         }
         
         manager?.didSelectCurrency = { [weak self] currency in
+            self?.selectDelegate?.getCurrency(currency: currency)
             self?.dismiss(animated: true, completion: nil)
         }
         

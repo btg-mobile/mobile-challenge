@@ -16,6 +16,9 @@ class ExchangeView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        fromStackView.buttonType = .from
+        toStackView.buttonType = .to
+        
         axis = .vertical
         distribution = .fill
         spacing = 18
