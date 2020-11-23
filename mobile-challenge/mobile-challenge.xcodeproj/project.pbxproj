@@ -41,6 +41,9 @@
 		49D7E054256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E053256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift */; };
 		49D7E059256B61BD00CCF3BB /* ExchangeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E058256B61BD00CCF3BB /* ExchangeError.swift */; };
 		49D7E065256B67A400CCF3BB /* UserDefaults+CustomProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E064256B67A400CCF3BB /* UserDefaults+CustomProperties.swift */; };
+		49D7E071256B68B700CCF3BB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E070256B68B700CCF3BB /* CoreDataStack.swift */; };
+		49D7E079256B68CF00CCF3BB /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */; };
+		49D7E07E256B68E800CCF3BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,9 @@
 		49D7E053256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyTableViewManager+SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		49D7E058256B61BD00CCF3BB /* ExchangeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeError.swift; sourceTree = "<group>"; };
 		49D7E064256B67A400CCF3BB /* UserDefaults+CustomProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+CustomProperties.swift"; sourceTree = "<group>"; };
+		49D7E070256B68B700CCF3BB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
+		49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,9 +359,20 @@
 		49D7E063256B678C00CCF3BB /* StorageLayer */ = {
 			isa = PBXGroup;
 			children = (
+				49D7E06F256B68A900CCF3BB /* CoreData */,
 				49D7E064256B67A400CCF3BB /* UserDefaults+CustomProperties.swift */,
 			);
 			path = StorageLayer;
+			sourceTree = "<group>";
+		};
+		49D7E06F256B68A900CCF3BB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				49D7E070256B68B700CCF3BB /* CoreDataStack.swift */,
+				49D7E078256B68CF00CCF3BB /* CoreDataProtocol.swift */,
+				49D7E07D256B68E800CCF3BB /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,9 +510,11 @@
 				492B7F30256A97EC00EA4B36 /* ExchangeViewController.swift in Sources */,
 				492B7F8F256A9BB400EA4B36 /* LiveModel.swift in Sources */,
 				49D7E059256B61BD00CCF3BB /* ExchangeError.swift in Sources */,
+				49D7E079256B68CF00CCF3BB /* CoreDataProtocol.swift in Sources */,
 				492B8009256B24EA00EA4B36 /* CurrencyTableView.swift in Sources */,
 				492B7F7D256A9AE900EA4B36 /* DataModelProtocol.swift in Sources */,
 				492B7FC9256AE0D900EA4B36 /* CurrencyTableViewCell.swift in Sources */,
+				49D7E071256B68B700CCF3BB /* CoreDataStack.swift in Sources */,
 				492B7F2C256A97EC00EA4B36 /* AppDelegate.swift in Sources */,
 				492B7FC1256ADFD400EA4B36 /* CurrencyModel.swift in Sources */,
 				49D7E03A256B440200CCF3BB /* ButtonType.swift in Sources */,
@@ -503,6 +522,7 @@
 				492B7FAC256AA1CA00EA4B36 /* ViewCodable.swift in Sources */,
 				492B7FF1256B236A00EA4B36 /* SortType.swift in Sources */,
 				492B7F73256A99A900EA4B36 /* NetworkManager.swift in Sources */,
+				49D7E07E256B68E800CCF3BB /* CoreDataManager.swift in Sources */,
 				492B7F2E256A97EC00EA4B36 /* SceneDelegate.swift in Sources */,
 				492B7F36256A97EC00EA4B36 /* mobile_challenge.xcdatamodeld in Sources */,
 				49D7E054256B540100CCF3BB /* CurrencyTableViewManager+SearchBarDelegate.swift in Sources */,
