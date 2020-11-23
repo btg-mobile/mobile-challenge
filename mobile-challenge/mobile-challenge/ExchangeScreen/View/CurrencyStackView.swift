@@ -24,7 +24,7 @@ class CurrencyStackView: UIStackView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.keyboardType = .numberPad
-        textField.text = "00"
+        textField.placeholder = "00"
         textField.borderStyle = .roundedRect
         textField.textAlignment = .right
         return textField
@@ -68,9 +68,10 @@ class CurrencyStackView: UIStackView {
     func convertButtonKeyBoard() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismiss))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismiss))
         let convertButton = UIBarButtonItem(title: "Converter", style: .done, target: self, action: #selector(didTapConvert))
-        keyboardToolbar.items = [flexSpace, convertButton]
+        keyboardToolbar.items = [cancelButton, flexSpace, convertButton]
        
         valueTextField.inputAccessoryView = keyboardToolbar
     }
