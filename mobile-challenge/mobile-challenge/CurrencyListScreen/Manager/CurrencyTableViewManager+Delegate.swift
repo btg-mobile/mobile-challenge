@@ -13,6 +13,7 @@ extension CurrencyTableViewManager: UITableViewDelegate {
         
         if isFiltering {
             didSelectCurrency?(filteredCurrencies[indexPath.row])
+            return
         }
         
         guard let currencyList = currencyListViewModel else { return }

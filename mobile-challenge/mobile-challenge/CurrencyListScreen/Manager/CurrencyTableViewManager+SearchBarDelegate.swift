@@ -8,12 +8,7 @@
 import Foundation
 import UIKit
 
-extension CurrencyTableViewManager: UISearchBarDelegate, UISearchResultsUpdating {
-   
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
+extension CurrencyTableViewManager: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
