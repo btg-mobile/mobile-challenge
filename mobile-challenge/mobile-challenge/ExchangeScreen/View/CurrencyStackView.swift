@@ -24,16 +24,22 @@ class CurrencyStackView: UIStackView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Escolha a moeda", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .gray
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(showCurrencyScreen), for: .touchUpInside)
         return button
     }()
+    
+    var selectCurrency: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         axis = .horizontal
-        distribution = .equalSpacing
-        alignment = .fill
+        distribution = .fillProportionally
+        alignment = .center
         spacing = 10
         translatesAutoresizingMaskIntoConstraints = false
        
@@ -42,6 +48,10 @@ class CurrencyStackView: UIStackView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func showCurrencyScreen() {
+        selectCurrency?()
     }
 }
 

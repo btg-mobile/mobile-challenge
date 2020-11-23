@@ -36,6 +36,7 @@
 		492B8009256B24EA00EA4B36 /* CurrencyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B8008256B24EA00EA4B36 /* CurrencyTableView.swift */; };
 		492B8012256B26BE00EA4B36 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B8011256B26BE00EA4B36 /* CurrencyListView.swift */; };
 		49D7E021256B3A7000CCF3BB /* SelectCurrencyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E020256B3A7000CCF3BB /* SelectCurrencyDelegate.swift */; };
+		49D7E02D256B3F3800CCF3BB /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7E02C256B3F3800CCF3BB /* ExchangeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		492B8008256B24EA00EA4B36 /* CurrencyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableView.swift; sourceTree = "<group>"; };
 		492B8011256B26BE00EA4B36 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
 		49D7E020256B3A7000CCF3BB /* SelectCurrencyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyDelegate.swift; sourceTree = "<group>"; };
+		49D7E02C256B3F3800CCF3BB /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				492B7F2F256A97EC00EA4B36 /* ExchangeViewController.swift */,
 				492B7FA9256AA1A200EA4B36 /* View */,
 				49D7E025256B3A7600CCF3BB /* Delegate */,
+				49D7E02C256B3F3800CCF3BB /* ExchangeViewModel.swift */,
 			);
 			path = ExchangeScreen;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				492B7FB6256ACDA500EA4B36 /* CurrencyStackView.swift in Sources */,
 				492B7FCE256AE38500EA4B36 /* CurrencyTableViewManager.swift in Sources */,
 				492B7FD9256B20B200EA4B36 /* CurrencyTableViewManager+DataSource.swift in Sources */,
+				49D7E02D256B3F3800CCF3BB /* ExchangeViewModel.swift in Sources */,
 				492B7F8A256A9B6400EA4B36 /* ListModel.swift in Sources */,
 				49D7E021256B3A7000CCF3BB /* SelectCurrencyDelegate.swift in Sources */,
 			);

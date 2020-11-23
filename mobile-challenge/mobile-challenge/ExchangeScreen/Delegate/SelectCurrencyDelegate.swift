@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SelectCurrencyDelegate {
+protocol SelectCurrencyDelegate: AnyObject {
     func getCurrency(currency: CurrencyModel)
 }

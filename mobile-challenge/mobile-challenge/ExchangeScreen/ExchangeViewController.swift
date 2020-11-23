@@ -18,15 +18,33 @@ class ExchangeViewController: UIViewController {
         view.addSubview(exchangeView)
         view.backgroundColor = .systemBackground
         setupConstraints()
+        setupClosures()
+    }
+    
+    private func setupClosures() {
+        let showCurrencyVC = { [weak self] in
+            let currencyListVC = CurrencyListViewController()
+            currencyListVC.selectDelegate = self
+            self?.present(currencyListVC, animated: true, completion: nil)
+        }
+        
+        exchangeView.fromStackView.selectCurrency = showCurrencyVC
+        exchangeView.toStackView.selectCurrency = showCurrencyVC
     }
 
     private func setupConstraints(){
         NSLayoutConstraint.activate([
             exchangeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             exchangeView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            exchangeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            exchangeView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             exchangeView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
+    }
+}
+
+extension ExchangeViewController: SelectCurrencyDelegate {
+    func getCurrency(currency: CurrencyModel) {
+        
     }
 }
 

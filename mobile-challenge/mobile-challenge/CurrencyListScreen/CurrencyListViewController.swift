@@ -12,6 +12,7 @@ class CurrencyListViewController: UIViewController {
     let currencyListView = CurrencyListView()
     var manager: CurrencyTableViewManager?
     let currencyListViewModel = CurrencyListViewModel()
+    weak var selectDelegate: SelectCurrencyDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
