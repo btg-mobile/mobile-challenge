@@ -14,6 +14,11 @@ class CurrencyListViewController: UIViewController {
     private let currencyListViewModel = CurrencyListViewModel()
     weak var selectDelegate: SelectCurrencyDelegate?
     private let alert = UIAlertController(title: "Erro", message: nil, preferredStyle: .alert)
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,10 @@ class CurrencyListViewController: UIViewController {
         setupSearchBar()
         setupAction()
         
+        view.addSubview(activityIndicator)
+        setupActivityIndicator()
+        activityIndicator.startAnimating()
+        
         currencyListViewModel.fetchCurrencies { (error) in
             DispatchQueue.main.async {
                 if let error = error {
@@ -36,8 +45,16 @@ class CurrencyListViewController: UIViewController {
                 } else {
                     self.currencyListView.tableView.reloadData()
                 }
+                self.activityIndicator.stopAnimating()
             }
         }
+    }
+    
+    private func setupActivityIndicator() {
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
     
     private func setupAction() {
