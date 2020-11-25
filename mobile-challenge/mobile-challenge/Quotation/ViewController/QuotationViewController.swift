@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class QuotationViewController: UIViewController {
+    
+    var coordinator: Coordinator?
     
     override func loadView() {
         super.loadView()
