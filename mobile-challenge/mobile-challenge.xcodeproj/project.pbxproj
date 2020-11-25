@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C92DF5EB256E129D007589A1 /* PassCurrencyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */; };
 		C94C728D256DB5AB0082D3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C728C256DB5AB0082D3A6 /* AppDelegate.swift */; };
 		C94C728F256DB5AB0082D3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C728E256DB5AB0082D3A6 /* SceneDelegate.swift */; };
 		C94C7291256DB5AB0082D3A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C7290256DB5AB0082D3A6 /* ViewController.swift */; };
@@ -15,6 +16,9 @@
 		C94C7299256DB5AF0082D3A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94C7297256DB5AF0082D3A6 /* LaunchScreen.storyboard */; };
 		C94C72A4256DB5AF0082D3A6 /* mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C72A3256DB5AF0082D3A6 /* mobile_challengeTests.swift */; };
 		C94C72AF256DB5AF0082D3A6 /* mobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C72AE256DB5AF0082D3A6 /* mobile_challengeUITests.swift */; };
+		C94C72C6256DD5180082D3A6 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */; };
+		C94C72CB256DD54F0082D3A6 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C72CA256DD54F0082D3A6 /* CurrencyCell.swift */; };
+		C94C731B256E0A380082D3A6 /* CurrencyTypesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCurrencyDelegate.swift; sourceTree = "<group>"; };
 		C94C7289256DB5AB0082D3A6 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94C728C256DB5AB0082D3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C94C728E256DB5AB0082D3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,9 @@
 		C94C72AA256DB5AF0082D3A6 /* mobile-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94C72AE256DB5AF0082D3A6 /* mobile_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challengeUITests.swift; sourceTree = "<group>"; };
 		C94C72B0256DB5AF0082D3A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
+		C94C72CA256DD54F0082D3A6 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTypesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C92DF5E9256E1288007589A1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		C94C7280256DB5AB0082D3A6 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +115,12 @@
 		C94C728B256DB5AB0082D3A6 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				C92DF5E9256E1288007589A1 /* Protocols */,
+				C94C72C1256DD39A0082D3A6 /* ViewModel */,
+				C94C72C0256DD38E0082D3A6 /* View */,
+				C94C72BF256DD3850082D3A6 /* Model */,
 				C94C728C256DB5AB0082D3A6 /* AppDelegate.swift */,
 				C94C728E256DB5AB0082D3A6 /* SceneDelegate.swift */,
-				C94C7290256DB5AB0082D3A6 /* ViewController.swift */,
-				C94C7292256DB5AB0082D3A6 /* Main.storyboard */,
 				C94C7295256DB5AF0082D3A6 /* Assets.xcassets */,
 				C94C7297256DB5AF0082D3A6 /* LaunchScreen.storyboard */,
 				C94C729A256DB5AF0082D3A6 /* Info.plist */,
@@ -126,6 +144,32 @@
 				C94C72B0256DB5AF0082D3A6 /* Info.plist */,
 			);
 			path = "mobile-challengeUITests";
+			sourceTree = "<group>";
+		};
+		C94C72BF256DD3850082D3A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C94C72CA256DD54F0082D3A6 /* CurrencyCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C94C72C0256DD38E0082D3A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C94C7290256DB5AB0082D3A6 /* ViewController.swift */,
+				C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */,
+				C94C7292256DB5AB0082D3A6 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C94C72C1256DD39A0082D3A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +302,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94C72CB256DD54F0082D3A6 /* CurrencyCell.swift in Sources */,
 				C94C7291256DB5AB0082D3A6 /* ViewController.swift in Sources */,
+				C94C731B256E0A380082D3A6 /* CurrencyTypesService.swift in Sources */,
+				C92DF5EB256E129D007589A1 /* PassCurrencyDelegate.swift in Sources */,
 				C94C728D256DB5AB0082D3A6 /* AppDelegate.swift in Sources */,
 				C94C728F256DB5AB0082D3A6 /* SceneDelegate.swift in Sources */,
+				C94C72C6256DD5180082D3A6 /* CurrenciesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
