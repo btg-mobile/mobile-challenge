@@ -17,6 +17,8 @@
 		E22EA127256F03A300D10E62 /* mobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA126256F03A300D10E62 /* mobile_challengeUITests.swift */; };
 		E290217E256F13EC0059D042 /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290217D256F13EC0059D042 /* NetworkRequestProtocol.swift */; };
 		E2902183256F140A0059D042 /* NetworkServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2902182256F140A0059D042 /* NetworkServiceType.swift */; };
+		E2902188256F14AD0059D042 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2902187256F14AD0059D042 /* NetworkManager.swift */; };
+		E290218E256F18060059D042 /* Quotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290218D256F18060059D042 /* Quotation.swift */; };
 		E2B724EB256F0983006AC96D /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B724EA256F0983006AC96D /* ViewCodable.swift */; };
 		E2B724FA256F0BF2006AC96D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B724F9256F0BF2006AC96D /* Coordinator.swift */; };
 		E2B7250A256F0E58006AC96D /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B72509256F0E58006AC96D /* ApplicationCoordinator.swift */; };
@@ -57,6 +59,8 @@
 		E22EA128256F03A300D10E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E290217D256F13EC0059D042 /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestProtocol.swift; sourceTree = "<group>"; };
 		E2902182256F140A0059D042 /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
+		E2902187256F14AD0059D042 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E290218D256F18060059D042 /* Quotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotation.swift; sourceTree = "<group>"; };
 		E2B724EA256F0983006AC96D /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		E2B724F9256F0BF2006AC96D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E2B72509256F0E58006AC96D /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
@@ -155,8 +159,17 @@
 			children = (
 				E290217D256F13EC0059D042 /* NetworkRequestProtocol.swift */,
 				E2902182256F140A0059D042 /* NetworkServiceType.swift */,
+				E2902187256F14AD0059D042 /* NetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E290218C256F17F30059D042 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E290218D256F18060059D042 /* Quotation.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E2B724E9256F0967006AC96D /* General */ = {
@@ -181,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				E2B72500256F0D21006AC96D /* Coordinator */,
+				E290218C256F17F30059D042 /* Model */,
 				E2B724FF256F0D18006AC96D /* ViewController */,
 			);
 			path = Quotation;
@@ -342,11 +356,13 @@
 			files = (
 				E2902183256F140A0059D042 /* NetworkServiceType.swift in Sources */,
 				E22EA109256F03A000D10E62 /* QuotationViewController.swift in Sources */,
+				E2902188256F14AD0059D042 /* NetworkManager.swift in Sources */,
 				E22EA105256F03A000D10E62 /* AppDelegate.swift in Sources */,
 				E2B724FA256F0BF2006AC96D /* Coordinator.swift in Sources */,
 				E2B72516256F1047006AC96D /* QuotationCoordinator.swift in Sources */,
 				E290217E256F13EC0059D042 /* NetworkRequestProtocol.swift in Sources */,
 				E22EA107256F03A000D10E62 /* SceneDelegate.swift in Sources */,
+				E290218E256F18060059D042 /* Quotation.swift in Sources */,
 				E2B724EB256F0983006AC96D /* ViewCodable.swift in Sources */,
 				E2B7250A256F0E58006AC96D /* ApplicationCoordinator.swift in Sources */,
 			);
