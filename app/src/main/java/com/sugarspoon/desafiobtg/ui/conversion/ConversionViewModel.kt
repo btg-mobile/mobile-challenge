@@ -29,50 +29,36 @@ class ConversionViewModel(
     private val allCurrenciesOnDb = repositoryLocal.allCurrencies
     private val allQuotations = repositoryLocal.allQuotations
     private var currencies: List<CurrencyEntity>? = null
-    private val _stateLoading = MutableLiveData<Boolean>()
-
-    var stateLoading: LiveData<Boolean> = _stateLoading
-    private val _stateOriginText = MutableLiveData<String>()
-    var stateOriginText = _stateOriginText
-    private val _stateDestinyText = MutableLiveData<String>()
-    var stateDestinyText = _stateDestinyText
-    private val _amountFinal = MutableLiveData<String>()
-    var amountFinal = _amountFinal
-    private val _buttonOriginIsVisible = MutableLiveData<Boolean>()
-    var buttonOriginIsVisible = _buttonOriginIsVisible
-    private val _buttonDestinyIsVisible = MutableLiveData<Boolean>()
-    var buttonDestinyIsVisible = _buttonDestinyIsVisible
-    private val _displayError = MutableLiveData<String>()
-    var displayError = _displayError
-
     private var changeOptions = ChangeOptions()
+    private val _state = MutableLiveData<ConversionStates>()
+    var state = _state
 
     private fun loadCurrencies() {
-        if(currencies.isNullOrEmpty()) {
-            _stateLoading.value = true
+        if (currencies.isNullOrEmpty()) {
+            _state.value = ConversionStates(stateLoading = true)
             compositeDisposable.add(repositoryRemote.fetchSupportedCurrencies().singleSubscribe(
                 onSuccess = {
                     saveCurrenciesOnDb(it.toListCurrencyModel())
-                    _stateLoading.value = false
+                    _state.value = ConversionStates(stateLoading = false)
                 },
                 onError = {
-                    _displayError.value = ERROR_CURRENCIES
-                    _stateLoading.value = false
+                    _state.value = ConversionStates(displayError = ERROR_CURRENCIES)
+                    _state.value = ConversionStates(stateLoading = false)
                 }
             ))
         }
     }
 
     private fun loadRealTimeRates() {
-        _stateLoading.value = true
+        _state.value = ConversionStates(stateLoading = true)
         compositeDisposable.add(repositoryRemote.fetchRealTimeRates().singleSubscribe(
             onSuccess = {
                 saveQuotationsOnDb(quotations = it.toListQuotationModel())
-                _stateLoading.value = false
+                _state.value = ConversionStates(stateLoading = false)
             },
             onError = {
-                _displayError.value = ERROR_QUOTE
-                _stateLoading.value = false
+                _state.value = ConversionStates(displayError = ERROR_QUOTE)
+                _state.value = ConversionStates(stateLoading = false)
             }
         ))
     }
@@ -83,7 +69,7 @@ class ConversionViewModel(
         currencies.forEach {
             repositoryLocal.insertCurrency(
                 CurrencyEntity(
-                    id = 0,
+                    id = DEFAULT_INTEGER,
                     code = it.code,
                     name = it.name
                 )
@@ -97,7 +83,7 @@ class ConversionViewModel(
         quotations.forEach {
             repositoryLocal.insertQuotation(
                 QuotationEntity(
-                    id = 0,
+                    id = DEFAULT_INTEGER,
                     code = it.code,
                     value = it.value
                 )
@@ -109,14 +95,14 @@ class ConversionViewModel(
         viewModelScope.launch {
             allCurrenciesOnDb.collect {
                 currencies = it
-                if(it.isNullOrEmpty()) {
+                if (it.isNullOrEmpty()) {
                     loadCurrencies()
                 }
             }
         }
         viewModelScope.launch {
             allQuotations.collect {
-                if(it.isNullOrEmpty()) {
+                if (it.isNullOrEmpty()) {
                     loadRealTimeRates()
                 }
             }
@@ -129,23 +115,30 @@ class ConversionViewModel(
         loadDataOnDb()
     }
 
+    fun onClear() {
+        compositeDisposable.dispose()
+    }
+
     fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
-        data: Intent?) {
-        if(resultCode == RESULT_OK) {
-            when(requestCode) {
+        data: Intent?
+    ) {
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
                 RESULT_FROM_ORIGIN -> {
-                    _stateOriginText.value = data?.getStringExtra(Constants.CODE_EXTRA_INTENT)
-                    _stateOriginText.value?.let {
-                        changeOptions.origin = repositoryLocal.getQuotationByCode(it)
+                    val argument = data?.getStringExtra(Constants.CODE_EXTRA_INTENT) ?: ""
+                    argument.run {
+                        _state.value = ConversionStates(stateOriginText = this)
+                        changeOptions.origin = repositoryLocal.getQuotationByCode(this)
                         collectOriginCurrency()
                     }
                 }
                 RESULT_FROM_DESTINY -> {
-                    _stateDestinyText.value = data?.getStringExtra(Constants.CODE_EXTRA_INTENT)
-                    _stateDestinyText.value?.let {
-                        changeOptions.destiny = repositoryLocal.getQuotationByCode(it)
+                    val argument = data?.getStringExtra(Constants.CODE_EXTRA_INTENT) ?: ""
+                    argument.run {
+                        _state.value = ConversionStates(stateDestinyText = this)
+                        changeOptions.destiny = repositoryLocal.getQuotationByCode(this)
                     }
                 }
             }
@@ -153,7 +146,9 @@ class ConversionViewModel(
     }
 
     fun setValueFromConvert(value: String) {
-        _buttonOriginIsVisible.value = value.isNotEmpty()
+        _state.value = ConversionStates(
+            buttonOriginIsVisible = value.isNotEmpty()
+        )
         changeOptions.valueToConvert = flowOf(
             value.trim().replace(",", ".").toFloat()
         )
@@ -168,7 +163,7 @@ class ConversionViewModel(
                             (valueToConvert * quote.value) * CORRECTION_FACTOR
                             valueInDollar =
                                 flowOf((valueToConvert * quote.value) * CORRECTION_FACTOR)
-                            _buttonDestinyIsVisible.value = true
+                            _state.value = ConversionStates(buttonDestinyIsVisible = true)
                         }
                     }
                 }
@@ -185,8 +180,13 @@ class ConversionViewModel(
                         destiny?.collect { quote ->
                             quote?.value?.run {
                                 changeOptions.valueInDollar?.collect { valueInDollar ->
-                                    _amountFinal.value = quote.code +
-                                            " ${(valueInDollar / quote.value).formatCurrencyBRL(showCurrency = false)}"
+                                    _state.value =
+                                        ConversionStates(
+                                            amount = quote.code + " ${
+                                                (valueInDollar / quote.value)
+                                                    .formatCurrencyBRL(showCurrency = false)
+                                            }"
+                                        )
                                 }
                             }
                         }
@@ -209,14 +209,6 @@ class ConversionViewModel(
         }
     }
 
-    companion object {
-        private const val RESULT_FROM_ORIGIN = 100
-        private const val RESULT_FROM_DESTINY = 200
-        private const val CORRECTION_FACTOR = 10
-        private const val ERROR_CURRENCIES = "Falha ao carregar os tipos de moedas, tente novamente mais tarde"
-        private const val ERROR_QUOTE = "Falha ao carregar as taxas de câmbio, tente novamente mais tarde"
-    }
-
     data class ChangeOptions(
         var origin: Flow<QuotationEntity?>? = null,
         var destiny: Flow<QuotationEntity?>? = null,
@@ -224,4 +216,25 @@ class ConversionViewModel(
         var valueToConvert: Flow<Float>? = null,
         var valueInDollar: Flow<Float>? = null,
     )
+
+    data class ConversionStates(
+        val stateLoading: Boolean? = false,
+        val stateOriginText: String? = null,
+        val stateDestinyText: String? = null,
+        val amount: String? = null,
+        val buttonOriginIsVisible: Boolean? = null,
+        val buttonDestinyIsVisible: Boolean? = null,
+        val displayError: String? = null
+    )
+
+    companion object {
+        private const val DEFAULT_INTEGER = 0
+        private const val RESULT_FROM_ORIGIN = 100
+        private const val RESULT_FROM_DESTINY = 200
+        private const val CORRECTION_FACTOR = 10
+        private const val ERROR_CURRENCIES =
+            "Falha ao carregar os tipos de moedas, tente novamente mais tarde"
+        private const val ERROR_QUOTE =
+            "Falha ao carregar as taxas de câmbio, tente novamente mais tarde"
+    }
 }

@@ -69,32 +69,36 @@ class ConversionActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.run {
-            stateLoading.observe(this@ConversionActivity, { isVisible ->
-                conversionLoadingPb.setVisible(isVisible)
-                originBt.isEnabled = !isVisible
-                destinyBt.isEnabled = !isVisible
-            })
-            stateOriginText.observe(this@ConversionActivity, {
-                originCoinTv.text = it
-            })
-            stateDestinyText.observe(this@ConversionActivity, {
-                destinyCoinTv.text = it
-            })
-            amountFinal.observe(this@ConversionActivity, {
-                conversionResultTv.text = it
-            })
-            buttonOriginIsVisible.observe(this@ConversionActivity, {
-                originBt.isEnabled = it
-            })
-            buttonDestinyIsVisible.observe(this@ConversionActivity, {
-                destinyBt.isEnabled = it
-            })
-            displayError.observe(this@ConversionActivity, {
-                DefaultDialogFactory.createError(
-                    context = this@ConversionActivity,
-                    title = getString(R.string.error_dialog_title),
-                    body = it
-                ).show()
+            state.observe(this@ConversionActivity, { state ->
+                state.run {
+                    stateLoading?.run {
+                        conversionLoadingPb.setVisible(this)
+                        originBt.isEnabled = !this
+                        destinyBt.isEnabled = !this
+                    }
+                    stateOriginText?.run {
+                        originCoinTv.text = this
+                    }
+                    stateDestinyText?.run {
+                        destinyCoinTv.text = this
+                    }
+                    amount?.run {
+                        conversionResultTv.text = this
+                    }
+                    buttonOriginIsVisible?.run {
+                        originBt.isEnabled = this
+                    }
+                    buttonDestinyIsVisible?.run {
+                        destinyBt.isEnabled = this
+                    }
+                    displayError?.run {
+                        DefaultDialogFactory.createError(
+                            context = this@ConversionActivity,
+                            title = getString(R.string.error_dialog_title),
+                            body = this
+                        ).show()
+                    }
+                }
             })
         }
     }
@@ -119,6 +123,11 @@ class ConversionActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         viewModel.updateData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.onClear()
     }
 
     companion object {
