@@ -8,26 +8,28 @@ import Foundation
 import UIKit
 
 class ViewController: UIViewController {
+    ///Outlet of the textfield
     @IBOutlet weak var amountTextField: UITextField!
+    ///Outlet of the results
     @IBOutlet weak var resultLabel: UILabel!
-    
+    ///Outlet of the First currency label
     @IBOutlet weak var firstCurrencyLabel: UILabel!
+    ///Outlet of the Second currency label
     @IBOutlet weak var secondCurrencyLabel: UILabel!
-    @IBOutlet weak var firstCurrency: UIButton!
-   
-    @IBOutlet weak var secondCurrency: UIButton!
-    //    https://api.currencylayer.com/list?access_key=
-    @IBOutlet weak var convertButton: UIButton!
-    let currencyTypesService = CurrencyTypesService()
-    var selected = ""
-    let currencyService = CurrencyService()
 
-    let apiKey = "baa8ca67a82137316bb59b665428e101"
-    //Flag that
+    ///Outlet of the convert button
+    @IBOutlet weak var convertButton: UIButton!
+    ///Instance of the currency type service
+    let currencyTypesService = CurrencyTypesService()
+    ///Store the selected acronym
+    var selectedAcronym = ""
+    ///Instance of the currency service
+    let currencyService = CurrencyService()
+    //Flag that will determinate the button that was clicked on
     var flag = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     //Function that prepares data to be sent to another view controller.
@@ -48,31 +50,31 @@ class ViewController: UIViewController {
         
     }
     
-    
+    ///Function that sends the acronyms to fetch the data, converts the value and shows the result
     @IBAction func convertButton(_ sender: Any) {
-        let amount = Double(amountTextField.text!)!
+        guard let amount = Double(amountTextField.text!) else{ return }
         currencyService.fetch(firstCurrency: firstCurrencyLabel.text!, secondCurrency: secondCurrencyLabel.text!, amount: amount)
         var num1 = currencyService.getValue1()
         var num2 = currencyService.getValue2()
         let result = currencyService.convert(num1: num1, num2: num2, amount: amount)
         resultLabel.text = String(result)
-        print("E O RESULTADP É:",result)
+        
     }
-    
+    ///Function that calls the second view
     @IBAction func firstCurrency(_ sender: Any) {
         performSegue(withIdentifier: "currencyType1", sender: sender)
     }
+    ///Function that calls the second view
     @IBAction func secondCurrency(_ sender: Any) {
 
         performSegue(withIdentifier: "currencyType2", sender: sender)
     }
-    func changeTitle(selectedAcronym: String){
-        firstCurrency.setTitle(selectedAcronym, for: .normal)
-    }
+
 }
 extension ViewController: PassCurrencyDelegate{
+    ///Function that sets the values according with the CurrenciesViewController values of the selected currency and the button that will change the value of the labels.
     func passCurrency(currency: String,flag: Int) {
-        self.selected = currency
+        self.selectedAcronym = currency
         self.flag = flag
         if flag == 1 {
             firstCurrencyLabel.text = currency

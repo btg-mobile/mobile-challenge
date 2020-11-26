@@ -8,22 +8,22 @@
 import Foundation
 
 class CurrencyService {
+    ///Base URL
     let url = "http://api.currencylayer.com/live?access_key=baa8ca67a82137316bb59b665428e101&currencies="
-    
-    var firstCurrency = ""
-    var secondCurrency = ""
-    
+
+    ///Array of acronyms
     var acronyms: [String] = []
+    //Array of values of the currencies(in USD value)
     var currencyValues: [NSNumber] = []
-    
-    
+    ///First value in USD
     var num1 = Double()
+    ///Second value in USD
     var num2 = Double()
     
     init() {
         
     }
-    
+    ///Function that fetches the values of the currencies requested.
     func fetch(firstCurrency:String, secondCurrency: String, amount: Double){
         
         let session = URLSession.shared
@@ -56,13 +56,15 @@ class CurrencyService {
         task.resume()
     }
     
-    
+    ///Function that return the value of the first currency in dolar
     func getValue1() -> Double{
         return self.num1
     }
+    ///Function that return the value of the second currency in dolar
     func getValue2() -> Double{
         return self.num2
     }
+    ///Function that converts the value to the other currency and multiplies the amount requested
     func convert(num1:Double, num2:Double, amount: Double) -> Double{
         var result = ((num1)/(num2))*amount
         return result

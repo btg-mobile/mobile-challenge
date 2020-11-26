@@ -12,33 +12,47 @@ class CurrenciesViewController: UIViewController {
     ///Constant of the link that gets the requests
     let url = "http://api.currencylayer.com/list?access_key=baa8ca67a82137316bb59b665428e101"
     
-    ///Dictionary that will --guardar--- the values of the currencies fetched from API
+    ///Dictionary that will store the values of the currencies fetched from API
     var quotes: Dictionary<String, String> = [:]
+    ///Array that will store the values of the acronyms of the currencies
     var acronyms: [String] = []
+    ///Array that will store the names of the currencies
     var currencyNames: [String] = []
+    ///Amount of the cells
     var count = 0
+    /// Will store the acronym of the selected cell
     var selected = " "
+    /// Instace of the Pass Currency Delegate
     var passCurrency: PassCurrencyDelegate?
-    @IBOutlet weak var currencyTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    ///Will store the index path of the selected cell
     var indexPath = 0
-    
-    //Instance of view controller to change the title of the button
+    ///Instance of view controller to change the title of the button
     var viewControllerInstance = ViewController()
-    //Flag to verify which button is the sender
+    ///Flag to verify which button is the sender
     var flag = 0
+    
+    ///Outlet of the table view
+    @IBOutlet weak var currencyTableView: UITableView!
+    ///Outlet of the search bar
+    @IBOutlet weak var searchBar: UISearchBar!
+
+    
+    ///Sets the tableview delegate and datasource, sets the count of cells the tableview will need
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         currencyTableView.delegate = self
         currencyTableView.dataSource = self
         count = acronyms.count
     
     }
+    
+    ///Function that will dismiss the view
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    ///Function that will pass the selected acronym and the flag back to the main view controller and dismiss the view
     @IBAction func saveButton(_ sender: Any) {
         self.selected = acronyms[indexPath]
         if flag == 1{
@@ -73,6 +87,9 @@ extension CurrenciesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath.row
     }
+    
+}
+extension CurrenciesViewController: UISearchBarDelegate{
     
 }
 
