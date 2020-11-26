@@ -9,6 +9,17 @@ import UIKit
 
 class ConvertView: UIView {
     
+    let modelView = ConvertViewModel()
+    
+    let contentViewTounch:UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        view.layer.zPosition = 0
+        view.isUserInteractionEnabled = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
     let titleLabel:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Conversão"
@@ -70,34 +81,39 @@ class ConvertView: UIView {
     }()
     
     /// Button for onboard mode
-    let textInputOrigin: UITextField = {
+    lazy var textInputOrigin: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.placeholder = "Digite o Valor"
         textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 5
+        textField.layer.zPosition = 3
         textField.keyboardType = .numberPad
+        textField.returnKeyType = .route
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     /// Button for onboard mode
-    let textInputDestiny: UITextField = {
-        let textField = UITextField(frame: .zero)
-        textField.placeholder = "Digite o Valor"
-        textField.font = UIFont.preferredFont(forTextStyle: .body)
-        textField.backgroundColor = .white
-        textField.layer.cornerRadius = 5
-        textField.keyboardType = .numberPad
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
+    let labelDestiny: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = "Resultado"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor(named: "colorText")
+        label.layer.zPosition = 3
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    let currencyOrigin:UILabel = {
+    var currencyOrigin:UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.text = "R$"
+        label.text = "Escolha Uma Moeda"
+        label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 40)
+        label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "colorText")
         label.layer.zPosition = 3
         
@@ -107,9 +123,10 @@ class ConvertView: UIView {
     
     let currencyDestiny:UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.text = "USD$"
+        label.text = "Escolha Uma Moeda"
+        label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 40)
+        label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "colorText")
         label.layer.zPosition = 3
         
@@ -147,10 +164,11 @@ extension ConvertView:ViewCodable{
         self.addSubview(changeButtonOrigin)
         self.addSubview(destinyButtonOrigin)
         self.addSubview(textInputOrigin)
-        self.addSubview(textInputDestiny)
+        self.addSubview(labelDestiny)
         self.addSubview(currencyOrigin)
         self.addSubview(currencyDestiny)
         self.addSubview(convertButton)
+        self.addSubview(contentViewTounch)
     }
     
     func setupConstraints() {
@@ -189,10 +207,10 @@ extension ConvertView:ViewCodable{
         ])
         
         NSLayoutConstraint.activate([
-            textInputDestiny.heightAnchor.constraint(equalToConstant: 50),
-            textInputDestiny.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4),
-            textInputDestiny.topAnchor.constraint(equalTo: titleLabelDestiny.bottomAnchor, constant: 50),
-            textInputDestiny.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 40),
+            labelDestiny.heightAnchor.constraint(equalToConstant: 50),
+            labelDestiny.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4),
+            labelDestiny.topAnchor.constraint(equalTo: titleLabelDestiny.bottomAnchor, constant: 50),
+            labelDestiny.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 40),
         ])
         
         NSLayoutConstraint.activate([
@@ -204,7 +222,7 @@ extension ConvertView:ViewCodable{
         NSLayoutConstraint.activate([
             currencyDestiny.topAnchor.constraint(equalTo:  destinyButtonOrigin.bottomAnchor, constant: 50),
             
-            currencyDestiny.leadingAnchor.constraint(equalTo: textInputDestiny.trailingAnchor,constant: 30),
+            currencyDestiny.leadingAnchor.constraint(equalTo: labelDestiny.trailingAnchor,constant: 30),
         ])
         
         NSLayoutConstraint.activate([
@@ -214,9 +232,46 @@ extension ConvertView:ViewCodable{
             convertButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
 
+        
+//        NSLayoutConstraint.activate([
+//            contentViewTounch.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height),
+//            contentViewTounch.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+//            contentViewTounch.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            contentViewTounch.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+//        ])
     }
     
     func setupAditionalConfiguration() {
         self.backgroundColor = .clear
     }
+    
+    /**
+     simpleAlert create a simple alert
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameter titleController:String
+     - Parameter messageController:String
+     - Parameter titleAlert:String
+     - Parameter completion:() -> Void
+     */
+    func simpleAlert(viewController:UIViewController,_ titleController: String,_ messageController:String,_ titleAlert:String){
+        let alert = UIAlertAction(title: titleAlert, style: .default) { (UIAlertAction) in
+            
+        }
+        let alertController = UIAlertController(title: titleController, message: messageController, preferredStyle: .alert)
+        alertController.addAction(alert)
+        
+        viewController.present(alertController, animated: false, completion: nil)
+    }
 }
+
+extension ConvertView:UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        contentViewTounch.isUserInteractionEnabled = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        contentViewTounch.isUserInteractionEnabled = false
+    }
+}
+

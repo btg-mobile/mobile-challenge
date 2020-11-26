@@ -11,6 +11,9 @@ class CurrencyTableViewCell: UITableViewCell {
     
     static let identifier:String = "Currency-Table-View-Cell"
     
+    var nameCurrency:String = ""
+    var quote:Double = 0.0
+    
     let currencyLabel:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "R$"

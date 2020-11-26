@@ -23,10 +23,16 @@ class MainCoordinator: Coordinator {
 
 //MARK: Functins
 extension MainCoordinator{
-    func navigateToCurrencyViewController() {
+    func navigateToCurrencyViewController(destinyData:CurrencyViewModelDestiny, delegateCurrency:ConvertViewController) {
+        
         let currencyVC = CurrencyViewController()
         currencyVC.coordinator = self
+        currencyVC.delegate = delegateCurrency
+        currencyVC.baseView.viewModel.myDestinyData = destinyData
+        
         navigationController.present(currencyVC, animated: true, completion: nil)
     }
+    
+
 }
 

@@ -7,28 +7,49 @@
 
 import Foundation
 
-class Request {
 
-    func peformRequest(url:String) -> Data?{
+protocol ObserverRequest {
+    func notifyEndRequest(_ dicionary:[String:Double])
+}
+
+class Request:ObserverRequest {
+    
+    var allObservers:[ObserverRequest] = []
+    
+    func notifyEndRequest(_ dicionary:[String:Double]) {
+        for observer in allObservers {
+            observer.notifyEndRequest(dicionary)
+        }
+    }
+    
+    func peformRequest(url:String){
         if let urlRequest = URL(string: url){
-            
-            var responseReturn:Data?
-            
+
             let session = URLSession(configuration: .default)
             
             let task = session.dataTask(with: urlRequest) { (data, response, error)  in
                 if error != nil{
-                    responseReturn = nil
+                    fatalError("Error in Request")
                 }
-
-                responseReturn = data
+                
+                if let dataForParse = data{
+                    self.dataForParse(data: dataForParse)
+                }
             }
-            
             task.resume()
-            
-            return responseReturn
         }
-        return nil
     }
+       
+    func dataForParse(data:Data) {
+        do {
+            let decoder = JSONDecoder()
+            let decode = try decoder.decode(Currencies.self, from: data)
+//            print(decode.quotes)
+            notifyEndRequest(decode.quotes)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
     
 }

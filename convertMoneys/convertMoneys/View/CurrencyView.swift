@@ -33,7 +33,8 @@ class CurrencyView: UIView {
 
 extension CurrencyView:ViewCodable{
     func setupViewHierarchy() {
-        viewModel.configureAllCurrencies()
+
+        
         self.addSubview(tableView)
     }
     
@@ -50,16 +51,25 @@ extension CurrencyView:ViewCodable{
 extension CurrencyView:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.allCurrenciesNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier) as? CurrencyTableViewCell else{return UITableViewCell()}
         
-        cell.currencyLabel.text = viewModel.allCurrencies[indexPath.row]
+        viewModel.configureCurrencyName(cell,indexPath.row)
+        
         cell.backgroundColor = .gray
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
+        
+        viewModel.delegate?.notifyChooseCurrency(nameCurrency: cell.nameCurrency, quote: cell.quote,destiny: viewModel.myDestinyData)
+        
     }
 }
