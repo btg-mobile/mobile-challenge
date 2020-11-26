@@ -34,15 +34,26 @@ class QuotationViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        quotationView.requestButton.addTarget(self, action: #selector(makeRequest), for: .touchUpInside)
+        quotationView.quotationButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
+        quotationView.currencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
     }
     
-    @objc func makeRequest(){
-        viewModel.fetchQuotation { (result) in
-            DispatchQueue.main.async {
-                self.quotationView.label.text = result
+    @objc func makeRequest(sender: UIButton){
+        switch sender.tag {
+        case TagButton.quotation.rawValue:
+            viewModel.fetchQuotation { (result) in
+                DispatchQueue.main.async {
+                    self.quotationView.label.text = result
+                }
+            }
+        default:
+            viewModel.fetchCurrencies { (result) in
+                DispatchQueue.main.async {
+                    self.quotationView.label.text = result
+                }
             }
         }
+        
     }
 }
 

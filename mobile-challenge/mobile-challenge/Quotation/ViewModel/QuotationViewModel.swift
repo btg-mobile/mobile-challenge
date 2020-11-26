@@ -10,6 +10,7 @@ import Foundation
 class QuotationViewModel {
     
     var quotation: Quotation?
+    var currency: Currency?
     var manager: NetworkManager
     
     init(manager: NetworkManager) {
@@ -29,6 +30,20 @@ extension QuotationViewModel {
             case .failure(let error):
                 print(error.localizedDescription)
                 completion("Error")
+            }
+        }
+    }
+    
+    func fetchCurrencies(completion: @escaping (String) -> ()) {
+        manager.request(service: .list, model: Currency.self) { (result) in
+            switch result {
+            case .success(let currency):
+                self.currency = currency
+                let currencyName = currency.currencies["BRL"] ?? "Empty"
+                let resultMenssage = "BRL - \(currencyName)"
+                completion(resultMenssage)
+            case .failure(let error):
+                completion(error.localizedDescription)
             }
         }
     }

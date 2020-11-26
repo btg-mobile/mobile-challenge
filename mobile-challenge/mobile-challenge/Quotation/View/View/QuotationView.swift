@@ -7,13 +7,29 @@
 
 import UIKit
 
+enum TagButton: Int {
+    case quotation = 0
+    case currency = 1
+}
+
 class QuotationView: UIView {
     
-    var requestButton: UIButton = {
+    var quotationButton: UIButton = {
         var button = UIButton(frame: .zero)
-        button.setTitle("Request", for: .normal)
+        button.setTitle("Quotation", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
+        button.tag = TagButton.quotation.rawValue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    var currencyButton: UIButton = {
+        var button = UIButton(frame: .zero)
+        button.setTitle("Currency", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .blue
+        button.tag = TagButton.currency.rawValue
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -39,16 +55,20 @@ class QuotationView: UIView {
 
 extension QuotationView: ViewCodable {
     func setupHierarchy() {
-        addSubview(requestButton)
+        addSubview(quotationButton)
+        addSubview(currencyButton)
         addSubview(label)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            requestButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            requestButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            quotationButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -30),
+            quotationButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            label.topAnchor.constraint(equalTo: requestButton.bottomAnchor, constant: 30),
+            currencyButton.topAnchor.constraint(equalTo: quotationButton.bottomAnchor, constant: 20),
+            currencyButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            label.topAnchor.constraint(equalTo: currencyButton.bottomAnchor, constant: 30),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
