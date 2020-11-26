@@ -53,7 +53,7 @@ class CurrencyViewController: UIViewController {
         baseView.tableView.delegate = self
         baseView.tableView.dataSource = self
         
-        setupSearchController()
+//        setupSearchController()
     }
 
 

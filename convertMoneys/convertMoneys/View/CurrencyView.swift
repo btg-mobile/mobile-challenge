@@ -34,7 +34,7 @@ class CurrencyView: UIView {
 extension CurrencyView:ViewCodable{
     func setupViewHierarchy() {
         self.addSubview(tableView)
-        self.addSubview(searchController.searchBar)
+//        self.addSubview(searchController.searchBar)
     }
     
     func setupConstraints() {
