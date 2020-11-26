@@ -11,11 +11,13 @@ class ApplicationCoordinator: Coordinator {
     let window: UIWindow
     let rootViewController: UINavigationController
     let quotationCoordinator: QuotationCoordinator
+    let networkManager: NetworkManager
     
     init(window: UIWindow) {
         self.window = window
-        rootViewController = UINavigationController()
-        self.quotationCoordinator = QuotationCoordinator(navigationController: rootViewController)
+        self.rootViewController = UINavigationController()
+        self.networkManager = NetworkManager()
+        self.quotationCoordinator = QuotationCoordinator(navigationController: rootViewController, manager: networkManager)
     }
     
     func start() {

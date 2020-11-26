@@ -24,9 +24,9 @@ extension NetworkServiceType: NetworkRequestProtocol {
     var path : String {
         switch self {
         case .list:
-            return "\(host)list\(accessKey)"
+            return "\(host)list?\(accessKey)"
         case .live:
-            return "\(host)live\(accessKey)"
+            return "\(host)live?\(accessKey)"
         }
     }
     
