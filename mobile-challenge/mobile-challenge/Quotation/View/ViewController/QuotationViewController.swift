@@ -34,8 +34,8 @@ class QuotationViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        quotationView.quotationButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
-        quotationView.currencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
+//        quotationView.choosquotationButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
+//        quotationView.currencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
     }
     
     @objc func makeRequest(sender: UIButton){

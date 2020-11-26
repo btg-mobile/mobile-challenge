@@ -16,6 +16,9 @@
 		E22EA11C256F03A300D10E62 /* mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA11B256F03A300D10E62 /* mobile_challengeTests.swift */; };
 		E22EA127256F03A300D10E62 /* mobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA126256F03A300D10E62 /* mobile_challengeUITests.swift */; };
 		E28E2D03256FCB4000177E4E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E2D02256FCB4000177E4E /* Currency.swift */; };
+		E28E2D14256FD7D500177E4E /* ChooseCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E2D13256FD7D500177E4E /* ChooseCurrencyView.swift */; };
+		E28E2D1C256FDBA100177E4E /* QuotationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E2D1B256FDBA100177E4E /* QuotationColors.swift */; };
+		E28E2D26256FDC8F00177E4E /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E2D25256FDC8F00177E4E /* AppColors.swift */; };
 		E290217E256F13EC0059D042 /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290217D256F13EC0059D042 /* NetworkRequestProtocol.swift */; };
 		E2902183256F140A0059D042 /* NetworkServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2902182256F140A0059D042 /* NetworkServiceType.swift */; };
 		E2902188256F14AD0059D042 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2902187256F14AD0059D042 /* NetworkManager.swift */; };
@@ -61,6 +64,9 @@
 		E22EA126256F03A300D10E62 /* mobile_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobile_challengeUITests.swift; sourceTree = "<group>"; };
 		E22EA128256F03A300D10E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E28E2D02256FCB4000177E4E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		E28E2D13256FD7D500177E4E /* ChooseCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCurrencyView.swift; sourceTree = "<group>"; };
+		E28E2D1B256FDBA100177E4E /* QuotationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationColors.swift; sourceTree = "<group>"; };
+		E28E2D25256FDC8F00177E4E /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		E290217D256F13EC0059D042 /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestProtocol.swift; sourceTree = "<group>"; };
 		E2902182256F140A0059D042 /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
 		E2902187256F14AD0059D042 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -176,6 +182,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E28E2D1A256FDB8D00177E4E /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				E28E2D1B256FDBA100177E4E /* QuotationColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		E28E2D23256FDC7700177E4E /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				E28E2D25256FDC8F00177E4E /* AppColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		E290217C256F13B60059D042 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				E29021A0256F29160059D042 /* QuotationView.swift */,
+				E28E2D13256FD7D500177E4E /* ChooseCurrencyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +246,7 @@
 		E2B724E9256F0967006AC96D /* General */ = {
 			isa = PBXGroup;
 			children = (
+				E28E2D23256FDC7700177E4E /* Colors */,
 				E2B72511256F0E68006AC96D /* Coordinator */,
 				E2B724F2256F0ABB006AC96D /* Protocols */,
 			);
@@ -241,6 +265,7 @@
 		E2B724FE256F0D01006AC96D /* Quotation */ = {
 			isa = PBXGroup;
 			children = (
+				E28E2D1A256FDB8D00177E4E /* Colors */,
 				E2B72500256F0D21006AC96D /* Coordinator */,
 				E290218C256F17F30059D042 /* Model */,
 				E290219E256F28CC0059D042 /* View */,
@@ -409,12 +434,15 @@
 				E22EA105256F03A000D10E62 /* AppDelegate.swift in Sources */,
 				E2B724FA256F0BF2006AC96D /* Coordinator.swift in Sources */,
 				E2B72516256F1047006AC96D /* QuotationCoordinator.swift in Sources */,
+				E28E2D1C256FDBA100177E4E /* QuotationColors.swift in Sources */,
 				E290217E256F13EC0059D042 /* NetworkRequestProtocol.swift in Sources */,
 				E290219A256F236E0059D042 /* QuotationViewModel.swift in Sources */,
 				E22EA107256F03A000D10E62 /* SceneDelegate.swift in Sources */,
 				E290218E256F18060059D042 /* Quotation.swift in Sources */,
 				E29021A1256F29160059D042 /* QuotationView.swift in Sources */,
 				E2B724EB256F0983006AC96D /* ViewCodable.swift in Sources */,
+				E28E2D26256FDC8F00177E4E /* AppColors.swift in Sources */,
+				E28E2D14256FD7D500177E4E /* ChooseCurrencyView.swift in Sources */,
 				E28E2D03256FCB4000177E4E /* Currency.swift in Sources */,
 				E2B7250A256F0E58006AC96D /* ApplicationCoordinator.swift in Sources */,
 			);
