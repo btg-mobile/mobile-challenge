@@ -23,13 +23,14 @@ class ViewController: UIViewController {
     let currencyTypesService = CurrencyTypesService()
     ///Store the selected acronym
     var selectedAcronym = ""
-    ///Instance of the currency service
-    let currencyService = CurrencyService()
+        
     //Flag that will determinate the button that was clicked on
     var flag = 0
-    
+
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     //Function that prepares data to be sent to another view controller.
@@ -50,14 +51,19 @@ class ViewController: UIViewController {
         
     }
     
-    ///Function that sends the acronyms to fetch the data, converts the value and shows the result
+    ///Function that sends the acronyms to fetch the data
     @IBAction func convertButton(_ sender: Any) {
-        guard let amount = Double(amountTextField.text!) else{ return }
-        currencyService.fetch(firstCurrency: firstCurrencyLabel.text!, secondCurrency: secondCurrencyLabel.text!, amount: amount)
-        var num1 = currencyService.getValue1()
-        var num2 = currencyService.getValue2()
-        let result = currencyService.convert(num1: num1, num2: num2, amount: amount)
-        resultLabel.text = String(result)
+        guard let amount = Double(amountTextField.text!) else { return }
+        guard let firstCurrencyAcronym = firstCurrencyLabel.text  else { return }
+        guard let secondCurrencyAcronym = secondCurrencyLabel.text else { return }
+        if firstCurrencyAcronym == secondCurrencyAcronym{
+            resultLabel.text = String(amount)
+        }else{
+            let currencyService = CurrencyService(firstCurrency: firstCurrencyAcronym, secondCurrency: secondCurrencyAcronym, amount: amount)
+                currencyService.passResult = self
+            
+        }
+        
         
     }
     ///Function that calls the second view
@@ -83,4 +89,11 @@ extension ViewController: PassCurrencyDelegate{
         }
     }
 }
-
+extension ViewController: PassResultDelegate{
+    ///Function that change label with the result received
+    func passResult(result: Double) {
+        self.resultLabel.text = String(result)
+    }
+    
+    
+}

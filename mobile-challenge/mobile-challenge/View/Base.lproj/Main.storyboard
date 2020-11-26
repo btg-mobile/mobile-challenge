@@ -101,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2d2-30-9vp">
-                                <rect key="frame" x="20" y="149" width="374" height="676"/>
+                                <rect key="frame" x="20" y="138" width="374" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currencyCell" rowHeight="79" id="NRh-hx-b5Z" customClass="CurrencyCell" customModule="mobile_challenge" customModuleProvider="target">
@@ -136,14 +136,8 @@
                                     <outlet property="delegate" destination="o51-R2-S9I" id="oyr-4f-KuZ"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-lC-6i9">
-                                <rect key="frame" x="0.0" y="87" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iHk-ku-u8H">
-                                <rect key="frame" x="0.0" y="36" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHk-ku-u8H">
+                                <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="9Jp-ab-Y8Z">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="Q7F-49-6LN">
@@ -173,21 +167,24 @@
                         <viewLayoutGuide key="safeArea" id="U8j-Fo-I4c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2d2-30-9vp" firstAttribute="top" secondItem="U8j-Fo-I4c" secondAttribute="top" constant="105" id="1uT-B4-4zU"/>
-                            <constraint firstItem="2d2-30-9vp" firstAttribute="width" secondItem="Sys-nR-hzM" secondAttribute="width" multiplier="0.903382" id="8lj-pn-tJu"/>
-                            <constraint firstItem="2d2-30-9vp" firstAttribute="centerX" secondItem="U8j-Fo-I4c" secondAttribute="centerX" id="Lf2-jD-WsA"/>
-                            <constraint firstItem="2d2-30-9vp" firstAttribute="height" secondItem="Sys-nR-hzM" secondAttribute="height" multiplier="0.754464" id="osZ-nF-hLU"/>
+                            <constraint firstItem="2d2-30-9vp" firstAttribute="top" secondItem="U8j-Fo-I4c" secondAttribute="top" constant="94" id="Bdm-hw-gwr"/>
+                            <constraint firstItem="iHk-ku-u8H" firstAttribute="width" secondItem="Sys-nR-hzM" secondAttribute="width" id="EMa-Yu-2Gb"/>
+                            <constraint firstItem="iHk-ku-u8H" firstAttribute="top" secondItem="U8j-Fo-I4c" secondAttribute="top" constant="12" id="Gs1-r7-LIN"/>
+                            <constraint firstItem="2d2-30-9vp" firstAttribute="centerX" secondItem="U8j-Fo-I4c" secondAttribute="centerX" id="N6A-kG-eRz"/>
+                            <constraint firstItem="2d2-30-9vp" firstAttribute="width" secondItem="Sys-nR-hzM" secondAttribute="width" multiplier="0.903382" id="YsK-j3-9Ft"/>
+                            <constraint firstItem="iHk-ku-u8H" firstAttribute="height" secondItem="Sys-nR-hzM" secondAttribute="height" multiplier="0.0491071" id="hFk-f7-MZm"/>
+                            <constraint firstItem="iHk-ku-u8H" firstAttribute="centerX" secondItem="U8j-Fo-I4c" secondAttribute="centerX" id="jHz-lh-kYX"/>
+                            <constraint firstItem="2d2-30-9vp" firstAttribute="height" secondItem="Sys-nR-hzM" secondAttribute="height" multiplier="0.808036" id="s70-ZV-PLS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6jk-7U-GXc"/>
                     <connections>
                         <outlet property="currencyTableView" destination="2d2-30-9vp" id="CyV-e1-gpZ"/>
-                        <outlet property="searchBar" destination="fV4-lC-6i9" id="oAN-rq-ZRZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q78-LE-yKy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="72"/>
+            <point key="canvasLocation" x="927.536231884058" y="71.651785714285708"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

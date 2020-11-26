@@ -22,6 +22,7 @@
 		C969B6DE256F48130065A973 /* CurrencyTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B6DD256F48130065A973 /* CurrencyTypeViewModel.swift */; };
 		C969B6EB256F485E0065A973 /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969B6EA256F485E0065A973 /* CurrencyType.swift */; };
 		C977D61C256E8771003D3C9B /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D61B256E8771003D3C9B /* CurrencyService.swift */; };
+		C9B2F286256FF6B100B28847 /* PassResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2F285256FF6B100B28847 /* PassResultDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C969B6DD256F48130065A973 /* CurrencyTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTypeViewModel.swift; sourceTree = "<group>"; };
 		C969B6EA256F485E0065A973 /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		C977D61B256E8771003D3C9B /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		C9B2F285256FF6B100B28847 /* PassResultDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassResultDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,8 @@
 		C92DF5E9256E1288007589A1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */,
+				C9B2F285256FF6B100B28847 /* PassResultDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -120,7 +124,6 @@
 		C94C728B256DB5AB0082D3A6 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
-				C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */,
 				C92DF5E9256E1288007589A1 /* Protocols */,
 				C94C72C1256DD39A0082D3A6 /* ViewModel */,
 				C94C72C0256DD38E0082D3A6 /* View */,
@@ -164,8 +167,6 @@
 		C94C72C0256DD38E0082D3A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C94C7290256DB5AB0082D3A6 /* ViewController.swift */,
-				C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */,
 				C94C7292256DB5AB0082D3A6 /* Main.storyboard */,
 			);
 			path = View;
@@ -174,6 +175,8 @@
 		C94C72C1256DD39A0082D3A6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */,
+				C94C7290256DB5AB0082D3A6 /* ViewController.swift */,
 				C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */,
 				C977D61B256E8771003D3C9B /* CurrencyService.swift */,
 				C969B6DD256F48130065A973 /* CurrencyTypeViewModel.swift */,
@@ -313,6 +316,7 @@
 			files = (
 				C969B6EB256F485E0065A973 /* CurrencyType.swift in Sources */,
 				C94C72CB256DD54F0082D3A6 /* CurrencyCell.swift in Sources */,
+				C9B2F286256FF6B100B28847 /* PassResultDelegate.swift in Sources */,
 				C94C7291256DB5AB0082D3A6 /* ViewController.swift in Sources */,
 				C94C731B256E0A380082D3A6 /* CurrencyTypesService.swift in Sources */,
 				C92DF5EB256E129D007589A1 /* PassCurrencyDelegate.swift in Sources */,

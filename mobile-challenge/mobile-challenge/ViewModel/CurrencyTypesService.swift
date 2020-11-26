@@ -20,6 +20,7 @@ class CurrencyTypesService{
         fetchCurrencyTypes()
     }
     
+    
     ///Function that will fetch all the currency types with its acronyms
     func fetchCurrencyTypes(){
         let url = "http://api.currencylayer.com/list?access_key=baa8ca67a82137316bb59b665428e101"
@@ -41,8 +42,7 @@ class CurrencyTypesService{
                     self.quotes = (dados["currencies"] as? Dictionary<String, String>)!
                     let sorted = self.quotes.sorted { $0.value < $1.value }
                     let count = sorted.count
-                    for i in 0..<(count-1){
-                        
+                    for i in 0..<(count-1){          
                         self.acronyms.append(sorted[i].key)
                         self.currencyNames.append(sorted[i].value)
                     }

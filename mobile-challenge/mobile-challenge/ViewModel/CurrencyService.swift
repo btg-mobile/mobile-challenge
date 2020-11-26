@@ -19,9 +19,19 @@ class CurrencyService {
     var num1 = Double()
     ///Second value in USD
     var num2 = Double()
+    /// Instance of the Result delegate
+    var passResult: PassResultDelegate?
+    ///Store the acronym of the first currency
+    var firstCurrency: String?
+    ///Store the acronym of the second currency
+    var secondCurrency: String?
+    ///Store the amount that will be converted
+    var amount = 0.0
     
-    init() {
-        
+    
+    
+    init(firstCurrency:String, secondCurrency: String, amount: Double) {
+        fetch(firstCurrency: firstCurrency, secondCurrency: secondCurrency, amount: amount)
     }
     ///Function that fetches the values of the currencies requested.
     func fetch(firstCurrency:String, secondCurrency: String, amount: Double){
@@ -46,6 +56,8 @@ class CurrencyService {
                     self.currencyValues = Array(quotes.values)
                     self.num1 = Double(self.currencyValues[0])
                     self.num2 = Double(self.currencyValues[1])
+                    let res = self.convert(num1: self.num1, num2: self.num2, amount: amount)
+                    self.passResult?.passResult(result: res)
                 }
                 
             }catch {
@@ -56,8 +68,10 @@ class CurrencyService {
         task.resume()
     }
     
+    
     ///Function that return the value of the first currency in dolar
     func getValue1() -> Double{
+        print(num1)
         return self.num1
     }
     ///Function that return the value of the second currency in dolar
@@ -69,5 +83,5 @@ class CurrencyService {
         var result = ((num1)/(num2))*amount
         return result
     }
-    
+
 }

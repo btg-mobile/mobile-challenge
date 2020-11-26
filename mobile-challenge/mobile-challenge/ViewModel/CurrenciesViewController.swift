@@ -33,9 +33,6 @@ class CurrenciesViewController: UIViewController {
     
     ///Outlet of the table view
     @IBOutlet weak var currencyTableView: UITableView!
-    ///Outlet of the search bar
-    @IBOutlet weak var searchBar: UISearchBar!
-
     
     ///Sets the tableview delegate and datasource, sets the count of cells the tableview will need
     override func viewDidLoad() {
@@ -87,10 +84,6 @@ extension CurrenciesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath.row
     }
-    
-}
-extension CurrenciesViewController: UISearchBarDelegate{
-    
 }
 
 
