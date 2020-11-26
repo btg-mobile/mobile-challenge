@@ -16,11 +16,15 @@ class CurrencyService {
     var acronyms: [String] = []
     var currencyValues: [NSNumber] = []
     
+    
+    var num1 = Double()
+    var num2 = Double()
+    
     init() {
         
     }
-    func fetch(){
-        
+    
+    func fetch(firstCurrency:String, secondCurrency: String, amount: Double){
         
         let session = URLSession.shared
         let linkURL = "\(url)\(firstCurrency),\(secondCurrency)"
@@ -40,9 +44,8 @@ class CurrencyService {
 
                     self.acronyms = Array(quotes.keys)
                     self.currencyValues = Array(quotes.values)
-                    let num1 = Double(self.currencyValues[0])
-                    let num2 = Double(self.currencyValues[1])
-                    print((num1)/(num2))
+                    self.num1 = Double(self.currencyValues[0])
+                    self.num2 = Double(self.currencyValues[1])
                 }
                 
             }catch {
@@ -53,5 +56,16 @@ class CurrencyService {
         task.resume()
     }
     
+    
+    func getValue1() -> Double{
+        return self.num1
+    }
+    func getValue2() -> Double{
+        return self.num2
+    }
+    func convert(num1:Double, num2:Double, amount: Double) -> Double{
+        var result = ((num1)/(num2))*amount
+        return result
+    }
     
 }

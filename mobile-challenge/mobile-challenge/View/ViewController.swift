@@ -23,13 +23,14 @@ class ViewController: UIViewController {
     let currencyService = CurrencyService()
 
     let apiKey = "baa8ca67a82137316bb59b665428e101"
+    //Flag that
     var flag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        reloadInputViews()
-        firstCurrencyLabel.reloadInputViews()
+        
     }
 
+    //Function that prepares data to be sent to another view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! CurrenciesViewController
     
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
             destination.currencyNames = currencyTypesService.sendCurrencyNames()
             destination.passCurrency = self
             destination.flag = 1
-        }else {
+        }else if segue.identifier == "currencyType2"{
             destination.acronyms = currencyTypesService.sendAcronyms()
             destination.currencyNames = currencyTypesService.sendCurrencyNames()
             destination.passCurrency = self
@@ -49,18 +50,17 @@ class ViewController: UIViewController {
     
     
     @IBAction func convertButton(_ sender: Any) {
-        let amount = amountTextField.text
-//        let first = firstCurrency.titleLabel?.text
-        
+        let amount = Double(amountTextField.text!)!
+        currencyService.fetch(firstCurrency: firstCurrencyLabel.text!, secondCurrency: secondCurrencyLabel.text!, amount: amount)
+        var num1 = currencyService.getValue1()
+        var num2 = currencyService.getValue2()
+        let result = currencyService.convert(num1: num1, num2: num2, amount: amount)
+        resultLabel.text = String(result)
+        print("E O RESULTADP É:",result)
     }
     
     @IBAction func firstCurrency(_ sender: Any) {
-        
         performSegue(withIdentifier: "currencyType1", sender: sender)
-//        firstCurrency.setTitle(selected, for: .normal)
-        
-        
-        
     }
     @IBAction func secondCurrency(_ sender: Any) {
 
@@ -74,7 +74,6 @@ extension ViewController: PassCurrencyDelegate{
     func passCurrency(currency: String,flag: Int) {
         self.selected = currency
         self.flag = flag
-        print("FLAAAAG",flag)
         if flag == 1 {
             firstCurrencyLabel.text = currency
         }else if flag == 2{
