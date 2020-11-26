@@ -7,6 +7,13 @@
 
 import Foundation
 
-class CurrencyViewModel {
+class CurrencyViewModel:AnswerAllCurrencies {
     
+    var allCurrencies:[Int:String] = [:]
+    
+    func configureAllCurrencies(){
+        let resp = self.currencies(url: URLs.allCurrencies)
+        
+        allCurrencies = resp
+    }
 }

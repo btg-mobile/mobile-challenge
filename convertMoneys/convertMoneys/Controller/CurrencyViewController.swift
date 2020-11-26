@@ -11,7 +11,7 @@ class CurrencyViewController: UIViewController {
     
     weak var coordinator:MainCoordinator?
     
-    let baseView = CurrencyView()
+    let baseView = CurrencyView()    
     
     override func loadView() {
         super.loadView()
@@ -20,9 +20,10 @@ class CurrencyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
 
 }
+

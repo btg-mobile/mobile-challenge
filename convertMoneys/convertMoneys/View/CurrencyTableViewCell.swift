@@ -23,8 +23,9 @@ class CurrencyTableViewCell: UITableViewCell {
         return label
     }()
     
-    init() {
-        super.init(style: .default, reuseIdentifier: CurrencyTableViewCell.identifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -46,8 +47,10 @@ extension CurrencyTableViewCell:ViewCodable{
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            currencyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 10),
-            currencyLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            currencyLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            currencyLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            currencyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            currencyLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
     }
 }

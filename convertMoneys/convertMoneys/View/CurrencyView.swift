@@ -9,8 +9,13 @@ import UIKit
 
 class CurrencyView: UIView {
     
-    let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
+    let viewModel = CurrencyViewModel()
+    
+    lazy var tableView: CurrencyTableView = {
+        let tableView = CurrencyTableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -28,9 +33,8 @@ class CurrencyView: UIView {
 
 extension CurrencyView:ViewCodable{
     func setupViewHierarchy() {
+        viewModel.configureAllCurrencies()
         self.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     func setupConstraints() {
@@ -53,7 +57,7 @@ extension CurrencyView:UITableViewDelegate,UITableViewDataSource{
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier) as? CurrencyTableViewCell else{return UITableViewCell()}
         
-        cell.currencyLabel.text = "2s pau"
+        cell.currencyLabel.text = viewModel.allCurrencies[indexPath.row]
         cell.backgroundColor = .gray
         
         return cell
