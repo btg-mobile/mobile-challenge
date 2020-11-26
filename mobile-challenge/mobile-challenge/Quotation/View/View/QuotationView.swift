@@ -20,7 +20,8 @@ class QuotationView: UIView {
     
     var label: UILabel = {
         var label = UILabel(frame: .zero)
-        label.textColor = .systemGray4
+        label.textColor = .red
+        label.textAlignment = .center
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,7 +50,7 @@ extension QuotationView: ViewCodable {
             
             label.topAnchor.constraint(equalTo: requestButton.bottomAnchor, constant: 30),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30)
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
     }
     
