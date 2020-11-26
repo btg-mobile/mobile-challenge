@@ -1,5 +1,5 @@
 //
-//  CurrencyTypesService.swift
+//  CurrencyService.swift
 //  mobile-challenge
 //
 //  Created by Fernanda Sudré on 25/11/20.
@@ -7,21 +7,23 @@
 
 import Foundation
 
-class CurrencyTypesService{
+class CurrencyService {
+    let url = "http://api.currencylayer.com/live?access_key=baa8ca67a82137316bb59b665428e101&currencies="
     
-    var quotes: Dictionary<String, String> = [:]
+    var firstCurrency = ""
+    var secondCurrency = ""
+    
     var acronyms: [String] = []
-    var currencyNames: [String] = []
+    var currencyValues: [NSNumber] = []
     
-   
     init() {
-        fetchCurrencyTypes()
+        
     }
-    
-    func fetchCurrencyTypes(){
-        let url = "http://api.currencylayer.com/list?access_key=baa8ca67a82137316bb59b665428e101"
+    func fetch(){
+        
+        
         let session = URLSession.shared
-        let linkURL = "\(url)"
+        let linkURL = "\(url)\(firstCurrency),\(secondCurrency)"
         let urlApi = URL(string: linkURL)!
 
         let task = session.dataTask(with: urlApi) {data, response, error in
@@ -34,11 +36,13 @@ class CurrencyTypesService{
             do{
                 json = try JSONSerialization.jsonObject(with: data!, options: [])
                 if let dados = json as? [String:Any]{
-                    
-                    self.quotes = (dados["currencies"] as? Dictionary<String, String>)!
-                    self.acronyms = Array(self.quotes.keys)
-                    self.currencyNames = Array(self.quotes.values)
-                    
+                    let quotes = (dados["quotes"] as! Dictionary<String, NSNumber>)
+
+                    self.acronyms = Array(quotes.keys)
+                    self.currencyValues = Array(quotes.values)
+                    let num1 = Double(self.currencyValues[0])
+                    let num2 = Double(self.currencyValues[1])
+                    print((num1)/(num2))
                 }
                 
             }catch {
@@ -49,11 +53,5 @@ class CurrencyTypesService{
         task.resume()
     }
     
-    func sendAcronyms() -> Array<String>{
-        return self.acronyms
-    }
     
-    func sendCurrencyNames() -> Array<String>{
-        return self.currencyNames
-    }
 }

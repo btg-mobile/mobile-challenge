@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var firstCurrencyLabel: UILabel!
+    @IBOutlet weak var secondCurrencyLabel: UILabel!
     @IBOutlet weak var firstCurrency: UIButton!
    
     @IBOutlet weak var secondCurrency: UIButton!
@@ -18,24 +20,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var convertButton: UIButton!
     let currencyTypesService = CurrencyTypesService()
     var selected = ""
+    let currencyService = CurrencyService()
 
     let apiKey = "baa8ca67a82137316bb59b665428e101"
+    var flag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-//        amountTextField.text
-
-        // Do any additional setup after loading the view.
-        if firstCurrency.isSelected{
-            firstCurrency.titleLabel?.text = selected
-        }
+        reloadInputViews()
+        firstCurrencyLabel.reloadInputViews()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! CurrenciesViewController
     
-        destination.acronyms = currencyTypesService.sendAcronyms()
-        destination.currencyNames = currencyTypesService.sendCurrencyNames()
-        destination.passCurrency = self
+        if segue.identifier == "currencyType1"{
+            destination.acronyms = currencyTypesService.sendAcronyms()
+            destination.currencyNames = currencyTypesService.sendCurrencyNames()
+            destination.passCurrency = self
+            destination.flag = 1
+        }else {
+            destination.acronyms = currencyTypesService.sendAcronyms()
+            destination.currencyNames = currencyTypesService.sendCurrencyNames()
+            destination.passCurrency = self
+            destination.flag = 2
+        }
+        
     }
     
     
@@ -46,29 +55,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func firstCurrency(_ sender: Any) {
-
+        
+        performSegue(withIdentifier: "currencyType1", sender: sender)
+//        firstCurrency.setTitle(selected, for: .normal)
         
         
         
     }
     @IBAction func secondCurrency(_ sender: Any) {
-        
-        
+
+        performSegue(withIdentifier: "currencyType2", sender: sender)
     }
-    
+    func changeTitle(selectedAcronym: String){
+        firstCurrency.setTitle(selectedAcronym, for: .normal)
+    }
 }
 extension ViewController: PassCurrencyDelegate{
-    func passCurrency(currency: String) {
+    func passCurrency(currency: String,flag: Int) {
         self.selected = currency
-        firstCurrency.setTitle(currency, for: .normal)
-//        if  firstCurrency.isSelected {
-//            firstCurrency.setTitle(currency, for: .normal)
-//        } else if secondCurrency.isSelected{
-//            secondCurrency.setTitle(currency, for: .normal)
-//        }
-        
+        self.flag = flag
+        print("FLAAAAG",flag)
+        if flag == 1 {
+            firstCurrencyLabel.text = currency
+        }else if flag == 2{
+            secondCurrencyLabel.text = currency
+        }
     }
-    
-    
 }
 

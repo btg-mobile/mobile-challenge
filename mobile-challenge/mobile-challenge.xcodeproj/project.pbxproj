@@ -19,6 +19,7 @@
 		C94C72C6256DD5180082D3A6 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */; };
 		C94C72CB256DD54F0082D3A6 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C72CA256DD54F0082D3A6 /* CurrencyCell.swift */; };
 		C94C731B256E0A380082D3A6 /* CurrencyTypesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */; };
+		C977D61C256E8771003D3C9B /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D61B256E8771003D3C9B /* CurrencyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C94C72C5256DD5180082D3A6 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
 		C94C72CA256DD54F0082D3A6 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTypesService.swift; sourceTree = "<group>"; };
+		C977D61B256E8771003D3C9B /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,6 @@
 		C92DF5E9256E1288007589A1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -115,6 +116,7 @@
 		C94C728B256DB5AB0082D3A6 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				C92DF5EA256E129D007589A1 /* PassCurrencyDelegate.swift */,
 				C92DF5E9256E1288007589A1 /* Protocols */,
 				C94C72C1256DD39A0082D3A6 /* ViewModel */,
 				C94C72C0256DD38E0082D3A6 /* View */,
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				C94C731A256E0A370082D3A6 /* CurrencyTypesService.swift */,
+				C977D61B256E8771003D3C9B /* CurrencyService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				C94C7291256DB5AB0082D3A6 /* ViewController.swift in Sources */,
 				C94C731B256E0A380082D3A6 /* CurrencyTypesService.swift in Sources */,
 				C92DF5EB256E129D007589A1 /* PassCurrencyDelegate.swift in Sources */,
+				C977D61C256E8771003D3C9B /* CurrencyService.swift in Sources */,
 				C94C728D256DB5AB0082D3A6 /* AppDelegate.swift in Sources */,
 				C94C728F256DB5AB0082D3A6 /* SceneDelegate.swift in Sources */,
 				C94C72C6256DD5180082D3A6 /* CurrenciesViewController.swift in Sources */,

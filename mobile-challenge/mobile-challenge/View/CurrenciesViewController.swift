@@ -17,12 +17,16 @@ class CurrenciesViewController: UIViewController {
     var acronyms: [String] = []
     var currencyNames: [String] = []
     var count = 0
-    var selected = ""
+    var selected = " "
     var passCurrency: PassCurrencyDelegate?
     @IBOutlet weak var currencyTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var indexPath = 0
     
+    //Instance of view controller to change the title of the button
+    var viewControllerInstance = ViewController()
+    //Flag to verify which button is the sender
+    var flag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,16 +40,14 @@ class CurrenciesViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        selected = acronyms[indexPath]
-        self.passCurrency?.passCurrency(currency: selected)
+        self.selected = acronyms[indexPath]
+        if flag == 1{
+            self.passCurrency?.passCurrency(currency: selected,flag: 1)
+        }else if flag == 2{
+            self.passCurrency?.passCurrency(currency: selected,flag: 2)
+            
+        }
         dismiss(animated: true, completion: nil)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! ViewController
-        destination.selected = self.selected
-        
-        
     }
 }
 

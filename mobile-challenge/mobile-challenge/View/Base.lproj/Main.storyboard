@@ -29,32 +29,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbK-ol-GOO">
-                                <rect key="frame" x="80" y="264" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="firstCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g5M-J5-ltc"/>
-                                    <segue destination="o51-R2-S9I" kind="show" id="BD4-oT-ed1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQL-7A-zNU">
-                                <rect key="frame" x="290" y="264" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="secondCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tNX-H6-CZ1"/>
-                                    <segue destination="o51-R2-S9I" kind="show" id="j8j-P7-w3e"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjm-v9-Lyk">
-                                <rect key="frame" x="184" y="665" width="46" height="30"/>
+                                <rect key="frame" x="180" y="665" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Convert"/>
                                 <connections>
                                     <action selector="convertButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F2w-k1-oQ6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOT-yf-zaf">
+                                <rect key="frame" x="37" y="276" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="First Currency"/>
+                                <connections>
+                                    <action selector="firstCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zjP-F6-Tt9"/>
+                                    <segue destination="o51-R2-S9I" kind="show" identifier="currencyType1" id="6C3-L8-Xgo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K81-U7-6v2">
+                                <rect key="frame" x="259" y="276" width="119" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Second Currency"/>
+                                <connections>
+                                    <action selector="secondCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Vx-UT-4FF"/>
+                                    <segue destination="o51-R2-S9I" kind="show" identifier="currencyType2" id="d65-qE-B1A"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMX-u2-wQi">
+                                <rect key="frame" x="302" y="370" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPd-kg-427">
+                                <rect key="frame" x="55" y="370" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -62,9 +76,9 @@
                     <connections>
                         <outlet property="amountTextField" destination="UYF-XY-jk1" id="drp-cF-gIh"/>
                         <outlet property="convertButton" destination="sjm-v9-Lyk" id="9aU-S2-hxP"/>
-                        <outlet property="firstCurrency" destination="wQL-7A-zNU" id="GN7-Zd-AQc"/>
+                        <outlet property="firstCurrencyLabel" destination="SPd-kg-427" id="Q07-vY-Kz3"/>
                         <outlet property="resultLabel" destination="6Q9-Ap-21W" id="5Qm-Lz-u9Y"/>
-                        <outlet property="secondCurrency" destination="wQL-7A-zNU" id="tQq-no-jGV"/>
+                        <outlet property="secondCurrencyLabel" destination="aMX-u2-wQi" id="9qu-KS-geY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -170,7 +184,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BD4-oT-ed1"/>
+        <segue reference="6C3-L8-Xgo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
