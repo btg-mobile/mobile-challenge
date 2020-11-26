@@ -22,7 +22,8 @@ class CurrencyViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = baseView
-        baseView.viewModel.delegate = self
+        baseView.viewModel.delegate1 = self
+        baseView.viewModel.delegate2 = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,12 +33,11 @@ class CurrencyViewController: UIViewController {
             fatalError(error.localizedDescription)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
   
-        // Do any additional setup after loading the view.
     }
-    
 
 }
 
@@ -45,5 +45,11 @@ extension CurrencyViewController:CurrencyViewModelDelegate{
     func notifyChooseCurrency(nameCurrency: String, quote: Double, destiny: CurrencyViewModelDestiny) {
         delegate?.notifyChooseCurrencyConvertVC(nameCurrency: nameCurrency, quote: quote, destiny: destiny)
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CurrencyViewController:CurrencyViewModelDelegateEndRequest{
+    func notifyEndRequestForTableView() {
+        baseView.tableView.reloadData()
     }
 }

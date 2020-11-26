@@ -15,9 +15,13 @@ protocol CurrencyViewModelDelegate:class {
     func notifyChooseCurrency(nameCurrency:String,quote:Double,destiny:CurrencyViewModelDestiny)
 }
 
+protocol CurrencyViewModelDelegateEndRequest:class {
+    func notifyEndRequestForTableView()
+}
 class CurrencyViewModel {
     
-    weak var delegate:CurrencyViewModelDelegate?
+    weak var delegate1:CurrencyViewModelDelegate?
+    weak var delegate2:CurrencyViewModelDelegateEndRequest?
     
     let requisition = Request()
     
@@ -53,12 +57,14 @@ class CurrencyViewModel {
 
 extension CurrencyViewModel:ObserverRequest{
     func notifyEndRequest(_ dicionary: [String : Double]) {
-     
-        allCurrencies = dicionary
-        for name in dicionary.keys {
-            allCurrenciesNames.append(name)
+        DispatchQueue.main.async { [weak self] in
+            self?.allCurrencies = dicionary
+            for name in dicionary.keys {
+                self?.allCurrenciesNames.append(name)
+            }
+        
+            self?.delegate2?.notifyEndRequestForTableView()
+            self?.requisition.allObservers.removeAll()
         }
-   
-        requisition.allObservers.removeAll()
     }
 }

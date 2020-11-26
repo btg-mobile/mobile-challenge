@@ -48,16 +48,20 @@ class ConvertViewModel {
             throw ErrorsConvertViewModel.inputZero
         }else{
             //Para dolar USD
-            if nameCurrencyDestny == "USD"{
+            if nameCurrencyDestny == "USD" {
                 return valueForConvertion * atualQuoteOrigin
+            }
+            
+            if nameCurrencyOrigin == "USD"{
+                return valueForConvertion * atualQuoteDestiny
             }
             
             //Para uma moeda qualquer
 
             //Transforma em dolar
-            let dolar = valueForConvertion * atualQuoteOrigin
+            let dolar = valueForConvertion / atualQuoteOrigin
             //Calcula
-            let result = dolar/atualQuoteDestiny
+            let result = dolar*atualQuoteDestiny
         
             return result
         }

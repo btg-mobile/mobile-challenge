@@ -69,7 +69,7 @@ extension CurrencyView:UITableViewDelegate,UITableViewDataSource{
         
         let cell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
         
-        viewModel.delegate?.notifyChooseCurrency(nameCurrency: cell.nameCurrency, quote: cell.quote,destiny: viewModel.myDestinyData)
+        viewModel.delegate1?.notifyChooseCurrency(nameCurrency: cell.nameCurrency, quote: cell.quote,destiny: viewModel.myDestinyData)
         
     }
 }

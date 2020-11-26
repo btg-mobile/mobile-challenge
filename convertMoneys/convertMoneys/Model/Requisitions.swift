@@ -32,8 +32,10 @@ class Request:ObserverRequest {
                     fatalError("Error in Request")
                 }
                 
-                if let dataForParse = data{
-                    self.dataForParse(data: dataForParse)
+                if data?.isEmpty == false{
+                    if let dataForParse = data{
+                        self.dataForParse(data: dataForParse)
+                    }
                 }
             }
             task.resume()
