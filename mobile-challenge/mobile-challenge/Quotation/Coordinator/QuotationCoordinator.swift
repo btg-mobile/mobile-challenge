@@ -9,13 +9,15 @@ import UIKit
 
 class QuotationCoordinator: Coordinator {
     var navigationController: UINavigationController
+    var viewModel: QuotationViewModel
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, manager: NetworkManager) {
         self.navigationController = navigationController
+        self.viewModel = QuotationViewModel(manager: manager)
     }
     
     func start() {
-        let controller = QuotationViewController(nibName: nil, bundle: nil)
+        let controller = QuotationViewController(viewModel: viewModel)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
