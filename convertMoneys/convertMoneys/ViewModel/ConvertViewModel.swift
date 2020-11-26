@@ -14,9 +14,20 @@ enum ErrorsConvertViewModel:Error{
 
 class ConvertViewModel {
     
+    ///The quote of the currencie value for convertion
     var atualQuoteOrigin:Double = 0.0
+    ///The quote of the currencie value destiny of convertion
     var atualQuoteDestiny:Double = 0.0
     
+    /**
+     Configure the string for showing in Custom View labels
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameter atualNameCurrency: String
+     - Parameter view: ConvertView
+     - Parameter destiny: CurrencyViewModelDestiny
+     - Parameter quote: Double
+     */
     func configureCurrencyName(_ atualNameCurrency:String,view:ConvertView,destiny:CurrencyViewModelDestiny, quote:Double){
         
         if atualNameCurrency == "USDUSD"{
@@ -40,6 +51,14 @@ class ConvertViewModel {
         }
     }
     
+    /**
+     Method for calculate the convertion of a value in Double
+     - Authors: Mateus R.
+     - Returns valueAftherConvertion: Double
+     - Parameter valueForConvertion: String
+     - Parameter nameCurrencyOrigin: ConvertView
+     - Parameter nameCurrencyDestny: CurrencyViewModelDestiny
+     */
     func convert(valueForConvertion:Double,nameCurrencyOrigin:String,nameCurrencyDestny:String) throws -> Double{
         
         if nameCurrencyDestny == "NOTHING" || nameCurrencyOrigin == "NOTHING" || nameCurrencyDestny ==  "Escolha Uma Moeda" || nameCurrencyOrigin ==  "Escolha Uma Moeda"{
@@ -48,6 +67,7 @@ class ConvertViewModel {
             throw ErrorsConvertViewModel.inputZero
         }else{
             //Para dolar USD
+            
             if nameCurrencyDestny == "USD" {
                 return valueForConvertion * atualQuoteOrigin
             }

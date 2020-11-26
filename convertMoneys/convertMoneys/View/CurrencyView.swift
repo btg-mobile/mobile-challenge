@@ -8,18 +8,18 @@
 import UIKit
 
 class CurrencyView: UIView {
-    
-    let viewModel = CurrencyViewModel()
-    
+    //TableView
     lazy var tableView: CurrencyTableView = {
         let tableView = CurrencyTableView()
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
+    //Search Controller
+    let searchController: UISearchController = {
+        let searchController = UISearchController()
+        return searchController
+    }()
     
     init() {
         super.init(frame: .zero)
@@ -33,43 +33,17 @@ class CurrencyView: UIView {
 
 extension CurrencyView:ViewCodable{
     func setupViewHierarchy() {
-
-        
         self.addSubview(tableView)
+        self.addSubview(searchController.searchBar)
     }
     
     func setupConstraints() {
+    
         NSLayoutConstraint.activate([
-            tableView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            tableView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            tableView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            tableView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
         ])
-    }
-}
-
-extension CurrencyView:UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.allCurrenciesNames.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier) as? CurrencyTableViewCell else{return UITableViewCell()}
-        
-        viewModel.configureCurrencyName(cell,indexPath.row)
-        
-        cell.backgroundColor = .gray
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
-        
-        viewModel.delegate1?.notifyChooseCurrency(nameCurrency: cell.nameCurrency, quote: cell.quote,destiny: viewModel.myDestinyData)
-        
     }
 }

@@ -11,30 +11,62 @@ enum CurrencyViewModelDestiny {
     case currencyOrigin
     case currencyDestiny
 }
-protocol CurrencyViewModelDelegate:class {
+protocol CurrencyViewModelDelegateChooseCurrency:class {
+    /**
+     Notify what the currency that choose in tableView to ViewController
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameter nameCurrency:String
+     - Parameter quote:Double
+     - Parameter destiny:CurrencyViewModelDestiny
+     */
     func notifyChooseCurrency(nameCurrency:String,quote:Double,destiny:CurrencyViewModelDestiny)
 }
 
 protocol CurrencyViewModelDelegateEndRequest:class {
+    /**
+     Notify the final of the request to create tableView
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameters: nothing
+     */
     func notifyEndRequestForTableView()
 }
 class CurrencyViewModel {
     
-    weak var delegate1:CurrencyViewModelDelegate?
-    weak var delegate2:CurrencyViewModelDelegateEndRequest?
+    ///delegateChosseCurrency
+    weak var delegateChosseCurrency:CurrencyViewModelDelegateChooseCurrency?
+    ///delegateEndRequest
+    weak var delegateEndRequest:CurrencyViewModelDelegateEndRequest?
     
+    ///Object for create a request
     let requisition = Request()
     
+    ///Indicate the destiny of data
     var myDestinyData:CurrencyViewModelDestiny = .currencyOrigin
     
+    ///allCurrencies and quotes
     var allCurrencies:[String:Double] = [:]
+    ///allCurrencies names
     var allCurrenciesNames:[String] = []
     
+    /**
+     Configure arrays and dictionarys
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameters: nothing
+     */
     func configureAllCurrencies() throws{
         requisition.allObservers.append(self)
         requisition.peformRequest(url: URLs.allCurrencies)
     }
     
+    /**
+     Configure the text labels to show on cells
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameters: nothing
+     */
     func configureCurrencyName(_ cell:CurrencyTableViewCell,_ index: Int){
         
         if let quoteR = allCurrencies[allCurrenciesNames[index]]{
@@ -63,7 +95,7 @@ extension CurrencyViewModel:ObserverRequest{
                 self?.allCurrenciesNames.append(name)
             }
         
-            self?.delegate2?.notifyEndRequestForTableView()
+            self?.delegateEndRequest?.notifyEndRequestForTableView()
             self?.requisition.allObservers.removeAll()
         }
     }

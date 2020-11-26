@@ -9,22 +9,31 @@ import UIKit
 
 class ConvertViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    ///Coordinator
     weak var coordinator:MainCoordinator?
     
+    ///Base View
     let baseView = ConvertView()
+    
+    ///modelView
+    let modelView = ConvertViewModel()
     
     override func loadView() {
         super.loadView()
         self.view = baseView
+        self.navigationController?.isNavigationBarHidden  = true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
-        // Do any additional setup after loading the view.
+       
+        //Add Triggers
         addTriggers()
+        
+        //Add Tap Gesture
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapAction))
         gestureRecognizer.delegate = self
+        
         baseView.addGestureRecognizer(gestureRecognizer)
     }
 }
@@ -39,22 +48,30 @@ extension ConvertViewController{
 //MARK: - Triggers
 extension ConvertViewController{
     
+    /**
+     addTriggers of buttons
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameters nothing
+     */
     func addTriggers(){
         baseView.changeButtonOrigin.addTarget(self, action: #selector(self.actionChangeButtonOrigin(_:)), for: .touchUpInside)
         baseView.destinyButtonOrigin.addTarget(self, action: #selector(self.actionDestinyButtonOrigin(_:)), for: .touchUpInside)
         baseView.convertButton.addTarget(self, action: #selector(self.actionConvertButton(_:)), for: .touchUpInside)
     }
-    
+}
+
+//MARK: Action of buttons
+extension ConvertViewController{
     @objc func actionConvertButton(_ sender: Any){
         do{
             
-        
-        let string = baseView.textInputOrigin.text
-        let number = Double(string ?? "0")
-        
-        let result = try baseView.modelView.convert(valueForConvertion: number ?? 0.0, nameCurrencyOrigin: baseView.currencyOrigin.text ?? "NOTHING", nameCurrencyDestny: baseView.currencyDestiny.text ?? "NOTHING")
-        
-        baseView.labelDestiny.text = "\(result)"
+            let string = baseView.textInputOrigin.text
+            let number = Double(string ?? "0")
+            
+            let result = try modelView.convert(valueForConvertion: number ?? 0.0, nameCurrencyOrigin: baseView.currencyOrigin.text ?? "NOTHING", nameCurrencyDestny: baseView.currencyDestiny.text ?? "NOTHING")
+            
+            baseView.labelDestiny.text = "\(result)"
             
         }catch{
             if error as! ErrorsConvertViewModel == ErrorsConvertViewModel.inputZero{
@@ -73,8 +90,9 @@ extension ConvertViewController{
     }
 }
 
+//MARK: CurrencyViewControllerDelegate
 extension ConvertViewController:CurrencyViewControllerDelegate{
     func notifyChooseCurrencyConvertVC(nameCurrency: String, quote: Double, destiny: CurrencyViewModelDestiny) {
-        baseView.modelView.configureCurrencyName(nameCurrency, view: baseView, destiny: destiny, quote: quote)
+        modelView.configureCurrencyName(nameCurrency, view: baseView, destiny: destiny, quote: quote)
     }
 }

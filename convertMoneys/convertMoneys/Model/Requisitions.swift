@@ -9,11 +9,18 @@ import Foundation
 
 
 protocol ObserverRequest {
+    /**
+     Notify the end of request for the class that call the peformRequest method
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameter dicionary: Name currencie and your quote
+     */
     func notifyEndRequest(_ dicionary:[String:Double])
 }
 
 class Request:ObserverRequest {
     
+    ///All observers of this class
     var allObservers:[ObserverRequest] = []
     
     func notifyEndRequest(_ dicionary:[String:Double]) {
@@ -22,6 +29,12 @@ class Request:ObserverRequest {
         }
     }
     
+    /**
+     Create a request and call method to parse
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameter url: the URL for create a request
+     */
     func peformRequest(url:String){
         if let urlRequest = URL(string: url){
 
@@ -41,12 +54,18 @@ class Request:ObserverRequest {
             task.resume()
         }
     }
-       
+    
+    /**
+     Method for parse of a JSON
+     - Authors: Mateus R.
+     - Returns: nothing
+     - Parameter data: A data object
+     */
     func dataForParse(data:Data) {
         do {
             let decoder = JSONDecoder()
             let decode = try decoder.decode(Currencies.self, from: data)
-//            print(decode.quotes)
+            
             notifyEndRequest(decode.quotes)
         } catch {
             fatalError(error.localizedDescription)

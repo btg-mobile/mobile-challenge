@@ -9,8 +9,7 @@ import UIKit
 
 class ConvertView: UIView {
     
-    let modelView = ConvertViewModel()
-    
+    ///contentViewTounch
     let contentViewTounch:UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         view.layer.zPosition = 0
@@ -19,7 +18,7 @@ class ConvertView: UIView {
         return view
     }()
     
-    
+    ///titleLabel
     let titleLabel:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Conversão"
@@ -32,6 +31,7 @@ class ConvertView: UIView {
         return label
     }()
     
+    /// titleLabelOrigin
     let titleLabelOrigin:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Moeda de Origem"
@@ -44,6 +44,7 @@ class ConvertView: UIView {
         return label
     }()
     
+    /// titleLabelDestiny
     let titleLabelDestiny:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Moeda de destino"
@@ -56,7 +57,7 @@ class ConvertView: UIView {
         return label
     }()
     
-    /// Button for onboard mode
+    /// changeButtonOrigin
     let changeButtonOrigin: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Trocar Moeda", for: .normal)
@@ -68,7 +69,7 @@ class ConvertView: UIView {
         return button
     }()
     
-    /// Button for onboard mode
+    /// destinyButtonOrigin
     let destinyButtonOrigin: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Trocar Moeda", for: .normal)
@@ -80,7 +81,7 @@ class ConvertView: UIView {
         return button
     }()
     
-    /// Button for onboard mode
+    /// textInputOrigin
     lazy var textInputOrigin: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.placeholder = "Digite o Valor"
@@ -95,7 +96,7 @@ class ConvertView: UIView {
         return textField
     }()
     
-    /// Button for onboard mode
+    /// labelDestiny
     let labelDestiny: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Resultado"
@@ -108,6 +109,7 @@ class ConvertView: UIView {
         return label
     }()
     
+    ///currencyOriging
     var currencyOrigin:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Escolha Uma Moeda"
@@ -121,6 +123,7 @@ class ConvertView: UIView {
         return label
     }()
     
+    ///currencyDestiny
     let currencyDestiny:UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.text = "Escolha Uma Moeda"
@@ -202,27 +205,27 @@ extension ConvertView:ViewCodable{
         NSLayoutConstraint.activate([
             textInputOrigin.heightAnchor.constraint(equalToConstant: 50),
             textInputOrigin.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4),
-            textInputOrigin.topAnchor.constraint(equalTo: titleLabelOrigin.bottomAnchor, constant: 50),
-            textInputOrigin.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 40),
+            textInputOrigin.topAnchor.constraint(equalTo: titleLabelOrigin.layoutMarginsGuide.bottomAnchor, constant: 40),
+            textInputOrigin.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
         ])
         
         NSLayoutConstraint.activate([
             labelDestiny.heightAnchor.constraint(equalToConstant: 50),
             labelDestiny.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4),
-            labelDestiny.topAnchor.constraint(equalTo: titleLabelDestiny.bottomAnchor, constant: 50),
-            labelDestiny.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 40),
+            labelDestiny.topAnchor.constraint(equalTo: titleLabelDestiny.layoutMarginsGuide.bottomAnchor, constant: 40),
+            labelDestiny.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
         ])
         
         NSLayoutConstraint.activate([
             currencyOrigin.topAnchor.constraint(equalTo:  changeButtonOrigin.bottomAnchor, constant: 40),
             
-            currencyOrigin.leadingAnchor.constraint(equalTo: textInputOrigin.trailingAnchor,constant: 30),
+            currencyOrigin.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -10),
         ])
         
         NSLayoutConstraint.activate([
             currencyDestiny.topAnchor.constraint(equalTo:  destinyButtonOrigin.bottomAnchor, constant: 50),
             
-            currencyDestiny.leadingAnchor.constraint(equalTo: labelDestiny.trailingAnchor,constant: 30),
+            currencyDestiny.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -10),
         ])
         
         NSLayoutConstraint.activate([
@@ -232,13 +235,6 @@ extension ConvertView:ViewCodable{
             convertButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
 
-        
-//        NSLayoutConstraint.activate([
-//            contentViewTounch.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height),
-//            contentViewTounch.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-//            contentViewTounch.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            contentViewTounch.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//        ])
     }
     
     func setupAditionalConfiguration() {
@@ -249,6 +245,7 @@ extension ConvertView:ViewCodable{
      simpleAlert create a simple alert
      - Authors: Mateus R.
      - Returns: nothing
+     - Parameter viewController:UIViewControllers
      - Parameter titleController:String
      - Parameter messageController:String
      - Parameter titleAlert:String
