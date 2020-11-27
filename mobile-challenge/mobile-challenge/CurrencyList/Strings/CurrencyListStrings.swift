@@ -9,11 +9,14 @@ import Foundation
 
 enum CurrencyListStrings {
     case searchPlaceHolder
+    case title
     
     var text: String {
         switch self {
         case .searchPlaceHolder:
             return "Buscar Moeda"
+        case .title:
+            return "Moedas"
         }
     }
 }

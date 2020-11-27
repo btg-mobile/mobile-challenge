@@ -29,6 +29,16 @@ class QuotationViewController: UIViewController {
         super.loadView()
         view = QuotationView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +50,23 @@ class QuotationViewController: UIViewController {
     @objc func makeRequest(sender: UIButton){
         switch sender.tag {
         case TagButton.origin.rawValue:
-            coordinator?.showCurrencyList()
+            getCurrenciesQuotation()
         default:
-            coordinator?.showCurrencyList()
+            getCurrenciesQuotation()
         }
         
+    }
+    
+    func getCurrenciesQuotation() {
+        coordinator?.showCurrencyList()
+        viewModel.getCurrenciesQuotation { (result) in
+            switch result {
+            case .success(let currenciesQuotation):
+                self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation)
+            case .failure(let error):
+                self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error)
+            }
+        }
     }
 }
 

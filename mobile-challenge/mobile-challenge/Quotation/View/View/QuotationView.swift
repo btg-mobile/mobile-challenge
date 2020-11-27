@@ -32,16 +32,6 @@ class QuotationView: UIView {
         return stack
     }()
     
-    var label: UILabel = {
-        var label = UILabel(frame: .zero)
-        label.textColor = .red
-        label.textAlignment = .center
-        label.text = "Error"
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     var convertButton: UIButton = {
         var button = UIButton(frame: .zero)
         button.setTitle("CONVERT", for: .normal)
@@ -68,7 +58,6 @@ extension QuotationView: ViewCodable {
         addSubview(middleView)
         middleView.addSubview(chooseCurrencyView)
         addSubview(convertButton)
-        addSubview(label)
     }
     
     func setupConstraints() {
@@ -92,10 +81,6 @@ extension QuotationView: ViewCodable {
             convertButton.widthAnchor.constraint(equalToConstant: 190),
             convertButton.heightAnchor.constraint(equalToConstant: 50),
             convertButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            label.topAnchor.constraint(equalTo: convertButton.bottomAnchor, constant: 30),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
     }
     

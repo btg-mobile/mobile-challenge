@@ -9,6 +9,7 @@ import UIKit
 
 class CurrencyListCoordinator: Coordinator {
     var navigationController: UINavigationController
+    var delegate : CurrenciesQuotationDelegate?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -17,6 +18,7 @@ class CurrencyListCoordinator: Coordinator {
     func start() {
         let controller = CurrencyListViewController()
         controller.coordinator = self
+        delegate = controller
         navigationController.pushViewController(controller, animated: true)
     }
 }
