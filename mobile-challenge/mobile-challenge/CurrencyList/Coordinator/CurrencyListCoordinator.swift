@@ -9,7 +9,7 @@ import UIKit
 
 class CurrencyListCoordinator: Coordinator {
     var navigationController: UINavigationController
-    weak var viewController : CurrencyListDelegate?
+    var delegate : CurrenciesQuotationDelegate?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -18,19 +18,7 @@ class CurrencyListCoordinator: Coordinator {
     func start() {
         let controller = CurrencyListViewController()
         controller.coordinator = self
-        viewController = controller
+        delegate = controller
         navigationController.pushViewController(controller, animated: true)
     }
-}
-
-extension CurrencyListCoordinator: CurrenciesQuotationDelegate {
-    func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation]) {
-        viewController?.showCurrencyList(currenciesQuotation: currenciesQuotation)
-    }
-    
-    func didFinishFetchQuotationsWithError(error: Error) {
-        viewController?.showError(error: error)
-    }
-    
-    
 }

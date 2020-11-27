@@ -11,8 +11,3 @@ protocol CurrenciesQuotationDelegate: class {
     func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation])
     func didFinishFetchQuotationsWithError(error: Error)
 }
-
-protocol CurrencyListDelegate: class {
-    func showCurrencyList(currenciesQuotation: [CurrencyQuotation])
-    func showError(error: Error)
-}
