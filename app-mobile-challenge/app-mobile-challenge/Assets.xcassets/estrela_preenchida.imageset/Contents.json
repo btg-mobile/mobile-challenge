@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "estrela_preenchida.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
