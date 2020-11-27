@@ -6,10 +6,10 @@
 - <a href="http://www.figma.com" target="_blank">Figma</a>
 
 ### Download
-- <a href="" target="_blank">design-mobile-challenge.fig</a>
+- <a href="https://github.com/MaatheusGois/mobile-challenge/raw/master/design/resources/design-mobile-challenge.fig" target="_blank">design-mobile-challenge.fig</a>
 
-- <a href="" target="_blank">style-guide.png</a>
-- <a href="" target="_blank">baixa-excalidraw.json</a>
+- <a href="https://github.com/MaatheusGois/mobile-challenge/raw/master/design/resources/style-guide.jpg" target="_blank">style-guide.png</a>
+- <a href="https://github.com/MaatheusGois/mobile-challenge/blob/master/design/resources/baixa-excalidraw.json" target="_blank">baixa-excalidraw.json</a>
 
 
 
