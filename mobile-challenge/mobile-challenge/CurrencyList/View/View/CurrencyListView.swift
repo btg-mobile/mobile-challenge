@@ -13,12 +13,15 @@ class CurrencyListView: UIView {
         let search = UISearchBar(frame: .zero)
         search.placeholder = CurrencyListStrings.searchPlaceHolder.text
         search.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        search.tintColor = CurrencyListColors.searchBarBackground.color
+        search.barTintColor = CurrencyListColors.searchBarBackground.color
         search.translatesAutoresizingMaskIntoConstraints = false
         return search
     }()
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
+        tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.identifier)
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = AppColors.appBackground.color
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,8 +47,8 @@ extension CurrencyListView: ViewCodable {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),

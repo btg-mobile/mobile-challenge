@@ -21,7 +21,7 @@ class CurrencyCell: UITableViewCell {
     var name: UILabel = {
         var label = UILabel(frame: .zero)
         label.textColor = CurrencyListColors.name.color
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -29,7 +29,7 @@ class CurrencyCell: UITableViewCell {
     var quotation: UILabel = {
         var label = UILabel(frame: .zero)
         label.textColor = CurrencyListColors.quotation.color
-        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,17 +48,20 @@ extension CurrencyCell: ViewCodable {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            code.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
+            code.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             code.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
-            name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
-            name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            name.topAnchor.constraint(equalTo: code.topAnchor),
+            name.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            name.leadingAnchor.constraint(equalTo: code.trailingAnchor, constant: 5),
             
             quotation.topAnchor.constraint(equalTo: code.bottomAnchor, constant: 5),
-            quotation.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20)
+            quotation.leadingAnchor.constraint(equalTo: code.leadingAnchor)
         ])
-        
     }
     
+    func setupAditionalConfiguration() {
+        backgroundColor = CurrencyListColors.cellBackground.color
+    }
     
 }
