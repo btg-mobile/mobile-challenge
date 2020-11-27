@@ -11,6 +11,8 @@ class CurrencyListManager: NSObject {
     var currenciesQuotation: [CurrencyQuotation] = []
     var tableView: UITableView?
     
+    var selectedCurrency: ((CurrencyQuotation)->())?
+    
 }
 
 extension CurrencyListManager: UITableViewDataSource {
@@ -37,6 +39,10 @@ extension CurrencyListManager: UITableViewDataSource {
 extension CurrencyListManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCurrency?(currenciesQuotation[indexPath.row])
     }
 }
 

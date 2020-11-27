@@ -12,6 +12,9 @@ class QuotationViewController: UIViewController {
     weak var coordinator: QuotationCoordinator?
     private var viewModel: QuotationViewModel
     
+    var originCurrencyQuotation: CurrencyQuotation?
+    var destinyCurrencyQuotation: CurrencyQuotation?
+    
     var quotationView: QuotationView {
         return view as! QuotationView
     }
@@ -50,22 +53,34 @@ class QuotationViewController: UIViewController {
     @objc func makeRequest(sender: UIButton){
         switch sender.tag {
         case TagButton.origin.rawValue:
-            getCurrenciesQuotation()
+            getCurrenciesQuotation(tagButton: TagButton.origin)
         default:
-            getCurrenciesQuotation()
+            getCurrenciesQuotation(tagButton: TagButton.destiny)
         }
         
     }
     
-    func getCurrenciesQuotation() {
+    func getCurrenciesQuotation(tagButton: TagButton) {
         coordinator?.showCurrencyList()
         viewModel.getCurrenciesQuotation { (result) in
             switch result {
             case .success(let currenciesQuotation):
-                self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation)
+                self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation, tagButton: tagButton)
             case .failure(let error):
                 self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error)
             }
+        }
+    }
+}
+
+extension QuotationViewController {
+    func updateUI(currencyQuotation: CurrencyQuotation, tagButton: TagButton) {
+        if tagButton == .origin {
+            self.quotationView.chooseCurrencyView.originCurrencyButton.setTitle(currencyQuotation.code, for: .normal)
+            self.originCurrencyQuotation = currencyQuotation
+        } else {
+            quotationView.chooseCurrencyView.destinyCurrencyButton.setTitle(currencyQuotation.code, for: .normal)
+            self.destinyCurrencyQuotation = currencyQuotation
         }
     }
 }
