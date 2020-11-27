@@ -20,8 +20,7 @@ class CurrencyListView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 0)
-        tableView.backgroundColor = .blue
+        tableView.backgroundColor = AppColors.appBackground.color
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()

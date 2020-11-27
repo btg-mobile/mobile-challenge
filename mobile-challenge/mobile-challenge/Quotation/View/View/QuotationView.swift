@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum TagButton: Int {
-    case quotation = 0
-    case currency = 1
-}
-
 class QuotationView: UIView {
     
     private var backgroundTopView: UIView = {
