@@ -21,4 +21,9 @@ class QuotationCoordinator: Coordinator {
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
+    
+    func showCurrencyList(){
+        let coordinator = CurrencyListCoordinator(navigationController: navigationController)
+        coordinator.start()
+    }
 }

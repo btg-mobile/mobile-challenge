@@ -33,25 +33,16 @@ class QuotationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-//        quotationView.choosquotationButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
-//        quotationView.currencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
+        quotationView.chooseCurrencyView.originCurrencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
+        quotationView.chooseCurrencyView.destinyCurrencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
     }
     
     @objc func makeRequest(sender: UIButton){
         switch sender.tag {
-        case TagButton.quotation.rawValue:
-            viewModel.fetchQuotation { (result) in
-                DispatchQueue.main.async {
-                    self.quotationView.label.text = result
-                }
-            }
+        case TagButton.origin.rawValue:
+            coordinator?.showCurrencyList()
         default:
-            viewModel.fetchCurrencies { (result) in
-                DispatchQueue.main.async {
-                    self.quotationView.label.text = result
-                }
-            }
+            coordinator?.showCurrencyList()
         }
         
     }

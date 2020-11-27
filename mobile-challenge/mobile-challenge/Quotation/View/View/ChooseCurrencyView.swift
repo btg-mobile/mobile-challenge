@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum TagButton: Int {
+    case origin = 0
+    case destiny = 1
+}
+
 class ChooseCurrencyView : UIStackView {
     var topStack: UIStackView = {
         var stack = UIStackView(frame: .zero)
@@ -36,7 +41,7 @@ class ChooseCurrencyView : UIStackView {
         button.setImage(image, for: .normal)
         button.tintColor = textColor
         button.semanticContentAttribute = .forceRightToLeft
-        button.tag = TagButton.quotation.rawValue
+        button.tag = TagButton.origin.rawValue
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -62,7 +67,7 @@ class ChooseCurrencyView : UIStackView {
         button.setImage(image, for: .normal)
         button.tintColor = textColor
         button.semanticContentAttribute = .forceRightToLeft
-        button.tag = TagButton.currency.rawValue
+        button.tag = TagButton.destiny.rawValue
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
