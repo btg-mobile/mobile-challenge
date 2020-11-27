@@ -10,6 +10,7 @@ import UIKit
 class QuotationCoordinator: Coordinator {
     var navigationController: UINavigationController
     var viewModel: QuotationViewModel
+    weak var currencyList: CurrenciesQuotationDelegate?
     
     init(navigationController: UINavigationController, manager: NetworkManager) {
         self.navigationController = navigationController
@@ -25,5 +26,6 @@ class QuotationCoordinator: Coordinator {
     func showCurrencyList(){
         let coordinator = CurrencyListCoordinator(navigationController: navigationController)
         coordinator.start()
+        currencyList = coordinator
     }
 }

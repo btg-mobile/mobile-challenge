@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2229DA4257135A400FB48AF /* CurrencyQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DA3257135A400FB48AF /* CurrencyQuotation.swift */; };
+		E2229DAC25713F3300FB48AF /* CurrenciesQuotationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DAB25713F3300FB48AF /* CurrenciesQuotationDelegate.swift */; };
 		E22EA105256F03A000D10E62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA104256F03A000D10E62 /* AppDelegate.swift */; };
 		E22EA107256F03A000D10E62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA106256F03A000D10E62 /* SceneDelegate.swift */; };
 		E22EA109256F03A000D10E62 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA108256F03A000D10E62 /* QuotationViewController.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E2229DA3257135A400FB48AF /* CurrencyQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyQuotation.swift; sourceTree = "<group>"; };
+		E2229DAB25713F3300FB48AF /* CurrenciesQuotationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesQuotationDelegate.swift; sourceTree = "<group>"; };
 		E22EA101256F03A000D10E62 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22EA104256F03A000D10E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E22EA106256F03A000D10E62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		E28E2D01256FCB1D00177E4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E2229DA3257135A400FB48AF /* CurrencyQuotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			children = (
 				E2B724EA256F0983006AC96D /* ViewCodable.swift */,
 				E2B724F9256F0BF2006AC96D /* Coordinator.swift */,
+				E2229DAB25713F3300FB48AF /* CurrenciesQuotationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				E2902188256F14AD0059D042 /* NetworkManager.swift in Sources */,
 				E22EA105256F03A000D10E62 /* AppDelegate.swift in Sources */,
 				E2DA7A542571258F004BC7B6 /* CurrencyListViewController.swift in Sources */,
+				E2229DAC25713F3300FB48AF /* CurrenciesQuotationDelegate.swift in Sources */,
 				E2B724FA256F0BF2006AC96D /* Coordinator.swift in Sources */,
 				E2B72516256F1047006AC96D /* QuotationCoordinator.swift in Sources */,
 				E28E2D1C256FDBA100177E4E /* QuotationColors.swift in Sources */,
@@ -499,6 +506,7 @@
 				E28E2D26256FDC8F00177E4E /* AppColors.swift in Sources */,
 				E28E2D14256FD7D500177E4E /* ChooseCurrencyView.swift in Sources */,
 				E2DA7A5F25712870004BC7B6 /* CurrencyListStrings.swift in Sources */,
+				E2229DA4257135A400FB48AF /* CurrencyQuotation.swift in Sources */,
 				E28E2D03256FCB4000177E4E /* Currency.swift in Sources */,
 				E2B7250A256F0E58006AC96D /* ApplicationCoordinator.swift in Sources */,
 			);

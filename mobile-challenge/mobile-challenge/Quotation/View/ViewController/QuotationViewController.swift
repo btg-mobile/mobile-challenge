@@ -41,6 +41,14 @@ class QuotationViewController: UIViewController {
         switch sender.tag {
         case TagButton.origin.rawValue:
             coordinator?.showCurrencyList()
+            viewModel.getCurrenciesQuotation { (result) in
+                switch result {
+                case .success(let currenciesQuotation):
+                    self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation)
+                case .failure(let error):
+                    self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error)
+                }
+            }
         default:
             coordinator?.showCurrencyList()
         }

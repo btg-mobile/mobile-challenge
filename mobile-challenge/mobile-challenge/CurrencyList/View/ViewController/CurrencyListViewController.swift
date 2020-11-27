@@ -25,3 +25,13 @@ class CurrencyListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 }
+
+extension CurrencyListViewController: CurrencyListDelegate {
+    func showCurrencyList(currenciesQuotation: [CurrencyQuotation]) {
+        
+    }
+    
+    func showError(error: Error) {
+        
+    }
+}
