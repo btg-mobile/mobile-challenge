@@ -16,6 +16,8 @@ class CurrencyConverterViewController: UIViewController {
     
     @AutoLayout private var toCurrencyLabel: CurrencyResultLabel
     @AutoLayout private var toCurrencyButton: CurrentyButton
+    
+    private lazy var keyboard: KeyboardView = KeyboardView(frame: self.view.frame, delegate: self)
 
     private var viewModel: CurrencyConverterViewModel
     
@@ -43,12 +45,14 @@ class CurrencyConverterViewController: UIViewController {
         setUpButton()
         setUpFromCurrentyButton()
         setUpToCurrentyButton()
+        setUpKeyboard()
     }
     
     private func layoutConstraints() {
         layoutButton()
         layoutFromCurrenty()
         layoutToCurrenty()
+        layoutToKeyboard()
     }
     //MARK: - End SetUp
     
@@ -68,10 +72,16 @@ class CurrencyConverterViewController: UIViewController {
                                    for: .touchUpInside)
     }
     
+    private func setUpKeyboard() {
+        keyboard.delegate = keyboard
+        keyboard.dataSource = keyboard
+    }
+    
     //MARK: - objcs
     @objc private func openList() {
         viewModel.pickSupporteds()
     }
+    //MARK: - End objcs
     
     //MARK: - Layout
     private func layoutButton() {
@@ -126,6 +136,26 @@ class CurrencyConverterViewController: UIViewController {
             toCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthMultiplier),
         ])
     }
+    
+    private func layoutToKeyboard() {
+        view.addSubview(keyboard)
+        
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            keyboard.topAnchor.constraint(equalTo: toCurrencyButton.bottomAnchor,
+                                          constant: DesignSystem.Spacing.large*4),
+            keyboard.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
+            keyboard.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.height),
+            keyboard.widthAnchor.constraint(equalToConstant: DesignSystem.Keyboard.width),
+        ])
+    }
     //MARK: - End Layout
+}
+
+extension CurrencyConverterViewController: KeyboardViewService {
+    func selected(value: Int) {
+        debugPrint(value)
+    }
 }
 

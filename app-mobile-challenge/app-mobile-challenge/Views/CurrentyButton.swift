@@ -24,7 +24,6 @@ final class CurrentyButton: UIButton {
         titleLabel?.font = TextStyle.display1.font
         setTitleColor(DesignSystem.Colors.primary, for: .normal)
         setTitle("USD", for: .normal)
-        let icon = DesignSystem.Icons.coins
         clipsToBounds = true
     }
 }

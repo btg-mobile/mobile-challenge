@@ -21,6 +21,8 @@
 		820C4FF92571FF2B00D9FEAB /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */; };
 		820C4FFE2572081800D9FEAB /* CurrencyResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */; };
 		820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50022572089B00D9FEAB /* CurrentyButton.swift */; };
+		820C500D25720EB600D9FEAB /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C500C25720EB600D9FEAB /* KeyboardView.swift */; };
+		820C501525720EE100D9FEAB /* KeyboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C501425720EE100D9FEAB /* KeyboardViewCell.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -64,6 +66,8 @@
 		820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultLabel.swift; sourceTree = "<group>"; };
 		820C50022572089B00D9FEAB /* CurrentyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentyButton.swift; sourceTree = "<group>"; };
+		820C500C25720EB600D9FEAB /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		820C501425720EE100D9FEAB /* KeyboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewCell.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +174,23 @@
 			path = "Property wrappers";
 			sourceTree = "<group>";
 		};
+		820C500A25720E8C00D9FEAB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				820C500B25720E9D00D9FEAB /* Keyboard */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		820C500B25720E9D00D9FEAB /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				820C500C25720EB600D9FEAB /* KeyboardView.swift */,
+				820C501425720EE100D9FEAB /* KeyboardViewCell.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		82D09B7425719E4C00624615 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +220,7 @@
 				820C4F872571E5BD00D9FEAB /* ViewControllers */,
 				820C4F992571E89C00D9FEAB /* ViewModels */,
 				820C4FC72571F13C00D9FEAB /* Views */,
+				820C500A25720E8C00D9FEAB /* Components */,
 				820C4F7E2571E59000D9FEAB /* Extensions */,
 				820C4FCB2571F1B200D9FEAB /* Enums */,
 				820C4FE52571FA3D00D9FEAB /* Property wrappers */,
@@ -390,6 +412,7 @@
 				820C4FF92571FF2B00D9FEAB /* BackButtonView.swift in Sources */,
 				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
 				820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */,
+				820C501525720EE100D9FEAB /* KeyboardViewCell.swift in Sources */,
 				82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */,
 				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
 				820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */,
@@ -399,6 +422,7 @@
 				820C4FE12571F83B00D9FEAB /* DesignSystem.swift in Sources */,
 				820C4FE72571FA4D00D9FEAB /* AutoLayout.swift in Sources */,
 				82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */,
+				820C500D25720EB600D9FEAB /* KeyboardView.swift in Sources */,
 				820C4FCD2571F1C000D9FEAB /* UIFont.swift in Sources */,
 				82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */,
 			);

@@ -64,4 +64,14 @@ enum DesignSystem {
         static let secondary: UIColor? = UIColor(named: "secundaria")
         static let background: UIColor? = UIColor(named: "background")
     }
+    
+    enum Keyboard {
+        static let height: CGFloat = 400
+        static let width: CGFloat = 300
+        enum Cell {
+            static let height: CGFloat = 72
+            static let width: CGFloat = 72
+            
+        }
+    }
 }
