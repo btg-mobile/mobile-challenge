@@ -8,7 +8,7 @@
 import UIKit
 
 protocol KeyboardViewService: class {
-    func selected(value: Int)
+    func selected(value: String)
 }
 
 class KeyboardView: UICollectionView {
@@ -62,7 +62,8 @@ extension KeyboardView: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        kdelegate?.selected(value: viewModel.convertValue(index: indexPath.row))
+        let value = viewModel.convertValue(index: indexPath.row)
+        kdelegate?.selected(value: value)
     }
     
 }

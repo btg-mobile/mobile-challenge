@@ -41,28 +41,12 @@ final class CurrencyConverterViewModel {
     }
     //End Coordinators
     
-    public func newValue(value: Int) -> String {
-        switch value {
-        case 0...9:
-            currencyValue.append(String(value))
-        case 10:
-            if(isValidComma()) { currencyValue.append(",") }
-        case 11:
-            if (!currencyValueIsEmpty()) { currencyValue.removeLast() }
-        default:
-            break
-        }
+    public func calculateConvertion() -> String {
+        if (currencyValueIsEmpty()) { return "1,00" }
         return currencyValue
     }
+    
     public func currencyValueIsEmpty() -> Bool {
         return currencyValue == ""
     }
-    public func calculateConvertion() -> String {
-        return currencyValue
-    }
-    
-    private func isValidComma() -> Bool {
-        return !currencyValue.contains(",")
-    }
-    
 }

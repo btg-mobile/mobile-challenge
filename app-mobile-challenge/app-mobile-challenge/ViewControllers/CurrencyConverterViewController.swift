@@ -180,8 +180,9 @@ class CurrencyConverterViewController: UIViewController {
 
 //MARK: - Integração com Keyboard
 extension CurrencyConverterViewController: KeyboardViewService {
-    func selected(value: Int) {
-        fromCurrencyLabel.text = viewModel.newValue(value: value)
+    func selected(value: String) {
+        fromCurrencyLabel.text = value
+        viewModel.currencyValue = value
         if(viewModel.currencyValueIsEmpty()) {
             fromCurrencyLabel.text = "1,00"
         }

@@ -8,7 +8,10 @@
 import Foundation
 
 final class KeyboardViewModel {
-    func convertValue(index: Int) -> Int {
+    
+    public var currencyValue: String = ""
+    
+    func convertValue(index: Int) -> String {
         var value: Int = 0
         switch index {
         case 0:
@@ -34,6 +37,31 @@ final class KeyboardViewModel {
         default:
             value = index
         }
-        return value
+        
+        return computedValue(value: value)
+    }
+    
+    public func computedValue(value: Int) -> String {
+        switch value {
+        case 0...9:
+            currencyValue.append(String(value))
+        case 10:
+            if(currencyValueIsEmpty()) { currencyValue.append("0") }
+            if(isValidComma()) { currencyValue.append(",") }
+        case 11:
+            if (!currencyValueIsEmpty()) { currencyValue.removeLast() }
+        default:
+            break
+        }
+        return currencyValue
+    }
+    
+    public func currencyValueIsEmpty() -> Bool {
+        return currencyValue == ""
+    }
+    
+    
+    private func isValidComma() -> Bool {
+        return !currencyValue.contains(",")
     }
 }
