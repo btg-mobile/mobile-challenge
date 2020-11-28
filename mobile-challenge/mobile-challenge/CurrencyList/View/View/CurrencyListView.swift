@@ -13,8 +13,8 @@ class CurrencyListView: UIView {
         let search = UISearchBar(frame: .zero)
         search.placeholder = CurrencyListStrings.searchPlaceHolder.text
         search.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        search.tintColor = CurrencyListColors.searchBarBackground.color
-        search.barTintColor = CurrencyListColors.searchBarBackground.color
+        search.tintColor = CurrencyListColors.code.color
+        search.searchTextField.returnKeyType = .search
         search.translatesAutoresizingMaskIntoConstraints = false
         return search
     }()
