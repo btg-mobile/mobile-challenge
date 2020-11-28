@@ -48,6 +48,7 @@ class QuotationViewController: UIViewController {
         // Do any additional setup after loading the view.
         quotationView.chooseCurrencyView.originCurrencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
         quotationView.chooseCurrencyView.destinyCurrencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
+        quotationView.convertButton.addTarget(self, action: #selector(convert), for: .touchUpInside)
     }
     
     @objc func makeRequest(sender: UIButton){
@@ -58,6 +59,17 @@ class QuotationViewController: UIViewController {
             getCurrenciesQuotation(tagButton: TagButton.destiny)
         }
         
+    }
+    
+    @objc func convert() {
+        guard let valueStr = quotationView.chooseCurrencyView.textValueToConvert.text else { return }
+        guard let origin = originCurrencyQuotation else { return }
+        guard let destiny = destinyCurrencyQuotation else { return }
+        let value = Double(valueStr) ?? 0.0
+        
+        let convertedValue = viewModel.convert(value: value, origin: origin, destiny: destiny)
+        
+        quotationView.chooseCurrencyView.resultLabel.text = convertedValue
     }
     
     func getCurrenciesQuotation(tagButton: TagButton) {
