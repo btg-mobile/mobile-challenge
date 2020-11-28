@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4F7F2571E5A900D9FEAB /* OSLog.swift */; };
+		820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4F912571E84400D9FEAB /* CurrencyConverterViewModel.swift */; };
+		820C4FAD2571EF5500D9FEAB /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */; };
+		820C4FB02571EF5500D9FEAB /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */; };
+		820C4FB32571EF5500D9FEAB /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA92571EF5500D9FEAB /* Manrope-Bold.ttf */; };
+		820C4FC32571F13600D9FEAB /* CurrencyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FC22571F13600D9FEAB /* CurrencyButtonView.swift */; };
+		820C4FCD2571F1C000D9FEAB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FCC2571F1C000D9FEAB /* UIFont.swift */; };
+		820C4FE12571F83B00D9FEAB /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FE02571F83B00D9FEAB /* DesignSystem.swift */; };
+		820C4FE72571FA4D00D9FEAB /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FE62571FA4D00D9FEAB /* AutoLayout.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
-		82D09B8525719E4D00624615 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* ViewController.swift */; };
+		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
 		82D09B8D25719E4F00624615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D09B8C25719E4F00624615 /* Assets.xcassets */; };
 		82D09B9025719E4F00624615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D09B8E25719E4F00624615 /* LaunchScreen.storyboard */; };
 		82D09B9B25719E4F00624615 /* app_mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B9A25719E4F00624615 /* app_mobile_challengeTests.swift */; };
@@ -38,10 +46,18 @@
 
 /* Begin PBXFileReference section */
 		820C4F7F2571E5A900D9FEAB /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		820C4F912571E84400D9FEAB /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
+		820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		820C4FA92571EF5500D9FEAB /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		820C4FC22571F13600D9FEAB /* CurrencyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButtonView.swift; sourceTree = "<group>"; };
+		820C4FCC2571F1C000D9FEAB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		820C4FE02571F83B00D9FEAB /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		820C4FE62571FA4D00D9FEAB /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82D09B8425719E4D00624615 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		82D09B8C25719E4F00624615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82D09B8F25719E4F00624615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82D09B9125719E4F00624615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,12 +104,55 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		820C4F872571E5BD00D9FEAB /* Controllers */ = {
+		820C4F872571E5BD00D9FEAB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				82D09B8425719E4D00624615 /* ViewController.swift */,
+				82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		820C4F992571E89C00D9FEAB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				820C4F912571E84400D9FEAB /* CurrencyConverterViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		820C4FA02571EF5500D9FEAB /* Manrope */ = {
+			isa = PBXGroup;
+			children = (
+				820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */,
+				820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */,
+				820C4FA92571EF5500D9FEAB /* Manrope-Bold.ttf */,
+			);
+			path = Manrope;
+			sourceTree = "<group>";
+		};
+		820C4FC72571F13C00D9FEAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				820C4FC22571F13600D9FEAB /* CurrencyButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		820C4FCB2571F1B200D9FEAB /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				820C4FCC2571F1C000D9FEAB /* UIFont.swift */,
+				820C4FE02571F83B00D9FEAB /* DesignSystem.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		820C4FE52571FA3D00D9FEAB /* Property wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				820C4FE62571FA4D00D9FEAB /* AutoLayout.swift */,
+			);
+			path = "Property wrappers";
 			sourceTree = "<group>";
 		};
 		82D09B7425719E4C00624615 = {
@@ -121,9 +180,13 @@
 			children = (
 				82D46D9A2571DB8000C316E1 /* App */,
 				82D46D9E2571DB8F00C316E1 /* Resources */,
-				820C4F872571E5BD00D9FEAB /* Controllers */,
 				82D46DCB2571E41300C316E1 /* Coordinators */,
+				820C4F872571E5BD00D9FEAB /* ViewControllers */,
+				820C4F992571E89C00D9FEAB /* ViewModels */,
+				820C4FC72571F13C00D9FEAB /* Views */,
 				820C4F7E2571E59000D9FEAB /* Extensions */,
+				820C4FCB2571F1B200D9FEAB /* Enums */,
+				820C4FE52571FA3D00D9FEAB /* Property wrappers */,
 			);
 			path = "app-mobile-challenge";
 			sourceTree = "<group>";
@@ -158,6 +221,7 @@
 		82D46D9E2571DB8F00C316E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				820C4FA02571EF5500D9FEAB /* Manrope */,
 				82D09B8C25719E4F00624615 /* Assets.xcassets */,
 				82D09B8E25719E4F00624615 /* LaunchScreen.storyboard */,
 				82D09B9125719E4F00624615 /* Info.plist */,
@@ -279,6 +343,9 @@
 			files = (
 				82D09B9025719E4F00624615 /* LaunchScreen.storyboard in Resources */,
 				82D09B8D25719E4F00624615 /* Assets.xcassets in Resources */,
+				820C4FAD2571EF5500D9FEAB /* Manrope-Medium.ttf in Resources */,
+				820C4FB32571EF5500D9FEAB /* Manrope-Bold.ttf in Resources */,
+				820C4FB02571EF5500D9FEAB /* Manrope-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,10 +371,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				82D46DD02571E46D00C316E1 /* CurrencyConverterCoordinator.swift in Sources */,
+				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
 				82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */,
 				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
-				82D09B8525719E4D00624615 /* ViewController.swift in Sources */,
+				82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */,
+				820C4FC32571F13600D9FEAB /* CurrencyButtonView.swift in Sources */,
+				820C4FE12571F83B00D9FEAB /* DesignSystem.swift in Sources */,
+				820C4FE72571FA4D00D9FEAB /* AutoLayout.swift in Sources */,
 				82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */,
+				820C4FCD2571F1C000D9FEAB /* UIFont.swift in Sources */,
 				82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,7 +558,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "maatheusgois.app-mobile-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -505,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "maatheusgois.app-mobile-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

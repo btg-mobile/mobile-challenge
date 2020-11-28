@@ -17,9 +17,12 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoodinatorService {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
+    /// Inicializa o fluxo de telas
     func start() {
         os_log("Coordinator: showing initial screen.", log: .appflow, type: .debug)
-        let viewController = UIViewController()
+        let viewModel = CurrencyConverterViewModel()
+        let viewController = CurrencyConverterViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
 
     }
