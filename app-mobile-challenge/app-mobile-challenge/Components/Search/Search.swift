@@ -26,14 +26,14 @@ final class Search: UISearchBar {
     private func layout() {
         barTintColor = .white
         searchTextField.backgroundColor = .white
-        tintColor = DesignSystem.Colors.primary
+        tintColor = DesignSystem.Colors.secondary
         placeholder = " Pesquise por uma moeda..."
         layer.borderWidth = 1.5
         layer.borderColor = #colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9803921569, alpha: 1)
+        clipsToBounds = true
         backgroundImage = UIImage() //Maior roubo da história...
         isTranslucent = false
         //Rounded
-        clipsToBounds = true
         layer.cornerRadius = 20
     }
 }

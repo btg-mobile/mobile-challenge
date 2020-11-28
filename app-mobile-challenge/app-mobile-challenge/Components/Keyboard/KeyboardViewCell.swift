@@ -13,7 +13,7 @@ class KeyboardViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setUpViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,14 +27,14 @@ class KeyboardViewCell: UICollectionViewCell {
         self.backgroundColor = .white
     }
     
-    private func setup() {
+    private func setUpViews() {
         clipsToBounds = false
         layer.cornerRadius = frame.height/2
-        setConstraints()
+        layoutViews()
         setShadows()
     }
     
-    private func setConstraints() {
+    private func layoutViews() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
         NSLayoutConstraint.activate([

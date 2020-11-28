@@ -42,13 +42,13 @@ extension TextStyle {
         case .display1:
             return FontDescription(font: .medium, size: 40, style: .largeTitle)
         case .display2:
-            return FontDescription(font: .medium, size: 20, style: .body)
+            return FontDescription(font: .medium, size: 28, style: .title1)
         case .display3:
             return FontDescription(font: .bold, size: 20, style: .title2)
         case .display4:
             return FontDescription(font: .regular, size: 16, style: .headline)
         case .display5:
-            return FontDescription(font: .regular, size: 14, style: .headline)
+            return FontDescription(font: .regular, size: 14, style: .footnote)
         }
     }
 }

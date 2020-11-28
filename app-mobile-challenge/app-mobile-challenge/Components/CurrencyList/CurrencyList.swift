@@ -9,14 +9,8 @@ import UIKit
 
 final class CurrencyList: UITableView {
     public var currencies = Currencies.sample
-    /// Descreve as moedas favoritas.
-    private var favoriteCurrencies: Currencies {
-        return currencies.filter({$0.favorite == true})
-    }
-    /// Descreve todas as moedas.
-    private var allCurrencies: Currencies {
-        return currencies
-    }
+    
+    private lazy var viewModel = CurrencyListViewModel(currencies: currencies)
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -30,7 +24,19 @@ final class CurrencyList: UITableView {
     private func setUp() {
         self.delegate = self
         self.dataSource = self
-        self.backgroundColor = .green
+        register()
+        style()
+    }
+    
+    private func style() {
+        separatorStyle = .none
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
+        sectionHeaderHeight = 42
+    }
+    
+    private func register() {
+        register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.self.description())
     }
 }
 
@@ -39,12 +45,30 @@ extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) { return favoriteCurrencies.count }
-        else { return allCurrencies.count }
+        return viewModel.elementsBy(section: section).count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = .red
+        guard let cell = dequeueReusableCell(withIdentifier: CurrencyListCell.self.description(), for: indexPath) as? CurrencyListCell else {
+            return UITableViewCell()
+        }
+        cell.setUpComponent(currency: currencies[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72 //configura o tamanho da celula
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.title(section: section)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.contentView.backgroundColor = .white
+            headerView.textLabel?.font = TextStyle.display3.font
+            headerView.textLabel?.textColor = DesignSystem.Colors.secondary
+
+        }
     }
 }

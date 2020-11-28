@@ -25,9 +25,8 @@ final class CalculationButton: UIButton {
         setTitle("Calcular", for: .normal)
         let icon = DesignSystem.Backgrounds.gradientButton
         backgroundImage(for: .normal)
-        clipsToBounds = false
-        layer.cornerRadius = 24
         setBackgroundImage(icon, for: .normal)
         clipsToBounds = true
+        layer.cornerRadius = 24
     }
 }

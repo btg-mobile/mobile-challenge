@@ -46,6 +46,7 @@ class SupportedCurrenciesViewController: UIViewController {
     private func setUpViews() {
         setUpButton()
         setUpTitle()
+        hideKeyboardWhenTappedAround() 
     }
     
     /// Configura as constraints dos elementos visuais.
@@ -104,7 +105,7 @@ class SupportedCurrenciesViewController: UIViewController {
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            search.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: DesignSystem.Spacing.large*2),
+            search.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: DesignSystem.Spacing.large*2 ),
             search.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             search.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor)
         ])

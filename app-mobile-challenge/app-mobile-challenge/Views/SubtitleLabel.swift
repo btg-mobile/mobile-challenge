@@ -1,5 +1,5 @@
 //
-//  TitleLabel.swift
+//  Subtitle.swift
 //  app-mobile-challenge
 //
 //  Created by Matheus Silva on 28/11/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TitleLabel: UILabel {
+final class SubtitleLabel: UILabel {
     
     // - MARK: Init
     override init(frame: CGRect) {
@@ -21,7 +21,7 @@ final class TitleLabel: UILabel {
     
     private func style() {
         textAlignment = .center
-        font = TextStyle.display2.font
+        font = TextStyle.display5.font
         textColor = DesignSystem.Colors.secondary
     }
 }
