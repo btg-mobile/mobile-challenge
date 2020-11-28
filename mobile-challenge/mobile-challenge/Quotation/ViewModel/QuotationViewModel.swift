@@ -19,6 +19,12 @@ class QuotationViewModel {
     init(manager: NetworkManager) {
         self.manager = manager
     }
+    
+    func convert(value: Double, origin: CurrencyQuotation, destiny: CurrencyQuotation) -> String {
+        let convertedValue = (value / origin.quotation) * destiny.quotation
+        
+        return String(format: "%.2f", convertedValue)
+    }
 }
 
 extension QuotationViewModel {

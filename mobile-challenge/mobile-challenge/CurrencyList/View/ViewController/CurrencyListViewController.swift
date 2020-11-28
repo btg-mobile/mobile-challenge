@@ -14,9 +14,11 @@ class CurrencyListViewController: UIViewController {
     }
     weak var coordinator: CurrencyListCoordinator?
     var manager: CurrencyListManager
+    var tagButton: TagButton
     
     init() {
         self.manager = CurrencyListManager()
+        self.tagButton = .origin
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,8 +35,14 @@ class CurrencyListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setUpClosures()
         setUpNavigation()
         setUpTableView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        coordinator?.didFinish()
     }
     
     func setUpTableView() {
@@ -45,8 +53,8 @@ class CurrencyListViewController: UIViewController {
     
     func setUpNavigation(){
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: CurrencyListColors.currencyTitle.color]
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: CurrencyListColors.currencyTitle.color]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: CurrencyListColors.currencyTitle.color ?? .blue]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: CurrencyListColors.currencyTitle.color ?? .blue]
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = CurrencyListStrings.title.text
         
@@ -55,8 +63,17 @@ class CurrencyListViewController: UIViewController {
     }
 }
 
+private extension CurrencyListViewController {
+    func setUpClosures() {
+        self.manager.selectedCurrency = { currencyQuotation in
+            self.coordinator?.didFinish(currencyQuotation: currencyQuotation, tagButton: self.tagButton)
+        }
+    }
+}
+
 extension CurrencyListViewController: CurrenciesQuotationDelegate {
-    func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation]) {
+    func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation], tagButton: TagButton) {
+        self.tagButton = tagButton
         DispatchQueue.main.async {
             self.manager.currenciesQuotation = currenciesQuotation
             self.manager.tableView?.reloadData()

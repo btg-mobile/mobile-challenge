@@ -33,7 +33,7 @@ class ChooseCurrencyView : UIStackView {
         
     var originCurrencyButton: UIButton = {
         var button = UIButton(frame: .zero)
-        button.setTitle("USD", for: .normal)
+        button.setTitle("---", for: .normal)
         let textColor = QuotationColors.buttonTextColor.color
         button.setTitleColor(textColor, for: .normal)
         button.backgroundColor = QuotationColors.currencyButton.color
@@ -59,7 +59,7 @@ class ChooseCurrencyView : UIStackView {
     
     var destinyCurrencyButton: UIButton = {
         var button = UIButton(frame: .zero)
-        button.setTitle("BRL", for: .normal)
+        button.setTitle("---", for: .normal)
         let textColor = QuotationColors.buttonTextColor.color
         button.setTitleColor(textColor, for: .normal)
         button.backgroundColor = QuotationColors.currencyButton.color

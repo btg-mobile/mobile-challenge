@@ -8,6 +8,12 @@
 import Foundation
 
 protocol CurrenciesQuotationDelegate: class {
-    func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation])
+    func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation], tagButton: TagButton)
     func didFinishFetchQuotationsWithError(error: Error)
+}
+
+protocol SelectCurrencyQuotationDelegate: class {
+    var childCoordinators: [Coordinator] { get set }
+    
+    func didSelectCurrrencyQuotation(as tagButton: TagButton, currencyQuotation: CurrencyQuotation)
 }
