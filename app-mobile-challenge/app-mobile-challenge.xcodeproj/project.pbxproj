@@ -28,6 +28,9 @@
 		820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502625722B8500D9FEAB /* UserDefaults.swift */; };
 		820C502C2572312B00D9FEAB /* CalculationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502B2572312B00D9FEAB /* CalculationButton.swift */; };
 		820C50312572D1F100D9FEAB /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50302572D1F100D9FEAB /* TitleLabel.swift */; };
+		820C50372572D81300D9FEAB /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50362572D81300D9FEAB /* Currency.swift */; };
+		820C50412572D8E200D9FEAB /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50402572D8E200D9FEAB /* CurrencyList.swift */; };
+		820C50472572E04900D9FEAB /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50462572E04800D9FEAB /* Search.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -78,6 +81,9 @@
 		820C502625722B8500D9FEAB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		820C502B2572312B00D9FEAB /* CalculationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationButton.swift; sourceTree = "<group>"; };
 		820C50302572D1F100D9FEAB /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		820C50362572D81300D9FEAB /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		820C50402572D8E200D9FEAB /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
+		820C50462572E04800D9FEAB /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +197,8 @@
 		820C500A25720E8C00D9FEAB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				820C50452572E03000D9FEAB /* Search */,
+				820C503E2572D8BD00D9FEAB /* CurrencyList */,
 				820C500B25720E9D00D9FEAB /* Keyboard */,
 			);
 			path = Components;
@@ -204,6 +212,30 @@
 				820C501425720EE100D9FEAB /* KeyboardViewCell.swift */,
 			);
 			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		820C50352572D7D500D9FEAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				820C50362572D81300D9FEAB /* Currency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		820C503E2572D8BD00D9FEAB /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				820C50402572D8E200D9FEAB /* CurrencyList.swift */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		820C50452572E03000D9FEAB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				820C50462572E04800D9FEAB /* Search.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		82D09B7425719E4C00624615 = {
@@ -232,6 +264,7 @@
 				82D46D9A2571DB8000C316E1 /* App */,
 				82D46D9E2571DB8F00C316E1 /* Resources */,
 				82D46DCB2571E41300C316E1 /* Coordinators */,
+				820C50352572D7D500D9FEAB /* Model */,
 				820C4F872571E5BD00D9FEAB /* ViewControllers */,
 				820C4F992571E89C00D9FEAB /* ViewModels */,
 				820C4FC72571F13C00D9FEAB /* Views */,
@@ -425,6 +458,7 @@
 				820C4FFE2572081800D9FEAB /* CurrencyResultLabel.swift in Sources */,
 				82D46DD02571E46D00C316E1 /* CurrencyConverterCoordinator.swift in Sources */,
 				820C4FF92571FF2B00D9FEAB /* BackButtonView.swift in Sources */,
+				820C50412572D8E200D9FEAB /* CurrencyList.swift in Sources */,
 				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
 				820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */,
 				820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */,
@@ -434,6 +468,8 @@
 				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
 				820C502225722AB800D9FEAB /* UserDefaultsAccess.swift in Sources */,
 				820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */,
+				820C50472572E04900D9FEAB /* Search.swift in Sources */,
+				820C50372572D81300D9FEAB /* Currency.swift in Sources */,
 				82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */,
 				820C4FC32571F13600D9FEAB /* SupportedButton.swift in Sources */,
 				820C4FEF2571FED000D9FEAB /* SupportedCurrenciesViewModel.swift in Sources */,

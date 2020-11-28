@@ -13,6 +13,11 @@ class SupportedCurrenciesViewController: UIViewController {
     @AutoLayout private var backButton: BackButtonView
     /// Título da página
     @AutoLayout private var titleLabel: TitleLabel
+    
+    /// Barra de pesquisa
+    @AutoLayout private var search: Search
+    /// Lista com as moedas
+    @AutoLayout private var currentyList: CurrencyList
 
     private var viewModel: SupportedCurrenciesViewModel
     
@@ -47,6 +52,8 @@ class SupportedCurrenciesViewController: UIViewController {
     private func layoutViews() {
         layoutButton()
         layoutTitle()
+        layoutSearch()
+        layoutCurrentyList()
     }
     //MARK: - Final da configuração inicial
     
@@ -88,6 +95,31 @@ class SupportedCurrenciesViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: layoutGuides.topAnchor, constant: DesignSystem.Spacing.large),
             titleLabel.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor)
+        ])
+    }
+    
+    private func layoutSearch() {
+        view.addSubview(search)
+        
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            search.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: DesignSystem.Spacing.large*2),
+            search.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
+            search.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor)
+        ])
+    }
+    
+    private func layoutCurrentyList() {
+        view.addSubview(currentyList)
+        
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            currentyList.topAnchor.constraint(equalTo: search.bottomAnchor, constant: DesignSystem.Spacing.large),
+            currentyList.bottomAnchor.constraint(equalTo: layoutGuides.bottomAnchor),
+            currentyList.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
+            currentyList.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor)
         ])
     }
     //MARK: - Final da confuguração de Layout

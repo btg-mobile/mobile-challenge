@@ -18,7 +18,7 @@ class CurrencyConverterViewController: UIViewController {
     @AutoLayout private var toCurrencyButton: CurrentyButton
     
     @AutoLayout private var calculationButton: CalculationButton
-    
+
     private lazy var keyboard: KeyboardView = KeyboardView(frame: self.view.frame, delegate: self)
 
     private var viewModel: CurrencyConverterViewModel
