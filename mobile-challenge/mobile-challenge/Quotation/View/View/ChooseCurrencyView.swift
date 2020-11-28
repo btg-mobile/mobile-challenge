@@ -48,6 +48,7 @@ class ChooseCurrencyView : UIStackView {
         text.textAlignment = .right
         text.backgroundColor = QuotationColors.textFiledBackground.color
         text.borderStyle = .roundedRect
+        text.keyboardType = .numberPad
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()

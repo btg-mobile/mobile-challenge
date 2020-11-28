@@ -46,9 +46,21 @@ class QuotationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        setUpTargets()
+        quotationView.chooseCurrencyView.textValueToConvert.delegate = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func setUpTargets() {
         quotationView.chooseCurrencyView.originCurrencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
         quotationView.chooseCurrencyView.destinyCurrencyButton.addTarget(self, action: #selector(makeRequest(sender:)), for: .touchUpInside)
         quotationView.convertButton.addTarget(self, action: #selector(convert), for: .touchUpInside)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
     }
     
     @objc func makeRequest(sender: UIButton){
@@ -95,5 +107,28 @@ extension QuotationViewController {
             self.destinyCurrencyQuotation = currencyQuotation
         }
     }
+}
+
+extension QuotationViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            
+            if string.count == 0 { return true }
+
+            let text = textField.text ?? ""
+            
+            var newText = (text as NSString).replacingCharacters(in: range, with: string) as NSString
+            
+            newText = newText.replacingOccurrences(of: ".", with: "") as NSString
+
+            let cents : NSInteger = newText.integerValue
+            let value = (Double(cents) / 100.0)
+
+            if newText.length < 9 {
+                let str = String(format: "%0.2f", arguments: [value])
+                quotationView.chooseCurrencyView.textValueToConvert.text = str
+            }
+
+            return false
+        }
 }
 
