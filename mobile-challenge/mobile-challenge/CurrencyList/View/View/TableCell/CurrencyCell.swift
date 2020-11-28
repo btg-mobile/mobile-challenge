@@ -40,13 +40,13 @@ class CurrencyCell: UITableViewCell {
 }
 
 extension CurrencyCell: ViewCodable {
-    func setupHierarchy() {
+    func setUpHierarchy() {
         addSubview(code)
         addSubview(name)
         addSubview(quotation)
     }
     
-    func setupConstraints() {
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             code.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             code.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -60,7 +60,7 @@ extension CurrencyCell: ViewCodable {
         ])
     }
     
-    func setupAditionalConfiguration() {
+    func setUpAditionalConfiguration() {
         backgroundColor = CurrencyListColors.cellBackground.color
     }
     

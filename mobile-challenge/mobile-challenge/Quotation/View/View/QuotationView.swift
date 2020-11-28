@@ -53,14 +53,14 @@ class QuotationView: UIView {
 }
 
 extension QuotationView: ViewCodable {
-    func setupHierarchy() {
+    func setUpHierarchy() {
         addSubview(backgroundTopView)
         addSubview(middleView)
         middleView.addSubview(chooseCurrencyView)
         addSubview(convertButton)
     }
     
-    func setupConstraints() {
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             backgroundTopView.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundTopView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -84,7 +84,7 @@ extension QuotationView: ViewCodable {
         ])
     }
     
-    func setupAditionalConfiguration() {
+    func setUpAditionalConfiguration() {
         backgroundColor = .white
         
         applyShaddow(view: middleView)

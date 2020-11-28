@@ -101,7 +101,7 @@ class ChooseCurrencyView : UIStackView {
 }
 
 extension ChooseCurrencyView: ViewCodable {
-    func setupHierarchy() {
+    func setUpHierarchy() {
         addSubview(topStack)
         addSubview(bottomStack)
         
@@ -112,7 +112,7 @@ extension ChooseCurrencyView: ViewCodable {
         bottomStack.addArrangedSubview(resultLabel)
     }
     
-    func setupConstraints() {
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             topStack.topAnchor.constraint(equalTo: topAnchor),
             topStack.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -136,7 +136,7 @@ extension ChooseCurrencyView: ViewCodable {
         ])
     }
     
-    func setupAditionalConfiguration() {
+    func setUpAditionalConfiguration() {
         roundView(view: originCurrencyButton)
         roundView(view: destinyCurrencyButton)
     }

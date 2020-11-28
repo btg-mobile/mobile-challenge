@@ -22,6 +22,7 @@ class CurrencyListView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.identifier)
+        tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.identifier)
         tableView.register(CurrencyListHeader.self, forHeaderFooterViewReuseIdentifier: CurrencyListHeader.identifier)
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = AppColors.appBackground.color
@@ -40,12 +41,12 @@ class CurrencyListView: UIView {
 }
 
 extension CurrencyListView: ViewCodable {
-    func setupHierarchy() {
+    func setUpHierarchy() {
         addSubview(searchBar)
         addSubview(tableView)
     }
     
-    func setupConstraints() {
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
@@ -58,7 +59,7 @@ extension CurrencyListView: ViewCodable {
         ])
     }
     
-    func setupAditionalConfiguration() {
+    func setUpAditionalConfiguration() {
         backgroundColor = AppColors.appBackground.color
     }
 }

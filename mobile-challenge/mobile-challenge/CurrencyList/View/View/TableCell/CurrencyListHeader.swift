@@ -21,19 +21,18 @@ class CurrencyListHeader: UITableViewHeaderFooterView {
 }
 
 extension CurrencyListHeader: ViewCodable {
-    func setupHierarchy() {
+    func setUpHierarchy() {
         addSubview(label)
     }
     
-    func setupConstraints() {
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
         ])
     }
     
-    func setupAditionalConfiguration() {
-        backgroundColor = CurrencyListColors.sectionBackground.color
+    func setUpAditionalConfiguration() {
         tintColor = CurrencyListColors.sectionBackground.color
     }
 }

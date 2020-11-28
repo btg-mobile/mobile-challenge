@@ -13,6 +13,8 @@
 		E2229DBB2571446100FB48AF /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DBA2571446100FB48AF /* CurrencyCell.swift */; };
 		E2229DC22571458700FB48AF /* CurrencyListColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DC12571458700FB48AF /* CurrencyListColors.swift */; };
 		E22B399325729232004C917C /* CurrencyListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B399225729232004C917C /* CurrencyListHeader.swift */; };
+		E22B39AA2572B6A8004C917C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B39A92572B6A8004C917C /* LoadingView.swift */; };
+		E22B39AF2572B717004C917C /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B39AE2572B717004C917C /* LoadingCell.swift */; };
 		E22EA105256F03A000D10E62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA104256F03A000D10E62 /* AppDelegate.swift */; };
 		E22EA107256F03A000D10E62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA106256F03A000D10E62 /* SceneDelegate.swift */; };
 		E22EA109256F03A000D10E62 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EA108256F03A000D10E62 /* QuotationViewController.swift */; };
@@ -66,6 +68,8 @@
 		E2229DBA2571446100FB48AF /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		E2229DC12571458700FB48AF /* CurrencyListColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListColors.swift; sourceTree = "<group>"; };
 		E22B399225729232004C917C /* CurrencyListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListHeader.swift; sourceTree = "<group>"; };
+		E22B39A92572B6A8004C917C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E22B39AE2572B717004C917C /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		E22EA101256F03A000D10E62 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22EA104256F03A000D10E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E22EA106256F03A000D10E62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			children = (
 				E2229DBA2571446100FB48AF /* CurrencyCell.swift */,
 				E22B399225729232004C917C /* CurrencyListHeader.swift */,
+				E22B39AE2572B717004C917C /* LoadingCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 			children = (
 				E2229DB92571443E00FB48AF /* TableCell */,
 				E2DA7A58257125BF004BC7B6 /* CurrencyListView.swift */,
+				E22B39A92572B6A8004C917C /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,7 +563,9 @@
 				E28E2D26256FDC8F00177E4E /* AppColors.swift in Sources */,
 				E28E2D14256FD7D500177E4E /* ChooseCurrencyView.swift in Sources */,
 				E2DA7A5F25712870004BC7B6 /* CurrencyListStrings.swift in Sources */,
+				E22B39AF2572B717004C917C /* LoadingCell.swift in Sources */,
 				E2229DA4257135A400FB48AF /* CurrencyQuotation.swift in Sources */,
+				E22B39AA2572B6A8004C917C /* LoadingView.swift in Sources */,
 				E28E2D03256FCB4000177E4E /* Currency.swift in Sources */,
 				E2EC77E32571D5480086706D /* CurrencyListViewModel.swift in Sources */,
 				E2B7250A256F0E58006AC96D /* ApplicationCoordinator.swift in Sources */,
@@ -666,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -721,7 +729,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

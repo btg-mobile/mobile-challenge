@@ -9,17 +9,17 @@ import Foundation
 
 protocol ViewCodable {
     func setUpViews()
-    func setupHierarchy()
-    func setupConstraints()
-    func setupAditionalConfiguration()
+    func setUpHierarchy()
+    func setUpConstraints()
+    func setUpAditionalConfiguration()
 }
 
 extension ViewCodable {
     func setUpViews() {
-        setupHierarchy()
-        setupConstraints()
-        setupAditionalConfiguration()
+        setUpHierarchy()
+        setUpConstraints()
+        setUpAditionalConfiguration()
     }
     
-    func setupAditionalConfiguration() { }
+    func setUpAditionalConfiguration() { }
 }
