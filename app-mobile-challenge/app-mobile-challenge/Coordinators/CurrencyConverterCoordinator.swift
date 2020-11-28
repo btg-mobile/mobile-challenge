@@ -26,7 +26,6 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
         let viewModel = CurrencyConverterViewModel(coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
-
     }
     
     func showSupporteds() {

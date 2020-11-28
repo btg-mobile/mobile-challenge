@@ -26,26 +26,33 @@ final class CurrencyConverterViewModel {
         return fromCurrencyStorage
     }
     
-    public var currencyValue: String = ""
-    
     public var toCurrency: String {
         return toCurrencyStorage
     }
     
+    /// Valor da moeda atual a ser convertida.
+    public var currencyValue: String = ""
+    
+    /// Inicializador
+    /// - Parameter coordinator: O coordinator controla todas as operações de navegação entre telas.
     init(coordinator: CurrencyConverterCoordinatorService) {
         self.coordinator = coordinator
     }
-    //Coordinators
+    // Coordinators
+    /// Abre a tela de moedas suportadas.
     public func pickSupporteds() {
         coordinator.showSupporteds()
     }
-    //End Coordinators
+    // End Coordinators
     
+    /// Pega a conversão de moedas.
+    /// - Returns: Retorna o valor convertido para a moeda selecionada.
     public func calculateConvertion() -> String {
         if (currencyValueIsEmpty()) { return "1,00" }
         return currencyValue
     }
     
+    /// Verifica se o valor para a conversão está vazio.
     public func currencyValueIsEmpty() -> Bool {
         return currencyValue == ""
     }

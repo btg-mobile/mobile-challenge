@@ -27,6 +27,7 @@
 		820C502225722AB800D9FEAB /* UserDefaultsAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502125722AB800D9FEAB /* UserDefaultsAccess.swift */; };
 		820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502625722B8500D9FEAB /* UserDefaults.swift */; };
 		820C502C2572312B00D9FEAB /* CalculationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502B2572312B00D9FEAB /* CalculationButton.swift */; };
+		820C50312572D1F100D9FEAB /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50302572D1F100D9FEAB /* TitleLabel.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -76,6 +77,7 @@
 		820C502125722AB800D9FEAB /* UserDefaultsAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAccess.swift; sourceTree = "<group>"; };
 		820C502625722B8500D9FEAB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		820C502B2572312B00D9FEAB /* CalculationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationButton.swift; sourceTree = "<group>"; };
+		820C50302572D1F100D9FEAB /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				820C4FC22571F13600D9FEAB /* SupportedButton.swift */,
 				820C502B2572312B00D9FEAB /* CalculationButton.swift */,
+				820C50302572D1F100D9FEAB /* TitleLabel.swift */,
 				820C50022572089B00D9FEAB /* CurrentyButton.swift */,
 				820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */,
 				820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */,
@@ -425,6 +428,7 @@
 				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
 				820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */,
 				820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */,
+				820C50312572D1F100D9FEAB /* TitleLabel.swift in Sources */,
 				820C501525720EE100D9FEAB /* KeyboardViewCell.swift in Sources */,
 				82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */,
 				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
