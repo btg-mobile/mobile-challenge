@@ -65,8 +65,8 @@ class SupportedCurrenciesViewController: UIViewController {
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: layoutGuides.topAnchor, constant: DesignSystem.Spacing.large),
             backButton.leadingAnchor.constraint(equalTo: layoutGuides.leadingAnchor),
-            backButton.heightAnchor.constraint(equalToConstant: DesignSystem.BackButton.height),
-            backButton.widthAnchor.constraint(equalToConstant: DesignSystem.BackButton.width)
+            backButton.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Back.height),
+            backButton.widthAnchor.constraint(equalToConstant: DesignSystem.Button.Back.width)
         ])
     }
 }

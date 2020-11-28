@@ -15,15 +15,21 @@ enum DesignSystem {
     }
     
     enum Button {
-//        static let cornerRadius: CGFloat = UIScreen.main.bounds.height * 0.005        
         static let height: CGFloat = 24
-        static let widthMultiplier: CGFloat = 0.4
+        static let width: CGFloat = 140
+        
+        enum Currency {
+            static let height: CGFloat = 55
+            static let width: CGFloat = 80
+            static let widthMultiplier: CGFloat = 0.3
+        }
+        enum Back {
+            static let height: CGFloat = 24
+            static let width: CGFloat = 24
+        }
     }
     
-    enum BackButton {
-        static let height: CGFloat = 24
-        static let width: CGFloat = 24
-    }
+    
 
     
     enum Label {

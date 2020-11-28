@@ -12,13 +12,15 @@
 		820C4FAD2571EF5500D9FEAB /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */; };
 		820C4FB02571EF5500D9FEAB /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */; };
 		820C4FB32571EF5500D9FEAB /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA92571EF5500D9FEAB /* Manrope-Bold.ttf */; };
-		820C4FC32571F13600D9FEAB /* CurrencyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FC22571F13600D9FEAB /* CurrencyButtonView.swift */; };
+		820C4FC32571F13600D9FEAB /* SupportedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FC22571F13600D9FEAB /* SupportedButton.swift */; };
 		820C4FCD2571F1C000D9FEAB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FCC2571F1C000D9FEAB /* UIFont.swift */; };
 		820C4FE12571F83B00D9FEAB /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FE02571F83B00D9FEAB /* DesignSystem.swift */; };
 		820C4FE72571FA4D00D9FEAB /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FE62571FA4D00D9FEAB /* AutoLayout.swift */; };
 		820C4FEF2571FED000D9FEAB /* SupportedCurrenciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FEE2571FED000D9FEAB /* SupportedCurrenciesViewModel.swift */; };
 		820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FF32571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift */; };
 		820C4FF92571FF2B00D9FEAB /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */; };
+		820C4FFE2572081800D9FEAB /* CurrencyResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */; };
+		820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50022572089B00D9FEAB /* CurrentyButton.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -53,13 +55,15 @@
 		820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
 		820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
 		820C4FA92571EF5500D9FEAB /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
-		820C4FC22571F13600D9FEAB /* CurrencyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButtonView.swift; sourceTree = "<group>"; };
+		820C4FC22571F13600D9FEAB /* SupportedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedButton.swift; sourceTree = "<group>"; };
 		820C4FCC2571F1C000D9FEAB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		820C4FE02571F83B00D9FEAB /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		820C4FE62571FA4D00D9FEAB /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
 		820C4FEE2571FED000D9FEAB /* SupportedCurrenciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesViewModel.swift; sourceTree = "<group>"; };
 		820C4FF32571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesViewController.swift; sourceTree = "<group>"; };
 		820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
+		820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultLabel.swift; sourceTree = "<group>"; };
+		820C50022572089B00D9FEAB /* CurrentyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentyButton.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,8 +145,10 @@
 		820C4FC72571F13C00D9FEAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				820C4FC22571F13600D9FEAB /* CurrencyButtonView.swift */,
+				820C4FC22571F13600D9FEAB /* SupportedButton.swift */,
+				820C50022572089B00D9FEAB /* CurrentyButton.swift */,
 				820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */,
+				820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,14 +385,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820C4FFE2572081800D9FEAB /* CurrencyResultLabel.swift in Sources */,
 				82D46DD02571E46D00C316E1 /* CurrencyConverterCoordinator.swift in Sources */,
 				820C4FF92571FF2B00D9FEAB /* BackButtonView.swift in Sources */,
 				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
 				820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */,
 				82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */,
 				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
+				820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */,
 				82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */,
-				820C4FC32571F13600D9FEAB /* CurrencyButtonView.swift in Sources */,
+				820C4FC32571F13600D9FEAB /* SupportedButton.swift in Sources */,
 				820C4FEF2571FED000D9FEAB /* SupportedCurrenciesViewModel.swift in Sources */,
 				820C4FE12571F83B00D9FEAB /* DesignSystem.swift in Sources */,
 				820C4FE72571FA4D00D9FEAB /* AutoLayout.swift in Sources */,

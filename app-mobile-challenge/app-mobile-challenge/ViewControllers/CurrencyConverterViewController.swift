@@ -9,7 +9,13 @@ import UIKit
 
 class CurrencyConverterViewController: UIViewController {
     
-    @AutoLayout private var currencyButton: CurrencyButtonView
+    @AutoLayout private var currencyButton: SupportedButton
+    
+    @AutoLayout private var fromCurrencyLabel: CurrencyResultLabel
+    @AutoLayout private var fromCurrencyButton: CurrentyButton
+    
+    @AutoLayout private var toCurrencyLabel: CurrencyResultLabel
+    @AutoLayout private var toCurrencyButton: CurrentyButton
 
     private var viewModel: CurrencyConverterViewModel
     
@@ -35,15 +41,31 @@ class CurrencyConverterViewController: UIViewController {
     //MARK: - SetUp
     private func setUpViews() {
         setUpButton()
+        setUpFromCurrentyButton()
+        setUpToCurrentyButton()
     }
     
     private func layoutConstraints() {
         layoutButton()
+        layoutFromCurrenty()
+        layoutToCurrenty()
     }
+    //MARK: - End SetUp
     
     //MARK: - Views setUp
     private func setUpButton() {
-        currencyButton.addTarget(self, action: #selector(openList), for: .touchUpInside)
+        currencyButton.addTarget(self, action: #selector(openList),
+                                 for: .touchUpInside)
+    }
+    
+    private func setUpFromCurrentyButton() {
+        fromCurrencyButton.addTarget(self, action: #selector(openList),
+                                     for: .touchUpInside)
+    }
+    
+    private func setUpToCurrentyButton() {
+        toCurrencyButton.addTarget(self, action: #selector(openList),
+                                   for: .touchUpInside)
     }
     
     //MARK: - objcs
@@ -61,9 +83,49 @@ class CurrencyConverterViewController: UIViewController {
             currencyButton.topAnchor.constraint(equalTo: layoutGuides.topAnchor, constant: DesignSystem.Spacing.large),
             currencyButton.leadingAnchor.constraint(equalTo: layoutGuides.leadingAnchor),
             currencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.Button.height),
-            currencyButton.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor,
-                multiplier: DesignSystem.Button.widthMultiplier)
+            currencyButton.widthAnchor.constraint(equalToConstant: DesignSystem.Button.width)
         ])
     }
+    
+    private func layoutFromCurrenty() {
+        view.addSubview(fromCurrencyLabel)
+        view.addSubview(fromCurrencyButton)
+        
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            fromCurrencyButton.topAnchor.constraint(equalTo: currencyButton.bottomAnchor, constant: DesignSystem.Spacing.large),
+            fromCurrencyButton.trailingAnchor.constraint(equalTo: layoutGuides.trailingAnchor),
+            fromCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.height),
+            fromCurrencyButton.widthAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.width),
+            
+            
+            fromCurrencyLabel.topAnchor.constraint(equalTo: fromCurrencyButton.topAnchor),
+            fromCurrencyLabel.trailingAnchor.constraint(equalTo: fromCurrencyButton.leadingAnchor),
+            fromCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.height),
+            fromCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthMultiplier),
+        ])
+    }
+    
+    private func layoutToCurrenty() {
+        view.addSubview(toCurrencyLabel)
+        view.addSubview(toCurrencyButton)
+        
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            toCurrencyButton.topAnchor.constraint(equalTo: fromCurrencyButton.bottomAnchor),
+            toCurrencyButton.trailingAnchor.constraint(equalTo: layoutGuides.trailingAnchor),
+            toCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.height),
+            toCurrencyButton.widthAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.width),
+            
+            
+            toCurrencyLabel.topAnchor.constraint(equalTo: toCurrencyButton.topAnchor),
+            toCurrencyLabel.trailingAnchor.constraint(equalTo: toCurrencyButton.leadingAnchor),
+            toCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.height),
+            toCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthMultiplier),
+        ])
+    }
+    //MARK: - End Layout
 }
 

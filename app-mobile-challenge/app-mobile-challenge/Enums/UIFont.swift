@@ -40,7 +40,7 @@ extension TextStyle {
     private var fontDescription: FontDescription {
         switch self {
         case .display1:
-            return FontDescription(font: .medium, size: 40, style: .body)
+            return FontDescription(font: .medium, size: 40, style: .largeTitle)
         case .display2:
             return FontDescription(font: .medium, size: 20, style: .body)
         case .display3:

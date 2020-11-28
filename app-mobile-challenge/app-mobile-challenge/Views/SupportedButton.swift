@@ -1,5 +1,5 @@
 //
-//  CurrencyButtonView.swift
+//  SupportedButton.swift
 //  app-mobile-challenge
 //
 //  Created by Matheus Silva on 27/11/20.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class CurrencyButtonView: UIButton {
+final class SupportedButton: UIButton {
 
     // - MARK: Init
     override init(frame: CGRect) {
