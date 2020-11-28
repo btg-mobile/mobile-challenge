@@ -19,6 +19,8 @@ class KeyboardView: UICollectionView {
     init(frame: CGRect, delegate: KeyboardViewService) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.kdelegate = delegate
+        self.dataSource = self
+        self.delegate = self
         setUp()
     }
     

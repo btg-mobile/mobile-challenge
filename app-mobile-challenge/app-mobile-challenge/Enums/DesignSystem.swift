@@ -29,9 +29,6 @@ enum DesignSystem {
         }
     }
     
-    
-
-    
     enum Label {
         static let height: CGFloat = 30
     }
@@ -57,6 +54,11 @@ enum DesignSystem {
         static let star: UIImage? = UIImage(named: "estrela")
         static let star_fill: UIImage? = UIImage(named: "estrela_preenchida")
         static let back: UIImage? = UIImage(named: "voltar")
+        
+    }
+    
+    enum Backgrounds {
+        static let gradientButton: UIImage? = UIImage(named: "gradient_button")
     }
     
     enum Colors {
@@ -71,7 +73,11 @@ enum DesignSystem {
         enum Cell {
             static let height: CGFloat = 72
             static let width: CGFloat = 72
-            
+        }
+        enum Layout {
+            static let top: CGFloat = -45
+            static let height: CGFloat = 64
+            static let widthMultiplier: CGFloat = 0.8
         }
     }
 }

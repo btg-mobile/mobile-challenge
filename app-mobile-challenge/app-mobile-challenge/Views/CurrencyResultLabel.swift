@@ -18,7 +18,6 @@ final class CurrencyResultLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// Styles the label.
     private func style() {
         textAlignment = .right
         font = TextStyle.display1.font

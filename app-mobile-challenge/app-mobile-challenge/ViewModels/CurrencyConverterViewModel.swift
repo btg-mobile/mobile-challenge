@@ -22,40 +22,42 @@ final class CurrencyConverterViewModel {
     private weak var delegate: CurrencyConverterService?
     
     
-    var fromCurrency: String {
+    public var fromCurrency: String {
         return fromCurrencyStorage
     }
     
-    var currencyValue: String = ""
+    public var currencyValue: String = ""
     
-    var toCurrency: String {
+    public var toCurrency: String {
         return toCurrencyStorage
     }
     
     init(coordinator: CurrencyConverterCoordinatorService) {
         self.coordinator = coordinator
     }
-    
-    func pickSupporteds() {
+    //Coordinators
+    public func pickSupporteds() {
         coordinator.showSupporteds()
     }
+    //End Coordinators
     
-    func newValue(value: Int) -> String {
+    public func newValue(value: Int) -> String {
         switch value {
         case 0...9:
             currencyValue.append(String(value))
-            break
         case 10:
             if(isValidComma()) { currencyValue.append(",") }
-            break
         case 11:
-            if (!currencyValueIsEmpty()) {
-                currencyValue.removeLast()
-            }
-            break
+            if (!currencyValueIsEmpty()) { currencyValue.removeLast() }
         default:
             break
         }
+        return currencyValue
+    }
+    public func currencyValueIsEmpty() -> Bool {
+        return currencyValue == ""
+    }
+    public func calculateConvertion() -> String {
         return currencyValue
     }
     
@@ -63,7 +65,4 @@ final class CurrencyConverterViewModel {
         return !currencyValue.contains(",")
     }
     
-    func currencyValueIsEmpty() -> Bool {
-        return currencyValue == ""
-    }
 }

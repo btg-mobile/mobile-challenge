@@ -10,7 +10,6 @@ import UIKit
 
 final class CurrentyButton: UIButton {
 
-    // - MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         style()

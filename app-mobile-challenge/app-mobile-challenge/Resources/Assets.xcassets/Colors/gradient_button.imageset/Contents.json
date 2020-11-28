@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "gradient_button.pdf",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "gradient_button-1.pdf",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "gradient_button-2.pdf",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "gradient_button.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

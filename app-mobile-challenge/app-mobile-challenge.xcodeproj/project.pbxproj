@@ -26,6 +26,7 @@
 		820C501A2572291200D9FEAB /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C50192572291200D9FEAB /* KeyboardViewModel.swift */; };
 		820C502225722AB800D9FEAB /* UserDefaultsAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502125722AB800D9FEAB /* UserDefaultsAccess.swift */; };
 		820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502625722B8500D9FEAB /* UserDefaults.swift */; };
+		820C502C2572312B00D9FEAB /* CalculationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C502B2572312B00D9FEAB /* CalculationButton.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -74,6 +75,7 @@
 		820C50192572291200D9FEAB /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
 		820C502125722AB800D9FEAB /* UserDefaultsAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAccess.swift; sourceTree = "<group>"; };
 		820C502625722B8500D9FEAB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		820C502B2572312B00D9FEAB /* CalculationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationButton.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				820C4FC22571F13600D9FEAB /* SupportedButton.swift */,
+				820C502B2572312B00D9FEAB /* CalculationButton.swift */,
 				820C50022572089B00D9FEAB /* CurrentyButton.swift */,
 				820C4FF82571FF2B00D9FEAB /* BackButtonView.swift */,
 				820C4FFD2572081800D9FEAB /* CurrencyResultLabel.swift */,
@@ -435,6 +438,7 @@
 				820C501A2572291200D9FEAB /* KeyboardViewModel.swift in Sources */,
 				82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */,
 				820C500D25720EB600D9FEAB /* KeyboardView.swift in Sources */,
+				820C502C2572312B00D9FEAB /* CalculationButton.swift in Sources */,
 				820C4FCD2571F1C000D9FEAB /* UIFont.swift in Sources */,
 				82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */,
 			);

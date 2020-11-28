@@ -17,6 +17,8 @@ class CurrencyConverterViewController: UIViewController {
     @AutoLayout private var toCurrencyLabel: CurrencyResultLabel
     @AutoLayout private var toCurrencyButton: CurrentyButton
     
+    @AutoLayout private var calculationButton: CalculationButton
+    
     private lazy var keyboard: KeyboardView = KeyboardView(frame: self.view.frame, delegate: self)
 
     private var viewModel: CurrencyConverterViewModel
@@ -46,6 +48,7 @@ class CurrencyConverterViewController: UIViewController {
         setUpFromCurrentyButton()
         setUpToCurrentyButton()
         setUpKeyboard()
+        setUpToCalculationButton()
     }
     
     private func layoutConstraints() {
@@ -53,6 +56,7 @@ class CurrencyConverterViewController: UIViewController {
         layoutFromCurrenty()
         layoutToCurrenty()
         layoutToKeyboard()
+        layoutCalculationButton()
     }
     //MARK: - SetUp fim
     
@@ -72,14 +76,21 @@ class CurrencyConverterViewController: UIViewController {
                                    for: .touchUpInside)
     }
     
+    private func setUpToCalculationButton() {
+        calculationButton.addTarget(self, action: #selector(calculate),
+                                   for: .touchUpInside)
+    }
+    
     private func setUpKeyboard() {
-        keyboard.delegate = keyboard
-        keyboard.dataSource = keyboard
+        
     }
     
     //MARK: - objcs
     @objc private func openList() {
         viewModel.pickSupporteds()
+    }
+    @objc private func calculate() {
+        toCurrencyLabel.text = viewModel.calculateConvertion()
     }
     //MARK: - objcs fim
     
@@ -139,15 +150,29 @@ class CurrencyConverterViewController: UIViewController {
     
     private func layoutToKeyboard() {
         view.addSubview(keyboard)
-        
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
             keyboard.topAnchor.constraint(equalTo: toCurrencyButton.bottomAnchor,
-                                          constant: DesignSystem.Spacing.large*4),
+                                          constant: DesignSystem.Spacing.large*6),
             keyboard.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             keyboard.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.height),
             keyboard.widthAnchor.constraint(equalToConstant: DesignSystem.Keyboard.width),
+        ])
+    }
+    
+    private func layoutCalculationButton() {
+        view.addSubview(calculationButton)
+        
+        let layoutGuides = view.layoutMarginsGuide
+
+        NSLayoutConstraint.activate([
+            calculationButton.topAnchor.constraint(
+                equalTo: keyboard.bottomAnchor,
+                constant: DesignSystem.Keyboard.Layout.top),
+            calculationButton.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
+            calculationButton.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.Layout.height),
+            calculationButton.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Keyboard.Layout.widthMultiplier),
         ])
     }
     //MARK: - Layout fim
