@@ -10,8 +10,13 @@ import UIKit
 class CurrencyListManager: NSObject {
     var currenciesQuotation: [CurrencyQuotation] = []
     var tableView: UITableView?
+    var viewModel: CurrencyListViewModel
     
     var selectedCurrency: ((CurrencyQuotation)->())?
+    
+    override init() {
+        self.viewModel = CurrencyListViewModel()
+    }
     
 }
 

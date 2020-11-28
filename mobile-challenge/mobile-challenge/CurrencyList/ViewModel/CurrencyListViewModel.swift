@@ -10,6 +10,15 @@ import Foundation
 enum TypeSort {
     case code
     case name
+    
+    var title: String {
+        switch self {
+        case .code:
+            return "Ordem: Código"
+        case .name:
+            return "Order: Nome"
+        }
+    }
 }
 
 class CurrencyListViewModel {
