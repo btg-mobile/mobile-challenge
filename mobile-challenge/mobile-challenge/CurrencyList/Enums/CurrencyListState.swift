@@ -11,4 +11,5 @@ enum CurrencyListState {
     case loading
     case searching
     case normal
+    case empty
 }

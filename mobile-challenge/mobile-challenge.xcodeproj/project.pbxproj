@@ -45,6 +45,8 @@
 		E2E4A3692572C197003A3987 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3682572C197003A3987 /* TagButton.swift */; };
 		E2E4A36E2572C1CB003A3987 /* CurrencyListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A36D2572C1CB003A3987 /* CurrencyListState.swift */; };
 		E2E4A3732572C204003A3987 /* TypeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3722572C204003A3987 /* TypeSort.swift */; };
+		E2E4A3792572C780003A3987 /* CurrencyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3782572C780003A3987 /* CurrencyError.swift */; };
+		E2E4A3812572D0EB003A3987 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3802572D0EB003A3987 /* EmptyCell.swift */; };
 		E2EC77E32571D5480086706D /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		E2E4A3682572C197003A3987 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
 		E2E4A36D2572C1CB003A3987 /* CurrencyListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListState.swift; sourceTree = "<group>"; };
 		E2E4A3722572C204003A3987 /* TypeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSort.swift; sourceTree = "<group>"; };
+		E2E4A3782572C780003A3987 /* CurrencyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyError.swift; sourceTree = "<group>"; };
+		E2E4A3802572D0EB003A3987 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +156,7 @@
 				E2229DBA2571446100FB48AF /* CurrencyCell.swift */,
 				E22B399225729232004C917C /* CurrencyListHeader.swift */,
 				E22B39AE2572B717004C917C /* LoadingCell.swift */,
+				E2E4A3802572D0EB003A3987 /* EmptyCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E4A3682572C197003A3987 /* TagButton.swift */,
+				E2E4A3782572C780003A3987 /* CurrencyError.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -576,6 +582,7 @@
 				E2229DBB2571446100FB48AF /* CurrencyCell.swift in Sources */,
 				E2DA7A542571258F004BC7B6 /* CurrencyListViewController.swift in Sources */,
 				E2229DB52571420E00FB48AF /* CurrencyListManager.swift in Sources */,
+				E2E4A3792572C780003A3987 /* CurrencyError.swift in Sources */,
 				E2229DC22571458700FB48AF /* CurrencyListColors.swift in Sources */,
 				E2E4A3632572BF17003A3987 /* ErrorCode.swift in Sources */,
 				E2229DAC25713F3300FB48AF /* CurrenciesQuotationDelegate.swift in Sources */,
@@ -583,6 +590,7 @@
 				E2B72516256F1047006AC96D /* QuotationCoordinator.swift in Sources */,
 				E28E2D1C256FDBA100177E4E /* QuotationColors.swift in Sources */,
 				E290217E256F13EC0059D042 /* NetworkRequestProtocol.swift in Sources */,
+				E2E4A3812572D0EB003A3987 /* EmptyCell.swift in Sources */,
 				E2E4A36E2572C1CB003A3987 /* CurrencyListState.swift in Sources */,
 				E290219A256F236E0059D042 /* QuotationViewModel.swift in Sources */,
 				E22EA107256F03A000D10E62 /* SceneDelegate.swift in Sources */,

@@ -34,7 +34,7 @@ extension CurrencyListManager: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch state {
-        case .loading:
+        case .loading, .empty:
             return 1
         case .searching:
             return currencyList.count
@@ -48,6 +48,12 @@ extension CurrencyListManager: UITableViewDataSource {
         if state == .loading {
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
             cell.setUpCell()
+            
+            return cell
+        } else if state == .empty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: EmptyCell.identifier, for: indexPath) as! EmptyCell
+            cell.setUpCell()
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.identifier, for: indexPath) as! CurrencyCell
@@ -80,7 +86,7 @@ extension CurrencyListManager: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if state == .loading {
+        if state == .loading || state == .empty {
             return tableView.frame.size.height
         } else {
             return 55
@@ -98,7 +104,7 @@ extension CurrencyListManager: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let currenciesDictKey = currenciesDict[section].keys.first, state != .loading {
+        if let currenciesDictKey = currenciesDict[section].keys.first, state != .loading, state != .empty {
             
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CurrencyListHeader.identifier) as! CurrencyListHeader
             header.setUpViews()
@@ -118,10 +124,12 @@ extension CurrencyListManager: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        state = .searching
-        
-        currencyList = viewModel.filterCurrenciesDict(searchString: searchText.lowercased(), currenciesDict: currenciesDict)
-        tableView?.reloadData()
+        if state == .searching || state == .normal {
+            state = .searching
+            
+            currencyList = viewModel.filterCurrenciesDict(searchString: searchText.lowercased(), currenciesDict: currenciesDict)
+            tableView?.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
