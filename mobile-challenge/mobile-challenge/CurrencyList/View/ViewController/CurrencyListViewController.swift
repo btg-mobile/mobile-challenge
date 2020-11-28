@@ -15,10 +15,15 @@ class CurrencyListViewController: UIViewController {
     weak var coordinator: CurrencyListCoordinator?
     var manager: CurrencyListManager
     var tagButton: TagButton
+    var typeSort: TypeSort
+    var currenciesQuotation: [CurrencyQuotation] = []
+    var viewModel: CurrencyListViewModel
     
     init() {
         self.manager = CurrencyListManager()
         self.tagButton = .origin
+        self.typeSort = .code
+        self.viewModel = CurrencyListViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,6 +65,21 @@ class CurrencyListViewController: UIViewController {
         
         navigationController?.navigationBar.backgroundColor = AppColors.appBackground.color
         navigationController?.navigationBar.tintColor = CurrencyListColors.currencyTitle.color
+       
+        navigationItem.rightBarButtonItem = getBarButton()
+    }
+    
+    func getBarButton() -> UIBarButtonItem{
+        return UIBarButtonItem(title: typeSort.title, style: .plain, target: self, action: #selector(changeTypeSort))
+    }
+    
+    @objc func changeTypeSort(sender: UIBarButtonItem) {
+        typeSort = typeSort == TypeSort.code ? .name : .code
+        sender.title = typeSort.title
+        
+        let sortedCurrencies = viewModel.sortArray(by: typeSort, currenciesQuotation: self.currenciesQuotation)
+        manager.currenciesDict = sortedCurrencies
+        manager.tableView?.reloadData()
     }
 }
 
@@ -74,8 +94,12 @@ private extension CurrencyListViewController {
 extension CurrencyListViewController: CurrenciesQuotationDelegate {
     func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation], tagButton: TagButton) {
         self.tagButton = tagButton
+        self.currenciesQuotation = currenciesQuotation
+        
+        let sortedCurrencies = self.viewModel.sortArray(by: self.typeSort, currenciesQuotation: currenciesQuotation)
+        self.manager.currenciesDict = sortedCurrencies
+            
         DispatchQueue.main.async {
-            self.manager.currenciesQuotation = currenciesQuotation
             self.manager.tableView?.reloadData()
         }
     }
