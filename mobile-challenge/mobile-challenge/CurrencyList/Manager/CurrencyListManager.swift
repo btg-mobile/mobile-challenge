@@ -80,7 +80,7 @@ extension CurrencyListManager: UITableViewDataSource {
 }
 
 extension CurrencyListManager: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
@@ -104,16 +104,18 @@ extension CurrencyListManager: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let currenciesDictKey = currenciesDict[section].keys.first, state != .loading, state != .empty {
+        
+        switch state {
+        case .loading, .empty:
+            return UIView(frame: .zero)
+        default:
+            let currenciesDictKey = currenciesDict[section].keys.first ?? ""
             
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CurrencyListHeader.identifier) as! CurrencyListHeader
             header.setUpViews()
             header.label.text = state == .searching ? "Moedas" : currenciesDictKey
             
             return header
-        } else {
-            return UIView(frame: .zero)
-            
         }
     }
 }

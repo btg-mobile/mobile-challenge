@@ -20,7 +20,7 @@ class CurrencyListViewController: UIViewController {
     var viewModel: CurrencyListViewModel
     
     init() {
-        self.viewModel = CurrencyListViewModel()
+        self.viewModel = CurrencyListViewModel(coreDataManager: CoreDataManager())
         self.manager = CurrencyListManager(viewModel: viewModel)
         self.tagButton = .origin
         self.typeSort = .code
@@ -97,27 +97,55 @@ extension CurrencyListViewController: CurrenciesQuotationDelegate {
         self.tagButton = tagButton
         self.currenciesQuotation = currenciesQuotation
         
+        viewModel.saveEntities(currencyList: currenciesQuotation)
+        
+        prepareDataForManager()
+    }
+    
+    func didFinishFetchQuotationsWithError(error: CurrencyError, tagButton: TagButton) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Ocorreu um Erro", message: "\(error.localizedError)", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Obter Dados Locais", style: .default) { (_) in
+                self.viewModel.fetchEntities { (result) in
+                    switch result {
+                    case .success(let currencList):
+                        self.tagButton = tagButton
+                        self.currenciesQuotation = currencList
+                        
+                        self.prepareDataForManager()
+                    case .failure(let error):
+                        if ((self.manager.currenciesDict.first?.isEmpty) != nil) {
+                            self.manager.state = .empty
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.performCoreDataAlert(error: error)
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            }
+            alert.addAction(action)
+        
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func prepareDataForManager(){
         let sortedCurrencies = self.viewModel.sortArray(by: self.typeSort, currenciesQuotation: currenciesQuotation)
         self.manager.currenciesDict = sortedCurrencies
-        self.manager.state = .normal
-            
+        self.manager.state = sortedCurrencies.isEmpty ? .empty : .normal
         DispatchQueue.main.async {
             self.manager.tableView?.reloadData()
         }
     }
     
-    func didFinishFetchQuotationsWithError(error: CurrencyError) {
+    func performCoreDataAlert(error: CurrencyError) {
         let alert = UIAlertController(title: "Ocorreu um Erro", message: "\(error.localizedError)", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Continuar", style: .default)
+        let action = UIAlertAction(title: "Obter Dados Locais", style: .default)
+        
         alert.addAction(action)
         
-        if ((manager.currenciesDict.first?.isEmpty) != nil) {
-            manager.state = .empty
-        }
-        
-        DispatchQueue.main.async {
-            self.manager.tableView?.reloadData()
-            self.present(alert, animated: true)
-        }
+        self.present(alert, animated: true)
     }
 }

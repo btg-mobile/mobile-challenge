@@ -14,6 +14,7 @@ enum CurrencyError: Error {
     case DecodeError
     case ResponseError
     case UnknowError
+    case CoreDataError
     
     var localizedError: String {
         switch self {
@@ -29,6 +30,8 @@ enum CurrencyError: Error {
             return "Dados recebidos da API são inválidos."
         case .UnknowError:
             return "Erro Desconhecido."
+        case .CoreDataError:
+            return "Erro de Acesso ao Banco de dados local."
         }
     }
 }

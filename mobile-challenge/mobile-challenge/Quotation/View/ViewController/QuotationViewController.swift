@@ -70,7 +70,7 @@ class QuotationViewController: UIViewController {
             case .success(let currenciesQuotation):
                 self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation, tagButton: tagButton)
             case .failure(let error):
-                self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error)
+                self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error, tagButton: tagButton)
             }
         }
     }
