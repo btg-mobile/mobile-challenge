@@ -8,21 +8,38 @@
 import Foundation
 
 class NetworkManager {
-    func request<T: Decodable>(service: NetworkServiceType, model: T.Type, completion: @escaping (Result<T,Error>) -> Void) {
-        guard let url = URL(string: service.path) else { return }
+    func request<T: Decodable>(service: NetworkServiceType, model: T.Type, completion: @escaping (Result<T,CurrencyError>) -> Void) {
+        guard let url = URL(string: service.path) else {
+            completion(.failure(.InvalidURL))
+            return
+        }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                //TODO: handle error
-                completion(.failure(error))
-            }
-            
-            guard let safeData = data, let object: T = self.decode(data: safeData) else {
-                // error to decode
+                if error.localizedDescription.lowercased().contains("offline") {
+                    completion(.failure(.NoNetworkConnnectionError))
+                } else {
+                    completion(.failure(.UnknowError))
+                }
                 return
             }
             
-            completion(.success(object))
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(.APIConnectionError))
+                return
+            }
+            
+            switch httpResponse.statusCode {
+            case 200...299:
+                guard let safeData = data, let object: T = self.decode(data: safeData) else {
+                    completion(.failure(.DecodeError))
+                    return
+                }
+                
+                completion(.success(object))
+            default:
+                completion(.failure(.APIConnectionError))
+            }
         }.resume()
     }
     
