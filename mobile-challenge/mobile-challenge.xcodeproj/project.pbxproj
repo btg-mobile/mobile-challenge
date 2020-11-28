@@ -38,6 +38,7 @@
 		E2DA7A59257125BF004BC7B6 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA7A58257125BF004BC7B6 /* CurrencyListView.swift */; };
 		E2DA7A5F25712870004BC7B6 /* CurrencyListStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA7A5E25712870004BC7B6 /* CurrencyListStrings.swift */; };
 		E2DA7A6525712BE2004BC7B6 /* CurrencyListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA7A6425712BE2004BC7B6 /* CurrencyListCoordinator.swift */; };
+		E2EC77E32571D5480086706D /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E2DA7A58257125BF004BC7B6 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
 		E2DA7A5E25712870004BC7B6 /* CurrencyListStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListStrings.swift; sourceTree = "<group>"; };
 		E2DA7A6425712BE2004BC7B6 /* CurrencyListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCoordinator.swift; sourceTree = "<group>"; };
+		E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 				E2DA7A6325712BD0004BC7B6 /* Coordinator */,
 				E28E2D01256FCB1D00177E4E /* Model */,
 				E2DA7A5025712554004BC7B6 /* View */,
+				E2EC77E12571D52C0086706D /* ViewModel */,
 			);
 			path = CurrencyList;
 			sourceTree = "<group>";
@@ -389,6 +392,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		E2EC77E12571D52C0086706D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,6 +555,7 @@
 				E2DA7A5F25712870004BC7B6 /* CurrencyListStrings.swift in Sources */,
 				E2229DA4257135A400FB48AF /* CurrencyQuotation.swift in Sources */,
 				E28E2D03256FCB4000177E4E /* Currency.swift in Sources */,
+				E2EC77E32571D5480086706D /* CurrencyListViewModel.swift in Sources */,
 				E2B7250A256F0E58006AC96D /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

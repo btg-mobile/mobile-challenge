@@ -15,10 +15,12 @@ class CurrencyListViewController: UIViewController {
     weak var coordinator: CurrencyListCoordinator?
     var manager: CurrencyListManager
     var tagButton: TagButton
+    var viewModel: CurrencyListViewModel
     
     init() {
         self.manager = CurrencyListManager()
         self.tagButton = .origin
+        self.viewModel = CurrencyListViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,8 +76,11 @@ private extension CurrencyListViewController {
 extension CurrencyListViewController: CurrenciesQuotationDelegate {
     func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation], tagButton: TagButton) {
         self.tagButton = tagButton
+        let sortedCurrencies = self.viewModel.sortArray(by: .code, currenciesQuotation: currenciesQuotation)
+        
+        self.manager.currenciesQuotation = sortedCurrencies
+            
         DispatchQueue.main.async {
-            self.manager.currenciesQuotation = currenciesQuotation
             self.manager.tableView?.reloadData()
         }
     }
