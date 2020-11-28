@@ -14,6 +14,8 @@ protocol KeyboardViewService: class {
 class KeyboardView: UICollectionView {
     private let layout = UICollectionViewFlowLayout()
     weak var kdelegate: KeyboardViewService?
+    private let viewModel = KeyboardViewModel()
+    
     init(frame: CGRect, delegate: KeyboardViewService) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.kdelegate = delegate
@@ -58,35 +60,7 @@ extension KeyboardView: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        kdelegate?.selected(value: convertValue(index: indexPath.row))
+        kdelegate?.selected(value: viewModel.convertValue(index: indexPath.row))
     }
     
-    private func convertValue(index: Int) -> Int {
-        var value: Int = 0
-        switch index {
-        case 0:
-            value = 7
-        case 1:
-            value = 8
-        case 2:
-            value = 9
-        case 3:
-            value = 4
-        case 4:
-            value = 5
-        case 5:
-            value = 6
-        case 6:
-            value = 1
-        case 7:
-            value = 2
-        case 8:
-            value = 3
-        case 9:
-            value = 0
-        default:
-            value = index
-        }
-        return value
-    }
 }

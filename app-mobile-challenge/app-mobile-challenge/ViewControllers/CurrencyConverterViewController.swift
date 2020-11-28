@@ -54,7 +54,7 @@ class CurrencyConverterViewController: UIViewController {
         layoutToCurrenty()
         layoutToKeyboard()
     }
-    //MARK: - End SetUp
+    //MARK: - SetUp fim
     
     //MARK: - Views setUp
     private func setUpButton() {
@@ -81,7 +81,7 @@ class CurrencyConverterViewController: UIViewController {
     @objc private func openList() {
         viewModel.pickSupporteds()
     }
-    //MARK: - End objcs
+    //MARK: - objcs fim
     
     //MARK: - Layout
     private func layoutButton() {
@@ -113,7 +113,7 @@ class CurrencyConverterViewController: UIViewController {
             fromCurrencyLabel.topAnchor.constraint(equalTo: fromCurrencyButton.topAnchor),
             fromCurrencyLabel.trailingAnchor.constraint(equalTo: fromCurrencyButton.leadingAnchor),
             fromCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.height),
-            fromCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthMultiplier),
+            fromCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthLabelMultiplier),
         ])
     }
     
@@ -133,7 +133,7 @@ class CurrencyConverterViewController: UIViewController {
             toCurrencyLabel.topAnchor.constraint(equalTo: toCurrencyButton.topAnchor),
             toCurrencyLabel.trailingAnchor.constraint(equalTo: toCurrencyButton.leadingAnchor),
             toCurrencyLabel.heightAnchor.constraint(equalToConstant: DesignSystem.Button.Currency.height),
-            toCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthMultiplier),
+            toCurrencyLabel.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Button.Currency.widthLabelMultiplier),
         ])
     }
     
@@ -150,12 +150,15 @@ class CurrencyConverterViewController: UIViewController {
             keyboard.widthAnchor.constraint(equalToConstant: DesignSystem.Keyboard.width),
         ])
     }
-    //MARK: - End Layout
+    //MARK: - Layout fim
 }
 
+//MARK: - Integração com Keyboard
 extension CurrencyConverterViewController: KeyboardViewService {
     func selected(value: Int) {
-        debugPrint(value)
+        fromCurrencyLabel.text = viewModel.newValue(value: value)
+        if(viewModel.currencyValueIsEmpty()) {
+            fromCurrencyLabel.text = "1,00"
+        }
     }
 }
-
