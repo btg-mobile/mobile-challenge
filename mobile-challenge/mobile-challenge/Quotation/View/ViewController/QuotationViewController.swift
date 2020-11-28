@@ -63,6 +63,42 @@ class QuotationViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
     }
     
+    func getCurrenciesQuotation(tagButton: TagButton) {
+        coordinator?.showCurrencyList()
+        viewModel.getCurrenciesQuotation { (result) in
+            switch result {
+            case .success(let currenciesQuotation):
+                self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation, tagButton: tagButton)
+            case .failure(let error):
+                self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error)
+            }
+        }
+    }
+    
+    func verifyIfFieldsAreValid() -> Bool {
+        if quotationView.chooseCurrencyView.originCurrencyButton.title(for: .normal) == "---" || quotationView.chooseCurrencyView.destinyCurrencyButton.title(for: .normal) == "---" {
+            presentAlert(missingField: .buttons)
+            
+            return false
+        } else if quotationView.chooseCurrencyView.textValueToConvert.text == "" {
+            presentAlert(missingField: .textField)
+            
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func presentAlert(missingField: MissingField) {
+        let alert = UIAlertController(title: missingField.title, message: missingField.menssage, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Continar", style: .default)
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
+    }
+    
+    
     @objc func makeRequest(sender: UIButton){
         switch sender.tag {
         case TagButton.origin.rawValue:
@@ -74,25 +110,18 @@ class QuotationViewController: UIViewController {
     }
     
     @objc func convert() {
-        guard let valueStr = quotationView.chooseCurrencyView.textValueToConvert.text else { return }
-        guard let origin = originCurrencyQuotation else { return }
-        guard let destiny = destinyCurrencyQuotation else { return }
-        let value = Double(valueStr) ?? 0.0
+        let isValid = verifyIfFieldsAreValid()
         
-        let convertedValue = viewModel.convert(value: value, origin: origin, destiny: destiny)
-        
-        quotationView.chooseCurrencyView.resultLabel.text = convertedValue
-    }
-    
-    func getCurrenciesQuotation(tagButton: TagButton) {
-        coordinator?.showCurrencyList()
-        viewModel.getCurrenciesQuotation { (result) in
-            switch result {
-            case .success(let currenciesQuotation):
-                self.coordinator?.currencyList?.didFinishFetchQuotations(currenciesQuotation: currenciesQuotation, tagButton: tagButton)
-            case .failure(let error):
-                self.coordinator?.currencyList?.didFinishFetchQuotationsWithError(error: error)
-            }
+        if isValid {
+            guard let valueStr = quotationView.chooseCurrencyView.textValueToConvert.text else { return }
+            guard let origin = originCurrencyQuotation else { return }
+            guard let destiny = destinyCurrencyQuotation else { return }
+            
+            let value = Double(valueStr) ?? 0.0
+            
+            let convertedValue = viewModel.convert(value: value, origin: origin, destiny: destiny)
+            
+            quotationView.chooseCurrencyView.resultLabel.text = convertedValue
         }
     }
 }

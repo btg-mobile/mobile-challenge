@@ -47,6 +47,7 @@
 		E2E4A3732572C204003A3987 /* TypeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3722572C204003A3987 /* TypeSort.swift */; };
 		E2E4A3792572C780003A3987 /* CurrencyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3782572C780003A3987 /* CurrencyError.swift */; };
 		E2E4A3812572D0EB003A3987 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A3802572D0EB003A3987 /* EmptyCell.swift */; };
+		E2E4A38E2572F300003A3987 /* MissingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4A38D2572F300003A3987 /* MissingField.swift */; };
 		E2EC77E32571D5480086706D /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		E2E4A3722572C204003A3987 /* TypeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSort.swift; sourceTree = "<group>"; };
 		E2E4A3782572C780003A3987 /* CurrencyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyError.swift; sourceTree = "<group>"; };
 		E2E4A3802572D0EB003A3987 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		E2E4A38D2572F300003A3987 /* MissingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingField.swift; sourceTree = "<group>"; };
 		E2EC77E22571D5480086706D /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -431,6 +433,7 @@
 			children = (
 				E2E4A3682572C197003A3987 /* TagButton.swift */,
 				E2E4A3782572C780003A3987 /* CurrencyError.swift */,
+				E2E4A38D2572F300003A3987 /* MissingField.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				E2DA7A6525712BE2004BC7B6 /* CurrencyListCoordinator.swift in Sources */,
 				E2902188256F14AD0059D042 /* NetworkManager.swift in Sources */,
 				E22EA105256F03A000D10E62 /* AppDelegate.swift in Sources */,
+				E2E4A38E2572F300003A3987 /* MissingField.swift in Sources */,
 				E2229DBB2571446100FB48AF /* CurrencyCell.swift in Sources */,
 				E2DA7A542571258F004BC7B6 /* CurrencyListViewController.swift in Sources */,
 				E2229DB52571420E00FB48AF /* CurrencyListManager.swift in Sources */,
