@@ -99,6 +99,7 @@ extension CurrencyListViewController: CurrenciesQuotationDelegate {
         
         let sortedCurrencies = self.viewModel.sortArray(by: self.typeSort, currenciesQuotation: currenciesQuotation)
         self.manager.currenciesDict = sortedCurrencies
+        self.manager.state = .normal
             
         DispatchQueue.main.async {
             self.manager.tableView?.reloadData()
