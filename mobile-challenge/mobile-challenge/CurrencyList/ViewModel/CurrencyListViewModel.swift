@@ -9,7 +9,11 @@ import Foundation
 
 class CurrencyListViewModel {
     
-    init() { }
+    private var manager: CoreDataManager
+    
+    init(coreDataManager: CoreDataManager) {
+        self.manager = coreDataManager
+    }
     
     func sortArray(by type: TypeSort, currenciesQuotation: [CurrencyQuotation]) -> [[String : [CurrencyQuotation]]] {
         if type == .code {
@@ -63,5 +67,22 @@ class CurrencyListViewModel {
         }
         
         return currencyList
+    }
+}
+
+extension CurrencyListViewModel {
+    func saveEntities(currencyList: [CurrencyQuotation]) {
+        manager.create(currenciesQuotation: currencyList)
+    }
+    
+    func fetchEntities(completion: @escaping ((Result<[CurrencyQuotation], CurrencyError>) -> Void)) {
+        manager.fetch { (result) in
+            switch result {
+            case .success(let currentList):
+                completion(.success(currentList))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
