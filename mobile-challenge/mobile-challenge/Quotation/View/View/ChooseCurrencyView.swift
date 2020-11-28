@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum TagButton: Int {
-    case origin = 0
-    case destiny = 1
-}
-
 class ChooseCurrencyView : UIStackView {
     var topStack: UIStackView = {
         var stack = UIStackView(frame: .zero)

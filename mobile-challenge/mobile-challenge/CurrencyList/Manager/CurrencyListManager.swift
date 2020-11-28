@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum CurrencyListState {
-    case loading
-    case searching
-    case normal
-}
-
 class CurrencyListManager: NSObject {
     var currenciesDict: [[String : [CurrencyQuotation]]] = [[:]]
     var tableView: UITableView?

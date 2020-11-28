@@ -9,5 +9,6 @@ import Foundation
 
 struct Currency: Decodable {
     var success: Bool
+    var error: ErrorCode?
     var currencies: [String: String]
 }
