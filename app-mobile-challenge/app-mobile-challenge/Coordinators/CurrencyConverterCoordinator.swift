@@ -8,10 +8,12 @@
 import UIKit
 import os.log
 
-protocol CurrencyConverterCoodinatorService: Coordinator {
+protocol CurrencyConverterCoordinatorService: Coordinator {
+    func showSupporteds()
+    func back()
 }
 
-final class CurrencyConverterCoordinator: CurrencyConverterCoodinatorService {
+final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -21,9 +23,19 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoodinatorService {
     /// Inicializa o fluxo de telas
     func start() {
         os_log("Coordinator: showing initial screen.", log: .appflow, type: .debug)
-        let viewModel = CurrencyConverterViewModel()
+        let viewModel = CurrencyConverterViewModel(coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
 
+    }
+    
+    func showSupporteds() {
+        let viewModel = SupportedCurrenciesViewModel(coordinator: self)
+        let viewController = SupportedCurrenciesViewController(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func back() {
+        navigationController.popViewController(animated: true)
     }
 }

@@ -25,18 +25,34 @@ class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
+        layoutConstraints()
     }
     
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
     }
-    
+    //MARK: - SetUp
     private func setUpViews() {
         setUpButton()
     }
     
+    private func layoutConstraints() {
+        layoutButton()
+    }
+    
+    //MARK: - Views setUp
     private func setUpButton() {
+        currencyButton.addTarget(self, action: #selector(openList), for: .touchUpInside)
+    }
+    
+    //MARK: - objcs
+    @objc private func openList() {
+        viewModel.pickSupporteds()
+    }
+    
+    //MARK: - Layout
+    private func layoutButton() {
         view.addSubview(currencyButton)
         
         let layoutGuides = view.layoutMarginsGuide

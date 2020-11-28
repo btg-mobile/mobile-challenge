@@ -1,14 +1,13 @@
 //
-//  CurrencyConverterViewModel.swift
+//  SupportedCurrenciesViewModel.swift
 //  app-mobile-challenge
 //
-//  Created by Matheus Silva on 27/11/20.
+//  Created by Matheus Silva on 28/11/20.
 //
 
 import UIKit
 
-
-final class CurrencyConverterViewModel {
+final class SupportedCurrenciesViewModel {
     
     private let coordinator: CurrencyConverterCoordinatorService
     
@@ -16,7 +15,7 @@ final class CurrencyConverterViewModel {
         self.coordinator = coordinator
     }
 
-    func pickSupporteds() {
-        coordinator.showSupporteds()
+    func back() {
+        coordinator.back()
     }
 }

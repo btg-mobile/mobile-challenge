@@ -19,6 +19,11 @@ enum DesignSystem {
         static let height: CGFloat = 24
         static let widthMultiplier: CGFloat = 0.4
     }
+    
+    enum BackButton {
+        static let height: CGFloat = 24
+        static let width: CGFloat = 24
+    }
 
     
     enum Label {
