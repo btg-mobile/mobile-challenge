@@ -22,6 +22,7 @@ class CurrencyListView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.identifier)
+        tableView.register(CurrencyListHeader.self, forHeaderFooterViewReuseIdentifier: CurrencyListHeader.identifier)
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = AppColors.appBackground.color
         tableView.translatesAutoresizingMaskIntoConstraints = false

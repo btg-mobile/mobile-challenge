@@ -78,7 +78,7 @@ class CurrencyListViewController: UIViewController {
         sender.title = typeSort.title
         
         let sortedCurrencies = viewModel.sortArray(by: typeSort, currenciesQuotation: self.currenciesQuotation)
-        manager.currenciesQuotation = sortedCurrencies
+        manager.currenciesDict = sortedCurrencies
         manager.tableView?.reloadData()
     }
 }
@@ -97,7 +97,7 @@ extension CurrencyListViewController: CurrenciesQuotationDelegate {
         self.currenciesQuotation = currenciesQuotation
         
         let sortedCurrencies = self.viewModel.sortArray(by: self.typeSort, currenciesQuotation: currenciesQuotation)
-        self.manager.currenciesQuotation = sortedCurrencies
+        self.manager.currenciesDict = sortedCurrencies
             
         DispatchQueue.main.async {
             self.manager.tableView?.reloadData()
