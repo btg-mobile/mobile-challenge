@@ -9,7 +9,7 @@ import Foundation
 
 protocol CurrenciesQuotationDelegate: class {
     func didFinishFetchQuotations(currenciesQuotation: [CurrencyQuotation], tagButton: TagButton)
-    func didFinishFetchQuotationsWithError(error: Error)
+    func didFinishFetchQuotationsWithError(error: CurrencyError)
 }
 
 protocol SelectCurrencyQuotationDelegate: class {

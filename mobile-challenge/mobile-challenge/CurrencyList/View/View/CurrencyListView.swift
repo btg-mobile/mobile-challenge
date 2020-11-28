@@ -23,6 +23,7 @@ class CurrencyListView: UIView {
         let tableView = UITableView(frame: .zero)
         tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.identifier)
         tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.identifier)
+        tableView.register(EmptyCell.self, forCellReuseIdentifier: EmptyCell.identifier)
         tableView.register(CurrencyListHeader.self, forHeaderFooterViewReuseIdentifier: CurrencyListHeader.identifier)
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = AppColors.appBackground.color

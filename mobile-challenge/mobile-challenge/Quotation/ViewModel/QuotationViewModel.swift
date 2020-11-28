@@ -28,31 +28,37 @@ class QuotationViewModel {
 }
 
 extension QuotationViewModel {
-    func getCurrenciesQuotation(completion: @escaping (Result<[CurrencyQuotation], Error>)-> Void) {
+    func getCurrenciesQuotation(completion: @escaping (Result<[CurrencyQuotation], CurrencyError>)-> Void) {
+        
+        var currencyError: CurrencyError?
         
         queue.async {
             self.fetchCurrencies { (error) in
                 if let error = error {
-                    completion(.failure(error))
+                    currencyError = error
                 }
                 self.group.leave()
             }
             
             self.fetchQuotation { (error) in
                 if let error = error {
-                    completion(.failure(error))
+                    currencyError = error
                 }
                 self.group.leave()
             }
             
             self.group.notify(queue: self.queue){
-                self.groupCurrencyQuotationInfo()
-                completion(.success(self.currenciesQuotation))
+                if let error = currencyError {
+                    completion(.failure(error))
+                } else {
+                    self.groupCurrencyQuotationInfo()
+                    completion(.success(self.currenciesQuotation))
+                }
             }
         }
     }
     
-    func fetchQuotation(completion: @escaping (Error?)->()) {
+    func fetchQuotation(completion: @escaping (CurrencyError?)->()) {
         group.enter()
         manager.request(service: NetworkServiceType.live, model: Quotation.self) { (result) in
             switch result {
@@ -65,7 +71,7 @@ extension QuotationViewModel {
         }
     }
     
-    func fetchCurrencies(completion: @escaping (Error?)->()) {
+    func fetchCurrencies(completion: @escaping (CurrencyError?)->()) {
         group.enter()
         manager.request(service: .list, model: Currency.self) { (result) in
             switch result {

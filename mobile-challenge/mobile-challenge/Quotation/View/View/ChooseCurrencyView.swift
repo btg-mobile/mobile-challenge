@@ -7,13 +7,8 @@
 
 import UIKit
 
-enum TagButton: Int {
-    case origin = 0
-    case destiny = 1
-}
-
-class ChooseCurrencyView : UIStackView {
-    var topStack: UIStackView = {
+class ChooseCurrencyView : UIView {
+    private var topStack: UIStackView = {
         var stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
         stack.spacing = 20
@@ -22,7 +17,7 @@ class ChooseCurrencyView : UIStackView {
         return stack
     }()
     
-    var bottomStack: UIStackView = {
+    private var bottomStack: UIStackView = {
         var stack = UIStackView(frame: .zero)
         stack.axis = .horizontal
         stack.spacing = 20
@@ -53,8 +48,18 @@ class ChooseCurrencyView : UIStackView {
         text.textAlignment = .right
         text.backgroundColor = QuotationColors.textFiledBackground.color
         text.borderStyle = .roundedRect
+        text.keyboardType = .numberPad
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
+    }()
+    
+    private var convertIndicator: UIImageView = {
+        let image = UIImageView(frame: .zero)
+        let img = UIImage(systemName: "arrow.down", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        image.image = img
+        image.tintColor = QuotationColors.topBackground.color
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     var destinyCurrencyButton: UIButton = {
@@ -103,6 +108,7 @@ class ChooseCurrencyView : UIStackView {
 extension ChooseCurrencyView: ViewCodable {
     func setUpHierarchy() {
         addSubview(topStack)
+        addSubview(convertIndicator)
         addSubview(bottomStack)
         
         topStack.addArrangedSubview(originCurrencyButton)
@@ -114,11 +120,16 @@ extension ChooseCurrencyView: ViewCodable {
     
     func setUpConstraints() {
         NSLayoutConstraint.activate([
-            topStack.topAnchor.constraint(equalTo: topAnchor),
+            topStack.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             topStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             topStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            bottomStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            convertIndicator.topAnchor.constraint(equalTo: topStack.bottomAnchor, constant: 12),
+            convertIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            convertIndicator.heightAnchor.constraint(equalToConstant: 20),
+            convertIndicator.widthAnchor.constraint(equalToConstant: 20),
+            
+            bottomStack.topAnchor.constraint(equalTo: convertIndicator.bottomAnchor, constant: 5),
             bottomStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
@@ -129,7 +140,6 @@ extension ChooseCurrencyView: ViewCodable {
             originCurrencyButton.widthAnchor.constraint(equalToConstant: buttonWidth),
             
             textValueToConvert.heightAnchor.constraint(equalToConstant: buttonHeight),
-//            textValueToConvert.centerYAnchor.constraint(equalTo: topStack.centerYAnchor),
             
             resultLabel.centerYAnchor.constraint(equalTo: bottomStack.centerYAnchor)
             

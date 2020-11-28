@@ -106,11 +106,18 @@ extension CurrencyListViewController: CurrenciesQuotationDelegate {
         }
     }
     
-    func didFinishFetchQuotationsWithError(error: Error) {
-        let alert = UIAlertController(title: "Ocorreu um Erro", message: "\(error.localizedDescription)", preferredStyle: .alert)
+    func didFinishFetchQuotationsWithError(error: CurrencyError) {
+        let alert = UIAlertController(title: "Ocorreu um Erro", message: "\(error.localizedError)", preferredStyle: .alert)
         let action = UIAlertAction(title: "Continuar", style: .default)
         alert.addAction(action)
         
-        self.present(alert, animated: true)
+        if ((manager.currenciesDict.first?.isEmpty) != nil) {
+            manager.state = .empty
+        }
+        
+        DispatchQueue.main.async {
+            self.manager.tableView?.reloadData()
+            self.present(alert, animated: true)
+        }
     }
 }

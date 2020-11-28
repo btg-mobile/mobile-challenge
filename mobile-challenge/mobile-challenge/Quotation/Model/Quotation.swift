@@ -9,6 +9,7 @@ import Foundation
 
 struct Quotation: Decodable {
     var success: Bool
-    var timestamp: Int
+    var error: ErrorCode?
+    var timestamp: Int?
     var quotes: [String: Double]
 }

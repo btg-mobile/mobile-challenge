@@ -26,8 +26,6 @@ class QuotationView: UIView {
     
     var chooseCurrencyView: ChooseCurrencyView = {
         let stack = ChooseCurrencyView(frame: .zero)
-        stack.axis = .vertical
-        stack.spacing = 25
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -67,7 +65,7 @@ extension QuotationView: ViewCodable {
             backgroundTopView.topAnchor.constraint(equalTo: topAnchor),
             backgroundTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height*0.4),
             
-            middleView.heightAnchor.constraint(equalToConstant: 200),
+            middleView.heightAnchor.constraint(equalToConstant: 230),
             middleView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.9),
             middleView.centerYAnchor.constraint(equalTo: backgroundTopView.bottomAnchor),
             middleView.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -75,7 +73,7 @@ extension QuotationView: ViewCodable {
             chooseCurrencyView.topAnchor.constraint(equalTo: middleView.topAnchor, constant: 20),
             chooseCurrencyView.centerXAnchor.constraint(equalTo: centerXAnchor),
             chooseCurrencyView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.8),
-            chooseCurrencyView.heightAnchor.constraint(equalToConstant: 125),
+            chooseCurrencyView.heightAnchor.constraint(equalToConstant: 180),
             
             convertButton.centerYAnchor.constraint(equalTo: middleView.bottomAnchor),
             convertButton.widthAnchor.constraint(equalToConstant: 190),
