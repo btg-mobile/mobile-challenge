@@ -20,10 +20,10 @@ class CurrencyListViewController: UIViewController {
     var viewModel: CurrencyListViewModel
     
     init() {
-        self.manager = CurrencyListManager()
+        self.viewModel = CurrencyListViewModel()
+        self.manager = CurrencyListManager(viewModel: viewModel)
         self.tagButton = .origin
         self.typeSort = .code
-        self.viewModel = CurrencyListViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,6 +51,7 @@ class CurrencyListViewController: UIViewController {
     }
     
     func setUpTableView() {
+        currencyListView.searchBar.delegate = manager
         currencyListView.tableView.delegate = manager
         currencyListView.tableView.dataSource = manager
         manager.tableView = currencyListView.tableView

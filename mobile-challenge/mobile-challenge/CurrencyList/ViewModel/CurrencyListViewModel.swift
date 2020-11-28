@@ -62,4 +62,20 @@ class CurrencyListViewModel {
         
         return dictCurrencies.map { [$0.key : $0.value] }.sorted { $0.keys.first! < $1.keys.first! }
     }
+    
+    func filterCurrenciesDict(searchString: String , currenciesDict: [[String : [CurrencyQuotation]]]) -> [CurrencyQuotation] {
+        var currencyList: [CurrencyQuotation] = []
+        
+        for dict in currenciesDict {
+            for (_, currencyArray) in dict {
+                for currencyQuotation in currencyArray {
+                    if currencyQuotation.currency.lowercased().contains(searchString) || currencyQuotation.code.lowercased().contains(searchString) {
+                        currencyList.append(currencyQuotation)
+                    }
+                }
+            }
+        }
+        
+        return currencyList
+    }
 }
