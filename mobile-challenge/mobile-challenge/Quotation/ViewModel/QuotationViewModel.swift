@@ -79,6 +79,7 @@ extension QuotationViewModel {
     }
     
     func groupCurrencyQuotationInfo() {
+        self.currenciesQuotation = []
         guard let currencies = currency?.currencies else { return }
         guard let quotation = quotation?.quotes else { return }
         for (key, value) in currencies {

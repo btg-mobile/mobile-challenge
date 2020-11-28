@@ -72,8 +72,13 @@ extension CurrencyListManager: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let currency = currenciesDict[indexPath.section].values.first?[indexPath.row] else { return }
-        selectedCurrency?(currency)
+        
+        if isSearching {
+            selectedCurrency?(currencyList[indexPath.row])
+        } else {
+            guard let currency = currenciesDict[indexPath.section].values.first?[indexPath.row] else { return }
+            selectedCurrency?(currency)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
