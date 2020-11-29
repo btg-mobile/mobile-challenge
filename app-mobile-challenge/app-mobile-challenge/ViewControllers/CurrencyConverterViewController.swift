@@ -38,6 +38,11 @@ class CurrencyConverterViewController: UIViewController {
         layoutConstraints()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateCurrencyView()
+    }
+    
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
@@ -47,7 +52,6 @@ class CurrencyConverterViewController: UIViewController {
         setUpButton()
         setUpFromCurrentyButton()
         setUpToCurrentyButton()
-        setUpKeyboard()
         setUpToCalculationButton()
     }
     
@@ -67,27 +71,36 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     private func setUpFromCurrentyButton() {
-        fromCurrencyButton.addTarget(self, action: #selector(openList),
+        fromCurrencyButton.addTarget(self,
+                                     action: #selector(fromPickList),
                                      for: .touchUpInside)
     }
     
     private func setUpToCurrentyButton() {
-        toCurrencyButton.addTarget(self, action: #selector(openList),
+        toCurrencyButton.addTarget(self,
+                                   action: #selector(toPickList),
                                    for: .touchUpInside)
     }
     
     private func setUpToCalculationButton() {
-        calculationButton.addTarget(self, action: #selector(calculate),
-                                   for: .touchUpInside)
+        calculationButton.addTarget(self,
+                                    action: #selector(calculate),
+                                    for: .touchUpInside)
     }
-    
-    private func setUpKeyboard() {
-        
+    private func updateCurrencyView() {
+        fromCurrencyButton.setTitle(viewModel.fromCurrency, for: .normal)
+        toCurrencyButton.setTitle(viewModel.toCurrency, for: .normal)
     }
     
     //MARK: - objcs
     @objc private func openList() {
-        viewModel.pickSupporteds()
+        viewModel.openSupporteds()
+    }
+    @objc private func fromPickList() {
+        viewModel.pickSupporteds(type: .from)
+    }
+    @objc private func toPickList() {
+        viewModel.pickSupporteds(type: .to)
     }
     @objc private func calculate() {
         toCurrencyLabel.text = viewModel.calculateConvertion()

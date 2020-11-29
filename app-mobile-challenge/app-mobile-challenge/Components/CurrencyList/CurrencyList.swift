@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol CurrencyListService: class {
+    func choiced(currency: Currency)
+}
+
 final class CurrencyList: UITableView {
-    public var currencies = Currencies.sample
     
-    private lazy var viewModel = CurrencyListViewModel(currencies: currencies)
+    private var currencies = Currencies.sample
+    private lazy var viewModel =
+        CurrencyListViewModel(currencies: currencies)
+    public weak var cdelegate: CurrencyListService?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -33,6 +39,7 @@ final class CurrencyList: UITableView {
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         sectionHeaderHeight = 42
+        allowsSelection = true
     }
     
     private func register() {
@@ -41,6 +48,10 @@ final class CurrencyList: UITableView {
     private func toggle(indexPath: IndexPath) {
         viewModel.toggleFavorite(indexPath: indexPath)
         reloadData()
+    }
+    private func selected(indexPath: IndexPath) {
+        let currency = viewModel.elementBy(indexPath: indexPath)
+        cdelegate?.choiced(currency: currency)
     }
     
     public func filterBy(textSearched: String) {
@@ -64,6 +75,7 @@ extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
         cell.setUpComponent(currency: currencies[indexPath.row],
                             indexPath: indexPath)
         cell.toggleAction = toggle
+        cell.selectedAction = selected
         return cell
     }
     

@@ -11,7 +11,7 @@ protocol KeyboardViewService: class {
     func selected(value: String)
 }
 
-class KeyboardView: UICollectionView {
+final class KeyboardView: UICollectionView {
     private let layout = UICollectionViewFlowLayout()
     weak var kdelegate: KeyboardViewService?
     private let viewModel = KeyboardViewModel()

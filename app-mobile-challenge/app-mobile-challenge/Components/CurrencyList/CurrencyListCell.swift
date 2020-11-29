@@ -8,7 +8,6 @@
 import UIKit
 
 final class CurrencyListCell: UITableViewCell {
-    
     @AutoLayout private var starButton: UIButton
     @AutoLayout private var codeLabel: TitleLabel
     @AutoLayout private var nameLabel: SubtitleLabel
@@ -16,7 +15,8 @@ final class CurrencyListCell: UITableViewCell {
     private var indexPath = IndexPath()
     
     var toggleAction: ((_ index: IndexPath)->Void)? = nil
-
+    var selectedAction: ((_ index: IndexPath)->Void)? = nil
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViews()
@@ -64,15 +64,12 @@ final class CurrencyListCell: UITableViewCell {
         }
     }
     private func toggle() {
-        currency?.favorite.toggle()
-//        setUpStar(favorite: currency?.favorite)
         toggleAction?(indexPath)
     }
+    private func selected() {
+        selectedAction?(indexPath)
+    }
     //MARK:- Final das funções
-    
-    //MARK:- Funcões objs
-    
-    //MARK:- Final de funcões objs
     
     //MARK:- Configuração do Style
     private func style() {
@@ -89,7 +86,7 @@ final class CurrencyListCell: UITableViewCell {
     private func layoutButton() {
         addSubview(starButton)
         let layoutGuides = layoutMarginsGuide
-
+        
         NSLayoutConstraint.activate([
             starButton.centerYAnchor.constraint(equalTo: layoutGuides.centerYAnchor),
             starButton.leadingAnchor.constraint(equalTo: layoutGuides.leadingAnchor),
@@ -100,7 +97,7 @@ final class CurrencyListCell: UITableViewCell {
     private func layoutTitle() {
         addSubview(codeLabel)
         let layoutGuides = layoutMarginsGuide
-
+        
         NSLayoutConstraint.activate([
             codeLabel.topAnchor.constraint(equalTo: layoutGuides.topAnchor, constant: DesignSystem.Spacing.default),
             codeLabel.leadingAnchor.constraint(equalTo: starButton.trailingAnchor, constant: DesignSystem.Spacing.default)
@@ -116,9 +113,15 @@ final class CurrencyListCell: UITableViewCell {
     //MARK:- Final da configuração do Layout
     
     /// Reconhecimento de toque nos favoritos
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first, starButton.bounds.contains(touch.location(in: self)) {
-            toggle()
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if starButton.bounds
+                .contains(touch.location(in: self)) {
+                toggle()
+            } else if self.bounds
+                        .contains(touch.location(in: self)) {
+                selected()
+            }
         }
     }
 }

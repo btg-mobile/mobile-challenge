@@ -13,14 +13,11 @@ final class CurrencyListViewModel {
     private var textSearched: String = ""
     private var filtedCurrencies: Currencies {
         get {
-            textSearched.isEmpty
-                    ? currencies
-                    : currencies.filter {
-                    $0.name.range(of: textSearched, options: .caseInsensitive) != nil
-            }
-        } set {
-            
-        }
+        textSearched.isEmpty
+            ? currencies
+            : currencies.filter {
+            $0.name.range(of: textSearched, options: .caseInsensitive) != nil
+        }} set {}
      }
     
     /// Descreve as moedas favoritas.
@@ -38,6 +35,11 @@ final class CurrencyListViewModel {
     
     public func elementsBy(section: Int) -> Currencies {
         return section == 0 ? favoriteCurrencies : allCurrencies
+    }
+    public func elementBy(indexPath: IndexPath) -> Currency {
+        let section = indexPath.section
+        let row = indexPath.row
+        return section == 0 ?favoriteCurrencies[row]:allCurrencies[row]
     }
     
     public func title(section: Int) -> String {

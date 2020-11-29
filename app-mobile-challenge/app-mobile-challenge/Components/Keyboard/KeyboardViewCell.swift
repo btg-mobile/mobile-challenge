@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeyboardViewCell: UICollectionViewCell {
+final class KeyboardViewCell: UICollectionViewCell {
     
     private let imageView = UIImageView()
     

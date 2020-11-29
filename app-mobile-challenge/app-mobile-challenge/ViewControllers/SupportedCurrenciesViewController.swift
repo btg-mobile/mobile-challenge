@@ -20,8 +20,14 @@ class SupportedCurrenciesViewController: UIViewController {
     @AutoLayout private var currentyList: CurrencyList
 
     private var viewModel: SupportedCurrenciesViewModel
+    private var type: PickCurrencyType
     
-    init(viewModel: SupportedCurrenciesViewModel) {
+    /// Inicializador da Supported
+    /// - Parameters:
+    ///   - viewModel: O `ViewModel` desse controller.
+    ///   - type: Determina de onde o usuário veio e quais serão as ações da Controller.
+    init(viewModel: SupportedCurrenciesViewModel, type: PickCurrencyType) {
+        self.type = type
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,9 +38,9 @@ class SupportedCurrenciesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        search.delegate = self
         setUpViews()
         layoutViews()
+        setUpDelegate()
     }
     
     override func loadView() {
@@ -56,6 +62,12 @@ class SupportedCurrenciesViewController: UIViewController {
         layoutTitle()
         layoutSearch()
         layoutCurrentyList()
+    }
+    
+    /// Configura a comunicação com os componentes
+    private func setUpDelegate() {
+        search.delegate = self
+        currentyList.cdelegate = self
     }
     //MARK: - Final da configuração inicial
     
@@ -106,7 +118,7 @@ class SupportedCurrenciesViewController: UIViewController {
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            search.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: DesignSystem.Spacing.large*2 ),
+            search.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: DesignSystem.Spacing.large*2),
             search.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             search.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor)
         ])
@@ -127,9 +139,16 @@ class SupportedCurrenciesViewController: UIViewController {
     //MARK: - Final da confuguração de Layout
 }
 
-//MARK: - Crontrolar o rrecebimento de input
+//MARK: - Crontrolar o recebimento de input
 extension SupportedCurrenciesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
         currentyList.filterBy(textSearched: textSearched)
+    }
+}
+
+//MARK: - Crontrolar o recebimento de selecionar uma moeda
+extension SupportedCurrenciesViewController: CurrencyListService {
+    func choiced(currency: Currency) {
+        viewModel.choiced(currency: currency, type: type)
     }
 }

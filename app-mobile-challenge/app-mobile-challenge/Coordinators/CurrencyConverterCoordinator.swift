@@ -9,11 +9,12 @@ import UIKit
 import os.log
 
 protocol CurrencyConverterCoordinatorService: Coordinator {
-    func showSupporteds()
+    func showSupporteds(type: PickCurrencyType)
     func back()
 }
 
 final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
+    
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -28,9 +29,9 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showSupporteds() {
+    func showSupporteds(type: PickCurrencyType) {
         let viewModel = SupportedCurrenciesViewModel(coordinator: self)
-        let viewController = SupportedCurrenciesViewController(viewModel: viewModel)
+        let viewController = SupportedCurrenciesViewController(viewModel: viewModel, type: type)
         navigationController.pushViewController(viewController, animated: true)
     }
     

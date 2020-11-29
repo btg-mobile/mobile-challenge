@@ -12,22 +12,17 @@ protocol CurrencyConverterService: class {
 }
 
 final class CurrencyConverterViewModel {
-    @UserDefaultAccess(key: "USD", defaultValue: "USD")
-    private var fromCurrencyStorage: String
-    
-    @UserDefaultAccess(key: "USD", defaultValue: "USD")
-    private var toCurrencyStorage: String
     
     private let coordinator: CurrencyConverterCoordinatorService
     private weak var delegate: CurrencyConverterService?
     
     
     public var fromCurrency: String {
-        return fromCurrencyStorage
+        return CommonData.shared.fromCurrencyStorage
     }
     
     public var toCurrency: String {
-        return toCurrencyStorage
+        return CommonData.shared.toCurrencyStorage
     }
     
     /// Valor da moeda atual a ser convertida.
@@ -40,8 +35,11 @@ final class CurrencyConverterViewModel {
     }
     // Coordinators
     /// Abre a tela de moedas suportadas.
-    public func pickSupporteds() {
-        coordinator.showSupporteds()
+    public func pickSupporteds(type: PickCurrencyType) {
+        coordinator.showSupporteds(type: type)
+    }
+    public func openSupporteds() {
+        coordinator.showSupporteds(type: .none)
     }
     // End Coordinators
     

@@ -35,6 +35,8 @@
 		823D09832572F0ED00DFA64D /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09822572F0ED00DFA64D /* CurrencyListViewModel.swift */; };
 		823D09932572FDC600DFA64D /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09922572FDC600DFA64D /* SubtitleLabel.swift */; };
 		823D09A1257307B000DFA64D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09A0257307B000DFA64D /* UIViewController.swift */; };
+		823D09A625732DAF00DFA64D /* Currenty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09A525732DAE00DFA64D /* Currenty.swift */; };
+		823D09AF25734C6000DFA64D /* CommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09AE25734C6000DFA64D /* CommonData.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -92,6 +94,8 @@
 		823D09822572F0ED00DFA64D /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		823D09922572FDC600DFA64D /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
 		823D09A0257307B000DFA64D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		823D09A525732DAE00DFA64D /* Currenty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currenty.swift; sourceTree = "<group>"; };
+		823D09AE25734C6000DFA64D /* CommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonData.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			children = (
 				820C4FCC2571F1C000D9FEAB /* UIFont.swift */,
 				820C4FE02571F83B00D9FEAB /* DesignSystem.swift */,
+				823D09A525732DAE00DFA64D /* Currenty.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -217,9 +222,9 @@
 		820C500B25720E9D00D9FEAB /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				820C50192572291200D9FEAB /* KeyboardViewModel.swift */,
 				820C500C25720EB600D9FEAB /* KeyboardView.swift */,
 				820C501425720EE100D9FEAB /* KeyboardViewCell.swift */,
+				820C50192572291200D9FEAB /* KeyboardViewModel.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -248,6 +253,14 @@
 				820C50462572E04800D9FEAB /* Search.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		823D09AD25734C4200DFA64D /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				823D09AE25734C6000DFA64D /* CommonData.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		82D09B7425719E4C00624615 = {
@@ -281,6 +294,7 @@
 				820C4F992571E89C00D9FEAB /* ViewModels */,
 				820C4FC72571F13C00D9FEAB /* Views */,
 				820C500A25720E8C00D9FEAB /* Components */,
+				823D09AD25734C4200DFA64D /* DataBase */,
 				820C4F7E2571E59000D9FEAB /* Extensions */,
 				820C4FCB2571F1B200D9FEAB /* Enums */,
 				820C4FE52571FA3D00D9FEAB /* Property wrappers */,
@@ -474,12 +488,14 @@
 				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
 				820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */,
 				820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */,
+				823D09A625732DAF00DFA64D /* Currenty.swift in Sources */,
 				820C50312572D1F100D9FEAB /* TitleLabel.swift in Sources */,
 				820C501525720EE100D9FEAB /* KeyboardViewCell.swift in Sources */,
 				82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */,
 				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
 				820C502225722AB800D9FEAB /* UserDefaultsAccess.swift in Sources */,
 				820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */,
+				823D09AF25734C6000DFA64D /* CommonData.swift in Sources */,
 				823D09832572F0ED00DFA64D /* CurrencyListViewModel.swift in Sources */,
 				823D09A1257307B000DFA64D /* UIViewController.swift in Sources */,
 				823D097D2572EF2B00DFA64D /* CurrencyListCell.swift in Sources */,

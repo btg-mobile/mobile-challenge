@@ -28,4 +28,21 @@ final class SupportedCurrenciesViewModel {
     public func title() -> String {
         return "Moedas"
     }
+    
+    /// Salva a moeda selecionada e volta para a tela inicial.
+    /// - Parameters:
+    ///   - currency: Moeda selecionada, `Currency`
+    ///   - type: Tipo de `PickCurrencyType`
+    public func choiced(currency: Currency, type: PickCurrencyType) {
+        if type == .none { return }
+        switch type {
+        case .none:
+            return
+        case .from:
+            CommonData.shared.fromCurrencyStorage = currency.code
+        case .to:
+            CommonData.shared.toCurrencyStorage = currency.code
+        }
+        back()
+    }
 }
