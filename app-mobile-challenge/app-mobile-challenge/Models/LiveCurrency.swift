@@ -31,13 +31,13 @@ extension LiveCurrency: Equatable {
         var publishers = [AnyCancellable]()
         CurrencyApi.shared.lives()
             .map { $0 }
-            .sink(receiveCompletion: { _ in print("A requisição terminou...") },
+            .sink(receiveCompletion: { _ in debugPrint("A requisição terminou...") },
                   receiveValue: {
                     CommonData.shared.lastUpdate = $0.timestamp
                     Live.save(quotes: $0.quotes)
             })
             .store(in: &publishers)
-        RunLoop.main.run(until: Date(timeIntervalSinceNow: 10))
-        withExtendedLifetime(CurrencyApi.shared.lives, {})
+        RunLoop.main.run(until: Date(timeIntervalSinceNow: 1))
+        withExtendedLifetime(publishers, {})
     }
 }

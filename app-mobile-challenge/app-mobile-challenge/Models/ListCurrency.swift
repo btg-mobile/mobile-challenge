@@ -27,12 +27,12 @@ extension ListCurrency: Equatable {
         var publishers = [AnyCancellable]()
         CurrencyApi.shared.lists()
             .map { $0 }
-            .sink(receiveCompletion: { _ in print("A requisição terminou...") },
+            .sink(receiveCompletion: { _ in debugPrint("A requisição terminou...") },
                   receiveValue: {
                     List.save(currencies: $0.currencies)
             })
             .store(in: &publishers)
-        RunLoop.main.run(until: Date(timeIntervalSinceNow: 10))
-        withExtendedLifetime(CurrencyApi.shared.lists, {})
+        RunLoop.main.run(until: Date(timeIntervalSinceNow: 1))
+        withExtendedLifetime(publishers, {})
     }
 }
