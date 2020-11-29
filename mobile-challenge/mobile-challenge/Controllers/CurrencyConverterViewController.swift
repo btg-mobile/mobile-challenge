@@ -8,11 +8,25 @@
 import UIKit
 
 class CurrencyConverterViewController: UIViewController {
+    
+    // View Model
+    let currencyConverter = CurrencyConverterViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupBindings()
+        currencyConverter.getQuotes()
+    }
+    
+    private func setupBindings() {
+        currencyConverter.quotesFetched = {
+            self.updateData()
+        }
+    }
+    
+    private func updateData() {
+        print(currencyConverter.quotes)
     }
 
 }
