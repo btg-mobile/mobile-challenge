@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol CurrencyConverterService: class {
     func updateView()
@@ -27,6 +28,7 @@ final class CurrencyConverterViewModel {
     
     /// Valor da moeda atual a ser convertida.
     public var currencyValue: String = ""
+
     
     /// Inicializador
     /// - Parameter coordinator: O coordinator controla todas as operações de navegação entre telas.

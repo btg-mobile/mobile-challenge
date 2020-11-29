@@ -34,7 +34,7 @@ final class SupportedCurrenciesViewModel {
     /// - Parameters:
     ///   - currency: Moeda selecionada, `Currency`
     ///   - type: Tipo de `PickCurrencyType`
-    public func choiced(currency: Currency, type: PickCurrencyType) {
+    public func choiced(currency: List, type: PickCurrencyType) {
         if type == .none { return }
         ImpactFeedback.run(style: .heavy)
         switch type {

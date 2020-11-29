@@ -22,4 +22,13 @@ final class CommonData {
     
     @UserDefaultAccess(key: "favorites", defaultValue: [])
     public var favorites: [String]
+    
+    @UserDefaultAccess(key: "lists", defaultValue: [])
+    public var lists: Lists
+    
+    @UserDefaultAccess(key: "lives", defaultValue: [])
+    public var lives: Lives
+    
+    @UserDefaultAccess(key: "lastUpdate", defaultValue: .zero)
+    public var lastUpdate: Int
 }

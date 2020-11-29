@@ -8,12 +8,12 @@
 import UIKit
 
 protocol CurrencyListService: class {
-    func choiced(currency: Currency)
+    func choiced(currency: List)
 }
 
 final class CurrencyList: UITableView {
     
-    private var currencies = Currencies.sample
+    private var currencies = Lists.sample
     private lazy var viewModel =
         CurrencyListViewModel(currencies: currencies)
     public weak var cdelegate: CurrencyListService?

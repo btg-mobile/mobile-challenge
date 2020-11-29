@@ -7,7 +7,7 @@
 
 import Foundation
 
-@propertyWrapper struct UserDefaultAccess<T> {
+@propertyWrapper struct UserDefaultAccess<T: Codable> {
     let key: String
     let defaultValue: T
     let userDefaults: UserDefaultsService
@@ -22,15 +22,15 @@ import Foundation
 
     var wrappedValue: T {
         get {
-            return userDefaults.object(forKey: key) as? T ?? defaultValue
+            return userDefaults.value(T.self, forKey: key) ?? defaultValue
         }
         set {
-            userDefaults.setValue(newValue, forKey: key)
+            userDefaults.set(encodable: newValue, forKey: key)
         }
     }
 }
 
 protocol UserDefaultsService {
-    func object(forKey: String) -> Any?
-    func setValue(_ value: Any?, forKey key: String)
+    func set<T: Encodable>(encodable: T, forKey key: String)
+    func value<T: Decodable>(_ type: T.Type, forKey key: String) -> T?
 }

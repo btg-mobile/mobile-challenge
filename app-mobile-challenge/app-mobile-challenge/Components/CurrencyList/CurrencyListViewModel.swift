@@ -9,9 +9,9 @@ import UIKit
 
 final class CurrencyListViewModel {
     
-    private var currencies: Currencies
+    private var currencies: Lists
     private var textSearched: String = ""
-    private var filtedCurrencies: Currencies {
+    private var filtedCurrencies: Lists {
         get {
         textSearched.isEmpty
             ? currencies
@@ -22,22 +22,22 @@ final class CurrencyListViewModel {
      }
     
     /// Descreve as moedas favoritas.
-    private var favoriteCurrencies: Currencies {
+    private var favoriteCurrencies: Lists {
         filtedCurrencies.filter({$0.favorite})
     }
     /// Descreve todas as moedas.
-    private var allCurrencies: Currencies {
+    private var allCurrencies: Lists {
         filtedCurrencies.filter({!$0.favorite})
     }
     
-    init(currencies: Currencies) {
+    init(currencies: Lists) {
         self.currencies = currencies
     }
     
-    public func elementsBy(section: Int) -> Currencies {
+    public func elementsBy(section: Int) -> Lists {
         return section == 0 ? favoriteCurrencies : allCurrencies
     }
-    public func elementBy(indexPath: IndexPath) -> Currency {
+    public func elementBy(indexPath: IndexPath) -> List {
         let section = indexPath.section
         let row = indexPath.row
         return section == 0 ?favoriteCurrencies[row]:allCurrencies[row]
@@ -62,7 +62,7 @@ final class CurrencyListViewModel {
         }
         guard let index = currencies.firstIndex(where: {$0.name==name}) else { return }
         currencies[index].favorite.toggle()
-        currencies[index].save()
+        currencies[index].saveFavorite()
         ImpactFeedback.run(style: .light)
         recalculate()
     }

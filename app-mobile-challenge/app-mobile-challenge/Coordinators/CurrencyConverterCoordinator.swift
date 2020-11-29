@@ -7,6 +7,7 @@
 
 import UIKit
 import os.log
+import Combine
 
 protocol CurrencyConverterCoordinatorService: Coordinator {
     func showSupporteds(type: PickCurrencyType)
@@ -19,6 +20,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        getDataFromWeb()
     }
     
     /// Inicializa o fluxo de telas
@@ -37,5 +39,12 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
     
     func back() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func getDataFromWeb() {
+        DispatchQueue.main.async {
+            ListCurrency.getFromWeb()
+            LiveCurrency.getFromWeb()
+        }
     }
 }

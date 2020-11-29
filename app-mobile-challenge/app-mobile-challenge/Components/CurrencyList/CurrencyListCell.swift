@@ -11,7 +11,7 @@ final class CurrencyListCell: UITableViewCell {
     @AutoLayout private var starButton: UIButton
     @AutoLayout private var codeLabel: TitleLabel
     @AutoLayout private var nameLabel: SubtitleLabel
-    private var currency: Currency?
+    private var currency: List?
     private var indexPath = IndexPath()
     
     var toggleAction: ((_ index: IndexPath)->Void)? = nil
@@ -41,7 +41,7 @@ final class CurrencyListCell: UITableViewCell {
     //MARK:- Final da configuração inicial
     
     //MARK:- Funções
-    public func setUpComponent(currency: Currency,
+    public func setUpComponent(currency: List,
                                indexPath: IndexPath) {
         self.indexPath = indexPath
         self.currency = currency
