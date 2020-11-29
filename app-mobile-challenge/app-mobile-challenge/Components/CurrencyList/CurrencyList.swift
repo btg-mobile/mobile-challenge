@@ -38,6 +38,10 @@ final class CurrencyList: UITableView {
     private func register() {
         register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.self.description())
     }
+    private func toggle(indexPath: IndexPath) {
+        self.viewModel.toggleFavorite(indexPath: indexPath)
+        self.reloadData()
+    }
 }
 
 extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
@@ -51,7 +55,10 @@ extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
         guard let cell = dequeueReusableCell(withIdentifier: CurrencyListCell.self.description(), for: indexPath) as? CurrencyListCell else {
             return UITableViewCell()
         }
-        cell.setUpComponent(currency: currencies[indexPath.row])
+        let currencies = viewModel.elementsBy(section: indexPath.section)
+        cell.setUpComponent(currency: currencies[indexPath.row],
+                            indexPath: indexPath)
+        cell.toggleAction = toggle
         return cell
     }
     
@@ -68,7 +75,6 @@ extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
             headerView.contentView.backgroundColor = .white
             headerView.textLabel?.font = TextStyle.display3.font
             headerView.textLabel?.textColor = DesignSystem.Colors.secondary
-
         }
     }
 }

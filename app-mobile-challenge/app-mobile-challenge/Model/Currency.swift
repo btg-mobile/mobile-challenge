@@ -10,7 +10,7 @@ import Foundation
 struct Currency {
     let code: String
     let name: String
-    let favorite: Bool = false
+    var favorite: Bool = false
 }
 
 typealias Currencies = [Currency]

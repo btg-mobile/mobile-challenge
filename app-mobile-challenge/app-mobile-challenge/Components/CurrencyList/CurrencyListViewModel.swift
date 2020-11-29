@@ -12,21 +12,16 @@ final class CurrencyListViewModel {
     private var currencies: Currencies
     
     /// Descreve as moedas favoritas.
-    private var favoriteCurrencies: Currencies {
-        return currencies.filter({$0.favorite == true})
-    }
+    private lazy var favoriteCurrencies = currencies.filter({$0.favorite})
     /// Descreve todas as moedas.
-    private var allCurrencies: Currencies {
-        return currencies
-    }
+    private lazy var allCurrencies = currencies.filter({!$0.favorite})
     
     init(currencies: Currencies) {
         self.currencies = currencies
     }
     
     public func elementsBy(section: Int) -> Currencies {
-        if (section == 0) { return favoriteCurrencies }
-        else { return allCurrencies }
+        return section == 0 ? favoriteCurrencies : allCurrencies
     }
     
     public func title(section: Int) -> String {
@@ -34,7 +29,23 @@ final class CurrencyListViewModel {
         case 0:
             return favoriteCurrencies.count > 0 ? "Favoritas" : ""
         default:
-            return "Todas as moedas"
+            return allCurrencies.count > 0 ? "Todas as moedas" : ""
         }
+    }
+    
+    public func toggleFavorite(indexPath: IndexPath) {
+        //salvar a atualização
+        if indexPath.section == 0 {
+            favoriteCurrencies[indexPath.row].favorite.toggle()
+        } else {
+            allCurrencies[indexPath.row].favorite.toggle()
+        }
+        recalculate()
+    }
+    
+    private func recalculate() {
+        currencies = favoriteCurrencies + allCurrencies
+        favoriteCurrencies = currencies.filter({$0.favorite})
+        allCurrencies = currencies.filter({!$0.favorite})
     }
 }
