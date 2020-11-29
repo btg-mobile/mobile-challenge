@@ -19,4 +19,7 @@ final class CommonData {
     
     @UserDefaultAccess(key: "selectedTypeCurrency", defaultValue: "none")
     public var selectedTypeCurrency: String
+    
+    @UserDefaultAccess(key: "favorites", defaultValue: [])
+    public var favorites: [String]
 }

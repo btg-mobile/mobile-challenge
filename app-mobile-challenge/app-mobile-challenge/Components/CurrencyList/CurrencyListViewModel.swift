@@ -62,6 +62,7 @@ final class CurrencyListViewModel {
         }
         guard let index = currencies.firstIndex(where: {$0.name==name}) else { return }
         currencies[index].favorite.toggle()
+        currencies[index].save()
         recalculate()
     }
     
@@ -72,5 +73,14 @@ final class CurrencyListViewModel {
     public func filterBy(textSearched: String) {
         self.textSearched = textSearched
         recalculate()
+    }
+    
+    public func inicializeFavorites() {
+        let favorites = CommonData.shared.favorites
+        for favorite in favorites {
+            if let index = currencies.firstIndex(where: { $0.code == favorite }) {
+                currencies[index].favorite.toggle()
+            }
+        }
     }
 }

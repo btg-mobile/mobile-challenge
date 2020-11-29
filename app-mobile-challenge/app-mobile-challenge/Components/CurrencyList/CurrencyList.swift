@@ -30,8 +30,13 @@ final class CurrencyList: UITableView {
     private func setUp() {
         self.delegate = self
         self.dataSource = self
-        register()
         style()
+        setUpViews()
+    }
+    
+    private func setUpViews() {
+        register()
+        inicializeFavorites()
     }
     
     private func style() {
@@ -56,6 +61,10 @@ final class CurrencyList: UITableView {
     
     public func filterBy(textSearched: String) {
         viewModel.filterBy(textSearched: textSearched)
+        reloadData()
+    }
+    private func inicializeFavorites() {
+        viewModel.inicializeFavorites()
         reloadData()
     }
 }
