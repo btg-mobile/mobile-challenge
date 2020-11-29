@@ -20,7 +20,7 @@ class CurrencyListViewController: UIViewController {
     var viewModel: CurrencyListViewModel
     
     init() {
-        self.viewModel = CurrencyListViewModel(coreDataManager: CoreDataManager())
+        self.viewModel = CurrencyListViewModel()
         self.manager = CurrencyListManager(viewModel: viewModel)
         self.tagButton = .origin
         self.typeSort = .code

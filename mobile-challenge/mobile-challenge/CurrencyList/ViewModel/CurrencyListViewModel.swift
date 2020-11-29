@@ -11,8 +11,8 @@ class CurrencyListViewModel {
     
     private var manager: CoreDataManager
     
-    init(coreDataManager: CoreDataManager) {
-        self.manager = coreDataManager
+    init() {
+        self.manager = CoreDataManager()
     }
     
     func sortArray(by type: TypeSort, currenciesQuotation: [CurrencyQuotation]) -> [[String : [CurrencyQuotation]]] {
