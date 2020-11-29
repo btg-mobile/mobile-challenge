@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum PickCurrencyType {
-    case from
-    case to
-    case none
+enum PickCurrencyType: String {
+    case from = "from"
+    case to = "to"
+    case none = "none"
 }

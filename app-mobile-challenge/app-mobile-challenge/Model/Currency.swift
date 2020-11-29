@@ -22,4 +22,11 @@ extension Currencies {
         Currency(code: "JPY", name: "Japanese Yen"),
         Currency(code: "GBP", name: "British Pound")
     ]
+    
+    /// Encontra um `Currency` por seu código.
+    /// - Parameter code: código único de cada moeda.
+    /// - Returns `Currency?`: se encontrar algum elemento com o código correspondente retorna o elemento caso contrário, retorna `nil`.
+    func finOne(by code: String) -> Currency? {
+        return self.first { $0.code == code }
+    }
 }

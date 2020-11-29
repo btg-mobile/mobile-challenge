@@ -50,12 +50,20 @@ final class CurrencyListCell: UITableViewCell {
         nameLabel.text = currency.name
         setUpStar(favorite: currency.favorite)
         self.backgroundColor = .white
+        if isCellSelected() { isSelected = true }
+    }
+    override var isSelected: Bool {
+        didSet {
+            alpha = isSelected ? 0.5 : 1.0
+        }
     }
     private func setUpButton() {
         starButton.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9803921569, alpha: 1)
         starButton.layer.cornerRadius = 14
         starButton.clipsToBounds = true
     }
+    /// Configura qual imagem vai aparecer parar a estrela.
+    /// - Parameter favorite: Em caso do valor verdade ele colocará na imagem a preencida no `starButton`, caso contrárrio a sem preenchimento.
     private func setUpStar(favorite: Bool?) {
         if favorite ?? false {
             starButton.setImage(DesignSystem.Icons.star_fill, for: .normal)
@@ -63,11 +71,35 @@ final class CurrencyListCell: UITableViewCell {
             starButton.setImage(DesignSystem.Icons.star, for: .normal)
         }
     }
+    /// Faz a chamada quando um botão de favorito é clicado.
     private func toggle() {
         toggleAction?(indexPath)
     }
+    /// Faz a chamada quando uma célula é cliicada.
     private func selected() {
         selectedAction?(indexPath)
+    }
+    /// Verifica pelo tipo de ação da controller para qual moeda é a chamada.
+    /// - Parameter type: Tipo de ação da controler, determindo pelo enumerador `PickCurrencyType`
+    /// - Returns: Caso o tipo seja encontrado a função retornará o `code` dela, caso contrário retornará `nil`
+    private func getCurrencyCodeSelected(type: String) -> String? {
+        var value = ""
+        switch type {
+        case "from":
+            value = CommonData.shared.fromCurrencyStorage
+        case "to":
+            value = CommonData.shared.toCurrencyStorage
+        default:
+            return nil
+        }
+        return value
+    }
+    /// Verifica se a celula foi selecionada na tela prrincipal.
+    /// - Returns: Retorna `true`, caso verdadeiro e `false`, caso contrário.
+    private func isCellSelected() -> Bool {
+        let type = CommonData.shared.selectedTypeCurrency
+        guard let code = getCurrencyCodeSelected(type: type) else { return false }
+        return currency?.code == code
     }
     //MARK:- Final das funções
     
@@ -112,7 +144,7 @@ final class CurrencyListCell: UITableViewCell {
     }
     //MARK:- Final da configuração do Layout
     
-    /// Reconhecimento de toque nos favoritos
+    /// Reconhecimento de toque
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             if starButton.bounds

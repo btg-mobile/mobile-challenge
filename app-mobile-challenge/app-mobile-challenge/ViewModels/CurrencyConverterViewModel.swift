@@ -34,11 +34,13 @@ final class CurrencyConverterViewModel {
         self.coordinator = coordinator
     }
     // Coordinators
-    /// Abre a tela de moedas suportadas.
+    /// Salva o dado de transição de tela e abre a tela de moedas suportadas.
     public func pickSupporteds(type: PickCurrencyType) {
+        CommonData.shared.selectedTypeCurrency = type.rawValue
         coordinator.showSupporteds(type: type)
     }
     public func openSupporteds() {
+        CommonData.shared.selectedTypeCurrency = "none"
         coordinator.showSupporteds(type: .none)
     }
     // End Coordinators

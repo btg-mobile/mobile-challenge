@@ -16,4 +16,7 @@ final class CommonData {
     
     @UserDefaultAccess(key: "toCurrency", defaultValue: "USD")
     public var toCurrencyStorage: String
+    
+    @UserDefaultAccess(key: "selectedTypeCurrency", defaultValue: "none")
+    public var selectedTypeCurrency: String
 }
