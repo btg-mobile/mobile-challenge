@@ -16,8 +16,8 @@ class QuotationViewModel {
     var group = DispatchGroup()
     var queue = DispatchQueue.global()
     
-    init(manager: NetworkManager) {
-        self.manager = manager
+    init() {
+        self.manager = NetworkManager()
     }
     
     func convert(value: Double, origin: CurrencyQuotation, destiny: CurrencyQuotation) -> String {

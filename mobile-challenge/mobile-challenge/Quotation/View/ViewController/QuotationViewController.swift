@@ -141,23 +141,32 @@ extension QuotationViewController {
 extension QuotationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             
-            if string.count == 0 { return true }
-
-            let text = textField.text ?? ""
-            
-            var newText = (text as NSString).replacingCharacters(in: range, with: string) as NSString
-            
-            newText = newText.replacingOccurrences(of: ".", with: "") as NSString
-
-            let cents : NSInteger = newText.integerValue
-            let value = (Double(cents) / 100.0)
-
-            if newText.length < 9 {
-                let str = String(format: "%0.2f", arguments: [value])
-                quotationView.chooseCurrencyView.textValueToConvert.text = str
-            }
-
-            return false
+        if string.count == 0 { return true }
+        
+        if let newText = convertText(string: string, range: range, text: textField.text) {
+            quotationView.chooseCurrencyView.textValueToConvert.text = newText
         }
+        
+        return false
+    }
+    
+    func convertText(string: String, range: NSRange, text: String?) -> String? {
+
+        let givenText = text ?? ""
+        
+        var newText = (givenText as NSString).replacingCharacters(in: range, with: string) as NSString
+        
+        newText = newText.replacingOccurrences(of: ".", with: "") as NSString
+
+        let cents : NSInteger = newText.integerValue
+        let value = (Double(cents) / 100.0)
+
+        if newText.length < 9 {
+            let str = String(format: "%0.2f", arguments: [value])
+            return str
+        }
+        
+        return nil
+    }
 }
 

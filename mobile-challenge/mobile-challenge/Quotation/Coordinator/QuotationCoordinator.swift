@@ -16,7 +16,7 @@ class QuotationCoordinator: Coordinator {
     
     init(navigationController: UINavigationController, manager: NetworkManager) {
         self.navigationController = navigationController
-        self.viewModel = QuotationViewModel(manager: manager)
+        self.viewModel = QuotationViewModel()
     }
     
     func start() {

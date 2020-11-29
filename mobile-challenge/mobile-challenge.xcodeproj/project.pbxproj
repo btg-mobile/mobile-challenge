@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E20CEFCE2573158E0082FBDE /* CurrencyQuotationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CEFCC2573158E0082FBDE /* CurrencyQuotationEntity+CoreDataClass.swift */; };
 		E20CEFCF2573158E0082FBDE /* CurrencyQuotationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CEFCD2573158E0082FBDE /* CurrencyQuotationEntity+CoreDataProperties.swift */; };
+		E20CEFD8257320E10082FBDE /* QuotationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CEFD7257320E10082FBDE /* QuotationViewModelTests.swift */; };
+		E20CEFE2257323710082FBDE /* QuotationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CEFE1257323710082FBDE /* QuotationViewControllerTests.swift */; };
 		E2229DA4257135A400FB48AF /* CurrencyQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DA3257135A400FB48AF /* CurrencyQuotation.swift */; };
 		E2229DAC25713F3300FB48AF /* CurrenciesQuotationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DAB25713F3300FB48AF /* CurrenciesQuotationDelegate.swift */; };
 		E2229DB52571420E00FB48AF /* CurrencyListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2229DB42571420E00FB48AF /* CurrencyListManager.swift */; };
@@ -77,6 +79,8 @@
 /* Begin PBXFileReference section */
 		E20CEFCC2573158E0082FBDE /* CurrencyQuotationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyQuotationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E20CEFCD2573158E0082FBDE /* CurrencyQuotationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyQuotationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E20CEFD7257320E10082FBDE /* QuotationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewModelTests.swift; sourceTree = "<group>"; };
+		E20CEFE1257323710082FBDE /* QuotationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewControllerTests.swift; sourceTree = "<group>"; };
 		E2229DA3257135A400FB48AF /* CurrencyQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyQuotation.swift; sourceTree = "<group>"; };
 		E2229DAB25713F3300FB48AF /* CurrenciesQuotationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesQuotationDelegate.swift; sourceTree = "<group>"; };
 		E2229DB42571420E00FB48AF /* CurrencyListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListManager.swift; sourceTree = "<group>"; };
@@ -156,6 +160,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E20CEFD6257320810082FBDE /* Quotation */ = {
+			isa = PBXGroup;
+			children = (
+				E20CEFE0257323560082FBDE /* ViewController */,
+				E20CEFDF2573234D0082FBDE /* ViewModel */,
+			);
+			path = Quotation;
+			sourceTree = "<group>";
+		};
+		E20CEFDF2573234D0082FBDE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E20CEFD7257320E10082FBDE /* QuotationViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E20CEFE0257323560082FBDE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E20CEFE1257323710082FBDE /* QuotationViewControllerTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		E2229DB3257141F400FB48AF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +253,7 @@
 		E22EA11A256F03A300D10E62 /* mobile-challengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				E20CEFD6257320810082FBDE /* Quotation */,
 				E22EA11B256F03A300D10E62 /* mobile_challengeTests.swift */,
 				E22EA11D256F03A300D10E62 /* Info.plist */,
 			);
@@ -653,6 +683,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22EA11C256F03A300D10E62 /* mobile_challengeTests.swift in Sources */,
+				E20CEFE2257323710082FBDE /* QuotationViewControllerTests.swift in Sources */,
+				E20CEFD8257320E10082FBDE /* QuotationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

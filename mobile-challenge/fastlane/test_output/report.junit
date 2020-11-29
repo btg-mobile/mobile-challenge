@@ -1,11 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='mobile-challengeTests.xctest' tests='4' failures='0'>
+<testsuites name='mobile-challengeTests.xctest' tests='7' failures='0'>
   <testsuite name='mobile_challengeUITests.mobile_challengeUITests' tests='2' failures='0'>
-    <testcase classname='mobile_challengeUITests.mobile_challengeUITests' name='testExample' time='3.652'/>
-    <testcase classname='mobile_challengeUITests.mobile_challengeUITests' name='testLaunchPerformance' time='16.783'/>
+    <testcase classname='mobile_challengeUITests.mobile_challengeUITests' name='testExample' time='2.394'/>
+    <testcase classname='mobile_challengeUITests.mobile_challengeUITests' name='testLaunchPerformance' time='15.558'/>
+  </testsuite>
+  <testsuite name='mobile_challengeTests.QuotationViewControllerTests' tests='1' failures='0'>
+    <testcase classname='mobile_challengeTests.QuotationViewControllerTests' name='test_convertText' time='0.003'/>
+  </testsuite>
+  <testsuite name='mobile_challengeTests.QuotationViewModelTests' tests='2' failures='0'>
+    <testcase classname='mobile_challengeTests.QuotationViewModelTests' name='testExample' time='0.000'/>
+    <testcase classname='mobile_challengeTests.QuotationViewModelTests' name='testPerformanceExample' time='0.279'/>
   </testsuite>
   <testsuite name='mobile_challengeTests.mobile_challengeTests' tests='2' failures='0'>
-    <testcase classname='mobile_challengeTests.mobile_challengeTests' name='testExample' time='0.002'/>
-    <testcase classname='mobile_challengeTests.mobile_challengeTests' name='testPerformanceExample' time='0.287'/>
+    <testcase classname='mobile_challengeTests.mobile_challengeTests' name='testExample' time='0.000'/>
+    <testcase classname='mobile_challengeTests.mobile_challengeTests' name='testPerformanceExample' time='0.254'/>
   </testsuite>
 </testsuites>
