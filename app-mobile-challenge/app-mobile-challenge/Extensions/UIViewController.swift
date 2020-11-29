@@ -23,11 +23,15 @@ extension UIViewController {
     /// - Parameters:
     ///   - title: Descreve o título da alerta.
     ///   - message: Descreve o corpo da menssagem a ser enviada.
+    ///   - confirm: Descreve a mensagem do botão de confirmação.
     ///   - completion: Retorna a confimação quando o usuário clicar no botão de confirmação.
     func showAlert(_ title: String,
                    _ message: String = "",
+                   _ buttonTitle: String = "",
                    with completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        self.present(alert, animated: true, completion: completion)
+        let confirm = UIAlertAction(title: buttonTitle, style: .default, handler: { (_) in completion() })
+        alert.addAction(confirm)
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -103,7 +103,12 @@ class CurrencyConverterViewController: UIViewController {
         viewModel.pickSupporteds(type: .to)
     }
     @objc private func calculate() {
-        toCurrencyLabel.text = viewModel.calculateConvertion()
+        guard let values = viewModel.calculateConvertion() else {
+            self.showAlert("Algo inesperado aconteceu na conversão") { }
+            return
+        }
+        toCurrencyLabel.text = values.valueFrom
+        toCurrencyLabel.text = values.valueTo
     }
     //MARK: - objcs fim
     
@@ -164,11 +169,10 @@ class CurrencyConverterViewController: UIViewController {
     private func layoutToKeyboard() {
         view.addSubview(keyboard)
         let layoutGuides = view.layoutMarginsGuide
-
+        debugPrint(view.frame.height)
         NSLayoutConstraint.activate([
             keyboard.bottomAnchor.constraint(
-                equalTo: calculationButton.topAnchor,
-                constant: DesignSystem.Spacing.large*2),
+                equalTo: calculationButton.topAnchor, constant: -DesignSystem.Spacing.default*(view.frame.height-568)*0.02),
             keyboard.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             keyboard.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.height),
             keyboard.widthAnchor.constraint(equalToConstant: DesignSystem.Keyboard.width),

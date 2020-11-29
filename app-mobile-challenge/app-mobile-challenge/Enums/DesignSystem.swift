@@ -68,7 +68,7 @@ enum DesignSystem {
     }
     
     enum Keyboard {
-        static let height: CGFloat = 400
+        static let height: CGFloat = 330
         static let width: CGFloat = 300
         enum Cell {
             static let height: CGFloat = 72

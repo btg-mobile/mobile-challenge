@@ -29,19 +29,18 @@ final class CurrencyConverterViewModel {
     /// Valor da moeda atual a ser convertida.
     public var currencyValue: String = ""
 
-    
     /// Inicializador
     /// - Parameter coordinator: O coordinator controla todas as operações de navegação entre telas.
     init(coordinator: CurrencyConverterCoordinatorService) {
         self.coordinator = coordinator
     }
-    // Coordinators
     /// Salva o dado de transição de tela e abre a tela de moedas suportadas.
     public func pickSupporteds(type: PickCurrencyType) {
         ImpactFeedback.run(style: .medium)
         CommonData.shared.selectedTypeCurrency = type.rawValue
         coordinator.showSupporteds(type: type)
     }
+    /// Abre a tela de Moedas
     public func openSupporteds() {
         ImpactFeedback.run(style: .medium)
         CommonData.shared.selectedTypeCurrency = "none"
@@ -51,9 +50,9 @@ final class CurrencyConverterViewModel {
     
     /// Pega a conversão de moedas.
     /// - Returns: Retorna o valor convertido para a moeda selecionada.
-    public func calculateConvertion() -> String {
-        if (currencyValueIsEmpty()) { return "1,00" }
-        return currencyValue
+    public func calculateConvertion() -> (valueFrom: String, valueTo: String)? {
+        ImpactFeedback.run(style: .heavy)
+        return Convertion.getCurrrency(from: fromCurrency, to: toCurrency, valueFrom: currencyValue)
     }
     
     /// Verifica se o valor para a conversão está vazio.

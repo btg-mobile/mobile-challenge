@@ -20,7 +20,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        getDataFromWeb()
+//        getDataFromWeb()
     }
     
     /// Inicializa o fluxo de telas
