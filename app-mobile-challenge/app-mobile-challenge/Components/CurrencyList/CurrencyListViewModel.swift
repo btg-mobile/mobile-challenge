@@ -16,7 +16,8 @@ final class CurrencyListViewModel {
         textSearched.isEmpty
             ? currencies
             : currencies.filter {
-            $0.name.range(of: textSearched, options: .caseInsensitive) != nil
+            $0.name.range(of: textSearched, options: .caseInsensitive) != nil ||
+            $0.code.range(of: textSearched, options: .caseInsensitive) != nil
         }} set {}
      }
     
