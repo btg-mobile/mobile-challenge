@@ -30,8 +30,8 @@ final class CurrencyListViewModel {
         filtedCurrencies.filter({!$0.favorite})
     }
     
-    init(currencies: Lists) {
-        self.currencies = currencies
+    init(lists: Lists) {
+        self.currencies = lists
     }
     
     public func elementsBy(section: Int) -> Lists {

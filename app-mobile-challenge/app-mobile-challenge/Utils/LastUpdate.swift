@@ -12,7 +12,7 @@ final class LastUpdate {
     /// - Returns: O valor em `String` da ultima atualização.
     static func get() -> String {
         let timestamp = CommonData.shared.lastUpdate
-        if (timestamp == .zero) return "Buscando atualizações..."
+        if (timestamp == .zero) { return "Buscando atualizações..." }
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "BRT")

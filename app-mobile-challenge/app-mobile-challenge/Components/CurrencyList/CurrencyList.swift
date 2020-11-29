@@ -8,14 +8,14 @@
 import UIKit
 
 protocol CurrencyListService: class {
-    func choiced(currency: List)
+    func choiced(list: List)
 }
 
 final class CurrencyList: UITableView {
     
-    private var currencies = Lists.sample
+    private var lists = CommonData.shared.lists
     private lazy var viewModel =
-        CurrencyListViewModel(currencies: currencies)
+        CurrencyListViewModel(lists: lists)
     public weak var cdelegate: CurrencyListService?
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -55,8 +55,8 @@ final class CurrencyList: UITableView {
         reloadData()
     }
     private func selected(indexPath: IndexPath) {
-        let currency = viewModel.elementBy(indexPath: indexPath)
-        cdelegate?.choiced(currency: currency)
+        let list = viewModel.elementBy(indexPath: indexPath)
+        cdelegate?.choiced(list: list)
     }
     
     public func filterBy(textSearched: String) {
@@ -80,8 +80,8 @@ extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
         guard let cell = dequeueReusableCell(withIdentifier: CurrencyListCell.self.description(), for: indexPath) as? CurrencyListCell else {
             return UITableViewCell()
         }
-        let currencies = viewModel.elementsBy(section: indexPath.section)
-        cell.setUpComponent(currency: currencies[indexPath.row],
+        let lists = viewModel.elementsBy(section: indexPath.section)
+        cell.setUpComponent(currency: lists[indexPath.row],
                             indexPath: indexPath)
         cell.toggleAction = toggle
         cell.selectedAction = selected

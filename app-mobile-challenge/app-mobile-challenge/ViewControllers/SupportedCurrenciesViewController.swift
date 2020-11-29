@@ -148,7 +148,7 @@ extension SupportedCurrenciesViewController: UISearchBarDelegate {
 
 //MARK: - Crontrolar o recebimento de selecionar uma moeda
 extension SupportedCurrenciesViewController: CurrencyListService {
-    func choiced(currency: List) {
-        viewModel.choiced(currency: currency, type: type)
+    func choiced(list: List) {
+        viewModel.choiced(currency: list, type: type)
     }
 }
