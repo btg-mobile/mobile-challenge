@@ -13,15 +13,16 @@ struct Currency {
     var favorite: Bool = false
     
     func save() {
-        if favorite {
-            CommonData.shared.favorites.append(self.code)
-        } else {
-            if let index = CommonData.shared.favorites.firstIndex(where: {$0 == code}) {
-                CommonData.shared.favorites.remove(at: index)
+        DispatchQueue.main.async {
+            if favorite {
+                CommonData.shared.favorites.append(self.code)
+            } else {
+                if let index = CommonData.shared.favorites.firstIndex(where: {$0 == code}) {
+                    CommonData.shared.favorites.removeFirst(index)
+                }
+                
             }
-            
         }
-        
     }
 }
 

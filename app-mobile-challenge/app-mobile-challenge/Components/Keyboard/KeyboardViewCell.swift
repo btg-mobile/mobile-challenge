@@ -47,7 +47,7 @@ final class KeyboardViewCell: UICollectionViewCell {
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 6
+        layer.shadowRadius = 3
     }
 }
 

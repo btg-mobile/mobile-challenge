@@ -105,7 +105,6 @@ final class CurrencyListCell: UITableViewCell {
     
     //MARK:- Configuração do Style
     private func style() {
-        frame = frame.offsetBy(dx: 10, dy: 10)
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize.zero

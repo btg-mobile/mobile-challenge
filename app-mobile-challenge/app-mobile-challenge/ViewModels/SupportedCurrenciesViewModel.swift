@@ -20,6 +20,7 @@ final class SupportedCurrenciesViewModel {
     
     /// Volta para a tela anterior.
     public func back() {
+        ImpactFeedback.run(style: .heavy)
         coordinator.back()
     }
     
@@ -35,6 +36,7 @@ final class SupportedCurrenciesViewModel {
     ///   - type: Tipo de `PickCurrencyType`
     public func choiced(currency: Currency, type: PickCurrencyType) {
         if type == .none { return }
+        ImpactFeedback.run(style: .heavy)
         switch type {
         case .none:
             return

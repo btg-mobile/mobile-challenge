@@ -37,6 +37,7 @@
 		823D09A1257307B000DFA64D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09A0257307B000DFA64D /* UIViewController.swift */; };
 		823D09A625732DAF00DFA64D /* Currenty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09A525732DAE00DFA64D /* Currenty.swift */; };
 		823D09AF25734C6000DFA64D /* CommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09AE25734C6000DFA64D /* CommonData.swift */; };
+		823D09BF2573D6FA00DFA64D /* ImpactFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D09BE2573D6FA00DFA64D /* ImpactFeedback.swift */; };
 		82D09B8125719E4D00624615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8025719E4D00624615 /* AppDelegate.swift */; };
 		82D09B8325719E4D00624615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8225719E4D00624615 /* SceneDelegate.swift */; };
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
@@ -96,6 +97,7 @@
 		823D09A0257307B000DFA64D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		823D09A525732DAE00DFA64D /* Currenty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currenty.swift; sourceTree = "<group>"; };
 		823D09AE25734C6000DFA64D /* CommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonData.swift; sourceTree = "<group>"; };
+		823D09BE2573D6FA00DFA64D /* ImpactFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactFeedback.swift; sourceTree = "<group>"; };
 		82D09B7D25719E4C00624615 /* app-mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D09B8025719E4D00624615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D09B8225719E4D00624615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,21 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		823D09B62573D50300DFA64D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		823D09BD2573D6E300DFA64D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				823D09BE2573D6FA00DFA64D /* ImpactFeedback.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		82D09B7425719E4C00624615 = {
 			isa = PBXGroup;
 			children = (
@@ -294,8 +311,10 @@
 				820C4F992571E89C00D9FEAB /* ViewModels */,
 				820C4FC72571F13C00D9FEAB /* Views */,
 				820C500A25720E8C00D9FEAB /* Components */,
+				823D09B62573D50300DFA64D /* Network */,
 				823D09AD25734C4200DFA64D /* DataBase */,
 				820C4F7E2571E59000D9FEAB /* Extensions */,
+				823D09BD2573D6E300DFA64D /* Utils */,
 				820C4FCB2571F1B200D9FEAB /* Enums */,
 				820C4FE52571FA3D00D9FEAB /* Property wrappers */,
 			);
@@ -486,6 +505,7 @@
 				820C4FF92571FF2B00D9FEAB /* BackButtonView.swift in Sources */,
 				820C50412572D8E200D9FEAB /* CurrencyList.swift in Sources */,
 				820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */,
+				823D09BF2573D6FA00DFA64D /* ImpactFeedback.swift in Sources */,
 				820C4FF42571FEEF00D9FEAB /* SupportedCurrenciesViewController.swift in Sources */,
 				820C502725722B8500D9FEAB /* UserDefaults.swift in Sources */,
 				823D09A625732DAF00DFA64D /* Currenty.swift in Sources */,
@@ -681,6 +701,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CTAFH43K36;
 				INFOPLIST_FILE = "app-mobile-challenge/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -700,6 +721,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CTAFH43K36;
 				INFOPLIST_FILE = "app-mobile-challenge/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

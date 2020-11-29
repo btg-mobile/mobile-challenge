@@ -63,6 +63,7 @@ final class CurrencyListViewModel {
         guard let index = currencies.firstIndex(where: {$0.name==name}) else { return }
         currencies[index].favorite.toggle()
         currencies[index].save()
+        ImpactFeedback.run(style: .light)
         recalculate()
     }
     

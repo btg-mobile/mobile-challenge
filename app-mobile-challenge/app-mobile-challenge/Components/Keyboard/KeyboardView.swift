@@ -30,6 +30,7 @@ final class KeyboardView: UICollectionView {
     
     //MARK - Funcs
     private func setUp() {
+        contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
         isScrollEnabled = true
@@ -62,8 +63,8 @@ extension KeyboardView: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ImpactFeedback.run(style: .medium)
         let value = viewModel.convertValue(index: indexPath.row)
         kdelegate?.selected(value: value)
     }
-    
 }
