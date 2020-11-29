@@ -59,8 +59,8 @@ class CurrencyConverterViewController: UIViewController {
         layoutButton()
         layoutFromCurrenty()
         layoutToCurrenty()
-        layoutToKeyboard()
         layoutCalculationButton()
+        layoutToKeyboard()
     }
     //MARK: - SetUp fim
     
@@ -166,8 +166,8 @@ class CurrencyConverterViewController: UIViewController {
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            keyboard.topAnchor.constraint(equalTo: toCurrencyButton.bottomAnchor,
-                                          constant: DesignSystem.Spacing.large*6),
+            keyboard.bottomAnchor.constraint(equalTo: calculationButton.topAnchor,
+                                          constant: DesignSystem.Spacing.large*2),
             keyboard.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             keyboard.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.height),
             keyboard.widthAnchor.constraint(equalToConstant: DesignSystem.Keyboard.width),
@@ -180,8 +180,8 @@ class CurrencyConverterViewController: UIViewController {
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            calculationButton.topAnchor.constraint(
-                equalTo: keyboard.bottomAnchor,
+            calculationButton.bottomAnchor.constraint(
+                equalTo: layoutGuides.bottomAnchor,
                 constant: DesignSystem.Keyboard.Layout.top),
             calculationButton.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             calculationButton.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.Layout.height),
