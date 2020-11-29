@@ -8,10 +8,10 @@
 import UIKit
 
 final class Search: UISearchBar {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -19,7 +19,6 @@ final class Search: UISearchBar {
     }
     
     private func setup() {
-        delegate = self
         layout()
     }
     
@@ -35,14 +34,5 @@ final class Search: UISearchBar {
         isTranslucent = false
         //Rounded
         layer.cornerRadius = 20
-    }
-}
-
-extension Search: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
-        debugPrint(textSearched)
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
     }
 }

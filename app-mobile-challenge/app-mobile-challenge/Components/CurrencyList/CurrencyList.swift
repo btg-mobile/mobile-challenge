@@ -39,8 +39,13 @@ final class CurrencyList: UITableView {
         register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.self.description())
     }
     private func toggle(indexPath: IndexPath) {
-        self.viewModel.toggleFavorite(indexPath: indexPath)
-        self.reloadData()
+        viewModel.toggleFavorite(indexPath: indexPath)
+        reloadData()
+    }
+    
+    public func filterBy(textSearched: String) {
+        viewModel.filterBy(textSearched: textSearched)
+        reloadData()
     }
 }
 

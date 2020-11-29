@@ -10,11 +10,27 @@ import UIKit
 final class CurrencyListViewModel {
     
     private var currencies: Currencies
+    private var textSearched: String = ""
+    private var filtedCurrencies: Currencies {
+        get {
+            textSearched.isEmpty
+                    ? currencies
+                    : currencies.filter {
+                    $0.name.range(of: textSearched, options: .caseInsensitive) != nil
+            }
+        } set {
+            
+        }
+     }
     
     /// Descreve as moedas favoritas.
-    private lazy var favoriteCurrencies = currencies.filter({$0.favorite})
+    private var favoriteCurrencies: Currencies {
+        filtedCurrencies.filter({$0.favorite})
+    }
     /// Descreve todas as moedas.
-    private lazy var allCurrencies = currencies.filter({!$0.favorite})
+    private var allCurrencies: Currencies {
+        filtedCurrencies.filter({!$0.favorite})
+    }
     
     init(currencies: Currencies) {
         self.currencies = currencies
@@ -34,18 +50,24 @@ final class CurrencyListViewModel {
     }
     
     public func toggleFavorite(indexPath: IndexPath) {
+        var name = ""
         //salvar a atualização
         if indexPath.section == 0 {
-            favoriteCurrencies[indexPath.row].favorite.toggle()
+            name = favoriteCurrencies[indexPath.row].name
         } else {
-            allCurrencies[indexPath.row].favorite.toggle()
+            name = allCurrencies[indexPath.row].name
         }
+        guard let index = currencies.firstIndex(where: {$0.name==name}) else { return }
+        currencies[index].favorite.toggle()
         recalculate()
     }
     
     private func recalculate() {
-        currencies = favoriteCurrencies + allCurrencies
-        favoriteCurrencies = currencies.filter({$0.favorite})
-        allCurrencies = currencies.filter({!$0.favorite})
+        filtedCurrencies = currencies
+    }
+    
+    public func filterBy(textSearched: String) {
+        self.textSearched = textSearched
+        recalculate()
     }
 }

@@ -32,6 +32,7 @@ class SupportedCurrenciesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        search.delegate = self
         setUpViews()
         layoutViews()
     }
@@ -124,4 +125,11 @@ class SupportedCurrenciesViewController: UIViewController {
         ])
     }
     //MARK: - Final da confuguração de Layout
+}
+
+//MARK: - Crontrolar o rrecebimento de input
+extension SupportedCurrenciesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
+        currentyList.filterBy(textSearched: textSearched)
+    }
 }
