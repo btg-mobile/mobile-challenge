@@ -38,8 +38,8 @@ class CurrencyConverterViewController: UIViewController {
         layoutConstraints()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateCurrencyView()
     }
     
@@ -166,8 +166,9 @@ class CurrencyConverterViewController: UIViewController {
         let layoutGuides = view.layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            keyboard.bottomAnchor.constraint(equalTo: calculationButton.topAnchor,
-                                          constant: DesignSystem.Spacing.large*2),
+            keyboard.bottomAnchor.constraint(
+                equalTo: calculationButton.topAnchor,
+                constant: DesignSystem.Spacing.large*2),
             keyboard.centerXAnchor.constraint(equalTo: layoutGuides.centerXAnchor),
             keyboard.heightAnchor.constraint(equalToConstant: DesignSystem.Keyboard.height),
             keyboard.widthAnchor.constraint(equalToConstant: DesignSystem.Keyboard.width),
