@@ -119,7 +119,7 @@ class QuotationViewController: UIViewController {
             
             let value = Double(valueStr) ?? 0.0
             
-            let convertedValue = viewModel.convert(value: value, origin: origin, destiny: destiny)
+            let convertedValue = viewModel.convert(value: value, origin: origin.quotation, destiny: destiny.quotation)
             
             quotationView.chooseCurrencyView.resultLabel.text = convertedValue
         }

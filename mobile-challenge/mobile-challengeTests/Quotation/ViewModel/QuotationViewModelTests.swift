@@ -6,27 +6,43 @@
 //
 
 import XCTest
+@testable import mobile_challenge
 
 class QuotationViewModelTests: XCTestCase {
+    
+    var sut: QuotationViewModel!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        sut = QuotationViewModel()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        sut = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func test_convert(){
+        let value = 10.0
+        let origin = 5.34 //BRL
+        let destiny = 0.84 // EUR
+        
+        let result = sut.convert(value: value, origin: origin, destiny: destiny)
+        
+        XCTAssertEqual(result, "1.57")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_groupCurrencyQuotationInfo(){
+        let key = "BRL"
+        let value = 5.34
+        let currency = Currency(success: true, error: nil, currencies: [key : "BrazilianReal"])
+        let quotation = Quotation(success: true, error: nil, timestamp: nil, quotes: ["USDBRL" : value])
+        
+        sut.currency = currency
+        sut.quotation = quotation
+        
+        sut.groupCurrencyQuotationInfo()
+        
+        XCTAssertEqual(sut.currenciesQuotation.first?.code, key)
+        XCTAssertEqual(sut.currenciesQuotation.first?.quotation, value)
     }
 
 }

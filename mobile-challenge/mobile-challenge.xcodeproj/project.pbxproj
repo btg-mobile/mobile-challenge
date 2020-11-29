@@ -185,6 +185,21 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		E20D559B257337CA005CD750 /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				E20D559C257337D3005CD750 /* ViewModel */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		E20D559C257337D3005CD750 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E2229DB3257141F400FB48AF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +268,7 @@
 		E22EA11A256F03A300D10E62 /* mobile-challengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				E20D559B257337CA005CD750 /* CurrencyList */,
 				E20CEFD6257320810082FBDE /* Quotation */,
 				E22EA11B256F03A300D10E62 /* mobile_challengeTests.swift */,
 				E22EA11D256F03A300D10E62 /* Info.plist */,
