@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Base do `Coordinator`
 protocol Coordinator {
     var navigationController: UINavigationController { get set }
     func start()

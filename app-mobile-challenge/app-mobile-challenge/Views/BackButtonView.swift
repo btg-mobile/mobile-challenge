@@ -18,6 +18,7 @@ final class BackButtonView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Configuração de aparencia do botão.
     private func style() {
         let icon = DesignSystem.Icons.back
         setImage(icon, for: .normal)

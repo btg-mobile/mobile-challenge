@@ -8,20 +8,17 @@
 import UIKit
 import Combine
 
-protocol CurrencyConverterService: class {
-    func updateView()
-}
-
+/// `ViewModel` responsável pela `CurrencyConverterViewController`.
 final class CurrencyConverterViewModel {
     
+    /// `Coordinator` associado com esse `ViewModel`.
     private let coordinator: CurrencyConverterCoordinatorService
-    private weak var delegate: CurrencyConverterService?
     
-    
+    /// Recupera a informação de moeda selecionada para a conversão do `CommonData`.
     public var fromCurrency: String {
         return CommonData.shared.fromCurrencyStorage
     }
-    
+    /// Recupera a informação de moeda selecionada à ser convertida do `CommonData`.
     public var toCurrency: String {
         return CommonData.shared.toCurrencyStorage
     }
@@ -50,9 +47,13 @@ final class CurrencyConverterViewModel {
     
     /// Pega a conversão de moedas.
     /// - Returns: Retorna o valor convertido para a moeda selecionada.
-    public func calculateConvertion() -> ((valueFrom: String, valueTo: String)?, String?) {
+    public func calculateConvertion() -> ((valueFrom: String,
+                                           valueTo: String)?,
+                                           String?) {
         ImpactFeedback.run(style: .heavy)
-        return Convertion.getCurrrency(from: fromCurrency, to: toCurrency, valueFrom: currencyValue)
+        return Convertion.getCurrrency(from: fromCurrency,
+                                       to: toCurrency,
+                                       valueFrom: currencyValue)
     }
     
     /// Verifica se o valor para a conversão está vazio.

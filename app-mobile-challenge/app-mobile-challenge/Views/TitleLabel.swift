@@ -18,7 +18,7 @@ final class TitleLabel: UILabel {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /// Configuração de aparencia da label.
     private func style() {
         textAlignment = .center
         font = TextStyle.display2.font

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4F7F2571E5A900D9FEAB /* OSLog.swift */; };
 		820C4F922571E84400D9FEAB /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C4F912571E84400D9FEAB /* CurrencyConverterViewModel.swift */; };
 		820C4FAD2571EF5500D9FEAB /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */; };
 		820C4FB02571EF5500D9FEAB /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */; };
@@ -51,8 +50,6 @@
 		82D09B8525719E4D00624615 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B8425719E4D00624615 /* CurrencyConverterViewController.swift */; };
 		82D09B8D25719E4F00624615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D09B8C25719E4F00624615 /* Assets.xcassets */; };
 		82D09B9025719E4F00624615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D09B8E25719E4F00624615 /* LaunchScreen.storyboard */; };
-		82D09B9B25719E4F00624615 /* app_mobile_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09B9A25719E4F00624615 /* app_mobile_challengeTests.swift */; };
-		82D09BA625719E4F00624615 /* app_mobile_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09BA525719E4F00624615 /* app_mobile_challengeUITests.swift */; };
 		82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D46DC22571E3D700C316E1 /* Coordinator.swift */; };
 		82D46DD02571E46D00C316E1 /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D46DCF2571E46D00C316E1 /* CurrencyConverterCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +72,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		820C4F7F2571E5A900D9FEAB /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		820C4F912571E84400D9FEAB /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
 		820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
@@ -122,11 +118,7 @@
 		82D09B8F25719E4F00624615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82D09B9125719E4F00624615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82D09B9625719E4F00624615 /* app-mobile-challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "app-mobile-challengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		82D09B9A25719E4F00624615 /* app_mobile_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_mobile_challengeTests.swift; sourceTree = "<group>"; };
-		82D09B9C25719E4F00624615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82D09BA125719E4F00624615 /* app-mobile-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "app-mobile-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		82D09BA525719E4F00624615 /* app_mobile_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_mobile_challengeUITests.swift; sourceTree = "<group>"; };
-		82D09BA725719E4F00624615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82D46DC22571E3D700C316E1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		82D46DCF2571E46D00C316E1 /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,7 +151,6 @@
 		820C4F7E2571E59000D9FEAB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				820C4F7F2571E5A900D9FEAB /* OSLog.swift */,
 				820C502625722B8500D9FEAB /* UserDefaults.swift */,
 				823D09A0257307B000DFA64D /* UIViewController.swift */,
 				823D0A2E257421F600DFA64D /* UIView.swift */,
@@ -185,14 +176,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		820C4FA02571EF5500D9FEAB /* Manrope */ = {
+		820C4FA02571EF5500D9FEAB /* fonts */ = {
 			isa = PBXGroup;
 			children = (
 				820C4FA32571EF5500D9FEAB /* Manrope-Medium.ttf */,
 				820C4FA62571EF5500D9FEAB /* Manrope-Regular.ttf */,
 				820C4FA92571EF5500D9FEAB /* Manrope-Bold.ttf */,
 			);
-			path = Manrope;
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		820C4FC72571F13C00D9FEAB /* Views */ = {
@@ -308,8 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				82D09B7F25719E4C00624615 /* app-mobile-challenge */,
-				82D09B9925719E4F00624615 /* app-mobile-challengeTests */,
-				82D09BA425719E4F00624615 /* app-mobile-challengeUITests */,
 				82D09B7E25719E4C00624615 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -345,24 +334,6 @@
 			path = "app-mobile-challenge";
 			sourceTree = "<group>";
 		};
-		82D09B9925719E4F00624615 /* app-mobile-challengeTests */ = {
-			isa = PBXGroup;
-			children = (
-				82D09B9A25719E4F00624615 /* app_mobile_challengeTests.swift */,
-				82D09B9C25719E4F00624615 /* Info.plist */,
-			);
-			path = "app-mobile-challengeTests";
-			sourceTree = "<group>";
-		};
-		82D09BA425719E4F00624615 /* app-mobile-challengeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				82D09BA525719E4F00624615 /* app_mobile_challengeUITests.swift */,
-				82D09BA725719E4F00624615 /* Info.plist */,
-			);
-			path = "app-mobile-challengeUITests";
-			sourceTree = "<group>";
-		};
 		82D46D9A2571DB8000C316E1 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,7 +346,7 @@
 		82D46D9E2571DB8F00C316E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				820C4FA02571EF5500D9FEAB /* Manrope */,
+				820C4FA02571EF5500D9FEAB /* fonts */,
 				82D09B8C25719E4F00624615 /* Assets.xcassets */,
 				82D09B8E25719E4F00624615 /* LaunchScreen.storyboard */,
 				82D09B9125719E4F00624615 /* Info.plist */,
@@ -541,7 +512,6 @@
 				820C501525720EE100D9FEAB /* KeyboardViewCell.swift in Sources */,
 				82D46DC32571E3D700C316E1 /* Coordinator.swift in Sources */,
 				823D09E42573E0A800DFA64D /* CurrencyProvider.swift in Sources */,
-				820C4F802571E5A900D9FEAB /* OSLog.swift in Sources */,
 				820C502225722AB800D9FEAB /* UserDefaultsAccess.swift in Sources */,
 				823D0A1425740E6E00DFA64D /* Live.swift in Sources */,
 				820C50032572089B00D9FEAB /* CurrentyButton.swift in Sources */,
@@ -572,7 +542,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82D09B9B25719E4F00624615 /* app_mobile_challengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +549,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82D09BA625719E4F00624615 /* app_mobile_challengeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

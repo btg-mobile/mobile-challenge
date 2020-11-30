@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+/// Representação do serviço responsável pelas taxação das moedas.
 struct LiveCurrency: Codable {
     public var success: Bool
     public var terms: URL
@@ -17,16 +18,8 @@ struct LiveCurrency: Codable {
     public var quotes: [String: Double]
 }
 
-extension LiveCurrency: Equatable {
-    static func == (lhs: LiveCurrency, rhs: LiveCurrency) -> Bool {
-        return lhs.success == rhs.success
-            && lhs.terms == rhs.terms
-            && lhs.privacy == rhs.privacy
-            && lhs.timestamp == rhs.timestamp
-            && lhs.source == rhs.source
-            && lhs.quotes == rhs.quotes
-    }
-    
+extension LiveCurrency {
+    /// Serviço de captura da `LiveCurrency` na Web.
     static func getFromWeb() {
         var publishers = [AnyCancellable]()
         CurrencyApi.shared.lives()
@@ -34,10 +27,10 @@ extension LiveCurrency: Equatable {
             .sink(receiveCompletion: { _ in debugPrint("A requisição terminou...") },
                   receiveValue: {
                     CommonData.shared.lastUpdate = $0.timestamp
-                    Live.save(quotes: $0.quotes)
+                    Lives.save(quotes: $0.quotes)
             })
             .store(in: &publishers)
-        RunLoop.main.run(until: Date(timeIntervalSinceNow: 1))
+        RunLoop.main.run(until: Date(timeIntervalSinceNow: 2))
         withExtendedLifetime(publishers, {})
     }
 }

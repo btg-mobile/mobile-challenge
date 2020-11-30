@@ -9,18 +9,26 @@ import UIKit
 
 class CurrencyConverterViewController: UIViewController {
     
+    /// `Button` resposável por abrir a tela de Moedas disponíves.
     @AutoLayout private var currencyButton: SupportedButton
     
+    /// `Label` responsável por apresentar o valor digitado pelo usuário.
     @AutoLayout private var fromCurrencyLabel: CurrencyResultLabel
+    /// `Buton` resposável por apresentar a moeda selecionada para a coonversão e abrir a área de moedas para um nova seleção.
     @AutoLayout private var fromCurrencyButton: CurrentyButton
     
+    /// `Label` responsável por apresentar o valor convertido ao usuário.
     @AutoLayout private var toCurrencyLabel: CurrencyResultLabel
+    /// `Buton` resposável por apresentar a moeda selecionada à ser convertida e abrir a área de moedas para um nova seleção.
     @AutoLayout private var toCurrencyButton: CurrentyButton
     
+    /// `Button` de calculo de conversão
     @AutoLayout private var calculationButton: CalculationButton
-
+    
+    /// Componente de `Keyboard` responsável por capturar o input do usuário.
     private lazy var keyboard: KeyboardView = KeyboardView(frame: self.view.frame, delegate: self)
-
+    
+    /// `ViewMoodel` responsável por esta classe.
     private var viewModel: CurrencyConverterViewModel
     
     /// Define a primeira entrada no app para não chamar a função de calculo
@@ -51,7 +59,8 @@ class CurrencyConverterViewController: UIViewController {
         super.loadView()
         view.backgroundColor = .white
     }
-    //MARK: - SetUp
+    //MARK: - Configuração inicial
+    /// Realiza as especificações de cada view em tela.
     private func setUpViews() {
         setUpButton()
         setUpFromCurrentyButton()
@@ -59,6 +68,7 @@ class CurrencyConverterViewController: UIViewController {
         setUpToCalculationButton()
     }
     
+    /// Configura as constraints dos elementos visuais.
     private func layoutConstraints() {
         layoutButton()
         layoutFromCurrenty()
@@ -66,9 +76,9 @@ class CurrencyConverterViewController: UIViewController {
         layoutCalculationButton()
         layoutToKeyboard()
     }
-    //MARK: - SetUp fim
+    //MARK: - Final da configuração inicial
     
-    //MARK: - Views setUp
+    //MARK: - Confuguração das Views
     private func setUpButton() {
         currencyButton.addTarget(self, action: #selector(openList),
                                  for: .touchUpInside)
@@ -96,8 +106,9 @@ class CurrencyConverterViewController: UIViewController {
         fromCurrencyButton.setTitle(viewModel.fromCurrency, for: .normal)
         toCurrencyButton.setTitle(viewModel.toCurrency, for: .normal)
     }
+    //MARK: - Final da confuguração das Views
     
-    //MARK: - objcs
+    //MARK: - Funções de objc.
     @objc private func openList() {
         viewModel.openSupporteds()
     }
@@ -121,9 +132,9 @@ class CurrencyConverterViewController: UIViewController {
         
         toCurrencyLabel.text =  values.valueFrom == "" ? "1,00" : values.valueTo
     }
-    //MARK: - objcs fim
+    //MARK: - Final das funções de objc.
     
-    //MARK: - Layout
+    //MARK: - Confuguração de Layout
     private func layoutButton() {
         view.addSubview(currencyButton)
         
@@ -203,10 +214,10 @@ class CurrencyConverterViewController: UIViewController {
             calculationButton.widthAnchor.constraint(equalTo: layoutGuides.widthAnchor, multiplier: DesignSystem.Keyboard.Layout.widthMultiplier),
         ])
     }
-    //MARK: - Layout fim
+    //MARK: - Final da confuguração de Layout
 }
 
-//MARK: - Integração com Keyboard
+//MARK: - Crontrolar o recebimento de input do `Keyboard`
 extension CurrencyConverterViewController: KeyboardViewService {
     func selected(value: String) {
         fromCurrencyLabel.text = value

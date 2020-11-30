@@ -54,7 +54,6 @@ enum DesignSystem {
         static let star: UIImage? = UIImage(named: "estrela")
         static let star_fill: UIImage? = UIImage(named: "estrela_preenchida")
         static let back: UIImage? = UIImage(named: "voltar")
-        
     }
     
     enum Backgrounds {

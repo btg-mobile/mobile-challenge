@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// Célula do `KeyboardView`
 final class KeyboardViewCell: UICollectionViewCell {
     
+    /// Imagem representativa do número no teclado.
     private let imageView = UIImageView()
     
     override init(frame: CGRect) {
@@ -20,6 +22,8 @@ final class KeyboardViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Configuração da imagem da célula a patir do seu index.
+    /// - Parameter index: valor correspondente a ordem da célula.
     public func setupComponent(index: Int) {
         let image = UIImage(named: "k-\(index)")
         imageView.image = image
@@ -27,6 +31,7 @@ final class KeyboardViewCell: UICollectionViewCell {
         self.backgroundColor = .white
     }
     
+    /// Configuração das Views internas.
     private func setUpViews() {
         clipsToBounds = false
         layer.cornerRadius = frame.height/2
@@ -34,6 +39,7 @@ final class KeyboardViewCell: UICollectionViewCell {
         setShadows()
     }
     
+    /// Configuração das constraints da imagem central da célula.
     private func layoutViews() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
@@ -43,6 +49,7 @@ final class KeyboardViewCell: UICollectionViewCell {
         ])
     }
     
+    /// Configuração das sombras.
     private func setShadows() {
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOpacity = 0.1

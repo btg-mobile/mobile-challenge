@@ -12,6 +12,7 @@ struct List: Codable {
     let name: String
     var favorite: Bool = false
     
+    /// Salva a opção selecionada na lista de favoritos no `CommonData`
     func saveFavorite() {
         DispatchQueue.main.async {
             if favorite {
@@ -23,7 +24,21 @@ struct List: Codable {
             }
         }
     }
+}
+
+typealias Lists = [List]
+
+extension Lists {
+    /// Exemplo de `Lists` de apoio ao desenvolvimento
+    static let sample = [
+        List(code: "USD", name: "US Dollar"),
+        List(code: "CHF", name: "Swiss Franc"),
+        List(code: "JPY", name: "Japanese Yen"),
+        List(code: "GBP", name: "British Pound")
+    ]
     
+    /// Salva as `Lists` no `CommonData`.
+    /// - Parameter quotes: Um dicionário de `String` e `String` com as informações da `API`.
     static func save(currencies: [String: String]) {
         CommonData.shared.lists = []
         currencies.forEach {
@@ -31,17 +46,6 @@ struct List: Codable {
             CommonData.shared.lists.append(list)
         }
     }
-}
-
-typealias Lists = [List]
-
-extension Lists {
-    static let sample = [
-        List(code: "USD", name: "US Dollar"),
-        List(code: "CHF", name: "Swiss Franc"),
-        List(code: "JPY", name: "Japanese Yen"),
-        List(code: "GBP", name: "British Pound")
-    ]
     
     /// Encontra um `Currency` por seu código.
     /// - Parameter code: código único de cada moeda.

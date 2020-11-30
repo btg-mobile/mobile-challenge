@@ -19,6 +19,7 @@ final class CalculationButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Configuração de aparencia do botão
     private func style() {
         titleLabel?.font = TextStyle.display3.font
         setTitleColor(.white, for: .normal)

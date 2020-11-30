@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class ImpactFeedback {
     /// Gerador de feedback tátil.
     /// - Parameter style: Define a intencidade do impacto.

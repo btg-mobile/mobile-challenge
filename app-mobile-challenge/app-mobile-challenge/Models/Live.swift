@@ -10,7 +10,21 @@ import Foundation
 struct Live: Codable {
     let code: String
     let quote: Double
+}
+
+typealias Lives = [Live]
+
+extension Lives {
+    /// Exemplo de `Lives` de apoio ao desenvolvimento
+    static let sample = [
+        Live(code: "USDAED", quote: 3.673042),
+        Live(code: "USDAFN", quote: 77.000368),
+        Live(code: "USDALL", quote: 103.650403),
+        Live(code: "USDAMD", quote: 508.210403)
+    ]
     
+    /// Salva as `Lives` no `CommonData`.
+    /// - Parameter quotes: Um dicionário de `String` e `Double` com as informações da `API`.
     static func save(quotes: [String: Double]) {
         CommonData.shared.lives = []
         quotes.forEach {
@@ -18,17 +32,7 @@ struct Live: Codable {
             CommonData.shared.lives.append(live)
         }
     }
-}
-
-typealias Lives = [Live]
-
-extension Lives {
-    static let sample = [
-        Live(code: "USDAED", quote: 3.673042),
-        Live(code: "USDAFN", quote: 77.000368),
-        Live(code: "USDALL", quote: 103.650403),
-        Live(code: "USDAMD", quote: 508.210403)
-    ]
+    
     
     /// Encontra um `Currency` por seu código.
     /// - Parameter code: código único de cada moeda.

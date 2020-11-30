@@ -7,10 +7,14 @@
 
 import Foundation
 
+/// `ViewModel` responsável por `KeyboardView`
 final class KeyboardViewModel {
-    
+    /// Valor digitado no teclado.
     public var currencyValue: String = ""
     
+    /// Conversor de adaptação do index ao valor correspondente na célula, para se adaptar aos padrões iOS.
+    /// - Parameter index: valor correspondente ao index da célula.
+    /// - Returns: valor representativo na célula.
     func convertValue(index: Int) -> String {
         var value: Int = 0
         switch index {
@@ -41,7 +45,10 @@ final class KeyboardViewModel {
         return computedValue(value: value)
     }
     
-    public func computedValue(value: Int) -> String {
+    /// Validador dos valores digitados.
+    /// - Parameter value: Valor digitado.
+    /// - Returns: `String` com valor final digitado.
+    private func computedValue(value: Int) -> String {
         switch value {
         case 0...9:
             currencyValue.append(String(value))
@@ -56,11 +63,15 @@ final class KeyboardViewModel {
         return currencyValue
     }
     
+    /// Verifica se o valor atual digitado é vazio.
+    /// - Returns: `true` se o valor atual é vazio, caso contrário, retorna `false`.
     public func currencyValueIsEmpty() -> Bool {
         return currencyValue == ""
     }
     
     
+    /// valida a existencia de vígulas no valor digitado
+    /// - Returns: `true` se o valor atual não tiver vírgulas, caso contrário, retorna `false`.
     private func isValidComma() -> Bool {
         return !currencyValue.contains(",")
     }

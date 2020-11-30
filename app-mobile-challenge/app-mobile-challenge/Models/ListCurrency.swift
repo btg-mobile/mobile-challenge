@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+/// Representação do serviço responsável pelas lista de moedas.
 struct ListCurrency: Codable {
     public var success: Bool
     public var terms: URL
@@ -15,21 +16,15 @@ struct ListCurrency: Codable {
     public var currencies: [String: String]
 }
 
-extension ListCurrency: Equatable {
-    static func == (lhs: ListCurrency, rhs: ListCurrency) -> Bool {
-        return lhs.success == rhs.success
-            && lhs.terms == rhs.terms
-            && lhs.privacy == rhs.privacy
-            && lhs.currencies == rhs.currencies
-    }
-    
+extension ListCurrency {
+    /// Serviço de captura da `LiveCurrency` na Web.
     static func getFromWeb() {
         var publishers = [AnyCancellable]()
         CurrencyApi.shared.lists()
             .map { $0 }
             .sink(receiveCompletion: { _ in debugPrint("A requisição terminou...") },
                   receiveValue: {
-                    List.save(currencies: $0.currencies)
+                    Lists.save(currencies: $0.currencies)
             })
             .store(in: &publishers)
         RunLoop.main.run(until: Date(timeIntervalSinceNow: 1))

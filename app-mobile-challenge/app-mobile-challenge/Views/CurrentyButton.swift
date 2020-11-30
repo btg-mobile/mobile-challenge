@@ -17,7 +17,8 @@ final class CurrentyButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    /// Configuração de aparencia do botão.
     private func style() {
         titleLabel?.font = TextStyle.display1.font
         setTitleColor(DesignSystem.Colors.primary, for: .normal)

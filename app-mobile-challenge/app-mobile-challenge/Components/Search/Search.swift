@@ -11,17 +11,14 @@ final class Search: UISearchBar {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        layout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("Pesquise por uma moeda")
     }
     
-    private func setup() {
-        layout()
-    }
-    
+    /// Configuração do componente de pesquisa.
     private func layout() {
         barTintColor = .white
         searchTextField.backgroundColor = .white

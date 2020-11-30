@@ -7,13 +7,18 @@
 
 import UIKit
 
+/// Protocolo de comunicação entre `KeyboardView` e a `CurrencyConverterViewController`
 protocol KeyboardViewService: class {
     func selected(value: String)
 }
 
+/// View de Teclado, responsável por capturar os valores digitados.
 final class KeyboardView: UICollectionView {
+    /// Layout default da `UICollectionView`
     private let layout = UICollectionViewFlowLayout()
+    /// Delegate responsável pela comunicação.
     weak var kdelegate: KeyboardViewService?
+    /// `ViewModel` responsável por essa classe.
     private let viewModel = KeyboardViewModel()
     
     init(frame: CGRect, delegate: KeyboardViewService) {
@@ -28,7 +33,7 @@ final class KeyboardView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK - Funcs
+    /// Configuração inicial.
     private func setUp() {
         contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +42,7 @@ final class KeyboardView: UICollectionView {
         register()
     }
     
+    /// Registro da `KeyboardViewCell`
     private func register() {
         register(KeyboardViewCell.self,
                  forCellWithReuseIdentifier: KeyboardViewCell.self.description())
@@ -57,6 +63,7 @@ extension KeyboardView: UICollectionViewDataSource {
     }
 }
 
+// Em um projeto maiores esses componentes deveriam estar em componentes separados.
 extension KeyboardView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: DesignSystem.Keyboard.Cell.width, height: DesignSystem.Keyboard.Cell.height)

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// `ViewModel` responsável pela `SupportedCurrenciesViewController`.
 final class SupportedCurrenciesViewModel {
     
     /// Descreve o coordinator.

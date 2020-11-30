@@ -148,9 +148,11 @@ final class CurrencyListCell: UITableViewCell {
         if let touch = touches.first {
             if starButton.bounds
                 .contains(touch.location(in: self)) {
+                //Identifica toque nos favoritos.
                 toggle()
             } else if self.bounds
                         .contains(touch.location(in: self)) {
+                //Identifica toque na célula.
                 selected()
             }
         }

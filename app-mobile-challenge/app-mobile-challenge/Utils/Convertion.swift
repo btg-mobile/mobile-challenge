@@ -11,7 +11,7 @@ import Foundation
 class Convertion {
     
     /// Retorna as lives salvas.
-    static var lives: Lives { CommonData.shared.lives }
+    private static var lives: Lives { CommonData.shared.lives }
     
     /// Converte as moedas.
     /// - Parameters:
@@ -37,7 +37,7 @@ class Convertion {
         }
     }
     
-    static func toUSD(_ from: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
+    private static func toUSD(_ from: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
         guard let doubleFrom: Double =
                 stringToDouble(valueFrom) else {
             return (nil, "Insira um valor válido!")
@@ -55,7 +55,7 @@ class Convertion {
         )
     }
     
-    static func fromUSD(_ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
+    private static func fromUSD(_ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
         guard let doubleFrom: Double =
                 stringToDouble(valueFrom) else {
             return (nil, "Insira um valor válido!")
@@ -73,7 +73,7 @@ class Convertion {
         )
     }
     
-    static func equals(_ from: String, _ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
+    private static func equals(_ from: String, _ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
         guard let doubleFrom: Double =
                 stringToDouble(valueFrom) else {
             return (nil, "Insira um valor válido!")
@@ -85,7 +85,7 @@ class Convertion {
         )
     }
     
-    static func diferents(_ from: String, _ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
+    private static func diferents(_ from: String, _ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
         guard let usdFrom = toUSD(from, valueFrom).0?.valueTo,
               let doubleFrom = stringToDouble(valueFrom),
               let usdTo = fromUSD(to, usdFrom).0?.valueTo else {
@@ -97,12 +97,12 @@ class Convertion {
         )
     }
     
-    static func stringToDouble(_ value: String) -> Double? {
+    private static func stringToDouble(_ value: String) -> Double? {
         return Double((value == "" ?"1":value)
                         .replacingOccurrences(of: ",", with: "."))
     }
     
-    static func doubleToCurrent(_ value: Double) -> String {
+    private static func doubleToCurrent(_ value: Double) -> String {
         return String(format: "%.02f", value)
             .replacingOccurrences(of: ".", with: ",")
     }

@@ -9,7 +9,6 @@ import UIKit
 
 
 final class SupportedButton: UIButton {
-    
     // - MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +25,7 @@ final class SupportedButton: UIButton {
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: imageView.frame.width)
         
     }
+    /// Configuração de aparencia do botão
     private func style() {
         titleLabel?.font = TextStyle.display3.font
         setTitleColor(DesignSystem.Colors.primary, for: .normal) 
