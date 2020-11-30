@@ -117,8 +117,9 @@ class CurrencyConverterViewController: UIViewController {
             return
         }
         viewModel.currencyValue = values.valueFrom
-        fromCurrencyLabel.text = values.valueFrom
-        toCurrencyLabel.text = values.valueTo
+        fromCurrencyLabel.text = values.valueFrom == "" ? "1,00" : values.valueFrom
+        
+        toCurrencyLabel.text =  values.valueFrom == "" ? "1,00" : values.valueTo
     }
     //MARK: - objcs fim
     

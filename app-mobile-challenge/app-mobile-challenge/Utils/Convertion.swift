@@ -87,11 +87,12 @@ class Convertion {
     
     static func diferents(_ from: String, _ to: String, _ valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
         guard let usdFrom = toUSD(from, valueFrom).0?.valueTo,
+              let doubleFrom = stringToDouble(valueFrom),
               let usdTo = fromUSD(to, usdFrom).0?.valueTo else {
             return (nil, "Insira um valor válido!")
         }
         return (
-            (valueFrom, usdTo),
+            (doubleToCurrent(doubleFrom), usdTo),
             nil
         )
     }

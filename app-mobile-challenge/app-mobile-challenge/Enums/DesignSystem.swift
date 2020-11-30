@@ -20,7 +20,7 @@ enum DesignSystem {
         
         enum Currency {
             static let height: CGFloat = 55
-            static let width: CGFloat = 80
+            static let width: CGFloat = 90
             static let widthLabelMultiplier: CGFloat = 0.8
         }
         enum Back {
