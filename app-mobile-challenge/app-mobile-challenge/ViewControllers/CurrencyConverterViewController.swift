@@ -23,6 +23,9 @@ class CurrencyConverterViewController: UIViewController {
 
     private var viewModel: CurrencyConverterViewModel
     
+    /// Define a primeira entrada no app para não chamar a função de calculo
+    private var firstMoment: Bool = true
+    
     init(viewModel: CurrencyConverterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -40,7 +43,8 @@ class CurrencyConverterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateCurrencyView()
+        if !firstMoment { updateCurrencyView() }
+        firstMoment = false
     }
     
     override func loadView() {
@@ -175,7 +179,6 @@ class CurrencyConverterViewController: UIViewController {
     private func layoutToKeyboard() {
         view.addSubview(keyboard)
         let layoutGuides = view.layoutMarginsGuide
-        debugPrint(view.frame.height)
         NSLayoutConstraint.activate([
             keyboard.bottomAnchor.constraint(
                 equalTo: calculationButton.topAnchor, constant: -DesignSystem.Spacing.default*(view.frame.height-568)*0.02),
