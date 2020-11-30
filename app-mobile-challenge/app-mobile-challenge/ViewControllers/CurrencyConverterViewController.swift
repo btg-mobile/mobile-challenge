@@ -66,6 +66,7 @@ class CurrencyConverterViewController: UIViewController {
         setUpFromCurrentyButton()
         setUpToCurrentyButton()
         setUpToCalculationButton()
+        updateButtonView()
     }
     
     /// Configura as constraints dos elementos visuais.
@@ -103,6 +104,10 @@ class CurrencyConverterViewController: UIViewController {
     }
     private func updateCurrencyView() {
         calculate()
+        updateButtonView()
+    }
+    
+    private func updateButtonView() {
         fromCurrencyButton.setTitle(viewModel.fromCurrency, for: .normal)
         toCurrencyButton.setTitle(viewModel.toCurrency, for: .normal)
     }
