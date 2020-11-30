@@ -50,7 +50,7 @@ final class CurrencyConverterViewModel {
     
     /// Pega a conversão de moedas.
     /// - Returns: Retorna o valor convertido para a moeda selecionada.
-    public func calculateConvertion() -> (valueFrom: String, valueTo: String)? {
+    public func calculateConvertion() -> ((valueFrom: String, valueTo: String)?, String?) {
         ImpactFeedback.run(style: .heavy)
         return Convertion.getCurrrency(from: fromCurrency, to: toCurrency, valueFrom: currencyValue)
     }

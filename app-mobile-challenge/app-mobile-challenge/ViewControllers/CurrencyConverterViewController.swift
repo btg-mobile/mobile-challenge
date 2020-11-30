@@ -88,6 +88,7 @@ class CurrencyConverterViewController: UIViewController {
                                     for: .touchUpInside)
     }
     private func updateCurrencyView() {
+        calculate()
         fromCurrencyButton.setTitle(viewModel.fromCurrency, for: .normal)
         toCurrencyButton.setTitle(viewModel.toCurrency, for: .normal)
     }
@@ -103,11 +104,16 @@ class CurrencyConverterViewController: UIViewController {
         viewModel.pickSupporteds(type: .to)
     }
     @objc private func calculate() {
-        guard let values = viewModel.calculateConvertion() else {
+        guard let values = viewModel.calculateConvertion().0 else {
+            if let error = viewModel.calculateConvertion().1 {
+                self.showAlert("Ops...", error) { }
+                return
+            }
             self.showAlert("Algo inesperado aconteceu na conversão") { }
             return
         }
-        toCurrencyLabel.text = values.valueFrom
+        viewModel.currencyValue = values.valueFrom
+        fromCurrencyLabel.text = values.valueFrom
         toCurrencyLabel.text = values.valueTo
     }
     //MARK: - objcs fim

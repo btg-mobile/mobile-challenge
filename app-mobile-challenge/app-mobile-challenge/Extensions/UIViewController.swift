@@ -27,7 +27,7 @@ extension UIViewController {
     ///   - completion: Retorna a confimação quando o usuário clicar no botão de confirmação.
     func showAlert(_ title: String,
                    _ message: String = "",
-                   _ buttonTitle: String = "",
+                   _ buttonTitle: String = "Ok",
                    with completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let confirm = UIAlertAction(title: buttonTitle, style: .default, handler: { (_) in completion() })
