@@ -51,6 +51,7 @@ class CurrencyConverterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateCurrencyView()
     }
     
     override func loadView() {
@@ -64,7 +65,6 @@ class CurrencyConverterViewController: UIViewController {
         setUpFromCurrentyButton()
         setUpToCurrentyButton()
         setUpToCalculationButton()
-        updateCurrencyView()
     }
     
     /// Configura as constraints dos elementos visuais.
