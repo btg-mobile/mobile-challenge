@@ -15,10 +15,11 @@ class CurrencyConverterViewModel {
         }
     }
     
-    // Bindings
+    // MARK: Bindings
     var quotesFetched: (() -> Void) = {}
     
     func getQuotes() -> Void {
+        
         CurrencyQuotesService.getQuotes { (answer) in
             switch answer {
             case .result(let quotes as CurrencyQuotes):
@@ -33,5 +34,22 @@ class CurrencyConverterViewModel {
                 self.quotes = nil
             }
         }
+    }
+    
+    func convert(_ value: Double, from origin: String, to destiny: String) -> Double? {
+        let usdOriginKey = "USD" + origin
+        let usdDestinyKey = "USD" + destiny
+                
+        guard let quotes = self.quotes,
+              let originUSD = quotes.quotes[usdOriginKey],
+              let destinyUSD = quotes.quotes[usdDestinyKey] else {
+            return nil
+        }
+        
+        return (value / originUSD) * destinyUSD
+    }
+    
+    private func getCachedQuotes() {
+        
     }
 }

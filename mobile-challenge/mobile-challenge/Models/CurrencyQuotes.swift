@@ -10,7 +10,7 @@ import Foundation
 struct CurrencyQuotes: Decodable {
     let lastUpdate: Date
     let source: String
-    let quotes: [String: Float]
+    let quotes: [String: Double]
     
     enum CodingKeys: String, CodingKey {
         case quotes, source, lastUpdate = "timestamp"
@@ -25,6 +25,6 @@ struct CurrencyQuotes: Decodable {
         lastUpdate = Date(timeIntervalSince1970: timestamp)
                 
         source = try container.decode(String.self, forKey: .source)
-        quotes = try container.decode([String: Float].self, forKey: .quotes)
+        quotes = try container.decode([String: Double].self, forKey: .quotes)
     }
 }

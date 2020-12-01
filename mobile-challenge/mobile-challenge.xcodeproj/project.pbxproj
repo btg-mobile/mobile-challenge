@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01036DA25759C5400B446DE /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01036D925759C5400B446DE /* UIViewController+Keyboard.swift */; };
 		C0291F712573E99800B042D9 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0291F702573E99800B042D9 /* Requests.swift */; };
 		C0291F742573EAFC00B042D9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0291F732573EAFC00B042D9 /* Errors.swift */; };
 		C0291F782574081E00B042D9 /* Date+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0291F772574081E00B042D9 /* Date+Current.swift */; };
+		C0A4371A25745E2900980FE2 /* InputCurrencyTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A4371925745E2900980FE2 /* InputCurrencyTextFieldDelegate.swift */; };
 		C0F0A38C2573C324002CB011 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0A38B2573C324002CB011 /* AppDelegate.swift */; };
 		C0F0A38E2573C324002CB011 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0A38D2573C324002CB011 /* SceneDelegate.swift */; };
 		C0F0A3952573C326002CB011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F0A3942573C326002CB011 /* Assets.xcassets */; };
@@ -24,9 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C01036D925759C5400B446DE /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		C0291F702573E99800B042D9 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		C0291F732573EAFC00B042D9 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		C0291F772574081E00B042D9 /* Date+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Current.swift"; sourceTree = "<group>"; };
+		C0A4371925745E2900980FE2 /* InputCurrencyTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCurrencyTextFieldDelegate.swift; sourceTree = "<group>"; };
 		C0F0A3882573C324002CB011 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F0A38B2573C324002CB011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F0A38D2573C324002CB011 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,8 +61,17 @@
 			isa = PBXGroup;
 			children = (
 				C0291F772574081E00B042D9 /* Date+Current.swift */,
+				C01036D925759C5400B446DE /* UIViewController+Keyboard.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C0A4371825745DEC00980FE2 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				C0A4371925745E2900980FE2 /* InputCurrencyTextFieldDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		C0F0A37F2573C324002CB011 = {
@@ -80,6 +93,7 @@
 		C0F0A38A2573C324002CB011 /* mobile-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				C0A4371825745DEC00980FE2 /* Delegates */,
 				C0291F76257407F600B042D9 /* Extensions */,
 				C0F0A3BD2573DFFF002CB011 /* APIService */,
 				C0F0A3A22573CE9F002CB011 /* ViewModels */,
@@ -216,8 +230,10 @@
 				C0F0A3B72573DD27002CB011 /* CurrencyQuotes.swift in Sources */,
 				C0F0A38C2573C324002CB011 /* AppDelegate.swift in Sources */,
 				C0F0A3B12573D35B002CB011 /* CurrencyList.swift in Sources */,
+				C0A4371A25745E2900980FE2 /* InputCurrencyTextFieldDelegate.swift in Sources */,
 				C0291F742573EAFC00B042D9 /* Errors.swift in Sources */,
 				C0F0A38E2573C324002CB011 /* SceneDelegate.swift in Sources */,
+				C01036DA25759C5400B446DE /* UIViewController+Keyboard.swift in Sources */,
 				C0F0A3C52573E163002CB011 /* CurrencyAPI.swift in Sources */,
 				C0F0A3BF2573E0C2002CB011 /* CurrencyQuotesService.swift in Sources */,
 			);
