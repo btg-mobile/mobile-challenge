@@ -51,7 +51,7 @@ class CurrencyAPIService {
         
         // Fetch Currency Names
         fetchCurrencyNames(completionHandler: { [weak self] result in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             
             switch result {
             case .failure(let error):
@@ -59,13 +59,13 @@ class CurrencyAPIService {
             case .success(let receivedCurrencyNames):
                 
                 // Fetch Currency Names
-                strongSelf.fetchCurrencyValuesInDollar(completionHandler: { result in
+                self.fetchCurrencyValuesInDollar(completionHandler: { result in
                     switch result {
                     case .failure(let error):
                         completionHandler(.failure(error))
                     case .success(let receveidCurrencyValuesInDollar):
                         do {
-                            let currencies = try strongSelf.handleCurrencyObject(currencyNames: receivedCurrencyNames, currencyValuesInDollar: receveidCurrencyValuesInDollar)
+                            let currencies = try self.handleCurrencyObject(currencyNames: receivedCurrencyNames, currencyValuesInDollar: receveidCurrencyValuesInDollar)
                             
                             if currencies.isEmpty {
                                 completionHandler(.failure(CurrencyAPIError.emptyCurrencyArray))
