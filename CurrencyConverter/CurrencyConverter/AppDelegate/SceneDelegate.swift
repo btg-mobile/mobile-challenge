@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = navigationController
         
         // Setup Main Coordinator
-        let mainCoordinator = MainCoordinator(navigationController: navigationController)
-        mainCoordinator.start()
+        self.mainCoordinator = MainCoordinator(navigationController: navigationController)
+        self.mainCoordinator?.start()
         
         // Show home screen
         self.window?.makeKeyAndVisible()

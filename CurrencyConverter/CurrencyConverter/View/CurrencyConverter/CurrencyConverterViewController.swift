@@ -62,6 +62,8 @@ extension CurrencyConverterViewController {
         } else {
             print("Moeda destino")
         }
+        
+        coordinator?.navigateToCurrencyList()        
     }
     
     @objc private func sourceCurrencyTextFieldDidChange(_ textField: UITextField) {

@@ -25,3 +25,17 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(currencyConverterViewController, animated: true)
     }
 }
+
+
+// MARK: - Navigations
+extension MainCoordinator {
+    func navigateToCurrencyList() {
+        let currencyListViewController = CurrencyListViewController()
+        currencyListViewController.coordinator = self
+        navigationController.pushViewController(currencyListViewController, animated: true)
+    }
+    
+    func exitCurrentScreen() {
+        navigationController.popViewController(animated: true)
+    }
+}
