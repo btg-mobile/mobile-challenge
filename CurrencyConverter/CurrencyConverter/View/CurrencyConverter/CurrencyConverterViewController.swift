@@ -10,6 +10,8 @@ import UIKit
 class CurrencyConverterViewController: UIViewController {
     // MARK: - Properties
     private lazy var baseView = CurrencyConverterView()
+    private lazy var viewModel = CurrencyConverterViewModel()
+    
     weak var coordinator: MainCoordinator?
     
     
