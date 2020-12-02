@@ -18,12 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        // Instantiate the root View Controller
+        // Instantiate the root View Controller and the Navigation Controller
         let rootViewController = CurrencyConverterViewController()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.barTintColor = .systemGray6
         
         // Setting the root view controller to the windows
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = rootViewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

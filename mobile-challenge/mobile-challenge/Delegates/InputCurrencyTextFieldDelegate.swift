@@ -11,6 +11,7 @@ class InputCurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     // Callback function
     var textChanged: (() -> Void) = {}
+    var shouldBeginEdit: (() -> Bool) = { return true }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Only accepts currency
@@ -22,6 +23,10 @@ class InputCurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
         
         // Max of 15 characters due to Double precision
         return ((string != "" && input.count <= 15) || string == "") && isValidNumber(input) && lessThanTwoDecimals(input)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return shouldBeginEdit()
     }
     
     func isValidNumber(_ string: String) -> Bool {

@@ -17,7 +17,7 @@ class CurrencyService {
      */
     public static func getQuotes(completion: @escaping (TaskAnswer<Any>) -> Void) {
         
-        private static let endpoint = "live"
+        let endpoint = "live"
         
         // Specify API access key
         let accesKeyQuery = URLQueryItem(name: "access_key", value: CurrencyAPI.accessKey)
@@ -27,14 +27,20 @@ class CurrencyService {
         }
     }
     
-    public static func getCurrencyList() {
+    /**
+     Performs a request to the Currency API and returns CurrencyList.
+     
+     - Parameter completion: The block of code that will be executed after the get request is executed.
+     
+     */
+    public static func getCurrencyList(completion: @escaping (TaskAnswer<Any>) -> Void) {
         
-        private static let endpoint = "list"
+        let endpoint = "list"
         
         // Specify API access key
         let accesKeyQuery = URLQueryItem(name: "access_key", value: CurrencyAPI.accessKey)
         
-        Requests.getRequest(url: CurrencyAPI.url, endpoint: endpoint, decodableType: CurrencyQuotes.self, queries: [accesKeyQuery]) { (answer) in
+        Requests.getRequest(url: CurrencyAPI.url, endpoint: endpoint, decodableType: CurrencyList.self, queries: [accesKeyQuery]) { (answer) in
             completion(answer)
         }
         

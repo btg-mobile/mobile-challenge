@@ -10,13 +10,15 @@ import UIKit
 class CurrencyConverterViewController: UIViewController {
     
     // MARK: View Model
-    private let currencyConverter = CurrencyConverterViewModel()
-    
+    private let viewModel = CurrencyConverterViewModel()
+        
     // MARK: UI Elements
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.bounces = false
+        scrollView.refreshControl = UIRefreshControl()
+        scrollView.refreshControl?.tintColor = .systemGray6
+        scrollView.refreshControl?.addTarget(self, action: #selector(scrollViewRefresh(_:)), for: .valueChanged)
         return scrollView
     }()
     private let contentView: UIView = {
@@ -36,10 +38,20 @@ class CurrencyConverterViewController: UIViewController {
     }()
     
     private let originButtonStack: UIStackView = UIStackView(frame: .zero)
-    private let originCurrencyButton: UIButton = UIButton(frame: .zero)
+    private let originCurrencyButton: SelectCurrencyButton = SelectCurrencyButton(frame: .zero)
     
     private let destinyButtonStack: UIStackView = UIStackView(frame: .zero)
-    private let destinyCurrencyButton: UIButton = UIButton(frame: .zero)
+    private let destinyCurrencyButton: SelectCurrencyButton = SelectCurrencyButton(frame: .zero)
+    
+    private let arrowRight: UILabel = {
+        let arrow = UILabel()
+        arrow.text = "➜"
+        arrow.font = .boldSystemFont(ofSize: 60)
+        arrow.adjustsFontSizeToFitWidth = true
+        arrow.textAlignment = .center
+        arrow.textColor = .white
+        return arrow
+    }()
     
     private let textField: UITextField = {
         let textField = UITextField(frame: .zero)
@@ -82,10 +94,7 @@ class CurrencyConverterViewController: UIViewController {
     // MARK: Delegates
     private let textFieldDelegate: InputCurrencyTextFieldDelegate = InputCurrencyTextFieldDelegate()
     
-    // MARK: Others
-    private var originCurrency: String = "BRL"
-    private var destinyCurrency: String = "AUD"
-    
+    // MARK: Deinit
     deinit {
         removeObservers()
     }
@@ -93,30 +102,20 @@ class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currencyConverter.getQuotes()
+        viewModel.start()
         
         setupAutoScrollWhenKeyboardShowsUp()
-        setupBindings()
+        setupViewModel()
         setupUI()
     }
     
-    // MARK: Setup methods
-    private func setupBindings() {
-        currencyConverter.quotesFetched = {
-            self.updateData()
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func updateData() {
-        
-        guard let lastUpdate = currencyConverter.quotes?.lastUpdate.gmtToCurrent(dateFormat: "dd/MM/yyyy HH:mm") else {
-            lastUpdateLabel.text = ""
-            return
-        }
-        
-        DispatchQueue.main.async {
-            self.lastUpdateLabel.text = "Última atualização em: \(String(describing: lastUpdate))"
-        }
+    // MARK: Setup methods
+    private func setupViewModel() {
+        viewModel.delegate = self
     }
     
     private func setupUI() {
@@ -124,24 +123,38 @@ class CurrencyConverterViewController: UIViewController {
         
         setupScrollView()
         setupButtons()
-        setupInputField()
+        setupTextField()
         setupConvertedCurrencyLabel()
         setupLastUpdateLabel()
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        setupScrollViewConstraints()
+        setupContentViewConstraints()
+        setupButtonsStackConstraints()
+        setupTextFieldConstraints()
+        setupConvertedCurrencyLabelConstraints()
+        setupLastUpdateLabelConstraints()
     }
     
     private func setupScrollView() {
         // Add scrollView as subview of view
         view.addSubview(scrollView)
-        
-        // Setup scrollView constraints
+
+        // Add contentView as subview of scrollView
+        scrollView.addSubview(contentView)
+    }
+    
+    func setupScrollViewConstraints() {
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        // Add contentView as subview of scrollView
-        scrollView.addSubview(contentView)
-        
+    }
+    
+    func setupContentViewConstraints() {
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
@@ -152,30 +165,23 @@ class CurrencyConverterViewController: UIViewController {
         // Add ButtonsStack as subview of scrollView
         contentView.addSubview(buttonsStack)
         
-        // Setup buttonsStack constraints
+        // Setup origin button
+        setupSingleButton(label: "Origem:", stack: originButtonStack, button: originCurrencyButton)
+        
+        // Add arrow as subview of buttonsStack
+        buttonsStack.addArrangedSubview(arrowRight)
+        
+        // Setup destiny button
+        setupSingleButton(label: "Destino:", stack: destinyButtonStack, button: destinyCurrencyButton)
+    }
+    
+    private func setupButtonsStackConstraints() {
         buttonsStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -100).isActive = true
         buttonsStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
         buttonsStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30).isActive = true
-        
-        // Setup origin button
-        setupSingleButton(label: "Origem:", stack: originButtonStack, button: originCurrencyButton, buttonTitle: originCurrency)
-        
-        // Setup center arrow
-        let arrow = UILabel()
-        arrow.text = "->"
-        arrow.font = .boldSystemFont(ofSize: 36)
-        arrow.adjustsFontSizeToFitWidth = true
-        arrow.textAlignment = .center
-        arrow.textColor = .white
-        
-        // Add arrow as subview of buttonsStack
-        buttonsStack.addArrangedSubview(arrow)
-        
-        // Setup destiny button
-        setupSingleButton(label: "Destino:", stack: destinyButtonStack, button: destinyCurrencyButton, buttonTitle: destinyCurrency)
     }
     
-    private func setupSingleButton(label: String, stack: UIStackView, button: UIButton, buttonTitle: String) {
+    private func setupSingleButton(label: String, stack: UIStackView, button: SelectCurrencyButton) {
         // Setup stack attributes
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.backgroundColor = .clear
@@ -185,7 +191,7 @@ class CurrencyConverterViewController: UIViewController {
         // Add stack as subview of buttonsStack
         buttonsStack.addArrangedSubview(stack)
         
-        // Setup upperLabel
+        // Setup button upperLabel
         let upperLabel = UILabel()
         upperLabel.text = label
         upperLabel.textColor = .systemGray6
@@ -194,33 +200,23 @@ class CurrencyConverterViewController: UIViewController {
         stack.addArrangedSubview(upperLabel)
         
         // Setup button
-        button.setTitle(buttonTitle, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .heavy)
-        button.backgroundColor = .systemGray6
-        button.setTitleColor(.systemGray, for: .normal)
-        button.layer.cornerRadius = 10
+        button.setTitle("-", for: .normal)
         button.addTarget(self, action: #selector(currencyButtonTapped(_:)), for: .touchUpInside)
         
         // Add button as subview of stack
         stack.addArrangedSubview(button)
-        
-        // Setup button constraints
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
-    private func setupInputField() {
+    private func setupTextField() {
         // Setup textField delegate
         textField.delegate = textFieldDelegate
-        textFieldDelegate.textChanged = {
-            self.inputTextChanged()
-        }
+        textFieldDelegate.textChanged = self.inputTextChanged
+        textFieldDelegate.shouldBeginEdit = self.isTextFieldEnabled
         
-        // Add textField as subview of view
         contentView.addSubview(textField)
-        
-        // Setup textField constraints
+    }
+    
+    private func setupTextFieldConstraints() {
         textField.topAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 30).isActive = true
         textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
         textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30).isActive = true
@@ -228,10 +224,10 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     private func setupConvertedCurrencyLabel() {
-        // Add convertedCurrencyLabel as subview of view
         contentView.addSubview(convertedCurrencyLabel)
-        
-        // Setup convertedCurrencyLabel constraints
+    }
+    
+    private func setupConvertedCurrencyLabelConstraints() {
         convertedCurrencyLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 30).isActive = true
         convertedCurrencyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
         convertedCurrencyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30).isActive = true
@@ -239,59 +235,47 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     private func setupLastUpdateLabel() {
-        // Add lastUpdateLabel as subview of view
         contentView.addSubview(lastUpdateLabel)
-        
-        // Setup lastUpdateLabel constraints
+    }
+    
+    private func setupLastUpdateLabelConstraints() {
         lastUpdateLabel.topAnchor.constraint(equalTo: convertedCurrencyLabel.bottomAnchor, constant: 30).isActive = true
         lastUpdateLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 30).isActive = true
         lastUpdateLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
     }
     
+    // MARK: Bind methods
     private func inputTextChanged() {
+        let response = viewModel.convert(textField.text)
         
-        guard var inputText = textField.text else {
-            textField.text = ""
-            convertedCurrencyLabel.text = ""
-            return
-        }
-        
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .currency
-        numberFormatter.positiveInfinitySymbol = "Valor inválido"
-        numberFormatter.alwaysShowsDecimalSeparator = false
-        numberFormatter.currencyCode = originCurrency
-        numberFormatter.decimalSeparator = Locale.current.decimalSeparator
-        numberFormatter.groupingSeparator = Locale.current.groupingSeparator
-        // Enable separator input
-        numberFormatter.alwaysShowsDecimalSeparator = inputText.last?.description == Locale.current.decimalSeparator ? true : false
-        // Enable decimal character for 0 digit
-        let splitString = inputText.split(separator: Character(Locale.current.decimalSeparator ?? ""))
-        numberFormatter.minimumFractionDigits = splitString.count > 1 && splitString[1].last?.description == "0" ? 1 : 0
-        
-        // Remove every non digit character except decimal separator
-        inputText.removeAll(where: {Double($0.description) == nil && $0.description != Locale.current.decimalSeparator})
-        inputText = inputText.replacingOccurrences(of: Locale.current.decimalSeparator ?? "", with: ".")
-                        
-        // Deal with the case where textField has a currency and when it has only numbers
-        if let originValue = Double(inputText),
-           let valueConverted = currencyConverter.convert(originValue, from: originCurrency, to: destinyCurrency) {
-            
-            numberFormatter.currencyCode = originCurrency
-            textField.text = numberFormatter.string(from: originValue as NSNumber)
-            
-            numberFormatter.currencyCode = destinyCurrency
-            convertedCurrencyLabel.text = numberFormatter.string(from: valueConverted as NSNumber)
-            
-        } else {
-            convertedCurrencyLabel.text = textField.hasText ? "Valor inválido" : ""
-            textField.text = ""
-        }
+        self.textField.text = response.input
+        self.convertedCurrencyLabel.text = response.output
+    }
+    
+    private func isTextFieldEnabled() -> Bool {
+        return viewModel.isConvertEnabled()
     }
     
     // MARK: Button target method
     @objc private func currencyButtonTapped(_ sender: UIButton) {
-        print(sender)
+
+        guard let currencyList = viewModel.getCurrencyList() else {
+            return
+        }
+        
+        // Choose the correct bind to currencyListViewController
+        let selectedItemBind = sender == originCurrencyButton ? viewModel.setOrigin : viewModel.setDestiny
+        let currencyListViewController = CurrencyListViewController(currencyList: currencyList, selectedItem: selectedItemBind)
+        
+        // Remove keyboard focus
+        view.endEditing(true)
+        
+        // Reset scroll view
+        scrollView.contentOffset = .zero
+        scrollView.refreshControl?.endRefreshing()
+        
+        // Push the CurrencyListViewController
+        navigationController?.pushViewController(currencyListViewController, animated: true)
     }
     
     // MARK: ScrollView behaviour
@@ -303,5 +287,62 @@ class CurrencyConverterViewController: UIViewController {
         let distanceLabelBottom = scrollView.contentSize.height - convertedCurrencyLabel.frame.origin.y
         let offsetY = inset.bottom == 0 ? 0 : scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom - distanceLabelBottom + convertedCurrencyLabel.bounds.height + 30
         scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+    }
+    
+    @objc private func scrollViewRefresh(_ sender: UIRefreshControl) {
+        viewModel.start()
+    }
+}
+
+extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
+    
+    func originChanged() {
+        let newTitle = viewModel.originCurrency.isEmpty ? "-" : viewModel.originCurrency
+        originCurrencyButton.setTitle(newTitle, for: .normal)
+        textField.text = ""
+        convertedCurrencyLabel.text = ""
+    }
+    
+    func destinyChanged() {
+        let newTitle = viewModel.destinyCurrency.isEmpty ? "-" : viewModel.destinyCurrency
+        destinyCurrencyButton.setTitle(newTitle, for: .normal)
+        textField.text = ""
+        convertedCurrencyLabel.text = ""
+    }
+    
+    func dataFetched() {
+        
+        DispatchQueue.main.async {
+            self.scrollView.refreshControl?.endRefreshing()
+            // Bug on refresh control when end with alert, must set offset back to stop the refresh
+            self.scrollView.setContentOffset(.zero, animated: true)
+        }
+        
+        guard let quotes = viewModel.getQuotes(),
+              viewModel.getCurrencyList() != nil,
+              let lastUpdate = quotes.lastUpdate.gmtToCurrent(dateFormat: "dd/MM/yyyy HH:mm") else {
+            DispatchQueue.main.async {
+                self.lastUpdateLabel.text = "Ocorreu um erro no carregamento. Deslize para cima para tentar novamente."
+                self.originCurrencyButton.setTitle("-", for: .normal)
+                self.destinyCurrencyButton.setTitle("-", for: .normal)
+                self.textField.text = ""
+                self.convertedCurrencyLabel.text = ""
+            }
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.lastUpdateLabel.text = "Última atualização em: \(String(describing: lastUpdate))"
+        }
+    }
+    
+    func createAlert(title: String, message: String, handler: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .cancel, handler: {_ in handler?()}))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
