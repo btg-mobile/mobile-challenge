@@ -12,6 +12,7 @@
 		041860752577BEEE00BE9B0D /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041860742577BEEE00BE9B0D /* CurrencyAPIService.swift */; };
 		0418607B2577BF3A00BE9B0D /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418607A2577BF3A00BE9B0D /* Currency.swift */; };
 		0418608E2577BFC500BE9B0D /* URLSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418608D2577BFC500BE9B0D /* URLSessionManagerTests.swift */; };
+		041860962577C1D600BE9B0D /* CurrencyAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041860952577C1D600BE9B0D /* CurrencyAPIServiceTests.swift */; };
 		044AC2FA257742C4008F6A7A /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC2F9257742C4008F6A7A /* NetworkManagerProtocol.swift */; };
 		044AC2FF257742FE008F6A7A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC2FE257742FE008F6A7A /* NetworkError.swift */; };
 		044AC303257743B2008F6A7A /* URLSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC302257743B2008F6A7A /* URLSessionManager.swift */; };
@@ -45,6 +46,7 @@
 		041860812577BFB200BE9B0D /* CurrencyConverterUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041860852577BFB200BE9B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0418608D2577BFC500BE9B0D /* URLSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManagerTests.swift; sourceTree = "<group>"; };
+		041860952577C1D600BE9B0D /* CurrencyAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIServiceTests.swift; sourceTree = "<group>"; };
 		044AC2F9257742C4008F6A7A /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		044AC2FE257742FE008F6A7A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		044AC302257743B2008F6A7A /* URLSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManager.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				0418608D2577BFC500BE9B0D /* URLSessionManagerTests.swift */,
+				041860952577C1D600BE9B0D /* CurrencyAPIServiceTests.swift */,
 				041860852577BFB200BE9B0D /* Info.plist */,
 			);
 			path = CurrencyConverterUnitTests;
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0418608E2577BFC500BE9B0D /* URLSessionManagerTests.swift in Sources */,
+				041860962577C1D600BE9B0D /* CurrencyAPIServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
