@@ -15,7 +15,7 @@ class CurrencyConverterViewModel {
     
     
     // MARK: - Input Methods
-    func insertsourceCurrency(currency: Currency) {
+    func insertSourceCurrency(currency: Currency) {
         self.sourceCurrency = currency
     }
     

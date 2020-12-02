@@ -41,7 +41,7 @@ class CurrencyConverterViewModelTests: XCTestCase {
     
     func testEmptyTargetCurrency() {
         // Given
-        sut.insertsourceCurrency(currency: getFakeCurrency(type: .source))
+        sut.insertSourceCurrency(currency: getFakeCurrency(type: .source))
         sut.insertValueToConvert(value: 10.0)
         
         
@@ -54,7 +54,7 @@ class CurrencyConverterViewModelTests: XCTestCase {
     
     func testEmptyValueToConvert() {
         // Given
-        sut.insertsourceCurrency(currency: getFakeCurrency(type: .source))
+        sut.insertSourceCurrency(currency: getFakeCurrency(type: .source))
         sut.insertTargetCurrency(currency: getFakeCurrency(type: .target))
         
         // When
@@ -66,7 +66,7 @@ class CurrencyConverterViewModelTests: XCTestCase {
     
     func testValueToConvertEqualZero() {
         // Given
-        sut.insertsourceCurrency(currency: getFakeCurrency(type: .source))
+        sut.insertSourceCurrency(currency: getFakeCurrency(type: .source))
         sut.insertTargetCurrency(currency: getFakeCurrency(type: .target))
         sut.insertValueToConvert(value: 0)
         
@@ -79,7 +79,7 @@ class CurrencyConverterViewModelTests: XCTestCase {
     
     func testCurrencyConverter() throws {
         // Given
-        sut.insertsourceCurrency(currency: getFakeCurrency(type: .source))
+        sut.insertSourceCurrency(currency: getFakeCurrency(type: .source))
         sut.insertTargetCurrency(currency: getFakeCurrency(type: .target))
         sut.insertValueToConvert(value: 2)
         

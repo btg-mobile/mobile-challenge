@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol CurrencyListViewControllerDelegate: class {
+    func didSelectCurrency(selectedCurrency: Currency)
+}
+
 class CurrencyListViewController: UIViewController {
     // MARK: - Properties
     private lazy var baseView = CurrencyListView()
     private lazy var viewModel = CurrencyListViewModel()
     
     weak var coordinator: MainCoordinator?
+    
+    weak var delegate: CurrencyListViewControllerDelegate?
     
     private var dataSource: CurrencyListDataSource? {
         didSet {
@@ -37,6 +43,18 @@ class CurrencyListViewController: UIViewController {
     
     
     // MARK: - Initialization
+    init(selectCurrencyDelegate: CurrencyListViewControllerDelegate? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = selectCurrencyDelegate
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // MARK: - View Life Cycle
     override func loadView() {
         super.loadView()
         self.view = baseView
@@ -63,6 +81,7 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
             return
         }
         
+        // TODO: Handle Errors
         print(detectedError.localizedDescription)
     }
 }
@@ -71,7 +90,8 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
 // MARK: - Handle Selected Currency
 extension CurrencyListViewController {
     private func didSelectCurrency(selectedCurrency: Currency) {
-        print("Selected currency:", selectedCurrency)
+        delegate?.didSelectCurrency(selectedCurrency: selectedCurrency)
+        coordinator?.exitCurrentScreen()
     }
 }
 

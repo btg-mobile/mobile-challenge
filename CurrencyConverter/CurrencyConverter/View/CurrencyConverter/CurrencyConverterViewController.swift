@@ -14,6 +14,7 @@ class CurrencyConverterViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     
+    private var currentCurrencyTypeButtonClicked: CurrencyTypeButtonTag?
     
     // MARK: - View Life Cycle
     override func loadView() {
@@ -58,17 +59,17 @@ extension CurrencyConverterViewController {
     @objc private func currencyTypeDidTouch(_ sender: UIButton) {
         // Identify type button
         if sender.tag == CurrencyTypeButtonTag.sourceCurrency.rawValue {
-            print("Moeda origem")
+            self.currentCurrencyTypeButtonClicked = .sourceCurrency
         } else {
-            print("Moeda destino")
+            self.currentCurrencyTypeButtonClicked = .targetCurrency
         }
         
-        coordinator?.navigateToCurrencyList()        
+        coordinator?.navigateToCurrencyList(selectCurrencyDelegate: self)
     }
     
     @objc private func sourceCurrencyTextFieldDidChange(_ textField: UITextField) {
         // Checando se algo foi digitado
-        guard let typedText = textField.text else {
+        guard let typedText = textField.text, !typedText.isEmpty else {
             print("Digite o valor a ser convertido")
             return
         }
@@ -79,7 +80,8 @@ extension CurrencyConverterViewController {
             return
         }
         
-        print("Typed value:", typedValue)
+//        print("Typed value:", typedValue)
+        viewModel.insertValueToConvert(value: typedValue)
     }
     
     @objc private func targetCurrencyTextFieldDidTouch() {
@@ -93,5 +95,25 @@ extension CurrencyConverterViewController {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+// MARK: - CurrencyListViewControllerDelegate
+extension CurrencyConverterViewController: CurrencyListViewControllerDelegate {
+    func didSelectCurrency(selectedCurrency: Currency) {
+        guard let lastCurrencyTypeButtonClicked = currentCurrencyTypeButtonClicked else {
+            return
+        }
+
+        switch lastCurrencyTypeButtonClicked {
+        case .sourceCurrency:
+            viewModel.insertSourceCurrency(currency: selectedCurrency)
+            baseView.sourceCurrencyTypeButton.setTitle(selectedCurrency.code, for: .normal)
+        case .targetCurrency:
+            viewModel.insertTargetCurrency(currency: selectedCurrency)
+            baseView.targetCurrencyTypeButton.setTitle(selectedCurrency.code, for: .normal)
+        }
+        
+        self.currentCurrencyTypeButtonClicked = nil
     }
 }

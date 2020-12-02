@@ -29,8 +29,8 @@ class MainCoordinator: Coordinator {
 
 // MARK: - Navigations
 extension MainCoordinator {
-    func navigateToCurrencyList() {
-        let currencyListViewController = CurrencyListViewController()
+    func navigateToCurrencyList(selectCurrencyDelegate: CurrencyListViewControllerDelegate? = nil) {
+        let currencyListViewController = CurrencyListViewController(selectCurrencyDelegate: selectCurrencyDelegate)
         currencyListViewController.coordinator = self
         navigationController.pushViewController(currencyListViewController, animated: true)
     }
