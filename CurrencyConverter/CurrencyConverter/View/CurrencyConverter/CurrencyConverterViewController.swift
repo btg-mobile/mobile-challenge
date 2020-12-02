@@ -16,6 +16,9 @@ class CurrencyConverterViewController: UIViewController {
     
     private var currentCurrencyTypeButtonClicked: CurrencyTypeButtonTag?
     
+    private var alertManager = AlertManager()
+    
+    
     // MARK: - View Life Cycle
     override func loadView() {
         super.loadView()
@@ -50,6 +53,7 @@ extension CurrencyConverterViewController {
     private func setupTextFields() {
         baseView.sourceCurrencyValueTextField.addTarget(self, action: #selector(sourceCurrencyTextFieldDidChange(_:)), for: .editingChanged)
         baseView.targetCurrencyValueTextField.addTarget(self, action: #selector(targetCurrencyTextFieldDidTouch), for: .touchDown)
+        baseView.sourceCurrencyValueTextField.becomeFirstResponder()
     }
 }
 
@@ -70,17 +74,18 @@ extension CurrencyConverterViewController {
     @objc private func sourceCurrencyTextFieldDidChange(_ textField: UITextField) {
         // Checando se algo foi digitado
         guard let typedText = textField.text, !typedText.isEmpty else {
-            print("Digite o valor a ser convertido")
+            viewModel.insertValueToConvert(value: 0)
             return
         }
         
         // Checando se é um número
         guard let typedValue = Double(typedText) else {
             print("Digite um valor numérico")
+            let alert = alertManager.createGenericAlert(title: "Número inválido", message: "Digite apenas números")
+            present(alert, animated: true, completion: nil)
             return
         }
         
-//        print("Typed value:", typedValue)
         viewModel.insertValueToConvert(value: typedValue)
     }
     
@@ -93,7 +98,8 @@ extension CurrencyConverterViewController {
             let resultOfConversion = try viewModel.convertCurrencies()
             baseView.targetCurrencyValueTextField.text = String(resultOfConversion)
         } catch {
-            print(error.localizedDescription)
+            let alert = alertManager.createGenericAlert(title: "Atenção", message: error.localizedDescription)
+            present(alert, animated: true, completion: nil)
         }
     }
 }
