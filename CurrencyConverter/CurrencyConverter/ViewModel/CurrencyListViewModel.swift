@@ -15,6 +15,7 @@ protocol CurrencyListViewModelDelegate: class {
 class CurrencyListViewModel {
     // MARK: - Properties
     private let currencyAPI = CurrencyAPIService()
+    private let currencyDAO = CurrencyDAO()
     var currencies: [Currency]
     
     weak var delegate: CurrencyListViewModelDelegate?
@@ -37,13 +38,15 @@ extension CurrencyListViewModel {
         currencyAPI.fetchAllCurrencies(completionHandler: { [weak self] result in
             switch result {
             case .failure(let error):
-                self?.handleErrors(error: error)
-            
+                // Verificando se há moedas salvas localmente
+                if let currenciesSavedLocally = self?.getCurrenciesSavedLocally() {
+                    self?.handleSuccess(savedCurrencies: currenciesSavedLocally)
+                } else {
+                    self?.handleErrors(error: error)
+                }
+                
             case .success(let receivedCurrencies):
-                self?.currencies = receivedCurrencies
-                self?.sortCurrenciesByCode()
-                self?.delegate?.didReceiveCurrencies()
-                break
+                self?.handleSuccess(savedCurrencies: receivedCurrencies)
             }
         })
     }
@@ -58,10 +61,39 @@ extension CurrencyListViewModel {
     }
 }
 
+// MARK: - Handle Local Storage
+extension CurrencyListViewModel {
+    private func getCurrenciesSavedLocally() -> [Currency]? {
+        do {
+            let savedCurrencies = try currencyDAO.fetchCurrencies()
+            return savedCurrencies
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
+    }
+    
+    private func saveCurrenciesLocally() {
+        do {
+            try currencyDAO.saveCurrencies(currencies: self.currencies)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
 
 // MARK: - Handle Erros
 extension CurrencyListViewModel {
+    private func handleSuccess(savedCurrencies: [Currency]) {
+        self.currencies = savedCurrencies
+        self.sortCurrenciesByCode()
+        self.saveCurrenciesLocally()
+        self.delegate?.didReceiveCurrencies()
+    }
+    
     private func handleErrors(error: Error) {
-        print("Error: ", error)
+//        print("Error: ", error)
+        delegate?.didReceiveError(error: error)
     }
 }

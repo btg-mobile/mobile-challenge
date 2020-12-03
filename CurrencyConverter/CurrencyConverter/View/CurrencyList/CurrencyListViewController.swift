@@ -82,7 +82,19 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
         }
         
         // TODO: Handle Errors
-        print(detectedError.localizedDescription)
+        var alertMessage = String()
+        
+        if detectedError == .networkUnavailable {
+            alertMessage = "Sem conexão com a internet!"
+        } else {
+            alertMessage = "Houve um error na conexão com o servidor!"
+        }
+        
+        let alertManager = AlertManager()
+        let alert = alertManager.createGenericAlert(title: "Temos um probleminha...", message: alertMessage, buttonTitle: "Ok", completionButtonClicked: { [weak self] _ in
+            self?.coordinator?.exitCurrentScreen()
+        })
+        present(alert, animated: true, completion: nil)
     }
 }
 
