@@ -96,7 +96,8 @@ extension CurrencyConverterViewController {
     @objc private func convertCurrenciesButtonDidTouch() {
         do {
             let resultOfConversion = try viewModel.convertCurrencies()
-            baseView.targetCurrencyValueTextField.text = String(resultOfConversion)
+            let textToDisplay = String(format: "%.02f", resultOfConversion)
+            baseView.targetCurrencyValueTextField.text = textToDisplay
         } catch {
             let alert = alertManager.createGenericAlert(title: "Atenção", message: error.localizedDescription)
             present(alert, animated: true, completion: nil)
