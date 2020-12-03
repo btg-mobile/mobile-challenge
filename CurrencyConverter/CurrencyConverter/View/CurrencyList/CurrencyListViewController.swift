@@ -66,6 +66,9 @@ class CurrencyListViewController: UIViewController {
         // Active loading component
         baseView.activityIndicatorView.startAnimating()
         
+        // Setup Search Bar
+        setupSearchController()
+        
         // Setup View Model
         viewModel.delegate = self
         viewModel.fetchCurrencies()
@@ -120,5 +123,34 @@ extension CurrencyListViewController {
         DispatchQueue.main.async { [weak self] in
             self?.baseView.activityIndicatorView.stopAnimating()
         }
+    }
+}
+
+// MARK: - Setup Search Controller
+extension CurrencyListViewController {
+    private func setupSearchController() {
+        baseView.searchController.searchResultsUpdater = self
+        baseView.searchController.obscuresBackgroundDuringPresentation = false
+        baseView.searchController.searchBar.placeholder = "Search by name or code"
+        navigationItem.searchController = baseView.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+}
+
+
+// MARK: - UISearchResultsUpdating
+extension CurrencyListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let queryOrNil = searchController.searchBar.text
+        
+        guard let query = queryOrNil, !query.isEmpty else {
+            dataSource = CurrencyListDataSource(currencies: viewModel.currencies)
+            return
+        }
+        
+        let filterSessions = viewModel.searchCurrencies(searchText: query)
+        
+        // Update data of the Table View
+        dataSource = CurrencyListDataSource(currencies: filterSessions)
     }
 }

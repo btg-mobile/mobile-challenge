@@ -50,6 +50,17 @@ extension CurrencyListViewModel {
             }
         })
     }
+    
+    func searchCurrencies(searchText: String) -> [Currency] {
+        let searchAttribute = searchText.lowercased()
+        
+        let filterSessions = currencies.filter {
+            let currentCurrencyName = $0.name.lowercased()
+            let currentCurrencyCode = $0.code.lowercased()
+            return currentCurrencyName.contains(searchAttribute) || currentCurrencyCode.contains(searchAttribute)
+        }
+        return filterSessions
+    }
 }
 
 // MARK: - Sort Method

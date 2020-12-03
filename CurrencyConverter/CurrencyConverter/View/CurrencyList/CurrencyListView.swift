@@ -9,6 +9,8 @@ import UIKit
 
 class CurrencyListView: UIView {
     // MARK: - Views
+    let searchController: UISearchController = UISearchController()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.bounds)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
