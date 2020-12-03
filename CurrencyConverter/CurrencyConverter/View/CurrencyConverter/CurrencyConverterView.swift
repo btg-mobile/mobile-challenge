@@ -110,9 +110,9 @@ extension CurrencyConverterView: ViewCodable {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            contentStackView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 50),
             contentStackView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
