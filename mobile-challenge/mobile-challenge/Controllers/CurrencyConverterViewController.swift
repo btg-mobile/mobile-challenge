@@ -292,6 +292,11 @@ class CurrencyConverterViewController: UIViewController {
     @objc private func scrollViewRefresh(_ sender: UIRefreshControl) {
         viewModel.start()
     }
+    
+    // MARK: Rotation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        scrollView.contentSize = size
+    }
 }
 
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
