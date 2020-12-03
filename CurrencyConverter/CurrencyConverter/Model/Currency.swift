@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency {
+struct Currency: Codable {
     // MARK: - Properties
     let name: String
     let code: String

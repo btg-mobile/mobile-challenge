@@ -11,4 +11,8 @@ enum Identifier {
     enum Cell {
         static let currencyCell = "currencyCell"
     }
+    
+    enum Database {
+        static let name = "currencies"
+    }
 }
