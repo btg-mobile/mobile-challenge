@@ -104,7 +104,6 @@ extension CurrencyListViewModel {
     }
     
     private func handleErrors(error: Error) {
-//        print("Error: ", error)
         delegate?.didReceiveError(error: error)
     }
 }

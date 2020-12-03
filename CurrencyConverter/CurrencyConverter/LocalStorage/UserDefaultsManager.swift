@@ -7,16 +7,12 @@
 
 import Foundation
 
-enum UserDefaultsManagerError: Error {
-    case unableToEncode
-    case noValue
-    case unableToDecode
-}
-
 class UserDefaultsManager {
     // MARK: - Properties
     private let userDefaults = UserDefaults.standard
     
+    
+    // MARK: - Storage Methods
     func saveObject<T: Encodable>(_ object: T, forKey: String) throws {
         let encoder = JSONEncoder()
         do {
