@@ -18,6 +18,11 @@ class CurrencyListView: UIView {
         return tableView
     }()
     
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
     // MARK: - Initialization
     init() {
@@ -36,10 +41,14 @@ class CurrencyListView: UIView {
 extension CurrencyListView: ViewCodable {
     func setupHierarchy() {
         addSubview(tableView)
+        addSubview(activityIndicatorView)
     }
     
     func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        ])
     }
     
     func setupAditionalConfiguration() {

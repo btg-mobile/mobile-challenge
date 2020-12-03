@@ -63,6 +63,9 @@ class CurrencyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Active loading component
+        baseView.activityIndicatorView.startAnimating()
+        
         // Setup View Model
         viewModel.delegate = self
         viewModel.fetchCurrencies()
@@ -73,10 +76,13 @@ class CurrencyListViewController: UIViewController {
 // MARK: - CurrencyListViewModelDelegate
 extension CurrencyListViewController: CurrencyListViewModelDelegate {
     func didReceiveCurrencies() {
+        self.stopLoadingAnimation()
         self.dataSource = CurrencyListDataSource(currencies: viewModel.currencies)
     }
     
     func didReceiveError(error: Error) {
+        self.stopLoadingAnimation()
+        
         guard let detectedError = error as? NetworkError else {
             return
         }
@@ -107,3 +113,12 @@ extension CurrencyListViewController {
     }
 }
 
+
+// MARK: - Setup Activity Indicator View
+extension CurrencyListViewController {
+    private func stopLoadingAnimation() {
+        DispatchQueue.main.async { [weak self] in
+            self?.baseView.activityIndicatorView.stopAnimating()
+        }
+    }
+}
