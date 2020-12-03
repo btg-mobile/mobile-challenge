@@ -72,12 +72,6 @@ class CurrencyAPIService {
                             } else {
                                 completionHandler(.success(currencies))
                             }
-                            
-//                            if let validCurrencies = currencies, !validCurrencies.isEmpty {
-//                                completionHandler(.success(validCurrencies))
-//                            } else {
-//                                completionHandler(.failure(CurrencyAPIError.emptyCurrencyArray))
-//                            }
                         } catch {
                             completionHandler(.failure(error))
                         }
