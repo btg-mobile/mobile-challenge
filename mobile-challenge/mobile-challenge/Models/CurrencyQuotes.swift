@@ -10,7 +10,7 @@ import Foundation
 /**
  Model of the currency quotes designed from the API needed attributes.
  */
-struct CurrencyQuotes: Decodable {
+struct CurrencyQuotes: Codable {
     let lastUpdate: Date
     let source: String
     let quotes: [String: Double]

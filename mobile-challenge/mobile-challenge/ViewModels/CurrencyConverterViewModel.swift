@@ -38,12 +38,16 @@ class CurrencyConverterViewModel {
     
     private var isQuotesFetched: Bool = false {
         didSet {
-            dataLoaded()
+            if isCurrenciesFetched && isQuotesFetched {
+                dataLoaded()
+            }
         }
     }
     private var isCurrenciesFetched: Bool = false {
         didSet {
-            dataLoaded()
+            if isCurrenciesFetched && isQuotesFetched {
+                dataLoaded()
+            }
         }
     }
     
@@ -56,6 +60,9 @@ class CurrencyConverterViewModel {
         numberFormatter.groupingSeparator = Locale.current.groupingSeparator
         return numberFormatter
     }()
+    
+    static let quotesCacheKey = "CurrencyQuotes"
+    static let currenciesCacheKey = "CurrencyList"
     
     // MARK: Methods
     /**
@@ -70,50 +77,144 @@ class CurrencyConverterViewModel {
      Make the request to get the latests currencies quotes.
      */
     private func requestQuotes() {
+        quotes = nil
         isQuotesFetched = false
+        
         CurrencyService.getQuotes { [weak self] (answer) in
-            switch answer {
-            case .result(let quotes as CurrencyQuotes):
-                self?.quotes = quotes
-            case .error(_ as DataTaskError):
-                self?.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
-                self?.quotes = nil
-            case .error(let error as URLParsingError):
-                self?.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
-                self?.quotes = nil
-            default:
-                self?.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
-                self?.quotes = nil
-            }
-            self?.isQuotesFetched = true
+            self?.quotesFetched(answer)
         }
+    }
+    
+    /**
+     Deal with quotes data task answer. Delegating an error alert if needed.
+     
+     - Parameter answer: The data task answer.
+     */
+    private func quotesFetched(_ answer: TaskAnswer<Any>) {
+        switch answer {
+        case .result(let quotes as CurrencyQuotes):
+            self.quotes = quotes
+        case .error(_ as DataTaskError):
+            guard let quotes = getCachedQuotes() else {
+                self.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
+                return
+            }
+            self.quotes = quotes
+        case .error(let error as URLParsingError):
+            guard let quotes = getCachedQuotes() else {
+                self.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
+                return
+            }
+            self.quotes = quotes
+        default:
+            guard let quotes = getCachedQuotes() else {
+                self.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
+                return
+            }
+            self.quotes = quotes
+        }
+        
+        self.isQuotesFetched = true
     }
     
     /**
      Make the request to get the available currencies.
      */
     private func requestCurrencyList() {
+        currencyList = nil
         isCurrenciesFetched = false
+        
         CurrencyService.getCurrencyList { [weak self] (answer) in
-            switch answer {
-            case .result(let currencyList as CurrencyList):
-                self?.currencyList = currencyList
-            case .error(_ as DataTaskError):
-                self?.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
-                self?.currencyList = nil
-            case .error(let error as URLParsingError):
-                self?.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
-                self?.currencyList = nil
-            default:
-                self?.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
-                self?.currencyList = nil
-            }
-            self?.isCurrenciesFetched = true
+            self?.currenciesFetched(answer)
         }
     }
     
-    private func getCachedQuotes() {
+    /**
+     Deal with quotes data task answer. Delegating an error alert if needed.
+     
+     - Parameter answer: The data task answer.
+     */
+    private func currenciesFetched(_ answer: TaskAnswer<Any>) {
+        switch answer {
+        case .result(let currencies as CurrencyList):
+            self.currencyList = currencies
+        case .error(_ as DataTaskError):
+            guard let currencies = getCachedCurrencies() else {
+                self.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
+                return
+            }
+            self.currencyList = currencies
+        case .error(let error as URLParsingError):
+            guard let currencies = getCachedCurrencies() else {
+                self.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
+                return
+            }
+            self.currencyList = currencies
+        default:
+            guard let currencies = getCachedCurrencies() else {
+                self.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
+                return
+            }
+            self.currencyList = currencies
+        }
         
+        self.isCurrenciesFetched = true
+    }
+    
+    /**
+     Set quotes to User Defaults.
+     
+     - Parameter currencies: The quotes to cache.
+     */
+    private func setCachedQuotes(_ quotes: CurrencyQuotes) {
+        let userDefaults = UserDefaults.standard
+        if let encodedQuotes = try? JSONEncoder().encode(quotes) {
+            userDefaults.setValue(encodedQuotes, forKey: CurrencyConverterViewModel.quotesCacheKey)
+        }
+    }
+    
+    /**
+     Attempts to retrieve cached quotes from User Defaults.
+     */
+    private func getCachedQuotes() -> CurrencyQuotes? {
+        let userDefaults = UserDefaults.standard
+        
+        guard let encodedQuotes = userDefaults.object(forKey: CurrencyConverterViewModel.quotesCacheKey) as? Data,
+              let quotes = try? JSONDecoder().decode(CurrencyQuotes.self, from: encodedQuotes) else {
+            return nil
+        }
+        
+        delegate?.createAlert(title: "Atenção", message: "Os dados apresentados podem estar desatualizados. Verifique o status da sua conexão.", handler: nil)
+        
+        return quotes
+    }
+    
+    /**
+     Set currencies to User Defaults.
+     
+     - Parameter currencies: The currencies to cache.
+     */
+    private func setCachedCurrencies(_ currencies: CurrencyList) {
+        let userDefaults = UserDefaults.standard
+        if let encodedCurrencies = try? JSONEncoder().encode(currencies) {
+            userDefaults.setValue(encodedCurrencies, forKey: CurrencyConverterViewModel.currenciesCacheKey)
+        }
+    }
+    
+    /**
+     Attempts to retrieve cached currencies from User Defaults.
+     */
+    private func getCachedCurrencies() -> CurrencyList? {
+        let userDefaults = UserDefaults.standard
+        
+        guard let encodedCurrencies = userDefaults.object(forKey: CurrencyConverterViewModel.currenciesCacheKey) as? Data,
+              let currencies = try? JSONDecoder().decode(CurrencyList.self, from: encodedCurrencies) else {
+            return nil
+        }
+        
+        delegate?.createAlert(title: "Atenção", message: "Os dados apresentados podem estar desatualizados. Verifique o status da sua conexão.", handler: nil)
+        
+        return currencies
     }
     
     /**
@@ -213,10 +314,22 @@ class CurrencyConverterViewModel {
     }
     
     private func dataLoaded() {
-        // Finished loading data
-        if isQuotesFetched && isCurrenciesFetched {
+        // Finished assyncronous data tasks
+        
+        // If quotes or currencies is nil try to get from cache
+        guard let quotes = quotes,
+              let currencyList = currencyList else {
+            self.quotes = getCachedQuotes()
+            self.currencyList = getCachedCurrencies()
             delegate?.dataFetched()
-        }        
+            return
+        }
+        
+        setCachedQuotes(quotes)
+        setCachedCurrencies(currencyList)
+        
+        // Tells the delegate that it finished fetching the data
+        delegate?.dataFetched()
     }
     
     private func getCurrencyList() -> CurrencyList? {
