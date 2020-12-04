@@ -7,9 +7,19 @@
 
 import UIKit
 
+public enum CurrencyType {
+    case origin
+    case destiny
+}
+
 class SelectCurrencyButton: UIButton {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    let type: CurrencyType
+    
+    init(ofType type: CurrencyType) {
+        self.type = type
+        
+        super.init(frame: .zero)
         
         setupUI()
         setupConstraints()

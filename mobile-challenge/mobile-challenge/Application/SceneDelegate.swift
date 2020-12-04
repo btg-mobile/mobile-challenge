@@ -10,7 +10,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    // App coordinator needs a strong reference to remain in memory
+    var appCoordinator: AppCoordinator!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,9 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         // Instantiate the root View Controller and the Navigation Controller
-        let rootViewController = CurrencyConverterViewController()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let navigationController = UINavigationController()
         navigationController.navigationBar.barTintColor = .systemGray6
+        
+        // Instantiate and start the coordinator
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator.start()
         
         // Setting the root view controller to the windows
         window = UIWindow(windowScene: scene)

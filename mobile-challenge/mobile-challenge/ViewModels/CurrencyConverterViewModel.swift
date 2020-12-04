@@ -17,6 +17,9 @@ class CurrencyConverterViewModel {
     // MARK: Delegate
     weak var delegate: CurrencyConverterViewModelDelegate?
     
+    // MARK: Coordinator
+    weak var coordinator: CurrencyConverterCoordinator?
+    
     // MARK: Variables
     private var quotes: CurrencyQuotes?
     
@@ -68,21 +71,21 @@ class CurrencyConverterViewModel {
      */
     private func requestQuotes() {
         isQuotesFetched = false
-        CurrencyService.getQuotes { (answer) in
+        CurrencyService.getQuotes { [weak self] (answer) in
             switch answer {
             case .result(let quotes as CurrencyQuotes):
-                self.quotes = quotes
+                self?.quotes = quotes
             case .error(_ as DataTaskError):
-                self.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
-                self.quotes = nil
+                self?.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
+                self?.quotes = nil
             case .error(let error as URLParsingError):
-                self.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
-                self.quotes = nil
+                self?.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
+                self?.quotes = nil
             default:
-                self.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
-                self.quotes = nil
+                self?.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
+                self?.quotes = nil
             }
-            self.isQuotesFetched = true
+            self?.isQuotesFetched = true
         }
     }
     
@@ -91,21 +94,21 @@ class CurrencyConverterViewModel {
      */
     private func requestCurrencyList() {
         isCurrenciesFetched = false
-        CurrencyService.getCurrencyList { (answer) in
+        CurrencyService.getCurrencyList { [weak self] (answer) in
             switch answer {
             case .result(let currencyList as CurrencyList):
-                self.currencyList = currencyList
+                self?.currencyList = currencyList
             case .error(_ as DataTaskError):
-                self.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
-                self.currencyList = nil
+                self?.delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão.", handler: nil)
+                self?.currencyList = nil
             case .error(let error as URLParsingError):
-                self.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
-                self.currencyList = nil
+                self?.delegate?.createAlert(title: "Erro \(error.code)", message: "Entre em contato com o administrador.", handler: nil)
+                self?.currencyList = nil
             default:
-                self.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
-                self.currencyList = nil
+                self?.delegate?.createAlert(title: "Erro genérico", message: "Entre em contato com o administrador.", handler: nil)
+                self?.currencyList = nil
             }
-            self.isCurrenciesFetched = true
+            self?.isCurrenciesFetched = true
         }
     }
     
@@ -177,14 +180,27 @@ class CurrencyConverterViewModel {
         return Double(inputText)
     }
     
+    /**
+     Set currency origin.
+     
+     - Parameter origin: The target currency origin.
+     */
     func setOrigin(for currency: Currency) {
         self.originCurrency = currency.symbol
     }
     
+    /**
+     Set currency destiny.
+     
+     - Parameter destiny: The target currency destiny.
+     */
     func setDestiny(for currency: Currency) {
         self.destinyCurrency = currency.symbol
     }
     
+    /**
+     Returns if currency conversion is available to the current origin and destiny. If not available it asks the delegate to create an alert.
+     */
     func isConvertEnabled() -> Bool {
         let isOriginValid = currencyList?.currencies.contains(where: {$0.symbol == originCurrency}) ?? false
         let isDestinyValid = currencyList?.currencies.contains(where: {$0.symbol == destinyCurrency}) ?? false
@@ -203,7 +219,7 @@ class CurrencyConverterViewModel {
         }        
     }
     
-    func getCurrencyList() -> CurrencyList? {
+    private func getCurrencyList() -> CurrencyList? {
         // Show an alert if there is no CurrencyList
         if currencyList == nil {
             delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão e deslize para cima para tentar novamente.", handler: nil)
@@ -211,11 +227,37 @@ class CurrencyConverterViewModel {
         return currencyList
     }
     
-    func getQuotes() -> CurrencyQuotes? {
+    private func getQuotes() -> CurrencyQuotes? {
         // Show an alert if there is no CurrencyList
         if quotes == nil {
             delegate?.createAlert(title: "Ocorreu um erro", message: "Verifique o status da sua conexão e deslize para cima para tentar novamente.", handler: nil)
         }
         return quotes
     }
+    
+    /**
+     Asks the coordinator to deal with the transition for the specific currency type.
+     
+     - Parameter type: The button's type.
+     */
+    func buttonDidTap(_ type: CurrencyType) {
+        guard let currencyList = getCurrencyList() else {
+            return
+        }
+        
+        coordinator?.selectCurrencyButtonDidTap(currencyList, for: type)
+    }
+    
+    /**
+     Returns the formatted date of quotes last update if available.
+     */
+    func getLastUpdate() -> String? {
+        guard let quotes = getQuotes(),
+              getCurrencyList() != nil,
+              let lastUpdate = quotes.lastUpdate.gmtToCurrent(dateFormat: "dd/MM/yyyy HH:mm") else {
+            return nil
+        }
+        return lastUpdate
+    }
+    
 }

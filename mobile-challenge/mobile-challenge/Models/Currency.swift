@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Model of the currency designed from the API needed attributes.
+ */
 struct Currency {
     let name: String
     let symbol: String

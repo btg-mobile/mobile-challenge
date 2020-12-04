@@ -9,14 +9,8 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
     
-    private let cellIdentifier = "CurrencyTableViewCell"
-    
-    // MARK: Data dependencies
-    private let currencyList: CurrencyList
-    private var filteredCurrencyList: [Currency]
-    
-    // MARK: Binding methods
-    var selectedItem: ((Currency) -> Void)
+    // MARK: View Model
+    private let viewModel: CurrencyListViewModel
     
     // MARK: UI Elements
     private let tableView: UITableView = {
@@ -28,13 +22,14 @@ class CurrencyListViewController: UIViewController {
         return tableView
     }()
     
+    private let tableViewDelegate: CurrencyListTableViewDelegate = CurrencyListTableViewDelegate()
+    private let tableViewDataSource: CurrencyListTableViewDataSource = CurrencyListTableViewDataSource()
+    
     private let searchController: UISearchController = UISearchController()
     
     // MARK: Init
-    init(currencyList: CurrencyList, selectedItem: @escaping ((Currency) -> Void)) {
-        self.currencyList = currencyList
-        self.filteredCurrencyList = currencyList.currencies
-        self.selectedItem = selectedItem
+    init(viewModel: CurrencyListViewModel) {
+        self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,8 +42,7 @@ class CurrencyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchController.searchBar.delegate = self
-        
+        setupDelegates()
         setupUI()
     }
     
@@ -57,6 +51,11 @@ class CurrencyListViewController: UIViewController {
     }
     
     // MARK: Setup methods
+    private func setupDelegates() {
+        viewModel.delegate = self
+        searchController.searchBar.delegate = self
+    }
+    
     private func setupUI() {
         self.title = "Selecione uma moeda"
         navigationController?.navigationBar.backgroundColor = .systemGray6
@@ -68,9 +67,22 @@ class CurrencyListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-                
+        tableView.delegate = tableViewDelegate
+        tableView.dataSource = tableViewDataSource
+        
+        // Set table view delegate bindings
+        tableViewDelegate.didSelectedRowAt = { [weak self] row in
+            self?.viewModel.currencySelected(at: row)
+        }
+        
+        // Set table view data source bindings
+        tableViewDataSource.currencyForRow = { [weak self] row in
+            return self?.viewModel.getCurrency(for: row) ?? nil
+        }
+        tableViewDataSource.numberOfRows = { [weak self] section in
+            return self?.viewModel.numberOfRows ?? 0
+        }
+        
         view.addSubview(tableView)
     }
     
@@ -82,39 +94,19 @@ class CurrencyListViewController: UIViewController {
     }
 }
 
-extension CurrencyListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedItem(filteredCurrencyList[indexPath.row])
-        navigationController?.popViewController(animated: true)
-    }
-}
-
-extension CurrencyListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredCurrencyList.count
-    }
+// MARK: View Model Delegate
+extension CurrencyListViewController: CurrencyListViewModelDelegate {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let name = filteredCurrencyList[indexPath.row].name
-        let symbol = filteredCurrencyList[indexPath.row].symbol
-        
-        let cell = CurrencyTableViewCell()
-        cell.setup(for: name, and: symbol)
-                
-        return cell
+    func dataChanged() {
+        tableView.reloadData()
     }
 }
 
+// MARK: UISearchBarDelegate
 extension CurrencyListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         let searchText = searchText.lowercased()
-        let filtered = currencyList.currencies.filter({
-            // Query by name or symbol
-            $0.name.lowercased().contains(searchText) || $0.symbol.lowercased().contains(searchText)
-        })
-        self.filteredCurrencyList = filtered.isEmpty ? currencyList.currencies : filtered
-        tableView.reloadData()
+        viewModel.filter(by: searchText)
     }
 }

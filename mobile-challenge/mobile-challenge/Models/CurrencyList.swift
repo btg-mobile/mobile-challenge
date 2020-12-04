@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Model of the currency list designed from the API needed attributes.
+ */
 struct CurrencyList: Decodable {
     let currencies: [Currency]
     

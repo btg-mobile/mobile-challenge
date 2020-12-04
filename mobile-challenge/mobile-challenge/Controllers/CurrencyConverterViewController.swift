@@ -10,7 +10,7 @@ import UIKit
 class CurrencyConverterViewController: UIViewController {
     
     // MARK: View Model
-    private let viewModel = CurrencyConverterViewModel()
+    private let viewModel: CurrencyConverterViewModel
         
     // MARK: UI Elements
     private let scrollView: UIScrollView = {
@@ -38,10 +38,10 @@ class CurrencyConverterViewController: UIViewController {
     }()
     
     private let originButtonStack: UIStackView = UIStackView(frame: .zero)
-    private let originCurrencyButton: SelectCurrencyButton = SelectCurrencyButton(frame: .zero)
+    private let originCurrencyButton: SelectCurrencyButton = SelectCurrencyButton(ofType: .origin)
     
     private let destinyButtonStack: UIStackView = UIStackView(frame: .zero)
-    private let destinyCurrencyButton: SelectCurrencyButton = SelectCurrencyButton(frame: .zero)
+    private let destinyCurrencyButton: SelectCurrencyButton = SelectCurrencyButton(ofType: .destiny)
     
     private let arrowRight: UILabel = {
         let arrow = UILabel()
@@ -94,13 +94,28 @@ class CurrencyConverterViewController: UIViewController {
     // MARK: Delegates
     private let textFieldDelegate: InputCurrencyTextFieldDelegate = InputCurrencyTextFieldDelegate()
     
-    // MARK: Deinit
+    // MARK: Init
+    init(viewModel: CurrencyConverterViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     deinit {
         removeObservers()
+        
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Rotation observer
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         viewModel.start()
         
@@ -201,7 +216,7 @@ class CurrencyConverterViewController: UIViewController {
         
         // Setup button
         button.setTitle("-", for: .normal)
-        button.addTarget(self, action: #selector(currencyButtonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(currencyButtonDidTap(_:)), for: .touchUpInside)
         
         // Add button as subview of stack
         stack.addArrangedSubview(button)
@@ -257,16 +272,7 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     // MARK: Button target method
-    @objc private func currencyButtonTapped(_ sender: UIButton) {
-
-        guard let currencyList = viewModel.getCurrencyList() else {
-            return
-        }
-        
-        // Choose the correct bind to currencyListViewController
-        let selectedItemBind = sender == originCurrencyButton ? viewModel.setOrigin : viewModel.setDestiny
-        let currencyListViewController = CurrencyListViewController(currencyList: currencyList, selectedItem: selectedItemBind)
-        
+    @objc private func currencyButtonDidTap(_ sender: SelectCurrencyButton) {
         // Remove keyboard focus
         view.endEditing(true)
         
@@ -274,11 +280,11 @@ class CurrencyConverterViewController: UIViewController {
         scrollView.contentOffset = .zero
         scrollView.refreshControl?.endRefreshing()
         
-        // Push the CurrencyListViewController
-        navigationController?.pushViewController(currencyListViewController, animated: true)
+        // Call viewModel to handle button interaction
+        viewModel.buttonDidTap(sender.type)
     }
     
-    // MARK: ScrollView behaviour
+    // MARK: Observers handlers
     override func setScrollViewContentInset(_ inset: UIEdgeInsets) {
         // Adjust the scrollView so the textField and the label doesn't hide when keyboard appears
         scrollView.contentInset = inset
@@ -289,16 +295,20 @@ class CurrencyConverterViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
     }
     
+    @objc func rotated() {
+        // Reset content view size when device rotated
+        setScrollViewContentInset(.zero)
+        view.endEditing(true)
+        
+    }
+    
+    // MARK: Refresh control handler
     @objc private func scrollViewRefresh(_ sender: UIRefreshControl) {
         viewModel.start()
     }
-    
-    // MARK: Rotation
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        scrollView.contentSize = size
-    }
 }
 
+// MARK: CurrencyConverterViewModelDelegate
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     
     func originChanged() {
@@ -316,16 +326,14 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     }
     
     func dataFetched() {
-        
+
         DispatchQueue.main.async {
             self.scrollView.refreshControl?.endRefreshing()
             // Bug on refresh control when end with alert, must set offset back to stop the refresh
             self.scrollView.setContentOffset(.zero, animated: true)
         }
         
-        guard let quotes = viewModel.getQuotes(),
-              viewModel.getCurrencyList() != nil,
-              let lastUpdate = quotes.lastUpdate.gmtToCurrent(dateFormat: "dd/MM/yyyy HH:mm") else {
+        guard let lastUpdate = viewModel.getLastUpdate() else {
             DispatchQueue.main.async {
                 self.lastUpdateLabel.text = "Ocorreu um erro no carregamento. Deslize para cima para tentar novamente."
                 self.originCurrencyButton.setTitle("-", for: .normal)
