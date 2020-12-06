@@ -107,15 +107,10 @@ class CurrencyConverterViewController: UIViewController {
     
     deinit {
         removeObservers()
-        
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Rotation observer
-        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         viewModel.start()
         
@@ -295,11 +290,16 @@ class CurrencyConverterViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
     }
     
-    @objc func rotated() {
-        // Reset content view size when device rotated
-        setScrollViewContentInset(.zero)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // Reset scroll view when device orientation changes
         view.endEditing(true)
-        
+        resetScrollView()
+    }
+    
+    private func resetScrollView() {
+        scrollView.contentSize = .zero
+        scrollView.contentInset = .zero
+        scrollView.contentOffset = .zero
     }
     
     // MARK: Refresh control handler
