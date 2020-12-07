@@ -8,13 +8,13 @@
 import Foundation
 
 
-class NetworkManager {
+public class NetworkManager {
 
     private lazy var session = {
         URLSession.shared
     }()
     
-    func request(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    public func request(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         session.dataTask(with: url, completionHandler: { data, response, error in
             guard let data = data else {
                 completion(.failure(error!))

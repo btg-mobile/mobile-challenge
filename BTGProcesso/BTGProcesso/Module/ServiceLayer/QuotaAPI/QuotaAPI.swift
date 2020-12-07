@@ -7,13 +7,10 @@
 
 import Foundation
 
-struct Quota: Decodable {
-    
-}
 
-class QuotaAPI {
+ public class QuotaAPI {
     
-    let manager: NetworkManager = {
+    private let manager: NetworkManager = {
         NetworkManager()
     }()
     
