@@ -15,6 +15,9 @@
 		CFCD7BCD257ED1D900FA3DB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7BCB257ED1D900FA3DB9 /* LaunchScreen.storyboard */; };
 		CFCD7BD8257ED1D900FA3DB9 /* BTGProcessoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BD7257ED1D900FA3DB9 /* BTGProcessoTests.swift */; };
 		CFCD7BE3257ED1D900FA3DB9 /* BTGProcessoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BE2257ED1D900FA3DB9 /* BTGProcessoUITests.swift */; };
+		CFCD7BF7257ED77700FA3DB9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BF6257ED77600FA3DB9 /* NetworkManager.swift */; };
+		CFEC31F1257EDD7F00CB7FFA /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC31F0257EDD7F00CB7FFA /* NetworkRequest.swift */; };
+		CFEC3203257EDE9E00CB7FFA /* QuotaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC3202257EDE9E00CB7FFA /* QuotaAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		CFCD7BDE257ED1D900FA3DB9 /* BTGProcessoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTGProcessoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCD7BE2257ED1D900FA3DB9 /* BTGProcessoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGProcessoUITests.swift; sourceTree = "<group>"; };
 		CFCD7BE4257ED1D900FA3DB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFCD7BF6257ED77600FA3DB9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CFEC31F0257EDD7F00CB7FFA /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		CFEC3202257EDE9E00CB7FFA /* QuotaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		CFCD7BBF257ED1D500FA3DB9 /* BTGProcesso */ = {
 			isa = PBXGroup;
 			children = (
+				CFCD7BF4257ED71100FA3DB9 /* Common */,
+				CFCD7BF3257ED70500FA3DB9 /* Module */,
 				CFCD7BC0257ED1D500FA3DB9 /* AppDelegate.swift */,
 				CFCD7BC2257ED1D500FA3DB9 /* SceneDelegate.swift */,
 				CFCD7BC4257ED1D500FA3DB9 /* ViewController.swift */,
@@ -126,6 +134,55 @@
 				CFCD7BE4257ED1D900FA3DB9 /* Info.plist */,
 			);
 			path = BTGProcessoUITests;
+			sourceTree = "<group>";
+		};
+		CFCD7BF3257ED70500FA3DB9 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7BF5257ED75200FA3DB9 /* ServiceLayer */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		CFCD7BF4257ED71100FA3DB9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CFCD7BF5257ED75200FA3DB9 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CFEC3201257EDE6F00CB7FFA /* QuotaAPI */,
+				CFEC31F5257EDE1000CB7FFA /* Protocol */,
+				CFEC31FC257EDE4F00CB7FFA /* Manager */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		CFEC31F5257EDE1000CB7FFA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CFEC31F0257EDD7F00CB7FFA /* NetworkRequest.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CFEC31FC257EDE4F00CB7FFA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7BF6257ED77600FA3DB9 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CFEC3201257EDE6F00CB7FFA /* QuotaAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CFEC3202257EDE9E00CB7FFA /* QuotaAPI.swift */,
+			);
+			path = QuotaAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +316,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCD7BC5257ED1D500FA3DB9 /* ViewController.swift in Sources */,
+				CFEC3203257EDE9E00CB7FFA /* QuotaAPI.swift in Sources */,
 				CFCD7BC1257ED1D500FA3DB9 /* AppDelegate.swift in Sources */,
 				CFCD7BC3257ED1D500FA3DB9 /* SceneDelegate.swift in Sources */,
+				CFCD7BF7257ED77700FA3DB9 /* NetworkManager.swift in Sources */,
+				CFEC31F1257EDD7F00CB7FFA /* NetworkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
