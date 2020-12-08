@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		35FA9C7A257F046900213F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C79257F046900213F84 /* AppDelegate.swift */; };
-		35FA9C7C257F046900213F84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C7B257F046900213F84 /* SceneDelegate.swift */; };
-		35FA9C7E257F046900213F84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C7D257F046900213F84 /* ViewController.swift */; };
-		35FA9C81257F046900213F84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9C7F257F046900213F84 /* Main.storyboard */; };
+		35FA9C7E257F046900213F84 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C7D257F046900213F84 /* ExchangeViewController.swift */; };
+		35FA9C81257F046900213F84 /* ExchangeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9C7F257F046900213F84 /* ExchangeScreen.storyboard */; };
 		35FA9C83257F046D00213F84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9C82257F046D00213F84 /* Assets.xcassets */; };
 		35FA9C86257F046D00213F84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9C84257F046D00213F84 /* LaunchScreen.storyboard */; };
 		35FA9C91257F046E00213F84 /* EasyMoneyExchangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C90257F046E00213F84 /* EasyMoneyExchangerTests.swift */; };
 		35FA9C9C257F046E00213F84 /* EasyMoneyExchangerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C9B257F046E00213F84 /* EasyMoneyExchangerUITests.swift */; };
+		35FA9CC7257F8E6900213F84 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CC6257F8E6900213F84 /* Coordinator.swift */; };
+		35FA9CCF257F8F2800213F84 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CCE257F8F2800213F84 /* Storyboarded.swift */; };
+		35FA9CD4257F909200213F84 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CD3257F909200213F84 /* MainCoordinator.swift */; };
+		35FA9CDC257F967600213F84 /* CurrenciesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9CDB257F967600213F84 /* CurrenciesScreen.storyboard */; };
+		35FA9CE1257F96AA00213F84 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CE0257F96AA00213F84 /* CurrenciesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +41,8 @@
 /* Begin PBXFileReference section */
 		35FA9C76257F046900213F84 /* EasyMoneyExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMoneyExchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA9C79257F046900213F84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		35FA9C7B257F046900213F84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		35FA9C7D257F046900213F84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		35FA9C80257F046900213F84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		35FA9C7D257F046900213F84 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		35FA9C80257F046900213F84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ExchangeScreen.storyboard; sourceTree = "<group>"; };
 		35FA9C82257F046D00213F84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35FA9C85257F046D00213F84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35FA9C87257F046D00213F84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,11 @@
 		35FA9C97257F046E00213F84 /* EasyMoneyExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyMoneyExchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA9C9B257F046E00213F84 /* EasyMoneyExchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyMoneyExchangerUITests.swift; sourceTree = "<group>"; };
 		35FA9C9D257F046E00213F84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35FA9CC6257F8E6900213F84 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		35FA9CCE257F8F2800213F84 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		35FA9CD3257F909200213F84 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		35FA9CDB257F967600213F84 /* CurrenciesScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrenciesScreen.storyboard; sourceTree = "<group>"; };
+		35FA9CE0257F96AA00213F84 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +107,10 @@
 		35FA9C78257F046900213F84 /* EasyMoneyExchanger */ = {
 			isa = PBXGroup;
 			children = (
+				35FA9CB5257F8D3100213F84 /* CurrenciesScreen */,
+				35FA9CAD257F279B00213F84 /* ExchangeScreen */,
+				35FA9CAC257F06D000213F84 /* Coordinator */,
 				35FA9C79257F046900213F84 /* AppDelegate.swift */,
-				35FA9C7B257F046900213F84 /* SceneDelegate.swift */,
-				35FA9C7D257F046900213F84 /* ViewController.swift */,
-				35FA9C7F257F046900213F84 /* Main.storyboard */,
 				35FA9C82257F046D00213F84 /* Assets.xcassets */,
 				35FA9C84257F046D00213F84 /* LaunchScreen.storyboard */,
 				35FA9C87257F046D00213F84 /* Info.plist */,
@@ -126,6 +134,98 @@
 				35FA9C9D257F046E00213F84 /* Info.plist */,
 			);
 			path = EasyMoneyExchangerUITests;
+			sourceTree = "<group>";
+		};
+		35FA9CAC257F06D000213F84 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9CC6257F8E6900213F84 /* Coordinator.swift */,
+				35FA9CCE257F8F2800213F84 /* Storyboarded.swift */,
+				35FA9CD3257F909200213F84 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		35FA9CAD257F279B00213F84 /* ExchangeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9CAF257F27D100213F84 /* Model */,
+				35FA9CAE257F27CC00213F84 /* View */,
+				35FA9CB0257F27D700213F84 /* ViewModel */,
+				35FA9CB1257F27E000213F84 /* Storyboard */,
+			);
+			path = ExchangeScreen;
+			sourceTree = "<group>";
+		};
+		35FA9CAE257F27CC00213F84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9C7D257F046900213F84 /* ExchangeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35FA9CAF257F27D100213F84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35FA9CB0257F27D700213F84 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		35FA9CB1257F27E000213F84 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9C7F257F046900213F84 /* ExchangeScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		35FA9CB5257F8D3100213F84 /* CurrenciesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9CB8257F8D6B00213F84 /* Model */,
+				35FA9CB9257F8D7100213F84 /* View */,
+				35FA9CB7257F8D5D00213F84 /* ViewModel */,
+				35FA9CB6257F8D4D00213F84 /* Storyboard */,
+			);
+			path = CurrenciesScreen;
+			sourceTree = "<group>";
+		};
+		35FA9CB6257F8D4D00213F84 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9CDB257F967600213F84 /* CurrenciesScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		35FA9CB7257F8D5D00213F84 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		35FA9CB8257F8D6B00213F84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35FA9CB9257F8D7100213F84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9CE0257F96AA00213F84 /* CurrenciesViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +332,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FA9C86257F046D00213F84 /* LaunchScreen.storyboard in Resources */,
+				35FA9CDC257F967600213F84 /* CurrenciesScreen.storyboard in Resources */,
 				35FA9C83257F046D00213F84 /* Assets.xcassets in Resources */,
-				35FA9C81257F046900213F84 /* Main.storyboard in Resources */,
+				35FA9C81257F046900213F84 /* ExchangeScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +359,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35FA9C7E257F046900213F84 /* ViewController.swift in Sources */,
+				35FA9CC7257F8E6900213F84 /* Coordinator.swift in Sources */,
+				35FA9CD4257F909200213F84 /* MainCoordinator.swift in Sources */,
+				35FA9C7E257F046900213F84 /* ExchangeViewController.swift in Sources */,
+				35FA9CE1257F96AA00213F84 /* CurrenciesViewController.swift in Sources */,
+				35FA9CCF257F8F2800213F84 /* Storyboarded.swift in Sources */,
 				35FA9C7A257F046900213F84 /* AppDelegate.swift in Sources */,
-				35FA9C7C257F046900213F84 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +400,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		35FA9C7F257F046900213F84 /* Main.storyboard */ = {
+		35FA9C7F257F046900213F84 /* ExchangeScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				35FA9C80257F046900213F84 /* Base */,
 			);
-			name = Main.storyboard;
+			name = ExchangeScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		35FA9C84257F046D00213F84 /* LaunchScreen.storyboard */ = {
