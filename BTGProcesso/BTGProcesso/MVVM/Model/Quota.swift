@@ -8,6 +8,10 @@
 import Foundation
 
 
+
+
 struct Quota: Decodable {
-    
+    var success: Bool
+    var source: String
+    var quotes: [String: Float]
 }
