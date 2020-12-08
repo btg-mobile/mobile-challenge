@@ -9,20 +9,19 @@ import Foundation
 import UIKit
 
 protocol Storyboarded {
-    static func instantiate()-> Self
+    static func instantiate() -> Self?
 }
 
-extension Storyboarded where Self: UIViewController{
-    static func instantiate(from storyboardName: UIStoryboard.Name) -> Self{
-        let id = String(describing: self)
+extension Storyboarded where Self: UIViewController {
+    static func instantiate(from storyboardName: UIStoryboard.Name) -> Self? {
+        let storyboardID = String(describing: self)
         let storyboard =  UIStoryboard(name: storyboardName.rawValue, bundle: Bundle.main)
-        
-        return storyboard.instantiateViewController(withIdentifier: id) as! Self
+        return storyboard.instantiateViewController(withIdentifier: storyboardID) as? Self
     }
 }
 
-extension UIStoryboard{
-    enum Name: String{
+extension UIStoryboard {
+    enum Name: String {
         case exchangeScreen = "ExchangeScreen"
         case currenciesScreen = "CurrenciesScreen"
     }
