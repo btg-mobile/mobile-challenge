@@ -12,9 +12,10 @@
 		CF524CE225807BD500E4468C /* TableViewDataSource+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */; };
 		CF524CEA2581040900E4468C /* QuotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CE92581040900E4468C /* QuotaViewModel.swift */; };
 		CF524CEF25810D1500E4468C /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CEE25810D1500E4468C /* ViewModelTests.swift */; };
+		CF524D342581497500E4468C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524D302581497500E4468C /* NetworkManager.swift */; };
+		CF524D352581497500E4468C /* APISource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524D312581497500E4468C /* APISource.swift */; };
+		CF524D362581497500E4468C /* QuotaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524D332581497500E4468C /* QuotaAPI.swift */; };
 		CF62B5B9257FFC5C00B7707E /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5B8257FFC5C00B7707E /* Coins.swift */; };
-		CF62B5C9257FFDAC00B7707E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */; };
-		CF62B5CA257FFDAC00B7707E /* QuotaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C7257FFDAC00B7707E /* QuotaAPI.swift */; };
 		CFCD7BC1257ED1D500FA3DB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BC0257ED1D500FA3DB9 /* AppDelegate.swift */; };
 		CFCD7BC3257ED1D500FA3DB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BC2257ED1D500FA3DB9 /* SceneDelegate.swift */; };
 		CFCD7BC5257ED1D500FA3DB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BC4257ED1D500FA3DB9 /* ViewController.swift */; };
@@ -24,7 +25,6 @@
 		CFCD7BE3257ED1D900FA3DB9 /* BTGProcessoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BE2257ED1D900FA3DB9 /* BTGProcessoUITests.swift */; };
 		CFEC320C257EE65300CB7FFA /* Quota.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC320B257EE65300CB7FFA /* Quota.swift */; };
 		CFEC3214257EE6EC00CB7FFA /* ServiceLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC3213257EE6EC00CB7FFA /* ServiceLayerTests.swift */; };
-		CFEDB9BE258003AA0041952D /* APISource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDB9BD258003AA0041952D /* APISource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +50,10 @@
 		CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewDataSource+Delegate.swift"; sourceTree = "<group>"; };
 		CF524CE92581040900E4468C /* QuotaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaViewModel.swift; sourceTree = "<group>"; };
 		CF524CEE25810D1500E4468C /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		CF524D302581497500E4468C /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CF524D312581497500E4468C /* APISource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISource.swift; sourceTree = "<group>"; };
+		CF524D332581497500E4468C /* QuotaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotaAPI.swift; sourceTree = "<group>"; };
 		CF62B5B8257FFC5C00B7707E /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
-		CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		CF62B5C7257FFDAC00B7707E /* QuotaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotaAPI.swift; sourceTree = "<group>"; };
 		CFCD7BBD257ED1D500FA3DB9 /* BTGProcesso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTGProcesso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCD7BC0257ED1D500FA3DB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFCD7BC2257ED1D500FA3DB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		CFCD7BE4257ED1D900FA3DB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFEC320B257EE65300CB7FFA /* Quota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quota.swift; sourceTree = "<group>"; };
 		CFEC3213257EE6EC00CB7FFA /* ServiceLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerTests.swift; sourceTree = "<group>"; };
-		CFEDB9BD258003AA0041952D /* APISource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +96,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF524D212581492500E4468C /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CF524D2E2581497500E4468C /* ServiceLayer */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		CF524D2E2581497500E4468C /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CF524D2F2581497500E4468C /* Manager */,
+				CF524D322581497500E4468C /* QuotaAPI */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		CF524D2F2581497500E4468C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CF524D302581497500E4468C /* NetworkManager.swift */,
+				CF524D312581497500E4468C /* APISource.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CF524D322581497500E4468C /* QuotaAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CF524D332581497500E4468C /* QuotaAPI.swift */,
+			);
+			path = QuotaAPI;
+			sourceTree = "<group>";
+		};
 		CF62B5BD257FFD0900B7707E /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,33 +165,6 @@
 				CF62B5B8257FFC5C00B7707E /* Coins.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		CF62B5C1257FFDAC00B7707E /* ServiceLayer */ = {
-			isa = PBXGroup;
-			children = (
-				CF62B5C4257FFDAC00B7707E /* Manager */,
-				CF62B5C6257FFDAC00B7707E /* QuotaAPI */,
-			);
-			name = ServiceLayer;
-			path = BTGProcesso/MVVM/Model/ServiceLayer;
-			sourceTree = SOURCE_ROOT;
-		};
-		CF62B5C4257FFDAC00B7707E /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */,
-				CFEDB9BD258003AA0041952D /* APISource.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		CF62B5C6257FFDAC00B7707E /* QuotaAPI */ = {
-			isa = PBXGroup;
-			children = (
-				CF62B5C7257FFDAC00B7707E /* QuotaAPI.swift */,
-			);
-			path = QuotaAPI;
 			sourceTree = "<group>";
 		};
 		CF62B5CE257FFE1500B7707E /* StoryBoards */ = {
@@ -202,8 +209,8 @@
 		CFCD7BBF257ED1D500FA3DB9 /* BTGProcesso */ = {
 			isa = PBXGroup;
 			children = (
+				CF524D212581492500E4468C /* Module */,
 				CFCD7BF4257ED71100FA3DB9 /* Common */,
-				CFCD7BF3257ED70500FA3DB9 /* Module */,
 				CF62B5BD257FFD0900B7707E /* MVVM */,
 				CFCD7BCE257ED1D900FA3DB9 /* Info.plist */,
 			);
@@ -227,14 +234,6 @@
 				CFCD7BE4257ED1D900FA3DB9 /* Info.plist */,
 			);
 			path = BTGProcessoUITests;
-			sourceTree = "<group>";
-		};
-		CFCD7BF3257ED70500FA3DB9 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				CF62B5C1257FFDAC00B7707E /* ServiceLayer */,
-			);
-			path = Module;
 			sourceTree = "<group>";
 		};
 		CFCD7BF4257ED71100FA3DB9 /* Common */ = {
@@ -378,17 +377,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF524CE225807BD500E4468C /* TableViewDataSource+Delegate.swift in Sources */,
+				CF524D362581497500E4468C /* QuotaAPI.swift in Sources */,
 				CF524CCB258056B300E4468C /* ViewCodingProtocol.swift in Sources */,
+				CF524D342581497500E4468C /* NetworkManager.swift in Sources */,
 				CFCD7BC5257ED1D500FA3DB9 /* ViewController.swift in Sources */,
 				CF62B5B9257FFC5C00B7707E /* Coins.swift in Sources */,
+				CF524D352581497500E4468C /* APISource.swift in Sources */,
 				CFCD7BC1257ED1D500FA3DB9 /* AppDelegate.swift in Sources */,
 				CF524CEA2581040900E4468C /* QuotaViewModel.swift in Sources */,
 				CF524CD0258058D600E4468C /* QuotaView.swift in Sources */,
-				CF62B5C9257FFDAC00B7707E /* NetworkManager.swift in Sources */,
 				CFCD7BC3257ED1D500FA3DB9 /* SceneDelegate.swift in Sources */,
-				CF62B5CA257FFDAC00B7707E /* QuotaAPI.swift in Sources */,
 				CFEC320C257EE65300CB7FFA /* Quota.swift in Sources */,
-				CFEDB9BE258003AA0041952D /* APISource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
