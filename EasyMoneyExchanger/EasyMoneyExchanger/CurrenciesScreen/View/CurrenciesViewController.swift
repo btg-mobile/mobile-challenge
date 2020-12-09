@@ -18,6 +18,5 @@ class CurrenciesViewController: UIViewController, Storyboarded {
     }
 
     @IBAction func goToExchange(_ sender: Any) {
-        coordinator?.goToExchangeScreen()
     }
 }

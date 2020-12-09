@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
-
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
@@ -19,15 +18,18 @@ class MainCoordinator: Coordinator {
 
     func start() {
         let viewController = ExchangeViewController.instantiate(from: UIStoryboard.Name.exchangeScreen)
+        let viewModel = ExchangeViewModel(currencyRates: RealtimeRates.init(timestamp: 0, quotes: ["": 0]), service: CurrencyLayerAPI())
+
         viewController?.coordinator = self
+        viewController?.viewModel = viewModel
         navigationController.pushViewController(viewController!, animated: true)
     }
 
     // MARK: - Navigation Functions
-
-    func goToExchangeScreen() {
+    func goToExchangeScreen(with viewModel: ExchangeViewModel) {
         let viewController = ExchangeViewController.instantiate(from: UIStoryboard.Name.exchangeScreen)
         viewController?.coordinator = self
+        viewController?.viewModel = viewModel
         navigationController.popViewController(animated: true)
     }
 

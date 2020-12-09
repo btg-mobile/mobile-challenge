@@ -10,9 +10,10 @@ import UIKit
 
 class ExchangeViewController: UITableViewController, Storyboarded {
     static func instantiate() -> Self? {
-        return ExchangeViewController() as? Self
+        return nil
     }
 
+    var  viewModel: ExchangeViewModel?
     var  animationView: AnimationView?
     weak var coordinator: MainCoordinator?
 
@@ -166,6 +167,8 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     @IBAction func onPressTo(_ sender: Any) {
     }
     @IBAction func onPressConvert(_ sender: Any) {
+        print("Passou")
+        viewModel?.fetchRealtimeRates()
     }
 
 }
