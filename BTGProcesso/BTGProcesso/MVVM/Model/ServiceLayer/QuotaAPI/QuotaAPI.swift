@@ -14,15 +14,20 @@ public class QuotaAPI {
         NetworkManager()
     }()
     
-    func request<T: Decodable>(url: URL, completion: @escaping (T?) -> Void) {
-        manager.request(url: url) { (result: Result<T, Error>) in
-            switch result {
-            
-            case .success(_):
-                completion(try? result.get())
-            case .failure(_):
-                completion(nil)
+    func request<T: Decodable>(with resource: APIResource, completion: @escaping (T?) -> Void) {
+        do {
+            let request = try resource.request()
+            manager.request(with: request) { (result: Result<T, Error>) in
+                switch result {
+                
+                case .success(_):
+                    completion(try? result.get())
+                case .failure(_):
+                    completion(nil)
+                }
             }
+        } catch {
+            completion(nil)
         }
     }
 }

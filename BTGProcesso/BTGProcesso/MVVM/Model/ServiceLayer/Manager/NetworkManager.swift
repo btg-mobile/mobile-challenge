@@ -18,8 +18,8 @@ public class NetworkManager {
        JSONDecoder()
     }()
     
-    public func request<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void) {
-        session.dataTask(with: url, completionHandler: { data, response, error in
+    public func request<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
+        session.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 completion(.failure(error!))
                 return
@@ -30,17 +30,15 @@ public class NetworkManager {
                 return
             }
             
-            
-            
             do{
                 let object = try self.decoder.decode(T.self, from: data)
                 completion(.success(object))
-            } catch {
+            } catch let error {
                 completion(.failure(error))
             }
             
-            
-        }).resume()
+        }.resume()
+        
     }
     
 }

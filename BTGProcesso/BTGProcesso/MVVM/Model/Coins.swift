@@ -14,8 +14,9 @@ struct Coins {
     
 }
 
-extension Coins {
+extension Coins: Decodable {
     enum CodingKeys: String, CodingKey {
+        case success
         case coins = "currencies"
     }
 }
