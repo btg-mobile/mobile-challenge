@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35F16FCE257FD97200481772 /* homeAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 35F16FCD257FD97200481772 /* homeAnimation.json */; };
+		35F16FD325800F0A00481772 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F16FD225800F0A00481772 /* Strings.swift */; };
 		35FA9C7A257F046900213F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C79257F046900213F84 /* AppDelegate.swift */; };
 		35FA9C7E257F046900213F84 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C7D257F046900213F84 /* ExchangeViewController.swift */; };
 		35FA9C81257F046900213F84 /* ExchangeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9C7F257F046900213F84 /* ExchangeScreen.storyboard */; };
@@ -19,6 +21,10 @@
 		35FA9CD4257F909200213F84 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CD3257F909200213F84 /* MainCoordinator.swift */; };
 		35FA9CDC257F967600213F84 /* CurrenciesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA9CDB257F967600213F84 /* CurrenciesScreen.storyboard */; };
 		35FA9CE1257F96AA00213F84 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CE0257F96AA00213F84 /* CurrenciesViewController.swift */; };
+		35FA9CEA257FA18900213F84 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9CE9257FA18900213F84 /* Colors.swift */; };
+		52BE84BF5750D54D1B8C6D67 /* Pods_EasyMoneyExchanger_EasyMoneyExchangerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D14E6FD35D4FCA8CE4A69D /* Pods_EasyMoneyExchanger_EasyMoneyExchangerUITests.framework */; };
+		B4C24EDCC71013BB5DC5CE96 /* Pods_EasyMoneyExchangerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A566ED7D57CE14909C200D4 /* Pods_EasyMoneyExchangerTests.framework */; };
+		F363644E49339B43CE755072 /* Pods_EasyMoneyExchanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560CAF7924CE05E90C068189 /* Pods_EasyMoneyExchanger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00D3E337A5E6D8312E19D03A /* Pods-EasyMoneyExchangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMoneyExchangerTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyMoneyExchangerTests/Pods-EasyMoneyExchangerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		35F16FCD257FD97200481772 /* homeAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeAnimation.json; sourceTree = "<group>"; };
+		35F16FD225800F0A00481772 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		35FA9C76257F046900213F84 /* EasyMoneyExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMoneyExchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA9C79257F046900213F84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35FA9C7D257F046900213F84 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +66,15 @@
 		35FA9CD3257F909200213F84 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		35FA9CDB257F967600213F84 /* CurrenciesScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrenciesScreen.storyboard; sourceTree = "<group>"; };
 		35FA9CE0257F96AA00213F84 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
+		35FA9CE9257FA18900213F84 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		560CAF7924CE05E90C068189 /* Pods_EasyMoneyExchanger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyMoneyExchanger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A7D9EC7BC82807C2A551A58 /* Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.debug.xcconfig"; path = "Target Support Files/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		611DB02194DC3614EC9D0D87 /* Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		67D14E6FD35D4FCA8CE4A69D /* Pods_EasyMoneyExchanger_EasyMoneyExchangerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyMoneyExchanger_EasyMoneyExchangerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C19E873B27D8AE2D6ADB2E6 /* Pods-EasyMoneyExchanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMoneyExchanger.release.xcconfig"; path = "Target Support Files/Pods-EasyMoneyExchanger/Pods-EasyMoneyExchanger.release.xcconfig"; sourceTree = "<group>"; };
+		76473044AEFAE107CD861828 /* Pods-EasyMoneyExchanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMoneyExchanger.debug.xcconfig"; path = "Target Support Files/Pods-EasyMoneyExchanger/Pods-EasyMoneyExchanger.debug.xcconfig"; sourceTree = "<group>"; };
+		7A566ED7D57CE14909C200D4 /* Pods_EasyMoneyExchangerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyMoneyExchangerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3D0D5000B23953F1606E14E /* Pods-EasyMoneyExchangerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMoneyExchangerTests.release.xcconfig"; path = "Target Support Files/Pods-EasyMoneyExchangerTests/Pods-EasyMoneyExchangerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F363644E49339B43CE755072 /* Pods_EasyMoneyExchanger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C24EDCC71013BB5DC5CE96 /* Pods_EasyMoneyExchangerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +98,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52BE84BF5750D54D1B8C6D67 /* Pods_EasyMoneyExchanger_EasyMoneyExchangerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35E677EF25810FC8007590F2 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				35F16FCD257FD97200481772 /* homeAnimation.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		35E677F025810FD2007590F2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9C82257F046D00213F84 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		35F16FCC257FD94B00481772 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35E677F025810FD2007590F2 /* Images */,
+				35E677EF25810FC8007590F2 /* Animations */,
+				35FA9C84257F046D00213F84 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		35FA9C6D257F046900213F84 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +138,8 @@
 				35FA9C8F257F046E00213F84 /* EasyMoneyExchangerTests */,
 				35FA9C9A257F046E00213F84 /* EasyMoneyExchangerUITests */,
 				35FA9C77257F046900213F84 /* Products */,
+				831ED7C9185A2F50CE76F230 /* Pods */,
+				71A49C76CD522B683287546E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,12 +156,12 @@
 		35FA9C78257F046900213F84 /* EasyMoneyExchanger */ = {
 			isa = PBXGroup;
 			children = (
+				35F16FCC257FD94B00481772 /* Resources */,
+				35FA9CE8257FA17600213F84 /* Constants */,
 				35FA9CB5257F8D3100213F84 /* CurrenciesScreen */,
 				35FA9CAD257F279B00213F84 /* ExchangeScreen */,
 				35FA9CAC257F06D000213F84 /* Coordinator */,
 				35FA9C79257F046900213F84 /* AppDelegate.swift */,
-				35FA9C82257F046D00213F84 /* Assets.xcassets */,
-				35FA9C84257F046D00213F84 /* LaunchScreen.storyboard */,
 				35FA9C87257F046D00213F84 /* Info.plist */,
 			);
 			path = EasyMoneyExchanger;
@@ -228,6 +277,38 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		35FA9CE8257FA17600213F84 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				35FA9CE9257FA18900213F84 /* Colors.swift */,
+				35F16FD225800F0A00481772 /* Strings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		71A49C76CD522B683287546E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				560CAF7924CE05E90C068189 /* Pods_EasyMoneyExchanger.framework */,
+				67D14E6FD35D4FCA8CE4A69D /* Pods_EasyMoneyExchanger_EasyMoneyExchangerUITests.framework */,
+				7A566ED7D57CE14909C200D4 /* Pods_EasyMoneyExchangerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		831ED7C9185A2F50CE76F230 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76473044AEFAE107CD861828 /* Pods-EasyMoneyExchanger.debug.xcconfig */,
+				6C19E873B27D8AE2D6ADB2E6 /* Pods-EasyMoneyExchanger.release.xcconfig */,
+				5A7D9EC7BC82807C2A551A58 /* Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.debug.xcconfig */,
+				611DB02194DC3614EC9D0D87 /* Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.release.xcconfig */,
+				00D3E337A5E6D8312E19D03A /* Pods-EasyMoneyExchangerTests.debug.xcconfig */,
+				A3D0D5000B23953F1606E14E /* Pods-EasyMoneyExchangerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,9 +316,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35FA9CA0257F046E00213F84 /* Build configuration list for PBXNativeTarget "EasyMoneyExchanger" */;
 			buildPhases = (
+				F6CA3B7422C4E306DBFA857A /* [CP] Check Pods Manifest.lock */,
+				35FA9DA3257FB7E500213F84 /* ShellScript */,
 				35FA9C72257F046900213F84 /* Sources */,
 				35FA9C73257F046900213F84 /* Frameworks */,
 				35FA9C74257F046900213F84 /* Resources */,
+				353B80485785A496519FFB85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35FA9CA3257F046E00213F84 /* Build configuration list for PBXNativeTarget "EasyMoneyExchangerTests" */;
 			buildPhases = (
+				C2AB95591A25FA023DAC080A /* [CP] Check Pods Manifest.lock */,
 				35FA9C88257F046E00213F84 /* Sources */,
 				35FA9C89257F046E00213F84 /* Frameworks */,
 				35FA9C8A257F046E00213F84 /* Resources */,
@@ -270,9 +355,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35FA9CA6257F046E00213F84 /* Build configuration list for PBXNativeTarget "EasyMoneyExchangerUITests" */;
 			buildPhases = (
+				A7C1E6DAA705E406AF656B15 /* [CP] Check Pods Manifest.lock */,
 				35FA9C93257F046E00213F84 /* Sources */,
 				35FA9C94257F046E00213F84 /* Frameworks */,
 				35FA9C95257F046E00213F84 /* Resources */,
+				CC0F1A2458B9BBC4E797B803 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35F16FCE257FD97200481772 /* homeAnimation.json in Resources */,
 				35FA9C86257F046D00213F84 /* LaunchScreen.storyboard in Resources */,
 				35FA9CDC257F967600213F84 /* CurrenciesScreen.storyboard in Resources */,
 				35FA9C83257F046D00213F84 /* Assets.xcassets in Resources */,
@@ -354,6 +442,126 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		353B80485785A496519FFB85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyMoneyExchanger/Pods-EasyMoneyExchanger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyMoneyExchanger/Pods-EasyMoneyExchanger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyMoneyExchanger/Pods-EasyMoneyExchanger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35FA9DA3257FB7E500213F84 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		A7C1E6DAA705E406AF656B15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2AB95591A25FA023DAC080A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyMoneyExchangerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC0F1A2458B9BBC4E797B803 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests/Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6CA3B7422C4E306DBFA857A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyMoneyExchanger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35FA9C72257F046900213F84 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -361,7 +569,9 @@
 			files = (
 				35FA9CC7257F8E6900213F84 /* Coordinator.swift in Sources */,
 				35FA9CD4257F909200213F84 /* MainCoordinator.swift in Sources */,
+				35F16FD325800F0A00481772 /* Strings.swift in Sources */,
 				35FA9C7E257F046900213F84 /* ExchangeViewController.swift in Sources */,
+				35FA9CEA257FA18900213F84 /* Colors.swift in Sources */,
 				35FA9CE1257F96AA00213F84 /* CurrenciesViewController.swift in Sources */,
 				35FA9CCF257F8F2800213F84 /* Storyboarded.swift in Sources */,
 				35FA9C7A257F046900213F84 /* AppDelegate.swift in Sources */,
@@ -470,7 +680,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -525,7 +735,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -537,12 +747,15 @@
 		};
 		35FA9CA1257F046E00213F84 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76473044AEFAE107CD861828 /* Pods-EasyMoneyExchanger.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 298LMVZB5H;
 				INFOPLIST_FILE = EasyMoneyExchanger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -556,12 +769,15 @@
 		};
 		35FA9CA2257F046E00213F84 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C19E873B27D8AE2D6ADB2E6 /* Pods-EasyMoneyExchanger.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 298LMVZB5H;
 				INFOPLIST_FILE = EasyMoneyExchanger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,6 +791,7 @@
 		};
 		35FA9CA4257F046E00213F84 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00D3E337A5E6D8312E19D03A /* Pods-EasyMoneyExchangerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -597,6 +814,7 @@
 		};
 		35FA9CA5257F046E00213F84 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3D0D5000B23953F1606E14E /* Pods-EasyMoneyExchangerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -619,6 +837,7 @@
 		};
 		35FA9CA7257F046E00213F84 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A7D9EC7BC82807C2A551A58 /* Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -639,6 +858,7 @@
 		};
 		35FA9CA8257F046E00213F84 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 611DB02194DC3614EC9D0D87 /* Pods-EasyMoneyExchanger-EasyMoneyExchangerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 struct Colors {
-    static let mainColor = getColor(red: 59, green: 189, blue: 175, alpha: 1)
+    static let primaryColor = getColor(red: 59, green: 189, blue: 175, alpha: 1)
+    static let secondaryColor = UIColor.systemGray5
+    static let labelColor = UIColor.label
 }
 
 func getColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
