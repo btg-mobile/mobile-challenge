@@ -20,14 +20,14 @@ class ViewModelTests: XCTestCase {
         viewModel.didFinishFetchCoins = {
             XCTAssertNotNil(viewModel.siglaCoins)
             XCTAssertNotNil(viewModel.nameCoins)
-            debugPrint(viewModel.siglaCoins)
-            debugPrint(viewModel.nameCoins)
+            debugPrint(viewModel.siglaCoins!)
+            debugPrint(viewModel.nameCoins!)
         }
         
         viewModel.fetchQuota(with: "EUR")
         viewModel.didFinishFetchQuota = {
             XCTAssertNotNil(viewModel.quota)
-            debugPrint(viewModel.quota)
+            debugPrint(viewModel.quota!)
         }
     }
 }

@@ -41,7 +41,7 @@ extension DataSource: UITableViewDataSource {
 class Delegate: NSObject {
     var view: QuotaView?
     var identifier: String?
-    var didSelectItem: ((IndexPath?) -> ())?
+    var didSelectItem: ((IndexPath, String?) -> ())?
 }
 
 extension Delegate: UITableViewDelegate {
@@ -58,7 +58,7 @@ extension Delegate: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        didSelectItem?(indexPath)
+        didSelectItem?(indexPath,cell?.textLabel?.text)
         if identifier == "QuotaTableViewtCellOrigin" {
             view?.animationTableViewOrigin()
         } else {

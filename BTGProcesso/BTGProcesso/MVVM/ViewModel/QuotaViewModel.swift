@@ -34,8 +34,15 @@ class QuotaViewModel {
     
     var quota: [String : Float]? {
         didSet {
+            quotaDestiny = quota?.first?.value
             didFinishFetchQuota?()
         }
+    }
+    
+    var dolarValue: Float?
+    var quotaDestiny: Float?
+    var newValue: Float? {
+        quotaDestiny! * dolarValue!
     }
     
     init(dataServiceAPI: QuotaAPI) {
@@ -59,4 +66,15 @@ class QuotaViewModel {
             self.quota = quota.quotes
         }
     }
+    
+    func convertToDolar(with currencies: String, value: Float) {
+        let api = APIResource(endpoint: .live, httpMethod: .get, parameters: [.currencies: currencies])
+
+        manager.request(with: api) { (quota: Quota?) in
+            guard let quota = quota else {return}
+            self.dolarValue = value / quota.quotes.first!.value
+            
+        }
+    }
+
 }

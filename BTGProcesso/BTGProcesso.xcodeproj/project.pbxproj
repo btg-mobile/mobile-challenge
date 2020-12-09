@@ -13,6 +13,7 @@
 		CF524CE225807BD500E4468C /* TableViewDataSource+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */; };
 		CF524CEA2581040900E4468C /* QuotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CE92581040900E4468C /* QuotaViewModel.swift */; };
 		CF524CEF25810D1500E4468C /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CEE25810D1500E4468C /* ViewModelTests.swift */; };
+		CF524CFA2581300900E4468C /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CF92581300900E4468C /* Convert.swift */; };
 		CF62B5B9257FFC5C00B7707E /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5B8257FFC5C00B7707E /* Coins.swift */; };
 		CF62B5C8257FFDAC00B7707E /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C3257FFDAC00B7707E /* NetworkRequest.swift */; };
 		CF62B5C9257FFDAC00B7707E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */; };
@@ -53,6 +54,7 @@
 		CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewDataSource+Delegate.swift"; sourceTree = "<group>"; };
 		CF524CE92581040900E4468C /* QuotaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaViewModel.swift; sourceTree = "<group>"; };
 		CF524CEE25810D1500E4468C /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		CF524CF92581300900E4468C /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		CF62B5B8257FFC5C00B7707E /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		CF62B5C3257FFDAC00B7707E /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				CFEC320B257EE65300CB7FFA /* Quota.swift */,
 				CF62B5B8257FFC5C00B7707E /* Coins.swift */,
+				CF524CF92581300900E4468C /* Convert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF524CE225807BD500E4468C /* TableViewDataSource+Delegate.swift in Sources */,
+				CF524CFA2581300900E4468C /* Convert.swift in Sources */,
 				CF524CCB258056B300E4468C /* ViewCodingProtocol.swift in Sources */,
 				CFCD7BC5257ED1D500FA3DB9 /* ViewController.swift in Sources */,
 				CF62B5B9257FFC5C00B7707E /* Coins.swift in Sources */,

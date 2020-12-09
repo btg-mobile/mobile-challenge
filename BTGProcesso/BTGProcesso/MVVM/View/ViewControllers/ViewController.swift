@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         quota.translatesAutoresizingMaskIntoConstraints = false
         quota.layer.cornerRadius = 30
         quota.layer.masksToBounds = true
+        quota.delegate = self
         
         return quota
     }()
@@ -53,32 +54,18 @@ class ViewController: UIViewController {
             nameCoins = viewModel.nameCoins
         }
     }
-    func calculate(index: IndexPath) {
+    func calculate(from index: IndexPath, to outherIndex: IndexPath, value: Float) {
         guard let siglas = siglas else {
             getCoins()
             return
         }
         
-        viewModel.fetchQuota(with: siglas[index.row])
-        viewModel.didFinishFetchQuota = {
-            
+        viewModel.convertToDolar(with: siglas[index.row], value: value)
+        viewModel.fetchQuota(with: siglas[outherIndex.row])
+        viewModel.didFinishFetchQuota = { [self] in
+            quotaView.newValue = viewModel.newValue ?? 0
         }
     }
-    
-//    func test_viewModel() {
-//        let viewModel = QuotaViewModel(dataServiceAPI: QuotaAPI())
-//        viewModel.fetchCoins()
-//        viewModel.didFinishFetchCoins = {
-//            debugPrint(viewModel.siglaCoins)
-//            debugPrint(viewModel.nameCoins)
-//        }
-//
-//        viewModel.fetchQuota(with: "EUR")
-//        viewModel.didFinishFetchQuota = {
-//
-//            debugPrint(viewModel.quota)
-//        }
-//    }
 
 }
 
