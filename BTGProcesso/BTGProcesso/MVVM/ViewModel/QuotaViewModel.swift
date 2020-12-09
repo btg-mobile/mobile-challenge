@@ -14,6 +14,7 @@ class QuotaViewModel {
     
     var didFinishFetchCoins: (() -> ())?
     var didFinishFetchQuota: (() -> ())?
+    var didFinishConvertToDolar: (() -> ())?
 
     private var coin: [String : String]? {
         didSet {
@@ -73,7 +74,7 @@ class QuotaViewModel {
         manager.request(with: api) { (quota: Quota?) in
             guard let quota = quota else {return}
             self.dolarValue = value / quota.quotes.first!.value
-            
+            self.didFinishConvertToDolar?()
         }
     }
 

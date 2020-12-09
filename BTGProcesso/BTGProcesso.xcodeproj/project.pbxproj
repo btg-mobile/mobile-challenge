@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		CF524CCB258056B300E4468C /* ViewCodingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CCA258056B300E4468C /* ViewCodingProtocol.swift */; };
 		CF524CD0258058D600E4468C /* QuotaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CCF258058D600E4468C /* QuotaView.swift */; };
-		CF524CDD25805D3B00E4468C /* QuotaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CDC25805D3B00E4468C /* QuotaTableViewCell.swift */; };
 		CF524CE225807BD500E4468C /* TableViewDataSource+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */; };
 		CF524CEA2581040900E4468C /* QuotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CE92581040900E4468C /* QuotaViewModel.swift */; };
 		CF524CEF25810D1500E4468C /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CEE25810D1500E4468C /* ViewModelTests.swift */; };
-		CF524CFA2581300900E4468C /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF524CF92581300900E4468C /* Convert.swift */; };
 		CF62B5B9257FFC5C00B7707E /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5B8257FFC5C00B7707E /* Coins.swift */; };
-		CF62B5C8257FFDAC00B7707E /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C3257FFDAC00B7707E /* NetworkRequest.swift */; };
 		CF62B5C9257FFDAC00B7707E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */; };
 		CF62B5CA257FFDAC00B7707E /* QuotaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62B5C7257FFDAC00B7707E /* QuotaAPI.swift */; };
 		CFCD7BC1257ED1D500FA3DB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7BC0257ED1D500FA3DB9 /* AppDelegate.swift */; };
@@ -50,13 +47,10 @@
 /* Begin PBXFileReference section */
 		CF524CCA258056B300E4468C /* ViewCodingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodingProtocol.swift; sourceTree = "<group>"; };
 		CF524CCF258058D600E4468C /* QuotaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaView.swift; sourceTree = "<group>"; };
-		CF524CDC25805D3B00E4468C /* QuotaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaTableViewCell.swift; sourceTree = "<group>"; };
 		CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewDataSource+Delegate.swift"; sourceTree = "<group>"; };
 		CF524CE92581040900E4468C /* QuotaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaViewModel.swift; sourceTree = "<group>"; };
 		CF524CEE25810D1500E4468C /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
-		CF524CF92581300900E4468C /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		CF62B5B8257FFC5C00B7707E /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
-		CF62B5C3257FFDAC00B7707E /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		CF62B5C5257FFDAC00B7707E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CF62B5C7257FFDAC00B7707E /* QuotaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotaAPI.swift; sourceTree = "<group>"; };
 		CFCD7BBD257ED1D500FA3DB9 /* BTGProcesso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTGProcesso.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +129,6 @@
 			children = (
 				CFEC320B257EE65300CB7FFA /* Quota.swift */,
 				CF62B5B8257FFC5C00B7707E /* Coins.swift */,
-				CF524CF92581300900E4468C /* Convert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,21 +136,12 @@
 		CF62B5C1257FFDAC00B7707E /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				CF62B5C2257FFDAC00B7707E /* Protocol */,
 				CF62B5C4257FFDAC00B7707E /* Manager */,
 				CF62B5C6257FFDAC00B7707E /* QuotaAPI */,
 			);
 			name = ServiceLayer;
 			path = BTGProcesso/MVVM/Model/ServiceLayer;
 			sourceTree = SOURCE_ROOT;
-		};
-		CF62B5C2257FFDAC00B7707E /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				CF62B5C3257FFDAC00B7707E /* NetworkRequest.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
 		};
 		CF62B5C4257FFDAC00B7707E /* Manager */ = {
 			isa = PBXGroup;
@@ -190,7 +174,6 @@
 			children = (
 				CFCD7BC4257ED1D500FA3DB9 /* ViewController.swift */,
 				CF524CCF258058D600E4468C /* QuotaView.swift */,
-				CF524CDC25805D3B00E4468C /* QuotaTableViewCell.swift */,
 				CF524CE125807BD500E4468C /* TableViewDataSource+Delegate.swift */,
 			);
 			path = ViewControllers;
@@ -395,18 +378,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF524CE225807BD500E4468C /* TableViewDataSource+Delegate.swift in Sources */,
-				CF524CFA2581300900E4468C /* Convert.swift in Sources */,
 				CF524CCB258056B300E4468C /* ViewCodingProtocol.swift in Sources */,
 				CFCD7BC5257ED1D500FA3DB9 /* ViewController.swift in Sources */,
 				CF62B5B9257FFC5C00B7707E /* Coins.swift in Sources */,
 				CFCD7BC1257ED1D500FA3DB9 /* AppDelegate.swift in Sources */,
 				CF524CEA2581040900E4468C /* QuotaViewModel.swift in Sources */,
-				CF524CDD25805D3B00E4468C /* QuotaTableViewCell.swift in Sources */,
 				CF524CD0258058D600E4468C /* QuotaView.swift in Sources */,
 				CF62B5C9257FFDAC00B7707E /* NetworkManager.swift in Sources */,
 				CFCD7BC3257ED1D500FA3DB9 /* SceneDelegate.swift in Sources */,
 				CF62B5CA257FFDAC00B7707E /* QuotaAPI.swift in Sources */,
-				CF62B5C8257FFDAC00B7707E /* NetworkRequest.swift in Sources */,
 				CFEC320C257EE65300CB7FFA /* Quota.swift in Sources */,
 				CFEDB9BE258003AA0041952D /* APISource.swift in Sources */,
 			);

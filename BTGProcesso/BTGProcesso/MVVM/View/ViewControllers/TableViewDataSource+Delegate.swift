@@ -9,14 +9,12 @@ import UIKit
 
 class DataSource: NSObject {
     
-    var coins: [String]
+    var coins: [String] = []
     var cellID: String
    
     
-    init(coins: [String], cellID: String) {
-        self.coins = coins
+    init(cellID: String) {
         self.cellID = cellID
-        
     }
 }
 

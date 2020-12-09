@@ -19,6 +19,7 @@ class QuotaView: UIView {
         textField.textAlignment = .right
         textField.backgroundColor = .white
         textField.textColor = .lightGray
+        textField.backgroundColor = UIColor.init(red: 197/255, green: 222/255, blue: 229/255, alpha: 1)
         
         return textField
     }()
@@ -89,22 +90,14 @@ class QuotaView: UIView {
         return label
     }()
     
-    var value: Float = 1.0 {
-        didSet {
-            textFieldView.text = String(value) + " " + maincoin
-        }
-    }
+    var value: Float = 1.0
     
-    private var maincoin: String = "EUA" {
-        didSet {
-            textFieldView.text = String(value) + " " + maincoin
-        }
-    }
+    private var maincoin: String = "EUA"
     
     var newValue: Float = 0.0 {
         didSet {
             DispatchQueue.main.async {
-                self.resultLabelView.text = String(self.newValue) + " " + self.destinyCoin
+                self.resultLabelView.text = String(format: "%.2f",self.newValue) + " " + self.destinyCoin
             }
         }
     }
@@ -116,8 +109,8 @@ class QuotaView: UIView {
     }
     
     private lazy var dataSources: [DataSource] = {
-        [DataSource(coins: [], cellID: "QuotaTableViewtCellOrigin"),
-         DataSource(coins: [], cellID: "QuotaTableViewtCellDestiny")]
+        [DataSource(cellID: "QuotaTableViewtCellOrigin"),
+         DataSource(cellID: "QuotaTableViewtCellDestiny")]
     }()
     
     private lazy var delegates: [Delegate] = {

@@ -47,6 +47,7 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         getCoins()
     }
+    
     func getCoins() {
         viewModel.fetchCoins()
         viewModel.didFinishFetchCoins = { [self] in
@@ -54,6 +55,7 @@ class ViewController: UIViewController {
             nameCoins = viewModel.nameCoins
         }
     }
+    
     func calculate(from index: IndexPath, to outherIndex: IndexPath, value: Float) {
         guard let siglas = siglas else {
             getCoins()
@@ -61,7 +63,9 @@ class ViewController: UIViewController {
         }
         
         viewModel.convertToDolar(with: siglas[index.row], value: value)
-        viewModel.fetchQuota(with: siglas[outherIndex.row])
+        viewModel.didFinishConvertToDolar = {
+            self.viewModel.fetchQuota(with: siglas[outherIndex.row])
+        }
         viewModel.didFinishFetchQuota = { [self] in
             quotaView.newValue = viewModel.newValue ?? 0
         }
