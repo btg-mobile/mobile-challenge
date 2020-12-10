@@ -18,7 +18,8 @@ class MainCoordinator: Coordinator {
 
     func start() {
         let viewController = ExchangeViewController.instantiate(from: UIStoryboard.Name.exchangeScreen)
-        let viewModel = ExchangeViewModel(currencyRates: RealtimeRates.init(timestamp: 0, quotes: ["": 0]), service: CurrencyLayerAPI())
+        let viewModel = ExchangeViewModel(currencyRates: RealtimeRates.init(timestamp: 0, quotes: ["": 0]), service: CurrencyLayerAPI(),
+                                          supportedCurrencies: SupportedCurrencies.init(currencies: ["": ""]))
 
         viewController?.coordinator = self
         viewController?.viewModel = viewModel

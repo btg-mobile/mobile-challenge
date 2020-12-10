@@ -14,7 +14,13 @@ class CurrenciesViewController: UIViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = Colors.primaryColor
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onPressAdd))
         // Do any additional setup after loading the view.
+    }
+
+    @objc func onPressAdd() {
+
     }
 
     @IBAction func goToExchange(_ sender: Any) {
