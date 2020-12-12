@@ -14,34 +14,31 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     }
 
     var  viewModel: ExchangeViewModel?
+    var  currencyViewModel: SupportedCurrenciesViewModel?
     var  animationView: AnimationView?
     weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAnimationView()
+        viewModel?.initApplication(tableView: self.tableView)
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         playHomeAnimation()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
         playHomeAnimation()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-               traitCollection.userInterfaceStyle == .dark ? setupAnimationView() : setupAnimationView()
-            }
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+           traitCollection.userInterfaceStyle == .dark ? setupAnimationView() : setupAnimationView()
         }
     }
 
@@ -51,7 +48,6 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     }
 
     func setupAnimationView() {
-        print("PASSOU")
         let strokeKeyPath = AnimationKeypath(keypath: "**.Group 1.Stroke 1.Color")
         let fillKeyPath = AnimationKeypath(keypath: "**.Group 1.Fill 1.Color")
         let colorProvider = ColorValueProvider(Colors.primaryColor!.lottieColorValue)
@@ -150,6 +146,8 @@ class ExchangeViewController: UITableViewController, Storyboarded {
             let buttonIcon = UIImage(
                 systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .light)
             )?.withTintColor(Colors.labelColor, renderingMode: .alwaysOriginal)
+            fromButton.contentHorizontalAlignment = .left
+            fromButton.setTitle(Strings.ExchangeScreen.formButton, for: .normal)
             fromButton.setTitleColor(Colors.labelColor, for: .normal)
             fromButton.setImage(buttonIcon, for: .normal)
             fromButton.layer.cornerRadius = 5
@@ -162,6 +160,8 @@ class ExchangeViewController: UITableViewController, Storyboarded {
             let buttonIcon = UIImage(
                 systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .light)
             )?.withTintColor(Colors.labelColor, renderingMode: .alwaysOriginal)
+            toButton.contentHorizontalAlignment = .left
+            toButton.setTitle(Strings.ExchangeScreen.toButton, for: .normal)
             toButton.setTitleColor(Colors.labelColor, for: .normal)
             toButton.setImage(buttonIcon, for: .normal)
             toButton.layer.cornerRadius = 5
@@ -183,7 +183,7 @@ class ExchangeViewController: UITableViewController, Storyboarded {
         view.endEditing(true)
     }
     @IBAction func goToCurrenciesScreen(_ sender: Any) {
-        coordinator?.goToCurrenciesScreen()
+        coordinator?.goToCurrenciesScreen(with: currencyViewModel!)
     }
     @IBAction func updateCurrencyValues(_ sender: Any) {
     }
@@ -192,7 +192,6 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     @IBAction func onPressTo(_ sender: Any) {
     }
     @IBAction func onPressConvert(_ sender: Any) {
-        //  viewModel?.fetchSupportedCurrencies()
     }
 
 }

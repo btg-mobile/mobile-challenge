@@ -146,7 +146,6 @@
                                         <constraint firstAttribute="height" constant="30" id="9uf-dm-TGd"/>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="tX1-fx-lt0"/>
                                     </constraints>
-                                    <inset key="titleEdgeInsets" minX="-150" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="270" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="🇧🇷 Brazilian Real" image="chevron.down" catalog="system"/>
                                     <connections>
@@ -174,7 +173,6 @@
                                         <constraint firstAttribute="height" constant="30" id="XR6-Ee-tmX"/>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="j4b-Yg-01o"/>
                                     </constraints>
-                                    <inset key="titleEdgeInsets" minX="-90" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="270" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="🇺🇸 United States Dollar" image="chevron.down" catalog="system"/>
                                     <connections>

@@ -11,6 +11,8 @@ import UIKit
 struct Flags {
     static let codeToFlag =
         [
+            "BYN": "🏳️ New Belarusian Ruble",
+            "AED": "🏳️ United Arab Emirates Dirham",
             "AFN": "🏳️ Afghan Afghani"  ,
             "ALL": "🏳️ Albanian Lek"  ,
             "AMD": "🏳️ Armenian Dram"  ,

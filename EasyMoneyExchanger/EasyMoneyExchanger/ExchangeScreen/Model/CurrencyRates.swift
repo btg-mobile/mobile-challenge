@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RealtimeRates: Codable {
+struct CurrencyRates: Codable {
     let timestamp: Int
     let quotes: [String: Float]
 }

@@ -23,6 +23,6 @@ extension Storyboarded where Self: UIViewController {
 extension UIStoryboard {
     enum Name: String {
         case exchangeScreen = "ExchangeScreen"
-        case currenciesScreen = "CurrenciesScreen"
+        case currenciesScreen = "SupportedCurrenciesScreen"
     }
 }

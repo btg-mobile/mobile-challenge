@@ -4,43 +4,44 @@
 //
 //  Created by Leon on 09/12/20.
 //
-
+import UIKit
 import Foundation
+
 class ExchangeViewModel {
-    var supportedCurrencies: SupportedCurrencies
-    var currencyRates: RealtimeRates
+
+    let coreData: CoreDataManager
     let service: CurrencyLayerAPI
 
-    init(currencyRates: RealtimeRates, service: CurrencyLayerAPI, supportedCurrencies: SupportedCurrencies) {
-        self.supportedCurrencies = supportedCurrencies
-        self.currencyRates = currencyRates
+    init(service: CurrencyLayerAPI, coreData: CoreDataManager) {
         self.service = service
+        self.coreData = coreData
     }
 
-    func fetchRealtimeRates() {
-        let url = URL(string: "http://api.currencylayer.com/live")!
-        print("passou fetch")
-        service.fetchCurrencyRates(url: url) { result in
-        switch result {
-        case .success(let response):
-                self.currencyRates = response
-        case .failure(let myError):
-                print(myError)
-            }
+    // MARK: - Main Methods
+
+    // Run when the application Launch
+    func initApplication(tableView: UITableView) {
+
+        // TODO: Replace to fetch Exchanges
+        // Initialize Local Data
+        self.coreData.getRates(tableView: tableView)
+        print("Passou no Init Application")
+        print(self.coreData.rateItems!.count)
+        // Check if has local data stored
+        if self.coreData.rateItems!.count > 0 {
+            loadLocalData(uiTableView: tableView)
+        } else {
+            addLocalData(uiTableView: tableView)
         }
     }
 
-    func fetchSupportedCurrencies() {
-        let url = URL(string: "http://api.currencylayer.com/list")!
-        print("passou fetch")
-        service.fetchSupportedCurrencies(url: url) { result in
-        switch result {
-        case .success(let response):
-                self.supportedCurrencies = response
-            print(self.supportedCurrencies.currencies)
-        case .failure(let myError):
-                print(myError)
-            }
-        }
+    func loadLocalData(uiTableView: UITableView) {
+        self.coreData.getSupported(tableView: uiTableView)
+        self.coreData.getExchanges(tableView: uiTableView)
+    }
+
+    func addLocalData(uiTableView: UITableView) {
+        fetchSupportedCurrencies(isUpdating: false, tableView: uiTableView)
+        fetchRealtimeRates(isUpdating: false, tableView: uiTableView)
     }
 }

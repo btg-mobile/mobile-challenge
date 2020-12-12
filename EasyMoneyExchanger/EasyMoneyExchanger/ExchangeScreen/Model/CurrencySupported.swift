@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct SupportedCurrencies: Codable {
+struct CurrencySupported: Codable {
     let currencies: [String: String]
 }
