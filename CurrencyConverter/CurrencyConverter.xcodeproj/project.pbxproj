@@ -15,6 +15,7 @@
 		0C426391258507BE00E7979F /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C426390258507BE00E7979F /* CurrencyConverterTests.swift */; };
 		0C42639C258507BE00E7979F /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C42639B258507BE00E7979F /* CurrencyConverterUITests.swift */; };
 		0C4263CE25853A4B00E7979F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C4263D025853A4B00E7979F /* Localizable.strings */; };
+		0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263D525853BB300E7979F /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		0C42639B258507BE00E7979F /* CurrencyConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterUITests.swift; sourceTree = "<group>"; };
 		0C42639D258507BE00E7979F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C4263CF25853A4B00E7979F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0C4263D525853BB300E7979F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		0C4263AE2585086200E7979F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0C4263D425853B9300E7979F /* Extensions */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -198,6 +201,14 @@
 				0C426387258507BD00E7979F /* Info.plist */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		0C4263D425853B9300E7979F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C4263D525853BB300E7979F /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +344,7 @@
 				0C42637E258507B900E7979F /* ViewController.swift in Sources */,
 				0C42637A258507B900E7979F /* AppDelegate.swift in Sources */,
 				0C42637C258507B900E7979F /* SceneDelegate.swift in Sources */,
+				0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
