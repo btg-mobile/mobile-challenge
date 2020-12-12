@@ -101,10 +101,10 @@
 			children = (
 				0C426379258507B900E7979F /* AppDelegate.swift */,
 				0C42637B258507B900E7979F /* SceneDelegate.swift */,
+				0C4263AD2585083200E7979F /* Source */,
+				0C4263AC2585082900E7979F /* Resource */,
 				0C42637D258507B900E7979F /* ViewController.swift */,
 				0C42637F258507B900E7979F /* Main.storyboard */,
-				0C426382258507BD00E7979F /* Assets.xcassets */,
-				0C426384258507BD00E7979F /* LaunchScreen.storyboard */,
 				0C426387258507BD00E7979F /* Info.plist */,
 			);
 			path = CurrencyConverter;
@@ -126,6 +126,70 @@
 				0C42639D258507BE00E7979F /* Info.plist */,
 			);
 			path = CurrencyConverterUITests;
+			sourceTree = "<group>";
+		};
+		0C4263AC2585082900E7979F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0C426382258507BD00E7979F /* Assets.xcassets */,
+				0C426384258507BD00E7979F /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0C4263AD2585083200E7979F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0C4263B12585088600E7979F /* Scenes */,
+				0C4263B02585087600E7979F /* Service */,
+				0C4263AF2585086800E7979F /* Network */,
+				0C4263AE2585086200E7979F /* Util */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0C4263AE2585086200E7979F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		0C4263AF2585086800E7979F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0C4263B02585087600E7979F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0C4263B12585088600E7979F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0C4263B22585088C00E7979F /* CurrencyConverter */,
+				0C4263B3258508BD00E7979F /* CurrencyList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0C4263B22585088C00E7979F /* CurrencyConverter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurrencyConverter;
+			sourceTree = "<group>";
+		};
+		0C4263B3258508BD00E7979F /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurrencyList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
