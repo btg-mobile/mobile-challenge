@@ -2,7 +2,7 @@
 //  Rates+CoreDataProperties.swift
 //  EasyMoneyExchanger
 //
-//  Created by Leon on 10/12/20.
+//  Created by Leon on 12/12/20.
 //
 //
 
@@ -19,7 +19,7 @@ extension Rates {
     @NSManaged public var timeStamp: Int64
 
 }
-
-extension Rates : Identifiable {
-
-}
+//
+//extension Rates : Identifiable {
+//
+//}
