@@ -19,6 +19,7 @@
 		0C4263DE25853CEE00E7979F /* Cell+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263DD25853CEE00E7979F /* Cell+Identifiable.swift */; };
 		0C4263E325853E1A00E7979F /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */; };
 		0C4263E825853F4F00E7979F /* NSObject+BuilderChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */; };
+		0C4263EE2585405100E7979F /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263ED2585405100E7979F /* CurrencyConverterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0C4263DD25853CEE00E7979F /* Cell+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Identifiable.swift"; sourceTree = "<group>"; };
 		0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+BuilderChain.swift"; sourceTree = "<group>"; };
+		0C4263ED2585405100E7979F /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		0C4263AD2585083200E7979F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0C4263F2258540F700E7979F /* Components */,
 				0C4263B12585088600E7979F /* Scenes */,
 				0C4263B02585087600E7979F /* Service */,
 				0C4263AF2585086800E7979F /* Network */,
@@ -188,6 +191,7 @@
 		0C4263B22585088C00E7979F /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
+				0C4263EC2585404200E7979F /* View */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -218,6 +222,21 @@
 				0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0C4263EC2585404200E7979F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C4263ED2585405100E7979F /* CurrencyConverterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C4263F2258540F700E7979F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +373,7 @@
 				0C4263E325853E1A00E7979F /* UITableView+Identifiable.swift in Sources */,
 				0C4263E825853F4F00E7979F /* NSObject+BuilderChain.swift in Sources */,
 				0C42637A258507B900E7979F /* AppDelegate.swift in Sources */,
+				0C4263EE2585405100E7979F /* CurrencyConverterView.swift in Sources */,
 				0C42637C258507B900E7979F /* SceneDelegate.swift in Sources */,
 				0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */,
 				0C4263DE25853CEE00E7979F /* Cell+Identifiable.swift in Sources */,
