@@ -18,6 +18,7 @@
 		0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263D525853BB300E7979F /* UIView+Constraints.swift */; };
 		0C4263DE25853CEE00E7979F /* Cell+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263DD25853CEE00E7979F /* Cell+Identifiable.swift */; };
 		0C4263E325853E1A00E7979F /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */; };
+		0C4263E825853F4F00E7979F /* NSObject+BuilderChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0C4263D525853BB300E7979F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		0C4263DD25853CEE00E7979F /* Cell+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Identifiable.swift"; sourceTree = "<group>"; };
 		0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
+		0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+BuilderChain.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				0C4263D525853BB300E7979F /* UIView+Constraints.swift */,
 				0C4263DD25853CEE00E7979F /* Cell+Identifiable.swift */,
 				0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */,
+				0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			files = (
 				0C42637E258507B900E7979F /* ViewController.swift in Sources */,
 				0C4263E325853E1A00E7979F /* UITableView+Identifiable.swift in Sources */,
+				0C4263E825853F4F00E7979F /* NSObject+BuilderChain.swift in Sources */,
 				0C42637A258507B900E7979F /* AppDelegate.swift in Sources */,
 				0C42637C258507B900E7979F /* SceneDelegate.swift in Sources */,
 				0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */,
