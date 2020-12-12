@@ -97,12 +97,10 @@
 		0C426378258507B900E7979F /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				0C426379258507B900E7979F /* AppDelegate.swift */,
-				0C42637B258507B900E7979F /* SceneDelegate.swift */,
+				0C4263BD258537E500E7979F /* App */,
 				0C4263AD2585083200E7979F /* Source */,
 				0C4263AC2585082900E7979F /* Resource */,
 				0C42637D258507B900E7979F /* ViewController.swift */,
-				0C426387258507BD00E7979F /* Info.plist */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -187,6 +185,16 @@
 			children = (
 			);
 			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		0C4263BD258537E500E7979F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0C426379258507B900E7979F /* AppDelegate.swift */,
+				0C42637B258507B900E7979F /* SceneDelegate.swift */,
+				0C426387258507BD00E7979F /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
