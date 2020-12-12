@@ -20,6 +20,7 @@
 		0C4263E325853E1A00E7979F /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */; };
 		0C4263E825853F4F00E7979F /* NSObject+BuilderChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */; };
 		0C4263EE2585405100E7979F /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263ED2585405100E7979F /* CurrencyConverterView.swift */; };
+		0C4263F4258541FC00E7979F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263F3258541FC00E7979F /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0C4263E225853E1A00E7979F /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		0C4263E725853F4F00E7979F /* NSObject+BuilderChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+BuilderChain.swift"; sourceTree = "<group>"; };
 		0C4263ED2585405100E7979F /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
+		0C4263F3258541FC00E7979F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 		0C4263F2258540F700E7979F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0C4263F3258541FC00E7979F /* BaseView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				0C42637A258507B900E7979F /* AppDelegate.swift in Sources */,
 				0C4263EE2585405100E7979F /* CurrencyConverterView.swift in Sources */,
 				0C42637C258507B900E7979F /* SceneDelegate.swift in Sources */,
+				0C4263F4258541FC00E7979F /* BaseView.swift in Sources */,
 				0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */,
 				0C4263DE25853CEE00E7979F /* Cell+Identifiable.swift in Sources */,
 			);
