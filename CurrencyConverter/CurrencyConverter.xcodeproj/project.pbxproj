@@ -14,6 +14,7 @@
 		0C426386258507BD00E7979F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C426384258507BD00E7979F /* LaunchScreen.storyboard */; };
 		0C426391258507BE00E7979F /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C426390258507BE00E7979F /* CurrencyConverterTests.swift */; };
 		0C42639C258507BE00E7979F /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C42639B258507BE00E7979F /* CurrencyConverterUITests.swift */; };
+		0C4263CE25853A4B00E7979F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C4263D025853A4B00E7979F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0C426397258507BE00E7979F /* CurrencyConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C42639B258507BE00E7979F /* CurrencyConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterUITests.swift; sourceTree = "<group>"; };
 		0C42639D258507BE00E7979F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C4263CF25853A4B00E7979F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				0C426382258507BD00E7979F /* Assets.xcassets */,
 				0C426384258507BD00E7979F /* LaunchScreen.storyboard */,
+				0C4263D025853A4B00E7979F /* Localizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C426386258507BD00E7979F /* LaunchScreen.storyboard in Resources */,
+				0C4263CE25853A4B00E7979F /* Localizable.strings in Resources */,
 				0C426383258507BD00E7979F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +374,14 @@
 				0C426385258507BD00E7979F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0C4263D025853A4B00E7979F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C4263CF25853A4B00E7979F /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
