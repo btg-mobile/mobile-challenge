@@ -11,9 +11,8 @@ extension SupportedCurrenciesViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // Filter Dictionary
-        print(searchText)
-
-        if searchText.count > 0 {
+        if searchText.count > 0 && searchText != " "{
+            viewModel?.supportedListSearch = viewModel?.supportedList?.filter {$0.currencyName.contains(searchText) || $0.currencyCode.contains(searchText)}
             viewModel?.isSearching = true
         } else {
             viewModel?.isSearching = false

@@ -30,6 +30,8 @@
 		35E677FB2581156E007590F2 /* CurrencyLayerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E677FA2581156E007590F2 /* CurrencyLayerAPI.swift */; };
 		35E6780325811647007590F2 /* CurrencySupported.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6780225811647007590F2 /* CurrencySupported.swift */; };
 		35E67808258116C6007590F2 /* CurrencyRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E67807258116C6007590F2 /* CurrencyRates.swift */; };
+		35ED5E65258574C900D74F71 /* ExchangeScreenModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ED5E64258574C900D74F71 /* ExchangeScreenModal.storyboard */; };
+		35ED5E732585759300D74F71 /* ExchangeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED5E722585759300D74F71 /* ExchangeModalViewController.swift */; };
 		35F16FD325800F0A00481772 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F16FD225800F0A00481772 /* Strings.swift */; };
 		35FA9C7A257F046900213F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C79257F046900213F84 /* AppDelegate.swift */; };
 		35FA9C7E257F046900213F84 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA9C7D257F046900213F84 /* ExchangeViewController.swift */; };
@@ -90,6 +92,8 @@
 		35E677FA2581156E007590F2 /* CurrencyLayerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerAPI.swift; sourceTree = "<group>"; };
 		35E6780225811647007590F2 /* CurrencySupported.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySupported.swift; sourceTree = "<group>"; };
 		35E67807258116C6007590F2 /* CurrencyRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRates.swift; sourceTree = "<group>"; };
+		35ED5E64258574C900D74F71 /* ExchangeScreenModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExchangeScreenModal.storyboard; sourceTree = "<group>"; };
+		35ED5E722585759300D74F71 /* ExchangeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeModalViewController.swift; sourceTree = "<group>"; };
 		35F16FD225800F0A00481772 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		35FA9C76257F046900213F84 /* EasyMoneyExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMoneyExchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA9C79257F046900213F84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				35FA9C7D257F046900213F84 /* ExchangeViewController.swift */,
+				35ED5E722585759300D74F71 /* ExchangeModalViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				35FA9C7F257F046900213F84 /* ExchangeScreen.storyboard */,
+				35ED5E64258574C900D74F71 /* ExchangeScreenModal.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 				35A5C62D2583AF4E00F8FD84 /* SupportedCurrenciesScreen.storyboard in Resources */,
 				35FA9C83257F046D00213F84 /* Assets.xcassets in Resources */,
 				35FA9C81257F046900213F84 /* ExchangeScreen.storyboard in Resources */,
+				35ED5E65258574C900D74F71 /* ExchangeScreenModal.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +698,7 @@
 				35FA9C7E257F046900213F84 /* ExchangeViewController.swift in Sources */,
 				35A5C6842584E79C00F8FD84 /* SupportedCurrenciesList.swift in Sources */,
 				35A5C54325822FE300F8FD84 /* Flags.swift in Sources */,
+				35ED5E732585759300D74F71 /* ExchangeModalViewController.swift in Sources */,
 				35FA9CEA257FA18900213F84 /* Colors.swift in Sources */,
 				35A5C6612584D6E900F8FD84 /* Supported+CoreDataClass.swift in Sources */,
 				35A5C65D2584D6E900F8FD84 /* Exchanges+CoreDataClass.swift in Sources */,

@@ -18,6 +18,13 @@ class SupportedCurrenciesViewController: UIViewController, Storyboarded {
         viewModel?.initSupportedCurrenciesScreen(tableView: tableView)
     }
 
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.text = Strings.SupportedCurrenciesScreen.title
+            titleLabel.tintColor = Colors.primaryColor
+        }
+    }
+
     @IBAction func onPressBackButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

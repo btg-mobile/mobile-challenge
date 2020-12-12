@@ -19,4 +19,8 @@ struct Strings {
         static let toButton = "🏳️ Select Cirrency"
     }
 
+    struct SupportedCurrenciesScreen {
+        static let title = "Supported Currencies"
+    }
+
 }

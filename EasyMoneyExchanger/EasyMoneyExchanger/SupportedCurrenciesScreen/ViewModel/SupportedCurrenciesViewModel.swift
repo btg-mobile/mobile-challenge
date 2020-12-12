@@ -13,6 +13,7 @@ class SupportedCurrenciesViewModel {
     var supportedList: [SupportedList]?
     var supportedListDictionary: [String: [SupportedList]]?
     var supportedTitles = [String]()
+    var supportedListSearch: [SupportedList]?
     var isSearching = false
 
     let coreData: CoreDataManager
@@ -36,9 +37,6 @@ class SupportedCurrenciesViewModel {
         initSupportedList(uiTableView: tableView)
         initSupportedTitles(uiTableView: tableView)
         initSupportedListDictionary(uiTableView: tableView)
-
-        print(supportedList!)
-        print(supportedTitles)
     }
 
     func initSupportedList(uiTableView tableView: UITableView) {

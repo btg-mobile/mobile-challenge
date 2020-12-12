@@ -82,7 +82,7 @@
                                 <color key="textColor" name="PrimaryColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-Nb-kHc">
+                            <searchBar contentMode="redraw" placeholder="Currency Name or Code" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-Nb-kHc">
                                 <rect key="frame" x="0.0" y="56" width="375" height="56"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
@@ -121,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Yxk-WS-8Ob" id="Bef-ts-LBI"/>
+                        <outlet property="titleLabel" destination="3KC-en-HMn" id="i3u-5D-kRr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqz-wT-9Wf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

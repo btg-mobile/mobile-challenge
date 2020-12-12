@@ -85,4 +85,10 @@ extension SupportedCurrenciesViewModel {
         }
         return listDictionary
     }
+
+    // MARK: - Search Method
+
+    func filterSupportedList( ) {
+        
+    }
 }

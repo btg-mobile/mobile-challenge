@@ -10,13 +10,17 @@ import UIKit
 extension SupportedCurrenciesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (viewModel?.supportedTitles.count)!
+        if viewModel?.isSearching == true {
+            return (viewModel?.supportedListSearch?.count)!
+        } else {
+            return (viewModel?.supportedTitles.count)!
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if viewModel?.isSearching == true {
-            return 0
+            return (viewModel?.supportedListSearch!.count)!
         } else {
             let listKey = viewModel?.supportedTitles[section]
             if let listValues = viewModel?.supportedListDictionary![listKey!] {
@@ -31,7 +35,8 @@ extension SupportedCurrenciesViewController: UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath)
 
         if viewModel?.isSearching == true {
-
+            cell.detailTextLabel?.text = viewModel?.supportedListSearch![indexPath.row].currencyCode
+            cell.textLabel?.text = viewModel?.supportedListSearch![indexPath.row].currencyName
         } else {
             let itemKey = viewModel?.supportedTitles[indexPath.section]
 
@@ -39,6 +44,7 @@ extension SupportedCurrenciesViewController: UITableViewDelegate, UITableViewDat
                 cell.detailTextLabel?.text = keyValues[indexPath.row].currencyCode
                 cell.textLabel?.text = keyValues[indexPath.row].currencyName
             }
+
             // Dismiss keyboard on Drag
             tableView.keyboardDismissMode = .onDrag
         }
