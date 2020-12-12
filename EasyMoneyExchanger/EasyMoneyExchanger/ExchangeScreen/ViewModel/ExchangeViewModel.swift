@@ -25,8 +25,6 @@ class ExchangeViewModel {
         // TODO: Replace to fetch Exchanges
         // Initialize Local Data
         self.coreData.getRates(tableView: tableView)
-        print("Passou no Init Application")
-        print(self.coreData.rateItems!.count)
         // Check if has local data stored
         if self.coreData.rateItems!.count > 0 {
             loadLocalData(uiTableView: tableView)

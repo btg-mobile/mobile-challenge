@@ -22,8 +22,10 @@ class ExchangeViewController: UITableViewController, Storyboarded {
         super.viewDidLoad()
         setupAnimationView()
         viewModel?.initApplication(tableView: self.tableView)
-        // Do any additional setup after loading the view.
+        setupLabels()
     }
+
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,8 +61,8 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     // MARK: - Outlets
 
     @IBOutlet weak var currencyConvertedLabel: UILabel!
-    @IBOutlet weak var currencyCountryLabel: UILabel!
-    @IBOutlet weak var currencyCountryShortLabel: UILabel!
+    @IBOutlet weak var currencyNameLabel: UILabel!
+    @IBOutlet weak var currencyTimestampLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel! {
         didSet {
             amountLabel.text = Strings.ExchangeScreen.amountLabel
@@ -178,6 +180,12 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     }
 
     // MARK: - Actions
+
+    func setupLabels() {
+        let timestamp = viewModel?.coreData.rateItems![0].timeStamp
+        currencyTimestampLabel.text = viewModel?.getDateString(timestamp: timestamp!)
+        currencyNameLabel.text = Strings.ExchangeScreen.currencyName
+    }
 
     @objc func onPressDone() {
         view.endEditing(true)

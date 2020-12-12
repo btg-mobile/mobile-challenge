@@ -74,7 +74,7 @@
                                         <color key="titleColor" name="AccentColor"/>
                                     </state>
                                 </button>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddI-pL-jE1">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddI-pL-jE1">
                                     <rect key="frame" x="37" y="342" width="230" height="34"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="6ud-tX-WWO"/>
@@ -222,8 +222,8 @@
                         <outlet property="convertButton" destination="RjV-7Q-f0o" id="SWA-9J-Lyk"/>
                         <outlet property="currenciesListButton" destination="iZt-gg-2Dk" id="r2O-zD-Q77"/>
                         <outlet property="currencyConvertedLabel" destination="Am9-tM-aef" id="1ru-w6-5Dk"/>
-                        <outlet property="currencyCountryLabel" destination="sl9-6U-qJ7" id="U2l-TX-3Ff"/>
-                        <outlet property="currencyCountryShortLabel" destination="cEs-vI-ogx" id="CI3-4K-Lsb"/>
+                        <outlet property="currencyNameLabel" destination="sl9-6U-qJ7" id="U2l-TX-3Ff"/>
+                        <outlet property="currencyTimestampLabel" destination="cEs-vI-ogx" id="CI3-4K-Lsb"/>
                         <outlet property="fromButton" destination="VjN-0V-s5z" id="C04-GE-PlV"/>
                         <outlet property="fromLabel" destination="UKm-J3-hgt" id="Bcc-jh-pvh"/>
                         <outlet property="homeAnimationView" destination="ECX-ZM-PQ8" id="7tg-TE-HTR"/>
@@ -238,6 +238,9 @@
             <point key="canvasLocation" x="-1986.4000000000001" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="ECX-ZM-PQ8"/>
+    </designables>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <namedColor name="AccentColor">

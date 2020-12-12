@@ -15,6 +15,7 @@ struct Strings {
         static let fromLabel = "From"
         static let toLabel = "To"
         static let convertButton = "Convert"
+        static let currencyName = "Currency Name"
         static let formButton = "🏳️ Select Cirrency"
         static let toButton = "🏳️ Select Cirrency"
     }

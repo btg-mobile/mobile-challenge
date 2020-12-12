@@ -36,4 +36,16 @@ extension ExchangeViewModel {
         // Calcular
         return fromValue! / toValue!
     }
+
+    func getDateString(timestamp: Int64) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormatter = DateFormatter()
+        // Set timezone
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.locale = NSLocale.current
+
+        // Specifing format
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return dateFormatter.string(from: date)
+    }
 }
