@@ -35,6 +35,7 @@ class BaseView: UIView {
     }
     
     private func setup() {
+        backgroundColor = .white
         self.initialize()
         self.addViews()
     }
