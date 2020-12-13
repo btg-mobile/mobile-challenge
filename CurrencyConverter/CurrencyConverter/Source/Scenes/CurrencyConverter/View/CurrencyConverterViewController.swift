@@ -14,25 +14,37 @@ class CurrencyConverterViewController: UIViewController {
         .set(\.toCurrencySelectButton.tapAction, to: didTapToCurrency)
         .run {
             $0.swapButton.addTarget(self, action: #selector(didTapSwapButton), for: .touchUpInside)
+            $0.fromValueTextField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingChanged)
         }
+    
+    // MARK: - Properties
+    
+    private var viewModel: CurrencyConverterViewModeling
     
     // MARK: - Initializers
     
-    init() {
+    init(viewModel: CurrencyConverterViewModeling = CurrencyConverterViewModel()) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setup()
     }
     
     required init?(coder: NSCoder) {
+        self.viewModel = CurrencyConverterViewModel()
         super.init(coder: coder)
         setup()
     }
     
     private func setup() {
         view = contentView
+        viewModel.delegate = self
     }
     
     // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.loadCurrencyLiveQuote()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         contentView.fromValueTextField.becomeFirstResponder()
@@ -52,6 +64,36 @@ class CurrencyConverterViewController: UIViewController {
     
     @objc func didTapSwapButton() {
         print("swapButton - tapped")
+    }
+    
+    @objc func didEndEditingTextField() {
+        viewModel.fromCurrencyValue = contentView.fromValueTextField.text
+    }
+    
+}
+
+// MARK: - CurrencyConverterViewModelDelegate
+
+extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
+    
+    func updateUI() {
+        contentView.fromCurrencySelectButton.primaryLabel.text = viewModel.fromCurrencyName
+        contentView.fromCurrencySelectButton.secondaryLabel.text = viewModel.fromCurrencyCode
+        
+        contentView.toCurrencySelectButton.primaryLabel.text = viewModel.toCurrencyName
+        contentView.toCurrencySelectButton.secondaryLabel.text = viewModel.toCurrencyCode
+        
+        contentView.resultValueLabel.text = viewModel.toCurrencyValue
+    }
+    
+    func presentError() {
+        let alert = UIAlertController(
+            title: "Error",
+            message: "Some error occurred.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }
