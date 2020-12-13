@@ -11,7 +11,7 @@ class CurrencyConverterView: BaseView {
     
     // MARK: - UI Components
     lazy var titleLabel = TitleLabel()
-        .set(\.text, to: "Currency Converter")
+        .set(\.text, to: LocalizableStrings.currencyConverterViewTitle.localized)
     
     lazy var swapButton = UIButton()
         .set(\.tintColor, to: .black)
@@ -21,13 +21,13 @@ class CurrencyConverterView: BaseView {
         }
     
     lazy var fromCurrencySelectButton = CurrencySelectButton()
-        .set(\.primaryLabel.text, to: "Dollar")
-        .set(\.secondaryLabel.text, to: "USD")
+        .set(\.primaryLabel.text, to: LocalizableStrings.currencyConverterViewTapToSelect.localized)
+        .set(\.secondaryLabel.text, to: "")
     
     lazy var fromValueTextField = UITextField()
         .set(\.textAlignment, to: .right)
         .set(\.font, to: UIFont.systemFont(ofSize: 24, weight: .light))
-        .set(\.placeholder, to: "0.00")
+        .set(\.placeholder, to: LocalizableStrings.currencyConverterViewValuePlaceholder.localized)
         .set(\.keyboardType, to: .decimalPad)
         .set(\.borderStyle, to: .none)
         .run {
@@ -42,15 +42,15 @@ class CurrencyConverterView: BaseView {
     
     lazy var equalsLabel = UILabel()
         .set(\.font, to: UIFont.systemFont(ofSize: 24, weight: .thin))
-        .set(\.text, to: "=")
+        .set(\.text, to: LocalizableStrings.generalEqualSign.localized)
     
     lazy var resultValueLabel = UILabel()
         .set(\.font, to: UIFont.systemFont(ofSize: 24, weight: .medium))
         .set(\.text, to: "0.00")
     
     lazy var toCurrencySelectButton = CurrencySelectButton()
-        .set(\.primaryLabel.text, to: "Euro")
-        .set(\.secondaryLabel.text, to: "EUR")
+        .set(\.primaryLabel.text, to: LocalizableStrings.currencyConverterViewValuePlaceholder.localized)
+        .set(\.secondaryLabel.text, to: "")
     
     // MARK: - Setup
     
