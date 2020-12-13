@@ -13,7 +13,6 @@ extension ExchangeViewModel {
 
     func fetchRealtimeRates(isUpdating updating: Bool, tableView: UITableView) {
         let url = URL(string: "http://api.currencylayer.com/live")!
-        print("Pasou no Realtime Fetch")
         service.fetchCurrencyRates(url: url) { result in
         switch result {
         case .success(let response):
@@ -30,7 +29,6 @@ extension ExchangeViewModel {
 
     func fetchSupportedCurrencies(isUpdating updating: Bool, tableView: UITableView) {
         let url = URL(string: "http://api.currencylayer.com/list")!
-        print("Pasou no Supported Fetch")
         service.fetchSupportedCurrencies(url: url) { result in
         switch result {
         case .success(let response):

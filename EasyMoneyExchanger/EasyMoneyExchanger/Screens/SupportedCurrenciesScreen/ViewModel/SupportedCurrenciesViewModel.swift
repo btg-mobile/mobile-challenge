@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SupportedCurrenciesViewModel {
+class SupportedCurrenciesViewModel: DataConverter {
 
     var supportedList: [SupportedList]?
     var supportedListDictionary: [String: [SupportedList]]?
@@ -21,16 +21,6 @@ class SupportedCurrenciesViewModel {
     init( coreData: CoreDataManager) {
         self.coreData = coreData
     }
-
-//    func showCurrencieModal(currenciesView viewController: CurrenciesViewController) {
-//        let modal = UIStoryboard(name: "CurrenciesScreenModal", bundle: nil)
-//        let localViewController = (modal.instantiateViewController(withIdentifier: "CurrenciesScreenModal") as? CurrenciesModalViewController)!
-//
-//        localViewController.modalPresentationStyle = UIModalPresentationStyle.formSheet
-//        localViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-//        localViewController.viewModel = self
-//        viewController.present(localViewController, animated: true, completion: nil)
-//    }
 
     func initSupportedCurrenciesScreen(tableView: UITableView) {
         // Setup supported Items List
@@ -59,6 +49,6 @@ class SupportedCurrenciesViewModel {
     func getCoreDataSupported(uiTableView: UITableView) -> [String: String]? {
         coreData.getSupported(tableView: uiTableView)
         coreData.getRates(tableView: uiTableView)
-        return coreData.supportedItems![0].currencies
+        return coreData.supportedItems?[0].currencies
     }
 }

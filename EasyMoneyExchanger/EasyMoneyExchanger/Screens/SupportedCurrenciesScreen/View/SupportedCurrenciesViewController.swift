@@ -18,6 +18,8 @@ class SupportedCurrenciesViewController: UIViewController, Storyboarded {
         viewModel?.initSupportedCurrenciesScreen(tableView: tableView)
     }
 
+    // MARK: - Outlets
+
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
             titleLabel.text = Strings.SupportedCurrenciesScreen.title
@@ -25,13 +27,16 @@ class SupportedCurrenciesViewController: UIViewController, Storyboarded {
         }
     }
 
-    @IBAction func onPressBackButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.tintColor = Colors.primaryColor
         }
+    }
+
+    // MARK: - Actions
+
+    @IBAction func onPressBackButton(_ sender: Any) {
+        viewModel?.isSearching = false
+        navigationController?.popViewController(animated: true)
     }
 }

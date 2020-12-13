@@ -19,7 +19,7 @@ class CoreDataManager {
     func addSupportedCurrencies(tableView: UITableView, supprtedCurrencies: CurrencySupported) {
         let newSupportedCurrencies = Supported(context: self.context!)
         newSupportedCurrencies.currencies = supprtedCurrencies.currencies
-        print(supprtedCurrencies.currencies)
+        supportedItems = [newSupportedCurrencies]
         //Save Data
         do {
             try self.context?.save()
@@ -29,14 +29,13 @@ class CoreDataManager {
         } catch {
 
         }
-
     }
 
     func addRates(tableView: UITableView, realtimeRates: CurrencyRates) {
         let newCurrencyRates = Rates(context: self.context!)
         newCurrencyRates.quotes = realtimeRates.quotes
         newCurrencyRates.timeStamp = Int64(realtimeRates.timestamp)
-
+        rateItems = [newCurrencyRates]
         //Save Data
         do {
             try self.context?.save()
@@ -48,19 +47,33 @@ class CoreDataManager {
         }
     }
 
-    func addExchanges(tableView: UITableView, currenciesToConvert: CurrencyExchanges) {
-//        let newCurrencyToConvert = Exchanges(context: self.context!)
-//        newCurrencyToConvert.from = currenciesToConvert.currenciesConvert[]
-//
-//        //Save Data
-//        do {
-//            try self.context?.save()
-//            DispatchQueue.main.async {
-//                tableView.reloadData()
-//            }
-//        } catch {
-//
-//        }
+    func addExchangesTo(tableView: UITableView, to: String) {
+        let newCurrencyToConvert = Exchanges(context: self.context!)
+        newCurrencyToConvert.to = to
+        //Save Data
+        do {
+            try self.context?.save()
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        } catch {
+
+        }
+    }
+
+    func addExchangesFrom(tableView: UITableView, from: String) {
+        let newCurrencyToConvert = Exchanges(context: self.context!)
+        newCurrencyToConvert.from = from
+
+        //Save Data
+        do {
+            try self.context?.save()
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        } catch {
+
+        }
     }
 
     // MARK: - Core Data Get
@@ -91,14 +104,14 @@ class CoreDataManager {
 
     // Fetch Core Data Currencies To Convert
     func getExchanges(tableView: UITableView) {
-//        do {
-//            self.coreDataExchangeItems = try context?.fetch(CurrenciesToConvert.fetchRequest())
-//            DispatchQueue.main.async {
-//                tableView.reloadData()
-//            }
-//        } catch {
-//
-//        }
+        do {
+            self.exchangeItems = try context?.fetch(Exchanges.fetchRequest())
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        } catch {
+
+        }
     }
 
     // MARK: - Core Data Update
@@ -121,7 +134,6 @@ class CoreDataManager {
         let localCoreRealtimeRates = self.rateItems![0]
         localCoreRealtimeRates.quotes = currencyRates.quotes
         localCoreRealtimeRates.timeStamp = Int64(currencyRates.timestamp)
-
         //Save Data
         do {
             try self.context?.save()
@@ -133,17 +145,31 @@ class CoreDataManager {
         }
     }
 
-    func updateExchanges(tableView: UITableView, currencyExchanges: CurrencyExchanges) {
-//        let localCoreRealtimeRates = self.coreDataExchangeItems![0]
-//        localCoreRealtimeRates.currenciesToConvert = currenciesToConvert.currenciesConvert
-//        //Save Data
-//        do {
-//            try self.context?.save()
-//            DispatchQueue.main.async {
-//                tableView.reloadData()
-//            }
-//        } catch {
-//
-//        }
+    func updateExchangeFrom(tableView: UITableView, from: String) {
+        let localCoreRealtimeRates = self.exchangeItems![0]
+        localCoreRealtimeRates.from = from
+        //Save Data
+        do {
+            try self.context?.save()
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        } catch {
+
+        }
+    }
+
+    func updateExchangeTo(tableView: UITableView, to: String) {
+        let localCoreRealtimeRates = self.exchangeItems![0]
+        localCoreRealtimeRates.to = to
+        //Save Data
+        do {
+            try self.context?.save()
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        } catch {
+
+        }
     }
 }

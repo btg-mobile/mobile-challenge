@@ -21,7 +21,7 @@ extension ExchangeViewModel {
         return CurrencySupported(currencies: newElement)
     }
 
-    func calcConvertion(fromCurrency: String, toCurrency: String) -> Float {
+    func getConvertionCurrency(fromCurrency: String, toCurrency: String, amount: Float) -> Float {
         // Pegar o valor de From pra USD
         var fromValue = coreData.rateItems![0].quotes!["USD\(fromCurrency)"]
         fromValue = 1 / fromValue!
@@ -31,10 +31,13 @@ extension ExchangeViewModel {
 
         toValue = 1 / toValue!
 
-        print(fromValue!)
-        print(toValue!)
         // Calcular
-        return fromValue! / toValue!
+        return (fromValue! / toValue!) * amount
+    }
+
+    func inverCurrencies(tableView: UITableView, fromCurrency: String, toCurrency: String) {
+        coreData.updateExchangeTo(tableView: tableView, to: fromCurrency)
+        coreData.updateExchangeFrom(tableView: tableView, from: toCurrency)
     }
 
     func getDateString(timestamp: Int64) -> String {

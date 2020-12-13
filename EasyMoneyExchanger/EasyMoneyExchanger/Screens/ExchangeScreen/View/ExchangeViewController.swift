@@ -8,11 +8,13 @@
 import Lottie
 import UIKit
 
-class ExchangeViewController: UITableViewController, Storyboarded {
+class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded {
+
     static func instantiate() -> Self? {
         return nil
     }
 
+    var  exchangeModalViewController = ExchangeModalViewController()
     var  viewModel: ExchangeViewModel?
     var  currencyViewModel: SupportedCurrenciesViewModel?
     var  animationView: AnimationView?
@@ -21,11 +23,27 @@ class ExchangeViewController: UITableViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAnimationView()
-        viewModel?.initApplication(tableView: self.tableView)
-        setupLabels()
+        viewModel?.initApplication(tableView: tableView)
+        loadLabels()
     }
 
-    
+    func updateFrom(from: String) {
+        fromButton.setTitle(Flags.codeToFlag[from], for: .normal)
+    }
+
+    func updateTo(to: String) {
+        toButton.setTitle(Flags.codeToFlag[to], for: .normal)
+    }
+
+    func loadLabels() {
+        if (viewModel?.coreData.rateItems!.count)! > 0 {
+            let exchangeItems = viewModel?.coreData.exchangeItems![0]
+            let timestamp = viewModel?.coreData.rateItems![0].timeStamp
+            currencyTimestampLabel.text = viewModel?.getDateString(timestamp: timestamp!)
+            updateTo(to: (exchangeItems?.to)!)
+            updateFrom(from: (exchangeItems?.from)!)
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -149,7 +167,6 @@ class ExchangeViewController: UITableViewController, Storyboarded {
                 systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .light)
             )?.withTintColor(Colors.labelColor, renderingMode: .alwaysOriginal)
             fromButton.contentHorizontalAlignment = .left
-            fromButton.setTitle(Strings.ExchangeScreen.formButton, for: .normal)
             fromButton.setTitleColor(Colors.labelColor, for: .normal)
             fromButton.setImage(buttonIcon, for: .normal)
             fromButton.layer.cornerRadius = 5
@@ -163,7 +180,6 @@ class ExchangeViewController: UITableViewController, Storyboarded {
                 systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .light)
             )?.withTintColor(Colors.labelColor, renderingMode: .alwaysOriginal)
             toButton.contentHorizontalAlignment = .left
-            toButton.setTitle(Strings.ExchangeScreen.toButton, for: .normal)
             toButton.setTitleColor(Colors.labelColor, for: .normal)
             toButton.setImage(buttonIcon, for: .normal)
             toButton.layer.cornerRadius = 5
@@ -181,25 +197,33 @@ class ExchangeViewController: UITableViewController, Storyboarded {
 
     // MARK: - Actions
 
-    func setupLabels() {
-        let timestamp = viewModel?.coreData.rateItems![0].timeStamp
-        currencyTimestampLabel.text = viewModel?.getDateString(timestamp: timestamp!)
-        currencyNameLabel.text = Strings.ExchangeScreen.currencyName
-    }
-
     @objc func onPressDone() {
         view.endEditing(true)
     }
+
     @IBAction func goToCurrenciesScreen(_ sender: Any) {
         coordinator?.goToCurrenciesScreen(with: currencyViewModel!)
     }
     @IBAction func updateCurrencyValues(_ sender: Any) {
+        viewModel?.updateData(uiTableView: tableView)
+        tableView.reloadData()
+        loadLabels()
     }
     @IBAction func onPressFrom(_ sender: Any) {
+        viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: "From")
     }
     @IBAction func onPressTo(_ sender: Any) {
+        viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: "To")
     }
     @IBAction func onPressConvert(_ sender: Any) {
-    }
 
+        if !amountTextInput.text!.isEmpty {
+            let amount = Float(amountTextInput.text!)
+            let from = viewModel?.coreData.exchangeItems![0].from
+            let to = viewModel?.coreData.exchangeItems![0].to
+            let currencyName = Flags.codeToFlag[(viewModel?.coreData.exchangeItems![0].to)!]
+            currencyConvertedLabel.text = String(format: "%.2f", ((viewModel?.getConvertionCurrency( fromCurrency: from!, toCurrency: to!, amount: amount!))!))
+            currencyNameLabel.text = String((currencyName?.dropFirst())!)
+        }
+    }
 }

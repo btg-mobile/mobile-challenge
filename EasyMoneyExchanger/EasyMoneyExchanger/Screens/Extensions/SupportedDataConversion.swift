@@ -6,7 +6,17 @@
 //
 
 import Foundation
-extension SupportedCurrenciesViewModel {
+
+protocol DataConverter {
+    func getSupportedList(supportedDictionary: [String: String]) -> [SupportedList]
+    func sortSupportedList(supportedList: [SupportedList]) -> [SupportedList]
+    func addSupportedListFlags(supportedList: [SupportedList]) -> [SupportedList]
+    func getSupportedTitles(supportedList: [SupportedList]) -> [String]
+    func getStringFirstCharacter(string: String) -> String
+    func getSupportedListDictionary(supportedList: [SupportedList], supportedListWithoutFlags: [SupportedList]) -> [String: [SupportedList]]
+}
+
+extension DataConverter {
 
     // MARK: - Supported List
 
@@ -84,11 +94,5 @@ extension SupportedCurrenciesViewModel {
             }
         }
         return listDictionary
-    }
-
-    // MARK: - Search Method
-
-    func filterSupportedList( ) {
-        
     }
 }

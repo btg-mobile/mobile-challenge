@@ -8,5 +8,6 @@
 import Foundation
 
 struct CurrencyExchanges: Codable {
-    let currenciesConvert: [String: String]
+    let from: String
+    let to: String
 }

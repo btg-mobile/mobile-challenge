@@ -34,7 +34,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brazilian Real" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl9-6U-qJ7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl9-6U-qJ7">
                                             <rect key="frame" x="50" y="150" width="200" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="PeK-BH-S2J"/>
@@ -43,7 +43,7 @@
                                             <color key="textColor" systemColor="placeholderTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-vI-ogx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timestamp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-vI-ogx">
                                             <rect key="frame" x="50" y="175" width="200" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="sU2-dq-6sR"/>
@@ -93,7 +93,7 @@
                                         <color key="titleColor" name="AccentColor"/>
                                     </state>
                                     <connections>
-                                        <action selector="updateCurrencyValues:" destination="1si-10-FTQ" eventType="touchUpInside" id="tCR-40-dv4"/>
+                                        <action selector="updateCurrencyValues:" destination="1si-10-FTQ" eventType="touchUpInside" id="yL6-5j-BeI"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCJ-cD-CGt">
@@ -149,8 +149,7 @@
                                     <inset key="imageEdgeInsets" minX="270" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="🇧🇷 Brazilian Real" image="chevron.down" catalog="system"/>
                                     <connections>
-                                        <action selector="onPressFrom:" destination="1si-10-FTQ" eventType="touchUpInside" id="Ko4-A7-2kR"/>
-                                        <action selector="updateCurrencyValues:" destination="1si-10-FTQ" eventType="touchUpInside" id="5HO-DI-AAu"/>
+                                        <action selector="onPressFrom:" destination="1si-10-FTQ" eventType="touchUpInside" id="1ep-ru-nHF"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjV-7Q-f0o">
@@ -176,7 +175,7 @@
                                     <inset key="imageEdgeInsets" minX="270" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="🇺🇸 United States Dollar" image="chevron.down" catalog="system"/>
                                     <connections>
-                                        <action selector="onPressTo:" destination="1si-10-FTQ" eventType="touchUpInside" id="w5L-wp-Yab"/>
+                                        <action selector="onPressTo:" destination="1si-10-FTQ" eventType="touchUpInside" id="fK3-Az-Uvo"/>
                                     </connections>
                                 </button>
                             </subviews>
