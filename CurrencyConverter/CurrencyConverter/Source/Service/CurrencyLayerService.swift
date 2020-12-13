@@ -37,8 +37,6 @@ enum CurrencyLayerService: Service {
     }
     
     var task: HTTPTask {
-        let accessKey = ""
-        
         switch self {
         case .list:
             return .requestParameters(["access_key": accessKey])
@@ -63,7 +61,7 @@ enum CurrencyLayerService: Service {
     
     // MARK: - API Access Key
     var accessKey: String {
-        return ""
+        return "d8b189f5cf89be26d1ac7d1f2dad1251"
     }
     
 }

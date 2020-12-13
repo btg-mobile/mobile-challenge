@@ -5,7 +5,7 @@
 //  Created by Italo Boss on 13/12/20.
 //
 
-struct CurrencyLayerLiveResponse {
+struct CurrencyLayerLiveResponse: Decodable {
     
     let success: Bool
     let timestamp: Int
