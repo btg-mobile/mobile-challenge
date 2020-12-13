@@ -36,6 +36,7 @@
 		0C42645D258670AA00E7979F /* Encodable+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C42645C258670AA00E7979F /* Encodable+Parse.swift */; };
 		0C426462258671AB00E7979F /* URLSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C426461258671AB00E7979F /* URLSessionProvider.swift */; };
 		0C4264672586729100E7979F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4264662586729100E7979F /* ErrorResponse.swift */; };
+		0C5B801025867D6D00E2BBF8 /* CurrencyLayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B800F25867D6D00E2BBF8 /* CurrencyLayerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		0C42645C258670AA00E7979F /* Encodable+Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Parse.swift"; sourceTree = "<group>"; };
 		0C426461258671AB00E7979F /* URLSessionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProvider.swift; sourceTree = "<group>"; };
 		0C4264662586729100E7979F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		0C5B800F25867D6D00E2BBF8 /* CurrencyLayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		0C4263B02585087600E7979F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0C5B800F25867D6D00E2BBF8 /* CurrencyLayerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				0C4263F4258541FC00E7979F /* BaseView.swift in Sources */,
 				0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */,
 				0C42644425866D4500E7979F /* ParametersEncoding.swift in Sources */,
+				0C5B801025867D6D00E2BBF8 /* CurrencyLayerService.swift in Sources */,
 				0C426462258671AB00E7979F /* URLSessionProvider.swift in Sources */,
 				0C4263DE25853CEE00E7979F /* Cell+Identifiable.swift in Sources */,
 				0C42644E25866E5000E7979F /* URLSession+Result.swift in Sources */,
