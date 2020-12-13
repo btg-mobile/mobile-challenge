@@ -11,7 +11,7 @@ extension SupportedCurrenciesViewController: UITableViewDelegate, UITableViewDat
 
     func numberOfSections(in tableView: UITableView) -> Int {
         if viewModel?.isSearching == true {
-            return (viewModel?.supportedListSearch?.count)!
+            return 1
         } else {
             return (viewModel?.supportedTitles.count)!
         }

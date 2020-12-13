@@ -43,7 +43,7 @@
                                             <color key="textColor" systemColor="placeholderTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timestamp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-vI-ogx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="press update button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-vI-ogx">
                                             <rect key="frame" x="50" y="175" width="200" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="sU2-dq-6sR"/>
@@ -73,6 +73,9 @@
                                     <state key="normal" title="C">
                                         <color key="titleColor" name="AccentColor"/>
                                     </state>
+                                    <connections>
+                                        <action selector="onPressSwitchCurrencies:" destination="1si-10-FTQ" eventType="touchUpInside" id="jm4-Wd-W58"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddI-pL-jE1">
                                     <rect key="frame" x="37" y="342" width="230" height="34"/>
@@ -178,6 +181,15 @@
                                         <action selector="onPressTo:" destination="1si-10-FTQ" eventType="touchUpInside" id="fK3-Az-Uvo"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTf-MI-FMg">
+                                    <rect key="frame" x="38" y="389.5" width="172" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="172" id="4VV-jw-iyE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <constraints>
@@ -187,12 +199,14 @@
                                 <constraint firstItem="hhi-hu-H4k" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" constant="122" id="HPb-FD-fxi"/>
                                 <constraint firstItem="ddI-pL-jE1" firstAttribute="centerY" secondItem="ahn-X0-99A" secondAttribute="centerY" constant="25" id="Hvu-M5-CZ1"/>
                                 <constraint firstItem="ECX-ZM-PQ8" firstAttribute="centerY" secondItem="ahn-X0-99A" secondAttribute="centerY" constant="-148" id="LYn-EY-ztz"/>
+                                <constraint firstItem="dTf-MI-FMg" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" constant="-63.5" id="Las-kS-cx9"/>
                                 <constraint firstItem="iZt-gg-2Dk" firstAttribute="centerY" secondItem="ahn-X0-99A" secondAttribute="centerY" constant="-283" id="Lpl-Z1-TFF"/>
                                 <constraint firstItem="yCJ-cD-CGt" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" constant="-63" id="O4c-kD-jm8"/>
                                 <constraint firstItem="RjV-7Q-f0o" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" id="Q0v-cc-Gxv"/>
                                 <constraint firstItem="VjN-0V-s5z" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" id="Svk-n6-nDK"/>
                                 <constraint firstItem="ECX-ZM-PQ8" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" id="VWC-dj-opf"/>
                                 <constraint firstItem="UKm-J3-hgt" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" constant="-64" id="c65-QT-nqj"/>
+                                <constraint firstItem="dTf-MI-FMg" firstAttribute="centerY" secondItem="ahn-X0-99A" secondAttribute="centerY" constant="55.5" id="dbg-bM-4fa"/>
                                 <constraint firstItem="GhO-Tj-6Kr" firstAttribute="centerY" secondItem="ahn-X0-99A" secondAttribute="centerY" constant="170" id="dud-Sc-ZKz"/>
                                 <constraint firstItem="GhO-Tj-6Kr" firstAttribute="centerX" secondItem="ahn-X0-99A" secondAttribute="centerX" id="iUE-tU-KZS"/>
                                 <constraint firstItem="RjV-7Q-f0o" firstAttribute="centerY" secondItem="ahn-X0-99A" secondAttribute="centerY" constant="240" id="kMo-X3-RqW"/>
@@ -223,6 +237,7 @@
                         <outlet property="currencyConvertedLabel" destination="Am9-tM-aef" id="1ru-w6-5Dk"/>
                         <outlet property="currencyNameLabel" destination="sl9-6U-qJ7" id="U2l-TX-3Ff"/>
                         <outlet property="currencyTimestampLabel" destination="cEs-vI-ogx" id="CI3-4K-Lsb"/>
+                        <outlet property="errorMessage" destination="dTf-MI-FMg" id="FtI-ki-xB5"/>
                         <outlet property="fromButton" destination="VjN-0V-s5z" id="C04-GE-PlV"/>
                         <outlet property="fromLabel" destination="UKm-J3-hgt" id="Bcc-jh-pvh"/>
                         <outlet property="homeAnimationView" destination="ECX-ZM-PQ8" id="7tg-TE-HTR"/>
@@ -256,6 +271,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Currency" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzW-CG-d6k">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Currency Name or Code" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzW-CG-d6k">
                                 <rect key="frame" x="0.0" y="24" width="302" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="barTintColor" systemColor="systemGray5Color"/>

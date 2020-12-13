@@ -47,24 +47,11 @@ class CoreDataManager {
         }
     }
 
-    func addExchangesTo(tableView: UITableView, to: String) {
+    func addExchanges(tableView: UITableView, from: String, to: String) {
         let newCurrencyToConvert = Exchanges(context: self.context!)
         newCurrencyToConvert.to = to
-        //Save Data
-        do {
-            try self.context?.save()
-            DispatchQueue.main.async {
-                tableView.reloadData()
-            }
-        } catch {
-
-        }
-    }
-
-    func addExchangesFrom(tableView: UITableView, from: String) {
-        let newCurrencyToConvert = Exchanges(context: self.context!)
         newCurrencyToConvert.from = from
-
+        exchangeItems = [newCurrencyToConvert]
         //Save Data
         do {
             try self.context?.save()

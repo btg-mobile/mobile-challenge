@@ -11,6 +11,7 @@ import UIKit
 struct Strings {
 
     struct ExchangeScreen {
+        static let errorMessage = "Please, add a value"
         static let amountLabel = "Amount"
         static let fromLabel = "From"
         static let toLabel = "To"

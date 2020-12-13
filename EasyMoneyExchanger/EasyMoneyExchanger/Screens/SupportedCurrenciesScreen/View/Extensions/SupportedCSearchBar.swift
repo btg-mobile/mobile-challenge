@@ -10,8 +10,9 @@ import UIKit
 extension SupportedCurrenciesViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
         // Filter Dictionary
-        if searchText.count > 0 && searchText != " "{
+        if searchText.count > 0 && !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
             viewModel?.supportedListSearch = viewModel?.supportedList?.filter {$0.currencyName.contains(searchText) || $0.currencyCode.contains(searchText)}
             viewModel?.isSearching = true
         } else {

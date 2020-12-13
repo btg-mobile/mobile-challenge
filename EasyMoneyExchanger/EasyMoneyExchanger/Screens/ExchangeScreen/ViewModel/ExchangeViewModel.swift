@@ -33,6 +33,7 @@ class ExchangeViewModel {
         coreData.getRates(tableView: tableView)
         coreData.getSupported(tableView: tableView)
         coreData.getExchanges(tableView: tableView)
+        print("Init APP")
     }
 
     func loadLocalData(uiTableView: UITableView) {
@@ -43,8 +44,8 @@ class ExchangeViewModel {
     func addLocalData(uiTableView: UITableView) {
         fetchSupportedCurrencies(isUpdating: false, tableView: uiTableView)
         fetchRealtimeRates(isUpdating: false, tableView: uiTableView)
-        self.coreData.addExchangesFrom(tableView: uiTableView, from: "BRL")
-        self.coreData.addExchangesTo(tableView: uiTableView, to: "USD")
+        self.coreData.addExchanges(tableView: uiTableView, from: "BRL", to: "USD")
+        self.coreData.getExchanges(tableView: uiTableView)
     }
 
     func updateData(uiTableView: UITableView) {
@@ -64,5 +65,17 @@ class ExchangeViewModel {
         localViewController.selected = selectedButton
 
         viewController.present(localViewController, animated: true, completion: nil)
+    }
+
+    // MARK: - Animation
+    func rotateButton(updateCurrencyButton: UIButton) {
+        // Setup Rotation Animation
+        UIView.animate(withDuration: 0.5) { () -> Void in
+          updateCurrencyButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+
+        UIView.animate(withDuration: 0.5, delay: 0.45, options: UIView.AnimationOptions.curveEaseIn, animations: { () -> Void in
+          updateCurrencyButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)
+        }, completion: nil)
     }
 }

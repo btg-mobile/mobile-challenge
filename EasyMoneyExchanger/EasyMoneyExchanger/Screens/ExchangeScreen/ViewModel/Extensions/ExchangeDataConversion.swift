@@ -35,7 +35,7 @@ extension ExchangeViewModel {
         return (fromValue! / toValue!) * amount
     }
 
-    func inverCurrencies(tableView: UITableView, fromCurrency: String, toCurrency: String) {
+    func invetCurrencies(tableView: UITableView, fromCurrency: String, toCurrency: String) {
         coreData.updateExchangeTo(tableView: tableView, to: fromCurrency)
         coreData.updateExchangeFrom(tableView: tableView, from: toCurrency)
     }

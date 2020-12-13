@@ -22,6 +22,7 @@ class SelectItemModalViewModel: DataConverter {
         supportedList = getSupportedList(supportedDictionary: getCoreDataSupported(uiTableView: tableView)!)
         supportedList = sortSupportedList(supportedList: supportedList!)
         supportedList = addSupportedListFlags(supportedList: supportedList!)
+        supportedListSearch = supportedList
     }
 
     func getCoreDataSupported(uiTableView: UITableView) -> [String: String]? {

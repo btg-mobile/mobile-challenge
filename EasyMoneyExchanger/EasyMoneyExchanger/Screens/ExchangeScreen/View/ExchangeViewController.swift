@@ -186,6 +186,8 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
 
+    @IBOutlet weak var errorMessage: UILabel!
+    
     @IBOutlet weak var convertButton: UIButton! {
         didSet {
             convertButton.setTitle(Strings.ExchangeScreen.convertButton, for: .normal)
@@ -201,11 +203,19 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         view.endEditing(true)
     }
 
+    @IBAction func onPressSwitchCurrencies(_ sender: Any) {
+        let from = viewModel?.coreData.exchangeItems![0].from
+        let to = viewModel?.coreData.exchangeItems![0].to
+        viewModel?.invetCurrencies(tableView: tableView, fromCurrency: from!, toCurrency: to!)
+        updateFrom(from: (viewModel?.coreData.exchangeItems![0].from)!)
+        updateTo(to: (viewModel?.coreData.exchangeItems![0].to)!)
+    }
     @IBAction func goToCurrenciesScreen(_ sender: Any) {
         coordinator?.goToCurrenciesScreen(with: currencyViewModel!)
     }
     @IBAction func updateCurrencyValues(_ sender: Any) {
         viewModel?.updateData(uiTableView: tableView)
+        viewModel?.rotateButton(updateCurrencyButton: updateCurrencyButton)
         tableView.reloadData()
         loadLabels()
     }
@@ -222,8 +232,11 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
             let from = viewModel?.coreData.exchangeItems![0].from
             let to = viewModel?.coreData.exchangeItems![0].to
             let currencyName = Flags.codeToFlag[(viewModel?.coreData.exchangeItems![0].to)!]
-            currencyConvertedLabel.text = String(format: "%.2f", ((viewModel?.getConvertionCurrency( fromCurrency: from!, toCurrency: to!, amount: amount!))!))
+            currencyConvertedLabel.text = String(format: "%.3f", ((viewModel?.getConvertionCurrency( fromCurrency: from!, toCurrency: to!, amount: amount!))!))
             currencyNameLabel.text = String((currencyName?.dropFirst())!)
+            errorMessage.text = ""
+        } else {
+            errorMessage.text = Strings.ExchangeScreen.errorMessage
         }
     }
 }
