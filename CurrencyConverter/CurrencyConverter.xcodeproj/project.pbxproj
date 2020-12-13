@@ -23,6 +23,7 @@
 		0C4263FC2585444600E7979F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4263FB2585444600E7979F /* TitleLabel.swift */; };
 		0C4264012585478700E7979F /* CurrencySelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4264002585478700E7979F /* CurrencySelectButton.swift */; };
 		0C42640C25856D1900E7979F /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C42640B25856D1900E7979F /* CurrencyConverterViewController.swift */; };
+		0C4264142586456D00E7979F /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4264132586456D00E7979F /* LocalizableStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0C4263FB2585444600E7979F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		0C4264002585478700E7979F /* CurrencySelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectButton.swift; sourceTree = "<group>"; };
 		0C42640B25856D1900E7979F /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
+		0C4264132586456D00E7979F /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				0C4263D425853B9300E7979F /* Extensions */,
+				0C4264132586456D00E7979F /* LocalizableStrings.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				0C42637A258507B900E7979F /* AppDelegate.swift in Sources */,
 				0C42640C25856D1900E7979F /* CurrencyConverterViewController.swift in Sources */,
 				0C4263EE2585405100E7979F /* CurrencyConverterView.swift in Sources */,
+				0C4264142586456D00E7979F /* LocalizableStrings.swift in Sources */,
 				0C42637C258507B900E7979F /* SceneDelegate.swift in Sources */,
 				0C4263F4258541FC00E7979F /* BaseView.swift in Sources */,
 				0C4263D625853BB300E7979F /* UIView+Constraints.swift in Sources */,
