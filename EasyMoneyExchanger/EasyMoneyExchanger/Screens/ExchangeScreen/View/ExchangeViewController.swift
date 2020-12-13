@@ -7,13 +7,15 @@
 
 import Lottie
 import UIKit
+import Network
 
 class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded {
 
     static func instantiate() -> Self? {
         return nil
     }
-
+    var  isConnected = true
+    var  canAccessLists = true
     var  exchangeModalViewController = ExchangeModalViewController()
     var  viewModel: ExchangeViewModel?
     var  currencyViewModel: SupportedCurrenciesViewModel?
@@ -22,58 +24,12 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAnimationView()
-        viewModel?.initApplication(tableView: tableView)
-        loadLabels()
-    }
-
-    func updateFrom(from: String) {
-        fromButton.setTitle(Flags.codeToFlag[from], for: .normal)
-    }
-
-    func updateTo(to: String) {
-        toButton.setTitle(Flags.codeToFlag[to], for: .normal)
-    }
-
-    func loadLabels() {
-        if (viewModel?.coreData.rateItems!.count)! > 0 {
-            let exchangeItems = viewModel?.coreData.exchangeItems![0]
-            let timestamp = viewModel?.coreData.rateItems![0].timeStamp
-            currencyTimestampLabel.text = viewModel?.getDateString(timestamp: timestamp!)
-            updateTo(to: (exchangeItems?.to)!)
-            updateFrom(from: (exchangeItems?.from)!)
+        monitorNetwork()
+        if isConnected {
+            setupAnimationView()
+            self.viewModel?.initApplication(tableView: self.tableView, viewController: self)
+            self.loadLabels()
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        playHomeAnimation()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        playHomeAnimation()
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-           traitCollection.userInterfaceStyle == .dark ? setupAnimationView() : setupAnimationView()
-        }
-    }
-
-    func playHomeAnimation() {
-        animationView?.play()
-        animationView?.loopMode = .loop
-    }
-
-    func setupAnimationView() {
-        let strokeKeyPath = AnimationKeypath(keypath: "**.Group 1.Stroke 1.Color")
-        let fillKeyPath = AnimationKeypath(keypath: "**.Group 1.Fill 1.Color")
-        let colorProvider = ColorValueProvider(Colors.primaryColor!.lottieColorValue)
-        animationView?.animationSpeed = 0.1
-        animationView?.setValueProvider(colorProvider, keypath: strokeKeyPath)
-        animationView?.setValueProvider(colorProvider, keypath: fillKeyPath)
     }
 
     // MARK: - Outlets
@@ -187,7 +143,7 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
     }
 
     @IBOutlet weak var errorMessage: UILabel!
-    
+
     @IBOutlet weak var convertButton: UIButton! {
         didSet {
             convertButton.setTitle(Strings.ExchangeScreen.convertButton, for: .normal)
@@ -197,7 +153,7 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
 
-    // MARK: - Actions
+    // MARK: - UI Actions
 
     @objc func onPressDone() {
         view.endEditing(true)
@@ -214,10 +170,16 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         coordinator?.goToCurrenciesScreen(with: currencyViewModel!)
     }
     @IBAction func updateCurrencyValues(_ sender: Any) {
-        viewModel?.updateData(uiTableView: tableView)
-        viewModel?.rotateButton(updateCurrencyButton: updateCurrencyButton)
-        tableView.reloadData()
-        loadLabels()
+        if isConnected {
+            viewModel?.updateData(uiTableView: tableView, viewController: self)
+            viewModel?.rotateButton(updateCurrencyButton: updateCurrencyButton)
+            tableView.reloadData()
+            loadLabels()
+        } else {
+            let errorAlert = UIAlertController(title: "Error", message: Strings.ExchangeScreen.internetError, preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(errorAlert, animated: true)
+        }
     }
     @IBAction func onPressFrom(_ sender: Any) {
         viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: "From")
@@ -238,5 +200,88 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         } else {
             errorMessage.text = Strings.ExchangeScreen.errorMessage
         }
+    }
+
+    // MARK: - Other Actions
+
+    func monitorNetwork() {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "Network")
+
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    self.isConnected = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.isConnected = false
+                }
+            }
+        }
+
+        monitor.start(queue: queue)
+    }
+    func updateFrom(from: String) {
+        fromButton.setTitle(Flags.codeToFlag[from], for: .normal)
+    }
+
+    func showError(error: String) {
+        let errorAlert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(errorAlert, animated: true)
+    }
+
+    func setButtonsActivation(state: Bool) {
+        toButton.isEnabled = state
+        fromButton.isEnabled = state
+        switchCurrencyButton.isEnabled = state
+        convertButton.isEnabled = state
+        currenciesListButton.isEnabled = state
+    }
+
+    func updateTo(to: String) {
+        toButton.setTitle(Flags.codeToFlag[to], for: .normal)
+    }
+
+    func loadLabels() {
+        if (viewModel?.coreData.rateItems!.count)! > 0 {
+            let exchangeItems = viewModel?.coreData.exchangeItems![0]
+            let timestamp = viewModel?.coreData.rateItems![0].timeStamp
+            currencyTimestampLabel.text = viewModel?.getDateString(timestamp: timestamp!)
+            updateTo(to: (exchangeItems?.to)!)
+            updateFrom(from: (exchangeItems?.from)!)
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        playHomeAnimation()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        playHomeAnimation()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+           traitCollection.userInterfaceStyle == .dark ? setupAnimationView() : setupAnimationView()
+        }
+    }
+
+    func playHomeAnimation() {
+        animationView?.play()
+        animationView?.loopMode = .loop
+    }
+
+    func setupAnimationView() {
+        let strokeKeyPath = AnimationKeypath(keypath: "**.Group 1.Stroke 1.Color")
+        let fillKeyPath = AnimationKeypath(keypath: "**.Group 1.Fill 1.Color")
+        let colorProvider = ColorValueProvider(Colors.primaryColor!.lottieColorValue)
+        animationView?.animationSpeed = 0.1
+        animationView?.setValueProvider(colorProvider, keypath: strokeKeyPath)
+        animationView?.setValueProvider(colorProvider, keypath: fillKeyPath)
     }
 }

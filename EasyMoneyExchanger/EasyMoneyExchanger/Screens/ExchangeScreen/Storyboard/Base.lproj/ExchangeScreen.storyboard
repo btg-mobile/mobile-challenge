@@ -252,9 +252,6 @@
             <point key="canvasLocation" x="-1986.4000000000001" y="118.29085457271366"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="ECX-ZM-PQ8"/>
-    </designables>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <namedColor name="AccentColor">

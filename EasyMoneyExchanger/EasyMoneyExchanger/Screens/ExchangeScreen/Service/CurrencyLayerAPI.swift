@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CurrencyLayerAPI {
 
@@ -17,7 +18,6 @@ class CurrencyLayerAPI {
         //Handling Error
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completion(Result.failure(Errors.invalidEndpoint))
-            print("FICOU NO 1")
             return
         }
 
@@ -27,7 +27,6 @@ class CurrencyLayerAPI {
         //Handling Error
         guard let queryUrl = urlComponents.url else {
             completion(Result.failure(Errors.invalidEndpoint))
-            print("FICOU NO 2")
             return
         }
 
@@ -35,7 +34,6 @@ class CurrencyLayerAPI {
             //Handling Error
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 completion(Result.failure(Errors.transportError(error)))
-                print("FICOU NO 3")
                 return
             }
 
@@ -46,7 +44,6 @@ class CurrencyLayerAPI {
             } catch {
                 //Handling Error
                 completion(Result.failure(Errors.transportError(error)))
-                print("FICOU NO 4")
                 return
             }
         }.resume()
@@ -60,7 +57,6 @@ class CurrencyLayerAPI {
         //Handling Error
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completion(Result.failure(Errors.invalidEndpoint))
-            print("FICOU NO 1")
             return
         }
 
@@ -69,7 +65,6 @@ class CurrencyLayerAPI {
         //Handling Error
         guard let queryUrl = urlComponents.url else {
             completion(Result.failure(Errors.invalidEndpoint))
-            print("FICOU NO 2")
             return
         }
 
@@ -77,7 +72,6 @@ class CurrencyLayerAPI {
             //Handling Error
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 completion(Result.failure(Errors.transportError(error)))
-                print("FICOU NO 3")
                 return
             }
 
@@ -88,7 +82,6 @@ class CurrencyLayerAPI {
             } catch {
                 //Handling Error
                 completion(Result.failure(Errors.transportError(error)))
-                print("FICOU NO 4")
                 return
             }
         }.resume()

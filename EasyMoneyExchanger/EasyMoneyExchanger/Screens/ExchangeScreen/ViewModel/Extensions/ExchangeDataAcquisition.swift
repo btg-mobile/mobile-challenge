@@ -11,7 +11,7 @@ import UIKit
 extension ExchangeViewModel {
     // MARK: - Service Methos
 
-    func fetchRealtimeRates(isUpdating updating: Bool, tableView: UITableView) {
+    func fetchRealtimeRates(isUpdating updating: Bool, tableView: UITableView, viewController: ExchangeViewController) {
         let url = URL(string: "http://api.currencylayer.com/live")!
         service.fetchCurrencyRates(url: url) { result in
         switch result {
@@ -21,13 +21,19 @@ extension ExchangeViewModel {
             } else {
                 self.coreData.addRates(tableView: tableView, realtimeRates: response)
             }
+            DispatchQueue.main.async {
+                viewController.setButtonsActivation(state: true)
+            }
         case .failure(let myError):
-                print(myError)
+                DispatchQueue.main.async {
+                    viewController.showError(error: String(myError.localizedDescription))
+                    viewController.setButtonsActivation(state: false)
+                }
             }
         }
     }
 
-    func fetchSupportedCurrencies(isUpdating updating: Bool, tableView: UITableView) {
+    func fetchSupportedCurrencies(isUpdating updating: Bool, tableView: UITableView, viewController: ExchangeViewController) {
         let url = URL(string: "http://api.currencylayer.com/list")!
         service.fetchSupportedCurrencies(url: url) { result in
         switch result {
@@ -38,7 +44,10 @@ extension ExchangeViewModel {
                 self.coreData.addSupportedCurrencies(tableView: tableView, supprtedCurrencies: response)
             }
         case .failure(let myError):
-                print(myError)
+                DispatchQueue.main.async {
+                    viewController.showError(error: String(myError.localizedDescription))
+                    viewController.setButtonsActivation(state: false)
+                }
             }
         }
     }

@@ -6,6 +6,7 @@
 //
 import UIKit
 import Foundation
+import Network
 
 class ExchangeViewModel {
 
@@ -20,19 +21,19 @@ class ExchangeViewModel {
     // MARK: - Main Methods
 
     // Run when the application Launch
-    func initApplication(tableView: UITableView) {
+    func initApplication(tableView: UITableView, viewController: ExchangeViewController) {
         // Initialize Local Data
         self.coreData.getRates(tableView: tableView)
         // Check if has local data stored
         if self.coreData.rateItems!.count > 0 {
-            loadLocalData(uiTableView: tableView)
+            self.loadLocalData(uiTableView: tableView)
         } else {
-            addLocalData(uiTableView: tableView)
+            self.addLocalData(uiTableView: tableView, viewController: viewController)
         }
 
-        coreData.getRates(tableView: tableView)
-        coreData.getSupported(tableView: tableView)
-        coreData.getExchanges(tableView: tableView)
+        self.coreData.getRates(tableView: tableView)
+        self.coreData.getSupported(tableView: tableView)
+        self.coreData.getExchanges(tableView: tableView)
         print("Init APP")
     }
 
@@ -41,16 +42,16 @@ class ExchangeViewModel {
         self.coreData.getExchanges(tableView: uiTableView)
     }
 
-    func addLocalData(uiTableView: UITableView) {
-        fetchSupportedCurrencies(isUpdating: false, tableView: uiTableView)
-        fetchRealtimeRates(isUpdating: false, tableView: uiTableView)
+    func addLocalData(uiTableView: UITableView, viewController: ExchangeViewController) {
+        fetchSupportedCurrencies(isUpdating: false, tableView: uiTableView, viewController: viewController)
+        fetchRealtimeRates(isUpdating: false, tableView: uiTableView, viewController: viewController)
         self.coreData.addExchanges(tableView: uiTableView, from: "BRL", to: "USD")
         self.coreData.getExchanges(tableView: uiTableView)
     }
 
-    func updateData(uiTableView: UITableView) {
-        fetchSupportedCurrencies(isUpdating: true, tableView: uiTableView)
-        fetchRealtimeRates(isUpdating: true, tableView: uiTableView)
+    func updateData(uiTableView: UITableView, viewController: ExchangeViewController) {
+        self.fetchSupportedCurrencies(isUpdating: true, tableView: uiTableView, viewController: viewController)
+        self.fetchRealtimeRates(isUpdating: true, tableView: uiTableView, viewController: viewController)
     }
 
     func showCurrencieModal(currenciesView viewController: ExchangeViewController, viewModel: ExchangeViewModel, selectedButton: String) {

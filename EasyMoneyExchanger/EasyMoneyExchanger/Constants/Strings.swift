@@ -11,6 +11,7 @@ import UIKit
 struct Strings {
 
     struct ExchangeScreen {
+        static let internetError = "You have no internet connection"
         static let errorMessage = "Please, add a value"
         static let amountLabel = "Amount"
         static let fromLabel = "From"
