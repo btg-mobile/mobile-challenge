@@ -49,7 +49,7 @@ class CurrencyConverterView: BaseView {
         .set(\.text, to: "0.00")
     
     lazy var toCurrencySelectButton = CurrencySelectButton()
-        .set(\.primaryLabel.text, to: LocalizableStrings.currencyConverterViewValuePlaceholder.localized)
+        .set(\.primaryLabel.text, to: LocalizableStrings.currencyConverterViewTapToSelect.localized)
         .set(\.secondaryLabel.text, to: "")
     
     // MARK: - Setup

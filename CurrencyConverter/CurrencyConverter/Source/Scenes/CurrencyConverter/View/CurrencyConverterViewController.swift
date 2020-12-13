@@ -38,14 +38,16 @@ class CurrencyConverterViewController: UIViewController {
         contentView.fromValueTextField.becomeFirstResponder()
     }
     
-    // MARK: - Actions
+    // MARK: - Actigons
     
     func didTapFromCurrency() {
-        print("fromCurrencySelectButton - tapped")
+        let currencyListModal = CurrencyListViewController()
+        present(currencyListModal, animated: true, completion: nil)
     }
     
     func didTapToCurrency() {
-        print("toCurrencySelectButton - tapped")
+        let currencyListModal = CurrencyListViewController()
+        present(currencyListModal, animated: true, completion: nil)
     }
     
     @objc func didTapSwapButton() {
