@@ -79,6 +79,7 @@ class ConvertViewController: UIViewController {
         resultLabel?.text = viewModel?.convertCurrencies(value: value ?? 0,
                                                          firstCurrency: quoteFirst ?? 0, for: quoteSecond ?? 0)
         resultLabel?.isHidden = false
+        valueTextField?.resignFirstResponder()
     }
     @IBAction func tryAgain(_ sender: Any) {
         viewModel?.fetchQuotesCurrencies()
