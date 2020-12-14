@@ -20,7 +20,6 @@ struct AvailableCurrencies: View {
       List(currencies.sorted(by: <), id: \.key) {  key, value in
         HStack {
           Text(key + " - " + value)
-//            .foregroundColor(.white)
           Spacer()
         }
         .contentShape(Rectangle())
