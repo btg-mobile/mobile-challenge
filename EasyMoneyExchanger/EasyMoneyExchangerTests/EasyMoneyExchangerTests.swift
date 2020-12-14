@@ -10,6 +10,8 @@ import XCTest
 
 class EasyMoneyExchangerTests: XCTestCase {
 
+    let supportedCurrencies = SupportedCurrenciesViewModel(coreData: CoreDataManager())
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -18,9 +20,22 @@ class EasyMoneyExchangerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetSupportedList() {
+        let dictionary = [ "USD": "United States Dollar", "BRL": "Brazilian Real"]
+        let result = supportedCurrencies.getSupportedList(supportedDictionary: dictionary)
+        XCTAssert(result[0].currencyCode == "BRL" && result[0].currencyName == "Brazilian Real", "Supported List Operation Failed" )
+    }
+
+    func testSortSupportedList() {
+        let list = [SupportedList(currencyCode: "USD", currencyName: "United States Dollar"), SupportedList(currencyCode: "BRL", currencyName: "Brazilian Real")]
+        let result = supportedCurrencies.sortSupportedList(supportedList: list)
+        XCTAssert(result[0].currencyCode == "BRL" && result[0].currencyName == "Brazilian Real", "Supported List Operation Failed" )
+    }
+
+    func testAddSupportedListFlags() {
+        let list = [SupportedList(currencyCode: "USD", currencyName: "United States Dollar"), SupportedList(currencyCode: "BRL", currencyName: "Brazilian Real")]
+        let result = supportedCurrencies.addSupportedListFlags(supportedList: list)
+        XCTAssert(result[0].currencyCode == "USD" && result[0].currencyName == "🇺🇸 United States Dollar", "Supported List Operation Failed" )
     }
 
     func testPerformanceExample() throws {
@@ -29,5 +44,4 @@ class EasyMoneyExchangerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

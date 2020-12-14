@@ -41,8 +41,8 @@ extension DataConverter {
         var flaggedSupportedList: [SupportedList] = []
 
         for item in supportedList {
-            let flaggeItem = Flags.codeToFlag[item.currencyCode]
-            let newSupportedListItem = SupportedList(currencyCode: item.currencyCode, currencyName: flaggeItem!)
+            let flaggedItem = Flags.codeToFlag[item.currencyCode]
+            let newSupportedListItem = SupportedList(currencyCode: item.currencyCode, currencyName: flaggedItem!)
             flaggedSupportedList.append(newSupportedListItem)
         }
 

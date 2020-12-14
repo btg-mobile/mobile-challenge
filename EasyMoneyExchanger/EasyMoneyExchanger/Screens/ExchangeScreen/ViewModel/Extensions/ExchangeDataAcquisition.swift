@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension ExchangeViewModel {
-    // MARK: - Service Methos
 
     func fetchRealtimeRates(isUpdating updating: Bool, tableView: UITableView, viewController: ExchangeViewController) {
         let url = URL(string: "http://api.currencylayer.com/live")!
