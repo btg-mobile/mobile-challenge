@@ -38,6 +38,18 @@ class EasyMoneyExchangerTests: XCTestCase {
         XCTAssert(result[0].currencyCode == "USD" && result[0].currencyName == "🇺🇸 United States Dollar", "Supported List Operation Failed" )
     }
 
+    func testGetStringFirstCharacter() {
+        let list = "Brazilian Real"
+        let result = supportedCurrencies.getStringFirstCharacter(string: list)
+        XCTAssert(result == "B", "Supported List Operation Failed" )
+    }
+
+    func testGetSupportedTitles() {
+        let list = [SupportedList(currencyCode: "USD", currencyName: "United States Dollar"), SupportedList(currencyCode: "BRL", currencyName: "Brazilian Real")]
+        let result = supportedCurrencies.getSupportedTitles(supportedList: list)
+        XCTAssert(result == ["B", "U"], "Supported List Operation Failed" )
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

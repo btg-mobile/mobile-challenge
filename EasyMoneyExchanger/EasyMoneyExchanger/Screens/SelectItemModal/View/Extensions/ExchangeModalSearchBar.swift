@@ -10,8 +10,7 @@ import UIKit
 extension ExchangeModalViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        viewModel.supportedListSearch = viewModel.supportedList?.filter {$0.currencyName.contains(searchText) || $0.currencyCode.contains(searchText)}
+        viewModel.supportedListSearch = viewModel.filterSearchbarList(list: (viewModel.supportedList)!, searchText: searchText )
         tableView.reloadData()
     }
 

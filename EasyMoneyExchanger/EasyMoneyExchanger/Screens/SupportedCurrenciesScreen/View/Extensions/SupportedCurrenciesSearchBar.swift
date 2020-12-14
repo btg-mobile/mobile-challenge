@@ -13,7 +13,7 @@ extension SupportedCurrenciesViewController: UISearchBarDelegate {
 
         // Filter Dictionary
         if searchText.count > 0 && !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
-            viewModel?.supportedListSearch = viewModel?.supportedList?.filter {$0.currencyName.contains(searchText) || $0.currencyCode.contains(searchText)}
+            viewModel?.supportedListSearch = viewModel?.filterSearchbarList(list: (viewModel?.supportedList)!, searchText: searchText)
             viewModel?.isSearching = true
         } else {
             viewModel?.isSearching = false

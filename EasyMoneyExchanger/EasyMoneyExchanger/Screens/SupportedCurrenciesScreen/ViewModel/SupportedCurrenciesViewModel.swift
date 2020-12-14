@@ -51,4 +51,9 @@ class SupportedCurrenciesViewModel: DataConverter {
         coreData.getRates(tableView: uiTableView)
         return coreData.supportedItems?[0].currencies
     }
+
+    // Filter a list of items based on given text
+    func filterSearchbarList(list: [SupportedList], searchText: String ) -> [SupportedList] {
+        return  list.filter {$0.currencyName.contains(searchText) || $0.currencyCode.contains(searchText)}
+    }
 }

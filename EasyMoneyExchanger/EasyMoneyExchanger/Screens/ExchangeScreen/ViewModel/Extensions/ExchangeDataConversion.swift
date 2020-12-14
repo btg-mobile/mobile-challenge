@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 extension ExchangeViewModel {
-    // MARK: - Data Convertion Methods
+
+    // MARK: - List Methods
 
     func convertSupportedCurrenciesToFlags(data: [String: String]) -> CurrencySupported {
         var newElement: [String: String] = ["BRL": "BRL"]
@@ -21,7 +22,9 @@ extension ExchangeViewModel {
         return CurrencySupported(currencies: newElement)
     }
 
-    func getConvertionCurrency(fromCurrency: String, toCurrency: String, amount: Float) -> Float {
+    // MARK: - Currency Methods
+
+    func getCurrencyConverted(fromCurrency: String, toCurrency: String, amount: Float) -> Float {
         // Pegar o valor de From pra USD
         var fromValue = coreData.rateItems![0].quotes!["USD\(fromCurrency)"]
         fromValue = 1 / fromValue!
@@ -39,6 +42,8 @@ extension ExchangeViewModel {
         coreData.updateExchangeTo(tableView: tableView, to: fromCurrency)
         coreData.updateExchangeFrom(tableView: tableView, from: toCurrency)
     }
+
+    // MARK: - Time Handle Methods
 
     func getDateString(timestamp: Int64) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))

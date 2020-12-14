@@ -13,6 +13,7 @@ class CurrencyLayerAPI {
     let apiKey = "0db8ed878f9da1db0a2f1dc91f086f7e"
 
     // MARK: - Currency Rates
+
     func fetchCurrencyRates(url: URL, completion: @escaping (Result<CurrencyRates, Errors>) -> Void) {
         let decoder = JSONDecoder()
         //Handling Error

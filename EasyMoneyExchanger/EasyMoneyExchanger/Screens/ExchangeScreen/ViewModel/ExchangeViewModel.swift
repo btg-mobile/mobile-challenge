@@ -22,8 +22,10 @@ class ExchangeViewModel {
 
     // Run when the application Launch
     func initApplication(tableView: UITableView, viewController: ExchangeViewController) {
+
         // Initialize Local Data
         self.coreData.getRates(tableView: tableView)
+
         // Check if has local data stored
         if self.coreData.rateItems!.count > 0 {
             self.loadLocalData(uiTableView: tableView)
@@ -31,11 +33,13 @@ class ExchangeViewModel {
             self.addLocalData(uiTableView: tableView, viewController: viewController)
         }
 
+        // Load CoreData Items
         self.coreData.getRates(tableView: tableView)
         self.coreData.getSupported(tableView: tableView)
         self.coreData.getExchanges(tableView: tableView)
-        print("Init APP")
     }
+
+    // MARK: - Local Data
 
     func loadLocalData(uiTableView: UITableView) {
         self.coreData.getSupported(tableView: uiTableView)
@@ -49,11 +53,14 @@ class ExchangeViewModel {
         self.coreData.getExchanges(tableView: uiTableView)
     }
 
-    func updateData(uiTableView: UITableView, viewController: ExchangeViewController) {
+    func updateLocalData(uiTableView: UITableView, viewController: ExchangeViewController) {
         self.fetchSupportedCurrencies(isUpdating: true, tableView: uiTableView, viewController: viewController)
         self.fetchRealtimeRates(isUpdating: true, tableView: uiTableView, viewController: viewController)
     }
 
+    // MARK: - Other Methods
+
+    // Loads a modal with a list of all available Currencies
     func showCurrencieModal(currenciesView viewController: ExchangeViewController, viewModel: ExchangeViewModel, selectedButton: String) {
 
         let modal = UIStoryboard(name: "ExchangeScreenModal", bundle: nil)
@@ -68,7 +75,9 @@ class ExchangeViewModel {
         viewController.present(localViewController, animated: true, completion: nil)
     }
 
-    // MARK: - Animation
+    // MARK: - Animations
+
+    // This method rotates a given button 360 degrees
     func rotateButton(updateCurrencyButton: UIButton) {
         // Setup Rotation Animation
         UIView.animate(withDuration: 0.5) { () -> Void in

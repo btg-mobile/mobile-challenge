@@ -22,9 +22,11 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
     var  animationView: AnimationView?
     weak var coordinator: MainCoordinator?
 
+    // MARK: - Override Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        monitorNetwork()
+        monitorNetwork(monitor: NWPathMonitor(), queue: DispatchQueue(label: "Network"))
         if isConnected {
             setupAnimationView()
             self.viewModel?.initApplication(tableView: self.tableView, viewController: self)
@@ -32,7 +34,24 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
 
-    // MARK: - Outlets
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        playHomeAnimation()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        playHomeAnimation()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+           traitCollection.userInterfaceStyle == .dark ? setupAnimationView() : setupAnimationView()
+        }
+    }
+
+    // MARK: - Outlets UI Labels
 
     @IBOutlet weak var currencyConvertedLabel: UILabel!
     @IBOutlet weak var currencyNameLabel: UILabel!
@@ -55,6 +74,8 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
 
+    // MARK: - Outlets UI TextField
+
     @IBOutlet weak var amountTextInput: UITextField! {
         didSet {
             //Adding a Done Button above the keyboard
@@ -71,6 +92,7 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
 
+    // MARK: - Outlets AnimationView
     @IBOutlet weak var homeAnimationView: AnimationView! {
         didSet {
             animationView = .init(name: "homeAnimation")
@@ -79,6 +101,8 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
             homeAnimationView.addSubview(animationView!)
         }
     }
+
+    // MARK: - Outlets UI Button
 
     @IBOutlet weak var currenciesListButton: UIButton! {
         didSet {
@@ -171,7 +195,7 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
     }
     @IBAction func updateCurrencyValues(_ sender: Any) {
         if isConnected {
-            viewModel?.updateData(uiTableView: tableView, viewController: self)
+            viewModel?.updateLocalData(uiTableView: tableView, viewController: self)
             viewModel?.rotateButton(updateCurrencyButton: updateCurrencyButton)
             tableView.reloadData()
             loadLabels()
@@ -194,7 +218,7 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
             let from = viewModel?.coreData.exchangeItems![0].from
             let to = viewModel?.coreData.exchangeItems![0].to
             let currencyName = Flags.codeToFlag[(viewModel?.coreData.exchangeItems![0].to)!]
-            currencyConvertedLabel.text = String(format: "%.3f", ((viewModel?.getConvertionCurrency( fromCurrency: from!, toCurrency: to!, amount: amount!))!))
+            currencyConvertedLabel.text = String(format: "%.3f", ((viewModel?.getCurrencyConverted( fromCurrency: from!, toCurrency: to!, amount: amount!))!))
             currencyNameLabel.text = String((currencyName?.dropFirst())!)
             errorMessage.text = ""
         } else {
@@ -202,12 +226,18 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
 
+    // MARK: - Delegate Methods
+    func updateFrom(from: String) {
+        fromButton.setTitle(Flags.codeToFlag[from], for: .normal)
+    }
+
+    func updateTo(to: String) {
+        toButton.setTitle(Flags.codeToFlag[to], for: .normal)
+    }
+
     // MARK: - Other Actions
 
-    func monitorNetwork() {
-        let monitor = NWPathMonitor()
-        let queue = DispatchQueue(label: "Network")
-
+    func monitorNetwork(monitor: NWPathMonitor, queue: DispatchQueue) {
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 DispatchQueue.main.async {
@@ -221,9 +251,6 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
 
         monitor.start(queue: queue)
-    }
-    func updateFrom(from: String) {
-        fromButton.setTitle(Flags.codeToFlag[from], for: .normal)
     }
 
     func showError(error: String) {
@@ -240,10 +267,6 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         currenciesListButton.isEnabled = state
     }
 
-    func updateTo(to: String) {
-        toButton.setTitle(Flags.codeToFlag[to], for: .normal)
-    }
-
     func loadLabels() {
         if (viewModel?.coreData.rateItems!.count)! > 0 {
             let exchangeItems = viewModel?.coreData.exchangeItems![0]
@@ -251,23 +274,6 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
             currencyTimestampLabel.text = viewModel?.getDateString(timestamp: timestamp!)
             updateTo(to: (exchangeItems?.to)!)
             updateFrom(from: (exchangeItems?.from)!)
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        playHomeAnimation()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        playHomeAnimation()
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-           traitCollection.userInterfaceStyle == .dark ? setupAnimationView() : setupAnimationView()
         }
     }
 

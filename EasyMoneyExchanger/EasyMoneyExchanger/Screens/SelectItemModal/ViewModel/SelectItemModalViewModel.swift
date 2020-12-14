@@ -43,4 +43,9 @@ class SelectItemModalViewModel: DataConverter {
             delegate?.updateFrom(from: selectedItem)
         }
     }
+
+    // Filter a list of items based on given text
+    func filterSearchbarList(list: [SupportedList], searchText: String ) -> [SupportedList] {
+        return  list.filter {$0.currencyName.contains(searchText) || $0.currencyCode.contains(searchText)}
+    }
 }
