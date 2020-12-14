@@ -8,17 +8,9 @@
 import XCTest
 @testable import EasyMoneyExchanger
 
-class EasyMoneyExchangerTests: XCTestCase {
+class DataConverterTestsTests: XCTestCase {
 
     let supportedCurrencies = SupportedCurrenciesViewModel(coreData: CoreDataManager())
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
 
     func testGetSupportedList() {
         let dictionary = [ "USD": "United States Dollar", "BRL": "Brazilian Real"]
@@ -48,12 +40,5 @@ class EasyMoneyExchangerTests: XCTestCase {
         let list = [SupportedList(currencyCode: "USD", currencyName: "United States Dollar"), SupportedList(currencyCode: "BRL", currencyName: "Brazilian Real")]
         let result = supportedCurrencies.getSupportedTitles(supportedList: list)
         XCTAssert(result == ["B", "U"], "Supported List Operation Failed" )
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 }

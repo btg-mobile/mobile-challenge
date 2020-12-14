@@ -25,16 +25,16 @@ extension ExchangeViewModel {
     // MARK: - Currency Methods
 
     func getCurrencyConverted(fromCurrency: String, toCurrency: String, amount: Float) -> Float {
-        // Pegar o valor de From pra USD
+        // Get From value USD
         var fromValue = coreData.rateItems![0].quotes!["USD\(fromCurrency)"]
         fromValue = 1 / fromValue!
 
-        // Pegar o valor de To pra USD
+        // Get To Value
         var toValue = coreData.rateItems![0].quotes!["USD\(toCurrency)"]
 
         toValue = 1 / toValue!
 
-        // Calcular
+        // Calculate
         return (fromValue! / toValue!) * amount
     }
 
