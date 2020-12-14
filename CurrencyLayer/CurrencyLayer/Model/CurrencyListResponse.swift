@@ -1,5 +1,5 @@
 import Foundation
 
-class CurrencyListResponse: Decodable {
+struct CurrencyListResponse: Decodable {
   var currencies: [String:String]
 }

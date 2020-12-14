@@ -13,15 +13,6 @@ protocol CurrencyLayerFetchable {
   func getSupportedCurrencies() -> AnyPublisher<CurrencyListResponse, CurrencyLayerError>
 }
 
-class CurrencyLayerFetcher {
-  private let session: URLSession
-  static let pageSize = 10
-
-  init(session: URLSession = .shared) {
-    self.session = session
-  }
-}
-
 // MARK: - MarvelComics API
 private extension CurrencyLayerFetcher {
   struct CurrencyLayerAPI {
@@ -59,8 +50,14 @@ private extension CurrencyLayerFetcher {
   }
 }
 
-// MARK: - WeatherFetchable
-extension CurrencyLayerFetcher: CurrencyLayerFetchable {
+
+public class CurrencyLayerFetcher: CurrencyLayerFetchable {
+  private let session: URLSession
+
+  init(session: URLSession = .shared) {
+    self.session = session
+  }
+  
   func getCurrencyExangeList() -> AnyPublisher<CurrencyLayerResponse, CurrencyLayerError> {
     return getCurrency(with: makeCurrencyListComponents())
   }

@@ -1,12 +1,13 @@
 import Foundation
 import Combine
-class CurrencyConversionViewModel: ObservableObject {
+
+public class CurrencyConversionViewModel: ObservableObject {
   @Published private(set) var state = CurrencyLayerState()
   private var subscriptions = Set<AnyCancellable>()
   private var fetcher: CurrencyLayerFetcher
   
-  init() {
-    fetcher = CurrencyLayerFetcher()
+  init(fetcher: CurrencyLayerFetcher) {
+    self.fetcher = fetcher
   }
   
   func fetchCurrecyListAndCurrencies() {
@@ -25,9 +26,9 @@ class CurrencyConversionViewModel: ObservableObject {
               break
             }
           },
-          receiveValue: { [weak self] forecast in
+          receiveValue: { [weak self] currenciesResponse in
             guard let self = self else { return }
-            self.state.exangeRates = forecast.quotes
+            self.state.exangeRates = currenciesResponse.quotes
             self.fetchSupportedCurrencies()
         })
         .store(in: &subscriptions)
@@ -48,9 +49,9 @@ class CurrencyConversionViewModel: ObservableObject {
               break
             }
           },
-          receiveValue: { [weak self] forecast in
+          receiveValue: { [weak self] supportedCurrencies in
             guard let self = self else { return }
-            self.state.currencies = forecast.currencies
+            self.state.currencies = supportedCurrencies.currencies
             self.state.isLoading = false
 
         })
