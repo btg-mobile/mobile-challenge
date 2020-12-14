@@ -12,6 +12,7 @@
 		EBB10AB325855A7A00281C78 /* AvailableCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB10AB225855A7A00281C78 /* AvailableCurrencies.swift */; };
 		EBDCD8852587DC5200DBFC1C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCD8842587DC5200DBFC1C /* ActivityIndicator.swift */; };
 		EBDCD88C2587DE9100DBFC1C /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCD88B2587DE9100DBFC1C /* CurrencyButton.swift */; };
+		EBDCD8902587E1BD00DBFC1C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCD88F2587E1BD00DBFC1C /* SearchBar.swift */; };
 		EBF19F3C25800B2F00BA88B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19F3B25800B2F00BA88B0 /* AppDelegate.swift */; };
 		EBF19F3E25800B2F00BA88B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19F3D25800B2F00BA88B0 /* SceneDelegate.swift */; };
 		EBF19F4025800B2F00BA88B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF19F3F25800B2F00BA88B0 /* ContentView.swift */; };
@@ -33,6 +34,7 @@
 		EBB10AB225855A7A00281C78 /* AvailableCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableCurrencies.swift; sourceTree = "<group>"; };
 		EBDCD8842587DC5200DBFC1C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		EBDCD88B2587DE9100DBFC1C /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
+		EBDCD88F2587E1BD00DBFC1C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EBF19F3825800B2F00BA88B0 /* CurrencyLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF19F3B25800B2F00BA88B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF19F3D25800B2F00BA88B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				EBF19F3F25800B2F00BA88B0 /* ContentView.swift */,
 				EBB10AA7258536FA00281C78 /* CurrencyInput.swift */,
 				EBDCD88B2587DE9100DBFC1C /* CurrencyButton.swift */,
+				EBDCD88F2587E1BD00DBFC1C /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				EBF19F6B2580100B00BA88B0 /* Parsing.swift in Sources */,
 				EBB10AA8258536FA00281C78 /* CurrencyInput.swift in Sources */,
 				EBF19F7A25801B1E00BA88B0 /* CurrencyListResponse.swift in Sources */,
+				EBDCD8902587E1BD00DBFC1C /* SearchBar.swift in Sources */,
 				EBF19F5F25800E9200BA88B0 /* CurrencyConversionView.swift in Sources */,
 				EBF19F6225800EA700BA88B0 /* CurrencyConversionViewModel.swift in Sources */,
 				EBF19F6825800FB900BA88B0 /* CurrencyLayerError.swift in Sources */,
