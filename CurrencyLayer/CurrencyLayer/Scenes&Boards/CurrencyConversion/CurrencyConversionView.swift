@@ -4,7 +4,6 @@ import Combine
 var screenHeight = UIScreen.main.bounds.height
 
 struct CurrencyConversionView: View {
- var currencies: [String: String] = ["":""]
  @ObservedObject var viewModel: CurrencyConversionViewModel
 
  @State var fromInput = ""

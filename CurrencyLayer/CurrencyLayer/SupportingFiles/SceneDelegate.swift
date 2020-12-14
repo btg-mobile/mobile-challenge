@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UIHostingController(
             rootView: contentView.onTapGesture { window.endEditing(true)}
         )
-//        window.rootViewController?.view.backgroundColor = UIColor(named: "color_primary_background")
         self.window = window
         window.makeKeyAndVisible()
     }
