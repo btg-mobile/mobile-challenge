@@ -16,7 +16,10 @@ struct CurrencyConversionView: View {
     NavigationView {
       ZStack {
         Color.init("color_primary_background").edgesIgnoringSafeArea(.all)
-        VStack(alignment: .leading) {
+        if viewModel.state.isLoading {
+          loadingIndicator
+        } else {
+          VStack(alignment: .leading) {
           VStack(spacing: screenHeight/3) {
               HStack(alignment: .center, spacing: 26) {
                 NavigationLink(destination: AvailableCurrencies(currencies: viewModel.state.currencies, currencyItem: $currencyFrom)) {
@@ -65,11 +68,17 @@ struct CurrencyConversionView: View {
             .frame(maxWidth: .infinity)
             .foregroundColor(Color.white)
           }
-        .toolbar {
-          ToolbarItem(placement: .principal) { Text("Currency Layer").foregroundColor(Color.white) }
         }
       }
+      .toolbar {
+        ToolbarItem(placement: .principal) { Text("Currency Layer").foregroundColor(Color.white) }
+      }
     }
+  }
+  
+  private var loadingIndicator: some View {
+    ActivityIndicator(isAnimating: .constant(true), style: .large, color: .gray)
+      .frame(maxWidth: .infinity, alignment: .center)
   }
 }
 

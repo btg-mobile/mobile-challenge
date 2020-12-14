@@ -10,17 +10,18 @@ class CurrencyConversionViewModel: ObservableObject {
   }
   
   func fetchCurrecyListAndCurrencies() {
-
+    self.state.isLoading = true
     fetcher.getCurrencyExangeList()
         .receive(on: DispatchQueue.main)
         .sink(
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
-            case .failure(let error):
-              print(error.localizedDescription)
+            case .failure:
+              self.state.isLoading = false
               self.subscriptions = []
             case .finished:
+              self.state.isLoading = false
               break
             }
           },
@@ -41,13 +42,17 @@ class CurrencyConversionViewModel: ObservableObject {
             switch value {
             case .failure:
               self.subscriptions = []
+              self.state.isLoading = false
             case .finished:
+              self.state.isLoading = false
               break
             }
           },
           receiveValue: { [weak self] forecast in
             guard let self = self else { return }
             self.state.currencies = forecast.currencies
+            self.state.isLoading = false
+
         })
         .store(in: &subscriptions)
   }

@@ -74,7 +74,7 @@ extension CurrencyLayerFetcher: CurrencyLayerFetchable {
       let error = CurrencyLayerError.network(description: "Couldn't create URL")
       return Fail(error: error).eraseToAnyPublisher()
     }
-    print(url)
+
     return session.dataTaskPublisher(for: URLRequest(url: url))
       .mapError { error in
         .network(description: error.localizedDescription)
