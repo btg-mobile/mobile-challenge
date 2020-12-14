@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		B6A1465E258819D400AFA333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A1465D258819D400AFA333 /* AppDelegate.swift */; };
 		B6A14660258819D400AFA333 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A1465F258819D400AFA333 /* SceneDelegate.swift */; };
-		B6A14662258819D400AFA333 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A14661258819D400AFA333 /* ViewController.swift */; };
-		B6A14665258819D400AFA333 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A14663258819D400AFA333 /* Main.storyboard */; };
+		B6A14662258819D400AFA333 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A14661258819D400AFA333 /* CurrencyConverterViewController.swift */; };
 		B6A14667258819D600AFA333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A14666258819D600AFA333 /* Assets.xcassets */; };
 		B6A1466A258819D600AFA333 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A14668258819D600AFA333 /* LaunchScreen.storyboard */; };
 		B6A14675258819D700AFA333 /* mobile_challenge_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A14674258819D700AFA333 /* mobile_challenge_UIKitTests.swift */; };
@@ -38,8 +37,7 @@
 		B6A1465A258819D400AFA333 /* mobile-challenge-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A1465D258819D400AFA333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6A1465F258819D400AFA333 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6A14661258819D400AFA333 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B6A14664258819D400AFA333 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B6A14661258819D400AFA333 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		B6A14666258819D600AFA333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6A14669258819D600AFA333 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6A1466B258819D600AFA333 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,13 +97,8 @@
 		B6A1465C258819D400AFA333 /* mobile-challenge-UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				B6A1465D258819D400AFA333 /* AppDelegate.swift */,
-				B6A1465F258819D400AFA333 /* SceneDelegate.swift */,
-				B6A14661258819D400AFA333 /* ViewController.swift */,
-				B6A14663258819D400AFA333 /* Main.storyboard */,
-				B6A14666258819D600AFA333 /* Assets.xcassets */,
-				B6A14668258819D600AFA333 /* LaunchScreen.storyboard */,
-				B6A1466B258819D600AFA333 /* Info.plist */,
+				B6A1469825881DFD00AFA333 /* Controllers */,
+				B6A1469425881D1900AFA333 /* Supporting Files */,
 			);
 			path = "mobile-challenge-UIKit";
 			sourceTree = "<group>";
@@ -126,6 +119,26 @@
 				B6A14681258819D700AFA333 /* Info.plist */,
 			);
 			path = "mobile-challenge-UIKitUITests";
+			sourceTree = "<group>";
+		};
+		B6A1469425881D1900AFA333 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6A14666258819D600AFA333 /* Assets.xcassets */,
+				B6A14668258819D600AFA333 /* LaunchScreen.storyboard */,
+				B6A1466B258819D600AFA333 /* Info.plist */,
+				B6A1465D258819D400AFA333 /* AppDelegate.swift */,
+				B6A1465F258819D400AFA333 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6A1469825881DFD00AFA333 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6A14661258819D400AFA333 /* CurrencyConverterViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +246,6 @@
 			files = (
 				B6A1466A258819D600AFA333 /* LaunchScreen.storyboard in Resources */,
 				B6A14667258819D600AFA333 /* Assets.xcassets in Resources */,
-				B6A14665258819D400AFA333 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6A14662258819D400AFA333 /* ViewController.swift in Sources */,
+				B6A14662258819D400AFA333 /* CurrencyConverterViewController.swift in Sources */,
 				B6A1465E258819D400AFA333 /* AppDelegate.swift in Sources */,
 				B6A14660258819D400AFA333 /* SceneDelegate.swift in Sources */,
 			);
@@ -296,14 +308,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B6A14663258819D400AFA333 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6A14664258819D400AFA333 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B6A14668258819D600AFA333 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -438,7 +442,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G2Y58K9U;
-				INFOPLIST_FILE = "mobile-challenge-UIKit/Info.plist";
+				INFOPLIST_FILE = "mobile-challenge-UIKit/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +461,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G2Y58K9U;
-				INFOPLIST_FILE = "mobile-challenge-UIKit/Info.plist";
+				INFOPLIST_FILE = "mobile-challenge-UIKit/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
