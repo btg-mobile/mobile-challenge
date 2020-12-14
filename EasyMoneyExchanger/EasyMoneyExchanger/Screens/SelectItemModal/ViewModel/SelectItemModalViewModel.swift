@@ -31,11 +31,11 @@ class SelectItemModalViewModel: DataConverter {
         return coreData.supportedItems?[0].currencies
     }
 
-    func addSelectedItem(uiTableView tableView: UITableView, selectedItem: String, selected: String, delegate: UpdateLabels?) {
+    func addSelectedItem(uiTableView tableView: UITableView, selectedItem: String, selected: ButtonType, delegate: UpdateLabels?) {
         coreData.getExchanges(tableView: tableView)
 
         // Check Selected
-        if selected == "To" {
+        if selected == ButtonType.to {
             coreData.updateExchangeTo(tableView: tableView, to: selectedItem)
             delegate?.updateTo(to: selectedItem)
         } else {

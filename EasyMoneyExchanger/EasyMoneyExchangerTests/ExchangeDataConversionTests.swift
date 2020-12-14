@@ -10,12 +10,22 @@ import XCTest
 
 class ExchangeDataConversionTests: XCTestCase {
 
-    let supportedCurrencies = ExchangeViewModel(service: CurrencyLayerAPI(), coreData: CoreDataManager())
+    private var viewModel: ExchangeViewModel!
+
+    override func setUp() {
+        super.setUp()
+        viewModel = ExchangeViewModel(service: CurrencyLayerAPI(), coreData: CoreDataManager())
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        viewModel = nil
+    }
 
     func testConvertSupportedCurrenciesToFlags() {
         let dictionary = [ "USD": "United States Dollar", "BRL": "Brazilian Real"]
         let dictionaryResult = [ "USD": "🇺🇸 United States Dollar", "BRL": "🇧🇷 Brazilian Real"]
-        let result = supportedCurrencies.convertSupportedCurrenciesToFlags(data: dictionary)
+        let result = viewModel.convertSupportedCurrenciesToFlags(data: dictionary)
 
         XCTAssert(result.currencies == dictionaryResult, "Test Failed" )
     }
@@ -27,7 +37,7 @@ class ExchangeDataConversionTests: XCTestCase {
     }
 
     func testGetDataString() {
-        let result = supportedCurrencies.getDateString(timestamp: 1607945458)
+        let result = viewModel.getDateString(timestamp: 1607945458)
 
         XCTAssert(result == "2020-12-14 11:30", "Test Failed" )
     }

@@ -9,7 +9,7 @@ import UIKit
 
 class ExchangeModalViewController: UIViewController {
 
-    var selected: String = ""
+    var selected: ButtonType?
     var viewModel = SelectItemModalViewModel(coreData: CoreDataManager())
     var updateLabels: UpdateLabels?
 
@@ -34,4 +34,40 @@ class ExchangeModalViewController: UIViewController {
     @IBAction func onPressCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+extension ExchangeModalViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.supportedListSearch = viewModel.filterSearchbarList(list: (viewModel.supportedList)!, searchText: searchText )
+        tableView.reloadData()
+    }
+
+    // Disable keyboard on Press Search Button
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+}
+
+extension ExchangeModalViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.supportedListSearch!.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath)
+        cell.textLabel?.text = viewModel.supportedListSearch![indexPath.row].currencyName
+        cell.detailTextLabel?.text = viewModel.supportedListSearch![indexPath.row].currencyCode
+        // Dismiss keyboard on Drag
+        tableView.keyboardDismissMode = .onDrag
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = viewModel.supportedListSearch![indexPath.row].currencyCode
+        viewModel.addSelectedItem(uiTableView: tableView, selectedItem: selectedItem, selected: selected!, delegate: updateLabels)
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }

@@ -184,7 +184,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTf-MI-FMg">
                                     <rect key="frame" x="38" y="389.5" width="172" height="0.0"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="172" id="4VV-jw-iyE"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="172" id="4VV-jw-iyE"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" systemColor="systemRedColor"/>

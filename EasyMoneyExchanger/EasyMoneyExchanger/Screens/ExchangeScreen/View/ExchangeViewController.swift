@@ -11,9 +11,6 @@ import Network
 
 class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded {
 
-    static func instantiate() -> Self? {
-        return nil
-    }
     var  isConnected = true
     var  canAccessLists = true
     var  exchangeModalViewController = ExchangeModalViewController()
@@ -206,10 +203,10 @@ class ExchangeViewController: UITableViewController, UpdateLabels, Storyboarded 
         }
     }
     @IBAction func onPressFrom(_ sender: Any) {
-        viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: "From")
+        viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: ButtonType.from)
     }
     @IBAction func onPressTo(_ sender: Any) {
-        viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: "To")
+        viewModel?.showCurrencieModal(currenciesView: self, viewModel: viewModel!, selectedButton: ButtonType.to)
     }
     @IBAction func onPressConvert(_ sender: Any) {
 

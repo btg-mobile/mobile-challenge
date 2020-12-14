@@ -18,7 +18,3 @@ extension Exchanges {
     @NSManaged public var from: String?
     @NSManaged public var to: String?
 }
-//
-//extension Exchanges : Identifiable {
-//
-//}

@@ -19,7 +19,3 @@ extension Rates {
     @NSManaged public var timeStamp: Int64
 
 }
-//
-//extension Rates : Identifiable {
-//
-//}

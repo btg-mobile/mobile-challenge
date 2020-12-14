@@ -18,6 +18,3 @@ extension Supported {
     @NSManaged public var currencies: [String: String]?
 
 }
-//extension Supported : Identifiable {
-//
-//}
