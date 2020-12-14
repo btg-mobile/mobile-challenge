@@ -118,7 +118,9 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     }
     
     private func presentError(message: String) {
-        delegate?.presentError()
+        DispatchQueue.main.async {
+            self.delegate?.presentError()
+        }
     }
     
 }
