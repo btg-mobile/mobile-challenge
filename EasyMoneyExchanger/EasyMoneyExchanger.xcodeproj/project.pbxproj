@@ -30,6 +30,7 @@
 		35BD255E2586238400023ADE /* SelectItemModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD255D2586238400023ADE /* SelectItemModalViewModel.swift */; };
 		35BD256A2586661500023ADE /* UpdateLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD25692586661500023ADE /* UpdateLabels.swift */; };
 		35E1208225877DCB00894CD9 /* ExchangeDataConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E1208125877DCB00894CD9 /* ExchangeDataConversionTests.swift */; };
+		35E1208A258785FE00894CD9 /* SelectedItemModalViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E12089258785FE00894CD9 /* SelectedItemModalViewModelTests.swift */; };
 		35E677F525811504007590F2 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E677F425811504007590F2 /* ExchangeViewModel.swift */; };
 		35E677FB2581156E007590F2 /* CurrencyLayerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E677FA2581156E007590F2 /* CurrencyLayerAPI.swift */; };
 		35E6780325811647007590F2 /* CurrencySupported.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6780225811647007590F2 /* CurrencySupported.swift */; };
@@ -97,6 +98,7 @@
 		35BD255D2586238400023ADE /* SelectItemModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectItemModalViewModel.swift; sourceTree = "<group>"; };
 		35BD25692586661500023ADE /* UpdateLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLabels.swift; sourceTree = "<group>"; };
 		35E1208125877DCB00894CD9 /* ExchangeDataConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDataConversionTests.swift; sourceTree = "<group>"; };
+		35E12089258785FE00894CD9 /* SelectedItemModalViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemModalViewModelTests.swift; sourceTree = "<group>"; };
 		35E677F425811504007590F2 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		35E677FA2581156E007590F2 /* CurrencyLayerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerAPI.swift; sourceTree = "<group>"; };
 		35E6780225811647007590F2 /* CurrencySupported.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySupported.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				35FA9C90257F046E00213F84 /* DataConverterTests.swift */,
 				35E1208125877DCB00894CD9 /* ExchangeDataConversionTests.swift */,
+				35E12089258785FE00894CD9 /* SelectedItemModalViewModelTests.swift */,
 				35FA9C92257F046E00213F84 /* Info.plist */,
 			);
 			path = EasyMoneyExchangerTests;
@@ -799,6 +802,7 @@
 			files = (
 				35E1208225877DCB00894CD9 /* ExchangeDataConversionTests.swift in Sources */,
 				35FA9C91257F046E00213F84 /* DataConverterTests.swift in Sources */,
+				35E1208A258785FE00894CD9 /* SelectedItemModalViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
