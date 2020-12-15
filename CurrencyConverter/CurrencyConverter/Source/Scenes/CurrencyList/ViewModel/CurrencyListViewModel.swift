@@ -20,7 +20,7 @@ protocol CurrencyListViewModeling {
 
 protocol CurrencyListViewModelDelegate: class {
     func updateUI()
-    func presentError()
+    func presentError(with message: String)
     func close()
 }
 
@@ -61,15 +61,35 @@ class CurrencyListViewModel: CurrencyListViewModeling {
             switch result {
             case .success(let response):
                 self?.currencies = response.currencies.map({ ($0.key, $0.value) })
-            case .failure(_):
-                self?.presentError(message: "")
+            case .failure(let error):
+                guard let networkError = error as? NetworkError
+                else {
+                    self?.presentError()
+                    break
+                }
+                self?.handleNetworkError(networkError)
             }
         }
     }
     
-    private func presentError(message: String) {
+    // MARK: - Private functions
+    
+    private func presentError(message: String = "Some error occurred.") {
         DispatchQueue.main.async {
-            self.delegate?.presentError()
+            self.delegate?.presentError(with: message)
+        }
+    }
+    
+    private func handleNetworkError(_ error: NetworkError) {
+        switch error {
+        case .apiError(let err):
+            if let errorResponse = err as? ErrorResponse {
+                presentError(message: errorResponse.error.info)
+            } else {
+                presentError()
+            }
+        default:
+            presentError()
         }
     }
     

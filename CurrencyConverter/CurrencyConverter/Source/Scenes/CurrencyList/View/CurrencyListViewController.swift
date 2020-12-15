@@ -53,10 +53,10 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
         contentView.currenciesTableView.reloadData()
     }
     
-    func presentError() {
+    func presentError(with message: String) {
         let alert = UIAlertController(
             title: "Error",
-            message: "Some error occurred.",
+            message: message,
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
