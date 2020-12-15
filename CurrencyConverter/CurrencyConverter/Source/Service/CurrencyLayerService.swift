@@ -41,7 +41,7 @@ enum CurrencyLayerService: Service {
         case .list:
             return .requestParameters(["access_key": accessKey])
         case .live(let fromCurrency, let toCurrency):
-            return .requestParameters(["access_key": accessKey, "source": fromCurrency, "currencies": toCurrency])
+            return .requestParameters(["access_key": accessKey, "currencies": "\(fromCurrency),\(toCurrency)"])
         }
     }
     

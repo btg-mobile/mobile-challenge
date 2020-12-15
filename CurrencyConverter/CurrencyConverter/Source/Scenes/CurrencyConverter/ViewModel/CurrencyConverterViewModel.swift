@@ -110,7 +110,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             self?.delegate?.shouldShowLoading(false)
             switch result {
             case .success(let response):
-                self?.quote = response.quotes["\(fromCurrencyCode)\(toCurrencyCode)"] ?? 0
+                self?.setResultQuote(from: response.quotes)
             case .failure(let error):
                 guard let networkError = error as? NetworkError
                 else {
@@ -160,6 +160,13 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     }
     
     // MARK: - Private functions
+    
+    private func setResultQuote(from quotes: [String : Double]) {
+        let fromQuote = quotes["USD\(fromCurrencyCode)"] ?? 0
+        let toQuote = quotes["USD\(toCurrencyCode)"] ?? 0
+        
+        quote = (1/fromQuote) * toQuote
+    }
     
     private func selectedFromCurrency(_ currency: Currency) {
         fromCurrencyName = currency.name
