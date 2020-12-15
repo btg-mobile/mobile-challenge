@@ -96,4 +96,10 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    func shouldShowLoading(_ isLoading: Bool) {
+        DispatchQueue.main.async {
+            self.contentView.isLoading = isLoading
+        }
+    }
+    
 }

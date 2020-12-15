@@ -44,6 +44,7 @@
 		0C5B803125868FF600E2BBF8 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B803025868FF600E2BBF8 /* CurrencyConverterViewModel.swift */; };
 		0C5B803B2586BDB600E2BBF8 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B803A2586BDB600E2BBF8 /* CurrencyListViewModel.swift */; };
 		0CD045C425882A5C00A77E9E /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD045C325882A5C00A77E9E /* CurrencyTableViewCell.swift */; };
+		0CD045C9258841FF00A77E9E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD045C8258841FF00A77E9E /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		0C5B803025868FF600E2BBF8 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		0C5B803A2586BDB600E2BBF8 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		0CD045C325882A5C00A77E9E /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		0CD045C8258841FF00A77E9E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 				0C4263F3258541FC00E7979F /* BaseView.swift */,
 				0C4263FB2585444600E7979F /* TitleLabel.swift */,
 				0C4264002585478700E7979F /* CurrencySelectButton.swift */,
+				0CD045C8258841FF00A77E9E /* ProgressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				0C42644E25866E5000E7979F /* URLSession+Result.swift in Sources */,
 				0C5B802B25868C8E00E2BBF8 /* CurrencyListViewController.swift in Sources */,
 				0C5B801E2586865300E2BBF8 /* CurrencyLayerLiveResponse.swift in Sources */,
+				0CD045C9258841FF00A77E9E /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

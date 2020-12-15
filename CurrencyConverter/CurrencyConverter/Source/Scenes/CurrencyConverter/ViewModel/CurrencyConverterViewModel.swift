@@ -28,6 +28,7 @@ protocol CurrencyConverterViewModeling {
 protocol CurrencyConverterViewModelDelegate: class {
     func updateUI()
     func presentError(with message: String)
+    func shouldShowLoading(_ isLoading: Bool)
 }
 
 class CurrencyConverterViewModel: CurrencyConverterViewModeling {
@@ -104,7 +105,9 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             quote = 1
             return
         }
+        delegate?.shouldShowLoading(true)
         provider.request(type: CurrencyLayerLiveResponse.self, service: CurrencyLayerService.live(from: fromCurrencyCode, to: toCurrencyCode)) { [weak self] (result) in
+            self?.delegate?.shouldShowLoading(false)
             switch result {
             case .success(let response):
                 self?.quote = response.quotes["\(fromCurrencyCode)\(toCurrencyCode)"] ?? 0

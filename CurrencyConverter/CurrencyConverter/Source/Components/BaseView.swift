@@ -9,6 +9,18 @@ import UIKit
 
 class BaseView: UIView {
     
+    var progressView: ProgressView = ProgressView()
+    
+    var isLoading: Bool = false {
+        didSet {
+            if isLoading {
+                progressView.show()
+            } else {
+                progressView.hide()
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()

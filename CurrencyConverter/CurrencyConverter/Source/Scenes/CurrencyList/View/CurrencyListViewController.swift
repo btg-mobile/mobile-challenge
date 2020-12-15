@@ -36,6 +36,11 @@ class CurrencyListViewController: UIViewController {
     private func setup() {
         view = contentView
         viewModel.delegate = self
+    }
+    
+    // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
         viewModel.loadCurrencyList()
     }
     
@@ -61,6 +66,12 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func shouldShowLoading(_ isLoading: Bool) {
+        DispatchQueue.main.async {
+            self.contentView.isLoading = isLoading
+        }
     }
     
     func close() {

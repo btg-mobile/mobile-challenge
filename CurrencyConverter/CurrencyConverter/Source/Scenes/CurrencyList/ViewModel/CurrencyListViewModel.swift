@@ -21,6 +21,7 @@ protocol CurrencyListViewModeling {
 protocol CurrencyListViewModelDelegate: class {
     func updateUI()
     func presentError(with message: String)
+    func shouldShowLoading(_ isLoading: Bool)
     func close()
 }
 
@@ -57,7 +58,9 @@ class CurrencyListViewModel: CurrencyListViewModeling {
     // MARK: - Logic Functions
     
     func loadCurrencyList() {
+        delegate?.shouldShowLoading(true)
         provider.request(type: CurrencyLayerListResponse.self, service: CurrencyLayerService.list) { [weak self] (result) in
+            self?.delegate?.shouldShowLoading(false)
             switch result {
             case .success(let response):
                 self?.currencies = response.currencies.map({ ($0.key, $0.value) })
