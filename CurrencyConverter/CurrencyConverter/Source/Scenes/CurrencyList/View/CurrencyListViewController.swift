@@ -117,7 +117,7 @@ extension CurrencyListViewController: UITableViewDelegate {
 extension CurrencyListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchCurrenciesFor(name: searchText)
+        viewModel.searchCurrenciesFor(text: searchText)
     }
     
 }

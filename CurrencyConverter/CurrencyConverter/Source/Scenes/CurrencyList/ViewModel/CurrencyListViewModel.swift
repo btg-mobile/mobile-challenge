@@ -15,7 +15,7 @@ protocol CurrencyListViewModeling {
     func currienciesCount() -> Int
     func getCurrencyAt(index: Int) -> Currency
     func selectCurrencyAt(index: Int)
-    func searchCurrenciesFor(name: String)
+    func searchCurrenciesFor(text: String)
 }
 
 protocol CurrencyListViewModelDelegate: class {
@@ -112,9 +112,11 @@ class CurrencyListViewModel: CurrencyListViewModeling {
         delegate?.close()
     }
     
-    func searchCurrenciesFor(name: String) {
+    func searchCurrenciesFor(text: String) {
         filteredCurrencies = currencies.filter{
-            $0.name.lowercased().contains(name.lowercased())
+            text.isEmpty
+                || $0.name.lowercased().contains(text.lowercased())
+                || $0.code.lowercased().contains(text.lowercased())
         }
     }
     
