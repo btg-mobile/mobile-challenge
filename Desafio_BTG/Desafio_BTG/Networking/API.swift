@@ -9,7 +9,7 @@
 import Foundation
 
 final class API {
-    static func fetchQuotes(completion: @escaping(Quotes) -> Void) {
+    static func fetchQuotes(completion: @escaping(Quotes) -> Void, completionError: @escaping(String) -> Void) {
         guard let url  = URL(string: Endpoints.live + getPrivateKey()) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error == nil, let data = data {
@@ -19,17 +19,17 @@ final class API {
                         completion(quotes) //retornar o model desta funcão
                     }
                 } catch {
-                    print("Erro na conversao")
+                    completionError("Ocorreu um erro!")
                 }
             }
-            else { print(error)}
+            else {
+                completionError("Erro de conexão")
+            }
         }
         task.resume() //da o play na task assincrona
     }
     
-    
-    
-    static func fetchList(completion: @escaping(List) -> Void) {
+    static func fetchList(completion: @escaping(List) -> Void, completionError: @escaping(String) -> Void) {
         guard let url  = URL(string: Endpoints.list + getPrivateKey()) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error == nil, let data = data {
@@ -39,10 +39,12 @@ final class API {
                         completion(list) //retornar o model desta funcão
                     }
                 } catch {
-                    print("Erro na conversao")
+                    completionError("Ocorreu um erro!")
                 }
             }
-            else { print(error)}
+            else {
+                completionError("Erro de conexão")
+            }
         }
         task.resume() //da o play na task assincrona
     }

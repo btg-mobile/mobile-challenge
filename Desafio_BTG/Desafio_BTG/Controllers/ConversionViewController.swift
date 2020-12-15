@@ -55,16 +55,26 @@ final class ConversionViewController: UIViewController {
         }
     }
     
+    private func showErrorMessage(message: String) {
+        let alertController = UIAlertController(title: "Ops!", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func convertCurrency(_ sender: UIButton) {
         let source = Currencies(rawValue: sourceCurrencyTextField.text ?? "")
         let destination = Currencies(rawValue: targetCurrencyTextField.text ?? "")
         
-        API.fetchQuotes { quotes in
+        API.fetchQuotes(completion: { (quotes) in
             if let dictQuotes = quotes.quotes, let sourceValue = dictQuotes[self.getCurrencyCode(currency: source ?? .dolar)], let destinationValue = dictQuotes[self.getCurrencyCode(currency: destination ?? .dolar)] {
                 let result = self.calculateCurrency(sourceValue,destinationValue)
                 self.resultCurrencyLabel.text = self.formatCurrencyNumber(result: result)
                 self.view.endEditing(true)
             }
+        }) { (errorMessage) in
+            self.showErrorMessage(message: errorMessage)
         }
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     private var currencyArray: [String: String] = [:]
@@ -21,11 +21,21 @@ class ListViewController: UIViewController {
     }
     
     private func fetchList() {
-        API.fetchList { (list) in
+        API.fetchList(completion: { (list) in
             self.currencyArray =  list.currencies ?? [:]
-            self.tableView.reloadData()        
+            self.tableView.reloadData()
+        }) { (errorMessage) in
+            self.showErrorMessage(message: errorMessage)
         }
     }
+    
+    private func showErrorMessage(message: String) {
+        let alertController = UIAlertController(title: "Ops!", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension ListViewController: UITableViewDataSource{
