@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension URLSession {
+extension URLSession: URLSessioning {
 
     /// DataTask with a completion using Result
     ///
