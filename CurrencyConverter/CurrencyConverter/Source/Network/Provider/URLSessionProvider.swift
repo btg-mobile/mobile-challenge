@@ -54,7 +54,8 @@ final class URLSessionProvider: Provider {
                         let model = try decoder.decode(T.self, from: data)
                         completion(.success(model))
                     } catch {
-                        completion(.failure(NetworkError.parsedData))
+                        let error = try? decoder.decode(E.self, from: data)
+                        completion(.failure(NetworkError.apiError(error)))
                     }
                 case 400...499:
                     let error = try? decoder.decode(E.self, from: data)

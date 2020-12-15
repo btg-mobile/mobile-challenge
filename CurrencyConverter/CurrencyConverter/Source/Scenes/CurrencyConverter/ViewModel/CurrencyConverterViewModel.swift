@@ -27,7 +27,7 @@ protocol CurrencyConverterViewModeling {
 
 protocol CurrencyConverterViewModelDelegate: class {
     func updateUI()
-    func presentError()
+    func presentError(with message: String)
 }
 
 class CurrencyConverterViewModel: CurrencyConverterViewModeling {
@@ -108,8 +108,13 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             switch result {
             case .success(let response):
                 self?.quote = response.quotes["\(fromCurrencyCode)\(toCurrencyCode)"] ?? 0
-            case .failure(_):
-                self?.presentError(message: "")
+            case .failure(let error):
+                guard let networkError = error as? NetworkError
+                else {
+                    self?.presentError()
+                    break
+                }
+                self?.handleNetworkError(networkError)
             }
         }
     }
@@ -167,9 +172,22 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         return value * quote
     }
     
-    private func presentError(message: String) {
+    private func presentError(message: String = "Some error occurred.") {
         DispatchQueue.main.async {
-            self.delegate?.presentError()
+            self.delegate?.presentError(with: message)
+        }
+    }
+    
+    private func handleNetworkError(_ error: NetworkError) {
+        switch error {
+        case .apiError(let err):
+            if let errorResponse = err as? ErrorResponse {
+                presentError(message: errorResponse.error.info)
+            } else {
+                presentError()
+            }
+        default:
+            presentError()
         }
     }
     
