@@ -17,7 +17,7 @@ class CurrencyListViewController: UIViewController {
             $0.cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         }
     
-    private var viewModel: CurrencyListViewModeling
+    var viewModel: CurrencyListViewModeling
     
     // MARK: - Initializers
     

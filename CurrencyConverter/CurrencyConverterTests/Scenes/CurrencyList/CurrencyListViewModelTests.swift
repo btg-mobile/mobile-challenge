@@ -16,6 +16,7 @@ class CurrencyListViewModelTests: XCTestCase {
     var mockProvider: CurrencyListMockProvider!
     
     override func setUpWithError() throws {
+        super.setUp()
         mockProvider = CurrencyListMockProvider()
         sut = CurrencyListViewModel(provider: mockProvider)
         sut.loadCurrencyList()
@@ -46,7 +47,9 @@ class CurrencyListViewModelTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        mockProvider = nil
+        super.tearDown()
     }
 
 }
