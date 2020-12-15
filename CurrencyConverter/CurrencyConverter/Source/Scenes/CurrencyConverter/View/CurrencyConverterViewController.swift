@@ -63,7 +63,7 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     @objc func didTapSwapButton() {
-        print("swapButton - tapped")
+        viewModel.swapCurrencies()
     }
     
     @objc func didEndEditingTextField() {

@@ -21,7 +21,8 @@ protocol CurrencyConverterViewModeling {
     func getSelectFromCurrencyScene() -> CurrencyListViewController
     func getSelectToCurrencyScene() -> CurrencyListViewController
     func loadCurrencyLiveQuote()
-    func convert(amount: String) -> String 
+    func convert(amount: String) -> String
+    func swapCurrencies()
 }
 
 protocol CurrencyConverterViewModelDelegate: class {
@@ -98,6 +99,11 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     func loadCurrencyLiveQuote() {
         let fromCurrencyCode = self.fromCurrencyCode
         let toCurrencyCode = self.toCurrencyCode
+        
+        guard fromCurrencyCode != toCurrencyCode else {
+            quote = 1
+            return
+        }
         provider.request(type: CurrencyLayerLiveResponse.self, service: CurrencyLayerService.live(from: fromCurrencyCode, to: toCurrencyCode)) { [weak self] (result) in
             switch result {
             case .success(let response):
@@ -132,6 +138,17 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         
         let currencyListScene = CurrencyListViewController(viewModel: currencyListViewModel)
         return currencyListScene
+    }
+    
+    func swapCurrencies() {
+        let lastFromCurrencyCode = fromCurrencyCode
+        let lastFromCurrencyName = fromCurrencyName
+        
+        fromCurrencyName = toCurrencyName
+        toCurrencyName = lastFromCurrencyName
+        
+        fromCurrencyCode = toCurrencyCode
+        toCurrencyCode = lastFromCurrencyCode
     }
     
     // MARK: - Private functions
