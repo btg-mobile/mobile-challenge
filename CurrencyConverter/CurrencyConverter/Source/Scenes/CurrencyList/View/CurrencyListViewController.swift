@@ -62,6 +62,10 @@ extension CurrencyListViewController: CurrencyListViewModelDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    func close() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDataSource

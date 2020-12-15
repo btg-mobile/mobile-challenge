@@ -50,15 +50,15 @@ class CurrencyConverterViewController: UIViewController {
         contentView.fromValueTextField.becomeFirstResponder()
     }
     
-    // MARK: - Actigons
+    // MARK: - Actions
     
     func didTapFromCurrency() {
-        let currencyListModal = CurrencyListViewController()
+        let currencyListModal = viewModel.getSelectFromCurrencyScene()
         present(currencyListModal, animated: true, completion: nil)
     }
     
     func didTapToCurrency() {
-        let currencyListModal = CurrencyListViewController()
+        let currencyListModal = viewModel.getSelectToCurrencyScene()
         present(currencyListModal, animated: true, completion: nil)
     }
     

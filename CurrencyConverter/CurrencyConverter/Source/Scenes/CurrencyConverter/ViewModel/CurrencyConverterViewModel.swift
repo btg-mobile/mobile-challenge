@@ -18,6 +18,8 @@ protocol CurrencyConverterViewModeling {
     var toCurrencyName: String { get }
     var toCurrencyValue: String? { get }
     
+    func getSelectFromCurrencyScene() -> CurrencyListViewController
+    func getSelectToCurrencyScene() -> CurrencyListViewController
     func loadCurrencyLiveQuote()
     func convert(amount: String) -> String 
 }
@@ -78,6 +80,7 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     
     private var quote: Double = 0 {
         didSet {
+            toCurrencyValue = convert(amount: fromCurrencyValue ?? "0")
             DispatchQueue.main.async {
                 self.delegate?.updateUI()
             }
@@ -89,6 +92,8 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     init(provider: Provider = URLSessionProvider()) {
         self.provider = provider
     }
+    
+    // MARK: - Protocol functions
     
     func loadCurrencyLiveQuote() {
         let fromCurrencyCode = self.fromCurrencyCode
@@ -111,6 +116,34 @@ class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         let convertedAmount = convertValue(amountDouble)
         
         return String(format: "%.2f", convertedAmount)
+    }
+    
+    func getSelectFromCurrencyScene() -> CurrencyListViewController {
+        let currencyListViewModel = CurrencyListViewModel()
+        currencyListViewModel.selectedCurrency = selectedFromCurrency
+        
+        let currencyListScene = CurrencyListViewController(viewModel: currencyListViewModel)
+        return currencyListScene
+    }
+    
+    func getSelectToCurrencyScene() -> CurrencyListViewController {
+        let currencyListViewModel = CurrencyListViewModel()
+        currencyListViewModel.selectedCurrency = selectedToCurrency
+        
+        let currencyListScene = CurrencyListViewController(viewModel: currencyListViewModel)
+        return currencyListScene
+    }
+    
+    // MARK: - Private functions
+    
+    private func selectedFromCurrency(_ currency: Currency) {
+        fromCurrencyName = currency.name
+        fromCurrencyCode = currency.code
+    }
+    
+    private func selectedToCurrency(_ currency: Currency) {
+        toCurrencyName = currency.name
+        toCurrencyCode = currency.code
     }
     
     private func convertValue(_ value: Double) -> Double {

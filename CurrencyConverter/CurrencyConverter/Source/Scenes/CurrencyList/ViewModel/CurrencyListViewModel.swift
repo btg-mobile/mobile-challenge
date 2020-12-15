@@ -20,6 +20,7 @@ protocol CurrencyListViewModeling {
 protocol CurrencyListViewModelDelegate: class {
     func updateUI()
     func presentError()
+    func close()
 }
 
 class CurrencyListViewModel: CurrencyListViewModeling {
@@ -77,8 +78,8 @@ class CurrencyListViewModel: CurrencyListViewModeling {
     
     func selectCurrencyAt(index: Int) {
         let currency = getCurrencyAt(index: index)
-        print(currency)
         selectedCurrency?(currency)
+        delegate?.close()
     }
     
 }
