@@ -15,6 +15,7 @@ protocol CurrencyListViewModeling {
     func currienciesCount() -> Int
     func getCurrencyAt(index: Int) -> Currency
     func selectCurrencyAt(index: Int)
+    func searchCurrenciesFor(name: String)
 }
 
 protocol CurrencyListViewModelDelegate: class {
@@ -32,6 +33,12 @@ class CurrencyListViewModel: CurrencyListViewModeling {
     var selectedCurrency: ((Currency) -> Void)?
     
     private var currencies: [Currency] = [] {
+        didSet {
+            filteredCurrencies = currencies
+        }
+    }
+    
+    private var filteredCurrencies: [Currency] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.delegate?.updateUI()
@@ -69,17 +76,23 @@ class CurrencyListViewModel: CurrencyListViewModeling {
     // MARK: - Protocol functions
     
     func currienciesCount() -> Int {
-        return currencies.count
+        return filteredCurrencies.count
     }
     
     func getCurrencyAt(index: Int) -> Currency {
-        return currencies[index]
+        return filteredCurrencies[index]
     }
     
     func selectCurrencyAt(index: Int) {
         let currency = getCurrencyAt(index: index)
         selectedCurrency?(currency)
         delegate?.close()
+    }
+    
+    func searchCurrenciesFor(name: String) {
+        filteredCurrencies = currencies.filter{
+            $0.name.lowercased().contains(name.lowercased())
+        }
     }
     
 }

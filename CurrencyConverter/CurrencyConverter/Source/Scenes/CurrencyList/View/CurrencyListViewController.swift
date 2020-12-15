@@ -13,6 +13,7 @@ class CurrencyListViewController: UIViewController {
         .run {
             $0.currenciesTableView.dataSource = self
             $0.currenciesTableView.delegate = self
+            $0.searchBar.delegate = self
             $0.cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         }
     
@@ -96,6 +97,16 @@ extension CurrencyListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectCurrencyAt(index: indexPath.row)
+    }
+    
+}
+
+// MARK: - UISearchBarDelegate
+
+extension CurrencyListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchCurrenciesFor(name: searchText)
     }
     
 }
