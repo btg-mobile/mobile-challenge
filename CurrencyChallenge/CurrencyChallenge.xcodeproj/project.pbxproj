@@ -103,15 +103,9 @@
 		64568B1F258A34D700989EA7 /* CurrencyChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				64568B20258A34D700989EA7 /* AppDelegate.swift */,
-				64568B22258A34D700989EA7 /* SceneDelegate.swift */,
-				64568B24258A34D700989EA7 /* ViewController.swift */,
-				64568B26258A34D700989EA7 /* Main.storyboard */,
-				64568B29258A34D900989EA7 /* Assets.xcassets */,
-				64568B2B258A34D900989EA7 /* LaunchScreen.storyboard */,
-				64568B2E258A34D900989EA7 /* Info.plist */,
-				64568B56258A3DF100989EA7 /* CurrencyLiveExample.json */,
-				64568B5B258A3E3200989EA7 /* CurrencyListExample.json */,
+				64568B60258A487000989EA7 /* Application */,
+				64568B61258A489700989EA7 /* Commons */,
+				64568B63258A48E800989EA7 /* Modules */,
 			);
 			path = CurrencyChallenge;
 			sourceTree = "<group>";
@@ -132,6 +126,60 @@
 				64568B44258A34DA00989EA7 /* Info.plist */,
 			);
 			path = CurrencyChallengeUITests;
+			sourceTree = "<group>";
+		};
+		64568B60258A487000989EA7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				64568B20258A34D700989EA7 /* AppDelegate.swift */,
+				64568B22258A34D700989EA7 /* SceneDelegate.swift */,
+				64568B2E258A34D900989EA7 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		64568B61258A489700989EA7 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				64568B62258A48C500989EA7 /* Assets */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		64568B62258A48C500989EA7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				64568B5B258A3E3200989EA7 /* CurrencyListExample.json */,
+				64568B56258A3DF100989EA7 /* CurrencyLiveExample.json */,
+				64568B29258A34D900989EA7 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		64568B63258A48E800989EA7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				64568B65258A491B00989EA7 /* Main Screen */,
+				64568B64258A490800989EA7 /* LaunchScreen */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		64568B64258A490800989EA7 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				64568B2B258A34D900989EA7 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		64568B65258A491B00989EA7 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64568B24258A34D700989EA7 /* ViewController.swift */,
+				64568B26258A34D700989EA7 /* Main.storyboard */,
+			);
+			path = "Main Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
