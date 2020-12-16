@@ -31,14 +31,14 @@ enum CurrencyService: ServiceProtocol {
     var task: Task {
         switch self {
         case .list:
-            return .requestParameters([:])
+            return .requestParameters(["access_key": Endpoint.apiKey()])
         case .live:
-            return .requestParameters([:])
+            return .requestParameters(["access_key": Endpoint.apiKey()])
         }
     }
     
     var headers: Headers? {
-        return ["access_key": Endpoint.apiKey()]
+        return [:]
     }
     
     var parametersEncoding: ParametersEncoding {
