@@ -9,6 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTGConversorViewController" customModule="BTGConversor" customModuleProvider="target">
             <connections>
+                <outlet property="currencyFromButton" destination="1wv-4J-SP7" id="vCP-XI-1NE"/>
+                <outlet property="currencyFromTextField" destination="aGV-7P-4Ha" id="ds3-zr-lH0"/>
+                <outlet property="currencyToButton" destination="0JN-aZ-Yz2" id="eie-kB-AEI"/>
+                <outlet property="currencyToTextField" destination="rYn-4Y-H8v" id="kqt-9q-zq1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,20 +27,26 @@
                         <constraint firstAttribute="height" constant="44" id="Gqz-h2-w37"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="didTapCurrencyFrom:" destination="-1" eventType="touchUpInside" id="sgK-RF-fR3"/>
+                    </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYn-4Y-H8v">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYn-4Y-H8v">
                     <rect key="frame" x="215" y="120" width="183" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGV-7P-4Ha">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite aqui o valor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGV-7P-4Ha">
                     <rect key="frame" x="16" y="120" width="183" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JN-aZ-Yz2">
                     <rect key="frame" x="215" y="68" width="183" height="44"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="didTapCurrencyTo:" destination="-1" eventType="touchUpInside" id="rZ0-qe-fjb"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

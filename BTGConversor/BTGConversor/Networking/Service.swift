@@ -47,8 +47,9 @@ class Service<T: Target> {
         
     }
     
-    func composeRequest<T: Target>(_ target: T) -> URLRequest {
-        var request = URLRequest(url: URL(with: target))
+    private func composeRequest<T: Target>(_ target: T) -> URLRequest {
+        guard let url = urlComponents(target)?.url else { fatalError("An error has ocurred. Please try again later") }
+        var request = URLRequest(url: url)
         request.allHTTPHeaderFields = target.headers
         request.httpMethod = target.method.rawValue
         
@@ -60,6 +61,15 @@ class Service<T: Target> {
             return request
         }
         
+    }
+    
+    private func urlComponents<T: Target>(_ target: T) -> URLComponents? {
+        let url = URL(with: target)
+        var components = URLComponents(string: url.absoluteString)
+        var resultQueryItems: [URLQueryItem] = []
+        resultQueryItems += target.queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
+        components?.queryItems = resultQueryItems
+        return components
     }
     
     private func parseData<V: Codable>(_ data: Data?, type: V.Type) throws -> V? {
