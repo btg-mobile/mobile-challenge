@@ -16,7 +16,7 @@ final class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        self.title = "Listagem"
+        self.title = "Listagem de Moedas"
         fetchList()
     }
     
@@ -35,7 +35,6 @@ final class ListViewController: UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
-    
 }
 
 extension ListViewController: UITableViewDataSource{

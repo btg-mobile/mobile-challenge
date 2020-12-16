@@ -41,7 +41,7 @@ final class ConversionViewController: UIViewController {
     
     private func formatCurrencyNumber (result: Double) -> String {
         let format = round(result * 100)/100 //arrendondar o texto
-        return "$" + String(format).replacingOccurrences(of: ".", with: ",")
+        return "$ " + String(format).replacingOccurrences(of: ".", with: ",")
     }
     
     private func getCurrencyCode(currency: Currencies) -> String {
@@ -61,7 +61,6 @@ final class ConversionViewController: UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
-    
     
     @IBAction func convertCurrency(_ sender: UIButton) {
         let source = Currencies(rawValue: sourceCurrencyTextField.text ?? "")

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09268F4C25899A1A0089F1C1 /* ConversionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09268F4B25899A1A0089F1C1 /* ConversionViewControllerTests.swift */; };
 		095BB82D258308BB00F3CD1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BB82C258308BB00F3CD1D /* AppDelegate.swift */; };
 		095BB82F258308BB00F3CD1D /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BB82E258308BB00F3CD1D /* ConversionViewController.swift */; };
 		095BB832258308BB00F3CD1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095BB830258308BB00F3CD1D /* Main.storyboard */; };
 		095BB834258308BC00F3CD1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 095BB833258308BC00F3CD1D /* Assets.xcassets */; };
 		095BB837258308BC00F3CD1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095BB835258308BC00F3CD1D /* LaunchScreen.storyboard */; };
-		095BB842258308BC00F3CD1D /* Desafio_BTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BB841258308BC00F3CD1D /* Desafio_BTGTests.swift */; };
 		095BB84D25830D7D00F3CD1D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BB84C25830D7D00F3CD1D /* ListViewController.swift */; };
 		095DA40C258324A100258FD5 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DA40B258324A100258FD5 /* Quotes.swift */; };
 		0971A428258851630011EBE2 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0971A427258851630011EBE2 /* List.swift */; };
@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09268F4B25899A1A0089F1C1 /* ConversionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewControllerTests.swift; sourceTree = "<group>"; };
 		095BB829258308BB00F3CD1D /* Desafio_BTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desafio_BTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		095BB82C258308BB00F3CD1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		095BB82E258308BB00F3CD1D /* ConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		095BB836258308BC00F3CD1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		095BB838258308BC00F3CD1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		095BB83D258308BC00F3CD1D /* Desafio_BTGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Desafio_BTGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		095BB841258308BC00F3CD1D /* Desafio_BTGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_BTGTests.swift; sourceTree = "<group>"; };
 		095BB843258308BC00F3CD1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		095BB84C25830D7D00F3CD1D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		095DA40B258324A100258FD5 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 		095BB840258308BC00F3CD1D /* Desafio_BTGTests */ = {
 			isa = PBXGroup;
 			children = (
-				095BB841258308BC00F3CD1D /* Desafio_BTGTests.swift */,
 				095BB843258308BC00F3CD1D /* Info.plist */,
+				09268F4B25899A1A0089F1C1 /* ConversionViewControllerTests.swift */,
 			);
 			path = Desafio_BTGTests;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				095BB842258308BC00F3CD1D /* Desafio_BTGTests.swift in Sources */,
+				09268F4C25899A1A0089F1C1 /* ConversionViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
