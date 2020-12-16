@@ -11,9 +11,11 @@ class CurrencyConverterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setUp()
     }
 
-
+    func setUp() {
+        view.backgroundColor = .systemBackground
+    }
 }
 
