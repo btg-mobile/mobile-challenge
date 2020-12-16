@@ -15,6 +15,8 @@
 		64568B2D258A34D900989EA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64568B2B258A34D900989EA7 /* LaunchScreen.storyboard */; };
 		64568B38258A34DA00989EA7 /* CurrencyChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64568B37258A34DA00989EA7 /* CurrencyChallengeTests.swift */; };
 		64568B43258A34DA00989EA7 /* CurrencyChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64568B42258A34DA00989EA7 /* CurrencyChallengeUITests.swift */; };
+		64568B57258A3DF100989EA7 /* CurrencyLiveExample.json in Resources */ = {isa = PBXBuildFile; fileRef = 64568B56258A3DF100989EA7 /* CurrencyLiveExample.json */; };
+		64568B5C258A3E3200989EA7 /* CurrencyListExample.json in Resources */ = {isa = PBXBuildFile; fileRef = 64568B5B258A3E3200989EA7 /* CurrencyListExample.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		64568B3E258A34DA00989EA7 /* CurrencyChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64568B42258A34DA00989EA7 /* CurrencyChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChallengeUITests.swift; sourceTree = "<group>"; };
 		64568B44258A34DA00989EA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64568B56258A3DF100989EA7 /* CurrencyLiveExample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyLiveExample.json; sourceTree = "<group>"; };
+		64568B5B258A3E3200989EA7 /* CurrencyListExample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyListExample.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				64568B29258A34D900989EA7 /* Assets.xcassets */,
 				64568B2B258A34D900989EA7 /* LaunchScreen.storyboard */,
 				64568B2E258A34D900989EA7 /* Info.plist */,
+				64568B56258A3DF100989EA7 /* CurrencyLiveExample.json */,
+				64568B5B258A3E3200989EA7 /* CurrencyListExample.json */,
 			);
 			path = CurrencyChallenge;
 			sourceTree = "<group>";
@@ -231,8 +237,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64568B57258A3DF100989EA7 /* CurrencyLiveExample.json in Resources */,
 				64568B2D258A34D900989EA7 /* LaunchScreen.storyboard in Resources */,
 				64568B2A258A34D900989EA7 /* Assets.xcassets in Resources */,
+				64568B5C258A3E3200989EA7 /* CurrencyListExample.json in Resources */,
 				64568B28258A34D700989EA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
