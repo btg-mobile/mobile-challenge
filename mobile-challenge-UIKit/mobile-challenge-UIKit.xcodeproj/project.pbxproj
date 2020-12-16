@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B69429BF258A929D00CC9949 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429BE258A929D00CC9949 /* Coordinator.swift */; };
+		B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429C6258A933600CC9949 /* MainCoordinator.swift */; };
+		B69429CC258A985E00CC9949 /* CurrencyChoosing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */; };
 		B6A146BB25881F5C00AFA333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A146BA25881F5C00AFA333 /* AppDelegate.swift */; };
 		B6A146BD25881F5C00AFA333 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A146BC25881F5C00AFA333 /* SceneDelegate.swift */; };
 		B6A146BF25881F5C00AFA333 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A146BE25881F5C00AFA333 /* CurrencyConverterViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B69429BE258A929D00CC9949 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B69429C6258A933600CC9949 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChoosing.swift; sourceTree = "<group>"; };
 		B6A146B725881F5C00AFA333 /* mobile-challenge-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A146BA25881F5C00AFA333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6A146BC25881F5C00AFA333 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B69429BD258A929000CC9949 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B69429BE258A929D00CC9949 /* Coordinator.swift */,
+				B69429C6258A933600CC9949 /* MainCoordinator.swift */,
+				B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		B6A146AE25881F5C00AFA333 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +113,7 @@
 		B6A146B925881F5C00AFA333 /* mobile-challenge-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B69429BD258A929000CC9949 /* Coordinators */,
 				B6A146F825881FFF00AFA333 /* Controllers */,
 				B6A146F125881FD400AFA333 /* Supporting Files */,
 			);
@@ -270,8 +287,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B69429CC258A985E00CC9949 /* CurrencyChoosing.swift in Sources */,
+				B69429BF258A929D00CC9949 /* Coordinator.swift in Sources */,
 				B6A146BF25881F5C00AFA333 /* CurrencyConverterViewController.swift in Sources */,
 				B6A146BB25881F5C00AFA333 /* AppDelegate.swift in Sources */,
+				B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */,
 				B6A146BD25881F5C00AFA333 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
