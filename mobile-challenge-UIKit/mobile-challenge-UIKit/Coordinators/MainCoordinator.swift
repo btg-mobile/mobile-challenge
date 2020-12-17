@@ -15,7 +15,7 @@ class MainCoordinator: Coordinator, CurrencyChoosing {
     }
 
     func start() {
-        let vc = CurrencyConverterViewController()
+        let vc = CurrencyConverterViewController(coordinator: self)
         navigationController.pushViewController(vc, animated: false)
     }
 
