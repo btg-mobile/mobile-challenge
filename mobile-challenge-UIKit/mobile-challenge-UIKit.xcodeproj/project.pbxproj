@@ -29,6 +29,7 @@
 		B6D79664258ACC8E00A34234 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D79663258ACC8E00A34234 /* NetworkingError.swift */; };
 		B6D79670258BD1E400A34234 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7966F258BD1E400A34234 /* CurrencyConverterViewModel.swift */; };
 		B6D79679258BE0CB00A34234 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */; };
+		B6D79682258C0E9A00A34234 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D79681258C0E9A00A34234 /* DesignSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		B6D79663258ACC8E00A34234 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		B6D7966F258BD1E400A34234 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
+		B6D79681258C0E9A00A34234 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		B6A146B925881F5C00AFA333 /* mobile-challenge-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B6D79680258C0E8600A34234 /* Util */,
 				B6D79677258BE0BB00A34234 /* Views */,
 				B6D7966E258BD1C900A34234 /* ViewModels */,
 				B6A146F825881FFF00AFA333 /* Controllers */,
@@ -224,6 +227,14 @@
 				B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B6D79680258C0E8600A34234 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B6D79681258C0E9A00A34234 /* DesignSystem.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +378,7 @@
 				B69429E0258ABE6400CC9949 /* CurrencyLiveRateProviding.swift in Sources */,
 				B6A146BB25881F5C00AFA333 /* AppDelegate.swift in Sources */,
 				B6D79670258BD1E400A34234 /* CurrencyConverterViewModel.swift in Sources */,
+				B6D79682258C0E9A00A34234 /* DesignSystem.swift in Sources */,
 				B69429FD258AC61A00CC9949 /* CurrencyList.swift in Sources */,
 				B6942A02258AC63B00CC9949 /* CurrencyLiveRate.swift in Sources */,
 				B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */,
