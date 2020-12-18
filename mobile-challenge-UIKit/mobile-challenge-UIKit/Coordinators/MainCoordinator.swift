@@ -19,7 +19,7 @@ class MainCoordinator: Coordinator, CurrencyChoosing {
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func chooseCurrency() {
-        // Yet to be implemented
+    func chooseCurrency(onSelect: (Currency) -> Void) {
+        
     }
 }

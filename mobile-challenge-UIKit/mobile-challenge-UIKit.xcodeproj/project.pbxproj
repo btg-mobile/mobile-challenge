@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B663DB3B258C1DAA007499F6 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */; };
+		B663DB40258CEE0C007499F6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB3F258CEE0C007499F6 /* APIClient.swift */; };
+		B663DB46258CEEA1007499F6 /* CurrencyListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB45258CEEA1007499F6 /* CurrencyListService.swift */; };
+		B663DB52258CEEF4007499F6 /* CurrencyLiveRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB51258CEEF4007499F6 /* CurrencyLiveRateService.swift */; };
 		B69429BF258A929D00CC9949 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429BE258A929D00CC9949 /* Coordinator.swift */; };
 		B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429C6258A933600CC9949 /* MainCoordinator.swift */; };
 		B69429CC258A985E00CC9949 /* CurrencyChoosing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */; };
@@ -30,6 +34,8 @@
 		B6D79670258BD1E400A34234 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7966F258BD1E400A34234 /* CurrencyConverterViewModel.swift */; };
 		B6D79679258BE0CB00A34234 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */; };
 		B6D79682258C0E9A00A34234 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D79681258C0E9A00A34234 /* DesignSystem.swift */; };
+		B6D7968D258C143A00A34234 /* InputAccessoryViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7968C258C143A00A34234 /* InputAccessoryViewButton.swift */; };
+		B6D79692258C14C700A34234 /* LiteralText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D79691258C14C700A34234 /* LiteralText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		B663DB3F258CEE0C007499F6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		B663DB45258CEEA1007499F6 /* CurrencyListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListService.swift; sourceTree = "<group>"; };
+		B663DB51258CEEF4007499F6 /* CurrencyLiveRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLiveRateService.swift; sourceTree = "<group>"; };
 		B69429BE258A929D00CC9949 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B69429C6258A933600CC9949 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChoosing.swift; sourceTree = "<group>"; };
@@ -79,6 +89,8 @@
 		B6D7966F258BD1E400A34234 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		B6D79681258C0E9A00A34234 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		B6D7968C258C143A00A34234 /* InputAccessoryViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccessoryViewButton.swift; sourceTree = "<group>"; };
+		B6D79691258C14C700A34234 /* LiteralText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteralText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B663DB44258CEE96007499F6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B663DB45258CEEA1007499F6 /* CurrencyListService.swift */,
+				B663DB51258CEEF4007499F6 /* CurrencyLiveRateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B663DB4D258CEEC1007499F6 /* Providing */ = {
+			isa = PBXGroup;
+			children = (
+				B69429D7258ABE0900CC9949 /* CurrencyListProviding.swift */,
+				B69429DF258ABE6400CC9949 /* CurrencyLiveRateProviding.swift */,
+				B69429F2258AC03E00CC9949 /* Providing.swift */,
+				B6D7965E258ACA4100A34234 /* URLRequestProviding.swift */,
+			);
+			path = Providing;
+			sourceTree = "<group>";
+		};
 		B69429BD258A929000CC9949 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,13 +151,12 @@
 		B69429D6258ABDEA00CC9949 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B69429D7258ABE0900CC9949 /* CurrencyListProviding.swift */,
-				B69429DF258ABE6400CC9949 /* CurrencyLiveRateProviding.swift */,
+				B663DB4D258CEEC1007499F6 /* Providing */,
+				B663DB44258CEE96007499F6 /* Services */,
 				B69429E5258ABEAD00CC9949 /* Networking.swift */,
 				B69429ED258ABFBC00CC9949 /* Endpoint.swift */,
-				B69429F2258AC03E00CC9949 /* Providing.swift */,
-				B6D7965E258ACA4100A34234 /* URLRequestProviding.swift */,
 				B6D79663258ACC8E00A34234 /* NetworkingError.swift */,
+				B663DB3F258CEE0C007499F6 /* APIClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -225,6 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */,
+				B6D7968C258C143A00A34234 /* InputAccessoryViewButton.swift */,
+				B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D79681258C0E9A00A34234 /* DesignSystem.swift */,
+				B6D79691258C14C700A34234 /* LiteralText.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -367,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B69429F8258AC42D00CC9949 /* Currency.swift in Sources */,
+				B663DB3B258C1DAA007499F6 /* PaddingTextField.swift in Sources */,
 				B69429CC258A985E00CC9949 /* CurrencyChoosing.swift in Sources */,
 				B6D79664258ACC8E00A34234 /* NetworkingError.swift in Sources */,
 				B69429BF258A929D00CC9949 /* Coordinator.swift in Sources */,
@@ -374,16 +409,21 @@
 				B69429E6258ABEAD00CC9949 /* Networking.swift in Sources */,
 				B6D79679258BE0CB00A34234 /* CurrencyTextField.swift in Sources */,
 				B69429EE258ABFBC00CC9949 /* Endpoint.swift in Sources */,
+				B663DB52258CEEF4007499F6 /* CurrencyLiveRateService.swift in Sources */,
 				B69429F3258AC03E00CC9949 /* Providing.swift in Sources */,
 				B69429E0258ABE6400CC9949 /* CurrencyLiveRateProviding.swift in Sources */,
 				B6A146BB25881F5C00AFA333 /* AppDelegate.swift in Sources */,
+				B663DB46258CEEA1007499F6 /* CurrencyListService.swift in Sources */,
 				B6D79670258BD1E400A34234 /* CurrencyConverterViewModel.swift in Sources */,
 				B6D79682258C0E9A00A34234 /* DesignSystem.swift in Sources */,
 				B69429FD258AC61A00CC9949 /* CurrencyList.swift in Sources */,
+				B6D79692258C14C700A34234 /* LiteralText.swift in Sources */,
+				B6D7968D258C143A00A34234 /* InputAccessoryViewButton.swift in Sources */,
 				B6942A02258AC63B00CC9949 /* CurrencyLiveRate.swift in Sources */,
 				B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */,
 				B69429D8258ABE0A00CC9949 /* CurrencyListProviding.swift in Sources */,
 				B6D7965F258ACA4100A34234 /* URLRequestProviding.swift in Sources */,
+				B663DB40258CEE0C007499F6 /* APIClient.swift in Sources */,
 				B6A146BD25881F5C00AFA333 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

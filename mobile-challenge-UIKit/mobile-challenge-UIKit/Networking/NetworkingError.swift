@@ -8,7 +8,8 @@
 import Foundation
 
 enum NetworkingError: String, Error {
-    case noDataReceived = "The request did not generate any data"
-    case invalidURL = "Invalid URL"
-    case unknown = "Something went wrong while trying to retrieve data from URLSession"
+    case noDataReceived = "The request did not generate any data. Please try again."
+    case invalidData = "The data received from the server was invalid. Please try again."
+    case invalidURL = "The URL is invalid. Please try again."
+    case invalidResponse = "Invalid response from the server. Please try again."
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class CurrencyConverterViewController: UIViewController {
     @CurrencyTextField var originCurrencyTextField
-    @CurrencyTextField var destinationCurrencyTextField
+    @CurrencyTextField var targetCurrencyTextField
 
     var viewModel: CurrencyConverterViewModel?
     weak var coordinator: CurrencyChoosing?
@@ -26,25 +26,58 @@ class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        setConstraints()
     }
 
     private func setUp() {
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = LiteralText.currencyConverterViewControllerTitle
 
-        viewModel = CurrencyConverterViewModel { [weak self] in
+        originCurrencyTextField.delegate = self
+
+        let service = CurrencyListService(network: APIClient.shared)
+        viewModel = CurrencyConverterViewModel(service: service) { [weak self] in
             self?.updateUI()
         }
+        updateUI()
+    }
 
+    private func setConstraints() {
         view.addSubview(originCurrencyTextField)
+        view.addSubview(targetCurrencyTextField)
+        
         NSLayoutConstraint.activate([
-            originCurrencyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            originCurrencyTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            originCurrencyTextField.heightAnchor.constraint(equalToConstant: 80),
-            originCurrencyTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            originCurrencyTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            originCurrencyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            originCurrencyTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
+            originCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
+
+            targetCurrencyTextField.topAnchor.constraint(equalTo: originCurrencyTextField.bottomAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            targetCurrencyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            targetCurrencyTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
+            targetCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height)
         ])
     }
 
     private func updateUI() {
+        guard let viewModel = viewModel else { return }
+        _originCurrencyTextField.setCurrencyCode(viewModel.originCurrency.code)
+        _targetCurrencyTextField.setCurrencyCode(viewModel.targetCurrency.code)
+    }
 
+    func select() {
+        coordinator?.chooseCurrency { currency in
+            viewModel?.setSelectedCurrency(currency, for: .origin)
+        }
+    }
+}
+
+extension CurrencyConverterViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        textField.text = viewModel!.getCurrencyValue(forText: textField.text!)
+        return true
     }
 }

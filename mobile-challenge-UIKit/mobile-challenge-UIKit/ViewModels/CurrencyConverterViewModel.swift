@@ -8,29 +8,66 @@
 import Foundation
 
 class CurrencyConverterViewModel {
-    var originCurrency: Currency {
+
+    enum CurrencyType {
+        case origin
+        case target
+    }
+
+    var service: CurrencyListProviding
+
+    private(set) var originCurrency: Currency {
         didSet {
-            onUpdate()
+            DispatchQueue.main.async {
+                self.onUpdate()
+            }
         }
     }
-    var destinationCurrency: Currency {
+    private(set) var targetCurrency: Currency {
         didSet {
-            onUpdate()
+            DispatchQueue.main.async {
+                self.onUpdate()
+            }
         }
     }
+    private var onUpdate: () -> Void
+    private let formatter = NumberFormatter()
     var quotes = [String: Double]()
-    var onUpdate: () -> Void
 
     init(originCurrency: Currency = .brl,
-         destinationCurrency: Currency = .usd,
+         targetCurrency: Currency = .usd,
+         service: CurrencyListProviding,
          onUpdate: @escaping () -> Void) {
         self.originCurrency = originCurrency
-        self.destinationCurrency = destinationCurrency
+        self.targetCurrency = targetCurrency
+        self.service = service
         self.onUpdate = onUpdate
-        fetchData()
+        onUpdate()
+
+        formatter.numberStyle = .currency
+
+        service.getCurrencyList { result in
+            switch result {
+            case .success(let list):
+                self.originCurrency = list.currencies[Int.random(in: 0..<list.currencies.count)]
+                self.targetCurrency = list.currencies[Int.random(in: 0..<list.currencies.count)]
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
-    private func fetchData() {
+    func getCurrencyValue(forText text: String) -> String {
+        return text
+    }
 
+    func setSelectedCurrency(_ currency: Currency, for type: CurrencyType) {
+        switch type {
+        case .origin:
+            originCurrency = currency
+        case .target:
+            targetCurrency = currency
+        }
+        onUpdate()
     }
 }

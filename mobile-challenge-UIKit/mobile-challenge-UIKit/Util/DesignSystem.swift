@@ -11,15 +11,28 @@ struct DesignSystem {
 
     struct Spacing {
         static let `default`: CGFloat = 10
+        static let leadingTopSafeArea: CGFloat = 20
+        static let trailingBottomSafeArea: CGFloat = -20
     }
 
     struct Colors {
         static let background: UIColor = .systemBackground
         static let border: UIColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
-        static let currencyCode: UIColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
+        static let currencyCodeView: UIColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         static let primaryText: UIColor = .label
         static let secondaryText: UIColor = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.262745098, alpha: 0.6)
         static let action: UIColor = #colorLiteral(red: 0.09803921569, green: 0.3529411765, blue: 0.7058823529, alpha: 1)
+    }
+
+    struct FontSize {
+        static let normal: CGFloat = 18
+        static let large: CGFloat = 24
+    }
+
+    struct Animation {
+        static let duration: TimeInterval = 0.2
+        static let lowAlpha: CGFloat = 0.3
+        static let highAlpha: CGFloat = 1
     }
 
     struct TextField {
@@ -27,6 +40,23 @@ struct DesignSystem {
         static let width: CGFloat = UIScreen.main.bounds.width
         static let cornerRadius: CGFloat = min(height, width) / 2
         static let borderWidth: CGFloat = 1
+        static let padding = UIEdgeInsets(top: 0,
+                                          left: CurrencyCodeView.width + 10,
+                                          bottom: 0,
+                                          right: 20)
+        static let editingPadding = UIEdgeInsets(top: 0,
+                                          left: CurrencyCodeView.width + 10,
+                                          bottom: 0,
+                                          right: 40)
+    }
+
+    struct CurrencyCodeView {
+        static let x: CGFloat = 9
+        static let y: CGFloat = 7.5
+        static let width: CGFloat = UIScreen.main.bounds.width / 4
+        static let height: CGFloat = TextField.height - y * 2
+        static let frame: CGRect = CGRect(x: x, y: y, width: width, height: height)
+        static let cornerRadius = min(width, height) / 2
     }
 
     struct InputAccessoryView {
