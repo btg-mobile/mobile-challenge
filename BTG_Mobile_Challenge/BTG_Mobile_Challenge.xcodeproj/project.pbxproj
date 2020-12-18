@@ -14,6 +14,10 @@
 		D9CF67E0258D0EF7003DFAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9CF67DE258D0EF7003DFAD3 /* LaunchScreen.storyboard */; };
 		D9CF67EB258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67EA258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift */; };
 		D9CF67F6258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67F5258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.swift */; };
+		D9CF6810258D4150003DFAD3 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF680F258D4150003DFAD3 /* RequestManager.swift */; };
+		D9CF6818258D426C003DFAD3 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6817258D426C003DFAD3 /* RequestError.swift */; };
+		D9CF681E258D42AC003DFAD3 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */; };
+		D9CF6823258D42E1003DFAD3 /* CharacterSet+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		D9CF67F1258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTG_Mobile_ChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CF67F5258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_Mobile_ChallengeUITests.swift; sourceTree = "<group>"; };
 		D9CF67F7258D0EF8003DFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9CF680F258D4150003DFAD3 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		D9CF6817258D426C003DFAD3 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 			children = (
 				D9CF6806258D15E9003DFAD3 /* App */,
 				D9CF6807258D1617003DFAD3 /* Source */,
+				D9CF681C258D428A003DFAD3 /* Helpers */,
 				D9CF6808258D1636003DFAD3 /* Resources */,
 			);
 			path = BTG_Mobile_Challenge;
@@ -161,6 +170,8 @@
 		D9CF680A258D1671003DFAD3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D9CF680F258D4150003DFAD3 /* RequestManager.swift */,
+				D9CF6817258D426C003DFAD3 /* RequestError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -171,6 +182,15 @@
 				D9CF67D7258D0EF4003DFAD3 /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D9CF681C258D428A003DFAD3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */,
+				D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +323,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */,
+				D9CF6823258D42E1003DFAD3 /* CharacterSet+Extension.swift in Sources */,
+				D9CF6818258D426C003DFAD3 /* RequestError.swift in Sources */,
 				D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */,
 				D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */,
+				D9CF6810258D4150003DFAD3 /* RequestManager.swift in Sources */,
+				D9CF681E258D42AC003DFAD3 /* Dictionary+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = BTG_Mobile_Challenge/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -457,6 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = BTG_Mobile_Challenge/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
