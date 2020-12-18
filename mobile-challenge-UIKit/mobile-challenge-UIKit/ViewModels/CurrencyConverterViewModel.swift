@@ -43,19 +43,8 @@ class CurrencyConverterViewModel {
         self.targetCurrency = targetCurrency
         self.service = service
         self.onUpdate = onUpdate
-        onUpdate()
 
         formatter.numberStyle = .currency
-
-        service.getCurrencyList { result in
-            switch result {
-            case .success(let list):
-                self.originCurrency = list.currencies[Int.random(in: 0..<list.currencies.count)]
-                self.targetCurrency = list.currencies[Int.random(in: 0..<list.currencies.count)]
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 
     func getCurrencyValue(forText text: String) -> String {
