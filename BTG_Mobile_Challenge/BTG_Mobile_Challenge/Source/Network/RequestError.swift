@@ -7,11 +7,11 @@
 
 import Foundation
 
-public protocol MyErrorProtocol: LocalizedError {
+public protocol RequestError: LocalizedError {
     var title: String? { get }
 }
 
-public struct NotURLError: MyErrorProtocol {
+public struct NotURLError: RequestError {
     public var title: String?
     public var errorDescription: String? { return _description }
     public var failureReason: String? { return _description }
@@ -24,7 +24,7 @@ public struct NotURLError: MyErrorProtocol {
     }
 }
 
-public struct InvalidCodableError: MyErrorProtocol {
+public struct InvalidCodableError: RequestError {
     public var title: String?
     public var errorDescription: String? { return _description }
     public var failureReason: String? { return _description }

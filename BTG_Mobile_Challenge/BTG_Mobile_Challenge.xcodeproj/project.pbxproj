@@ -105,6 +105,7 @@
 		D9CF67D2258D0EF4003DFAD3 /* BTG_Mobile_Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D9CF67E1258D0EF7003DFAD3 /* Info.plist */,
 				D9CF6806258D15E9003DFAD3 /* App */,
 				D9CF6807258D1617003DFAD3 /* Source */,
 				D9CF681C258D428A003DFAD3 /* Helpers */,
@@ -136,7 +137,6 @@
 			children = (
 				D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */,
 				D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */,
-				D9CF67E1258D0EF7003DFAD3 /* Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -426,7 +426,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"INFOPLIST_FILE[sdk=*]" = BTG_Mobile_Challenge/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -482,7 +481,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"INFOPLIST_FILE[sdk=*]" = BTG_Mobile_Challenge/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
