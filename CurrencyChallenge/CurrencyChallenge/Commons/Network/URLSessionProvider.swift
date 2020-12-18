@@ -30,8 +30,7 @@ final class URLSessionProvider: ProviderProtocol {
         switch response.statusCode {
         case 200...299:
             guard let data = data, let model = try? JSONDecoder().decode(T.self, from: data)
-                else {
-                return completion(.failure(
+                else { return completion(.failure(
                     .unknown(message: error?.localizedDescription ?? "Has no detailed error message"))) }
             completion(.success(model))
         default:
