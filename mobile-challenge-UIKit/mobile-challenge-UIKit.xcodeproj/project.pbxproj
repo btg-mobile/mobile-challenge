@@ -16,6 +16,7 @@
 		B663DB62258CF37A007499F6 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB61258CF37A007499F6 /* ViewCodable.swift */; };
 		B663DB68258CF603007499F6 /* CurrencyListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB67258CF603007499F6 /* CurrencyListTableViewDataSource.swift */; };
 		B663DB71258CF614007499F6 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB70258CF614007499F6 /* TableViewDelegate.swift */; };
+		B663DB7F258D1DD0007499F6 /* DetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB7E258D1DD0007499F6 /* DetailsButton.swift */; };
 		B69429BF258A929D00CC9949 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429BE258A929D00CC9949 /* Coordinator.swift */; };
 		B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429C6258A933600CC9949 /* MainCoordinator.swift */; };
 		B69429CC258A985E00CC9949 /* CurrencyChoosing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */; };
@@ -70,6 +71,7 @@
 		B663DB61258CF37A007499F6 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		B663DB67258CF603007499F6 /* CurrencyListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewDataSource.swift; sourceTree = "<group>"; };
 		B663DB70258CF614007499F6 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		B663DB7E258D1DD0007499F6 /* DetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsButton.swift; sourceTree = "<group>"; };
 		B69429BE258A929D00CC9949 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B69429C6258A933600CC9949 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		B69429CB258A985E00CC9949 /* CurrencyChoosing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChoosing.swift; sourceTree = "<group>"; };
@@ -172,6 +174,13 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		B663DB83258D4898007499F6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		B69429BD258A929000CC9949 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +237,7 @@
 		B6A146B925881F5C00AFA333 /* mobile-challenge-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B663DB83258D4898007499F6 /* Enums */,
 				B663DB6F258CF608007499F6 /* Delegates */,
 				B663DB66258CF5F6007499F6 /* DataSources */,
 				B663DB60258CF33A007499F6 /* Protocols */,
@@ -297,6 +307,7 @@
 				B6D79678258BE0CB00A34234 /* CurrencyTextField.swift */,
 				B6D7968C258C143A00A34234 /* InputAccessoryViewButton.swift */,
 				B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */,
+				B663DB7E258D1DD0007499F6 /* DetailsButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -457,6 +468,7 @@
 				B663DB57258CF156007499F6 /* CurrencyListViewController.swift in Sources */,
 				B6D79670258BD1E400A34234 /* CurrencyConverterViewModel.swift in Sources */,
 				B6D79682258C0E9A00A34234 /* DesignSystem.swift in Sources */,
+				B663DB7F258D1DD0007499F6 /* DetailsButton.swift in Sources */,
 				B69429FD258AC61A00CC9949 /* CurrencyList.swift in Sources */,
 				B6D79692258C14C700A34234 /* LiteralText.swift in Sources */,
 				B6D7968D258C143A00A34234 /* InputAccessoryViewButton.swift in Sources */,

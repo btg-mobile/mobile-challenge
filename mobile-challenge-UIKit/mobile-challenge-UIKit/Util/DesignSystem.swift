@@ -13,9 +13,10 @@ struct DesignSystem {
         static let `default`: CGFloat = 10
         static let leadingTopSafeArea: CGFloat = 20
         static let trailingBottomSafeArea: CGFloat = -20
+        static let min: CGFloat = 2
     }
 
-    struct Colors {
+    struct Color {
         static let background: UIColor = .systemBackground
         static let border: UIColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
         static let currencyCodeView: UIColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
@@ -27,6 +28,8 @@ struct DesignSystem {
     struct FontSize {
         static let normal: CGFloat = 18
         static let large: CGFloat = 24
+        static let labelTitle: CGFloat = 17
+        static let labelDetails: CGFloat = 15
     }
 
     struct Animation {
@@ -74,5 +77,8 @@ struct DesignSystem {
         static let height: CGFloat = InputAccessoryView.height
         static let frame = CGRect(x: x, y: y, width: width, height: height)
     }
-    
+
+    struct Image {
+        static let chevronRight = UIImage(systemName: "chevron.right")
+    }
 }

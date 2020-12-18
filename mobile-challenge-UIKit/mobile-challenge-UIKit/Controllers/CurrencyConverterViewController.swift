@@ -8,8 +8,28 @@
 import UIKit
 
 class CurrencyConverterViewController: UIViewController, ViewCodable {
-    @CurrencyTextField var originCurrencyTextField
-    @CurrencyTextField var targetCurrencyTextField
+
+    @DetailsButton(.origin) var originCurrencyButton
+    @DetailsButton(.target) var targetCurrencyButton
+
+    @CurrencyTextField(.origin) var originCurrencyTextField
+    @CurrencyTextField(.target) var targetCurrencyTextField
+
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            originCurrencyButton,
+            originCurrencyTextField,
+            targetCurrencyButton,
+            targetCurrencyTextField
+        ])
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = DesignSystem.Spacing.min
+        stackView.alignment = .fill
+
+        return stackView
+    }()
 
     private weak var coordinator: CurrencyChoosing?
     private var viewModel: CurrencyConverterViewModel?
@@ -30,11 +50,24 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
     }
 
     func setUp() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = DesignSystem.Color.background
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = LiteralText.currencyConverterViewControllerTitle
 
         originCurrencyTextField.delegate = self
+        targetCurrencyTextField.delegate = self
+
+        _originCurrencyButton.onTouch = { [weak self] in
+            self?.coordinator?.chooseCurrency { [weak self] currency in
+                self?.viewModel?.setSelectedCurrency(currency, for: .origin)
+            }
+        }
+
+        _targetCurrencyButton.onTouch = { [weak self] in
+            self?.coordinator?.chooseCurrency { [weak self] currency in
+                self?.viewModel?.setSelectedCurrency(currency, for: .target)
+            }
+        }
 
         let service = CurrencyListService(network: APIClient.shared)
         viewModel = CurrencyConverterViewModel(service: service) { [weak self] in
@@ -44,19 +77,17 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
     }
 
     func setConstraints() {
-        view.addSubview(originCurrencyTextField)
-        view.addSubview(targetCurrencyTextField)
+        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            originCurrencyTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
-            originCurrencyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
-            originCurrencyTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
+            originCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
+            targetCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
             originCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
+            targetCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
 
-            targetCurrencyTextField.topAnchor.constraint(equalTo: originCurrencyTextField.bottomAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
-            targetCurrencyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
-            targetCurrencyTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
-            targetCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height)
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
         ])
     }
 
@@ -64,6 +95,9 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
         guard let viewModel = viewModel else { return }
         _originCurrencyTextField.setCurrencyCode(viewModel.originCurrency.code)
         _targetCurrencyTextField.setCurrencyCode(viewModel.targetCurrency.code)
+
+        _originCurrencyButton.setDetailsLabel(text: viewModel.originCurrency.name)
+        _targetCurrencyButton.setDetailsLabel(text: viewModel.targetCurrency.name)
     }
 }
 

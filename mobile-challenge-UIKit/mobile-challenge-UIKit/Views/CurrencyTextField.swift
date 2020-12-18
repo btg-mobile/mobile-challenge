@@ -8,7 +8,9 @@
 import UIKit
 
 @propertyWrapper class CurrencyTextField<T: PaddingTextField> {
+
     private let formatter = NumberFormatter()
+    private let currencyType: CurrencyConverterViewModel.CurrencyType
 
     private lazy var textField: T = {
         let textField = T()
@@ -17,11 +19,12 @@ import UIKit
         textField.adjustsFontSizeToFitWidth = true
         textField.keyboardType = .decimalPad
         textField.layer.borderWidth = DesignSystem.TextField.borderWidth
-        textField.layer.borderColor = DesignSystem.Colors.border.cgColor
+        textField.layer.borderColor = DesignSystem.Color.border.cgColor
         textField.layer.cornerRadius = DesignSystem.TextField.cornerRadius
         textField.inputAccessoryView = inputAccessoryView
         textField.clearButtonMode = .whileEditing
         textField.font = UIFont.systemFont(ofSize: DesignSystem.FontSize.large)
+        textField.isEnabled = currencyType == .origin ? true: false
 
         textField.addSubview(currencyCodeView)
 
@@ -33,7 +36,7 @@ import UIKit
 
     private lazy var currencyCodeView: UIView = {
         let view = UIView(frame: DesignSystem.CurrencyCodeView.frame)
-        view.backgroundColor = DesignSystem.Colors.currencyCodeView
+        view.backgroundColor = DesignSystem.Color.currencyCodeView
         view.layer.cornerRadius = DesignSystem.CurrencyCodeView.cornerRadius
 
         view.addSubview(currencyCodeLabel)
@@ -53,7 +56,7 @@ import UIKit
         return label
     }()
 
-    private var inputAccessoryView: UIView {
+    private lazy var inputAccessoryView: UIView = {
         let blurEffect = UIBlurEffect(style: .prominent)
 
         let view = UIVisualEffectView(effect: blurEffect)
@@ -61,23 +64,26 @@ import UIKit
 
         let button = InputAccessoryViewButton(frame: DesignSystem.InputAccessoryViewButton.frame)
         button.setTitle(LiteralText.done, for: .normal)
-        button.setTitleColor(DesignSystem.Colors.action, for: .normal)
-        button.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
+        button.setTitleColor(DesignSystem.Color.action, for: .normal)
+
+        button.addAction(UIAction(handler: { [weak self] _ in
+            self?.textField.endEditing(true)
+        }), for: .touchUpInside)
 
         view.contentView.addSubview(button)
 
         return view
+    }()
+
+    var wrappedValue: T {
+        return textField
     }
 
-    @objc private func dismissKeyboard() {
-        wrappedValue.endEditing(true)
+    init(_ currencyType: CurrencyConverterViewModel.CurrencyType) {
+        self.currencyType = currencyType
     }
 
     func setCurrencyCode(_ code: String) {
         currencyCodeLabel.text = code
-    }
-
-    var wrappedValue: T {
-        return textField
     }
 }

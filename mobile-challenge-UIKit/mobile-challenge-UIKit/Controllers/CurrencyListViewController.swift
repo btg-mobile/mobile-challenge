@@ -59,6 +59,7 @@ class CurrencyListViewController: UIViewController, ViewCodable {
     }
 
     func setUp() {
+        view.backgroundColor = DesignSystem.Color.background
         navigationItem.title = LiteralText.originViewControllerTitle
 
         let service = CurrencyListService(network: APIClient.shared)
