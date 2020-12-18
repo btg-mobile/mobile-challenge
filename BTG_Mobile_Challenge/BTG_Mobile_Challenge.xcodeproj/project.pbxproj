@@ -18,6 +18,7 @@
 		D9CF6818258D426C003DFAD3 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6817258D426C003DFAD3 /* RequestError.swift */; };
 		D9CF681E258D42AC003DFAD3 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */; };
 		D9CF6823258D42E1003DFAD3 /* CharacterSet+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */; };
+		D9CF6876258D6002003DFAD3 /* CurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6875258D6002003DFAD3 /* CurrencyAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D9CF6817258D426C003DFAD3 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Extension.swift"; sourceTree = "<group>"; };
+		D9CF6875258D6002003DFAD3 /* CurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				D9CF680F258D4150003DFAD3 /* RequestManager.swift */,
 				D9CF6817258D426C003DFAD3 /* RequestError.swift */,
+				D9CF6875258D6002003DFAD3 /* CurrencyAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -187,10 +190,18 @@
 		D9CF681C258D428A003DFAD3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D9CF6871258D5FAA003DFAD3 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D9CF6871258D5FAA003DFAD3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
 				D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */,
 				D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */,
+				D9CF6876258D6002003DFAD3 /* CurrencyAPI.swift in Sources */,
 				D9CF6823258D42E1003DFAD3 /* CharacterSet+Extension.swift in Sources */,
 				D9CF6818258D426C003DFAD3 /* RequestError.swift in Sources */,
 				D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */,
