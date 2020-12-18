@@ -19,6 +19,7 @@
 		D9CF681E258D42AC003DFAD3 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */; };
 		D9CF6823258D42E1003DFAD3 /* CharacterSet+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */; };
 		D9CF6876258D6002003DFAD3 /* CurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6875258D6002003DFAD3 /* CurrencyAPI.swift */; };
+		D9CF687B258D618B003DFAD3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF687A258D618B003DFAD3 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Extension.swift"; sourceTree = "<group>"; };
 		D9CF6875258D6002003DFAD3 /* CurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPI.swift; sourceTree = "<group>"; };
+		D9CF687A258D618B003DFAD3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			children = (
 				D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */,
 				D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */,
+				D9CF687A258D618B003DFAD3 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */,
 				D9CF6876258D6002003DFAD3 /* CurrencyAPI.swift in Sources */,
 				D9CF6823258D42E1003DFAD3 /* CharacterSet+Extension.swift in Sources */,
+				D9CF687B258D618B003DFAD3 /* UIView+Extension.swift in Sources */,
 				D9CF6818258D426C003DFAD3 /* RequestError.swift in Sources */,
 				D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */,
 				D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */,
