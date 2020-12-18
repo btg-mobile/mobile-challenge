@@ -14,8 +14,9 @@ class CurrencyConverterViewModel {
         case target
     }
 
-    private var service: CurrencyListProviding
-    private var onUpdate: () -> Void
+    var onUpdate: () -> Void = { }
+
+    private var service: CurrencyLiveRateService
     private var quotes = [String: Double]()
     private let formatter = NumberFormatter()
 
@@ -37,12 +38,10 @@ class CurrencyConverterViewModel {
 
     init(originCurrency: Currency = .brl,
          targetCurrency: Currency = .usd,
-         service: CurrencyListProviding,
-         onUpdate: @escaping () -> Void) {
+         service: CurrencyLiveRateService) {
         self.originCurrency = originCurrency
         self.targetCurrency = targetCurrency
         self.service = service
-        self.onUpdate = onUpdate
 
         formatter.numberStyle = .currency
     }
@@ -59,5 +58,11 @@ class CurrencyConverterViewModel {
             targetCurrency = currency
         }
         onUpdate()
+    }
+
+    func invertCurrencies() {
+        let temp = originCurrency
+        originCurrency = targetCurrency
+        targetCurrency = temp
     }
 }

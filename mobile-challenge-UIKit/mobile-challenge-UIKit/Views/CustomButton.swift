@@ -1,5 +1,5 @@
 //
-//  InputAccessoryViewButton.swift
+//  CustomButton.swift
 //  mobile-challenge-UIKit
 //
 //  Created by Lucas Fernandez Nicolau on 17/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InputAccessoryViewButton: UIButton {
+class CustomButton: UIButton {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

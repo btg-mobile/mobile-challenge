@@ -23,6 +23,7 @@ struct DesignSystem {
         static let primaryText: UIColor = .label
         static let secondaryText: UIColor = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.262745098, alpha: 0.6)
         static let action: UIColor = #colorLiteral(red: 0.09803921569, green: 0.3529411765, blue: 0.7058823529, alpha: 1)
+        static let shadow: UIColor = .label
     }
 
     struct FontSize {
@@ -30,6 +31,7 @@ struct DesignSystem {
         static let large: CGFloat = 24
         static let labelTitle: CGFloat = 17
         static let labelDetails: CGFloat = 15
+        static let fab: CGFloat = 30
     }
 
     struct Animation {
@@ -78,7 +80,20 @@ struct DesignSystem {
         static let frame = CGRect(x: x, y: y, width: width, height: height)
     }
 
+    struct FloatingActionButton {
+        static let size: CGFloat = 65
+        static let cornerRadius: CGFloat = size / 2
+        static let shadowOffset: CGSize = CGSize(width: 0, height: 1)
+        static let shadowRadius: CGFloat = 4
+        static let shadowOpacity: Float = 0.5
+        static let edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 13,
+                                                           left: 13,
+                                                           bottom: 13,
+                                                           right: 13)
+    }
+
     struct Image {
         static let chevronRight = UIImage(systemName: "chevron.right")
+        static let invert = UIImage(systemName: "arrow.triangle.2.circlepath")
     }
 }

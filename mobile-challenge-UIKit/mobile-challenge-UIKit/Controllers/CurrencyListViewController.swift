@@ -10,7 +10,7 @@ import UIKit
 class CurrencyListViewController: UIViewController, ViewCodable {
 
     private weak var coordinator: (MainCoordinator & CurrencyChoosing)?
-    private var viewModel: CurrencyListViewModel?
+    private var viewModel: CurrencyListViewModel
     private let tableViewDataSource = CurrencyListTableViewDataSource()
     private let tableViewDelegate = TableViewDelegate()
     private var onSelectCurrency: (Currency) -> Void = { _ in }
@@ -46,7 +46,9 @@ class CurrencyListViewController: UIViewController, ViewCodable {
     }()
 
     init(coordinator: (MainCoordinator & CurrencyChoosing),
+         viewModel: CurrencyListViewModel,
          onSelectCurrency: @escaping (Currency) -> Void) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
         self.onSelectCurrency = onSelectCurrency
@@ -63,7 +65,7 @@ class CurrencyListViewController: UIViewController, ViewCodable {
     }
 
     @objc private func onSegmentSelected(_ segment: UISegmentedControl) {
-        viewModel?.sort(by: segment.selectedSegmentIndex)
+        viewModel.sort(by: segment.selectedSegmentIndex)
     }
 
     func setUp() {
@@ -73,25 +75,24 @@ class CurrencyListViewController: UIViewController, ViewCodable {
 
         setUpSearchController()
 
-        let service = CurrencyListService(network: APIClient.shared)
-        viewModel = CurrencyListViewModel(service: service) { [weak self] in
+        viewModel.onUpdate = { [weak self] in
             self?.activityIndicator.removeFromSuperview()
             self?.tableView.isHidden = false
             self?.updateUI()
         }
 
-        guard let viewModel = viewModel else { return }
-
-        tableViewDataSource.setNumberOfRows = {
-            return viewModel.getCurrenciesSize()
+        tableViewDataSource.setNumberOfRows = { [weak self] in
+            guard let self = self else { return 0 }
+            return self.viewModel.getCurrenciesSize()
         }
-        tableViewDataSource.getCurrencyForRowAt = { row in
-            return viewModel.getCurrency(for: row)
+        tableViewDataSource.getCurrencyForRowAt = { [weak self] row in
+            return self?.viewModel.getCurrency(for: row)
         }
 
         tableViewDelegate.didSelectRowAt = { [weak self] row in
-            self?.onSelectCurrency(viewModel.getCurrency(for: row))
-            self?.coordinator?.goBack()
+            guard let self = self else { return }
+            self.onSelectCurrency(self.viewModel.getCurrency(for: row))
+            self.coordinator?.goBack()
         }
 
     }
@@ -128,7 +129,7 @@ extension CurrencyListViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        viewModel?.filter(by: text)
+        viewModel.filter(by: text)
     }
 
 }

@@ -14,8 +14,9 @@ class CurrencyListViewModel {
         case code
     }
 
+    var onUpdate: () -> Void = { }
+
     private var service: CurrencyListProviding
-    private var onUpdate: () -> Void
 
     private var currencies = [Currency]()
     private var showingCurrencies = [Currency]() {
@@ -26,9 +27,8 @@ class CurrencyListViewModel {
         }
     }
 
-    init(service: CurrencyListProviding, onUpdate: @escaping () -> Void) {
+    init(service: CurrencyListProviding) {
         self.service = service
-        self.onUpdate = onUpdate
         getCurrencyList()
     }
 

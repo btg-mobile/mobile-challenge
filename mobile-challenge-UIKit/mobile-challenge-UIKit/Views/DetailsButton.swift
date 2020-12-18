@@ -7,7 +7,7 @@
 
 import UIKit
 
-@propertyWrapper class DetailsButton<T: InputAccessoryViewButton> {
+@propertyWrapper class DetailsButton<T: CustomButton> {
 
     var onTouch: () -> Void = { }
     private(set) var currencyType: CurrencyConverterViewModel.CurrencyType

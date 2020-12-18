@@ -9,11 +9,16 @@ import UIKit
 
 class CurrencyConverterViewController: UIViewController, ViewCodable {
 
+    private weak var coordinator: CurrencyChoosing?
+    private var viewModel: CurrencyConverterViewModel
+
     @DetailsButton(.origin) var originCurrencyButton
     @DetailsButton(.target) var targetCurrencyButton
 
     @CurrencyTextField(.origin) var originCurrencyTextField
     @CurrencyTextField(.target) var targetCurrencyTextField
+
+    @FloatingActionButton var fab
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
@@ -31,10 +36,8 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
         return stackView
     }()
 
-    private weak var coordinator: CurrencyChoosing?
-    private var viewModel: CurrencyConverterViewModel?
-
-    init(coordinator: CurrencyChoosing) {
+    init(coordinator: CurrencyChoosing, viewModel: CurrencyConverterViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
     }
@@ -59,18 +62,21 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
 
         _originCurrencyButton.onTouch = { [weak self] in
             self?.coordinator?.chooseCurrency { [weak self] currency in
-                self?.viewModel?.setSelectedCurrency(currency, for: .origin)
+                self?.viewModel.setSelectedCurrency(currency, for: .origin)
             }
         }
 
         _targetCurrencyButton.onTouch = { [weak self] in
             self?.coordinator?.chooseCurrency { [weak self] currency in
-                self?.viewModel?.setSelectedCurrency(currency, for: .target)
+                self?.viewModel.setSelectedCurrency(currency, for: .target)
             }
         }
 
-        let service = CurrencyListService(network: APIClient.shared)
-        viewModel = CurrencyConverterViewModel(service: service) { [weak self] in
+        _fab.onTouch = { [weak self] in
+            self?.viewModel.invertCurrencies()
+        }
+
+        viewModel.onUpdate = { [weak self] in
             self?.updateUI()
         }
         updateUI()
@@ -78,6 +84,7 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
 
     func setConstraints() {
         view.addSubview(stackView)
+        view.addSubview(fab)
         
         NSLayoutConstraint.activate([
             originCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
@@ -88,11 +95,13 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
+
+            fab.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
+            fab.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea)
         ])
     }
 
     func updateUI() {
-        guard let viewModel = viewModel else { return }
         _originCurrencyTextField.setCurrencyCode(viewModel.originCurrency.code)
         _targetCurrencyTextField.setCurrencyCode(viewModel.targetCurrency.code)
 
@@ -105,7 +114,7 @@ extension CurrencyConverterViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        textField.text = viewModel!.getCurrencyValue(forText: textField.text!)
+        textField.text = viewModel.getCurrencyValue(forText: textField.text!)
         return true
     }
 }

@@ -62,7 +62,7 @@ import UIKit
         let view = UIVisualEffectView(effect: blurEffect)
         view.frame = DesignSystem.InputAccessoryView.frame
 
-        let button = InputAccessoryViewButton(frame: DesignSystem.InputAccessoryViewButton.frame)
+        let button = CustomButton(frame: DesignSystem.InputAccessoryViewButton.frame)
         button.setTitle(LiteralText.done, for: .normal)
         button.setTitleColor(DesignSystem.Color.action, for: .normal)
 

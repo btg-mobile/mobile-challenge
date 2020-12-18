@@ -15,12 +15,21 @@ class MainCoordinator: Coordinator, CurrencyChoosing {
     }
 
     func start() {
-        let vc = CurrencyConverterViewController(coordinator: self)
+        let service = CurrencyLiveRateService(network: APIClient.shared)
+        let viewModel = CurrencyConverterViewModel(service: service)
+        let vc = CurrencyConverterViewController(coordinator: self,
+                                                 viewModel: viewModel)
+        
         navigationController.pushViewController(vc, animated: false)
     }
 
     func chooseCurrency(onSelect: @escaping (Currency) -> Void) {
-        let vc = CurrencyListViewController(coordinator: self, onSelectCurrency: onSelect)
+        let service = CurrencyListService(network: APIClient.shared)
+        let viewModel = CurrencyListViewModel(service: service)
+        let vc = CurrencyListViewController(coordinator: self,
+                                            viewModel: viewModel,
+                                            onSelectCurrency: onSelect)
+
         navigationController.pushViewController(vc, animated: true)
     }
 
