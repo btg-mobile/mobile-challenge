@@ -9,6 +9,11 @@ import Foundation
 
 class CurrencyListViewModel {
 
+    enum FilterType: Int {
+        case name
+        case code
+    }
+
     private var service: CurrencyListProviding
     private var onUpdate: () -> Void
 
@@ -34,6 +39,19 @@ class CurrencyListViewModel {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+
+    func sort(by segmentIndex: Int) {
+        let filterType = FilterType(rawValue: segmentIndex)
+
+        switch filterType {
+        case .name:
+            currencies.sort { $0.name < $1.name }
+        case .code:
+            currencies.sort { $0.code < $1.code }
+        default:
+            return
         }
     }
 }

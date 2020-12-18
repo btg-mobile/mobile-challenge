@@ -12,4 +12,6 @@ enum LiteralText {
     static let currencyConverterViewControllerTitle = "Currency Converter"
     static let originViewControllerTitle = "Origin Currency"
     static let targetViewControllerTitle = "Target Currency"
+    static let name = "Name"
+    static let code = "Code"
 }

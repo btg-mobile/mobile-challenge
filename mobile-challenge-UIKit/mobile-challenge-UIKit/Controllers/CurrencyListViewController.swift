@@ -11,10 +11,31 @@ class CurrencyListViewController: UIViewController, ViewCodable {
 
     private weak var coordinator: (MainCoordinator & CurrencyChoosing)?
     private var viewModel: CurrencyListViewModel?
-    private var tableView: UITableView?
     private let tableViewDataSource = CurrencyListTableViewDataSource()
     private let tableViewDelegate = TableViewDelegate()
     private var onSelectCurrency: (Currency) -> Void = { _ in }
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        tableView.dataSource = tableViewDataSource
+        tableView.delegate = tableViewDelegate
+
+        return tableView
+    }()
+
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmented = UISegmentedControl()
+        segmented.translatesAutoresizingMaskIntoConstraints = false
+        segmented.insertSegment(withTitle: LiteralText.name, at: 0, animated: false)
+        segmented.insertSegment(withTitle: LiteralText.code, at: 1, animated: false)
+        segmented.selectedSegmentIndex = 0
+        segmented.addTarget(self, action: #selector(onSegmentSelected(_:)), for: .valueChanged)
+
+        return segmented
+    }()
 
     init(coordinator: (MainCoordinator & CurrencyChoosing),
          onSelectCurrency: @escaping (Currency) -> Void) {
@@ -31,6 +52,10 @@ class CurrencyListViewController: UIViewController, ViewCodable {
         super.viewDidLoad()
         setUp()
         setConstraints()
+    }
+
+    @objc private func onSegmentSelected(_ segment: UISegmentedControl) {
+        viewModel?.sort(by: segment.selectedSegmentIndex)
     }
 
     func setUp() {
@@ -55,18 +80,19 @@ class CurrencyListViewController: UIViewController, ViewCodable {
             self?.coordinator?.goBack()
         }
 
-        tableView = UITableView()
-        tableView?.dataSource = tableViewDataSource
-        tableView?.delegate = tableViewDelegate
+
     }
 
     func setConstraints() {
-        guard let tableView = tableView else { return }
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(segmentedControl)
         view.addSubview(tableView)
+
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.default),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: DesignSystem.Spacing.default),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -74,6 +100,6 @@ class CurrencyListViewController: UIViewController, ViewCodable {
     }
 
     func updateUI() {
-        tableView?.reloadData()
+        tableView.reloadData()
     }
 }
