@@ -7,12 +7,12 @@
 
 import UIKit
 
-class CurrencyConverterViewController: UIViewController {
+class CurrencyConverterViewController: UIViewController, ViewCodable {
     @CurrencyTextField var originCurrencyTextField
     @CurrencyTextField var targetCurrencyTextField
 
-    var viewModel: CurrencyConverterViewModel?
-    weak var coordinator: CurrencyChoosing?
+    private weak var coordinator: CurrencyChoosing?
+    private var viewModel: CurrencyConverterViewModel?
 
     init(coordinator: CurrencyChoosing) {
         super.init(nibName: nil, bundle: nil)
@@ -29,7 +29,7 @@ class CurrencyConverterViewController: UIViewController {
         setConstraints()
     }
 
-    private func setUp() {
+    func setUp() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = LiteralText.currencyConverterViewControllerTitle
@@ -43,7 +43,7 @@ class CurrencyConverterViewController: UIViewController {
         updateUI()
     }
 
-    private func setConstraints() {
+    func setConstraints() {
         view.addSubview(originCurrencyTextField)
         view.addSubview(targetCurrencyTextField)
         
@@ -60,16 +60,10 @@ class CurrencyConverterViewController: UIViewController {
         ])
     }
 
-    private func updateUI() {
+    func updateUI() {
         guard let viewModel = viewModel else { return }
         _originCurrencyTextField.setCurrencyCode(viewModel.originCurrency.code)
         _targetCurrencyTextField.setCurrencyCode(viewModel.targetCurrency.code)
-    }
-
-    func select() {
-        coordinator?.chooseCurrency { currency in
-            viewModel?.setSelectedCurrency(currency, for: .origin)
-        }
     }
 }
 

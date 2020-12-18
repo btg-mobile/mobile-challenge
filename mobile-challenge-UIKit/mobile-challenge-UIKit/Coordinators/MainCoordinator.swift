@@ -19,7 +19,12 @@ class MainCoordinator: Coordinator, CurrencyChoosing {
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func chooseCurrency(onSelect: (Currency) -> Void) {
-        
+    func chooseCurrency(onSelect: @escaping (Currency) -> Void) {
+        let vc = CurrencyListViewController(coordinator: self, onSelectCurrency: onSelect)
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+    func goBack() {
+        navigationController.popViewController(animated: true)
     }
 }

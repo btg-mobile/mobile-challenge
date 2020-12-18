@@ -14,7 +14,10 @@ class CurrencyConverterViewModel {
         case target
     }
 
-    var service: CurrencyListProviding
+    private var service: CurrencyListProviding
+    private var onUpdate: () -> Void
+    private var quotes = [String: Double]()
+    private let formatter = NumberFormatter()
 
     private(set) var originCurrency: Currency {
         didSet {
@@ -23,6 +26,7 @@ class CurrencyConverterViewModel {
             }
         }
     }
+    
     private(set) var targetCurrency: Currency {
         didSet {
             DispatchQueue.main.async {
@@ -30,9 +34,6 @@ class CurrencyConverterViewModel {
             }
         }
     }
-    private var onUpdate: () -> Void
-    private let formatter = NumberFormatter()
-    var quotes = [String: Double]()
 
     init(originCurrency: Currency = .brl,
          targetCurrency: Currency = .usd,

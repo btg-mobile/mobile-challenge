@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CurrencyChoosing: AnyObject {
-    func chooseCurrency(onSelect: (Currency) -> Void) // Yet to be implemented
+    func chooseCurrency(onSelect: @escaping (Currency) -> Void) // Yet to be implemented
 }
