@@ -182,33 +182,37 @@ extension CurrencyConverterViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        let range = NSRange(location: .zero, length: string.utf16.count)
-        guard let regex = try? NSRegularExpression(pattern: #"[0-9]|\,|\."#),
-              let text = textField.text else {
+        guard let text = textField.text else {
             return false
         }
 
-        if text.isEmpty && string.containsDecimalSeparator() {
-            textField.text?.append("0")
+        if text.isEmpty && string.isDecimalSeparator() {
+            textField.text?.append("0\(String.decimalSeparator)")
         }
 
-        return canAddCharacter(text: text, regex: regex, range: range, newText: string)
+        return canAddCharacter(text: text, range: range, newText: string)
     }
 
     /// Verify if a character should be added into the text field
     /// - Parameters:
     ///   - text: current text field text
-    ///   - regex: user defined regex
     ///   - range: text to be placed into text field range
     ///   - newText: text to be placed into text field
     /// - Returns: true or false
-    private func canAddCharacter(text: String, regex: NSRegularExpression, range: NSRange, newText: String) -> Bool {
+    private func canAddCharacter(text: String, range: NSRange, newText: String) -> Bool {
 
-        if text.containsDecimalSeparator() && newText.containsDecimalSeparator() {
+        let completeText = "\(text)\(newText)"
+
+        if completeText.numberOfDecimalSeparators() > 1 {
             return false
         }
 
-        return regex.firstMatch(in: newText, options: [], range: range) != nil
+        let range = NSRange(location: .zero, length: completeText.utf16.count)
+        guard let regex = try? NSRegularExpression(pattern: #"\b([0-9]+)(\,{0,1}|\.{0,1})([0-9]*)\b"#) else {
+            return false
+        }
+
+        return regex.firstMatch(in: completeText, options: [], range: range) != nil
             || newText.isEmpty
     }
 }
