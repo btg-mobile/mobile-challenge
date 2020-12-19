@@ -196,7 +196,7 @@ extension CurrencyConverterViewController: UITextFieldDelegate {
 
     private func canAddCharacter(text: String, regex: NSRegularExpression, range: NSRange, newText: String) -> Bool {
 
-        if text.contains(Locale.current.decimalSeparator ?? ".")
+        if (text.contains(".") || text.contains(","))
             && (newText == "." || newText == ",") {
             return false
         }
