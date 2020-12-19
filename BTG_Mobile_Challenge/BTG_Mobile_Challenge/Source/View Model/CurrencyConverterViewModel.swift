@@ -72,11 +72,11 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             return
         }
         
-        requestManager.getRequest(url: url, decodableType: CurrencyReponseFromLive.self) { (response) in
+        requestManager.getRequest(url: url, decodableType: CurrencyReponseFromLive.self) { [weak self] (response) in
             switch response {
             case .success(let result):
                 let fetchedCurrency = result.quotes
-                self.currency = fetchedCurrency
+                self?.currency = fetchedCurrency
                 //TODO
             case .failure(let error):
                 print("TODO")
