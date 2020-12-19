@@ -11,10 +11,10 @@ public protocol RequestError: LocalizedError {
     var title: String? { get }
 }
 
-public struct NotURLError: RequestError {
-    public var title: String?
-    public var errorDescription: String? { return _description }
-    public var failureReason: String? { return _description }
+struct NotURLError: RequestError {
+    var title: String?
+    var errorDescription: String? { return _description }
+    var failureReason: String? { return _description }
 
     private var _description: String
 
@@ -24,15 +24,25 @@ public struct NotURLError: RequestError {
     }
 }
 
-public struct InvalidCodableError: RequestError {
-    public var title: String?
-    public var errorDescription: String? { return _description }
-    public var failureReason: String? { return _description }
+struct InvalidCodableError: RequestError {
+    var title: String?
+    var errorDescription: String? { return _description }
+    var failureReason: String? { return _description }
 
     private var _description: String
 
     init(title: String?, description: String) {
         self.title = title ?? "Invalid Codable Object."
+        self._description = description
+    }
+}
+
+struct RequestFailedError: RequestError {
+    var title: String?
+    private var _description: String
+    
+    init(title: String?, description: String) {
+        self.title = title ?? "Unable to complete the Request"
         self._description = description
     }
 }

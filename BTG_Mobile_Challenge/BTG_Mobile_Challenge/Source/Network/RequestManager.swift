@@ -19,17 +19,17 @@ internal enum HttpMethods: String {
 }
 
 internal enum TaskAnswer<T> {
-    case result(T)
+    case result(T?, T?)
     case error(Error)
 }
 
 
-final class RequestManager {
+final class RequestManager: NetworkService {
     
-    private init() {
+    init() {
     }
 
-    private static func createRequest(url: String, method: HttpMethods) -> NSMutableURLRequest? {
+    func createRequest(url: String, method: HttpMethods) -> NSMutableURLRequest? {
         guard let URL = URL(string: url) else {
             return nil
         }
@@ -47,7 +47,7 @@ final class RequestManager {
      - Parameter header: The request's header, separated by key and values.
      - Parameter completion: The block of code that will execute after the get request is executed.
      */
-    public static func getRequest(url: String, header: [String: String]? = nil, completion:
+    func getRequest(url: String, header: [String: String]? = nil, completion:
         ((TaskAnswer<Any>) -> Void)? = nil) {
         getRequest(url: url, decodableType: NilCodable.self, header: header, completion: completion)
     }
@@ -62,7 +62,7 @@ final class RequestManager {
      - Parameter header: The request's header, separated by key and values.
      - Parameter completion: The block of code that will execute after the get request is executed.
      */
-    public static func getRequest<T: Decodable>(
+    private func getRequest<T: Decodable>(
         url: String,
         decodableType: T.Type,
         header: [String: String]? = nil,
@@ -92,19 +92,19 @@ final class RequestManager {
      - Parameter decodableType: The decodable type that conforms to the get request answer.
      - Parameter completion: The block of code that will execute after the get request is executed.
      */
-    public static func createTask<T: Decodable>(request: URLRequest, decodableType: T.Type, completion:
+    func createTask<T: Decodable>(request: URLRequest, decodableType: T.Type, completion:
         ((TaskAnswer<Any>) -> Void)? = nil) -> URLSessionDataTask {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
-                completion?(TaskAnswer.result([:]))
+                completion?(TaskAnswer.result([:], [:]))
                 return
             }
             do {
                 if decodableType != NilCodable.self {
                     let response = try JSONDecoder().decode(decodableType, from: data)
-                    completion?(TaskAnswer.result(response))
+                    completion?(TaskAnswer.result(response, [:]))
                 } else {
-                    completion?(TaskAnswer.result(data))
+                    completion?(TaskAnswer.result(data, [:]))
                 }
             } catch let error as NSError {
                 completion?(TaskAnswer.error(error))
