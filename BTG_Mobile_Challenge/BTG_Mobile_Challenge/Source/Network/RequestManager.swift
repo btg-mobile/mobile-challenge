@@ -10,7 +10,7 @@ import Foundation
 fileprivate struct NilCodable: Codable {
 }
 
-internal enum HttpMethods: String {
+enum HttpMethods: String {
     case get = "GET"
 }
 

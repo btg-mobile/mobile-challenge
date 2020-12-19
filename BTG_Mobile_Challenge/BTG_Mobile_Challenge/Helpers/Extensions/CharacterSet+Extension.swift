@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal extension CharacterSet {
+extension CharacterSet {
     static let urlQueryValueAllowed: CharacterSet = {
         let generalDelimitersToEncode = ":#[]@" 
         let subDelimitersToEncode = "!$&'()*+,;="

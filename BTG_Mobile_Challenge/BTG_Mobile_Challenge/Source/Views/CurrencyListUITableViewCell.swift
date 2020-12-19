@@ -8,22 +8,53 @@
 import UIKit
 
 final class CurrencyListUITableViewCell: UITableViewCell {
+        
+    private var currencyName: String
+    private var currencyID: String
     
-    private var currency: CurrencyResponseFromList
+    private lazy var currencyNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = currencyName
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(label)
+        
+        return label
+    }()
     
-    init(currency: CurrencyResponseFromList) {
-        self.currency = currency
+    private lazy var currencyIDLabel: UILabel = {
+        let label = UILabel()
+        label.text = currencyID
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(label)
+        
+        return label
+    }()
+    
+    init(currencyName: String, currencyID: String) {
+        self.currencyName = currencyName
+        self.currencyID = currencyID
         super.init(style: .default, reuseIdentifier: CurrencyListUITableViewCell.cellID())
+        
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
-    internal required convenience init?(coder: NSCoder) {
-        guard let currency = coder.decodeObject(forKey: "currency") as? CurrencyResponseFromList else {
+    required convenience init?(coder: NSCoder) {
+        guard let currencyName = coder.decodeObject(forKey: "currencyName") as? String,
+              let currencyID = coder.decodeObject(forKey: "currencyID") as? String else {
             return nil
         }
-        self.init(currency: currency)
+        self.init(currencyName: currencyName, currencyID: currencyID)
     }
     
-    internal class func cellID() -> String {
+    class func cellID() -> String {
         "CurrencyListUITableViewCell"
+    }
+    
+    private func createConstraints() {
+        currencyNameLabel.addAnchor(top: self.topAnchor, leading: self.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 8, left: 16, bottom: 0, right: 0), size: .init(width: self.frame.width * 0.5, height: 10))
+        
+        currencyIDLabel.addAnchor(top: nil, leading: self.leadingAnchor, trailing: nil, bottom: self.bottomAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: self.frame.width * 0.5, height: 10))
     }
 }
