@@ -14,6 +14,7 @@ class CurrencyListViewController: UIViewController, ViewCodable {
     private let tableViewDataSource = CurrencyListTableViewDataSource()
     private let tableViewDelegate = TableViewDelegate()
     private var onSelectCurrency: (Currency) -> Void = { _ in }
+    private var currencyType: CurrencyConverterViewModel.CurrencyType
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -47,8 +48,10 @@ class CurrencyListViewController: UIViewController, ViewCodable {
 
     init(coordinator: (MainCoordinator & CurrencyChoosing),
          viewModel: CurrencyListViewModel,
+         currencyType: CurrencyConverterViewModel.CurrencyType,
          onSelectCurrency: @escaping (Currency) -> Void) {
         self.viewModel = viewModel
+        self.currencyType = currencyType
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
         self.onSelectCurrency = onSelectCurrency
@@ -70,7 +73,9 @@ class CurrencyListViewController: UIViewController, ViewCodable {
 
     func setUp() {
         view.backgroundColor = DesignSystem.Color.background
-        navigationItem.title = LiteralText.originViewControllerTitle
+        navigationItem.title = currencyType == .origin
+            ? LiteralText.originViewControllerTitle
+            : LiteralText.targetViewControllerTitle
         navigationItem.titleView = segmentedControl
 
         setUpSearchController()

@@ -8,5 +8,6 @@
 import Foundation
 
 protocol CurrencyChoosing: AnyObject {
-    func chooseCurrency(onSelect: @escaping (Currency) -> Void)
+    func chooseCurrency(type: CurrencyConverterViewModel.CurrencyType,
+                        onSelect: @escaping (Currency) -> Void)
 }

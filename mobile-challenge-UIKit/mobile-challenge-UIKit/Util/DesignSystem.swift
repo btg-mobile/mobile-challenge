@@ -21,6 +21,7 @@ struct DesignSystem {
         static let border: UIColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
         static let currencyCodeView: UIColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         static let primaryText: UIColor = .label
+        static let gray: UIColor = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         static let secondaryText: UIColor = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.262745098, alpha: 0.6)
         static let action: UIColor = #colorLiteral(red: 0.09803921569, green: 0.3529411765, blue: 0.7058823529, alpha: 1)
         static let shadow: UIColor = .label

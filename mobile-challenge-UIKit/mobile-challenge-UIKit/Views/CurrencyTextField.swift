@@ -9,6 +9,8 @@ import UIKit
 
 @propertyWrapper class CurrencyTextField<T: PaddingTextField> {
 
+    var onTextChanged: (String) -> Void = { _ in }
+
     private let formatter = NumberFormatter()
     private let currencyType: CurrencyConverterViewModel.CurrencyType
 
@@ -24,7 +26,14 @@ import UIKit
         textField.inputAccessoryView = inputAccessoryView
         textField.clearButtonMode = .whileEditing
         textField.font = UIFont.systemFont(ofSize: DesignSystem.FontSize.large)
-        textField.isEnabled = currencyType == .origin ? true: false
+        textField.isEnabled = currencyType == .origin ? true : false
+        textField.textColor = currencyType == .origin
+            ? DesignSystem.Color.primaryText
+            : DesignSystem.Color.gray
+
+        textField.addAction(UIAction(handler: { [weak self] _ in
+            self?.onTextChanged(textField.text ?? "")
+        }), for: .editingChanged)
 
         textField.addSubview(currencyCodeView)
 
@@ -85,5 +94,9 @@ import UIKit
 
     func setCurrencyCode(_ code: String) {
         currencyCodeLabel.text = code
+    }
+
+    func setText(_ text: String) {
+        textField.text = text
     }
 }

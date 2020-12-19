@@ -23,11 +23,13 @@ class MainCoordinator: Coordinator, CurrencyChoosing {
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func chooseCurrency(onSelect: @escaping (Currency) -> Void) {
+    func chooseCurrency(type: CurrencyConverterViewModel.CurrencyType,
+                        onSelect: @escaping (Currency) -> Void) {
         let service = CurrencyListService(network: APIClient.shared)
         let viewModel = CurrencyListViewModel(service: service)
         let vc = CurrencyListViewController(coordinator: self,
                                             viewModel: viewModel,
+                                            currencyType: type,
                                             onSelectCurrency: onSelect)
 
         navigationController.pushViewController(vc, animated: true)
