@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B61B471E258DA6C000B30D49 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B471D258DA6C000B30D49 /* AlertError.swift */; };
+		B61B472A258DBCFB00B30D49 /* String+ContainsDecimalSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B4729258DBCFB00B30D49 /* String+ContainsDecimalSeparator.swift */; };
 		B663DB3B258C1DAA007499F6 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */; };
 		B663DB40258CEE0C007499F6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB3F258CEE0C007499F6 /* APIClient.swift */; };
 		B663DB46258CEEA1007499F6 /* CurrencyListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB45258CEEA1007499F6 /* CurrencyListService.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		B61B471D258DA6C000B30D49 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
+		B61B4729258DBCFB00B30D49 /* String+ContainsDecimalSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ContainsDecimalSeparator.swift"; sourceTree = "<group>"; };
 		B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		B663DB3F258CEE0C007499F6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B663DB45258CEEA1007499F6 /* CurrencyListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListService.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B61B4728258DBCE900B30D49 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B61B4729258DBCFB00B30D49 /* String+ContainsDecimalSeparator.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B663DB44258CEE96007499F6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +252,7 @@
 		B6A146B925881F5C00AFA333 /* mobile-challenge-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B61B4728258DBCE900B30D49 /* Extensions */,
 				B663DB83258D4898007499F6 /* Enums */,
 				B663DB6F258CF608007499F6 /* Delegates */,
 				B663DB66258CF5F6007499F6 /* DataSources */,
@@ -481,6 +492,7 @@
 				B6D7968D258C143A00A34234 /* CustomButton.swift in Sources */,
 				B6942A02258AC63B00CC9949 /* CurrencyLiveRate.swift in Sources */,
 				B69429C7258A933600CC9949 /* MainCoordinator.swift in Sources */,
+				B61B472A258DBCFB00B30D49 /* String+ContainsDecimalSeparator.swift in Sources */,
 				B69429D8258ABE0A00CC9949 /* CurrencyListProviding.swift in Sources */,
 				B6D7965F258ACA4100A34234 /* URLRequestProviding.swift in Sources */,
 				B663DB40258CEE0C007499F6 /* APIClient.swift in Sources */,

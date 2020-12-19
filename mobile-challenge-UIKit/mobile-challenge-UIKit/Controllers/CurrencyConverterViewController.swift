@@ -187,7 +187,7 @@ extension CurrencyConverterViewController: UITextFieldDelegate {
             return false
         }
 
-        if text.isEmpty && (string == "." || string == ",") {
+        if text.isEmpty && string.containsDecimalSeparator() {
             textField.text?.append("0")
         }
 
@@ -196,8 +196,7 @@ extension CurrencyConverterViewController: UITextFieldDelegate {
 
     private func canAddCharacter(text: String, regex: NSRegularExpression, range: NSRange, newText: String) -> Bool {
 
-        if (text.contains(".") || text.contains(","))
-            && (newText == "." || newText == ",") {
+        if text.containsDecimalSeparator() && newText.containsDecimalSeparator() {
             return false
         }
 
