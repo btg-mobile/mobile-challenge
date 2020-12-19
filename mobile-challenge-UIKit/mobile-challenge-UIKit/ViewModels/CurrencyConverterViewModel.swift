@@ -86,13 +86,17 @@ class CurrencyConverterViewModel {
 
     /// Get saved currencies from Local Storage  (UserDefaults)
     private func getSavedCurrencies() {
-        originCurrency = localOriginCurrency != nil
-            ? localOriginCurrency!
-            : originCurrency
+        if let localOriginCurrency = localOriginCurrency {
+            originCurrency = localOriginCurrency
+        } else {
+            localOriginCurrency = originCurrency
+        }
 
-        targetCurrency = localTargetCurrency != nil
-            ? localTargetCurrency!
-            : targetCurrency
+        if let localTargetCurrency = localTargetCurrency {
+            targetCurrency = localTargetCurrency
+        } else {
+            localTargetCurrency = targetCurrency
+        }
     }
 
     /// Get the currency live rate from API
