@@ -15,4 +15,5 @@ enum LiteralText {
     static let targetViewControllerTitle = "Target Currency"
     static let name = "Name"
     static let code = "Code"
+    static let ok = "OK"
 }

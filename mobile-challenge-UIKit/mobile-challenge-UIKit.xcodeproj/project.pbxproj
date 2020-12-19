@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61B471E258DA6C000B30D49 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B471D258DA6C000B30D49 /* AlertError.swift */; };
 		B663DB3B258C1DAA007499F6 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */; };
 		B663DB40258CEE0C007499F6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB3F258CEE0C007499F6 /* APIClient.swift */; };
 		B663DB46258CEEA1007499F6 /* CurrencyListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B663DB45258CEEA1007499F6 /* CurrencyListService.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B61B471D258DA6C000B30D49 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
 		B663DB3A258C1DAA007499F6 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		B663DB3F258CEE0C007499F6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B663DB45258CEEA1007499F6 /* CurrencyListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListService.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				B663DB61258CF37A007499F6 /* ViewCodable.swift */,
+				B61B471D258DA6C000B30D49 /* AlertError.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				B6D7965F258ACA4100A34234 /* URLRequestProviding.swift in Sources */,
 				B663DB40258CEE0C007499F6 /* APIClient.swift in Sources */,
 				B663DB62258CF37A007499F6 /* ViewCodable.swift in Sources */,
+				B61B471E258DA6C000B30D49 /* AlertError.swift in Sources */,
 				B663DB5C258CF167007499F6 /* CurrencyListViewModel.swift in Sources */,
 				B6A146BD25881F5C00AFA333 /* SceneDelegate.swift in Sources */,
 				B663DB68258CF603007499F6 /* CurrencyListTableViewDataSource.swift in Sources */,

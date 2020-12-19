@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyConverterViewController: UIViewController, ViewCodable {
+class CurrencyConverterViewController: UIViewController, ViewCodable, AlertError {
 
     private weak var coordinator: CurrencyChoosing?
     private var viewModel: CurrencyConverterViewModel
