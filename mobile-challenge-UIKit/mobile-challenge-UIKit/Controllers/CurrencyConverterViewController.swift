@@ -20,6 +20,16 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
 
     @FloatingActionButton var fab
 
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+
+        scrollView.addSubview(stackView)
+        scrollView.addSubview(lastUpdateLabel)
+
+        return scrollView
+    }()
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             originCurrencyButton,
@@ -120,30 +130,34 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
     }
 
     func setConstraints() {
-        view.addSubview(stackView)
-        view.addSubview(lastUpdateLabel)
+        view.addSubview(scrollView)
         view.addSubview(fab)
         
         NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
             originCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
             targetCurrencyButton.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
             originCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
             targetCurrencyTextField.heightAnchor.constraint(equalToConstant: DesignSystem.TextField.height),
 
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            stackView.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor, constant: DesignSystem.Spacing.leadingTopSafeArea),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: DesignSystem.Spacing.trailingBottomSafeArea),
 
             lastUpdateLabel.topAnchor.constraint(
                 equalTo: stackView.bottomAnchor,
                 constant: DesignSystem.Spacing.leadingTopSafeArea
             ),
             lastUpdateLabel.leadingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor,
                 constant: DesignSystem.Spacing.leadingTopSafeArea
             ),
             lastUpdateLabel.trailingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor,
                 constant: DesignSystem.Spacing.trailingBottomSafeArea
             ),
 
