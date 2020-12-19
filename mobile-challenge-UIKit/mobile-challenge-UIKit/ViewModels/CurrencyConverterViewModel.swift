@@ -17,8 +17,7 @@ class CurrencyConverterViewModel {
     var onUpdate: () -> Void = { }
 
     private var service: CurrencyLiveRateService
-    private var quotes = [String: Double]()
-    private var lastUpdate = Date()
+    private var lastUpdate: Date?
     private let numberFormatter = NumberFormatter()
     private let dateFormatter = DateFormatter()
 
@@ -31,6 +30,14 @@ class CurrencyConverterViewModel {
     }
     
     private(set) var targetCurrency: Currency {
+        didSet {
+            DispatchQueue.main.async {
+                self.onUpdate()
+            }
+        }
+    }
+
+    private var quotes = [String: Double]() {
         didSet {
             DispatchQueue.main.async {
                 self.onUpdate()
@@ -104,6 +111,9 @@ class CurrencyConverterViewModel {
     }
 
     func getLastUpdateDate() -> String {
+        guard let lastUpdate = lastUpdate else {
+            return ""
+        }
         return "Last update: \(dateFormatter.string(from: lastUpdate))"
     }
 }
