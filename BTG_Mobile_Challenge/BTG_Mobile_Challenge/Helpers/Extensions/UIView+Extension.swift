@@ -9,15 +9,30 @@ import UIKit
 
 extension UIView {
     
-    func addAnchor(top: NSLayoutYAxisAnchor, leading: NSLayoutXAxisAnchor, trailing: NSLayoutXAxisAnchor, bottom: NSLayoutYAxisAnchor, padding: UIEdgeInsets = .zero) {
+    func addAnchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize?) {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
-        leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
-        trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
-        bottom.constraint(equalTo: bottom, constant: padding.bottom).isActive = true
+        if let anchor = top {
+            topAnchor.constraint(equalTo: anchor, constant: padding.top).isActive = true
+        }
         
+        if let anchor = leading {
+            leadingAnchor.constraint(equalTo: anchor, constant: padding.left).isActive = true
+        }
+        
+        if let anchor = trailing {
+            trailingAnchor.constraint(equalTo: anchor, constant: padding.right).isActive = true
+        }
+        
+        if let anchor = bottom{
+            bottomAnchor.constraint(equalTo: anchor, constant: padding.bottom).isActive = true
+        }
+        
+        if let size = size {
+            widthAnchor.constraint(equalToConstant: size.width).isActive = true
+            heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
     }
     
     func addContraintsRelative(to View: UIView, with Multiplier: CGFloat) {
