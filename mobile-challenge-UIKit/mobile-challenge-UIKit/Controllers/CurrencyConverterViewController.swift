@@ -52,6 +52,7 @@ class CurrencyConverterViewController: UIViewController, ViewCodable, AlertError
         label.font = UIFont.systemFont(ofSize: DesignSystem.FontSize.labelDetails)
         label.textColor = DesignSystem.Color.gray
         label.textAlignment = .center
+        label.numberOfLines = 2
 
         return label
     }()

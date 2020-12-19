@@ -174,6 +174,6 @@ class CurrencyConverterViewModel {
         guard let lastUpdate = localLastUpdate else {
             return ""
         }
-        return "Last update: \(dateFormatter.string(from: lastUpdate))"
+        return "Last update: \(dateFormatter.string(from: lastUpdate))\n (updates depends on API free plan features)"
     }
 }
