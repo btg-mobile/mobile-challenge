@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Network
 
 class CurrencyConverterViewModel {
 
@@ -13,6 +14,14 @@ class CurrencyConverterViewModel {
         case origin
         case target
     }
+
+    @LocalStorage(key: .originCurrency) var localOriginCurrency: Currency?
+    @LocalStorage(key: .targetCurrency) var localTargetCurrency: Currency?
+    @LocalStorage(key: .quotes) var localQuotes: [String: Double]?
+    @LocalStorage(key: .lastUpdate) var localLastUpdate: Date?
+
+    private let monitor = NWPathMonitor()
+    private var isConnected = false
 
     var onUpdate: () -> Void = { }
 
@@ -61,17 +70,49 @@ class CurrencyConverterViewModel {
         dateFormatter.timeStyle = .short
 
         getLiveRate()
+
+        monitor.pathUpdateHandler = { [weak self] path in
+            if path.status == .satisfied {
+                self?.isConnected = true
+            } else {
+                self?.isConnected = false
+            }
+        }
+        let queue = DispatchQueue(label: .init())
+        monitor.start(queue: queue)
+
+        getSavedCurrencies()
+    }
+
+    private func getSavedCurrencies() {
+        originCurrency = localOriginCurrency != nil
+            ? localOriginCurrency!
+            : originCurrency
+
+        targetCurrency = localTargetCurrency != nil
+            ? localTargetCurrency!
+            : targetCurrency
     }
 
     func getLiveRate() {
-        service.getCurrencyLiveRate { [weak self] result in
-            switch result {
-            case .success(let liveRate):
-                self?.quotes = liveRate.quotes
-                self?.lastUpdate = liveRate.lastUpdate
-            case .failure(let error):
-                print(error)
+        if isConnected {
+            service.getCurrencyLiveRate { [weak self] result in
+                switch result {
+                case .success(let liveRate):
+                    self?.quotes = liveRate.quotes
+                    self?.lastUpdate = liveRate.lastUpdate
+
+                    self?.localLastUpdate = liveRate.lastUpdate
+                    self?.localQuotes = liveRate.quotes
+
+                case .failure(let error):
+                    print(error)
+                }
             }
+
+        } else {
+            quotes = localQuotes ?? [:]
+            lastUpdate = localLastUpdate
         }
     }
 
@@ -79,19 +120,25 @@ class CurrencyConverterViewModel {
         switch type {
         case .origin:
             originCurrency = currency
+            localOriginCurrency = currency
         case .target:
             targetCurrency = currency
+            localTargetCurrency = currency
         }
         onUpdate()
     }
 
     func invertCurrencies() {
-        let temp = originCurrency
-        originCurrency = targetCurrency
-        targetCurrency = temp
+        let temp = localOriginCurrency
+        localOriginCurrency = localTargetCurrency
+        localTargetCurrency = temp
     }
 
     func convert(text: String, completion: (String) -> Void) {
+        guard let originCurrency = localOriginCurrency,
+              let targetCurrency = localTargetCurrency,
+              let quotes = localQuotes else { return }
+
         let usdSourceKey = "\(Currency.usd.code)\(originCurrency.code)"
         let targetKey = "\(Currency.usd.code)\(targetCurrency.code)"
 
@@ -111,7 +158,7 @@ class CurrencyConverterViewModel {
     }
 
     func getLastUpdateDate() -> String {
-        guard let lastUpdate = lastUpdate else {
+        guard let lastUpdate = localLastUpdate else {
             return ""
         }
         return "Last update: \(dateFormatter.string(from: lastUpdate))"

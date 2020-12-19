@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import Network
 
 class CurrencyListViewModel {
 
     enum FilterType: Int {
         case name
         case code
+    }
+
+    @LocalStorage(key: .currencies) var localCurrencies: [Currency]?
+
+    private let monitor = NWPathMonitor()
+    private var isConnected = false {
+        didSet {
+            getCurrencyList()
+        }
     }
 
     var onUpdate: () -> Void = { }
@@ -29,19 +39,40 @@ class CurrencyListViewModel {
 
     init(service: CurrencyListProviding) {
         self.service = service
+
         getCurrencyList()
+
+        monitor.pathUpdateHandler = { [weak self] path in
+            if path.status == .satisfied {
+                self?.isConnected = true
+            } else {
+                self?.isConnected = false
+            }
+        }
+        let queue = DispatchQueue(label: .init())
+        monitor.start(queue: queue)
     }
 
     private func getCurrencyList() {
-        service.getCurrencyList { [weak self] result in
-            switch result {
-            case .success(let currencyList):
-                guard let self = self else { return }
-                self.currencies = currencyList.currencies.sorted { $0.name < $1.name }
-                self.showingCurrencies = self.currencies
-            case .failure(let error):
-                print(error)
+        if isConnected {
+            service.getCurrencyList { [weak self] result in
+                switch result {
+                case .success(let currencyList):
+                    guard let self = self else { return }
+
+                    self.currencies = currencyList.currencies.sorted { $0.name < $1.name }
+                    self.showingCurrencies = self.currencies
+
+                    self.localCurrencies = self.showingCurrencies
+
+                case .failure(let error):
+                    print(error)
+                }
             }
+
+        } else {
+            currencies = localCurrencies ?? []
+            showingCurrencies = currencies
         }
     }
 
@@ -67,10 +98,12 @@ class CurrencyListViewModel {
     }
 
     func filter(by text: String) {
+        guard let localCurrencies = localCurrencies else { return }
+
         if text.isEmpty {
-            showingCurrencies = currencies
+            showingCurrencies = localCurrencies
         } else {
-            showingCurrencies = currencies.filter {
+            showingCurrencies = localCurrencies.filter {
                 $0.name.contains(text) || $0.code.contains(text)
             }
         }

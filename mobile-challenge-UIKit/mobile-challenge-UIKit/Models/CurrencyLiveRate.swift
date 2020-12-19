@@ -25,4 +25,10 @@ struct CurrencyLiveRate: Codable {
         let timeInterval = try container.decode(TimeInterval.self, forKey: .lastUpdate)
         lastUpdate = Date(timeIntervalSince1970: timeInterval)
     }
+
+    func encode(to encoder: Encoder) throws {
+        var cont = encoder.container(keyedBy: Keys.self)
+
+        try cont.encode(lastUpdate, forKey: .lastUpdate)
+    }
 }
