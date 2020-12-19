@@ -63,6 +63,10 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
     }
 
     func setUp() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: LiteralText.updateRates,
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(updateRates))
         view.backgroundColor = DesignSystem.Color.background
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = LiteralText.currencyConverterViewControllerTitle
@@ -105,6 +109,10 @@ class CurrencyConverterViewController: UIViewController, ViewCodable {
         viewModel.convert(text: text) { [weak self] convertedText in
             self?._targetCurrencyTextField.setText(convertedText)
         }
+    }
+
+    @objc func updateRates() {
+        viewModel.getLiveRate()
     }
 
     @objc private func dismissKeyboard() {

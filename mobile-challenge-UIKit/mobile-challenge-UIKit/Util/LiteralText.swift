@@ -9,6 +9,7 @@ import Foundation
 
 enum LiteralText {
     static let done = "Done"
+    static let updateRates = "Update Rates"
     static let currencyConverterViewControllerTitle = "Currency Converter"
     static let originViewControllerTitle = "Origin Currency"
     static let targetViewControllerTitle = "Target Currency"
