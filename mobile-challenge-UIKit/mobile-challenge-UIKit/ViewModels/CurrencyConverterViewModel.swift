@@ -21,7 +21,11 @@ class CurrencyConverterViewModel {
     @LocalStorage(key: .lastUpdate) var localLastUpdate: Date?
 
     private let monitor = NWPathMonitor()
-    private var isConnected = false
+    private var isConnected = false {
+        didSet {
+            getLiveRate()
+        }
+    }
 
     var onUpdate: () -> Void = { }
 
@@ -143,6 +147,9 @@ class CurrencyConverterViewModel {
         let temp = localOriginCurrency
         localOriginCurrency = localTargetCurrency
         localTargetCurrency = temp
+
+        originCurrency = localOriginCurrency ?? .brl
+        targetCurrency = localTargetCurrency ?? .usd
     }
 
     /// Converts originCurrency value to targetCurrencyValue

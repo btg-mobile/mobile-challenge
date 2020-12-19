@@ -114,7 +114,8 @@ class CurrencyListViewModel {
             showingCurrencies = localCurrencies
         } else {
             showingCurrencies = localCurrencies.filter {
-                $0.name.contains(text) || $0.code.contains(text)
+                $0.name.lowercased().contains(text.lowercased())
+                    || $0.code.lowercased().contains(text.lowercased())
             }
         }
     }
