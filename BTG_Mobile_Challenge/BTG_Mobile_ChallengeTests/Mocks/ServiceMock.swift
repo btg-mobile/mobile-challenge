@@ -12,39 +12,46 @@ import Foundation
 final class ServiceMock: NetworkService {
 
     let bundle: Bundle
-    var jsonPath: URL?
+    var json: URL?
     
     var shouldFail: Bool = false
     var invalidCodable: Bool = false
+    var unexpectedResponseType: Bool = false
+    var missinData: Bool = false
+    
+    var statusCode: Int = 200
     
     init(bundle: Bundle) {
         self.bundle = bundle
     }
     
-    func createTask<T>(request: URLRequest, decodableType: T.Type, completion: ((TaskAnswer<Any>) -> Void)?) -> URLSessionDataTask where T : Decodable {
+    func createTask<T>(request: URLRequest, decodableType: T.Type, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask where T : Decodable {
         
         if shouldFail {
-            completion?(TaskAnswer.error(RequestFailedError(title: nil, description: "Unable to complete the Request")))
+            completion(nil, nil, PurposefulError(title: nil, description: "Request to fail"))
             return ServiceMockDataTask()
         }
         
-        if invalidCodable {
-            completion?(TaskAnswer.error(InvalidCodableError(title: nil, description: "Codable was Invalid")))
+        if unexpectedResponseType {
+            completion(nil, nil, nil)
             return ServiceMockDataTask()
         }
         
-        guard let url = request.url, let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil) else {
-            completion?(TaskAnswer.error(NotURLError(title: nil, description: "The URL was not valid")))
+        let urlResponse = HTTPURLResponse(url: request.url!, statusCode: statusCode, httpVersion: nil, headerFields: nil)
+
+        if statusCode != 200 {
+            completion(nil, urlResponse, nil)
             return ServiceMockDataTask()
         }
         
-        guard let json = jsonPath, let data = try? Data(contentsOf: json) else {
-            completion?(TaskAnswer.error(RequestFailedError(title: nil, description: "Unable to complete the Request")))
+        if missinData {
+            completion(nil, urlResponse, nil)
             return ServiceMockDataTask()
         }
-              
-        completion?(TaskAnswer.result(response, data))
+        
+        let data = try! Data(contentsOf: json!)
+        completion(data, urlResponse, nil)
+        
         return ServiceMockDataTask()
     }
-    
 }

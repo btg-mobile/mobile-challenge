@@ -12,21 +12,14 @@ fileprivate struct NilCodable: Codable {
 
 internal enum HttpMethods: String {
     case get = "GET"
-    case post = "POST"
-    case patch = "PATCH"
-    case put = "PUT"
-    case delete = "DELETE"
 }
 
-internal enum TaskAnswer<T> {
-    case result(T?, T?)
-    case error(Error)
-}
-
-
-final class RequestManager: NetworkService {
+final class RequestManager {
     
-    init() {
+    private let service: NetworkService
+    
+    init(service: NetworkService) {
+        self.service = service
     }
 
     func createRequest(url: String, method: HttpMethods) -> NSMutableURLRequest? {
@@ -39,20 +32,6 @@ final class RequestManager: NetworkService {
     }
 
     /**
-     This function performs a get request and triggers a completion handler with its answer.
-
-     - Warning: This method is asyncronous.
-
-     - Parameter url: The url address to make the requisition.
-     - Parameter header: The request's header, separated by key and values.
-     - Parameter completion: The block of code that will execute after the get request is executed.
-     */
-    func getRequest(url: String, header: [String: String]? = nil, completion:
-        ((TaskAnswer<Any>) -> Void)? = nil) {
-        getRequest(url: url, decodableType: NilCodable.self, header: header, completion: completion)
-    }
-
-    /**
      This function performs a get request, transforms its answer into a Decodable, and triggers a completion handler with its answer.
 
      - Warning: This method is asyncronous.
@@ -62,15 +41,15 @@ final class RequestManager: NetworkService {
      - Parameter header: The request's header, separated by key and values.
      - Parameter completion: The block of code that will execute after the get request is executed.
      */
-    private func getRequest<T: Decodable>(
+    func getRequest<T: Decodable>(
         url: String,
         decodableType: T.Type,
         header: [String: String]? = nil,
-        completion: ((TaskAnswer<Any>) -> Void)? = nil ) {
+        completion: @escaping (Result<T, Error>) -> Void) {
 
         //Creating a request and making sure it exists.
         guard let request = createRequest(url: url, method: .get) else {
-            completion?(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
+            completion(.failure(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
 
@@ -80,36 +59,34 @@ final class RequestManager: NetworkService {
         }
 
         //Creating the get task with the request, and executing it.
-        createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
-    }
-
-    /**
-     This function creates a DataTask from a URL request, and when resumed, triggers a completion handler with its answer.
-
-     - Warning: This method is asyncronous.
-
-     - Parameter request: The URL Request.
-     - Parameter decodableType: The decodable type that conforms to the get request answer.
-     - Parameter completion: The block of code that will execute after the get request is executed.
-     */
-    func createTask<T: Decodable>(request: URLRequest, decodableType: T.Type, completion:
-        ((TaskAnswer<Any>) -> Void)? = nil) -> URLSessionDataTask {
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                completion?(TaskAnswer.result([:], [:]))
+        service.createTask(request: request as URLRequest, decodableType: decodableType) { (data, response, error) in
+            
+            if let serviceError = error {
+                completion(.failure(serviceError))
                 return
             }
-            do {
-                if decodableType != NilCodable.self {
-                    let response = try JSONDecoder().decode(decodableType, from: data)
-                    completion?(TaskAnswer.result(response, [:]))
-                } else {
-                    completion?(TaskAnswer.result(data, [:]))
-                }
-            } catch let error as NSError {
-                completion?(TaskAnswer.error(error))
+            
+            guard let httpResponse =  response as? HTTPURLResponse else {
+                completion(.failure(NotURLError(title: nil, description: "Couldn't use URL as Response")))
+                return
             }
-        }
-        return task
+            
+            if httpResponse.statusCode == 200 {
+                
+                guard let data = data else {
+                    completion(.failure(RequestFailedError(title: nil, description: "Couldn't retrive data from URL")))
+                    return
+                }
+                
+                do {
+                    let decoded = try JSONDecoder().decode(decodableType.self, from: data) 
+                    completion(.success(decoded))
+                }  catch {
+                    completion(.failure(InvalidCodableError(title: nil, description: "Couldn't decode object retrivied from URL")))
+                }
+            } else {
+                completion(.failure(RequestFailedError(title: nil, description: "Network request failed due to unexpected HTTP status code.")))
+            }
+        }.resume()
     }
 }

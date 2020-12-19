@@ -40,9 +40,23 @@ struct InvalidCodableError: RequestError {
 struct RequestFailedError: RequestError {
     var title: String?
     private var _description: String
+    var errorDescription: String? { return _description }
+    var failureReason: String? { return _description }
     
     init(title: String?, description: String) {
         self.title = title ?? "Unable to complete the Request"
+        self._description = description
+    }
+}
+
+struct PurposefulError: RequestError {
+    var title: String?
+    private var _description: String
+    var errorDescription: String? { return _description }
+    var failureReason: String? { return _description }
+    
+    init(title: String?, description: String) {
+        self.title = title ?? "purposeful Error"
         self._description = description
     }
 }
