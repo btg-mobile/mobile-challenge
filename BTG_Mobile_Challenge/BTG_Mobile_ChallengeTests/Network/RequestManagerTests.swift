@@ -26,12 +26,12 @@ class RequestManagerTests: XCTestCase {
         let url = CurrencyAPIEndpoint.live.url
         let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
         let stubJSONData = try! Data(contentsOf: stubJSONURL!) 
-        let stubJSON = try! JSONDecoder().decode(LiveCurrencyReponse.self, from: stubJSONData)
+        let stubJSON = try! JSONDecoder().decode(CurrencyReponseFromLive.self, from: stubJSONData)
         
         service.json = stubJSONURL
         
         DispatchQueue.main.async { [weak self] in
-            self?.sut?.getRequest(url: url!, decodableType: LiveCurrencyReponse.self) { (response) in
+            self?.sut?.getRequest(url: url!, decodableType: CurrencyReponseFromLive.self) { (response) in
                 switch response {
                 case .success(let result):
                     XCTAssertTrue(result.success)
@@ -52,12 +52,12 @@ class RequestManagerTests: XCTestCase {
         let url = CurrencyAPIEndpoint.list.url
         let stubJSONURL = service.bundle.url(forResource: "list-response", withExtension: "json")
         let stubJSONData = try! Data(contentsOf: stubJSONURL!) 
-        let stubJSON = try! JSONDecoder().decode(ListCurrencyResponse.self, from: stubJSONData)
+        let stubJSON = try! JSONDecoder().decode(CurrencyResponseFromList.self, from: stubJSONData)
         
         service.json = stubJSONURL
         
         DispatchQueue.main.async { [weak self] in
-            self?.sut?.getRequest(url: url!, decodableType: ListCurrencyResponse.self) { (response) in
+            self?.sut?.getRequest(url: url!, decodableType: CurrencyResponseFromList.self) { (response) in
                 switch response {
                 case .success(let result):
                     XCTAssertEqual(stubJSON.currencies.count, result.currencies.count)

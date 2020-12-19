@@ -1,5 +1,5 @@
 //
-//  LiveCurrencyReponse.swift
+//  CurrencyReponseFromLive.swift
 //  BTG_Mobile_Challenge
 //
 //  Created by Pedro Henrique Guedes Silveira on 19/12/20.
@@ -9,7 +9,7 @@ import Foundation
 
 /// Representation of the service response for live currency rates
 /// based on a source (default: `USD`).
-struct LiveCurrencyReponse: Decodable {
+struct CurrencyReponseFromLive: Decodable {
     let success: Bool
     let terms: URL
     let privacy: URL
@@ -18,8 +18,8 @@ struct LiveCurrencyReponse: Decodable {
     let quotes: [String: Double]
 }
 
-extension LiveCurrencyReponse: Equatable {
-    static func == (lhs: LiveCurrencyReponse, rhs: LiveCurrencyReponse) -> Bool {
+extension CurrencyReponseFromLive: Equatable {
+    static func == (lhs: CurrencyReponseFromLive, rhs: CurrencyReponseFromLive) -> Bool {
         return lhs.success == rhs.success
             && lhs.terms == rhs.terms
             && lhs.privacy == rhs.privacy

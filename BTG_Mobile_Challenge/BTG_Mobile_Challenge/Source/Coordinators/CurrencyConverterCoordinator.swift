@@ -24,12 +24,12 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
     }
     
     //TODO
-    func pickCurrency(currencies: ListCurrencyResponse) {
+    func pickCurrency(currencies: CurrencyResponseFromList) {
         print("TODO")
     }
     
     //TODO
-    func chooseCurrency(currencies: ListCurrencyResponse) {
+    func chooseCurrency(currencies: CurrencyResponseFromList) {
         print("TODO")
     }
 }
