@@ -10,7 +10,7 @@ import Foundation
 
 
 final class ServiceMock: NetworkService {
-
+ 
     let bundle: Bundle
     var json: URL?
     
@@ -25,32 +25,32 @@ final class ServiceMock: NetworkService {
         self.bundle = bundle
     }
     
-    func createTask<T>(request: URLRequest, decodableType: T.Type, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask where T : Decodable {
+    func dataTask(with url: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         
         if shouldFail {
-            completion(nil, nil, PurposefulError(title: nil, description: "Request to fail"))
+            completionHandler(nil, nil, PurposefulError(title: nil, description: "Request to fail"))
             return ServiceMockDataTask()
         }
         
         if unexpectedResponseType {
-            completion(nil, nil, nil)
+            completionHandler(nil, nil, nil)
             return ServiceMockDataTask()
         }
         
-        let urlResponse = HTTPURLResponse(url: request.url!, statusCode: statusCode, httpVersion: nil, headerFields: nil)
+        let urlResponse = HTTPURLResponse(url: url.url!, statusCode: statusCode, httpVersion: nil, headerFields: nil)
 
         if statusCode != 200 {
-            completion(nil, urlResponse, nil)
+            completionHandler(nil, urlResponse, nil)
             return ServiceMockDataTask()
         }
         
         if missinData {
-            completion(nil, urlResponse, nil)
+            completionHandler(nil, urlResponse, nil)
             return ServiceMockDataTask()
         }
         
         let data = try! Data(contentsOf: json!)
-        completion(data, urlResponse, nil)
+        completionHandler(data, urlResponse, nil)
         
         return ServiceMockDataTask()
     }

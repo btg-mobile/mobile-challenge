@@ -18,7 +18,7 @@ final class RequestManager {
     
     private let service: NetworkService
     
-    init(service: NetworkService) {
+    init(service: NetworkService = URLSession.shared) {
         self.service = service
     }
 
@@ -59,7 +59,7 @@ final class RequestManager {
         }
 
         //Creating the get task with the request, and executing it.
-        service.createTask(request: request as URLRequest, decodableType: decodableType) { (data, response, error) in
+        service.dataTask(with: request as URLRequest) { (data, response, error) in
             
             if let serviceError = error {
                 completion(.failure(serviceError))

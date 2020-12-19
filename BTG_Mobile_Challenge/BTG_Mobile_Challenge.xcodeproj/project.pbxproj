@@ -10,6 +10,7 @@
 		D93EC00E258E4F8100E0F1EF /* ListCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC00D258E4F8100E0F1EF /* ListCurrencyResponse.swift */; };
 		D93EC01E258E6C8F00E0F1EF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC01D258E6C8F00E0F1EF /* Coordinator.swift */; };
 		D93EC03C258E6EA200E0F1EF /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC03B258E6EA200E0F1EF /* AutoLayout.swift */; };
+		D93EC055258E7B4E00E0F1EF /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC054258E7B4E00E0F1EF /* URLSession+Extension.swift */; };
 		D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */; };
 		D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */; };
 		D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D7258D0EF4003DFAD3 /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 		D93EC00D258E4F8100E0F1EF /* ListCurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyResponse.swift; sourceTree = "<group>"; };
 		D93EC01D258E6C8F00E0F1EF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D93EC03B258E6EA200E0F1EF /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
+		D93EC054258E7B4E00E0F1EF /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		D9CF67D0258D0EF4003DFAD3 /* BTG_Mobile_Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTG_Mobile_Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				D9CF681D258D42AC003DFAD3 /* Dictionary+Extension.swift */,
 				D9CF6822258D42E1003DFAD3 /* CharacterSet+Extension.swift */,
 				D9CF687A258D618B003DFAD3 /* UIView+Extension.swift */,
+				D93EC054258E7B4E00E0F1EF /* URLSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				D9CF688A258D665B003DFAD3 /* NetworkService.swift in Sources */,
 				D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */,
 				D93EC01E258E6C8F00E0F1EF /* Coordinator.swift in Sources */,
+				D93EC055258E7B4E00E0F1EF /* URLSession+Extension.swift in Sources */,
 				D93EC03C258E6EA200E0F1EF /* AutoLayout.swift in Sources */,
 				D9CF6876258D6002003DFAD3 /* CurrencyAPI.swift in Sources */,
 				D9CF68C3258E4264003DFAD3 /* LiveCurrencyReponse.swift in Sources */,
