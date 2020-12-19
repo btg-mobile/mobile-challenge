@@ -9,6 +9,10 @@ import UIKit
 
 protocol AlertError: UIViewController {
 
+    /// Shows a custom error alert
+    /// - Parameters:
+    ///   - title: error title
+    ///   - message: error message
     func showError(title: String, message: String)
 }
 

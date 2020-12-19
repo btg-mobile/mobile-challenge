@@ -92,10 +92,14 @@ import UIKit
         self.currencyType = currencyType
     }
 
+    /// Sets currency code for currency label
+    /// - Parameter code: currency  code
     func setCurrencyCode(_ code: String) {
         currencyCodeLabel.text = code
     }
 
+    /// Sets currencyTextField text
+    /// - Parameter text: text to placed into textField
     func setText(_ text: String) {
         textField.text = text
     }

@@ -201,13 +201,6 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		B663DB83258D4898007499F6 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
 		B69429BD258A929000CC9949 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +259,6 @@
 			children = (
 				B61B4740258DC75500B30D49 /* LocalStorage */,
 				B61B4728258DBCE900B30D49 /* Extensions */,
-				B663DB83258D4898007499F6 /* Enums */,
 				B663DB6F258CF608007499F6 /* Delegates */,
 				B663DB66258CF5F6007499F6 /* DataSources */,
 				B663DB60258CF33A007499F6 /* Protocols */,

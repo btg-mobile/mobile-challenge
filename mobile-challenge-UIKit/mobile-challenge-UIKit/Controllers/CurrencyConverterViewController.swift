@@ -194,6 +194,13 @@ extension CurrencyConverterViewController: UITextFieldDelegate {
         return canAddCharacter(text: text, regex: regex, range: range, newText: string)
     }
 
+    /// Verify if a character should be added into the text field
+    /// - Parameters:
+    ///   - text: current text field text
+    ///   - regex: user defined regex
+    ///   - range: text to be placed into text field range
+    ///   - newText: text to be placed into text field
+    /// - Returns: true or false
     private func canAddCharacter(text: String, regex: NSRegularExpression, range: NSRange, newText: String) -> Bool {
 
         if text.containsDecimalSeparator() && newText.containsDecimalSeparator() {

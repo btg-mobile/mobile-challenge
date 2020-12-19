@@ -102,6 +102,7 @@ class CurrencyListViewController: UIViewController, ViewCodable {
 
     }
 
+    /// SetUp the searchController
     func setUpSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

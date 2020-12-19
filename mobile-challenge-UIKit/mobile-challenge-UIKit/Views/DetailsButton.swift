@@ -82,6 +82,8 @@ import UIKit
         self.currencyType = currencyType
     }
 
+    /// Sets detailsLabel text
+    /// - Parameter text: detailsLabel text
     func setDetailsLabel(text: String) {
         detailsLabel.text = text
     }

@@ -84,6 +84,7 @@ class CurrencyConverterViewModel {
         getSavedCurrencies()
     }
 
+    /// Get saved currencies from Local Storage  (UserDefaults)
     private func getSavedCurrencies() {
         originCurrency = localOriginCurrency != nil
             ? localOriginCurrency!
@@ -94,6 +95,7 @@ class CurrencyConverterViewModel {
             : targetCurrency
     }
 
+    /// Get the currency live rate from API
     func getLiveRate() {
         if isConnected {
             service.getCurrencyLiveRate { [weak self] result in
@@ -116,6 +118,10 @@ class CurrencyConverterViewModel {
         }
     }
 
+    /// Sets selected currency and calls onUpdate() to inform new changes
+    /// - Parameters:
+    ///   - currency: currency selected
+    ///   - type: which currency shoud be set (origin or target currency)
     func setSelectedCurrency(_ currency: Currency, for type: CurrencyType) {
         switch type {
         case .origin:
@@ -128,12 +134,17 @@ class CurrencyConverterViewModel {
         onUpdate()
     }
 
+    /// Invert originCurrency and  targetCurrency
     func invertCurrencies() {
         let temp = localOriginCurrency
         localOriginCurrency = localTargetCurrency
         localTargetCurrency = temp
     }
 
+    /// Converts originCurrency value to targetCurrencyValue
+    /// - Parameters:
+    ///   - text: text containing the originCurrency value
+    ///   - completion: closure to return the converted value
     func convert(text: String, completion: (String) -> Void) {
         guard let originCurrency = localOriginCurrency,
               let targetCurrency = localTargetCurrency,
@@ -157,6 +168,8 @@ class CurrencyConverterViewModel {
         completion(formattedText)
     }
 
+    /// Gets the last update date in a formatted manner
+    /// - Returns: lastUpdate
     func getLastUpdateDate() -> String {
         guard let lastUpdate = localLastUpdate else {
             return ""

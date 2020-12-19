@@ -8,6 +8,9 @@
 import Foundation
 
 extension String {
+
+    /// Returns if this string contains some decimal separator
+    /// - Returns: true or false
     func containsDecimalSeparator() -> Bool {
         return self.contains(".") || self.contains(",")
     }

@@ -53,6 +53,7 @@ class CurrencyListViewModel {
         monitor.start(queue: queue)
     }
 
+    /// Get the currency list from API
     private func getCurrencyList() {
         if isConnected {
             service.getCurrencyList { [weak self] result in
@@ -76,6 +77,8 @@ class CurrencyListViewModel {
         }
     }
 
+    /// Sort currencies by currency name or currency code
+    /// - Parameter segmentIndex: index used to schoose sorting type
     func sort(by segmentIndex: Int) {
         let filterType = FilterType(rawValue: segmentIndex)
 
@@ -89,14 +92,21 @@ class CurrencyListViewModel {
         }
     }
 
+    /// Returns a currency for an specific index
+    /// - Parameter index: index to be found
+    /// - Returns: currency found
     func getCurrency(for index: Int) -> Currency {
         return showingCurrencies[index]
     }
 
+    /// Returns currencies array size
+    /// - Returns: currencies array size
     func getCurrenciesSize() -> Int {
         return showingCurrencies.count
     }
 
+    /// Filter currencies by given text
+    /// - Parameter text: text used to filter currencies
     func filter(by text: String) {
         guard let localCurrencies = localCurrencies else { return }
 

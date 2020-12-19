@@ -8,7 +8,12 @@
 import Foundation
 
 protocol ViewCodable: class {
+    /// SetUp any needed configurations
     func setUp()
+
+    /// Set constraints for all views
     func setConstraints()
+
+    /// Updates UI given events
     func updateUI()
 }
