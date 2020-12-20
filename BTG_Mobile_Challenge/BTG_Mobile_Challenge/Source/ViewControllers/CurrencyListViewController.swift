@@ -9,8 +9,23 @@ import UIKit
 
 final class CurrencyListViewController: UIViewController {
     
-    @AutoLayout private var pickerTableView: UITableView
+    private lazy var pickerTableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.delegate = tableViewDelegate
+        tableView.dataSource = tableViewDataSource
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .singleLine
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tableView
+    }()
     
+    private lazy var tableViewDelegate: CurrencyListTableViewDelegate = CurrencyListTableViewDelegate { (cell) in
+        self.viewModel.swapCurrencies(newCode: cell.currencyID, newName: cell.currencyName)
+    }
+    
+    private lazy var tableViewDataSource: CurrencyListTableViewDataSource = CurrencyListTableViewDataSource(viewModel: viewModel)
+
     private let viewModel: CurrencyListViewModel
     
     init(viewModel: CurrencyListViewModel) {
@@ -27,5 +42,11 @@ final class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }    
+        setupTableViewConstraints()
+    }
+    
+    private func setupTableViewConstraints() {
+        self.view.addSubview(pickerTableView)
+        pickerTableView.addAnchor(top: self.view.safeAreaLayoutGuide.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor, widht: nil, height: nil)
+    }
 }

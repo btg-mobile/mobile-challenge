@@ -24,6 +24,7 @@ protocol CurrencyConverterViewModeling {
     var toCurrencyValue: String? { get }
     
     func fetchCurrencyLiveQuote()
+    func fetchCurrencyListQuote()
     
     func convert(amount: String) -> String
     func convertFromUSD(amount: Double) -> String

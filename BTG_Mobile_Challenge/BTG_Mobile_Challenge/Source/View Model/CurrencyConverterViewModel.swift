@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CurrencyConverterViewModel: CurrencyConverterViewModeling {    
+final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     
     typealias Currency = [String: Double]
     
@@ -65,10 +65,12 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     private let coordinator: CurrencyConverterCoordinator
     
     private var currency: Currency = [:]
+    private var listResponse: CurrencyResponseFromList?
     
     init(requestManager: RequestManager, coordinator: CurrencyConverterCoordinator) {
         self.requestManager = requestManager
         self.coordinator = coordinator
+        fetchCurrencyListQuote()
     }
     
     func fetchCurrencyLiveQuote() {
@@ -88,6 +90,23 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             }
         }
     }
+    
+    func fetchCurrencyListQuote() {
+        guard let url = CurrencyAPIEndpoint.list.url else {
+            return
+        }
+        
+        self.requestManager.getRequest(url: url, decodableType: CurrencyResponseFromList.self) { [weak self] (response) in
+            switch response {
+            case .success(let result):
+                self?.listResponse = result
+            //TODO
+            case .failure(let error):
+                print("TODO")
+            }
+        }
+    }
+    
     
     func convert(amount: String) -> String {
         
@@ -160,6 +179,8 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     }
     
     func pickCurrencies(selectCase: SelectCase) {
-        coordinator.changeCurrency(selectedCase: selectCase)
+        if let response = listResponse {
+            coordinator.changeCurrency(selectedCase: selectCase, response: response)
+        }
     }
 }

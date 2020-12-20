@@ -8,6 +8,6 @@
 import Foundation
 
 protocol CurrencyConverterService: Coordinator {
-    func changeCurrency(selectedCase: SelectCase)
+    func changeCurrency(selectedCase: SelectCase, response: CurrencyResponseFromList)
     func changeFinished()
 }

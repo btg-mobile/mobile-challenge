@@ -9,8 +9,8 @@ import UIKit
 
 final class CurrencyListUITableViewCell: UITableViewCell {
         
-    private var currencyName: String
-    private var currencyID: String
+    var currencyName: String
+    var currencyID: String
     
     private lazy var currencyNameLabel: UILabel = {
         let label = UILabel()
@@ -54,8 +54,8 @@ final class CurrencyListUITableViewCell: UITableViewCell {
     }
     
     private func createConstraints() {
-        currencyNameLabel.addAnchor(top: self.topAnchor, leading: self.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 8, left: -16, bottom: 0, right: 0), widht: self.frame.width * 0.5, height: 10)
+        currencyNameLabel.addAnchor(top: self.topAnchor, leading: self.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 14, left: -16, bottom: 0, right: 0), widht: self.frame.width * 0.8, height: self.frame.height * 0.4)
         
-        currencyIDLabel.addAnchor(top: nil, leading: self.leadingAnchor, trailing: nil, bottom: self.bottomAnchor, padding: .init(top: 0, left: -16, bottom: 0, right: 0),widht: self.frame.width * 0.5, height: 10)
+        currencyIDLabel.addAnchor(top: nil, leading: self.leadingAnchor, trailing: nil, bottom: self.bottomAnchor, padding: .init(top: 0, left: -16, bottom: 14, right: 0),widht: self.frame.width * 0.8, height: self.frame.height * 0.4)
     }
 }

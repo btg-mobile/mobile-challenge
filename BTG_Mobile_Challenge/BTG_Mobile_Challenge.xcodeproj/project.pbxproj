@@ -29,6 +29,8 @@
 		D93EC0B9258FA7DE00E0F1EF /* StorageVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC0B8258FA7DE00E0F1EF /* StorageVariables.swift */; };
 		D93EC0C6258FAA3700E0F1EF /* CurrencyValuesKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC0C5258FAA3700E0F1EF /* CurrencyValuesKeys.swift */; };
 		D93EC0CB258FB1B600E0F1EF /* CurrencyFromListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC0CA258FB1B500E0F1EF /* CurrencyFromListObject.swift */; };
+		D93EC0D0258FC94000E0F1EF /* CurrencyListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC0CF258FC93F00E0F1EF /* CurrencyListTableViewDataSource.swift */; };
+		D93EC0D5258FCB0E00E0F1EF /* CurrencyListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC0D4258FCB0E00E0F1EF /* CurrencyListTableViewDelegate.swift */; };
 		D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */; };
 		D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */; };
 		D9CF67DD258D0EF7003DFAD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9CF67DC258D0EF7003DFAD3 /* Assets.xcassets */; };
@@ -90,6 +92,8 @@
 		D93EC0B8258FA7DE00E0F1EF /* StorageVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVariables.swift; sourceTree = "<group>"; };
 		D93EC0C5258FAA3700E0F1EF /* CurrencyValuesKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyValuesKeys.swift; sourceTree = "<group>"; };
 		D93EC0CA258FB1B500E0F1EF /* CurrencyFromListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFromListObject.swift; sourceTree = "<group>"; };
+		D93EC0CF258FC93F00E0F1EF /* CurrencyListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewDataSource.swift; sourceTree = "<group>"; };
+		D93EC0D4258FCB0E00E0F1EF /* CurrencyListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewDelegate.swift; sourceTree = "<group>"; };
 		D9CF67D0258D0EF4003DFAD3 /* BTG_Mobile_Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTG_Mobile_Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				D93EC00D258E4F8100E0F1EF /* CurrencyResponseFromList.swift */,
 				D93EC0C5258FAA3700E0F1EF /* CurrencyValuesKeys.swift */,
 				D93EC0CA258FB1B500E0F1EF /* CurrencyFromListObject.swift */,
+				D93EC0CF258FC93F00E0F1EF /* CurrencyListTableViewDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			children = (
 				D93EC097258EAADF00E0F1EF /* CurrencyConverterViewController.swift */,
 				D93EC0A4258F988300E0F1EF /* CurrencyListViewController.swift */,
+				D93EC0D4258FCB0E00E0F1EF /* CurrencyListTableViewDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 				D93EC05D258E7F6A00E0F1EF /* CurrencyConverterCoordinator.swift in Sources */,
 				D93EC0C6258FAA3700E0F1EF /* CurrencyValuesKeys.swift in Sources */,
 				D93EC06C258E863F00E0F1EF /* ChangeCurrencyButton.swift in Sources */,
+				D93EC0D0258FC94000E0F1EF /* CurrencyListTableViewDataSource.swift in Sources */,
 				D93EC0CB258FB1B600E0F1EF /* CurrencyFromListObject.swift in Sources */,
 				D93EC03C258E6EA200E0F1EF /* AutoLayout.swift in Sources */,
 				D9CF6876258D6002003DFAD3 /* CurrencyAPI.swift in Sources */,
@@ -516,6 +523,7 @@
 				D93EC0AF258F992700E0F1EF /* CurrencyListViewModelDelegate.swift in Sources */,
 				D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */,
 				D93EC07C258E950300E0F1EF /* CurrencyLabel.swift in Sources */,
+				D93EC0D5258FCB0E00E0F1EF /* CurrencyListTableViewDelegate.swift in Sources */,
 				D93EC08E258E985C00E0F1EF /* CurrencyConverterViewModeling.swift in Sources */,
 				D93EC086258E97C100E0F1EF /* CurrencyConverterViewModelDelegate.swift in Sources */,
 				D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */,

@@ -20,7 +20,7 @@ final class CurrencyConverterViewController: UIViewController {
     @AutoLayout private var toCurrencyLabel: TargetingLabel
     @AutoLayout private var fromCurrencyLabel: TargetingLabel
     
-    private let viewModel: CurrencyConverterViewModel
+    let viewModel: CurrencyConverterViewModel
     
     init(viewModel: CurrencyConverterViewModel) {
         self.viewModel = viewModel
@@ -40,6 +40,7 @@ final class CurrencyConverterViewController: UIViewController {
         setupViewModel()
         setupViews()
         setupLayoutConstraints()
+        viewModel.delegate?.updateUI()
     }
     
     private func setupViewModel() {
@@ -69,8 +70,10 @@ final class CurrencyConverterViewController: UIViewController {
     }
     
     private func setupButttons() {
-        fromCurrencyButton.setTitle("USD", for: .normal)
-        toCurrencyButton.setTitle("BRL", for: .normal)
+        
+        fromCurrencyButton.addTarget(self, action: #selector(changeCurrencyToBeConvertedFrom), for: .touchUpInside)
+        toCurrencyButton.addTarget(self, action: #selector(changeCurrencyToBeConverted), for: .touchUpInside)
+
     }
     
     private func setupTextField() {
@@ -115,6 +118,14 @@ final class CurrencyConverterViewController: UIViewController {
             return
         }
         viewModel.fromCurrencyValue = newAmount
+    }
+    
+    @objc func changeCurrencyToBeConvertedFrom() {
+        viewModel.pickCurrencies(selectCase: .beConvertedFrom)
+    }
+    
+    @objc func changeCurrencyToBeConverted() {
+        viewModel.pickCurrencies(selectCase: .toBeConverted)
     }
 }
 

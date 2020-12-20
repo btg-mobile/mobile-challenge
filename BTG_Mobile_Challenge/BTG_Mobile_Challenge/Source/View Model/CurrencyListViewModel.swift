@@ -44,6 +44,8 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     
     private var selectedCase: SelectCase
     
+    private var apiResponse: CurrencyResponseFromList
+    
     private var response: Currency = [:] {
         didSet {
             convertResponseToCurrencyObject()
@@ -56,32 +58,22 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
         currenciesObjects.count
     }
     
-    init(requestManager: RequestManager, coordinator: CurrencyConverterCoordinator, selectedCase: SelectCase) {
+    init(requestManager: RequestManager, coordinator: CurrencyConverterCoordinator, selectedCase: SelectCase, response: CurrencyResponseFromList) {
         self.requestManager = requestManager
         self.coordinator = coordinator
         self.selectedCase = selectedCase
+        self.apiResponse = response
+        convertoToResponse()
     }
     
-    func fetchCurrencyListQuote() {
-        guard let url = CurrencyAPIEndpoint.list.url else {
-            return
-        }
-        
-        self.requestManager.getRequest(url: url, decodableType: CurrencyResponseFromList.self) { [weak self] (response) in
-            switch response {
-            case .success(let result):
-                let currency = result.currencies
-                self?.response = currency
-                //TODO
-            case .failure(_):
-                print("TODO")
-            }
-        }
+    func convertoToResponse() {
+        let currency = apiResponse.currencies
+        self.response = currency
     }
     
     func swapCurrencies(newCode: String, newName: String) {
-        self.newCurrencyCode = newCode
         self.newCurrencyName = newName
+        self.newCurrencyCode = newCode
     }
     
     func numberOfRows(in Section: Int) -> Int{

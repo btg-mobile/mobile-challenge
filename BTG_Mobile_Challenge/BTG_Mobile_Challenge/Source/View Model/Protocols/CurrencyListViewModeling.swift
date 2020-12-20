@@ -13,6 +13,5 @@ protocol CurrencyListViewModeling {
     var newCurrencyCode: String { get }
     var newCurrencyName: String { get }
     
-    func fetchCurrencyListQuote()
     func swapCurrencies(newCode: String, newName: String)
 }
