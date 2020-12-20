@@ -12,9 +12,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     typealias Currency = [String: Double]
     
     weak var delegate: CurrencyConverterViewModelDelegate?
-    
-    var convertedAmount: String = "" 
-                
+                    
     var fromCurrencyValue: String? {
         didSet {
             toCurrencyValue = convert(amount: fromCurrencyValue ?? "")
@@ -122,11 +120,11 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             return convertToUSD(amount: doubleValue)
         }
         
-        guard let currencyValueFromUSD = currency[fromCurrencyCode] else {
+        guard let currencyValueFromUSD = currency["USD" + toCurrencyCode] else {
             return ""
         }
         
-        guard let currencyValueToUSD = currency[toCurrencyCode] else {
+        guard let currencyValueToUSD = currency["USD" + fromCurrencyCode] else {
             return ""
         }
         
@@ -139,7 +137,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     }
     
     func convertFromUSD(amount: Double) -> String {
-        guard let USDValue = currency["USD" + "\(toCurrencyCode)"] else {
+        guard let USDValue = currency["USD" + toCurrencyCode] else {
             return ""
         }
         
@@ -154,7 +152,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     }
     
     func convertToUSD(amount: Double) -> String {
-        guard let USDValue = currency["USD" + "\(fromCurrencyCode)"] else {
+        guard let USDValue = currency["USD" + fromCurrencyCode] else {
             return ""
         }
         

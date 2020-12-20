@@ -26,18 +26,21 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
     }
     
     func changeCurrency(selectedCase: SelectCase, response: CurrencyResponseFromList) {
-        let viewModel = CurrencyListViewModel(requestManager: requestManager, coordinator: self, selectedCase: selectedCase, response: response)
-        let viewController = CurrencyListViewController(viewModel: viewModel)
-        
-        navigationController.pushViewController(viewController, animated: true)
-        
+        if let observed = navigationController.viewControllers.first as? CurrencyDidChangeObserver {
+            let viewModel = CurrencyListViewModel(requestManager: requestManager, coordinator: self, selectedCase: selectedCase, response: response)
+            viewModel.observer = observed
+            let viewController = CurrencyListViewController(viewModel: viewModel)
+            
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
     
     func changeFinished() {
-        navigationController.popViewController(animated: true)
-        if let viewController = navigationController.topViewController as? CurrencyConverterViewController {
-            viewController.viewModel.delegate?.updateUI()
-        }
-        
+        if let viewController = navigationController.viewControllers.first as? CurrencyConverterViewController {
+            DispatchQueue.main.async { [weak self] in
+                viewController.viewModel.delegate?.updateUI()
+                self?.navigationController.popViewController(animated: true)
+            }
+        }        
     }
 }

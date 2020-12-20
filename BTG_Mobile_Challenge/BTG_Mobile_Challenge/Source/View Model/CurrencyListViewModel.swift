@@ -13,6 +13,8 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     
     weak var delegate: CurrencyListViewModelDelegate?
     
+    weak var observer: CurrencyDidChangeObserver?
+    
     @StorageVariables(key: CurrencyValuesKeys.fromCurrencyCode.rawValue, defaultValue: "USD") 
     private var fromCurrencyCode: String 
     
@@ -74,6 +76,7 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     func swapCurrencies(newCode: String, newName: String) {
         self.newCurrencyName = newName
         self.newCurrencyCode = newCode
+        observer?.currencyDidChange()
     }
     
     func numberOfRows(in Section: Int) -> Int{

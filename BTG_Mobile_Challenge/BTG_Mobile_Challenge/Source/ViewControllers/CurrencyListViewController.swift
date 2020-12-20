@@ -20,14 +20,14 @@ final class CurrencyListViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var tableViewDelegate: CurrencyListTableViewDelegate = CurrencyListTableViewDelegate { (cell) in
-        self.viewModel.swapCurrencies(newCode: cell.currencyID, newName: cell.currencyName)
+    private lazy var tableViewDelegate: CurrencyListTableViewDelegate = CurrencyListTableViewDelegate { [weak self] (cell) in 
+        self?.viewModel.swapCurrencies(newCode: cell.currencyID, newName: cell.currencyName)
     }
     
     private lazy var tableViewDataSource: CurrencyListTableViewDataSource = CurrencyListTableViewDataSource(viewModel: viewModel)
 
     private let viewModel: CurrencyListViewModel
-    
+        
     init(viewModel: CurrencyListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

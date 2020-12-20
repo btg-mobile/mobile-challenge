@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrencyConverterViewController: UIViewController {
+final class CurrencyConverterViewController: UIViewController, CurrencyDidChangeObserver {
     
     @AutoLayout private var currencyLabel: CurrencyLabel
     
@@ -40,7 +40,9 @@ final class CurrencyConverterViewController: UIViewController {
         setupViewModel()
         setupViews()
         setupLayoutConstraints()
-        viewModel.delegate?.updateUI()
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.delegate?.updateUI()
+        }
     }
     
     private func setupViewModel() {
@@ -113,6 +115,10 @@ final class CurrencyConverterViewController: UIViewController {
         toCurrencyLabel.addAnchor(top: self.toCurrencyButton.bottomAnchor, leading: nil, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, bottom: nil, padding: .init(top: 20, left: 0, bottom: 0, right: -20), widht: self.view.frame.width * 0.4, height: 40)
     }
     
+    func currencyDidChange() {
+        viewModel.toCurrencyValue = viewModel.convert(amount: viewModel.fromCurrencyValue ?? "")
+    }
+    
     @objc func amountToBeConvertedDidChange() {
         guard let newAmount = amountInputTextField.text, newAmount != viewModel.fromCurrencyValue else {
             return
@@ -131,6 +137,7 @@ final class CurrencyConverterViewController: UIViewController {
 
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     func updateUI() {
+        amountToBeConvertedDidChange()
         resultCurrencyLabel.text = viewModel.toCurrencyValue
         fromCurrencyButton.setTitle(viewModel.fromCurrencyCode, for: .normal)
         toCurrencyButton.setTitle(viewModel.toCurrencyCode, for: .normal)
