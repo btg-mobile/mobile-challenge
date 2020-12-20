@@ -113,13 +113,14 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         
         let convertedValue = (currencyValueToUSD/currencyValueFromUSD) * doubleValue
         let numberFormatter = NumberFormatter()
-        numberFormatter.currencyCode = fromCurrencyCode
+        numberFormatter.currencyCode = toCurrencyCode
+        numberFormatter.numberStyle = .currencyISOCode
         
         return numberFormatter.string(from: NSNumber(value: convertedValue)) ?? ""
     }
     
     func convertFromUSD(amount: Double) -> String {
-        guard let USDValue = currency["\(fromCurrencyCode)" + "\(toCurrencyCode)"] else {
+        guard let USDValue = currency["USD" + "\(toCurrencyCode)"] else {
             return ""
         }
         
@@ -127,23 +128,21 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         let convertedValue = amount * currencyValue
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.currencyCode = fromCurrencyCode
-        
-        numberFormatter.string(from: NSNumber(value: convertedValue))
+        numberFormatter.currencyCode = toCurrencyCode        
         numberFormatter.numberStyle = .currencyISOCode
         
         return numberFormatter.string(from: NSNumber(value: convertedValue)) ?? ""
     }
     
     func convertToUSD(amount: Double) -> String {
-        guard let USDValue = currency[toCurrencyCode] else {
+        guard let USDValue = currency["USD" + "\(fromCurrencyCode)"] else {
             return ""
         }
         
         let convertedValue = amount * USDValue
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.currencyCode = fromCurrencyCode
+        numberFormatter.currencyCode = "USD"
         numberFormatter.numberStyle = .currencyISOCode
         
         return numberFormatter.string(from: NSNumber(value: convertedValue)) ?? ""
