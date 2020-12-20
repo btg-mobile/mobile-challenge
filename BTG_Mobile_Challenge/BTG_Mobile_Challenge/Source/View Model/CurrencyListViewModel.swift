@@ -40,11 +40,21 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     
     private let requestManager: RequestManager
     
-    private var currency: Currency = [:]
-    
     private let coordinator: CurrencyConverterCoordinator
     
     private var selectedCase: SelectCase
+    
+    private var response: Currency = [:] {
+        didSet {
+            convertResponseToCurrencyObject()
+        }
+    }
+    
+    private var currenciesObjects: [[CurrencyFromListObject]] = [[]]
+    
+    var numberOfSections: Int {
+        currenciesObjects.count
+    }
     
     init(requestManager: RequestManager, coordinator: CurrencyConverterCoordinator, selectedCase: SelectCase) {
         self.requestManager = requestManager
@@ -60,8 +70,8 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
         self.requestManager.getRequest(url: url, decodableType: CurrencyResponseFromList.self) { [weak self] (response) in
             switch response {
             case .success(let result):
-                let fetchedCurrency = result.currencies
-                self?.currency = fetchedCurrency
+                let currency = result.currencies
+                self?.response = currency
                 //TODO
             case .failure(_):
                 print("TODO")
@@ -74,11 +84,32 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
         self.newCurrencyName = newName
     }
     
+    func numberOfRows(in Section: Int) -> Int{
+        return currenciesObjects[Section].count
+    }
+    
+    func codeValueAt(indexPath: IndexPath) -> String {
+        return currenciesObjects[indexPath.section][indexPath.row].codeString
+    }
+    
+    func nameValueAt(indexPath: IndexPath) -> String {
+        return currenciesObjects[indexPath.section][indexPath.row].nameString
+    }
+    
     private func changeCurrencyValue(oldCode: inout String, oldName: inout String) {
         oldCode = newCurrencyCode
         oldName = newCurrencyName
         
         coordinator.changeFinished()
+    }
+    
+    private func convertResponseToCurrencyObject() {
+        let objects = response.keys.map({CurrencyFromListObject(codeString: $0, nameString: response[$0] ?? "USD")})
+        
+        let sortedObjects = objects.sorted(by: { $0.codeString < $1.codeString})
+        let result = [sortedObjects]
+        
+        self.currenciesObjects = result
     }
 }
 

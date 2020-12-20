@@ -27,7 +27,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
     
     func changeCurrency(selectedCase: SelectCase) {
         let viewModel = CurrencyListViewModel(requestManager: requestManager, coordinator: self, selectedCase: selectedCase)
-        let viewController = CurrencyListViewController()
+        let viewController = CurrencyListViewController(viewModel: viewModel)
         
         navigationController.present(viewController, animated: true, completion: nil)
     }
