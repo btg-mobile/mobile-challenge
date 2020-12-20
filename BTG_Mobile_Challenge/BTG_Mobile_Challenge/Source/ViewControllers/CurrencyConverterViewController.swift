@@ -17,8 +17,8 @@ final class CurrencyConverterViewController: UIViewController {
     @AutoLayout private var fromCurrencyButton: ChangeCurrencyButton
     @AutoLayout private var toCurrencyButton: ChangeCurrencyButton
     
-    @AutoLayout private var toCurrencyLabel: UILabel
-    @AutoLayout private var fromCurrencyLabel: UILabel
+    @AutoLayout private var toCurrencyLabel: TargetingLabel
+    @AutoLayout private var fromCurrencyLabel: TargetingLabel
     
     private let viewModel: CurrencyConverterViewModel
     
@@ -37,9 +37,9 @@ final class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setupLayoutConstraints()
         setupViewModel()
         setupViews()
+        setupLayoutConstraints()
     }
     
     private func setupViewModel() {
@@ -105,9 +105,9 @@ final class CurrencyConverterViewController: UIViewController {
         self.view.addSubview(fromCurrencyLabel)
         self.view.addSubview(toCurrencyLabel)
         
-        fromCurrencyLabel.addAnchor(top: self.fromCurrencyButton.bottomAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 20, left: -20, bottom: 0, right: 0), widht: self.fromCurrencyButton.frame.width, height: 40)
+        fromCurrencyLabel.addAnchor(top: self.fromCurrencyButton.bottomAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 20, left: -20, bottom: 0, right: 0), widht: self.view.frame.width * 0.4, height: 40)
         
-        toCurrencyLabel.addAnchor(top: self.toCurrencyButton.bottomAnchor, leading: nil, trailing: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, padding: .init(top: 20, left: 0, bottom: 0, right: -20), widht: self.toCurrencyButton.frame.width, height: 40)
+        toCurrencyLabel.addAnchor(top: self.toCurrencyButton.bottomAnchor, leading: nil, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, bottom: nil, padding: .init(top: 20, left: 0, bottom: 0, right: -20), widht: self.view.frame.width * 0.4, height: 40)
     }
     
     @objc func amountToBeConvertedDidChange() {

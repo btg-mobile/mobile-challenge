@@ -1,13 +1,13 @@
 //
-//  CurrencyLabel.swift
+//  TargetingLabel.swift
 //  BTG_Mobile_Challenge
 //
-//  Created by Pedro Henrique Guedes Silveira on 19/12/20.
+//  Created by Pedro Henrique Guedes Silveira on 20/12/20.
 //
 
 import UIKit
 
-final class CurrencyLabel: UILabel {
+final class TargetingLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,8 +23,8 @@ final class CurrencyLabel: UILabel {
     
     private func setLabel() {
         textAlignment = .center
-        textColor = #colorLiteral(red: 0.2941176471, green: 0.4156862745, blue: 0.8352941176, alpha: 1)
-        font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         backgroundColor = .white
     }
