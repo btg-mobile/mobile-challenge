@@ -18,7 +18,6 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
         self.navigationController = navigationController
     }
     
-    //TODO
     func start() {
         let viewModel = CurrencyConverterViewModel(requestManager: requestManager, coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
@@ -26,13 +25,14 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    //TODO
-    func pickCurrency(currencies: CurrencyResponseFromList) {
-        print("TODO")
+    func changeCurrency(selectedCase: SelectCase) {
+        let viewModel = CurrencyListViewModel(requestManager: requestManager, coordinator: self, selectedCase: selectedCase)
+        let viewController = CurrencyListViewController()
+        
+        navigationController.present(viewController, animated: true, completion: nil)
     }
     
-    //TODO
-    func chooseCurrency(currencies: CurrencyResponseFromList) {
-        print("TODO")
+    func changeFinished() {
+        navigationController.popViewController(animated: true)
     }
 }

@@ -21,13 +21,15 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         }
     }
     
-    var fromCurrencyCode: String = "USD" {
+    @StorageVariables(key: CurrencyValuesKeys.fromCurrencyCode.rawValue, defaultValue: "USD") 
+    var fromCurrencyCode: String {
         didSet {
             fetchCurrencyLiveQuote()
         }
     }
     
-    var fromCurrencyName: String = "United States Dollar" {
+    @StorageVariables(key: CurrencyValuesKeys.fromCurrencyName.rawValue, defaultValue: "United States Dollar") 
+    var fromCurrencyName: String {
         didSet {
             DispatchQueue.main.async { [unowned self] in
                 self.delegate?.updateUI()
@@ -43,13 +45,15 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         }
     }
     
-    var toCurrencyCode: String = "BRL" {
+    @StorageVariables(key: CurrencyValuesKeys.toCurrencyCode.rawValue, defaultValue: "BRL") 
+    var toCurrencyCode: String {
         didSet {
             fetchCurrencyLiveQuote()
         }
     }
     
-    var toCurrencyName: String = "Brazilian Real" {
+    @StorageVariables(key: CurrencyValuesKeys.toCurrencyName.rawValue, defaultValue: "Brazilian Real") 
+    var toCurrencyName: String {
         didSet {
             DispatchQueue.main.async { [unowned self] in
                 self.delegate?.updateUI()
@@ -61,7 +65,6 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     private let coordinator: CurrencyConverterCoordinator
     
     private var currency: Currency = [:]
-    private var listResponse: CurrencyResponseFromList?
     
     init(requestManager: RequestManager, coordinator: CurrencyConverterCoordinator) {
         self.requestManager = requestManager
@@ -155,5 +158,9 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         
         fromCurrencyName = toCurrencyName
         toCurrencyName = lastCurrencyName
+    }
+    
+    func pickCurrencies(selectCase: SelectCase) {
+        coordinator.changeCurrency(selectedCase: selectCase)
     }
 }

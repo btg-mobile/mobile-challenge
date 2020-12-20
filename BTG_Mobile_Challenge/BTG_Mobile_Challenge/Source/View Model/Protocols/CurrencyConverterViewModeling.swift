@@ -7,10 +7,9 @@
 
 import Foundation
 
-enum convertingState {
-    case convertFromUSD
-    case convertToUSD
-    case otherTransaction
+enum SelectCase {
+    case toBeConverted
+    case beConvertedFrom
 }
 
 protocol CurrencyConverterViewModeling {
@@ -30,4 +29,5 @@ protocol CurrencyConverterViewModeling {
     func convertFromUSD(amount: Double) -> String
     func convertToUSD(amount: Double) -> String
     func swapCurrencies()
+    func pickCurrencies(selectCase: SelectCase)
 }
