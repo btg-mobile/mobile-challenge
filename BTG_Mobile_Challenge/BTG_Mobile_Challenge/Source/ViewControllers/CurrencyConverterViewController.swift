@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrencyConverterViewController: UIViewController, CurrencyDidChangeDelegate {
+final class CurrencyConverterViewController: UIViewController {
     
     @AutoLayout private var currencyLabel: CurrencyLabel
     
@@ -115,10 +115,6 @@ final class CurrencyConverterViewController: UIViewController, CurrencyDidChange
         toCurrencyLabel.addAnchor(top: self.toCurrencyButton.bottomAnchor, leading: nil, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, bottom: nil, padding: .init(top: 20, left: 0, bottom: 0, right: -20), widht: self.view.frame.width * 0.4, height: 40)
     }
     
-    func currencyDidChange() {
-        viewModel.toCurrencyValue = viewModel.convert(amount: viewModel.fromCurrencyValue ?? "")
-    }
-    
     @objc func amountToBeConvertedDidChange() {
         guard let newAmount = amountInputTextField.text, newAmount != viewModel.fromCurrencyValue else {
             return
@@ -151,3 +147,10 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
         print("TODO")
     }
 }
+
+extension CurrencyConverterViewController: CurrencyDidChangeDelegate{
+    func currencyDidChange() {
+        viewModel.toCurrencyValue = viewModel.convert(amount: viewModel.fromCurrencyValue ?? "")
+    }
+}
+

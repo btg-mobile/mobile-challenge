@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let navigationController = UINavigationController()
-        navigationController.navigationBar.tintColor = .clear
         
         let requestManager = RequestManager()
         
