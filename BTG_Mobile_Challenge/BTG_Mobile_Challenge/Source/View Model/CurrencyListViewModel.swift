@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class CurrencyListViewModel: CurrencyListViewModeling {
     
@@ -48,6 +49,8 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     
     private var apiResponse: CurrencyResponseFromList
     
+    private var isFilteringFlag: Bool = false
+    
     private var response: Currency = [:] {
         didSet {
             convertResponseToCurrencyObject()
@@ -56,8 +59,14 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     
     private var currenciesObjects: [[CurrencyFromListObject]] = [[]]
     
+    private var filteredCurrenciesObjectects: [[CurrencyFromListObject]] = [[]]
+    
     var numberOfSections: Int {
-        currenciesObjects.count
+        if isFilteringFlag {
+            return filteredCurrenciesObjectects.count
+        } else {
+            return currenciesObjects.count
+        }
     }
     
     init(requestManager: RequestManager, coordinator: CurrencyConverterCoordinator, selectedCase: SelectCase, response: CurrencyResponseFromList) {
@@ -80,16 +89,48 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
     }
     
     func numberOfRows(in Section: Int) -> Int{
-        return currenciesObjects[Section].count
+        if isFilteringFlag {
+            return filteredCurrenciesObjectects[Section].count
+        } else {
+            return currenciesObjects[Section].count
+        }
     }
     
     func codeValueAt(indexPath: IndexPath) -> String {
-        return currenciesObjects[indexPath.section][indexPath.row].codeString
+        if isFilteringFlag {
+            return filteredCurrenciesObjectects[indexPath.section][indexPath.row].codeString
+        } else {
+            return currenciesObjects[indexPath.section][indexPath.row].codeString
+        }
     }
     
     func nameValueAt(indexPath: IndexPath) -> String {
-        return currenciesObjects[indexPath.section][indexPath.row].nameString
+        if isFilteringFlag {
+            return filteredCurrenciesObjectects[indexPath.section][indexPath.row].nameString
+        } else {
+            return currenciesObjects[indexPath.section][indexPath.row].nameString
+        }
     }
+    
+    func filterContentForSearchText(_ searchText: String, tableView: UITableView) {
+        let objects = response.keys.map( {CurrencyFromListObject(codeString: $0, nameString: response[$0] ?? "USD")})
+        
+        let filteredObjectsByName = objects.filter { (currency: CurrencyFromListObject) -> Bool in
+            return currency.nameString.lowercased().contains(searchText.lowercased())
+        }
+        
+        let filteredObjectsByCode = objects.filter { (currency: CurrencyFromListObject) -> Bool in
+            return currency.codeString.lowercased().contains(searchText.lowercased())
+        }
+        
+        let filteredObjects = filteredObjectsByName + filteredObjectsByCode
+        let cleanedArray = filteredObjects.removingDuplicates()
+        
+        filteredCurrenciesObjectects = [cleanedArray]
+        
+        tableView.reloadData()
+    }
+
     
     private func changeCurrencyValue(oldCode: inout String, oldName: inout String) {
         oldCode = newCurrencyCode
@@ -107,4 +148,12 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
         self.currenciesObjects = result
     }
 }
+
+extension CurrencyListViewModel: SearchBarDelegate {
+    
+    func isFiltering(_ value: Bool) {
+        isFilteringFlag = value
+    }
+}
+
 

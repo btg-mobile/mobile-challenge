@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyFromListObject {
+struct CurrencyFromListObject: Hashable {
     let codeString: String
     let nameString: String
 }

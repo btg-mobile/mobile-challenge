@@ -30,6 +30,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
             let viewModel = CurrencyListViewModel(requestManager: requestManager, coordinator: self, selectedCase: selectedCase, response: response)
             viewModel.didChangeDelegate = observed
             let viewController = CurrencyListViewController(viewModel: viewModel)
+            viewController.searchBarDelegate = viewModel
             
             navigationController.pushViewController(viewController, animated: true)
         }

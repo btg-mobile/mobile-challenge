@@ -27,6 +27,24 @@ final class CurrencyListViewController: UIViewController {
     private lazy var tableViewDataSource: CurrencyListTableViewDataSource = CurrencyListTableViewDataSource(viewModel: viewModel)
 
     private let viewModel: CurrencyListViewModel
+    
+    weak var searchBarDelegate: SearchBarDelegate?
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "Search for Currencies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+
+        return searchController
+    }()
+    
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
         
     init(viewModel: CurrencyListViewModel) {
         self.viewModel = viewModel
@@ -44,6 +62,7 @@ final class CurrencyListViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupTableViewConstraints()
+        navigationItem.searchController = searchController
     }
     
     private func setupTableViewConstraints() {
@@ -51,3 +70,13 @@ final class CurrencyListViewController: UIViewController {
         pickerTableView.addAnchor(top: self.view.safeAreaLayoutGuide.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor, widht: nil, height: nil)
     }
 }
+
+extension CurrencyListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let value = searchController.isActive && !isSearchBarEmpty
+        searchBarDelegate?.isFiltering(value)
+        viewModel.filterContentForSearchText(searchBar.text ?? "", tableView: pickerTableView)
+    }
+}
+
