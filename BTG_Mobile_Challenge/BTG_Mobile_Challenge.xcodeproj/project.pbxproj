@@ -20,9 +20,9 @@
 		D93EC086258E97C100E0F1EF /* CurrencyConverterViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC085258E97C100E0F1EF /* CurrencyConverterViewModelDelegate.swift */; };
 		D93EC08E258E985C00E0F1EF /* CurrencyConverterViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC08D258E985C00E0F1EF /* CurrencyConverterViewModeling.swift */; };
 		D93EC093258E98A600E0F1EF /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC092258E98A600E0F1EF /* CurrencyConverterViewModel.swift */; };
+		D93EC098258EAADF00E0F1EF /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC097258EAADF00E0F1EF /* CurrencyConverterViewController.swift */; };
 		D9CF67D4258D0EF4003DFAD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */; };
 		D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */; };
-		D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D7258D0EF4003DFAD3 /* ViewController.swift */; };
 		D9CF67DD258D0EF7003DFAD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9CF67DC258D0EF7003DFAD3 /* Assets.xcassets */; };
 		D9CF67E0258D0EF7003DFAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9CF67DE258D0EF7003DFAD3 /* LaunchScreen.storyboard */; };
 		D9CF67EB258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67EA258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift */; };
@@ -73,10 +73,10 @@
 		D93EC085258E97C100E0F1EF /* CurrencyConverterViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModelDelegate.swift; sourceTree = "<group>"; };
 		D93EC08D258E985C00E0F1EF /* CurrencyConverterViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModeling.swift; sourceTree = "<group>"; };
 		D93EC092258E98A600E0F1EF /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		D93EC097258EAADF00E0F1EF /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		D9CF67D0258D0EF4003DFAD3 /* BTG_Mobile_Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTG_Mobile_Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CF67D3258D0EF4003DFAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D9CF67D7258D0EF4003DFAD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D9CF67DC258D0EF7003DFAD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9CF67DF258D0EF7003DFAD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9CF67E1258D0EF7003DFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 		D9CF680E258D177D003DFAD3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D9CF67D7258D0EF4003DFAD3 /* ViewController.swift */,
+				D93EC097258EAADF00E0F1EF /* CurrencyConverterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -472,7 +472,6 @@
 			files = (
 				D9CF688A258D665B003DFAD3 /* NetworkService.swift in Sources */,
 				D93EC062258E806900E0F1EF /* CurrencyConverterService.swift in Sources */,
-				D9CF67D8258D0EF4003DFAD3 /* ViewController.swift in Sources */,
 				D93EC01E258E6C8F00E0F1EF /* Coordinator.swift in Sources */,
 				D93EC071258E899A00E0F1EF /* CurrencyListUITableViewCell.swift in Sources */,
 				D93EC055258E7B4E00E0F1EF /* URLSession+Extension.swift in Sources */,
@@ -490,6 +489,7 @@
 				D93EC08E258E985C00E0F1EF /* CurrencyConverterViewModeling.swift in Sources */,
 				D93EC086258E97C100E0F1EF /* CurrencyConverterViewModelDelegate.swift in Sources */,
 				D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */,
+				D93EC098258EAADF00E0F1EF /* CurrencyConverterViewController.swift in Sources */,
 				D93EC093258E98A600E0F1EF /* CurrencyConverterViewModel.swift in Sources */,
 				D9CF6810258D4150003DFAD3 /* RequestManager.swift in Sources */,
 				D9CF681E258D42AC003DFAD3 /* Dictionary+Extension.swift in Sources */,

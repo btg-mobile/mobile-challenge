@@ -18,11 +18,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.tintColor = .clear
+        
         let requestManager = RequestManager()
         
+        let coordinator = CurrencyConverterCoordinator(requestManager: requestManager, navigationController: navigationController)
+        
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = ViewController()
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        coordinator.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

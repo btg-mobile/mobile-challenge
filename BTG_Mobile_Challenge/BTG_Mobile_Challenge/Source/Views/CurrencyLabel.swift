@@ -11,6 +11,7 @@ final class CurrencyLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setTextField()
     }
     
     required convenience init?(coder: NSCoder) {

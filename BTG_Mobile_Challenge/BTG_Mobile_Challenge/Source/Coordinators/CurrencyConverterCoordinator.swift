@@ -20,7 +20,10 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
     
     //TODO
     func start() {
-        print("TODO")
+        let viewModel = CurrencyConverterViewModel(requestManager: requestManager, coordinator: self)
+        let viewController = CurrencyConverterViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     //TODO

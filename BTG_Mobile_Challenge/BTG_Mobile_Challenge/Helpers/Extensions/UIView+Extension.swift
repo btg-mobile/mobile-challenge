@@ -9,16 +9,14 @@ import UIKit
 
 extension UIView {
     
-    func addAnchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize?) {
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
+    func addAnchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, widht: CGFloat?, height: CGFloat?) {
+                
         if let anchor = top {
             topAnchor.constraint(equalTo: anchor, constant: padding.top).isActive = true
         }
         
         if let anchor = leading {
-            leadingAnchor.constraint(equalTo: anchor, constant: padding.left).isActive = true
+            leadingAnchor.constraint(equalTo: anchor, constant: -(padding.left)).isActive = true
         }
         
         if let anchor = trailing {
@@ -26,12 +24,15 @@ extension UIView {
         }
         
         if let anchor = bottom{
-            bottomAnchor.constraint(equalTo: anchor, constant: padding.bottom).isActive = true
+            bottomAnchor.constraint(equalTo: anchor, constant: -(padding.bottom)).isActive = true
         }
         
-        if let size = size {
-            widthAnchor.constraint(equalToConstant: size.width).isActive = true
-            heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        if let width = widht {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        
+        if let height = height {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
     

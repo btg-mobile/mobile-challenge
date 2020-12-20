@@ -12,6 +12,8 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     typealias Currency = [String: Double]
     
     weak var delegate: CurrencyConverterViewModelDelegate?
+    
+    var convertedAmount: String = "" 
                 
     var fromCurrencyValue: String? {
         didSet {
@@ -27,7 +29,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     
     var fromCurrencyName: String = "United States Dollar" {
         didSet {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 self.delegate?.updateUI()
             }
         }
@@ -35,7 +37,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
 
     var toCurrencyValue: String? = "0.00" {
         didSet {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 self.delegate?.updateUI()
             }
         }
@@ -49,7 +51,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     
     var toCurrencyName: String = "Brazilian Real" {
         didSet {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 self.delegate?.updateUI()
             }
         }
@@ -72,12 +74,12 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             return
         }
         
-        requestManager.getRequest(url: url, decodableType: CurrencyReponseFromLive.self) { [weak self] (response) in
+        self.requestManager.getRequest(url: url, decodableType: CurrencyReponseFromLive.self) { [weak self] (response) in
             switch response {
             case .success(let result):
                 let fetchedCurrency = result.quotes
                 self?.currency = fetchedCurrency
-                //TODO
+            //TODO
             case .failure(let error):
                 print("TODO")
             }
@@ -114,7 +116,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
     }
     
     func convertFromUSD(amount: Double) -> String {
-        guard let USDValue = currency[fromCurrencyCode] else {
+        guard let USDValue = currency["\(fromCurrencyCode)" + "\(toCurrencyCode)"] else {
             return ""
         }
         
@@ -123,6 +125,9 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         
         let numberFormatter = NumberFormatter()
         numberFormatter.currencyCode = fromCurrencyCode
+        
+        numberFormatter.string(from: NSNumber(value: convertedValue))
+        numberFormatter.numberStyle = .currencyISOCode
         
         return numberFormatter.string(from: NSNumber(value: convertedValue)) ?? ""
     }
@@ -136,6 +141,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         
         let numberFormatter = NumberFormatter()
         numberFormatter.currencyCode = fromCurrencyCode
+        numberFormatter.numberStyle = .currencyISOCode
         
         return numberFormatter.string(from: NSNumber(value: convertedValue)) ?? ""
     }

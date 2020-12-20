@@ -15,19 +15,19 @@ final class CurrencyConverterTextField: UITextField {
         }
     }
     
-    init(placeholder: String, frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.placeholder = placeholder
         self.backgroundColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 0.1510314941)
-        self.tintColor = .black
+        self.textColor = .black
+        self.placeholder = "Seu Valor"
+        setTextField()
     }
     
     required convenience init?(coder: NSCoder) {
-        guard let frame = coder.decodeObject(forKey: "frame") as? CGRect,
-              let placeholder = coder.decodeObject(forKey: "placeholder") as? String else {
+        guard let frame = coder.decodeObject(forKey: "frame") as? CGRect else {
             return nil
         }
-        self.init(placeholder: placeholder, frame: frame)
+        self.init(frame: frame)
     }
     
     private func setCornerRadius() {

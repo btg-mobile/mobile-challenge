@@ -15,19 +15,18 @@ final class ChangeCurrencyButton: UIButton {
         }
     }
     
-    init(frame: CGRect, selector: Selector) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addTarget(self, action: selector, for: .touchUpInside)
         self.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4156862745, blue: 0.8352941176, alpha: 1)
         self.tintColor = .white
+        setButton()
     }
     
     required convenience init?(coder: NSCoder) {
-        guard let frame = coder.decodeObject(forKey: "frame") as? CGRect,
-              let selector = coder.decodeObject(forKey: "selector") as? Selector else {
+        guard let frame = coder.decodeObject(forKey: "frame") as? CGRect else {
             return nil
         }
-        self.init(frame: frame, selector: selector)
+        self.init(frame: frame)
     }
     
     private func setButton() {
