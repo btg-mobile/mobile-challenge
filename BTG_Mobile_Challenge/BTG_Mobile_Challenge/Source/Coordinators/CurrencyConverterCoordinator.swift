@@ -26,9 +26,9 @@ final class CurrencyConverterCoordinator: CurrencyConverterService {
     }
     
     func changeCurrency(selectedCase: SelectCase, response: CurrencyResponseFromList) {
-        if let observed = navigationController.viewControllers.first as? CurrencyDidChangeObserver {
+        if let observed = navigationController.viewControllers.first as? CurrencyDidChangeDelegate {
             let viewModel = CurrencyListViewModel(requestManager: requestManager, coordinator: self, selectedCase: selectedCase, response: response)
-            viewModel.observer = observed
+            viewModel.didChangeDelegate = observed
             let viewController = CurrencyListViewController(viewModel: viewModel)
             
             navigationController.pushViewController(viewController, animated: true)

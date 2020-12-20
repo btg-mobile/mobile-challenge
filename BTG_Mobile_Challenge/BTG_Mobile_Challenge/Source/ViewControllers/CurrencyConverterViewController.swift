@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrencyConverterViewController: UIViewController, CurrencyDidChangeObserver {
+final class CurrencyConverterViewController: UIViewController, CurrencyDidChangeDelegate {
     
     @AutoLayout private var currencyLabel: CurrencyLabel
     
@@ -144,10 +144,10 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     }
     
     func shouldShowLoading(_ isLoading: Bool) {
-        print("OI")
+        print("TODO")
     }
     
     func showError(_ error: String) {
-        print("OI")
+        print("TODO")
     }
 }
