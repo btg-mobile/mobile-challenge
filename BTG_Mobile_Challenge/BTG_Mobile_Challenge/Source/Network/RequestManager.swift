@@ -63,11 +63,13 @@ final class RequestManager {
             
             if let serviceError = error {
                 completion(.failure(serviceError))
+                ErrorHandlerObject().genericErrorHandling(title: "Error with service", message: error?.localizedDescription ?? "No Localized Description")
                 return
             }
             
             guard let httpResponse =  response as? HTTPURLResponse else {
                 completion(.failure(NotURLError(title: nil, description: "Couldn't use URL as Response")))
+                ErrorHandlerObject().genericErrorHandling(title: "Error with Http Response", message: error?.localizedDescription ?? "No Localized Description")
                 return
             }
             
@@ -75,6 +77,7 @@ final class RequestManager {
                 
                 guard let data = data else {
                     completion(.failure(RequestFailedError(title: nil, description: "Couldn't retrive data from URL")))
+                    ErrorHandlerObject().genericErrorHandling(title: "Couldn't retrive data from URL", message: error?.localizedDescription ?? "No Localized Description")
                     return
                 }
                 
@@ -83,6 +86,7 @@ final class RequestManager {
                     completion(.success(decoded))
                 }  catch {
                     completion(.failure(InvalidCodableError(title: nil, description: "Couldn't decode object retrivied from URL")))
+                    ErrorHandlerObject().genericErrorHandling(title: "Couldn't decode object retrivied from URL", message: error.localizedDescription )
                 }
             } else {
                 completion(.failure(RequestFailedError(title: nil, description: "Network request failed due to unexpected HTTP status code.")))

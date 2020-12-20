@@ -53,6 +53,8 @@
 		D9CF68BA258E4140003DFAD3 /* live-response.json in Resources */ = {isa = PBXBuildFile; fileRef = D9CF68B8258E413F003DFAD3 /* live-response.json */; };
 		D9CF68BB258E4140003DFAD3 /* list-response.json in Resources */ = {isa = PBXBuildFile; fileRef = D9CF68B9258E4140003DFAD3 /* list-response.json */; };
 		D9CF68C3258E4264003DFAD3 /* CurrencyReponseFromLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF68C2258E4263003DFAD3 /* CurrencyReponseFromLive.swift */; };
+		D9F7B836259005DF009B9ECC /* ErrorHandlerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F7B835259005DF009B9ECC /* ErrorHandlerObject.swift */; };
+		D9F7B843259006CC009B9ECC /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F7B842259006CC009B9ECC /* UIAlert+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,8 @@
 		D9CF68B8258E413F003DFAD3 /* live-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "live-response.json"; sourceTree = "<group>"; };
 		D9CF68B9258E4140003DFAD3 /* list-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "list-response.json"; sourceTree = "<group>"; };
 		D9CF68C2258E4263003DFAD3 /* CurrencyReponseFromLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyReponseFromLive.swift; sourceTree = "<group>"; };
+		D9F7B835259005DF009B9ECC /* ErrorHandlerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerObject.swift; sourceTree = "<group>"; };
+		D9F7B842259006CC009B9ECC /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +290,7 @@
 				D93EC022258E6C9F00E0F1EF /* Model */,
 				D9CF680E258D177D003DFAD3 /* ViewControllers */,
 				D9CF680A258D1671003DFAD3 /* Network */,
+				D9F7B834259005BB009B9ECC /* Error Handling */,
 				D9CF6809258D1660003DFAD3 /* Coordinators */,
 			);
 			path = Source;
@@ -348,6 +353,7 @@
 				D9CF687A258D618B003DFAD3 /* UIView+Extension.swift */,
 				D93EC054258E7B4E00E0F1EF /* URLSession+Extension.swift */,
 				D93EC0EE258FF79100E0F1EF /* Array+Extension.swift */,
+				D9F7B842259006CC009B9ECC /* UIAlert+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -384,6 +390,14 @@
 				D9CF68B8258E413F003DFAD3 /* live-response.json */,
 			);
 			path = Stubs;
+			sourceTree = "<group>";
+		};
+		D9F7B834259005BB009B9ECC /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				D9F7B835259005DF009B9ECC /* ErrorHandlerObject.swift */,
+			);
+			path = "Error Handling";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,7 +562,9 @@
 				D93EC098258EAADF00E0F1EF /* CurrencyConverterViewController.swift in Sources */,
 				D93EC093258E98A600E0F1EF /* CurrencyConverterViewModel.swift in Sources */,
 				D93EC0EF258FF79100E0F1EF /* Array+Extension.swift in Sources */,
+				D9F7B843259006CC009B9ECC /* UIAlert+Extension.swift in Sources */,
 				D93EC0B9258FA7DE00E0F1EF /* StorageVariables.swift in Sources */,
+				D9F7B836259005DF009B9ECC /* ErrorHandlerObject.swift in Sources */,
 				D9CF6810258D4150003DFAD3 /* RequestManager.swift in Sources */,
 				D9CF681E258D42AC003DFAD3 /* Dictionary+Extension.swift in Sources */,
 				D93EC0E4258FF14600E0F1EF /* SearchBarDelegate.swift in Sources */,
@@ -654,7 +670,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -709,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

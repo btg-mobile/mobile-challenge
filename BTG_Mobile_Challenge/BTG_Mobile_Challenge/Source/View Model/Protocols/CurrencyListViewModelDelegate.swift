@@ -9,5 +9,4 @@ import Foundation
 
 protocol CurrencyListViewModelDelegate: AnyObject {
     func updateCurrencyOption()
-    func showError(_ error: String)
 }

@@ -142,10 +142,6 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
     func shouldShowLoading(_ isLoading: Bool) {
         print("TODO")
     }
-    
-    func showError(_ error: String) {
-        print("TODO")
-    }
 }
 
 extension CurrencyConverterViewController: CurrencyDidChangeDelegate{
