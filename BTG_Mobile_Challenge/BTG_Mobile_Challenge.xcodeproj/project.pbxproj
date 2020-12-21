@@ -38,7 +38,6 @@
 		D9CF67D6258D0EF4003DFAD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67D5258D0EF4003DFAD3 /* SceneDelegate.swift */; };
 		D9CF67DD258D0EF7003DFAD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9CF67DC258D0EF7003DFAD3 /* Assets.xcassets */; };
 		D9CF67E0258D0EF7003DFAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9CF67DE258D0EF7003DFAD3 /* LaunchScreen.storyboard */; };
-		D9CF67EB258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67EA258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift */; };
 		D9CF67F6258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF67F5258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.swift */; };
 		D9CF6810258D4150003DFAD3 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF680F258D4150003DFAD3 /* RequestManager.swift */; };
 		D9CF6818258D426C003DFAD3 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF6817258D426C003DFAD3 /* RequestError.swift */; };
@@ -109,7 +108,6 @@
 		D9CF67DF258D0EF7003DFAD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9CF67E1258D0EF7003DFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9CF67E6258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTG_Mobile_ChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9CF67EA258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_Mobile_ChallengeTests.swift; sourceTree = "<group>"; };
 		D9CF67EC258D0EF8003DFAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9CF67F1258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTG_Mobile_ChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CF67F5258D0EF8003DFAD3 /* BTG_Mobile_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_Mobile_ChallengeUITests.swift; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				D9CF68B7258E4130003DFAD3 /* Stubs */,
 				D9CF68A9258E34E3003DFAD3 /* Network */,
 				D9CF687F258D65BD003DFAD3 /* Mocks */,
-				D9CF67EA258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift */,
 				D9CF67EC258D0EF8003DFAD3 /* Info.plist */,
 			);
 			path = BTG_Mobile_ChallengeTests;
@@ -577,7 +574,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9CF67EB258D0EF8003DFAD3 /* BTG_Mobile_ChallengeTests.swift in Sources */,
 				D9CF6895258E266D003DFAD3 /* ServiceMock.swift in Sources */,
 				D9CF68A2258E2B0E003DFAD3 /* ServiceMockDataTask.swift in Sources */,
 				D9CF68AB258E351C003DFAD3 /* RequestManagerTests.swift in Sources */,
@@ -750,7 +746,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.guedes.BTG-Mobile-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -769,7 +765,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.guedes.BTG-Mobile-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

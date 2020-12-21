@@ -82,7 +82,6 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             case .success(let result):
                 let fetchedCurrency = result.quotes
                 self?.currency = fetchedCurrency
-            //TODO
             case .failure(let error):
                 ErrorHandlerObject().genericErrorHandling(title: "Error Fetching Live Response", message: error.localizedDescription)
             }
@@ -98,7 +97,6 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             switch response {
             case .success(let result):
                 self?.listResponse = result
-            //TODO
             case .failure(let error):
                 ErrorHandlerObject().genericErrorHandling(title: "Error fetching list response", message: error.localizedDescription)
             }
