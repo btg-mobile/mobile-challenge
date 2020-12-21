@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+enum SortingType {
+    case name
+    case code
+}
+
 final class CurrencyListViewModel: CurrencyListViewModeling {
     
     typealias Currency = [String: String]
@@ -130,7 +135,23 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
         
         tableView.reloadData()
     }
-
+    
+    func sortResponse(by: SortingType, tableView: UITableView) {
+        let objects = response.keys.map( {CurrencyFromListObject(codeString: $0, nameString: response[$0] ?? "USD")})
+        
+        switch by {
+        case .code:
+            let sortedObjects = objects.sorted(by: { $0.codeString < $1.codeString})
+            let result = [sortedObjects]
+            self.currenciesObjects = result
+            tableView.reloadData()
+        case .name:
+            let sortedObjects = objects.sorted(by: { $0.nameString < $1.nameString})
+            let result = [sortedObjects]
+            self.currenciesObjects = result
+            tableView.reloadData()
+        }
+    }
     
     private func changeCurrencyValue(oldCode: inout String, oldName: inout String) {
         oldCode = newCurrencyCode
@@ -146,7 +167,7 @@ final class CurrencyListViewModel: CurrencyListViewModeling {
         let result = [sortedObjects]
         
         self.currenciesObjects = result
-    }
+    }    
 }
 
 extension CurrencyListViewModel: SearchBarDelegate {

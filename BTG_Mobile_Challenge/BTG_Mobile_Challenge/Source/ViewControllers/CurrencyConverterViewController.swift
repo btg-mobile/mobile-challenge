@@ -22,7 +22,7 @@ final class CurrencyConverterViewController: UIViewController {
     
     let viewModel: CurrencyConverterViewModel
     
-    private let swapBarButton: UIBarButtonItem = {
+    private lazy var swapBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(swapCurrencies))
         
         return button

@@ -45,6 +45,13 @@ final class CurrencyListViewController: UIViewController {
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
     }
+    
+    private lazy var sortBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "slider.vertical.3"), style: .plain, target: self, action: #selector(sortTableView))
+        return button
+    }()
+    
+    private var sortingState: SortingType = .name
         
     init(viewModel: CurrencyListViewModel) {
         self.viewModel = viewModel
@@ -61,6 +68,7 @@ final class CurrencyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = sortBarButton
         setupTableViewConstraints()
         navigationItem.searchController = searchController
     }
@@ -68,6 +76,16 @@ final class CurrencyListViewController: UIViewController {
     private func setupTableViewConstraints() {
         self.view.addSubview(pickerTableView)
         pickerTableView.addAnchor(top: self.view.safeAreaLayoutGuide.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor, widht: nil, height: nil)
+    }
+    
+    @objc func sortTableView() {
+        switch sortingState {
+        case .name:
+            sortingState = .code
+        case .code:
+            sortingState = .name
+        }
+        viewModel.sortResponse(by: sortingState, tableView: pickerTableView)
     }
 }
 
