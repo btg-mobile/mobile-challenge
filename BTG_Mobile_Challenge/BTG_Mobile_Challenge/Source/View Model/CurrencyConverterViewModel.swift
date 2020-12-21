@@ -139,8 +139,7 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             return ""
         }
         
-        let currencyValue = 1/USDValue
-        let convertedValue = amount * currencyValue
+        let convertedValue = amount * USDValue
         
         let numberFormatter = NumberFormatter()
         numberFormatter.currencyCode = toCurrencyCode        
@@ -154,7 +153,8 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
             return ""
         }
         
-        let convertedValue = amount * USDValue
+        let currencyValue = 1/USDValue
+        let convertedValue = amount * currencyValue
         
         let numberFormatter = NumberFormatter()
         numberFormatter.currencyCode = "USD"
