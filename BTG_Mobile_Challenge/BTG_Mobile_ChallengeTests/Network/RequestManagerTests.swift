@@ -20,6 +20,12 @@ class RequestManagerTests: XCTestCase {
         sut = RequestManager(service: service)
     }
     
+    override func tearDown() {
+        sut = nil
+        service = nil
+        super.tearDown()
+    }
+    
     func testLiveCurrencyBehavior() {        
         let expectation = XCTestExpectation()
 
@@ -68,11 +74,5 @@ class RequestManagerTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)
-    }
-    
-    override func tearDownWithError() throws {
-        sut = nil
-        service = nil
-        super.tearDown()
     }
 }
