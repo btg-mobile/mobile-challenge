@@ -28,7 +28,7 @@ class RequestManagerTests: XCTestCase {
     
     func testLiveCurrencyBehavior() {        
         let expectation = XCTestExpectation()
-
+        
         let url = CurrencyAPIEndpoint.live.url
         let stubJSONURL = service.bundle.url(forResource: "live-response", withExtension: "json")
         let stubJSONData = try! Data(contentsOf: stubJSONURL!) 
@@ -36,19 +36,19 @@ class RequestManagerTests: XCTestCase {
         
         service.json = stubJSONURL
         
-        DispatchQueue.main.async { [weak self] in
-            self?.sut?.getRequest(url: url!, decodableType: CurrencyReponseFromLive.self) { (response) in
-                switch response {
-                case .success(let result):
-                    XCTAssertTrue(result.success)
-                    XCTAssertFalse(result.quotes.isEmpty)
-                    XCTAssertEqual(stubJSON, result)
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                }
+        self.sut?.getRequest(url: url!, decodableType: CurrencyReponseFromLive.self) { (response) in
+            switch response {
+            case .success(let result):
+                XCTAssertTrue(result.success)
+                XCTAssertFalse(result.quotes.isEmpty)
+                XCTAssertEqual(stubJSON, result)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+                expectation.fulfill()
             }
-            expectation.fulfill()
         }
+        
         wait(for: [expectation], timeout: 1)
     }
     
@@ -62,16 +62,15 @@ class RequestManagerTests: XCTestCase {
         
         service.json = stubJSONURL
         
-        DispatchQueue.main.async { [weak self] in
-            self?.sut?.getRequest(url: url!, decodableType: CurrencyResponseFromList.self) { (response) in
-                switch response {
-                case .success(let result):
-                    XCTAssertEqual(stubJSON.currencies.count, result.currencies.count)
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                }
+        self.sut?.getRequest(url: url!, decodableType: CurrencyResponseFromList.self) { [](response) in
+            switch response {
+            case .success(let result):
+                XCTAssertEqual(stubJSON.currencies.count, result.currencies.count)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+                expectation.fulfill()
             }
-            expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)
     }
