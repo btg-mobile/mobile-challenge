@@ -22,6 +22,12 @@ final class CurrencyConverterViewController: UIViewController {
     
     let viewModel: CurrencyConverterViewModel
     
+    private let swapBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(swapCurrencies))
+        
+        return button
+    }()
+    
     init(viewModel: CurrencyConverterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +43,7 @@ final class CurrencyConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = swapBarButton
         setupViewModel()
         setupViews()
         setupLayoutConstraints()
@@ -129,6 +136,10 @@ final class CurrencyConverterViewController: UIViewController {
     @objc func changeCurrencyToBeConverted() {
         viewModel.pickCurrencies(selectCase: .toBeConverted)
     }
+    
+    @objc func swapCurrencies() {
+        self.viewModel.swapCurrencies()
+    }
 }
 
 extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
@@ -137,10 +148,6 @@ extension CurrencyConverterViewController: CurrencyConverterViewModelDelegate {
         resultCurrencyLabel.text = viewModel.toCurrencyValue
         fromCurrencyButton.setTitle(viewModel.fromCurrencyCode, for: .normal)
         toCurrencyButton.setTitle(viewModel.toCurrencyCode, for: .normal)
-    }
-    
-    func shouldShowLoading(_ isLoading: Bool) {
-        print("TODO")
     }
 }
 

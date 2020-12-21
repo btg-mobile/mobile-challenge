@@ -9,5 +9,4 @@ import Foundation
 
 protocol CurrencyConverterViewModelDelegate: AnyObject {
     func updateUI()
-    func shouldShowLoading(_ isLoading: Bool)
 }

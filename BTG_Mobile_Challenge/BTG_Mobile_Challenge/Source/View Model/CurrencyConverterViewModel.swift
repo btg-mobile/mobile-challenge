@@ -174,6 +174,8 @@ final class CurrencyConverterViewModel: CurrencyConverterViewModeling {
         
         fromCurrencyName = toCurrencyName
         toCurrencyName = lastCurrencyName
+        
+        toCurrencyValue = convert(amount: fromCurrencyValue ?? "")
     }
     
     func pickCurrencies(selectCase: SelectCase) {
