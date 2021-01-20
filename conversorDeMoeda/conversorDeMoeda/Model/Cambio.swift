@@ -7,7 +7,7 @@
 
 import Foundation
 
-//modelo de dados da API
+// MARK: modelo de dados da API
 struct Cambio : Codable {
     typealias DicType = [String: String]
     let terms: URL?

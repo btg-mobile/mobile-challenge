@@ -5,7 +5,7 @@
 //  Created by Diogenes de Souza on 08/01/21.
 //
 
-//classe responsável por fazer a requisição ao servidor
+
 
 import Foundation
 
@@ -15,7 +15,7 @@ enum cambioError {
     case takError(error: Error)
     case noResponse
 }
-//classe responsável por fazer a requisição no servidor
+// MARK: classe responsável por fazer a requisição no servidor
 class Rest {
     private static let basePhath = "http://api.currencylayer.com/"
     private static let acesskey = "?access_key=62ac3fd83ede8cb37b1591c7d1635ae4" //chave da api
@@ -32,7 +32,7 @@ class Rest {
         return config
     }()
     
-    //Carrega a lista de moedas com nome e siglas correspondentes (String:String)
+    // MARK: Carrega a lista de moedas com nome e siglas correspondentes (String:String)
     class func loadCurrencys(endPoint: String, onClomplete: @escaping(Dictionary<String,String>) -> Void, onError: @escaping(cambioError) -> Void){
         
         //define o endPoint da url
@@ -81,10 +81,10 @@ class Rest {
         
     }
     
-    //Carrega a lista de moedas com siglas e cotações correspondentes (String:Double)
+    // MARK: Carrega a lista de moedas com siglas e cotações correspondentes (String:Double)
     class func loadCurrencysValues(endPoint: String, onClomplete: @escaping(Dictionary<String,Double>) -> Void, onError: @escaping(cambioError) -> Void){
         
-        //define o endPoint da url
+        // MARK: define o endPoint da url
         fullUrl = URL(string: basePhath + endPoint + acesskey)
         
         guard let url = fullUrl else {
@@ -92,7 +92,7 @@ class Rest {
             return
             
         }
-        //tarefa e resposta com URLResponse, variavel data
+        // MARK: tarefa e resposta com URLResponse, variavel data
         let dataTask = URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
             if error == nil{
                 guard let response = response as? HTTPURLResponse else{
@@ -108,9 +108,7 @@ class Rest {
                         let cambioList: Cotacao = try JSONDecoder().decode(Cotacao.self, from: data)
                         
                         let arrayDeMoedas = cambioList.quotes
-                        
-                        //                                    print("array de moedas live: \(arrayDeMoedas)")
-                        
+                 
                         onClomplete(arrayDeMoedas)
                         
                         
