@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
         if !siglaOrig!.isEmpty &&  !siglaDest!.isEmpty{
             labelResult.text = getValorDolar(textOrig: siglaOrig!, textDest: siglaDest!, valor: display.text!)
-            print("as duas estrings nao estão vazias")
+          
         }
         
      

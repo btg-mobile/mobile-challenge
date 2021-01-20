@@ -18,11 +18,11 @@ class MoedasTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: detectar qual linha do tableview é tocada, você precisará definir o delegado no controlador de visualização
+        //detectar qual linha do tableview é tocada, você precisará definir o delegado no controlador de visualização
         myTableView.delegate = self
     }
     
-    // MARK: Retorna para a view anterior, botão no final da lista
+    //Retorna para a view anterior, botão no final da lista
     @IBAction func returViewAfter(_ sender: Any) {
         fecharView()
         
@@ -32,25 +32,25 @@ class MoedasTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // MARK: pega no UserDefault o id do botão acionado na tela anterior
+        //pega no UserDefault o id do botão acionado na tela anterior
         buttonSelect =  UserDefaults.standard.integer(forKey: "buttonSelect")
         
-        // MARK: Recupera a lista de moedas na API , endPoint "list" (sigla : nome)
+        //Recupera a lista de moedas na API , endPoint "list" (sigla : nome)
         Rest.loadCurrencys(endPoint: "list") { (cambio) in
             self.cambioList = cambio
             
-            // MARK: percorre o dicionário populando o Array moedasList, para exibir na TableView
+            //percorre o dicionário populando o Array moedasList, para exibir na TableView
             for item in self.cambioList {
                 let moeda = Moeda(nome:item.value, sigla:item.key)
                 self.moedasList.append(moeda)
             }
             
-            // MARK: Ordena a lista por nome em ordem crescente
+            //Ordena a lista por nome em ordem crescente
             self.moedasList.sort {
                 $0.nome! < $1.nome!
             }
             
-            // MARK: Atualiza a view na tread maim
+            //Atualiza a view na tread maim
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
@@ -67,6 +67,7 @@ class MoedasTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         return moedasList.count
     }
     
@@ -80,7 +81,7 @@ class MoedasTableViewController: UITableViewController {
         cell.detailTextLabel?.text = String(moeda.sigla!)
         return cell
     }
-    // MARK: a method from UITableViewDelegate
+    // a method from UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let sigla:String = moedasList[indexPath.row].sigla ?? ""
