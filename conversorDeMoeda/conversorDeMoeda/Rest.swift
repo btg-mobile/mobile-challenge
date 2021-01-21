@@ -133,7 +133,7 @@ class Rest {
                     return
                 }
                 
-                //se houve sucesso na resposta código 200
+                // MARK: se houve sucesso na resposta código 200
                 if response.statusCode == 200 {
                     guard let data = data else{return}
                     
