@@ -18,7 +18,7 @@ class MoedasTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //detectar qual linha do tableview é tocada, você precisará definir o delegado no controlador de visualização
+        // MARK: detectar qual linha do tableview é tocada, você precisará definir o delegado no controlador de visualização
         myTableView.delegate = self
     }
     
