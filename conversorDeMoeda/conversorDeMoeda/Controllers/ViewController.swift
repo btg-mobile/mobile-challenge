@@ -77,8 +77,8 @@ class ViewController: UIViewController {
         destButton.setTitle(textDest, for: .normal)
         
         // MARK: Pega a lista de moedas com suas cotações no servidor
-        Rest.loadCurrencysValues(endPoint: "live") { (cambio) in
-            self.cambioValorList = cambio
+        Rest.loadCurrencys(endPoint: "live") { (nomesSiglas, siglasValues) in
+            self.cambioValorList = siglasValues!
         } onError: { (cambioError) in
             print(cambioError)
         }

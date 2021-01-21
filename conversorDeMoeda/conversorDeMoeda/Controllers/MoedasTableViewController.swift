@@ -33,8 +33,8 @@ class MoedasTableViewController: UITableViewController {
         buttonSelect =  UserDefaults.standard.integer(forKey: "buttonSelect")
         
         // MARK: Carrega a lista de moedas na View
-        Rest.loadCurrencys(endPoint: "list"){(cambio) in
-            self.moedasList = cambio as! [Moeda]
+        Rest.loadCurrencys(endPoint: "list"){(nomesSiglas, siglasValues) in
+            self.moedasList = nomesSiglas as! [Moeda]
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
