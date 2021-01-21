@@ -30,7 +30,7 @@ class Rest {
     }()
     
     // MARK: Carrega a lista de moedas com nome e siglas correspondentes (String:String)
-    class func loadCurrencys(endPoint: String, onClomplete: @escaping([Moeda]) -> Void, onError: @escaping(cambioError) -> Void){
+    class func loadCurrencys(endPoint: String, onClomplete: @escaping([Any]) -> Void, onError: @escaping(cambioError) -> Void){
         
         fullUrl = URL(string: basePhath + endPoint + acesskey)
         guard let url = fullUrl else {
@@ -50,36 +50,24 @@ class Rest {
                     guard let data = data else{return}
                     
                     do{
-                        
                         // MARK: decodificar JSON
                         let cambioList: Cambio = try JSONDecoder().decode(Cambio.self, from: data)
                         
                         let arrayDeMoedas: Dictionary = cambioList.currencies
                         print("\narray de moedas list: \(arrayDeMoedas)")
-                        
+    
                         var moedasList:[Moeda] = []
-                                    for item in arrayDeMoedas {
-                                        let moeda = Moeda(nome:String(item.value), sigla:item.key)
-                                        moedasList.append(moeda)
-                                    }
+                        for item in arrayDeMoedas {
+                            let moeda = Moeda(nome:String(item.value), sigla:item.key)
+                            moedasList.append(moeda)
+                        }
                         
-                                    // MARK: Ordena a lista por nome em ordem crescente
-                                    moedasList.sort {
-                                        $0.nome! < $1.nome!
-                                    }
-                        //
-                        //            // MARK: Atualiza a view na tread maim
-                        //            DispatchQueue.main.async {
-                        //                self.myTableView.reloadData()
-                        //            }
-                        //
-            
-                        
+                        // MARK: Ordena a lista por nome em ordem crescente
+                        moedasList.sort {
+                            $0.nome! < $1.nome!
+                        }
                         
                         onClomplete(moedasList)
-                        
-                        
-                        
                     }catch{
                         print(error.localizedDescription)
                     }
@@ -93,7 +81,6 @@ class Rest {
             
         }
         dataTask.resume()
-        
     }
     
     // MARK: Carrega a lista de moedas com siglas e cotações correspondentes (String:Double)
@@ -127,64 +114,11 @@ class Rest {
                     print("Algum status inválido no servidor")
                 }
             }else{
-                
                 onError(.takError(error: error!))
             }
-            
         }
         dataTask.resume()
-        
     }
-    
-    
-    
-    // MARK: Carrega a lista de moedas com nome e siglas correspondentes (String:String)
-    class func carregarLista(endPoint: String, onClomplete: @escaping(Dictionary<String,String>) -> Void, onError: @escaping(cambioError) -> Void){
-        
-        fullUrl = URL(string: basePhath + endPoint + acesskey)
-        guard let url = fullUrl else {
-            onError(.url)
-            return
-            
-        }
-        
-        let dataTask = URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
-            if error == nil{
-                guard let response = response as? HTTPURLResponse else{
-                    onError(.noResponse)
-                    return
-                }
-                
-                // MARK: se houve sucesso na resposta código 200
-                if response.statusCode == 200 {
-                    guard let data = data else{return}
-                    
-                    do{
-                        
-                        // MARK: decodificar JSON
-                        let cambioList: Cambio = try JSONDecoder().decode(Cambio.self, from: data)
-                        
-                        let arrayDeMoedas: Dictionary = cambioList.currencies
-                        print("\narray de moedas list: \(arrayDeMoedas)")
-                        
-                        onClomplete(arrayDeMoedas)
-                        
-                    }catch{
-                        print(error.localizedDescription)
-                    }
-                    
-                }else{
-                    print("Algum status inválido no servidor")
-                }
-            }else{
-                onError(.takError(error: error!))
-            }
-            
-        }
-        dataTask.resume()
-        
-    }
-    
 }
 
 
