@@ -30,7 +30,7 @@ class Rest {
     }()
     
     // MARK: Carrega a lista de moedas com nome e siglas correspondentes (String:String)
-    class func loadCurrencys(endPoint: String, onClomplete: @escaping(Dictionary<String,String>) -> Void, onError: @escaping(cambioError) -> Void){
+    class func loadCurrencys(endPoint: String, onClomplete: @escaping([Moeda]) -> Void, onError: @escaping(cambioError) -> Void){
         
         fullUrl = URL(string: basePhath + endPoint + acesskey)
         guard let url = fullUrl else {
@@ -57,7 +57,28 @@ class Rest {
                         let arrayDeMoedas: Dictionary = cambioList.currencies
                         print("\narray de moedas list: \(arrayDeMoedas)")
                         
-                        onClomplete(arrayDeMoedas)
+                        var moedasList:[Moeda] = []
+                                    for item in arrayDeMoedas {
+                                        let moeda = Moeda(nome:String(item.value), sigla:item.key)
+                                        moedasList.append(moeda)
+                                    }
+                        
+                                    // MARK: Ordena a lista por nome em ordem crescente
+                                    moedasList.sort {
+                                        $0.nome! < $1.nome!
+                                    }
+                        //
+                        //            // MARK: Atualiza a view na tread maim
+                        //            DispatchQueue.main.async {
+                        //                self.myTableView.reloadData()
+                        //            }
+                        //
+            
+                        
+                        
+                        onClomplete(moedasList)
+                        
+                        
                         
                     }catch{
                         print(error.localizedDescription)
@@ -97,6 +118,7 @@ class Rest {
                         let cambioList: Cotacao = try JSONDecoder().decode(Cotacao.self, from: data)
                         let arrayDeMoedas = cambioList.quotes
                         print("\narray de moedas list: \(arrayDeMoedas)")
+                        
                         onClomplete(arrayDeMoedas)
                     }catch{
                         print(error.localizedDescription)

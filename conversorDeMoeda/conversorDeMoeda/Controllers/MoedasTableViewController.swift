@@ -9,7 +9,6 @@ import UIKit
 
 class MoedasTableViewController: UITableViewController {
     
-    var cambioList: Dictionary<String,String> = [:]
     var moedasList:[Moeda] = []
     var buttonSelect:Int?
     
@@ -33,25 +32,12 @@ class MoedasTableViewController: UITableViewController {
         // MARK: pega no UserDefault o id do botão acionado na tela anterior
         buttonSelect =  UserDefaults.standard.integer(forKey: "buttonSelect")
         
-        // MARK:  Recupera a lista de moedas na API , endPoint "list" (sigla : nome)
-        Rest.loadCurrencys(endPoint: "list") { (cambio) in
-            self.cambioList = cambio
-            
-            for item in self.cambioList {
-                let moeda = Moeda(nome:item.value, sigla:item.key)
-                self.moedasList.append(moeda)
-            }
-            
-            // MARK: Ordena a lista por nome em ordem crescente
-            self.moedasList.sort {
-                $0.nome! < $1.nome!
-            }
-            
-            // MARK: Atualiza a view na tread maim
+        // MARK: Carrega a lista de moedas na View
+        Rest.loadCurrencys(endPoint: "list"){(cambio) in
+            self.moedasList = cambio
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
-            
         } onError: { (cambioError) in
             print(cambioError)
         }
