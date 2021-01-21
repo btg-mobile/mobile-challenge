@@ -31,13 +31,13 @@ class Rest {
     
     // MARK: Carrega a lista de moedas com nome e siglas correspondentes (String:String)
     class func loadCurrencys(endPoint: String, onClomplete: @escaping(Dictionary<String,String>) -> Void, onError: @escaping(cambioError) -> Void){
-    
+        
         fullUrl = URL(string: basePhath + endPoint + acesskey)
         guard let url = fullUrl else {
             onError(.url)
             return
         }
-       
+        
         let dataTask = URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
             if error == nil{
                 guard let response = response as? HTTPURLResponse else{
@@ -98,10 +98,10 @@ class Rest {
                         let arrayDeMoedas = cambioList.quotes
                         print("\narray de moedas list: \(arrayDeMoedas)")
                         onClomplete(arrayDeMoedas)
-                        }catch{
+                    }catch{
                         print(error.localizedDescription)
-                        }
-                    }else{
+                    }
+                }else{
                     print("Algum status inválido no servidor")
                 }
             }else{
@@ -125,7 +125,7 @@ class Rest {
             return
             
         }
-      
+        
         let dataTask = URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
             if error == nil{
                 guard let response = response as? HTTPURLResponse else{
@@ -139,10 +139,9 @@ class Rest {
                     
                     do{
                         
-                        //decodificar JSON
+                        // MARK: decodificar JSON
                         let cambioList: Cambio = try JSONDecoder().decode(Cambio.self, from: data)
                         
-                        //Dicionário de moedas para consulta( chave:valor)
                         let arrayDeMoedas: Dictionary = cambioList.currencies
                         print("\narray de moedas list: \(arrayDeMoedas)")
                         
@@ -163,8 +162,6 @@ class Rest {
         dataTask.resume()
         
     }
-    
-
     
 }
 

@@ -25,9 +25,7 @@ class MoedasTableViewController: UITableViewController {
     // MARK: Retorna para a view anterior, botão no final da lista
     @IBAction func returViewAfter(_ sender: Any) {
         fecharView()
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,15 +62,11 @@ class MoedasTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return moedasList.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        // Configure the cell...
         let moeda = moedasList[indexPath.row]
         cell.textLabel?.text = String(moeda.nome!)
         cell.detailTextLabel?.text = String(moeda.sigla!)
@@ -92,9 +86,7 @@ class MoedasTableViewController: UITableViewController {
             UserDefaults.standard.set("\(sigla)-\(nome)"  , forKey: "nomeDest")
             UserDefaults.standard.set(sigla , forKey: "siglaDest")
         }
-        
         fecharView()
-        
     }
     
 }
