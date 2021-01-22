@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let formatter = NumberFormatter()
+        
     var cambioValorList: Dictionary<String,Double> = [:]
     var textOrig:String?
     var textDest:String?
@@ -52,6 +54,9 @@ class ViewController: UIViewController {
         if let value = UserDefaults.standard.string(forKey: "result"){
             labelResult.text = value
             }
+        
+        formatter.numberStyle = .currency
+        formatter.alwaysShowsDecimalSeparator = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,9 +99,20 @@ class ViewController: UIViewController {
                 UserDefaults.standard.set(display.text, forKey: "display")
         UserDefaults.standard.set(labelResult.text, forKey: "result")
     }
-
+    
+    
+    func getValorFormatado(valor: Double, moedaCode: String) -> String{
+        
+        formatter.currencySymbol = moedaCode
+        formatter.currencyCode = moedaCode
+        return formatter.string(for: valor) ?? ""
+    }
+    
     // MARK: faz a conversão da moeda
     func getValorDolar(textOrig:String, textDest:String, valor:String) -> String{
+        
+        let valorNovo = valor.replacingOccurrences(of: ",", with: ".")
+        
         var resultado:Double = 0
         let cotacao1:Double = cambioValorList["USD" + textOrig] ?? 1
         let cotacao2:Double = cambioValorList["USD" + textDest] ?? 1
@@ -105,15 +121,18 @@ class ViewController: UIViewController {
         print("valor em cotacao 2:\(cotacao2)")
         
         // MARK: fórmula da conversão :  x= (valor digitado / indice1) * ídice2
-        if let valordigitado = Double(valor){
+        if let valordigitado = Double(valorNovo){
             print("Converteu valor digitado:\(valordigitado)")
             
             let valorEmDolar = valordigitado/cotacao1
             print("valor em dolar: \(valorEmDolar)")
             resultado = valorEmDolar * cotacao2
             print("valor em Destino: \(resultado)")
+            
         }
-        let resultString = String(resultado)
+        
+       
+        let resultString = getValorFormatado(valor: resultado, moedaCode: textDest)
         return resultString
     }
     

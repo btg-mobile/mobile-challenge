@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991AD53B25BA613F00DCE625 /* Moeda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AD53A25BA613F00DCE625 /* Moeda.swift */; };
+		991AD54025BA615800DCE625 /* Cotacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AD53F25BA615800DCE625 /* Cotacao.swift */; };
 		994DDF2025AF87D500627153 /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 994DDF1F25AF87D500627153 /* launch.jpg */; };
 		994DDF2B25AFB4AD00627153 /* moedas_fundo2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 994DDF2A25AFB4AD00627153 /* moedas_fundo2.jpg */; };
 		994FEA1025A7EBF4002E3C93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994FEA0F25A7EBF4002E3C93 /* AppDelegate.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		991AD53A25BA613F00DCE625 /* Moeda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moeda.swift; sourceTree = "<group>"; };
+		991AD53F25BA615800DCE625 /* Cotacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cotacao.swift; sourceTree = "<group>"; };
 		994DDF1F25AF87D500627153 /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch.jpg; sourceTree = "<group>"; };
 		994DDF2A25AFB4AD00627153 /* moedas_fundo2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moedas_fundo2.jpg; sourceTree = "<group>"; };
 		994FEA0C25A7EBF4002E3C93 /* conversorDeMoeda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conversorDeMoeda.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				99B4647325A8DE7600DE150B /* Cambio.swift */,
+				991AD53A25BA613F00DCE625 /* Moeda.swift */,
+				991AD53F25BA615800DCE625 /* Cotacao.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,9 +323,11 @@
 			files = (
 				994FEA1425A7EBF4002E3C93 /* ViewController.swift in Sources */,
 				994FEA1025A7EBF4002E3C93 /* AppDelegate.swift in Sources */,
+				991AD54025BA615800DCE625 /* Cotacao.swift in Sources */,
 				99B4647425A8DE7600DE150B /* Cambio.swift in Sources */,
 				99B4647925A8DE9F00DE150B /* Rest.swift in Sources */,
 				99B4645C25A8C0B800DE150B /* MoedasTableViewController.swift in Sources */,
+				991AD53B25BA613F00DCE625 /* Moeda.swift in Sources */,
 				994FEA1225A7EBF4002E3C93 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

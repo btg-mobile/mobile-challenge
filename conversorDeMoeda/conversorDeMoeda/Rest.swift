@@ -74,6 +74,7 @@ class Rest {
                             print("\narray de moedas list: \(arrayDeMoedas)")
                             
                             onClomplete(nil, arrayDeMoedas)
+                            
                         }
                         
                     }catch{
@@ -86,6 +87,7 @@ class Rest {
             }else{
                 onError(.takError(error: error!))
             }
+        
         }
         dataTask.resume()
     }

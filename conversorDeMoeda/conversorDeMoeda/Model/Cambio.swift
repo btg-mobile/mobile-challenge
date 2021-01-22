@@ -16,19 +16,8 @@ struct Cambio : Codable {
     
 }
 
-struct Moeda {
-    var nome:String?
-    var sigla:String?
-    var valor:Double?
-}
 
-struct Cotacao : Codable{
-    typealias DicType = [String: Double]
-    let terms: URL?
-    let privacy: URL?
-    let quotes:DicType
-    
-}
+
 
 
 
