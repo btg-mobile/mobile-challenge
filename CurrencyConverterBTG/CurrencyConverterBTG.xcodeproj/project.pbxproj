@@ -14,6 +14,8 @@
 		8CB1E180260968A300ABEDFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CB1E17E260968A300ABEDFA /* LaunchScreen.storyboard */; };
 		8CB1E18B260968A300ABEDFA /* CurrencyConverterBTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E18A260968A300ABEDFA /* CurrencyConverterBTGTests.swift */; };
 		8CB1E196260968A300ABEDFA /* CurrencyConverterBTGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E195260968A300ABEDFA /* CurrencyConverterBTGUITests.swift */; };
+		8CB1E1AA2609725900ABEDFA /* CurrencyLayerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E1A92609725900ABEDFA /* CurrencyLayerAPI.swift */; };
+		8CB1E1B726097ECE00ABEDFA /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E1B626097ECE00ABEDFA /* Debugger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		8CB1E191260968A300ABEDFA /* CurrencyConverterBTGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterBTGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB1E195260968A300ABEDFA /* CurrencyConverterBTGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterBTGUITests.swift; sourceTree = "<group>"; };
 		8CB1E197260968A300ABEDFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CB1E1A92609725900ABEDFA /* CurrencyLayerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerAPI.swift; sourceTree = "<group>"; };
+		8CB1E1B626097ECE00ABEDFA /* Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				8CB1E1732609689F00ABEDFA /* AppDelegate.swift */,
 				8CB1E1752609689F00ABEDFA /* SceneDelegate.swift */,
 				8CB1E1772609689F00ABEDFA /* ViewController.swift */,
+				8CB1E1A92609725900ABEDFA /* CurrencyLayerAPI.swift */,
+				8CB1E1B626097ECE00ABEDFA /* Debugger.swift */,
 				8CB1E17C260968A300ABEDFA /* Assets.xcassets */,
 				8CB1E17E260968A300ABEDFA /* LaunchScreen.storyboard */,
 				8CB1E181260968A300ABEDFA /* Info.plist */,
@@ -257,6 +263,8 @@
 				8CB1E1782609689F00ABEDFA /* ViewController.swift in Sources */,
 				8CB1E1742609689F00ABEDFA /* AppDelegate.swift in Sources */,
 				8CB1E1762609689F00ABEDFA /* SceneDelegate.swift in Sources */,
+				8CB1E1B726097ECE00ABEDFA /* Debugger.swift in Sources */,
+				8CB1E1AA2609725900ABEDFA /* CurrencyLayerAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,10 @@ class ViewController: UIViewController {
         button.tintColor = .gray
         button.backgroundColor = .brown
         self.view.addSubview(button)
+        
+        CurrencyLayerAPI.shared.fetchSupportedCurrencies{
+            print("completed")
+        }
     }
 
 
