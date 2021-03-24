@@ -53,6 +53,10 @@ final class ConversionsViewController: UIViewController {
         
         textField.backgroundColor = DesignSystem.Color.tertiary
         textField.textColor = DesignSystem.Color.white
+        textField.keyboardType = .numbersAndPunctuation
+        textField.delegate = self
+        textField.spellCheckingType = .no
+        textField.autocorrectionType = .no
         
         resultLabel.backgroundColor = DesignSystem.Color.tertiary
         resultLabel.textColor = DesignSystem.Color.white
@@ -76,11 +80,21 @@ final class ConversionsViewController: UIViewController {
                object: nil)
         
         viewModel.originText.bind { [unowned self] text in
-            self.originBtn.setTitle(text, for: .normal)
+            DispatchQueue.main.async {
+                self.originBtn.setTitle(text, for: .normal)
+            }
         }
         
         viewModel.destinyText.bind { [unowned self] text in
-            self.destinyBtn.setTitle(text, for: .normal)
+            DispatchQueue.main.async {
+                self.destinyBtn.setTitle(text, for: .normal)
+            }
+        }
+        
+        viewModel.resultText.bind { [unowned self] text in
+            DispatchQueue.main.async {
+                self.resultLabel.text = text
+            }
         }
     }
     
@@ -98,15 +112,20 @@ final class ConversionsViewController: UIViewController {
             destinyBtn.widthAnchor.constraint(equalToConstant: DesignSystem.Button.getWidth(view: view)),
             destinyBtn.heightAnchor.constraint(equalToConstant: DesignSystem.Button.getHeight(view: view)),
             conversionArrow.centerYAnchor.constraint(equalTo: originBtn.centerYAnchor),
-            conversionArrow.leftAnchor.constraint(equalTo: originBtn.rightAnchor, constant: DesignSystem.marginsPadding),
-            conversionArrow.rightAnchor.constraint(equalTo: destinyBtn.leftAnchor, constant: -DesignSystem.marginsPadding),
+            conversionArrow.leftAnchor.constraint(equalTo: originBtn.rightAnchor, constant: DesignSystem.internalPadding),
+            conversionArrow.rightAnchor.constraint(equalTo: destinyBtn.leftAnchor, constant: -DesignSystem.internalPadding),
             conversionArrow.widthAnchor.constraint(equalTo: conversionArrow.heightAnchor),
             destinyBtn.centerYAnchor.constraint(equalTo: originBtn.centerYAnchor),
             
             // Text Field and result Label
-            textField.bottomAnchor.constraint(equalTo: originBtn.topAnchor, constant: -DesignSystem.marginsPadding),
+            textField.bottomAnchor.constraint(equalTo: originBtn.topAnchor, constant: -DesignSystem.internalPadding),
             textField.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
-            textField.rightAnchor.constraint(equalTo: originBtn.rightAnchor)
+            textField.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
+            resultLabel.bottomAnchor.constraint(equalTo: destinyBtn.topAnchor, constant: -DesignSystem.internalPadding),
+            resultLabel.leftAnchor.constraint(equalTo: destinyBtn.leftAnchor),
+            resultLabel.rightAnchor.constraint(equalTo: destinyBtn.rightAnchor)
+
+            
         ])
     }
     
@@ -143,5 +162,16 @@ final class ConversionsViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension ConversionsViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        viewModel.didUpdateTextField(with: textField.text)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

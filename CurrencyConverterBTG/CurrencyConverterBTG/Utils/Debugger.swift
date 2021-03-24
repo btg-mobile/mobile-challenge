@@ -13,4 +13,10 @@ final class Debugger {
         print(items)
         #endif
     }
+    
+    static func warning(_ items: Any...) {
+        #if DEBUG
+        print("Warning: ", items)
+        #endif
+    }
 }

@@ -51,7 +51,7 @@ class MainCoordinator {
             conversionsViewController.viewModel.destinyCurrency.value = currency
             conversionsViewController.dismiss(animated: true, completion: nil)
         default:
-            Debugger.log("Warning: buttonType found nil")
+            Debugger.warning("buttonType found nil")
         }
     }
 }

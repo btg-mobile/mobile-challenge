@@ -14,7 +14,8 @@ import UIKit
 class DesignSystem {
     
     /// Padding from the LayoutMarguinsGuide to the UI elements
-    static let marginsPadding: CGFloat = 10
+    static let marginsPadding: CGFloat = 15
+    static let internalPadding: CGFloat = 10
     
     /// Color palett base on: https://colorhunt.co/palette/264850
     struct Color {

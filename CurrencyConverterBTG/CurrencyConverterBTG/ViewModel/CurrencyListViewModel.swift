@@ -24,7 +24,9 @@ class CurrencyListViewModel {
     init() {
         CurrencyLayerAPI.shared.fetchSupportedCurrencies { [unowned self] currencies in
             if let currencies = currencies {
-                self.currencies = currencies
+                self.currencies = currencies.sorted(by: { (c1, c2) -> Bool in
+                    c1.code < c2.code
+                })
             }
         }
     }
