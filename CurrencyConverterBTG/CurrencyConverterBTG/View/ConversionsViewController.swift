@@ -62,6 +62,12 @@ final class ConversionsViewController: UIViewController {
                 self.resultLabel.text = text
             }
         }
+        
+        viewModel.amountText.bind { [unowned self] text in
+            DispatchQueue.main.async {
+                self.amountLabel.text = text
+            }
+        }
     }
     
     private func viewsSetup() {
@@ -106,10 +112,6 @@ final class ConversionsViewController: UIViewController {
         conversionArrow.tintColor = DesignSystem.Color.tertiary
         
         // Amount label and Text Field
-        amountLabel.text = "Give an amount to be converted"
-        amountLabel.numberOfLines = 0
-        amountLabel.textColor = DesignSystem.Color.white
-            
         amountTextField.backgroundColor = DesignSystem.Color.tertiary
         amountTextField.placeholder = "Currency amount..."
         amountTextField.tintColor = DesignSystem.Color.secondary
@@ -121,6 +123,9 @@ final class ConversionsViewController: UIViewController {
         amountTextField.spellCheckingType = .no
         amountTextField.autocorrectionType = .no
         
+//        amountLabel.text = ""
+        amountLabel.numberOfLines = 0
+        amountLabel.textColor = DesignSystem.Color.white
         // Result Label
         resultLabel.textColor = DesignSystem.Color.white
         
@@ -129,14 +134,14 @@ final class ConversionsViewController: UIViewController {
         view.addSubview(originBtn)
         view.addSubview(destinyBtn)
         view.addSubview(conversionArrow)
-        view.addSubview(amountLabel)
         view.addSubview(amountTextField)
+        view.addSubview(amountLabel)
         view.addSubview(resultLabel)
     }
     
     private func addConstraints() {
         // Used by keyboard notification
-        self.bottomConstraint = amountTextField.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -DesignSystem.marginsPadding)
+        self.bottomConstraint = amountLabel.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -DesignSystem.marginsPadding)
         
         NSLayoutConstraint.activate([
             self.bottomConstraint,
@@ -150,7 +155,7 @@ final class ConversionsViewController: UIViewController {
             destinyBtn.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -DesignSystem.marginsPadding),
             originBtn.widthAnchor.constraint(equalToConstant: DesignSystem.Button.getWidth(view: view)),
             originBtn.heightAnchor.constraint(equalToConstant: DesignSystem.Button.getHeight(view: view)),
-            originBtn.bottomAnchor.constraint(equalTo: amountLabel.topAnchor, constant: -DesignSystem.internalPadding),
+            originBtn.bottomAnchor.constraint(equalTo: amountTextField.topAnchor, constant: -DesignSystem.internalPadding),
             destinyBtn.widthAnchor.constraint(equalToConstant: DesignSystem.Button.getWidth(view: view)),
             destinyBtn.heightAnchor.constraint(equalToConstant: DesignSystem.Button.getHeight(view: view)),
             destinyBtn.centerYAnchor.constraint(equalTo: originBtn.centerYAnchor),
@@ -160,11 +165,11 @@ final class ConversionsViewController: UIViewController {
             conversionArrow.widthAnchor.constraint(equalTo: conversionArrow.heightAnchor),
             
             // Text Field and result Label
-            amountLabel.bottomAnchor.constraint(equalTo: amountTextField.topAnchor, constant: -DesignSystem.internalPadding),
-            amountLabel.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
-            amountLabel.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
             amountTextField.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
             amountTextField.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
+            amountTextField.bottomAnchor.constraint(equalTo: amountLabel.topAnchor, constant: -DesignSystem.internalPadding),
+            amountLabel.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
+            amountLabel.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
             
             resultLabel.centerYAnchor.constraint(equalTo: amountTextField.centerYAnchor),
             resultLabel.rightAnchor.constraint(equalTo: destinyBtn.rightAnchor)

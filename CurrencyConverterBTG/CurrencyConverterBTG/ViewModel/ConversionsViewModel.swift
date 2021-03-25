@@ -56,15 +56,16 @@ class ConversionsViewModel {
     }
     
     func didUpdateTextField(with text: String?) {
-        if let text = text {
+        if let text = text, text != "" {
             if let amount = numberFormatter.number(from: text)?.doubleValue {
                 validatedAmount.value = amount
+                resultText.value = ""
                 tryCalculation()
             } else {
-                
                 changeDecimalSeparator()
                 if let amount = numberFormatter.number(from: text)?.doubleValue {
                     validatedAmount.value = amount
+                    resultText.value = ""
                     tryCalculation()
                 } else {
                     // Invalid input
@@ -87,6 +88,7 @@ class ConversionsViewModel {
             }
         } else {
             validatedAmount.value = nil
+            resultText.value = ""
         }
     }
     
@@ -95,16 +97,22 @@ class ConversionsViewModel {
     }
     
     private func tryCalculation() {
-        if let origin = originCurrency.value,
-           let destiny = destinyCurrency.value,
-           let amount = validatedAmount.value {
-            CurrencyLayerAPI.shared.fetchConversions { [unowned self] conversions in
-                if let conversions = conversions {
-                    self.conversions = conversions
-                    
-                    if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions, amount: amount) {
-                        resultText.value = numberFormatter.string(for: result)
-                    }
+        guard  let origin = originCurrency.value else { return }
+        guard let destiny = destinyCurrency.value else { return }
+        guard let amount = validatedAmount.value else {
+            amountText.value = "Give an amount to be converted"
+            return
+        }
+        
+        CurrencyLayerAPI.shared.fetchConversions { [unowned self] conversions in
+            if let conversions = conversions {
+                self.conversions = conversions
+                
+                if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions, amount: amount) {
+                    var resultString = "Result: "
+                    resultString += numberFormatter.string(for: result) ?? ""
+                    resultText.value = resultString
+                    amountText.value = nil
                 }
             }
         }
