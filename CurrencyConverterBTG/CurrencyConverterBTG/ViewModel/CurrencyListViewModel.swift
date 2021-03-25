@@ -9,14 +9,22 @@ import UIKit
 
 class CurrencyListViewModel {
     
-    var currencies: [Currency]? {
+    private var currencies = [Currency]() {
+        didSet {
+            filterCurrencies(search: searchString)
+        }
+    }
+    
+    private var searchString = ""
+    
+    var filteredCurrencies = [Currency]() {
         didSet {
             viewController?.update()
         }
     }
     
     var rowsInSection: Int {
-        return currencies?.count ?? 0
+        return filteredCurrencies.count ?? 0
     }
     
     weak var viewController: CurrencyListViewController?
@@ -29,5 +37,18 @@ class CurrencyListViewModel {
                 })
             }
         }
+    }
+    
+    func filterCurrencies(search: String?) {
+        guard let search = search else { return }
+        if search == "" {
+            filteredCurrencies = currencies
+        } else {
+            let filtered = currencies.filter({ (currency) -> Bool in
+                currency.name.contains(search) || currency.code.contains(search.uppercased())
+            })
+            filteredCurrencies = filtered
+        }
+        searchString = search
     }
 }
