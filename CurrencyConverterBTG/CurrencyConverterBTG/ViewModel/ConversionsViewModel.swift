@@ -34,7 +34,19 @@ class ConversionsViewModel {
     
     
     init() {
-        fetchConversions()
+        CurrencyLayerAPI.shared.fetchConversions { [unowned self] result in
+            switch result {
+            case .success(let conversionsDTO):
+                self.conversions = conversionsDTO.conversions
+            case .failure(let error):
+                switch error {
+                case NetworkingError.transportError:
+                    Debugger.log("There was a problem on your internet connection")
+                default:
+                    Debugger.log(error.rawValue)
+                }
+            }
+        }
         
         originCurrency.bind { [unowned self] currency in
             if let currency = currency {
@@ -104,24 +116,23 @@ class ConversionsViewModel {
             return
         }
         
-        CurrencyLayerAPI.shared.fetchConversions { [unowned self] conversions in
-            if let conversions = conversions {
-                self.conversions = conversions
-                
-                if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions, amount: amount) {
+        CurrencyLayerAPI.shared.fetchConversions { [unowned self] result in
+            switch result {
+            case .success(let conversionsDTO):
+                self.conversions = conversionsDTO.conversions
+                if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions!, amount: amount) {
                     var resultString = "Result: "
                     resultString += numberFormatter.string(for: result) ?? ""
                     resultText.value = resultString
                     amountText.value = nil
                 }
-            }
-        }
-    }
-    
-    private func fetchConversions() {
-        CurrencyLayerAPI.shared.fetchConversions { [unowned self] conversions in
-            if let conversions = conversions {
-                self.conversions = conversions
+            case .failure(let error):
+                switch error {
+                case NetworkingError.transportError:
+                    Debugger.log("There was a problem on your internet connection")
+                default:
+                    Debugger.log(error.rawValue)
+                }
             }
         }
     }

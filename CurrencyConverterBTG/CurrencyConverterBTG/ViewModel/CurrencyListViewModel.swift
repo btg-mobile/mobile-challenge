@@ -30,11 +30,19 @@ class CurrencyListViewModel {
     weak var viewController: CurrencyListViewController?
     
     init() {
-        CurrencyLayerAPI.shared.fetchSupportedCurrencies { [unowned self] currencies in
-            if let currencies = currencies {
-                self.currencies = currencies.sorted(by: { (c1, c2) -> Bool in
+        CurrencyLayerAPI.shared.fetchSupportedCurrencies { [unowned self] result in
+            switch result {
+            case .success(let currenciesDTO):
+                self.currencies = currenciesDTO.currencies.sorted(by: { (c1, c2) -> Bool in
                     c1.code < c2.code
                 })
+            case .failure(let error):
+                switch error {
+                case NetworkingError.transportError:
+                    Debugger.log("There was a problem on your internet connection")
+                default:
+                    Debugger.log(error.rawValue)
+                }
             }
         }
     }

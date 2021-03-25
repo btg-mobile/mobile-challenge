@@ -15,49 +15,12 @@ final class CurrencyLayerAPI {
 
     static let shared = CurrencyLayerAPI()
     private init() { }
-    
-    func fetchSupportedCurrencies(completion: @escaping ([Currency]?) -> Void) {
-        guard let url = URL(string: CurrencyLayerAPI.supportedCurrenciesURL) else {
-            preconditionFailure("Unable to construct URL")
-        }
-        Debugger.log("OUTGOING: ",url)
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let currenciesDTO = try decoder.decode(CurrenciesDTO.self, from: data)
-                    completion(currenciesDTO.currencies)
-                } catch {
-                    Debugger.log(error)
-                }
-            } else {
-                // TODO: Error handling
-                Debugger.log("Response came with no data")
-            }
-            completion(nil)
-        }.resume()
+
+    func fetchSupportedCurrencies(completion: @escaping (Result<CurrenciesDTO, NetworkingError>) -> Void) {
+        Networking.request(url: CurrencyLayerAPI.supportedCurrenciesURL, completion: completion)
     }
     
-    func fetchConversions(completion: @escaping ([Conversion]?) -> Void) {
-        guard let url = URL(string: CurrencyLayerAPI.realTimeRatesURL) else {
-            preconditionFailure("Unable to construct URL")
-        }
-        Debugger.log("OUTGOING: ",url)
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let conversionsDTO = try decoder.decode(ConversionsDTO.self, from: data)
-                    completion(conversionsDTO.conversions)
-                } catch {
-                    Debugger.log(error)
-                }
-            } else {
-                // TODO: Error handling
-                Debugger.log("Response came with no data")
-            }
-            completion(nil)
-        }
-        task.resume()
+    func fetchConversions(completion: @escaping (Result<ConversionsDTO, NetworkingError>) -> Void) {
+        Networking.request(url: CurrencyLayerAPI.realTimeRatesURL, completion: completion)
     }
 }
