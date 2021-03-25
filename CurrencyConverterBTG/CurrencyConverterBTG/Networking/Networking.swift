@@ -28,6 +28,7 @@ class Networking {
             if let error = error {
                 Debugger.log(error)
                 completion(.failure(NetworkingError.transportError))
+                return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {

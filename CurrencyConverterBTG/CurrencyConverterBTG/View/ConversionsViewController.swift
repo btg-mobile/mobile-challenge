@@ -18,7 +18,6 @@ final class ConversionsViewController: UIViewController {
     @AutoLayout var backgroundLabel: UILabel
     
     var viewModel: ConversionsViewModel
-    weak var coordinator: MainCoordinator?
     
     var bottomConstraint = NSLayoutConstraint()
     
@@ -188,11 +187,11 @@ final class ConversionsViewController: UIViewController {
 // MARK: - Objc Methods
 extension ConversionsViewController {
     @objc func didSelectOrigin() {
-        coordinator?.chooseOriringCurrency()
+        viewModel.chooseOriringCurrency()
     }
     
     @objc func didSelectDestiny() {
-        coordinator?.chooseDestinyCurrency()
+        viewModel.chooseDestinyCurrency()
     }
     
     @objc func keyboardShowNotification(notification: NSNotification) {

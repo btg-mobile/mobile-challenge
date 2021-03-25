@@ -11,7 +11,6 @@ final class CurrencyListViewController: UITableViewController {
     
     var viewModel: CurrencyListViewModel
     var searchBar: UISearchBar
-    weak var coordinator: MainCoordinator?
     
     init(viewModel: CurrencyListViewModel) {
         self.viewModel = viewModel
@@ -39,6 +38,10 @@ final class CurrencyListViewController: UITableViewController {
         tableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.reusableIdentifier)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.updateCurrencies()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = CurrencyTableViewCell.reusableIdentifier
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? CurrencyTableViewCell else {
@@ -58,7 +61,7 @@ final class CurrencyListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.selectCurrency(currency: viewModel.filteredCurrencies[indexPath.row])
+        viewModel.selectCurrency(currency: viewModel.filteredCurrencies[indexPath.row])
     }
     
     func update() {

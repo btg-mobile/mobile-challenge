@@ -9,6 +9,8 @@ import UIKit
 
 class CurrencyListViewModel {
     
+    weak var coordinator: MainCoordinator?
+    
     private var currencies = [Currency]() {
         didSet {
             filterCurrencies(search: searchString)
@@ -24,12 +26,12 @@ class CurrencyListViewModel {
     }
     
     var rowsInSection: Int {
-        return filteredCurrencies.count ?? 0
+        return filteredCurrencies.count
     }
     
     weak var viewController: CurrencyListViewController?
     
-    init() {
+    func updateCurrencies() {
         CurrencyLayerAPI.shared.fetchSupportedCurrencies { [unowned self] result in
             switch result {
             case .success(let currenciesDTO):
@@ -40,6 +42,10 @@ class CurrencyListViewModel {
                 switch error {
                 case NetworkingError.transportError:
                     Debugger.log("There was a problem on your internet connection")
+                    guard let viewController = viewController else { return }
+                    coordinator?.showConnectionProblemAlert(error: error, sender: viewController, handler: {
+                        viewController.dismiss(animated: true, completion: nil)
+                    })
                 default:
                     Debugger.log(error.rawValue)
                 }
@@ -58,5 +64,9 @@ class CurrencyListViewModel {
             filteredCurrencies = filtered
         }
         searchString = search
+    }
+    
+    func selectCurrency(currency: Currency) {
+        coordinator?.selectCurrency(currency: currency)
     }
 }

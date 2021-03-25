@@ -24,6 +24,7 @@ class ConversionsViewModel {
     var destinyText: Box<String> = Box(ConversionsViewModel.destinyDefaultText)
     
     weak var viewController: ConversionsViewController?
+    weak var coordinator: MainCoordinator?
 
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -34,20 +35,6 @@ class ConversionsViewModel {
     
     
     init() {
-        CurrencyLayerAPI.shared.fetchConversions { [unowned self] result in
-            switch result {
-            case .success(let conversionsDTO):
-                self.conversions = conversionsDTO.conversions
-            case .failure(let error):
-                switch error {
-                case NetworkingError.transportError:
-                    Debugger.log("There was a problem on your internet connection")
-                default:
-                    Debugger.log(error.rawValue)
-                }
-            }
-        }
-        
         originCurrency.bind { [unowned self] currency in
             if let currency = currency {
                 self.originText.value = currency.code
@@ -130,10 +117,20 @@ class ConversionsViewModel {
                 switch error {
                 case NetworkingError.transportError:
                     Debugger.log("There was a problem on your internet connection")
+                    guard let viewController = viewController else { return }
+                    coordinator?.showConnectionProblemAlert(error: error, sender: viewController, handler: nil)
                 default:
                     Debugger.log(error.rawValue)
                 }
             }
         }
+    }
+    
+    func chooseOriringCurrency() {
+        coordinator?.chooseOriringCurrency()
+    }
+    
+    func chooseDestinyCurrency() {
+        coordinator?.chooseDestinyCurrency()
     }
 }

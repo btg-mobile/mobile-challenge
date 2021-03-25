@@ -5,7 +5,7 @@
 //  Created by Alex Nascimento on 23/03/21.
 //
 
-import Foundation
+import UIKit
 
 class MainCoordinator {
     
@@ -28,8 +28,8 @@ class MainCoordinator {
         self.conversionsViewController = ConversionsViewController(viewModel: conversionsViewModel)
         conversionsViewModel.viewController = conversionsViewController
         
-        currencyListViewController.coordinator = self
-        conversionsViewController.coordinator = self
+        currencyListViewModel.coordinator = self
+        conversionsViewModel.coordinator = self
     }
     
     func chooseOriringCurrency() {
@@ -52,6 +52,16 @@ class MainCoordinator {
             conversionsViewController.dismiss(animated: true, completion: nil)
         default:
             Debugger.warning("buttonType found nil")
+        }
+    }
+    
+    func showConnectionProblemAlert(error: NetworkingError, sender: UIViewController, handler: (() -> Void)?) {
+        let alertController = UIAlertController(title: error.rawValue, message: "Please check your internet connection and try again", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            handler?()
+        }))
+        DispatchQueue.main.async {
+            sender.present(alertController, animated: true, completion: nil)
         }
     }
 }
