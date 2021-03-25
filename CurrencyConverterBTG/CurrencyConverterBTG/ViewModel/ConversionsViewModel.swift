@@ -49,7 +49,16 @@ class ConversionsViewModel {
     
     func didUpdateTextField(with text: String?) {
         if let text = text {
+            // try conversion direcly
             if let amount = Double(text) {
+                validatedAmount.value = amount
+                tryCalculation()
+                return
+            }
+            // transform "." to "," if in Brazil, for example
+            let numberFormater = NumberFormatter()
+            numberFormater.locale = Locale(identifier: "pt_BR")
+            if let amount = numberFormater.number(from: text)?.doubleValue {
                 validatedAmount.value = amount
                 tryCalculation()
             }
@@ -66,24 +75,9 @@ class ConversionsViewModel {
                 if let conversions = conversions {
                     self.conversions = conversions
                     
-                    guard let oneDolarInOriginCurrency = conversions.filter({ conversion in
-                        conversion.code == "USD" + origin.code
-                    }).first?.value else {
-                        Debugger.warning("No conversion found")
-                        self.resultText.value = "Error"
-                        return
+                    if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions, amount: amount) {
+                        resultText.value = String(result)
                     }
-                    
-                    guard let oneDolarInDestinyCurrency = conversions.filter({ conversion in
-                        conversion.code == "USD" + destiny.code
-                    }).first?.value else {
-                        Debugger.warning("No conversion found")
-                        self.resultText.value = "Error"
-                        return
-                    }
-                    
-                    let result = (oneDolarInDestinyCurrency / oneDolarInOriginCurrency) * amount
-                    resultText.value = String(result)
                 }
             }
         }
