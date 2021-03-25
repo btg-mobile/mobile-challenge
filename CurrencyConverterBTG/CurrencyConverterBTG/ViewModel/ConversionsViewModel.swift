@@ -18,9 +18,17 @@ class ConversionsViewModel {
     var originCurrency: Box<Currency?> = Box(nil)
     var destinyCurrency: Box<Currency?> = Box(nil)
     
+    var amountText: Box<String?> = Box(nil)
     var resultText: Box<String?> = Box(nil)
     var originText: Box<String> = Box(ConversionsViewModel.originDefaultText)
     var destinyText: Box<String> = Box(ConversionsViewModel.destinyDefaultText)
+    
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.currencyDecimalSeparator = ","
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
     
     
     weak var viewController: ConversionsViewController?
@@ -49,22 +57,27 @@ class ConversionsViewModel {
     
     func didUpdateTextField(with text: String?) {
         if let text = text {
-            // try conversion direcly
-            if let amount = Double(text) {
+            if let amount = numberFormatter.number(from: text)?.doubleValue {
                 validatedAmount.value = amount
                 tryCalculation()
-                return
-            }
-            // transform "." to "," if in Brazil, for example
-            let numberFormater = NumberFormatter()
-            numberFormater.locale = Locale(identifier: "pt_BR")
-            if let amount = numberFormater.number(from: text)?.doubleValue {
-                validatedAmount.value = amount
-                tryCalculation()
+            } else {
+                // try with different decimal separator
+                changeDecimalSeparator()
+                if let amount = numberFormatter.number(from: text)?.doubleValue {
+                    validatedAmount.value = amount
+                    tryCalculation()
+                } else {
+                    // Invalid input
+                    resultText.value = "Invalid Input"
+                }
             }
         } else {
             validatedAmount.value = nil
         }
+    }
+    
+    private func changeDecimalSeparator() {
+        numberFormatter.decimalSeparator = numberFormatter.decimalSeparator == "." ? "," : "."
     }
     
     private func tryCalculation() {
@@ -76,7 +89,7 @@ class ConversionsViewModel {
                     self.conversions = conversions
                     
                     if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions, amount: amount) {
-                        resultText.value = String(result)
+                        resultText.value = numberFormatter.string(for: result)
                     }
                 }
             }
