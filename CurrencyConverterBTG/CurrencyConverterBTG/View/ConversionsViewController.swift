@@ -12,7 +12,8 @@ final class ConversionsViewController: UIViewController {
     @AutoLayout var originBtn: UIButton
     @AutoLayout var destinyBtn: UIButton
     @AutoLayout var conversionArrow: UIImageView
-    @AutoLayout var textField: UITextField
+    @AutoLayout var amountLabel: UILabel
+    @AutoLayout var amountTextField: UITextField
     @AutoLayout var resultLabel: UILabel
     @AutoLayout var backgroundLabel: UILabel
     
@@ -66,12 +67,12 @@ final class ConversionsViewController: UIViewController {
     private func viewsSetup() {
         view.backgroundColor = DesignSystem.Color.primary
         
+        // Background Label
         backgroundLabel.textColor = DesignSystem.Color.darkPrimary
         backgroundLabel.font = UIFont.systemFont(ofSize: 40)
         let bgString = "CURRENCY $\n CONVERTER"
         let bgAttString = NSMutableAttributedString(string: "CURRENCY $\n CONVERTER")
         let shadow = NSShadow()
-//        shadow.shadowBlurRadius = 4
         shadow.shadowOffset = CGSize(width: -2, height: 2)
         shadow.shadowBlurRadius = 2
         shadow.shadowColor = DesignSystem.Color.tertiary
@@ -81,11 +82,9 @@ final class ConversionsViewController: UIViewController {
         ]
         bgAttString.addAttributes(moneySignAttributes, range: (bgString as NSString).range(of: "$"))
         backgroundLabel.attributedText = bgAttString
-        
-        
-//        backgroundLabel.text = "CURRENCY $\n CONVERTER"
         backgroundLabel.numberOfLines = 2
         
+        // Currency Buttons
         originBtn.setTitle("Origin", for: .normal)
         originBtn.tintColor = DesignSystem.Color.white
         originBtn.titleLabel?.numberOfLines = 0
@@ -102,63 +101,78 @@ final class ConversionsViewController: UIViewController {
         destinyBtn.backgroundColor = DesignSystem.Color.secondary
         destinyBtn.layer.cornerRadius = DesignSystem.Button.getCornerRadius(view: view)
         
+        // Currency Arrow
         conversionArrow.image = UIImage(systemName: "arrow.right")
         conversionArrow.tintColor = DesignSystem.Color.tertiary
         
-        textField.backgroundColor = DesignSystem.Color.tertiary
-        textField.placeholder = "Type in the amount to be converted"
-        textField.textColor = DesignSystem.Color.white
-        textField.keyboardType = .numbersAndPunctuation
-        textField.delegate = self
-        textField.spellCheckingType = .no
-        textField.autocorrectionType = .no
+        // Amount label and Text Field
+        amountLabel.text = "Give an amount to be converted"
+        amountLabel.numberOfLines = 0
+        amountLabel.textColor = DesignSystem.Color.white
+            
+        amountTextField.backgroundColor = DesignSystem.Color.tertiary
+        amountTextField.placeholder = "Currency amount..."
+        amountTextField.tintColor = DesignSystem.Color.secondary
+        amountTextField.attributedPlaceholder = NSAttributedString(string: "$ Amount...", attributes: [.foregroundColor : DesignSystem.Color.primary])
+        amountTextField.textColor = DesignSystem.Color.white
+        amountTextField.borderStyle = .roundedRect
+        amountTextField.keyboardType = .numbersAndPunctuation
+        amountTextField.delegate = self
+        amountTextField.spellCheckingType = .no
+        amountTextField.autocorrectionType = .no
         
+        // Result Label
         resultLabel.textColor = DesignSystem.Color.white
         
+        // Add Views
         view.addSubview(backgroundLabel)
         view.addSubview(originBtn)
         view.addSubview(destinyBtn)
         view.addSubview(conversionArrow)
-        view.addSubview(textField)
+        view.addSubview(amountLabel)
+        view.addSubview(amountTextField)
         view.addSubview(resultLabel)
     }
     
     private func addConstraints() {
         // Used by keyboard notification
-        self.bottomConstraint = originBtn.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+        self.bottomConstraint = amountTextField.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -DesignSystem.marginsPadding)
         
         NSLayoutConstraint.activate([
+            self.bottomConstraint,
             
             // Background Label
             backgroundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            backgroundLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: view.frame.width/4),
             
             // Buttons and arrow
-            self.bottomConstraint,
             originBtn.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: DesignSystem.marginsPadding),
             destinyBtn.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -DesignSystem.marginsPadding),
             originBtn.widthAnchor.constraint(equalToConstant: DesignSystem.Button.getWidth(view: view)),
             originBtn.heightAnchor.constraint(equalToConstant: DesignSystem.Button.getHeight(view: view)),
+            originBtn.bottomAnchor.constraint(equalTo: amountLabel.topAnchor, constant: -DesignSystem.internalPadding),
             destinyBtn.widthAnchor.constraint(equalToConstant: DesignSystem.Button.getWidth(view: view)),
             destinyBtn.heightAnchor.constraint(equalToConstant: DesignSystem.Button.getHeight(view: view)),
+            destinyBtn.centerYAnchor.constraint(equalTo: originBtn.centerYAnchor),
             conversionArrow.centerYAnchor.constraint(equalTo: originBtn.centerYAnchor),
             conversionArrow.leftAnchor.constraint(equalTo: originBtn.rightAnchor, constant: DesignSystem.internalPadding),
             conversionArrow.rightAnchor.constraint(equalTo: destinyBtn.leftAnchor, constant: -DesignSystem.internalPadding),
             conversionArrow.widthAnchor.constraint(equalTo: conversionArrow.heightAnchor),
-            destinyBtn.centerYAnchor.constraint(equalTo: originBtn.centerYAnchor),
             
             // Text Field and result Label
-            textField.bottomAnchor.constraint(equalTo: originBtn.topAnchor, constant: -DesignSystem.internalPadding),
-            textField.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
-            textField.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
-            resultLabel.bottomAnchor.constraint(equalTo: destinyBtn.topAnchor, constant: -DesignSystem.internalPadding),
-            resultLabel.leftAnchor.constraint(equalTo: destinyBtn.leftAnchor),
+            amountLabel.bottomAnchor.constraint(equalTo: amountTextField.topAnchor, constant: -DesignSystem.internalPadding),
+            amountLabel.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
+            amountLabel.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
+            amountTextField.leftAnchor.constraint(equalTo: originBtn.leftAnchor),
+            amountTextField.rightAnchor.constraint(equalTo: originBtn.rightAnchor),
+            
+            resultLabel.centerYAnchor.constraint(equalTo: amountTextField.centerYAnchor),
             resultLabel.rightAnchor.constraint(equalTo: destinyBtn.rightAnchor)
         ])
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        textField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
     }
     
     deinit {
@@ -180,7 +194,7 @@ extension ConversionsViewController {
         guard let info = notification.userInfo else { return }
         let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 
-        self.bottomConstraint.constant = -keyboardFrame.size.height
+        self.bottomConstraint.constant = -keyboardFrame.size.height - DesignSystem.marginsPadding
         
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.layoutIfNeeded()
@@ -188,7 +202,7 @@ extension ConversionsViewController {
     }
     
     @objc func keyboardHideNotification(notification: NSNotification) {
-        self.bottomConstraint.constant = 0
+        self.bottomConstraint.constant = -DesignSystem.marginsPadding
         
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.layoutIfNeeded()
