@@ -30,6 +30,7 @@
 		8CB1E1D2260988BF00ABEDFA /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E1D1260988BF00ABEDFA /* AutoLayout.swift */; };
 		8CB1E1D82609FC8400ABEDFA /* CurrenciesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E1D72609FC8400ABEDFA /* CurrenciesDTO.swift */; };
 		8CB1E1DD2609FC8E00ABEDFA /* ConversionsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1E1DC2609FC8E00ABEDFA /* ConversionsDTO.swift */; };
+		8CDA7AEF260CDD52006B51BA /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA7AEE260CDD51006B51BA /* LocalStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		8CB1E1D1260988BF00ABEDFA /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
 		8CB1E1D72609FC8400ABEDFA /* CurrenciesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesDTO.swift; sourceTree = "<group>"; };
 		8CB1E1DC2609FC8E00ABEDFA /* ConversionsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionsDTO.swift; sourceTree = "<group>"; };
+		8CDA7AEE260CDD51006B51BA /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				8CB1E1D1260988BF00ABEDFA /* AutoLayout.swift */,
 				8C5D497B260ABFB500C0BF63 /* Box.swift */,
 				8C5D4985260CAAC400C0BF63 /* MathUtils.swift */,
+				8CDA7AEE260CDD51006B51BA /* LocalStorage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C5D496E260A944D00C0BF63 /* MainCoordinator.swift in Sources */,
+				8CDA7AEF260CDD52006B51BA /* LocalStorage.swift in Sources */,
 				8C5D494E260A074000C0BF63 /* Currency.swift in Sources */,
 				8CB1E1C82609813200ABEDFA /* CurrencyListViewController.swift in Sources */,
 				8C5D4981260CA65C00C0BF63 /* Networking.swift in Sources */,

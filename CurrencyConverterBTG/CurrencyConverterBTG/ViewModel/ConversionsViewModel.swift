@@ -9,10 +9,11 @@ import Foundation
 
 class ConversionsViewModel {
     
-    var conversions: [Conversion]?
+    var conversions = [Conversion]()
     
     static private let originDefaultText = "Choose a currency to convert from"
     static private let destinyDefaultText = "Choose a currency to convert to"
+    static private let conversionsStorageString = "Conversions"
 
     private var validatedAmount: Box<Double?> = Box(nil)
     var originCurrency: Box<Currency?> = Box(nil)
@@ -32,7 +33,6 @@ class ConversionsViewModel {
         formatter.numberStyle = .decimal
         return formatter
     }()
-    
     
     init() {
         originCurrency.bind { [unowned self] currency in
@@ -107,7 +107,8 @@ class ConversionsViewModel {
             switch result {
             case .success(let conversionsDTO):
                 self.conversions = conversionsDTO.conversions
-                if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions!, amount: amount) {
+                LocalStorage.store(conversions: conversions)
+                if let result = Conversion.convert(from: origin, to: destiny, conversions: conversions, amount: amount) {
                     var resultString = "Result: "
                     resultString += numberFormatter.string(for: result) ?? ""
                     resultText.value = resultString
@@ -116,9 +117,14 @@ class ConversionsViewModel {
             case .failure(let error):
                 switch error {
                 case NetworkingError.transportError:
-                    Debugger.log("There was a problem on your internet connection")
-                    guard let viewController = viewController else { return }
-                    coordinator?.showConnectionProblemAlert(error: error, sender: viewController, handler: nil)
+                    if let recovedConversions = LocalStorage.retrieveConversions() {
+                        Debugger.log("Retrieving conversions from User Defaults")
+                        self.conversions = recovedConversions
+                    } else {
+                        Debugger.log("There was a problem on your internet connection")
+                        guard let viewController = viewController else { return }
+                        coordinator?.showConnectionProblemAlert(error: error, sender: viewController, handler: nil)
+                    }
                 default:
                     Debugger.log(error.rawValue)
                 }

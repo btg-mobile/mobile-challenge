@@ -11,6 +11,8 @@ class CurrencyListViewModel {
     
     weak var coordinator: MainCoordinator?
     
+    static private let currenciesStorageString = "Currencies"
+    
     private var currencies = [Currency]() {
         didSet {
             filterCurrencies(search: searchString)
@@ -38,14 +40,21 @@ class CurrencyListViewModel {
                 self.currencies = currenciesDTO.currencies.sorted(by: { (c1, c2) -> Bool in
                     c1.code < c2.code
                 })
+                Debugger.log("Saving currencies to User Defaults")
+                LocalStorage.store(currencies: currencies)
             case .failure(let error):
                 switch error {
                 case NetworkingError.transportError:
-                    Debugger.log("There was a problem on your internet connection")
-                    guard let viewController = viewController else { return }
-                    coordinator?.showConnectionProblemAlert(error: error, sender: viewController, handler: {
-                        viewController.dismiss(animated: true, completion: nil)
-                    })
+                    if let storedCurrencies = LocalStorage.retrieveCurrencies() {
+                        Debugger.log("Retrieving currencies from User Defaults")
+                        currencies = storedCurrencies
+                    } else {
+                        Debugger.log("There was a problem on your internet connection")
+                        guard let viewController = viewController else { return }
+                        coordinator?.showConnectionProblemAlert(error: error, sender: viewController, handler: {
+                            viewController.dismiss(animated: true, completion: nil)
+                        })
+                    }
                 default:
                     Debugger.log(error.rawValue)
                 }
