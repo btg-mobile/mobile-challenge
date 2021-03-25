@@ -46,9 +46,6 @@ final class CurrencyLayerAPI {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data {
                 do {
-                    if let jsonResult = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                        print(jsonResult)
-                    }
                     let decoder = JSONDecoder()
                     let conversionsDTO = try decoder.decode(ConversionsDTO.self, from: data)
                     completion(conversionsDTO.conversions)

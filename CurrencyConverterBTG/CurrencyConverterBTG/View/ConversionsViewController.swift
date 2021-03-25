@@ -14,6 +14,7 @@ final class ConversionsViewController: UIViewController {
     @AutoLayout var conversionArrow: UIImageView
     @AutoLayout var textField: UITextField
     @AutoLayout var resultLabel: UILabel
+    @AutoLayout var backgroundLabel: UILabel
     
     var viewModel: ConversionsViewModel
     weak var coordinator: MainCoordinator?
@@ -30,43 +31,7 @@ final class ConversionsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = DesignSystem.Color.primary
-        
-        originBtn.setTitle("Origin", for: .normal)
-        originBtn.tintColor = DesignSystem.Color.white
-        originBtn.titleLabel?.numberOfLines = 0
-        originBtn.titleLabel?.textAlignment = .center
-        originBtn.addTarget(self, action: #selector(didSelectOrigin), for: .touchUpInside)
-        originBtn.backgroundColor = DesignSystem.Color.secondary
-        originBtn.layer.cornerRadius = DesignSystem.Button.getCornerRadius(view: view)
-        
-        destinyBtn.setTitle("Destiny", for: .normal)
-        destinyBtn.tintColor = DesignSystem.Color.white
-        destinyBtn.titleLabel?.numberOfLines = 0
-        destinyBtn.titleLabel?.textAlignment = .center
-        destinyBtn.addTarget(self, action: #selector(didSelectDestiny), for: .touchUpInside)
-        destinyBtn.backgroundColor = DesignSystem.Color.secondary
-        destinyBtn.layer.cornerRadius = DesignSystem.Button.getCornerRadius(view: view)
-        
-        conversionArrow.image = UIImage(systemName: "arrow.right")
-        conversionArrow.tintColor = DesignSystem.Color.tertiary
-        
-        textField.backgroundColor = DesignSystem.Color.tertiary
-        textField.textColor = DesignSystem.Color.white
-        textField.keyboardType = .numbersAndPunctuation
-        textField.delegate = self
-        textField.spellCheckingType = .no
-        textField.autocorrectionType = .no
-        
-        resultLabel.backgroundColor = DesignSystem.Color.tertiary
-        resultLabel.textColor = DesignSystem.Color.white
-        
-        view.addSubview(originBtn)
-        view.addSubview(destinyBtn)
-        view.addSubview(conversionArrow)
-        view.addSubview(textField)
-        view.addSubview(resultLabel)
-        
+        viewsSetup()
         addConstraints()
         
         NotificationCenter.default.addObserver(self,
@@ -98,11 +63,76 @@ final class ConversionsViewController: UIViewController {
         }
     }
     
+    private func viewsSetup() {
+        view.backgroundColor = DesignSystem.Color.primary
+        
+        backgroundLabel.textColor = DesignSystem.Color.darkPrimary
+        backgroundLabel.font = UIFont.systemFont(ofSize: 40)
+        let bgString = "CURRENCY $\n CONVERTER"
+        let bgAttString = NSMutableAttributedString(string: "CURRENCY $\n CONVERTER")
+        let shadow = NSShadow()
+//        shadow.shadowBlurRadius = 4
+        shadow.shadowOffset = CGSize(width: -2, height: 2)
+        shadow.shadowBlurRadius = 2
+        shadow.shadowColor = DesignSystem.Color.tertiary
+        let moneySignAttributes: [NSAttributedString.Key:Any] = [
+            .foregroundColor:DesignSystem.Color.moneySign,
+            .shadow:shadow
+        ]
+        bgAttString.addAttributes(moneySignAttributes, range: (bgString as NSString).range(of: "$"))
+        backgroundLabel.attributedText = bgAttString
+        
+        
+//        backgroundLabel.text = "CURRENCY $\n CONVERTER"
+        backgroundLabel.numberOfLines = 2
+        
+        originBtn.setTitle("Origin", for: .normal)
+        originBtn.tintColor = DesignSystem.Color.white
+        originBtn.titleLabel?.numberOfLines = 0
+        originBtn.titleLabel?.textAlignment = .center
+        originBtn.addTarget(self, action: #selector(didSelectOrigin), for: .touchUpInside)
+        originBtn.backgroundColor = DesignSystem.Color.secondary
+        originBtn.layer.cornerRadius = DesignSystem.Button.getCornerRadius(view: view)
+        
+        destinyBtn.setTitle("Destiny", for: .normal)
+        destinyBtn.tintColor = DesignSystem.Color.white
+        destinyBtn.titleLabel?.numberOfLines = 0
+        destinyBtn.titleLabel?.textAlignment = .center
+        destinyBtn.addTarget(self, action: #selector(didSelectDestiny), for: .touchUpInside)
+        destinyBtn.backgroundColor = DesignSystem.Color.secondary
+        destinyBtn.layer.cornerRadius = DesignSystem.Button.getCornerRadius(view: view)
+        
+        conversionArrow.image = UIImage(systemName: "arrow.right")
+        conversionArrow.tintColor = DesignSystem.Color.tertiary
+        
+        textField.backgroundColor = DesignSystem.Color.tertiary
+        textField.placeholder = "Type in the amount to be converted"
+        textField.textColor = DesignSystem.Color.white
+        textField.keyboardType = .numbersAndPunctuation
+        textField.delegate = self
+        textField.spellCheckingType = .no
+        textField.autocorrectionType = .no
+        
+        resultLabel.textColor = DesignSystem.Color.white
+        
+        view.addSubview(backgroundLabel)
+        view.addSubview(originBtn)
+        view.addSubview(destinyBtn)
+        view.addSubview(conversionArrow)
+        view.addSubview(textField)
+        view.addSubview(resultLabel)
+    }
+    
     private func addConstraints() {
         // Used by keyboard notification
         self.bottomConstraint = originBtn.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
         
         NSLayoutConstraint.activate([
+            
+            // Background Label
+            backgroundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             // Buttons and arrow
             self.bottomConstraint,
             originBtn.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: DesignSystem.marginsPadding),
@@ -124,8 +154,6 @@ final class ConversionsViewController: UIViewController {
             resultLabel.bottomAnchor.constraint(equalTo: destinyBtn.topAnchor, constant: -DesignSystem.internalPadding),
             resultLabel.leftAnchor.constraint(equalTo: destinyBtn.leftAnchor),
             resultLabel.rightAnchor.constraint(equalTo: destinyBtn.rightAnchor)
-
-            
         ])
     }
     
@@ -133,6 +161,13 @@ final class ConversionsViewController: UIViewController {
         textField.resignFirstResponder()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: - Objc Methods
+extension ConversionsViewController {
     @objc func didSelectOrigin() {
         coordinator?.chooseOriringCurrency()
     }
@@ -159,12 +194,9 @@ final class ConversionsViewController: UIViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
+// MARK: - Text Field Delegate
 extension ConversionsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
