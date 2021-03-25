@@ -113,7 +113,7 @@ final class ConversionsViewController: UIViewController {
         amountTextField.backgroundColor = DesignSystem.Color.tertiary
         amountTextField.placeholder = "Currency amount..."
         amountTextField.tintColor = DesignSystem.Color.secondary
-        amountTextField.attributedPlaceholder = NSAttributedString(string: "$ Amount...", attributes: [.foregroundColor : DesignSystem.Color.primary])
+        amountTextField.attributedPlaceholder = NSAttributedString(string: "$ Amount", attributes: [.foregroundColor : DesignSystem.Color.primary])
         amountTextField.textColor = DesignSystem.Color.white
         amountTextField.borderStyle = .roundedRect
         amountTextField.keyboardType = .numbersAndPunctuation

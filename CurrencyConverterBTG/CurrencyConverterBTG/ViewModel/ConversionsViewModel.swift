@@ -23,6 +23,8 @@ class ConversionsViewModel {
     var originText: Box<String> = Box(ConversionsViewModel.originDefaultText)
     var destinyText: Box<String> = Box(ConversionsViewModel.destinyDefaultText)
     
+    weak var viewController: ConversionsViewController?
+
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.currencyDecimalSeparator = ","
@@ -30,8 +32,6 @@ class ConversionsViewModel {
         return formatter
     }()
     
-    
-    weak var viewController: ConversionsViewController?
     
     init() {
         fetchConversions()
@@ -61,14 +61,28 @@ class ConversionsViewModel {
                 validatedAmount.value = amount
                 tryCalculation()
             } else {
-                // try with different decimal separator
+                
                 changeDecimalSeparator()
                 if let amount = numberFormatter.number(from: text)?.doubleValue {
                     validatedAmount.value = amount
                     tryCalculation()
                 } else {
                     // Invalid input
-                    resultText.value = "Invalid Input"
+                    let haveSpaces = text.filter{ $0.isWhitespace }.count > 0
+                    let haveUnexpectedChars = text.filter{ $0.isSymbol || $0.isLetter || $0.isMathSymbol || ($0.isPunctuation && $0 != "," && $0 != ".") }.count > 0
+                    let haveMorePunctuations = text.filter{ $0 == "," || $0 == "." }.count > 1
+                    // if 2 or more of the error are true show generic message
+                    if [haveSpaces, haveUnexpectedChars, haveMorePunctuations].filter({$0}).count > 2 {
+                        resultText.value = "Invalid Input"
+                    } else if haveSpaces {
+                        resultText.value = "Spaces in input"
+                    } else if haveUnexpectedChars {
+                        resultText.value = "Unexpected characters"
+                    } else if haveMorePunctuations {
+                        resultText.value = "Multiple punctuations"
+                    } else {
+                        resultText.value = "Invalid Input"
+                    }
                 }
             }
         } else {
