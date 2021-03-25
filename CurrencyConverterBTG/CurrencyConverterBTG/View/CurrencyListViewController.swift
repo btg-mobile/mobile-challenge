@@ -15,6 +15,7 @@ final class CurrencyListViewController: UITableViewController {
     init(viewModel: CurrencyListViewModel) {
         self.viewModel = viewModel
         super.init(style: .plain)
+        tableView.separatorColor = DesignSystem.Color.primary
     }
     
     required init?(coder: NSCoder) {

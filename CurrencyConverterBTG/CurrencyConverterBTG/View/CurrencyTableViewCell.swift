@@ -13,6 +13,9 @@ class CurrencyTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = DesignSystem.Color.darkPrimary
+        self.textLabel?.textColor = DesignSystem.Color.white
+        self.detailTextLabel?.textColor = DesignSystem.Color.moneySign
     }
     
     required init?(coder: NSCoder) {
