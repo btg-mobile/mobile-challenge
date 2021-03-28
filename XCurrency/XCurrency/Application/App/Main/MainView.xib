@@ -37,20 +37,20 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLp-co-XfE">
-                    <rect key="frame" x="10" y="30" width="300" height="50"/>
+                    <rect key="frame" x="70" y="95" width="180" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 40,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noU-lL-Fs8">
-                            <rect key="frame" x="112" y="14.5" width="76.5" height="21"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <rect key="frame" x="41.5" y="12" width="97.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <color key="textColor" red="0.24313725490196078" green="0.53333333333333333" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.94117647058823528" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="noU-lL-Fs8" firstAttribute="centerY" secondItem="LLp-co-XfE" secondAttribute="centerY" id="HKs-z4-KCy"/>
-                        <constraint firstItem="noU-lL-Fs8" firstAttribute="centerX" secondItem="LLp-co-XfE" secondAttribute="centerX" id="bti-ZD-hRw"/>
-                        <constraint firstAttribute="height" constant="50" id="sN5-z5-l4z"/>
+                        <constraint firstItem="noU-lL-Fs8" firstAttribute="centerX" secondItem="LLp-co-XfE" secondAttribute="centerX" id="ZdL-Dq-yjJ"/>
+                        <constraint firstAttribute="height" constant="50" id="lhH-vt-8pd"/>
+                        <constraint firstItem="noU-lL-Fs8" firstAttribute="centerY" secondItem="LLp-co-XfE" secondAttribute="centerY" id="zSh-oK-0UZ"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -61,19 +61,19 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LLp-co-XfE" secondAttribute="trailing" constant="10" id="8AY-4h-DfC"/>
+                <constraint firstItem="LLp-co-XfE" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="1:2" id="941-tr-xKw"/>
                 <constraint firstItem="twr-Hl-xfP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="AVd-eV-0eF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nVv-fo-y1x" secondAttribute="bottom" constant="20" id="Cch-cq-yo0"/>
-                <constraint firstItem="LLp-co-XfE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="K8x-7s-hQq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="twr-Hl-xfP" secondAttribute="trailing" constant="10" id="Xh3-IR-zFT"/>
-                <constraint firstItem="LLp-co-XfE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="bZA-P1-E0K"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LLp-co-XfE" secondAttribute="trailing" constant="70" id="ZCo-NW-vC2"/>
                 <constraint firstItem="nVv-fo-y1x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="coc-6s-bjv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nVv-fo-y1x" secondAttribute="trailing" constant="10" id="mpy-fH-yj3"/>
                 <constraint firstItem="nVv-fo-y1x" firstAttribute="top" secondItem="twr-Hl-xfP" secondAttribute="bottom" constant="10" id="q1L-tF-pdu"/>
+                <constraint firstItem="LLp-co-XfE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="70" id="wAo-ll-aGC"/>
             </constraints>
-            <point key="canvasLocation" x="133" y="129"/>
+            <point key="canvasLocation" x="131.25" y="128.75"/>
         </view>
     </objects>
     <resources>

@@ -43,11 +43,11 @@ class MainViewController: UIViewController {
 
     // MARK: - Objc Methods
     @objc private func tapOnCurrencyComponent() {
-        self.viewModel.presentFirstCurrencySelector()
+        self.viewModel.presentCurrencySelector(order: .first)
     }
 
     @objc private func tapOnSecondCurrencyComponent() {
-        self.viewModel.presentSecondCurrencySelector()
+        self.viewModel.presentCurrencySelector(order: .second)
     }
 }
 
