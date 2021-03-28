@@ -10,11 +10,12 @@ import UIKit
 class CurrencyComponent: UIView {
 
     // MARK: - Outlets
-    @IBOutlet private weak var codeLabel: UILabel!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var iconView: UIView!
+    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var iconView: UIView!
     @IBOutlet weak var valueTextField: UITextField!
-
+    @IBOutlet weak var iconLabel: UILabel!
+    
     // MARK: - Initialziers
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencyComponent" customModule="XCurrency" customModuleProvider="target">
             <connections>
                 <outlet property="codeLabel" destination="CR2-Gs-iMw" id="wEc-hy-1Fb"/>
+                <outlet property="iconLabel" destination="VoK-z4-cGY" id="mum-vb-zoA"/>
                 <outlet property="iconView" destination="pPD-hI-4DP" id="hms-m5-bkt"/>
                 <outlet property="nameLabel" destination="gxz-80-2iZ" id="BBa-QI-Eze"/>
                 <outlet property="valueTextField" destination="8Ld-RL-LgJ" id="zcQ-Hy-knz"/>

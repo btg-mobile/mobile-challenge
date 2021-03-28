@@ -10,7 +10,6 @@ import UIKit
 class MainViewController: UIViewController {
 
     // MARK: - Outlets
-    @IBOutlet private weak var resultLabel: UILabel!
     @IBOutlet private weak var firstCurrencyComponent: CurrencyComponent!
     @IBOutlet private weak var secondCurrencyComponent: CurrencyComponent!
 
@@ -31,8 +30,8 @@ class MainViewController: UIViewController {
 
     // MARK: - Overrides
     override func viewDidLoad() {
-        self.setupComponentsGestures()
         self.title = StringsDictionary.currencyConverter
+        self.setupComponents()
         super.viewDidLoad()
     }
 
@@ -42,6 +41,14 @@ class MainViewController: UIViewController {
         let secondGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapOnSecondCurrencyComponent))
         self.firstCurrencyComponent.addGestureRecognizer(firstGesture)
         self.secondCurrencyComponent.addGestureRecognizer(secondGesture)
+    }
+
+    private func setupComponents() {
+        self.firstCurrencyComponent.valueTextField.becomeFirstResponder()
+        self.secondCurrencyComponent.iconLabel.textColor = UIColor(red: 144/255, green: 82/255, blue: 80/255, alpha: 1)
+        self.secondCurrencyComponent.iconView.backgroundColor = UIColor(red: 248/255, green: 214/255, blue: 214/255, alpha: 1)
+        self.secondCurrencyComponent.valueTextField.isEnabled = false
+        self.setupComponentsGestures()
     }
 
     // MARK: - Objc Methods
