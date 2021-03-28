@@ -12,7 +12,7 @@ class GenericRouter {
     // MARK: - Attributes
     private let window: UIWindow
     private var viewController: UIViewController!
-//    private var presentingViewController: UIViewController!
+    private var presentingViewController: UIViewController!
 
     // MARK: - Initializer
     init(window: UIWindow) {
@@ -26,24 +26,21 @@ class GenericRouter {
         }, completion: nil)
     }
 
-//    func presentFromViewController(presentingViewController: UIViewController) {
-//        self.presentingViewController = presentingViewController
-//        self.presentingViewController?.present(self.viewController, animated: true, completion: nil)
-//    }
+    func presentFromViewController(presentingViewController: UIViewController) {
+        self.presentingViewController = presentingViewController
+        self.viewController.modalPresentationStyle = .fullScreen
+        self.presentingViewController.present(self.viewController, animated: true, completion: nil)
+    }
 
     func dismiss() {
         self.viewController?.dismiss(animated: true, completion: nil)
     }
 
-//    func getViewController() -> UIViewController {
-//        return self.viewController
-//    }
+    func getViewController() -> UIViewController {
+        return self.viewController
+    }
 
     func setViewController(viewController: UIViewController) {
         self.viewController = viewController
     }
-
-//    func setPresentingViewController(presentingViewController: UIViewController) {
-//        self.presentingViewController = presentingViewController
-//    }
 }
