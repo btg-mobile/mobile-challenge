@@ -28,7 +28,7 @@ class GenericRouter {
     }
 
     func dismiss() {
-        self.viewController?.dismiss(animated: true, completion: nil)
+        self.navigationController.popViewController(animated: true)
     }
 
     func getNavigationController() -> UINavigationController {
