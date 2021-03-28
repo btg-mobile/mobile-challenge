@@ -12,7 +12,7 @@ class MainViewModel: GenericModel {
         self.router.present()
     }
 
-    func presentCurrencySelector(order: CurrencyOrder) {
-        (self.router as! MainRouter).presentCurrencysView(order: order)
+    func presentCurrencySelector(order: CurrencyOrder, selectedCurrency: @escaping (Currency) -> Void) {
+        (self.router as! MainRouter).presentCurrencysView(order: order, selectedCurrency: selectedCurrency)
     }
 }

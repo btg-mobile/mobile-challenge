@@ -19,9 +19,10 @@ class MainRouter: GenericRouter {
     }
 
     // MARK: - Public Methods
-    func presentCurrencysView(order: CurrencyOrder) {
+    func presentCurrencysView(order: CurrencyOrder, selectedCurrency: @escaping (Currency) -> Void) {
         let currencysRouter = CurrencysRouter(window: self.getWindow(), navigationController: self.getNavigationController())
-        currencysRouter.getViewController().title = (order == .first) ? "First Currency" : "Second Currency"
+        currencysRouter.getViewController().title = (order == .first) ? StringsDictionary.firstCurrency : StringsDictionary.secondCurrency
+        (currencysRouter.getViewController() as! CurrencysViewController).setDelegate(selectedCurrency: selectedCurrency)
         currencysRouter.present()
     }
 }

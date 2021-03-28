@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
 
     // MARK: - Attributes
     private var viewModel: MainViewModel
+    private var firstCurrency: Currency?
+    private var secondCurrency: Currency?
 
     // MARK: - Initializers
     init(mainViewModel: MainViewModel) {
@@ -30,7 +32,7 @@ class MainViewController: UIViewController {
     // MARK: - Overrides
     override func viewDidLoad() {
         self.setupComponentsGestures()
-        self.title = "Currency converter"
+        self.title = StringsDictionary.currencyConverter
         super.viewDidLoad()
     }
 
@@ -44,11 +46,17 @@ class MainViewController: UIViewController {
 
     // MARK: - Objc Methods
     @objc private func tapOnCurrencyComponent() {
-        self.viewModel.presentCurrencySelector(order: .first)
+        self.viewModel.presentCurrencySelector(order: .first, selectedCurrency: { [weak self] currency in
+            self?.firstCurrency = currency
+            self?.firstCurrencyComponent.setCurrency(currency: currency)
+        })
     }
 
     @objc private func tapOnSecondCurrencyComponent() {
-        self.viewModel.presentCurrencySelector(order: .second)
+        self.viewModel.presentCurrencySelector(order: .second, selectedCurrency: { [weak self] currency in
+            self?.secondCurrency = currency
+            self?.secondCurrencyComponent.setCurrency(currency: currency)
+        })
     }
 }
 

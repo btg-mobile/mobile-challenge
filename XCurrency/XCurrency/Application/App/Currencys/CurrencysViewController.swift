@@ -15,6 +15,7 @@ class CurrencysViewController: UIViewController {
 
     // MARK: - Attributes
     private let viewModel: CurrencysViewModel
+    private var selectedCurrency: (Currency) -> Void = { _ in }
 
     // MARK: - Overrides
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class CurrencysViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Public Methods
+    // MARK: - Private Methods
     private func setupTableView() {
         let nib = UINib(nibName: "CurrencyTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CurrencyTableViewCell.reuseIdentifier)
@@ -43,8 +44,13 @@ class CurrencysViewController: UIViewController {
 
     private func setupNavigationBar() {
         let backButton = UIBarButtonItem()
-        backButton.title = "Back"
+        backButton.title = StringsDictionary.back
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+
+    // MARK: - Public Methods
+    func setDelegate(selectedCurrency: @escaping (Currency) -> Void) {
+        self.selectedCurrency = selectedCurrency
     }
 
     // MARK: - Actions
@@ -56,7 +62,10 @@ class CurrencysViewController: UIViewController {
 // MARK: - TableViewDelegate
 extension CurrencysViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // FIXME: - Implement cell selection
+        if let currency = self.viewModel.getCurrency(position: indexPath.row) {
+            self.selectedCurrency(currency)
+            self.viewModel.dismiss()
+        }
     }
 }
 
