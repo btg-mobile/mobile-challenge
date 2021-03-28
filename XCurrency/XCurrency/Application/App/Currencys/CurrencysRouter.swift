@@ -10,8 +10,8 @@ import UIKit
 class CurrencysRouter: GenericRouter {
 
     // MARK: - Overrides
-    override init(window: UIWindow) {
-        super.init(window: window)
+    override init(window: UIWindow, navigationController: UINavigationController) {
+        super.init(window: window, navigationController: navigationController)
         let viewModel = CurrencysViewModel()
         self.setViewController(viewController: CurrencysViewController(currencysViewModel: viewModel))
     }

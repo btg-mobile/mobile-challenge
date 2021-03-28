@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     // MARK: - Overrides
     override func viewDidLoad() {
         self.setupComponentsGestures()
+        self.title = "Currency converter"
         super.viewDidLoad()
     }
 

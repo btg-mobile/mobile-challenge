@@ -8,15 +8,11 @@
 import UIKit
 
 class MainRouter: GenericRouter {
-
-    // MARK: - Attributes
-    private var currencysRouter: CurrencysRouter
     
     // MARK: - Overrides
-    override init(window: UIWindow) {
+    override init(window: UIWindow, navigationController: UINavigationController) {
         let viewModel = MainViewModel()
-        self.currencysRouter = CurrencysRouter(window: window)
-        super.init(window: window)
+        super.init(window: window, navigationController: navigationController)
         viewModel.router = self
         let mainViewController = MainViewController(mainViewModel: viewModel)
         self.setViewController(viewController: mainViewController)
@@ -24,11 +20,8 @@ class MainRouter: GenericRouter {
 
     // MARK: - Public Methods
     func presentCurrencysView(order: CurrencyOrder) {
-        self.currencysRouter.presentFromViewController(presentingViewController: self.getViewController())
+        let currencysRouter = CurrencysRouter(window: self.getWindow(), navigationController: self.getNavigationController())
+        currencysRouter.getViewController().title = (order == .first) ? "First Currency" : "Second Currency"
+        currencysRouter.present()
     }
-}
-
-enum CurrencyOrder {
-    case first
-    case second
 }

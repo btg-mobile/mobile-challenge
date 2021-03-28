@@ -19,6 +19,8 @@ class CurrencysViewController: UIViewController {
     // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupTableView()
+        self.setupNavigationBar()
     }
 
     // MARK: Initializers
@@ -31,8 +33,46 @@ class CurrencysViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Public Methods
+    private func setupTableView() {
+        let nib = UINib(nibName: "CurrencyTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: CurrencyTableViewCell.reuseIdentifier)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+
+    private func setupNavigationBar() {
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+
     // MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - TableViewDelegate
+extension CurrencysViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // FIXME: - Implement cell selection
+    }
+}
+
+// MARK: - TableViewDataSource
+extension CurrencysViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.viewModel.getCurrencys().count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell: CurrencyTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.reuseIdentifier, for: indexPath) as? CurrencyTableViewCell {
+            if let currency = self.viewModel.getCurrency(position: indexPath.row) {
+                cell.setupCell(currency: currency)
+                return cell
+            }
+        }
+        return UITableViewCell()
     }
 }
