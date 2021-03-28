@@ -8,7 +8,7 @@
 class CurrencysViewModel: GenericModel {
 
     // MARK: - Attributes
-    private var currencys: [Currency] = [Currency(name: "Dolar Americano EUA", code: "USD"), Currency(name: "Dolar Americano EUA", code: "USD"), Currency(name: "Dolar Americano EUA", code: "USD")]
+    private var currencys: [Currency] = [Currency(name: "Dolar Americano", code: "USD"), Currency(name: "Real Brasileiro", code: "BRL"), Currency(name: "Euro", code: "EU")]
 
     // MARK: - Public Methods
     func presentCurrencys() {
@@ -21,5 +21,9 @@ class CurrencysViewModel: GenericModel {
 
     func getCurrency(position: Int) -> Currency? {
         return position <= (currencys.count - 1) ? self.currencys[position] : nil
+    }
+
+    func dismiss() {
+        self.router.dismiss()
     }
 }

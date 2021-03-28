@@ -13,6 +13,7 @@ class CurrencysRouter: GenericRouter {
     override init(window: UIWindow, navigationController: UINavigationController) {
         super.init(window: window, navigationController: navigationController)
         let viewModel = CurrencysViewModel()
+        viewModel.router = self
         self.setViewController(viewController: CurrencysViewController(currencysViewModel: viewModel))
     }
 }
