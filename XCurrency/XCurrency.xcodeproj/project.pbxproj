@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				5494D465260FC9DF00677D15 /* CurrencysCell */,
-				5494D464260FC9CF00677D15 /* CurrencysButton */,
+				5494D464260FC9CF00677D15 /* CurrencysComponent */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -142,13 +142,13 @@
 			path = Currencys;
 			sourceTree = "<group>";
 		};
-		5494D464260FC9CF00677D15 /* CurrencysButton */ = {
+		5494D464260FC9CF00677D15 /* CurrencysComponent */ = {
 			isa = PBXGroup;
 			children = (
 				54683ED5260FAEBE007F14A1 /* CurrencyComponent.swift */,
 				54683ED6260FAEBE007F14A1 /* CurrencyComponent.xib */,
 			);
-			path = CurrencysButton;
+			path = CurrencysComponent;
 			sourceTree = "<group>";
 		};
 		5494D465260FC9DF00677D15 /* CurrencysCell */ = {
