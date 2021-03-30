@@ -17,6 +17,7 @@ class CurrencysViewController: UIViewController {
     private let viewModel: CurrencysViewModel
     private var selectedCurrency: (Currency) -> Void = { _ in }
     private var updateCurrencies: () -> Void = {}
+    private var alert: UIAlertController?
 
     // MARK: - Overrides
     override func viewDidLoad() {
@@ -25,12 +26,19 @@ class CurrencysViewController: UIViewController {
         self.setupNavigationBar()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if self.viewModel.getCurrencies().isEmpty {
+            self.showLoadingView()
+        }
+    }
+
     // MARK: Initializers
     init(currencysViewModel: CurrencysViewModel) {
         self.viewModel = currencysViewModel
         super.init(nibName: nil, bundle: nil)
         self.updateCurrencies = {
             self.tableView.reloadData()
+            self.alert?.dismiss(animated: true, completion: nil)
         }
         self.viewModel.updateCurrencies = self.updateCurrencies
     }
@@ -40,6 +48,16 @@ class CurrencysViewController: UIViewController {
     }
 
     // MARK: - Private Methods
+    private func showLoadingView() {
+        self.alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating()
+        self.alert!.view.addSubview(loadingIndicator)
+        self.present(self.alert!, animated: true, completion: nil)
+    }
+
     private func setupTableView() {
         self.segmentControll.addTarget(self, action: #selector(self.valueChanged(_:)), for: .valueChanged)
         let nib = UINib(nibName: "CurrencyTableViewCell", bundle: nil)
