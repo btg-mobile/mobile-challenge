@@ -15,13 +15,17 @@ class MainViewController: UIViewController {
 
     // MARK: - Attributes
     private var viewModel: MainViewModel
-    private var firstCurrency: Currency?
-    private var secondCurrency: Currency?
+    private var updateCurrencies: () -> Void = {}
 
     // MARK: - Initializers
     init(mainViewModel: MainViewModel) {
         self.viewModel = mainViewModel
         super.init(nibName: nil, bundle: nil)
+        self.updateCurrencies = {
+            self.firstCurrencyComponent.setCurrency(currency: self.viewModel.firstCurrency)
+            self.secondCurrencyComponent.setCurrency(currency: self.viewModel.secondCurrency)
+        }
+        self.viewModel.updateCurrencies = self.updateCurrencies
     }
 
     required init?(coder: NSCoder) {
@@ -32,6 +36,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         self.title = StringsDictionary.currencyConverter
         self.setupComponents()
+        self.updateCurrencies()
         super.viewDidLoad()
     }
 
@@ -53,17 +58,11 @@ class MainViewController: UIViewController {
 
     // MARK: - Objc Methods
     @objc private func tapOnCurrencyComponent() {
-        self.viewModel.presentCurrencySelector(order: .first, selectedCurrency: { [weak self] currency in
-            self?.firstCurrency = currency
-            self?.firstCurrencyComponent.setCurrency(currency: currency)
-        })
+        self.viewModel.presentCurrencySelector(order: .first)
     }
 
     @objc private func tapOnSecondCurrencyComponent() {
-        self.viewModel.presentCurrencySelector(order: .second, selectedCurrency: { [weak self] currency in
-            self?.secondCurrency = currency
-            self?.secondCurrencyComponent.setCurrency(currency: currency)
-        })
+        self.viewModel.presentCurrencySelector(order: .second)
     }
 }
 

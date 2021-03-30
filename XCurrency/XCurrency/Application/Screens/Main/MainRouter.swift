@@ -11,7 +11,7 @@ class MainRouter: GenericRouter {
     
     // MARK: - Overrides
     override init(window: UIWindow, navigationController: UINavigationController) {
-        let viewModel = MainViewModel()
+        let viewModel = MainViewModel(currencyRepository: CurrencyRepository(network: Network()))
         super.init(window: window, navigationController: navigationController)
         viewModel.router = self
         let mainViewController = MainViewController(mainViewModel: viewModel)

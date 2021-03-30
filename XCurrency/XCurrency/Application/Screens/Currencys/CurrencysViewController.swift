@@ -16,6 +16,7 @@ class CurrencysViewController: UIViewController {
     // MARK: - Attributes
     private let viewModel: CurrencysViewModel
     private var selectedCurrency: (Currency) -> Void = { _ in }
+    private var updateCurrencies: () -> Void = {}
 
     // MARK: - Overrides
     override func viewDidLoad() {
@@ -28,6 +29,10 @@ class CurrencysViewController: UIViewController {
     init(currencysViewModel: CurrencysViewModel) {
         self.viewModel = currencysViewModel
         super.init(nibName: nil, bundle: nil)
+        self.updateCurrencies = {
+            self.tableView.reloadData()
+        }
+        self.viewModel.updateCurrencies = self.updateCurrencies
     }
 
     required init?(coder: NSCoder) {
@@ -72,7 +77,7 @@ extension CurrencysViewController: UITableViewDelegate {
 // MARK: - TableViewDataSource
 extension CurrencysViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel.getCurrencys().count
+        self.viewModel.getCurrencies().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
