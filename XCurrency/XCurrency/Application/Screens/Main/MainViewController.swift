@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
         self.updateCurrencies = {
             self.firstCurrencyComponent.setCurrency(currency: self.viewModel.firstCurrency)
             self.secondCurrencyComponent.setCurrency(currency: self.viewModel.secondCurrency)
+            self.secondCurrencyComponent.valueTextField.text = "\(self.viewModel.convertedValue)"
         }
         self.viewModel.updateCurrencies = self.updateCurrencies
     }
@@ -46,6 +47,7 @@ class MainViewController: UIViewController {
         let secondGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapOnSecondCurrencyComponent))
         self.firstCurrencyComponent.addGestureRecognizer(firstGesture)
         self.secondCurrencyComponent.addGestureRecognizer(secondGesture)
+        self.firstCurrencyComponent.valueTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
 
     private func setupComponents() {
@@ -64,5 +66,10 @@ class MainViewController: UIViewController {
     @objc private func tapOnSecondCurrencyComponent() {
         self.viewModel.presentCurrencySelector(order: .second)
     }
-}
 
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if let value: Double = Double(textField.text ?? "") {
+            self.viewModel.convertValueToCurrency(valueToConvert: value)
+        }
+    }
+}

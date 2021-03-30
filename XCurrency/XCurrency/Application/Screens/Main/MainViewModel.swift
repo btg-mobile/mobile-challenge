@@ -8,9 +8,10 @@
 class MainViewModel: GenericModel {
 
     // MARK: - Attributes
-    var updateCurrencies: () -> Void = {}
     private var repository: CurrencyRepositoryProtocol
     private var currenciesRate: [CurrencyRate] = []
+    var updateCurrencies: () -> Void = {}
+    var convertedValue: Double = 0
     var firstCurrency: Currency? {
         didSet {
             self.updateCurrencies()
@@ -19,7 +20,6 @@ class MainViewModel: GenericModel {
     var secondCurrency: Currency? {
         didSet {
             self.updateCurrencies()
-            self.getCurrencyValue()
         }
     }
 
@@ -42,15 +42,10 @@ class MainViewModel: GenericModel {
         }
     }
 
-    private func getCurrencyValue() {
-        if !self.currenciesRate.isEmpty, let firstCurrency = self.firstCurrency, let secondCurrency = self.secondCurrency {
-            let firstCurrencyCode: String = "USD\(firstCurrency.code)"
-            let secondCurrencyCode: String = "USD\(secondCurrency.code)"
-            if let firstTax = self.currenciesRate.first(where: { $0.source == firstCurrencyCode }), let secondTax = self.currenciesRate.first(where: { $0.source == secondCurrencyCode }) {
-                let a = firstTax.value * secondTax.value
-                print("\(firstTax.value * secondTax.value)")
-            }
-            print("")
+    private func convertCurrencyToCurrency(firstCurrencyCode: String, secondCurrencyCode: String, valueToConvert: Double) {
+        if let firstTax = self.currenciesRate.first(where: { $0.source == firstCurrencyCode }), let secondTax = self.currenciesRate.first(where: { $0.source == secondCurrencyCode }){
+            self.convertedValue = (valueToConvert/firstTax.value) * secondTax.value
+            self.updateCurrencies()
         } else {
             return
         }
@@ -71,6 +66,14 @@ class MainViewModel: GenericModel {
                     self.secondCurrency = currency
                 }
             })
+        }
+    }
+
+    func convertValueToCurrency(valueToConvert: Double) {
+        if let firstCurrency = self.firstCurrency, let secondCurrency = self.secondCurrency {
+            let firstCode: String = "USD\(firstCurrency.code)"
+            let secondCode: String = "USD\(secondCurrency.code)"
+            self.convertCurrencyToCurrency(firstCurrencyCode: firstCode, secondCurrencyCode: secondCode, valueToConvert: valueToConvert)
         }
     }
 }

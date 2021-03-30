@@ -33,7 +33,7 @@ class CurrencysViewModel: GenericModel {
         self.repository.getCurrencyList { [weak self] result in
             switch result {
             case .success(let currenciesObject):
-                self?.currencies = currenciesObject.currencies
+                self?.currencies = currenciesObject.currencies.sorted(by: {$0.name < $1.name})
             case .failure(_):
                 print("ERROR")
             }
@@ -41,6 +41,15 @@ class CurrencysViewModel: GenericModel {
     }
 
     // MARK: - Public Methods
+    func orderCurrenciesBy(_ order: CurrenciesOrder) {
+        switch order {
+        case .code:
+            self.currencies = self.currencies.sorted(by: {$0.code < $1.code})
+        case .name:
+            self.currencies = self.currencies.sorted(by: {$0.name < $1.name})
+        }
+    }
+
     func presentCurrencys() {
         self.router.present()
     }
@@ -56,4 +65,8 @@ class CurrencysViewModel: GenericModel {
     func dismiss() {
         self.router.dismiss()
     }
+}
+
+enum CurrenciesOrder {
+    case name, code
 }

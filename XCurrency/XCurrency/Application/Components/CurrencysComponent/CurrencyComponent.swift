@@ -43,6 +43,7 @@ class CurrencyComponent: UIView {
         } else {
             self.codeLabel.text = "SAC"
             self.nameLabel.text = "Select a currency!"
+            self.valueTextField.text = "0.0"
         }
     }
 }

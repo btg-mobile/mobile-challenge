@@ -41,6 +41,7 @@ class CurrencysViewController: UIViewController {
 
     // MARK: - Private Methods
     private func setupTableView() {
+        self.segmentControll.addTarget(self, action: #selector(self.valueChanged(_:)), for: .valueChanged)
         let nib = UINib(nibName: "CurrencyTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CurrencyTableViewCell.reuseIdentifier)
         self.tableView.dataSource = self
@@ -61,6 +62,14 @@ class CurrencysViewController: UIViewController {
     // MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func valueChanged(_ segmentedControll: UISegmentedControl) {
+        if segmentControll.selectedSegmentIndex == 0 {
+            self.viewModel.orderCurrenciesBy(.name)
+        } else {
+            self.viewModel.orderCurrenciesBy(.code)
+        }
     }
 }
 
