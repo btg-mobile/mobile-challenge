@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		2F57AE632614B58F00FBCA90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F57AE612614B58F00FBCA90 /* LaunchScreen.storyboard */; };
 		2F57AE6E2614B59000FBCA90 /* Desafio_BTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AE6D2614B59000FBCA90 /* Desafio_BTGTests.swift */; };
 		2F57AE792614B59000FBCA90 /* Desafio_BTGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AE782614B59000FBCA90 /* Desafio_BTGUITests.swift */; };
+		2F57AE982614C47E00FBCA90 /* RealTimeRatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AE972614C47E00FBCA90 /* RealTimeRatesModel.swift */; };
+		A2B93753BA1788EE335ED750 /* Pods_Desafio_BTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE8F94206A21BA0758CC5DB /* Pods_Desafio_BTG.framework */; };
+		AA679301A3E68A1FBD52F5CB /* Pods_Desafio_BTGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31408F26C919C5AD30E7B89 /* Pods_Desafio_BTGTests.framework */; };
+		F0447EF94D964633A2DA728B /* Pods_Desafio_BTG_Desafio_BTGUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE904081F90AD4219298B9EB /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CFC9E766D91CA6073285DA9 /* Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F57AE532614B58B00FBCA90 /* Desafio-BTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-BTG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F57AE562614B58B00FBCA90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F57AE582614B58B00FBCA90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +52,15 @@
 		2F57AE742614B59000FBCA90 /* Desafio-BTGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio-BTGUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F57AE782614B59000FBCA90 /* Desafio_BTGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_BTGUITests.swift; sourceTree = "<group>"; };
 		2F57AE7A2614B59000FBCA90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F57AE972614C47E00FBCA90 /* RealTimeRatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeRatesModel.swift; sourceTree = "<group>"; };
+		6E9B7A776242EBA940600F6B /* Pods-Desafio-BTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.release.xcconfig"; sourceTree = "<group>"; };
+		9F90976F1551CF559B303070 /* Pods-Desafio-BTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.debug.xcconfig"; sourceTree = "<group>"; };
+		CA1F7F775829B740191FA210 /* Pods-Desafio-BTGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTGTests.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTGTests/Pods-Desafio-BTGTests.release.xcconfig"; sourceTree = "<group>"; };
+		CF471B2B96CA3A1F47C3E5EC /* Pods-Desafio-BTGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTGTests.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-BTGTests/Pods-Desafio-BTGTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DCE8F94206A21BA0758CC5DB /* Pods_Desafio_BTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Desafio_BTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E31408F26C919C5AD30E7B89 /* Pods_Desafio_BTGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Desafio_BTGTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E602B6B3E19619BE6FECC2C9 /* Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FE904081F90AD4219298B9EB /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Desafio_BTG_Desafio_BTGUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B93753BA1788EE335ED750 /* Pods_Desafio_BTG.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA679301A3E68A1FBD52F5CB /* Pods_Desafio_BTGTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0447EF94D964633A2DA728B /* Pods_Desafio_BTG_Desafio_BTGUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,8 @@
 				2F57AE6C2614B59000FBCA90 /* Desafio-BTGTests */,
 				2F57AE772614B59000FBCA90 /* Desafio-BTGUITests */,
 				2F57AE542614B58B00FBCA90 /* Products */,
+				6CCB70FD15BBC44E8553EEB3 /* Pods */,
+				79778C39498636B040488CD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +116,8 @@
 		2F57AE552614B58B00FBCA90 /* Desafio-BTG */ = {
 			isa = PBXGroup;
 			children = (
-				2F57AE562614B58B00FBCA90 /* AppDelegate.swift */,
-				2F57AE582614B58B00FBCA90 /* SceneDelegate.swift */,
-				2F57AE5A2614B58B00FBCA90 /* ViewController.swift */,
-				2F57AE5F2614B58F00FBCA90 /* Assets.xcassets */,
-				2F57AE612614B58F00FBCA90 /* LaunchScreen.storyboard */,
+				2F57AE962614C40C00FBCA90 /* Model */,
+				2F57AE952614C31600FBCA90 /* Supporting Files */,
 				2F57AE642614B58F00FBCA90 /* Info.plist */,
 			);
 			path = "Desafio-BTG";
@@ -125,6 +141,49 @@
 			path = "Desafio-BTGUITests";
 			sourceTree = "<group>";
 		};
+		2F57AE952614C31600FBCA90 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F57AE562614B58B00FBCA90 /* AppDelegate.swift */,
+				2F57AE582614B58B00FBCA90 /* SceneDelegate.swift */,
+				2F57AE5A2614B58B00FBCA90 /* ViewController.swift */,
+				2F57AE5F2614B58F00FBCA90 /* Assets.xcassets */,
+				2F57AE612614B58F00FBCA90 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2F57AE962614C40C00FBCA90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F57AE972614C47E00FBCA90 /* RealTimeRatesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6CCB70FD15BBC44E8553EEB3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F90976F1551CF559B303070 /* Pods-Desafio-BTG.debug.xcconfig */,
+				6E9B7A776242EBA940600F6B /* Pods-Desafio-BTG.release.xcconfig */,
+				0CFC9E766D91CA6073285DA9 /* Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig */,
+				E602B6B3E19619BE6FECC2C9 /* Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig */,
+				CF471B2B96CA3A1F47C3E5EC /* Pods-Desafio-BTGTests.debug.xcconfig */,
+				CA1F7F775829B740191FA210 /* Pods-Desafio-BTGTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		79778C39498636B040488CD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCE8F94206A21BA0758CC5DB /* Pods_Desafio_BTG.framework */,
+				FE904081F90AD4219298B9EB /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */,
+				E31408F26C919C5AD30E7B89 /* Pods_Desafio_BTGTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F57AE7D2614B59000FBCA90 /* Build configuration list for PBXNativeTarget "Desafio-BTG" */;
 			buildPhases = (
+				9945F42486AEE3BBDB6D3E77 /* [CP] Check Pods Manifest.lock */,
 				2F57AE4F2614B58B00FBCA90 /* Sources */,
 				2F57AE502614B58B00FBCA90 /* Frameworks */,
 				2F57AE512614B58B00FBCA90 /* Resources */,
+				394436308C4D4EA4C529AC5D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +210,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F57AE802614B59000FBCA90 /* Build configuration list for PBXNativeTarget "Desafio-BTGTests" */;
 			buildPhases = (
+				5D2B399DCDCE76C9BC809BF5 /* [CP] Check Pods Manifest.lock */,
 				2F57AE652614B59000FBCA90 /* Sources */,
 				2F57AE662614B59000FBCA90 /* Frameworks */,
 				2F57AE672614B59000FBCA90 /* Resources */,
@@ -167,9 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F57AE832614B59000FBCA90 /* Build configuration list for PBXNativeTarget "Desafio-BTGUITests" */;
 			buildPhases = (
+				0A08A129AAF8151F895BCC3B /* [CP] Check Pods Manifest.lock */,
 				2F57AE702614B59000FBCA90 /* Sources */,
 				2F57AE712614B59000FBCA90 /* Frameworks */,
 				2F57AE722614B59000FBCA90 /* Resources */,
+				2BB9FF141D45986E46F38E70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -249,6 +313,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A08A129AAF8151F895BCC3B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Desafio-BTG-Desafio-BTGUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BB9FF141D45986E46F38E70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		394436308C4D4EA4C529AC5D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D2B399DCDCE76C9BC809BF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Desafio-BTGTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9945F42486AEE3BBDB6D3E77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Desafio-BTG-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F57AE4F2614B58B00FBCA90 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -256,6 +423,7 @@
 			files = (
 				2F57AE5B2614B58B00FBCA90 /* ViewController.swift in Sources */,
 				2F57AE572614B58B00FBCA90 /* AppDelegate.swift in Sources */,
+				2F57AE982614C47E00FBCA90 /* RealTimeRatesModel.swift in Sources */,
 				2F57AE592614B58B00FBCA90 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +589,7 @@
 		};
 		2F57AE7E2614B59000FBCA90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F90976F1551CF559B303070 /* Pods-Desafio-BTG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -440,6 +609,7 @@
 		};
 		2F57AE7F2614B59000FBCA90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E9B7A776242EBA940600F6B /* Pods-Desafio-BTG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -459,6 +629,7 @@
 		};
 		2F57AE812614B59000FBCA90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF471B2B96CA3A1F47C3E5EC /* Pods-Desafio-BTGTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -481,6 +652,7 @@
 		};
 		2F57AE822614B59000FBCA90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA1F7F775829B740191FA210 /* Pods-Desafio-BTGTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -503,6 +675,7 @@
 		};
 		2F57AE842614B59000FBCA90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CFC9E766D91CA6073285DA9 /* Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,6 +696,7 @@
 		};
 		2F57AE852614B59000FBCA90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E602B6B3E19619BE6FECC2C9 /* Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
