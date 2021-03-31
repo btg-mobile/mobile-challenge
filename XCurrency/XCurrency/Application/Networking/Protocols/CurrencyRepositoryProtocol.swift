@@ -16,13 +16,21 @@ protocol CurrencyRepositoryProtocol {
 }
 
 extension CurrencyRepositoryProtocol {
-    
+
     // MARK: - Methods
     func getCurrencyList(completion: @escaping(Result<CurrencyObject, Error>) -> Void) {
-        self.network.execute(requestProvider: Endpoint.currencies, completion: completion)
+        if Reachability.isConnectedToNetwork() {
+            self.network.execute(requestProvider: Endpoint.currencies, completion: completion)
+        } else {
+            completion(.failure(StringsDictionary.checkInternetConnection))
+        }
     }
     
     func getCurrenciesRate(completion: @escaping(Result<CurrencyRateObject, Error>) -> Void) {
-        self.network.execute(requestProvider: Endpoint.currencyRate, completion: completion)
+        if Reachability.isConnectedToNetwork() {
+            self.network.execute(requestProvider: Endpoint.currencyRate, completion: completion)
+        } else {
+            completion(.failure(StringsDictionary.checkInternetConnection))
+        }
     }
 }

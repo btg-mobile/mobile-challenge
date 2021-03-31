@@ -13,6 +13,8 @@ class MainViewModel: GenericModel {
     private var repository: CurrencyRepositoryProtocol
     private var currenciesRate: [CurrencyRate] = []
     private let formatter: NumberFormatter
+    var errorMessage: String = ""
+    var updateErrorMessage: () -> Void = {}
     var updateCurrencies: () -> Void = {}
     var convertedValue: String = "0.0"
     var firstCurrency: Currency? {
@@ -41,8 +43,11 @@ class MainViewModel: GenericModel {
             switch result {
             case .success(let currencyRateObject):
                 self?.currenciesRate = currencyRateObject.currenciesRate
-            case .failure(_):
-                print("ERROR")
+            case .failure(let error):
+                self?.errorMessage = error.localizedDescription
+                DispatchQueue.main.async {
+                    self?.updateErrorMessage()
+                }
             }
         }
     }

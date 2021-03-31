@@ -15,18 +15,17 @@ class MainViewController: UIViewController {
 
     // MARK: - Attributes
     private var viewModel: MainViewModel
-    private var updateCurrencies: () -> Void = {}
 
     // MARK: - Initializers
     init(mainViewModel: MainViewModel) {
         self.viewModel = mainViewModel
         super.init(nibName: nil, bundle: nil)
-        self.updateCurrencies = {
-            self.firstCurrencyComponent.setCurrency(currency: self.viewModel.firstCurrency)
-            self.secondCurrencyComponent.setCurrency(currency: self.viewModel.secondCurrency)
-            self.secondCurrencyComponent.valueTextField.text = "\(self.viewModel.convertedValue)"
+        self.viewModel.updateCurrencies = { self.updateCurrenciesComponents() }
+        self.viewModel.updateErrorMessage = {
+            let alert = UIAlertController(title: "Error", message: self.viewModel.errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        self.viewModel.updateCurrencies = self.updateCurrencies
     }
 
     required init?(coder: NSCoder) {
@@ -37,11 +36,17 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         self.title = StringsDictionary.currencyConverter
         self.setupComponents()
-        self.updateCurrencies()
+        self.updateCurrenciesComponents()
         super.viewDidLoad()
     }
 
     // MARK: - Private Methods
+    private func updateCurrenciesComponents() {
+        self.firstCurrencyComponent.setCurrency(currency: self.viewModel.firstCurrency)
+        self.secondCurrencyComponent.setCurrency(currency: self.viewModel.secondCurrency)
+        self.secondCurrencyComponent.valueTextField.text = "\(self.viewModel.convertedValue)"
+    }
+
     private func setupComponentsGestures() {
         let firstGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapOnCurrencyComponent))
         let secondGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapOnSecondCurrencyComponent))
