@@ -5,13 +5,16 @@
 //  Created by Vinicius Nadin on 27/03/21.
 //
 
+import Foundation
+
 class MainViewModel: GenericModel {
 
     // MARK: - Attributes
     private var repository: CurrencyRepositoryProtocol
     private var currenciesRate: [CurrencyRate] = []
+    private let formatter: NumberFormatter
     var updateCurrencies: () -> Void = {}
-    var convertedValue: Double = 0
+    var convertedValue: String = "0.0"
     var firstCurrency: Currency? {
         didSet {
             self.updateCurrencies()
@@ -26,7 +29,9 @@ class MainViewModel: GenericModel {
     // MARK: - Initializer
     init(currencyRepository: CurrencyRepositoryProtocol) {
         self.repository = currencyRepository
+        self.formatter = NumberFormatter()
         super.init()
+        self.setupFormatter()
         self.getCurrenciesRate()
     }
 
@@ -42,12 +47,19 @@ class MainViewModel: GenericModel {
         }
     }
 
+    private func setupFormatter() {
+        self.formatter.numberStyle = .currency
+        self.formatter.minimumFractionDigits = 2
+        self.formatter.currencySymbol = ""
+    }
+
     private func convertCurrencyToCurrency(firstCurrencyCode: String, secondCurrencyCode: String, valueToConvert: Double) {
         if let firstTax = self.currenciesRate.first(where: { $0.source == firstCurrencyCode }), let secondTax = self.currenciesRate.first(where: { $0.source == secondCurrencyCode }){
-            self.convertedValue = (valueToConvert/firstTax.value) * secondTax.value
-            self.updateCurrencies()
-        } else {
-            return
+            let value = (valueToConvert/firstTax.value) * secondTax.value
+            if let formattedText = self.formatter.string(from: NSNumber(value: value)) {
+                self.convertedValue = formattedText
+                self.updateCurrencies()
+            }
         }
     }
 
