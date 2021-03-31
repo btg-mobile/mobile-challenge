@@ -15,6 +15,9 @@
 		2F57AE6E2614B59000FBCA90 /* Desafio_BTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AE6D2614B59000FBCA90 /* Desafio_BTGTests.swift */; };
 		2F57AE792614B59000FBCA90 /* Desafio_BTGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AE782614B59000FBCA90 /* Desafio_BTGUITests.swift */; };
 		2F57AE982614C47E00FBCA90 /* RealTimeRatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AE972614C47E00FBCA90 /* RealTimeRatesModel.swift */; };
+		2F57AEBA2614C63100FBCA90 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEB92614C63100FBCA90 /* ConnectionManager.swift */; };
+		2F57AEBF2614C65F00FBCA90 /* ConnectionErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEBE2614C65F00FBCA90 /* ConnectionErrorManager.swift */; };
+		2F57AEC52614C6BB00FBCA90 /* RealTimeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEC42614C6BB00FBCA90 /* RealTimeRates.swift */; };
 		A2B93753BA1788EE335ED750 /* Pods_Desafio_BTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE8F94206A21BA0758CC5DB /* Pods_Desafio_BTG.framework */; };
 		AA679301A3E68A1FBD52F5CB /* Pods_Desafio_BTGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31408F26C919C5AD30E7B89 /* Pods_Desafio_BTGTests.framework */; };
 		F0447EF94D964633A2DA728B /* Pods_Desafio_BTG_Desafio_BTGUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE904081F90AD4219298B9EB /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */; };
@@ -53,6 +56,9 @@
 		2F57AE782614B59000FBCA90 /* Desafio_BTGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_BTGUITests.swift; sourceTree = "<group>"; };
 		2F57AE7A2614B59000FBCA90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F57AE972614C47E00FBCA90 /* RealTimeRatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeRatesModel.swift; sourceTree = "<group>"; };
+		2F57AEB92614C63100FBCA90 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		2F57AEBE2614C65F00FBCA90 /* ConnectionErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorManager.swift; sourceTree = "<group>"; };
+		2F57AEC42614C6BB00FBCA90 /* RealTimeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeRates.swift; sourceTree = "<group>"; };
 		6E9B7A776242EBA940600F6B /* Pods-Desafio-BTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.release.xcconfig"; sourceTree = "<group>"; };
 		9F90976F1551CF559B303070 /* Pods-Desafio-BTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.debug.xcconfig"; sourceTree = "<group>"; };
 		CA1F7F775829B740191FA210 /* Pods-Desafio-BTGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTGTests.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTGTests/Pods-Desafio-BTGTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 		2F57AE552614B58B00FBCA90 /* Desafio-BTG */ = {
 			isa = PBXGroup;
 			children = (
+				2F57AEB52614C62100FBCA90 /* API */,
 				2F57AE962614C40C00FBCA90 /* Model */,
 				2F57AE952614C31600FBCA90 /* Supporting Files */,
 				2F57AE642614B58F00FBCA90 /* Info.plist */,
@@ -159,6 +166,24 @@
 				2F57AE972614C47E00FBCA90 /* RealTimeRatesModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2F57AEB52614C62100FBCA90 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2F57AEC32614C67900FBCA90 /* Connection */,
+				2F57AEC42614C6BB00FBCA90 /* RealTimeRates.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		2F57AEC32614C67900FBCA90 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				2F57AEB92614C63100FBCA90 /* ConnectionManager.swift */,
+				2F57AEBE2614C65F00FBCA90 /* ConnectionErrorManager.swift */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 		6CCB70FD15BBC44E8553EEB3 /* Pods */ = {
@@ -421,9 +446,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F57AEBA2614C63100FBCA90 /* ConnectionManager.swift in Sources */,
 				2F57AE5B2614B58B00FBCA90 /* ViewController.swift in Sources */,
+				2F57AEBF2614C65F00FBCA90 /* ConnectionErrorManager.swift in Sources */,
 				2F57AE572614B58B00FBCA90 /* AppDelegate.swift in Sources */,
 				2F57AE982614C47E00FBCA90 /* RealTimeRatesModel.swift in Sources */,
+				2F57AEC52614C6BB00FBCA90 /* RealTimeRates.swift in Sources */,
 				2F57AE592614B58B00FBCA90 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
