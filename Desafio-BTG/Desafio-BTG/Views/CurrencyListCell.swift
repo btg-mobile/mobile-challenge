@@ -59,10 +59,10 @@ class CurrencyListCell: UITableViewCell {
         countryAbbreviationText.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
         
         fullNameText.translatesAutoresizingMaskIntoConstraints = false
-        fullNameText.topAnchor.constraint(equalTo: countryAbbreviationText.bottomAnchor, constant: 10).isActive = true
+        fullNameText.topAnchor.constraint(equalTo: countryAbbreviationText.bottomAnchor, constant: 0).isActive = true
         fullNameText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
         fullNameText.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
-        fullNameText.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
+        fullNameText.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         }
     
     func setup(_ countryAbbreviation: String,_ fullName: String) {

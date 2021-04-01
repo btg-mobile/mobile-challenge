@@ -66,7 +66,7 @@ class CurrencyConverterView: UIView {
     
     let destinationCountryBt: UIButton = {
         let button = UIButton(title: "BRL", borderColor: UIColor.blue)
-        button.addTarget(self, action: #selector(handlefirstCountry), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSecondCountry), for: .touchUpInside)
         return button
     }()
     
