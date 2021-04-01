@@ -11,6 +11,8 @@ class CurrencysViewModel: GenericModel {
     
     // MARK: - Attributes
     var updateCurrencies: () -> Void = { }
+    var updateErrorMessage: () -> Void = {}
+    var errorMessage: String = ""
     private var orderBy: CurrenciesOrder = .name
     private var repository: CurrencyRepositoryProtocol
     private var currencies = [Currency]()
@@ -38,8 +40,11 @@ class CurrencysViewModel: GenericModel {
                     self.currencies = self.getCurrenciesSortedBy(order: self.orderBy, currencies: currenciesObject.currencies)
                     self.filteredCurrencies = self.currencies
                 }
-            case .failure(_):
-                print("ERROR")
+            case .failure(let error):
+                self?.errorMessage = error.localizedDescription
+                DispatchQueue.main.async {
+                    self?.updateErrorMessage()
+                }
             }
         }
     }
@@ -58,12 +63,7 @@ class CurrencysViewModel: GenericModel {
     // MARK: - Public Methods
     func orderCurrenciesBy(_ order: CurrenciesOrder) {
         self.orderBy = order
-        switch order {
-        case .code:
-            self.filteredCurrencies = self.filteredCurrencies.sorted(by: {$0.code < $1.code})
-        case .name:
-            self.filteredCurrencies = self.filteredCurrencies.sorted(by: {$0.name < $1.name})
-        }
+        self.filteredCurrencies = self.getCurrenciesSortedBy(order: order, currencies: self.filteredCurrencies)
     }
     
     func filterCurrenciesBy(text: String) {
@@ -79,8 +79,12 @@ class CurrencysViewModel: GenericModel {
         self.router.present()
     }
     
-    func getCurrencies() -> [Currency] {
-        return self.filteredCurrencies
+    func hasCurrencies() -> Bool {
+        return self.filteredCurrencies.isEmpty
+    }
+
+    func currenciesCount() -> Int {
+        return self.filteredCurrencies.count
     }
     
     func getCurrency(position: Int) -> Currency? {

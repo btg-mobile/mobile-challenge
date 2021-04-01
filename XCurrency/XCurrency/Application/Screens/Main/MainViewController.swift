@@ -20,12 +20,8 @@ class MainViewController: UIViewController {
     init(mainViewModel: MainViewModel) {
         self.viewModel = mainViewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.updateCurrencies = { self.updateCurrenciesComponents() }
-        self.viewModel.updateErrorMessage = {
-            let alert = UIAlertController(title: "Error", message: self.viewModel.errorMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        self.viewModel.updateCurrencies = self.updateCurrenciesComponents
+        self.viewModel.updateErrorMessage = self.updateErrorMessage
     }
 
     required init?(coder: NSCoder) {
@@ -41,6 +37,12 @@ class MainViewController: UIViewController {
     }
 
     // MARK: - Private Methods
+    private func updateErrorMessage() {
+        let alert = UIAlertController(title: StringsDictionary.error, message: self.viewModel.errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringsDictionary.ok, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     private func updateCurrenciesComponents() {
         self.firstCurrencyComponent.setCurrency(currency: self.viewModel.firstCurrency)
         self.secondCurrencyComponent.setCurrency(currency: self.viewModel.secondCurrency)

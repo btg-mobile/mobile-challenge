@@ -35,6 +35,7 @@ class Network: Networking {
                                 }
                             }
                             if let decodedObject = try? JSONDecoder().decode(T.self, from: data) {
+                                UserDefaults.standard.set(data, forKey: "\(T.self)")
                                 completion(.success(decodedObject))
                             }
                         } catch {

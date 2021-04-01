@@ -15,7 +15,6 @@ class CurrencysViewController: UIViewController {
     // MARK: - Attributes
     private let viewModel: CurrencysViewModel
     private var selectedCurrency: (Currency) -> Void = { _ in }
-    private var updateCurrencies: () -> Void = {}
     private var alert: UIAlertController?
 
     // MARK: - Overrides
@@ -23,17 +22,12 @@ class CurrencysViewController: UIViewController {
         super.viewDidLoad()
         self.setupTableView()
         self.setupNavigationBar()
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = false
-//        definesPresentationContext = true
-        searchController.searchBar.scopeButtonTitles = [StringsDictionary.name, StringsDictionary.code]
-        self.navigationItem.searchController = searchController
+        self.setupSearchController()
+        self.viewModel.updateCurrencies = self.updateCurrencies
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if self.viewModel.getCurrencies().isEmpty {
+        if self.viewModel.hasCurrencies() {
             self.showLoadingView()
         }
     }
@@ -42,11 +36,7 @@ class CurrencysViewController: UIViewController {
     init(currencysViewModel: CurrencysViewModel) {
         self.viewModel = currencysViewModel
         super.init(nibName: nil, bundle: nil)
-        self.updateCurrencies = {
-            self.tableView.reloadData()
-            self.alert?.dismiss(animated: true, completion: nil)
-        }
-        self.viewModel.updateCurrencies = self.updateCurrencies
+        self.viewModel.updateErrorMessage = self.updateErrorMessage
     }
 
     required init?(coder: NSCoder) {
@@ -54,8 +44,33 @@ class CurrencysViewController: UIViewController {
     }
 
     // MARK: - Private Methods
+    private func updateErrorMessage() {
+        self.alert?.dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: StringsDictionary.error, message: self.viewModel.errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringsDictionary.ok, style: .default, handler: self.alertHandler(alert:)))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    private func updateCurrencies() {
+        self.tableView.reloadData()
+        self.alert?.dismiss(animated: true, completion: nil)
+    }
+
+    private func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = [StringsDictionary.name, StringsDictionary.code]
+        self.navigationItem.searchController = searchController
+    }
+
+    private func alertHandler(alert: UIAlertAction) {
+        self.viewModel.dismiss()
+    }
+
     private func showLoadingView() {
-        self.alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        self.alert = UIAlertController(title: nil, message: StringsDictionary.pleaseWait, preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
@@ -105,7 +120,7 @@ extension CurrencysViewController: UITableViewDelegate {
 // MARK: - TableViewDataSource
 extension CurrencysViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel.getCurrencies().count
+        return self.viewModel.currenciesCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,7 +144,7 @@ extension CurrencysViewController: UISearchBarDelegate {
 // MARK: - UISearchResultsUpdating
 extension CurrencysViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespaces) else { return }
         self.viewModel.filterCurrenciesBy(text: text)
     }
 }

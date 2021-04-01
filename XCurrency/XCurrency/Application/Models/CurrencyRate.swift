@@ -6,9 +6,6 @@
 //
 
 struct CurrencyRate: Codable {
-
-    // MARK: - Attributes
     var source: String
     var value: Double
-    
 }

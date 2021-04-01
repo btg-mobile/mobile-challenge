@@ -39,7 +39,7 @@ class CurrencyComponent: UIView {
     func setCurrency(currency: Currency?) {
         if let currency = currency {
             self.codeLabel.text = currency.code
-            self.nameLabel.text = currency.name
+            self.nameLabel.text = "(\(currency.name))"
         } else {
             self.codeLabel.text = "SAC"
             self.nameLabel.text = "Select a currency!"
