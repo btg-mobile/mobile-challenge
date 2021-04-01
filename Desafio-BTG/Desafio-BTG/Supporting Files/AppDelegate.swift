@@ -10,10 +10,14 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+//    var coordinator: DesafioBTGCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        self.coordinator = DesafioBTGCoordinator()
+//        self.window = coordinator.start()
+//        self.window?.makeKeyAndVisible()
         return true
     }
 

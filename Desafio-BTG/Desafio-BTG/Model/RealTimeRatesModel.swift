@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - RealTimeRatesModel
-struct RealTimeRates: Codable {
+struct RealTimeRatesModel: Codable {
     let success: Bool
     let terms, privacy: String
     let timestamp: Int

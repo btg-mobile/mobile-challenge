@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RealTimeRatesApiProtocol {
-    func fetch(completion: @escaping (Int?, _ details: RealTimeRates?) -> Swift.Void)
+    func fetch(completion: @escaping (Int?, _ details: RealTimeRatesModel?) -> Swift.Void)
 }
 
 class RealTimeRatesApi: RealTimeRatesApiProtocol {
@@ -23,8 +23,8 @@ class RealTimeRatesApi: RealTimeRatesApiProtocol {
         self.connectionManager = connectionManager
     }
     
-    func fetch(completion: @escaping (Int?, _ details: RealTimeRates?) -> Swift.Void)  {
-        connectionManager.request(url:  BaseUrl.urlRealTimeRates, method: .get, parameters: nil, headers: nil) { (statusCode, details: RealTimeRates?) in
+    func fetch(completion: @escaping (Int?, _ details: RealTimeRatesModel?) -> Swift.Void)  {
+        connectionManager.request(url:  BaseUrl.urlRealTimeRates, method: .get, parameters: nil, headers: nil) { (statusCode, details: RealTimeRatesModel?) in
             completion(statusCode, details)
         }
     }
