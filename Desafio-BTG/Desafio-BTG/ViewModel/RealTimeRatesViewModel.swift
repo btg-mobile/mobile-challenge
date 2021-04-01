@@ -12,7 +12,7 @@ final class RealTimeRatesViewModel {
     private let api: RealTimeRatesApiProtocol
     private var model: RealTimeRatesModel?
     
-    init(api: RealTimeRatesApiProtocol = RealTimeRatesApi()) {
+    init(api: RealTimeRatesApiProtocol = RequestApi()) {
         self.api = api
     }
     
@@ -21,7 +21,7 @@ final class RealTimeRatesViewModel {
     }
     
     func fetchDetails(_ completion: @escaping (Bool) -> Void) {
-        api.fetch { statusCode, model in
+        api.fetchRealTimeRates { statusCode, model in
             guard let statusCode = statusCode else { return }
             if ConnectionErrorManager.isSuccessfulStatusCode(statusCode: statusCode) {
                 guard let model = model else { return }

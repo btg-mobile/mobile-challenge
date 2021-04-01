@@ -10,6 +10,7 @@ import UIKit
 class CurrencyConverterVC: BaseViewController {
 
     private let viewModel = RealTimeRatesViewModel()
+    private let viewModelList = CurrencyListViewModel()
     
     private lazy var contentView: CurrencyConverterView = {
         let view = CurrencyConverterView(viewModel: viewModel)
@@ -27,6 +28,10 @@ class CurrencyConverterVC: BaseViewController {
         super.loadView()
         view = contentView
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        fetchDetails()
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -48,7 +53,7 @@ class CurrencyConverterVC: BaseViewController {
     
     /// go to user registration
     private func countryFirstPressed() {
-        let goToTableView = CurrencyListController()
+        let goToTableView = CurrencyListController(viewModel: viewModelList)
         let navVC = UINavigationController(rootViewController: goToTableView)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)

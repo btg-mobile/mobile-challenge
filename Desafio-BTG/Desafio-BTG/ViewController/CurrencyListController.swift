@@ -11,6 +11,7 @@ class CurrencyListController: BaseViewController {
     
     // MARK: - Properties
     
+    var viewModel: CurrencyListViewModel
     private lazy var contentView: CurrencyListView = {
         let view = CurrencyListView()
         view.tableView.delegate = self
@@ -27,9 +28,34 @@ class CurrencyListController: BaseViewController {
         setupNavigation()
     }
     
+    init(viewModel: CurrencyListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        fetchDetails()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         self.view = contentView
     }
+    
+    private func fetchDetails() {
+        self.viewModel.fetchDetails { success in
+            if success {
+                self.contentView.tableView.reloadData()
+
+            } else {
+                self.handleError()
+            }
+        }
+    }
+    
+    private func handleError() {
+        print("Erro")    }
     
 }
 
@@ -37,12 +63,15 @@ class CurrencyListController: BaseViewController {
 
 extension CurrencyListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.modelDetails?.currencies.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CurrencyListCell
-        cell.setup("USD", "United State")
+        let keyArray = viewModel.convertDicKeyToArray()
+        let valueArray = viewModel.convertDicValueToArray()
+        
+        cell.setup("\(keyArray[indexPath.row])", "\(valueArray[indexPath.row]))")
         cell.selectionStyle = .none
         return cell
     }
