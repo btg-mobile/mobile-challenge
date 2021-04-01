@@ -29,7 +29,7 @@ class CurrencyConverterVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         contentView.mainStackView.changeBackgroundColor(color: UIColor.cyan)
-        contentView.stackView1.changeBackgroundColor(color: UIColor.yellow)
+        contentView.stackView.changeBackgroundColor(color: UIColor.yellow)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
