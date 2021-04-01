@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencysViewController" customModule="XCurrency" customModuleProvider="target">
             <connections>
-                <outlet property="segmentControll" destination="3lg-jH-NdH" id="REj-Ji-M7t"/>
                 <outlet property="tableView" destination="SGE-RU-vvl" id="8my-1g-GkY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,15 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3lg-jH-NdH">
-                    <rect key="frame" x="96.5" y="16" width="127" height="32"/>
-                    <segments>
-                        <segment title="Nome"/>
-                        <segment title="Codigo"/>
-                    </segments>
-                </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SGE-RU-vvl">
-                    <rect key="frame" x="0.0" y="57" width="320" height="423"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -39,9 +31,7 @@
                 <constraint firstItem="SGE-RU-vvl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1Ea-CD-s5x"/>
                 <constraint firstItem="SGE-RU-vvl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4bL-mh-SvP"/>
                 <constraint firstItem="SGE-RU-vvl" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Q1n-2C-oeU"/>
-                <constraint firstItem="3lg-jH-NdH" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="RhP-Gd-caK"/>
-                <constraint firstItem="SGE-RU-vvl" firstAttribute="top" secondItem="3lg-jH-NdH" secondAttribute="bottom" constant="10" id="jzg-ab-ESi"/>
-                <constraint firstItem="3lg-jH-NdH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="kbU-ib-bbj"/>
+                <constraint firstItem="SGE-RU-vvl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ovN-K5-FxY"/>
             </constraints>
             <point key="canvasLocation" x="131.25" y="110"/>
         </view>

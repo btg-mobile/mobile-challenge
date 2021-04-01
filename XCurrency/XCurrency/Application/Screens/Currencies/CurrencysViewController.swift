@@ -10,7 +10,6 @@ import UIKit
 class CurrencysViewController: UIViewController {
 
     // MARK: - Outlets
-    @IBOutlet private weak var segmentControll: UISegmentedControl!
     @IBOutlet private weak var tableView: UITableView!
 
     // MARK: - Attributes
@@ -24,6 +23,13 @@ class CurrencysViewController: UIViewController {
         super.viewDidLoad()
         self.setupTableView()
         self.setupNavigationBar()
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+//        definesPresentationContext = true
+        searchController.searchBar.scopeButtonTitles = [StringsDictionary.name, StringsDictionary.code]
+        self.navigationItem.searchController = searchController
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +65,6 @@ class CurrencysViewController: UIViewController {
     }
 
     private func setupTableView() {
-        self.segmentControll.addTarget(self, action: #selector(self.valueChanged(_:)), for: .valueChanged)
         let nib = UINib(nibName: "CurrencyTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CurrencyTableViewCell.reuseIdentifier)
         self.tableView.dataSource = self
@@ -72,6 +77,10 @@ class CurrencysViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
+    private func getSelectedScopeIndexType(index: Int) -> CurrenciesOrder {
+        return index == 0 ? .name : .code
+    }
+
     // MARK: - Public Methods
     func setDelegate(selectedCurrency: @escaping (Currency) -> Void) {
         self.selectedCurrency = selectedCurrency
@@ -80,14 +89,6 @@ class CurrencysViewController: UIViewController {
     // MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-    }
-
-    @objc func valueChanged(_ segmentedControll: UISegmentedControl) {
-        if segmentControll.selectedSegmentIndex == 0 {
-            self.viewModel.orderCurrenciesBy(.name)
-        } else {
-            self.viewModel.orderCurrenciesBy(.code)
-        }
     }
 }
 
@@ -115,5 +116,20 @@ extension CurrencysViewController: UITableViewDataSource {
             }
         }
         return UITableViewCell()
+    }
+}
+
+// MARK: - SearchBarDelegate
+extension CurrencysViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        self.viewModel.orderCurrenciesBy(self.getSelectedScopeIndexType(index: selectedScope))
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension CurrencysViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        self.viewModel.filterCurrenciesBy(text: text)
     }
 }

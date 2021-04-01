@@ -7,9 +7,11 @@
 
 struct StringsDictionary {
     static let back = "Back"
-    static let firstCurrency = "First Currency"
-    static let secondCurrency = "Second Currency"
-    static let currencyConverter = "Currency converter"
     static let checkInternetConnection = "Check your internet connection"
+    static let code = "Code"
+    static let currencyConverter = "Currency converter"
     static let errorContactSupport = "Error, contact support"
+    static let firstCurrency = "First Currency"
+    static let name = "Name"
+    static let secondCurrency = "Second Currency"
 }
