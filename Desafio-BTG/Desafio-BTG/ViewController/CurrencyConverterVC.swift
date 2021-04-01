@@ -13,6 +13,7 @@ class CurrencyConverterVC: BaseViewController {
     
     private lazy var contentView: CurrencyConverterView = {
         let view = CurrencyConverterView(viewModel: viewModel)
+        view.firstCountyAction = countryFirstPressed
         return view
     }()
     
@@ -44,5 +45,15 @@ class CurrencyConverterVC: BaseViewController {
             }
         }
     }
+    
+    /// go to user registration
+    private func countryFirstPressed() {
+        let goToTableView = CurrencyListController()
+        let navVC = UINavigationController(rootViewController: goToTableView)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true, completion: nil)
+        print("clicou no primeiro pais")
+    }
+    
 }
 

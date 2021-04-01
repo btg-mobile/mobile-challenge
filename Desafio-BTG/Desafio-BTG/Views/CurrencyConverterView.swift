@@ -54,7 +54,7 @@ class CurrencyConverterView: UIView {
     
     let currentCurrency: UIButton = {
         let button = UIButton(title: "USA", borderColor: UIColor.blue)
-        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlefirstCountry), for: .touchUpInside)
         return button
     }()
     
@@ -66,7 +66,7 @@ class CurrencyConverterView: UIView {
     
     let destinationCountryBt: UIButton = {
         let button = UIButton(title: "BRL", borderColor: UIColor.blue)
-        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlefirstCountry), for: .touchUpInside)
         return button
     }()
     
@@ -171,13 +171,13 @@ class CurrencyConverterView: UIView {
     // MARK: - Public Functions
     
     /// functions to trigger login and signIn
-    @objc func handleLogin() {
+    @objc func handlefirstCountry() {
         firstCountyAction?()
-        print("banana")
     }
 
-    @objc func handleSignUp() {
+    @objc func handleSecondCountry() {
         secondCountryAction?()
+        print("clicou no segundo pais")
     }
     
     @objc func handleConvert() {
