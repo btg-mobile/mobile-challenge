@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (4.9.1)
+  - FSnapChatLoading (1.0.5)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
+  - FSnapChatLoading
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FSnapChatLoading
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  FSnapChatLoading: c06f4e0a4a4ec1eba8f2fef46f8c1653cc79b2ef
 
-PODFILE CHECKSUM: 0498a5fbd92a4fbc7bff11aa90080be7bd8dbdc4
+PODFILE CHECKSUM: a5b5ee6007f5d00d2966df7e7f5963dd858946e7
 
 COCOAPODS: 1.10.1

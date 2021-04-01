@@ -7,6 +7,7 @@ target 'Desafio-BTG' do
 
   # Pods for Desafio-BTG
   pod 'Alamofire', '~>4.9.1'
+  pod 'FSnapChatLoading'
   
   target 'Desafio-BTGTests' do
     inherit! :search_paths

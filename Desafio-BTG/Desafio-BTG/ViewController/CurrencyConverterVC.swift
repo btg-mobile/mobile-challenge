@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyConverterVC: UIViewController {
+class CurrencyConverterVC: BaseViewController {
 
     private let viewModel = RealTimeRatesViewModel()
     
@@ -18,6 +18,7 @@ class CurrencyConverterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeHideKeyboard()
         self.view.backgroundColor = .white
     }
     
@@ -30,10 +31,6 @@ class CurrencyConverterVC: UIViewController {
         super.viewDidAppear(animated)
         contentView.mainStackView.changeBackgroundColor(color: UIColor.cyan)
         contentView.stackView.changeBackgroundColor(color: UIColor.yellow)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fetchDetails()
     }
     
     private func fetchDetails() {

@@ -1,0 +1,6 @@
+framework module FSnapChatLoading {
+  umbrella header "FSnapChatLoading-umbrella.h"
+
+  export *
+  module * { export * }
+}
