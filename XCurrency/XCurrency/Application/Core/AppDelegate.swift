@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
         self.window?.rootViewController = navigationController
-        let router = MainRouter(window: self.window!, navigationController: navigationController)
+        let router = MainRouter(navigationController: navigationController)
         router.present()
         window?.makeKeyAndVisible()
         return true

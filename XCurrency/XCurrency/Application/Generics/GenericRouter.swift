@@ -10,21 +10,17 @@ import UIKit
 class GenericRouter {
 
     // MARK: - Attributes
-    private let window: UIWindow
     private var navigationController: UINavigationController!
     private var viewController: UIViewController!
 
     // MARK: - Initializer
-    init(window: UIWindow, navigationController: UINavigationController) {
-        self.window = window
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
     // MARK: - Public Methods
     func present() {
-        UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.navigationController.pushViewController(self.viewController, animated: true)
-        }, completion: nil)
+        self.navigationController.pushViewController(self.viewController, animated: true)
     }
 
     func dismiss() {
@@ -41,9 +37,5 @@ class GenericRouter {
 
     func setViewController(viewController: UIViewController) {
         self.viewController = viewController
-    }
-
-    func getWindow() -> UIWindow {
-        return self.window
     }
 }

@@ -54,7 +54,7 @@ class CurrencysViewController: UIViewController {
     }
 
     deinit {
-        print("asdfuahsdufsd")
+        print("Deinitialized")
     }
 
     // MARK: - Private Methods
