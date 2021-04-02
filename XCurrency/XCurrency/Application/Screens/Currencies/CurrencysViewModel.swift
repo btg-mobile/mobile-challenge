@@ -80,7 +80,7 @@ class CurrencysViewModel: GenericModel {
     }
     
     func hasCurrencies() -> Bool {
-        return self.filteredCurrencies.isEmpty
+        return !self.filteredCurrencies.isEmpty
     }
 
     func currenciesCount() -> Int {

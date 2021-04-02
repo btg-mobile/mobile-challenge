@@ -27,7 +27,7 @@ class CurrencysViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if self.viewModel.hasCurrencies() {
+        if !self.viewModel.hasCurrencies() {
             self.showLoadingView()
         }
     }
