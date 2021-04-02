@@ -23,7 +23,6 @@ class CurrencysViewController: UIViewController {
         self.setupTableView()
         self.setupNavigationBar()
         self.setupSearchController()
-        self.viewModel.updateCurrencies = self.updateCurrencies
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -36,26 +35,29 @@ class CurrencysViewController: UIViewController {
     init(currencysViewModel: CurrencysViewModel) {
         self.viewModel = currencysViewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.updateErrorMessage = self.updateErrorMessage
+
+        self.viewModel.updateErrorMessage = { [unowned self] in
+            self.alert?.dismiss(animated: true, completion: nil)
+            let alert = UIAlertController(title: StringsDictionary.error, message: self.viewModel.errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: StringsDictionary.ok, style: .default, handler: self.alertHandler(alert:)))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        self.viewModel.updateCurrencies = { [unowned self] in
+            self.tableView.reloadData()
+            self.alert?.dismiss(animated: true, completion: nil)
+        }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        print("asdfuahsdufsd")
+    }
+
     // MARK: - Private Methods
-    private func updateErrorMessage() {
-        self.alert?.dismiss(animated: true, completion: nil)
-        let alert = UIAlertController(title: StringsDictionary.error, message: self.viewModel.errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: StringsDictionary.ok, style: .default, handler: self.alertHandler(alert:)))
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    private func updateCurrencies() {
-        self.tableView.reloadData()
-        self.alert?.dismiss(animated: true, completion: nil)
-    }
-
     private func setupSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -99,11 +101,6 @@ class CurrencysViewController: UIViewController {
     // MARK: - Public Methods
     func setDelegate(selectedCurrency: @escaping (Currency) -> Void) {
         self.selectedCurrency = selectedCurrency
-    }
-
-    // MARK: - Actions
-    @IBAction func close(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
     }
 }
 

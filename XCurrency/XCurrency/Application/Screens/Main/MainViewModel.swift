@@ -69,10 +69,6 @@ class MainViewModel: GenericModel {
     }
 
     // MARK: - Public Methods
-    func presentMain() {
-        self.router.present()
-    }
-
     func presentCurrencySelector(order: CurrenciesPosition) {
         if let router = self.router as? MainRouter {
             router.presentCurrencysView(order: order, selectedCurrency: { currency in
