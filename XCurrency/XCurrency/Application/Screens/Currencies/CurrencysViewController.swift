@@ -26,7 +26,7 @@ class CurrencysViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if !self.viewModel.hasCurrencies() {
+        if self.viewModel.loading {
             self.showLoadingView()
         }
     }
@@ -49,12 +49,12 @@ class CurrencysViewController: UIViewController {
         }
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    deinit {
+        print("")
     }
 
-    deinit {
-        print("Deinitialized")
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Private Methods

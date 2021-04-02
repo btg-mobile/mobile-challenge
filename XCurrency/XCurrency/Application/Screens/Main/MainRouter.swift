@@ -8,21 +8,23 @@
 import UIKit
 
 class MainRouter: GenericRouter {
+
+    // MARK: - Attributes
+    private var viewModel: MainViewModel
     
     // MARK: - Overrides
     override init(navigationController: UINavigationController) {
-        let viewModel = MainViewModel(currencyRepository: CurrencyRepository(network: Network()))
+        self.viewModel = MainViewModel(currencyRepository: CurrencyRepository(network: Network()))
         super.init(navigationController: navigationController)
-        viewModel.router = self
-        let mainViewController = MainViewController(mainViewModel: viewModel)
-        self.setViewController(viewController: mainViewController)
+        self.viewModel.router = self
     }
 
     // MARK: - Public Methods
+    func present() {
+        self.navigationController.pushViewController(MainViewController(mainViewModel: self.viewModel), animated: true)
+    }
+
     func presentCurrencysView(order: CurrenciesPosition, selectedCurrency: @escaping (Currency) -> Void) {
-        let currencysRouter = CurrencysRouter(navigationController: self.getNavigationController())
-        currencysRouter.getViewController().title = (order == .first) ? StringsDictionary.firstCurrency : StringsDictionary.secondCurrency
-        (currencysRouter.getViewController() as! CurrencysViewController).setDelegate(selectedCurrency: selectedCurrency)
-        currencysRouter.present()
+        CurrencysRouter(navigationController: self.navigationController).present(order: order, selectedCurrency: selectedCurrency)
     }
 }

@@ -37,7 +37,6 @@ class CurrenciesViewModelTests: XCTestCase {
         self.setup(data: data)
         XCTAssertEqual(self.repository.getCurrencyListCount, 1)
         XCTAssertTrue(self.viewModel.errorMessage.isEmpty)
-        XCTAssertTrue(self.viewModel.hasCurrencies())
         XCTAssertEqual(self.viewModel.currenciesCount(), 1)
     }
 
@@ -47,7 +46,6 @@ class CurrenciesViewModelTests: XCTestCase {
         XCTAssertEqual(self.repository.getCurrencyListCount, 1)
         XCTAssertFalse(self.viewModel.errorMessage.isEmpty)
         XCTAssertEqual(self.viewModel.errorMessage, "ERROR")
-        XCTAssertFalse(self.viewModel.hasCurrencies())
         XCTAssertEqual(self.viewModel.currenciesCount(), 0)
     }
 
@@ -56,7 +54,6 @@ class CurrenciesViewModelTests: XCTestCase {
         self.setup(data: data)
         XCTAssertEqual(self.repository.getCurrencyListCount, 1)
         XCTAssertTrue(self.viewModel.errorMessage.isEmpty)
-        XCTAssertTrue(self.viewModel.hasCurrencies())
         XCTAssertEqual(self.viewModel.currenciesCount(), 2)
         XCTAssertNotNil(self.viewModel.getCurrency(position: 0))
         XCTAssertEqual(self.viewModel.getCurrency(position: 0)!.code, "BRL")
@@ -68,7 +65,6 @@ class CurrenciesViewModelTests: XCTestCase {
         self.viewModel.orderCurrenciesBy(.name)
         XCTAssertEqual(self.repository.getCurrencyListCount, 1)
         XCTAssertTrue(self.viewModel.errorMessage.isEmpty)
-        XCTAssertTrue(self.viewModel.hasCurrencies())
         XCTAssertEqual(self.viewModel.currenciesCount(), 2)
         XCTAssertNotNil(self.viewModel.getCurrency(position: 0))
         XCTAssertEqual(self.viewModel.getCurrency(position: 0)!.name, "Brazilian Real")
@@ -80,7 +76,6 @@ class CurrenciesViewModelTests: XCTestCase {
         self.viewModel.orderCurrenciesBy(.code)
         XCTAssertEqual(self.repository.getCurrencyListCount, 1)
         XCTAssertTrue(self.viewModel.errorMessage.isEmpty)
-        XCTAssertTrue(self.viewModel.hasCurrencies())
         XCTAssertEqual(self.viewModel.currenciesCount(), 2)
         XCTAssertNotNil(self.viewModel.getCurrency(position: 0))
         XCTAssertEqual(self.viewModel.getCurrency(position: 0)!.code, "BRL")
@@ -92,7 +87,6 @@ class CurrenciesViewModelTests: XCTestCase {
         self.viewModel.filterCurrenciesBy(text: "BRL")
         XCTAssertEqual(self.repository.getCurrencyListCount, 1)
         XCTAssertTrue(self.viewModel.errorMessage.isEmpty)
-        XCTAssertTrue(self.viewModel.hasCurrencies())
         XCTAssertEqual(self.viewModel.currenciesCount(), 1)
         XCTAssertNotNil(self.viewModel.getCurrency(position: 0))
         XCTAssertEqual(self.viewModel.getCurrency(position: 0)!.code, "BRL")
