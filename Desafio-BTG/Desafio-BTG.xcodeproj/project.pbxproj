@@ -18,8 +18,6 @@
 		2F57AEBA2614C63100FBCA90 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEB92614C63100FBCA90 /* ConnectionManager.swift */; };
 		2F57AEBF2614C65F00FBCA90 /* ConnectionErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEBE2614C65F00FBCA90 /* ConnectionErrorManager.swift */; };
 		2F57AEC52614C6BB00FBCA90 /* RequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEC42614C6BB00FBCA90 /* RequestApi.swift */; };
-		2F57AED42614CDA300FBCA90 /* RealTimeRatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AED32614CDA300FBCA90 /* RealTimeRatesViewModel.swift */; };
-		2F57AEE42614EB0000FBCA90 /* DesafioBTGCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEE32614EB0000FBCA90 /* DesafioBTGCoordinator.swift */; };
 		2F57AEF82614F8F000FBCA90 /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AEF72614F8F000FBCA90 /* CurrencyConverterView.swift */; };
 		2F57AF1B2615163300FBCA90 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF1A2615163300FBCA90 /* UITextField+Extensions.swift */; };
 		2F57AF23261517F400FBCA90 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF22261517F400FBCA90 /* UIButton+Extension.swift */; };
@@ -29,7 +27,7 @@
 		2F57AF492616074E00FBCA90 /* CurrencyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF482616074E00FBCA90 /* CurrencyListController.swift */; };
 		2F57AF4E2616086B00FBCA90 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF4D2616086B00FBCA90 /* CurrencyListCell.swift */; };
 		2F57AF532616164100FBCA90 /* CurrencyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF522616164100FBCA90 /* CurrencyListModel.swift */; };
-		2F57AF5E261619C000FBCA90 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF5D261619C000FBCA90 /* CurrencyListViewModel.swift */; };
+		2F57AF5E261619C000FBCA90 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF5D261619C000FBCA90 /* CurrencyViewModel.swift */; };
 		2FB5B449261660C500C76CDD /* Dic+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B448261660C500C76CDD /* Dic+Extensions.swift */; };
 		A2B93753BA1788EE335ED750 /* Pods_Desafio_BTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE8F94206A21BA0758CC5DB /* Pods_Desafio_BTG.framework */; };
 		AA679301A3E68A1FBD52F5CB /* Pods_Desafio_BTGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31408F26C919C5AD30E7B89 /* Pods_Desafio_BTGTests.framework */; };
@@ -72,8 +70,6 @@
 		2F57AEB92614C63100FBCA90 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		2F57AEBE2614C65F00FBCA90 /* ConnectionErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorManager.swift; sourceTree = "<group>"; };
 		2F57AEC42614C6BB00FBCA90 /* RequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestApi.swift; sourceTree = "<group>"; };
-		2F57AED32614CDA300FBCA90 /* RealTimeRatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeRatesViewModel.swift; sourceTree = "<group>"; };
-		2F57AEE32614EB0000FBCA90 /* DesafioBTGCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioBTGCoordinator.swift; sourceTree = "<group>"; };
 		2F57AEF72614F8F000FBCA90 /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
 		2F57AF1A2615163300FBCA90 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		2F57AF22261517F400FBCA90 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -83,7 +79,7 @@
 		2F57AF482616074E00FBCA90 /* CurrencyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListController.swift; sourceTree = "<group>"; };
 		2F57AF4D2616086B00FBCA90 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
 		2F57AF522616164100FBCA90 /* CurrencyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListModel.swift; sourceTree = "<group>"; };
-		2F57AF5D261619C000FBCA90 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
+		2F57AF5D261619C000FBCA90 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		2FB5B448261660C500C76CDD /* Dic+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dic+Extensions.swift"; sourceTree = "<group>"; };
 		6E9B7A776242EBA940600F6B /* Pods-Desafio-BTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.release.xcconfig"; sourceTree = "<group>"; };
 		9F90976F1551CF559B303070 /* Pods-Desafio-BTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,7 +147,6 @@
 				2F57AF192615161B00FBCA90 /* Extensions */,
 				2F57AEEC2614F6D600FBCA90 /* Views */,
 				2F57AEEB2614F6CD00FBCA90 /* ViewController */,
-				2F57AEE22614EAE100FBCA90 /* Coordinator */,
 				2F57AED22614CD8F00FBCA90 /* ViewModel */,
 				2F57AEB52614C62100FBCA90 /* API */,
 				2F57AE962614C40C00FBCA90 /* Model */,
@@ -221,18 +216,9 @@
 		2F57AED22614CD8F00FBCA90 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2F57AED32614CDA300FBCA90 /* RealTimeRatesViewModel.swift */,
-				2F57AF5D261619C000FBCA90 /* CurrencyListViewModel.swift */,
+				2F57AF5D261619C000FBCA90 /* CurrencyViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		2F57AEE22614EAE100FBCA90 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				2F57AEE32614EB0000FBCA90 /* DesafioBTGCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		2F57AEEB2614F6CD00FBCA90 /* ViewController */ = {
@@ -535,13 +521,11 @@
 				2F57AE572614B58B00FBCA90 /* AppDelegate.swift in Sources */,
 				2F57AF4E2616086B00FBCA90 /* CurrencyListCell.swift in Sources */,
 				2F57AF532616164100FBCA90 /* CurrencyListModel.swift in Sources */,
-				2F57AF5E261619C000FBCA90 /* CurrencyListViewModel.swift in Sources */,
+				2F57AF5E261619C000FBCA90 /* CurrencyViewModel.swift in Sources */,
 				2F57AF342616029800FBCA90 /* BaseViewController.swift in Sources */,
 				2F57AF23261517F400FBCA90 /* UIButton+Extension.swift in Sources */,
 				2F57AEF82614F8F000FBCA90 /* CurrencyConverterView.swift in Sources */,
 				2F57AE982614C47E00FBCA90 /* RealTimeRatesModel.swift in Sources */,
-				2F57AED42614CDA300FBCA90 /* RealTimeRatesViewModel.swift in Sources */,
-				2F57AEE42614EB0000FBCA90 /* DesafioBTGCoordinator.swift in Sources */,
 				2F57AF2F26155F9300FBCA90 /* UIStackView+Extension.swift in Sources */,
 				2F57AEC52614C6BB00FBCA90 /* RequestApi.swift in Sources */,
 				2F57AE592614B58B00FBCA90 /* SceneDelegate.swift in Sources */,

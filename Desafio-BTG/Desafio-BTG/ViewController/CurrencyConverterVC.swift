@@ -9,8 +9,8 @@ import UIKit
 
 class CurrencyConverterVC: BaseViewController {
 
-    private let viewModel = RealTimeRatesViewModel()
-    private let viewModelList = CurrencyListViewModel()
+    private let viewModel = CurrencyViewModel()
+    private let viewModelList = CurrencyViewModel()
     
     private lazy var contentView: CurrencyConverterView = {
         let view = CurrencyConverterView(viewModel: viewModel)
@@ -29,26 +29,10 @@ class CurrencyConverterVC: BaseViewController {
         view = contentView
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        fetchDetails()
-//    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         contentView.mainStackView.changeBackgroundColor(color: UIColor.cyan)
         contentView.stackView.changeBackgroundColor(color: UIColor.yellow)
-    }
-    
-    private func fetchDetails() {
-        self.viewModel.fetchDetails { success in
-            if success {
-//                self.dataSource.setViewModel(viewModel: self.viewModel)
-//                self.contentView.setDataSource(self.dataSource)
-            } else {
-//                self.handleError()
-                print("Error")
-            }
-        }
     }
     
     /// go to user registration
@@ -59,6 +43,5 @@ class CurrencyConverterVC: BaseViewController {
         present(navVC, animated: true, completion: nil)
         print("clicou no primeiro pais")
     }
-    
 }
 

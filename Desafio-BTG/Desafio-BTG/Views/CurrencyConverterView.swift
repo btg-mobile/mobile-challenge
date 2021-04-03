@@ -17,7 +17,7 @@ class CurrencyConverterView: UIView {
     
     // MARK: - Constants
     
-    private let viewModel: RealTimeRatesViewModel
+    private let viewModel: CurrencyViewModel
     
     /// creating stack view main
     var mainStackView: UIStackView = UIStackView()
@@ -72,7 +72,7 @@ class CurrencyConverterView: UIView {
     
     // MARK: - Override & Initializers
     
-    init(viewModel: RealTimeRatesViewModel) {
+    init(viewModel: CurrencyViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         autoLayoutMainStackView()

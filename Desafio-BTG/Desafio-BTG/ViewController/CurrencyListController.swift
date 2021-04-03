@@ -11,7 +11,8 @@ class CurrencyListController: BaseViewController {
     
     // MARK: - Properties
     
-    var viewModel: CurrencyListViewModel
+    var viewModel: CurrencyViewModel
+    
     private lazy var contentView: CurrencyListView = {
         let view = CurrencyListView()
         view.tableView.delegate = self
@@ -28,9 +29,10 @@ class CurrencyListController: BaseViewController {
         setupNavigation()
     }
     
-    init(viewModel: CurrencyListViewModel) {
+    init(viewModel: CurrencyViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        fetchValue()
         fetchDetails()
     }
     
@@ -43,11 +45,20 @@ class CurrencyListController: BaseViewController {
         self.view = contentView
     }
     
+    private func fetchValue() {
+        self.viewModel.fetchCurrentValue { success in
+            if success {
+                self.contentView.tableView.reloadData()
+            } else {
+                self.handleError()
+            }
+        }
+    }
+    
     private func fetchDetails() {
         self.viewModel.fetchDetails { success in
             if success {
                 self.contentView.tableView.reloadData()
-
             } else {
                 self.handleError()
             }
@@ -55,7 +66,8 @@ class CurrencyListController: BaseViewController {
     }
     
     private func handleError() {
-        print("Erro")    }
+        print("Erro")
+    }
     
 }
 
@@ -70,8 +82,7 @@ extension CurrencyListController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CurrencyListCell
         let keyArray = viewModel.convertDicKeyToArray()
         let valueArray = viewModel.convertDicValueToArray()
-        
-        cell.setup("\(keyArray[indexPath.row])", "\(valueArray[indexPath.row]))")
+        cell.setup("\(keyArray[indexPath.row])","\(valueArray[indexPath.row]))")
         cell.selectionStyle = .none
         return cell
     }
@@ -80,4 +91,9 @@ extension CurrencyListController: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let keyArray = viewModel.convertDicKeyToArray()[indexPath.row]
+        viewModel.gettingCountryAcronym(country: keyArray)
+        dismiss(animated: true, completion: nil)
+    }
 }
