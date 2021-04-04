@@ -43,24 +43,18 @@ class CurrencyConverterVC: BaseViewController {
     }
     
     func setupCountryUI() {
-        guard let teste = viewModelList.countrySelectedOne else { return }
-        contentView.currentCurrency.setTitle("\(teste)", for: .normal)
+        guard let setupCountryName = viewModelList.countrySelectedOne else { return }
+        contentView.currentCurrencyBt.setTitle("\(setupCountryName)", for: .normal)
     }
     
     func setupCountryTwoUI() {
-      guard let teste1 = viewModelList.countrySelectedTwo else { return }
-        contentView.destinationCountryBt.setTitle("\(teste1)", for: .normal)
+      guard let setupCountryNameTo = viewModelList.countrySelectedTwo else { return }
+        contentView.destinationCountryBt.setTitle("\(setupCountryNameTo)", for: .normal)
     }
     
     override func loadView() {
         super.loadView()
         view = contentView
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        contentView.mainStackView.changeBackgroundColor(color: UIColor.cyan)
-        contentView.stackView.changeBackgroundColor(color: UIColor.yellow)
     }
     
     /// go to user registration
@@ -80,17 +74,27 @@ class CurrencyConverterVC: BaseViewController {
         SelectedCurrencySingleton.selectedCurrency = .toCurrency
     }
     
+    private func allowConvert() -> Bool {
+        if contentView.currentCurrencyBt.titleLabel?.text == "select country" || contentView.destinationCountryBt.titleLabel?.text == "select country" {
+            return false
+        }
+        return true
+    }
+    
     private func handleConvertPressed() {
-        guard let countryOne = viewModelList.countrySelectedOne else { return }
-        guard let CountryTwo = viewModelList.countrySelectedTwo else { return }
-        guard let convertedValue = contentView.insertTextField.text else { return}
-        
-        viewModelList.loadCurrencyData(ofCurrency: countryOne, toCurrency: CountryTwo, value: Double(convertedValue) ?? 0.0) {  [weak self] (finalValue) in
-            guard let self = self else { return }
+        if allowConvert() {
+            guard let countryOne = viewModelList.countrySelectedOne else { return }
+            guard let CountryTwo = viewModelList.countrySelectedTwo else { return }
+            guard let convertedValue = contentView.insertTextField.text else { return}
             
-            
-            let stringFormatted = String(format: "%.2f", finalValue ?? 0.0)
-            self.contentView.valueConverttedTextField.text = String(stringFormatted)
+            viewModelList.loadCurrencyData(ofCurrency: countryOne, toCurrency: CountryTwo, value: Double(convertedValue) ?? 0.0) {  [weak self] (finalValue) in
+                guard let self = self else { return }
+                
+                let stringFormatted = String(format: "%.2f", finalValue ?? 0.0)
+                self.contentView.valueConverttedTextField.text = String(stringFormatted)
+            }
+        } else {
+            showAlert(alertText: "Error", alertMessage: "please select a country")
         }
     }
 }

@@ -55,16 +55,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4BD8EF60-8918-4C52-A9F4-D91598248915"
+            uuid = "94613E4C-C6AE-487A-B912-EFA49AB357F0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Desafio-BTG/ViewController/CurrencyConverterVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "handleConvertPressed()"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "allowConvert()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

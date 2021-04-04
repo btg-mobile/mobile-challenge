@@ -32,49 +32,53 @@ class CurrencyConverterView: UIView {
     var contentView: UIView = UIView()
     
     let insertTextField: UITextField = {
-        let tf = UITextField("insira um valor a ser convertido")
+        let tf = UITextField("enter a value to be converted")
+        tf.text = "1"
+        tf.keyboardType = .numberPad
         return tf
     }()
     
     let valueConverttedTextField: UITextField = {
-        let tf = UITextField("valor convertido")
+        let tf = UITextField("converted value")
         tf.isEnabled = false
         return tf
     }()
     
     let convertCurrencies: UIButton = {
-        let button = UIButton(title: "Converter moedas", borderColor: UIColor.blue)
+        let button = UIButton(title: "convert currency", borderColor: UIColor.blue)
         button.addTarget(self, action: #selector(handleConvert), for: .touchUpInside)
         return button
     }()
     
     var labelFirst: UILabel = {
         let label = UILabel()
-        label.text = "De:"
+        label.text = "of:"
         return label
     }()
     
-    let currentCurrency: UIButton = {
-//        let button = UIButton(title: "USA", borderColor: UIColor.blue)
+    let currentCurrencyBt: UIButton = {
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         button.backgroundColor = UIColor.gray
-        button.setTitle("Select Country", for: .normal)
+        button.setTitle("select country", for: .normal)
         button.addTarget(self, action: #selector(handlefirstCountry), for: .touchUpInside)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
         return button
     }()
     
     let currencyDestinationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Para:"
+        label.text = "to:"
         return label
     }()
     
     let destinationCountryBt: UIButton = {
-//        let button = UIButton(title: "BRL", borderColor: UIColor.blue)
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         button.backgroundColor = UIColor.gray
-        button.setTitle("Select Country", for: .normal)
+        button.setTitle("select country", for: .normal)
         button.addTarget(self, action: #selector(handleSecondCountry), for: .touchUpInside)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
         return button
     }()
     
@@ -128,10 +132,10 @@ class CurrencyConverterView: UIView {
         stackViewRight.addArrangedSubview(labelFirst)
         labelFirst.translatesAutoresizingMaskIntoConstraints = false
         
-        stackViewRight.addArrangedSubview(currentCurrency)
+        stackViewRight.addArrangedSubview(currentCurrencyBt)
         
-        currentCurrency.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        currentCurrency.translatesAutoresizingMaskIntoConstraints = false
+        currentCurrencyBt.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        currentCurrencyBt.translatesAutoresizingMaskIntoConstraints = false
         
         stackViewLeft.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(stackViewLeft)
