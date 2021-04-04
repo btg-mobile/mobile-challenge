@@ -15,5 +15,4 @@ class ConnectionErrorManager {
         }
     return false
     }
-    
 }

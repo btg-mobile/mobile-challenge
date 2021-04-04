@@ -43,17 +43,19 @@ final class CurrencyViewModel: DataDelegete {
     var modelCurrentValue: RealTimeRatesModel?  {
         return modelValue
     }
-    
+    /// converting the dictionary to an array
     func convertDicKeyToArray() -> [String] {
         let names = model?.currencies.map { return $0.key }
         return names ?? []
     }
     
+    /// converting the dictionary to an array
     func convertDicValueToArray() -> [String] {
         let names = model?.currencies.map { return $0.value }
         return names ?? []
     }
     
+    /// Function responsible for bringing the current value of the currency
     func fetchDetails(_ completion: @escaping (Bool) -> Void) {
         api.fetchCurrencyList { statusCode, model in
             guard let statusCode = statusCode else { return }
@@ -67,6 +69,7 @@ final class CurrencyViewModel: DataDelegete {
         }
     }
     
+    /// Function responsible for searching the name of the countries and their acronym
     func fetchCurrentValue(_ completion: @escaping (Bool) -> Void) {
         apiCurrentValue.fetchRealTimeRates { statusCode, model in
             guard let statusCode = statusCode else { return }
@@ -80,6 +83,12 @@ final class CurrencyViewModel: DataDelegete {
         }
     }
     
+    /// function responsible for carrying out all currency conversion logic
+    /// - Parameters:
+    ///   - ofCurrency: country of origin
+    ///   - toCurrency: destiny country
+    ///   - value: value to be converted
+    ///   - completionHendler: final conversion result to display on the screen
     func loadCurrencyData(ofCurrency: String, toCurrency: String, value: Double, completionHendler: @escaping (Double?) -> Void) {
         var finalResult = 0.0
         

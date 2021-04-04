@@ -29,6 +29,8 @@ class CurrencyListController: BaseViewController {
         setupNavigation()
     }
     
+    // MARK: - Initializers
+    
     init(viewModel: CurrencyViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -44,6 +46,8 @@ class CurrencyListController: BaseViewController {
     override func loadView() {
         self.view = contentView
     }
+    
+    // MARK: - Private functions
     
     private func fetchValue() {
         self.viewModel.fetchCurrentValue { success in
@@ -74,6 +78,8 @@ class CurrencyListController: BaseViewController {
 // MARK: - Extensions
 
 extension CurrencyListController: UITableViewDelegate, UITableViewDataSource {
+    // MARK: - functions
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.modelDetails?.currencies.count ?? 0
     }

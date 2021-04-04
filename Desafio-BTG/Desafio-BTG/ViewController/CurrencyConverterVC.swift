@@ -20,12 +20,26 @@ class CurrencyConverterVC: BaseViewController {
         return view
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeHideKeyboard()
         self.view.backgroundColor = .white
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupCountryUI()
+        setupCountryTwoUI()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view = contentView
+    }
+    
+    // MARK: - Initializers
     
     init(viewModel: CurrencyViewModel) {
         self.viewModelList = viewModel
@@ -36,25 +50,16 @@ class CurrencyConverterVC: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setupCountryUI()
-        setupCountryTwoUI()
-    }
+    // MARK: - Private functions
     
-    func setupCountryUI() {
+    private func setupCountryUI() {
         guard let setupCountryName = viewModelList.countrySelectedOne else { return }
         contentView.currentCurrencyBt.setTitle("\(setupCountryName)", for: .normal)
     }
     
-    func setupCountryTwoUI() {
+    private func setupCountryTwoUI() {
       guard let setupCountryNameTo = viewModelList.countrySelectedTwo else { return }
         contentView.destinationCountryBt.setTitle("\(setupCountryNameTo)", for: .normal)
-    }
-    
-    override func loadView() {
-        super.loadView()
-        view = contentView
     }
     
     /// go to user registration
