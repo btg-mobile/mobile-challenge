@@ -9,9 +9,7 @@ import UIKit
 
 class CurrencyConverterVC: BaseViewController {
 
-//    var viewModel: CurrencyViewModel
     private var viewModelList = CurrencyViewModel()
-    
     private lazy var contentView: CurrencyConverterView = {
         let view = CurrencyConverterView(viewModel: viewModelList)
         view.firstCountyAction = countryFirstPressed
