@@ -93,7 +93,11 @@ extension CurrencyListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let keyArray = viewModel.convertDicKeyToArray()[indexPath.row]
-        viewModel.gettingCountryAcronym(country: keyArray)
+        if SelectedCurrencySingleton.selectedCurrency == selectedCurrency.ofCurrency {
+            viewModel.gettingCountryOne(countryOne: keyArray)
+        } else {
+            viewModel.gettingCountryTwo(countryTwo: keyArray)
+        }
         dismiss(animated: true, completion: nil)
     }
 }

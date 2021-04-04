@@ -14,6 +14,7 @@ class CurrencyConverterView: UIView {
     /// clousure to trigger function in viewController
     var firstCountyAction: (() -> Void)?
     var secondCountryAction: (() -> Void)?
+    var handleConvertAction: (() -> Void)?
     
     // MARK: - Constants
     
@@ -37,6 +38,7 @@ class CurrencyConverterView: UIView {
     
     let valueConverttedTextField: UITextField = {
         let tf = UITextField("valor convertido")
+        tf.isEnabled = false
         return tf
     }()
     
@@ -53,7 +55,10 @@ class CurrencyConverterView: UIView {
     }()
     
     let currentCurrency: UIButton = {
-        let button = UIButton(title: "USA", borderColor: UIColor.blue)
+//        let button = UIButton(title: "USA", borderColor: UIColor.blue)
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        button.backgroundColor = UIColor.gray
+        button.setTitle("Select Country", for: .normal)
         button.addTarget(self, action: #selector(handlefirstCountry), for: .touchUpInside)
         return button
     }()
@@ -65,7 +70,10 @@ class CurrencyConverterView: UIView {
     }()
     
     let destinationCountryBt: UIButton = {
-        let button = UIButton(title: "BRL", borderColor: UIColor.blue)
+//        let button = UIButton(title: "BRL", borderColor: UIColor.blue)
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        button.backgroundColor = UIColor.gray
+        button.setTitle("Select Country", for: .normal)
         button.addTarget(self, action: #selector(handleSecondCountry), for: .touchUpInside)
         return button
     }()
@@ -122,7 +130,7 @@ class CurrencyConverterView: UIView {
         
         stackViewRight.addArrangedSubview(currentCurrency)
         
-        currentCurrency.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        currentCurrency.widthAnchor.constraint(equalToConstant: 120).isActive = true
         currentCurrency.translatesAutoresizingMaskIntoConstraints = false
         
         stackViewLeft.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +144,7 @@ class CurrencyConverterView: UIView {
         currencyDestinationLabel.translatesAutoresizingMaskIntoConstraints = false
         stackViewLeft.addArrangedSubview(currencyDestinationLabel)
         
-        destinationCountryBt.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        destinationCountryBt.widthAnchor.constraint(equalToConstant: 120).isActive = true
         destinationCountryBt.translatesAutoresizingMaskIntoConstraints = false
         stackViewLeft.addArrangedSubview(destinationCountryBt)
     }
@@ -177,10 +185,9 @@ class CurrencyConverterView: UIView {
 
     @objc func handleSecondCountry() {
         secondCountryAction?()
-        print("clicou no segundo pais")
     }
     
     @objc func handleConvert() {
-        print("convertendo moedas")
+        handleConvertAction?()
     }
 }

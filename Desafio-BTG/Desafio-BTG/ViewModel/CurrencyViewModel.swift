@@ -8,22 +8,22 @@
 import Foundation
 
 protocol DataDelegete {
-    func gettingCountryAcronym(country: String)
+    func gettingCountryOne(countryOne: String)
+    func gettingCountryTwo(countryTwo: String)
 }
 
 final class CurrencyViewModel: DataDelegete {
     
-    var countrySelected: String?
+    var countrySelectedOne: String?
+    var countrySelectedTwo: String?
     
-    func gettingCountryAcronym(country: String) {
-        self.countrySelected = country
+    func gettingCountryOne(countryOne: String) {
+        self.countrySelectedOne = countryOne
     }
     
-//    func banana() {
-//        let teste: String?
-//        teste = modelValue?.quotes.values
-//        
-//    }
+    func gettingCountryTwo(countryTwo: String) {
+        self.countrySelectedTwo = countryTwo
+    }
     
     private let apiCurrentValue: RealTimeRatesApiProtocol
     private var modelValue: RealTimeRatesModel?
@@ -66,7 +66,7 @@ final class CurrencyViewModel: DataDelegete {
             }
         }
     }
-
+    
     func fetchCurrentValue(_ completion: @escaping (Bool) -> Void) {
         apiCurrentValue.fetchRealTimeRates { statusCode, model in
             guard let statusCode = statusCode else { return }
@@ -78,5 +78,21 @@ final class CurrencyViewModel: DataDelegete {
                 completion(false)
             }
         }
+    }
+    
+    func loadCurrencyData(ofCurrency: String, toCurrency: String, value: Double, completionHendler: @escaping (Double?) -> Void) {
+        var finalResult = 0.0
+        
+        modelValue?.quotes.forEach {
+            if "USD\(ofCurrency)" == $0.key {
+                finalResult = value / $0.value
+            }
+        }
+        modelValue?.quotes.forEach {
+            if "USD\(toCurrency)" == $0.key {
+                finalResult = finalResult * $0.value
+            }
+        }
+        completionHendler(finalResult)
     }
 }

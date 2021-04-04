@@ -29,6 +29,8 @@
 		2F57AF532616164100FBCA90 /* CurrencyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF522616164100FBCA90 /* CurrencyListModel.swift */; };
 		2F57AF5E261619C000FBCA90 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57AF5D261619C000FBCA90 /* CurrencyViewModel.swift */; };
 		2FB5B449261660C500C76CDD /* Dic+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B448261660C500C76CDD /* Dic+Extensions.swift */; };
+		2FB5B45826181E3900C76CDD /* SelectedCurrencySingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B45726181E3900C76CDD /* SelectedCurrencySingleton.swift */; };
+		2FB5B460261A12A200C76CDD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B45F261A12A200C76CDD /* String+Extensions.swift */; };
 		A2B93753BA1788EE335ED750 /* Pods_Desafio_BTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE8F94206A21BA0758CC5DB /* Pods_Desafio_BTG.framework */; };
 		AA679301A3E68A1FBD52F5CB /* Pods_Desafio_BTGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31408F26C919C5AD30E7B89 /* Pods_Desafio_BTGTests.framework */; };
 		F0447EF94D964633A2DA728B /* Pods_Desafio_BTG_Desafio_BTGUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE904081F90AD4219298B9EB /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */; };
@@ -81,6 +83,8 @@
 		2F57AF522616164100FBCA90 /* CurrencyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListModel.swift; sourceTree = "<group>"; };
 		2F57AF5D261619C000FBCA90 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		2FB5B448261660C500C76CDD /* Dic+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dic+Extensions.swift"; sourceTree = "<group>"; };
+		2FB5B45726181E3900C76CDD /* SelectedCurrencySingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCurrencySingleton.swift; sourceTree = "<group>"; };
+		2FB5B45F261A12A200C76CDD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6E9B7A776242EBA940600F6B /* Pods-Desafio-BTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.release.xcconfig"; sourceTree = "<group>"; };
 		9F90976F1551CF559B303070 /* Pods-Desafio-BTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTG.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.debug.xcconfig"; sourceTree = "<group>"; };
 		CA1F7F775829B740191FA210 /* Pods-Desafio-BTGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-BTGTests.release.xcconfig"; path = "Target Support Files/Pods-Desafio-BTGTests/Pods-Desafio-BTGTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		2F57AE552614B58B00FBCA90 /* Desafio-BTG */ = {
 			isa = PBXGroup;
 			children = (
+				2FB5B45626181E1E00C76CDD /* Singletons */,
 				2F57AF192615161B00FBCA90 /* Extensions */,
 				2F57AEEC2614F6D600FBCA90 /* Views */,
 				2F57AEEB2614F6CD00FBCA90 /* ViewController */,
@@ -247,8 +252,17 @@
 				2F57AF22261517F400FBCA90 /* UIButton+Extension.swift */,
 				2F57AF2E26155F9300FBCA90 /* UIStackView+Extension.swift */,
 				2FB5B448261660C500C76CDD /* Dic+Extensions.swift */,
+				2FB5B45F261A12A200C76CDD /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2FB5B45626181E1E00C76CDD /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				2FB5B45726181E3900C76CDD /* SelectedCurrencySingleton.swift */,
+			);
+			path = Singletons;
 			sourceTree = "<group>";
 		};
 		6CCB70FD15BBC44E8553EEB3 /* Pods */ = {
@@ -511,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB5B460261A12A200C76CDD /* String+Extensions.swift in Sources */,
 				2F57AF1B2615163300FBCA90 /* UITextField+Extensions.swift in Sources */,
 				2F57AEBA2614C63100FBCA90 /* ConnectionManager.swift in Sources */,
 				2F57AF492616074E00FBCA90 /* CurrencyListController.swift in Sources */,
@@ -519,6 +534,7 @@
 				2F57AEBF2614C65F00FBCA90 /* ConnectionErrorManager.swift in Sources */,
 				2FB5B449261660C500C76CDD /* Dic+Extensions.swift in Sources */,
 				2F57AE572614B58B00FBCA90 /* AppDelegate.swift in Sources */,
+				2FB5B45826181E3900C76CDD /* SelectedCurrencySingleton.swift in Sources */,
 				2F57AF4E2616086B00FBCA90 /* CurrencyListCell.swift in Sources */,
 				2F57AF532616164100FBCA90 /* CurrencyListModel.swift in Sources */,
 				2F57AF5E261619C000FBCA90 /* CurrencyViewModel.swift in Sources */,
