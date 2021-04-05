@@ -10,8 +10,9 @@ import UIKit
 class CurrencyConverterVC: BaseViewController {
 
     private var viewModelList = CurrencyViewModel()
+    //private let viewModel: CurrencyViewModel?
     private lazy var contentView: CurrencyConverterView = {
-        let view = CurrencyConverterView(viewModel: viewModelList)
+        let view = CurrencyConverterView()
         view.firstCountyAction = countryFirstPressed
         view.secondCountryAction = countrySecondPressed
         view.handleConvertAction = handleConvertPressed
@@ -39,14 +40,14 @@ class CurrencyConverterVC: BaseViewController {
     
     // MARK: - Initializers
     
-    init(viewModel: CurrencyViewModel) {
-        self.viewModelList = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(viewModel: CurrencyViewModel) {
+//        self.viewModelList = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     // MARK: - Private functions
     
@@ -62,7 +63,8 @@ class CurrencyConverterVC: BaseViewController {
     
     /// go to user registration
     private func countryFirstPressed() {
-        let goToTableView = CurrencyListController(viewModel: viewModelList)
+        let goToTableView = CurrencyListController()
+        goToTableView.viewModel = viewModelList
         let navVC = UINavigationController(rootViewController: goToTableView)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)
@@ -70,7 +72,8 @@ class CurrencyConverterVC: BaseViewController {
     }
     
     private func countrySecondPressed() {
-        let goToTableView = CurrencyListController(viewModel: viewModelList)
+        let goToTableView = CurrencyListController()
+        goToTableView.viewModel = viewModelList
         let navVC = UINavigationController(rootViewController: goToTableView)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)

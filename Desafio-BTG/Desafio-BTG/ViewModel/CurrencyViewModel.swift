@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FSnapChatLoading
 
 protocol DataDelegete {
     func gettingCountryOne(countryOne: String)
@@ -14,6 +15,7 @@ protocol DataDelegete {
 
 final class CurrencyViewModel: DataDelegete {
     
+    var arr = [String:String]()
     var countrySelectedOne: String?
     var countrySelectedTwo: String?
     
@@ -27,6 +29,7 @@ final class CurrencyViewModel: DataDelegete {
     
     private let apiCurrentValue: RealTimeRatesApiProtocol
     private var modelValue: RealTimeRatesModel?
+    public var modelValueList = [String:String]()
     
     private let api: CurrencyListModelProtocol
     private var model: CurrencyListModel?
@@ -54,6 +57,7 @@ final class CurrencyViewModel: DataDelegete {
         let names = model?.currencies.map { return $0.value }
         return names ?? []
     }
+
     
     /// Function responsible for bringing the current value of the currency
     func fetchDetails(_ completion: @escaping (Bool) -> Void) {
@@ -61,11 +65,20 @@ final class CurrencyViewModel: DataDelegete {
             guard let statusCode = statusCode else { return }
             if ConnectionErrorManager.isSuccessfulStatusCode(statusCode: statusCode) {
                 guard let model = model else { return }
-                self.model = model
+//                self.model = model
+                self.modelValueList = model.currencies
                 completion(true)
             } else {
                 completion(false)
             }
+        }
+    }
+    
+    var setContentCurrencies: [(key: String, value: String)] {
+        get {
+            var dict = Array(modelValueList)
+            dict.sort(by: ({$0 < $1}))
+            return dict
         }
     }
     

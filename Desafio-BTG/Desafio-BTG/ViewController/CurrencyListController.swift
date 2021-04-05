@@ -7,19 +7,12 @@
 
 import UIKit
 
-class CurrencyListController: BaseViewController {
+class CurrencyListController: BaseViewController, DismissScreen {
     
     // MARK: - Properties
     
-    var viewModel: CurrencyViewModel
-    
-    private lazy var contentView: CurrencyListView = {
-        let view = CurrencyListView()
-        view.tableView.delegate = self
-        view.tableView.dataSource = self
-        view.tableView.register(CurrencyListCell.self, forCellReuseIdentifier: "cell")
-        return view
-    }()
+    var viewModel: CurrencyViewModel?
+    lazy var mainView = CurrencyListView(viewModel: viewModel)
     
     // MARK: - Lifecycle
     
@@ -27,32 +20,22 @@ class CurrencyListController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupNavigation()
-    }
-    
-    // MARK: - Initializers
-    
-    init(viewModel: CurrencyViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
         fetchValue()
         fetchDetails()
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        mainView.delegate = self
     }
     
     override func loadView() {
-        self.view = contentView
+        self.view = mainView
     }
     
     // MARK: - Private functions
     
     private func fetchValue() {
-        self.viewModel.fetchCurrentValue { success in
+        self.viewModel?.fetchCurrentValue { [weak self] success in
+            guard let self = self else { return }
             if success {
-                self.contentView.tableView.reloadData()
+                self.mainView.tableView.reloadData()
             } else {
                 self.handleError()
             }
@@ -60,9 +43,10 @@ class CurrencyListController: BaseViewController {
     }
     
     private func fetchDetails() {
-        self.viewModel.fetchDetails { success in
+        self.viewModel?.fetchDetails { [weak self] success in
+            guard let self = self else { return }
             if success {
-                self.contentView.tableView.reloadData()
+                self.mainView.tableView.reloadData()
             } else {
                 self.handleError()
             }
@@ -70,40 +54,10 @@ class CurrencyListController: BaseViewController {
     }
     
     private func handleError() {
-        print("Erro")
+        self.showAlert(alertText: "Error", alertMessage: "Error")
     }
     
-}
-
-// MARK: - Extensions
-
-extension CurrencyListController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - functions
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.modelDetails?.currencies.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CurrencyListCell
-        let keyArray = viewModel.convertDicKeyToArray()
-        let valueArray = viewModel.convertDicValueToArray()
-        cell.setup("\(keyArray[indexPath.row])","\(valueArray[indexPath.row]))")
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let keyArray = viewModel.convertDicKeyToArray()[indexPath.row]
-        if SelectedCurrencySingleton.selectedCurrency == selectedCurrency.ofCurrency {
-            viewModel.gettingCountryOne(countryOne: keyArray)
-        } else {
-            viewModel.gettingCountryTwo(countryTwo: keyArray)
-        }
+    func dismissScreenTapped() {
         dismiss(animated: true, completion: nil)
     }
 }
