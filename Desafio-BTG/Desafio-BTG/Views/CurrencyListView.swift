@@ -14,6 +14,7 @@ protocol DismissScreen {
 class CurrencyListView: UIView {
     
     // MARK: - Properties
+    
     var delegate: DismissScreen?
     var viewModel: CurrencyViewModel?
     
@@ -35,10 +36,6 @@ class CurrencyListView: UIView {
         tableView.dataSource = self
         tableView.register(CurrencyListCell.self, forCellReuseIdentifier: "cell")
     }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -62,6 +59,7 @@ class CurrencyListView: UIView {
 // MARK: - Extensions
 
 extension CurrencyListView: UITableViewDelegate, UITableViewDataSource {
+    
     // MARK: - functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,9 +68,6 @@ extension CurrencyListView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CurrencyListCell
-//        let keyArray = viewModel?.convertDicKeyToArray()
-//        let valueArray = viewModel?.convertDicValueToArray()
-//        cell.setup("\(keyArray[indexPath.row])","\(valueArray[indexPath.row]))")
         cell.setup(viewModel?.setContentCurrencies[indexPath.row].key ?? "", viewModel?.setContentCurrencies[indexPath.row].value ?? "")
         cell.selectionStyle = .none
         return cell
@@ -83,7 +78,6 @@ extension CurrencyListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let keyArray = viewModel.convertDicKeyToArray()[indexPath.row]
         let keyArray = viewModel?.setContentCurrencies[indexPath.row].key
         if SelectedCurrencySingleton.selectedCurrency == selectedCurrency.ofCurrency {
             viewModel?.gettingCountryOne(countryOne: keyArray ?? "")

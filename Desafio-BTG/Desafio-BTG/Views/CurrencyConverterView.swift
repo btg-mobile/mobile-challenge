@@ -177,7 +177,6 @@ class CurrencyConverterView: UIView {
     
     // MARK: - Public Functions
     
-    /// functions to trigger login and signIn
     @objc func handlefirstCountry() {
         firstCountyAction?()
     }

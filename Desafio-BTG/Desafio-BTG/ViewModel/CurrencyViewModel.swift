@@ -15,7 +15,6 @@ protocol DataDelegete {
 
 final class CurrencyViewModel: DataDelegete {
     
-    var arr = [String:String]()
     var countrySelectedOne: String?
     var countrySelectedTwo: String?
     
@@ -28,36 +27,14 @@ final class CurrencyViewModel: DataDelegete {
     }
     
     private let apiCurrentValue: RealTimeRatesApiProtocol
+    private let api: CurrencyListModelProtocol
     private var modelValue: RealTimeRatesModel?
     public var modelValueList = [String:String]()
-    
-    private let api: CurrencyListModelProtocol
-    private var model: CurrencyListModel?
     
     init(api: CurrencyListModelProtocol = RequestApi(), apiCurrentValue: RealTimeRatesApiProtocol = RequestApi()) {
         self.api = api
         self.apiCurrentValue = apiCurrentValue
     }
-    
-    var modelDetails: CurrencyListModel? {
-        return model
-    }
-    
-    var modelCurrentValue: RealTimeRatesModel?  {
-        return modelValue
-    }
-    /// converting the dictionary to an array
-    func convertDicKeyToArray() -> [String] {
-        let names = model?.currencies.map { return $0.key }
-        return names ?? []
-    }
-    
-    /// converting the dictionary to an array
-    func convertDicValueToArray() -> [String] {
-        let names = model?.currencies.map { return $0.value }
-        return names ?? []
-    }
-
     
     /// Function responsible for bringing the current value of the currency
     func fetchDetails(_ completion: @escaping (Bool) -> Void) {
@@ -65,7 +42,6 @@ final class CurrencyViewModel: DataDelegete {
             guard let statusCode = statusCode else { return }
             if ConnectionErrorManager.isSuccessfulStatusCode(statusCode: statusCode) {
                 guard let model = model else { return }
-//                self.model = model
                 self.modelValueList = model.currencies
                 completion(true)
             } else {

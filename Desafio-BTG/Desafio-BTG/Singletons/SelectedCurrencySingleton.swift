@@ -8,8 +8,6 @@
 import Foundation
 
 struct SelectedCurrencySingleton {
-    static var currencyOne: String?
-    static var currencyTwo: String?
     static var selectedCurrency: selectedCurrency?
     
 }

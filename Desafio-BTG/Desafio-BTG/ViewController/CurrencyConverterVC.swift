@@ -8,9 +8,8 @@
 import UIKit
 
 class CurrencyConverterVC: BaseViewController {
-
+    
     private var viewModelList = CurrencyViewModel()
-    //private let viewModel: CurrencyViewModel?
     private lazy var contentView: CurrencyConverterView = {
         let view = CurrencyConverterView()
         view.firstCountyAction = countryFirstPressed
@@ -38,17 +37,6 @@ class CurrencyConverterVC: BaseViewController {
         view = contentView
     }
     
-    // MARK: - Initializers
-    
-//    init(viewModel: CurrencyViewModel) {
-//        self.viewModelList = viewModel
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     // MARK: - Private functions
     
     private func setupCountryUI() {
@@ -57,7 +45,7 @@ class CurrencyConverterVC: BaseViewController {
     }
     
     private func setupCountryTwoUI() {
-      guard let setupCountryNameTo = viewModelList.countrySelectedTwo else { return }
+        guard let setupCountryNameTo = viewModelList.countrySelectedTwo else { return }
         contentView.destinationCountryBt.setTitle("\(setupCountryNameTo)", for: .normal)
     }
     
