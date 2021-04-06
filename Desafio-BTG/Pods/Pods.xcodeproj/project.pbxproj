@@ -7,149 +7,118 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		051C4386AD9DF64F8A1ADC0FF7630A35 /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FFA446A33D024B0C6834B41EA5C4D85 /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0572D41BC9418C90AF68808341200693 /* Pods-Desafio-BTG-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 281D758119AF90CB0DD326162959F710 /* Pods-Desafio-BTG-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C5E11DE24DAA737704B355F5F2F3426 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED9C4C43A686C2D08B8D108313AF21 /* ParameterEncoding.swift */; };
-		0F62BAD5AA0032690955EAEEEAF86CA5 /* Pods-Desafio-BTG-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44FA7A312D9510F0B35F99F2F45129 /* Pods-Desafio-BTG-dummy.m */; };
-		11130500E3113A599E6646D30B1C70CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		132E0F619E4338E5D1B27E4C72076B3F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BEDC38FA2097BD20B2673C92692C1A /* Notifications.swift */; };
-		1945CD5D63A1C164AEAAA9A33E85571E /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B20CE58079EEF05658D470B1481E3E3 /* Alamofire-dummy.m */; };
-		1986B50C74F1697EA43F68335C93CEB3 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07994E22DF1935168C583F7E8A05196A /* MultipartFormData.swift */; };
-		2C61B040BA6A9A7AE66C4D9BA26D5520 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE172F8D08182C3E7BEB928B23671EBC /* SessionDelegate.swift */; };
-		3571F958A3907B3A806E62D50C2550D4 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7804F71822D0025390584ED0C0D5935D /* NetworkReachabilityManager.swift */; };
-		452A5924CBEE1399302CDD707B312966 /* FSnapChatLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42E9D220B432A2BB08F7255530A928 /* FSnapChatLoadingView.swift */; };
+		0C5E11DE24DAA737704B355F5F2F3426 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D7A47A590ED08C21AB24503841C370 /* ParameterEncoding.swift */; };
+		1039C70FEFFFAC0118146BEB83E678CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		132E0F619E4338E5D1B27E4C72076B3F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FC9B604FA843EF26A951C43C0CE8B /* Notifications.swift */; };
+		1945CD5D63A1C164AEAAA9A33E85571E /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0389D0AFC58E73A075F3F7740CE1D441 /* Alamofire-dummy.m */; };
+		1986B50C74F1697EA43F68335C93CEB3 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616062C81FDAB5C58156D8D00F0FC48D /* MultipartFormData.swift */; };
+		2C61B040BA6A9A7AE66C4D9BA26D5520 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB0C226D602EC371BECC5BD2CC9370 /* SessionDelegate.swift */; };
+		3571F958A3907B3A806E62D50C2550D4 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36DA43AFF8C1CD3C666DACA78B91C2 /* NetworkReachabilityManager.swift */; };
 		4A455F854970B29F8E3B246686F2B217 /* Pods-Desafio-BTGTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F369189A9C45996AB1DD6F2CF1071F19 /* Pods-Desafio-BTGTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50013C33D35EBAF31ACF3A8B3A9A3FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		53791F5E5F07400F92CFDFC89A432305 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3778FA90FF55EEDC479F21F011AF38E5 /* Validation.swift */; };
-		5F89E9B6D4712531E5C4079277819967 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		64744C911253C3E01461FAD7C935C8D7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733DB63C4DCBAED6AD094453CD43795 /* Result.swift */; };
-		83956E20859CDBBE7BC38ABADE0170FB /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512BD565C854F41E9255F7142C43C15 /* AFError.swift */; };
-		931BBB8230A25161D5C37528A8F9FECF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B7E852A77421540DFE1E4E2CA828B9 /* SessionManager.swift */; };
-		933FDA5970AA525D6CB92BFEBA2BAB4A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98D6DF7D9391CADD404C10927FB7CA /* Timeline.swift */; };
+		53791F5E5F07400F92CFDFC89A432305 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AE0D4172A0ECD56EBFA08991A7C70 /* Validation.swift */; };
+		64744C911253C3E01461FAD7C935C8D7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA11279AA1D6557BB10C9936E9B3A3 /* Result.swift */; };
+		83956E20859CDBBE7BC38ABADE0170FB /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63F367F44FC87833A1792B541781BB7 /* AFError.swift */; };
+		931BBB8230A25161D5C37528A8F9FECF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3F4F1011789493720361780A1982D /* SessionManager.swift */; };
+		933FDA5970AA525D6CB92BFEBA2BAB4A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACD677FD4B95B260E1B1C656D08B84 /* Timeline.swift */; };
 		958296454634103F2EAD51724D0C8E39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		98A929C8E9012AB167672714FFD2113C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B8B7361DA8CB199831B236B5F03FF /* Request.swift */; };
-		9E92020DAD18390B5919FD74D3B549C0 /* FSnapChatLoading-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AC9EED0DCD4F6611B9D7E11E33124E /* FSnapChatLoading-dummy.m */; };
-		A260E790839AE2583A86640F7C360DB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		AFC64B1097F7355FF423D6A73E9C7210 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713F306D73634C7305CEE26073C9EF8 /* TaskDelegate.swift */; };
-		BEE6B677416CA71C981D1D3F60B18C96 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0120F933722022A9A2066C03388DBAC4 /* Alamofire.swift */; };
-		BFC24A9BB72A0AC18D868B283D6329FE /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 063160475A4DF9EF4D9D2892F6EFDD23 /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m */; };
+		98A929C8E9012AB167672714FFD2113C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE101F8BE2F43D16C24A9874C79A94A /* Request.swift */; };
+		A78BAA796E3F57ABBE7C053FBF47ADBF /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 063160475A4DF9EF4D9D2892F6EFDD23 /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m */; };
+		AADF8B227330FBE07F978D2781739603 /* Pods-Desafio-BTG-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 281D758119AF90CB0DD326162959F710 /* Pods-Desafio-BTG-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFC64B1097F7355FF423D6A73E9C7210 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DCBCED5F02570DDA9386825ACB4CF /* TaskDelegate.swift */; };
+		BEE6B677416CA71C981D1D3F60B18C96 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FC5E8A366EFB3B0CF9816F6A90B258 /* Alamofire.swift */; };
 		C45ADB74039008F5EC12F38459FE95E9 /* Pods-Desafio-BTGTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7CEFC2E6E1FDD8F9E31B9A6AD5E3A0 /* Pods-Desafio-BTGTests-dummy.m */; };
-		CF029E081DFB4E4CEA9E345E1FA070DB /* FSnapChatLoading-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 64B1121CEC2AD3ED5EE4506273DFAA4F /* FSnapChatLoading-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3D8C379C6E4FB487E5ABD6800AD7B7E /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FE4CBC6561564B94123066F8E3A7C /* DispatchQueue+Alamofire.swift */; };
-		D65C254F5ABF2CB5ECEE50FE8F8E1A80 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BA35A3548CC07768A07E3CA1D6FD6 /* Response.swift */; };
-		E36AC485859535B6D4715F7603DA8DD0 /* FSLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32237AD6BB1E8CE3136C911B86BB788A /* FSLoading.swift */; };
-		E3747EC31FCCA97D75A81FC700CF7E24 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62130F559FE5AAC163F00097122F244 /* ResponseSerialization.swift */; };
-		E72DFB75DDC4B6348E4A1DA6CA2B0D37 /* FSnapChatLoading.h in Headers */ = {isa = PBXBuildFile; fileRef = FF4DE453309C2178DEF545345120A035 /* FSnapChatLoading.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F13F2AA7F2E6D95A181CAB99B900D531 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB9F30DE095718311E288376313BB4 /* ServerTrustPolicy.swift */; };
-		F7B74645E07C39771156A1FA413B98D4 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B71296695086592105ADBDE4CF4166 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C921AB1661485B25AF710E818E9A034E /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FFA446A33D024B0C6834B41EA5C4D85 /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3D8C379C6E4FB487E5ABD6800AD7B7E /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8FC88383C541917CFD5ADA31DD7AB /* DispatchQueue+Alamofire.swift */; };
+		D65C254F5ABF2CB5ECEE50FE8F8E1A80 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06A315E96FC5BCCAB1C5145D4BF1BCF /* Response.swift */; };
+		D803DE9BF207D9D7F76F43E576A77153 /* Pods-Desafio-BTG-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E44FA7A312D9510F0B35F99F2F45129 /* Pods-Desafio-BTG-dummy.m */; };
+		E3747EC31FCCA97D75A81FC700CF7E24 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15E9B6C2601FD9AD228CA2D657E44B /* ResponseSerialization.swift */; };
+		F13F2AA7F2E6D95A181CAB99B900D531 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B86CF47C1835EA00FE7A8B8D5CCC5 /* ServerTrustPolicy.swift */; };
+		F25348C7A61A7B9A9E6B2639A76B6020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F7B74645E07C39771156A1FA413B98D4 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FFE4C558583FF9884EBA9DDF1C6F0DCD /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1A0570FF8F36CC06953D16C7D4ABB920 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 11B0331B2105FA64DA2F183E0CE48C75;
-			remoteInfo = FSnapChatLoading;
-		};
-		3806B31E9FCEB1B5300026F2772C424A /* PBXContainerItemProxy */ = {
+		0C0522C024BE25356F1BD6B8256D958A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
-		3B219D1FB420EA684C052484688DECF2 /* PBXContainerItemProxy */ = {
+		4BA8A70C162F4DCA219FCBDBE725E648 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0623FF7BCCCDC689874FB540496BF25F;
 			remoteInfo = "Pods-Desafio-BTG";
 		};
-		82964619CC109AA5BF10BBD9C1575911 /* PBXContainerItemProxy */ = {
+		8A438AE57A04D7794BB415E289E163B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
-		D7750072E26A2F476107EE46B147551B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 11B0331B2105FA64DA2F183E0CE48C75;
-			remoteInfo = FSnapChatLoading;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C3494BE71F2AC7C818B54C26FFE924 /* FSnapChatLoading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSnapChatLoading.debug.xcconfig; sourceTree = "<group>"; };
-		0120F933722022A9A2066C03388DBAC4 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		01E79893C60767EF8C7073B569622220 /* Pods-Desafio-BTG-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Desafio-BTG-frameworks.sh"; sourceTree = "<group>"; };
+		0389D0AFC58E73A075F3F7740CE1D441 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		063160475A4DF9EF4D9D2892F6EFDD23 /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m"; sourceTree = "<group>"; };
-		06BEDC38FA2097BD20B2673C92692C1A /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		07994E22DF1935168C583F7E8A05196A /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		09AE7578779A1DF6A38E87F90BCFCF8B /* Pods-Desafio-BTG-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Desafio-BTG-acknowledgements.plist"; sourceTree = "<group>"; };
-		0B0F67169A795F6F0FB93310BC456977 /* FSnapChatLoading.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSnapChatLoading.release.xcconfig; sourceTree = "<group>"; };
-		133BA35A3548CC07768A07E3CA1D6FD6 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		1AE3132D0190F09B7C4B37E1CF1747A0 /* FSnapChatLoading-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FSnapChatLoading-Info.plist"; sourceTree = "<group>"; };
+		0C96CDEC4805F115B4225E4EBFC020B7 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		1FD704AAC9B30AF6DDAE9EAA9E59AE25 /* Pods-Desafio-BTGTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Desafio-BTGTests-Info.plist"; sourceTree = "<group>"; };
 		218CECB19DC29D897D7FFF8357FD29A1 /* Pods-Desafio-BTGTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Desafio-BTGTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		281D758119AF90CB0DD326162959F710 /* Pods-Desafio-BTG-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Desafio-BTG-umbrella.h"; sourceTree = "<group>"; };
-		291FE4CBC6561564B94123066F8E3A7C /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		2C508F700A8971B9A80F1625860A7506 /* Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		32237AD6BB1E8CE3136C911B86BB788A /* FSLoading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSLoading.swift; path = FSnapChatLoading/FSLoading.swift; sourceTree = "<group>"; };
-		3778FA90FF55EEDC479F21F011AF38E5 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		2C50F83F93296D01A5B9009365A2671D /* Alamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.debug.xcconfig; sourceTree = "<group>"; };
+		2EE101F8BE2F43D16C24A9874C79A94A /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		3D7B86CF47C1835EA00FE7A8B8D5CCC5 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		3EFB0C226D602EC371BECC5BD2CC9370 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		43853AC5CE65FCAB7A61A1CFA4AD65A8 /* Pods_Desafio_BTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Desafio_BTG.framework; path = "Pods-Desafio-BTG.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4395A13BCE45DED548AE8822A6922A9A /* Pods-Desafio-BTG-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Desafio-BTG-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4512BD565C854F41E9255F7142C43C15 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		46129CC55061A25E74FD49DC9636530B /* Pods-Desafio-BTGTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Desafio-BTGTests.modulemap"; sourceTree = "<group>"; };
-		4B98D6DF7D9391CADD404C10927FB7CA /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		47D8FC88383C541917CFD5ADA31DD7AB /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		500C3904FF0674F1E8B2C0B51C84354F /* Pods-Desafio-BTG-Desafio-BTGUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Desafio-BTG-Desafio-BTGUITests-Info.plist"; sourceTree = "<group>"; };
-		58AC9EED0DCD4F6611B9D7E11E33124E /* FSnapChatLoading-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSnapChatLoading-dummy.m"; sourceTree = "<group>"; };
+		58ACD677FD4B95B260E1B1C656D08B84 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		5A7CEFC2E6E1FDD8F9E31B9A6AD5E3A0 /* Pods-Desafio-BTGTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Desafio-BTGTests-dummy.m"; sourceTree = "<group>"; };
 		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64B1121CEC2AD3ED5EE4506273DFAA4F /* FSnapChatLoading-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSnapChatLoading-umbrella.h"; sourceTree = "<group>"; };
-		6A80BEC277B2490C72466335957EA899 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		5ED047C2109FD8C989F0D93F032AAA29 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		5FEB2726D8D5B1A0A657204329BCF4BD /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		616062C81FDAB5C58156D8D00F0FC48D /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		6BE3CBA44932F92D1D9E0333B751835B /* Pods-Desafio-BTG-Desafio-BTGUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Desafio-BTG-Desafio-BTGUITests.modulemap"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		75B7E852A77421540DFE1E4E2CA828B9 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		75FBF3894B87CB536F7979321606ED02 /* Pods-Desafio-BTGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Desafio-BTGTests.release.xcconfig"; sourceTree = "<group>"; };
-		7733DB63C4DCBAED6AD094453CD43795 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		7804F71822D0025390584ED0C0D5935D /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		7C36DA43AFF8C1CD3C666DACA78B91C2 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		808450CE35B48DA92C5D1919308423A6 /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Desafio_BTG_Desafio_BTGUITests.framework; path = "Pods-Desafio-BTG-Desafio-BTGUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85FC5E8A366EFB3B0CF9816F6A90B258 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		890FE279EE04EF3AEE61BB7920609697 /* Pods-Desafio-BTG-Desafio-BTGUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Desafio-BTG-Desafio-BTGUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		8987D3F891F1E1BCFB2A98B864CDDCC9 /* Pods-Desafio-BTGTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Desafio-BTGTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8BAB04B92BFA779A90DF5D8F4EE54BF4 /* Alamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.debug.xcconfig; sourceTree = "<group>"; };
-		8D12CBA11019E82AD5E5A89927333529 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		8E44FA7A312D9510F0B35F99F2F45129 /* Pods-Desafio-BTG-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Desafio-BTG-dummy.m"; sourceTree = "<group>"; };
-		8F04D8713B7062D483DBC763CA20A5AC /* FSnapChatLoading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FSnapChatLoading.framework; path = FSnapChatLoading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFA446A33D024B0C6834B41EA5C4D85 /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h"; sourceTree = "<group>"; };
+		98D3F4F1011789493720361780A1982D /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		994F75862E9F7779E81812B4ED96006D /* Pods-Desafio-BTG-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Desafio-BTG-Info.plist"; sourceTree = "<group>"; };
-		9B20CE58079EEF05658D470B1481E3E3 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		9CE629239C0863B42283CB1C74E7A3EE /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1C98C3E8552B0A76FC68622A559459A /* Pods_Desafio_BTGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Desafio_BTGTests.framework; path = "Pods-Desafio-BTGTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A28B8B7361DA8CB199831B236B5F03FF /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		A9B71296695086592105ADBDE4CF4166 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		A31DDF318E3E03B4DEA2F1B4182A555D /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
+		A50DCBCED5F02570DDA9386825ACB4CF /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		AF15E9B6C2601FD9AD228CA2D657E44B /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		B06A315E96FC5BCCAB1C5145D4BF1BCF /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		B105A7BFD6AD95B2606ED11865CBFAB6 /* Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B713F306D73634C7305CEE26073C9EF8 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		B86FC9B604FA843EF26A951C43C0CE8B /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		B9EE32A2B26B65478DE893B254463B42 /* Pods-Desafio-BTG-Desafio-BTGUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Desafio-BTG-Desafio-BTGUITests-frameworks.sh"; sourceTree = "<group>"; };
-		B9FB9F30DE095718311E288376313BB4 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		BFED9C4C43A686C2D08B8D108313AF21 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		C0F921E929584FC0D77D2AF02F0C0FA8 /* Pods-Desafio-BTG-Desafio-BTGUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Desafio-BTG-Desafio-BTGUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CE172F8D08182C3E7BEB928B23671EBC /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		D0514EF00ACC73DAF2D8D9E0C4BD89AC /* FSnapChatLoading.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FSnapChatLoading.modulemap; sourceTree = "<group>"; };
 		D39F35B32CB12166EC5586C806EA515D /* Pods-Desafio-BTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Desafio-BTG.release.xcconfig"; sourceTree = "<group>"; };
-		D62130F559FE5AAC163F00097122F244 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		D6F79C24A4FF8E0AEDD2D50B0F8E5C27 /* Pods-Desafio-BTGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Desafio-BTGTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DA42E9D220B432A2BB08F7255530A928 /* FSnapChatLoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSnapChatLoadingView.swift; path = FSnapChatLoading/FSnapChatLoadingView.swift; sourceTree = "<group>"; };
-		DDBE546A5B27EA28B777A32E278ADA6F /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
+		DF3AE0D4172A0ECD56EBFA08991A7C70 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		E0714F8F07251982862A123967E5AE05 /* Pods-Desafio-BTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Desafio-BTG.debug.xcconfig"; sourceTree = "<group>"; };
+		E63F367F44FC87833A1792B541781BB7 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		E6F93346B87E07E16F1401750EE85353 /* Pods-Desafio-BTG.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Desafio-BTG.modulemap"; sourceTree = "<group>"; };
+		F1DA11279AA1D6557BB10C9936E9B3A3 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		F369189A9C45996AB1DD6F2CF1071F19 /* Pods-Desafio-BTGTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Desafio-BTGTests-umbrella.h"; sourceTree = "<group>"; };
-		F84CFC2CC217F55F05B358BFA3CB5D89 /* FSnapChatLoading-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSnapChatLoading-prefix.pch"; sourceTree = "<group>"; };
-		FF4DE453309C2178DEF545345120A035 /* FSnapChatLoading.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSnapChatLoading.h; path = FSnapChatLoading/FSnapChatLoading.h; sourceTree = "<group>"; };
+		F8D7A47A590ED08C21AB24503841C370 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		FFE4C558583FF9884EBA9DDF1C6F0DCD /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,19 +130,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCC18A041296A55A218D0CAE982003 /* Frameworks */ = {
+		B4AB1B82AFB00C861BF143E7BA1946C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F89E9B6D4712531E5C4079277819967 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C558F1FF195070B8FFFE2BF552B5F2C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A260E790839AE2583A86640F7C360DB9 /* Foundation.framework in Frameworks */,
+				F25348C7A61A7B9A9E6B2639A76B6020 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,48 +146,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E71C370EFA8C0243EA7771DD8BCC950F /* Frameworks */ = {
+		BDDE746C0A126FECE1E24BFDD2305519 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11130500E3113A599E6646D30B1C70CB /* Foundation.framework in Frameworks */,
+				1039C70FEFFFAC0118146BEB83E678CD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		202305815D7271E07B627E36EF15BD54 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				4512BD565C854F41E9255F7142C43C15 /* AFError.swift */,
-				0120F933722022A9A2066C03388DBAC4 /* Alamofire.swift */,
-				291FE4CBC6561564B94123066F8E3A7C /* DispatchQueue+Alamofire.swift */,
-				07994E22DF1935168C583F7E8A05196A /* MultipartFormData.swift */,
-				7804F71822D0025390584ED0C0D5935D /* NetworkReachabilityManager.swift */,
-				06BEDC38FA2097BD20B2673C92692C1A /* Notifications.swift */,
-				BFED9C4C43A686C2D08B8D108313AF21 /* ParameterEncoding.swift */,
-				A28B8B7361DA8CB199831B236B5F03FF /* Request.swift */,
-				133BA35A3548CC07768A07E3CA1D6FD6 /* Response.swift */,
-				D62130F559FE5AAC163F00097122F244 /* ResponseSerialization.swift */,
-				7733DB63C4DCBAED6AD094453CD43795 /* Result.swift */,
-				B9FB9F30DE095718311E288376313BB4 /* ServerTrustPolicy.swift */,
-				CE172F8D08182C3E7BEB928B23671EBC /* SessionDelegate.swift */,
-				75B7E852A77421540DFE1E4E2CA828B9 /* SessionManager.swift */,
-				B713F306D73634C7305CEE26073C9EF8 /* TaskDelegate.swift */,
-				4B98D6DF7D9391CADD404C10927FB7CA /* Timeline.swift */,
-				3778FA90FF55EEDC479F21F011AF38E5 /* Validation.swift */,
-				6BFAC6F6A6A01121483ADC03D4944AD7 /* Support Files */,
-			);
-			name = Alamofire;
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
-		5518091AC76F51560A5714B5B397A969 /* Products */ = {
+		2DABCF0D39ED9E29E45289178E29D6A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
-				8F04D8713B7062D483DBC763CA20A5AC /* FSnapChatLoading.framework */,
 				43853AC5CE65FCAB7A61A1CFA4AD65A8 /* Pods_Desafio_BTG.framework */,
 				808450CE35B48DA92C5D1919308423A6 /* Pods_Desafio_BTG_Desafio_BTGUITests.framework */,
 				A1C98C3E8552B0A76FC68622A559459A /* Pods_Desafio_BTGTests.framework */,
@@ -242,21 +176,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6BFAC6F6A6A01121483ADC03D4944AD7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				8D12CBA11019E82AD5E5A89927333529 /* Alamofire.modulemap */,
-				9B20CE58079EEF05658D470B1481E3E3 /* Alamofire-dummy.m */,
-				DDBE546A5B27EA28B777A32E278ADA6F /* Alamofire-Info.plist */,
-				6A80BEC277B2490C72466335957EA899 /* Alamofire-prefix.pch */,
-				A9B71296695086592105ADBDE4CF4166 /* Alamofire-umbrella.h */,
-				8BAB04B92BFA779A90DF5D8F4EE54BF4 /* Alamofire.debug.xcconfig */,
-				9CE629239C0863B42283CB1C74E7A3EE /* Alamofire.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
 		7572A8DCB065B944DA01B7FCA1F0135A /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +184,21 @@
 				7E7C6BA4CC842888A77FC41B1A243DCC /* Pods-Desafio-BTGTests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7D02D4600E8C814A4EF1D8C7FF8FA146 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5ED047C2109FD8C989F0D93F032AAA29 /* Alamofire.modulemap */,
+				0389D0AFC58E73A075F3F7740CE1D441 /* Alamofire-dummy.m */,
+				A31DDF318E3E03B4DEA2F1B4182A555D /* Alamofire-Info.plist */,
+				5FEB2726D8D5B1A0A657204329BCF4BD /* Alamofire-prefix.pch */,
+				FFE4C558583FF9884EBA9DDF1C6F0DCD /* Alamofire-umbrella.h */,
+				2C50F83F93296D01A5B9009365A2671D /* Alamofire.debug.xcconfig */,
+				0C96CDEC4805F115B4225E4EBFC020B7 /* Alamofire.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
 			sourceTree = "<group>";
 		};
 		7E7C6BA4CC842888A77FC41B1A243DCC /* Pods-Desafio-BTGTests */ = {
@@ -281,6 +215,14 @@
 			);
 			name = "Pods-Desafio-BTGTests";
 			path = "Target Support Files/Pods-Desafio-BTGTests";
+			sourceTree = "<group>";
+		};
+		90FDDC7F5D24472360CA259A8D40AE98 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC362FA3C7A87C2E5630BA06D8CB57BD /* Alamofire */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		95FEF5AA83EE89A6FC6C0B5B8F3F2B8A /* Pods-Desafio-BTG */ = {
@@ -317,31 +259,30 @@
 			path = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests";
 			sourceTree = "<group>";
 		};
-		AC5AE25D972E095B59FC31FFC692E42D /* FSnapChatLoading */ = {
+		CC362FA3C7A87C2E5630BA06D8CB57BD /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				32237AD6BB1E8CE3136C911B86BB788A /* FSLoading.swift */,
-				FF4DE453309C2178DEF545345120A035 /* FSnapChatLoading.h */,
-				DA42E9D220B432A2BB08F7255530A928 /* FSnapChatLoadingView.swift */,
-				C01EE6F273B9F0B11DF7C0ABDA117940 /* Support Files */,
+				E63F367F44FC87833A1792B541781BB7 /* AFError.swift */,
+				85FC5E8A366EFB3B0CF9816F6A90B258 /* Alamofire.swift */,
+				47D8FC88383C541917CFD5ADA31DD7AB /* DispatchQueue+Alamofire.swift */,
+				616062C81FDAB5C58156D8D00F0FC48D /* MultipartFormData.swift */,
+				7C36DA43AFF8C1CD3C666DACA78B91C2 /* NetworkReachabilityManager.swift */,
+				B86FC9B604FA843EF26A951C43C0CE8B /* Notifications.swift */,
+				F8D7A47A590ED08C21AB24503841C370 /* ParameterEncoding.swift */,
+				2EE101F8BE2F43D16C24A9874C79A94A /* Request.swift */,
+				B06A315E96FC5BCCAB1C5145D4BF1BCF /* Response.swift */,
+				AF15E9B6C2601FD9AD228CA2D657E44B /* ResponseSerialization.swift */,
+				F1DA11279AA1D6557BB10C9936E9B3A3 /* Result.swift */,
+				3D7B86CF47C1835EA00FE7A8B8D5CCC5 /* ServerTrustPolicy.swift */,
+				3EFB0C226D602EC371BECC5BD2CC9370 /* SessionDelegate.swift */,
+				98D3F4F1011789493720361780A1982D /* SessionManager.swift */,
+				A50DCBCED5F02570DDA9386825ACB4CF /* TaskDelegate.swift */,
+				58ACD677FD4B95B260E1B1C656D08B84 /* Timeline.swift */,
+				DF3AE0D4172A0ECD56EBFA08991A7C70 /* Validation.swift */,
+				7D02D4600E8C814A4EF1D8C7FF8FA146 /* Support Files */,
 			);
-			name = FSnapChatLoading;
-			path = FSnapChatLoading;
-			sourceTree = "<group>";
-		};
-		C01EE6F273B9F0B11DF7C0ABDA117940 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D0514EF00ACC73DAF2D8D9E0C4BD89AC /* FSnapChatLoading.modulemap */,
-				58AC9EED0DCD4F6611B9D7E11E33124E /* FSnapChatLoading-dummy.m */,
-				1AE3132D0190F09B7C4B37E1CF1747A0 /* FSnapChatLoading-Info.plist */,
-				F84CFC2CC217F55F05B358BFA3CB5D89 /* FSnapChatLoading-prefix.pch */,
-				64B1121CEC2AD3ED5EE4506273DFAA4F /* FSnapChatLoading-umbrella.h */,
-				00C3494BE71F2AC7C818B54C26FFE924 /* FSnapChatLoading.debug.xcconfig */,
-				0B0F67169A795F6F0FB93310BC456977 /* FSnapChatLoading.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/FSnapChatLoading";
+			name = Alamofire;
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -349,8 +290,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				F654825CAB892CE7C1BE9C412300372C /* Pods */,
-				5518091AC76F51560A5714B5B397A969 /* Products */,
+				90FDDC7F5D24472360CA259A8D40AE98 /* Pods */,
+				2DABCF0D39ED9E29E45289178E29D6A4 /* Products */,
 				7572A8DCB065B944DA01B7FCA1F0135A /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -361,15 +302,6 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F654825CAB892CE7C1BE9C412300372C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				202305815D7271E07B627E36EF15BD54 /* Alamofire */,
-				AC5AE25D972E095B59FC31FFC692E42D /* FSnapChatLoading */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,28 +315,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7EE9AFE3D3B1A1EF103A54B0F951FAF3 /* Headers */ = {
+		555BB9A8A34045B2227ECB8E6E55BA42 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF029E081DFB4E4CEA9E345E1FA070DB /* FSnapChatLoading-umbrella.h in Headers */,
-				E72DFB75DDC4B6348E4A1DA6CA2B0D37 /* FSnapChatLoading.h in Headers */,
+				C921AB1661485B25AF710E818E9A034E /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		986950B1FC9D92BBFE6CEF1136F806BA /* Headers */ = {
+		B0B84B4662D737867C76D984907C269F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0572D41BC9418C90AF68808341200693 /* Pods-Desafio-BTG-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B6F4BDB17CFA33DB9D5316A14BCCFE85 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				051C4386AD9DF64F8A1ADC0FF7630A35 /* Pods-Desafio-BTG-Desafio-BTGUITests-umbrella.h in Headers */,
+				AADF8B227330FBE07F978D2781739603 /* Pods-Desafio-BTG-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,40 +344,21 @@
 /* Begin PBXNativeTarget section */
 		0623FF7BCCCDC689874FB540496BF25F /* Pods-Desafio-BTG */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB7518166A3F053A9EBE2E5BE497F897 /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG" */;
+			buildConfigurationList = EE3210D43BA560F70C6B505554687959 /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG" */;
 			buildPhases = (
-				986950B1FC9D92BBFE6CEF1136F806BA /* Headers */,
-				6D4F4772B1AEB3BA01EB7AE5FB065B28 /* Sources */,
-				E71C370EFA8C0243EA7771DD8BCC950F /* Frameworks */,
-				7BB6903544E6CB08378D20979F72CE5F /* Resources */,
+				B0B84B4662D737867C76D984907C269F /* Headers */,
+				5789434AF3794F76079EC97AF888E9DD /* Sources */,
+				BDDE746C0A126FECE1E24BFDD2305519 /* Frameworks */,
+				F9EEE9E2350908CE951E911046839636 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				059560A7B72EB3ADFFE9F7E62B7ABCA2 /* PBXTargetDependency */,
-				26A7C276AEADD494744136CE65E26E7A /* PBXTargetDependency */,
+				DE4CD20B9655F8C70458AB6B51D59E7B /* PBXTargetDependency */,
 			);
 			name = "Pods-Desafio-BTG";
 			productName = "Pods-Desafio-BTG";
 			productReference = 43853AC5CE65FCAB7A61A1CFA4AD65A8 /* Pods_Desafio_BTG.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		11B0331B2105FA64DA2F183E0CE48C75 /* FSnapChatLoading */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7DB0EE5FF80DFE7A6D269DC85765A8FE /* Build configuration list for PBXNativeTarget "FSnapChatLoading" */;
-			buildPhases = (
-				7EE9AFE3D3B1A1EF103A54B0F951FAF3 /* Headers */,
-				F4CBB307C3E9AAD130CF0155A40D7388 /* Sources */,
-				3C558F1FF195070B8FFFE2BF552B5F2C /* Frameworks */,
-				792B55E344C3660F80978239A3ADEECA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FSnapChatLoading;
-			productName = FSnapChatLoading;
-			productReference = 8F04D8713B7062D483DBC763CA20A5AC /* FSnapChatLoading.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5B8FE6533AD763B6FAB20A2551311317 /* Pods-Desafio-BTGTests */ = {
@@ -469,7 +373,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C339F5E017D71C35C064BD991E5B87FF /* PBXTargetDependency */,
+				59408BBE462813252103A1B620B3A982 /* PBXTargetDependency */,
 			);
 			name = "Pods-Desafio-BTGTests";
 			productName = "Pods-Desafio-BTGTests";
@@ -478,18 +382,17 @@
 		};
 		65ABD886520F140B4722F8A342B2AB0A /* Pods-Desafio-BTG-Desafio-BTGUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FA9D13FFC95571636A230474380AF7E /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG-Desafio-BTGUITests" */;
+			buildConfigurationList = D6FD9B344C635B1CC86538133F68D10B /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG-Desafio-BTGUITests" */;
 			buildPhases = (
-				B6F4BDB17CFA33DB9D5316A14BCCFE85 /* Headers */,
-				FB96BF6E9CE94E9870B6F7F94DC47328 /* Sources */,
-				2CFCC18A041296A55A218D0CAE982003 /* Frameworks */,
-				E49AFCCD7AB84A3944BB805ADD188C89 /* Resources */,
+				555BB9A8A34045B2227ECB8E6E55BA42 /* Headers */,
+				6A623971A71C969F5B2648E6480244D1 /* Sources */,
+				B4AB1B82AFB00C861BF143E7BA1946C8 /* Frameworks */,
+				0C94DF710FDFAFBBC1FDA435910D7479 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				798FF78DCAB48D47D74511B65309A6EB /* PBXTargetDependency */,
-				D9F9C566F65FD1A5DA8206BE5617E72D /* PBXTargetDependency */,
+				2A8640B752CA177E3F969578363CAD85 /* PBXTargetDependency */,
 			);
 			name = "Pods-Desafio-BTG-Desafio-BTGUITests";
 			productName = "Pods-Desafio-BTG-Desafio-BTGUITests";
@@ -532,12 +435,11 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 5518091AC76F51560A5714B5B397A969 /* Products */;
+			productRefGroup = 2DABCF0D39ED9E29E45289178E29D6A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */,
-				11B0331B2105FA64DA2F183E0CE48C75 /* FSnapChatLoading */,
 				0623FF7BCCCDC689874FB540496BF25F /* Pods-Desafio-BTG */,
 				65ABD886520F140B4722F8A342B2AB0A /* Pods-Desafio-BTG-Desafio-BTGUITests */,
 				5B8FE6533AD763B6FAB20A2551311317 /* Pods-Desafio-BTGTests */,
@@ -546,6 +448,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0C94DF710FDFAFBBC1FDA435910D7479 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E07D9228A71B0A010AC2EBADCBB3F97 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -560,21 +469,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		792B55E344C3660F80978239A3ADEECA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7BB6903544E6CB08378D20979F72CE5F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E49AFCCD7AB84A3944BB805ADD188C89 /* Resources */ = {
+		F9EEE9E2350908CE951E911046839636 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -609,11 +504,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D4F4772B1AEB3BA01EB7AE5FB065B28 /* Sources */ = {
+		5789434AF3794F76079EC97AF888E9DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F62BAD5AA0032690955EAEEEAF86CA5 /* Pods-Desafio-BTG-dummy.m in Sources */,
+				D803DE9BF207D9D7F76F43E576A77153 /* Pods-Desafio-BTG-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A623971A71C969F5B2648E6480244D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A78BAA796E3F57ABBE7C053FBF47ADBF /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,60 +528,67 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4CBB307C3E9AAD130CF0155A40D7388 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E36AC485859535B6D4715F7603DA8DD0 /* FSLoading.swift in Sources */,
-				9E92020DAD18390B5919FD74D3B549C0 /* FSnapChatLoading-dummy.m in Sources */,
-				452A5924CBEE1399302CDD707B312966 /* FSnapChatLoadingView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FB96BF6E9CE94E9870B6F7F94DC47328 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFC24A9BB72A0AC18D868B283D6329FE /* Pods-Desafio-BTG-Desafio-BTGUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		059560A7B72EB3ADFFE9F7E62B7ABCA2 /* PBXTargetDependency */ = {
+		2A8640B752CA177E3F969578363CAD85 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 82964619CC109AA5BF10BBD9C1575911 /* PBXContainerItemProxy */;
+			targetProxy = 8A438AE57A04D7794BB415E289E163B7 /* PBXContainerItemProxy */;
 		};
-		26A7C276AEADD494744136CE65E26E7A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FSnapChatLoading;
-			target = 11B0331B2105FA64DA2F183E0CE48C75 /* FSnapChatLoading */;
-			targetProxy = D7750072E26A2F476107EE46B147551B /* PBXContainerItemProxy */;
-		};
-		798FF78DCAB48D47D74511B65309A6EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 3806B31E9FCEB1B5300026F2772C424A /* PBXContainerItemProxy */;
-		};
-		C339F5E017D71C35C064BD991E5B87FF /* PBXTargetDependency */ = {
+		59408BBE462813252103A1B620B3A982 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Desafio-BTG";
 			target = 0623FF7BCCCDC689874FB540496BF25F /* Pods-Desafio-BTG */;
-			targetProxy = 3B219D1FB420EA684C052484688DECF2 /* PBXContainerItemProxy */;
+			targetProxy = 4BA8A70C162F4DCA219FCBDBE725E648 /* PBXContainerItemProxy */;
 		};
-		D9F9C566F65FD1A5DA8206BE5617E72D /* PBXTargetDependency */ = {
+		DE4CD20B9655F8C70458AB6B51D59E7B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = FSnapChatLoading;
-			target = 11B0331B2105FA64DA2F183E0CE48C75 /* FSnapChatLoading */;
-			targetProxy = 1A0570FF8F36CC06953D16C7D4ABB920 /* PBXContainerItemProxy */;
+			name = Alamofire;
+			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
+			targetProxy = 0C0522C024BE25356F1BD6B8256D958A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		20E8F771DFCA31E787B4CD0EDE622A32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C508F700A8971B9A80F1625860A7506 /* Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		33FDC926D358904B335F0344F52A911F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6F79C24A4FF8E0AEDD2D50B0F8E5C27 /* Pods-Desafio-BTGTests.debug.xcconfig */;
@@ -716,9 +626,9 @@
 			};
 			name = Debug;
 		};
-		382B0726557F66AF11C37A0D2D3C1227 /* Release */ = {
+		45B4080E75D8A58C61E8252D652E32A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B105A7BFD6AD95B2606ED11865CBFAB6 /* Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig */;
+			baseConfigurationReference = D39F35B32CB12166EC5586C806EA515D /* Pods-Desafio-BTG.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -730,7 +640,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -739,7 +649,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -753,77 +663,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		3D6AA1C38A7AF7A9D87AF5821FA21E51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C508F700A8971B9A80F1625860A7506 /* Pods-Desafio-BTG-Desafio-BTGUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		668C777FED0CD0D7320A8304B5679F59 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00C3494BE71F2AC7C818B54C26FFE924 /* FSnapChatLoading.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FSnapChatLoading/FSnapChatLoading-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FSnapChatLoading/FSnapChatLoading-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FSnapChatLoading/FSnapChatLoading.modulemap";
-				PRODUCT_MODULE_NAME = FSnapChatLoading;
-				PRODUCT_NAME = FSnapChatLoading;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		71243899B61152433AAE34EE86456EE7 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -955,7 +794,7 @@
 		};
 		7A990D4D7A394E906F2DE82D639771CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CE629239C0863B42283CB1C74E7A3EE /* Alamofire.release.xcconfig */;
+			baseConfigurationReference = 0C96CDEC4805F115B4225E4EBFC020B7 /* Alamofire.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -981,44 +820,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		81ED56E794585952FB41B4D6CAFFF103 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D39F35B32CB12166EC5586C806EA515D /* Pods-Desafio-BTG.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1028,7 +829,7 @@
 		};
 		93AD64353C65D45C0D4197F9ECAD786D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BAB04B92BFA779A90DF5D8F4EE54BF4 /* Alamofire.debug.xcconfig */;
+			baseConfigurationReference = 2C50F83F93296D01A5B9009365A2671D /* Alamofire.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1060,9 +861,9 @@
 			};
 			name = Debug;
 		};
-		A64424D1D467A6713A4B79AF31C246B1 /* Debug */ = {
+		98AE3D647B5D6E79401B4DE35149E9CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0714F8F07251982862A123967E5AE05 /* Pods-Desafio-BTG.debug.xcconfig */;
+			baseConfigurationReference = B105A7BFD6AD95B2606ED11865CBFAB6 /* Pods-Desafio-BTG-Desafio-BTGUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1074,7 +875,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1083,7 +884,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG-Desafio-BTGUITests/Pods-Desafio-BTG-Desafio-BTGUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1092,10 +893,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		B6459187D149996EADE8A4DB4BC2A59C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1135,10 +937,12 @@
 			};
 			name = Release;
 		};
-		C55800D911467CBFC1DFB83FF17F78A2 /* Release */ = {
+		DABFBC7242ED8C6ED832DE4C3296A753 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B0F67169A795F6F0FB93310BC456977 /* FSnapChatLoading.release.xcconfig */;
+			baseConfigurationReference = E0714F8F07251982862A123967E5AE05 /* Pods-Desafio-BTG.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1147,28 +951,28 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FSnapChatLoading/FSnapChatLoading-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FSnapChatLoading/FSnapChatLoading-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/FSnapChatLoading/FSnapChatLoading.modulemap";
-				PRODUCT_MODULE_NAME = FSnapChatLoading;
-				PRODUCT_NAME = FSnapChatLoading;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Desafio-BTG/Pods-Desafio-BTG.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1182,24 +986,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FA9D13FFC95571636A230474380AF7E /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG-Desafio-BTGUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D6AA1C38A7AF7A9D87AF5821FA21E51 /* Debug */,
-				382B0726557F66AF11C37A0D2D3C1227 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7DB0EE5FF80DFE7A6D269DC85765A8FE /* Build configuration list for PBXNativeTarget "FSnapChatLoading" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				668C777FED0CD0D7320A8304B5679F59 /* Debug */,
-				C55800D911467CBFC1DFB83FF17F78A2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8BCBC353C249FA9346077F008B83B6A0 /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTGTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1209,11 +995,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB7518166A3F053A9EBE2E5BE497F897 /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG" */ = {
+		D6FD9B344C635B1CC86538133F68D10B /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG-Desafio-BTGUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A64424D1D467A6713A4B79AF31C246B1 /* Debug */,
-				81ED56E794585952FB41B4D6CAFFF103 /* Release */,
+				20E8F771DFCA31E787B4CD0EDE622A32 /* Debug */,
+				98AE3D647B5D6E79401B4DE35149E9CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1223,6 +1009,15 @@
 			buildConfigurations = (
 				93AD64353C65D45C0D4197F9ECAD786D /* Debug */,
 				7A990D4D7A394E906F2DE82D639771CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE3210D43BA560F70C6B505554687959 /* Build configuration list for PBXNativeTarget "Pods-Desafio-BTG" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DABFBC7242ED8C6ED832DE4C3296A753 /* Debug */,
+				45B4080E75D8A58C61E8252D652E32A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
