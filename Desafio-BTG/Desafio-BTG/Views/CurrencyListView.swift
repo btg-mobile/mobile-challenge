@@ -28,6 +28,7 @@ class CurrencyListView: UIView {
         return v
     }()
     
+    var alertAction: (() -> Void)?
     var delegate: DismissScreen?
     var viewModel: CurrencyViewModel?
     var isSearching: Bool = false
@@ -120,7 +121,7 @@ extension CurrencyListView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         if viewModel?.setSearchBar.count == 0 {
-            print("insira um valor valido")
+            alertAction?()
         }else {
             searchBar.resignFirstResponder()
         }

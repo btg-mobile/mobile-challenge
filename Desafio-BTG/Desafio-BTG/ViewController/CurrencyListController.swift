@@ -11,6 +11,11 @@ class CurrencyListController: BaseViewController, DismissScreen, UISearchBarDele
     
     // MARK: - Properties
     
+    let kNameList = "coin list"
+    let kError = "Error"
+    let KInfoError = "The list of currencies could not be loaded. Please try again later."
+    let KAlertSerchBar = "please insert a valid country"
+    
     var viewModel: CurrencyViewModel?
     lazy var mainView = CurrencyListView(viewModel: viewModel)
     
@@ -18,11 +23,10 @@ class CurrencyListController: BaseViewController, DismissScreen, UISearchBarDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        setupNavigation()
-        fetchValue()
-        fetchDetails()
+        requestsApi()
+        setupUI()
         mainView.delegate = self
+        mainView.alertAction = alertActionSearchBar
     }
     
     override func loadView() {
@@ -53,11 +57,26 @@ class CurrencyListController: BaseViewController, DismissScreen, UISearchBarDele
         }
     }
     
+    private func requestsApi() {
+        fetchValue()
+        fetchDetails()
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .white
+        self.title = kNameList
+        setupNavigation()
+    }
+    
     private func handleError() {
-        self.showAlert(alertText: "Error", alertMessage: "Error")
+        self.showAlert(alertText: kError, alertMessage: KInfoError)
     }
     
     func dismissScreenTapped() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func alertActionSearchBar() {
+        showAlert(alertText: kError, alertMessage: KAlertSerchBar)
     }
 }
