@@ -17,6 +17,13 @@ final class CurrencyViewModel: DataDelegete {
     
     var countrySelectedOne: String?
     var countrySelectedTwo: String?
+    var filterData: [String:String] = [:]
+    
+    var setSearchBar: [(key: String, value: String)] {
+        get {
+            return Array(filterData)
+        }
+    }
     
     func gettingCountryOne(countryOne: String) {
         self.countrySelectedOne = countryOne

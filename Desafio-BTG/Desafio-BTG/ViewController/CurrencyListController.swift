@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyListController: BaseViewController, DismissScreen {
+class CurrencyListController: BaseViewController, DismissScreen, UISearchBarDelegate {
     
     // MARK: - Properties
     
