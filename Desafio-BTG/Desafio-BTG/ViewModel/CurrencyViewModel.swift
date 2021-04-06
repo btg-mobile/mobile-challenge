@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FSnapChatLoading
 
 protocol DataDelegete {
     func gettingCountryOne(countryOne: String)
