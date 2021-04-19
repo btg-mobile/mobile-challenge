@@ -1,0 +1,6 @@
+include ':auth:currencyExchange'
+include ':auth:currencyList'
+include ':coreAndroid'
+include ':auth'
+include ':app'
+rootProject.name = "AppAndroid"
