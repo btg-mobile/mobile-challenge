@@ -9,9 +9,18 @@ import UIKit
 
 extension UIButton {
     func rotateAnimation() {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-        })
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotationAnimation.fromValue = 0.0
+        rotationAnimation.toValue = Double.pi * 2
+        rotationAnimation.duration = 0.7
+        rotationAnimation.repeatCount = .infinity
+        self.layer.add(rotationAnimation, forKey: nil)
+    }
+    
+    func removeAllAnimations() {
+        DispatchQueue.main.async {
+            self.layer.removeAllAnimations()
+        }
     }
     
 }

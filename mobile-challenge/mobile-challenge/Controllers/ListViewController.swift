@@ -58,19 +58,18 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.hideKeyboard()
-        APICurrency.getList { (result) in
-            switch(result) {
-            case .success(let currencyNameModel):
-                self.currencies = currencyNameModel.currencies.array
-                self.sortList()
-                
-            case .failure(_):
-                AlertMessage.showOk(title: "Atenção", message: "Parece que algo deu errado, tente novamente.")
-            }
+        tableView.pullToRefresh {
+            self.getList()
         }
+        if let refreshControl = tableView.refreshControl {
+            refreshControl.beginRefreshing()
+        }
+//        view.hideKeyboard()
+        getList()
         // Do any additional setup after loading the view.
     }
+    
+    
     
     
     func sortList() {
@@ -95,6 +94,22 @@ class ListViewController: UIViewController {
             }
         }
         
+    }
+    
+    private func getList() {
+        APICurrency.getList { (result) in
+            DispatchQueue.main.async {
+                self.tableView.stopPullToRefresh()
+            }
+            switch(result) {
+            case .success(let currencyNameModel):
+                self.currencies = currencyNameModel.currencies.array
+                self.sortList()
+                
+            case .failure(_):
+                AlertMessage.showOk(title: "Atenção", message: "Parece que algo deu errado, tente novamente.")
+            }
+        }
     }
 
     /*

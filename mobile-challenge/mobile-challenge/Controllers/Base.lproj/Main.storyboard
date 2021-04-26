@@ -150,7 +150,8 @@
                         <outlet property="currencyOneButtonOutlet" destination="1Le-Ss-1uK" id="caT-nQ-RQZ"/>
                         <outlet property="currencyTextField" destination="IVm-Aw-kuU" id="aVX-Vm-6HW"/>
                         <outlet property="currencyTwoButtonOutlet" destination="AaM-Fq-xwb" id="6aF-lG-IE2"/>
-                        <outlet property="rereshButton" destination="XsO-BT-7Zi" id="r4B-r9-cOG"/>
+                        <outlet property="refreshButton" destination="XsO-BT-7Zi" id="r4B-r9-cOG"/>
+                        <outlet property="totalQuotesLabel" destination="1o1-YX-EL5" id="RDn-fo-b2q"/>
                         <segue destination="G29-Vd-PWz" kind="show" identifier="listCurrencySegue" id="IVM-6d-UtJ"/>
                     </connections>
                 </viewController>

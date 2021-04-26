@@ -9,7 +9,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    private var currencyList: [Quote] = []
+    private var currencyList: [Quote] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.totalQuotesLabel.text = "Cotações disponíveis: \(self.currencyList.count)"
+            }
+        }
+    }
     
     private var currencyOne = CurrencyDescription() {
         didSet {
@@ -35,7 +41,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var currencyTwoButtonOutlet: UIButton!
     @IBOutlet weak var currencyTextField: MoneyFormatTextField!
     @IBOutlet weak var calcResulLabel: UILabel!
-    @IBOutlet weak var rereshButton: UIButton!
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var totalQuotesLabel: UILabel!
     
     @IBAction func currencyOneAction(_ sender: Any) {
         selectedCurrencyEnum = .ONE
@@ -85,8 +92,10 @@ class MainViewController: UIViewController {
     }
     
     private func getQuotes() {
-        rereshButton.rotateAnimation()
+        refreshButton.rotateAnimation()
         APICurrency.getLive { (result) in
+            self.refreshButton.removeAllAnimations()
+            
             switch (result) {
             case .success(let currencyModel):
                 self.currencyList =  currencyModel.quotes.array

@@ -31,4 +31,25 @@ extension UITableView {
             
         }
     }
+    
+    func pullToRefresh(completion: @escaping (() -> ())) {
+        self.refreshControl = UIRefreshControl()
+        self.actionHandler(action: completion)
+        refreshControl?.addTarget(self, action: #selector(triggerActionHandler), for: .valueChanged)
+    }
+    
+    func stopPullToRefresh() {
+        guard let refreshControl = refreshControl else {return}
+        refreshControl.endRefreshing()
+    }
+    
+    private func actionHandler(action:(() -> Void)? = nil) {
+        struct __ { static var action :(() -> Void)? }
+        if action != nil { __.action = action }
+        else { __.action?() }
+    }
+    
+    @objc private func triggerActionHandler() {
+        self.actionHandler()
+    }
 }
