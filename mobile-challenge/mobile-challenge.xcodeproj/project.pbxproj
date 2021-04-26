@@ -14,6 +14,7 @@
 		B3032A6A2634E58900827A58 /* ChooseCurrencyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3032A692634E58900827A58 /* ChooseCurrencyDelegate.swift */; };
 		B33E19872635D91D00116420 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E19862635D91D00116420 /* AlertMessage.swift */; };
 		B33E198A2635E8F000116420 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E19892635E8F000116420 /* UIButtonExtension.swift */; };
+		B33E198D2636439F00116420 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E198C2636439F00116420 /* Reachability.swift */; };
 		B343DBA326344F5500A6A699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B343DBA226344F5500A6A699 /* AppDelegate.swift */; };
 		B343DBA726344F5500A6A699 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B343DBA626344F5500A6A699 /* MainViewController.swift */; };
 		B343DBAA26344F5500A6A699 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B343DBA826344F5500A6A699 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		B3032A692634E58900827A58 /* ChooseCurrencyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCurrencyDelegate.swift; sourceTree = "<group>"; };
 		B33E19862635D91D00116420 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		B33E19892635E8F000116420 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		B33E198C2636439F00116420 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B343DB9F26344F5500A6A699 /* mobile-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B343DBA226344F5500A6A699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B343DBA626344F5500A6A699 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				B343DBB926345EE200A6A699 /* APICurrency.swift */,
+				B33E198C2636439F00116420 /* Reachability.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				B343DBBA26345EE200A6A699 /* APICurrency.swift in Sources */,
 				B3032A582634C6BB00827A58 /* CurrencyValueModel.swift in Sources */,
 				B3B7B8F22635A2EF00A81A30 /* UIViewExtension.swift in Sources */,
+				B33E198D2636439F00116420 /* Reachability.swift in Sources */,
 				B3032A6A2634E58900827A58 /* ChooseCurrencyDelegate.swift in Sources */,
 				B343DBA326344F5500A6A699 /* AppDelegate.swift in Sources */,
 				B3B7B8F92635A85600A81A30 /* StringExtension.swift in Sources */,

@@ -108,6 +108,7 @@ class ListViewController: UIViewController {
                 
             case .failure(_):
                 AlertMessage.showOk(title: "Atenção", message: "Parece que algo deu errado, tente novamente.")
+            case .connectivityError:break
             }
         }
     }

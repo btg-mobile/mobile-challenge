@@ -11,13 +11,19 @@ enum HTTPMethod: String {
     case GET
     case POST
 }
-public typealias Completion<T: Decodable> = (Result<T, Error>) -> Void
+
+public enum Result<T:Codable> {
+    case success(T)
+    case failure(Error)
+    case connectivityError
+    
+}
+
+public typealias Completion<T: Codable> = (Result<T>) -> Void
 public typealias Parameters = [String: Any]
 
 fileprivate let apiKey = ""
 fileprivate let baseURL = "http://api.currencylayer.com"
-
-
 
 public class APICurrency {
     
@@ -41,6 +47,26 @@ public class APICurrency {
 public class GenericRequest {
     
     static func request<T:Decodable>(url: String, method: HTTPMethod, urlParameters: Parameters? = nil, body parameters: Parameters? = nil, completion: @escaping Completion<T>){
+        
+        if !Reachability.isConnectedToNetwork() {
+            if let loadModel = UserDefaults.standard.object(forKey: "\(T.self)") as? Data {
+                do {
+                    let decoder = JSONDecoder()
+                    let responseModel = try decoder.decode(T.self, from: loadModel)
+                    completion(.success(responseModel))
+                    
+                } catch {
+                    AlertMessage.showOk(title: "atenção", message: "Conecte-se à internet e tente novamente.")
+                    completion(.connectivityError)
+                }
+            } else {
+                AlertMessage.showOk(title: "atenção", message: "Conecte-se à internet e tente novamente.")
+                completion(.connectivityError)
+            }
+            return
+        }
+        
+        
         let session = URLSession.shared
         var serviceUrl = URLComponents(string: baseURL + url + apiKey )
         
@@ -70,11 +96,11 @@ public class GenericRequest {
             if let error = error {
                 completion(.failure(error))
             }
-            
             if let data = data {
                 do {
                     let jsonDecoder = JSONDecoder()
                     let responseModel = try jsonDecoder.decode(T.self, from: data)
+                    UserDefaults.standard.set(data, forKey: "\(T.self)")
                     completion(.success(responseModel))
                 } catch {
                     completion(.failure(error))

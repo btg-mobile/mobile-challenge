@@ -7,18 +7,18 @@
 
 import Foundation
 
-public struct CurrencyNameModel: Decodable {
+public struct CurrencyNameModel: Codable {
     public var currencies: CurrencyNames
     
 }
 
-public struct CurrencyDescription: Decodable {
+public struct CurrencyDescription: Codable {
     public var key: String = ""
     public var name: String = ""
 }
 
 
-public struct CurrencyNames: Decodable {
+public struct CurrencyNames: Codable {
     public var array: [CurrencyDescription]
     
     // Define DynamicCodingKeys type needed for creating

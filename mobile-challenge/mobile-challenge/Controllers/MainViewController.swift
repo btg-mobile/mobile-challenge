@@ -102,6 +102,8 @@ class MainViewController: UIViewController {
             case .failure(let error):
                 print(error)
                 AlertMessage.showOk(title: "Atenção", message: "Parece que algo deu errado. Tente novamente.")
+            case .connectivityError:break
+                
             }
         }
     }

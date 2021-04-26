@@ -7,18 +7,18 @@
 
 import Foundation
 
-public struct CurrencyValueModel: Decodable {
+public struct CurrencyValueModel: Codable {
     public var quotes: Quotes
     
 }
 
-public struct Quote: Decodable {
+public struct Quote: Codable {
     public var key: String = ""
     public var value: Double = 0.0
 }
 
 
-public struct Quotes: Decodable {
+public struct Quotes: Codable {
     public var array: [Quote]
     
     // Define DynamicCodingKeys type needed for creating
@@ -57,7 +57,6 @@ public struct Quotes: Decodable {
             quote.key = key.stringValue
             tempArray.append(quote)
         }
-
         // 3
         // Finish decoding all Student objects. Thus assign tempArray to array.
         array = tempArray
