@@ -1,4 +1,4 @@
-package com.leonardo.convert_coins
+package com.leonardo.convertcoins
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

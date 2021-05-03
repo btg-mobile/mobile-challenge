@@ -1,4 +1,4 @@
-package com.leonardo.convert_coins
+package com.leonardo.convertcoins
 
 import org.junit.Test
 
