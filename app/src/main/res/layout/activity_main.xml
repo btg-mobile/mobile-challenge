@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/currency_i_have"
+        android:id="@+id/currencyIHave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/currency_i_have" />
@@ -19,14 +19,14 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/default_currency_i_have"
+            android:id="@+id/defaultCurrencyIHave"
             android:layout_weight="3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_currency_i_have" />
 
         <Button
-            android:id="@+id/button_change_currency1"
+            android:id="@+id/buttonChangeCurrency1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/currency_i_want"
+        android:id="@+id/currencyIWant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/currency_i_want" />
@@ -55,14 +55,14 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/default_currency_i_want"
+            android:id="@+id/defaultCurrencyIWant"
             android:layout_weight="3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_currency_want" />
 
         <Button
-            android:id="@+id/button_change_currency2"
+            android:id="@+id/buttonChangeCurrency2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

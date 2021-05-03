@@ -13,13 +13,13 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="currencySelected"
         android:gravity="center"
         android:textSize="24dp"
         android:textColor="@color/black"
         android:text="@string/default_currency_list_title" />
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/currencySearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"

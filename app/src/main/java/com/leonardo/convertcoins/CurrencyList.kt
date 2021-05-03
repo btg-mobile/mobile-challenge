@@ -3,12 +3,12 @@ package com.leonardo.convertcoins
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.leonardo.convertcoins.adapter.CurrencyAdapter
 import com.leonardo.convertcoins.config.Constants
 import com.leonardo.convertcoins.model.Currency
+
+import kotlinx.android.synthetic.main.activity_currency_list.*
 
 class CurrencyList : AppCompatActivity() {
     // id of the selected button from main
@@ -16,7 +16,6 @@ class CurrencyList : AppCompatActivity() {
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var currencyAdapter: CurrencyAdapter
-    private lateinit var currencyRecyclerView: RecyclerView
 
     private lateinit var currenciesList: ArrayList<Currency>;
 
@@ -38,19 +37,35 @@ class CurrencyList : AppCompatActivity() {
         println(buttonId)
     }
 
-    fun initViewElements() {
+    private fun initViewElements() {
         linearLayoutManager = LinearLayoutManager(this)
         currencyAdapter = CurrencyAdapter(currenciesList)
 
-        currencyRecyclerView = findViewById(R.id.currencyList)
-        currencyRecyclerView.layoutManager = linearLayoutManager
-        currencyRecyclerView.adapter = currencyAdapter
+        currencyList.layoutManager = linearLayoutManager
+        currencyList.adapter = currencyAdapter
+        configSearchView()
 
     }
 
-    fun currencySelected(view: View) {
+    private fun configSearchView() {
+        currencySearchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                currencyAdapter.filter.filter(newText)
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+        })
+
+        // allows all the search bar to be clickable
+        currencySearchView.setOnClickListener { currencySearchView.isIconified = false }
+    }
+
+    fun currencySelected(coin: String) {
         intent = Intent()
-        intent.putExtra("currency", "AUD")
+        intent.putExtra(Constants.INTENT.CURRENCIES, coin)
         setResult(RESULT_OK, intent)
         finish()
     }
