@@ -10,10 +10,11 @@ import kotlinx.coroutines.launch
 class ListRepository(
     private val remoteCurrencyList : CurrencyList,
 ) {
-    val scope = CoroutineScope(Job() + Dispatchers.Main)
+    private val scope = CoroutineScope(Job() + Dispatchers.Main)
 
 
-    private fun getCurrencyListFromApi() {
+    fun getCurrencyListFromApi() {
+        println("Chamou pelo menos")
         scope.launch {
             try {
                 val currencyListData = remoteCurrencyList.getCurrencyList()
@@ -26,12 +27,12 @@ class ListRepository(
                         typeKeys.addAll(it!!.keys.toList())
                     }
 
-                    print("typekeys $typeKeys")
+                    println("typekeys $typeKeys")
                 }
 
 
             }catch (e : Throwable) {
-                print("THROW $e")
+                println("THROW $e")
             }
         }
     }
