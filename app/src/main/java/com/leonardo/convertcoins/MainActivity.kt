@@ -2,12 +2,19 @@ package com.leonardo.convertcoins
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BlendModeColorFilter
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.core.widget.addTextChangedListener
 
 import com.leonardo.convertcoins.config.Keys
@@ -21,14 +28,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigDecimal
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
-    private val haveIndex = 0; // INDEX of selected list
-    private val wantIndex = 1; // INDEX of selected list
+object INDEX {
+    const val HAVE = 0 // INDEX of selected list
+    const val WANT = 1 // INDEX of selected list
+}
 
+class MainActivity : AppCompatActivity() {
     private val defaultHave = "BRL"
     private val defaultWant = "USD"
     private var toConvertValue = BigDecimal.ZERO
@@ -42,12 +49,12 @@ class MainActivity : AppCompatActivity() {
     // we can know which information needs to be updated
     private val buttonIdMap = mapOf(
         R.id.button_change_currency_I_have to mapOf(
-            "selected" to haveIndex,
+            "selected" to INDEX.HAVE,
             "label" to R.id.currency_I_have,
             "image" to R.id.currency_I_have_image
         ),
         R.id.button_change_currency_I_want to mapOf(
-            "selected" to wantIndex,
+            "selected" to INDEX.WANT,
             "label" to R.id.currency_I_want,
             "image" to R.id.currency_I_want_image
         )
@@ -74,9 +81,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewItems() {
+        // init currencies labels
         currency_I_have.text = defaultHave
         currency_I_want.text = defaultWant
+
+        // add listener so every time user types a new value its automatic converted
         input_to_convert.addTextChangedListener { value -> convertCurrency(value.toString()) }
+
+        // add style on invert_coins_image so it looks like a button when clicked
+        invert_coins_image.setOnTouchListener { v, event ->
+            val view = v as ImageView
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    view.drawable.colorFilter =
+                            BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.parseColor("#FF353C81"), BlendModeCompat.SRC_ATOP)
+                    view.invalidate()
+                }
+
+                MotionEvent.ACTION_CANCEL,
+                MotionEvent.ACTION_UP -> {
+                    view.performClick() // accessibility
+                    view.drawable.clearColorFilter()
+                    view.invalidate()
+                }
+            }
+            true
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -105,6 +135,16 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("CURRENCIES", supportedCurrencies.currencies)
         val requestCode = resources.getInteger(R.integer.REQUEST_CURRENCY_LIST)
         startActivityForResult(intent, requestCode)
+    }
+
+    /**
+     *
+     */
+    fun invertCoins(view: View) {
+        selected.reverse()
+        setCoin(R.id.button_change_currency_I_have, selected[INDEX.HAVE].coin)
+        setCoin(R.id.button_change_currency_I_want, selected[INDEX.WANT].coin)
+        convertCurrency(toConvertValue.toString())
     }
 
     /** update all activity variables related to the selected coin
@@ -155,17 +195,9 @@ class MainActivity : AppCompatActivity() {
      */
     private fun convertCurrency(toConvertValue: String?) {
         this.toConvertValue = if( toConvertValue.isNullOrBlank()) BigDecimal.ZERO else toConvertValue.toBigDecimal()
-        val convertedValue = convertService.convert(selected[haveIndex], selected[wantIndex], this.toConvertValue)
+        val convertedValue = convertService.convert(selected[INDEX.HAVE], selected[INDEX.WANT], this.toConvertValue)
 
-        final_value.text = getTemplateValue(convertedValue)
-    }
-
-    private fun getTemplateValue(convertedValue: BigDecimal): String {
-        val otherSymbols = DecimalFormatSymbols(Locale.ROOT)
-        otherSymbols.decimalSeparator = ','
-        otherSymbols.groupingSeparator = '.'
-        val df = DecimalFormat("#,###.##", otherSymbols)
-        return df.format(convertedValue)
+        final_value.text = convertService.getFormattedValue(convertedValue)
     }
 
     /**
@@ -181,6 +213,7 @@ class MainActivity : AppCompatActivity() {
                     realtimeRates = response.body() as RealtimeRates
                     initCoin(R.id.button_change_currency_I_have, defaultHave)
                     initCoin(R.id.button_change_currency_I_want, defaultWant)
+                    println(realtimeRates.quotes)
                 } else
                     errorHandler(errorLabel)
                 loading_panel.visibility = View.GONE
@@ -188,6 +221,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<RealtimeRates>, t: Throwable) {
                 errorHandler(errorLabel)
+                loading_panel.visibility = View.GONE
             }
         })
 

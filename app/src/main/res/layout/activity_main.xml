@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="32dp"
+        android:paddingBottom="40dp"
         android:textSize="24dp"
         android:textColor="@color/black"
         android:text="@string/main_title" />
@@ -62,7 +62,7 @@
         <Button
             android:id="@+id/button_change_currency_I_have"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:onClick="goToCurrencyList"
             android:text="@string/button_change_currency" />
     </LinearLayout>
@@ -70,7 +70,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp">
+        android:layout_marginBottom="32dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_to_convert"
@@ -79,6 +79,15 @@
             android:inputType="numberDecimal"
             android:hint="@string/value_to_convert" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/invert_coins_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:onClick="invertCoins"
+        app:srcCompat="@drawable/change_positions" />
 
     <TextView
         android:id="@+id/currency_I_want_label"
@@ -111,8 +120,9 @@
         <Button
             android:id="@+id/button_change_currency_I_want"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:onClick="goToCurrencyList"
+            android:textColor="@color/white"
             android:text="@string/button_change_currency" />
     </LinearLayout>
 
@@ -131,4 +141,5 @@
         android:textSize="24dp"
         android:gravity="center"
         android:text="@string/default_converted_value"/>
+
 </LinearLayout>

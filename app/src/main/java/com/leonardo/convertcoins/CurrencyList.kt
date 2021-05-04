@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leonardo.convertcoins.adapters.CurrencyAdapter
-import com.leonardo.convertcoins.config.Constants
 import com.leonardo.convertcoins.models.Currency
 
 import kotlinx.android.synthetic.main.activity_currency_list.*
