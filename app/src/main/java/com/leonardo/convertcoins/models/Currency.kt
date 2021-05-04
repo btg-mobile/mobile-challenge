@@ -1,4 +1,4 @@
-package com.leonardo.convertcoins.model
+package com.leonardo.convertcoins.models
 
 data class Currency (
     val coin: String,

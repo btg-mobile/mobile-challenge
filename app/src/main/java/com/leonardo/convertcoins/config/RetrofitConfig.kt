@@ -1,5 +1,6 @@
 package com.leonardo.convertcoins.config
 
+import com.leonardo.convertcoins.services.CurrencyService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

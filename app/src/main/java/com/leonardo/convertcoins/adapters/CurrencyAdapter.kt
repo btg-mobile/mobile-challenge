@@ -1,16 +1,14 @@
-package com.leonardo.convertcoins.adapter
+package com.leonardo.convertcoins.adapters
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.leonardo.convertcoins.CurrencyList
 import com.leonardo.convertcoins.R
 import com.leonardo.convertcoins.config.inflate
-import com.leonardo.convertcoins.model.Currency
+import com.leonardo.convertcoins.models.Currency
 import kotlinx.android.synthetic.main.currency_recyclerview_item_row.view.*
 
 class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>(), Filterable {

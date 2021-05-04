@@ -8,8 +8,30 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
+    <RelativeLayout
+        android:id="@+id/loading_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
+
     <TextView
-        android:id="@+id/currencyIHave"
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:text="@string/main_title" />
+
+    <TextView
+        android:id="@+id/currency_I_have_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/currency_i_have" />
@@ -19,17 +41,24 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/defaultCurrencyIHave"
-            android:layout_weight="3"
+            android:id="@+id/currency_I_have_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:text="future image"/>
+
+        <TextView
+            android:id="@+id/currency_I_have"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/default_currency_i_have" />
 
         <Button
-            android:id="@+id/buttonChangeCurrency1"
+            android:id="@+id/button_change_currency_I_have"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:onClick="goToCurrencyList"
             android:text="@string/button_change_currency" />
     </LinearLayout>
@@ -39,13 +68,15 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_to_convert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:hint="@string/value_to_convert" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/currencyIWant"
+        android:id="@+id/currency_I_want_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/currency_i_want" />
@@ -55,21 +86,37 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/defaultCurrencyIWant"
-            android:layout_weight="3"
+            android:id="@+id/currency_I_want_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:text="future image"/>
+
+        <TextView
+            android:id="@+id/currency_I_want"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_currency_want" />
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/default_currency_i_want" />
 
         <Button
-            android:id="@+id/buttonChangeCurrency2"
+            android:id="@+id/button_change_currency_I_want"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:onClick="goToCurrencyList"
             android:text="@string/button_change_currency" />
     </LinearLayout>
+
     <TextView
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/converted_value_title"/>
+    <TextView
+        android:id="@+id/final_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

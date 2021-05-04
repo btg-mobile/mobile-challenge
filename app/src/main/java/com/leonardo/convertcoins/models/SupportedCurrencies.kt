@@ -1,4 +1,4 @@
-package com.leonardo.convertcoins.model
+package com.leonardo.convertcoins.models
 
 data class SupportedCurrencies(
     val success: Boolean,

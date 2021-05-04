@@ -1,4 +1,4 @@
-package com.leonardo.convertcoins.model
+package com.leonardo.convertcoins.models
 
 data class RealtimeRates(
     val success: Boolean,
@@ -6,5 +6,5 @@ data class RealtimeRates(
     val privacy: String,
     val timestamp: Float,
     val source: String, // USD
-    val quotes: Map<String, Float>
+    val quotes: Map<String, Double>
 )
