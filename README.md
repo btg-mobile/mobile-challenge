@@ -1,5 +1,7 @@
 ## CONVERT COINS
 
+Uses shared preferences to keep user last convert choice
+
 # references
 currency layer: https://currencylayer.com/documentation
 cpp api_key: https://www.codementor.io/blog/kotlin-apikeys-7o0g54qk5b

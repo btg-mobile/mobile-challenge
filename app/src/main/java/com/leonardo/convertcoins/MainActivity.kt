@@ -1,13 +1,15 @@
 package com.leonardo.convertcoins
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import com.leonardo.convertcoins.config.Constants
+
 import com.leonardo.convertcoins.config.Keys
 import com.leonardo.convertcoins.config.RetrofitConfig
 import com.leonardo.convertcoins.models.Rate
@@ -18,7 +20,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
+import java.math.BigDecimal
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private val defaultHave = "BRL"
     private val defaultWant = "USD"
-    private var toConvertValue = 0.0
+    private var toConvertValue = BigDecimal.ZERO
 
     private val apiConfig = RetrofitConfig()
     private val convertService = ConvertService()
@@ -51,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     // start selected list values (currency I have being the first index and currency I want being the second)
     // with negative rates because we do not called the API yet
-    private lateinit var selected: MutableList<Rate>
+    private val selected = mutableListOf(Rate(0.0, ""), Rate(0.0, ""))
     private lateinit var realtimeRates: RealtimeRates;
     private lateinit var supportedCurrencies: SupportedCurrencies;
 
@@ -108,6 +112,11 @@ class MainActivity : AppCompatActivity() {
      * @param coin as "AUD"
      */
     private fun setCoin(buttonId: Int, coin: String) {
+        setCoinOnTemplate(buttonId, coin)
+        setCoinOnSharedPreferences(buttonId, coin)
+    }
+
+    private fun setCoinOnTemplate(buttonId: Int, coin: String) {
         val templateIds = buttonIdMap[buttonId]
         if (templateIds != null) {
             // access buttonMap properties to get selected index and
@@ -118,16 +127,45 @@ class MainActivity : AppCompatActivity() {
 
             selected[index] = Rate(rate, coin)
             label.text = coin
-//            TODO:
-//            val image: ImageView = findViewById(templateIds["image"]!!)
+            val image: ImageView = findViewById(templateIds["image"]!!)
+            val id = resources.getIdentifier("@drawable/${coin.toLowerCase()}", null, packageName)
+            if (id > 0) image.setImageResource(id)
+            else image.setImageResource(R.drawable.coin_icon)
+
         }
     }
 
+    private fun setCoinOnSharedPreferences(buttonId: Int, coin: String) {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        with (sharedPref.edit()) {
+            putString(buttonId.toString(), coin)
+            apply()
+        }
+    }
+
+    private fun initCoin(buttonId: Int, defaultCoin: String) {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        val coin = sharedPref.getString(buttonId.toString(), defaultCoin)!!
+        setCoin(buttonId, coin)
+    }
+
+    /**
+     * function that actually calls convertService, calculate the converted value and show it to the user
+     * @param toConvertValue is the value input from user to be converted between currencies
+     */
     private fun convertCurrency(toConvertValue: String?) {
-        this.toConvertValue = if( toConvertValue.isNullOrBlank()) 0.0 else toConvertValue.toDouble()
+        this.toConvertValue = if( toConvertValue.isNullOrBlank()) BigDecimal.ZERO else toConvertValue.toBigDecimal()
         val convertedValue = convertService.convert(selected[haveIndex], selected[wantIndex], this.toConvertValue)
-        println(convertedValue)
-        final_value.text = convertedValue.toString()
+
+        final_value.text = getTemplateValue(convertedValue)
+    }
+
+    private fun getTemplateValue(convertedValue: BigDecimal): String {
+        val otherSymbols = DecimalFormatSymbols(Locale.ROOT)
+        otherSymbols.decimalSeparator = ','
+        otherSymbols.groupingSeparator = '.'
+        val df = DecimalFormat("#,###.##", otherSymbols)
+        return df.format(convertedValue)
     }
 
     /**
@@ -141,9 +179,8 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<RealtimeRates>, response: Response<RealtimeRates>) {
                 if (response.body() != null && response.body()?.quotes != null) {
                     realtimeRates = response.body() as RealtimeRates
-                    val haveRate = convertService.getCurrentRate(defaultHave, realtimeRates.quotes)
-                    val wantRate = convertService.getCurrentRate(defaultWant, realtimeRates.quotes)
-                    selected = mutableListOf(Rate(haveRate, "BRL"), Rate(wantRate, "USD"))
+                    initCoin(R.id.button_change_currency_I_have, defaultHave)
+                    initCoin(R.id.button_change_currency_I_want, defaultWant)
                 } else
                     errorHandler(errorLabel)
                 loading_panel.visibility = View.GONE

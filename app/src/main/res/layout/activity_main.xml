@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginBottom="32dp"
         android:textSize="24dp"
         android:textColor="@color/black"
         android:text="@string/main_title" />
@@ -38,20 +39,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
-        <TextView
+        <ImageView
             android:id="@+id/currency_I_have_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:gravity="center"
-            android:text="future image"/>
+            android:layout_margin="12dp"
+            android:src="@drawable/coin_icon"/>
 
         <TextView
             android:id="@+id/currency_I_have"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textSize="16dp"
             android:gravity="center_vertical"
             android:text="@string/default_currency_i_have" />
 
@@ -65,7 +69,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_to_convert"
@@ -83,14 +88,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
 
-        <TextView
+        <ImageView
             android:id="@+id/currency_I_want_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:gravity="center"
-            android:text="future image"/>
+            android:layout_margin="12dp"
+            android:src="@drawable/coin_icon"/>
 
         <TextView
             android:id="@+id/currency_I_want"
@@ -98,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
+            android:textSize="16dp"
             android:text="@string/default_currency_i_want" />
 
         <Button
@@ -109,16 +117,18 @@
     </LinearLayout>
 
     <TextView
-        android:textSize="16dp"
-        android:textColor="@color/black"
+        android:textSize="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
         android:text="@string/converted_value_title"/>
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/final_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="24dp"
         android:gravity="center"
         android:text="@string/default_converted_value"/>
 </LinearLayout>

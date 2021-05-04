@@ -69,12 +69,17 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
 
         override fun onClick(v: View?) {
             if (view.context is CurrencyList)
-                (view.context as CurrencyList).currencySelected(view.recyclerCoin.text.toString())
+                (view.context as CurrencyList).currencySelected(view.recycler_coin.text.toString())
         }
 
         fun bindCurrency(currency: Currency) {
-            view.recyclerCoin.text = currency.coin
-            view.recyclerDescription.text = currency.description
+            view.recycler_coin.text = currency.coin
+            view.recycler_description.text = currency.description
+
+            val id = view.resources.getIdentifier("@drawable/${currency.coin.toLowerCase()}", null, view.context.packageName)
+            if (id > 0) view.recycler_image.setImageResource(id)
+            else view.recycler_image.setImageResource(R.drawable.coin_icon)
+
         }
     }
 }

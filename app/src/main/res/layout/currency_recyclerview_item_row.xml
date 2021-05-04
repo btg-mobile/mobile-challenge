@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/recyclerImage"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <ImageView
+        android:id="@+id/recycler_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:gravity="center"
-        android:text="future image"/>
+        android:layout_margin="12dp"
+        android:src="@drawable/coin_icon"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,12 +18,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/recyclerCoin"
+            android:id="@+id/recycler_coin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_list_currency_coin" />
         <TextView
-            android:id="@+id/recyclerDescription"
+            android:id="@+id/recycler_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_list_currency_description"/>
