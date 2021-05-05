@@ -13,7 +13,7 @@ interface ExchangeRateDao {
     suspend fun insertExchangeRateList(rates: List<ExchangeRateEntity>)
 
     @Query("SELECT * FROM exchange_rate")
-    fun observeCurrencyList(): LiveData<List<ExchangeRateEntity>>
+    fun observeExchangeRateList(): LiveData<List<ExchangeRateEntity>>
 
     @Query("SELECT * FROM exchange_rate WHERE fromCurrency = :fromCurrency AND toCurrency = :toCurrency")
     fun getRate(fromCurrency: String, toCurrency: String): LiveData<ExchangeRateEntity>
