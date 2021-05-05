@@ -28,7 +28,7 @@
         android:gravity="center"
         android:paddingBottom="40dp"
         android:textSize="24dp"
-        android:textColor="@color/black"
+        android:textColor="@color/blue_gray"
         android:text="@string/main_title" />
 
     <TextView
@@ -134,7 +134,7 @@
         android:gravity="center"
         android:text="@string/converted_value_title"/>
     <TextView
-        android:textColor="@color/black"
+        android:textColor="@color/blue_gray"
         android:id="@+id/final_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

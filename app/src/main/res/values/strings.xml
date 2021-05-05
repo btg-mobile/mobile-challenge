@@ -16,6 +16,7 @@
     <!--    currency list activity view-->
     <string name="default_currency_list_title">Selecione a moeda</string>
     <string name="search_coins_label">Buscar moedas...</string>
+    <string name="empty_currency_recycler_view">Tente digitar algo diferente...</string>
 
     <!--    currency recycler view-->
     <string name="default_list_currency_coin">EUR</string>

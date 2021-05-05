@@ -13,3 +13,4 @@ The application will not work without a private key.
 - cpp api_key: https://www.codementor.io/blog/kotlin-apikeys-7o0g54qk5b
 - recycler view: https://www.raywenderlich.com/1560485-android-recyclerview-tutorial-with-kotlin
 - extensions: https://antonioleiva.com/kotlin-android-extensions/
+- RecyclerView Empty Observer: https://stackoverflow.com/a/43953603/10526869

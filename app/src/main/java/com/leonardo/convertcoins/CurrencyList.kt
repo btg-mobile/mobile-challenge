@@ -1,5 +1,6 @@
 package com.leonardo.convertcoins
 
+import com.leonardo.convertcoins.config.RecyclerViewEmptyObserver
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,8 +40,13 @@ class CurrencyList : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(this)
         currencyAdapter = CurrencyAdapter(currenciesList)
 
-        currencyList.layoutManager = linearLayoutManager
-        currencyList.adapter = currencyAdapter
+        // set layout manager and adapter
+        currency_recycler_view.layoutManager = linearLayoutManager
+        currency_recycler_view.adapter = currencyAdapter
+        // config adapter to check if list is empty
+        val rvEmptyObserver = RecyclerViewEmptyObserver(currency_recycler_view, empty_currency_recycler_view)
+        currencyAdapter.registerAdapterDataObserver(rvEmptyObserver)
+
         configSearchView()
     }
 

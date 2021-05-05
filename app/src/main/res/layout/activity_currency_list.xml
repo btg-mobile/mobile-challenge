@@ -8,13 +8,13 @@
     android:layout_margin="16dp"
     tools:context=".CurrencyList">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="24dp"
+        android:paddingBottom="20dp"
+        android:textSize="24sp"
         android:textColor="@color/black"
         android:text="@string/default_currency_list_title" />
 
@@ -27,8 +27,24 @@
         app:queryHint="@string/search_coins_label"
         android:layoutDirection="rtl" />
 
+    <LinearLayout
+        android:id="@+id/empty_currency_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/blue_gray"
+            android:textSize="18sp"
+            android:text="@string/empty_currency_recycler_view"/>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/currencyList"
+        android:id="@+id/currency_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
