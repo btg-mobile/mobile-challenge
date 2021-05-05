@@ -2,17 +2,19 @@ package com.leonardo.convertcoins
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.BlendModeColorFilter
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Layout
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AlignmentSpan
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.core.widget.addTextChangedListener
@@ -23,6 +25,7 @@ import com.leonardo.convertcoins.models.Rate
 import com.leonardo.convertcoins.models.RealtimeRates
 import com.leonardo.convertcoins.models.SupportedCurrencies
 import com.leonardo.convertcoins.services.ConvertService
+import com.leonardo.convertcoins.services.SQLiteService
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,14 +33,23 @@ import retrofit2.Response
 import java.math.BigDecimal
 import java.util.*
 
-object INDEX {
-    const val HAVE = 0 // INDEX of selected list
-    const val WANT = 1 // INDEX of selected list
-}
-
 class MainActivity : AppCompatActivity() {
-    private val defaultHave = "BRL"
-    private val defaultWant = "USD"
+    object INDEX {
+        const val HAVE = 0 // INDEX of selected list
+        const val WANT = 1 // INDEX of selected list
+    }
+
+    object ERROR {
+        const val SUPPORTED_CURRENCIES = "SUPPORTED_CURRENCIES"
+        const val REALTIME_RATES = "REALTIME_RATES"
+        const val LOAD_COIN = "LOAD_COIN"
+    }
+
+    object DEFAULT {
+        const val I_HAVE = "BRL"
+        const val I_WANT = "USD"
+    }
+
     private var toConvertValue = BigDecimal.ZERO
 
     private val apiConfig = RetrofitConfig()
@@ -63,14 +75,20 @@ class MainActivity : AppCompatActivity() {
     // start selected list values (currency I have being the first index and currency I want being the second)
     // with negative rates because we do not called the API yet
     private val selected = mutableListOf(Rate(0.0, ""), Rate(0.0, ""))
-    private lateinit var realtimeRates: RealtimeRates;
-    private lateinit var supportedCurrencies: SupportedCurrencies;
+    private lateinit var dbService: SQLiteService
+    private lateinit var realtimeRates: RealtimeRates
+    private lateinit var supportedCurrencies: SupportedCurrencies
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loading_panel.visibility = View.VISIBLE
 
+        dbService = SQLiteService(applicationContext, MODE_PRIVATE)
+        supportedCurrencies = dbService.getSavedSupportedCurrencies()
+        realtimeRates = dbService.getSavedRealtimeRates()
+
+        initCoins()
         initCurrencyLayer()
         initViewItems()
     }
@@ -87,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     convertCurrency(toConvertValue.toString())  // call again when currency changes
                 }
                 else
-                    errorHandler("Erro ao carregar a moeda", false)
+                    errorHandler("Erro ao carregar a moeda", ERROR.LOAD_COIN)
             }
         }
     }
@@ -105,8 +123,8 @@ class MainActivity : AppCompatActivity() {
      */
     private fun initViewItems() {
         // init currencies labels
-        currency_I_have.text = defaultHave
-        currency_I_want.text = defaultWant
+        currency_I_have.text = DEFAULT.I_HAVE
+        currency_I_want.text = DEFAULT.I_WANT
 
         // add listener so every time user types a new value its automatic converted
         input_to_convert.addTextChangedListener { value -> convertCurrency(value.toString()) }
@@ -200,6 +218,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function that wrapper both coins to be initialized and should be called
+     * every time realtimeRate variable is updated
+     */
+    private fun initCoins() {
+        initCoin(R.id.button_change_currency_I_have, DEFAULT.I_HAVE)
+        initCoin(R.id.button_change_currency_I_want, DEFAULT.I_WANT)
+    }
     /** Access shared preferences to get last user selected coin. Used to start the screen
      * When the user do not selected any coin yet
      * @param buttonId to differ "I have" and "I want" buttons, and then, update the right variables
@@ -218,8 +244,28 @@ class MainActivity : AppCompatActivity() {
     private fun convertCurrency(toConvertValue: String?) {
         this.toConvertValue = if( toConvertValue.isNullOrBlank()) BigDecimal.ZERO else toConvertValue.toBigDecimal()
         val convertedValue = convertService.convert(selected[INDEX.HAVE], selected[INDEX.WANT], this.toConvertValue)
-        println(convertedValue)
         final_value.text = convertService.getFormattedValue(convertedValue)
+    }
+
+    /**
+     * Call supported currencies api and return all supported conversion currencies
+     */
+    private fun callSupportedCurrencies() {
+        val currenciesCall = apiConfig.currencyService().getSupportedCurrencies((apiKey))
+        currenciesCall.enqueue(object : Callback<SupportedCurrencies> {
+            val errorLabel = "Erro ao fazer a requisição de moedas disponíveis."
+            override fun onResponse(call: Call<SupportedCurrencies>, response: Response<SupportedCurrencies>) {
+                if (response.body() != null && response.body()?.currencies != null) {
+                    supportedCurrencies = response.body() as SupportedCurrencies
+                    dbService.saveCurrencies(supportedCurrencies)
+                } else
+                    errorHandler(errorLabel, ERROR.SUPPORTED_CURRENCIES)
+            }
+
+            override fun onFailure(call: Call<SupportedCurrencies>, t: Throwable) {
+                errorHandler(errorLabel, ERROR.SUPPORTED_CURRENCIES)
+            }
+        })
     }
 
     /**
@@ -233,51 +279,79 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<RealtimeRates>, response: Response<RealtimeRates>) {
                 if (response.body() != null && response.body()?.quotes != null) {
                     realtimeRates = response.body() as RealtimeRates
-                    initCoin(R.id.button_change_currency_I_have, defaultHave)
-                    initCoin(R.id.button_change_currency_I_want, defaultWant)
+                    dbService.saveQuotes(realtimeRates)
+                    initCoins()
                 } else
-                    errorHandler(errorLabel)
+                    errorHandler(errorLabel, ERROR.REALTIME_RATES)
                 loading_panel.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<RealtimeRates>, t: Throwable) {
-                errorHandler(errorLabel)
+                errorHandler(errorLabel, ERROR.REALTIME_RATES)
                 loading_panel.visibility = View.GONE
             }
         })
 
     }
 
-    /**
-     * Call supported currencies api and return all supported conversion currencies
-     */
-    private fun callSupportedCurrencies() {
-        val currenciesCall = apiConfig.currencyService().getSupportedCurrencies((apiKey))
-        currenciesCall.enqueue(object : Callback<SupportedCurrencies> {
-            val errorLabel = "Erro ao fazer a requisição de moedas disponíveis."
-            override fun onResponse(call: Call<SupportedCurrencies>, response: Response<SupportedCurrencies>) {
-                if (response.body() != null && response.body()?.currencies != null)
-                    supportedCurrencies = response.body() as SupportedCurrencies
-                else
-                    errorHandler(errorLabel)
-            }
-
-            override fun onFailure(call: Call<SupportedCurrencies>, t: Throwable) {
-                errorHandler(errorLabel)
-            }
-        })
-    }
-
     /** Handle api errors
      * @param label what should be printed on the toast
-     * @param disableButtons block navigate to CurrencyList if database is empty
+     * @param type that should be one of the object ERROR types
      */
-    private fun errorHandler(label: String, disableButtons: Boolean = true) {
-        Toast.makeText(this@MainActivity, label, Toast.LENGTH_SHORT).show()
-        if (disableButtons) {
+    private fun errorHandler(label: String, type: String) {
+        checkShowToast(label, type)
+        checkDisableButtons(type)
+        checkShowDialog(type)
+    }
+
+    /**
+     * Check if toast should be shown for the specific error type
+     * @param label what should be printed on the toast
+     * @param type that should be one of the object ERROR types
+     */
+    private fun checkShowToast(label: String, type: String) {
+        if (type != ERROR.REALTIME_RATES) {
+            showToast(label)
+        }
+    }
+    /**
+     * Show error toast on screen with a spannable String centralized
+     * @param label text to be centrilzed and displayed inside the toast
+     */
+    private fun showToast(label: String) {
+        val text = SpannableString(label)
+        text.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
+                0, text.length - 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+        )
+        Toast.makeText(this@MainActivity, text, Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Check if buttons should be mark as disable blocking naviagete to currencyList
+     * @param type that should be one of the object  ERROR types
+     */
+    private fun checkDisableButtons(type: String) {
+        if (type == ERROR.SUPPORTED_CURRENCIES
+                && (!this::supportedCurrencies.isInitialized || supportedCurrencies.currencies.isEmpty())) {
             button_change_currency_I_have.isEnabled = false
             button_change_currency_I_want.isEnabled = false
         }
     }
 
+    /**
+     * Check if dialog should be shown based on error type
+     * @param type that should be one of the object ERROR types
+     */
+    private fun checkShowDialog(type: String) {
+        if (type == ERROR.REALTIME_RATES
+                && !this::realtimeRates.isInitialized || realtimeRates.quotes.isEmpty()) {
+            val dialog = AlertDialog.Builder(this@MainActivity)
+            dialog.setTitle("Erro ao carregar as cotações")
+            dialog.setMessage("Não foi possível carregar as informações referentes as cotações" +
+                    " das moedas. Verifique sua interenet e tente novamente")
+            dialog.setPositiveButton("Ok") { _, _ -> {} }
+            dialog.create()
+            dialog.show()
+        }
+    }
 }
