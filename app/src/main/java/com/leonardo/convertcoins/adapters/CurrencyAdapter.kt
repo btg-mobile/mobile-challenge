@@ -1,3 +1,6 @@
+/**
+ * recycler view adapter to properly show the large currencies list inside CurrencyList activity
+ */
 package com.leonardo.convertcoins.adapters
 
 import android.view.View
@@ -30,6 +33,9 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
 
     override fun getItemCount() = filteredCurrencies.size
 
+    /**
+     * Method used to filter listed currencies.
+     */
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
@@ -40,6 +46,7 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
                     else {
                         val resultList = ArrayList<Currency>()
                         for (currency in currencies) {
+                            // filter currencies based on coin initials and currency description
                             if (currency.coin.toLowerCase().contains(charSearch.toLowerCase())
                                 || currency.description.toLowerCase().contains(charSearch.toLowerCase()))
                                 resultList.add(currency)
@@ -51,7 +58,9 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
                 return filteredResults
             }
 
-            @Suppress("UNCHECKED_CAST")
+            /**
+             * Update list indeed and notify adapter that the set has changed
+             */
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredCurrencies = results?.values as ArrayList<Currency>
                 notifyDataSetChanged()
@@ -76,6 +85,8 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
             view.recycler_coin.text = currency.coin
             view.recycler_description.text = currency.description
 
+            // draw the res image related to the selected currency if it exists,
+            // otherwise, draw default coin label
             val id = view.resources.getIdentifier("@drawable/${currency.coin.toLowerCase()}", null, view.context.packageName)
             if (id > 0) view.recycler_image.setImageResource(id)
             else view.recycler_image.setImageResource(R.drawable.coin_icon)

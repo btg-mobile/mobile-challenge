@@ -32,6 +32,9 @@ class CurrencyList : AppCompatActivity() {
         initViewElements()
     }
 
+    /**
+     * Init view elements and set needed listeners
+     */
     private fun initViewElements() {
         linearLayoutManager = LinearLayoutManager(this)
         currencyAdapter = CurrencyAdapter(currenciesList)
@@ -41,6 +44,10 @@ class CurrencyList : AppCompatActivity() {
         configSearchView()
     }
 
+    /**
+     * Config search view setting the full horizontal bar clickable triggering adapter.filter
+     * each time user types a new value on it
+     */
     private fun configSearchView() {
         // allows all the search bar to be clickable
         currencySearchView.setOnClickListener { currencySearchView.isIconified = false }
@@ -56,6 +63,11 @@ class CurrencyList : AppCompatActivity() {
         })
     }
 
+    /**
+     * Triggered when user clicks on a list item saving needed values inside intent and return it
+     * to main activity with setResult() and finish()
+     * @param coin selected  as AUD
+     */
     fun currencySelected(coin: String) {
         intent = Intent()
         intent.putExtra("ID", buttonId)

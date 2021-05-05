@@ -75,11 +75,34 @@ class MainActivity : AppCompatActivity() {
         initViewItems()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val currencyRequestCode = resources.getInteger(R.integer.REQUEST_CURRENCY_LIST)
+        if (resultCode == RESULT_OK && requestCode == currencyRequestCode) {
+            if (data !== null) {
+                val buttonId = data.getIntExtra("ID", 0)
+                val coin = data.getStringExtra("CURRENCIES")
+                if (buttonId != 0 && coin !== null) {
+                    setCoin(buttonId, coin)
+                    convertCurrency(toConvertValue.toString())  // call again when currency changes
+                }
+                else
+                    errorHandler("Erro ao carregar a moeda", false)
+            }
+        }
+    }
+
+    /**
+     * Init currencyLayer api calling both realtimeRates and supportedCurrencies
+     */
     private fun initCurrencyLayer() {
         callRealtimeRates()
         callSupportedCurrencies()
     }
 
+    /**
+     * Init view elements and set needed listeners
+     */
     private fun initViewItems() {
         // init currencies labels
         currency_I_have.text = defaultHave
@@ -109,24 +132,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val currencyRequestCode = resources.getInteger(R.integer.REQUEST_CURRENCY_LIST)
-        if (resultCode == RESULT_OK && requestCode == currencyRequestCode) {
-            if (data !== null) {
-                val buttonId = data.getIntExtra("ID", 0)
-                val coin = data.getStringExtra("CURRENCIES")
-                if (buttonId != 0 && coin !== null) {
-                    setCoin(buttonId, coin)
-                    convertCurrency(toConvertValue.toString())  // call again when currency changes
-                }
-                else
-                    errorHandler("Erro ao carregar a moeda", false)
-            }
-        }
-    }
-
-    /** navigate to CurrencyList Activity to select a currency
+    /** Navigate to CurrencyList Activity to select a currency
      * @param view is the button clicked (either to change currency I have or currency I want)
      */
     fun goToCurrencyList(view: View) {
@@ -138,7 +144,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     *
+     * Invert coin I have with coin I want and call convertCurrency again to update and show
+     * the converted value properly.
      */
     fun invertCoins(view: View) {
         selected.reverse()
@@ -147,7 +154,7 @@ class MainActivity : AppCompatActivity() {
         convertCurrency(toConvertValue.toString())
     }
 
-    /** update all activity variables related to the selected coin
+    /** Update all activity variables related to the selected coin
      * @param buttonId to differ "I have" and "I want" buttons, and then, update the right variables
      * @param coin as "AUD"
      */
@@ -156,6 +163,10 @@ class MainActivity : AppCompatActivity() {
         setCoinOnSharedPreferences(buttonId, coin)
     }
 
+    /** Set coin on template updating image, label and state list "selected"
+     * @param buttonId to differ "I have" and "I want" buttons, and then, update the right variables
+     * @param coin as "AUD"
+     */
     private fun setCoinOnTemplate(buttonId: Int, coin: String) {
         val templateIds = buttonIdMap[buttonId]
         if (templateIds != null) {
@@ -167,6 +178,8 @@ class MainActivity : AppCompatActivity() {
 
             selected[index] = Rate(rate, coin)
             label.text = coin
+            // draw the res image related to the selected currency if it exists,
+            // otherwise, draw default coin label
             val image: ImageView = findViewById(templateIds["image"]!!)
             val id = resources.getIdentifier("@drawable/${coin.toLowerCase()}", null, packageName)
             if (id > 0) image.setImageResource(id)
@@ -175,6 +188,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Set coin on shared preferences saving only the string representing the selected coin
+     * @param buttonId to differ "I have" and "I want" buttons, and then, update the right variables
+     * @param coin as "AUD"
+     */
     private fun setCoinOnSharedPreferences(buttonId: Int, coin: String) {
         val sharedPref = getPreferences(Context.MODE_PRIVATE)
         with (sharedPref.edit()) {
@@ -183,6 +200,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Access shared preferences to get last user selected coin. Used to start the screen
+     * When the user do not selected any coin yet
+     * @param buttonId to differ "I have" and "I want" buttons, and then, update the right variables
+     * @param defaultCoin as "AUD"
+     */
     private fun initCoin(buttonId: Int, defaultCoin: String) {
         val sharedPref = getPreferences(Context.MODE_PRIVATE)
         val coin = sharedPref.getString(buttonId.toString(), defaultCoin)!!
@@ -190,30 +212,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * function that actually calls convertService, calculate the converted value and show it to the user
+     * Call convertService, calculate the converted value and show it to the user
      * @param toConvertValue is the value input from user to be converted between currencies
      */
     private fun convertCurrency(toConvertValue: String?) {
         this.toConvertValue = if( toConvertValue.isNullOrBlank()) BigDecimal.ZERO else toConvertValue.toBigDecimal()
         val convertedValue = convertService.convert(selected[INDEX.HAVE], selected[INDEX.WANT], this.toConvertValue)
-
+        println(convertedValue)
         final_value.text = convertService.getFormattedValue(convertedValue)
     }
 
     /**
-     * call realtime rates api and return rates related to the USD coin
+     * Call realtime rates api and return rates related to the USD coin
      */
     private fun callRealtimeRates() {
         val ratesCall = apiConfig.currencyService().getRealtimeRates(apiKey)
 
         ratesCall.enqueue(object: Callback<RealtimeRates> {
-            val errorLabel = "Erro ao fazer a requisição de taxas. Verifique sua internet e abra o aplicativo novamente"
+            val errorLabel = "Erro ao fazer a requisição de taxas"
             override fun onResponse(call: Call<RealtimeRates>, response: Response<RealtimeRates>) {
                 if (response.body() != null && response.body()?.quotes != null) {
                     realtimeRates = response.body() as RealtimeRates
                     initCoin(R.id.button_change_currency_I_have, defaultHave)
                     initCoin(R.id.button_change_currency_I_want, defaultWant)
-                    println(realtimeRates.quotes)
                 } else
                     errorHandler(errorLabel)
                 loading_panel.visibility = View.GONE
@@ -228,12 +249,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * call supported currencies api and return all supported conversion currencies
+     * Call supported currencies api and return all supported conversion currencies
      */
     private fun callSupportedCurrencies() {
         val currenciesCall = apiConfig.currencyService().getSupportedCurrencies((apiKey))
         currenciesCall.enqueue(object : Callback<SupportedCurrencies> {
-            val errorLabel = "Erro ao fazer a requisição de moedas disponíveis"
+            val errorLabel = "Erro ao fazer a requisição de moedas disponíveis."
             override fun onResponse(call: Call<SupportedCurrencies>, response: Response<SupportedCurrencies>) {
                 if (response.body() != null && response.body()?.currencies != null)
                     supportedCurrencies = response.body() as SupportedCurrencies
@@ -249,6 +270,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Handle api errors
      * @param label what should be printed on the toast
+     * @param disableButtons block navigate to CurrencyList if database is empty
      */
     private fun errorHandler(label: String, disableButtons: Boolean = true) {
         Toast.makeText(this@MainActivity, label, Toast.LENGTH_SHORT).show()
