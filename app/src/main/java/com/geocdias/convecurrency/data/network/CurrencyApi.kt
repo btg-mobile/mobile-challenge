@@ -11,8 +11,8 @@ interface CurrencyApi {
     @GET("/live")
     suspend fun fetchRates(
         @Query("access_key") accessKey: String,
-        @Query("currencies") to: String,
         @Query("source") from: String,
+        @Query("currencies") to: String,
         @Query("format") format: Int = 1
     ): Response<ExchangeRateResponse>
 

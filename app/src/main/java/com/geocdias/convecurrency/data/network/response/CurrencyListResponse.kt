@@ -7,4 +7,3 @@ data class CurrencyListResponse(
     val success: Boolean,
     val terms: String
 )
-

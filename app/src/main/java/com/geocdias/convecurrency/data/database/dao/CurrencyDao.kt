@@ -13,7 +13,7 @@ interface CurrencyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCurrencyList(currencies: List<CurrencyEntity>)
 
-    @Query("SELECT * FROM currency")
+    @Query("SELECT * FROM currency ORDER BY code ASC")
     fun observeCurrencyList():LiveData<List<CurrencyEntity>>
 
     @Query("SELECT * FROM currency WHERE code = :code")
