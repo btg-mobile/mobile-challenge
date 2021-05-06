@@ -7,17 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.currencyapp.R
 import com.example.currencyapp.network.service.CurrencyList
+import com.example.currencyapp.network.service.CurrencyLive
+import com.example.currencyapp.repository.HomeRepository
 import com.example.currencyapp.repository.ListRepository
 import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
     private val remoteCurrencyList : CurrencyList by inject()
+    private val remoteCurrencyLive : CurrencyLive by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("Acho que to aqui 1")
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -25,6 +27,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         println("Acho que to aqui")
-        ListRepository(remoteCurrencyList).getCurrencyListFromApi()
+        //ListRepository(remoteCurrencyList).getCurrencyListFromApi()
+        HomeRepository(remoteCurrencyLive = remoteCurrencyLive).getCurrencyLiveFromApi()
     }
 }
