@@ -39,15 +39,10 @@ class CurrencyRepositoryImpl @Inject constructor(
 
   override fun fetchCurrencies(): LiveData<Resource<List<CurrencyModel>>> {
     return performGetOperation(
-      databaseQuery = { currencyDao.observeCurrencyList().map { mapper.dbToDomainMapper.mapList(it) } },
+      databaseQuery = { fetchCurrenciesFromDb() },
       networkCall = { currencyClient.fetchCurrencies(Constants.KEY) },
       saveCallResult = { currencyListRespose ->
-        val currencies = currencyListRespose.currencies.entries.map { entry ->
-          CurrencyEntity(
-            code = entry.key,
-            name = entry.value
-          )
-        }
+        val currencies =  mapper.remoteListToDbMapper.map(currencyListRespose)
         currencyDao.insertCurrencyList(currencies)
       }
     )
