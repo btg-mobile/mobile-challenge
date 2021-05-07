@@ -1,6 +1,8 @@
 package com.geocdias.convecurrency.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geocdias.convecurrency.R
+import com.geocdias.convecurrency.databinding.CurrencyListLayoutBinding
 import com.geocdias.convecurrency.databinding.FragmentCurrencyListBinding
 import com.geocdias.convecurrency.ui.adapters.CurrencyListAdapter
 import com.geocdias.convecurrency.ui.viewmodel.CurrencyViewModel
@@ -21,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CurrencyListFragment : Fragment() {
     private var fragBiding: FragmentCurrencyListBinding? = null
+    private var currencyListLayoutBinding: CurrencyListLayoutBinding? = null
     private val viewModel: CurrencyViewModel by viewModels()
     private lateinit var navController: NavController
     private val currencyListAdapter: CurrencyListAdapter by lazy {
@@ -32,6 +36,7 @@ class CurrencyListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCurrencyListBinding.inflate(inflater, container, false)
+        currencyListLayoutBinding = CurrencyListLayoutBinding.bind(binding.root)
         fragBiding = binding
 
         return binding.root
@@ -44,11 +49,21 @@ class CurrencyListFragment : Fragment() {
     }
 
     private fun setupUI() {
-        fragBiding?.currenciesRv?.apply {
+        currencyListLayoutBinding?.currenciesRv?.apply {
             adapter = currencyListAdapter
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
         }
+
+        currencyListLayoutBinding?.searchCurrencyEt?.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                currencyListAdapter.filter.filter(charSequence)
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+        })
     }
 
     private fun setupObservers() {
@@ -70,13 +85,14 @@ class CurrencyListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         fragBiding = null
+        currencyListLayoutBinding = null
     }
 
     private fun showProgress(show: Boolean) {
         if (show) {
-            fragBiding?.progress?.visibility = View.VISIBLE
+            currencyListLayoutBinding?.progress?.visibility = View.VISIBLE
         } else {
-            fragBiding?.progress?.visibility = View.GONE
+            currencyListLayoutBinding?.progress?.visibility = View.GONE
         }
     }
 }

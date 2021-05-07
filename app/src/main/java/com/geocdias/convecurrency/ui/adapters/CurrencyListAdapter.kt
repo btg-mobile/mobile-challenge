@@ -2,17 +2,25 @@ package com.geocdias.convecurrency.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.geocdias.convecurrency.databinding.CurrencyListItemBinding
 import com.geocdias.convecurrency.model.CurrencyModel
 
-class CurrencyListAdapter(): RecyclerView.Adapter<CurrencyListAdapter.CurrencyViewHolder>() {
+class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyViewHolder>(),
+    Filterable {
 
-    class CurrencyViewHolder(val binding: CurrencyListItemBinding): RecyclerView.ViewHolder(binding.root)
+    private lateinit var filteredList: MutableList<CurrencyModel>
 
-    var diffCallback = object: DiffUtil.ItemCallback<CurrencyModel>() {
+    private var originalList: List<CurrencyModel> = listOf()
+
+    class CurrencyViewHolder(val binding: CurrencyListItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    var diffCallback = object : DiffUtil.ItemCallback<CurrencyModel>() {
         override fun areItemsTheSame(oldItem: CurrencyModel, newItem: CurrencyModel): Boolean {
             return oldItem.code == newItem.code
         }
@@ -26,9 +34,18 @@ class CurrencyListAdapter(): RecyclerView.Adapter<CurrencyListAdapter.CurrencyVi
 
     var currencyList: List<CurrencyModel>
         get() = differ.currentList
-        set(list) = differ.submitList(list)
+        set(list) {
+            if (originalList.isNullOrEmpty()) {
+                originalList = list
+            }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyListAdapter.CurrencyViewHolder {
+            differ.submitList(list)
+        }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CurrencyListAdapter.CurrencyViewHolder {
         return CurrencyViewHolder(
             CurrencyListItemBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -45,4 +62,32 @@ class CurrencyListAdapter(): RecyclerView.Adapter<CurrencyListAdapter.CurrencyVi
     }
 
     override fun getItemCount(): Int = currencyList.count()
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence?): FilterResults {
+                val stringValue = charSequence.toString()
+
+                    filteredList = if (stringValue.isEmpty()) {
+                        originalList.toMutableList()
+                    } else {
+                        originalList.filter { currency ->
+                            currency.code.toLowerCase().contains(stringValue) ||
+                            currency.name.toLowerCase().contains(stringValue)
+
+                        }.toMutableList()
+                    }
+
+
+                return FilterResults().also {
+                    it.values = filteredList
+                }
+
+            }
+
+            override fun publishResults(charSequence: CharSequence?, result: FilterResults?) {
+                currencyList = result?.values as List<CurrencyModel>
+            }
+        }
+    }
 }
