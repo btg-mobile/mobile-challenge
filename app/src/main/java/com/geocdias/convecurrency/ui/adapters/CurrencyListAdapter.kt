@@ -13,7 +13,7 @@ import com.geocdias.convecurrency.model.CurrencyModel
 class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyViewHolder>(),
     Filterable {
 
-    private lateinit var filteredList: MutableList<CurrencyModel>
+    private lateinit var filteredList: List<CurrencyModel>
 
     private var originalList: List<CurrencyModel> = listOf()
 
@@ -38,14 +38,10 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyVie
             if (originalList.isNullOrEmpty()) {
                 originalList = list
             }
-
             differ.submitList(list)
         }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): CurrencyListAdapter.CurrencyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         return CurrencyViewHolder(
             CurrencyListItemBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -55,10 +51,15 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyVie
         )
     }
 
-    override fun onBindViewHolder(holder: CurrencyListAdapter.CurrencyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
         val currency = currencyList[position]
         holder.binding.currencyCode.text = currency.code
         holder.binding.currencyName.text = currency.name
+        holder.binding.currencyItem.setOnClickListener {
+            onItemClickListener?.let { onClick ->
+                onClick(currency)
+            }
+        }
     }
 
     override fun getItemCount(): Int = currencyList.count()
@@ -69,25 +70,28 @@ class CurrencyListAdapter : RecyclerView.Adapter<CurrencyListAdapter.CurrencyVie
                 val stringValue = charSequence.toString()
 
                     filteredList = if (stringValue.isEmpty()) {
-                        originalList.toMutableList()
+                        originalList
                     } else {
                         originalList.filter { currency ->
                             currency.code.toLowerCase().contains(stringValue) ||
                             currency.name.toLowerCase().contains(stringValue)
-
-                        }.toMutableList()
+                        }
                     }
-
 
                 return FilterResults().also {
                     it.values = filteredList
                 }
-
             }
 
             override fun publishResults(charSequence: CharSequence?, result: FilterResults?) {
                 currencyList = result?.values as List<CurrencyModel>
             }
         }
+    }
+
+    protected var onItemClickListener: ((CurrencyModel) -> Unit)? =  null
+
+    fun setOnClickListener(listener: (CurrencyModel) -> Unit) {
+        onItemClickListener = listener
     }
 }

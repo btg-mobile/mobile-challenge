@@ -9,8 +9,9 @@ import kotlinx.coroutines.Dispatchers
 
 fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
                                networkCall: suspend () -> Resource<A>,
-                               saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
-    liveData(Dispatchers.IO) {
+                               saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> {
+
+    return liveData(Dispatchers.IO) {
         emit(Resource.loading())
 
         val source = databaseQuery.invoke().map { Resource.success(it) }
@@ -25,3 +26,4 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
             emitSource(source)
         }
     }
+}

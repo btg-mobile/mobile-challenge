@@ -7,17 +7,17 @@
     tools:context=".ui.fragments.CurrencyConvertFragment"
     android:padding="16dp">
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/convertFromLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="De"
-        android:textSize="18dp" />
+        android:textSize="20sp" />
 
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/convertToLabel"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Para"
-        android:textSize="18dp" />
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
