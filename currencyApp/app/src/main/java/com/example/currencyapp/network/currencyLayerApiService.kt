@@ -1,8 +1,7 @@
 package com.example.currencyapp.network
 
-import com.example.currencyapp.network.response.CurrencyListResponse
 import com.example.currencyapp.network.service.CurrencyList
-import com.example.currencyapp.network.service.CurrencyLive
+import com.example.currencyapp.network.service.CurrencyRate
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,4 +15,4 @@ fun provideRetrofit() : Retrofit {
 }
 
 fun provideCurrencyListService(retrofit: Retrofit) : CurrencyList = retrofit.create(CurrencyList::class.java)
-fun provideCurrencyLiveService(retrofit: Retrofit) : CurrencyLive = retrofit.create(CurrencyLive::class.java)
+fun provideCurrencyLiveService(retrofit: Retrofit) : CurrencyRate = retrofit.create(CurrencyRate::class.java)

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Map;
 
-class CurrencyLiveResponse {
+class CurrencyRateResponse {
     @SerializedName("success")
     var success : Boolean ?= null
     @SerializedName("quotes")
