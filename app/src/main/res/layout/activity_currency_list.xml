@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/blue_gray"
+            android:textColor="@color/primary"
             android:textSize="18sp"
             android:text="@string/empty_currency_recycler_view"/>
     </LinearLayout>

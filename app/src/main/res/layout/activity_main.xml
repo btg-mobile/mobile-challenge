@@ -1,145 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity" >
-
-    <RelativeLayout
-        android:id="@+id/loading_panel"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+    <ScrollView
+        android:id="@+id/main_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:gravity="center" >
+        android:padding="16dp"
+        android:fillViewport="true">
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true" />
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/main_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="40dp"
-        android:textSize="24dp"
-        android:textColor="@color/blue_gray"
-        android:text="@string/main_title" />
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/loading_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                        <ProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:indeterminate="true" />
 
-    <TextView
-        android:id="@+id/currency_I_have_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/currency_i_have" />
+                </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/main_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="40dp"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:text="@string/main_title" />
 
-        <ImageView
-            android:id="@+id/currency_I_have_image"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:layout_margin="12dp"
-            android:src="@drawable/coin_icon"/>
+                <include
+                    android:id="@+id/layout_I_have"
+                    app:label="@{@string/currency_I_have}"
+                    layout="@layout/currency_item_layout"/>
 
-        <TextView
-            android:id="@+id/currency_I_have"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="16dp"
-            android:gravity="center_vertical"
-            android:text="@string/default_currency_i_have" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="32dp">
 
-        <Button
-            android:id="@+id/button_change_currency_I_have"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:onClick="goToCurrencyList"
-            android:text="@string/button_change_currency" />
-    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="32dp"
+                        android:layout_weight="1">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_to_convert"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789,"
+                            android:hint="@string/value_to_convert" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_to_convert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="@string/value_to_convert" />
-    </com.google.android.material.textfield.TextInputLayout>
+                        <ImageButton
+                            android:id="@+id/invert_coins_image"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:onClick="invertCoins"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/invert_coins_image_description"
+                            android:background="@drawable/change_positions_selector" />
 
-    <ImageView
-        android:id="@+id/invert_coins_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
-        android:onClick="invertCoins"
-        app:srcCompat="@drawable/change_positions" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/currency_I_want_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/currency_i_want" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp">
+                <include android:id="@+id/layout_I_want"
+                    app:label="@{@string/currency_I_want}"
+                    layout="@layout/currency_item_layout"/>
 
-        <ImageView
-            android:id="@+id/currency_I_want_image"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:layout_margin="12dp"
-            android:src="@drawable/coin_icon"/>
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="@string/converted_value_title"/>
 
-        <TextView
-            android:id="@+id/currency_I_want"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textSize="16dp"
-            android:text="@string/default_currency_i_want" />
+                <TextView
+                    android:id="@+id/final_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-        <Button
-            android:id="@+id/button_change_currency_I_want"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:onClick="goToCurrencyList"
-            android:textColor="@color/white"
-            android:text="@string/button_change_currency" />
-    </LinearLayout>
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="@string/default_converted_value"/>
+            </LinearLayout>
+    </ScrollView>
+</layout>
 
-    <TextView
-        android:textSize="18dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:gravity="center"
-        android:text="@string/converted_value_title"/>
-    <TextView
-        android:textColor="@color/blue_gray"
-        android:id="@+id/final_value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:gravity="center"
-        android:text="@string/default_converted_value"/>
 
-</LinearLayout>

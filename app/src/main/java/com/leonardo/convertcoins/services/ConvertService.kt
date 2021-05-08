@@ -9,6 +9,19 @@ import java.util.*
 
 class ConvertService {
 
+    companion object {
+        /**
+         * create default application DecimalFormat so it can be show to the user
+         * using "dot (.)" as thousand separator and "comma (,)" as decimal separator
+         */
+        private fun getDecimalFormat(forceZeros: Boolean = true): DecimalFormat {
+            val pattern = if (forceZeros) "#,##0.00" else "#,###.##"
+            val otherSymbols = DecimalFormatSymbols(Locale.ROOT)
+            otherSymbols.decimalSeparator = ','
+            otherSymbols.groupingSeparator = '.'
+            return DecimalFormat(pattern, otherSymbols)
+        }
+    }
     /**
      * Convert input value from currency I have to the respective amount on the currency
      * I want based on both rates related to the USD coin
@@ -31,19 +44,19 @@ class ConvertService {
      * @return a single quote related to USD coin as 1.213
      */
     fun getCurrentRate(coin: String, quotes: Map<String, Double>): Double {
-        return quotes["USD$coin"]!!
+        val key = "USD$coin"
+        if (key in quotes.keys) {
+            return quotes["USD$coin"]!!
+        }
+        return 0.0
     }
 
-    /** Get final value as bigDecimal and format it properly so it can be show to the user
-     * using "dot (.)" as thousand separator and "comma (,)" as decimal separator
+    /** Format bigDecimal to final value string with proper dots and commas
      * @param convertedValue final value to be printed on the screen
-     * @return formated value as 943.23,10
+     * @return formatted value as 943.23,10
      */
     fun getFormattedValue(convertedValue: BigDecimal): String {
-        val otherSymbols = DecimalFormatSymbols(Locale.ROOT)
-        otherSymbols.decimalSeparator = ','
-        otherSymbols.groupingSeparator = '.'
-        val df = DecimalFormat("#,##0.00", otherSymbols)
+        val df = getDecimalFormat()
         return df.format(convertedValue)
     }
 

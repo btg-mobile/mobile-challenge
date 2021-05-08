@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_currency_list.*
 
 class CurrencyList : AppCompatActivity() {
     // id of the selected button from main
-    private var buttonId = 0
+    private var layoutId = 0
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var currencyAdapter: CurrencyAdapter
@@ -23,7 +23,7 @@ class CurrencyList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_currency_list)
 
-        buttonId = intent.extras?.getInt("ID")!!
+        layoutId = intent.extras?.getInt("ID")!!
         val currencies = intent.extras?.getSerializable("CURRENCIES") as HashMap<String, String>
 
         currencies.forEach { currency ->
@@ -76,7 +76,7 @@ class CurrencyList : AppCompatActivity() {
      */
     fun currencySelected(coin: String) {
         intent = Intent()
-        intent.putExtra("ID", buttonId)
+        intent.putExtra("ID", layoutId)
         intent.putExtra("CURRENCIES", coin)
         setResult(RESULT_OK, intent)
         finish()
