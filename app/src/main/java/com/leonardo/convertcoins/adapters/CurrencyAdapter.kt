@@ -3,6 +3,7 @@
  */
 package com.leonardo.convertcoins.adapters
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
@@ -11,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.leonardo.convertcoins.CurrencyList
 import com.leonardo.convertcoins.R
 import com.leonardo.convertcoins.config.inflate
+import com.leonardo.convertcoins.databinding.CurrencyRecyclerviewItemRowBinding
 import com.leonardo.convertcoins.models.Currency
-import kotlinx.android.synthetic.main.currency_recyclerview_item_row.view.*
 
 class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>(), Filterable {
 
@@ -24,7 +25,9 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         val inflatedView = parent.inflate(R.layout.currency_recyclerview_item_row, false)
-        return CurrencyViewHolder(inflatedView)
+        val binding = CurrencyRecyclerviewItemRowBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+        return CurrencyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
@@ -69,27 +72,26 @@ class CurrencyAdapter(private val currencies: ArrayList<Currency>) : RecyclerVie
         }
     }
 
-    class CurrencyViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
-        private val view = v
-
+    class CurrencyViewHolder(private val binding: CurrencyRecyclerviewItemRowBinding) : RecyclerView.ViewHolder(binding.root),  View.OnClickListener {
+        val view = binding.root
         init {
-            v.setOnClickListener(this)
+            view.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {
             if (view.context is CurrencyList)
-                (view.context as CurrencyList).currencySelected(view.recycler_coin.text.toString())
+                (view.context as CurrencyList).currencySelected(binding.recyclerCoin.text.toString())
         }
 
         fun bindCurrency(currency: Currency) {
-            view.recycler_coin.text = currency.coin
-            view.recycler_description.text = currency.description
+            binding.recyclerCoin.text = currency.coin
+            binding.recyclerDescription.text = currency.description
 
             // draw the res image related to the selected currency if it exists,
             // otherwise, draw default coin label
             val id = view.resources.getIdentifier("@drawable/${currency.coin.toLowerCase()}", null, view.context.packageName)
-            if (id > 0) view.recycler_image.setImageResource(id)
-            else view.recycler_image.setImageResource(R.drawable.coin_icon)
+            if (id > 0) binding.recyclerImage.setImageResource(id)
+            else binding.recyclerImage.setImageResource(R.drawable.coin_icon)
 
         }
     }

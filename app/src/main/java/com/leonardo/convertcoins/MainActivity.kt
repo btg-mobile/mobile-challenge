@@ -3,31 +3,31 @@ package com.leonardo.convertcoins
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.*
 import android.text.style.AlignmentSpan
+
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-
+import androidx.appcompat.app.AppCompatActivity
 import com.leonardo.convertcoins.config.Keys
 import com.leonardo.convertcoins.config.RetrofitConfig
+import com.leonardo.convertcoins.config.scrollToBottom
 import com.leonardo.convertcoins.databinding.ActivityMainBinding
 import com.leonardo.convertcoins.models.Rate
 import com.leonardo.convertcoins.models.RealtimeRates
 import com.leonardo.convertcoins.models.SupportedCurrencies
 import com.leonardo.convertcoins.services.ConvertService
 import com.leonardo.convertcoins.services.SQLiteService
-import kotlinx.android.synthetic.main.currency_item_layout.view.*
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigDecimal
-
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -81,8 +81,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        binding.loadingPanel.visibility = View.VISIBLE
+        startLoading()
 
         // set tags to differentiate layouts when returning from currencyList.
         // this is the value that will be used on layoutId map to know which
@@ -132,29 +131,59 @@ class MainActivity : AppCompatActivity() {
         binding.layoutIHave.currencyLabel.text = DEFAULT.LABEL.HAVE
         binding.layoutIWant.currencyLabel.text = DEFAULT.LABEL.WANT
 
-        // changes input keyboard
-        binding.inputToConvert.setRawInputType(Configuration.KEYBOARD_12KEY);
-        // add listener so every time user types a new value its automatic converted
-        binding.inputToConvert.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        with(binding.inputToConvert) {
+            // changes input keyboard
+            setRawInputType(Configuration.KEYBOARD_12KEY);
+            // add listener so every time user types a new value its automatic converted
+            addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                binding.inputToConvert.removeTextChangedListener(this)
-                // change the first comma to dot so it can be properly parsed
-                // as a bigDecimal value and clean all remain commas inserted.
-                // We don't need to care about another dots because the dot period
-                // button is disabled
-                val value = s
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    removeTextChangedListener(this)
+                    // change the first comma to dot so it can be properly parsed
+                    // as a bigDecimal value and clean all remain commas inserted.
+                    // We don't need to care about another dots because the dot period
+                    // button is disabled
+                    val value = s
                         .toString()
                         .replaceFirst(",", ".")
                         .replace(",", "")
-                convertCurrency(value)
-                binding.inputToConvert.addTextChangedListener(this)
-            }
+                    convertCurrency(value)
+                    addTextChangedListener(this)
+                }
 
-            override fun afterTextChanged(s: Editable?) {}
-        })
+                override fun afterTextChanged(s: Editable?) {}
+            })
+        }
+
+        binding.inputToConvert.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    with(binding.mainScrollView) {
+                        postDelayed({
+                            scrollToBottom() // extension
+                        }, 450)
+                    }
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    v?.performClick()
+                }
+            }
+            v?.onTouchEvent(event) ?: true
+        }
     }
+
+    private fun startLoading() {
+        binding.loadingPanel.visibility = View.VISIBLE
+        binding.mainLayout.visibility = View.GONE
+    }
+
+    private fun finishLoading() {
+        binding.loadingPanel.visibility = View.GONE
+        binding.mainLayout.visibility = View.VISIBLE
+    }
+
 
     /** Navigate to CurrencyList Activity to select a currency
      * @param view is the button clicked (either to change currency I have or currency I want)
@@ -197,9 +226,10 @@ class MainActivity : AppCompatActivity() {
             // access buttonMap properties to get selected index and
             // view ids (text and image) to properly update the template
             val index = templateIds["selected"]!!
+
             val layout: View = findViewById(layoutId)
-            val label: TextView = layout.currency_label
-            val image: ImageView = layout.currency_image
+            val label = layout.findViewById<TextView>(R.id.currency_label)
+            val image = layout.findViewById<ImageView>(R.id.currency_image)
 
             val rate = convertService.getCurrentRate(coin, realtimeRates.quotes)
             selected[index] = Rate(rate, coin)
@@ -298,12 +328,12 @@ class MainActivity : AppCompatActivity() {
                     errorHandler(errorLabel, ERROR.REALTIME_RATES)
                 }
 
-                binding.loadingPanel.visibility = View.GONE
+                finishLoading()
             }
 
             override fun onFailure(call: Call<RealtimeRates>, t: Throwable) {
                 errorHandler(errorLabel, ERROR.REALTIME_RATES)
-                binding.loadingPanel.visibility = View.GONE
+                finishLoading()
             }
         })
 
