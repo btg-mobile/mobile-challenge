@@ -5,10 +5,7 @@ import com.geocdias.convecurrency.data.database.dao.ExchangeRateDao
 import com.geocdias.convecurrency.data.network.CurrencyClient
 import com.geocdias.convecurrency.repository.CurrencyRepository
 import com.geocdias.convecurrency.repository.CurrencyRepositoryImpl
-import com.geocdias.convecurrency.util.CurrencyMapper
-import com.geocdias.convecurrency.util.DbToModel
-import com.geocdias.convecurrency.util.DispacherProvider
-import com.geocdias.convecurrency.util.RemoteListToDb
+import com.geocdias.convecurrency.util.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,5 +37,5 @@ object AppModule {
 
     @Provides
     fun provideCurrencyMapper(): CurrencyMapper =
-        CurrencyMapper(RemoteListToDb(),DbToModel())
+        CurrencyMapper(RemoteCurrencyListToDb(), RemoteExchangeRateToDb(), CurrencyEntityToModel(), ExchangeRateEntityToModel())
 }

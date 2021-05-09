@@ -4,6 +4,5 @@ import javax.inject.Inject
 
 class CurrencyClient @Inject constructor(private val currencyApi: CurrencyApi): BaseDataSource() {
   suspend fun fetchCurrencies(apiKey: String) = getResult { currencyApi.fetchCurrencies(apiKey) }
-  suspend fun fetchRates(accessKey: String, currencyFrom: String, currencyTo: String) =
-    getResult { currencyApi.fetchRates(accessKey, currencyFrom, currencyTo ) }
+  suspend fun fetchRates(accessKey: String) = getResult { currencyApi.fetchRates(accessKey ) }
 }

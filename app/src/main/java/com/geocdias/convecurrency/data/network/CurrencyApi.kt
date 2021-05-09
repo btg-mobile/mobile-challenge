@@ -9,12 +9,7 @@ import retrofit2.http.Query
 interface CurrencyApi {
 
     @GET("/live")
-    suspend fun fetchRates(
-        @Query("access_key") accessKey: String,
-        @Query("source") from: String,
-        @Query("currencies") to: String,
-        @Query("format") format: Int = 1
-    ): Response<ExchangeRateResponse>
+    suspend fun fetchRates(@Query("access_key") accessKey: String): Response<ExchangeRateResponse>
 
     @GET("/list")
     suspend fun fetchCurrencies(@Query("access_key") accessKey: String): Response<CurrencyListResponse>

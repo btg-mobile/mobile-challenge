@@ -1,18 +1,19 @@
 package com.geocdias.convecurrency.ui.fragments
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.icu.util.CurrencyAmount
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,6 +60,31 @@ class CurrencyConvertFragment : Fragment() {
         fragBiding?.convertToBtn?.setOnClickListener {
             openToCurrencyDialog()
         }
+
+        fragBiding?.convertBtn?.setOnClickListener {
+            val currencyFrom = fragBiding?.convertFromBtn?.text.toString()
+            val currencyTo = fragBiding?.convertToBtn?.text.toString()
+            val amount = fragBiding?.amountEdt?.text.toString()
+
+            convertCurrency(currencyFrom, currencyTo, amount)
+        }
+    }
+
+    private fun convertCurrency(currencyFrom: String, currencyTo: String, amount: String) {
+        viewModel.convert(currencyFrom, currencyTo, amount).observe(viewLifecycleOwner, { resource ->
+            when(resource.status) {
+                Status.LOADING -> fragBiding?.convertProgress?.visibility = View.VISIBLE
+                Status.SUCCESS -> {
+                    fragBiding?.convertProgress?.visibility = View.GONE
+                    fragBiding?.amountConverted?.text = resource.data.toString()
+                }
+                Status.ERROR -> {
+                    fragBiding?.convertProgress?.visibility = View.GONE
+                    Toast.makeText(context, resource.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
     }
 
     override fun onDestroy() {
@@ -79,9 +105,9 @@ class CurrencyConvertFragment : Fragment() {
     }
 
     private fun openDialog(spinnerFn:(value: String) -> Unit) {
-
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.currency_spinner)
+        dialog.setCanceledOnTouchOutside(true)
         dialog.show()
 
         val searchEditText = dialog.findViewById<EditText>(R.id.searchCurrencyEt)
@@ -127,4 +153,11 @@ class CurrencyConvertFragment : Fragment() {
             override fun afterTextChanged(p0: Editable?) {}
         })
     }
+
+    private fun closeSoftKeyboard(context: Context, v: View) {
+        val iMm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        iMm.hideSoftInputFromWindow(v.windowToken, 0)
+        v.clearFocus()
+    }
+
 }

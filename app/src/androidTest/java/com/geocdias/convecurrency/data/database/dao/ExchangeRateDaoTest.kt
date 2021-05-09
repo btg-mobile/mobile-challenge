@@ -7,8 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.geocdias.convecurrency.ExchangeRateFakeProvider
 import com.geocdias.convecurrency.data.database.CurrencyDatabase
-import com.geocdias.convecurrency.data.database.CurrencyFakeProvider
-import com.geocdias.convecurrency.data.database.entities.CurrencyEntity
 import com.geocdias.convecurrency.data.database.entities.ExchangeRateEntity
 import com.google.common.truth.Truth.assertThat
 import getOrAwaitValue
@@ -49,7 +47,7 @@ class ExchangeRateDaoTest {
     fun insertExchangeRateList() = runBlockingTest {
         val rateList: List<ExchangeRateEntity> = ExchangeRateFakeProvider.rateList()
 
-        dao.insertExchangeRateList(rateList)
+        dao.insertExchangeRate(rateList)
 
         val allCurrencies: List<ExchangeRateEntity> = dao.observeExchangeRateList().getOrAwaitValue()
         assertThat(allCurrencies).isEqualTo(rateList)
@@ -58,13 +56,13 @@ class ExchangeRateDaoTest {
     @Test
     fun getRate() = runBlockingTest {
         val rateList: List<ExchangeRateEntity> = ExchangeRateFakeProvider.rateList()
-        dao.insertExchangeRateList(rateList)
+        dao.insertExchangeRate(rateList)
 
-        val from = "USD"
-        val to = "AED"
+        val quote = "USDAED"
 
-        val currencyEntity = dao.getRate(from, to).getOrAwaitValue()
+        val currencyEntity = dao.getRate(quote).getOrAwaitValue()
 
-        assertThat(currencyEntity.rate).isEqualTo(3.672982)
+        assertThat(currencyEntity).isNotNull()
+        assertThat(currencyEntity?.rate).isEqualTo(3.672982)
     }
 }
