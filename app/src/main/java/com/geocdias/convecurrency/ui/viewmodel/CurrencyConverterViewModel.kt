@@ -19,7 +19,7 @@ class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRep
 
     val currencyList: LiveData<Resource<List<CurrencyModel>>> = repository.fetchCurrencies()
 
-    private fun getRate(from: String, to: String) = repository.getRate(from, to)
+    private fun getRate(fromCurrency: String, toCurrency: String) = repository.getRate(fromCurrency, toCurrency)
 
 
     fun convert(fromCurrency: String, toCurrency: String, amount: String): LiveData<Resource<Double>> {
@@ -30,20 +30,6 @@ class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRep
         }
 
         return convertFromDolar(toCurrency, fromAmount)
-
-//        return getRate(fromCurrency, toCurrency).switchMap { resource ->
-//            liveData {
-//                if (resource.status == Status.SUCCESS) {
-//                    if (resource.data != null) {
-//                        val amountConverted = calculate(resource.data.rate, fromAmount)
-//                        emit(Resource.success(amountConverted))
-//                    }
-//                }
-////             else {
-////                emit(resource)
-////            }
-//            }
-//        }.distinctUntilChanged()
     }
 
     private fun convertFromDolar(to: String, amount: Double): LiveData<Resource<Double>> {

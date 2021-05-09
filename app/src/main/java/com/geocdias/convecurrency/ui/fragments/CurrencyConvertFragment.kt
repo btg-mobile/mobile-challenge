@@ -1,28 +1,18 @@
 package com.geocdias.convecurrency.ui.fragments
 
-import android.app.Activity
 import android.app.Dialog
-import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.icu.util.CurrencyAmount
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.geocdias.convecurrency.R
-import com.geocdias.convecurrency.databinding.CurrencyListLayoutBinding
 import com.geocdias.convecurrency.databinding.CurrencySpinnerBinding
 import com.geocdias.convecurrency.databinding.FragmentCurrencyConvertBinding
-import com.geocdias.convecurrency.model.CurrencyModel
 import com.geocdias.convecurrency.ui.adapters.CurrencyListAdapter
 import com.geocdias.convecurrency.ui.viewmodel.CurrencyConverterViewModel
 import com.geocdias.convecurrency.util.Status
@@ -80,7 +70,7 @@ class CurrencyConvertFragment : Fragment() {
                 }
                 Status.ERROR -> {
                     fragBiding?.convertProgress?.visibility = View.GONE
-                    Toast.makeText(context, resource.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
                 }
             }
         })
