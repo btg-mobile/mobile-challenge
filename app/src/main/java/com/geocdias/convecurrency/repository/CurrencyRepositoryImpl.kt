@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.geocdias.convecurrency.data.database.dao.CurrencyDao
 import com.geocdias.convecurrency.data.database.dao.ExchangeRateDao
-import com.geocdias.convecurrency.data.database.entities.CurrencyEntity
 import com.geocdias.convecurrency.data.network.CurrencyClient
-import com.geocdias.convecurrency.data.network.response.performGetOperation
+import com.geocdias.convecurrency.data.network.response.performFetchOperation
 import com.geocdias.convecurrency.model.CurrencyModel
 import com.geocdias.convecurrency.model.ExchangeRateModel
 import com.geocdias.convecurrency.util.Constants
@@ -22,7 +21,7 @@ class CurrencyRepositoryImpl @Inject constructor(
 ) : CurrencyRepository {
 
     override fun fetchCurrencies(): LiveData<Resource<List<CurrencyModel>>> {
-        return performGetOperation(
+        return performFetchOperation(
             databaseQuery = { fetchCurrenciesFromDb() },
             networkCall = { currencyClient.fetchCurrencies(Constants.KEY) },
             saveCallResult = { currencyListRespose ->
@@ -37,7 +36,7 @@ class CurrencyRepositoryImpl @Inject constructor(
     }
 
     override fun getRate(fromCurrency: String, toCurrency: String ): LiveData<Resource<ExchangeRateModel>> {
-        return performGetOperation(
+        return performFetchOperation(
             databaseQuery = { fetchCurrencyRateFromDb(fromCurrency, toCurrency) },
             networkCall = { currencyClient.fetchRates(Constants.KEY) },
             saveCallResult = { exchangeRateRespose ->

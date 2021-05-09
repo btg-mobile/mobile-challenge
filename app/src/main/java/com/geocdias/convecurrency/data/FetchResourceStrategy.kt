@@ -7,9 +7,9 @@ import com.geocdias.convecurrency.util.Resource
 import com.geocdias.convecurrency.util.Status
 import kotlinx.coroutines.Dispatchers
 
-fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
-                               networkCall: suspend () -> Resource<A>,
-                               saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> {
+fun <T, A> performFetchOperation(databaseQuery: () -> LiveData<T>,
+                                 networkCall: suspend () -> Resource<A>,
+                                 saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> {
 
     return liveData(Dispatchers.IO) {
         emit(Resource.loading())

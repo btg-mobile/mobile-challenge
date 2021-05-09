@@ -57,7 +57,6 @@ class ExchangeRateDaoTest {
     fun getRate() = runBlockingTest {
         val rateList: List<ExchangeRateEntity> = ExchangeRateFakeProvider.rateList()
         dao.insertExchangeRate(rateList)
-
         val quote = "USDAED"
 
         val currencyEntity = dao.getRate(quote).getOrAwaitValue()

@@ -2,4 +2,8 @@
     <string name="app_name">CurrencyConverter</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_search_currency">código, nome da moeda</string>
+    <string name="label_search_currency">Selecione uma moeda</string>
+    <string name="item_menu_converter">Converter</string>
+    <string name="item_menu_list_currency">Lista de moedas</string>
 </resources>

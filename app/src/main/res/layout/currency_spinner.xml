@@ -3,80 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/small_space">
 
         <ProgressBar
-            android:id="@+id/currencyListProgress"
+            android:id="@+id/spnListProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/selectCurrencyLabel"
+            android:id="@+id/spnSelectLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/medium_space"
             android:gravity="center"
-            android:text="Selecione uma moeda"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/label_search_currency"
+            android:textSize="20sp"/>
 
-        <!--        <include layout="@layout/currency_list_layout"/>-->
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/searchCurrencyEt"
-            android:layout_width="0dp"
+            android:id="@+id/spnSearchCurrencyEt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/searchIcon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/selectCurrencyLabel" />
-
-        <ImageView
-            android:id="@+id/searchIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_baseline_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/searchCurrencyEt"
-            app:layout_constraintTop_toTopOf="@id/searchCurrencyEt" />
+            android:layout_marginEnd="@dimen/small_space"
+            android:layout_marginStart="@dimen/small_space"
+            android:layout_marginTop="@dimen/medium_space"
+            android:hint="@string/hint_search_currency"
+            android:layout_below="@id/spnSelectLabel"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/currenciesRv"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchCurrencyEt"
-            tools:listitem="@layout/currency_list_item" />
+            android:id="@+id/spnCurrenciesRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_below="@id/spnSearchCurrencyEt"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/medium_space"
+            tools:listitem="@layout/currency_list_item"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/errorTxt"
-            android:textSize="20sp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:textSize="@dimen/big_text"
+            android:textAlignment="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
 </RelativeLayout>

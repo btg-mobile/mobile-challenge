@@ -105,34 +105,31 @@ class CurrencyConvertFragment : Fragment() {
     }
 
     private fun openDialog(spinnerFn:(value: String) -> Unit) {
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.currency_spinner)
-        dialog.setCanceledOnTouchOutside(true)
-        dialog.show()
-
-        val searchEditText = dialog.findViewById<EditText>(R.id.searchCurrencyEt)
-        val currenciesRv = dialog.findViewById<RecyclerView>(R.id.currenciesRv)
-        val progress = dialog.findViewById<ProgressBar>(R.id.currencyListProgress)
-        val errorTxt = dialog.findViewById<TextView>(R.id.errorTxt)
+        val spinnerBinding = CurrencySpinnerBinding.inflate(layoutInflater)
+        val dialog = Dialog(requireContext()).apply {
+            setContentView(spinnerBinding.root)
+            setCanceledOnTouchOutside(true)
+            show()
+        }
 
         viewModel.currencyList.observe(viewLifecycleOwner,{ resource ->
             when(resource.status){
-                Status.LOADING -> progress.visibility = View.VISIBLE
+                Status.LOADING ->  spinnerBinding.spnListProgress.visibility = View.VISIBLE
                 Status.SUCCESS -> {
-                    progress.visibility = View.GONE
+                    spinnerBinding.spnListProgress.visibility = View.GONE
                     resource.data?.let {
                         currencyListAdapter.currencyList = it
                     }
                 }
                 Status.ERROR -> {
-                    progress.visibility = View.GONE
-                    errorTxt.visibility = View.VISIBLE
-                    errorTxt.text = resource.message
+                    spinnerBinding.spnListProgress.visibility = View.GONE
+                    spinnerBinding.errorTxt.visibility = View.VISIBLE
+                    spinnerBinding.errorTxt.text = resource.message
                 }
             }
         })
 
-        currenciesRv.apply {
+        spinnerBinding.spnCurrenciesRv.apply {
             adapter = currencyListAdapter
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
@@ -143,7 +140,7 @@ class CurrencyConvertFragment : Fragment() {
             dialog.hide()
         }
 
-        searchEditText.addTextChangedListener(object : TextWatcher {
+        spinnerBinding.spnSearchCurrencyEt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -154,10 +151,10 @@ class CurrencyConvertFragment : Fragment() {
         })
     }
 
-    private fun closeSoftKeyboard(context: Context, v: View) {
-        val iMm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        iMm.hideSoftInputFromWindow(v.windowToken, 0)
-        v.clearFocus()
-    }
+//    private fun closeSoftKeyboard(context: Context, v: View) {
+//        val iMm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+//        iMm.hideSoftInputFromWindow(v.windowToken, 0)
+//        v.clearFocus()
+//    }
 
 }
