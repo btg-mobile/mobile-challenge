@@ -8,11 +8,12 @@ import com.example.currencyapp.repository.ListRepository
 
 class CurrencyListViewModel (private val listRepository: ListRepository) : ViewModel(){
     val error : MutableLiveData<String> = MutableLiveData()
-    val currencyList : MutableLiveData<List<Currency>> = MutableLiveData()
+    private val currencyList : MutableLiveData<List<Currency>> = MutableLiveData()
 
     fun getCurrencyList() : LiveData<List<Currency>> {
         try {
             currencyList.postValue(listRepository.getCurrencyListFromApi().value)
+            println("LISTA DA PESTE ${currencyList.value}")
         } catch (e : Exception) {
           error.value = e.message
         }

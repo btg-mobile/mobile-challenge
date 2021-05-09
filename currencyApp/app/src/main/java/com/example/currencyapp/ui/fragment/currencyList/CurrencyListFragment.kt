@@ -37,11 +37,11 @@ class CurrencyListFragment : Fragment() {
 
     private fun observerList() {
         listViewModel.getCurrencyList().observe(viewLifecycleOwner, Observer { currencies ->
-            currencies.let {
+            currencies?.let {
                 println("DATA $it")
 //                val adapter = CurrencyListAdapter(currencies = it)
 //                binding?.currenciesList?.adapter = adapter
-            }
+            } ?: println("colocar um textview de lista vazia")
         })
     }
 
