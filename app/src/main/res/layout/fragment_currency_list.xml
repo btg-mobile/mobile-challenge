@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/searchCurrencyEt"
         android:layout_marginStart="@dimen/medium_space"
+        android:layout_marginTop="@dimen/medium_space"
         android:hint="@string/hint_search_currency"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +35,7 @@
         android:id="@+id/searchIcon"
         android:src="@drawable/ic_baseline_search"
         android:layout_marginEnd="@dimen/small_space"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/searchCurrencyEt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/searchCurrencyEt"/>
 

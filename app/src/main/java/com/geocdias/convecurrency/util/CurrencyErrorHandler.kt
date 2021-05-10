@@ -15,4 +15,8 @@ object CurrencyErrorHandler {
             else -> "Ocorreu um erro inesperado."
         }
     }
+
+    fun unknowHostError(): String {
+        return "Não foi possivel recuperar a informação online."
+    }
 }

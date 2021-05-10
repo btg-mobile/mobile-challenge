@@ -3,6 +3,7 @@ package com.geocdias.convecurrency.data.network
 import com.geocdias.convecurrency.util.CurrencyErrorHandler
 import com.geocdias.convecurrency.util.Resource
 import retrofit2.Response
+import java.net.UnknownHostException
 
 abstract class BaseDataSource {
 
@@ -14,7 +15,11 @@ abstract class BaseDataSource {
                 if (body != null) return Resource.success(body)
             }
             return error(CurrencyErrorHandler.handleError(response.code()))
-        } catch (e: Exception) {
+        }catch (e: UnknownHostException) {
+            return error(CurrencyErrorHandler.unknowHostError())
+        }
+        catch (e: Exception) {
+            println(e)
             return error(e.message ?: e.toString())
         }
     }
