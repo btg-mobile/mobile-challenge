@@ -1,15 +1,25 @@
 ## CONVERT COINS
 
-Uses shared preferences to keep user last convert choice
-Use SQLite
-Use dark Theme
+
+This app is a platform that allows you to convert all kind of coins and see it's current value related to another.
+
+It uses this concept in order to show Kotlin programming and serves as a example on how to use the following features:
+
+    * Shared preferences to keep user last currencies choice
+    * SQLite to save last quotes and last available coins
+    * Compatible with dark theme
 
 
-The application will not work without a private key.
+All live data is retrieved from https://currencylayer.com/ and it's public API. You can set a paid subscription API KEY
+and your code will work as expected too. Keep in mind that if you use a free API KEY your app will have a limit on the number of calls, so it will stop working with live data in the future.
+
+As mentioned, you need a API KEY for the app to work. To insert that information on the code, check the following steps:
 
     1) generate one on https://currencylayer.com/
-    2) past it inside native-lib.cpp changing <YOUR_API_KEY_HERE> with the right value
-    3) run  git update-index --assume-unchanged app/src/main/cpp/native-lib.cpp
+    2) past it inside native-lib.cpp file changing <YOUR_API_KEY_HERE> with the value of your API KEY
+    3) run git update-index --assume-unchanged app/src/main/cpp/native-lib.cpp to never upload this changes
+
+Feel free to enjoy the app :)
 
 # references
 - currency layer: https://currencylayer.com/documentation
