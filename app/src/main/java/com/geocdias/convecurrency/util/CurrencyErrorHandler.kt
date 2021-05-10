@@ -17,6 +17,6 @@ object CurrencyErrorHandler {
     }
 
     fun unknowHostError(): String {
-        return "Não foi possivel recuperar a informação online."
+        return "Não foi possível obter conexão online."
     }
 }
