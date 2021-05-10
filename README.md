@@ -1,6 +1,14 @@
 ## CONVERT COINS
 
 
+
+
+
+|Home Screen|Currencies List|Converted Value|Searching Currency
+|----|-------|-------|--------|
+|<img width=400 src="https://user-images.githubusercontent.com/17517057/117727661-b72cc800-b1be-11eb-95ba-1f041d2d4b0f.png"/>|<img width=400 src="https://user-images.githubusercontent.com/17517057/117729096-c0b72f80-b1c0-11eb-9ca0-13d92bd8cfc8.png">|<img width=400 src="https://user-images.githubusercontent.com/17517057/117729344-14c21400-b1c1-11eb-9656-8a621dd725ab.png"/>|<img width=400 src="https://user-images.githubusercontent.com/17517057/117729429-315e4c00-b1c1-11eb-9a8c-183c6d04ed05.png">
+
+
 This app is a platform that allows you to convert all kind of coins and see it's current value related to another.
 
 It uses this concept in order to show Kotlin programming and serves as a example on how to use the following features:
