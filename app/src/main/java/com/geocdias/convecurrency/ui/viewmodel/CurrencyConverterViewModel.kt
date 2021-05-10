@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.geocdias.convecurrency.model.CurrencyModel
 import com.geocdias.convecurrency.model.ExchangeRateModel
 import com.geocdias.convecurrency.repository.CurrencyRepository
+import com.geocdias.convecurrency.util.NetworkConnectionLiveData
 import com.geocdias.convecurrency.util.Resource
 import com.geocdias.convecurrency.util.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,12 +13,15 @@ import kotlin.math.round
 
 
 @HiltViewModel
-class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRepository) :
+class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRepository, val conectivity: NetworkConnectionLiveData) :
     ViewModel() {
 
-    private val sourceCurrent = "USD"
+    val defaultFromCurrent = "USD"
+
+    val defaultToCurrent = "BRL"
 
     val currencyList: LiveData<Resource<List<CurrencyModel>>> = repository.fetchCurrencies()
+
 
     private fun getRate(fromCurrency: String, toCurrency: String) = repository.getRate(fromCurrency, toCurrency)
 
@@ -25,7 +29,7 @@ class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRep
     fun convert(fromCurrency: String, toCurrency: String, amount: String): LiveData<Resource<Double>> {
         val fromAmount = amount.toDoubleOrNull() ?: return liveData { emit(Resource.error("Valor inválido")) }
 
-        if (fromCurrency != sourceCurrent) {
+        if (fromCurrency != defaultFromCurrent) {
             return convertFromAnotherCurrency(fromCurrency, toCurrency, fromAmount)
         }
 
@@ -34,7 +38,7 @@ class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRep
 
     private fun convertFromDolar(to: String, amount: Double): LiveData<Resource<Double>> {
         return MediatorLiveData<Resource<Double>>().apply {
-            addSource(getRate(sourceCurrent, to)) { resource ->
+            addSource(getRate(defaultFromCurrent, to)) { resource ->
                 when (resource.status) {
                     Status.LOADING -> this.value = Resource.loading()
                     Status.ERROR -> this.value = Resource.error(resource.message.toString())
@@ -73,12 +77,12 @@ class CurrencyConverterViewModel @Inject constructor(val repository: CurrencyRep
                 }
             }
 
-            addSource(getRate(sourceCurrent, from)) {
+            addSource(getRate(defaultFromCurrent, from)) {
                 resourceFromCurrency = it
                 handleResource(it, convertCurrencies())
             }
 
-            addSource(getRate(sourceCurrent, toCurrency)) {
+            addSource(getRate(defaultFromCurrent, toCurrency)) {
                 resourceToCurrency = it
                 handleResource(it, convertCurrencies())
 

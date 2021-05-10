@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.geocdias.convecurrency.R
 import com.geocdias.convecurrency.databinding.CurrencySpinnerBinding
 import com.geocdias.convecurrency.databinding.FragmentCurrencyConvertBinding
 import com.geocdias.convecurrency.ui.adapters.CurrencyListAdapter
@@ -40,15 +41,26 @@ class CurrencyConvertFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.conectivity.observe(viewLifecycleOwner, {isConnected ->
+            if(!isConnected) {
+                Toast.makeText(context, getString(R.string.no_network_warning), Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     private fun setupUI() {
-        fragBiding?.convertFromBtn?.setOnClickListener {
-            openFromCurrencyDialog()
+        fragBiding?.convertFromBtn?.apply {
+            text = viewModel.defaultFromCurrent
+            setOnClickListener { openFromCurrencyDialog() }
         }
 
-        fragBiding?.convertToBtn?.setOnClickListener {
-            openToCurrencyDialog()
+        fragBiding?.convertToBtn?.apply {
+            text = viewModel.defaultToCurrent
+            setOnClickListener { openToCurrencyDialog() }
         }
 
         fragBiding?.convertBtn?.setOnClickListener {
@@ -67,6 +79,7 @@ class CurrencyConvertFragment : Fragment() {
                 Status.SUCCESS -> {
                     fragBiding?.convertProgress?.visibility = View.GONE
                     fragBiding?.amountConverted?.text = resource.data.toString()
+                    fragBiding?.amountCode?.text = currencyTo
                 }
                 Status.ERROR -> {
                     fragBiding?.convertProgress?.visibility = View.GONE
@@ -113,8 +126,7 @@ class CurrencyConvertFragment : Fragment() {
                 }
                 Status.ERROR -> {
                     spinnerBinding.spnListProgress.visibility = View.GONE
-                    spinnerBinding.errorTxt.visibility = View.VISIBLE
-                    spinnerBinding.errorTxt.text = resource.message
+                    Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -140,11 +152,4 @@ class CurrencyConvertFragment : Fragment() {
             override fun afterTextChanged(p0: Editable?) {}
         })
     }
-
-//    private fun closeSoftKeyboard(context: Context, v: View) {
-//        val iMm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-//        iMm.hideSoftInputFromWindow(v.windowToken, 0)
-//        v.clearFocus()
-//    }
-
 }

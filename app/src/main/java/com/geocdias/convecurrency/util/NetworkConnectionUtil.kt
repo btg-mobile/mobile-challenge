@@ -1,44 +1,49 @@
+@file:Suppress("DEPRECATION")
+
 package com.geocdias.convecurrency.util
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
+import android.net.*
+import android.os.Build
+import androidx.lifecycle.LiveData
 
-class NetworkConnectionUtil (
-        private val context: Context
-    )   {
-//        fun isConnectionOn():Boolean{
-//            val connectivityManager =
-//                context.getSystemService(Context.CONNECTIVITY_SERVICE) as
-//                        ConnectivityManager
-//
-//            return if (android.os.Build.VERSION.SDK_INT >=
-//                android.os.Build.VERSION_CODES.M) {
-//                postAndroidMInternetCheck(connectivityManager)
-//            } else {
-//                preAndroidMInternetCheck(connectivityManager)
-//            }
-//        }
-//
-//        private fun preAndroidMInternetCheck(
-//            connectivityManager: ConnectivityManager): Boolean {
-//            val activeNetwork = connectivityManager.activeNetworkInfo
-//            if (activeNetwork != null) {
-//                return (activeNetwork.type == ConnectivityManager.TYPE_WIFI ||
-//                        activeNetwork.type == ConnectivityManager.TYPE_MOBILE)
-//            }
-//            return false
-//        }
-//
-//        private fun postAndroidMInternetCheck(
-//            connectivityManager: ConnectivityManager
-//        ): Boolean {
-//            val network = connectivityManager.activeNetwork
-//            val connection =
-//                connectivityManager.getNetworkCapabilities(network)
-//
-//            return connection != null && (
-//                    connection.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
-//                            connection.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
-//        }
-}
+class NetworkConnectionLiveData (private val connectivityManager: ConnectivityManager): LiveData<Boolean>() {
+
+//    @RequiresPermission(android.Manifest.permission.ACCESS_NETWORK_STATE)
+//    constructor(application: Application) : this(application.getSystemService(Context.CONNECTIVITY_SERVICE)
+//            as ConnectivityManager)
+
+    private val networkRequest = NetworkRequest.Builder()
+        .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+        .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+        .build()
+
+    private val networkCallback = object : ConnectivityManager.NetworkCallback() {
+
+        override fun onAvailable(network: Network) {
+
+           postValue(true)
+        }
+
+        override fun onLost(network: Network) {
+           postValue(false)
+        }
+    }
+
+    override fun onActive() {
+        super.onActive()
+
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        postValue(activeNetwork?.isConnectedOrConnecting == true)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            connectivityManager.registerDefaultNetworkCallback(networkCallback)
+        } else {
+            connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
+        }
+    }
+
+    override fun onInactive() {
+        super.onInactive()
+        connectivityManager.unregisterNetworkCallback(networkCallback)
+    }
+ }

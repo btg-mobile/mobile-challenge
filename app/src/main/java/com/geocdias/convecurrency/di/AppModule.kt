@@ -1,5 +1,8 @@
 package com.geocdias.convecurrency.di
 
+import android.content.Context
+import android.net.ConnectivityManager
+import com.geocdias.convecurrency.data.database.CurrencyDatabase
 import com.geocdias.convecurrency.data.database.dao.CurrencyDao
 import com.geocdias.convecurrency.data.database.dao.ExchangeRateDao
 import com.geocdias.convecurrency.data.network.CurrencyClient
@@ -9,6 +12,7 @@ import com.geocdias.convecurrency.util.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -38,4 +42,11 @@ object AppModule {
     @Provides
     fun provideCurrencyMapper(): CurrencyMapper =
         CurrencyMapper(RemoteCurrencyListToDb(), RemoteExchangeRateToDb(), CurrencyEntityToModel(), ExchangeRateEntityToModel())
+
+    @Singleton
+    @Provides
+    fun provideNetworkConectivityLiveData(@ApplicationContext context: Context): NetworkConnectionLiveData {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return NetworkConnectionLiveData(cm)
+    }
 }
