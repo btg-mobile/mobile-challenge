@@ -8,6 +8,7 @@ import com.example.currencyapp.network.provideRetrofit
 import com.example.currencyapp.repository.HomeRepository
 import com.example.currencyapp.repository.ListRepository
 import com.example.currencyapp.ui.fragment.currencyList.CurrencyListViewModel
+import com.example.currencyapp.ui.fragment.home.HomeViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -20,10 +21,10 @@ val networkModule = module {
 val databaseModule = module {
     single {
         Room.databaseBuilder(
-            get(),
-            AppDatabase::class.java,
-            //BuildConfig.DATABASE_NAME
-            "currency-database"
+                get(),
+                AppDatabase::class.java,
+                //BuildConfig.DATABASE_NAME
+                "currency-database"
         ).build()
     }
 }
@@ -37,6 +38,9 @@ val resourceModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { CurrencyListViewModel(get()) }
+    viewModel {
+        HomeViewModel(get())
+        //CurrencyListViewModel(get())
+    }
 }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="homeviewmodel"
@@ -26,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_text_field"
@@ -37,24 +39,16 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="number"
                             />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/by_currency"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                <Spinner
+                    android:id="@+id/by_spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/currency_initial"
-                    android:layout_weight="0.5">
-
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    />
             </LinearLayout>
 
             <TextView
@@ -68,39 +62,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/output_text_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/input_money"
                     android:layout_weight="0.5">
-                    <com.google.android.material.textfield.TextInputEditText
+                    <TextView
+                        android:id="@+id/output_text_view"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
+                        android:layout_height="match_parent"
+                        tools:text="@string/input_money"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/to_currency"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                <Spinner
+                    android:id="@+id/to_spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/currency_initial"
-                    android:layout_weight="0.5">
-
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    />
             </LinearLayout>
 
             <Button
-                android:id="@+id/outlinedButton"
+                android:id="@+id/converter_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/converter"
