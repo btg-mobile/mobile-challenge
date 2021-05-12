@@ -5,10 +5,10 @@
     <string name="initials_name">Sigla</string>
     <string name="currency_name">Nome Moeda</string>
     <string name="search_currency">Buscar Moeda</string>
-    <string name="input_money">R$ 0.00</string>
+    <string name="input_money">$ 0.00</string>
     <string name="currency_initial">USD</string>
-    <string name="to">Para</string>
-    <string name="by">Converta de</string>
+    <string name="to">Para:</string>
+    <string name="by">Converter de:</string>
     <string name="converter">Converter</string>
     <string name="toolbar_app_title">Currency App</string>
 </resources>

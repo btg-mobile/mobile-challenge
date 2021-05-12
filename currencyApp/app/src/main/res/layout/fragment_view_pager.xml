@@ -13,7 +13,7 @@
         android:id="@+id/view_pager_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/dark_grey"
         app:title="@string/toolbar_app_title"
         app:titleTextColor="@color/white"/>
 
@@ -21,7 +21,7 @@
         android:id="@+id/view_pager_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/dark_grey"
         app:tabIndicatorColor="@color/white"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white"/>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.currencyapp.R
 import com.example.currencyapp.databinding.FragmentCurrencyListBinding
 import com.example.currencyapp.ui.fragment.currencyList.adapter.CurrencyListAdapter
@@ -38,9 +39,9 @@ class CurrencyListFragment : Fragment() {
     private fun observerList() {
         listViewModel.getCurrencyList().observe(viewLifecycleOwner, Observer { currencies ->
             currencies?.let {
-                println("DATA $it")
-//                val adapter = CurrencyListAdapter(currencies = it)
-//                binding?.currenciesList?.adapter = adapter
+                val adapter = CurrencyListAdapter(currencies = it)
+                binding?.currenciesList?.adapter = adapter
+                binding?.currenciesList?.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             } ?: println("colocar um textview de lista vazia")
         })
     }

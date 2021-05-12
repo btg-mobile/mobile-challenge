@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import com.example.currencyapp.databinding.FragmentHomeBinding
+import com.example.currencyapp.utils.MonetaryEditTextMask
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -36,7 +37,13 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         observerCurrencyOutput()
         initObserver()
         converterCurrency()
+        //inputValueMaskListener()
     }
+
+    //duvida sobre deixar o padrão sempre com moeda brasileira
+//    private fun inputValueMaskListener() {
+//        binding?.inputTextField?.addTextChangedListener(MonetaryEditTextMask.mask(binding!!.inputTextField))
+//    }
 
     private fun initObserver() {
         homeViewModel.getCurrencies().observe(viewLifecycleOwner, Observer {

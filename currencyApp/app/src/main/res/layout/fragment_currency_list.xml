@@ -10,7 +10,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/dark_grey">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 app:iconifiedByDefault="false"
-                app:queryHint="@string/search_currency"/>
+                app:queryHint="@string/search_currency"
+                android:theme="@style/SearchViewStyle"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/currencies_list"

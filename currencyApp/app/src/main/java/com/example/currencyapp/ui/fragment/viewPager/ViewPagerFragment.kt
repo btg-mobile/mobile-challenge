@@ -34,7 +34,6 @@ class ViewPagerFragment : Fragment() {
 
     private fun setupViewPager(view: View) {
         val labels = listOf("Conversor", "Cotações")
-        val navGraphsIds = listOf(R.layout.fragment_home, R.layout.fragment_currency_list)
 
         val navHostFragmentAdapter = NavHostFragmentAdapter(this)
 
