@@ -4,7 +4,7 @@
     <data>
         <variable
             name="homeviewmodel"
-            type="com.example.currencyapp.ui.fragment.currencyList.CurrencyListViewModel" />
+            type="com.example.currencyapp.ui.fragment.home.HomeViewModel" />
     </data>
 
     <FrameLayout
@@ -31,16 +31,15 @@
                 android:baselineAligned="false">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_text_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/input_money"
                     android:layout_weight="0.5">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_text_field"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"
-                            />
+                            android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner

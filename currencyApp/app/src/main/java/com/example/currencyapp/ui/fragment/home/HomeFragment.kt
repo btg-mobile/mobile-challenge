@@ -5,20 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
-import com.example.currencyapp.R
-import com.example.currencyapp.database.dao.CurrencyDao
-import com.example.currencyapp.database.entity.Currency
 import com.example.currencyapp.databinding.FragmentHomeBinding
-import com.example.currencyapp.network.service.CurrencyList
-import com.example.currencyapp.network.service.CurrencyRate
-import com.example.currencyapp.repository.HomeRepository
 import com.google.android.material.snackbar.Snackbar
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private val homeViewModel : HomeViewModel by viewModel()
     private var binding : FragmentHomeBinding ?= null
@@ -38,14 +32,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observerError()
         observerCurrencyOutput()
         initObserver()
+        converterCurrency()
     }
 
     private fun initObserver() {
         homeViewModel.getCurrencies().observe(viewLifecycleOwner, Observer {
             it?.let {
-                println("List in page ")
                 observerCurrencyList()
             }?: println("Empty List")
         })
@@ -60,10 +55,21 @@ class HomeFragment : Fragment() {
     private fun observerCurrencyList() {
         homeViewModel.getCurrenciesInitials().observe(viewLifecycleOwner, Observer {
             it?.let {
-                arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, it)
+                arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, it)
                 binding?.bySpinner?.adapter = arrayAdapter
+                binding?.toSpinner?.adapter = arrayAdapter
+
+
+                binding?.bySpinner?.onItemSelectedListener = this
+                binding?.toSpinner?.onItemSelectedListener = this
             }?:println("Empty data")
         })
+    }
+
+    private fun converterCurrency() {
+        binding?.converterButton?.setOnClickListener {
+            homeViewModel.convertCurrencyAtoCurrencyB(binding?.inputTextField?.text)
+        }
     }
 
     private fun observerError() {
@@ -76,5 +82,15 @@ class HomeFragment : Fragment() {
 
            snackbar.show()
        })
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        if(parent?.id == binding?.bySpinner?.id)
+            homeViewModel.byCurrencyAdapter.postValue(position)
+        else homeViewModel.toCurrencyAdapter.postValue(position)
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }

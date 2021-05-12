@@ -52,6 +52,8 @@ dependencies {
     def coroutine_version = "2.2.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$coroutine_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutine_version"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
 
     // navigation dependencies
     def nav_version = "2.3.5"

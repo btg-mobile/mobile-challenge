@@ -10,4 +10,5 @@
     <string name="to">Para</string>
     <string name="by">Converta de</string>
     <string name="converter">Converter</string>
+    <string name="toolbar_app_title">Currency App</string>
 </resources>

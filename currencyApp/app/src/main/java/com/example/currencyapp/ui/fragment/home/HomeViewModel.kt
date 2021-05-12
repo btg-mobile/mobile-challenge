@@ -1,5 +1,6 @@
 package com.example.currencyapp.ui.fragment.home
 
+import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +12,14 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val currencies : MutableLiveData<List<Currency>> = MutableLiveData()
     private val currencyInitials : MutableLiveData<List<String>> = MutableLiveData()
+
     val error : MutableLiveData<String> = MutableLiveData()
+
+    val byCurrencyAdapter : MutableLiveData<Int> = MutableLiveData(0)
+    val toCurrencyAdapter : MutableLiveData<Int> = MutableLiveData(0)
+
+
+    val inputValue : MutableLiveData<Number> = MutableLiveData(0.0)
     val convertedCurrency : MutableLiveData<Double> = MutableLiveData(0.0)
 
     fun getCurrencies() : LiveData<List<Currency>> {
@@ -27,6 +35,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     fun getCurrenciesInitials() : LiveData<List<String>> {
         val initialsList = mutableListOf<String>()
+
         currencies.value?.forEach {
             initialsList.add(it.currency)
         }
@@ -35,14 +44,21 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         return currencyInitials
     }
 
-    fun convertCurrencyAtoCurrencyB(input : Number, currencyAToUSDTaxes : Number, currencyUSDToBTaxes : Number) : Double {
-        //val currencyAToUSDTaxes = 5.441196 //taxa de conversao que vem da page
-        var inputInUSD : Double = 0.0
-        var result : Double = 0.0
+    fun convertCurrencyAtoCurrencyB(text: Editable?): LiveData<Double> {
+        val currencyAToUSDTaxes = currencies.value?.get(byCurrencyAdapter.value!!)?.rate ?: 1.0
+        val currencyUSDToBTaxes = currencies.value?.get(toCurrencyAdapter.value!!)?.rate ?: 1.0
 
-        inputInUSD = ((input.toDouble()) / currencyAToUSDTaxes.toDouble())
-        result = (inputInUSD * currencyUSDToBTaxes.toDouble())
+        if(text?.isNotEmpty()!!) {
+            val input = text.toString().toDouble()
 
-        return result
+            val inputInUSD = input.div(currencyAToUSDTaxes) ?: 0.0
+
+            convertedCurrency.value = (inputInUSD * currencyUSDToBTaxes)
+
+            println("Valor da conversão ${convertedCurrency.value}")
+
+        }else error.value = "Escolha um valor"
+
+        return convertedCurrency
     }
 }

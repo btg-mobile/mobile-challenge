@@ -40,7 +40,9 @@ val resourceModule = module {
 val viewModelModule = module {
     viewModel {
         HomeViewModel(get())
-        //CurrencyListViewModel(get())
+    }
+    viewModel {
+        CurrencyListViewModel(get())
     }
 }
 

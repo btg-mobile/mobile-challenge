@@ -14,19 +14,17 @@ import kotlinx.coroutines.launch
 class ListRepository(
         private val localData : CurrencyDao,
 ) {
-    private val scope = CoroutineScope(Job() + Dispatchers.Main)
 
-
-    fun getCurrencyListFromApi() : LiveData<List<Currency>> {
+    suspend fun getCurrencyListFromApi() : LiveData<List<Currency>> {
         val list: MutableLiveData<List<Currency>> = MutableLiveData()
-        scope.launch {
+
             try {
                 list.value = getLocalCurrencies()
 
-            }catch (e : Throwable) {
+            } catch (e : Throwable) {
                 println("THROW $e")
+                throw Exception(e)
             }
-        }
 
         return list
     }

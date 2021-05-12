@@ -3,23 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
-
-
+    app:startDestination="@id/viewPagerFragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.currencyapp.ui.fragment.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_currencyListFragment"
-            app:destination="@id/currencyListFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/currencyListFragment"
-        android:name="com.example.currencyapp.ui.fragment.currencyList.CurrencyListFragment"
-        android:label="fragment_currency_list"
-        tools:layout="@layout/fragment_currency_list" />
-
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.currencyapp.ui.fragment.viewPager.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>
