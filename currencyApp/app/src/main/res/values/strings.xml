@@ -11,4 +11,5 @@
     <string name="by">Converter de:</string>
     <string name="converter">Converter</string>
     <string name="toolbar_app_title">Currency App</string>
+    <string name="empty_currency_list">Não foi possível carregar a lista de moedas!</string>
 </resources>

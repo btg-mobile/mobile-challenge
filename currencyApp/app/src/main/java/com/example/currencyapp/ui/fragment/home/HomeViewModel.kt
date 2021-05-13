@@ -14,12 +14,11 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val currencyInitials : MutableLiveData<List<String>> = MutableLiveData()
 
     val error : MutableLiveData<String> = MutableLiveData()
+    val emptyList : MutableLiveData<Boolean> = MutableLiveData(true)
 
     val byCurrencyAdapter : MutableLiveData<Int> = MutableLiveData(0)
     val toCurrencyAdapter : MutableLiveData<Int> = MutableLiveData(0)
 
-
-    val inputValue : MutableLiveData<Number> = MutableLiveData(0.0)
     val convertedCurrency : MutableLiveData<Double> = MutableLiveData(0.0)
 
     fun getCurrencies() : LiveData<List<Currency>> {
@@ -30,6 +29,9 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         }catch (e : Exception) {
             error.value = e.message
         }
+
+        emptyList.value =  currencies.value?.isEmpty() ?: true
+
         return currencies
     }
 
@@ -45,20 +47,19 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     fun convertCurrencyAtoCurrencyB(text: Editable?): LiveData<Double> {
-        val currencyAToUSDTaxes = currencies.value?.get(byCurrencyAdapter.value!!)?.rate ?: 1.0
-        val currencyUSDToBTaxes = currencies.value?.get(toCurrencyAdapter.value!!)?.rate ?: 1.0
+        if(emptyList.value!!){
+            error.value = "Você não pode realizar essa operação"
+        } else {
+            val currencyAToUSDTaxes = currencies.value?.get(byCurrencyAdapter.value!!)?.rate ?: 1.0
+            val currencyUSDToBTaxes = currencies.value?.get(toCurrencyAdapter.value!!)?.rate ?: 1.0
 
-        if(text?.isNotEmpty()!!) {
-            val input = text.toString().toDouble()
+            if(text?.isNotEmpty()!!) {
+                val input = text.toString().toDouble()
+                val inputInUSD = input.div(currencyAToUSDTaxes) ?: 0.0
+                convertedCurrency.value = (inputInUSD * currencyUSDToBTaxes)
 
-            val inputInUSD = input.div(currencyAToUSDTaxes) ?: 0.0
-
-            convertedCurrency.value = (inputInUSD * currencyUSDToBTaxes)
-
-            println("Valor da conversão ${convertedCurrency.value}")
-
-        }else error.value = "Escolha um valor"
-
+            } else error.value = "Escolha um valor"
+        }
         return convertedCurrency
     }
 }

@@ -34,22 +34,29 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         super.onViewCreated(view, savedInstanceState)
 
         observerError()
+        observerEmptyList()
         observerCurrencyOutput()
         initObserver()
         converterCurrency()
-        //inputValueMaskListener()
     }
-
-    //duvida sobre deixar o padrão sempre com moeda brasileira
-//    private fun inputValueMaskListener() {
-//        binding?.inputTextField?.addTextChangedListener(MonetaryEditTextMask.mask(binding!!.inputTextField))
-//    }
 
     private fun initObserver() {
         homeViewModel.getCurrencies().observe(viewLifecycleOwner, Observer {
             it?.let {
                 observerCurrencyList()
-            }?: println("Empty List")
+            }?: binding?.failLayout?.visibility
+        })
+    }
+
+    private fun observerEmptyList() {
+        homeViewModel.emptyList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    binding?.failLayout?.visibility = View.VISIBLE
+                } else {
+                    binding?.failLayout?.visibility = View.GONE
+                }
+            }
         })
     }
 
@@ -69,7 +76,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
                 binding?.bySpinner?.onItemSelectedListener = this
                 binding?.toSpinner?.onItemSelectedListener = this
-            }?:println("Empty data")
+            }
         })
     }
 
@@ -86,7 +93,6 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
            snackbar.setAction("OK") {
                snackbar.dismiss()
            }
-
            snackbar.show()
        })
     }

@@ -33,7 +33,20 @@ class CurrencyListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observerError()
+        observerEmptyList()
         observerList()
+    }
+
+    private fun observerEmptyList() {
+        listViewModel.emptyList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    binding?.failLayout?.visibility = View.VISIBLE
+                } else {
+                    binding?.failLayout?.visibility = View.GONE
+                }
+            }
+        })
     }
 
     private fun observerList() {
@@ -42,7 +55,7 @@ class CurrencyListFragment : Fragment() {
                 val adapter = CurrencyListAdapter(currencies = it)
                 binding?.currenciesList?.adapter = adapter
                 binding?.currenciesList?.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-            } ?: println("colocar um textview de lista vazia")
+            }
         })
     }
 
@@ -53,7 +66,6 @@ class CurrencyListFragment : Fragment() {
             snackbar.setAction("OK") {
                 snackbar.dismiss()
             }
-
             snackbar.show()
         })
     }

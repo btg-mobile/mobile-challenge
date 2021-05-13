@@ -8,18 +8,36 @@
             type="com.example.currencyapp.ui.fragment.home.HomeViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark_grey"
-        android:paddingHorizontal="@dimen/dimen_10">
+        android:paddingHorizontal="@dimen/dimen_10"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/fail_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:gravity="center"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_currency_list"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_10"
-            app:cardCornerRadius="@dimen/dimen_10"
-            android:layout_gravity="center">
+            app:cardCornerRadius="@dimen/dimen_10">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +85,7 @@
                         android:id="@+id/by_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.6" />
+                        android:layout_weight="0.6"/>
                 </LinearLayout>
 
                 <TextView
@@ -107,7 +125,7 @@
                         android:id="@+id/to_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.6" />
+                        android:layout_weight="0.6"/>
                 </LinearLayout>
 
                 <Button
@@ -128,5 +146,7 @@
         </androidx.cardview.widget.CardView>
 
 
-    </FrameLayout>
+    </LinearLayout>
+
+
 </layout>

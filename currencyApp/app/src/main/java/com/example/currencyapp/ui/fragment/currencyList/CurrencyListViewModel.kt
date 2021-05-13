@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 
 class CurrencyListViewModel (private val listRepository: ListRepository) : ViewModel(){
     val error : MutableLiveData<String> = MutableLiveData()
+    val emptyList : MutableLiveData<Boolean> = MutableLiveData(true)
+
     private val currencyList : MutableLiveData<List<Currency>> = MutableLiveData()
 
     fun getCurrencyList() : LiveData<List<Currency>> {
@@ -20,6 +22,8 @@ class CurrencyListViewModel (private val listRepository: ListRepository) : ViewM
         } catch (e : Exception) {
           error.value = e.message
         }
+
+        emptyList.value =  currencyList.value?.isEmpty() ?: true
 
         return currencyList
     }
