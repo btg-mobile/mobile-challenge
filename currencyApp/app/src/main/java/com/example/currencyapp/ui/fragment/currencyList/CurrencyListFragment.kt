@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -37,6 +38,21 @@ class CurrencyListFragment : Fragment() {
         observerList()
     }
 
+    private fun searchCurrency(adapter: CurrencyListAdapter) {
+        binding?.searchText?.setOnQueryTextListener(object  : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+
+        })
+    }
+
     private fun observerEmptyList() {
         listViewModel.emptyList.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -54,7 +70,8 @@ class CurrencyListFragment : Fragment() {
             currencies?.let {
                 val adapter = CurrencyListAdapter(currencies = it)
                 binding?.currenciesList?.adapter = adapter
-                binding?.currenciesList?.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
+                searchCurrency(adapter)
             }
         })
     }

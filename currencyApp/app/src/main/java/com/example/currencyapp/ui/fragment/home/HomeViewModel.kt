@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.currencyapp.database.entity.Currency
 import com.example.currencyapp.repository.HomeRepository
 import kotlinx.coroutines.launch
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val currencies : MutableLiveData<List<Currency>> = MutableLiveData()
@@ -28,8 +30,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 currencies.value = data
 
                 emptyList.value = currencies.value?.isEmpty() ?: true
-
-                println("Lista vazia? ${emptyList.value}")
             }
         }catch (e : Exception) {
             error.value = e.message
@@ -58,10 +58,16 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             if(text?.isNotEmpty()!!) {
                 val input = text.toString().toDouble()
                 val inputInUSD = input.div(currencyAToUSDTaxes)
-                convertedCurrency.value = (inputInUSD * currencyUSDToBTaxes)
+                convertedCurrency.value = roundOffDecimal(number = (inputInUSD * currencyUSDToBTaxes))
 
-            } else error.value = "Escolha um valor"
+            } else error.value = "Insira um valor"
         }
         return convertedCurrency
+    }
+
+    private fun roundOffDecimal(number: Double): Double {
+        val decimalFormat = DecimalFormat("#.##")
+        decimalFormat.roundingMode = RoundingMode.CEILING
+        return decimalFormat.format(number).toDouble()
     }
 }

@@ -18,12 +18,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 import java.lang.IndexOutOfBoundsException
 
 
+//TODO -> converter para databinding
 class ViewPagerFragment : Fragment() {
-    private lateinit var viewPager : ViewPager2
-    private lateinit var tabLayoutMediator : TabLayoutMediator
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayoutMediator: TabLayoutMediator
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_view_pager, container, false)
     }
 
@@ -47,8 +50,6 @@ class ViewPagerFragment : Fragment() {
         }
 
         tabLayoutMediator.attach()
-
-
     }
 
 
@@ -58,10 +59,10 @@ class ViewPagerFragment : Fragment() {
         super.onDestroy()
     }
 
-    class NavHostFragmentAdapter(fragment : Fragment) : FragmentStateAdapter(fragment) {
-        private val tabFragmentsCreators : Map<Int, () -> Fragment> = mapOf(
-            0 to {HomeFragment()},
-            1 to {CurrencyListFragment()}
+    class NavHostFragmentAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+        private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
+            0 to { HomeFragment() },
+            1 to { CurrencyListFragment() }
         )
 
         override fun getItemCount() = tabFragmentsCreators.size
