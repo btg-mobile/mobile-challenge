@@ -24,14 +24,16 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     fun getCurrencies() : LiveData<List<Currency>> {
         try {
             viewModelScope.launch {
-                currencies.postValue(homeRepository.getExchangeRateValues().value)
+                val data = homeRepository.getExchangeRateValues().value
+                currencies.value = data
+
+                emptyList.value = currencies.value?.isEmpty() ?: true
+
+                println("Lista vazia? ${emptyList.value}")
             }
         }catch (e : Exception) {
             error.value = e.message
         }
-
-        emptyList.value =  currencies.value?.isEmpty() ?: true
-
         return currencies
     }
 
@@ -55,7 +57,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
             if(text?.isNotEmpty()!!) {
                 val input = text.toString().toDouble()
-                val inputInUSD = input.div(currencyAToUSDTaxes) ?: 0.0
+                val inputInUSD = input.div(currencyAToUSDTaxes)
                 convertedCurrency.value = (inputInUSD * currencyUSDToBTaxes)
 
             } else error.value = "Escolha um valor"

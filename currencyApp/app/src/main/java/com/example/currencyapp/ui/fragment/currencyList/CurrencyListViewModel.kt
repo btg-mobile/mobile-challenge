@@ -17,13 +17,12 @@ class CurrencyListViewModel (private val listRepository: ListRepository) : ViewM
     fun getCurrencyList() : LiveData<List<Currency>> {
         try {
             viewModelScope.launch {
-                currencyList.postValue(listRepository.getCurrencyListFromApi().value)
+                currencyList.value = listRepository.getCurrencyListFromApi().value
+                emptyList.value =  currencyList.value?.isEmpty() ?: true
             }
         } catch (e : Exception) {
           error.value = e.message
         }
-
-        emptyList.value =  currencyList.value?.isEmpty() ?: true
 
         return currencyList
     }
