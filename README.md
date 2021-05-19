@@ -15,7 +15,7 @@ O app deve counsumir a [Mobile Challenge API](https://btg-mobile-challenge.herok
    * A tela de conversão deve conter:
       * Dois botões que permitam o usuário a escolher as moedas de origem e de destino.
       * Um campo de entrada de texto onde o usuário possa inserir o valor a ser convertido.
-      * Uma campo de texto para apresentar o valor convertido.
+      * Um campo de texto para apresentar o valor convertido.
    * A tela de listagem de moedas deve conter:
       * Uma lista das moedas disponíves para conversão, mostrando código e nome da moeda.
     
