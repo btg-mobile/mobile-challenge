@@ -33,7 +33,7 @@ O app deve counsumir a [Mobile Challenge API](https://btg-mobile-challenge.herok
 - [ ] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
 
 ### Opcionais (não necessário, porém contam pontos):
-- [ ] Funcinalidade de busca na lista de moedas por nome ou sigla da moeda ("dólar" ou "USD").
+- [ ] Funcionalidade de busca na lista de moedas por nome ou sigla da moeda ("dólar" ou "USD").
 - [ ] Ordenação da lista de moedas por nome ou código.
 - [ ] Realizar a persistência local da lista de moedas e taxas para permitir o uso do app no caso de falta de internet.
 - [ ] Desenvolver testes unitários e/ou funcionais.
