@@ -28,8 +28,8 @@ O app deve counsumir a [Mobile Challenge API](https://btg-mobile-challenge.herok
 
 ## Features
 ### Obrigatórias:
-- [ ] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API Supported Currencies (/list)](https://currencylayer.com/documentation)
-- [ ] A cotação atual deve ser obtida da chamada de [API Real-time Rates (/live)](https://currencylayer.com/documentation)
+- [ ] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API Supported Currencies (/list)](https://btg-mobile-challenge.herokuapp.com/list)
+- [ ] A cotação atual deve ser obtida da chamada de [API Real-time Rates (/live)](https://btg-mobile-challenge.herokuapp.com/live)
 - [ ] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
 
 ### Opcionais (não necessário, porém contam pontos):
