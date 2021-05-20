@@ -41,6 +41,6 @@ O app deve counsumir a [Mobile Challenge API](https://btg-mobile-challenge.herok
 - [ ] Pipeline automatizado.
 
 ## Processo de submissão
-Para submeter o seu desafio, faça um clone deste projeto, desenvolva localmente e, no final, abra um pull request com o formato "[Plataforma] - Nome" para a master até a data limite estabelecida. Um exemplo seria "[iOS] - João da Silva".
+Para submeter o seu desafio, faça um fork deste projeto para sua conta no github, realize o clone e desenvolva localmente, no final, abra um pull request com o formato "[Plataforma] - Nome" para a master até a data limite estabelecida. Um exemplo seria "[iOS] - João da Silva".
 
 ### Boa sorte.
