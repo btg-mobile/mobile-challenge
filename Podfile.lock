@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (5.0.0.beta.1)
+  - PKHUD (5.3.0)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
+  - PKHUD (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - PKHUD
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: alamofire5
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 2c99a6691dac40f03ef9f9e89aaf2eb751843393
+    :git: https://github.com/Alamofire/Alamofire.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+
+PODFILE CHECKSUM: 2ce9d4f8323e2fbe94edf68a8ae5f0dd8f3362ee
+
+COCOAPODS: 1.9.3

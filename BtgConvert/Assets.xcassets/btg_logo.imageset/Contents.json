@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "btg_logo2.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

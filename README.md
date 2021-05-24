@@ -44,3 +44,22 @@ O app deve counsumir a [Mobile Challenge API](https://btg-mobile-challenge.herok
 Para submeter o seu desafio, faça um fork deste projeto para sua conta no github, realize o clone e desenvolva localmente, no final, abra um pull request com o formato "[Plataforma] - Nome" para a master até a data limite estabelecida. Um exemplo seria "[iOS] - João da Silva".
 
 ### Boa sorte.
+
+
+# Detalhes da Challenge - Albert Oliveira
+
+O projeto foi desenvolvido de forma rápida devido ao tempo que tenho disponível para o teste. Foi projetado de forma simples levando em consideração o padrão MVVM, faltando alguns recursos como: coordinator, delegates(contratos de cada camada) e classes utilitária e ajustes na camada de consumo de dados. Além de problemas alguns números referente ao a localização(Locale), onde este não vem no payload.
+
+Utilizado:
+
+* Linguagem: Swift 5
+* Padrão: MVVM
+* Bibliotecas externas: Alamofire e PKHUD
+* Devices: Testado em iPhone 11 Pro Max e SE(2º generation)
+
+Fluxo do app:
+
+* Home com o botão para iniciar a conversão
+* Tela de conversão com a escolha da moeda DE/PARA, definição do valor, texto para apresentação do resultado e botão para realizar a conversão.
+* Tela para escolha da moeda juntamente com a consulta pelo nome do país.
+
