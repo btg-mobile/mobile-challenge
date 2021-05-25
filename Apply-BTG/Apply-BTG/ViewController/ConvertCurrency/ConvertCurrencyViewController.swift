@@ -105,6 +105,12 @@ class ConvertCurrencyViewController: UIViewController {
                                                      from: originCurrencyCode,
                                                      to: destinyCurrencyCode)
                     
+                    self.selectedCurrencyOriginCode = nil
+                    self.selectedCurrencyDestinyCode = nil
+                    
+                    self.originCurrencyPicker.selectRow(0, inComponent: 0, animated: true)
+                    self.destinyCurrencyPicker.selectRow(0, inComponent: 0, animated: true)                    
+                    
                     resultLabel.text = ConvertCurrencyViewModel()
                         .formatCurrencyValue(convertedValue, withCode: destinyCurrencyCode)
                 }
