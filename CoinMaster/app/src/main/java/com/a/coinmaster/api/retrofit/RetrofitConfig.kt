@@ -1,6 +1,7 @@
 package com.a.coinmaster.api.retrofit
 
 import com.a.coinmaster.BuildConfig
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,21 +18,36 @@ class RetrofitConfig {
         Retrofit
             .Builder()
             .baseUrl(BuildConfig.CURRENCYLAYER_URL_BASE)
+            .client(getHttpClient())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .client(getHttpClient())
             .build()
 
-    private fun getHttpClient(): OkHttpClient =
-        OkHttpClient
+    private fun getHttpClient(): OkHttpClient {
+        return OkHttpClient
             .Builder()
-            .addInterceptor(getInterceptor())
+            .addInterceptor(getHttpLoggingInterceptor())
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .build()
+    }
 
-    private fun getInterceptor(): HttpLoggingInterceptor =
+    private fun getInterceptor() = Interceptor { chain: Interceptor.Chain ->
+        val oldRequest = chain.request()
+        val newUrl = oldRequest
+            .url()
+            .newBuilder()
+            .addQueryParameter(ACCESS_KEY_QUERY, BuildConfig.CURRENCYLAYER_ACCESS_KEY)
+            .build()
+        val newRequest = oldRequest
+            .newBuilder()
+            .url(newUrl)
+            .build()
+        chain.proceed(newRequest)
+    }
+
+    private fun getHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor()
             .apply {
                 level = getInterceptorLevel()
@@ -45,6 +61,7 @@ class RetrofitConfig {
         }
 
     companion object {
-        const val TIMEOUT = 60L
+        const val TIMEOUT = 30L
+        const val ACCESS_KEY_QUERY = "access_key"
     }
 }

@@ -4,10 +4,11 @@ import com.a.coinmaster.model.mapper.Mapper
 import com.a.coinmaster.model.response.CurrencyResponse
 import com.a.coinmaster.model.vo.CurrenciesListVO
 import com.a.coinmaster.repository.CoinMasterRepository
+import com.a.coinmaster.repository.CurrencyRepository
 import io.reactivex.Single
 
 class GetCurrencyUseCase(
-    private val repository: CoinMasterRepository,
+    private val repository: CurrencyRepository,
     private val mapper: Mapper<CurrencyResponse, CurrenciesListVO>
 ) : UseCase<String, Single<CurrenciesListVO>> {
 

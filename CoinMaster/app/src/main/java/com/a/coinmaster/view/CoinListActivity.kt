@@ -12,7 +12,7 @@ import com.a.coinmaster.R
 import com.a.coinmaster.extension.changeVisibility
 import com.a.coinmaster.model.StateError
 import com.a.coinmaster.model.StateLoading
-import com.a.coinmaster.model.StateResponse
+import com.a.coinmaster.model.StateEvent
 import com.a.coinmaster.model.StateSuccess
 import com.a.coinmaster.model.vo.CurrenciesListVO
 import com.a.coinmaster.view.adapter.CoinListAdapter
@@ -63,7 +63,7 @@ class CoinListActivity : AppCompatActivity(), OnItemSelected {
             })
     }
 
-    private fun handleState(state: StateResponse<CurrenciesListVO>) {
+    private fun handleState(state: StateEvent<CurrenciesListVO>) {
         enableLoading(false)
         when (state) {
             is StateLoading -> enableLoading(true)

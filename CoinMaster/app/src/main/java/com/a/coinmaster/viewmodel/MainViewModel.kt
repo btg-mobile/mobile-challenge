@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.a.coinmaster.model.StateError
 import com.a.coinmaster.model.StateLoading
-import com.a.coinmaster.model.StateResponse
+import com.a.coinmaster.model.StateEvent
 import com.a.coinmaster.model.StateSuccess
 import com.a.coinmaster.model.vo.CurrenciesListVO
 import com.a.coinmaster.usecase.CalculateTargetValueUseCase
@@ -28,9 +28,9 @@ class MainViewModel(
     private var sourceRate: Double = 0.0
     private var targetRate: Double = 0.0
 
-    val currencyLiveData: LiveData<StateResponse<CurrenciesListVO>>
+    val currencyLiveData: LiveData<StateEvent<CurrenciesListVO>>
         get() = _currencyLiveData
-    private val _currencyLiveData = MutableLiveData<StateResponse<CurrenciesListVO>>()
+    private val _currencyLiveData = MutableLiveData<StateEvent<CurrenciesListVO>>()
 
     val targetValueLiveData: LiveData<Double>
         get() = _targetValueLiveData

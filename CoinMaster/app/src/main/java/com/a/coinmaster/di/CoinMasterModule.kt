@@ -9,6 +9,7 @@ import com.a.coinmaster.model.response.CurrenciesListResponse
 import com.a.coinmaster.model.response.CurrencyResponse
 import com.a.coinmaster.model.vo.CurrenciesListVO
 import com.a.coinmaster.repository.CoinMasterRepository
+import com.a.coinmaster.repository.CurrencyRepository
 import com.a.coinmaster.usecase.CalculateTargetValueUseCase
 import com.a.coinmaster.usecase.GetCurrenciesListUseCase
 import com.a.coinmaster.usecase.GetCurrencyUseCase
@@ -39,13 +40,13 @@ class CoinMasterModule {
 
     @Provides
     fun providesCurrencyUseCase(
-        repository: CoinMasterRepository,
+        repository: CurrencyRepository,
         mapper: Mapper<CurrencyResponse, CurrenciesListVO>
     ) = GetCurrencyUseCase(repository, mapper)
 
     @Provides
     fun providesCurrenciesListUseCase(
-        repository: CoinMasterRepository,
+        repository: CurrencyRepository,
         mapper: Mapper<CurrenciesListResponse, CurrenciesListVO>
     ) = GetCurrenciesListUseCase(repository, mapper)
 
@@ -60,5 +61,5 @@ class CoinMasterModule {
     @Provides
     fun providesRepository(
         serviceApi: CoinMasterApi
-    ) = CoinMasterRepository(serviceApi)
+    ): CurrencyRepository = CoinMasterRepository(serviceApi)
 }

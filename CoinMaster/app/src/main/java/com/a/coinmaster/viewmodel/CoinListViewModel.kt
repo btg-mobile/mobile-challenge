@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.a.coinmaster.model.StateError
 import com.a.coinmaster.model.StateLoading
-import com.a.coinmaster.model.StateResponse
+import com.a.coinmaster.model.StateEvent
 import com.a.coinmaster.model.StateSuccess
 import com.a.coinmaster.model.vo.CurrenciesListVO
 import com.a.coinmaster.usecase.GetCurrenciesListUseCase
@@ -13,10 +13,10 @@ class CoinListViewModel(
     private val currenciesListUseCase: GetCurrenciesListUseCase
 ) : BaseViewModel() {
 
-    val currenciesListLiveData: LiveData<StateResponse<CurrenciesListVO>>
+    val currenciesListLiveData: LiveData<StateEvent<CurrenciesListVO>>
         get() = _currenciesListLiveData
 
-    private val _currenciesListLiveData = MutableLiveData<StateResponse<CurrenciesListVO>>()
+    private val _currenciesListLiveData = MutableLiveData<StateEvent<CurrenciesListVO>>()
 
     var coinSelected: Pair<String, String>? = null
 
