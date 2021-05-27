@@ -27,13 +27,14 @@ class RetrofitConfig {
         return OkHttpClient
             .Builder()
             .addInterceptor(getHttpLoggingInterceptor())
+            .addInterceptor(getRequestInterceptor())
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .build()
     }
 
-    private fun getInterceptor() = Interceptor { chain: Interceptor.Chain ->
+    private fun getRequestInterceptor() = Interceptor { chain: Interceptor.Chain ->
         val oldRequest = chain.request()
         val newUrl = oldRequest
             .url()
