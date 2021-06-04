@@ -4,5 +4,7 @@
     <dimen name="text_size_answer">22sp</dimen>
 
     <!--> Margin <-->
+    <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_medium">30dp</dimen>
+    <dimen name="margin_large">40dp</dimen>
 </resources>

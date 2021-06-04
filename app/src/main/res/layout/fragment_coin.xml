@@ -28,9 +28,11 @@
             android:id="@+id/textview_abbreviation"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#555"
             android:gravity="center_vertical|center"
             android:text="@string/initials"
             android:textAllCaps="true"
+            android:textColor="#FFF"
             app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
             app:layout_constraintEnd_toStartOf="@id/guideline_half_screen_vertical"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +42,11 @@
             android:id="@+id/textview_description"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border_left_white"
             android:gravity="center_vertical|center"
             android:text="@string/description"
             android:textAllCaps="true"
+            android:textColor="#FFF"
             app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_half_screen_vertical"
@@ -52,11 +56,24 @@
             android:id="@+id/recyclerview_coin"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/edittext_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline_screen_horizontal"
+            tools:itemCount="20"
             tools:listitem="@layout/list_coin" />
+
+        <EditText
+            android:id="@+id/edittext_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:inputType="text"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
