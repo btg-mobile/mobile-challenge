@@ -9,11 +9,12 @@ class Network {
 
         private const val URL_DOMAIN = "https://btg-mobile-challenge.herokuapp.com"
 
-        fun getInstance() : Retrofit {
+        fun getEndpoint() : Endpoint? {
             return Retrofit.Builder()
                 .baseUrl(URL_DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+                .create(Endpoint::class.java)
         }
     }
 }

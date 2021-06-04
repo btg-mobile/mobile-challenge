@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.exchange.R
-import com.example.exchange.model.Coin
 import com.example.exchange.utils.CoinAdapter
+import com.example.exchange.viewmodel.CoinViewModel
 import kotlinx.android.synthetic.main.fragment_coin.*
 
-
 class CoinFragment : Fragment() {
+
+    private lateinit var viewModel: CoinViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,25 +26,19 @@ class CoinFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listCoin: MutableList<Coin> = mutableListOf()
+        viewModel = ViewModelProviders.of(this).get(CoinViewModel::class.java)
 
-        listCoin.add(Coin("BGN", "Bulgarian Lev"))
-        listCoin.add(Coin("BIF", "Burundian Franc"))
-        listCoin.add(Coin("BMD", "Bermudan Dollar"))
-        listCoin.add(Coin("BND", "Brunei Dollar"))
-        listCoin.add(Coin("BRL", "Brazilian Real"))
-        listCoin.add(Coin("BTC", "Bitcoin"))
-        listCoin.add(Coin("CLP", "Chilean Peso"))
-        listCoin.add(Coin("BYN", "New Belarusian Ruble"))
-        listCoin.add(Coin("BYR", "Belarusian Ruble"))
-        listCoin.add(Coin("BZD", "Belize Dollar"))
-        listCoin.add(Coin("CAD", "Canadian Dollar"))
-        listCoin.add(Coin("CDF", "Congolese Franc"))
-        listCoin.add(Coin("CHF", "Swiss Franc"))
+        initObservers()
 
-        with(recyclerview_coin) {
-            adapter = CoinAdapter(listCoin)
-            layoutManager = LinearLayoutManager(context)
-        }
+        viewModel.requestData()
+    }
+
+    private fun initObservers() {
+        viewModel.getData().observe(this, {
+            with(recyclerview_coin) {
+                adapter = CoinAdapter(it)
+                layoutManager = LinearLayoutManager(context)
+            }
+        })
     }
 }
