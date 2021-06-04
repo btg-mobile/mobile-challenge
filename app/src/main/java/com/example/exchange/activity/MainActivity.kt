@@ -15,11 +15,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        viewModel.setScreen(OptionFragment())
+        viewModel.defineScreen(OptionFragment())
 
-        viewModel.getScreen().observe(this, {
+        viewModel.getScreenSelected().observe(this, {
             showFragment(it)
         })
     }
@@ -28,6 +29,15 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.frame_layout_fragment, fragment)
+            .addToBackStack("OptionScreen")
             .commit()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
