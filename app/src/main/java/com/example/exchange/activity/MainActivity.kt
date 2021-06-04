@@ -3,10 +3,13 @@ package com.example.exchange.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.ListFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.exchange.R
-import com.example.exchange.fragment.OptionFragment
+import com.example.exchange.fragment.ConverterFragment
+import com.example.exchange.fragment.StartFragment
 import com.example.exchange.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,26 +21,32 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        viewModel.defineScreen(OptionFragment())
+        initObservers()
+        initListeners()
 
+        viewModel.defineScreen(StartFragment())
+    }
+
+    private fun initObservers() {
         viewModel.getScreenSelected().observe(this, {
             showFragment(it)
         })
+    }
+
+    private fun initListeners() {
+        button_converter.setOnClickListener {
+            viewModel.defineScreen(ConverterFragment())
+        }
+
+        button_list.setOnClickListener {
+            viewModel.defineScreen(ListFragment())
+        }
     }
 
     private fun showFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.frame_layout_fragment, fragment)
-            .addToBackStack("OptionScreen")
             .commit()
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStack()
-        } else {
-            super.onBackPressed()
-        }
     }
 }
