@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Exchange</string>
-    <string name="conversion">Conversor de Moedas</string>
-    <string name="coin">Lista de Moedas</string>
+    <string name="conversion">Conversão</string>
+    <string name="coin">Listar Moedas</string>
     <string name="answer">O que você deseja visualizar?</string>
     <string name="abbreviation">BRL</string>
     <string name="complete">Brazilian Real</string>
