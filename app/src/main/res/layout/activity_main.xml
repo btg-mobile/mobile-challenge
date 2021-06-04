@@ -10,7 +10,7 @@
         android:id="@+id/frame_layout_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline_half_screen_horizontal"
+        app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_half_screen_horizontal"
+        android:id="@+id/guideline_screen_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_half_screen_vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline_half_screen_horizontal" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_screen_horizontal" />
 
     <Button
         android:id="@+id/button_list"
@@ -47,6 +47,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline_half_screen_vertical"
-        app:layout_constraintTop_toBottomOf="@id/guideline_half_screen_horizontal" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_screen_horizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

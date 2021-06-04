@@ -1,26 +1,18 @@
 package com.example.exchange.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.exchange.R
+import com.example.exchange.model.Coin
+import com.example.exchange.utils.CoinAdapter
+import kotlinx.android.synthetic.main.fragment_coin.*
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class CoinFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,14 +21,28 @@ class CoinFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_coin, container, false)
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CoinFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val listCoin: MutableList<Coin> = mutableListOf()
+
+        listCoin.add(Coin("BGN", "Bulgarian Lev"))
+        listCoin.add(Coin("BIF", "Burundian Franc"))
+        listCoin.add(Coin("BMD", "Bermudan Dollar"))
+        listCoin.add(Coin("BND", "Brunei Dollar"))
+        listCoin.add(Coin("BRL", "Brazilian Real"))
+        listCoin.add(Coin("BTC", "Bitcoin"))
+        listCoin.add(Coin("CLP", "Chilean Peso"))
+        listCoin.add(Coin("BYN", "New Belarusian Ruble"))
+        listCoin.add(Coin("BYR", "Belarusian Ruble"))
+        listCoin.add(Coin("BZD", "Belize Dollar"))
+        listCoin.add(Coin("CAD", "Canadian Dollar"))
+        listCoin.add(Coin("CDF", "Congolese Franc"))
+        listCoin.add(Coin("CHF", "Swiss Franc"))
+
+        with(recyclerview_coin) {
+            adapter = CoinAdapter(listCoin)
+            layoutManager = LinearLayoutManager(context)
+        }
     }
 }

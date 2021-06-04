@@ -3,9 +3,9 @@ package com.example.exchange.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.ListFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.exchange.R
+import com.example.exchange.fragment.CoinFragment
 import com.example.exchange.fragment.ConverterFragment
 import com.example.exchange.fragment.StartFragment
 import com.example.exchange.viewmodel.MainViewModel
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_list.setOnClickListener {
-            viewModel.defineScreen(ListFragment())
+            viewModel.defineScreen(CoinFragment())
         }
     }
 

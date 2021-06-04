@@ -3,4 +3,8 @@
     <string name="conversion">Conversor de Moedas</string>
     <string name="coin">Lista de Moedas</string>
     <string name="answer">O que você deseja visualizar?</string>
+    <string name="abbreviation">BRL</string>
+    <string name="complete">Brazilian Real</string>
+    <string name="initials">Sigla</string>
+    <string name="description">Descrição</string>
 </resources>
