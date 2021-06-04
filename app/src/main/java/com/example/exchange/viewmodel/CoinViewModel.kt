@@ -14,7 +14,6 @@ class CoinViewModel : ViewModel() {
 
     private val loading: MutableLiveData<Boolean> = MutableLiveData()
     private val data: MutableLiveData<List<Coin>> = MutableLiveData()
-    private val error: MutableLiveData<Boolean> = MutableLiveData()
 
     fun requestData() {
         true.also { loading.value = it }

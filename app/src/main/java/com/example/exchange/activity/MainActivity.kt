@@ -5,19 +5,22 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.exchange.R
+import com.example.exchange.databinding.ActivityMainBinding
 import com.example.exchange.fragment.CoinFragment
 import com.example.exchange.fragment.ConverterFragment
 import com.example.exchange.fragment.StartFragment
 import com.example.exchange.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
@@ -34,11 +37,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        button_converter.setOnClickListener {
+        binding.buttonConverter.setOnClickListener {
             viewModel.defineScreen(ConverterFragment())
         }
 
-        button_list.setOnClickListener {
+        binding.buttonList.setOnClickListener {
             viewModel.defineScreen(CoinFragment())
         }
     }
