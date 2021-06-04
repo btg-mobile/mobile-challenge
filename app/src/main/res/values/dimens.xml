@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--> Text <-->
-    <dimen name="text_size_answer">22sp</dimen>
+    <dimen name="text_size_answer">70sp</dimen>
 
     <!--> Margin <-->
     <dimen name="margin_small">10dp</dimen>
-    <dimen name="margin_medium">30dp</dimen>
-    <dimen name="margin_large">40dp</dimen>
+    <dimen name="margin_medium">32dp</dimen>
 </resources>

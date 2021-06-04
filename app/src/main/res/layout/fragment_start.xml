@@ -9,8 +9,11 @@
     <TextView
         android:id="@+id/textview_welcome"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="none"
         android:gravity="center_vertical|center"
+        android:maxLines="100"
+        android:scrollHorizontally="false"
         android:text="@string/answer"
         android:textSize="@dimen/text_size_answer"
         app:layout_constraintBottom_toBottomOf="parent"

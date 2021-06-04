@@ -18,7 +18,7 @@
         android:background="@drawable/border_bottom_grey"
         android:textColor="@color/black"
         android:gravity="center_vertical"
-        android:paddingStart="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_medium"
         android:text="@string/abbreviation"
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
