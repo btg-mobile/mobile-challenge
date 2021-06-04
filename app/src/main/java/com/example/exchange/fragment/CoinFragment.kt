@@ -34,5 +34,9 @@ class CoinFragment : Fragment(R.layout.fragment_coin) {
                 layoutManager = LinearLayoutManager(context)
             }
         })
+
+        viewModel.getLoading().observe(viewLifecycleOwner, {
+            binding.progressbarCoin.visibility = it
+        })
     }
 }

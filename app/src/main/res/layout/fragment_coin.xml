@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.CoinFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_half_screen_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.23" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_screen_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.06" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_half_screen_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.23" />
 
-    <TextView
-        android:id="@+id/textview_abbreviation"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center_vertical|center"
-        android:text="@string/initials"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
-        app:layout_constraintEnd_toStartOf="@id/guideline_half_screen_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_screen_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
 
-    <TextView
-        android:id="@+id/textview_description"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center_vertical|center"
-        android:text="@string/description"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline_half_screen_vertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textview_abbreviation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_vertical|center"
+            android:text="@string/initials"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
+            app:layout_constraintEnd_toStartOf="@id/guideline_half_screen_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_coin"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline_screen_horizontal"
-        tools:listitem="@layout/list_coin" />
+        <TextView
+            android:id="@+id/textview_description"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_vertical|center"
+            android:text="@string/description"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_half_screen_vertical"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_coin"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline_screen_horizontal"
+            tools:listitem="@layout/list_coin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressbar_coin"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center"
+        android:visibility="gone" />
+
+</FrameLayout>

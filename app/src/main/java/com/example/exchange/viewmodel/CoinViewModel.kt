@@ -1,5 +1,6 @@
 package com.example.exchange.viewmodel
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,25 +13,25 @@ import retrofit2.Response
 
 class CoinViewModel : ViewModel() {
 
-    private val loading: MutableLiveData<Boolean> = MutableLiveData()
+    private val loading: MutableLiveData<Int> = MutableLiveData()
     private val data: MutableLiveData<List<Coin>> = MutableLiveData()
 
     fun requestData() {
-        true.also { loading.value = it }
+        View.VISIBLE.also { loading.value = it }
 
         Network.getEndpoint()?.getListCoins()?.enqueue(object : Callback<ListCoin> {
             override fun onResponse(call: Call<ListCoin>, response: Response<ListCoin>) {
-                false.also { loading.value = it }
+                View.GONE.also { loading.value = it }
                 createDataList(response.body()?.currencies).also { data.value = it }
             }
 
             override fun onFailure(call: Call<ListCoin>, t: Throwable) {
-                false.also { loading.value = it }
+                View.GONE.also { loading.value = it }
             }
         })
     }
 
-    fun getLoading(): LiveData<Boolean> {
+    fun getLoading(): LiveData<Int> {
         return loading
     }
 
