@@ -6,4 +6,5 @@
     <!--> Margin <-->
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_medium">32dp</dimen>
+    <dimen name="margin_large">58dp</dimen>
 </resources>
