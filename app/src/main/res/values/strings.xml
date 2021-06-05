@@ -7,4 +7,5 @@
     <string name="complete">Brazilian Real</string>
     <string name="initials">Sigla</string>
     <string name="description">Descrição</string>
+    <string name="search">Pesquisar por sigla ou descrição...</string>
 </resources>

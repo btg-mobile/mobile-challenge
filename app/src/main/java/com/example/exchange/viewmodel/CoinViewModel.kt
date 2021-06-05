@@ -16,13 +16,21 @@ class CoinViewModel : ViewModel() {
     private val loading: MutableLiveData<Int> = MutableLiveData()
     private val data: MutableLiveData<List<Coin>> = MutableLiveData()
 
+    private lateinit var items: Map<String, String>
+
     fun requestData() {
         View.VISIBLE.also { loading.value = it }
 
         Network.getEndpoint()?.getListCoins()?.enqueue(object : Callback<ListCoin> {
             override fun onResponse(call: Call<ListCoin>, response: Response<ListCoin>) {
                 View.GONE.also { loading.value = it }
-                createDataList(response.body()?.currencies).also { data.value = it }
+
+                response.body()?.currencies.also { it ->
+                    if (it != null) {
+                        items = it
+                        createDataList("")
+                    }
+                }
             }
 
             override fun onFailure(call: Call<ListCoin>, t: Throwable) {
@@ -39,13 +47,24 @@ class CoinViewModel : ViewModel() {
         return data
     }
 
-    fun createDataList(data: Map<String, String>?): List<Coin> {
-        val list: MutableList<Coin> = mutableListOf()
+    fun createDataList(filter: String) {
+        val listCoins: MutableList<Coin> = mutableListOf()
 
-        data?.forEach { (k, v) ->
-            list.add(Coin(k, v))
+        items.forEach { (k, v) ->
+            when {
+                filter.isNotEmpty() -> {
+                    when {
+                        filter.toLowerCase().toRegex().containsMatchIn(k.toLowerCase()) || filter.toLowerCase().toRegex().containsMatchIn(v.toLowerCase()) -> {
+                            listCoins.add(Coin(k, v))
+                        }
+                    }
+                }
+                else -> {
+                    listCoins.add(Coin(k, v))
+                }
+            }
         }
 
-        return list
+        listCoins.also { data.value = it }
     }
 }

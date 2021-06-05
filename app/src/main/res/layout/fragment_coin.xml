@@ -17,23 +17,15 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.23" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_screen_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.06" />
-
         <TextView
             android:id="@+id/textview_abbreviation"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="45dp"
             android:background="#555"
             android:gravity="center_vertical|center"
             android:text="@string/initials"
             android:textAllCaps="true"
             android:textColor="#FFF"
-            app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
             app:layout_constraintEnd_toStartOf="@id/guideline_half_screen_vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,13 +33,12 @@
         <TextView
             android:id="@+id/textview_description"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="45dp"
             android:background="@drawable/border_left_white"
             android:gravity="center_vertical|center"
             android:text="@string/description"
             android:textAllCaps="true"
             android:textColor="#FFF"
-            app:layout_constraintBottom_toTopOf="@id/guideline_screen_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_half_screen_vertical"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +50,7 @@
             app:layout_constraintBottom_toTopOf="@+id/edittext_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline_screen_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/textview_description"
             tools:itemCount="20"
             tools:listitem="@layout/list_coin" />
 
@@ -69,6 +60,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_small"
+            android:hint="@string/search"
             android:inputType="text"
             android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="parent"

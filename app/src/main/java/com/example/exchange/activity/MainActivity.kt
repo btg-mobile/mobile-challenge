@@ -14,7 +14,6 @@ import com.example.exchange.viewmodel.MainViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
