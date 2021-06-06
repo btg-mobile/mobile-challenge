@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.exchange.R
-import com.example.exchange.model.Coin
+import com.example.exchange.model.CoinDetails
 
-class CoinAdapter(private val listCoins: List<Coin>) : RecyclerView.Adapter<CoinAdapter.ViewHolder>() {
+class CoinAdapter(private val listCoinDetails: List<CoinDetails>) : RecyclerView.Adapter<CoinAdapter.ViewHolder>() {
 
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val abbreviation: TextView = itemView.findViewById(R.id.textview_abbreviation)
@@ -17,17 +17,17 @@ class CoinAdapter(private val listCoins: List<Coin>) : RecyclerView.Adapter<Coin
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinAdapter.ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_coin, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false))
     }
 
     override fun onBindViewHolder(viewHolder: CoinAdapter.ViewHolder, position: Int) {
-        val coin: Coin = listCoins[position]
+        val coinDetails: CoinDetails = listCoinDetails[position]
 
-        viewHolder.abbreviation.text = coin.abbreviation
-        viewHolder.description.text = coin.description
+        viewHolder.abbreviation.text = coinDetails.abbreviation
+        viewHolder.description.text = coinDetails.description
     }
 
     override fun getItemCount(): Int {
-        return listCoins.size
+        return listCoinDetails.size
     }
 }

@@ -1,8 +1,64 @@
 package com.example.exchange.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.view.View
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.exchange.model.LiveCoin
+import com.example.exchange.utils.Network
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class ConverterViewModel(application: Application) : AndroidViewModel(application) {
+class ConverterViewModel : ViewModel() {
 
+    private val loading: MutableLiveData<Int> = MutableLiveData()
+    private val data: MutableLiveData<List<String>> = MutableLiveData()
+    private val error: MutableLiveData<Throwable> = MutableLiveData()
+
+    private lateinit var items: Map<String, Double>
+
+    fun getLoading(): LiveData<Int> {
+        return loading
+    }
+
+    fun getData(): LiveData<List<String>> {
+        return data
+    }
+
+    fun getError(): LiveData<Throwable> {
+        return error
+    }
+
+    fun requestData() {
+        View.VISIBLE.also { loading.value = it }
+
+        Network.getEndpoint()?.getLiveCoins()?.enqueue(object : Callback<LiveCoin> {
+            override fun onResponse(call: Call<LiveCoin>, response: Response<LiveCoin>) {
+                View.GONE.also { loading.value = it }
+
+                response.body()?.quotes.also { it ->
+                    if (it != null) {
+                        items = it
+                        createDataSpinner()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LiveCoin>, exception: Throwable) {
+                View.GONE.also { loading.value = it }
+                exception.also { error.value = it }
+            }
+        })
+    }
+
+    fun createDataSpinner() {
+        val listInitials: MutableList<String> = mutableListOf()
+
+        items.forEach { (k, v) ->
+            listInitials.add(k.substring(3, 6))
+        }
+
+        listInitials.also { data.value = it }
+    }
 }

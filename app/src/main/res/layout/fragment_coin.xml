@@ -53,7 +53,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_description"
             tools:itemCount="20"
-            tools:listitem="@layout/list_coin" />
+            tools:listitem="@layout/list_item" />
 
         <EditText
             android:id="@+id/edittext_search"

@@ -4,4 +4,10 @@
         <item name="colorAccent">@color/teal_200</item>
     </style>
 
+    <style name="SpinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">#d43003</item>
+        <item name="android:background">#a1c8bb</item>
+    </style>
+
 </resources>

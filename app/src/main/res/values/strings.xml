@@ -8,4 +8,8 @@
     <string name="initials">Sigla</string>
     <string name="description">Descrição</string>
     <string name="search">Pesquisar por sigla ou descrição...</string>
+    <string name="origin">Origem</string>
+    <string name="destiny">Destino</string>
+    <string name="result">Resultado</string>
+    <string name="options">Escolha uma moeda</string>
 </resources>

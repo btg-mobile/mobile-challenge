@@ -2,9 +2,13 @@
 <resources>
     <!--> Text <-->
     <dimen name="text_size_answer">70sp</dimen>
+    <dimen name="text_size_spinner_item">22sp</dimen>
 
     <!--> Margin <-->
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_medium">32dp</dimen>
     <dimen name="margin_large">58dp</dimen>
+
+    <!--> Width <-->
+    <dimen name="width_medium">120dp</dimen>
 </resources>

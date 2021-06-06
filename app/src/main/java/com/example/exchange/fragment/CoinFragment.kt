@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.exchange.R
 import com.example.exchange.databinding.FragmentCoinBinding
-import com.example.exchange.model.Coin
+import com.example.exchange.model.CoinDetails
 import com.example.exchange.utils.CoinAdapter
 import com.example.exchange.viewmodel.CoinViewModel
 
@@ -38,6 +38,10 @@ class CoinFragment : Fragment(R.layout.fragment_coin) {
         viewModel.getLoading().observe(viewLifecycleOwner, {
             binding.progressbarCoin.visibility = it
         })
+
+        viewModel.getError().observe(viewLifecycleOwner, {
+            // TODO include dialog error
+        })
     }
 
     private fun initListeners() {
@@ -54,7 +58,7 @@ class CoinFragment : Fragment(R.layout.fragment_coin) {
         })
     }
 
-    private fun fillAdapter(item: List<Coin>) {
+    private fun fillAdapter(item: List<CoinDetails>) {
         with(binding.recyclerviewCoin) {
             adapter = CoinAdapter(item)
             layoutManager = LinearLayoutManager(context)

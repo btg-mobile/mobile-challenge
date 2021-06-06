@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.exchange.model.Coin
+import com.example.exchange.model.CoinDetails
 import com.example.exchange.model.ListCoin
 import com.example.exchange.utils.Network
 import retrofit2.Call
@@ -14,9 +14,22 @@ import retrofit2.Response
 class CoinViewModel : ViewModel() {
 
     private val loading: MutableLiveData<Int> = MutableLiveData()
-    private val data: MutableLiveData<List<Coin>> = MutableLiveData()
+    private val data: MutableLiveData<List<CoinDetails>> = MutableLiveData()
+    private val error: MutableLiveData<Throwable> = MutableLiveData()
 
     private lateinit var items: Map<String, String>
+
+    fun getLoading(): LiveData<Int> {
+        return loading
+    }
+
+    fun getData(): LiveData<List<CoinDetails>> {
+        return data
+    }
+
+    fun getError(): LiveData<Throwable> {
+        return error
+    }
 
     fun requestData() {
         View.VISIBLE.also { loading.value = it }
@@ -33,38 +46,31 @@ class CoinViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<ListCoin>, t: Throwable) {
+            override fun onFailure(call: Call<ListCoin>, exception: Throwable) {
                 View.GONE.also { loading.value = it }
+                exception.also { error.value = it }
             }
         })
     }
 
-    fun getLoading(): LiveData<Int> {
-        return loading
-    }
-
-    fun getData(): LiveData<List<Coin>> {
-        return data
-    }
-
     fun createDataList(filter: String) {
-        val listCoins: MutableList<Coin> = mutableListOf()
+        val listCoinDetails: MutableList<CoinDetails> = mutableListOf()
 
         items.forEach { (k, v) ->
             when {
                 filter.isNotEmpty() -> {
                     when {
                         filter.toLowerCase().toRegex().containsMatchIn(k.toLowerCase()) || filter.toLowerCase().toRegex().containsMatchIn(v.toLowerCase()) -> {
-                            listCoins.add(Coin(k, v))
+                            listCoinDetails.add(CoinDetails(k, v))
                         }
                     }
                 }
                 else -> {
-                    listCoins.add(Coin(k, v))
+                    listCoinDetails.add(CoinDetails(k, v))
                 }
             }
         }
 
-        listCoins.also { data.value = it }
+        listCoinDetails.also { data.value = it }
     }
 }
