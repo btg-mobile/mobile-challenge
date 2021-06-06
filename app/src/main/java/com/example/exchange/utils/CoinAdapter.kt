@@ -17,7 +17,7 @@ class CoinAdapter(private val listCoinDetails: List<CoinDetails>) : RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinAdapter.ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_item, parent, false))
     }
 
     override fun onBindViewHolder(viewHolder: CoinAdapter.ViewHolder, position: Int) {

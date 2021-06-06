@@ -12,4 +12,5 @@
     <string name="destiny">Destino</string>
     <string name="result">Resultado</string>
     <string name="options">Escolha uma moeda</string>
+    <string name="value">$</string>
 </resources>
