@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Conversor de Moedas</string>
+
+    <!-- Success messages -->
+    <string name="message_successful_list_currencies">Moedas listadas com sucesso!</string>
+    <string name="message_successful_list_quotes">Cotação recuperada com sucesso!</string>
+
+    <!-- Error messages -->
+    <string name="message_error_default">Ocorreu um erro.</string>
+    <string name="message_error_internet_connection">Você está sem conexão com a Internet.</string>
+    <string name="message_error_list_currencies">Erro ao listar moedas.</string>
+    <string name="message_error_search">Nenhum resultado encontrado.</string>
+    <string name="message_error_list_quotes">Erro ao buscar cotação.</string>
+
+    <!-- Labels -->
+    <string name="from">De</string>
+    <string name="to">Para</string>
+    <string name="convert">Converter</string>
+    <string name="convert_from">Converter de</string>
+    <string name="convert_to">Converter para</string>
+    <string name="try_again">Tentar Novamente</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="sort">Ordenar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="by_name">Por nome</string>
+    <string name="by_code">Por código</string>
+    <string name="search_dots">Pesquisar…</string>
+    <string name="message_successful_insert_quotes">Cotação salva com sucesso!</string>
+    <string name="message_error_insert_quotes">Erro ao inserir cotação.</string>
+
+</resources>

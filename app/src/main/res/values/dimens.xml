@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_spacing">16dp</dimen>
+    <dimen name="half_spacing">8dp</dimen>
+    <dimen name="minor_spacing">4dp</dimen>
+    <dimen name="corner_radius_card_view">4dp</dimen>
+
+</resources>
