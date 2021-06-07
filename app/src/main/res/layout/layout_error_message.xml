@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.Pair" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="message"
+            type="Pair&lt;Integer, Boolean&gt;" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_spacing"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:textId="@{message.first}"
+            tools:text="@string/message_error_default" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_try_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/default_spacing"
+            android:layout_marginBottom="@dimen/default_spacing"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/try_again"
+            android:visibility="@{message.second ? View.VISIBLE : View.GONE}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>
