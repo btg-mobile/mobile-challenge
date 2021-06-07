@@ -37,12 +37,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        binding.buttonConverter.setOnClickListener {
-            viewModel.defineScreen(ConverterFragment())
-        }
+        with(binding) {
+            buttonConverter.setOnClickListener {
+                viewModel.defineScreen(ConverterFragment())
+            }
 
-        binding.buttonList.setOnClickListener {
-            viewModel.defineScreen(CoinFragment())
+            buttonList.setOnClickListener {
+                viewModel.defineScreen(CoinFragment())
+            }
+
+            buttonExit.setOnClickListener {
+                onBackPressed()
+            }
         }
     }
 
