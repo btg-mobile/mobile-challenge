@@ -41,7 +41,7 @@ class CoinViewModel : ViewModel() {
                 response.body()?.currencies.also { it ->
                     if (it != null) {
                         items = it
-                        createDataList("")
+                        createDataList(filter = "", orderByAbbreviation = false, orderByDescription = false)
                     }
                 }
             }
@@ -53,7 +53,7 @@ class CoinViewModel : ViewModel() {
         })
     }
 
-    fun createDataList(filter: String) {
+    fun createDataList(filter: String, orderByAbbreviation: Boolean, orderByDescription: Boolean) {
         val listCoinDetails: MutableList<CoinDetails> = mutableListOf()
 
         items.forEach { (k, v) ->
@@ -71,6 +71,16 @@ class CoinViewModel : ViewModel() {
             }
         }
 
-        listCoinDetails.also { data.value = it }
+        when {
+            orderByAbbreviation -> {
+                listCoinDetails.also { data.value = it.sortedBy { it.abbreviation } }
+            }
+            orderByDescription -> {
+                listCoinDetails.also { data.value = it.sortedBy { it.description } }
+            }
+            else -> {
+                listCoinDetails.also { data.value = it }
+            }
+        }
     }
 }

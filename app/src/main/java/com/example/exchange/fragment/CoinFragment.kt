@@ -45,15 +45,25 @@ class CoinFragment : Fragment(R.layout.fragment_coin) {
     }
 
     private fun initListeners() {
-        binding.edittextSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        with(binding) {
+            edittextSearch.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-            override fun afterTextChanged(s: Editable?) {
-                viewModel.createDataList(s.toString())
+                override fun afterTextChanged(s: Editable?) {
+                    viewModel.createDataList(filter = s.toString(), orderByAbbreviation = false, orderByDescription = false)
+                }
+            })
+
+            textviewAbbreviation.setOnClickListener {
+                viewModel.createDataList(filter = "", orderByAbbreviation = true, orderByDescription = false)
             }
-        })
+
+            textviewDescription.setOnClickListener {
+                viewModel.createDataList(filter = "", orderByAbbreviation = false, orderByDescription = true)
+            }
+        }
     }
 
     private fun fillAdapter(item: List<CoinDetails>) {
