@@ -97,9 +97,9 @@ class CurrenciesViewModelTest {
     @Test
     fun `test if search contains in currency`() {
         // Act
-        val mSearch = "BRa"
+        val mSearch = "Bra"
         val mContainedList = mCurrencies.filter {
-            it.name.toLowerCase().contains(mSearch.toLowerCase()) || it.name.toLowerCase()
+            it.name.toLowerCase().contains(mSearch.toLowerCase()) || it.code.toLowerCase()
                 .contains(mSearch.toLowerCase()) || mSearch.isEmpty()
         }
 
