@@ -2,11 +2,11 @@
 <resources>
     <!--> Text <-->
     <dimen name="text_size_answer">70sp</dimen>
-    <dimen name="text_size_spinner_item">20sp</dimen>
+    <dimen name="text_size_spinner_item">18sp</dimen>
     <dimen name="text_value">40sp</dimen>
     <dimen name="text_input_value">30sp</dimen>
     <dimen name="text_result_value">18sp</dimen>
-    <dimen name="text_subtitle">16sp</dimen>
+    <dimen name="text_subtitle">14sp</dimen>
 
     <!--> Margin <-->
     <dimen name="margin_small">10dp</dimen>

@@ -18,5 +18,5 @@
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="alert">Aviso</string>
-    <string name="exit">Você deseja realmente sair dessa aplicação?</string>
+    <string name="exit">Você deseja sair dessa aplicação?</string>
 </resources>
