@@ -69,10 +69,17 @@ class ConverterViewModel : ViewModel() {
     }
 
     fun conversionBetweenValues(firstCoin: String, secondCoin: String, value: String) {
-        val firstCoinQuote = items.getValue("USD$firstCoin")
-        val secondCoinQuote = items.getValue("USD$secondCoin")
-        val count = value.toDouble() / firstCoinQuote * secondCoinQuote
+        when {
+            value.isNotEmpty() -> {
+                val firstCoinQuote = items.getValue("USD$firstCoin")
+                val secondCoinQuote = items.getValue("USD$secondCoin")
+                val count = value.toDouble() / firstCoinQuote * secondCoinQuote
 
-        "${value.coinFormatted()} ($firstCoin) = ${count.toString().coinFormatted()} ($secondCoin)".also { result.value = it }
+                "${value.coinFormatted()} ($firstCoin) = ${count.toString().coinFormatted()} ($secondCoin)".also { result.value = it }
+            }
+            else -> {
+                "".also { result.value = it }
+            }
+        }
     }
 }
