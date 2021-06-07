@@ -18,6 +18,7 @@
     <LinearLayout
         android:id="@+id/linearlayout_bottom"
         android:layout_width="match_parent"
+        android:paddingBottom="@dimen/margin_small"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"

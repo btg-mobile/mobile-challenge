@@ -21,30 +21,25 @@
             android:background="@drawable/topless_border"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="@dimen/margin_medium"
-            android:paddingEnd="@dimen/margin_medium"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-2dp"
-                android:layout_weight="10"
+                android:layout_weight="2.1"
                 android:text="@string/origin"
-                android:textSize="@dimen/text_size_spinner_item" />
+                android:textSize="@dimen/text_subtitle" />
 
             <Spinner
                 android:id="@+id/spinner_coin_one"
-                android:layout_width="@dimen/width_medium"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@color/white"
                 android:padding="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_destiny"
                 tools:listitem="@layout/spinner_item" />
 
         </LinearLayout>
@@ -59,30 +54,25 @@
             android:background="@drawable/topless_border"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="@dimen/margin_medium"
-            android:paddingEnd="@dimen/margin_medium"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearlayout_origin">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-2dp"
-                android:layout_weight="10"
+                android:layout_weight="2.1"
                 android:text="@string/destiny"
-                android:textSize="@dimen/text_size_spinner_item" />
+                android:textSize="@dimen/text_subtitle" />
 
             <Spinner
                 android:id="@+id/spinner_coin_two"
-                android:layout_width="@dimen/width_medium"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@color/white"
                 android:padding="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_destiny"
                 tools:listitem="@layout/spinner_item" />
 
         </LinearLayout>
