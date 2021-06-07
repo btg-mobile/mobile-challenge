@@ -12,7 +12,7 @@ import com.example.exchange.R
 import com.example.exchange.databinding.FragmentConverterBinding
 import com.example.exchange.viewmodel.ConverterViewModel
 
-class ConverterFragment : Fragment(R.layout.fragment_converter) {
+open class ConverterFragment : Fragment(R.layout.fragment_converter) {
 
     private lateinit var viewModel: ConverterViewModel
     private lateinit var binding: FragmentConverterBinding

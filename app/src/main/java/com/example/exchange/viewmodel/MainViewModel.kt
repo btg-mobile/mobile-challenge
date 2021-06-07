@@ -9,7 +9,7 @@ class MainViewModel : ViewModel() {
 
     private val screen: MutableLiveData<Fragment> = MutableLiveData()
 
-    fun defineScreen(screen: Fragment) {
+    fun defineScreen(screen: Fragment?) {
         this.screen.value = screen
     }
 

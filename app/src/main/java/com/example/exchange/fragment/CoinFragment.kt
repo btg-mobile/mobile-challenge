@@ -14,7 +14,7 @@ import com.example.exchange.model.CoinDetails
 import com.example.exchange.utils.CoinAdapter
 import com.example.exchange.viewmodel.CoinViewModel
 
-class CoinFragment : Fragment(R.layout.fragment_coin) {
+open class CoinFragment : Fragment(R.layout.fragment_coin) {
 
     private lateinit var viewModel: CoinViewModel
     private lateinit var binding: FragmentCoinBinding
