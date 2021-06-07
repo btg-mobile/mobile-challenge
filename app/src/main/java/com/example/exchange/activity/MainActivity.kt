@@ -2,6 +2,7 @@ package com.example.exchange.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.exchange.R
@@ -50,5 +51,15 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.frame_layout_fragment, fragment)
             .commit()
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.alert)
+            .setMessage(R.string.exit)
+            .setCancelable(false)
+            .setNegativeButton(R.string.no) { dialog, which -> }
+            .setPositiveButton(R.string.yes) { dialog, which -> super.onBackPressed() }
+            .show()
     }
 }

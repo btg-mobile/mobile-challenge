@@ -15,4 +15,8 @@
     <string name="value">$</string>
     <string name="title_dialog">Ops... Tivemos um problema</string>
     <string name="message_dialog">Não foi possível obter dados do servidor</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="alert">Aviso</string>
+    <string name="exit">Realmente deseja sair dessa aplicação?</string>
 </resources>
