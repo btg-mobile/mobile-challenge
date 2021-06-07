@@ -1,6 +1,8 @@
 package com.example.exchange.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ArrayAdapter
@@ -46,6 +48,25 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
     }
 
     private fun initListeners() {
+        binding.edittextInputValue.addTextChangedListener(object : TextWatcher {
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                with(binding) {
+                    with(edittextInputValue) {
+                        setSelection(text.toString().length)
+                    }
+
+                    viewModel.conversionBetweenValues(spinnerCoinOne.selectedItem.toString(), spinnerCoinTwo.selectedItem.toString(), edittextInputValue.text.toString())
+
+                    viewModel.getResult().observe(viewLifecycleOwner, {
+                        textviewResult.text = it
+                    })
+                }
+            }
+        })
     }
 }

@@ -89,24 +89,28 @@
 
         <EditText
             android:id="@+id/edittext_input_value"
-            android:layout_width="@dimen/width_large"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:gravity="center"
             android:hint="@string/value"
-            android:inputType="number"
-            android:textSize="@dimen/text_value"
+            android:inputType="numberDecimal"
+            android:textSize="@dimen/text_input_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearlayout_destiny" />
 
         <TextView
+            android:id="@+id/textview_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_large"
-            android:gravity="center_horizontal"
-            android:text="= 1.334,78"
-            android:textSize="@dimen/text_value"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:gravity="center"
+            android:textSize="@dimen/text_result_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edittext_input_value" />

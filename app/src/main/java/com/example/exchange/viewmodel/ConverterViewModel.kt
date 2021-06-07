@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.exchange.model.LiveCoin
 import com.example.exchange.utils.Network
+import com.example.exchange.utils.coinFormatted
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,6 +16,7 @@ class ConverterViewModel : ViewModel() {
     private val loading: MutableLiveData<Int> = MutableLiveData()
     private val data: MutableLiveData<List<String>> = MutableLiveData()
     private val error: MutableLiveData<Throwable> = MutableLiveData()
+    private val result: MutableLiveData<String> = MutableLiveData()
 
     private lateinit var items: Map<String, Double>
 
@@ -28,6 +30,10 @@ class ConverterViewModel : ViewModel() {
 
     fun getError(): LiveData<Throwable> {
         return error
+    }
+
+    fun getResult(): LiveData<String> {
+        return result
     }
 
     fun requestData() {
@@ -60,5 +66,13 @@ class ConverterViewModel : ViewModel() {
         }
 
         listInitials.also { data.value = it }
+    }
+
+    fun conversionBetweenValues(firstCoin: String, secondCoin: String, value: String) {
+        val firstCoinQuote = items.getValue("USD$firstCoin")
+        val secondCoinQuote = items.getValue("USD$secondCoin")
+        val count = value.toDouble() / firstCoinQuote * secondCoinQuote
+
+        "${value.coinFormatted()} ($firstCoin) = ${count.toString().coinFormatted()} ($secondCoin)".also { result.value = it }
     }
 }
