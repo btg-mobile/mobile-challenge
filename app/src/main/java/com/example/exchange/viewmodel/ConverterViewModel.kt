@@ -1,5 +1,6 @@
 package com.example.exchange.viewmodel
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -49,11 +50,14 @@ class ConverterViewModel : ViewModel() {
                         createDataSpinner()
                     }
                 }
+
+                Log.i(this.javaClass.name, "status code: ${response.code()}, data: ${response.body()}")
             }
 
             override fun onFailure(call: Call<LiveCoin>, exception: Throwable) {
                 View.GONE.also { loading.value = it }
                 exception.also { error.value = it }
+                Log.i(this.javaClass.name, "failure: error request data", exception)
             }
         })
     }
@@ -69,12 +73,13 @@ class ConverterViewModel : ViewModel() {
     }
 
     fun conversionBetweenValues(firstCoin: String, secondCoin: String, value: String) {
+        val firstCoinQuote = items.getValue("USD$firstCoin")
+        val secondCoinQuote = items.getValue("USD$secondCoin")
+        var count: Double
+
         when {
             value.isNotEmpty() -> {
-                val firstCoinQuote = items.getValue("USD$firstCoin")
-                val secondCoinQuote = items.getValue("USD$secondCoin")
-                val count = value.toDouble() / firstCoinQuote * secondCoinQuote
-
+                 count = value.toDouble() / firstCoinQuote * secondCoinQuote
                 "${value.coinFormatted()} ($firstCoin) = ${count.toString().coinFormatted()} ($secondCoin)".also { result.value = it }
             }
             else -> {

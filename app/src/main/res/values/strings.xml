@@ -13,4 +13,6 @@
     <string name="result">Resultado</string>
     <string name="options">Escolha uma moeda</string>
     <string name="value">$</string>
+    <string name="title_dialog">Ops... Tivemos um problema</string>
+    <string name="message_dialog">Não foi possível obter dados do servidor</string>
 </resources>

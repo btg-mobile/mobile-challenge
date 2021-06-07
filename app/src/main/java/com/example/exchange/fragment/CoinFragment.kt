@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +41,11 @@ class CoinFragment : Fragment(R.layout.fragment_coin) {
         })
 
         viewModel.getError().observe(viewLifecycleOwner, {
-            // TODO include dialog error
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.title_dialog)
+                .setMessage(R.string.message_dialog)
+                .setCancelable(true)
+                .show()
         })
     }
 

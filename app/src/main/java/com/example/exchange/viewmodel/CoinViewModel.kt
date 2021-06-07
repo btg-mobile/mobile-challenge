@@ -1,5 +1,6 @@
 package com.example.exchange.viewmodel
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -44,11 +45,14 @@ class CoinViewModel : ViewModel() {
                         createDataList(filter = "", orderByAbbreviation = false, orderByDescription = false)
                     }
                 }
+
+                Log.i(this.javaClass.name, "status code: ${response.code()}, data: ${response.body()}")
             }
 
             override fun onFailure(call: Call<ListCoin>, exception: Throwable) {
                 View.GONE.also { loading.value = it }
                 exception.also { error.value = it }
+                Log.i(this.javaClass.name, "failure: error request data", exception)
             }
         })
     }

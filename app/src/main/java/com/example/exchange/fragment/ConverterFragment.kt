@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import com.example.exchange.R
 import com.example.exchange.databinding.FragmentConverterBinding
@@ -43,7 +44,11 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
         })
 
         viewModel.getError().observe(viewLifecycleOwner, {
-            // TODO include dialog error
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.title_dialog)
+                .setMessage(R.string.message_dialog)
+                .setCancelable(true)
+                .show()
         })
     }
 
