@@ -7,8 +7,15 @@
 
 import UIKit
 
-/// Base do `Coordinator`
+// MARK: - Coordinator Protocol
+
 protocol Coordinator {
+
+    // Properties
+    
     var navigationController: UINavigationController { get set }
+
+    // Methods
+
     func start()
 }

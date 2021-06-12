@@ -7,28 +7,34 @@
 
 import UIKit
 
+// Class
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    // Properties
+
     var window: UIWindow?
-    
-    /// Navegation controller já configurada.
-    private var defaultNavegation: UINavigationController {
+
+    private lazy var navegationController: UINavigationController = {
         let navigationController = UINavigationController()
-        navigationController.navigationBar.tintColor = .systemRed
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
         navigationController.setNavigationBarHidden(true, animated: false)
         return navigationController
-    }
+    }()
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    private lazy var coordinator = CurrencyConverterCoordinator(navegationController)
+
+    // Methods
+
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let navagation = defaultNavegation
-        let coordinator = CurrencyConverterCoordinator(navigationController: navagation)
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navagation
+        window?.rootViewController = navegationController
         window?.makeKeyAndVisible()
         coordinator.start()
     }
-
 }
 

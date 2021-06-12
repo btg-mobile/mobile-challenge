@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-/// Representação do serviço responsável pelas lista de moedas.
 struct ListCurrency: Codable {
     public var success: Bool
     public var terms: URL
@@ -17,14 +16,14 @@ struct ListCurrency: Codable {
 }
 
 extension ListCurrency {
-    /// Serviço de captura da `LiveCurrency` na Web.
-    static func getFromWeb() {
+    static func getFromWeb(completion: @escaping () -> Void) {
         var publishers = [AnyCancellable]()
         CurrencyApi.shared.lists()
             .map { $0 }
             .sink(receiveCompletion: { _ in debugPrint("A requisição terminou...") },
                   receiveValue: {
                     Lists.save(currencies: $0.currencies)
+                    completion()
             })
             .store(in: &publishers)
         RunLoop.main.run(until: Date(timeIntervalSinceNow: 1))

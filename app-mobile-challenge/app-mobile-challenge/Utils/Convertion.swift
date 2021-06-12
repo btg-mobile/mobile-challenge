@@ -98,7 +98,7 @@ class Convertion {
     }
     
     private static func stringToDouble(_ value: String) -> Double? {
-        return Double((value == "" ?"1":value)
+        return Double((value == "" ? "1" :value)
                         .replacingOccurrences(of: ",", with: "."))
     }
     

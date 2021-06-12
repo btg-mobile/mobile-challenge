@@ -20,7 +20,7 @@ struct LiveCurrency: Codable {
 
 extension LiveCurrency {
     /// Serviço de captura da `LiveCurrency` na Web.
-    static func getFromWeb() {
+    static func getFromWeb(completion: @escaping () -> Void) {
         var publishers = [AnyCancellable]()
         CurrencyApi.shared.lives()
             .map { $0 }
@@ -28,6 +28,7 @@ extension LiveCurrency {
                   receiveValue: {
                     CommonData.shared.lastUpdate = $0.timestamp
                     Lives.save(quotes: $0.quotes)
+                    completion()
             })
             .store(in: &publishers)
         RunLoop.main.run(until: Date(timeIntervalSinceNow: 2))

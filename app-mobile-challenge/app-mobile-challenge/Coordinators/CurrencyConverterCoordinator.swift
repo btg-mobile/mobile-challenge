@@ -6,51 +6,56 @@
 //
 
 import UIKit
-import os.log
 import Combine
 
-/// Serviço responsável pela gerenciamento da navegação.
+// Protocols
+
 protocol CurrencyConverterCoordinatorService: Coordinator {
     func showSupporteds(type: PickCurrencyType)
     func back()
 }
 
-/// `Coordinator` responsável pelas transições de telas do aplicativo.
+// Class
+
 final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
-    
-    /// `UINavigationController` responsável pelo `Coordinator`.
+
+    // Properties
+
     var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
+
+    // Lifecycle
+
+    init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        getDataFromWeb()
     }
-    
-    /// Inicializa o fluxo de telas.
+
     func start() {
+        requestData()
+    }
+
+    // Router
+
+    private func showInitial() {
         let viewModel = CurrencyConverterViewModel(coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    /// Mostra a tela de moedas suportadas.
-    /// - Parameter type: Descreve se é uma tela de escolha de moeda ou somente visualização.
+
     func showSupporteds(type: PickCurrencyType) {
         let viewModel = SupportedCurrenciesViewModel(coordinator: self)
         let viewController = SupportedCurrenciesViewController(viewModel: viewModel, type: type)
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    /// Volta para a tela anterior.
+
     func back() {
         navigationController.popViewController(animated: true)
     }
-    
-    /// Faz a request para a captura dos dados online.
-    func getDataFromWeb() {
-        DispatchQueue.main.async {
-            ListCurrency.getFromWeb()
-            LiveCurrency.getFromWeb()
-        }
+
+    // API
+
+    private func requestData() {
+        ListCurrency.getFromWeb() {}
+        LiveCurrency.getFromWeb() {}
+        showInitial()
     }
 }
