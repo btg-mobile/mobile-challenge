@@ -7,15 +7,22 @@
 
 import Foundation
 
-/// `ViewModel` responsável por `KeyboardView`
+// Class
+
 final class KeyboardViewModel {
-    /// Valor digitado no teclado.
-    public var currencyValue: String = ""
+
+    // Properties
+
+    internal var currencyValue: String = ""
+    internal var currencyValueIsEmpty: Bool { currencyValue.isEmpty }
+
+    // Private Properties
+
+    private var isValidComma: Bool { !currencyValue.contains(",") }
     
-    /// Conversor de adaptação do index ao valor correspondente na célula, para se adaptar aos padrões iOS.
-    /// - Parameter index: valor correspondente ao index da célula.
-    /// - Returns: valor representativo na célula.
-    func convertValue(index: Int) -> String {
+    // Methods
+
+    internal func convertValue(index: Int) -> String {
         var value: Int = 0
         switch index {
         case 0:
@@ -45,34 +52,20 @@ final class KeyboardViewModel {
         return computedValue(value: value)
     }
     
-    /// Validador dos valores digitados.
-    /// - Parameter value: Valor digitado.
-    /// - Returns: `String` com valor final digitado.
+    // Private Methods
+
     private func computedValue(value: Int) -> String {
         switch value {
         case 0...9:
             currencyValue.append(String(value))
         case 10:
-            if(currencyValueIsEmpty()) { currencyValue.append("0") }
-            if(isValidComma()) { currencyValue.append(",") }
+            if currencyValueIsEmpty { currencyValue.append("0") }
+            if isValidComma { currencyValue.append(",") }
         case 11:
-            if (!currencyValueIsEmpty()) { currencyValue.removeLast() }
+            if !currencyValueIsEmpty { currencyValue.removeLast() }
         default:
             break
         }
         return currencyValue
-    }
-    
-    /// Verifica se o valor atual digitado é vazio.
-    /// - Returns: `true` se o valor atual é vazio, caso contrário, retorna `false`.
-    public func currencyValueIsEmpty() -> Bool {
-        return currencyValue == ""
-    }
-    
-    
-    /// valida a existencia de vígulas no valor digitado
-    /// - Returns: `true` se o valor atual não tiver vírgulas, caso contrário, retorna `false`.
-    private func isValidComma() -> Bool {
-        return !currencyValue.contains(",")
     }
 }

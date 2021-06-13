@@ -9,7 +9,7 @@ import UIKit
 
 // Class
 
-class CurrencyConverterViewController: ViewController<CurrencyConverterView> {
+final class CurrencyConverterViewController: ViewController<CurrencyConverterView> {
     
     // Properties
 
@@ -37,16 +37,11 @@ class CurrencyConverterViewController: ViewController<CurrencyConverterView> {
         super.viewWillAppear(animated)
         updateCurrencyView()
     }
-    
-    override func loadView() {
-        super.loadView()
-        view.backgroundColor = .white
-    }
 }
 
 // Setup Views
 
-extension CurrencyConverterViewController {
+fileprivate extension CurrencyConverterViewController {
     func setupActions() {
         setUpButton()
         setUpFromCurrentyButton()
@@ -105,29 +100,27 @@ extension CurrencyConverterViewController {
 
     @objc private func calculate() {
         guard let values = viewModel.calculateConvertion().0 else {
-            if firstMoment {
-                firstMoment = false
+            guard !firstMoment else {
+                firstMoment.toggle()
                 return
             }
             if let error = viewModel.calculateConvertion().1 {
-                self.showAlert("Ops...", error) { }
+                self.showAlert("Ops...", error)
                 return
             }
-            self.showAlert("Algo inesperado aconteceu na conversão") { }
+            self.showAlert("Algo inesperado aconteceu na conversão")
             return
         }
         viewModel.currencyValue = values.valueFrom
-        contentView.fromCurrencyLabel.text = values.valueFrom == "" ? "1,00" : values.valueFrom
-        contentView.toCurrencyLabel.text =  values.valueFrom == "" ? "1,00" : values.valueTo
+        contentView.fromCurrencyLabel.text = values.valueFrom.isEmpty ? "1,00" : values.valueFrom
+        contentView.toCurrencyLabel.text =  values.valueFrom.isEmpty ? "1,00" : values.valueTo
     }
 }
 
 // CurrencyConverterViewDelegate
 
 extension CurrencyConverterViewController: CurrencyConverterViewDelegate {
-    var currencyValueIsEmpty: Bool {
-        viewModel.currencyValueIsEmpty()
-    }
+    var currencyValueIsEmpty: Bool { viewModel.currencyValueIsEmpty }
 
     func updateValue(_ value: String) {
         viewModel.currencyValue = value

@@ -10,14 +10,14 @@ import Combine
 
 // Protocols
 
-protocol CurrencyConverterCoordinatorService: Coordinator {
+protocol CurrencyCoordinatorDelegate: Coordinator {
     func showSupporteds(type: PickCurrencyType)
-    func back()
+    func backTapped()
 }
 
 // Class
 
-final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
+final class CurrencyCoordinator: CurrencyCoordinatorDelegate {
 
     // Properties
 
@@ -29,13 +29,9 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
         self.navigationController = navigationController
     }
 
-    func start() {
-        requestData()
-    }
-
     // Router
 
-    private func showInitial() {
+    func start() {
         let viewModel = CurrencyConverterViewModel(coordinator: self)
         let viewController = CurrencyConverterViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
@@ -47,15 +43,7 @@ final class CurrencyConverterCoordinator: CurrencyConverterCoordinatorService {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func back() {
+    func backTapped() {
         navigationController.popViewController(animated: true)
-    }
-
-    // API
-
-    private func requestData() {
-        ListCurrency.getFromWeb() {}
-        LiveCurrency.getFromWeb() {}
-        showInitial()
     }
 }

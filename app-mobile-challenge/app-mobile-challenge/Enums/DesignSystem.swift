@@ -13,6 +13,10 @@ enum DesignSystem {
         static let medium: CGFloat = 20
         static let large: CGFloat = 30
     }
+
+    enum Height {
+        static let tableViewCell: CGFloat = 72
+    }
     
     enum Button {
         static let height: CGFloat = 24
@@ -64,6 +68,7 @@ enum DesignSystem {
         static let primary: UIColor? = UIColor(named: "primaria")
         static let secondary: UIColor? = UIColor(named: "secundaria")
         static let background: UIColor? = UIColor(named: "background")
+        static let white: UIColor = .white
     }
     
     enum Keyboard {

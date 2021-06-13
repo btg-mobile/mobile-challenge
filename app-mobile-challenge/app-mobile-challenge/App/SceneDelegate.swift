@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return navigationController
     }()
 
-    private lazy var coordinator = CurrencyConverterCoordinator(navegationController)
+    private lazy var coordinator = CurrencyCoordinator(navegationController)
 
     // Methods
 

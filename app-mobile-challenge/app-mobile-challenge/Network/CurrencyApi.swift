@@ -25,6 +25,16 @@ final class CurrencyApi: CurrencyProvider {
 
     // Properties
 
+    internal var lists: AnyPublisher<ListCurrency, APIError> {
+        call(.list, method: .GET)
+    }
+
+    internal var lives: AnyPublisher<LiveCurrency, APIError> {
+        call(.live, method: .GET)
+    }
+
+    // Private Properties
+
     private let accessKey: String = "?access_key=7787f5623cd1653ff167db4f9c441026"
     private let baseURL = "http://api.currencylayer.com/"
     
@@ -32,17 +42,6 @@ final class CurrencyApi: CurrencyProvider {
 
     private init() {}
     static let shared = CurrencyApi()
-    
-    
-    // Methods
-
-    func lists() -> AnyPublisher<ListCurrency, APIError> {
-        call(.list, method: .GET)
-    }
-
-    func lives() -> AnyPublisher<LiveCurrency, APIError> {
-        call(.live, method: .GET)
-    }
     
     // Private Methods
 

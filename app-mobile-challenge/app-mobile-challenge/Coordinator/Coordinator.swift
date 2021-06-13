@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - Coordinator Protocol
+// Coordinator Protocol
 
 protocol Coordinator {
 

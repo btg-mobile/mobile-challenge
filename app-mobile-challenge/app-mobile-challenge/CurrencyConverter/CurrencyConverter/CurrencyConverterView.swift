@@ -36,44 +36,32 @@ class CurrencyConverterView: UIView {
 
     weak var delegate: CurrencyConverterViewDelegate?
 
-    // Lifecycle
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // Setup
 
     func setup(delegate: CurrencyConverterViewDelegate) {
         self.delegate = delegate
-        layoutConstraints()
+        setupConstraints()
+        setupViews()
     }
-    
+
+    func setupViews() {
+        self.backgroundColor = DesignSystem.Colors.white
+    }
 }
 
 // Methods
 
 private extension CurrencyConverterView {
-    func layoutConstraints() {
+    func setupConstraints() {
         layoutButton()
         layoutFromCurrenty()
         layoutToCurrenty()
         layoutCalculationButton()
         layoutToKeyboard()
     }
-}
 
-// Build Layout
-
-extension CurrencyConverterView {
-
-    private func layoutButton() {
+    func layoutButton() {
         addSubview(currencyButton)
-
         let layoutGuides = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
@@ -84,10 +72,9 @@ extension CurrencyConverterView {
         ])
     }
 
-    private func layoutFromCurrenty() {
+    func layoutFromCurrenty() {
         addSubview(fromCurrencyLabel)
         addSubview(fromCurrencyButton)
-
         let layoutGuides = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
@@ -104,10 +91,9 @@ extension CurrencyConverterView {
         ])
     }
 
-    private func layoutToCurrenty() {
+    func layoutToCurrenty() {
         addSubview(toCurrencyLabel)
         addSubview(toCurrencyButton)
-
         let layoutGuides = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
@@ -124,9 +110,10 @@ extension CurrencyConverterView {
         ])
     }
 
-    private func layoutToKeyboard() {
+    func layoutToKeyboard() {
         addSubview(keyboard)
         let layoutGuides = layoutMarginsGuide
+
         NSLayoutConstraint.activate([
             keyboard.bottomAnchor.constraint(
                 equalTo: calculationButton.topAnchor,
@@ -137,7 +124,7 @@ extension CurrencyConverterView {
         ])
     }
 
-    private func layoutCalculationButton() {
+    func layoutCalculationButton() {
         addSubview(calculationButton)
         let layoutGuides = layoutMarginsGuide
 
@@ -154,7 +141,7 @@ extension CurrencyConverterView {
 
 // KeyboardViewService
 
-extension CurrencyConverterView: KeyboardViewService {
+extension CurrencyConverterView: KeyboardViewDelegate {
     func selected(value: String) {
         fromCurrencyLabel.text = value
         delegate?.updateValue(value)

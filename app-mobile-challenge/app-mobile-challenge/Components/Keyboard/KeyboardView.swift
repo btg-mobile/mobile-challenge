@@ -7,23 +7,34 @@
 
 import UIKit
 
-/// Protocolo de comunicação entre `KeyboardView` e a `CurrencyConverterViewController`
-protocol KeyboardViewService: class {
+// Protocols
+
+protocol KeyboardViewDelegate: AnyObject {
     func selected(value: String)
 }
 
-/// View de Teclado, responsável por capturar os valores digitados.
+// Class
+
 final class KeyboardView: UICollectionView {
-    /// Layout default da `UICollectionView`
+
+    // Constans
+
+    private enum Contants {
+        static let keyboardItems: Int = 12
+    }
+
+    // Properties
+
     private let layout = UICollectionViewFlowLayout()
-    /// Delegate responsável pela comunicação.
-    weak var kdelegate: KeyboardViewService?
-    /// `ViewModel` responsável por essa classe.
+    weak var delegateController: KeyboardViewDelegate?
+
     private let viewModel = KeyboardViewModel()
-    
-    init(frame: CGRect, delegate: KeyboardViewService) {
+
+    // Lifecycle
+
+    init(frame: CGRect, delegate: KeyboardViewDelegate) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.kdelegate = delegate
+        self.delegateController = delegate
         self.dataSource = self
         self.delegate = self
         setUp()
@@ -33,16 +44,15 @@ final class KeyboardView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Configuração inicial.
+    // Private Methods
+
     private func setUp() {
-        contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
         isScrollEnabled = true
         register()
     }
-    
-    /// Registro da `KeyboardViewCell`
+
     private func register() {
         register(KeyboardViewCell.self,
                  forCellWithReuseIdentifier: KeyboardViewCell.self.description())
@@ -51,7 +61,7 @@ final class KeyboardView: UICollectionView {
 
 extension KeyboardView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return Contants.keyboardItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -59,19 +69,24 @@ extension KeyboardView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.setupComponent(index: indexPath.row)
+
         return cell
     }
 }
 
-// Em um projeto maiores esses componentes deveriam estar em componentes separados.
+// CollectionView
+
 extension KeyboardView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: DesignSystem.Keyboard.Cell.width, height: DesignSystem.Keyboard.Cell.height)
+        .init(
+            width: DesignSystem.Keyboard.Cell.width,
+            height: DesignSystem.Keyboard.Cell.height
+        )
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ImpactFeedback.run(style: .medium)
         let value = viewModel.convertValue(index: indexPath.row)
-        kdelegate?.selected(value: value)
+        delegateController?.selected(value: value)
     }
 }
