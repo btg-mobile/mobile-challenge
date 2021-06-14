@@ -32,7 +32,7 @@ final class KeyboardViewCell: UICollectionViewCell {
         let image = UIImage(named: "k-\(index)")
         imageView.image = image
         imageView.sizeToFit()
-        self.backgroundColor = .white
+        backgroundColor = DesignSystem.Colors.background
     }
     
     // Private Methods

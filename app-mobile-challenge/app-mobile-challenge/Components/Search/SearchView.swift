@@ -21,12 +21,12 @@ final class SearchView: UISearchBar {
     // Private Methods
 
     private func setupLayout() {
-        barTintColor = .white
-        searchTextField.backgroundColor = .white
+        barTintColor = DesignSystem.Colors.background
+        searchTextField.backgroundColor = DesignSystem.Colors.background
         tintColor = DesignSystem.Colors.secondary
         placeholder = Constants.placeholder
         layer.borderWidth = 1.5
-        layer.borderColor = #colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9803921569, alpha: 1)
+        layer.borderColor = DesignSystem.Colors.primary?.withAlphaComponent(0.05).cgColor
         clipsToBounds = true
         backgroundImage = UIImage()
         isTranslucent = false

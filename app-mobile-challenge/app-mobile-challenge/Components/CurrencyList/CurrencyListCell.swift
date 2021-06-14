@@ -42,7 +42,7 @@ final class CurrencyListCell: UITableViewCell {
         codeLabel.font = TextStyle.display4.font
         nameLabel.text = currency.name
         setupStar(favorite: currency.favorite)
-        backgroundColor = .white
+        backgroundColor = DesignSystem.Colors.background
         if isCellSelected() { isSelected = true }
     }
     
@@ -60,7 +60,7 @@ final class CurrencyListCell: UITableViewCell {
     }
 
     private func setupButton() {
-        starButton.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9803921569, alpha: 1)
+        starButton.backgroundColor = DesignSystem.Colors.background
         starButton.layer.cornerRadius = 14
         starButton.clipsToBounds = true
     }

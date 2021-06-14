@@ -57,6 +57,7 @@ final class CurrencyList: UITableView {
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         sectionHeaderHeight = 42
+        backgroundColor = DesignSystem.Colors.background
         allowsSelection = true
     }
 
@@ -118,13 +119,15 @@ extension CurrencyList: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.contentView.backgroundColor = .white
+            headerView.contentView.backgroundColor = DesignSystem.Colors.background
             headerView.textLabel?.font = TextStyle.display3.font
             headerView.textLabel?.textColor = DesignSystem.Colors.secondary
         }
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        .init()
+        let view = UIView()
+        view.backgroundColor = DesignSystem.Colors.background
+        return view
     }
 }

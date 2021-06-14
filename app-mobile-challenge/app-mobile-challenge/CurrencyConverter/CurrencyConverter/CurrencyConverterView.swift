@@ -45,7 +45,7 @@ class CurrencyConverterView: UIView {
     }
 
     func setupViews() {
-        self.backgroundColor = DesignSystem.Colors.white
+        self.backgroundColor = DesignSystem.Colors.background
     }
 }
 

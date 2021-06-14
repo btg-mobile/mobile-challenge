@@ -22,7 +22,7 @@ final class CalculationButton: UIButton {
 
     private func style() {
         titleLabel?.font = TextStyle.display3.font
-        setTitleColor(.white, for: .normal)
+        setTitleColor(DesignSystem.Colors.background, for: .normal)
         setTitle("Calcular", for: .normal)
         let icon = DesignSystem.Backgrounds.gradientButton
         backgroundImage(for: .normal)

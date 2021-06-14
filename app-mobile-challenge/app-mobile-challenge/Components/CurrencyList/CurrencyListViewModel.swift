@@ -55,7 +55,7 @@ final class CurrencyListViewModel {
 
     func title(section: Int) -> String {
         switch section {
-        case 0:
+        case .zero:
             return favoriteCurrencies.count > 0 ? "Favoritas" : ""
         default:
             return allCurrencies.count > 0 ? "Todas as moedas" : ""
@@ -73,16 +73,10 @@ final class CurrencyListViewModel {
         currencies[index].favorite.toggle()
         currencies[index].saveFavorite()
         ImpactFeedback.run(style: .light)
-        recalculate()
-    }
-
-    func recalculate() {
-        textSearched = ""
     }
 
     func filterBy(textSearched: String) {
         self.textSearched = textSearched
-        recalculate()
     }
 
     func inicializeFavorites() {

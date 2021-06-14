@@ -52,10 +52,10 @@ enum DesignSystem {
     }
     
     enum Icons {
-        static let coins: UIImage? = UIImage(named: "moedas")
-        static let star: UIImage? = UIImage(named: "estrela")
-        static let star_fill: UIImage? = UIImage(named: "estrela_preenchida")
-        static let back: UIImage? = UIImage(named: "voltar")
+        static let coins: UIImage? = UIImage(named: "currencies")
+        static let star: UIImage? = UIImage(named: "star")
+        static let star_fill: UIImage? = UIImage(named: "star_fill")
+        static let back: UIImage? = UIImage(named: "back")
     }
     
     enum Backgrounds {
@@ -63,10 +63,9 @@ enum DesignSystem {
     }
     
     enum Colors {
-        static let primary: UIColor? = UIColor(named: "primaria")
-        static let secondary: UIColor? = UIColor(named: "secundaria")
+        static let primary: UIColor? = UIColor(named: "primary")
+        static let secondary: UIColor? = UIColor(named: "second")
         static let background: UIColor? = UIColor(named: "background")
-        static let white: UIColor = .white
     }
     
     enum Keyboard {

@@ -12,7 +12,7 @@ extension UIView {
         DispatchQueue.main.async {
             let spinnerView = UIView.init(frame: self.bounds)
             spinnerView.backgroundColor =
-                UIColor(named: "Background")?.withAlphaComponent(0.5) ??
+                DesignSystem.Colors.background?.withAlphaComponent(0.5) ??
                 UIColor.white.withAlphaComponent(0.5)
             let animation = UIActivityIndicatorView.init(style: .medium)
             animation.startAnimating()
