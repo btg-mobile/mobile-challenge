@@ -7,7 +7,11 @@
 
 import UIKit
 
+// Class
+
 class ViewController<T: UIView>: UIViewController {
+
+    // Properties
 
     var contentView: T {
         return view as! T
@@ -16,6 +20,8 @@ class ViewController<T: UIView>: UIViewController {
     override func loadView() {
         view = T()
     }
+
+    // Lifecycle
 
     init() {
         super.init(nibName: nil, bundle: nil)

@@ -37,7 +37,6 @@ enum TextStyle {
 }
 
 extension TextStyle {
-    /// Retorna o tipo da fonte selecionada.
     private var fontDescription: FontDescription {
         switch self {
         case .display1:
@@ -55,7 +54,6 @@ extension TextStyle {
 }
 
 extension TextStyle {
-    /// Retorna a fonte de acordo com o seu tipo
     var font: UIFont {
         guard let font = UIFont(name: fontDescription.font.name, size: fontDescription.size) else {
             return UIFont.preferredFont(forTextStyle: fontDescription.style)

@@ -9,16 +9,11 @@ import Foundation
 
 
 class Convertion {
-    
-    /// Retorna as lives salvas.
+
+    // Properties
+
     private static var lives: Lives { CommonData.shared.lives }
-    
-    /// Converte as moedas.
-    /// - Parameters:
-    ///   - from: Código da moeda da qual principal.
-    ///   - to: Código da moeda à ser convertida..
-    ///   - valueFrom: Valor da moeda principal.
-    /// - Returns: Retorna os valores formatados das moedas.
+
     static func getCurrrency(from: String, to: String, valueFrom: String) -> ((valueFrom: String, valueTo: String)?, String?) {
         if lives.count == 0 {
             return (nil, "Aguarde, os dados estão sendo carrergados, tente novamente em breve.")

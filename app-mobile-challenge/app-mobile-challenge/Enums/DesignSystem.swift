@@ -37,12 +37,10 @@ enum DesignSystem {
         static let height: CGFloat = 30
     }
 
-    
     enum TextField {
         static let height: CGFloat = 50
     }
 
-    
     enum Result {
         static let widthMultiplier: CGFloat = 0.7
         static let height: CGFloat = 50

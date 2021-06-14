@@ -8,8 +8,6 @@
 import Foundation
 
 final class LastUpdate {
-    /// Pega a data formatada da ultima atualização.
-    /// - Returns: O valor em `String` da ultima atualização.
     static func get() -> String {
         let timestamp = CommonData.shared.lastUpdate
         if (timestamp == .zero) { return "Buscando atualizações..." }

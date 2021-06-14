@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIView {
-    /// Adiciona em uma `View` na tela, é usual para telas de carregamento.
     func showSpinner() {
         DispatchQueue.main.async {
             let spinnerView = UIView.init(frame: self.bounds)
@@ -25,7 +24,7 @@ extension UIView {
             }
         }
     }
-    /// Adiciona o Spinner da `View` se eles estiver carregado.
+
     func removeSpinner() {
         DispatchQueue.main.async {
             self.viewWithTag(999)?.removeFromSuperview()

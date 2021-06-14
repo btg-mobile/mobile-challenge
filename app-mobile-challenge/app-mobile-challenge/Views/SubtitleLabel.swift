@@ -7,18 +7,19 @@
 
 import UIKit
 
+// Class
+
 final class SubtitleLabel: UILabel {
     
-    // - MARK: Init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // Lifecycle
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
         style()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    /// Configuração de aparencia da label.
+
+    // Methods
+
     private func style() {
         textAlignment = .center
         font = TextStyle.display5.font
