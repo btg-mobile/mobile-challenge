@@ -72,7 +72,6 @@ class ConverterFragment : Fragment(), AdapterView.OnItemSelectedListener {
         dataBinding.buttonConvert.setOnClickListener {
             if(dataBinding.editValueToConvert.text.isNullOrBlank()){
                 Toast.makeText(context, getString(R.string.value_to_convert_empty), Toast.LENGTH_SHORT).show()
-
             }else{
                 val valueToConvert = dataBinding.editValueToConvert.text.toString()
                 val dolarOrigin = valueToConvert.toDouble() / originCoin.value
