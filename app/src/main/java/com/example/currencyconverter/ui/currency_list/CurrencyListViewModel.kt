@@ -1,10 +1,10 @@
-package com.example.currencyconverter.ui.notifications
+package com.example.currencyconverter.ui.currency_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class CurrencyListViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"

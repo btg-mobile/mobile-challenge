@@ -1,4 +1,4 @@
-package com.example.currencyconverter.ui.dashboard
+package com.example.currencyconverter.ui.converter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.currencyconverter.R
-import com.example.currencyconverter.databinding.FragmentDashboardBinding
+import com.example.currencyconverter.databinding.FragmentConverterBinding
 
-class DashboardFragment : Fragment() {
+class ConverterFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
+    private lateinit var converterViewModel: ConverterViewModel
+    private var _binding: FragmentConverterBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,16 +24,13 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        converterViewModel =
+            ViewModelProvider(this).get(ConverterViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentConverterBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 
