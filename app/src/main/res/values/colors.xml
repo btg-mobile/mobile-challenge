@@ -9,7 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="smoky_black">#100c08</color>
     <color name="light_black">#141414</color>
+    <color name="blue_black">#030513</color>
     <color name="grey">#737373</color>
     <color name="light_grey">#9a9a9a</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF1903</color>
 </resources>

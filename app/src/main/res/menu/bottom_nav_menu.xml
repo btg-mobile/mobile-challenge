@@ -6,6 +6,7 @@
         android:icon="@drawable/ic_converter"
         android:title="@string/title_converter" />
 
+
     <item
         android:id="@+id/navigation_currency_list"
         android:icon="@drawable/ic_currency_list"

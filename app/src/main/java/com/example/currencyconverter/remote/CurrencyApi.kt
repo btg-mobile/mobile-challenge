@@ -1,4 +1,4 @@
-package com.example.currencyconverter.network
+package com.example.currencyconverter.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

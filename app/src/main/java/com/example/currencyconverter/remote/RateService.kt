@@ -1,15 +1,15 @@
-package com.example.currencyconverter.network
+package com.example.currencyconverter.remote
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class RateResponse {
+class RateService {
 
     @SerializedName("success")
     var success: Boolean? = null
 
     @SerializedName("quotes")
     @Expose
-    var rates: MutableMap<String, Double>? = null
+    var mapRates: MutableMap<String, Double>? = null
 
 }
