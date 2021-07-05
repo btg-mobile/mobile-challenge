@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_black"
-    tools:context=".ui.currency_list.CurrencyListFragment">
+    tools:context=".ui.currencyList.CurrencyListFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
@@ -19,6 +19,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="@string/search"
         app:searchIcon="@drawable/ic_search" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/txt_empty_search"

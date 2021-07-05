@@ -8,9 +8,7 @@ import com.example.currencyconverter.remote.getRetrofit
 import com.example.currencyconverter.repository.ConverterRepository
 import com.example.currencyconverter.repository.CurrencyListRepository
 import com.example.currencyconverter.ui.converter.ConverterViewModel
-import com.example.currencyconverter.ui.currency_list.Adapter
-import com.example.currencyconverter.ui.currency_list.CurrencyListViewModel
-import org.koin.androidx.compose.get
+import com.example.currencyconverter.ui.currencyList.CurrencyListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

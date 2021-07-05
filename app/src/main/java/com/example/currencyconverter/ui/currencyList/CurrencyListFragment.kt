@@ -1,4 +1,4 @@
-package com.example.currencyconverter.ui.currency_list
+package com.example.currencyconverter.ui.currencyList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,6 +28,7 @@ class CurrencyListFragment : Fragment() {
         val root: View = binding.root
 
         binding.recyclerCurrencies.layoutManager = LinearLayoutManager(context)
+
 
         if (connection.connected(requireContext())) {
             currencyListViewModel.getListFromApi()

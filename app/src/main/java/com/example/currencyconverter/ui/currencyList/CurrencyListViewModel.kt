@@ -1,4 +1,4 @@
-package com.example.currencyconverter.ui.currency_list
+package com.example.currencyconverter.ui.currencyList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,7 +28,6 @@ class CurrencyListViewModel(private val listRepository: CurrencyListRepository) 
     fun getListFromApi(){
         try {
             viewModelScope.launch {
-                listRepository.getListFromApi()
                 mListOfCurrencies.value = listRepository.getListFromApi()
             }
         } catch (e: Exception){

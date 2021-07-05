@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_currency_list"
-        android:name="com.example.currencyconverter.ui.currency_list.CurrencyListFragment"
+        android:name="com.example.currencyconverter.ui.currencyList.CurrencyListFragment"
         android:label="@string/title_currency_list"
         tools:layout="@layout/fragment_currency_list" />
 </navigation>
