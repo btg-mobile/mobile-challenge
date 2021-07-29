@@ -1,3 +1,19 @@
+# Coin Converter - Desafio BTG
+
+<img src="Images/logo.png" width="200">
+
+> App desenvolvido para o teste de dev iOS da BTG.
+
+## Telas do app
+
+<img src="Images/2.png" width="200">
+<img src="Images/4.png" width="200">
+<img src="Images/5.png" width="200">
+
+## [Coin Converter - Protótipo Navegável](https://xd.adobe.com/view/2e5aa175-a187-45a6-bc98-e3ebb726bcd2-7b09/?fullscreen)
+
+----------
+
 # Desafio BTG
 
 Seja bem-vindo! Este é o seu primeiro passo para fazer parte do time de desenvolvimento do maior banco de investimentos da América Latina.
