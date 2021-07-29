@@ -6,9 +6,11 @@
 
 ## Telas do app
 
+<div>
 <img src="Images/2.png" width="200">
 <img src="Images/4.png" width="200">
 <img src="Images/5.png" width="200">
+</div>
 
 ## [Coin Converter - Protótipo Navegável](https://xd.adobe.com/view/2e5aa175-a187-45a6-bc98-e3ebb726bcd2-7b09/?fullscreen)
 
