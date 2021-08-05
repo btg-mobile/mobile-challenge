@@ -15,6 +15,8 @@
 		6333272026BC072D0013496A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6333271E26BC072D0013496A /* LaunchScreen.storyboard */; };
 		6333272B26BC072D0013496A /* BTGMobileChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333272A26BC072D0013496A /* BTGMobileChallengeTests.swift */; };
 		6333273626BC072D0013496A /* BTGMobileChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333273526BC072D0013496A /* BTGMobileChallengeUITests.swift */; };
+		6333275426BC13030013496A /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333275326BC13030013496A /* UIView+Anchors.swift */; };
+		6333275926BC1E970013496A /* BTGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333275826BC1E970013496A /* BTGViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		6333273126BC072D0013496A /* BTGMobileChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTGMobileChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6333273526BC072D0013496A /* BTGMobileChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGMobileChallengeUITests.swift; sourceTree = "<group>"; };
 		6333273726BC072D0013496A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6333275326BC13030013496A /* UIView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
+		6333275826BC1E970013496A /* BTGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,14 +103,12 @@
 		6333270F26BC072C0013496A /* BTGMobileChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				6333276326BC1F1E0013496A /* Config */,
+				6333276226BC1F160013496A /* Api */,
+				6333276026BC1ECB0013496A /* ViewModel */,
+				6333275F26BC1EC80013496A /* Controller */,
+				6333275E26BC1EC40013496A /* Model */,
 				6333274F26BC0AED0013496A /* Extensions + helpers */,
-				6333271026BC072C0013496A /* AppDelegate.swift */,
-				6333271226BC072C0013496A /* SceneDelegate.swift */,
-				6333271426BC072C0013496A /* WelcomeViewController.swift */,
-				6333271C26BC072D0013496A /* Assets.xcassets */,
-				6333271E26BC072D0013496A /* LaunchScreen.storyboard */,
-				6333272126BC072D0013496A /* Info.plist */,
-				6333271926BC072C0013496A /* BTGMobileChallenge.xcdatamodeld */,
 			);
 			path = BTGMobileChallenge;
 			sourceTree = "<group>";
@@ -132,8 +134,62 @@
 		6333274F26BC0AED0013496A /* Extensions + helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6333275326BC13030013496A /* UIView+Anchors.swift */,
+				6333275826BC1E970013496A /* BTGViewController.swift */,
 			);
 			path = "Extensions + helpers";
+			sourceTree = "<group>";
+		};
+		6333275E26BC1EC40013496A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6333275F26BC1EC80013496A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6333271426BC072C0013496A /* WelcomeViewController.swift */,
+				6333276126BC1F060013496A /* View */,
+			);
+			name = Controller;
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
+		6333276026BC1ECB0013496A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		6333276126BC1F060013496A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6333276226BC1F160013496A /* Api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		6333276326BC1F1E0013496A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6333271026BC072C0013496A /* AppDelegate.swift */,
+				6333271226BC072C0013496A /* SceneDelegate.swift */,
+				6333271C26BC072D0013496A /* Assets.xcassets */,
+				6333271E26BC072D0013496A /* LaunchScreen.storyboard */,
+				6333272126BC072D0013496A /* Info.plist */,
+				6333271926BC072C0013496A /* BTGMobileChallenge.xcdatamodeld */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +323,8 @@
 			files = (
 				6333271526BC072C0013496A /* WelcomeViewController.swift in Sources */,
 				6333271126BC072C0013496A /* AppDelegate.swift in Sources */,
+				6333275926BC1E970013496A /* BTGViewController.swift in Sources */,
+				6333275426BC13030013496A /* UIView+Anchors.swift in Sources */,
 				6333271326BC072C0013496A /* SceneDelegate.swift in Sources */,
 				6333271B26BC072C0013496A /* BTGMobileChallenge.xcdatamodeld in Sources */,
 			);
