@@ -10,6 +10,7 @@ import UIKit
 class WelcomeViewController: BTGViewController {
 
 	private let viewtest = UIView()
+	private let repository = ApiRequest()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -17,8 +18,6 @@ class WelcomeViewController: BTGViewController {
 	}
 
 	private func setupUI() {
-		
-		self.navigationItem.title = "Main"
 		view.backgroundColor = .white
 		view.addSubview(viewtest)
 		viewtest.backgroundColor = .purple
@@ -31,4 +30,3 @@ class WelcomeViewController: BTGViewController {
 		)
 	}
 }
-
