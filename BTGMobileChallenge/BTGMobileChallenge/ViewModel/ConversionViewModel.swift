@@ -28,11 +28,15 @@ class ConversionViewModel {
 		}
 	}
 	
-	func getCurrenciesAvaliable(completion: @escaping (Result<[String: Any], ApiRequestError>) -> Void) {
-		repository.getAvaliableCurrencies { response in
+	func getAvaliableQuotes(completion: @escaping (Result<[(code: String, description: String)], ApiRequestError>) -> Void) {
+		repository.getAvaliableQuotes { response in
 			switch response {
 			case .success(let avaliableCurrencies):
-				completion(.success(avaliableCurrencies.currencies))
+				var codesAndDescriptions: [(code: String, description: String)] = []
+				for currency in avaliableCurrencies.currencies {
+					codesAndDescriptions.append((code: currency.key, description: currency.value))
+				}
+				completion(.success(codesAndDescriptions))
 				
 			case .failure(let error):
 				completion(.failure(error))

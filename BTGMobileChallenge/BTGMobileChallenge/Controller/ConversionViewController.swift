@@ -8,7 +8,6 @@
 import UIKit
 
 class ConversionViewController: BTGViewController {
-	
 	private let showerView: UIView = {
 		let view = UIView()
 		view.backgroundColor = UIColor(red: 5, green: 0, blue: 200, alpha: 1)
@@ -30,8 +29,12 @@ class ConversionViewController: BTGViewController {
 	}()
 	
 	private let stackToButtons = UIStackView()
-
 	private let viewModel = ConversionViewModel()
+	private var fromCurrencyCode = "USD"
+	private var toCurrencyCode: String?
+	private var value: Float = 1
+	
+	var delegate: ConversionDelegate?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,26 +60,21 @@ class ConversionViewController: BTGViewController {
 	}
 	
 	private func bindUI() {
-		fromCurrencyButton.onClick = { [weak self] in
-			guard let self = self else { return }
-			self.showLoading()
-			self.viewModel.getQuotationValue(from: "EUR", to: "BRL", quantity: 1) { response in
-				self.hideLoading()
-				switch response {
-				case .success(let value):
-					print(value)
-				case .failure(let error):
-					print(error)
-				}
-			}
+		fromCurrencyButton.onClick = {
+			let viewController = AvaliableCurrenciesViewController(filling: .fromCurrency)
+			viewController.delegate = self
+			self.navigationController?.pushViewController(viewController, animated: true)
 		}
 		
 		toCurrencyButton.onClick = {
-			print("To was clicked")
+			let viewController = AvaliableCurrenciesViewController(filling: .toCurrency)
+			viewController.delegate = self
+			self.navigationController?.pushViewController(viewController, animated: true)
 		}
 	}
 }
 
+// MARK: Layout construction
 extension ConversionViewController {
 	private func setupConstraints() {
 		let bottom: NSLayoutYAxisAnchor
@@ -106,3 +104,30 @@ extension ConversionViewController {
 		toCurrencyButton.anchor(height: 100)
 	}
 }
+
+// MARK: Conversion Delegate
+extension ConversionViewController: ConversionDelegate {
+	func getFromCurrency(selectedCurrencyCode: String) {
+		self.fromCurrencyCode = selectedCurrencyCode
+		self.getQuote()
+	}
+	
+	func getToCurrency(selectedCurrencyCode: String) {
+		self.toCurrencyCode = selectedCurrencyCode
+		self.getQuote()
+	}
+}
+
+// MARK: Convertion API Call
+extension ConversionViewController {
+	func getQuote() {
+		if let toCurrencyCode = toCurrencyCode {
+			self.showLoading()
+			viewModel.getQuotationValue(from: fromCurrencyCode, to: toCurrencyCode, quantity: 1) { result in
+				self.hideLoading()
+				print(result)
+			}
+		}
+	}
+}
+

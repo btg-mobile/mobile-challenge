@@ -27,13 +27,13 @@ class ApiRequest {
 		return mainPath + endpoint.rawValue
 	}
 	
-	func getAvaliableCurrencies(completionHandler: @escaping (Result<AvaliableCurrencies, ApiRequestError>) -> Void) {
+	func getAvaliableQuotes(completionHandler: @escaping (Result<AvaliableQuotes, ApiRequestError>) -> Void) {
 		let urlString = getEntireUrl(.list)
 		guard let url = URL(string: urlString) else { return completionHandler(.failure(.invalidUrl)) }
 		let task = URLSession.shared.dataTask(with: url) { data, _, error in
 			guard let data = data else { return completionHandler(.failure(.responseError)) }
 			do {
-				let response = try JSONDecoder().decode(AvaliableCurrencies.self, from: data)
+				let response = try JSONDecoder().decode(AvaliableQuotes.self, from: data)
 				completionHandler(.success(response))
 			} catch {
 				completionHandler(.failure(.decodingError))

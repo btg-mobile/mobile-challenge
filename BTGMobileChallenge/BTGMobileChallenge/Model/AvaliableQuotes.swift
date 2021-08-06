@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AvaliableCurrencies: Decodable {
+struct AvaliableQuotes: Decodable {
 	let success: Bool
 	let currencies: [String: String]
 }

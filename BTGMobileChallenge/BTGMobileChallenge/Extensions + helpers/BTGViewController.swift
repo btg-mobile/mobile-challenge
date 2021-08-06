@@ -30,7 +30,7 @@ class BTGViewController: UIViewController {
 		
 		return loadView
 	}()
-	
+
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.view = view
@@ -39,10 +39,7 @@ class BTGViewController: UIViewController {
 	override func loadView() {
 		self.view = mainView
 	}
-	
-	
 }
-
 
 // MARK: Handler Loading
 extension BTGViewController {
@@ -67,7 +64,5 @@ extension BTGViewController {
 
 // MARK: HAndler Error
 extension BTGViewController {
-	public func handlerError(Error) {
-		
-	}
+
 }
