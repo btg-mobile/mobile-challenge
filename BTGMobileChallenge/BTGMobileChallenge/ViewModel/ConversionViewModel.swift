@@ -14,9 +14,14 @@ class ConversionViewModel {
 		repository.getCurrentQuotes { response in
 			switch response {
 			case .success(let currentQuotes):
-				guard let fromCurrency = currentQuotes.quotes[from], let toCurrency = currentQuotes.quotes[to] else { return completion(.failure(.quoteNotFound)) }
-				completion(.success(quantity * (fromCurrency - toCurrency)))
-			
+				if from == currentQuotes.source, let quote = currentQuotes.quotes[from + to] {
+					return completion(.success(quantity * quote))
+				} else if let fromQuote = currentQuotes.quotes[currentQuotes.source + from], let toQuote = currentQuotes.quotes[currentQuotes.source + to] {
+					return completion(.success(quantity * ( toQuote / fromQuote )))
+				} else {
+					completion(.failure(.quoteNotFound))
+				}
+				
 			case .failure(let error):
 				completion(.failure(error))
 			}

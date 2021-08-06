@@ -30,6 +30,8 @@ class ConversionViewController: BTGViewController {
 	}()
 	
 	private let stackToButtons = UIStackView()
+
+	private let viewModel = ConversionViewModel()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +57,18 @@ class ConversionViewController: BTGViewController {
 	}
 	
 	private func bindUI() {
-		fromCurrencyButton.onClick = {
-			print("wasClicked")
+		fromCurrencyButton.onClick = { [weak self] in
+			guard let self = self else { return }
+			self.showLoading()
+			self.viewModel.getQuotationValue(from: "EUR", to: "BRL", quantity: 1) { response in
+				self.hideLoading()
+				switch response {
+				case .success(let value):
+					print(value)
+				case .failure(let error):
+					print(error)
+				}
+			}
 		}
 		
 		toCurrencyButton.onClick = {

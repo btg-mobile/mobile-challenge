@@ -24,6 +24,7 @@
 		6350619526BCB8A40071EAB9 /* UIButton+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350619426BCB8A40071EAB9 /* UIButton+Actions.swift */; };
 		635061A126BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6350619F26BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodeld */; };
 		635061A626BCBFE40071EAB9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635061A526BCBFE40071EAB9 /* WelcomeViewController.swift */; };
+		635061AB26BD59B60071EAB9 /* CurrenciesAvaliableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635061AA26BD59B60071EAB9 /* CurrenciesAvaliableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		6350619426BCB8A40071EAB9 /* UIButton+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Actions.swift"; sourceTree = "<group>"; };
 		635061A026BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTGMobileChallenge.xcdatamodel; sourceTree = "<group>"; };
 		635061A526BCBFE40071EAB9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		635061AA26BD59B60071EAB9 /* CurrenciesAvaliableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesAvaliableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				6350616626BCB4130071EAB9 /* ConversionViewController.swift */,
 				635061A526BCBFE40071EAB9 /* WelcomeViewController.swift */,
+				635061AA26BD59B60071EAB9 /* CurrenciesAvaliableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				6350619526BCB8A40071EAB9 /* UIButton+Actions.swift in Sources */,
 				6350617026BCB41E0071EAB9 /* CurrentQuotes.swift in Sources */,
 				6350618126BCB4EA0071EAB9 /* SceneDelegate.swift in Sources */,
+				635061AB26BD59B60071EAB9 /* CurrenciesAvaliableViewController.swift in Sources */,
 				6350616826BCB4130071EAB9 /* ConversionViewController.swift in Sources */,
 				635061A626BCBFE40071EAB9 /* WelcomeViewController.swift in Sources */,
 				6350618626BCB4FE0071EAB9 /* ApiRequest.swift in Sources */,

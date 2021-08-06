@@ -15,13 +15,17 @@ class BTGViewController: UIViewController {
 		
 		return view
 	}()
-	
 	private lazy var loadingView: UIView = {
 		let loadIndicator = UIActivityIndicatorView(style: .large)
 		let loadView = UIView()
 
 		loadView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
 		loadView.addSubview(loadIndicator)
+		loadIndicator.anchor(
+			centerX: (loadView.centerXAnchor, 0),
+			centerY: (loadView.centerYAnchor, 0)
+		)
+		
 		loadIndicator.startAnimating()
 		
 		return loadView
@@ -36,11 +40,34 @@ class BTGViewController: UIViewController {
 		self.view = mainView
 	}
 	
+	
+}
+
+
+// MARK: Handler Loading
+extension BTGViewController {
 	public func showLoading() {
-		view.addSubview(loadingView)
+		DispatchQueue.main.async {
+			self.view.addSubview(self.loadingView)
+			self.loadingView.anchor(
+				top: (self.view.topAnchor, 0),
+				right: (self.view.rightAnchor, 0),
+				left: (self.view.leftAnchor, 0),
+				bottom: (self.view.bottomAnchor, 0)
+			)
+		}
 	}
 	
 	public func hideLoading() {
-		loadingView.removeFromSuperview()
+		DispatchQueue.main.async {
+			self.loadingView.removeFromSuperview()
+		}
+	}
+}
+
+// MARK: HAndler Error
+extension BTGViewController {
+	public func handlerError(Error) {
+		
 	}
 }
