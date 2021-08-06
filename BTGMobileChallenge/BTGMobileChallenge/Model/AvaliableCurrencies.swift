@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData
 
 struct AvaliableCurrencies: Decodable {
 	let success: Bool

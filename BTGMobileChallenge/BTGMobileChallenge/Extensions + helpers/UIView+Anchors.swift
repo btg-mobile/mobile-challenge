@@ -14,7 +14,9 @@ extension UIView {
 		left: (NSLayoutXAxisAnchor, CGFloat)? = nil,
 		bottom: (NSLayoutYAxisAnchor, CGFloat)? = nil,
 		centerX: (NSLayoutXAxisAnchor, CGFloat)? = nil,
-		centerY: (NSLayoutYAxisAnchor, CGFloat)? = nil) {
+		centerY: (NSLayoutYAxisAnchor, CGFloat)? = nil,
+		height: CGFloat? = nil,
+		width: CGFloat? = nil) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		if let top = top { self.topAnchor.constraint(equalTo: top.0, constant: top.1).isActive = true }
@@ -23,5 +25,7 @@ extension UIView {
 		if let bottom = bottom { self.bottomAnchor.constraint(equalTo: bottom.0, constant: -bottom.1).isActive = true }
 		if let centerX = centerX { self.centerXAnchor.constraint(equalTo: centerX.0, constant: centerX.1).isActive = true }
 		if let centerY = centerY { self.centerYAnchor.constraint(equalTo: centerY.0, constant: centerY.1).isActive = true }
+		if let height = height { self.heightAnchor.constraint(equalToConstant: height).isActive = true }
+		if let width = width { self.widthAnchor.constraint(equalToConstant: width).isActive = true }
 	}
 }

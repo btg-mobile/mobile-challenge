@@ -12,6 +12,7 @@ enum ApiRequestError: Error {
 	case noInternetConnection
 	case decodingError
 	case responseError
+	case quoteNotFound
 }
 
 class ApiRequest {
@@ -54,6 +55,7 @@ class ApiRequest {
 				completionHandler(.failure(.decodingError))
 			}
 		}
+		
 		task.resume()
 	}
 }
