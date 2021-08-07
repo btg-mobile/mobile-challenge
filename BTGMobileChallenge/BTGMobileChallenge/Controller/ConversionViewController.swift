@@ -23,11 +23,21 @@ class ConversionViewController: BTGViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: animated)
 		bindUI()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
 	
 	override func loadView() {
 		self.view = ConversionView(frame: UIScreen.main.bounds)
+	}
+	
+	override var preferredStatusBarStyle : UIStatusBarStyle {
+		return .lightContent
 	}
 	
 	private func bindUI() {

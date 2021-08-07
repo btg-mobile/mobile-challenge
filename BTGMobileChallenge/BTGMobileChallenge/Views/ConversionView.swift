@@ -27,7 +27,7 @@ class ConversionView: UIView {
 	
 	func setupUI() {
 		addSubview(stackToButtons)
-		self.backgroundColor = UIColor(red: 3, green: 0, blue: 200, alpha: 1)
+		self.backgroundColor = UIColor(red: 1 / 255, green: 0, blue: 103/255, alpha: 1)
 		stackToButtons.addArrangedSubview(fromCurrencyCell)
 		stackToButtons.addArrangedSubview(toCurrencyCell)
 		
@@ -39,12 +39,12 @@ class ConversionView: UIView {
 		stackToButtons.alignment = .center
 		stackToButtons.axis = .vertical
 		stackToButtons.distribution = .fillEqually
-		stackToButtons.spacing = 10
+		stackToButtons.spacing = 30
 		
 		stackToButtons.anchor(
-			top: (safeAreaLayoutGuide.topAnchor, 0),
 			right: (rightAnchor, 0),
-			left: (leftAnchor, 0)
+			left: (leftAnchor, 0),
+			centerY: (centerYAnchor, -40)
 		)
 		
 		fromCurrencyCell.anchor(

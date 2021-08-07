@@ -18,9 +18,8 @@ enum FillingField {
 }
 
 class AvaliableCurrenciesViewController: BTGViewController {
-
-	private let tableView = UITableView()
 	private let viewModel = ConversionViewModel()
+	private var currenciesView: AvaliableCurrenciesView { return self.view as! AvaliableCurrenciesView }
 	private var avaliableQuotes = [(code: String, description: String)]()
 	private var fillingField: FillingField?
 	
@@ -37,7 +36,7 @@ class AvaliableCurrenciesViewController: BTGViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		setupUI()
+		navigationController?.navigationBar.prefersLargeTitles = true
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -45,12 +44,12 @@ class AvaliableCurrenciesViewController: BTGViewController {
 		bindUI()
 	}
 	
-	private func setupUI() {
-		view.addSubview(tableView)
-		self.setupTableView()
-		self.setupConstraints()
+	override func loadView() {
+		self.view = AvaliableCurrenciesView(frame: UIScreen.main.bounds)
+		currenciesView.tableViewDelegate = self
+		currenciesView.tableViewDataSource = self
 	}
-	
+
 	private func bindUI() {
 		self.showLoading()
 		viewModel.getAvaliableQuotes { [weak self] result in
@@ -59,7 +58,10 @@ class AvaliableCurrenciesViewController: BTGViewController {
 			switch result {
 			case .success(let avaliableQuotes):
 				self.avaliableQuotes = avaliableQuotes
-				DispatchQueue.main.async { self.tableView.reloadData() }
+				DispatchQueue.main.async { [weak self] in
+					guard let self = self else { return }
+					self.currenciesView.reloadTableData()
+				}
 				
 			case .failure(let error):
 				print(error)
@@ -68,37 +70,8 @@ class AvaliableCurrenciesViewController: BTGViewController {
 	}
 }
 
-// MARK: Layout construction
-extension AvaliableCurrenciesViewController {
-	private func setupConstraints() {
-		let top: NSLayoutYAxisAnchor
-		let bottom: NSLayoutYAxisAnchor
-		
-		if #available(iOS 11.0, *) {
-			top = view.safeAreaLayoutGuide.topAnchor
-			bottom = view.safeAreaLayoutGuide.bottomAnchor
-		} else {
-			top = view.topAnchor
-			bottom = view.bottomAnchor
-		}
-		
-		tableView.anchor(
-			top: (top, 0),
-			right: (view.rightAnchor, 0),
-			left: (view.leftAnchor, 0),
-			bottom: (bottom, 0)
-		)
-	}
-}
-
 // MARK: TableBiew setup
 extension AvaliableCurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
-	private func setupTableView() {
-		tableView.dataSource = self
-		tableView.delegate = self
-		tableView.register(AvaliableCurrencyTableViewCell.self, forCellReuseIdentifier: AvaliableCurrencyTableViewCell.identifier)
-	}
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return avaliableQuotes.count
 	}

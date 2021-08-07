@@ -10,7 +10,7 @@ import Foundation
 class AppStrings {
 	var fromCurrencCellTitle: String { return getString(forKey: "fromCurrencCellTitle") }
 	var toCurrencCellTitle: String { return getString(forKey: "toCurrencCellTitle") }
-	var clickToChoiceText: String { return getString(forKey: "clickToChoiceText") }
+	var clickToChoiceTip: String { return getString(forKey: "clickToChoiceTip") }
 	
 	private func getString(forKey key: String) -> String {
 		return Bundle.main.localizedString(forKey: key, value: nil, table: "AppStrings")

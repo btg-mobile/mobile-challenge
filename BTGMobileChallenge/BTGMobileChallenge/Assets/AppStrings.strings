@@ -10,4 +10,4 @@
 "fromCurrencCellTitle" = "Moeda de origem";
 "toCurrencCellTitle" = "Moeda de destino";
 
-"clickToChoiceText" = "Clique para selecionar a moeda desejada";
+"clickToChoiceTip" = "Clique para alterar";

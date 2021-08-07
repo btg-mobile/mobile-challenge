@@ -18,8 +18,9 @@ class BTGViewController: UIViewController {
 	private lazy var loadingView: UIView = {
 		let loadIndicator = UIActivityIndicatorView(style: .large)
 		let loadView = UIView()
-
+		
 		loadView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+		loadView.layer.cornerRadius = 10
 		loadView.addSubview(loadIndicator)
 		loadIndicator.anchor(
 			centerX: (loadView.centerXAnchor, 0),
@@ -47,10 +48,10 @@ extension BTGViewController {
 		DispatchQueue.main.async {
 			self.view.addSubview(self.loadingView)
 			self.loadingView.anchor(
-				top: (self.view.topAnchor, 0),
-				right: (self.view.rightAnchor, 0),
-				left: (self.view.leftAnchor, 0),
-				bottom: (self.view.bottomAnchor, 0)
+				centerX: (self.view.centerXAnchor, 0),
+				centerY: (self.view.centerYAnchor, 0),
+				height: 150,
+				width: 200
 			)
 		}
 	}

@@ -20,10 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		let navigationController = UINavigationController(rootViewController: ConversionViewController())
+		navigationController.navigationBar.backgroundColor = .white
 		
 		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 		window?.windowScene = windowScene
 		window?.rootViewController = navigationController
+		window?.overrideUserInterfaceStyle = .light
 		window?.makeKeyAndVisible()
 	}
 
