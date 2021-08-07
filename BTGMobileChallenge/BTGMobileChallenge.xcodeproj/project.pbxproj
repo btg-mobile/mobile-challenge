@@ -20,13 +20,15 @@
 		6350618026BCB4EA0071EAB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350617E26BCB4E90071EAB9 /* AppDelegate.swift */; };
 		6350618126BCB4EA0071EAB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350617F26BCB4EA0071EAB9 /* SceneDelegate.swift */; };
 		6350618626BCB4FE0071EAB9 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350618526BCB4FE0071EAB9 /* ApiRequest.swift */; };
-		6350619026BCB5D30071EAB9 /* appStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6350618F26BCB5D30071EAB9 /* appStrings.strings */; };
+		6350619026BCB5D30071EAB9 /* AppStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6350618F26BCB5D30071EAB9 /* AppStrings.strings */; };
 		6350619526BCB8A40071EAB9 /* UIButton+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350619426BCB8A40071EAB9 /* UIButton+Actions.swift */; };
 		635061A126BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6350619F26BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodeld */; };
 		635061A626BCBFE40071EAB9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635061A526BCBFE40071EAB9 /* WelcomeViewController.swift */; };
 		635061AB26BD59B60071EAB9 /* AvaliableCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635061AA26BD59B60071EAB9 /* AvaliableCurrenciesViewController.swift */; };
 		6369376826BDE16000EBF519 /* AvaliableCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369376726BDE16000EBF519 /* AvaliableCurrencyTableViewCell.swift */; };
-		6369377026BDF21900EBF519 /* ConvertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369376F26BDF21900EBF519 /* ConvertionView.swift */; };
+		6369377026BDF21900EBF519 /* ConversionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369376F26BDF21900EBF519 /* ConversionView.swift */; };
+		6369378326BE039100EBF519 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369378226BE039100EBF519 /* AppStrings.swift */; };
+		6369379B26BE089600EBF519 /* CurrencySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369379A26BE089600EBF519 /* CurrencySectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,13 +68,15 @@
 		6350617E26BCB4E90071EAB9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Config/AppDelegate.swift; sourceTree = "<group>"; };
 		6350617F26BCB4EA0071EAB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = Config/SceneDelegate.swift; sourceTree = "<group>"; };
 		6350618526BCB4FE0071EAB9 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
-		6350618F26BCB5D30071EAB9 /* appStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = appStrings.strings; sourceTree = "<group>"; };
+		6350618F26BCB5D30071EAB9 /* AppStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AppStrings.strings; sourceTree = "<group>"; };
 		6350619426BCB8A40071EAB9 /* UIButton+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Actions.swift"; sourceTree = "<group>"; };
 		635061A026BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTGMobileChallenge.xcdatamodel; sourceTree = "<group>"; };
 		635061A526BCBFE40071EAB9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		635061AA26BD59B60071EAB9 /* AvaliableCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableCurrenciesViewController.swift; sourceTree = "<group>"; };
 		6369376726BDE16000EBF519 /* AvaliableCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliableCurrencyTableViewCell.swift; sourceTree = "<group>"; };
-		6369376F26BDF21900EBF519 /* ConvertionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertionView.swift; sourceTree = "<group>"; };
+		6369376F26BDF21900EBF519 /* ConversionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionView.swift; sourceTree = "<group>"; };
+		6369378226BE039100EBF519 /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		6369379A26BE089600EBF519 /* CurrencySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				6350617726BCB4610071EAB9 /* Repository */,
 				6350616C26BCB41E0071EAB9 /* Model */,
 				6350618D26BCB5400071EAB9 /* ViewModel */,
+				6369376626BDE13800EBF519 /* Views */,
 				6350616426BCB4130071EAB9 /* Controller */,
 				6333274F26BC0AED0013496A /* Extensions + helpers */,
 			);
@@ -177,7 +182,6 @@
 		6350616426BCB4130071EAB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6369376626BDE13800EBF519 /* Views */,
 				635061A526BCBFE40071EAB9 /* WelcomeViewController.swift */,
 				6350616626BCB4130071EAB9 /* ConversionViewController.swift */,
 				635061AA26BD59B60071EAB9 /* AvaliableCurrenciesViewController.swift */,
@@ -222,7 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				6333271C26BC072D0013496A /* Assets.xcassets */,
-				6350618F26BCB5D30071EAB9 /* appStrings.strings */,
+				6350618F26BCB5D30071EAB9 /* AppStrings.strings */,
+				6369378226BE039100EBF519 /* AppStrings.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -230,10 +235,19 @@
 		6369376626BDE13800EBF519 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6369376726BDE16000EBF519 /* AvaliableCurrencyTableViewCell.swift */,
-				6369376F26BDF21900EBF519 /* ConvertionView.swift */,
+				6369379926BE086500EBF519 /* AssistantsViews */,
+				6369376F26BDF21900EBF519 /* ConversionView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6369379926BE086500EBF519 /* AssistantsViews */ = {
+			isa = PBXGroup;
+			children = (
+				6369379A26BE089600EBF519 /* CurrencySectionView.swift */,
+				6369376726BDE16000EBF519 /* AvaliableCurrencyTableViewCell.swift */,
+			);
+			path = AssistantsViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,7 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6350619026BCB5D30071EAB9 /* appStrings.strings in Resources */,
+				6350619026BCB5D30071EAB9 /* AppStrings.strings in Resources */,
 				6333272026BC072D0013496A /* LaunchScreen.storyboard in Resources */,
 				6333271D26BC072D0013496A /* Assets.xcassets in Resources */,
 			);
@@ -372,6 +386,7 @@
 				635061A126BCBFAF0071EAB9 /* BTGMobileChallenge.xcdatamodeld in Sources */,
 				6350618026BCB4EA0071EAB9 /* AppDelegate.swift in Sources */,
 				6350619526BCB8A40071EAB9 /* UIButton+Actions.swift in Sources */,
+				6369378326BE039100EBF519 /* AppStrings.swift in Sources */,
 				6350617026BCB41E0071EAB9 /* CurrentQuotes.swift in Sources */,
 				6350618126BCB4EA0071EAB9 /* SceneDelegate.swift in Sources */,
 				6369376826BDE16000EBF519 /* AvaliableCurrencyTableViewCell.swift in Sources */,
@@ -379,8 +394,9 @@
 				6350616826BCB4130071EAB9 /* ConversionViewController.swift in Sources */,
 				635061A626BCBFE40071EAB9 /* WelcomeViewController.swift in Sources */,
 				6350618626BCB4FE0071EAB9 /* ApiRequest.swift in Sources */,
+				6369379B26BE089600EBF519 /* CurrencySectionView.swift in Sources */,
 				6350616726BCB4130071EAB9 /* ConversionViewModel.swift in Sources */,
-				6369377026BDF21900EBF519 /* ConvertionView.swift in Sources */,
+				6369377026BDF21900EBF519 /* ConversionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

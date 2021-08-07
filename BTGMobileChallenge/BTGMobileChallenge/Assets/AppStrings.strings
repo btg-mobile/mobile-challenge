@@ -1,0 +1,13 @@
+/* 
+  appStrings.strings
+  BTGMobileChallenge
+
+  Created by Carlos Roberto Modinez Junior on 05/08/21.
+  
+*/
+
+
+"fromCurrencCellTitle" = "Moeda de origem";
+"toCurrencCellTitle" = "Moeda de destino";
+
+"clickToChoiceText" = "Clique para selecionar a moeda desejada";
