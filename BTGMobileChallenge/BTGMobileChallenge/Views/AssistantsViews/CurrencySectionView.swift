@@ -128,7 +128,7 @@ class CurrencySectionView: UIView {
 		DispatchQueue.main.async { [weak self] in
 			guard let self = self else { return }
 			self.codeLabel.text = code
-			self.valueLabel.text = "\(value)"
+			self.valueLabel.text = "\(Float(round(1000*value)/1000))"
 		}
 	}
 }

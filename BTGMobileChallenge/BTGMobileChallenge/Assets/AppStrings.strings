@@ -9,5 +9,5 @@
 
 "fromCurrencCellTitle" = "Moeda de origem";
 "toCurrencCellTitle" = "Moeda de destino";
-
 "clickToChoiceTip" = "Clique para alterar";
+"choiceCurrencySearchPlaceholder" = "Procurar moeda";

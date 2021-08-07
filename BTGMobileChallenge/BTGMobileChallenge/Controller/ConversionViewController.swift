@@ -14,11 +14,15 @@ class ConversionViewController: BTGViewController {
 	private var fromCurrencyCode = "USD"
 	private var toCurrencyCode: String?
 	private var quantity: Float = 1
+	private var slider = UISlider()
+	private var quotation: Float = 0.0
 	
 	var delegate: ConversionDelegate?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		conversionView.setMaxMinSlider(quantity, 100)
+		conversionView.showFromCurrencyView(code: fromCurrencyCode, value: self.quantity)
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -41,17 +45,27 @@ class ConversionViewController: BTGViewController {
 	}
 	
 	private func bindUI() {
-		conversionView.showFromCurrencyView(code: fromCurrencyCode, value: self.quantity)
-		conversionView.fromOnClick = {
+		conversionView.fromOnClick = { [weak self] in
+			guard let self = self else { return }
 			let viewController = AvaliableCurrenciesViewController(filling: .fromCurrency)
 			viewController.delegate = self
 			self.navigationController?.pushViewController(viewController, animated: true)
 		}
 		
-		conversionView.toOnClick = {
+		conversionView.toOnClick = { [weak self] in
+			guard let self = self else { return }
 			let viewController = AvaliableCurrenciesViewController(filling: .toCurrency)
 			viewController.delegate = self
 			self.navigationController?.pushViewController(viewController, animated: true)
+		}
+		
+		conversionView.wasSlided = { [weak self] in
+			guard let self = self else { return }
+			self.quantity = self.conversionView.slidePosition
+			self.conversionView.showFromCurrencyView(code: self.fromCurrencyCode, value: self.quantity)
+			if let toCurrencyCode = self.toCurrencyCode {
+				self.conversionView.showToCurrencyView(code: toCurrencyCode, value: self.quotation * self.quantity)
+			}
 		}
 	}
 }
@@ -81,7 +95,8 @@ extension ConversionViewController {
 				self.hideLoading()
 				switch result {
 				case .success(let value):
-					self.conversionView.showToCurrencyView(code: toCurrencyCode, value: value * self.quantity)
+					self.conversionView.showToCurrencyView(code: toCurrencyCode, value: value)
+					self.quotation = value / self.quantity
 				case .failure(let error):
 					debugPrint(error)
 				}
@@ -89,4 +104,3 @@ extension ConversionViewController {
 		}
 	}
 }
-

@@ -11,6 +11,7 @@ class AppStrings {
 	var fromCurrencCellTitle: String { return getString(forKey: "fromCurrencCellTitle") }
 	var toCurrencCellTitle: String { return getString(forKey: "toCurrencCellTitle") }
 	var clickToChoiceTip: String { return getString(forKey: "clickToChoiceTip") }
+	var choiceCurrencySearchPlaceholder: String { return getString(forKey: "choiceCurrencySearchPlaceholder") }
 	
 	private func getString(forKey key: String) -> String {
 		return Bundle.main.localizedString(forKey: key, value: nil, table: "AppStrings")
