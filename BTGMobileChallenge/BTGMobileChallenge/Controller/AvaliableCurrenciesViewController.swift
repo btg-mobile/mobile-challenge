@@ -22,6 +22,8 @@ class AvaliableCurrenciesViewController: BTGViewController {
 	private var currenciesView: AvaliableCurrenciesView { return self.view as! AvaliableCurrenciesView }
 	private var avaliableQuotes = [(code: String, description: String)]()
 	private var fillingField: FillingField?
+	private var searchQuotes = [(code: String, description: String)]()
+	private var isSearching: Bool = false
 	
 	var delegate: ConversionDelegate?
 	
@@ -36,18 +38,19 @@ class AvaliableCurrenciesViewController: BTGViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		navigationController?.navigationBar.prefersLargeTitles = true
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		bindUI()
+		navigationItem.titleView = currenciesView.getSearchToTitle()
 	}
 	
 	override func loadView() {
 		self.view = AvaliableCurrenciesView(frame: UIScreen.main.bounds)
 		currenciesView.tableViewDelegate = self
 		currenciesView.tableViewDataSource = self
+		currenciesView.searchBarDelegate = self
 	}
 
 	private func bindUI() {
@@ -73,22 +76,40 @@ class AvaliableCurrenciesViewController: BTGViewController {
 // MARK: TableBiew setup
 extension AvaliableCurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return avaliableQuotes.count
+		return isSearching ? searchQuotes.count : avaliableQuotes.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: AvaliableCurrencyTableViewCell.identifier, for: indexPath) as? AvaliableCurrencyTableViewCell else {
 			return UITableViewCell()
 		}
-		cell.config(code: avaliableQuotes[indexPath.row].code, description: avaliableQuotes[indexPath.row].description)
+		if isSearching {
+			cell.config(code: searchQuotes[indexPath.row].code, description: searchQuotes[indexPath.row].description)
+		} else {
+			cell.config(code: avaliableQuotes[indexPath.row].code, description: avaliableQuotes[indexPath.row].description)
+		}
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let quotes = isSearching ? searchQuotes : avaliableQuotes
 		fillingField == .fromCurrency ?
-			delegate?.getFromCurrency(selectedCurrencyCode: avaliableQuotes[indexPath.row].code) :
-			delegate?.getToCurrency(selectedCurrencyCode: avaliableQuotes[indexPath.row].code)
+			delegate?.getFromCurrency(selectedCurrencyCode: quotes[indexPath.row].code) :
+			delegate?.getToCurrency(selectedCurrencyCode: quotes[indexPath.row].code)
 		
 		self.navigationController?.popViewController(animated: true)
+	}
+}
+
+// MARK: Search setup
+extension AvaliableCurrenciesViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		
+		searchQuotes = avaliableQuotes.filter {
+			$0.description.prefix(searchText.count).lowercased() == searchText.lowercased() ||
+		    $0.code.prefix(searchText.count).lowercased() == searchText.lowercased().lowercased() }
+		
+		isSearching = true
+		currenciesView.reloadTableData()
 	}
 }

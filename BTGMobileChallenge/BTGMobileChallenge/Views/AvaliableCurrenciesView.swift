@@ -9,6 +9,8 @@ import UIKit
 
 class AvaliableCurrenciesView: UIView {
 	private let tableView = UITableView()
+	private let searchBar = UISearchBar()
+	
 	public var tableViewDataSource: UITableViewDataSource? {
 		willSet(newValue) {
 			tableView.dataSource = newValue
@@ -17,6 +19,11 @@ class AvaliableCurrenciesView: UIView {
 	public var tableViewDelegate: UITableViewDelegate? {
 		willSet(newValue) {
 			tableView.delegate = newValue
+		}
+	}
+	public var searchBarDelegate: UISearchBarDelegate? {
+		willSet(newValue) {
+			searchBar.delegate = newValue
 		}
 	}
 	
@@ -58,5 +65,9 @@ class AvaliableCurrenciesView: UIView {
 	
 	public func reloadTableData() {
 		tableView.reloadData()
+	}
+	
+	public func getSearchToTitle() -> UISearchBar {
+		return searchBar
 	}
 }
