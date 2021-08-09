@@ -11,3 +11,9 @@
 "toCurrencCellTitle" = "Moeda de destino";
 "clickToChoiceTip" = "Clique para alterar";
 "choiceCurrencySearchPlaceholder" = "Procurar moeda";
+
+"generalPopupErrorDescription" = "Algo não está certo. Tente novamente mais tarde";
+"internetPopupErrorDescription" = "Verifique sua conexão com a internet";
+"convertionFailedPopupErrorDescription" = "Impossível fazer essa conversão";
+
+"popupErrorTitle" = "Erro";

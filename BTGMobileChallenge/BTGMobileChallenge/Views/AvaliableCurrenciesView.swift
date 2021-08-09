@@ -39,7 +39,7 @@ class AvaliableCurrenciesView: UIView {
 	private func setupUI() {
 		addSubview(tableView)
 		backgroundColor = .white
-		searchBar.placeholder = AppStrings().choiceCurrencySearchPlaceholder
+		searchBar.placeholder = AppStrings.shared.choiceCurrencySearchPlaceholder
 		tableView.register(AvaliableCurrencyTableViewCell.self, forCellReuseIdentifier: AvaliableCurrencyTableViewCell.identifier)
 		setupConstraints()
 	}

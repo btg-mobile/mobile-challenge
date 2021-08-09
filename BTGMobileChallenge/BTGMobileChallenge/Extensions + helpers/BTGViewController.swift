@@ -65,5 +65,25 @@ extension BTGViewController {
 
 // MARK: HAndler Error
 extension BTGViewController {
-
+	func handlerError(_ error: ApiRequestError, onTap: (() -> Void)? = nil) {
+		let description: String
+		
+		switch error {
+		case .decodingError, .responseError, .invalidUrl: description = AppStrings.shared.generalPopupErrorDescription
+		case .noInternetConnection: description = AppStrings.shared.internetPopupErrorDescription
+		case .quoteNotFound: description = AppStrings.shared.convertionFailedPopupErrorDescription
+		}
+		
+		let alertController = UIAlertController(
+			title: NSLocalizedString(AppStrings.shared.popupErrorTitle, comment:""),
+			message: NSLocalizedString(description, comment:""),
+			preferredStyle: .alert)
+		
+		let defaultAction = UIAlertAction(title: "Ok", style: .default) { dialog in
+			onTap?()
+		}
+		
+		alertController.addAction(defaultAction)
+		DispatchQueue.main.async { self.present(alertController, animated: true, completion: nil) }
+	}
 }

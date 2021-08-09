@@ -70,7 +70,6 @@ class ConversionViewController: BTGViewController {
 	}
 }
 
-
 // MARK: Conversion Delegate
 extension ConversionViewController: ConversionDelegate {
 	func getFromCurrency(selectedCurrencyCode: String) {
@@ -98,7 +97,7 @@ extension ConversionViewController {
 					self.conversionView.showToCurrencyView(code: toCurrencyCode, value: value)
 					self.quotation = value / self.quantity
 				case .failure(let error):
-					debugPrint(error)
+					self.handlerError(error)
 				}
 			}
 		}
