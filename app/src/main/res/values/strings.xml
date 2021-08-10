@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Conversor de Moedas</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_title_atencao">Atenção</string>
+    <string name="dialog_title_aguarde">Aguarde</string>
+
+    <string name="menu_search">Pesquisar</string>
+
+    <string name="convert">Converter</string>
+    <string name="clear">Apagar</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="carregando">Carregando…</string>
+    <string name="no_currencies_found">Nenhuma moeda encontrada.</string>
+</resources>

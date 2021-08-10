@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.alanminusculi.btgchallenge.ui.converter.ConverterViewModel" />
+
+        <import type="br.com.alanminusculi.btgchallenge.utils.Formatting" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/DefaultWindow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.converter.ConverterActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/TextViewCenterError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{viewModel.error}"
+                android:visibility="@{viewModel.error == null ? View.GONE : View.VISIBLE}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/TextViewRight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{viewModel.formatting.toString(viewModel.sourceValue)}" />
+
+            <TextView
+                style="@style/TextViewDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.sourceCurrency.acronym}" />
+
+            <ImageView
+                android:id="@+id/btnSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_spacing"
+                android:contentDescription="@string/pesquisar"
+                android:src="@drawable/ic_search"
+                android:theme="@style/Widget.AppCompat.ImageButton"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/TextViewRight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{viewModel.formatting.toString(viewModel.destinationValue)}" />
+
+            <TextView
+                style="@style/TextViewDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.destinationCurrency.acronym}" />
+
+            <ImageView
+                android:id="@+id/btnDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_spacing"
+                android:contentDescription="@string/pesquisar"
+                android:src="@drawable/ic_search"
+                android:theme="@style/Widget.AppCompat.ImageButton"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="7"
+                    android:onClick="@{() -> viewModel.numberPressed(7)}"
+                    app:srcCompat="@drawable/ic_seven" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="8"
+                    android:onClick="@{() -> viewModel.numberPressed(8)}"
+                    app:srcCompat="@drawable/ic_eight" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="9"
+                    android:onClick="@{() -> viewModel.numberPressed(9)}"
+                    app:srcCompat="@drawable/ic_nine" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="4"
+                    android:onClick="@{() -> viewModel.numberPressed(4)}"
+                    app:srcCompat="@drawable/ic_four" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="5"
+                    android:onClick="@{() -> viewModel.numberPressed(5)}"
+                    app:srcCompat="@drawable/ic_five" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="6"
+                    android:onClick="@{() -> viewModel.numberPressed(6)}"
+                    app:srcCompat="@drawable/ic_six" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="1"
+                    android:onClick="@{() -> viewModel.numberPressed(1)}"
+                    app:srcCompat="@drawable/ic_one" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="2"
+                    android:onClick="@{() -> viewModel.numberPressed(2)}"
+                    app:srcCompat="@drawable/ic_two" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="3"
+                    android:onClick="@{() -> viewModel.numberPressed(3)}"
+                    app:srcCompat="@drawable/ic_three" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="0"
+                    android:onClick="@{() -> viewModel.numberPressed(0)}"
+                    app:srcCompat="@drawable/ic_zero" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/clear"
+                    android:onClick="@{() -> viewModel.clear()}"
+                    app:srcCompat="@drawable/ic_delete" />
+
+                <ImageButton
+                    style="@style/NumberKeyboardButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:clickable="@{viewModel.valid}"
+                    android:contentDescription="@string/convert"
+                    android:onClick="@{() -> viewModel.convert()}"
+                    app:srcCompat="@drawable/ic_done" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.BTGChallenge" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/gray_800</item>
+        <item name="colorPrimaryVariant">@color/gray_900</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/gray_800</item>
+        <item name="colorSecondaryVariant">@color/gray_800</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/amber_900</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="FullScreenActivity" parent="Theme.BTGChallenge">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="DefaultWindow">
+        <item name="android:paddingRight">@dimen/horizontal_window_margin</item>
+        <item name="android:paddingLeft">@dimen/horizontal_window_margin</item>
+        <item name="android:paddingTop">@dimen/vertical_window_margin</item>
+        <item name="android:paddingBottom">@dimen/vertical_window_margin</item>
+    </style>
+
+    <style name="NumberKeyboardButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_marginLeft">@dimen/button_horizontal_spacing</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:tint">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="TextViewDefault">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginRight">@dimen/text_horizontal_window_margin</item>
+        <item name="android:layout_marginLeft">@dimen/text_horizontal_window_margin</item>
+    </style>
+
+    <style name="TextViewCenter" parent="TextViewDefault">
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+    </style>
+
+    <style name="TextViewRight" parent="TextViewDefault">
+        <item name="android:gravity">right</item>
+        <item name="android:textAlignment">gravity</item>
+    </style>
+
+    <style name="TextViewCenterError" parent="TextViewCenter">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="TextViewItemListFirstLine" parent="TextViewDefault">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="TextViewItemListSecondLine" parent="TextViewDefault">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="vertical_window_margin">16dp</dimen>
+    <dimen name="horizontal_window_margin">16dp</dimen>
+    <dimen name="button_horizontal_spacing">4dp</dimen>
+    <dimen name="text_horizontal_window_margin">4dp</dimen>
+    <dimen name="item_list_padding_vertical">8dp</dimen>
+    <dimen name="item_list_padding_horizontal">16dp</dimen>
+</resources>

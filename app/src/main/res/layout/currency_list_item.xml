@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="currency"
+            type="br.com.alanminusculi.btgchallenge.data.local.models.Currency" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/item_list_padding_horizontal"
+        android:paddingTop="@dimen/item_list_padding_vertical"
+        android:paddingEnd="@dimen/item_list_padding_horizontal"
+        android:paddingBottom="@dimen/item_list_padding_vertical">
+
+        <TextView
+            style="@style/TextViewItemListFirstLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{currency.name}" />
+
+        <TextView
+            style="@style/TextViewItemListSecondLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{currency.acronym}" />
+    </LinearLayout>
+</layout>
