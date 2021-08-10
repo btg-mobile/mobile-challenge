@@ -14,6 +14,8 @@
 		6333273626BC072D0013496A /* BTGMobileChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333273526BC072D0013496A /* BTGMobileChallengeUITests.swift */; };
 		6333275426BC13030013496A /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333275326BC13030013496A /* UIView+Anchors.swift */; };
 		6333275926BC1E970013496A /* BTGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333275826BC1E970013496A /* BTGViewController.swift */; };
+		6347BA6E26C2ADF800EDC48E /* ApiRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6347BA6D26C2ADF800EDC48E /* ApiRequestError.swift */; };
+		6347BA7326C2AE1300EDC48E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6347BA7226C2AE1300EDC48E /* NetworkMonitor.swift */; };
 		6350616726BCB4130071EAB9 /* ConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350616526BCB4130071EAB9 /* ConversionViewModel.swift */; };
 		6350616826BCB4130071EAB9 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350616626BCB4130071EAB9 /* ConversionViewController.swift */; };
 		6350616F26BCB41E0071EAB9 /* AvaliableQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350616D26BCB41E0071EAB9 /* AvaliableQuotes.swift */; };
@@ -61,6 +63,8 @@
 		6333273726BC072D0013496A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6333275326BC13030013496A /* UIView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
 		6333275826BC1E970013496A /* BTGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGViewController.swift; sourceTree = "<group>"; };
+		6347BA6D26C2ADF800EDC48E /* ApiRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestError.swift; sourceTree = "<group>"; };
+		6347BA7226C2AE1300EDC48E /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		6350616526BCB4130071EAB9 /* ConversionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
 		6350616626BCB4130071EAB9 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
 		6350616D26BCB41E0071EAB9 /* AvaliableQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvaliableQuotes.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				6350618526BCB4FE0071EAB9 /* ApiRequest.swift */,
+				6347BA6D26C2ADF800EDC48E /* ApiRequestError.swift */,
+				6347BA7226C2AE1300EDC48E /* NetworkMonitor.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6333275926BC1E970013496A /* BTGViewController.swift in Sources */,
+				6347BA6E26C2ADF800EDC48E /* ApiRequestError.swift in Sources */,
 				6350616F26BCB41E0071EAB9 /* AvaliableQuotes.swift in Sources */,
 				6333275426BC13030013496A /* UIView+Anchors.swift in Sources */,
 				6314CD0626BE18BB0097611C /* AvaliableCurrenciesView.swift in Sources */,
@@ -390,6 +397,7 @@
 				635061AB26BD59B60071EAB9 /* AvaliableCurrenciesViewController.swift in Sources */,
 				6350616826BCB4130071EAB9 /* ConversionViewController.swift in Sources */,
 				6350618626BCB4FE0071EAB9 /* ApiRequest.swift in Sources */,
+				6347BA7326C2AE1300EDC48E /* NetworkMonitor.swift in Sources */,
 				6369379B26BE089600EBF519 /* CurrencySectionView.swift in Sources */,
 				6350616726BCB4130071EAB9 /* ConversionViewModel.swift in Sources */,
 				6369377026BDF21900EBF519 /* ConversionView.swift in Sources */,

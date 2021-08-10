@@ -7,20 +7,13 @@
 
 import Foundation
 
-enum ApiRequestError: Error {
-	case invalidUrl
-	case noInternetConnection
-	case decodingError
-	case responseError
-	case quoteNotFound
-}
-
 class ApiRequest {
 	private enum Endpoint: String {
 		case live = "/live"
 		case list = "/list"
 	}
 	
+	private let networkMonitor = NetworkMonitor.shared
 	private let mainPath = "https://btg-mobile-challenge.herokuapp.com"
 		
 	private func getEntireUrl(_ endpoint: Endpoint) -> String {
@@ -28,6 +21,7 @@ class ApiRequest {
 	}
 	
 	func getAvaliableQuotes(completionHandler: @escaping (Result<AvaliableQuotes, ApiRequestError>) -> Void) {
+		guard networkMonitor.isReachable else { return completionHandler(.failure(.noInternetConnection)) }
 		let urlString = getEntireUrl(.list)
 		guard let url = URL(string: urlString) else { return completionHandler(.failure(.invalidUrl)) }
 		let task = URLSession.shared.dataTask(with: url) { data, _, error in
@@ -44,6 +38,7 @@ class ApiRequest {
 	}
 	
 	func getCurrentQuotes(completionHandler: @escaping (Result<CurrentQuotes, ApiRequestError>) -> Void) {
+		guard networkMonitor.isReachable else { return completionHandler(.failure(.noInternetConnection)) }
 		let urlString = getEntireUrl(.live)
 		guard let url = URL(string: urlString) else { return completionHandler(.failure(.invalidUrl)) }
 		let task = URLSession.shared.dataTask(with: url) { data, _, error in
