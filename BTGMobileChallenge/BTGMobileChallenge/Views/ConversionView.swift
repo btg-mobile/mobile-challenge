@@ -11,8 +11,8 @@ class ConversionView: UIView {
 
 	private let stackToButtons = UIStackView()
 	private let slider = UISlider()
-	private let fromCurrencyCell = CurrencySectionView(title: AppStrings().fromCurrencCellTitle)
-	private let toCurrencyCell = CurrencySectionView(title: AppStrings().toCurrencCellTitle)
+	private let fromCurrencyCell = CurrencySectionView(title: AppStrings.shared.fromCurrencCellTitle)
+	private let toCurrencyCell = CurrencySectionView(title: AppStrings.shared.toCurrencCellTitle)
 
 	var fromOnClick: (() -> Void)?
 	var toOnClick: (() -> Void)?

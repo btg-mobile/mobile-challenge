@@ -67,7 +67,9 @@ class AvaliableCurrenciesViewController: BTGViewController {
 				}
 				
 			case .failure(let error):
-				print(error)
+				self.handlerError(error) {
+					self.navigationController?.popViewController(animated: true)
+				}
 			}
 		}
 	}
@@ -83,21 +85,22 @@ extension AvaliableCurrenciesViewController: UITableViewDataSource, UITableViewD
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: AvaliableCurrencyTableViewCell.identifier, for: indexPath) as? AvaliableCurrencyTableViewCell else {
 			return UITableViewCell()
 		}
+		
 		if isSearching {
 			cell.config(code: searchQuotes[indexPath.row].code, description: searchQuotes[indexPath.row].description)
 		} else {
 			cell.config(code: avaliableQuotes[indexPath.row].code, description: avaliableQuotes[indexPath.row].description)
 		}
+		
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let quotes = isSearching ? searchQuotes : avaliableQuotes
+		self.navigationController?.popViewController(animated: true)
 		fillingField == .fromCurrency ?
 			delegate?.getFromCurrency(selectedCurrencyCode: quotes[indexPath.row].code) :
 			delegate?.getToCurrency(selectedCurrencyCode: quotes[indexPath.row].code)
-		
-		self.navigationController?.popViewController(animated: true)
 	}
 }
 

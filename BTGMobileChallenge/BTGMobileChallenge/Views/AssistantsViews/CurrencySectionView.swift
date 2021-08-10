@@ -17,7 +17,7 @@ class CurrencySectionView: UIView {
 	}()
 	private let tipLabel: UILabel = {
 		let label = UILabel()
-		label.text = AppStrings().clickToChoiceTip
+		label.text = AppStrings.shared.clickToChoiceTip
 		label.textAlignment = .center
 		label.font = UIFont.systemFont(ofSize: 15)
 		label.textColor = .white
