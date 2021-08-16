@@ -10,4 +10,5 @@
     <string name="fonts_close"></string>
     <string name="close">Fechar</string>
     <string name="digite_o_valor_para_converter">Digite o valor para converter</string>
+    <string name="database">Exchange.db</string>
 </resources>

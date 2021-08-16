@@ -1,9 +1,9 @@
 package com.br.cambio.utils
 
-import com.br.cambio.data.model.Result
+import com.br.cambio.data.model.Exchange
 
 object Extensions{
-    fun isNullOrEmpty(data: Result?): Boolean {
+    fun isNullOrEmpty(data: Exchange?): Boolean {
         return data == null
     }
 }

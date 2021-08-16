@@ -13,6 +13,7 @@ class AppApplication : SplitCompatApplication() {
             modules(dataModules)
             modules(presentationModules)
             modules(anotherModules)
+            modules(persistenceModule)
         }
     }
 }
