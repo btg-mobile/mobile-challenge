@@ -47,19 +47,6 @@ class CurrencyRepositoryTest {
         assertEquals(result, ExchangePresentation.ErrorResponse)
     }
 
-    @Test
-    fun `When get currencies from remote data source should return empty list`() =
-        runBlockingTest {
-            // Given
-            whenever(dataSource.getCurrencies()).thenReturn(mockEmptyResponse())
-
-            // When
-            val result = repository.getCurrencies(false)
-
-            // Then
-            assertEquals(result, ExchangePresentation.EmptyResponse)
-        }
-
     private fun mockResponse() =
         listOf(
             CurrencyDomain(

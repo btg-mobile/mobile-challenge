@@ -39,7 +39,7 @@ class RemoteDataSourceTest {
 
         // Then
         assertEquals(result, expectedResponse())
-        assertEquals(result?.get(0)?.key, 12)
+        assertEquals(result?.get(0)?.key, "BRL")
     }
 
     private fun setCurrency(): HashMap<String, String> {
