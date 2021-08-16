@@ -8,8 +8,8 @@ class CurrencyToDomainMapper : Mapper<Currency, CurrencyDomain> {
 
     override fun map(source: Currency): CurrencyDomain {
         return CurrencyDomain(
-            symbol = source.key.orEmpty(),
-            name = source.value.orEmpty()
+            key = source.key.orEmpty(),
+            value = source.value.orEmpty()
         )
     }
 }

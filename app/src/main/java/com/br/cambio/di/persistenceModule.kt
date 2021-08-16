@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val persistenceModule = module {
 
-    single {
+    factory {
         Room.databaseBuilder(
             androidApplication(),
             AppDatabase::class.java,
@@ -18,6 +18,6 @@ val persistenceModule = module {
             .build()
     }
 
-    single { get<AppDatabase>().currencyDao() }
-    single { get<AppDatabase>().priceDao() }
+    factory { get<AppDatabase>().currencyDao() }
+    factory { get<AppDatabase>().priceDao() }
 }

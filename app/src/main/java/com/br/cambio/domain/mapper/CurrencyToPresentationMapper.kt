@@ -25,8 +25,8 @@ class CurrencyToPresentationMapper : Mapper<List<CurrencyDomain>?, ExchangePrese
         return ExchangePresentation.SuccessResponse(
             source.map {
                 DialogSpinnerModel(
-                    codigo = it.symbol,
-                    nome = it.name
+                    codigo = it.key,
+                    nome = it.value
                 )
             }
         )

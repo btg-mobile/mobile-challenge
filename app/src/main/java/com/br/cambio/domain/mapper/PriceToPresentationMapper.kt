@@ -25,8 +25,8 @@ class PriceToPresentationMapper : Mapper<List<PriceDomain>?, QuotaPresentation> 
         return QuotaPresentation.SuccessResponse(
             source.map {
                 PricePresentation(
-                    currency = it.currency,
-                    price = it.price
+                    currency = it.key,
+                    price = it.value
                 )
             }
         )

@@ -8,8 +8,8 @@ class PriceToDomainMapper : Mapper<Price, PriceDomain> {
 
     override fun map(source: Price): PriceDomain {
         return PriceDomain(
-            currency = source.key.orEmpty(),
-            price = source.value
+            key = source.key.orEmpty(),
+            value = source.value
         )
     }
 }

@@ -1,6 +1,8 @@
 package com.br.cambio.data.datasource
 
 import com.br.cambio.data.api.Api
+import com.br.cambio.data.local.datasource.LocalDataSource
+import com.br.cambio.data.local.datasource.LocalDataSourceImpl
 import com.br.cambio.data.model.Currency
 import com.br.cambio.domain.model.CurrencyDomain
 import com.nhaarman.mockito_kotlin.mock
@@ -21,7 +23,7 @@ class RemoteDataSourceTest {
     private val testDispatcher = TestCoroutineDispatcher()
 
     private val service: Api = mock()
-    private val dataSource: RemoteDataSource = RemoteDataSourceImpl(service)
+    private val dataSource: LocalDataSource = LocalDataSourceImpl(service)
 
     @After
     fun tearDown() {
@@ -39,7 +41,7 @@ class RemoteDataSourceTest {
 
         // Then
         assertEquals(result, expectedResponse())
-        assertEquals(result?.get(0)?.symbol, 12)
+        assertEquals(result?.get(0)?.key, 12)
     }
 
     private fun mockResponse() =
@@ -55,8 +57,8 @@ class RemoteDataSourceTest {
     private fun expectedResponse() =
         listOf(
             CurrencyDomain(
-                symbol = "BRL",
-                name = "Brazilian Real"
+                key = "BRL",
+                value = "Brazilian Real"
             )
         )
 }

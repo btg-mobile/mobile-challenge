@@ -5,6 +5,8 @@ import com.br.cambio.data.api.retrofit.HttpClient
 import com.br.cambio.data.api.retrofit.RetrofitClient
 import com.br.cambio.data.datasource.RemoteDataSource
 import com.br.cambio.data.datasource.RemoteDataSourceImpl
+import com.br.cambio.data.local.datasource.LocalDataSource
+import com.br.cambio.data.local.datasource.LocalDataSourceImpl
 import com.br.cambio.data.repository.CurrencyRepositoryImpl
 import com.br.cambio.data.repository.PricesRepositoryImpl
 import com.br.cambio.domain.repository.CurrencyRepository
@@ -30,8 +32,9 @@ val presentationModules = module {
 
 val dataModules = module {
     factory<RemoteDataSource> { RemoteDataSourceImpl(service = get()) }
-    factory<CurrencyRepository> { CurrencyRepositoryImpl(remoteDataSource = get()) }
-    factory<PricesRepository> { PricesRepositoryImpl(remoteDataSource = get()) }
+    factory<LocalDataSource> { LocalDataSourceImpl(local = get()) }
+    factory<CurrencyRepository> { CurrencyRepositoryImpl(remoteDataSource = get(), localDataSource = get()) }
+    factory<PricesRepository> { PricesRepositoryImpl(remoteDataSource = get(), localDataSource = get()) }
 }
 
 val anotherModules = module {

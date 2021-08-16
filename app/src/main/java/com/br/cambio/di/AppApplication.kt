@@ -9,11 +9,11 @@ class AppApplication : SplitCompatApplication() {
         super.onCreate()
         startKoin {
             androidContext(this@AppApplication)
+            modules(persistenceModule)
             modules(domainModules)
             modules(dataModules)
             modules(presentationModules)
             modules(anotherModules)
-            modules(persistenceModule)
         }
     }
 }

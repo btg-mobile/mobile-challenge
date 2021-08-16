@@ -44,20 +44,20 @@ internal class MainViewModel(
     val successResultEvent: LiveData<Event<Double>>
         get() = _successResultEvent
 
-    fun getCurrency() {
+    fun getCurrency(network: Boolean) {
         if (currentList.isNullOrEmpty()) {
-            requestCurrency()
+            requestCurrency(network)
         } else {
             _successCurrencyEvent.triggerEvent(currentList)
         }
     }
 
-    private fun requestCurrency() {
+    private fun requestCurrency(network: Boolean) {
 
         viewModelScope.launch(dispatcher) {
 
             runCatching {
-                getCurrenciesUseCase()
+                getCurrenciesUseCase(network)
             }.onSuccess {
                 handlerCurrencySuccess(it)
             }.onFailure {
@@ -79,20 +79,20 @@ internal class MainViewModel(
         }
     }
 
-    fun getPrice() {
+    fun getPrice(network: Boolean) {
         if (priceList.isNullOrEmpty()) {
-            requestPrice()
+            requestPrice(network)
         } else {
             _successPriceEvent.triggerEvent(priceList)
         }
     }
 
-    private fun requestPrice() {
+    private fun requestPrice(network: Boolean) {
 
         viewModelScope.launch(dispatcher) {
 
             runCatching {
-                getPricesUseCase()
+                getPricesUseCase(network)
             }.onSuccess {
                 handlerPriceSuccess(it)
             }.onFailure {

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         setContentView(viewBinding.root)
         subscribeEvents()
-        viewModel.getCurrency()
+        viewModel.getCurrency(checkNetwork())
 
         viewBinding.EditTextMonetaryBrazil.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun subscribeEvents() {
         viewModel.successCurrencyEvent.subscribe(this) {
             currencies = this.data.sortedBy { it.nome }.toList()
-            viewModel.getPrice()
+            viewModel.getPrice(checkNetwork())
         }
 
         viewModel.successPriceEvent.subscribe(this) {
