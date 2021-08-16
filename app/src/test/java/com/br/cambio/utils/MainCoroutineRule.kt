@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.utils
+package com.br.cambio.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

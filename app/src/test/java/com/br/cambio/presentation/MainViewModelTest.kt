@@ -9,15 +9,14 @@ import com.br.cambio.presentation.viewmodel.MainViewModel
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
-import com.picpay.desafio.android.utils.MainCoroutineRule
-import com.picpay.desafio.android.utils.await
-import com.picpay.desafio.android.utils.verify
+import com.br.cambio.utils.MainCoroutineRule
+import com.br.cambio.utils.await
+import com.br.cambio.utils.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Rule
 import org.junit.Test
-import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
 class MainViewModelTest {
