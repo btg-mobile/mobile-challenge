@@ -1,13 +1,13 @@
-package com.picpay.desafio.android.data.mapper
+package com.br.cambio.data.mapper
 
-import com.picpay.desafio.android.data.model.User
-import com.picpay.desafio.android.domain.model.UserDomain
+import com.br.cambio.data.model.Currency
+import com.br.cambio.domain.model.CurrencyDomain
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class UserDomainMapperTest {
 
-    private val mapper: UserToDomainMapper = UserToDomainMapper()
+    private val mapper: CurrencyToDomainMapper = CurrencyToDomainMapper()
 
     @Test
     fun `when mapper should map to presentation`() {
@@ -19,20 +19,16 @@ class UserDomainMapperTest {
     }
 
     private fun mockResponse() =
-            User(
-                id = 12,
-                name = "teste",
-                username = "teste",
-                img = "teste"
-            )
+        Currency(
+            key = "BRL",
+            value = "Brazilian Real"
+        )
 
     private fun mockExpected() =
         listOf(
-            UserDomain(
-                id = 12,
-                name = "teste",
-                username = "teste",
-                img = "teste"
+            CurrencyDomain(
+                key = "BRL",
+                value = "Brazilian Real"
             )
         )
 }

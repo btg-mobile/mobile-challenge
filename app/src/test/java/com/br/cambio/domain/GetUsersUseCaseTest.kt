@@ -1,11 +1,11 @@
-package com.picpay.desafio.android.domain
+package com.br.cambio.domain
 
+import com.br.cambio.customviews.DialogSpinnerModel
+import com.br.cambio.domain.repository.CurrencyRepository
+import com.br.cambio.domain.usecase.GetCurrenciesUseCase
+import com.br.cambio.presentation.mapper.ExchangePresentation
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import com.picpay.desafio.android.domain.repository.PicPayRepository
-import com.picpay.desafio.android.domain.usecase.GetUsersUseCase
-import com.picpay.desafio.android.presentation.mapper.PicPayPresentation
-import com.picpay.desafio.android.presentation.model.UserPresentation
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
@@ -14,16 +14,16 @@ import kotlin.test.assertEquals
 @ExperimentalCoroutinesApi
 class GetUsersUseCaseTest {
 
-    private val repository: PicPayRepository = mock()
-    private val useCase: GetUsersUseCase = GetUsersUseCase(repository)
+    private val repository: CurrencyRepository = mock()
+    private val useCase: GetCurrenciesUseCase = GetCurrenciesUseCase(repository)
 
     @Test
     fun `when invoke should return list`() = runBlockingTest {
         // Given
-        whenever(repository.getUsers()).thenReturn(mockResponse())
+        whenever(repository.getCurrencies(false)).thenReturn(mockResponse())
 
         // When
-        val result = useCase.invoke()
+        val result = useCase.invoke(false)
 
         // Then
         assertEquals(result, mockResponse())
@@ -32,38 +32,36 @@ class GetUsersUseCaseTest {
     @Test
     fun `when invoke should return empty list`() = runBlockingTest {
         // Given
-        whenever(repository.getUsers()).thenReturn(mockEmptyResponse())
+        whenever(repository.getCurrencies(false)).thenReturn(mockEmptyResponse())
 
         // When
-        val result = useCase.invoke()
+        val result = useCase.invoke(false)
 
         // Then
-        assertEquals(result, PicPayPresentation.EmptyResponse)
+        assertEquals(result, ExchangePresentation.EmptyResponse)
     }
 
     @Test
     fun `when invoke should return throwable`() = runBlockingTest {
         // Given
-        whenever(repository.getUsers()).thenReturn(PicPayPresentation.ErrorResponse)
+        whenever(repository.getCurrencies(false)).thenReturn(ExchangePresentation.ErrorResponse)
 
         // When
-        val result = useCase.invoke()
+        val result = useCase.invoke(false)
 
         // Then
-        assertEquals(result, PicPayPresentation.ErrorResponse)
+        assertEquals(result, ExchangePresentation.ErrorResponse)
     }
 
     private fun mockResponse() =
-        PicPayPresentation.SuccessResponse(
+        ExchangePresentation.SuccessResponse(
             listOf(
-                UserPresentation(
-                    id = 12,
-                    name = "teste",
-                    username = "teste",
-                    img = "teste"
+                DialogSpinnerModel(
+                    codigo = "BRL",
+                    nome = "Brazilian Real"
                 )
             )
         )
 
-    private fun mockEmptyResponse() = PicPayPresentation.EmptyResponse
+    private fun mockEmptyResponse() = ExchangePresentation.EmptyResponse
 }

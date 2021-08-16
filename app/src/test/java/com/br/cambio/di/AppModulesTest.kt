@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.di
+package com.br.cambio.di
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.After
@@ -29,6 +29,7 @@ class AppModulesTest : KoinTest {
     fun `load should provide dependencies on Koin when is called`() {
         koinApplication {
             listOf(
+                persistenceModule,
                 domainModules,
                 presentationModules,
                 dataModules,
