@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Challenge Savio</string>
+    <string name="coin_conversion">Coin conversion</string>
+    <string name="is_equal_to">is equal to</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="select">Select...</string>
+    <string name="error_no_input">Please enter a value.</string>
+</resources>
