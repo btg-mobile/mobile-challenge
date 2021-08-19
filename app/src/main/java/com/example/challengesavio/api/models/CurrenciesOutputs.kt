@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import com.google.gson.annotations.Expose
 
-
-
-
 class CurrenciesOutputs(
     @SerializedName("currencies")
     @Expose

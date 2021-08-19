@@ -15,7 +15,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class CurrenciesViewModel constructor(private val repository: MainRepository)  : ViewModel() {
 
     val currenciesList = MutableLiveData<Map<String,String>>()

@@ -2,7 +2,6 @@ package com.example.roomdatabase.dao
 
 import androidx.room.*
 import com.example.challengesavio.data.entity.Currency
-import com.example.challengesavio.data.entity.Quote
 
 @Dao
 interface CurrencyDao {

@@ -2,10 +2,10 @@ package com.example.challengesavio
 
 import android.app.Application
 import androidx.room.Room
+import com.example.challengesavio.data.database.AppDatabase
 import com.example.challengesavio.di.networkModule
 import com.example.challengesavio.di.repository
 import com.example.challengesavio.di.viewModelModule
-import com.example.roomdatabase.database.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

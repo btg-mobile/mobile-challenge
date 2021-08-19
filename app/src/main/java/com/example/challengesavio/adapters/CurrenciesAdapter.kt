@@ -30,10 +30,6 @@ class CurrenciesAdapter(
         notifyDataSetChanged()
     }
 
-    fun getItemPosition(item : String) : Int {
-        return dataSource.indexOf(item)
-    }
-
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }

@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengesavio.adapters.CurrenciesListAdapter
-import com.example.challengesavio.api.repositories.MainRepository
-import com.example.challengesavio.api.services.RetrofitService
 import com.example.challengesavio.data.entity.Currency
 import com.example.challengesavio.databinding.ActivityListCurrenciesActivityBinding
 import com.example.challengesavio.utilities.CurrenciesListener
 import com.example.challengesavio.viewmodels.CurrenciesViewModel
-import com.example.challengesavio.viewmodels.MyViewModelFactory
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListCurrenciesActivity : AppCompatActivity() , CurrenciesListener {
