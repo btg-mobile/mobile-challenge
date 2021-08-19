@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Challenge Savio</string>
-    <string name="coin_conversion">Coin conversion</string>
+    <string name="coin_conversion">Currency conversion</string>
     <string name="is_equal_to">is equal to</string>
     <string name="to">To</string>
     <string name="from">From</string>
@@ -18,4 +18,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="search">Search</string>
+    <string name="load_error">Load Currencies Error</string>
+    <string name="load_error_quote">Load Quotes Error</string>
+    <string name="error_offline">Using offline data</string>
 </resources>

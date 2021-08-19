@@ -5,17 +5,24 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengesavio.adapters.CurrenciesListAdapter
+import com.example.challengesavio.api.repositories.MainRepository
+import com.example.challengesavio.api.services.RetrofitService
 import com.example.challengesavio.data.entity.Currency
 import com.example.challengesavio.databinding.ActivityListCurrenciesActivityBinding
+import com.example.challengesavio.utilities.CurrenciesListener
+import com.example.challengesavio.viewmodels.CurrenciesViewModel
+import com.example.challengesavio.viewmodels.MyViewModelFactory
 
-class ListCurrenciesActivity : AppCompatActivity() {
+class ListCurrenciesActivity : AppCompatActivity() , CurrenciesListener {
     private lateinit var currenciesAdapter: CurrenciesListAdapter
     private var currencyList = ArrayList<Currency>()
     private lateinit var mLayoutManager: LinearLayoutManager
     private lateinit var binding: ActivityListCurrenciesActivityBinding
+    private lateinit var currenciesViewModel : CurrenciesViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +31,19 @@ class ListCurrenciesActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.executePendingBindings()
 
-        initRecyclerView()
-        searchCurrencies()
+        currenciesViewModel = ViewModelProvider(this, MyViewModelFactory(
+            MainRepository(
+                RetrofitService.getInstance())
+        )
+        ).get(CurrenciesViewModel::class.java)
 
+        this.let {
+            currenciesViewModel.init(this,this)
+        }
+
+        initRecyclerView()
+        setupObservers()
+        searchCurrencies()
     }
 
     private fun searchCurrencies() {
@@ -45,11 +62,30 @@ class ListCurrenciesActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        currencyList= MyApplication.database?.currencyDao()?.getAllCurrencies() as ArrayList<Currency>
 
         mLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerView.layoutManager = mLayoutManager
         currenciesAdapter = CurrenciesListAdapter(currencyList)
         binding.recyclerView.adapter = currenciesAdapter
+    }
+
+    private fun setupObservers() {
+        currenciesViewModel.currenciesList.observe(this) {
+            if (it != null) {
+                it.forEach { (key, value) ->
+                    val currencies = Currency(null,key, value)
+                    currencyList.add(currencies)
+                }
+                currenciesAdapter.setCurrencies(currencyList)
+            }
+        }
+    }
+
+    override fun onCurrenciesError(message: String) {
+
+    }
+
+    override fun onQuotesError(message: String) {
+
     }
 }

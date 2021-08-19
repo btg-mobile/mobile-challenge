@@ -8,6 +8,8 @@ import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.challengesavio.adapters.CurrenciesAdapter
 import com.example.challengesavio.api.repositories.MainRepository
 import com.example.challengesavio.api.services.RetrofitService
@@ -19,13 +21,14 @@ import com.example.challengesavio.viewmodels.MyViewModelFactory
 
 class MainActivity : AppCompatActivity(), CurrenciesListener{
 
-    private var currenciesList : ArrayList<String>? = null
+    private var currenciesList : ArrayList<String>? = ArrayList()
     private var quotesList : HashMap<String,Double>? = null
     private lateinit var binding: ActivityMainBinding
     private var adapter: CurrenciesAdapter? = null
     private lateinit var spinnerOrigin : Spinner
     private lateinit var spinnerDestiny : Spinner
     private lateinit var progress : ProgressBar
+    private lateinit var currenciesViewModel : CurrenciesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,18 +41,22 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
         spinnerDestiny= binding.selectDestiny
         progress= binding.progressCircular
 
-        val viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(RetrofitService.getInstance()))).
+        currenciesViewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(RetrofitService.getInstance()))).
         get(CurrenciesViewModel::class.java)
 
-        viewModel.currenciesListener=this
-        viewModel.getAllCurrencies()
-        viewModel.getAllQuotes()
+        this.let {
+            currenciesViewModel.init(this,this)
+        }
+
+        initRecyclerView()
+        setupObservers()
 
         binding.convertButton.setOnClickListener {
             val origin = spinnerOrigin.selectedItem.toString()
             val destiny = spinnerDestiny.selectedItem.toString()
+            val userValue = binding.inputValue.text.toString()
 
-            if (origin != getString(R.string.select) && destiny != getString(R.string.select)){
+            if (origin != getString(R.string.select) && destiny != getString(R.string.select) && userValue != "" && userValue != "0.0"){
                 convertCurrency(origin, destiny)
             }else{
                 binding.errorMessage.text= getString(R.string.error_no_input)
@@ -62,37 +69,36 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
             startActivity(intent)
         }
 
-
-
-
-
-
     }
 
-    override fun onCurrenciesResult(currencies: Map<String, String>) {
-        progress.visibility= INVISIBLE
-        currenciesList= ArrayList()
-        currenciesList!!.add(getString(R.string.select))
-        for (item in currencies) {
-            currenciesList!!.add(item.key)
-            val currency = Currency(null,item.key, item.value)
-            MyApplication.database?.currencyDao()?.insertCurrencies(currency)
+    private fun setupObservers() {
+        currenciesViewModel.currenciesList.observe(this) {
+            if (it != null) {
+                progress.visibility= INVISIBLE
+                currenciesList?.add(getString(R.string.select))
+                for (item in it) {
+                    currenciesList!!.add(item.key)
+                }
+                adapter?.setCurrencies(currenciesList!!)
+            }
         }
+        currenciesViewModel.quotesList.observe(this) {
+            if (it != null) {
+                quotesList=it
+            }
+        }
+    }
+
+    private fun initRecyclerView() {
         adapter = CurrenciesAdapter(this, currenciesList!!)
         spinnerOrigin.adapter = adapter;
         spinnerDestiny.adapter = adapter;
-
-    }
-
-
-    override fun onQuotesResult(quotes: HashMap<String, Double>) {
-        quotesList= quotes
     }
 
     fun convertCurrency (origin : String, destiny: String){
 
         val junction = getString(R.string.usd)+destiny
-        var userValue = ""
+        var userValue: String
 
         if (origin==getString(R.string.usd)){
             userValue = binding.inputValue.text.toString()
@@ -131,6 +137,16 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
             result = userValue.toDouble()/quote!!
         }
         return result
+    }
+
+    override fun onCurrenciesError(message: String) {
+        progress.visibility= INVISIBLE
+        binding.errorMessage.text= message
+    }
+
+    override fun onQuotesError(message: String) {
+        progress.visibility= INVISIBLE
+        binding.errorMessage.text= message
     }
 
 }

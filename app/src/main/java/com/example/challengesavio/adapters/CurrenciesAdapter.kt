@@ -24,6 +24,12 @@ class CurrenciesAdapter(
         return dataSource.size
     }
 
+
+    fun setCurrencies(dataSource: ArrayList<String>){
+        this.dataSource= dataSource
+        notifyDataSetChanged()
+    }
+
     fun getItemPosition(item : String) : Int {
         return dataSource.indexOf(item)
     }

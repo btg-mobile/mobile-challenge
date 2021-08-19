@@ -4,6 +4,6 @@ import com.example.challengesavio.api.models.CurrenciesOutputs
 
 interface CurrenciesListener {
 
-    fun onCurrenciesResult(currencies: Map<String, String>)
-    fun onQuotesResult(quotes: HashMap<String, Double>)
+    fun onCurrenciesError(message: String)
+    fun onQuotesError(message: String)
 }

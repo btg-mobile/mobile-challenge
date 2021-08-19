@@ -26,6 +26,12 @@ List<Currency>): RecyclerView.Adapter<CurrenciesListAdapter.CurrenciesViewHolder
         return filterCurrencies.size
     }
 
+    fun setCurrencies(dataSource: List<Currency>){
+        this.currencies = dataSource
+        this.filterCurrencies = dataSource
+        notifyDataSetChanged()
+    }
+
     inner class CurrenciesViewHolder(val binding: ItemCurrencyBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
