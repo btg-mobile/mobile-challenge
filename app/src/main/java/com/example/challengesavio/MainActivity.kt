@@ -18,6 +18,7 @@ import com.example.challengesavio.databinding.ActivityMainBinding
 import com.example.challengesavio.utilities.CurrenciesListener
 import com.example.challengesavio.viewmodels.CurrenciesViewModel
 import com.example.challengesavio.viewmodels.MyViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), CurrenciesListener{
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
     private lateinit var spinnerOrigin : Spinner
     private lateinit var spinnerDestiny : Spinner
     private lateinit var progress : ProgressBar
-    private lateinit var currenciesViewModel : CurrenciesViewModel
+    private val currenciesViewModel : CurrenciesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +41,6 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
         spinnerOrigin= binding.selectOrigin
         spinnerDestiny= binding.selectDestiny
         progress= binding.progressCircular
-
-        currenciesViewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(RetrofitService.getInstance()))).
-        get(CurrenciesViewModel::class.java)
 
         this.let {
             currenciesViewModel.init(this,this)

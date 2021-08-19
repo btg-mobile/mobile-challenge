@@ -31,7 +31,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
         viewBinding = true
     }
@@ -69,9 +69,15 @@ dependencies {
 
     //region RoomDataBase
     implementation "androidx.room:room-runtime:2.3.0"
-    kapt  "androidx.room:room-compiler:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
 
 
+// Koin for Android
+    implementation "org.koin:koin-android:2.1.5"
+// Koin Android Scope feature
+    implementation "org.koin:koin-android-scope:2.1.5"
+// Koin Android ViewModel feature
+    implementation "org.koin:koin-android-viewmodel:2.1.5"
 
 
 }

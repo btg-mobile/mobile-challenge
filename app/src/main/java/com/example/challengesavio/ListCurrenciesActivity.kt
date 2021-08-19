@@ -16,13 +16,14 @@ import com.example.challengesavio.databinding.ActivityListCurrenciesActivityBind
 import com.example.challengesavio.utilities.CurrenciesListener
 import com.example.challengesavio.viewmodels.CurrenciesViewModel
 import com.example.challengesavio.viewmodels.MyViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListCurrenciesActivity : AppCompatActivity() , CurrenciesListener {
     private lateinit var currenciesAdapter: CurrenciesListAdapter
     private var currencyList = ArrayList<Currency>()
     private lateinit var mLayoutManager: LinearLayoutManager
     private lateinit var binding: ActivityListCurrenciesActivityBinding
-    private lateinit var currenciesViewModel : CurrenciesViewModel
+    private val currenciesViewModel : CurrenciesViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,12 +31,6 @@ class ListCurrenciesActivity : AppCompatActivity() , CurrenciesListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_currencies_activity)
         binding.lifecycleOwner = this
         binding.executePendingBindings()
-
-        currenciesViewModel = ViewModelProvider(this, MyViewModelFactory(
-            MainRepository(
-                RetrofitService.getInstance())
-        )
-        ).get(CurrenciesViewModel::class.java)
 
         this.let {
             currenciesViewModel.init(this,this)
