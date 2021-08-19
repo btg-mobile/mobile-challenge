@@ -1,10 +1,8 @@
 package com.example.challengesavio
 
-import android.opengl.Visibility
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.View.*
 import android.widget.ProgressBar
 import android.widget.Spinner
@@ -13,14 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.challengesavio.adapters.CurrenciesAdapter
 import com.example.challengesavio.api.repositories.MainRepository
 import com.example.challengesavio.api.services.RetrofitService
+import com.example.challengesavio.data.entity.Currency
 import com.example.challengesavio.databinding.ActivityMainBinding
 import com.example.challengesavio.utilities.CurrenciesListener
 import com.example.challengesavio.viewmodels.CurrenciesViewModel
 import com.example.challengesavio.viewmodels.MyViewModelFactory
-import android.widget.AdapterView
-
-
-
 
 class MainActivity : AppCompatActivity(), CurrenciesListener{
 
@@ -50,6 +45,28 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
         viewModel.getAllCurrencies()
         viewModel.getAllQuotes()
 
+        binding.convertButton.setOnClickListener {
+            val origin = spinnerOrigin.selectedItem.toString()
+            val destiny = spinnerDestiny.selectedItem.toString()
+
+            if (origin != getString(R.string.select) && destiny != getString(R.string.select)){
+                convertCurrency(origin, destiny)
+            }else{
+                binding.errorMessage.text= getString(R.string.error_no_input)
+            }
+        }
+
+        binding.listCurrencies.setOnClickListener {
+
+            val intent = Intent(this, ListCurrenciesActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+
+
+
     }
 
     override fun onCurrenciesResult(currencies: Map<String, String>) {
@@ -58,54 +75,62 @@ class MainActivity : AppCompatActivity(), CurrenciesListener{
         currenciesList!!.add(getString(R.string.select))
         for (item in currencies) {
             currenciesList!!.add(item.key)
+            val currency = Currency(null,item.key, item.value)
+            MyApplication.database?.currencyDao()?.insertCurrencies(currency)
         }
         adapter = CurrenciesAdapter(this, currenciesList!!)
         spinnerOrigin.adapter = adapter;
         spinnerDestiny.adapter = adapter;
 
-        spinnerDestiny.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position).toString()
-
-                if(selectedItem != getString(R.string.select)){
-                    convertCurrency(spinnerOrigin.selectedItem.toString(), selectedItem)
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
     }
+
 
     override fun onQuotesResult(quotes: HashMap<String, Double>) {
         quotesList= quotes
-        quotesList!!.forEach { (key, value) -> Log.d("Quotes", "$key = $value") }
     }
 
     fun convertCurrency (origin : String, destiny: String){
 
-        var junction = origin+destiny
+        val junction = getString(R.string.usd)+destiny
+        var userValue = ""
 
-        if (origin=="USD"){
-            junction = origin+destiny
-
+        if (origin==getString(R.string.usd)){
+            userValue = binding.inputValue.text.toString()
+            binding.displayOriginValue.text= """$userValue $origin"""
         }else{
-
-
+            binding.displayOriginValue.text= """${binding.inputValue.text} $origin"""
+            userValue= getValueInUSD(origin).toString()
         }
 
-        val quote = quotesList?.getValue(junction)
-        val userValue = binding.inputValue.text.toString()
-        var result: String
+        val quote :Double = quotesList?.getValue(junction)!!
 
-        if(userValue != ""){
-            result = (userValue.toDouble()*quote!!).toString()
-            binding.displayOriginValue.text= "$userValue $origin"
+        val result: String
+
+        if(userValue != "" && userValue != "0.0" ){
+            binding.containerResult.visibility= VISIBLE
+            binding.errorMessage.text=""
+            result = (userValue.toDouble()*quote).toString()
+
             binding.displayComplement.visibility= VISIBLE
             binding.displayResultValue.text= "$result $destiny"
+
         }else{
+            binding.containerResult.visibility= GONE
             binding.errorMessage.text= getString(R.string.error_no_input)
         }
 
+    }
+
+    private fun getValueInUSD(origin: String) : Double{
+
+        var result =0.0
+        val quote = quotesList?.getValue(getString(R.string.usd)+origin)
+        val userValue = binding.inputValue.text.toString()
+
+        if(userValue != ""){
+            result = userValue.toDouble()/quote!!
+        }
+        return result
     }
 
 }

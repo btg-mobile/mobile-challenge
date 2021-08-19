@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.challengesavio.R
-import com.example.challengesavio.api.models.Currency
 
 class CurrenciesAdapter(
     context: Context,

@@ -5,5 +5,17 @@
     <string name="to">To</string>
     <string name="from">From</string>
     <string name="select">Select...</string>
-    <string name="error_no_input">Please enter a value.</string>
+    <string name="error_no_input">Please select or enter a value.</string>
+    <string name="usd">USD</string>
+    <string name="convert">Convert</string>
+    <string name="list_currencies">List All Currencies</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="search">Search</string>
 </resources>

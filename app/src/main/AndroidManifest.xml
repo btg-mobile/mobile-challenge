@@ -10,7 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".MyApplication"
         android:theme="@style/Theme.ChallengeSavio">
+        <activity
+            android:name=".ListCurrenciesActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

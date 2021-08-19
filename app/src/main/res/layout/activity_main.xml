@@ -168,24 +168,40 @@
                     app:layout_constraintTop_toBottomOf="@+id/title"
                     tools:text="5 BRL" />
 
-                <TextView
-                    android:id="@+id/error_message"
-                    android:textColor="@color/red"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title"
-                    tools:text="Erro!" />
-            </LinearLayout>
 
+            </LinearLayout>
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/convert_button"
+            android:text="@string/convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/container_result"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <Button
+            android:id="@+id/list_currencies"
+            android:text="@string/list_currencies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/convert_button"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_currencies"
+            tools:text="Erro!" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
