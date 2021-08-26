@@ -6,4 +6,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Money Exchange"
-include ':app'
+include(":app")
