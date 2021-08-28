@@ -5,11 +5,11 @@ import java.lang.Exception
 class Exchange(
     private val amount: Double,
     private val originCurrency: String,
-    private val newCurrency: String,
+    private val targetCurrency: String,
     private val quotes: Map<String, Double>) {
 
     fun getExchanged(): Double {
-        if (originCurrency == USD || newCurrency == USD) {
+        if (originCurrency == USD || targetCurrency == USD) {
             return exchangeWithUSD(amount)
         }
 
@@ -40,7 +40,7 @@ class Exchange(
     }
 
     private fun exchangeFromUSD(amount: Double): Double {
-        val key = USD + newCurrency
+        val key = USD + targetCurrency
 
         if (quotes.containsKey(key)) {
             val quote = quotes[key]
