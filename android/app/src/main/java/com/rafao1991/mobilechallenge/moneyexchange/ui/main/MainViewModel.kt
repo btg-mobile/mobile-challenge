@@ -119,12 +119,4 @@ class MainViewModel : ViewModel() {
                 _currencyLiveQuotes.value?.quotes!!).getExchanged()
         }
     }
-
-    fun sort(asc: Boolean): SortedMap<String, String>? {
-        return if (asc) {
-            _currencyList.value?.currencies?.toSortedMap()
-        } else {
-            _currencyList.value?.currencies?.toSortedMap(reverseOrder())
-        }
-    }
 }
