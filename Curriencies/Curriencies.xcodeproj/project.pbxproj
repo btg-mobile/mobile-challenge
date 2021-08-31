@@ -14,6 +14,10 @@
 		7B954A9426DED195002C7133 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B954A9226DED195002C7133 /* LaunchScreen.storyboard */; };
 		7B954A9F26DED196002C7133 /* CurrienciesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954A9E26DED196002C7133 /* CurrienciesTests.swift */; };
 		7B954AAA26DED196002C7133 /* CurrienciesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AA926DED196002C7133 /* CurrienciesUITests.swift */; };
+		7B954AD326DED546002C7133 /* CurrencyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AD226DED546002C7133 /* CurrencyHomeViewController.swift */; };
+		7B954ADB26DED55C002C7133 /* CurrencyHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954ADA26DED55C002C7133 /* CurrencyHomeScreen.swift */; };
+		7B954AE126DED5D3002C7133 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */; };
+		7B954AE926DED68C002C7133 /* View+ConstraintsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		7B954AA526DED196002C7133 /* CurrienciesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrienciesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B954AA926DED196002C7133 /* CurrienciesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrienciesUITests.swift; sourceTree = "<group>"; };
 		7B954AAB26DED196002C7133 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B954AD226DED546002C7133 /* CurrencyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeViewController.swift; sourceTree = "<group>"; };
+		7B954ADA26DED55C002C7133 /* CurrencyHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeScreen.swift; sourceTree = "<group>"; };
+		7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
+		7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConstraintsWrapper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 		7B954A8326DED18C002C7133 /* Curriencies */ = {
 			isa = PBXGroup;
 			children = (
+				7B954ADF26DED5B0002C7133 /* UI */,
 				7B954AC026DED240002C7133 /* Scenes */,
 				7B954A8426DED18C002C7133 /* AppDelegate.swift */,
 				7B954A8626DED18C002C7133 /* SceneDelegate.swift */,
@@ -208,6 +217,8 @@
 		7B954AC926DED324002C7133 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B954AD226DED546002C7133 /* CurrencyHomeViewController.swift */,
+				7B954ADA26DED55C002C7133 /* CurrencyHomeScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,6 +270,15 @@
 			children = (
 			);
 			path = LocalData;
+			sourceTree = "<group>";
+		};
+		7B954ADF26DED5B0002C7133 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */,
+				7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,9 +410,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B954AD326DED546002C7133 /* CurrencyHomeViewController.swift in Sources */,
 				7B954A8F26DED18C002C7133 /* Curriencies.xcdatamodeld in Sources */,
 				7B954A8526DED18C002C7133 /* AppDelegate.swift in Sources */,
+				7B954AE126DED5D3002C7133 /* ViewConfiguration.swift in Sources */,
 				7B954A8726DED18C002C7133 /* SceneDelegate.swift in Sources */,
+				7B954ADB26DED55C002C7133 /* CurrencyHomeScreen.swift in Sources */,
+				7B954AE926DED68C002C7133 /* View+ConstraintsWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
