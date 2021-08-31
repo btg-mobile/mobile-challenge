@@ -97,6 +97,7 @@
 		7B954A8326DED18C002C7133 /* Curriencies */ = {
 			isa = PBXGroup;
 			children = (
+				7B954AC026DED240002C7133 /* Scenes */,
 				7B954A8426DED18C002C7133 /* AppDelegate.swift */,
 				7B954A8626DED18C002C7133 /* SceneDelegate.swift */,
 				7B954A9026DED195002C7133 /* Assets.xcassets */,
@@ -123,6 +124,141 @@
 				7B954AAB26DED196002C7133 /* Info.plist */,
 			);
 			path = CurrienciesUITests;
+			sourceTree = "<group>";
+		};
+		7B954AC026DED240002C7133 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7B954AC226DED25B002C7133 /* CurrencyHome */,
+				7B954AC126DED248002C7133 /* CurrencyList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7B954AC126DED248002C7133 /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				7B954AC826DED2FA002C7133 /* Data */,
+				7B954AC726DED2F4002C7133 /* Presentation */,
+				7B954AC626DED2EC002C7133 /* Domain */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		7B954AC226DED25B002C7133 /* CurrencyHome */ = {
+			isa = PBXGroup;
+			children = (
+				7B954AC526DED2E7002C7133 /* Data */,
+				7B954AC426DED2D6002C7133 /* Presentation */,
+				7B954AC326DED2CA002C7133 /* Domain */,
+			);
+			path = CurrencyHome;
+			sourceTree = "<group>";
+		};
+		7B954AC326DED2CA002C7133 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				7B954ACE26DED388002C7133 /* UseCases */,
+				7B954ACD26DED37F002C7133 /* Interfaces */,
+				7B954ACC26DED374002C7133 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		7B954AC426DED2D6002C7133 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				7B954ACB26DED348002C7133 /* ViewModel */,
+				7B954AC926DED324002C7133 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		7B954AC526DED2E7002C7133 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7B954AD126DED4DF002C7133 /* LocalData */,
+				7B954AD026DED4CC002C7133 /* Repository */,
+				7B954ACF26DED3C3002C7133 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7B954AC626DED2EC002C7133 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		7B954AC726DED2F4002C7133 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		7B954AC826DED2FA002C7133 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7B954AC926DED324002C7133 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B954ACB26DED348002C7133 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B954ACC26DED374002C7133 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7B954ACD26DED37F002C7133 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		7B954ACE26DED388002C7133 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		7B954ACF26DED3C3002C7133 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7B954AD026DED4CC002C7133 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		7B954AD126DED4DF002C7133 /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
