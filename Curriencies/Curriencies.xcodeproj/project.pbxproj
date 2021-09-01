@@ -18,6 +18,7 @@
 		7B954ADB26DED55C002C7133 /* CurrencyHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954ADA26DED55C002C7133 /* CurrencyHomeScreen.swift */; };
 		7B954AE126DED5D3002C7133 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */; };
 		7B954AE926DED68C002C7133 /* View+ConstraintsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */; };
+		7B954AEE26DF0FA5002C7133 /* View+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AED26DF0FA5002C7133 /* View+AddSubviews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		7B954ADA26DED55C002C7133 /* CurrencyHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeScreen.swift; sourceTree = "<group>"; };
 		7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConstraintsWrapper.swift"; sourceTree = "<group>"; };
+		7B954AED26DF0FA5002C7133 /* View+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AddSubviews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 			children = (
 				7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */,
 				7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */,
+				7B954AED26DF0FA5002C7133 /* View+AddSubviews.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B954AEE26DF0FA5002C7133 /* View+AddSubviews.swift in Sources */,
 				7B954AD326DED546002C7133 /* CurrencyHomeViewController.swift in Sources */,
 				7B954A8F26DED18C002C7133 /* Curriencies.xcdatamodeld in Sources */,
 				7B954A8526DED18C002C7133 /* AppDelegate.swift in Sources */,
