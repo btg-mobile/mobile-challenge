@@ -9,7 +9,7 @@ import UIKit
 
 enum CurrencyHomeFactory {
     static func make() -> UIViewController {
-        let localData: LocalCurrencyProtocol = LocalCurrency()
+        let localData: LocalCurrencyProtocol = LocalDataCurrency()
         let apiData: APICurrencyProtocol = APICurrency()
         let repository: CurrencyRepositoryProtocol = CurrencyRepository(apiCurrency: apiData,
                                                                         localCurrency: localData)

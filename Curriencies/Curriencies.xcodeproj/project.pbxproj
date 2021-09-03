@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B38B5CD26E2AC8500BCFC77 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */; };
 		7B38B5D226E2B0A100BCFC77 /* CurrencyHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */; };
+		7B38B5D926E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */; };
+		7B38B5DA26E2B6AA00BCFC77 /* LocalCurrency+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D826E2B6AA00BCFC77 /* LocalCurrency+CoreDataProperties.swift */; };
 		7B954A8526DED18C002C7133 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954A8426DED18C002C7133 /* AppDelegate.swift */; };
 		7B954A8726DED18C002C7133 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954A8626DED18C002C7133 /* SceneDelegate.swift */; };
 		7B954A8F26DED18C002C7133 /* Curriencies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B954A8D26DED18C002C7133 /* Curriencies.xcdatamodeld */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeFactory.swift; sourceTree = "<group>"; };
+		7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCurrency+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7B38B5D826E2B6AA00BCFC77 /* LocalCurrency+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCurrency+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7B954A8126DED18C002C7133 /* Curriencies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Curriencies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B954A8426DED18C002C7133 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B954A8626DED18C002C7133 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B38B5D626E2B68300BCFC77 /* LocalModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */,
+				7B38B5D826E2B6AA00BCFC77 /* LocalCurrency+CoreDataProperties.swift */,
+			);
+			path = LocalModel;
+			sourceTree = "<group>";
+		};
 		7B954A7826DED18C002C7133 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +234,7 @@
 		7B954AC526DED2E7002C7133 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7B38B5D626E2B68300BCFC77 /* LocalModel */,
 				7BF3C8CB26E29A920029F460 /* Response */,
 				7BF3C8BC26E292440029F460 /* CurrencyRepository.swift */,
 				7BF3C8C126E298B30029F460 /* APICurrency.swift */,
@@ -455,6 +469,7 @@
 				7BF3C8CD26E29AC40029F460 /* CurrencyListResponse.swift in Sources */,
 				7BF3C87F26E1BE5B0029F460 /* API.swift in Sources */,
 				7BF3C87926E1BBEF0029F460 /* CurrencyType.swift in Sources */,
+				7B38B5D926E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift in Sources */,
 				7BF3C8D526E29AD30029F460 /* CurrencyLiveResponse.swift in Sources */,
 				7BF3C8C726E298BF0029F460 /* LocalCurrency.swift in Sources */,
 				7B954AEE26DF0FA5002C7133 /* View+AddSubviews.swift in Sources */,
@@ -468,6 +483,7 @@
 				7BF3C8B526E2913A0029F460 /* CurrencyRepositoryInterface.swift in Sources */,
 				7B954ADB26DED55C002C7133 /* CurrencyHomeScreen.swift in Sources */,
 				7BF3C8AA26E28E560029F460 /* CurrencyEntity.swift in Sources */,
+				7B38B5DA26E2B6AA00BCFC77 /* LocalCurrency+CoreDataProperties.swift in Sources */,
 				7BF3C87426E1BA7C0029F460 /* CurrencyViewModel.swift in Sources */,
 				7B954AE926DED68C002C7133 /* View+ConstraintsWrapper.swift in Sources */,
 				7BF3C8BD26E292440029F460 /* CurrencyRepository.swift in Sources */,
