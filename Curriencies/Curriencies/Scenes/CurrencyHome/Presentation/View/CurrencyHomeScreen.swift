@@ -10,38 +10,74 @@ import UIKit
 fileprivate enum Layout {
     static let containerHeight = UIScreen.main.bounds.height/3
     static let textsWidth = UIScreen.main.bounds.width/3 * 2 - 20
-    static let itensHeight = containerHeight/2 - 10
     static let buttonsWidth = UIScreen.main.bounds.width/3 - 10
+    static let itensHeight = containerHeight/2 - 10
 }
 
 final class CurrencyHomeScreen: UIView {
     
+    let defaultOriginButtonTitle: String = "USD"
+    let defaultOriginTextFieldPlaceholder: String = "1.00"
+    let defaultDestinationButtonTitle: String = "BRL"
+    weak var buttonActions: HomeActionsProtocol?
+    
     private lazy var originCurrencyButton: UIButton = {
         let button = UIButton()
+        button.setTitle(defaultOriginButtonTitle, for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.blue.cgColor
+        button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(originButtonAction),
+                         for: .touchUpInside)
         
         return button
     }()
     
     private lazy var originCurrencyTextField: UITextField = {
         let textField = UITextField()
+        textField.placeholder = defaultOriginTextFieldPlaceholder
+        textField.textAlignment = .center
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+        textField.layer.cornerRadius = 5
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
     private lazy var destinationCurrencyButton: UIButton = {
         let button = UIButton()
+        button.setTitle(defaultDestinationButtonTitle, for: .normal)
+        button.setTitleColor(.orange, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.orange.cgColor
+        button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(destinationButtonAction),
+                         for: .touchUpInside)
         
         return button
     }()
     
     private lazy var destinationCurrencyLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.borderColor = UIColor.darkGray.cgColor
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 5
+        label.textAlignment = .center
         
         return label
     }()
     
     private lazy var containerView: UIView = {
         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         
         return view
     }()
@@ -75,13 +111,13 @@ extension CurrencyHomeScreen: ViewConfiguration {
             .make(.height, equalTo: Layout.containerHeight)
         
         originCurrencyTextField
-            .make(.leading, equalTo: self, constant: -10)
+            .make(.leading, equalTo: self, constant: 10)
             .make(.top, equalTo: containerView)
             .make(.width, equalTo: Layout.textsWidth)
             .make(.height, equalTo: Layout.itensHeight)
         
         originCurrencyButton
-            .make(.leading, equalTo: originCurrencyTextField, attribute: .trailing, constant: -10)
+            .make(.leading, equalTo: originCurrencyTextField, attribute: .trailing, constant: 10)
             .make([.top, .height], equalTo: originCurrencyTextField)
             .make(.width, equalTo: Layout.buttonsWidth)
         
@@ -92,5 +128,19 @@ extension CurrencyHomeScreen: ViewConfiguration {
         destinationCurrencyButton
             .make([.leading, .width, .height], equalTo: originCurrencyButton)
             .make(.bottom, equalTo: destinationCurrencyLabel)
+    }
+    
+    func additionalConfigs() {
+        backgroundColor = .white
+    }
+}
+
+@objc private extension CurrencyHomeScreen {
+    func originButtonAction() {
+        buttonActions?.tapOriginButton()
+    }
+    
+    func destinationButtonAction() {
+        buttonActions?.tapDestinationButton()
     }
 }

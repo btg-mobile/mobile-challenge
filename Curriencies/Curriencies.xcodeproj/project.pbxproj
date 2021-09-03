@@ -19,6 +19,7 @@
 		7B954AE126DED5D3002C7133 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */; };
 		7B954AE926DED68C002C7133 /* View+ConstraintsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */; };
 		7B954AEE26DF0FA5002C7133 /* View+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B954AED26DF0FA5002C7133 /* View+AddSubviews.swift */; };
+		7BF3C86F26E1AD1B0029F460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF3C86E26E1AD1B0029F460 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		7B954AE026DED5D3002C7133 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		7B954AE826DED68C002C7133 /* View+ConstraintsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConstraintsWrapper.swift"; sourceTree = "<group>"; };
 		7B954AED26DF0FA5002C7133 /* View+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AddSubviews.swift"; sourceTree = "<group>"; };
+		7BF3C86E26E1AD1B0029F460 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				7B954A9226DED195002C7133 /* LaunchScreen.storyboard */,
 				7B954A9526DED195002C7133 /* Info.plist */,
 				7B954A8D26DED18C002C7133 /* Curriencies.xcdatamodeld */,
+				7BF3C86E26E1AD1B0029F460 /* Main.storyboard */,
 			);
 			path = Curriencies;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF3C86F26E1AD1B0029F460 /* Main.storyboard in Resources */,
 				7B954A9426DED195002C7133 /* LaunchScreen.storyboard in Resources */,
 				7B954A9126DED195002C7133 /* Assets.xcassets in Resources */,
 			);
