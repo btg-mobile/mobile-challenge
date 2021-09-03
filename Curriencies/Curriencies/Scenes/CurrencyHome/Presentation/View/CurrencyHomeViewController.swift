@@ -14,16 +14,31 @@ protocol HomeActionsProtocol: AnyObject {
 
 final class CurrencyHomeViewController: UIViewController {
     
+    let viewModel: CurrencyViewModeling
+    
     private lazy var screen: CurrencyHomeScreen = {
         let screen = CurrencyHomeScreen()
         screen.buttonActions = self
         
         return screen
     }()
-
+    
+    init(viewModel: CurrencyViewModeling) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.getCurrencies {
+            print("a")
+        }
     }
     
     override func loadView() {
