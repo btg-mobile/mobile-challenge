@@ -1,14 +1,14 @@
 //
-//  coinexchangerTests.swift
-//  coinexchangerTests
+//  CoinExchangerTests.swift
+//  CoinExchangerTests
 //
 //  Created by Junior on 02/09/21.
 //
 
 import XCTest
-@testable import coinexchanger
+@testable import CoinExchanger
 
-class coinexchangerTests: XCTestCase {
+class CoinExchangerTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
