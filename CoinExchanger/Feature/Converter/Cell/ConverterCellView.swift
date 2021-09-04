@@ -2,7 +2,7 @@
 //  ConverterCellView.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
@@ -28,8 +28,9 @@ class ConverterCellView: UIView {
     let button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("$", for: .normal)
-        button.setTitleColor(Asset.Colors.text.color, for: .normal)
+        button.tintColor = Asset.Colors.secondary.color
         button.titleLabel?.font = UIFont(name: "Moderat-Thin", size: 20)
+        button.widthAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         return button
     }()
     

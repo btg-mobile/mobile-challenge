@@ -2,7 +2,7 @@
 //  GenericDelegate.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit

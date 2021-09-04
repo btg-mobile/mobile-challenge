@@ -2,7 +2,7 @@
 //  VisualInputSearch.swift
 //  CoinExchanger
 //
-//  Created by Junior on 18/08/21.
+//  Created by Edson Rottava on 18/08/21.
 //
 
 import UIKit

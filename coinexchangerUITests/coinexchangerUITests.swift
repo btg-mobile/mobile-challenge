@@ -2,7 +2,7 @@
 //  CoinExchangerUITests.swift
 //  CoinExchangerUITests
 //
-//  Created by Junior on 02/09/21.
+//  Created by Edson Rottava on 02/09/21.
 //
 
 import XCTest

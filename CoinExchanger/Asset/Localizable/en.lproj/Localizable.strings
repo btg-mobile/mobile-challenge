@@ -11,11 +11,14 @@
 
 // MARK: ERROR
 "system.error.connection" = "Não foi possível concluir operação";
+"system.error.storage" = "Não foi possível ler os dados";
 
 // MARK: PERMISSION
 "system.error.permission.gallery" = "Não foi possível acessar a galera, forneça a permissão para o aplicativo e tente novamente";
 
 // MARK: CONVERTER
+"coin.converter.date" = "Cotação:";
+"coin.converter.dateHint" = "Botão para atualizar os dados";
 "coin.converter.hint" = "Valor";
 "coin.converter.originCoin" = "$$$";
 "coin.converter.originCoinHint" = "Botão para escolher a moeda de origem";

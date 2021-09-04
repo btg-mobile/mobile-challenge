@@ -2,7 +2,7 @@
 //  ConverterView.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
@@ -50,7 +50,7 @@ class ConverterView: UIView {
     
     let originConverter: ConverterCellView = {
         let view = ConverterCellView(L10n.Coin.Converter.originLabel,
-                                     L10n.Coin.Converter.originCoin,
+                                     userPrefs.origin,
                                      L10n.Coin.Converter.hint)
         view.button.accessibilityHint = L10n.Coin.Converter.originCoinHint
         view.inputField.accessibilityHint = L10n.Coin.Converter.originFieldHint
@@ -60,14 +60,26 @@ class ConverterView: UIView {
     
     let targetConverter: ConverterCellView = {
         let view = ConverterCellView(L10n.Coin.Converter.targetLabel,
-                                     L10n.Coin.Converter.targetCoin,
+                                     userPrefs.target,
                                      L10n.Coin.Converter.hint)
         view.button.accessibilityHint = L10n.Coin.Converter.targetCoinHint
         view.inputField.accessibilityHint = L10n.Coin.Converter.targetFieldHint
         view.inputField.isUserInteractionEnabled = false
-        view.inputField.backgroundView.layer.borderColor = view.inputField.backgroundView.backgroundColor?.cgColor
+        view.inputField.backgroundView.layer.borderColor = UIColor.clear.cgColor
         view.tag = 2
         return view
+    }()
+    
+    let footer: UIButton = {
+        let button = UIButton(type: .system)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 8)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
+        button.setTitle(L10n.Coin.Converter.date + " " + userPrefs.date, for: .normal)
+        button.tag = 4
+        button.tintColor = Asset.Colors.gray.color
+        button.titleLabel?.font = UIFont(name: "Moderat-Regular", size: 12)
+        return button
     }()
     
     let emptyView: UIView = {
@@ -108,7 +120,7 @@ class ConverterView: UIView {
 private extension ConverterView {
     // MARK: Setup
     func setup() {
-        backgroundColor = Asset.Colors.background.color.withAlphaComponent(1)
+        backgroundColor = Asset.Colors.background.color
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
         addGestureRecognizer(tap)
@@ -142,7 +154,12 @@ private extension ConverterView {
                                                      constant: -Constants.space)
         bs?.isActive = true
         
+        addSubview(footer)
+        footer.centerX(equalTo: self)
+        footer.bottom(equalTo: self, constant: -Constants.space, safeArea: true)
+        
         button.addTarget(self, action: #selector(didTouch(_:)), for: .touchUpInside)
+        footer.addTarget(self, action: #selector(didTouch(_:)), for: .touchUpInside)
     }
     
     @objc

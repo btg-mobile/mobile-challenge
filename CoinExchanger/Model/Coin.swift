@@ -2,47 +2,33 @@
 //  Coin.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import Foundation
 
 class Coin: Codable {
-    var cod: String?
+    var code: String?
     var name: String?
     var quote: Double?
     
-    init(_ cod: String? = nil,
+    init(_ code: String? = nil,
          _ name: String? = nil,
          _ quote: Double? = nil) {
-        self.cod = cod
+        self.code = code
         self.name = name
         self.quote = quote
     }
     
-    enum CodingKeys: String, CodingKey {
-        case cod = "codigo"
-        case name = "nome"
-        case quote = "cotacao"
-    }
-}
-
-// MARK: getResponse List
-class GetCoinList: GetResponse {
-    var items: [Coin]?
-    
-    init(_ items: [Coin]?, _ success: Bool?) {
-        super.init(success)
-        self.items = items
-    }
-    
-    required init(from decoder: Decoder) throws {
-        try super.init(from: decoder)
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        items = try container.decode([Coin].self, forKey: .items)
+    init(_ item: Dictionary<String, String>.Element?) {
+        self.code = item?.key
+        self.name = item?.value
+        self.quote = 1
     }
     
     enum CodingKeys: String, CodingKey {
-        case items = "currencies"
+        case code = "code"
+        case name = "name"
+        case quote = "quote"
     }
 }

@@ -1,9 +1,8 @@
 //
 //  UINavigationControlerExtension.swift
-//  CAOA
+//  CoinExchanger
 //
 //  Created by Edson Rottava on 22/07/20.
-//  Copyright © 2020 Brave. All rights reserved.
 //
 
 import UIKit

@@ -2,50 +2,56 @@
 //  CoinListModel.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
 
 class CoinListModel: UIControl {
-    var data: [Coin] = Storage.retrieve(Constants.coinFile, from: .caches, as: [Coin].self) ?? []
+    var data: Currencies = Storage.retrieve(Constants.coinFile, from: .caches, as: GetCoinsResponse.self)?.currencies
+        ?? [:]
     var items: [Coin] = []
     var ord = 0 { didSet { ordenateItems() } } // 0 = name, 1 = id
     var search: String = "" { didSet { startTimer() } }
     var timer: Timer?
     
-    var fetchCompletion: () -> Void = {}
     var reloadData: () -> Void = {}
     
     func fetchData() { Repository.getCoins(completion: fetchDataCompletion) }
 }
 
 private extension CoinListModel {
-    func fetchDataCompletion(_ response: GetCoinList?, _ error: Error?) {
+    func fetchDataCompletion(_ response: GetCoinsResponse?, _ error: Error?) {
         if (response?.success ?? false || DEBUG) {
-            items = response?.items ?? items
-            Storage.store(items, to: .caches, as: Constants.coinFile)
+            if let data = response {
+                self.data = data.currencies ?? self.data
+                Storage.store(data, to: .caches, as: Constants.coinFile)
+                generateItems()
+                ordenateItems()
+            } else {
+                Toast.show(message: L10n.System.Error.storage)
+            }
         } else {
             Toast.show(message: L10n.System.Error.connection)
         }
         
-        fetchCompletion()
+        reloadData()
     }
     
     func filter(by text: String?) {
-        var n: [Coin] = []
+        var coins: [Coin] = []
         let t = Sanityze.normalize(text)
         
-        items = data
-        
         if !t.isEmpty {
-            for item in items {
-                let a = Sanityze.normalize(item.name)
-                let q = Sanityze.normalize(item.cod)
-                if (a.contains(t)) || q.contains(t) { n.append(item) }
+            for coin in data {
+                let key = Sanityze.normalize(coin.key)
+                let value = Sanityze.normalize(coin.value)
+                if (key.contains(t)) || value.contains(t) { coins.append(Coin(coin)) }
             }
             
-            items = n
+            items = coins
+        } else {
+            generateItems()
         }
         
         ordenateItems()
@@ -53,9 +59,14 @@ private extension CoinListModel {
         reloadData()
     }
     
-    func setItems() {
-        items = data
-        ordenateItems()
+    func generateItems() {
+        var n: [Coin] = []
+        
+        for d in data {
+            n.append(Coin(d))
+        }
+        
+        items = n
     }
     
     func ordenateItems() {
@@ -63,7 +74,7 @@ private extension CoinListModel {
         case 0:
             items.sort(by: { $0.name ?? "" < $1.name ?? "" })
         case 1:
-            items.sort(by: { $0.cod ?? "" < $1.cod ?? "" })
+            items.sort(by: { $0.code ?? "" < $1.code ?? "" })
         default:
             break
         }
