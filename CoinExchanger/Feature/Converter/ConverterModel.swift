@@ -31,11 +31,6 @@ class ConverterModel: UIControl {
     func appraise(_ value: Double, from origin: String, to target: String) -> Double {
         let oQuote = (data.source ?? Constants.code) + (origin)
         let tQuote = (data.source ?? Constants.code) + (target)
-        
-        print("Value: \(value)")
-        print("Origin: \(data.quotes?[oQuote] ?? -1.0)")
-        print("Target: \(data.quotes?[tQuote] ?? -1.0)")
-        
         return value / (data.quotes?[oQuote] ?? 1.0) * (data.quotes?[tQuote] ?? 1)
     }
 }
@@ -44,12 +39,7 @@ private extension ConverterModel {
     func fetchCoinsCompletion(_ response: GetCoinsResponse?, _ error: Error?) {
         if (response?.success ?? false || DEBUG) {
             if let items = response {
-                //var currency = response?.currencies ?? [:]
                 Storage.store(items, to: .caches, as: Constants.coinFile)
-                //if currency.keys.count > 1 {
-                //    origin = currency.popFirst()?.key ?? origin
-                //    target = currency.popFirst()?.key ?? target
-                //}
             } else {
                 Toast.show(message: L10n.System.Error.storage)
             }
