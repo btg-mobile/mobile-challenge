@@ -18,6 +18,18 @@ class CoinListModel: UIControl {
     var reloadData: () -> Void = {}
     
     func fetchData() { Repository.getCoins(completion: fetchDataCompletion) }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        generateItems()
+        ordenateItems()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        generateItems()
+        ordenateItems()
+    }
 }
 
 private extension CoinListModel {
