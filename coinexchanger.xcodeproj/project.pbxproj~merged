@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		790169A126E1128900EE164E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790169A026E1128900EE164E /* AppDelegate.swift */; };
+<<<<<<< HEAD
+		790169A526E1128900EE164E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790169A426E1128900EE164E /* ViewController.swift */; };
+=======
+>>>>>>> 1096c12 (Home and search pages)
 		790169AA26E1128900EE164E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790169A926E1128900EE164E /* Assets.xcassets */; };
 		790169AD26E1128900EE164E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790169AB26E1128900EE164E /* LaunchScreen.storyboard */; };
 		790169B826E1128900EE164E /* coinexchangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790169B726E1128900EE164E /* coinexchangerTests.swift */; };
 		790169C326E1128900EE164E /* coinexchangerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790169C226E1128900EE164E /* coinexchangerUITests.swift */; };
-		7911800026E3E0BE00B69771 /* rates.json in Resources */ = {isa = PBXBuildFile; fileRef = 79117FFE26E3E0BE00B69771 /* rates.json */; };
-		7911800126E3E0BE00B69771 /* coins.json in Resources */ = {isa = PBXBuildFile; fileRef = 79117FFF26E3E0BE00B69771 /* coins.json */; };
-		7911800626E3E79800B69771 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7911800526E3E79800B69771 /* UserDefaults+.swift */; };
-		7911800E26E3F59300B69771 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7911800D26E3F59300B69771 /* Coin.swift */; };
-		7911801626E40C7500B69771 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7911801526E40C7500B69771 /* AnimatedButton.swift */; };
-		7911802426E42B6200B69771 /* GetRatesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7911802326E42B6200B69771 /* GetRatesResponse.swift */; };
+<<<<<<< HEAD
+=======
 		7917D65726E2604300EC32CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7917D65626E2604300EC32CF /* Constants.swift */; };
 		7917D66726E2623000EC32CF /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7917D66626E2623000EC32CF /* ConverterController.swift */; };
 		7917D66F26E2623A00EC32CF /* ConverterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7917D66E26E2623A00EC32CF /* ConverterModel.swift */; };
@@ -55,14 +55,17 @@
 		795D7E7E26E2E0ED000B1D57 /* CoinTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D7E7D26E2E0ED000B1D57 /* CoinTableCell.swift */; };
 		795D7E8626E2E162000B1D57 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D7E8526E2E162000B1D57 /* ReusableProtocol.swift */; };
 		795D7E8B26E2F1FE000B1D57 /* UINavigationControler+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D7E8A26E2F1FE000B1D57 /* UINavigationControler+.swift */; };
+		795D7E9026E30065000B1D57 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D7E8F26E30065000B1D57 /* Exchange.swift */; };
 		79DA7A1E26E2370D008CCB6E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A1D26E2370D008CCB6E /* Repository.swift */; };
 		79DA7A3026E246CA008CCB6E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A2F26E246CA008CCB6E /* Storage.swift */; };
 		79DA7A3526E246D0008CCB6E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A3426E246D0008CCB6E /* Toast.swift */; };
-		79DA7A3A26E2474B008CCB6E /* GetCoinsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A3926E2474B008CCB6E /* GetCoinsResponse.swift */; };
+		79DA7A3A26E2474B008CCB6E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A3926E2474B008CCB6E /* Response.swift */; };
+		79DA7A3F26E247C0008CCB6E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A3E26E247C0008CCB6E /* Coin.swift */; };
 		79DA7A4526E24986008CCB6E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A4426E24986008CCB6E /* Helper.swift */; };
 		79DA7A5A26E24DF3008CCB6E /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A5626E24DF3008CCB6E /* L10n.swift */; };
 		79DA7A5B26E24DF3008CCB6E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79DA7A5726E24DF3008CCB6E /* Localizable.strings */; };
 		79DA7A6A26E25F07008CCB6E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA7A6926E25F07008CCB6E /* Assets.swift */; };
+>>>>>>> 1096c12 (Home and search pages)
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
+		7901699D26E1128900EE164E /* coinexchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coinexchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		790169A026E1128900EE164E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		790169A426E1128900EE164E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		790169A926E1128900EE164E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		790169AC26E1128900EE164E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		790169AE26E1128900EE164E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		790169B326E1128900EE164E /* coinexchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coinexchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		790169B726E1128900EE164E /* coinexchangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coinexchangerTests.swift; sourceTree = "<group>"; };
+		790169B926E1128900EE164E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		790169BE26E1128900EE164E /* coinexchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coinexchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		790169C226E1128900EE164E /* coinexchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coinexchangerUITests.swift; sourceTree = "<group>"; };
+		790169C426E1128900EE164E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+=======
 		7901699D26E1128900EE164E /* CoinExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinExchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790169A026E1128900EE164E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		790169A926E1128900EE164E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,12 +111,6 @@
 		790169BE26E1128900EE164E /* CoinExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinExchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		790169C226E1128900EE164E /* coinexchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coinexchangerUITests.swift; sourceTree = "<group>"; };
 		790169C426E1128900EE164E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		79117FFE26E3E0BE00B69771 /* rates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rates.json; sourceTree = "<group>"; };
-		79117FFF26E3E0BE00B69771 /* coins.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coins.json; sourceTree = "<group>"; };
-		7911800526E3E79800B69771 /* UserDefaults+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
-		7911800D26E3F59300B69771 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
-		7911801526E40C7500B69771 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
-		7911802326E42B6200B69771 /* GetRatesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRatesResponse.swift; sourceTree = "<group>"; };
 		7917D62D26E25FE000EC32CF /* Moderat-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moderat-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		7917D63026E25FE000EC32CF /* Moderat-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moderat-Light-Italic.ttf"; sourceTree = "<group>"; };
 		7917D63126E25FE000EC32CF /* Moderat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Moderat-Black.ttf"; sourceTree = "<group>"; };
@@ -137,15 +148,18 @@
 		795D7E7D26E2E0ED000B1D57 /* CoinTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableCell.swift; sourceTree = "<group>"; };
 		795D7E8526E2E162000B1D57 /* ReusableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		795D7E8A26E2F1FE000B1D57 /* UINavigationControler+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationControler+.swift"; sourceTree = "<group>"; };
+		795D7E8F26E30065000B1D57 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		79DA7A1D26E2370D008CCB6E /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		79DA7A2F26E246CA008CCB6E /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		79DA7A3426E246D0008CCB6E /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		79DA7A3926E2474B008CCB6E /* GetCoinsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCoinsResponse.swift; sourceTree = "<group>"; };
+		79DA7A3926E2474B008CCB6E /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		79DA7A3E26E247C0008CCB6E /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		79DA7A4426E24986008CCB6E /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		79DA7A5626E24DF3008CCB6E /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		79DA7A5826E24DF3008CCB6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79DA7A5926E24DF3008CCB6E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		79DA7A6926E25F07008CCB6E /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+>>>>>>> 1096c12 (Home and search pages)
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +190,11 @@
 		7901699426E1128900EE164E = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+				7901699F26E1128900EE164E /* coinexchanger */,
+=======
 				7901699F26E1128900EE164E /* CoinExchanger */,
+>>>>>>> 1096c12 (Home and search pages)
 				790169B626E1128900EE164E /* coinexchangerTests */,
 				790169C126E1128900EE164E /* coinexchangerUITests */,
 				7901699E26E1128900EE164E /* Products */,
@@ -186,13 +204,31 @@
 		7901699E26E1128900EE164E /* Products */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+				7901699D26E1128900EE164E /* coinexchanger.app */,
+				790169B326E1128900EE164E /* coinexchangerTests.xctest */,
+				790169BE26E1128900EE164E /* coinexchangerUITests.xctest */,
+=======
 				7901699D26E1128900EE164E /* CoinExchanger.app */,
 				790169B326E1128900EE164E /* CoinExchangerTests.xctest */,
 				790169BE26E1128900EE164E /* CoinExchangerUITests.xctest */,
+>>>>>>> 1096c12 (Home and search pages)
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+		7901699F26E1128900EE164E /* coinexchanger */ = {
+			isa = PBXGroup;
+			children = (
+				790169A026E1128900EE164E /* AppDelegate.swift */,
+				790169A426E1128900EE164E /* ViewController.swift */,
+				790169A926E1128900EE164E /* Assets.xcassets */,
+				790169AB26E1128900EE164E /* LaunchScreen.storyboard */,
+				790169AE26E1128900EE164E /* Info.plist */,
+			);
+			path = coinexchanger;
+=======
 		7901699F26E1128900EE164E /* CoinExchanger */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +244,7 @@
 				790169AE26E1128900EE164E /* Info.plist */,
 			);
 			path = CoinExchanger;
+>>>>>>> 1096c12 (Home and search pages)
 			sourceTree = "<group>";
 		};
 		790169B626E1128900EE164E /* coinexchangerTests */ = {
@@ -228,6 +265,14 @@
 			path = coinexchangerUITests;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7901699C26E1128900EE164E /* coinexchanger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 790169C726E1128900EE164E /* Build configuration list for PBXNativeTarget "coinexchanger" */;
+=======
 		7917D62B26E25F6F00EC32CF /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,7 +315,6 @@
 		7917D68226E264EA00EC32CF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7911800526E3E79800B69771 /* UserDefaults+.swift */,
 				7917D68826E2666800EC32CF /* UIImage+.swift */,
 				795D7E8A26E2F1FE000B1D57 /* UINavigationControler+.swift */,
 				7917D68326E2652100EC32CF /* UIView+.swift */,
@@ -332,9 +376,9 @@
 		79DA7A2526E237F6008CCB6E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7911800D26E3F59300B69771 /* Coin.swift */,
-				79DA7A3926E2474B008CCB6E /* GetCoinsResponse.swift */,
-				7911802326E42B6200B69771 /* GetRatesResponse.swift */,
+				79DA7A3E26E247C0008CCB6E /* Coin.swift */,
+				795D7E8F26E30065000B1D57 /* Exchange.swift */,
+				79DA7A3926E2474B008CCB6E /* Response.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,7 +387,6 @@
 			isa = PBXGroup;
 			children = (
 				7917D6B426E2B12800EC32CF /* VisualInput */,
-				7911801526E40C7500B69771 /* AnimatedButton.swift */,
 				7917D69D26E2A42900EC32CF /* GenericDelegate.swift */,
 				79DA7A4426E24986008CCB6E /* Helper.swift */,
 				7917D6CE26E2B66300EC32CF /* RegularBackButton.swift */,
@@ -371,8 +414,6 @@
 				79DA7A5526E24DF3008CCB6E /* Localizable */,
 				790169A926E1128900EE164E /* Assets.xcassets */,
 				79DA7A6926E25F07008CCB6E /* Assets.swift */,
-				79117FFF26E3E0BE00B69771 /* coins.json */,
-				79117FFE26E3E0BE00B69771 /* rates.json */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -383,6 +424,7 @@
 		7901699C26E1128900EE164E /* CoinExchanger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 790169C726E1128900EE164E /* Build configuration list for PBXNativeTarget "CoinExchanger" */;
+>>>>>>> 1096c12 (Home and search pages)
 			buildPhases = (
 				7901699926E1128900EE164E /* Sources */,
 				7901699A26E1128900EE164E /* Frameworks */,
@@ -392,6 +434,16 @@
 			);
 			dependencies = (
 			);
+<<<<<<< HEAD
+			name = coinexchanger;
+			productName = coinexchanger;
+			productReference = 7901699D26E1128900EE164E /* coinexchanger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		790169B226E1128900EE164E /* coinexchangerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 790169CA26E1128900EE164E /* Build configuration list for PBXNativeTarget "coinexchangerTests" */;
+=======
 			name = CoinExchanger;
 			productName = coinexchanger;
 			productReference = 7901699D26E1128900EE164E /* CoinExchanger.app */;
@@ -400,6 +452,7 @@
 		790169B226E1128900EE164E /* CoinExchangerTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 790169CA26E1128900EE164E /* Build configuration list for PBXNativeTarget "CoinExchangerTests" */;
+>>>>>>> 1096c12 (Home and search pages)
 			buildPhases = (
 				790169AF26E1128900EE164E /* Sources */,
 				790169B026E1128900EE164E /* Frameworks */,
@@ -410,6 +463,16 @@
 			dependencies = (
 				790169B526E1128900EE164E /* PBXTargetDependency */,
 			);
+<<<<<<< HEAD
+			name = coinexchangerTests;
+			productName = coinexchangerTests;
+			productReference = 790169B326E1128900EE164E /* coinexchangerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		790169BD26E1128900EE164E /* coinexchangerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 790169CD26E1128900EE164E /* Build configuration list for PBXNativeTarget "coinexchangerUITests" */;
+=======
 			name = CoinExchangerTests;
 			productName = coinexchangerTests;
 			productReference = 790169B326E1128900EE164E /* CoinExchangerTests.xctest */;
@@ -418,6 +481,7 @@
 		790169BD26E1128900EE164E /* CoinExchangerUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 790169CD26E1128900EE164E /* Build configuration list for PBXNativeTarget "CoinExchangerUITests" */;
+>>>>>>> 1096c12 (Home and search pages)
 			buildPhases = (
 				790169BA26E1128900EE164E /* Sources */,
 				790169BB26E1128900EE164E /* Frameworks */,
@@ -428,9 +492,15 @@
 			dependencies = (
 				790169C026E1128900EE164E /* PBXTargetDependency */,
 			);
+<<<<<<< HEAD
+			name = coinexchangerUITests;
+			productName = coinexchangerUITests;
+			productReference = 790169BE26E1128900EE164E /* coinexchangerUITests.xctest */;
+=======
 			name = CoinExchangerUITests;
 			productName = coinexchangerUITests;
 			productReference = 790169BE26E1128900EE164E /* CoinExchangerUITests.xctest */;
+>>>>>>> 1096c12 (Home and search pages)
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -455,23 +525,36 @@
 					};
 				};
 			};
+<<<<<<< HEAD
 			buildConfigurationList = 7901699826E1128900EE164E /* Build configuration list for PBXProject "coinexchanger" */;
+=======
+			buildConfigurationList = 7901699826E1128900EE164E /* Build configuration list for PBXProject "CoinExchanger" */;
+>>>>>>> 1096c12 (Home and search pages)
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+<<<<<<< HEAD
+=======
 				"pt-BR",
+>>>>>>> 1096c12 (Home and search pages)
 			);
 			mainGroup = 7901699426E1128900EE164E;
 			productRefGroup = 7901699E26E1128900EE164E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+<<<<<<< HEAD
+				7901699C26E1128900EE164E /* coinexchanger */,
+				790169B226E1128900EE164E /* coinexchangerTests */,
+				790169BD26E1128900EE164E /* coinexchangerUITests */,
+=======
 				7901699C26E1128900EE164E /* CoinExchanger */,
 				790169B226E1128900EE164E /* CoinExchangerTests */,
 				790169BD26E1128900EE164E /* CoinExchangerUITests */,
+>>>>>>> 1096c12 (Home and search pages)
 			);
 		};
 /* End PBXProject section */
@@ -481,11 +564,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+				790169AD26E1128900EE164E /* LaunchScreen.storyboard in Resources */,
+=======
 				795D7E5726E2D1A9000B1D57 /* Moderat-Regular-Italic.ttf in Resources */,
-				7911800026E3E0BE00B69771 /* rates.json in Resources */,
 				795D7E5026E2D1A9000B1D57 /* Moderat-Regular.ttf in Resources */,
 				795D7E5626E2D1A9000B1D57 /* Moderat-Medium-Italic.ttf in Resources */,
-				7911800126E3E0BE00B69771 /* coins.json in Resources */,
 				795D7E4F26E2D1A9000B1D57 /* Moderat-Medium.ttf in Resources */,
 				795D7E5526E2D1A9000B1D57 /* Moderat-Bold.ttf in Resources */,
 				795D7E5A26E2D1A9000B1D57 /* Moderat-Light-Italic.ttf in Resources */,
@@ -497,6 +581,7 @@
 				795D7E5426E2D1A9000B1D57 /* Moderat-Bold-Italic.ttf in Resources */,
 				795D7E5826E2D1A9000B1D57 /* Moderat-Light.ttf in Resources */,
 				795D7E5926E2D1A9000B1D57 /* Moderat-Thin.ttf in Resources */,
+>>>>>>> 1096c12 (Home and search pages)
 				790169AA26E1128900EE164E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,23 +607,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+				790169A526E1128900EE164E /* ViewController.swift in Sources */,
+				790169A126E1128900EE164E /* AppDelegate.swift in Sources */,
+=======
 				7917D6D026E2B66300EC32CF /* RegularBackButton.swift in Sources */,
 				7917D6B026E2B12400EC32CF /* Format.swift in Sources */,
-				7911800626E3E79800B69771 /* UserDefaults+.swift in Sources */,
 				7917D6BB26E2B35400EC32CF /* VisualInputPicker.swift in Sources */,
 				7917D69E26E2A42900EC32CF /* GenericDelegate.swift in Sources */,
 				7917D65726E2604300EC32CF /* Constants.swift in Sources */,
 				795D7E7326E2DD75000B1D57 /* CoinListView.swift in Sources */,
-				7911801626E40C7500B69771 /* AnimatedButton.swift in Sources */,
 				795D7E6E26E2DD61000B1D57 /* CoinListModel.swift in Sources */,
 				7917D66726E2623000EC32CF /* ConverterController.swift in Sources */,
 				79DA7A3026E246CA008CCB6E /* Storage.swift in Sources */,
 				7917D69526E2A36700EC32CF /* ConverterCellView.swift in Sources */,
 				7917D68926E2666800EC32CF /* UIImage+.swift in Sources */,
 				7917D6CF26E2B66300EC32CF /* RegularNavigationController.swift in Sources */,
-				7911800E26E3F59300B69771 /* Coin.swift in Sources */,
-				7911802426E42B6200B69771 /* GetRatesResponse.swift in Sources */,
 				79DA7A5A26E24DF3008CCB6E /* L10n.swift in Sources */,
+				795D7E9026E30065000B1D57 /* Exchange.swift in Sources */,
 				7917D66F26E2623A00EC32CF /* ConverterModel.swift in Sources */,
 				79DA7A3526E246D0008CCB6E /* Toast.swift in Sources */,
 				79DA7A4526E24986008CCB6E /* Helper.swift in Sources */,
@@ -548,7 +634,7 @@
 				795D7E6326E2DD45000B1D57 /* CoinListController.swift in Sources */,
 				790169A126E1128900EE164E /* AppDelegate.swift in Sources */,
 				795D7E7926E2DDDD000B1D57 /* CoinTableHeader.swift in Sources */,
-				79DA7A3A26E2474B008CCB6E /* GetCoinsResponse.swift in Sources */,
+				79DA7A3A26E2474B008CCB6E /* Response.swift in Sources */,
 				79DA7A1E26E2370D008CCB6E /* Repository.swift in Sources */,
 				795D7E8B26E2F1FE000B1D57 /* UINavigationControler+.swift in Sources */,
 				7917D6A326E2AFEF00EC32CF /* VisualInputValue.swift in Sources */,
@@ -556,9 +642,11 @@
 				7917D68426E2652100EC32CF /* UIView+.swift in Sources */,
 				7917D67426E2624400EC32CF /* ConverterView.swift in Sources */,
 				7917D6AB26E2B0DE00EC32CF /* Sanityze.swift in Sources */,
+				79DA7A3F26E247C0008CCB6E /* Coin.swift in Sources */,
 				7917D67E26E2635F00EC32CF /* VisualInputSearch.swift in Sources */,
 				7917D6C026E2B35A00EC32CF /* VisualInputSecure.swift in Sources */,
 				795D7E7E26E2E0ED000B1D57 /* CoinTableCell.swift in Sources */,
+>>>>>>> 1096c12 (Home and search pages)
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,12 +671,20 @@
 /* Begin PBXTargetDependency section */
 		790169B526E1128900EE164E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+<<<<<<< HEAD
+			target = 7901699C26E1128900EE164E /* coinexchanger */;
+=======
 			target = 7901699C26E1128900EE164E /* CoinExchanger */;
+>>>>>>> 1096c12 (Home and search pages)
 			targetProxy = 790169B426E1128900EE164E /* PBXContainerItemProxy */;
 		};
 		790169C026E1128900EE164E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+<<<<<<< HEAD
+			target = 7901699C26E1128900EE164E /* coinexchanger */;
+=======
 			target = 7901699C26E1128900EE164E /* CoinExchanger */;
+>>>>>>> 1096c12 (Home and search pages)
 			targetProxy = 790169BF26E1128900EE164E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -602,6 +698,8 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
 		79DA7A5726E24DF3008CCB6E /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -611,6 +709,7 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+>>>>>>> 1096c12 (Home and search pages)
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -788,7 +887,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+<<<<<<< HEAD
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coinexchanger.app/coinexchanger";
+=======
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinExchanger.app/CoinExchanger";
+>>>>>>> 1096c12 (Home and search pages)
 			};
 			name = Debug;
 		};
@@ -810,7 +913,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+<<<<<<< HEAD
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coinexchanger.app/coinexchanger";
+=======
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinExchanger.app/CoinExchanger";
+>>>>>>> 1096c12 (Home and search pages)
 			};
 			name = Release;
 		};
@@ -857,7 +964,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+<<<<<<< HEAD
 		7901699826E1128900EE164E /* Build configuration list for PBXProject "coinexchanger" */ = {
+=======
+		7901699826E1128900EE164E /* Build configuration list for PBXProject "CoinExchanger" */ = {
+>>>>>>> 1096c12 (Home and search pages)
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				790169C526E1128900EE164E /* Debug */,
@@ -866,7 +977,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+<<<<<<< HEAD
+		790169C726E1128900EE164E /* Build configuration list for PBXNativeTarget "coinexchanger" */ = {
+=======
 		790169C726E1128900EE164E /* Build configuration list for PBXNativeTarget "CoinExchanger" */ = {
+>>>>>>> 1096c12 (Home and search pages)
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				790169C826E1128900EE164E /* Debug */,
@@ -875,7 +990,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+<<<<<<< HEAD
+		790169CA26E1128900EE164E /* Build configuration list for PBXNativeTarget "coinexchangerTests" */ = {
+=======
 		790169CA26E1128900EE164E /* Build configuration list for PBXNativeTarget "CoinExchangerTests" */ = {
+>>>>>>> 1096c12 (Home and search pages)
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				790169CB26E1128900EE164E /* Debug */,
@@ -884,7 +1003,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+<<<<<<< HEAD
+		790169CD26E1128900EE164E /* Build configuration list for PBXNativeTarget "coinexchangerUITests" */ = {
+=======
 		790169CD26E1128900EE164E /* Build configuration list for PBXNativeTarget "CoinExchangerUITests" */ = {
+>>>>>>> 1096c12 (Home and search pages)
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				790169CE26E1128900EE164E /* Debug */,
