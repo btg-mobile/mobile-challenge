@@ -10,6 +10,7 @@ import UIKit
 protocol HomeActionsProtocol: AnyObject {
     func tapOriginButton()
     func tapDestinationButton()
+    func valueDidChange(newValue: String)
 }
 
 final class CurrencyHomeViewController: UIViewController {
@@ -18,7 +19,7 @@ final class CurrencyHomeViewController: UIViewController {
     
     private lazy var screen: CurrencyHomeScreen = {
         let screen = CurrencyHomeScreen()
-        screen.buttonActions = self
+        screen.homeActions = self
         
         return screen
     }()
@@ -36,13 +37,23 @@ final class CurrencyHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.getCurrencies {
-            print("a")
-        }
+        getCurrencies()
     }
     
     override func loadView() {
         view = screen
+    }
+}
+
+private extension CurrencyHomeViewController {
+    func getCurrencies() {
+        viewModel.getCurrencies { [weak self] success, value in
+            if success {
+                DispatchQueue.main.sync {
+                    self?.screen.updateLabelValue(value)
+                }
+            }
+        }
     }
 }
 
@@ -53,5 +64,17 @@ extension CurrencyHomeViewController: HomeActionsProtocol {
     
     func tapDestinationButton() {
         print("2")
+    }
+    
+    func valueDidChange(newValue: String) {
+        let value = viewModel.getValue(originValue: Double(newValue) ?? 1.0)
+        screen.updateLabelValue(value)
+    }
+}
+
+extension CurrencyHomeViewController {
+    func updateNewCurrency(title: String, type: CurrencyType) {
+        screen.updateButtonTitle(title, type: type)
+        viewModel.updateCurrency(code: title, type: type)
     }
 }

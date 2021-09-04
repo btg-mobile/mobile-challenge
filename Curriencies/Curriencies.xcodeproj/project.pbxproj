@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B37638826E3FA1F00AD3EAF /* CalculateCurrencyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B37638726E3FA1F00AD3EAF /* CalculateCurrencyUseCase.swift */; };
 		7B38B5CD26E2AC8500BCFC77 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */; };
 		7B38B5D226E2B0A100BCFC77 /* CurrencyHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */; };
 		7B38B5D926E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B37638726E3FA1F00AD3EAF /* CalculateCurrencyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCurrencyUseCase.swift; sourceTree = "<group>"; };
 		7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeFactory.swift; sourceTree = "<group>"; };
 		7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCurrency+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				7BF3C8AE26E28F520029F460 /* GetCurrencyUseCase.swift */,
+				7B37638726E3FA1F00AD3EAF /* CalculateCurrencyUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				7BF3C88F26E1BF2C0029F460 /* Repository.swift in Sources */,
 				7B954AE126DED5D3002C7133 /* ViewConfiguration.swift in Sources */,
 				7B954A8726DED18C002C7133 /* SceneDelegate.swift in Sources */,
+				7B37638826E3FA1F00AD3EAF /* CalculateCurrencyUseCase.swift in Sources */,
 				7B38B5CD26E2AC8500BCFC77 /* EndPoint.swift in Sources */,
 				7BF3C8B526E2913A0029F460 /* CurrencyRepositoryInterface.swift in Sources */,
 				7B954ADB26DED55C002C7133 /* CurrencyHomeScreen.swift in Sources */,

@@ -14,8 +14,11 @@ enum CurrencyHomeFactory {
         let repository: CurrencyRepositoryProtocol = CurrencyRepository(apiCurrency: apiData,
                                                                         localCurrency: localData)
         
-        let useCase: GetCurrencyUseCaseProtocol = GetCurrencyUseCase(repository: repository)
-        let viewModel: CurrencyViewModeling = CurrencyViewModel(getCurrenciesUseCase: useCase)
+        let getCurrencyUseCase: GetCurrencyUseCaseProtocol = GetCurrencyUseCase(repository: repository)
+        let calculateUseCase: CalculateCurrencyUseCaseProtocol = CalculateCurrencyUseCase()
+        
+        let viewModel: CurrencyViewModeling = CurrencyViewModel(getCurrenciesUseCase: getCurrencyUseCase,
+                                                                calculateCurrencyUseCase: calculateUseCase)
         let viewController = CurrencyHomeViewController(viewModel: viewModel)
         
         return viewController

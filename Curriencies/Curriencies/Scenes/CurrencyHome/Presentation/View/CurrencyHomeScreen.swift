@@ -19,7 +19,7 @@ final class CurrencyHomeScreen: UIView {
     let defaultOriginButtonTitle: String = "USD"
     let defaultOriginTextFieldPlaceholder: String = "1.00"
     let defaultDestinationButtonTitle: String = "BRL"
-    weak var buttonActions: HomeActionsProtocol?
+    weak var homeActions: HomeActionsProtocol?
     
     private lazy var originCurrencyButton: UIButton = {
         let button = UIButton()
@@ -44,6 +44,9 @@ final class CurrencyHomeScreen: UIView {
         textField.layer.borderColor = UIColor.darkGray.cgColor
         textField.layer.cornerRadius = 5
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.addTarget(self,
+                            action: #selector(textFieldDidChange(_:)),
+                            for: .editingChanged)
         
         return textField
     }()
@@ -107,7 +110,8 @@ extension CurrencyHomeScreen: ViewConfiguration {
     
     func makeConstraints() {
         containerView
-            .make([.centerX, .centerY, .width], equalTo: self)
+            .make([.centerX, .width], equalTo: self)
+            .make(.centerY, equalTo: self, constant: -70)
             .make(.height, equalTo: Layout.containerHeight)
         
         originCurrencyTextField
@@ -137,10 +141,28 @@ extension CurrencyHomeScreen: ViewConfiguration {
 
 @objc private extension CurrencyHomeScreen {
     func originButtonAction() {
-        buttonActions?.tapOriginButton()
+        homeActions?.tapOriginButton()
     }
     
     func destinationButtonAction() {
-        buttonActions?.tapDestinationButton()
+        homeActions?.tapDestinationButton()
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        homeActions?.valueDidChange(newValue: textField.text ?? "")
+    }
+}
+
+extension CurrencyHomeScreen {
+    func updateLabelValue(_ value: String) {
+        destinationCurrencyLabel.text = value
+    }
+    
+    func updateButtonTitle(_ title: String, type: CurrencyType) {
+        if type == .destination {
+            originCurrencyButton.setTitle(title, for: .normal)
+        } else {
+            destinationCurrencyButton.setTitle(title, for: .normal)
+        }
     }
 }
