@@ -2,22 +2,17 @@
 //  ConverterModel.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
 
 class ConverterModel: UIControl {
-    var origin = Storage.retrieve(Constants.originFile, from: .caches, as: Coin.self)
-        ?? Coin("xxx", L10n.Coin.Converter.originCoin, 1.0) {
-        didSet { Storage.store(origin, to: .caches, as: Constants.originFile) } }
-    
-    var target = Storage.retrieve(Constants.originFile, from: .caches, as: Coin.self)
-        ?? Coin("yyy", L10n.Coin.Converter.targetCoin, 0.9) {
-        didSet { Storage.store(origin, to: .caches, as: Constants.originFile) } }
+    var origin: String = userPrefs.origin { didSet { userPrefs.origin = origin } }
+    var target: String  = userPrefs.target { didSet { userPrefs.target = target } }
         
-    var quotes = Storage.retrieve(Constants.quoteFile, from: .caches, as: GetExchangeList.self)
-        ?? GetExchangeList([], true)
+    var data = Storage.retrieve(Constants.quoteFile, from: .caches, as: GetRatesResponse.self)
+        ?? GetRatesResponse(false, Constants.code, [:])
     
     var fetchCompletion: () -> Void = {}
     
@@ -29,29 +24,51 @@ class ConverterModel: UIControl {
         Repository.getQuotes(completion: fetchQuotesCompletion)
     }
     
-    func appraise() {
+    func appraise(_ value: Double) -> Double {
+        return appraise(value, from: origin, to: target)
+    }
+    
+    func appraise(_ value: Double, from origin: String, to target: String) -> Double {
+        let oQuote = (data.source ?? Constants.code) + (origin)
+        let tQuote = (data.source ?? Constants.code) + (target)
         
+        print("Value: \(value)")
+        print("Origin: \(data.quotes?[oQuote] ?? -1.0)")
+        print("Target: \(data.quotes?[tQuote] ?? -1.0)")
+        
+        return value / (data.quotes?[oQuote] ?? 1.0) * (data.quotes?[tQuote] ?? 1)
     }
 }
 
 private extension ConverterModel {
-    func fetchCoinsCompletion(_ response: GetCoinList?, _ error: Error?) {
+    func fetchCoinsCompletion(_ response: GetCoinsResponse?, _ error: Error?) {
         if (response?.success ?? false || DEBUG) {
-            let items = response?.items ?? []
-            Storage.store(items, to: .caches, as: Constants.coinFile)
-            origin = items.isEmpty ? origin : items[0]
-            target = items.count > 1 ? items[1] : target
+            if let items = response {
+                //var currency = response?.currencies ?? [:]
+                Storage.store(items, to: .caches, as: Constants.coinFile)
+                //if currency.keys.count > 1 {
+                //    origin = currency.popFirst()?.key ?? origin
+                //    target = currency.popFirst()?.key ?? target
+                //}
+            } else {
+                Toast.show(message: L10n.System.Error.storage)
+            }
         } else {
             Toast.show(message: L10n.System.Error.connection)
         }
         
-        //fetchCompletion()
+        fetchCompletion()
     }
     
-    func fetchQuotesCompletion(_ response: GetExchangeList?, _ error: Error?) {
+    func fetchQuotesCompletion(_ response: GetRatesResponse?, _ error: Error?) {
         if (response?.success ?? false || DEBUG) {
-            quotes = response ?? quotes
-            Storage.store(quotes, to: .caches, as: Constants.quoteFile)
+            if let data = response {
+                self.data = data
+                Storage.store(data, to: .caches, as: Constants.quoteFile)
+                userPrefs.date = Helper.getDate(Date())
+            } else {
+                Toast.show(message: L10n.System.Error.storage)
+            }
         } else {
             Toast.show(message: L10n.System.Error.connection)
         }

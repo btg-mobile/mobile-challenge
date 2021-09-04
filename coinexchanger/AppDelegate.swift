@@ -2,12 +2,14 @@
 //  AppDelegate.swift
 //  CoinExchanger
 //
-//  Created by Junior on 02/09/21.
+//  Created by Edson Rottava on 02/09/21.
 //
 
 import UIKit
 
 let DEBUG = false
+
+let userPrefs = UserDefaults()
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +31,7 @@ private extension AppDelegate {
     // MARK: Setup
     func setupApp(with lauchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         loadAllFonts()
+        validadeUserDefaults()
         
         navigationController = RegularNavigationController(ConverterController())
         
@@ -104,6 +107,32 @@ private extension AppDelegate {
     // MARK: Validate Url (Deep Link)
     func validateURL(_ url: URL) -> Bool {
         return false
+    }
+    
+    // MARK: UserDefaults
+    func validadeUserDefaults() {
+        if(userPrefs.date.isEmpty) { userPrefs.date = "04/09/2021" }
+        if(userPrefs.origin.isEmpty) { userPrefs.origin = Constants.code }
+        if(userPrefs.target.isEmpty) { userPrefs.target = Constants.code }
+        if(!userPrefs.reset) { prepareFirstLoad() }
+    }
+    
+    func prepareFirstLoad() {
+        do {
+            guard let coinsBundlePath = Bundle.main.path(forResource: "coins", ofType: "json") else { return }
+            guard let coinsJsonData = try String(contentsOfFile: coinsBundlePath).data(using: .utf8) else { return }
+            let coins = try JSONDecoder().decode(GetCoinsResponse.self, from: coinsJsonData)
+            Storage.store(coins, to: .caches, as: Constants.coinFile)
+            
+            guard let ratesBundlePath = Bundle.main.path(forResource: "rates", ofType: "json") else { return }
+            guard let ratesJsonData = try String(contentsOfFile: ratesBundlePath).data(using: .utf8) else { return }
+            let rates = try JSONDecoder().decode(GetRatesResponse.self, from: ratesJsonData)
+            Storage.store(rates, to: .caches, as: Constants.quoteFile)
+            
+            userPrefs.reset = true
+        } catch let jsonError {
+            print("Erro: \(jsonError.localizedDescription)")
+        }
     }
     
     func debug() {

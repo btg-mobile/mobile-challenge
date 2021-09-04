@@ -21,8 +21,10 @@ internal enum L10n {
 
         // MARK: ERROR
         internal enum Error {
-            /// ERROR
+            /// CONEXAO
             internal static let connection = L10n.tr("Localizable", "system.error.connection")
+            /// DADOS
+            internal static let storage = L10n.tr("Localizable", "system.error.storage")
             
             // MARK: PERMISSION
             internal enum Permission {
@@ -37,6 +39,10 @@ internal enum L10n {
         
         // MARK: CONVERTER
         internal enum Converter {
+            /// DADOS ATUALIZADO EM
+            internal static let date = L10n.tr("Localizable", "coin.converter.date")
+            ///
+            internal static let dateHint = L10n.tr("Localizable", "coin.converter.dateHint")
             /// VALOR
             internal static let hint = L10n.tr("Localizable", "coin.converter.hint")
             /// $$$

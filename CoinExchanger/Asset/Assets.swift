@@ -17,16 +17,15 @@ internal enum Asset {
     
     internal enum Colors {
         internal static let background = ColorAsset(name: "Colors/background")
+        internal static let black = ColorAsset(name: "Colors/black")
         internal static let gray = ColorAsset(name: "Colors/gray")
         internal static let primary = ColorAsset(name: "Colors/primary")
+        internal static let secondary = ColorAsset(name: "Colors/secondary")
         internal static let surface = ColorAsset(name: "Colors/surface")
         internal static let text = ColorAsset(name: "Colors/text")
         internal static let textLight = ColorAsset(name: "Colors/textLight")
         internal static let title = ColorAsset(name: "Colors/title")
-    }
-    
-    internal enum Icons {
-        internal static let search = ImageAsset(name: "Icons/icSearch")
+        internal static let white = ColorAsset(name: "Colors/white")
     }
 }
 

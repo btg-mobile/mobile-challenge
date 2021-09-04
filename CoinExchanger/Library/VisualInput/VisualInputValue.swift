@@ -2,17 +2,15 @@
 //  VisualInputValue.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
 
 class VisualInputValue: VisualInput {
-    private var enteredNumbers = ""
-
+    var currency = Constants.code { didSet { textFieldDidChange() } }
     private var didBackspace = false
-
-    var locale: Locale = .current
+    private var enteredNumbers = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,9 +24,21 @@ class VisualInputValue: VisualInput {
 
     override func deleteBackward() {
         enteredNumbers = String(enteredNumbers.dropLast())
-        text = enteredNumbers.asCurrency(locale: locale)
+        text = enteredNumbers.asCurrency(currency)
         didBackspace = true
         super.deleteBackward()
+    }
+    
+    func setText(_ value: Double) {
+        let text = "\(value)"
+        self.text = text.asCurrency(currency)
+        enteredNumbers = Sanityze.number(text)
+    }
+    
+    func setText(_ text: String?) {
+        let value = Sanityze.number(text ?? "")
+        enteredNumbers = value
+        self.text = text
     }
 }
 
@@ -46,7 +56,7 @@ private extension VisualInputValue {
     func textFieldDidChange() {
         defer {
             didBackspace = false
-            text = enteredNumbers.asCurrency(locale: locale)
+            text = enteredNumbers.asCurrency(currency)
             visualDelegate?.didChange(self)
         }
 
@@ -59,21 +69,15 @@ private extension VisualInputValue {
     }
 }
 
-private extension Formatter {
-    static let currency: NumberFormatter = {
+private extension String {
+    func asCurrency(_ currency: String) -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        return formatter
-    }()
-}
-
-private extension String {
-    func asCurrency(locale: Locale) -> String? {
-        Formatter.currency.locale = locale
-        if self.isEmpty {
-            return Formatter.currency.string(from: NSNumber(value: 0))
-        } else {
-            return Formatter.currency.string(from: NSNumber(value: (Double(self) ?? 0) / 100))
-        }
+        formatter.locale = Locale(identifier: currency)
+        formatter.currencyCode = currency
+        
+        return self.isEmpty
+            ? formatter.string(from: 0)
+            : formatter.string(from: NSNumber(value: (Double(self) ?? 0) / 100))
     }
 }

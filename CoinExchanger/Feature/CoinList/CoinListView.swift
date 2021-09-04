@@ -2,7 +2,7 @@
 //  CoinListView.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
@@ -19,10 +19,10 @@ class CoinListView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.alwaysBounceVertical = false
-        //tableView.backgroundColor = Asset.Colors.background.color
+        tableView.backgroundColor = .clear
         tableView.estimatedRowHeight = 100*Helper.wr()
         tableView.register(cellType: CoinTableCell.self)
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0,
                                                          width: 0.1, height: Constants.space))
         return tableView
@@ -68,15 +68,15 @@ class CoinListView: UIView {
         if view == emptySearch && !emptyList.isHidden { return }
         
         view.isHidden = false
-        view.alpha = 0
+        //view.alpha = 0
         UIView.animate(withDuration: Constants.animationDelay, animations: {
             view.alpha = 1
         })
     }
     
     func hideView(_ view: UIView) {
-        view.isHidden = false
-        view.alpha = 1
+        //view.isHidden = false
+        //view.alpha = 1
         UIView.animate(withDuration: Constants.animationDelay, animations: {
             view.alpha = 0
         }, completion: {_ in view.isHidden = true})
@@ -103,7 +103,7 @@ class CoinListView: UIView {
 private extension CoinListView {
     // MARK: Setup
     func setup() {
-        backgroundColor = Asset.Colors.background.color.withAlphaComponent(1)
+        backgroundColor = Asset.Colors.background.color
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTouch))
         addGestureRecognizer(tap)
@@ -119,7 +119,7 @@ private extension CoinListView {
         emptyList.fillHorizontal(to: self, constant: Constants.space*2)
         
         addSubview(emptySearch)
-        emptyList.centerY(equalTo: self, constant: -58-Helper.safeSize(for: .bottom))
+        emptySearch.centerY(equalTo: self, constant: -58-Helper.safeSize(for: .bottom))
         emptySearch.fillHorizontal(to: self, constant: Constants.space*2)
     }
     

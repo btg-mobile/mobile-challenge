@@ -56,6 +56,18 @@ class Sanityze {
         return clean
     }
     
+    class func currency(_ text: String) -> String {
+        var clean = ""
+        
+        for c in text {
+            if (c.isNumber || c == ".") {
+                clean.append(c)
+            }
+        }
+        
+        return clean
+    }
+    
     class func normalize(_ text: String?) -> String {
         guard let t = text else { return "" }
         var norma = t.lowercased()

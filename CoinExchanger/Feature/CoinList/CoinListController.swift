@@ -2,13 +2,13 @@
 //  CoinListController.swift
 //  CoinExchanger
 //
-//  Created by Junior on 03/09/21.
+//  Created by Edson Rottava on 03/09/21.
 //
 
 import UIKit
 
 class CoinListController: UIViewController {
-    var completion: (_ coin: Coin) -> Void = {_ in}
+    var completion: (_ code: String?, _ name: String?) -> Void = {_,_ in}
     var kb = false
     let model = CoinListModel()
     
@@ -16,7 +16,7 @@ class CoinListController: UIViewController {
     let contentView = CoinListView()
     
     // MARK: Override
-    convenience init(_ completion: @escaping (_ coin: Coin) -> Void) {
+    convenience init(_ completion: @escaping (_ code: String?, _ name: String?) -> Void) {
         self.init()
         self.completion = completion
     }
@@ -34,7 +34,7 @@ class CoinListController: UIViewController {
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(changeOrder))
-        reloadData()
+        model.fetchData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,24 +57,48 @@ private extension CoinListController {
         contentView.tableView.delegate = self
         
         contentView.visualDelegate = self
+        
+        model.reloadData = reloadData
+        
+        if model.data.isEmpty {
+            contentView.emptyList.alpha = 1
+            contentView.emptyList.isHidden = false
+        }
     }
     
-    @objc func changeOrder() {
+    @objc
+    func changeOrder() {
         switch model.ord {
         case 0:
             model.ord = 1
             self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "a.square")
+            reloadData()
         case 1:
             model.ord = 0
             self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "dollarsign.square")
+            reloadData()
         default:
             break
         }
     }
     
     func reloadData() {
-        if model.data.isEmpty { contentView.showView(contentView.emptyList) }
-        if model.items.isEmpty && !model.search.isEmpty { contentView.showView(contentView.emptyList) }
+        model.data.isEmpty
+            ? contentView.showView(contentView.emptyList)
+            : contentView.hideView(contentView.emptyList)
+        
+        model.items.isEmpty && model.data.isEmpty && !model.search.isEmpty
+            ? contentView.showView(contentView.emptySearch)
+            : contentView.hideView(contentView.emptySearch)
+        
+        contentView.tableView.reloadData()
+    }
+    
+    func tapAction(_ view: UIView) {
+        let coin = self.model.items[view.tag]
+        navigationController?.popViewController(animated: true) {
+            self.completion(coin.code, coin.name)
+        }
     }
     
     // MARK: Keyboard
@@ -149,6 +173,8 @@ extension CoinListController: UITableViewDelegate, UITableViewDataSource {
         
         let cell: CoinTableCell = tableView.dequeueReusableCell(for: indexPath)
         cell.set(item)
+        cell.tag = indexPath.row
+        cell.tapAction = tapAction
         return cell
     }
     
@@ -161,9 +187,10 @@ extension CoinListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.popViewController(animated: true) {
-            self.completion(self.model.items[indexPath.row])
-        }
+        //let coin = self.model.items[indexPath.row]
+        //navigationController?.popViewController(animated: true) {
+        //    self.completion(coin.code, coin.name)
+        //}
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
