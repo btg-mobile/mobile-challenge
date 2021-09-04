@@ -17,7 +17,8 @@ extension CurrencyRepository: CurrencyRepositoryProtocol {
             case let .success(entities):
                 localCurrency.updateCurrency(currencies: entities)
                 completion(.success(entities))
-            case .failure(_):
+            case let .failure(error):
+                print(error)
                 localCurrency.getCurrency { localResult in
                     completion(localResult)
                 }

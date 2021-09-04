@@ -47,7 +47,8 @@ extension LocalDataCurrency: LocalCurrencyProtocol {
                     deleteAllCurrencies(currencies: localCurrencies)
                 }
                 saveCurrency(currencies: currencies)
-            case .failure(_):
+            case let .failure(error):
+                print(error)
                 break
             }
         }
@@ -62,7 +63,11 @@ private extension LocalDataCurrency {
             context.delete(currency)
         }
         
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            print("Error at deleting local data")
+        }
     }
     
     func saveCurrency(currencies: [CurrencyEntity]) {
@@ -75,7 +80,11 @@ private extension LocalDataCurrency {
             entity.value = currency.value
         }
         
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            print("Error at saving local data")
+        }
     }
     
     func getCurrency(completion: (Result<[LocalCurrency], RepositoryError>) -> Void) {
@@ -89,6 +98,7 @@ private extension LocalDataCurrency {
             localEntities = try context.fetch(LocalCurrency.fetchRequest())
             completion(.success(localEntities))
         } catch {
+            print("Error at get local data")
             completion(.failure(.generic))
         }
     }

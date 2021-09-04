@@ -39,6 +39,11 @@ extension API: Repository {
         }
 
         networkSession.loadData(url: url) { data, response, error in
+            if error != nil {
+                completion(.failure(.generic))
+                return
+            }
+            
             guard let data = data else {
                 completion(.failure(.noData))
                 return
