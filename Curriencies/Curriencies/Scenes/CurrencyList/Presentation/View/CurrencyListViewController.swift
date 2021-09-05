@@ -12,7 +12,9 @@ final class CurrencyListViewController: UIViewController {
     let viewModel: CurrencyListViewModeling
     
     private lazy var screen: CurrencyListScreen = {
-        let screen = CurrencyListScreen(tableViewDelegate: self, searchBarDelegate: self)
+        let screen = CurrencyListScreen(tableViewDelegate: self,
+                                        searchBarDelegate: self,
+                                        sortDelegate: self)
         
         return screen
     }()
@@ -73,6 +75,17 @@ extension CurrencyListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(text: searchText)
+        screen.reloadTableView()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
+
+extension CurrencyListViewController: SortDelegate {
+    func sortList(type: SortType) {
+        viewModel.sortCurrencies(sortType: type)
         screen.reloadTableView()
     }
 }

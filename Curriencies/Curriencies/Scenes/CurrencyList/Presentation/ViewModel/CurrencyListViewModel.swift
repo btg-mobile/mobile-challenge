@@ -15,6 +15,7 @@ protocol CurrencyListViewModeling {
     func heightForRowAt() -> Float
     func searchBarCancelButtonPressed()
     func search(text: String)
+    func sortCurrencies(sortType: SortType)
 }
 
 protocol ChangeCurrencyDelegate: AnyObject {
@@ -68,5 +69,17 @@ extension CurrencyListViewModel: CurrencyListViewModeling {
         currenciesPresented = currencies.filter({
             ($0.code.contains(text) || $0.name.contains(text))
         })
+    }
+    
+    func sortCurrencies(sortType: SortType) {
+        if sortType == .code {
+            currenciesPresented = currenciesPresented.sorted {
+                $0.code < $1.code
+            }
+        } else {
+            currenciesPresented = currenciesPresented.sorted {
+                $0.name < $1.name
+            }
+        }
     }
 }

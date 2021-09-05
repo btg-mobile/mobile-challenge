@@ -20,6 +20,7 @@
 		7B3763D626E54D0B00AD3EAF /* CalculateCurrencyUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763D526E54D0B00AD3EAF /* CalculateCurrencyUseCaseSpy.swift */; };
 		7B3763DE26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763DD26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift */; };
 		7B3763E326E557CD00AD3EAF /* CurrencyListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763E226E557CD00AD3EAF /* CurrencyListViewModelTests.swift */; };
+		7B3763E826E5829400AD3EAF /* SortDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763E726E5829400AD3EAF /* SortDelegate.swift */; };
 		7B38B5CD26E2AC8500BCFC77 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */; };
 		7B38B5D226E2B0A100BCFC77 /* CurrencyHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */; };
 		7B38B5D926E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */; };
@@ -82,6 +83,7 @@
 		7B3763D526E54D0B00AD3EAF /* CalculateCurrencyUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCurrencyUseCaseSpy.swift; sourceTree = "<group>"; };
 		7B3763DD26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyUseCaseSpy.swift; sourceTree = "<group>"; };
 		7B3763E226E557CD00AD3EAF /* CurrencyListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTests.swift; sourceTree = "<group>"; };
+		7B3763E726E5829400AD3EAF /* SortDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDelegate.swift; sourceTree = "<group>"; };
 		7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeFactory.swift; sourceTree = "<group>"; };
 		7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCurrency+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				7B37638E26E4016200AD3EAF /* CurrencyListViewController.swift */,
 				7B37639626E401F500AD3EAF /* CurrencyListScreen.swift */,
 				7B37639B26E4042600AD3EAF /* CurrencyTableViewCell.swift */,
+				7B3763E726E5829400AD3EAF /* SortDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				7B954A8526DED18C002C7133 /* AppDelegate.swift in Sources */,
 				7BF3C88F26E1BF2C0029F460 /* Repository.swift in Sources */,
 				7B954AE126DED5D3002C7133 /* ViewConfiguration.swift in Sources */,
+				7B3763E826E5829400AD3EAF /* SortDelegate.swift in Sources */,
 				7B954A8726DED18C002C7133 /* SceneDelegate.swift in Sources */,
 				7B37638F26E4016200AD3EAF /* CurrencyListViewController.swift in Sources */,
 				7B3763AB26E40C0500AD3EAF /* CurrencyListFactory.swift in Sources */,

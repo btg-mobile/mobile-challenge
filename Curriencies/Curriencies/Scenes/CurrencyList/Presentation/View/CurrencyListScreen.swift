@@ -12,6 +12,7 @@ final class CurrencyListScreen: UIView {
     
     private let tableViewDelegate: TableViewDelegate
     private let searchBarDelegate: UISearchBarDelegate
+    private let sortDelegate: SortDelegate
     
     private lazy var currencyList: UITableView = {
         let tableView = UITableView()
@@ -34,9 +35,38 @@ final class CurrencyListScreen: UIView {
         return searchBar
     }()
     
-    init(tableViewDelegate: TableViewDelegate, searchBarDelegate: UISearchBarDelegate) {
+    private lazy var codeSorterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Código", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(sortByCode),
+                         for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var nameSorterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Nome", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(sortByName),
+                         for: .touchUpInside)
+        
+        return button
+    }()
+    
+    init(tableViewDelegate: TableViewDelegate,
+         searchBarDelegate: UISearchBarDelegate,
+         sortDelegate: SortDelegate) {
         self.tableViewDelegate = tableViewDelegate
         self.searchBarDelegate = searchBarDelegate
+        self.sortDelegate = sortDelegate
         super.init(frame: .zero)
         
         setupView()
@@ -51,8 +81,12 @@ final class CurrencyListScreen: UIView {
 
 extension CurrencyListScreen: ViewConfiguration {
     func buildHierarchy() {
-        addSubviews(views: [currencyList,
-                            currencySearchBar])
+        addSubviews(views: [
+            currencyList,
+            currencySearchBar,
+            codeSorterButton,
+            nameSorterButton
+        ])
     }
     
     func makeConstraints() {
@@ -60,9 +94,29 @@ extension CurrencyListScreen: ViewConfiguration {
             .make([.top, .leading, .trailing], equalTo: self)
             .make(.height, equalTo: 50)
         
+        codeSorterButton
+            .make(.top, equalTo: currencySearchBar, attribute: .bottom)
+            .make(.trailing, equalTo: self)
+            .make(.width, equalTo: (UIScreen.main.bounds.width / 2))
+            .make(.height, equalTo: 40)
+        
+        nameSorterButton
+            .make(.leading, equalTo: self)
+            .make([.width, .height, .top], equalTo: codeSorterButton)
+        
         currencyList
             .make([.leading, .trailing, .bottom], equalTo: self)
-            .make(.top, equalTo: currencySearchBar, attribute: .bottom)
+            .make(.top, equalTo: nameSorterButton, attribute: .bottom)
+    }
+}
+
+@objc extension CurrencyListScreen {
+    func sortByCode() {
+        sortDelegate.sortList(type: .code)
+    }
+    
+    func sortByName() {
+        sortDelegate.sortList(type: .name)
     }
 }
 
