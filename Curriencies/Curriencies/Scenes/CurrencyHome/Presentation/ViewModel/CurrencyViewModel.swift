@@ -18,9 +18,9 @@ protocol CurrencyViewModeling {
 final class CurrencyViewModel {
     let getCurrenciesUseCase: GetCurrencyUseCaseProtocol
     let calculateUseCase: CalculateCurrencyUseCaseProtocol
-    var currencies: [CurrencyEntity] = []
-    var originCode: String = "USD"
-    var destinationCode: String = "BRL"
+    private var currencies: [CurrencyEntity] = []
+    private(set) var originCode: String = "USD"
+    private(set) var destinationCode: String = "BRL"
     
     init(getCurrenciesUseCase: GetCurrencyUseCaseProtocol,
          calculateCurrencyUseCase: CalculateCurrencyUseCaseProtocol) {
