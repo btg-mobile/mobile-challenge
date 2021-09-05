@@ -12,7 +12,7 @@ final class CurrencyListViewController: UIViewController {
     let viewModel: CurrencyListViewModeling
     
     private lazy var screen: CurrencyListScreen = {
-        let screen = CurrencyListScreen(tableViewDelegate: self)
+        let screen = CurrencyListScreen(tableViewDelegate: self, searchBarDelegate: self)
         
         return screen
     }()
@@ -60,5 +60,19 @@ extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CGFloat(viewModel.heightForRowAt())
+    }
+}
+
+extension CurrencyListViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        viewModel.searchBarCancelButtonPressed()
+        screen.reloadTableView()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.search(text: searchText)
+        screen.reloadTableView()
     }
 }

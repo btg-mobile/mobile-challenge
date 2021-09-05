@@ -10,7 +10,8 @@ import UIKit
 final class CurrencyListScreen: UIView {
     typealias TableViewDelegate = UITableViewDelegate & UITableViewDataSource
     
-    let tableViewDelegate: TableViewDelegate
+    private let tableViewDelegate: TableViewDelegate
+    private let searchBarDelegate: UISearchBarDelegate
     
     private lazy var currencyList: UITableView = {
         let tableView = UITableView()
@@ -23,8 +24,19 @@ final class CurrencyListScreen: UIView {
         return tableView
     }()
     
-    init(tableViewDelegate: TableViewDelegate) {
+    private lazy var currencySearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = searchBarDelegate
+        searchBar.showsCancelButton = true
+        searchBar.isTranslucent = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return searchBar
+    }()
+    
+    init(tableViewDelegate: TableViewDelegate, searchBarDelegate: UISearchBarDelegate) {
         self.tableViewDelegate = tableViewDelegate
+        self.searchBarDelegate = searchBarDelegate
         super.init(frame: .zero)
         
         setupView()
@@ -39,11 +51,23 @@ final class CurrencyListScreen: UIView {
 
 extension CurrencyListScreen: ViewConfiguration {
     func buildHierarchy() {
-        addSubviews(views: [currencyList])
+        addSubviews(views: [currencyList,
+                            currencySearchBar])
     }
     
     func makeConstraints() {
+        currencySearchBar
+            .make([.top, .leading, .trailing], equalTo: self)
+            .make(.height, equalTo: 50)
+        
         currencyList
-            .make([.top, .leading, .trailing, .bottom], equalTo: self)
+            .make([.leading, .trailing, .bottom], equalTo: self)
+            .make(.top, equalTo: currencySearchBar, attribute: .bottom)
+    }
+}
+
+extension CurrencyListScreen {
+    func reloadTableView() {
+        currencyList.reloadData()
     }
 }

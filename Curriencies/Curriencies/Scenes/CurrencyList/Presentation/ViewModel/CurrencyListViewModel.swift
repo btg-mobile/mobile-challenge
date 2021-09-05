@@ -13,6 +13,8 @@ protocol CurrencyListViewModeling {
     func cellForItemAt(_ row: Int) -> CurrencyCellModel
     func didSelectCellAt(_ row: Int)
     func heightForRowAt() -> Float
+    func searchBarCancelButtonPressed()
+    func search(text: String)
 }
 
 protocol ChangeCurrencyDelegate: AnyObject {
@@ -21,12 +23,14 @@ protocol ChangeCurrencyDelegate: AnyObject {
 
 final class CurrencyListViewModel {
     let currencies: [CurrencyEntity]
+    var currenciesPresented: [CurrencyEntity] = []
     let type: CurrencyType
     weak var delegate: ChangeCurrencyDelegate?
     
     init(currencies: [CurrencyEntity], currencyType: CurrencyType) {
         self.currencies = currencies
         self.type = currencyType
+        currenciesPresented = currencies
     }
 }
 
@@ -36,23 +40,33 @@ extension CurrencyListViewModel: CurrencyListViewModeling {
     }
     
     func numberOfRows() -> Int {
-        currencies.count
+        currenciesPresented.count
     }
     
     func cellForItemAt(_ row: Int) -> CurrencyCellModel {
-        guard currencies.count > row else {
+        guard currenciesPresented.count > row else {
             return CurrencyCellModel(name: "Dólar", code: "USD")
         }
-        return CurrencyCellModel(name: currencies[row].name,
-                                 code: currencies[row].code)
+        return CurrencyCellModel(name: currenciesPresented[row].name,
+                                 code: currenciesPresented[row].code)
     }
     
     func didSelectCellAt(_ row: Int) {
-        guard currencies.count > row else { return }
-        delegate?.updateNewCurrency(title: currencies[row].code, type: type)
+        guard currenciesPresented.count > row else { return }
+        delegate?.updateNewCurrency(title: currenciesPresented[row].code, type: type)
     }
     
     func heightForRowAt() -> Float {
         50
+    }
+    
+    func searchBarCancelButtonPressed() {
+        currenciesPresented = currencies
+    }
+    
+    func search(text: String) {
+        currenciesPresented = currencies.filter({
+            ($0.code.contains(text) || $0.name.contains(text))
+        })
     }
 }
