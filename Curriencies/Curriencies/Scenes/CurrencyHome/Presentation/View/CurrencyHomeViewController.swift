@@ -59,11 +59,15 @@ private extension CurrencyHomeViewController {
 
 extension CurrencyHomeViewController: HomeActionsProtocol {
     func tapOriginButton() {
-        print("1")
+        let viewController = viewModel.goToCurrencyList(currencyType: .origin,
+                                                        delegate: self)
+        present(viewController, animated: true)
     }
     
     func tapDestinationButton() {
-        print("2")
+        let viewController = viewModel.goToCurrencyList(currencyType: .destination,
+                                                        delegate: self)
+        present(viewController, animated: true)
     }
     
     func valueDidChange(newValue: String) {
@@ -72,9 +76,9 @@ extension CurrencyHomeViewController: HomeActionsProtocol {
     }
 }
 
-extension CurrencyHomeViewController {
+extension CurrencyHomeViewController: ChangeCurrencyDelegate {
     func updateNewCurrency(title: String, type: CurrencyType) {
-        screen.updateButtonTitle(title, type: type)
-        viewModel.updateCurrency(code: title, type: type)
+        let newValue = viewModel.updateCurrency(code: title, type: type)
+        screen.updateButtonTitle(title, newValue: newValue, type: type)
     }
 }

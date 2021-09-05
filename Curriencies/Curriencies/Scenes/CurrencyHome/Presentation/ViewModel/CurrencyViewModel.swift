@@ -5,13 +5,14 @@
 //  Created by Ferraz on 02/09/21.
 //
 
-import Foundation
+import UIKit
 
 protocol CurrencyViewModeling {
     func getCurrencies(success: @escaping (Bool, String) -> Void)
-    func goToCurrencyList(currencyType: CurrencyType)
+    func goToCurrencyList(currencyType: CurrencyType,
+                          delegate: ChangeCurrencyDelegate) -> UIViewController
     func getValue(originValue: Double) -> String
-    func updateCurrency(code: String, type: CurrencyType)
+    func updateCurrency(code: String, type: CurrencyType) -> String 
 }
 
 final class CurrencyViewModel {
@@ -52,15 +53,19 @@ extension CurrencyViewModel: CurrencyViewModeling {
         return String(format: "%.2f", value)
     }
     
-    func goToCurrencyList(currencyType: CurrencyType) {
-        
+    func goToCurrencyList(currencyType: CurrencyType,
+                          delegate: ChangeCurrencyDelegate) -> UIViewController {
+        return CurrencyListFactory.make(currencies: currencies,
+                                        currencyType: currencyType,
+                                        delegate: delegate)
     }
     
-    func updateCurrency(code: String, type: CurrencyType) {
+    func updateCurrency(code: String, type: CurrencyType) -> String {
         if type == .destination {
-            originCode = code
-        } else {
             destinationCode = code
+        } else {
+            originCode = code
         }
+        return getValue(originValue: 1)
     }
 }

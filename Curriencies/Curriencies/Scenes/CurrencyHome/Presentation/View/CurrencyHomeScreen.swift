@@ -158,11 +158,13 @@ extension CurrencyHomeScreen {
         destinationCurrencyLabel.text = value
     }
     
-    func updateButtonTitle(_ title: String, type: CurrencyType) {
-        if type == .destination {
+    func updateButtonTitle(_ title: String, newValue: String, type: CurrencyType) {
+        if type == .origin {
             originCurrencyButton.setTitle(title, for: .normal)
         } else {
             destinationCurrencyButton.setTitle(title, for: .normal)
         }
+        originCurrencyTextField.text = "1"
+        destinationCurrencyLabel.text = newValue
     }
 }
