@@ -12,6 +12,7 @@ protocol CurrencyListViewModeling {
     func numberOfRows() -> Int
     func cellForItemAt(_ row: Int) -> CurrencyCellModel
     func didSelectCellAt(_ row: Int)
+    func heightForRowAt() -> Float
 }
 
 protocol ChangeCurrencyDelegate: AnyObject {
@@ -49,5 +50,9 @@ extension CurrencyListViewModel: CurrencyListViewModeling {
     func didSelectCellAt(_ row: Int) {
         guard currencies.count > row else { return }
         delegate?.updateNewCurrency(title: currencies[row].code, type: type)
+    }
+    
+    func heightForRowAt() -> Float {
+        50
     }
 }

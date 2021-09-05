@@ -17,13 +17,17 @@ struct CalculateCurrencyUseCase: CalculateCurrencyUseCaseProtocol {
                            originCode: String,
                            destinationCode: String,
                            originValue: Double) -> Double {
+        var originValuePositive = originValue
+        if originValue < 0 {
+            originValuePositive *= -1
+        }
         let originEntity = currencies.first {
             $0.code == originCode
         }
         let destinationEntity = currencies.first {
             $0.code == destinationCode
         }
-        let originValueDollar = originValue / (originEntity?.value ?? 1)
+        let originValueDollar = originValuePositive / (originEntity?.value ?? 1)
         let destinationValue = originValueDollar * (destinationEntity?.value ?? 1)
         
         return destinationValue

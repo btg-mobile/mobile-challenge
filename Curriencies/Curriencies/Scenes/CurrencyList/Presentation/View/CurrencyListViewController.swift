@@ -57,4 +57,8 @@ extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource
         viewModel.didSelectCellAt(indexPath.row)
         dismiss(animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CGFloat(viewModel.heightForRowAt())
+    }
 }

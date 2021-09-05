@@ -14,6 +14,8 @@
 		7B3763A126E408D900AD3EAF /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763A026E408D900AD3EAF /* CurrencyListViewModel.swift */; };
 		7B3763A626E409B800AD3EAF /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763A526E409B800AD3EAF /* CurrencyCellModel.swift */; };
 		7B3763AB26E40C0500AD3EAF /* CurrencyListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763AA26E40C0500AD3EAF /* CurrencyListFactory.swift */; };
+		7B3763BE26E5426E00AD3EAF /* CalculateCurrencyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763BD26E5426E00AD3EAF /* CalculateCurrencyUseCaseTests.swift */; };
+		7B3763C326E5481600AD3EAF /* GetCurrencyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763C226E5481600AD3EAF /* GetCurrencyUseCaseTests.swift */; };
 		7B38B5CD26E2AC8500BCFC77 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */; };
 		7B38B5D226E2B0A100BCFC77 /* CurrencyHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */; };
 		7B38B5D926E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */; };
@@ -70,6 +72,8 @@
 		7B3763A026E408D900AD3EAF /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
 		7B3763A526E409B800AD3EAF /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 		7B3763AA26E40C0500AD3EAF /* CurrencyListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListFactory.swift; sourceTree = "<group>"; };
+		7B3763BD26E5426E00AD3EAF /* CalculateCurrencyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCurrencyUseCaseTests.swift; sourceTree = "<group>"; };
+		7B3763C226E5481600AD3EAF /* GetCurrencyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyUseCaseTests.swift; sourceTree = "<group>"; };
 		7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeFactory.swift; sourceTree = "<group>"; };
 		7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCurrency+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -151,6 +155,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7B3763AF26E53F0D00AD3EAF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7B3763B026E53F1600AD3EAF /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				7B3763BD26E5426E00AD3EAF /* CalculateCurrencyUseCaseTests.swift */,
+				7B3763C226E5481600AD3EAF /* GetCurrencyUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		7B3763B126E53F1E00AD3EAF /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		7B38B5D626E2B68300BCFC77 /* LocalModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +227,9 @@
 		7B954A9D26DED196002C7133 /* CurrienciesTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B3763B126E53F1E00AD3EAF /* API */,
+				7B3763B026E53F1600AD3EAF /* UseCases */,
+				7B3763AF26E53F0D00AD3EAF /* ViewModels */,
 				7B954A9E26DED196002C7133 /* CurrienciesTests.swift */,
 				7B954AA026DED196002C7133 /* Info.plist */,
 			);
@@ -541,6 +571,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B954A9F26DED196002C7133 /* CurrienciesTests.swift in Sources */,
+				7B3763C326E5481600AD3EAF /* GetCurrencyUseCaseTests.swift in Sources */,
+				7B3763BE26E5426E00AD3EAF /* CalculateCurrencyUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
