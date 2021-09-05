@@ -66,6 +66,10 @@ extension CurrencyListViewModel: CurrencyListViewModeling {
     }
     
     func search(text: String) {
+        if text.isEmpty {
+            currenciesPresented = currencies
+            return
+        }
         currenciesPresented = currencies.filter({
             ($0.code.contains(text) || $0.name.contains(text))
         })
