@@ -39,6 +39,7 @@ final class CurrencyListViewController: UIViewController {
 
 }
 
+// MARK: - TableView Delegate && Data Source
 extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.numberOfSections()
@@ -65,6 +66,7 @@ extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+// MARK: - SearchBar Delegate
 extension CurrencyListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -83,6 +85,7 @@ extension CurrencyListViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - Sort Delegate
 extension CurrencyListViewController: SortDelegate {
     func sortList(type: SortType) {
         viewModel.sortCurrencies(sortType: type)

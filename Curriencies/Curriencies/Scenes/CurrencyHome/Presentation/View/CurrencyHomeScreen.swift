@@ -105,6 +105,7 @@ final class CurrencyHomeScreen: UIView {
     }
 }
 
+// MARK: - ViewConfiguration
 extension CurrencyHomeScreen: ViewConfiguration {
     func buildHierarchy() {
         containerView.addSubviews(views: [
@@ -147,6 +148,7 @@ extension CurrencyHomeScreen: ViewConfiguration {
     }
 }
 
+// MARK: - View Actions
 @objc private extension CurrencyHomeScreen {
     func originButtonAction() {
         homeActions?.tapOriginButton()
@@ -161,6 +163,7 @@ extension CurrencyHomeScreen: ViewConfiguration {
     }
 }
 
+// MARK: - View Methods
 extension CurrencyHomeScreen {
     func updateLabelValue(_ value: String) {
         destinationCurrencyLabel.text = value

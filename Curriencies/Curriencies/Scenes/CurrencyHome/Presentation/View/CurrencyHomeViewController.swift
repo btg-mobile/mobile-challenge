@@ -56,6 +56,7 @@ final class CurrencyHomeViewController: UIViewController {
     }
 }
 
+// MARK: - ViewController Methods
 private extension CurrencyHomeViewController {
     func getCurrencies() {
         viewModel.getCurrencies { [weak self] success, value in
@@ -72,6 +73,7 @@ private extension CurrencyHomeViewController {
     }
 }
 
+// MARK: - HomeActions
 extension CurrencyHomeViewController: HomeActionsProtocol {
     func tapOriginButton() {
         let viewController = viewModel.goToCurrencyList(currencyType: .origin,
@@ -95,6 +97,7 @@ extension CurrencyHomeViewController: HomeActionsProtocol {
     }
 }
 
+// MARK: - ChangeCurrency Delegate
 extension CurrencyHomeViewController: ChangeCurrencyDelegate {
     func updateNewCurrency(title: String, type: CurrencyType) {
         let newValue = viewModel.updateCurrency(code: title, type: type)

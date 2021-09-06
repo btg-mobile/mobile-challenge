@@ -66,8 +66,6 @@ final class CurrencyListViewModelTests: XCTestCase {
     }
     
     func testSearchBarCancelButtonPressed_WhenCancelButtonPressed_ShouldUpdateArrayOfCurrencies() {
-        sut.currenciesPresented = []
-        
         sut.searchBarCancelButtonPressed()
         
         XCTAssertEqual(sut.currenciesPresented.count, sut.currencies.count)

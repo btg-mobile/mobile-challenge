@@ -40,6 +40,7 @@ final class CurrencyTableViewCell: UITableViewCell {
     
 }
 
+// MARK: - ViewConfiguration
 extension CurrencyTableViewCell: ViewConfiguration {
     func buildHierarchy() {
         addSubviews(views: [currencyName, currencyCode])
@@ -58,6 +59,7 @@ extension CurrencyTableViewCell: ViewConfiguration {
     }
 }
 
+// MARK: - View Methods
 extension CurrencyTableViewCell {
     func setupCell(with model: CurrencyCellModel) {
         currencyCode.text = model.code

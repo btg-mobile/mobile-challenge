@@ -16,8 +16,8 @@ protocol CurrencyViewModeling {
 }
 
 final class CurrencyViewModel {
-    let getCurrenciesUseCase: GetCurrencyUseCaseProtocol
-    let calculateUseCase: CalculateCurrencyUseCaseProtocol
+    private let getCurrenciesUseCase: GetCurrencyUseCaseProtocol
+    private let calculateUseCase: CalculateCurrencyUseCaseProtocol
     private var currencies: [CurrencyEntity] = []
     private(set) var originCode: String = "USD"
     private(set) var destinationCode: String = "BRL"
@@ -31,8 +31,7 @@ final class CurrencyViewModel {
 
 extension CurrencyViewModel: CurrencyViewModeling {
     func getCurrencies(success: @escaping (Bool, String) -> Void) {
-        getCurrenciesUseCase.getCurrencies { [weak self] result in
-            guard let self = self else { return }
+        getCurrenciesUseCase.getCurrencies { result in
             switch result {
             case let .success(entities):
                 self.currencies = entities

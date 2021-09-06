@@ -49,7 +49,6 @@ extension LocalDataCurrency: LocalCurrencyProtocol {
                 saveCurrency(currencies: currencies)
             case let .failure(error):
                 print(error)
-                break
             }
         }
     }

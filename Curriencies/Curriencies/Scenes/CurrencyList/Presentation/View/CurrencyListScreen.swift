@@ -7,6 +7,10 @@
 
 import UIKit
 
+fileprivate enum Layout {
+    static let buttonSize: CGFloat = UIScreen.main.bounds.width / 2
+}
+
 final class CurrencyListScreen: UIView {
     typealias TableViewDelegate = UITableViewDelegate & UITableViewDataSource
     
@@ -37,7 +41,7 @@ final class CurrencyListScreen: UIView {
     
     private lazy var codeSorterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Código", for: .normal)
+        button.setTitle("Código ↓", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +54,7 @@ final class CurrencyListScreen: UIView {
     
     private lazy var nameSorterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Nome", for: .normal)
+        button.setTitle("Nome ↓", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +83,7 @@ final class CurrencyListScreen: UIView {
     
 }
 
+// MARK: - ViewConfiguration
 extension CurrencyListScreen: ViewConfiguration {
     func buildHierarchy() {
         addSubviews(views: [
@@ -97,7 +102,7 @@ extension CurrencyListScreen: ViewConfiguration {
         codeSorterButton
             .make(.top, equalTo: currencySearchBar, attribute: .bottom)
             .make(.trailing, equalTo: self)
-            .make(.width, equalTo: (UIScreen.main.bounds.width / 2))
+            .make(.width, equalTo: Layout.buttonSize)
             .make(.height, equalTo: 40)
         
         nameSorterButton
@@ -110,6 +115,7 @@ extension CurrencyListScreen: ViewConfiguration {
     }
 }
 
+// MARK: - View Actions
 @objc extension CurrencyListScreen {
     func sortByCode() {
         sortDelegate.sortList(type: .code)
@@ -120,6 +126,7 @@ extension CurrencyListScreen: ViewConfiguration {
     }
 }
 
+// MARK: - View Methods
 extension CurrencyListScreen {
     func reloadTableView() {
         currencyList.reloadData()

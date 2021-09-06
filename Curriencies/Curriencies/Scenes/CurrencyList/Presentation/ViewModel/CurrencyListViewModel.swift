@@ -24,7 +24,7 @@ protocol ChangeCurrencyDelegate: AnyObject {
 
 final class CurrencyListViewModel {
     let currencies: [CurrencyEntity]
-    var currenciesPresented: [CurrencyEntity] = []
+    private(set) var currenciesPresented: [CurrencyEntity] = []
     let type: CurrencyType
     weak var delegate: ChangeCurrencyDelegate?
     
@@ -36,6 +36,7 @@ final class CurrencyListViewModel {
 }
 
 extension CurrencyListViewModel: CurrencyListViewModeling {
+    // MARK: - TableView Delegate && Data Source
     func numberOfSections() -> Int {
         1
     }
@@ -61,6 +62,7 @@ extension CurrencyListViewModel: CurrencyListViewModeling {
         50
     }
     
+    // MARK: - SearchBar Delegate
     func searchBarCancelButtonPressed() {
         currenciesPresented = currencies
     }
@@ -75,6 +77,7 @@ extension CurrencyListViewModel: CurrencyListViewModeling {
         })
     }
     
+    // MARK: - Sort Methods
     func sortCurrencies(sortType: SortType) {
         if sortType == .code {
             currenciesPresented = currenciesPresented.sorted {
