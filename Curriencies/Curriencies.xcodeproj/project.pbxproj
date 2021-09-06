@@ -21,6 +21,9 @@
 		7B3763DE26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763DD26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift */; };
 		7B3763E326E557CD00AD3EAF /* CurrencyListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763E226E557CD00AD3EAF /* CurrencyListViewModelTests.swift */; };
 		7B3763E826E5829400AD3EAF /* SortDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763E726E5829400AD3EAF /* SortDelegate.swift */; };
+		7B3763F026E58A1600AD3EAF /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3763EF26E58A1500AD3EAF /* APITests.swift */; };
+		7B3763F526E58C4800AD3EAF /* responseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B3763F426E58C4800AD3EAF /* responseMock.json */; };
+		7B37640226E58C9000AD3EAF /* invalidResponseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B37640126E58C9000AD3EAF /* invalidResponseMock.json */; };
 		7B38B5CD26E2AC8500BCFC77 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */; };
 		7B38B5D226E2B0A100BCFC77 /* CurrencyHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */; };
 		7B38B5D926E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */; };
@@ -84,6 +87,9 @@
 		7B3763DD26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyUseCaseSpy.swift; sourceTree = "<group>"; };
 		7B3763E226E557CD00AD3EAF /* CurrencyListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTests.swift; sourceTree = "<group>"; };
 		7B3763E726E5829400AD3EAF /* SortDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDelegate.swift; sourceTree = "<group>"; };
+		7B3763EF26E58A1500AD3EAF /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
+		7B3763F426E58C4800AD3EAF /* responseMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = responseMock.json; sourceTree = "<group>"; };
+		7B37640126E58C9000AD3EAF /* invalidResponseMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalidResponseMock.json; sourceTree = "<group>"; };
 		7B38B5CC26E2AC8500BCFC77 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		7B38B5D126E2B0A100BCFC77 /* CurrencyHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHomeFactory.swift; sourceTree = "<group>"; };
 		7B38B5D726E2B6AA00BCFC77 /* LocalCurrency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCurrency+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 		7B3763B126E53F1E00AD3EAF /* API */ = {
 			isa = PBXGroup;
 			children = (
+				7B3763EF26E58A1500AD3EAF /* APITests.swift */,
+				7B3763F426E58C4800AD3EAF /* responseMock.json */,
+				7B37640126E58C9000AD3EAF /* invalidResponseMock.json */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -522,6 +531,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B37640226E58C9000AD3EAF /* invalidResponseMock.json in Resources */,
+				7B3763F526E58C4800AD3EAF /* responseMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +595,7 @@
 				7B3763E326E557CD00AD3EAF /* CurrencyListViewModelTests.swift in Sources */,
 				7B3763C326E5481600AD3EAF /* GetCurrencyUseCaseTests.swift in Sources */,
 				7B3763DE26E54D6F00AD3EAF /* GetCurrencyUseCaseSpy.swift in Sources */,
+				7B3763F026E58A1600AD3EAF /* APITests.swift in Sources */,
 				7B3763BE26E5426E00AD3EAF /* CalculateCurrencyUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
