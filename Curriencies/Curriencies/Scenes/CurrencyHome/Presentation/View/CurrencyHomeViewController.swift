@@ -11,6 +11,7 @@ protocol HomeActionsProtocol: AnyObject {
     func tapOriginButton()
     func tapDestinationButton()
     func valueDidChange(newValue: String)
+    func presentAlert(_ alert: UIAlertController)
 }
 
 final class CurrencyHomeViewController: UIViewController {
@@ -22,6 +23,16 @@ final class CurrencyHomeViewController: UIViewController {
         screen.homeActions = self
         
         return screen
+    }()
+    
+    private lazy var loadingView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .large
+        indicator.color = .gray
+        indicator.backgroundColor = .white
+        indicator.startAnimating()
+        
+        return indicator
     }()
     
     init(viewModel: CurrencyViewModeling) {
@@ -41,16 +52,20 @@ final class CurrencyHomeViewController: UIViewController {
     }
     
     override func loadView() {
-        view = screen
+        view = loadingView
     }
 }
 
 private extension CurrencyHomeViewController {
     func getCurrencies() {
         viewModel.getCurrencies { [weak self] success, value in
-            if success {
-                DispatchQueue.main.sync {
+            DispatchQueue.main.sync {
+                self?.loadingView.stopAnimating()
+                self?.view = self?.screen
+                if success {
                     self?.screen.updateLabelValue(value)
+                } else {
+                    self?.screen.errorHandling()
                 }
             }
         }
@@ -73,6 +88,10 @@ extension CurrencyHomeViewController: HomeActionsProtocol {
     func valueDidChange(newValue: String) {
         let value = viewModel.getValue(originValue: Double(newValue) ?? 1.0)
         screen.updateLabelValue(value)
+    }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        present(alert, animated: true)
     }
 }
 

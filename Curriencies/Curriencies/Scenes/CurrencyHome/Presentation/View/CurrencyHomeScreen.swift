@@ -43,6 +43,7 @@ final class CurrencyHomeScreen: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.darkGray.cgColor
         textField.layer.cornerRadius = 5
+        textField.keyboardType = .decimalPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.addTarget(self,
                             action: #selector(textFieldDidChange(_:)),
@@ -83,6 +84,13 @@ final class CurrencyHomeScreen: UIView {
         view.backgroundColor = .white
         
         return view
+    }()
+    
+    private lazy var errorAlert: UIAlertController = {
+        let alert = UIAlertController(title: "Erro ao buscar moedas!!!", message: "tente novamente mais tarde :(", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        
+        return alert
     }()
     
     override init(frame: CGRect = .zero) {
@@ -156,6 +164,12 @@ extension CurrencyHomeScreen: ViewConfiguration {
 extension CurrencyHomeScreen {
     func updateLabelValue(_ value: String) {
         destinationCurrencyLabel.text = value
+    }
+    
+    func errorHandling() {
+        homeActions?.presentAlert(errorAlert)
+        originCurrencyButton.isEnabled = false
+        destinationCurrencyButton.isEnabled = false
     }
     
     func updateButtonTitle(_ title: String, newValue: String, type: CurrencyType) {
