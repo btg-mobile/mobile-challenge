@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,6 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/atomicfu.kotlin_module")
+    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -55,20 +61,27 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.work:work-runtime-ktx:2.6.0")
+
+    // Room components
+    implementation("androidx.room:room-ktx:2.3.0")
+    kapt("androidx.room:room-compiler:2.3.0")
 
     // Retrofit with Moshi Converter
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.moshi:moshi-adapters:1.12.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.7.2")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
 
     testImplementation("junit:junit:4.13.2")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    androidTestImplementation("androidx.room:room-testing:2.3.0")
 }

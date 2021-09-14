@@ -6,4 +6,6 @@
     <string name="to">to</string>
     <string name="asc">ascending</string>
     <string name="desc">descending</string>
+    <string name="select_the_origin_currency">Select the origin currency</string>
+    <string name="select_the_target_currency">Select the target currency</string>
 </resources>

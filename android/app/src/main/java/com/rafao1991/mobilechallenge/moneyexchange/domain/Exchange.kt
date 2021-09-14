@@ -1,5 +1,7 @@
 package com.rafao1991.mobilechallenge.moneyexchange.domain
 
+import com.rafao1991.mobilechallenge.moneyexchange.util.ERROR
+import com.rafao1991.mobilechallenge.moneyexchange.util.USD
 import java.lang.Exception
 
 class Exchange(

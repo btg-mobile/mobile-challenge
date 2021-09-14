@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.rafao1991.mobilechallenge.moneyexchange.ExchangeApplication
 import com.rafao1991.mobilechallenge.moneyexchange.R
-import com.rafao1991.mobilechallenge.moneyexchange.ui.main.MainViewModel
+import com.rafao1991.mobilechallenge.moneyexchange.viewmodel.MainViewModel
+import com.rafao1991.mobilechallenge.moneyexchange.viewmodel.MainViewModelFactory
 
 class CurrencyListFragment : Fragment() {
 
@@ -22,7 +24,6 @@ class CurrencyListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_currency_list_adapter, container, false)
         setHasOptionsMenu(true)
         return view
@@ -30,9 +31,15 @@ class CurrencyListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val factory = requireActivity().let {
+            MainViewModelFactory(
+                (it.application as ExchangeApplication).currencyRepository,
+                (it.application as ExchangeApplication).quoteRepository)
+        }
+        viewModel = ViewModelProvider(requireActivity(), factory).get(MainViewModel::class.java)
         val list = view.findViewById<RecyclerView>(R.id.list)
         list.layoutManager = LinearLayoutManager(context)
-        list.adapter = viewModel.currencyList.value?.currencies?.let {
+        list.adapter = viewModel.currencyList.value?.let {
             CurrencyListRecyclerViewAdapter(
                 it,
                 true,
@@ -67,7 +74,7 @@ class CurrencyListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val asc = item.itemId == R.id.asc
         this.view?.findViewById<RecyclerView>(R.id.list)?.adapter =
-            viewModel.currencyList.value?.currencies?.let {
+            viewModel.currencyList.value?.let {
                 CurrencyListRecyclerViewAdapter(
                     it,
                     asc,

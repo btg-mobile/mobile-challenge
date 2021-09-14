@@ -1,5 +1,6 @@
 package com.rafao1991.mobilechallenge.moneyexchange.ui.currencyList
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +8,7 @@ import android.widget.Filter
 import android.widget.TextView
 
 import com.rafao1991.mobilechallenge.moneyexchange.databinding.FragmentCurrencyListBinding
-import com.rafao1991.mobilechallenge.moneyexchange.domain.Currency
+import com.rafao1991.mobilechallenge.moneyexchange.util.Currency
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -73,6 +74,7 @@ class CurrencyListRecyclerViewAdapter(
             return results
         }
 
+        @SuppressLint("NotifyDataSetChanged")
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
             if (results?.values is HashMap<*, *>) {
                 initialList.clear()

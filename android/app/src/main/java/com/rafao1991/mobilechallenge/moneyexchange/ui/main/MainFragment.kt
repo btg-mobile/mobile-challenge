@@ -1,25 +1,28 @@
 package com.rafao1991.mobilechallenge.moneyexchange.ui.main
 
-import android.opengl.Visibility
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
+import com.rafao1991.mobilechallenge.moneyexchange.ExchangeApplication
 import com.rafao1991.mobilechallenge.moneyexchange.R
-import com.rafao1991.mobilechallenge.moneyexchange.domain.ApiStatus
-import com.rafao1991.mobilechallenge.moneyexchange.domain.Currency
+import com.rafao1991.mobilechallenge.moneyexchange.util.ApiStatus
+import com.rafao1991.mobilechallenge.moneyexchange.util.Currency
+import com.rafao1991.mobilechallenge.moneyexchange.viewmodel.MainViewModel
+import com.rafao1991.mobilechallenge.moneyexchange.viewmodel.MainViewModelFactory
+import com.rafao1991.mobilechallenge.moneyexchange.worker.TAG
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -44,7 +47,12 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        val factory = requireActivity().let {
+            MainViewModelFactory(
+                (it.application as ExchangeApplication).currencyRepository,
+                (it.application as ExchangeApplication).quoteRepository)
+        }
+        viewModel = ViewModelProvider(requireActivity(), factory).get(MainViewModel::class.java)
         activity?.let {
             loadViews(it)
             loadActions()
@@ -111,11 +119,15 @@ class MainFragment : Fragment() {
         })
 
         viewModel.originCurrency.observe(viewLifecycleOwner, {
-            buttonOriginCurrency.text = it
+            if (!it.isNullOrBlank()) {
+                buttonOriginCurrency.text = it
+            }
         })
 
         viewModel.targetCurrency.observe(viewLifecycleOwner, {
-            buttonTargetCurrency.text = it
+            if (!it.isNullOrBlank()) {
+                buttonTargetCurrency.text = it
+            }
         })
 
         viewModel.result.observe(viewLifecycleOwner, {
@@ -123,5 +135,19 @@ class MainFragment : Fragment() {
             df.roundingMode = RoundingMode.CEILING
             textViewResult.text = df.format(it)
         })
+
+        WorkManager.getInstance(requireContext()).getWorkInfosByTagLiveData(TAG).observe(
+            viewLifecycleOwner, { workInfo ->
+                if (workInfo.isNotEmpty()) {
+                    if (workInfo != null && workInfo[0].state == WorkInfo.State.RUNNING) {
+                        viewModel.showLoading()
+                    }
+
+                    if (workInfo != null && workInfo[0].state == WorkInfo.State.ENQUEUED) {
+                        viewModel.getData()
+                    }
+                }
+            }
+        )
     }
 }

@@ -9,7 +9,7 @@ import org.junit.Before
 import java.lang.Exception
 
 class ExchangeUnitTest {
-    lateinit var exchange: Exchange
+    private lateinit var exchange: Exchange
 
     private val usd = "USD"
     private val brl = "BRL"

@@ -1,8 +1,7 @@
 package com.rafao1991.mobilechallenge.moneyexchange
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.rafao1991.mobilechallenge.moneyexchange.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 

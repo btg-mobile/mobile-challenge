@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_currency_list_adapter" >
         <argument
             android:name="currencyType"
-            app:argType="com.rafao1991.mobilechallenge.moneyexchange.domain.Currency"
+            app:argType="com.rafao1991.mobilechallenge.moneyexchange.util.Currency"
             android:defaultValue="ORIGIN" />
         <action
             android:id="@+id/action_currencyListFragment_pop"
