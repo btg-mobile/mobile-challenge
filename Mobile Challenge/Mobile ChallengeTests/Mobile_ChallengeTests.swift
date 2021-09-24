@@ -10,23 +10,43 @@ import XCTest
 
 class Mobile_ChallengeTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // MARK: - Private properties
+    
+    private var mockedError = NSError(domain: "MockedErrorDomain", code: -999, userInfo: nil)
+    private var mockedCurrentDollarQuoteDTO = CurrentDollarQuoteDTO(success: true, source: "USD", quotes: ["USDBRL" : 5.0])
+    private var mockedCurrenciesDTO = CurrenciesDTO(success: true, currencies: ["USD" : "Dolar Americano", "BRL" : "Real Brasileiro"])
+    
+    func testGetCurrenciesWithSucess() {
+        let useCase = ListCurrencyUseCase(currencyRepository: CurrencyMockedRepository(mockedCurrenciesDTO: mockedCurrenciesDTO, mockedCurrentDollarQuoteDTO: nil, mockedError: nil))
+        
+        useCase.listCurrencies { currencies, error in
+            XCTAssertNil(error)
+            XCTAssertEqual(currencies?.list.count, 2)
+        }
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testGetCurrenciesWithError() {
+        let useCase = ListCurrencyUseCase(currencyRepository: CurrencyMockedRepository(mockedCurrenciesDTO: mockedCurrenciesDTO, mockedCurrentDollarQuoteDTO: nil, mockedError: mockedError))
+        
+        useCase.listCurrencies { _ , error in
+            XCTAssertNotNil(error)
+        }
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testConverterCurrencyWithSucess() {
+        let useCase = ConverterUseCase(currencyRepository: CurrencyMockedRepository(mockedCurrenciesDTO: nil, mockedCurrentDollarQuoteDTO: mockedCurrentDollarQuoteDTO, mockedError: nil))
+        
+        useCase.convertCurrency(from: "USD", to: "BRL") { quote, error in
+            XCTAssertNil(error)
+            XCTAssertEqual(quote, 5.0)
+        }
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testConverterCurrencyWithError() {
+        let useCase = ConverterUseCase(currencyRepository: CurrencyMockedRepository(mockedCurrenciesDTO: nil, mockedCurrentDollarQuoteDTO: mockedCurrentDollarQuoteDTO, mockedError: mockedError))
+        
+        useCase.convertCurrency(from: "USD", to: "BRL") { quote, error in
+            XCTAssertNotNil(error)
         }
     }
 
