@@ -13,13 +13,6 @@ struct CurrencyLocalRepository: CurrencyRepositoryProtocol {
     
     let userDefault = UserDefaults.standard
     
-    // MARK: - Private properties
-    
-    private enum PersistKey : String {
-        case currenciesDTOKey = "com.simoes.daive.Mobile-Challenge.currenciesDTO"
-        case dollarQuoteDTOKey = "com.simoes.daive.Mobile-Challenge.currentDollarQuoteDTO"
-    }
-    
     // MARK: - Public methods
     
     func getCurrencyList(completion: @escaping (Result<CurrenciesDTO, Error>) -> Void) {
@@ -41,29 +34,29 @@ struct CurrencyLocalRepository: CurrencyRepositoryProtocol {
     }
     
     func saveCurrencyList(currenciesDTO: CurrenciesDTO) {
-        userDefault.set(currenciesDTO, forKey: PersistKey.currenciesDTOKey.rawValue)
+        guard let jsonData = try? JSONEncoder().encode(currenciesDTO) else { return }
+        
+        userDefault.set(String(bytes: jsonData, encoding: .utf8), forKey: Constants.currenciesDTOKey.rawValue)
     }
     
     func saveCurrentDollarQuote(currentDollarQuoteDTO: CurrentDollarQuoteDTO) {
-        userDefault.set(currentDollarQuoteDTO, forKey: PersistKey.dollarQuoteDTOKey.rawValue)
+        guard let jsonData = try? JSONEncoder().encode(currentDollarQuoteDTO) else { return }
+        
+        userDefault.set(String(bytes: jsonData, encoding: .utf8), forKey: Constants.dollarQuoteDTOKey.rawValue)
     }
     
     // MARK: - Private methods
     
     private func retrieveCurrencyListDTO() -> CurrenciesDTO? {
-        guard let dto = userDefault.object(forKey: PersistKey.currenciesDTOKey.rawValue) else {
-            return nil
-        }
+        guard let jsonString = userDefault.string(forKey: Constants.currenciesDTOKey.rawValue), let jsonData = jsonString.data(using: .utf8), let dto = try? JSONDecoder().decode(CurrenciesDTO.self, from : jsonData) else { return nil }
         
-        return dto as? CurrenciesDTO
+        return dto
     }
     
     private func retrieveCurrentDollarQuoteDTO() -> CurrentDollarQuoteDTO? {
-        guard let dto = userDefault.object(forKey: PersistKey.dollarQuoteDTOKey.rawValue) else {
-            return nil
-        }
+        guard let jsonString = userDefault.string(forKey: Constants.dollarQuoteDTOKey.rawValue), let jsonData = jsonString.data(using: .utf8), let dto = try? JSONDecoder().decode(CurrentDollarQuoteDTO.self, from : jsonData) else { return nil }
         
-        return dto as? CurrentDollarQuoteDTO
+        return dto
     }
     
 }
