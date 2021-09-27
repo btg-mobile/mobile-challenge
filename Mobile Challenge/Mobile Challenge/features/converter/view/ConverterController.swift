@@ -43,25 +43,6 @@ class ConverterController: UIViewController, Storyboarded {
         bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let currentCurrency = coordinator?.selectedCurrency else { return }
-        
-        switch selectedCurrency {
-        case .source:
-            sourceCurrency = currentCurrency
-            lblSourceCurrency.text = sourceCurrency?.id
-            
-        case .target:
-            targetCurrency = currentCurrency
-            lblTargetCurrency.text = targetCurrency?.id
-        }
-        
-        setConverterButtonStatus()
-        
-    }
-    
     deinit {
         unbind()
     }
@@ -80,12 +61,12 @@ class ConverterController: UIViewController, Storyboarded {
     
     @IBAction func didPressSourceCurrencyButton(sender: UITapGestureRecognizer) {
         selectedCurrency = .source
-        coordinator?.goToCurrencyList()
+        coordinator?.goToCurrencyList(delegate: self)
     }
     
     @IBAction func didPressTargetCurrencyButton(sender: UITapGestureRecognizer) {
         selectedCurrency = .target
-        coordinator?.goToCurrencyList()
+        coordinator?.goToCurrencyList(delegate: self)
     }
     
     @IBAction func didPressConvertButton(sender: UIButton) {
@@ -150,6 +131,26 @@ extension ConverterController {
     @objc private func showConversionError(_ notification: Notification) {
         guard let conversionError = notification.object as? Error else { return }
         print(conversionError.localizedDescription)
+    }
+    
+}
+
+// MARK: - SelectCurrencyDelegate
+
+extension ConverterController : SelectCurrencyDelegate {
+    
+    func selected(currency: Currency) {
+        switch selectedCurrency {
+        case .source:
+            sourceCurrency = currency
+            lblSourceCurrency.text = sourceCurrency?.id
+            
+        case .target:
+            targetCurrency = currency
+            lblTargetCurrency.text = targetCurrency?.id
+        }
+        
+        setConverterButtonStatus()
     }
     
 }

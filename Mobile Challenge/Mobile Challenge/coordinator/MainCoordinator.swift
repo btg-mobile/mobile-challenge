@@ -13,8 +13,6 @@ class MainCoordinator: Coordinator {
     
     weak var currentNavigationController: UINavigationController!
     
-    var selectedCurrency: Currency?
-    
     // MARK: - Public methods
     
     func start(navigationController: UINavigationController) {
@@ -26,9 +24,10 @@ class MainCoordinator: Coordinator {
         currentNavigationController.pushViewController(converterController, animated: false)
     }
     
-    func goToCurrencyList() {
+    func goToCurrencyList(delegate: SelectCurrencyDelegate) {
         let currencyListController = CurrencyListController.instantiate(storyboardName: Constants.currencyListStoryboardName.rawValue, bundle: Bundle(for: type(of: self)))
         currencyListController.coordinator = self
+        currencyListController.delegate = delegate
         currencyListController.viewModel = CurrencyListViewModel(currencyListUseCase: ListCurrenciesUseCase())
         currencyListController.title = Constants.currencyListScreenTitle.rawValue
         currentNavigationController.pushViewController(currencyListController, animated: true)

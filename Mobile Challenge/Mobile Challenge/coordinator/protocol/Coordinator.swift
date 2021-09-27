@@ -10,8 +10,8 @@ import UIKit
 protocol Coordinator {
     
     var currentNavigationController : UINavigationController! { get set }
-    var selectedCurrency: Currency? { get set }
     
     func start(navigationController: UINavigationController)
     func back()
+    
 }

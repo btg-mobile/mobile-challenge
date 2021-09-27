@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol SelectCurrencyDelegate : AnyObject {
+    func selected(currency: Currency)
+}
+
 class CurrencyListController: UIViewController, Storyboarded {
 
     // MARK: - IBOutlets
     
     @IBOutlet weak var tblCurrencies: UITableView!
     @IBOutlet weak var txtSearch: UITextField!
+    
+    // MARK: - Delegate
+    
+    weak var delegate: SelectCurrencyDelegate?
     
     // MARK: - Public properties
     
@@ -100,9 +108,8 @@ extension CurrencyListController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCurrency = viewModel?.currencyList?[indexPath.row] else { return }
-        coordinator?.selectedCurrency = selectedCurrency
+        delegate?.selected(currency: selectedCurrency)
         coordinator?.back()
     }
     
 }
-
