@@ -17,8 +17,7 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = CurrencyListViewModel()
-        let controller = CurrencyListController(viewModel: viewModel)
+        let controller = CurrencyListController()
         navigationController.pushViewController(controller, animated: true)
     }
     

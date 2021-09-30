@@ -9,12 +9,11 @@ import UIKit
 
 final class CurrencyListController: UIViewController {
     
-    private var viewModel: CurrencyListViewModel
+    private lazy var viewModel = CurrencyListViewModel(delegate: self)
     private lazy var customView = CurrencyListView(delegate: self, dataSource: self)
     
     // MARK: - Initializers
-    init(viewModel: CurrencyListViewModel) {
-        self.viewModel = viewModel
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,7 +23,7 @@ final class CurrencyListController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = customView
+        self.view = customView
     }
     
     override func viewDidLoad() {
@@ -38,7 +37,7 @@ final class CurrencyListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Chuck Norris Facts"
+        self.title = "Currencies"
     }
     
 }
@@ -54,6 +53,17 @@ extension CurrencyListController {
     
 }
 
+extension CurrencyListController: CurrencyListViewModelDelegate {
+    func didReloadData() {
+        customView.tableView.reloadData()
+    }
+    
+    func failedToGetCurrencyList() {
+        
+    }
+    
+}
+
 // MARK: - TableView Extensions
 extension CurrencyListController: UITableViewDelegate {
     
@@ -65,11 +75,15 @@ extension CurrencyListController: UITableViewDelegate {
 
 extension CurrencyListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.filteredData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return CurrencyCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CurrencyCell.self)) as? CurrencyCell, let info = viewModel.filteredData else {
+            return UITableViewCell()
+        }
+        cell.setupInfos(info[indexPath.row])
+        return cell
     }
     
 }

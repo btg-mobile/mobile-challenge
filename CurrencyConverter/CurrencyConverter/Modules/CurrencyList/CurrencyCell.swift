@@ -17,6 +17,13 @@ final class CurrencyCell: UITableViewCell {
         return stackView
     }()
     
+    var label: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewConfiguration()
@@ -26,11 +33,16 @@ final class CurrencyCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupInfos(_ model: String) {
+        label.text = model
+    }
+    
 }
 
 extension CurrencyCell: ViewConfiguration {
     func buildViewHierarchy() {
         addSubViews([container])
+        container.addArrangedSubview(label)
     }
     
     func setupConstraints() {
