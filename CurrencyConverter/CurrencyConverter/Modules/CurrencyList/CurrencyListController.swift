@@ -11,6 +11,7 @@ final class CurrencyListController: UIViewController {
     
     private lazy var viewModel = CurrencyListViewModel(delegate: self)
     private lazy var customView = CurrencyListView(delegate: self, dataSource: self)
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Initializers
     init() {
@@ -29,6 +30,7 @@ final class CurrencyListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setSearchBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +42,8 @@ final class CurrencyListController: UIViewController {
         self.title = "Currencies"
     }
     
+    
+    
 }
 
 // MARK: - Private Methods
@@ -49,6 +53,13 @@ extension CurrencyListController {
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    private func setSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        customView.tableView.tableHeaderView = searchController.searchBar
     }
     
 }
@@ -63,6 +74,18 @@ extension CurrencyListController: CurrencyListViewModelDelegate {
     }
     
 }
+
+extension CurrencyListController: UISearchBarDelegate {
+    
+}
+
+extension CurrencyListController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.updateSearchResults(for: searchController)
+    }
+    
+}
+
 
 // MARK: - TableView Extensions
 extension CurrencyListController: UITableViewDelegate {
