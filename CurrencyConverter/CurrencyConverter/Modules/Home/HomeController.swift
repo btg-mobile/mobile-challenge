@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  HomeController.swift
 //  CurrencyConverter
 //
 //  Created by Eduardo Lopes on 29/09/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeController: UIViewController {
     private let customView = HomeView()
     private let viewModel: HomeViewModel
     
@@ -30,3 +30,4 @@ final class HomeViewController: UIViewController {
     }
     
 }
+
