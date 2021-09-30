@@ -75,7 +75,13 @@ extension CurrencyListController: UITableViewDelegate {
 
 extension CurrencyListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.filteredData?.count ?? 0
+        let count = viewModel.getNumberOfRows()
+        if count == 0 {
+            tableView.setLoad()
+        } else {
+            tableView.restore()
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

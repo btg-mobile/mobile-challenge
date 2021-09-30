@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2B91F52705908400D3129B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B91F42705908400D3129B /* UITableViewExtension.swift */; };
 		0E2D0B37270548A40090E3B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D0B36270548A40090E3B9 /* AppDelegate.swift */; };
 		0E2D0B39270548A40090E3B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D0B38270548A40090E3B9 /* SceneDelegate.swift */; };
 		0E2D0B3B270548A40090E3B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D0B3A270548A40090E3B9 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E2B91F42705908400D3129B /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		0E2D0B33270548A40090E3B9 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2D0B36270548A40090E3B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E2D0B38270548A40090E3B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				0E7388E727055503006608A3 /* UIViewExtension.swift */,
 				0E7388E927055541006608A3 /* CollectionExtension.swift */,
 				0E7388EB27055594006608A3 /* ViewConfiguration.swift */,
+				0E2B91F42705908400D3129B /* UITableViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				0E2D0B7027054B730090E3B9 /* Coordinator.swift in Sources */,
 				0E7388EE270555EF006608A3 /* HomeViewModel.swift in Sources */,
 				0E7388F627055D2A006608A3 /* APICaller.swift in Sources */,
+				0E2B91F52705908400D3129B /* UITableViewExtension.swift in Sources */,
 				0E7388F827055F9C006608A3 /* CurrencyListController.swift in Sources */,
 				0E2D0B7627054E660090E3B9 /* HomeView.swift in Sources */,
 				0E7388FE27057001006608A3 /* CurrencyCell.swift in Sources */,

@@ -54,4 +54,11 @@ final class CurrencyListViewModel {
         }
     }
     
+    func getNumberOfRows() -> Int {
+        guard let count = filteredData?.count else {
+            return 0
+        }
+        return count
+    }
+    
 }
