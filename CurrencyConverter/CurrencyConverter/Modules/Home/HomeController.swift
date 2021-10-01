@@ -27,10 +27,15 @@ final class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTargets()
+  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         guard let currency = self.currency, let origin = self.origin else {
             return
         }
-        self.didSelectedCurrency(currency, origin: origin)
+        self.setCurrency(currency, origin: origin)
     }
 
     override func loadView() {
@@ -38,7 +43,7 @@ final class HomeController: UIViewController {
         self.view = customView
     }
     
-    func didSelectedCurrency(_ currency: String, origin: Int) {
+    func setCurrency(_ currency: String, origin: Int) {
         switch origin {
         case customView.currencyButton.tag:
             customView.currencyButton.setTitle(currency, for: .normal)

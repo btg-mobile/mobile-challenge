@@ -31,9 +31,7 @@ class MainCoordinator: Coordinator {
 
 extension MainCoordinator: CurrencyListDelegate {
     func didSelectedCurrency(_ currency: String, origin: Int) {
-        let viewModel = HomeViewModel(coordinator: self)
-        let controller = HomeController(viewModel: viewModel, currency, origin)
-        navigationController.pushViewController(controller, animated: true)
+        navigationController.popViewController(animated: true)
     }
     
 }
