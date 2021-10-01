@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CurrencyListViewModelDelegate: class {
+protocol CurrencyListViewModelDelegate: AnyObject {
     func didReloadData()
     func failedToGetCurrencyList()
 }

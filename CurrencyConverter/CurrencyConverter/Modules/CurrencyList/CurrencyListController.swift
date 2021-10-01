@@ -7,15 +7,25 @@
 
 import UIKit
 
+protocol CurrencyListDelegate {
+    func didSelectedCurrency(_ currency: String, origin: Int)
+}
+
 final class CurrencyListController: UIViewController {
     
     private lazy var viewModel = CurrencyListViewModel(delegate: self)
     private lazy var customView = CurrencyListView(delegate: self, dataSource: self)
-    let searchController = UISearchController(searchResultsController: nil)
+    private var delegate: CurrencyListDelegate?
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var origin: Int!
+    private var filter: String? = nil
+
     
     // MARK: - Initializers
-    init() {
+    init(origin: Int, delegate: CurrencyListDelegate) {
         super.init(nibName: nil, bundle: nil)
+        self.origin = origin
+        self.delegate = delegate
     }
     
     required init?(coder: NSCoder) {
@@ -29,7 +39,7 @@ final class CurrencyListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
+//        setNavigationBar()
         setSearchBar()
     }
     
@@ -46,7 +56,7 @@ final class CurrencyListController: UIViewController {
     
 }
 
-// MARK: - Private Methods
+// MARK: - Extensions
 extension CurrencyListController {
     
     private func setNavigationBar() {
@@ -55,27 +65,27 @@ extension CurrencyListController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
+    
+}
+
+extension CurrencyListController: CurrencyListViewModelDelegate {
+    func failedToGetCurrencyList() {
+        
+    }
+    
+    func didReloadData() {
+        customView.tableView.reloadData()
+    }
+    
+}
+
+extension CurrencyListController: UISearchBarDelegate {
     private func setSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         customView.tableView.tableHeaderView = searchController.searchBar
     }
-    
-}
-
-extension CurrencyListController: CurrencyListViewModelDelegate {
-    func didReloadData() {
-        customView.tableView.reloadData()
-    }
-    
-    func failedToGetCurrencyList() {
-        
-    }
-    
-}
-
-extension CurrencyListController: UISearchBarDelegate {
     
 }
 
@@ -89,6 +99,12 @@ extension CurrencyListController: UISearchResultsUpdating {
 
 // MARK: - TableView Extensions
 extension CurrencyListController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let currency = viewModel.filteredData?[indexPath.row] else { return }
+        delegate?.didSelectedCurrency(currency, origin: origin)
+        navigationController?.popViewController(animated: true)
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none

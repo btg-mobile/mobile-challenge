@@ -47,9 +47,9 @@ extension CurrencyCell: ViewConfiguration {
     
     func setupConstraints() {
         [
-            container.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
-            container.leadingAnchor.constraint(equalTo: leadingAnchor),
+            container.topAnchor.constraint(equalTo: topAnchor, constant: 18),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -18),
+            container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),
         ].activate()
     }

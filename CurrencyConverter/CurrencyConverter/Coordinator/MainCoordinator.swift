@@ -17,7 +17,22 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let controller = CurrencyListController()
+        let viewModel = HomeViewModel(coordinator: self)
+        let controller = HomeController(viewModel: viewModel, nil, nil)
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func openList(origin: Int) {
+        let controller = CurrencyListController(origin: origin, delegate: self)
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+}
+
+extension MainCoordinator: CurrencyListDelegate {
+    func didSelectedCurrency(_ currency: String, origin: Int) {
+        let viewModel = HomeViewModel(coordinator: self)
+        let controller = HomeController(viewModel: viewModel, currency, origin)
         navigationController.pushViewController(controller, animated: true)
     }
     

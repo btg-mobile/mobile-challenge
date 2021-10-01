@@ -6,11 +6,22 @@
 //
 
 import Foundation
+import UIKit
 
-final class HomeViewModel {
+class HomeViewModel {
+    var coordinator: MainCoordinator?
     
-    init() {
-        
+    init(coordinator: MainCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    @objc func didTapCurrency(_ sender: UIButton!) {
+        coordinator?.openList(origin: sender.tag)
+//        print("teste")
+    }
+    
+    @objc func didTapNewCurrency(_ sender: UIButton) {
+        coordinator?.openList(origin: sender.tag)
     }
     
 }

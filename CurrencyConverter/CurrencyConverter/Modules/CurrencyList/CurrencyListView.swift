@@ -43,10 +43,10 @@ extension CurrencyListView: ViewConfiguration {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
     
