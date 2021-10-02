@@ -32,7 +32,7 @@ class MainCoordinator: Coordinator {
 }
 
 extension MainCoordinator: CurrencyListDelegate {
-    func didSelectedCurrency(_ currency: String, origin: Origin) {
+    func didSelectedCurrency(_ currency: String, origin: Origin, currencyCode: String) {
         self.homeViewModel?.onOriginSelected(origin: origin, title: currency)
         navigationController.popViewController(animated: true)
     }

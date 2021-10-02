@@ -54,11 +54,10 @@ extension HomeController: HomeControllerDelegate {
         switch origin {
         case .currency:
             customView.currencyButton.setTitle(title, for: .normal)
-            //            viewModel.setSelectedSourceCurrency(currency: currency)
+            viewModel.convert(receivedValue: 50, from: "BRL", to: "AED")
             
         case .newCurrency:
             customView.newCurrencyButton.setTitle(title, for: .normal)
-            //            viewModel.setSelectedTargetCurrency(currency: currency)
         default:
             break
         }

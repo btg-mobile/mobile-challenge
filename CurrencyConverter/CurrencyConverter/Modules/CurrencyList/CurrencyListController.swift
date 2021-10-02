@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrencyListDelegate {
-    func didSelectedCurrency(_ currency: String, origin: Origin)
+    func didSelectedCurrency(_ currency: String, origin: Origin, currencyCode: String)
 }
 
 final class CurrencyListController: UIViewController {
@@ -102,7 +102,9 @@ extension CurrencyListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currency = viewModel.filteredData?[indexPath.row] else { return }
-        delegate?.didSelectedCurrency(currency, origin: origin)
+        if viewModel.filteredKey[indexPath.row].count > 0 {
+            delegate?.didSelectedCurrency(currency, origin: origin, currencyCode: viewModel.filteredKey[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

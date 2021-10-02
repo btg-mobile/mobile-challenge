@@ -18,6 +18,7 @@ final class CurrencyListViewModel {
     var searchController: UISearchController!
     var models = [String]()
     var filteredData: [String]?
+    var filteredKey = [String]()
     
     init(delegate: CurrencyListViewModelDelegate) {
         self.delegate = delegate
@@ -25,8 +26,10 @@ final class CurrencyListViewModel {
     }
     
     private func loadData(with model: Currency){
+        filteredKey.removeAll()
         model.currencies.forEach{ currency in
             models.append("\(currency.key): \(currency.value)")
+            filteredKey.append(currency.key)
         }
         filteredData = models
         delegate?.didReloadData()

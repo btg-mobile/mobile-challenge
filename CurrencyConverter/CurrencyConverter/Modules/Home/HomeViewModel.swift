@@ -24,9 +24,11 @@ enum Origin {
 class HomeViewModel {
     var coordinator: MainCoordinator?
     var controllerDelegate: HomeControllerDelegate?
+    var quotations: Quotation?
     
     init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
+        fetchQuotationsList()
     }
     
     @objc func didTapCurrency(_ sender: UIButton!) {
@@ -35,6 +37,33 @@ class HomeViewModel {
     
     @objc func didTapNewCurrency(_ sender: UIButton) {
         coordinator?.openList(origin: .newCurrency)
+    }
+    
+    private func fetchQuotationsList(){
+        APICaller.shared.getQuotations{ [weak self] result in
+            DispatchQueue.main.async{
+                switch result {
+                case .success(let model):
+                    self?.quotations = model
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func convert(receivedValue: Double, from: String, to: String) -> Double{
+        let valueA = findQuotation(currency: from)
+        let valueB = findQuotation(currency: to)
+        
+        let dolValueA = receivedValue / valueA
+        return dolValueA * valueB
+    }
+
+    func findQuotation(currency: String) -> Double {
+        guard let checkedQuotation = self.quotations else { return 0 }
+        let result = checkedQuotation.quotes.first(where: {$0.key.elementsEqual("USD\(currency)")})
+        return result?.value ?? 0
     }
     
 }
