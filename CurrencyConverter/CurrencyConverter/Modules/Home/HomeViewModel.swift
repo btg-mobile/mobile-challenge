@@ -8,20 +8,40 @@
 import Foundation
 import UIKit
 
+protocol OriginSelected {
+    func onOriginSelected(origin: Origin, title: String)
+}
+
+protocol HomeControllerDelegate {
+    func originUpdated(origin: Origin, title: String)
+}
+
+enum Origin {
+    case currency
+    case newCurrency
+}
+
 class HomeViewModel {
     var coordinator: MainCoordinator?
+    var controllerDelegate: HomeControllerDelegate?
     
     init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
     }
     
     @objc func didTapCurrency(_ sender: UIButton!) {
-        coordinator?.openList(origin: sender.tag)
-//        print("teste")
+        coordinator?.openList(origin: .currency)
     }
     
     @objc func didTapNewCurrency(_ sender: UIButton) {
-        coordinator?.openList(origin: sender.tag)
+        coordinator?.openList(origin: .newCurrency)
+    }
+    
+}
+
+extension HomeViewModel: OriginSelected {
+    func onOriginSelected(origin: Origin, title: String) {
+        controllerDelegate?.originUpdated(origin: origin, title: title)
     }
     
 }

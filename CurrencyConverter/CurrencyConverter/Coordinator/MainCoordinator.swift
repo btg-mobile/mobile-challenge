@@ -11,6 +11,7 @@ class MainCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    var homeViewModel: OriginSelected?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -18,11 +19,12 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let viewModel = HomeViewModel(coordinator: self)
-        let controller = HomeController(viewModel: viewModel, nil, nil)
+        self.homeViewModel = viewModel
+        let controller = HomeController(viewModel: viewModel)
         navigationController.pushViewController(controller, animated: true)
     }
     
-    func openList(origin: Int) {
+    func openList(origin: Origin) {
         let controller = CurrencyListController(origin: origin, delegate: self)
         navigationController.pushViewController(controller, animated: true)
     }
@@ -30,8 +32,9 @@ class MainCoordinator: Coordinator {
 }
 
 extension MainCoordinator: CurrencyListDelegate {
-    func didSelectedCurrency(_ currency: String, origin: Int) {
+    func didSelectedCurrency(_ currency: String, origin: Origin) {
+        self.homeViewModel?.onOriginSelected(origin: origin, title: currency)
         navigationController.popViewController(animated: true)
     }
-    
+
 }

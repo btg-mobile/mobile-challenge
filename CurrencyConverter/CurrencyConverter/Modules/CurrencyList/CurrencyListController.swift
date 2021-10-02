@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrencyListDelegate {
-    func didSelectedCurrency(_ currency: String, origin: Int)
+    func didSelectedCurrency(_ currency: String, origin: Origin)
 }
 
 final class CurrencyListController: UIViewController {
@@ -17,15 +17,15 @@ final class CurrencyListController: UIViewController {
     private lazy var customView = CurrencyListView(delegate: self, dataSource: self)
     private var delegate: CurrencyListDelegate?
     private let searchController = UISearchController(searchResultsController: nil)
-    private var origin: Int!
+    private var origin: Origin
     private var filter: String? = nil
 
     
     // MARK: - Initializers
-    init(origin: Int, delegate: CurrencyListDelegate) {
-        super.init(nibName: nil, bundle: nil)
+    init(origin: Origin, delegate: CurrencyListDelegate) {
         self.origin = origin
         self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -103,7 +103,6 @@ extension CurrencyListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currency = viewModel.filteredData?[indexPath.row] else { return }
         delegate?.didSelectedCurrency(currency, origin: origin)
-        navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
