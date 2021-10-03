@@ -29,7 +29,7 @@ final class CurrencyListViewModel {
         filteredKey.removeAll()
         model.currencies.forEach{ currency in
             models.append("\(currency.key): \(currency.value)")
-            filteredKey.append(currency.key)
+            filteredKey.append("\(currency.key)")
         }
         filteredData = models
         delegate?.didReloadData()
@@ -52,6 +52,8 @@ final class CurrencyListViewModel {
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
             filteredData = searchText.isEmpty ? models : models.filter({(dataString: String) -> Bool in
+                return dataString.range(of: searchText, options: .caseInsensitive) != nil})
+            filteredKey = searchText.isEmpty ? filteredKey : models.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: .caseInsensitive) != nil})
             delegate?.didReloadData()
         }

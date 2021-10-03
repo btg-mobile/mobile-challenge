@@ -102,9 +102,9 @@ extension CurrencyListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currency = viewModel.filteredData?[indexPath.row] else { return }
-        if viewModel.filteredKey[indexPath.row].count > 0 {
-            delegate?.didSelectedCurrency(currency, origin: origin, currencyCode: viewModel.filteredKey[indexPath.row])
-        }
+        let currencyCode = String(currency.prefix(3))
+            delegate?.didSelectedCurrency(currency, origin: origin, currencyCode: currencyCode)
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

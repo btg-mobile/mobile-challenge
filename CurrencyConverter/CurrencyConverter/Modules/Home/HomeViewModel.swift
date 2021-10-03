@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 protocol OriginSelected {
-    func onOriginSelected(origin: Origin, title: String)
+    func onOriginSelected(origin: Origin, title: String, currencyCode: String)
 }
 
 protocol HomeControllerDelegate {
-    func originUpdated(origin: Origin, title: String)
+    func originUpdated(origin: Origin, title: String, currencyCode: String)
 }
 
 enum Origin {
@@ -52,12 +52,11 @@ class HomeViewModel {
         }
     }
     
-    func convert(receivedValue: Double, from: String, to: String) -> Double{
-        let valueA = findQuotation(currency: from)
-        let valueB = findQuotation(currency: to)
-        
-        let dolValueA = receivedValue / valueA
-        return dolValueA * valueB
+    func convert(receivedValue: Double, from: String, to: String) -> Double {
+        let valueFrom = findQuotation(currency: from)
+        let valueTo = findQuotation(currency: to)
+        let valueUSD = receivedValue / valueFrom
+        return valueUSD * valueTo
     }
 
     func findQuotation(currency: String) -> Double {
@@ -69,8 +68,8 @@ class HomeViewModel {
 }
 
 extension HomeViewModel: OriginSelected {
-    func onOriginSelected(origin: Origin, title: String) {
-        controllerDelegate?.originUpdated(origin: origin, title: title)
+    func onOriginSelected(origin: Origin, title: String, currencyCode: String) {
+        controllerDelegate?.originUpdated(origin: origin, title: title, currencyCode: currencyCode)
     }
     
 }
