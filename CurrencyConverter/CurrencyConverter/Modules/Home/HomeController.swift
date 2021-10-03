@@ -50,11 +50,19 @@ extension HomeController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let receivedValue = textField.text else { return }
+        guard let receivedValue = textField.text else {
+            customView.newCurrencyLabel.text = String(format: "$%.02f \(newCurrencyCode)", 0)
+            return
+        }
         let from = self.currencyCode
         let to = self.newCurrencyCode
-        let convert = viewModel.convert(receivedValue: Double(receivedValue) ?? 0, from: from, to: to)
-        customView.newCurrencyLabel.text = String(format: "$%.02f \(newCurrencyCode)", convert)
+        if receivedValue != "" {
+            let converted = viewModel.convert(receivedValue: Double(receivedValue) ?? Double(0), from: from, to: to)
+            customView.newCurrencyLabel.text = String(format: "$%.02f \(to)", converted)
+        } else {
+            customView.newCurrencyLabel.text = String(format: "$%.02f \(newCurrencyCode)", 0)
+        }
+        customView.currencyTextField.placeholder = "$0,00 \(from)"
     }
 
 }
