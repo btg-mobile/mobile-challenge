@@ -31,6 +31,7 @@ final class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textFieldDidChange(customView.currencyTextField)
+        setSufix(from: self.currencyCode, to: self.newCurrencyCode)
     }
     
     override func loadView() {
@@ -45,6 +46,10 @@ final class HomeController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        updateValues(textField)
+    }
+    
+    private func updateValues(_ textField: UITextField) {
         viewModel.formatTextField(customView.currencyTextField)
         guard let receivedValue = textField.text else {
             customView.newCurrencyLabel.text = String(format: "%.02f", 0)
@@ -61,6 +66,9 @@ final class HomeController: UIViewController {
         } else {
             customView.newCurrencyLabel.text = String(format: "%.02f", 0)
         }
+    }
+    
+    func setSufix(from: String, to: String) {
         customView.newCurrencySufix.text = "\(to)  "
         customView.currencySufix.text = "\(from)  "
     }
