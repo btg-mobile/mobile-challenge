@@ -15,7 +15,7 @@ protocol CurrencyListViewModelDelegate: AnyObject {
 final class CurrencyListViewModel {
     
     weak var delegate: CurrencyListViewModelDelegate?
-    var searchController: UISearchController!
+    var searchController = UISearchController()
     var filteredData: [String]?
     var models = [String]()
     var filteredKey = [String]()
@@ -23,16 +23,6 @@ final class CurrencyListViewModel {
     init(delegate: CurrencyListViewModelDelegate) {
         self.delegate = delegate
         fetchCurrencyList()
-    }
-    
-    private func loadData(with model: Currency){
-        filteredKey.removeAll()
-        model.currencies.forEach{ currency in
-            models.append("\(currency.key): \(currency.value)")
-            filteredKey.append("\(currency.key)")
-        }
-        filteredData = models
-        delegate?.didReloadData()
     }
     
     private func fetchCurrencyList(){
@@ -47,6 +37,16 @@ final class CurrencyListViewModel {
                 }
             }
         }
+    }
+    
+    func loadData(with model: Currency){
+        filteredKey.removeAll()
+        model.currencies.forEach{ currency in
+            models.append("\(currency.key): \(currency.value)")
+            filteredKey.append("\(currency.key)")
+        }
+        filteredData = models
+        delegate?.didReloadData()
     }
     
     func updateSearchResults(for searchController: UISearchController) {

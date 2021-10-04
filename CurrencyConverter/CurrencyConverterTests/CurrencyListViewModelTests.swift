@@ -6,27 +6,53 @@
 //
 
 import XCTest
+@testable import CurrencyConverter
 
 class CurrencyListViewModelTests: XCTestCase {
+    let modelMock = Currency(success: true,
+                         currencies: ["BRT" : "Brazilian Test", "USD" : "American Dolar"])
+    var didReloadDataCalls: Int = 0
+    var failedToGetCurrencyListCalls: Int = 0
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    lazy var sut: CurrencyListViewModel = {
+        let sut = CurrencyListViewModel(delegate: self)
+        return sut
+    }()
+    
+    func testLoadData_ItShouldReturnProperFilteredData() {
+        sut.loadData(with: modelMock)
+        XCTAssertTrue(sut.models.contains("USD: American Dolar"))
+        XCTAssertTrue(sut.models.contains("BRT: Brazilian Test"))
+    }
+    
+    func testLoadData_ItShouldCallDelegate() {
+        sut.loadData(with: modelMock)
+        XCTAssertEqual(didReloadDataCalls, 1)
+    }
+    
+    func testUpdateSearchResults_ItShouldFailForNoData(){
+        let searchController = UISearchController()
+        sut.updateSearchResults(for: searchController)
+        XCTAssertEqual(sut.models, [])
+        XCTAssertEqual(didReloadDataCalls, 1)
+        XCTAssertEqual(failedToGetCurrencyListCalls, 1)
+    }
+    
+    func testGetNumberOfRows_ItShouldReturn0ForNoData() {
+        let rows = sut.getNumberOfRows()
+        XCTAssertEqual(rows, 0)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+extension CurrencyListViewModelTests: CurrencyListViewModelDelegate {
+    
+    func didReloadData() {
+        didReloadDataCalls += 1
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func failedToGetCurrencyList() {
+        failedToGetCurrencyListCalls += 1
     }
-
+    
 }
