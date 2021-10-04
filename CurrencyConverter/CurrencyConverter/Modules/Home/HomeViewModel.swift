@@ -56,13 +56,19 @@ final class HomeViewModel {
         let valueFrom = findQuotation(currency: from)
         let valueTo = findQuotation(currency: to)
         let valueUSD = receivedValue / valueFrom
-        return valueUSD * valueTo
+        return valueUSD * valueTo * 100
     }
     
     func findQuotation(currency: String) -> Double {
         guard let checkedQuotation = self.quotations else { return 0 }
         let result = checkedQuotation.quotes.first(where: {$0.key.elementsEqual("USD\(currency)")})
         return result?.value ?? 0
+    }
+    
+    func formatTextField(_ textField: UITextField) {
+        if let amountString = textField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
     }
     
 }

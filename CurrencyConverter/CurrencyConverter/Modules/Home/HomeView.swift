@@ -83,7 +83,7 @@ final class HomeView: UIView {
         textField.leftViewMode = .always
         textField.layer.cornerRadius = 10
         textField.textAlignment = .center
-        textField.text = "0,00"
+        textField.text = "0.00"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .systemGray5
         textField.isUserInteractionEnabled = false
@@ -100,7 +100,7 @@ final class HomeView: UIView {
     
     lazy var currencyTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "0,00"
+        textField.placeholder = "0.00"
         textField.rightView = currencySufix
         textField.leftView = currencyPrefix
         textField.rightViewMode = .always
