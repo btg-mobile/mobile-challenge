@@ -21,7 +21,7 @@ enum Origin {
     case newCurrency
 }
 
-class HomeViewModel {
+final class HomeViewModel {
     var coordinator: MainCoordinator?
     var controllerDelegate: HomeControllerDelegate?
     var quotations: Quotation?
@@ -58,7 +58,7 @@ class HomeViewModel {
         let valueUSD = receivedValue / valueFrom
         return valueUSD * valueTo
     }
-
+    
     func findQuotation(currency: String) -> Double {
         guard let checkedQuotation = self.quotations else { return 0 }
         let result = checkedQuotation.quotes.first(where: {$0.key.elementsEqual("USD\(currency)")})

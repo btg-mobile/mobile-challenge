@@ -16,8 +16,8 @@ final class CurrencyListViewModel {
     
     weak var delegate: CurrencyListViewModelDelegate?
     var searchController: UISearchController!
-    var models = [String]()
     var filteredData: [String]?
+    var models = [String]()
     var filteredKey = [String]()
     
     init(delegate: CurrencyListViewModelDelegate) {
@@ -56,6 +56,9 @@ final class CurrencyListViewModel {
             filteredKey = searchText.isEmpty ? filteredKey : models.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: .caseInsensitive) != nil})
             delegate?.didReloadData()
+            if filteredData?.count == 0 {
+                self.delegate?.failedToGetCurrencyList()
+            }
         }
     }
     

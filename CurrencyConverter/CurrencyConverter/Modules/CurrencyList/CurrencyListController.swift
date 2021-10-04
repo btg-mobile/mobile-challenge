@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrencyListDelegate {
-    func didSelectedCurrency(_ currency: String, origin: Origin, currencyCode: String)
+    func didSelectCurrency(_ currency: String, origin: Origin, currencyCode: String)
 }
 
 final class CurrencyListController: UIViewController {
@@ -39,7 +39,6 @@ final class CurrencyListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setNavigationBar()
         setSearchBar()
     }
     
@@ -49,7 +48,7 @@ final class CurrencyListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Currencies"
+        self.title = "Select Currency"
     }
     
     
@@ -58,19 +57,17 @@ final class CurrencyListController: UIViewController {
 
 // MARK: - Extensions
 extension CurrencyListController {
-    
     private func setNavigationBar() {
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
-    
 }
 
 extension CurrencyListController: CurrencyListViewModelDelegate {
     func failedToGetCurrencyList() {
-        
+        customView.tableView.setEmptyMessage("No currencies found")
     }
     
     func didReloadData() {
@@ -99,12 +96,10 @@ extension CurrencyListController: UISearchResultsUpdating {
 
 // MARK: - TableView Extensions
 extension CurrencyListController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currency = viewModel.filteredData?[indexPath.row] else { return }
         let currencyCode = String(currency.prefix(3))
-            delegate?.didSelectedCurrency(currency, origin: origin, currencyCode: currencyCode)
-        
+            delegate?.didSelectCurrency(currency, origin: origin, currencyCode: currencyCode)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

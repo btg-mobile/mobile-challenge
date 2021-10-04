@@ -10,12 +10,12 @@ import UIKit
 final class CurrencyListView: UIView {
     
     var tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .plain)
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.separatorStyle = .singleLine
-        table.rowHeight = UITableView.automaticDimension
-        table.backgroundColor = .white
-        return table
+        let tbl = UITableView(frame: .zero, style: .plain)
+        tbl.translatesAutoresizingMaskIntoConstraints = false
+        tbl.separatorStyle = .singleLine
+        tbl.rowHeight = UITableView.automaticDimension
+        tbl.backgroundColor = .white
+        return tbl
     }()
     
     init(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
@@ -33,9 +33,10 @@ final class CurrencyListView: UIView {
         tableView.dataSource = dataSource
         tableView.register(CurrencyCell.self, forCellReuseIdentifier: String(describing: CurrencyCell.self))
     }
+    
 }
 
-// MARK: - View Configurate Moethods
+// MARK: - View Configuration Methods
 extension CurrencyListView: ViewConfiguration {
     func buildViewHierarchy() {
         addSubViews([tableView])
