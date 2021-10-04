@@ -32,17 +32,12 @@ final class HomeController: UIViewController {
         super.viewWillAppear(animated)
         textFieldDidChange(customView.currencyTextField)
     }
-
+    
     override func loadView() {
         super.loadView()
         self.view = customView
     }
     
-}
-
-// MARK: - Extensions
-
-extension HomeController {
     private func setTargets() {
         customView.currencyButton.addTarget(viewModel, action: #selector(viewModel.didTapCurrency(_:)), for: .touchUpInside)
         customView.newCurrencyButton.addTarget(viewModel, action: #selector(viewModel.didTapNewCurrency), for: .touchUpInside)
@@ -72,6 +67,7 @@ extension HomeController {
     
 }
 
+// MARK: - Extensions
 extension HomeController: HomeControllerDelegate {
     func originUpdated(origin: Origin, title: String, currencyCode: String) {
         switch origin {
