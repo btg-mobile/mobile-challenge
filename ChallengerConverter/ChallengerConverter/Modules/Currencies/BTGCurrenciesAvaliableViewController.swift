@@ -26,10 +26,11 @@ class BTGCurrenciesAvaliableViewController: BTGBaseViewController<BTGCurrenciesA
         super.viewDidLoad()
         
         setupView()
+        setupNavigationBar()
         addTargets()
         bindViewModel()
         
-        viewModel.fetchCurrenciesAvaliable()
+        viewModel.viewDidLoad()
     }
 }
 
@@ -37,6 +38,14 @@ class BTGCurrenciesAvaliableViewController: BTGBaseViewController<BTGCurrenciesA
 fileprivate extension BTGCurrenciesAvaliableViewController {
     func setupView() {
         mainView.setupTableView(delegate: self, dataSource: self)
+    }
+    
+    func setupNavigationBar() {
+        
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.tintColor = AppStyle.Color.navigationTint
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Color.navigationTitleColor]
+        title = "Moedas"
     }
     
     func addTargets() {
@@ -76,7 +85,6 @@ extension BTGCurrenciesAvaliableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.numberCurrenciesToShow())
         return viewModel.numberCurrenciesToShow()
     }
     

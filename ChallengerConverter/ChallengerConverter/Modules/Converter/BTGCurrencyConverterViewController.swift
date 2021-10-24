@@ -28,17 +28,35 @@ class BTGCurrencyConverterViewController: BTGBaseViewController<BTGCurrencyConve
         addTargets()
         bindViewModel()
         
-        viewModel.fromCurrency = "EUR"
-        viewModel.toCurrency = "BRL"
-        viewModel.value(value: 2)
+        viewModel.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupNavigationBar()
+        self.viewModel.updateConvertIfNecessary()
     }
 }
 
 fileprivate extension BTGCurrencyConverterViewController {
+    func setupNavigationBar() {
+        
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.tintColor = AppStyle.Color.navigationTint
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Color.navigationTitleColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Color.navigationTitleColor]
+        title = "Conversor"
+    }
+    
     func addTargets() {
-        mainView.currencyTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         mainView.buttonFrom.addTarget(self, action: #selector(showFromPickerCurrencies), for: .touchUpInside)
         mainView.buttonTo.addTarget(self, action: #selector(showToPickerCurrencies), for: .touchUpInside)
+        
+        mainView.numberTextField.didUpdateValue = { [unowned self] val in
+            viewModel.currentValue = val
+        }
+        
     }
     
     func bindViewModel() {
@@ -46,19 +64,39 @@ fileprivate extension BTGCurrencyConverterViewController {
             self.mainView.currencyConverterLabel.text = value
         }
         
-        viewModel.didShowError = { error in
-            print(error)
+        viewModel.didShowError = { [unowned self] error in
+            self.showAlert(error)
+        }
+        
+        viewModel.didShowErrorWithReload = { [unowned self] error in
+            self.showAlert("Ops", error, "Recarregar") {
+                self.viewModel.fetchQuotes()
+            }
+        }
+        
+        viewModel.didUpdateFromCurrency = { [unowned self] code in
+            self.mainView.buttonFrom.setTitle(code, for: .normal)
+        }
+        
+        viewModel.didUpdateToCurrency = { [unowned self] code in
+            self.mainView.buttonTo.setTitle(code, for: .normal)
+        }
+        
+        viewModel.didEnableEdiValeu = { [unowned self] enable in
+            self.mainView.numberTextField.isEnabled = enable
+        }
+        
+        viewModel.didShowSpinner = { [unowned self] showSpinner in
+            if(showSpinner) {
+                self.mainView.showSpinner()
+            } else {
+                self.mainView.hideSpinner()
+            }
         }
     }
 }
 
 extension BTGCurrencyConverterViewController {
-    @objc
-    func textFieldDidChange(_ textField: UITextField) {        
-        let val = textField.text!.isEmpty ? 0.0 : Float(textField.text!)
-        viewModel.currentValue = val ?? 0
-    }
-    
     @objc private func showFromPickerCurrencies() {
         viewModel.showPickSupporteds(type: .from)
     }

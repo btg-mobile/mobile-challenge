@@ -7,15 +7,16 @@
 
 import Foundation
 
-protocol BTGCurrenciesAvaliableViewModelDelegate: class {
+protocol BTGCurrenciesAvaliableViewModelDelegate: AnyObject {
     func didChoiseCurrency(currency: Currency)
 }
 
 class BTGCurrenciesAvaliableViewModel {
     
-    let repository: CurrencyRepositoryProtocol
+    var currenciesAvaliable: [Currency] {
+        return LocalPreferencesRepostirory.shared.find() ?? []
+    }
     
-    var currenciesAvaliable: [Currency] = []
     var currenciesToShow: [Currency] = []
     
     var didUpdateList: (()-> Void)?
@@ -23,25 +24,16 @@ class BTGCurrenciesAvaliableViewModel {
     
     weak var delegate: BTGCurrenciesAvaliableViewModelDelegate?
     
-    init(repository: CurrencyRepositoryProtocol) {
-        self.repository = repository
-    }
-    
-    init(repository: CurrencyRepositoryProtocol, delegate: BTGCurrenciesAvaliableViewModelDelegate) {
-        self.repository = repository
+    init(delegate: BTGCurrenciesAvaliableViewModelDelegate) {
         self.delegate = delegate
     }
 }
 
 extension BTGCurrenciesAvaliableViewModel {
-    func fetchCurrenciesAvaliable() {
-        self.repository.currecnyAvaliable { [unowned self] currencies in
-            self.currenciesAvaliable = currencies
-            self.currenciesToShow.append(contentsOf: currenciesAvaliable)
-            self.didUpdateList?()
-        } fail: { [unowned self] error in
-            self.didShowError?(error)
-        }
+    
+    func viewDidLoad() {
+        currenciesToShow = currenciesAvaliable
+        self.didUpdateList?()
     }
     
     func filterCurrencies(textSearched: String) {
@@ -55,7 +47,7 @@ extension BTGCurrenciesAvaliableViewModel {
         
         currenciesToShow.append(contentsOf:
                                     currenciesAvaliable.filter { currency in
-                                            return currency.code.contains(textSearched) || currency.name.contains(textSearched)
+                                            return currency.code.caseInsensitiveContain(textSearched) || currency.name.caseInsensitiveContain(textSearched)
                                 }
         )
         

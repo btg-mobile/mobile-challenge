@@ -7,7 +7,7 @@
 
 import Darwin
 
-enum CurrencyType {
+enum EditingCurrencyType {
     case to
     case from
 }

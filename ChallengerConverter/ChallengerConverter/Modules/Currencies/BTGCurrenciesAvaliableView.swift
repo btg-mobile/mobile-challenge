@@ -35,8 +35,8 @@ class BTGCurrenciesAvaliableView: UIView {
 fileprivate extension BTGCurrenciesAvaliableView {
     
     func setupUI() {
-        self.backgroundColor = .white
-        self.tableView.backgroundColor = .white
+        self.backgroundColor = AppStyle.Color.background
+        self.tableView.backgroundColor = .clear
         
         addViews()
         setConstraints()

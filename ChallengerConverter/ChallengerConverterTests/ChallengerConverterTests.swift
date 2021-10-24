@@ -18,16 +18,17 @@ class ChallengerConverterTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testConvert() throws {
+        let viewModel = BTGCurrencyConverterViewModel(repository: MockCurrencyRepository())
+        viewModel.fromCurrency = "EUR"
+        viewModel.toCurrency = "BRL"
+        XCTAssertEqual(try? viewModel.calculate(value: 2), 13.179242, "Converte must be 13.179242")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testConvertZero() throws {
+        let viewModel = BTGCurrencyConverterViewModel(repository: MockCurrencyRepository())
+        viewModel.fromCurrency = "EUR"
+        viewModel.toCurrency = "BRL"
+        XCTAssertEqual(try? viewModel.calculate(value: 0), 0, "Converte must be 0")
     }
-
 }

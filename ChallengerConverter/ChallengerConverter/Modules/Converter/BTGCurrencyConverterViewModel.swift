@@ -22,26 +22,49 @@ class BTGCurrencyConverterViewModel {
         }
     }
     
-    var currentCurrencyEdit: CurrencyType?
+    var currentCurrencyEdit: EditingCurrencyType?
     var quotes: [Quotes] = []
     
     var didShowConvertedValue: ((String)-> Void)?
     var didShowError: ((String)-> Void)?
+    var didShowErrorWithReload: ((String)-> Void)?
+    var didEnableEdiValeu: ((Bool)-> Void)?
+    var didShowSpinner: ((Bool)-> Void)?
+    
+    var didUpdateFromCurrency: ((String)-> Void)?
+    var didUpdateToCurrency: ((String)-> Void)?
     
     let repository: CurrencyRepositoryProtocol
     
     init(repository: CurrencyRepositoryProtocol) {
         self.repository = repository
-        
+    }
+    
+    func viewDidLoad() {
         fetchQuotes()
     }
     
     func fetchQuotes() {
+        didShowSpinner?(true)
         self.repository.quotes { [unowned self] quotes in
             self.quotes = quotes
             self.value(value: currentValue)
+            
+            self.fetchCurrenciesAvaliable()
+            
         } fail: { [unowned self] error in
-            //self.didShowError?(error)
+            didShowSpinner?(false)
+            self.didShowErrorWithReload?(error)
+        }
+    }
+    
+    func fetchCurrenciesAvaliable() {
+        self.repository.currecnyAvaliable {[unowned self] currencies in
+            LocalPreferencesRepostirory.shared.save(model: currencies)
+            self.didShowSpinner?(false)
+        } fail: { [unowned self] error in
+            self.didShowErrorWithReload?(error)
+            didShowSpinner?(false)
         }
     }
     
@@ -61,18 +84,20 @@ class BTGCurrencyConverterViewModel {
     
     func value(value: Float) {
         do {
-            let convertedValue = try calculate(value: value)
-            didShowConvertedValue?(String(convertedValue))
+            if(!toCurrency.isEmpty && !fromCurrency.isEmpty) {
+                let convertedValue = try calculate(value: value)
+                didShowConvertedValue?(toCurrency + ": " + String(convertedValue))
+            }
+            
         } catch let error as RuntimeError {
             print(error.message)
             didShowError?(error.message)
         } catch {
-            print("Error \(error.localizedDescription)")
-            // Catch any other errors
+            self.didShowError?(error.localizedDescription)
         }
     }
     
-    func showPickSupporteds(type: CurrencyType) {
+    func showPickSupporteds(type: EditingCurrencyType) {
         currentCurrencyEdit = type
         coordinatorDelegate?.showPickerCurrencies()
     }
@@ -81,10 +106,20 @@ class BTGCurrencyConverterViewModel {
         switch(currentCurrencyEdit) {
         case .to:
             toCurrency = currencyCode
+            didUpdateToCurrency?(currencyCode)
         case .from:
             fromCurrency = currencyCode
+            didUpdateFromCurrency?(currencyCode)
         case .none: break
             
+        }
+        
+        didEnableEdiValeu?(!toCurrency.isEmpty && !fromCurrency.isEmpty)
+    }
+    
+    func updateConvertIfNecessary() {
+        if(!toCurrency.isEmpty && !fromCurrency.isEmpty) {
+            self.value(value: currentValue)
         }
     }
 }

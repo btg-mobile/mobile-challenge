@@ -16,4 +16,12 @@ extension UIView {
             self.addSubview(view)
         }
     }
+    
+    func showSpinner() {
+        BTGLoadingView.show(to: self)
+    }
+    
+    func hideSpinner() {
+        BTGLoadingView.hide(superView: self)
+    }
 }
