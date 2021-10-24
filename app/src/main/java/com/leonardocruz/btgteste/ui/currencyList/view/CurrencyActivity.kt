@@ -85,19 +85,16 @@ class CurrencyActivity : AppCompatActivity() {
 
     private fun readShared() {
         if(testConnection(this)){
-            viewModel.getList()
             viewModel.getLive()
-        } else {
+        } 
             val listPrefes = Util.readPrefs(this, PREFERENCES_CURRENCY)
             if (listPrefes.isNullOrEmpty()) {
                 viewModel.getList()
-                viewModel.getLive()
             } else {
                 listCurrency = listPrefes
                 mAdapter.updatList(listCurrency)
             }
         }
-    }
 
     override fun onBackPressed() {
         super.onBackPressed()
