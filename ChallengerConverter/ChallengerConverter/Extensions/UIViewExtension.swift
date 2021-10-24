@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+
+extension UIView {
+    func addSubViews(views: [UIView], translatesAutoresizingMaskIntoConstraints: Bool = false) {
+        views.forEach { view in
+            view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
+            self.addSubview(view)
+        }
+    }
+}
