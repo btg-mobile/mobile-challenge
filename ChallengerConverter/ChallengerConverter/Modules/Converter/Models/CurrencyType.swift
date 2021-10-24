@@ -5,4 +5,9 @@
 //  Created by ADRIANO.MAZUCATO on 23/10/21.
 //
 
-import Foundation
+import Darwin
+
+enum CurrencyType {
+    case to
+    case from
+}

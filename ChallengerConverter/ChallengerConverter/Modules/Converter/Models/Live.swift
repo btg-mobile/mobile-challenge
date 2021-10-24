@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+
+struct LiveResult: Codable {
+    var success: Bool
+    var terms: String
+    var timestamp: Double
+    var source: String
+    var quotes: [String: Float]
+}
+
+
+struct Quotes {
+    let code: String
+    let quote: Float
+}
