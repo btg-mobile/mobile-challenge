@@ -7,16 +7,6 @@
 
 import Foundation
 
-struct CurrencyResposnse: Codable {
-    var success: Bool
-    var terms: String
-    var currencies: [String: String]
-}
-
-struct Currency: Codable {
-    let code: String
-    let name: String
-}
 
 class MockCurrencyRepository: CurrencyRepositoryProtocol {
     

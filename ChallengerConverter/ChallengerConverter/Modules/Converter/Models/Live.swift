@@ -17,7 +17,7 @@ struct LiveResult: Codable {
 }
 
 
-struct Quotes {
+struct Quotes: Codable {
     let code: String
     let quote: Float
 }

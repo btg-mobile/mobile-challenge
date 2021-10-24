@@ -107,6 +107,9 @@
 		B7137EDC27260FF00030DB85 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDB27260FF00030DB85 /* StringExtension.swift */; };
 		B7137EDD27260FF00030DB85 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDB27260FF00030DB85 /* StringExtension.swift */; };
 		B7137EDE27260FF00030DB85 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDB27260FF00030DB85 /* StringExtension.swift */; };
+		B7137EE027261EE50030DB85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDF27261EE50030DB85 /* Currency.swift */; };
+		B7137EE127261EE50030DB85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDF27261EE50030DB85 /* Currency.swift */; };
+		B7137EE227261EE50030DB85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDF27261EE50030DB85 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +173,7 @@
 		B7137ED32725CC340030DB85 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		B7137ED727260C460030DB85 /* BTGLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGLoadingView.swift; sourceTree = "<group>"; };
 		B7137EDB27260FF00030DB85 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		B7137EDF27261EE50030DB85 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +363,7 @@
 			children = (
 				B7137E8C27237AFA0030DB85 /* Live.swift */,
 				B7137EAB2724CAB40030DB85 /* CurrencyType.swift */,
+				B7137EDF27261EE50030DB85 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				B7137ED42725CC340030DB85 /* NumberTextField.swift in Sources */,
 				B7137ED827260C460030DB85 /* BTGLoadingView.swift in Sources */,
 				B7137E4F27221F0C0030DB85 /* Coordinator.swift in Sources */,
+				B7137EE027261EE50030DB85 /* Currency.swift in Sources */,
 				B7137ED02725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */,
 				B7137EAC2724CAB40030DB85 /* CurrencyType.swift in Sources */,
 				B7137EA1272484C50030DB85 /* CurrencyConverter.swift in Sources */,
@@ -577,6 +583,7 @@
 				B7137E542722246A0030DB85 /* BTGCurrencyConverterView.swift in Sources */,
 				B7137E7A272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,
 				B7137EA2272484C50030DB85 /* CurrencyConverter.swift in Sources */,
+				B7137EE127261EE50030DB85 /* Currency.swift in Sources */,
 				B7137E992724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */,
 				B7137E7627232D320030DB85 /* UIViewExtension.swift in Sources */,
 				B7137EB12724CD0D0030DB85 /* BTGCurrencyProvider.swift in Sources */,
@@ -621,6 +628,7 @@
 				B7137ED62725CC340030DB85 /* NumberTextField.swift in Sources */,
 				B7137EDA27260C460030DB85 /* BTGLoadingView.swift in Sources */,
 				B7137E552722246A0030DB85 /* BTGCurrencyConverterView.swift in Sources */,
+				B7137EE227261EE50030DB85 /* Currency.swift in Sources */,
 				B7137ED22725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */,
 				B7137EAE2724CAB40030DB85 /* CurrencyType.swift in Sources */,
 				B7137EA3272484C50030DB85 /* CurrencyConverter.swift in Sources */,

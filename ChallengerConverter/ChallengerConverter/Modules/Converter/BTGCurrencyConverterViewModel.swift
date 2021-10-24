@@ -48,8 +48,11 @@ class BTGCurrencyConverterViewModel {
         didShowSpinner?(true)
         self.repository.quotes { [unowned self] quotes in
             self.quotes = quotes
+
+            LocalPreferencesRepostirory.shared.save(model: quotes)
+
             self.value(value: currentValue)
-            
+
             self.fetchCurrenciesAvaliable()
             
         } fail: { [unowned self] error in
