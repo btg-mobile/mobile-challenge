@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         )
         val dec = DecimalFormat("#,###,###,###.##")
         binding.tvResult.visibility = VISIBLE
-        binding.tvResultTo.text = "${dec.format(result)} ${currencyFrom!!.initials}"
+        binding.tvResultTo.text = "${dec.format(result)} ${currencyTo!!.initials}"
     }
 
     override fun onResume() {
