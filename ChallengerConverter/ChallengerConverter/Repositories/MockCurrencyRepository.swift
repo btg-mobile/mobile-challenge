@@ -22,7 +22,7 @@ class MockCurrencyRepository: CurrencyRepositoryProtocol {
             success(currenciesAvaliable)
             
         } catch {
-            print("decode error \(error.localizedDescription)")
+            fail(error.localizedDescription)
         }
     }
     
