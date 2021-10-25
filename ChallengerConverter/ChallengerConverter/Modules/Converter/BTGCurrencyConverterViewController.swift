@@ -84,6 +84,7 @@ fileprivate extension BTGCurrencyConverterViewController {
         
         viewModel.didEnableEdiValeu = { [unowned self] enable in
             self.mainView.numberTextField.isEnabled = enable
+            self.mainView.numberTextField.isHidden = !enable
         }
         
         viewModel.didShowSpinner = { [unowned self] showSpinner in

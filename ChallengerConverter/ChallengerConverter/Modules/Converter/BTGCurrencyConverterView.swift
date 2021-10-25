@@ -50,7 +50,7 @@ class BTGCurrencyConverterView: UIView {
         let textField = NumberTextField()
         textField.layer.cornerRadius = 10
         textField.textAlignment = .center
-        textField.text = "0.00"
+        textField.text = "1.00"
         textField.textColor = .black
         textField.backgroundColor = .white
         textField.keyboardType = .numberPad

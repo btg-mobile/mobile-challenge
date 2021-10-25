@@ -16,7 +16,7 @@ class BTGCurrencyConverterViewModel {
     var toCurrency: String = ""
     var currencyValue = 0.0
     
-    var currentValue: Float = 0 {
+    var currentValue: Float = 1.0 {
         didSet {
             self.value(value: currentValue)
         }
