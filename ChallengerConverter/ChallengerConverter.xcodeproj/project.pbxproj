@@ -110,6 +110,9 @@
 		B7137EE027261EE50030DB85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDF27261EE50030DB85 /* Currency.swift */; };
 		B7137EE127261EE50030DB85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDF27261EE50030DB85 /* Currency.swift */; };
 		B7137EE227261EE50030DB85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EDF27261EE50030DB85 /* Currency.swift */; };
+		B7137EE62726E4980030DB85 /* btg-logo-blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = B7137EE52726E4970030DB85 /* btg-logo-blue.svg */; };
+		B7137EE72726E4980030DB85 /* btg-logo-blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = B7137EE52726E4970030DB85 /* btg-logo-blue.svg */; };
+		B7137EE82726E4980030DB85 /* btg-logo-blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = B7137EE52726E4970030DB85 /* btg-logo-blue.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,7 @@
 		B7137ED727260C460030DB85 /* BTGLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGLoadingView.swift; sourceTree = "<group>"; };
 		B7137EDB27260FF00030DB85 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B7137EDF27261EE50030DB85 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		B7137EE52726E4970030DB85 /* btg-logo-blue.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "btg-logo-blue.svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +298,7 @@
 			children = (
 				B7137E5F27231ED90030DB85 /* Info.plist */,
 				B7137E1727221C680030DB85 /* Assets.xcassets */,
+				B7137EE52726E4970030DB85 /* btg-logo-blue.svg */,
 				B7137E1927221C680030DB85 /* LaunchScreen.storyboard */,
 				B7137E0E27221C610030DB85 /* AppDelegate.swift */,
 				B7137E1027221C610030DB85 /* SceneDelegate.swift */,
@@ -518,6 +523,7 @@
 				B7137EA82724BF390030DB85 /* CurrencyList.json in Resources */,
 				B7137E1B27221C680030DB85 /* LaunchScreen.storyboard in Resources */,
 				B7137E9227243C170030DB85 /* CurrencyLive.json in Resources */,
+				B7137EE62726E4980030DB85 /* btg-logo-blue.svg in Resources */,
 				B7137E1827221C680030DB85 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7137EE72726E4980030DB85 /* btg-logo-blue.svg in Resources */,
 				B7137EA92724BF3A0030DB85 /* CurrencyList.json in Resources */,
 				B7137E9327243C170030DB85 /* CurrencyLive.json in Resources */,
 			);
@@ -535,6 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7137EE82726E4980030DB85 /* btg-logo-blue.svg in Resources */,
 				B7137EAA2724BF3B0030DB85 /* CurrencyList.json in Resources */,
 				B7137E9427243C170030DB85 /* CurrencyLive.json in Resources */,
 			);
