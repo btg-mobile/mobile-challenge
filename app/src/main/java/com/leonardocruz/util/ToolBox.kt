@@ -23,11 +23,11 @@ fun convertHashMapToList(hash: HashMap<String, String>): MutableList<Currencies>
     return listCurrency
 }
 
-fun String.safeFloat() : Float {
+fun String.safeDouble() : Double {
     return try{
-        this.toFloat()
+        this.toDouble()
     } catch (e:Exception){
-        -1f
+        -1.0
     }
 }
 
