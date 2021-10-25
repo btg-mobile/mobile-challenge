@@ -13,11 +13,11 @@ struct LiveResult: Codable {
     var terms: String
     var timestamp: Double
     var source: String
-    var quotes: [String: Float]
+    var quotes: [String: Double]
 }
 
 
 struct Quotes: Codable {
     let code: String
-    let quote: Float
+    let quote: Double
 }

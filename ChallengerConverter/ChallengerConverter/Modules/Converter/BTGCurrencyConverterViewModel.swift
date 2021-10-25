@@ -16,7 +16,7 @@ class BTGCurrencyConverterViewModel {
     var toCurrency: String = ""
     var currencyValue = 0.0
     
-    var currentValue: Float = 1.0 {
+    var currentValue: Double = 1.0 {
         didSet {
             self.value(value: currentValue)
         }
@@ -82,17 +82,17 @@ class BTGCurrencyConverterViewModel {
         return quote
     }
     
-    func calculate(value: Float)throws -> Float {
+    func calculate(value: Double)throws -> Double {
         guard let fromQuote = findQuote(code: fromCurrency) else { throw RuntimeError("Currency \(fromCurrency) not found") }
         guard let toQuote = findQuote(code: toCurrency) else { throw RuntimeError("Currency \(toCurrency) not found") }
         return CurrencyConverter.converter(fromQuote: fromQuote, toQuote: toQuote, value: value)
     }
     
-    func value(value: Float) {
+    func value(value: Double) {
         do {
             if(!toCurrency.isEmpty && !fromCurrency.isEmpty) {
                 let convertedValue = try calculate(value: value)
-                didShowConvertedValue?(toCurrency + ": " + String(convertedValue))
+                didShowConvertedValue?(toCurrency + ": \(convertedValue.toCyrrency())")
             }
             
         } catch let error as RuntimeError {

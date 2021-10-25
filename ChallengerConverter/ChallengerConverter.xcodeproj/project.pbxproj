@@ -113,6 +113,7 @@
 		B7137EE62726E4980030DB85 /* btg-logo-blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = B7137EE52726E4970030DB85 /* btg-logo-blue.svg */; };
 		B7137EE72726E4980030DB85 /* btg-logo-blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = B7137EE52726E4970030DB85 /* btg-logo-blue.svg */; };
 		B7137EE82726E4980030DB85 /* btg-logo-blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = B7137EE52726E4970030DB85 /* btg-logo-blue.svg */; };
+		B7587538272715A3002CC6AD /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7587537272715A3002CC6AD /* DoubleExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		B7137EDB27260FF00030DB85 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B7137EDF27261EE50030DB85 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		B7137EE52726E4970030DB85 /* btg-logo-blue.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "btg-logo-blue.svg"; sourceTree = "<group>"; };
+		B7587537272715A3002CC6AD /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 				B7137EBF27250CA50030DB85 /* UIViewControllerExtension.swift */,
 				B7137ECB2725A6220030DB85 /* UIColorExtension.swift */,
 				B7137EDB27260FF00030DB85 /* StringExtension.swift */,
+				B7587537272715A3002CC6AD /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				B7137E982724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */,
 				B7137EDC27260FF00030DB85 /* StringExtension.swift in Sources */,
 				B7137E9C272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */,
+				B7587538272715A3002CC6AD /* DoubleExtension.swift in Sources */,
 				B7137EC027250CA50030DB85 /* UIViewControllerExtension.swift in Sources */,
 				B7137EBC27250A870030DB85 /* BorderedButton.swift in Sources */,
 				B7137E79272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,

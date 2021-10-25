@@ -9,7 +9,7 @@ import UIKit
 
 class NumberTextField: UITextField {
     
-    var didUpdateValue: ((Float)-> Void)?
+    var didUpdateValue: ((Double)-> Void)?
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -42,6 +42,6 @@ extension NumberTextField {
         number = NSNumber(value: (double / 100))
         
         text = formatter.string(from: number)!
-        didUpdateValue?(number.floatValue)
+        didUpdateValue?(number.doubleValue)
     }
 }

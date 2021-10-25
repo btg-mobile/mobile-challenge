@@ -10,7 +10,7 @@ import Foundation
 
 class CurrencyConverter {
     
-    public static func converter(fromQuote: Quotes, toQuote: Quotes, value: Float)-> Float {
+    public static func converter(fromQuote: Quotes, toQuote: Quotes, value: Double)-> Double {
         if(value == 0) {
             return 0
         }
@@ -20,7 +20,7 @@ class CurrencyConverter {
         return (toQuote.quote * dolarValue) * value
     }
     
-    private static func calculateCurrencyToDolar(quote: Float)-> Float {
+    private static func calculateCurrencyToDolar(quote: Double)-> Double {
         return 1 / quote
     }
 }

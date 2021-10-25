@@ -55,6 +55,7 @@ class BTGCurrencyConverterView: UIView {
         textField.backgroundColor = .white
         textField.keyboardType = .numberPad
         textField.isEnabled = false
+        textField.isHidden = true
         return textField
     }()
     var currencyConverterLabel: UILabel  = {
