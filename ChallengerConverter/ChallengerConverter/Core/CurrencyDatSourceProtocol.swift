@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol CurrencyRepositoryProtocol {
+protocol CurrencyDatSourceProtocol {
     func quotes(success: @escaping (([Quotes]) -> Void), fail: @escaping ((String) -> Void))
     func currecnyAvaliable(success: @escaping (([Currency]) -> Void), fail: @escaping ((String) -> Void))
 }

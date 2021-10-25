@@ -30,7 +30,7 @@ class BTGAppCoordinator: Coordinator {
     
     
     func start() {
-        let viewModel = BTGCurrencyConverterViewModel(repository: MockCurrencyRepository())
+        let viewModel = BTGCurrencyConverterViewModel(dataSource: MockCurrencyDataSource())
         self.viewModel = viewModel
         viewModel.coordinatorDelegate = self
         let viewController = BTGCurrencyConverterViewController(viewModel: viewModel)

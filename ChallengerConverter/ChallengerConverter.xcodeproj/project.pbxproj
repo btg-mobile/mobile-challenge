@@ -56,12 +56,12 @@
 		B7137E9227243C170030DB85 /* CurrencyLive.json in Resources */ = {isa = PBXBuildFile; fileRef = B7137E9127243C170030DB85 /* CurrencyLive.json */; };
 		B7137E9327243C170030DB85 /* CurrencyLive.json in Resources */ = {isa = PBXBuildFile; fileRef = B7137E9127243C170030DB85 /* CurrencyLive.json */; };
 		B7137E9427243C170030DB85 /* CurrencyLive.json in Resources */ = {isa = PBXBuildFile; fileRef = B7137E9127243C170030DB85 /* CurrencyLive.json */; };
-		B7137E982724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E972724469A0030DB85 /* CurrencyRepositoryProtocol.swift */; };
-		B7137E992724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E972724469A0030DB85 /* CurrencyRepositoryProtocol.swift */; };
-		B7137E9A2724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E972724469A0030DB85 /* CurrencyRepositoryProtocol.swift */; };
-		B7137E9C272446EC0030DB85 /* MockCurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E9B272446EC0030DB85 /* MockCurrencyRepository.swift */; };
-		B7137E9D272446EC0030DB85 /* MockCurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E9B272446EC0030DB85 /* MockCurrencyRepository.swift */; };
-		B7137E9E272446EC0030DB85 /* MockCurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E9B272446EC0030DB85 /* MockCurrencyRepository.swift */; };
+		B7137E982724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E972724469A0030DB85 /* CurrencyDatSourceProtocol.swift */; };
+		B7137E992724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E972724469A0030DB85 /* CurrencyDatSourceProtocol.swift */; };
+		B7137E9A2724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E972724469A0030DB85 /* CurrencyDatSourceProtocol.swift */; };
+		B7137E9C272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E9B272446EC0030DB85 /* MockCurrencyDataSource.swift */; };
+		B7137E9D272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E9B272446EC0030DB85 /* MockCurrencyDataSource.swift */; };
+		B7137E9E272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137E9B272446EC0030DB85 /* MockCurrencyDataSource.swift */; };
 		B7137EA1272484C50030DB85 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EA0272484C50030DB85 /* CurrencyConverter.swift */; };
 		B7137EA2272484C50030DB85 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EA0272484C50030DB85 /* CurrencyConverter.swift */; };
 		B7137EA3272484C50030DB85 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EA0272484C50030DB85 /* CurrencyConverter.swift */; };
@@ -157,8 +157,8 @@
 		B7137E8C27237AFA0030DB85 /* Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
 		B7137E9127243C170030DB85 /* CurrencyLive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyLive.json; sourceTree = "<group>"; };
 		B7137E9527243C950030DB85 /* CurrencyList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrencyList.json; sourceTree = "<group>"; };
-		B7137E972724469A0030DB85 /* CurrencyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRepositoryProtocol.swift; sourceTree = "<group>"; };
-		B7137E9B272446EC0030DB85 /* MockCurrencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyRepository.swift; sourceTree = "<group>"; };
+		B7137E972724469A0030DB85 /* CurrencyDatSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDatSourceProtocol.swift; sourceTree = "<group>"; };
+		B7137E9B272446EC0030DB85 /* MockCurrencyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyDataSource.swift; sourceTree = "<group>"; };
 		B7137EA0272484C50030DB85 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		B7137EA42724886E0030DB85 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		B7137EAB2724CAB40030DB85 /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 		B7137E0D27221C610030DB85 /* ChallengerConverter */ = {
 			isa = PBXGroup;
 			children = (
+				B7137EE32726325B0030DB85 /* DataSouces */,
 				B7137E9F272484AC0030DB85 /* Utils */,
 				B7137E9627243CCB0030DB85 /* Repositories */,
 				B7137E9027243BD30030DB85 /* Resources */,
@@ -332,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				B7137E5B27231C070030DB85 /* BTGBaseViewController.swift */,
-				B7137E972724469A0030DB85 /* CurrencyRepositoryProtocol.swift */,
+				B7137E972724469A0030DB85 /* CurrencyDatSourceProtocol.swift */,
 				B7137EA42724886E0030DB85 /* RuntimeError.swift */,
 				B7137EC72725A5530030DB85 /* AppStyle.swift */,
 			);
@@ -380,9 +381,6 @@
 		B7137E9627243CCB0030DB85 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				B7137E9B272446EC0030DB85 /* MockCurrencyRepository.swift */,
-				B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */,
-				B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -393,6 +391,16 @@
 				B7137EA0272484C50030DB85 /* CurrencyConverter.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B7137EE32726325B0030DB85 /* DataSouces */ = {
+			isa = PBXGroup;
+			children = (
+				B7137E9B272446EC0030DB85 /* MockCurrencyDataSource.swift */,
+				B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */,
+				B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */,
+			);
+			path = DataSouces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,9 +539,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7137E982724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */,
+				B7137E982724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */,
 				B7137EDC27260FF00030DB85 /* StringExtension.swift in Sources */,
-				B7137E9C272446EC0030DB85 /* MockCurrencyRepository.swift in Sources */,
+				B7137E9C272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */,
 				B7137EC027250CA50030DB85 /* UIViewControllerExtension.swift in Sources */,
 				B7137EBC27250A870030DB85 /* BorderedButton.swift in Sources */,
 				B7137E79272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,
@@ -584,7 +592,7 @@
 				B7137E7A272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,
 				B7137EA2272484C50030DB85 /* CurrencyConverter.swift in Sources */,
 				B7137EE127261EE50030DB85 /* Currency.swift in Sources */,
-				B7137E992724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */,
+				B7137E992724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */,
 				B7137E7627232D320030DB85 /* UIViewExtension.swift in Sources */,
 				B7137EB12724CD0D0030DB85 /* BTGCurrencyProvider.swift in Sources */,
 				B7137ECD2725A6220030DB85 /* UIColorExtension.swift in Sources */,
@@ -595,7 +603,7 @@
 				B7137EAD2724CAB40030DB85 /* CurrencyType.swift in Sources */,
 				B7137E8E27237AFA0030DB85 /* Live.swift in Sources */,
 				B7137E6527232A410030DB85 /* BTGCurrenciesAvaliableViewController.swift in Sources */,
-				B7137E9D272446EC0030DB85 /* MockCurrencyRepository.swift in Sources */,
+				B7137E9D272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */,
 				B7137EB52724CD200030DB85 /* BTGCurrencyService.swift in Sources */,
 				B7137EC127250CA50030DB85 /* UIViewControllerExtension.swift in Sources */,
 				B7137E2627221C690030DB85 /* ChallengerConverterTests.swift in Sources */,
@@ -608,9 +616,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7137E9A2724469A0030DB85 /* CurrencyRepositoryProtocol.swift in Sources */,
+				B7137E9A2724469A0030DB85 /* CurrencyDatSourceProtocol.swift in Sources */,
 				B7137EDE27260FF00030DB85 /* StringExtension.swift in Sources */,
-				B7137E9E272446EC0030DB85 /* MockCurrencyRepository.swift in Sources */,
+				B7137E9E272446EC0030DB85 /* MockCurrencyDataSource.swift in Sources */,
 				B7137EC227250CA50030DB85 /* UIViewControllerExtension.swift in Sources */,
 				B7137EBE27250A870030DB85 /* BorderedButton.swift in Sources */,
 				B7137E7B272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,

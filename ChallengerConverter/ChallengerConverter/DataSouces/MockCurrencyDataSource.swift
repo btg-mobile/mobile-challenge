@@ -8,7 +8,7 @@
 import Foundation
 
 
-class MockCurrencyRepository: CurrencyRepositoryProtocol {
+class MockCurrencyDataSource: CurrencyDatSourceProtocol {
     
     func currecnyAvaliable(success: @escaping (([Currency]) -> Void), fail: @escaping ((String) -> Void)) {
         do {

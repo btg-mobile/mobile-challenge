@@ -34,10 +34,10 @@ class BTGCurrencyConverterViewModel {
     var didUpdateFromCurrency: ((String)-> Void)?
     var didUpdateToCurrency: ((String)-> Void)?
     
-    let repository: CurrencyRepositoryProtocol
+    let dataSource: CurrencyDatSourceProtocol
     
-    init(repository: CurrencyRepositoryProtocol) {
-        self.repository = repository
+    init(dataSource: CurrencyDatSourceProtocol) {
+        self.dataSource = dataSource
     }
     
     func viewDidLoad() {
@@ -46,7 +46,7 @@ class BTGCurrencyConverterViewModel {
     
     func fetchQuotes() {
         didShowSpinner?(true)
-        self.repository.quotes { [unowned self] quotes in
+        self.dataSource.quotes { [unowned self] quotes in
             self.quotes = quotes
 
             LocalPreferencesRepostirory.shared.save(model: quotes)
@@ -62,7 +62,7 @@ class BTGCurrencyConverterViewModel {
     }
     
     func fetchCurrenciesAvaliable() {
-        self.repository.currecnyAvaliable {[unowned self] currencies in
+        self.dataSource.currecnyAvaliable {[unowned self] currencies in
             LocalPreferencesRepostirory.shared.save(model: currencies)
             self.didShowSpinner?(false)
         } fail: { [unowned self] error in

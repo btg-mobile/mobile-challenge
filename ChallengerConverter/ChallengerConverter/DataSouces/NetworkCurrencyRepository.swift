@@ -8,7 +8,7 @@
 import Foundation
 
 
-class NetworkCurrencyRepository: CurrencyRepositoryProtocol {
+class NetworkCurrencyRepository: CurrencyDatSourceProtocol {
     func quotes(success: @escaping (([Quotes]) -> Void), fail: @escaping ((String) -> Void)) {
         BTGCurrencyService.request(provider: ApiProvider.live) { (completion: Result<LiveResult, Error>) in
             
