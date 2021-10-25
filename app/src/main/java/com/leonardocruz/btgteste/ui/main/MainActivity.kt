@@ -14,7 +14,7 @@ import com.leonardocruz.btgteste.model.Currencies
 import com.leonardocruz.util.Constants.CURRENCY_KEY
 import com.leonardocruz.util.Constants.PREFERENCES_RATES
 import com.leonardocruz.util.Util
-import com.leonardocruz.util.safeFloat
+import com.leonardocruz.util.safeDouble
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.DecimalFormat
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var currencyFrom: Currencies? = null
     private var currencyTo: Currencies? = null
     private var listRates = mutableListOf<Currencies>()
-    private var currentValue: Float = -1f
+    private var currentValue: Double = -1.0
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     @SuppressLint("SetTextI18n")
     private fun verifyAndConvert() {
         if (!et_currency.text.toString().isNullOrEmpty()) currentValue =
-            et_currency.text.toString().safeFloat()
+            et_currency.text.toString().safeDouble()
         if (currencyFrom == null || currencyTo == null) {
             Toast.makeText(
                 this,
