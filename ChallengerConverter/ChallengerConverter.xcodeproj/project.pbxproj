@@ -285,6 +285,7 @@
 		B7137E4027221DC10030DB85 /* Currencies */ = {
 			isa = PBXGroup;
 			children = (
+				B758753627270DC3002CC6AD /* Models */,
 				B7137E6327232A410030DB85 /* BTGCurrenciesAvaliableViewController.swift */,
 				B7137E6727232A560030DB85 /* BTGCurrenciesAvaliableView.swift */,
 				B7137E6B27232A760030DB85 /* BTGCurrenciesAvaliableViewModel.swift */,
@@ -370,7 +371,6 @@
 			children = (
 				B7137E8C27237AFA0030DB85 /* Live.swift */,
 				B7137EAB2724CAB40030DB85 /* CurrencyType.swift */,
-				B7137EDF27261EE50030DB85 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,6 +414,14 @@
 				B7137ECF2725C5FA0030DB85 /* LocalPreferencesDataBase.swift */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		B758753627270DC3002CC6AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B7137EDF27261EE50030DB85 /* Currency.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
