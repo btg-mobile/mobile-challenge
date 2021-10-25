@@ -31,10 +31,10 @@ object Util {
         return parseJsonList(objArray)
     }
 
-    fun convertValues(currentValue : Float, currencyFrom : String, currencyTo : String, listRates : MutableList<Currencies>): Float {
+    fun convertValues(currentValue : Double, currencyFrom : String, currencyTo : String, listRates : MutableList<Currencies>): Double {
         var valorFrom = 0f
         var valorTo = 0f
-        var result = 0f
+        var result = 0.0
             listRates.forEach {
                 if (it.initials.takeLast(3) == currencyFrom) {
                     valorFrom = it.value.toString().toFloat()
