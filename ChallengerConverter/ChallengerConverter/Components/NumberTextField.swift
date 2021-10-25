@@ -9,6 +9,12 @@ import UIKit
 
 class NumberTextField: UITextField {
     
+    var currencyCode: String  = "" {
+        didSet {
+            updateValue( text: self.text ?? "" )
+        }
+    }
+    
     var didUpdateValue: ((Double)-> Void)?
     
     override init(frame: CGRect = .zero) {
@@ -26,22 +32,18 @@ extension NumberTextField {
     @objc
     func textFieldDidChange(_ textField: UITextField) {
         
-        var number: NSNumber!
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.currencySymbol = ""
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        
-        var amountWithPrefix = textField.text!
-        
+        updateValue( text: textField.text! )
+    }
+    
+    func updateValue(text: String) {
+        var amountWithPrefix = text
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, textField.text!.count), withTemplate: "")
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, amountWithPrefix.count), withTemplate: "")
         
         let double = (amountWithPrefix as NSString).doubleValue
-        number = NSNumber(value: (double / 100))
+        let number: NSNumber = NSNumber(value: (double / 100))
         
-        text = formatter.string(from: number)!
+        self.text = number.doubleValue.toCyrrency(currencyCode: currencyCode)
         didUpdateValue?(number.doubleValue)
     }
 }

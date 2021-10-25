@@ -76,6 +76,7 @@ fileprivate extension BTGCurrencyConverterViewController {
         
         viewModel.didUpdateFromCurrency = { [unowned self] code in
             self.mainView.buttonFrom.setTitle(code, for: .normal)
+            self.mainView.numberTextField.currencyCode = code
         }
         
         viewModel.didUpdateToCurrency = { [unowned self] code in

@@ -10,9 +10,11 @@ import Foundation
 
 extension Double {
     
-    func toCyrrency()-> String {
+    func toCyrrency(currencyCode: String)-> String {
         let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
+        formatter.numberStyle = .currency
+        formatter.currencyCode = currencyCode
+        formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(value: self))!
     }
     

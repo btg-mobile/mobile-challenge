@@ -92,7 +92,7 @@ class BTGCurrencyConverterViewModel {
         do {
             if(!toCurrency.isEmpty && !fromCurrency.isEmpty) {
                 let convertedValue = try calculate(value: value)
-                didShowConvertedValue?(toCurrency + ": \(convertedValue.toCyrrency())")
+                didShowConvertedValue?( convertedValue.toCyrrency(currencyCode: toCurrency) )
             }
             
         } catch let error as RuntimeError {
