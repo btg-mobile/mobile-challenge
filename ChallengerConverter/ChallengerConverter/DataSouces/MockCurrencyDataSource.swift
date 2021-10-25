@@ -10,7 +10,7 @@ import Foundation
 
 class MockCurrencyDataSource: CurrencyDatSourceProtocol {
     
-    func currecnyAvaliable(success: @escaping (([Currency]) -> Void), fail: @escaping ((String) -> Void)) {
+    func currenciesAvaliable(success: @escaping (([Currency]) -> Void), fail: @escaping ((String) -> Void)) {
         do {
             let decodedData = try JSONDecoder().decode(CurrencyResposnse.self, from: readLocalFile(forName: "CurrencyList")!)
             var currenciesAvaliable: [Currency] = []

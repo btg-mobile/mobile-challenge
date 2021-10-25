@@ -61,6 +61,18 @@ extension BTGCurrenciesAvaliableViewController {
         viewModel.didShowError = {  [unowned self] error in
             self.showAlert("Ops", error)
         }
+        viewModel.didShowSpinner = { [unowned self] showSpinner in
+            if(showSpinner) {
+                self.mainView.showSpinner()
+            } else {
+                self.mainView.hideSpinner()
+            }
+        }
+        viewModel.didShowErrorWithReload = { [unowned self] error in
+            self.showAlert("Ops", error, "Recarregar") {
+                self.viewModel.fetchCurrenciesAvaliable()
+            }
+        }
     }
 }
 

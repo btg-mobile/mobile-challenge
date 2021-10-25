@@ -8,7 +8,7 @@
 import Foundation
 
 
-class NetworkCurrencyRepository: CurrencyDatSourceProtocol {
+class NetworkCurrencyDataSource: CurrencyDatSourceProtocol {
     func quotes(success: @escaping (([Quotes]) -> Void), fail: @escaping ((String) -> Void)) {
         BTGCurrencyService.request(provider: ApiProvider.live) { (completion: Result<LiveResult, Error>) in
             
@@ -31,12 +31,12 @@ class NetworkCurrencyRepository: CurrencyDatSourceProtocol {
     }
     
 
-    func currecnyAvaliable(success: @escaping (([Currency]) -> Void), fail: @escaping ((String) -> Void)) {
+    func currenciesAvaliable(success: @escaping (([Currency]) -> Void), fail: @escaping ((String) -> Void)) {
 
         BTGCurrencyService.request(provider: ApiProvider.list) { (completion: Result<CurrencyResposnse, Error>) in
             
             switch(completion) {
-            case .success(let response) :
+            case .success(let response):
                 
                 var currenciesAvaliable: [Currency] = []
                 
@@ -46,7 +46,6 @@ class NetworkCurrencyRepository: CurrencyDatSourceProtocol {
                 
                 success(currenciesAvaliable)
             
-                
             case .failure(let error):
                 fail(error.localizedDescription)
             }

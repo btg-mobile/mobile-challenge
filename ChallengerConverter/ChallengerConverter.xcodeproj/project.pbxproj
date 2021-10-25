@@ -80,9 +80,9 @@
 		B7137EB42724CD200030DB85 /* BTGCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB32724CD200030DB85 /* BTGCurrencyService.swift */; };
 		B7137EB52724CD200030DB85 /* BTGCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB32724CD200030DB85 /* BTGCurrencyService.swift */; };
 		B7137EB62724CD200030DB85 /* BTGCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB32724CD200030DB85 /* BTGCurrencyService.swift */; };
-		B7137EB82724D31F0030DB85 /* NetworkCurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */; };
-		B7137EB92724D31F0030DB85 /* NetworkCurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */; };
-		B7137EBA2724D31F0030DB85 /* NetworkCurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */; };
+		B7137EB82724D31F0030DB85 /* NetworkCurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB72724D31F0030DB85 /* NetworkCurrencyDataSource.swift */; };
+		B7137EB92724D31F0030DB85 /* NetworkCurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB72724D31F0030DB85 /* NetworkCurrencyDataSource.swift */; };
+		B7137EBA2724D31F0030DB85 /* NetworkCurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EB72724D31F0030DB85 /* NetworkCurrencyDataSource.swift */; };
 		B7137EBC27250A870030DB85 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EBB27250A870030DB85 /* BorderedButton.swift */; };
 		B7137EBD27250A870030DB85 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EBB27250A870030DB85 /* BorderedButton.swift */; };
 		B7137EBE27250A870030DB85 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137EBB27250A870030DB85 /* BorderedButton.swift */; };
@@ -95,9 +95,9 @@
 		B7137ECC2725A6220030DB85 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECB2725A6220030DB85 /* UIColorExtension.swift */; };
 		B7137ECD2725A6220030DB85 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECB2725A6220030DB85 /* UIColorExtension.swift */; };
 		B7137ECE2725A6220030DB85 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECB2725A6220030DB85 /* UIColorExtension.swift */; };
-		B7137ED02725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */; };
-		B7137ED12725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */; };
-		B7137ED22725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */; };
+		B7137ED02725C5FA0030DB85 /* LocalPreferencesDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECF2725C5FA0030DB85 /* LocalPreferencesDataBase.swift */; };
+		B7137ED12725C5FA0030DB85 /* LocalPreferencesDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECF2725C5FA0030DB85 /* LocalPreferencesDataBase.swift */; };
+		B7137ED22725C5FA0030DB85 /* LocalPreferencesDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ECF2725C5FA0030DB85 /* LocalPreferencesDataBase.swift */; };
 		B7137ED42725CC340030DB85 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ED32725CC340030DB85 /* NumberTextField.swift */; };
 		B7137ED52725CC340030DB85 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ED32725CC340030DB85 /* NumberTextField.swift */; };
 		B7137ED62725CC340030DB85 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7137ED32725CC340030DB85 /* NumberTextField.swift */; };
@@ -164,12 +164,12 @@
 		B7137EAB2724CAB40030DB85 /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		B7137EAF2724CD0D0030DB85 /* BTGCurrencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyProvider.swift; sourceTree = "<group>"; };
 		B7137EB32724CD200030DB85 /* BTGCurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGCurrencyService.swift; sourceTree = "<group>"; };
-		B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCurrencyRepository.swift; sourceTree = "<group>"; };
+		B7137EB72724D31F0030DB85 /* NetworkCurrencyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCurrencyDataSource.swift; sourceTree = "<group>"; };
 		B7137EBB27250A870030DB85 /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		B7137EBF27250CA50030DB85 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B7137EC72725A5530030DB85 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		B7137ECB2725A6220030DB85 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferencesRepostirory.swift; sourceTree = "<group>"; };
+		B7137ECF2725C5FA0030DB85 /* LocalPreferencesDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferencesDataBase.swift; sourceTree = "<group>"; };
 		B7137ED32725CC340030DB85 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		B7137ED727260C460030DB85 /* BTGLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGLoadingView.swift; sourceTree = "<group>"; };
 		B7137EDB27260FF00030DB85 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 		B7137E0D27221C610030DB85 /* ChallengerConverter */ = {
 			isa = PBXGroup;
 			children = (
+				B7137EE42726D6DD0030DB85 /* DataBase */,
 				B7137EE32726325B0030DB85 /* DataSouces */,
 				B7137E9F272484AC0030DB85 /* Utils */,
 				B7137E9627243CCB0030DB85 /* Repositories */,
@@ -397,10 +398,17 @@
 			isa = PBXGroup;
 			children = (
 				B7137E9B272446EC0030DB85 /* MockCurrencyDataSource.swift */,
-				B7137EB72724D31F0030DB85 /* NetworkCurrencyRepository.swift */,
-				B7137ECF2725C5FA0030DB85 /* LocalPreferencesRepostirory.swift */,
+				B7137EB72724D31F0030DB85 /* NetworkCurrencyDataSource.swift */,
 			);
 			path = DataSouces;
+			sourceTree = "<group>";
+		};
+		B7137EE42726D6DD0030DB85 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				B7137ECF2725C5FA0030DB85 /* LocalPreferencesDataBase.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,7 +553,7 @@
 				B7137EC027250CA50030DB85 /* UIViewControllerExtension.swift in Sources */,
 				B7137EBC27250A870030DB85 /* BorderedButton.swift in Sources */,
 				B7137E79272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,
-				B7137EB82724D31F0030DB85 /* NetworkCurrencyRepository.swift in Sources */,
+				B7137EB82724D31F0030DB85 /* NetworkCurrencyDataSource.swift in Sources */,
 				B7137E0F27221C610030DB85 /* AppDelegate.swift in Sources */,
 				B7137EA52724886E0030DB85 /* RuntimeError.swift in Sources */,
 				B7137EB02724CD0D0030DB85 /* BTGCurrencyProvider.swift in Sources */,
@@ -560,7 +568,7 @@
 				B7137ED827260C460030DB85 /* BTGLoadingView.swift in Sources */,
 				B7137E4F27221F0C0030DB85 /* Coordinator.swift in Sources */,
 				B7137EE027261EE50030DB85 /* Currency.swift in Sources */,
-				B7137ED02725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */,
+				B7137ED02725C5FA0030DB85 /* LocalPreferencesDataBase.swift in Sources */,
 				B7137EAC2724CAB40030DB85 /* CurrencyType.swift in Sources */,
 				B7137EA1272484C50030DB85 /* CurrencyConverter.swift in Sources */,
 				B7137E6827232A560030DB85 /* BTGCurrenciesAvaliableView.swift in Sources */,
@@ -597,8 +605,8 @@
 				B7137EB12724CD0D0030DB85 /* BTGCurrencyProvider.swift in Sources */,
 				B7137ECD2725A6220030DB85 /* UIColorExtension.swift in Sources */,
 				B7137E4427221E6C0030DB85 /* BTGCurrencyConverterViewController.swift in Sources */,
-				B7137ED12725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */,
-				B7137EB92724D31F0030DB85 /* NetworkCurrencyRepository.swift in Sources */,
+				B7137ED12725C5FA0030DB85 /* LocalPreferencesDataBase.swift in Sources */,
+				B7137EB92724D31F0030DB85 /* NetworkCurrencyDataSource.swift in Sources */,
 				B7137EBD27250A870030DB85 /* BorderedButton.swift in Sources */,
 				B7137EAD2724CAB40030DB85 /* CurrencyType.swift in Sources */,
 				B7137E8E27237AFA0030DB85 /* Live.swift in Sources */,
@@ -622,7 +630,7 @@
 				B7137EC227250CA50030DB85 /* UIViewControllerExtension.swift in Sources */,
 				B7137EBE27250A870030DB85 /* BorderedButton.swift in Sources */,
 				B7137E7B272330AE0030DB85 /* BTGCurrencyCell.swift in Sources */,
-				B7137EBA2724D31F0030DB85 /* NetworkCurrencyRepository.swift in Sources */,
+				B7137EBA2724D31F0030DB85 /* NetworkCurrencyDataSource.swift in Sources */,
 				B7137E59272224E40030DB85 /* BTGCurrencyConverterViewModel.swift in Sources */,
 				B7137EA72724886E0030DB85 /* RuntimeError.swift in Sources */,
 				B7137EB22724CD0D0030DB85 /* BTGCurrencyProvider.swift in Sources */,
@@ -637,7 +645,7 @@
 				B7137EDA27260C460030DB85 /* BTGLoadingView.swift in Sources */,
 				B7137E552722246A0030DB85 /* BTGCurrencyConverterView.swift in Sources */,
 				B7137EE227261EE50030DB85 /* Currency.swift in Sources */,
-				B7137ED22725C5FA0030DB85 /* LocalPreferencesRepostirory.swift in Sources */,
+				B7137ED22725C5FA0030DB85 /* LocalPreferencesDataBase.swift in Sources */,
 				B7137EAE2724CAB40030DB85 /* CurrencyType.swift in Sources */,
 				B7137EA3272484C50030DB85 /* CurrencyConverter.swift in Sources */,
 				B7137E6A27232A560030DB85 /* BTGCurrenciesAvaliableView.swift in Sources */,

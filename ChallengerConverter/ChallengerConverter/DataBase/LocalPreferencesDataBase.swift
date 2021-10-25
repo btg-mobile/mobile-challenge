@@ -1,5 +1,5 @@
 //
-//  LocalPreferencesRepostirory.swift
+//  LocalPreferencesDataBase.swift
 //  ChallengerConverter
 //
 //  Created by ADRIANO.MAZUCATO on 24/10/21.
@@ -8,11 +8,11 @@
 import Foundation
 
 
-class LocalPreferencesRepostirory {
+class LocalPreferencesDataBase {
     
     let defaults = UserDefaults.standard
     
-    static let shared = LocalPreferencesRepostirory()
+    static let shared = LocalPreferencesDataBase()
     
     func save<T: Codable>(model: T) {
         let encoder = JSONEncoder()

@@ -30,7 +30,7 @@ class BTGAppCoordinator: Coordinator {
     
     
     func start() {
-        let viewModel = BTGCurrencyConverterViewModel(dataSource: MockCurrencyDataSource())
+        let viewModel = BTGCurrencyConverterViewModel(dataSource: NetworkCurrencyDataSource())
         self.viewModel = viewModel
         viewModel.coordinatorDelegate = self
         let viewController = BTGCurrencyConverterViewController(viewModel: viewModel)
@@ -40,7 +40,7 @@ class BTGAppCoordinator: Coordinator {
 
 extension BTGAppCoordinator : BTGAppCoordinatorDelegate {
     func showPickerCurrencies() {
-        let viewModel = BTGCurrenciesAvaliableViewModel(delegate: self)
+        let viewModel = BTGCurrenciesAvaliableViewModel(dataSource: NetworkCurrencyDataSource(), delegate: self)
         let viewController = BTGCurrenciesAvaliableViewController(viewModel: viewModel)
         navController.pushViewController(viewController, animated: true)
     }

@@ -14,26 +14,54 @@ protocol BTGCurrenciesAvaliableViewModelDelegate: AnyObject {
 class BTGCurrenciesAvaliableViewModel {
     
     var currenciesAvaliable: [Currency] {
-        return LocalPreferencesRepostirory.shared.find() ?? []
+        get {
+            return LocalPreferencesDataBase.shared.find() ?? []
+        }
     }
     
     var currenciesToShow: [Currency] = []
     
     var didUpdateList: (()-> Void)?
     var didShowError: ((String)-> Void)?
+    var didShowSpinner: ((Bool)-> Void)?
+    var didShowErrorWithReload: ((String)-> Void)?
     
     weak var delegate: BTGCurrenciesAvaliableViewModelDelegate?
     
-    init(delegate: BTGCurrenciesAvaliableViewModelDelegate) {
+    let dataSource: CurrencyDatSourceProtocol
+    
+    init(dataSource: CurrencyDatSourceProtocol, delegate: BTGCurrenciesAvaliableViewModelDelegate) {
         self.delegate = delegate
+        self.dataSource = dataSource
     }
 }
 
 extension BTGCurrenciesAvaliableViewModel {
     
     func viewDidLoad() {
-        currenciesToShow = currenciesAvaliable
-        self.didUpdateList?()
+        fetchCurrenciesAvaliable()
+    }
+    
+    func fetchCurrenciesAvaliable() {
+        if(currenciesAvaliable.isEmpty) {
+            self.dataSource.currenciesAvaliable {[unowned self] currencies in
+                
+                //Salva a lista de moedas no Bando de Dados
+                LocalPreferencesDataBase.shared.save(model: currencies)
+                self.didShowSpinner?(false)
+                
+                currenciesToShow = currenciesAvaliable
+                
+                self.didUpdateList?()
+            
+            } fail: { [unowned self] error in
+                self.didShowSpinner?(false)
+                self.didShowErrorWithReload?(error+"Aqui A")
+            }
+        } else {
+            currenciesToShow = currenciesAvaliable
+            self.didUpdateList?()
+        }
     }
     
     func filterCurrencies(textSearched: String) {

@@ -47,29 +47,32 @@ class BTGCurrencyConverterViewModel {
     func fetchQuotes() {
         didShowSpinner?(true)
         self.dataSource.quotes { [unowned self] quotes in
+            didShowSpinner?(false)
+            
             self.quotes = quotes
 
-            LocalPreferencesRepostirory.shared.save(model: quotes)
+            //Salva as cotas no bancp de dados
+            LocalPreferencesDataBase.shared.save(model: quotes)
 
             self.value(value: currentValue)
 
-            self.fetchCurrenciesAvaliable()
-            
         } fail: { [unowned self] error in
             didShowSpinner?(false)
-            self.didShowErrorWithReload?(error)
+            self.didShowErrorWithReload?(error+"Aqui")
         }
     }
     
-    func fetchCurrenciesAvaliable() {
-        self.dataSource.currecnyAvaliable {[unowned self] currencies in
-            LocalPreferencesRepostirory.shared.save(model: currencies)
-            self.didShowSpinner?(false)
-        } fail: { [unowned self] error in
-            self.didShowErrorWithReload?(error)
-            didShowSpinner?(false)
-        }
-    }
+//    func fetchCurrenciesAvaliable() {
+//        self.dataSource.currenciesAvaliable {[unowned self] currencies in
+//
+//            //Salva a lista de moedas no Bando de Dados
+//            LocalPreferencesDataBase.shared.save(model: currencies)
+//            self.didShowSpinner?(false)
+//        } fail: { [unowned self] error in
+//            didShowSpinner?(false)
+//            self.didShowErrorWithReload?(error+"Aqui A")
+//        }
+//    }
     
     func findQuote(code: String)-> Quotes? {
         guard let quote = quotes.first(where: { $0.code == "USD" + code } ) else {
