@@ -11,7 +11,7 @@ class NumberTextField: UITextField {
     
     var currencyCode: String  = "" {
         didSet {
-            updateValue( text: self.text ?? "" )
+            updateValue( text: self.text ?? "`" )
         }
     }
     

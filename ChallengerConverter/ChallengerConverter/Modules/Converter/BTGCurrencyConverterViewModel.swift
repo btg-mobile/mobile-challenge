@@ -10,8 +10,6 @@ import Foundation
 
 class BTGCurrencyConverterViewModel {
     
-    weak var coordinatorDelegate: BTGAppCoordinatorDelegate?
-    
     var fromCurrency: String = ""
     var toCurrency: String = ""
     var currencyValue = 0.0
@@ -30,6 +28,7 @@ class BTGCurrencyConverterViewModel {
     var didShowErrorWithReload: ((String)-> Void)?
     var didEnableEdiValeu: ((Bool)-> Void)?
     var didShowSpinner: ((Bool)-> Void)?
+    var didWantEditCurrency: (()-> Void)?
     
     var didUpdateFromCurrency: ((String)-> Void)?
     var didUpdateToCurrency: ((String)-> Void)?
@@ -105,7 +104,7 @@ class BTGCurrencyConverterViewModel {
     
     func showPickSupporteds(type: EditingCurrencyType) {
         currentCurrencyEdit = type
-        coordinatorDelegate?.showPickerCurrencies()
+        didWantEditCurrency?()
     }
     
     func updateCurrency(currencyCode: String) {

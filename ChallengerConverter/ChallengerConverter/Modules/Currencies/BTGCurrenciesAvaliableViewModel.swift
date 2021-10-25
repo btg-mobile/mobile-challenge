@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol BTGCurrenciesAvaliableViewModelDelegate: AnyObject {
-    func didChoiseCurrency(currency: Currency)
-}
-
 class BTGCurrenciesAvaliableViewModel {
     
     var currenciesAvaliable: [Currency] {
@@ -25,13 +21,11 @@ class BTGCurrenciesAvaliableViewModel {
     var didShowError: ((String)-> Void)?
     var didShowSpinner: ((Bool)-> Void)?
     var didShowErrorWithReload: ((String)-> Void)?
-    
-    weak var delegate: BTGCurrenciesAvaliableViewModelDelegate?
+    var didSelectCurrency: ((Currency)-> Void)?
     
     let dataSource: CurrencyDatSourceProtocol
     
-    init(dataSource: CurrencyDatSourceProtocol, delegate: BTGCurrenciesAvaliableViewModelDelegate) {
-        self.delegate = delegate
+    init(dataSource: CurrencyDatSourceProtocol) {
         self.dataSource = dataSource
     }
 }
@@ -87,6 +81,6 @@ extension BTGCurrenciesAvaliableViewModel {
     }
     
     func didSelectCurrency(at index: Int) {
-        self.delegate?.didChoiseCurrency(currency: currenciesToShow[index])
+        self.didSelectCurrency?(currenciesToShow[index])
     }
 }

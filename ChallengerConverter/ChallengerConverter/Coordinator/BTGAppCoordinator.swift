@@ -28,26 +28,24 @@ class BTGAppCoordinator: Coordinator {
         window?.makeKeyAndVisible()
     }
     
-    
     func start() {
         let viewModel = BTGCurrencyConverterViewModel(dataSource: NetworkCurrencyDataSource())
         self.viewModel = viewModel
-        viewModel.coordinatorDelegate = self
-        let viewController = BTGCurrencyConverterViewController(viewModel: viewModel)
+        let viewController = BTGCurrencyConverterViewController(viewModel: viewModel, coordinatorDelegate: self)
         navController.pushViewController(viewController, animated: false)
     }
 }
 
 extension BTGAppCoordinator : BTGAppCoordinatorDelegate {
     func showPickerCurrencies() {
-        let viewModel = BTGCurrenciesAvaliableViewModel(dataSource: NetworkCurrencyDataSource(), delegate: self)
-        let viewController = BTGCurrenciesAvaliableViewController(viewModel: viewModel)
+        let viewModel = BTGCurrenciesAvaliableViewModel(dataSource: NetworkCurrencyDataSource())
+        let viewController = BTGCurrenciesAvaliableViewController(viewModel: viewModel, delegate: self)
         navController.pushViewController(viewController, animated: true)
     }
 }
 
 extension BTGAppCoordinator : BTGCurrenciesAvaliableViewModelDelegate {
-    func didChoiseCurrency(currency: Currency) {
+    func didSelectCurrency(currency: Currency) {
         self.viewModel?.updateCurrency(currencyCode: currency.code)
         navController.popViewController(animated: true)
     }

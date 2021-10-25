@@ -11,9 +11,11 @@ import UIKit
 class BTGCurrencyConverterViewController: BTGBaseViewController<BTGCurrencyConverterView> {
     
     let viewModel: BTGCurrencyConverterViewModel
+    weak var coordinatorDelegate: BTGAppCoordinatorDelegate?
     
-    init(viewModel: BTGCurrencyConverterViewModel) {
+    init(viewModel: BTGCurrencyConverterViewModel, coordinatorDelegate: BTGAppCoordinatorDelegate?) {
         self.viewModel = viewModel
+        self.coordinatorDelegate = coordinatorDelegate
         super.init()
         
     }
@@ -94,6 +96,9 @@ fileprivate extension BTGCurrencyConverterViewController {
             } else {
                 self.mainView.hideSpinner()
             }
+        }
+        viewModel.didWantEditCurrency = { [unowned self] in
+            self.coordinatorDelegate?.showPickerCurrencies()
         }
     }
 }

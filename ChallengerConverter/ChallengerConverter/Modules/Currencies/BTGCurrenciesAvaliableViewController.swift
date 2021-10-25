@@ -8,13 +8,20 @@
 import Foundation
 import UIKit
 
+protocol BTGCurrenciesAvaliableViewModelDelegate: AnyObject {
+    func didSelectCurrency(currency: Currency)
+}
+
 
 class BTGCurrenciesAvaliableViewController: BTGBaseViewController<BTGCurrenciesAvaliableView> {
     
     let viewModel: BTGCurrenciesAvaliableViewModel
+    weak var delegate: BTGCurrenciesAvaliableViewModelDelegate?
     
-    init(viewModel: BTGCurrenciesAvaliableViewModel) {
+    
+    init(viewModel: BTGCurrenciesAvaliableViewModel, delegate: BTGCurrenciesAvaliableViewModelDelegate?) {
         self.viewModel = viewModel
+        self.delegate = delegate
         super.init()
     }
     
@@ -72,6 +79,9 @@ extension BTGCurrenciesAvaliableViewController {
             self.showAlert("Ops", error, "Recarregar") {
                 self.viewModel.fetchCurrenciesAvaliable()
             }
+        }
+        viewModel.didSelectCurrency = { [unowned self] currency in
+            self.delegate?.didSelectCurrency(currency: currency)
         }
     }
 }
