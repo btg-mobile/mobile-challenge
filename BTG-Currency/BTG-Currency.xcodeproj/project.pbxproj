@@ -16,6 +16,17 @@
 		3A9630182729CF0F00143477 /* BTG_CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630172729CF0F00143477 /* BTG_CurrencyTests.swift */; };
 		3A9630222729CF1000143477 /* BTG_CurrencyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630212729CF1000143477 /* BTG_CurrencyUITests.swift */; };
 		3A9630242729CF1000143477 /* BTG_CurrencyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630232729CF1000143477 /* BTG_CurrencyUITestsLaunchTests.swift */; };
+		3A9630352729D4E100143477 /* ListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630342729D4E100143477 /* ListServiceTests.swift */; };
+		3A9630382729D51C00143477 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630372729D51C00143477 /* Container.swift */; };
+		3A96303E2729D68800143477 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96303D2729D68800143477 /* Network.swift */; };
+		3A9630402729D8E800143477 /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96303F2729D8E800143477 /* ListService.swift */; };
+		3A9630432729DBB000143477 /* ListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630422729DBB000143477 /* ListDTO.swift */; };
+		3A9630452729DBFD00143477 /* LiveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630442729DBFD00143477 /* LiveDTO.swift */; };
+		3A96304B2729DE2700143477 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96304A2729DE2700143477 /* ListItem.swift */; };
+		3A96304F2729DE7D00143477 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96304E2729DE7D00143477 /* Currency.swift */; };
+		3A9630512729F03800143477 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630502729F03800143477 /* HomeService.swift */; };
+		3A9630532729F04000143477 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9630522729F04000143477 /* Endpoints.swift */; };
+		3A963055272A14AF00143477 /* HomeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A963054272A14AE00143477 /* HomeServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,17 @@
 		3A96301D2729CF1000143477 /* BTG-CurrencyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BTG-CurrencyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9630212729CF1000143477 /* BTG_CurrencyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_CurrencyUITests.swift; sourceTree = "<group>"; };
 		3A9630232729CF1000143477 /* BTG_CurrencyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG_CurrencyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3A9630342729D4E100143477 /* ListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListServiceTests.swift; sourceTree = "<group>"; };
+		3A9630372729D51C00143477 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		3A96303D2729D68800143477 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		3A96303F2729D8E800143477 /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListService.swift; sourceTree = "<group>"; };
+		3A9630422729DBB000143477 /* ListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDTO.swift; sourceTree = "<group>"; };
+		3A9630442729DBFD00143477 /* LiveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDTO.swift; sourceTree = "<group>"; };
+		3A96304A2729DE2700143477 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		3A96304E2729DE7D00143477 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		3A9630502729F03800143477 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		3A9630522729F04000143477 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		3A963054272A14AE00143477 /* HomeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +121,11 @@
 		3A962FFF2729CF0B00143477 /* BTG-Currency */ = {
 			isa = PBXGroup;
 			children = (
-				3A9630002729CF0B00143477 /* AppDelegate.swift */,
-				3A9630022729CF0B00143477 /* SceneDelegate.swift */,
-				3A9630042729CF0B00143477 /* ViewController.swift */,
-				3A9630062729CF0B00143477 /* Main.storyboard */,
-				3A9630092729CF0F00143477 /* Assets.xcassets */,
-				3A96300B2729CF0F00143477 /* LaunchScreen.storyboard */,
-				3A96300E2729CF0F00143477 /* Info.plist */,
+				3A96303C2729D67400143477 /* Service */,
+				3A9630362729D50800143477 /* Model */,
+				3A9630322729D1D500143477 /* Resources */,
+				3A9630312729D1BD00143477 /* View */,
+				3A9630302729D1A900143477 /* Delegates */,
 			);
 			path = "BTG-Currency";
 			sourceTree = "<group>";
@@ -114,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				3A9630172729CF0F00143477 /* BTG_CurrencyTests.swift */,
+				3A9630342729D4E100143477 /* ListServiceTests.swift */,
+				3A963054272A14AE00143477 /* HomeServiceTests.swift */,
 			);
 			path = "BTG-CurrencyTests";
 			sourceTree = "<group>";
@@ -125,6 +147,81 @@
 				3A9630232729CF1000143477 /* BTG_CurrencyUITestsLaunchTests.swift */,
 			);
 			path = "BTG-CurrencyUITests";
+			sourceTree = "<group>";
+		};
+		3A9630302729D1A900143477 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3A9630002729CF0B00143477 /* AppDelegate.swift */,
+				3A9630022729CF0B00143477 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		3A9630312729D1BD00143477 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A9630042729CF0B00143477 /* ViewController.swift */,
+				3A9630062729CF0B00143477 /* Main.storyboard */,
+				3A96300B2729CF0F00143477 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3A9630322729D1D500143477 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3A9630332729D3BE00143477 /* Fonts */,
+				3A9630092729CF0F00143477 /* Assets.xcassets */,
+				3A96300E2729CF0F00143477 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3A9630332729D3BE00143477 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3A9630362729D50800143477 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A9630412729DBA100143477 /* DTO */,
+				3A9630392729D5DD00143477 /* DI */,
+				3A96304A2729DE2700143477 /* ListItem.swift */,
+				3A96304E2729DE7D00143477 /* Currency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3A9630392729D5DD00143477 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				3A9630372729D51C00143477 /* Container.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		3A96303C2729D67400143477 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3A96303D2729D68800143477 /* Network.swift */,
+				3A96303F2729D8E800143477 /* ListService.swift */,
+				3A9630502729F03800143477 /* HomeService.swift */,
+				3A9630522729F04000143477 /* Endpoints.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3A9630412729DBA100143477 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				3A9630422729DBB000143477 /* ListDTO.swift */,
+				3A9630442729DBFD00143477 /* LiveDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +355,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A96304B2729DE2700143477 /* ListItem.swift in Sources */,
+				3A9630402729D8E800143477 /* ListService.swift in Sources */,
+				3A96303E2729D68800143477 /* Network.swift in Sources */,
+				3A96304F2729DE7D00143477 /* Currency.swift in Sources */,
 				3A9630052729CF0B00143477 /* ViewController.swift in Sources */,
+				3A9630382729D51C00143477 /* Container.swift in Sources */,
 				3A9630012729CF0B00143477 /* AppDelegate.swift in Sources */,
 				3A9630032729CF0B00143477 /* SceneDelegate.swift in Sources */,
+				3A9630512729F03800143477 /* HomeService.swift in Sources */,
+				3A9630432729DBB000143477 /* ListDTO.swift in Sources */,
+				3A9630532729F04000143477 /* Endpoints.swift in Sources */,
+				3A9630452729DBFD00143477 /* LiveDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +374,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A963055272A14AF00143477 /* HomeServiceTests.swift in Sources */,
 				3A9630182729CF0F00143477 /* BTG_CurrencyTests.swift in Sources */,
+				3A9630352729D4E100143477 /* ListServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +549,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 467P9HLJ38;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "BTG-Currency/Info.plist";
+				INFOPLIST_FILE = "BTG-Currency/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -469,7 +577,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 467P9HLJ38;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "BTG-Currency/Info.plist";
+				INFOPLIST_FILE = "BTG-Currency/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
