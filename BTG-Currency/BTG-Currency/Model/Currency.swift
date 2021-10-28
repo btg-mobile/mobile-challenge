@@ -11,7 +11,7 @@ public struct Currency {
     public var value: Decimal
     public var symbol: String
     
-    public init(value: Decimal, symbol: String) {
+    public init(value: Decimal = 0.0, symbol: String = "BRL") {
         self.value = value
         self.symbol = symbol
     }
