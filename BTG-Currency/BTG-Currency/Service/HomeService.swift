@@ -9,18 +9,32 @@ import Foundation
 import Combine
 
 public class HomeService {
-    public func fetchLive(fromCurrency input: Currency, toCurrencySymbol output: String) -> AnyPublisher<Currency, Error> {
+    public func fetchLive(fromCurrency input: Currency, toCurrencySymbol output: String) -> AnyPublisher<Decimal, ServiceError> {
         Network(Endpoints.live.url)
             .request(LiveDTO.self)
-            .map({ liveDTO in
-                let outputCurrency = liveDTO.quotes?["USD"+output] ?? 0.0
-                let inputCurrency = liveDTO.quotes?["USD"+input.symbol] ?? 0.0
+            .tryMap { liveDTO in
+                guard let quotes = liveDTO.quotes, !quotes.isEmpty else {
+                    throw ServiceError.isEmpty
+                }
+                
+                let outputCurrency = quotes["USD"+output] ?? 0.0
+                let inputCurrency = quotes["USD"+input.symbol] ?? 0.0
                 
                 let inputValue = input.value
                 let outputValue = inputValue / inputCurrency * outputCurrency
                 
-                return Currency(value: outputValue, symbol: output)
-            })
+                return outputValue
+            }
+            .mapError { error in
+                switch error {
+                case is URLError:
+                    return .sessionFailed
+                case ServiceError.isEmpty:
+                    return .isEmpty
+                default:
+                    return .unknown
+                }
+            }
             .eraseToAnyPublisher()
     }
 }

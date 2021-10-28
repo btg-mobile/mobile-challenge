@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         addDependencies()
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -33,14 +32,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func addDependencies() {
-        Container.shared.register(ListService.self) { _ in
-            ListService()
+        Container.shared.register(CurrenciesService.self) { _ in
+            CurrenciesService()
         }
         Container.shared.register(HomeService.self) { _ in
             HomeService()
         }
-        Container.shared.register(ListViewModel.self) { resolver in
-            ListViewModel(service: resolver.resolve(ListService.self)!)
+        Container.shared.register(CurrenciesViewModel.self) { resolver in
+            CurrenciesViewModel(service: resolver.resolve(CurrenciesService.self)!)
         }
         Container.shared.register(HomeViewModel.self) { resolver in
             HomeViewModel(service: resolver.resolve(HomeService.self)!)

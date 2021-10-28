@@ -37,7 +37,7 @@ class HomeServiceTests: XCTestCase {
                     XCTFail("FAILED\nerror:\(error.localizedDescription)")
                 }
             } receiveValue: { currency in
-                XCTAssert(currency.value != 0.0)
+                XCTAssert(currency != 0.0)
             }.store(in: &cancellables)
         
         wait(for: [expectation], timeout: 5)

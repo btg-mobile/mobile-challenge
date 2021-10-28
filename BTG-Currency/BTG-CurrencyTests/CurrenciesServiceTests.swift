@@ -1,5 +1,5 @@
 //
-//  ListServiceTests.swift
+//  CurrenciesServiceTests.swift
 //  BTG-CurrencyTests
 //
 //  Created by Ramon Almeida on 27/10/21.
@@ -9,13 +9,13 @@ import XCTest
 import Combine
 import BTG_Currency
 
-class ListServiceTests: XCTestCase {
-    var service: ListService!
+class CurrenciesServiceTests: XCTestCase {
+    var service: CurrenciesService!
     var cancellables: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
-        service = Container.shared.resolve(ListService.self)
+        service = Container.shared.resolve(CurrenciesService.self)
         cancellables = Set<AnyCancellable>()
     }
     

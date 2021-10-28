@@ -11,28 +11,8 @@ public struct Currency {
     public var value: Decimal
     public var symbol: String
     
-    public init(value: Decimal = 0.0, symbol: String = "BRL") {
+    public init(value: Decimal = 0.0, symbol: String) {
         self.value = value
         self.symbol = symbol
-    }
-}
-
-extension Currency: CustomStringConvertible {
-    public var description: String {
-        let outputLocale = Locale(identifier: symbol)
-        let currentLocale = Locale.current
-        
-        let formatter = NumberFormatter()
-        formatter.locale = outputLocale
-        formatter.numberStyle = .currency
-        formatter.groupingSize = 3
-        formatter.decimalSeparator = currentLocale.decimalSeparator // ","
-        formatter.groupingSeparator = currentLocale.groupingSeparator
-        
-        if let output = formatter.string(from: NSDecimalNumber(decimal: value)) {
-            return output
-        } else {
-            return "$" + String(format: "%.3f", value as CVarArg)
-        }
     }
 }

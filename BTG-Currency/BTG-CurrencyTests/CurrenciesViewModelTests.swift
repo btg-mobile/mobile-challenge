@@ -1,5 +1,5 @@
 //
-//  ListViewModelTests.swift
+//  CurrenciesViewModelTests.swift
 //  BTG-CurrencyTests
 //
 //  Created by Ramon Almeida on 27/10/21.
@@ -9,13 +9,13 @@ import XCTest
 import Combine
 @testable import BTG_Currency
 
-class ListViewModelTests: XCTestCase {
-    var viewModel: ListViewModel!
+class CurrenciesViewModelTests: XCTestCase {
+    var viewModel: CurrenciesViewModel!
     var cancellables: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
-        viewModel = Container.shared.resolve(ListViewModel.self)!
+        viewModel = Container.shared.resolve(CurrenciesViewModel.self)!
         cancellables = Set<AnyCancellable>()
     }
     
@@ -32,12 +32,18 @@ class ListViewModelTests: XCTestCase {
         
         var list: [ListItem] = []
         
-        viewModel.$items
-            .dropFirst()
-            .sink { receivedList in
+        viewModel.listPublisher
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    XCTFail("FAILED\nerror: \(error.localizedDescription)")
+                case .finished:
+                    expectation.fulfill()
+                }
+            } receiveValue: { receivedList in
                 list = receivedList
-                expectation.fulfill()
-            }.store(in: &cancellables)
+            }
+            .store(in: &cancellables)
         
         wait(for: [expectation], timeout: 10)
         
