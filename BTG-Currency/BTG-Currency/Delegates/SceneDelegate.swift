@@ -39,6 +39,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Container.shared.register(HomeService.self) { _ in
             HomeService()
         }
+        Container.shared.register(ListViewModel.self) { resolver in
+            ListViewModel(service: resolver.resolve(ListService.self)!)
+        }
+        Container.shared.register(HomeViewModel.self) { resolver in
+            HomeViewModel(service: resolver.resolve(HomeService.self)!)
+        }
     }
 }
 
