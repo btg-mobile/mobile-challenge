@@ -8,6 +8,6 @@
 import Foundation
 
 public struct ListItem {
-    var symbol: String
-    var name: String
+    var code: String
+    var countryName: String
 }
