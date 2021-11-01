@@ -9,8 +9,10 @@ import UIKit
 import Combine
 
 class CurrenciesTableViewController: UITableViewController {
+    //MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     
+    //MARK: - Attributes
     private var isConnected: Bool = true
     private var dataSource: [ListItem] = []
     private var viewModel: CurrenciesViewModel!
@@ -83,6 +85,7 @@ extension CurrenciesTableViewController {
     }
 }
 
+//MARK: - Binding methods
 extension CurrenciesTableViewController {
     private func binding() {
         cancellables = [
@@ -123,6 +126,7 @@ extension CurrenciesTableViewController {
     }
 }
 
+//MARK: - UISearchBarDelegate methods
 extension CurrenciesTableViewController: UISearchBarDelegate {
     @objc func keyboardWillShow(_ notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {

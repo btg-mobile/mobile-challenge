@@ -11,8 +11,8 @@ import Combine
 class HomeViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var inputValueTxtField: UITextField!
-    @IBOutlet weak var inputSymbolTxtField: UITextField!
-    @IBOutlet weak var outputSymbolTxtField: UITextField!
+    @IBOutlet weak var inputCodeTxtField: UITextField!
+    @IBOutlet weak var outputCodeTxtField: UITextField!
     @IBOutlet weak var outputValueLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var warningView: UIView!
@@ -23,17 +23,17 @@ class HomeViewController: UIViewController {
     //MARK: - Combine attributes
     private var cancellables = Set<AnyCancellable>()
     private let inputValueSubject = PassthroughSubject<String, Never>()
-    private let inputSymbolSubject = PassthroughSubject<String, Never>()
-    private let outputSymbolSubject = PassthroughSubject<String, Never>()
+    private let inputCodeSubject = PassthroughSubject<String, Never>()
+    private let outputCodeSubject = PassthroughSubject<String, Never>()
     
     var inputValuePublisher: AnyPublisher<String, Never> {
         inputValueSubject.eraseToAnyPublisher()
     }
-    var inputSymbolPublisher: AnyPublisher<String, Never> {
-        inputSymbolSubject.eraseToAnyPublisher()
+    var inputCodePublisher: AnyPublisher<String, Never> {
+        inputCodeSubject.eraseToAnyPublisher()
     }
-    var outputSymbolPublisher: AnyPublisher<String, Never> {
-        outputSymbolSubject.eraseToAnyPublisher()
+    var outputCodePublisher: AnyPublisher<String, Never> {
+        outputCodeSubject.eraseToAnyPublisher()
     }
     
     //MARK: - Life Cycle
@@ -43,10 +43,10 @@ class HomeViewController: UIViewController {
         binding()
         
         inputValueTxtField.delegate = self
-        inputSymbolTxtField.delegate = self
-        outputSymbolTxtField.delegate = self
+        inputCodeTxtField.delegate = self
+        outputCodeTxtField.delegate = self
         
-        [inputValueTxtField, inputSymbolTxtField, outputSymbolTxtField].forEach { textField in
+        [inputValueTxtField, inputCodeTxtField, outputCodeTxtField].forEach { textField in
             textField?.addTarget(self, action: #selector(textFieldChanged(_:)), for: .editingChanged)
         }
         
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        inputSymbolTxtField.becomeFirstResponder()
+        inputCodeTxtField.becomeFirstResponder()
     }
     
     //MARK: - Action methods
@@ -117,14 +117,14 @@ extension HomeViewController {
                     }
                 }),
             inputValuePublisher
-                .combineLatest(inputSymbolPublisher, outputSymbolPublisher)
-                .sink { [weak self] inputValue, inputSymbol, outputSymbol  in
-                    self?.convertButton.isEnabled = !inputValue.isEmpty && !inputSymbol.isEmpty && !outputSymbol.isEmpty
+                .combineLatest(inputCodePublisher, outputCodePublisher)
+                .sink { [weak self] inputValue, inputCode, outputCode  in
+                    self?.convertButton.isEnabled = !inputValue.isEmpty && !inputCode.isEmpty && !outputCode.isEmpty
                 }
         ]
         viewModel.attachInputValueListener(inputValuePublisher)
-        viewModel.attachInputSymbolListener(inputSymbolPublisher)
-        viewModel.attachOutputSymbolListener(outputSymbolPublisher)
+        viewModel.attachInputCodeListener(inputCodePublisher)
+        viewModel.attachOutputCodeListener(outputCodePublisher)
     }
 }
 
@@ -132,19 +132,19 @@ extension HomeViewController {
 extension HomeViewController: UITextFieldDelegate {
     @objc private func dismissKeyboard(_ gesture: UIGestureRecognizer) {
         inputValueTxtField.resignFirstResponder()
-        inputSymbolTxtField.resignFirstResponder()
-        outputSymbolTxtField.resignFirstResponder()
+        inputCodeTxtField.resignFirstResponder()
+        outputCodeTxtField.resignFirstResponder()
     }
     
     @objc private func textFieldChanged(_ textField: UITextField) {
         if textField == inputValueTxtField {
-            if let code = inputSymbolTxtField.text, let valueString = textField.text?.toCurrency(withCode: code) {
+            if let code = inputCodeTxtField.text, let valueString = textField.text?.toCurrency(withCode: code) {
                 textField.text = valueString
             }
-        } else if textField == inputSymbolTxtField, let count = inputSymbolTxtField.text?.count, count >= 3 {
+        } else if textField == inputCodeTxtField, let count = inputCodeTxtField.text?.count, count >= 3 {
             inputValueTxtField.becomeFirstResponder()
-        } else if textField == outputSymbolTxtField, let count = outputSymbolTxtField.text?.count, count >= 3 {
-            outputSymbolTxtField.resignFirstResponder()
+        } else if textField == outputCodeTxtField, let count = outputCodeTxtField.text?.count, count >= 3 {
+            outputCodeTxtField.resignFirstResponder()
         }
     }
     
@@ -154,13 +154,13 @@ extension HomeViewController: UITextFieldDelegate {
             if let value = inputValueTxtField.text {
                 inputValueSubject.send(value)
             }
-        case inputSymbolTxtField:
-            if let symbol = inputSymbolTxtField.text {
-                inputSymbolSubject.send(symbol)
+        case inputCodeTxtField:
+            if let code = inputCodeTxtField.text {
+                inputCodeSubject.send(code)
             }
-        case outputSymbolTxtField:
-            if let symbol = outputSymbolTxtField.text {
-                outputSymbolSubject.send(symbol)
+        case outputCodeTxtField:
+            if let code = outputCodeTxtField.text {
+                outputCodeSubject.send(code)
             }
         default:
             break

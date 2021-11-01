@@ -28,7 +28,7 @@ class HomeServiceTests: XCTestCase {
     func testListService_fetchList() {
         let expectation = XCTestExpectation(description: "HomeService fetchLive test")
         
-        service.fetchLive(fromCurrency: Currency(value: 10.00, symbol: "BRL"), toCurrencySymbol: "MWK")
+        service.fetchLive(fromCurrency: Currency(value: 10.00, code: "BRL"), toCurrencyCode: "MWK")
             .sink { completion in
                 switch completion {
                 case .finished:

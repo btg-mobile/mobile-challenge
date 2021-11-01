@@ -10,9 +10,9 @@ import Foundation
 
 public class HomeViewModel {
     //MARK: - Published attributes
-    private(set) var inputSymbol: String = ""
+    private(set) var inputCode: String = ""
     private(set) var inputValue: Decimal = 0.0
-    private(set) var outputSymbol: String = ""
+    private(set) var outputCode: String = ""
     private(set) var outputValue: Decimal = 0.0
     
     //MARK: - Service attribute
@@ -22,8 +22,8 @@ public class HomeViewModel {
     private var cancellables: Set<AnyCancellable>
     
     private var inputValuePublisher = PassthroughSubject<String, Never>().eraseToAnyPublisher()
-    private var inputSymbolPublisher = PassthroughSubject<String, Never>().eraseToAnyPublisher()
-    private var outputSymbolPublisher = PassthroughSubject<String, Never>().eraseToAnyPublisher()
+    private var inputCodePublisher = PassthroughSubject<String, Never>().eraseToAnyPublisher()
+    private var outputCodePublisher = PassthroughSubject<String, Never>().eraseToAnyPublisher()
     
     private var convertSubject = PassthroughSubject<Result<String, ServiceError>, Never>()
     var convertPublisher: AnyPublisher<Result<String, ServiceError>, Never> {
@@ -54,21 +54,21 @@ extension HomeViewModel {
             }.store(in: &cancellables)
     }
     
-    public func attachInputSymbolListener(_ publisher: AnyPublisher<String, Never>) {
-        self.inputSymbolPublisher = publisher
-        self.inputSymbolPublisher
+    public func attachInputCodeListener(_ publisher: AnyPublisher<String, Never>) {
+        self.inputCodePublisher = publisher
+        self.inputCodePublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] code in
-                self?.inputSymbol = code
+                self?.inputCode = code
             }.store(in: &cancellables)
     }
     
-    public func attachOutputSymbolListener(_ publisher: AnyPublisher<String, Never>) {
-        self.outputSymbolPublisher = publisher
-        self.outputSymbolPublisher
+    public func attachOutputCodeListener(_ publisher: AnyPublisher<String, Never>) {
+        self.outputCodePublisher = publisher
+        self.outputCodePublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] code in
-                self?.outputSymbol = code
+                self?.outputCode = code
             }.store(in: &cancellables)
     }
 }
@@ -76,14 +76,14 @@ extension HomeViewModel {
 //MARK: - Service calls
 extension HomeViewModel {
     public func convert() {
-        guard inputSymbol != outputSymbol else {
+        guard inputCode != outputCode else {
             self.outputValue = inputValue
-            self.convertSubject.send(.success(outputValue.toCurrency(withCode: outputSymbol)))
+            self.convertSubject.send(.success(outputValue.toCurrency(withCode: outputCode)))
             return
         }
         
-        let input = Currency(value: inputValue, symbol: inputSymbol)
-        service.fetchLive(fromCurrency: input, toCurrencySymbol: outputSymbol)
+        let input = Currency(value: inputValue, code: inputCode)
+        service.fetchLive(fromCurrency: input, toCurrencyCode: outputCode)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 switch completion {
@@ -94,8 +94,8 @@ extension HomeViewModel {
                 }
             } receiveValue: { [weak self] value in
                 self?.outputValue = value
-                if let symbol = self?.outputSymbol {
-                    let string = value.toCurrency(withCode: symbol)
+                if let code = self?.outputCode {
+                    let string = value.toCurrency(withCode: code)
                     self?.convertSubject.send(.success(string))
                 }
             }.store(in: &cancellables)

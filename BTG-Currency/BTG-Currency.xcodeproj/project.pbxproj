@@ -201,8 +201,8 @@
 			children = (
 				3A9630172729CF0F00143477 /* BTG_CurrencyTests.swift */,
 				3A9630342729D4E100143477 /* CurrenciesServiceTests.swift */,
-				3A963054272A14AE00143477 /* HomeServiceTests.swift */,
 				3A963059272A1C5900143477 /* CurrenciesViewModelTests.swift */,
+				3A963054272A14AE00143477 /* HomeServiceTests.swift */,
 			);
 			path = "BTG-CurrencyTests";
 			sourceTree = "<group>";

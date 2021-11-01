@@ -33,16 +33,15 @@ class CurrenciesViewModelTests: XCTestCase {
         var list: [ListItem] = []
         
         viewModel.listPublisher
-            .sink { completion in
-                switch completion {
+            .sink(receiveValue: { result in
+                switch result {
                 case .failure(let error):
                     XCTFail("FAILED\nerror: \(error.localizedDescription)")
-                case .finished:
-                    expectation.fulfill()
+                case .success(let receivedList):
+                    list = receivedList
                 }
-            } receiveValue: { receivedList in
-                list = receivedList
-            }
+                expectation.fulfill()
+            })
             .store(in: &cancellables)
         
         wait(for: [expectation], timeout: 10)

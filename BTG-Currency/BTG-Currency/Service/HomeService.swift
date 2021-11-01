@@ -9,19 +9,19 @@ import Foundation
 import Combine
 
 public class HomeService {
-    public func fetchLive(fromCurrency input: Currency, toCurrencySymbol output: String) -> AnyPublisher<Decimal, ServiceError> {
+    public func fetchLive(fromCurrency input: Currency, toCurrencyCode output: String) -> AnyPublisher<Decimal, ServiceError> {
         Network(Endpoints.live.url)
             .request(LiveDTO.self)
             .tryMap { liveDTO in
                 guard let quotes = liveDTO.quotes, !quotes.isEmpty else {
                     throw ServiceError.isEmpty
                 }
-                
-                let outputCurrency = quotes["USD"+output] ?? 0.0
-                let inputCurrency = quotes["USD"+input.symbol] ?? 0.0
+                guard let outputQuote = quotes["USD"+output], let inputQuote = quotes["USD"+input.code] else {
+                    throw ServiceError.missingCurrency
+                }
                 
                 let inputValue = input.value
-                let outputValue = inputValue / inputCurrency * outputCurrency
+                let outputValue = inputValue / inputQuote * outputQuote
                 
                 return outputValue
             }
@@ -31,6 +31,8 @@ public class HomeService {
                     return .sessionFailed
                 case ServiceError.isEmpty:
                     return .isEmpty
+                case ServiceError.missingCurrency:
+                    return .missingCurrency
                 default:
                     return .unknown
                 }

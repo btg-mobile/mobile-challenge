@@ -8,12 +8,14 @@
 import UIKit
 
 class ExceptionViewController: UIViewController, Storyboarded {
-    
-    var error: ServiceError?
-    
+    //MARK: - Outlets
     @IBOutlet weak var imageError: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    //MARK: - Error attribute
+    var error: ServiceError?
+    
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         imageError.image = error?.image

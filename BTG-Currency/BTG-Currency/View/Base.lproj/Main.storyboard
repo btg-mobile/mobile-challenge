@@ -49,7 +49,7 @@
                                 <rect key="frame" x="40" y="693" width="334" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IkZ-cp-PkO">
-                                        <rect key="frame" x="20" y="25" width="50" height="48"/>
+                                        <rect key="frame" x="50" y="25" width="50" height="48"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5bI-Tq-Nfg"/>
@@ -57,16 +57,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-JZ-d25">
-                                        <rect key="frame" x="90" y="12.5" width="224" height="75"/>
+                                        <rect key="frame" x="110" y="12.5" width="174" height="75"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot7-uy-tqp">
-                                                <rect key="frame" x="0.0" y="0.0" width="224" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot7-uy-tqp">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="29"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maybe some data will be outdated" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNR-9j-Ibs">
-                                                <rect key="frame" x="0.0" y="34" width="224" height="41"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your app won't work properly" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNR-9j-Ibs">
+                                                <rect key="frame" x="0.0" y="34" width="174" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -78,10 +78,10 @@
                                 <constraints>
                                     <constraint firstItem="IkZ-cp-PkO" firstAttribute="centerY" secondItem="He3-RV-2Ch" secondAttribute="centerY" id="D6e-bz-0hT"/>
                                     <constraint firstItem="fCz-JZ-d25" firstAttribute="centerY" secondItem="IkZ-cp-PkO" secondAttribute="centerY" id="FMp-aS-uns"/>
-                                    <constraint firstItem="IkZ-cp-PkO" firstAttribute="leading" secondItem="He3-RV-2Ch" secondAttribute="leading" constant="20" id="L88-VN-4tX"/>
+                                    <constraint firstItem="IkZ-cp-PkO" firstAttribute="leading" secondItem="He3-RV-2Ch" secondAttribute="leading" constant="50" id="L88-VN-4tX"/>
                                     <constraint firstAttribute="height" constant="100" id="PhM-BB-80g"/>
-                                    <constraint firstAttribute="trailing" secondItem="fCz-JZ-d25" secondAttribute="trailing" constant="20" id="cC7-qA-ALs"/>
-                                    <constraint firstItem="fCz-JZ-d25" firstAttribute="leading" secondItem="IkZ-cp-PkO" secondAttribute="trailing" constant="20" id="hUr-Ox-HZ5"/>
+                                    <constraint firstAttribute="trailing" secondItem="fCz-JZ-d25" secondAttribute="trailing" constant="50" id="cC7-qA-ALs"/>
+                                    <constraint firstItem="fCz-JZ-d25" firstAttribute="leading" secondItem="IkZ-cp-PkO" secondAttribute="trailing" constant="10" id="hUr-Ox-HZ5"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entry currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uFB-gi-uaO">
@@ -116,9 +116,9 @@
                     <navigationItem key="navigationItem" id="rRM-JN-Sda"/>
                     <connections>
                         <outlet property="convertButton" destination="P3n-0f-ABJ" id="634-6h-Wyt"/>
-                        <outlet property="inputSymbolTxtField" destination="uFB-gi-uaO" id="rmz-UL-vSc"/>
+                        <outlet property="inputCodeTxtField" destination="uFB-gi-uaO" id="rmz-UL-vSc"/>
                         <outlet property="inputValueTxtField" destination="G2F-ro-6a1" id="6ji-u3-nzp"/>
-                        <outlet property="outputSymbolTxtField" destination="QSP-Lj-WEC" id="HuX-aJ-Iny"/>
+                        <outlet property="outputCodeTxtField" destination="QSP-Lj-WEC" id="HuX-aJ-Iny"/>
                         <outlet property="outputValueLabel" destination="0hL-OZ-ieQ" id="qaz-re-WaW"/>
                         <outlet property="warningView" destination="He3-RV-2Ch" id="lMR-wN-8OS"/>
                     </connections>

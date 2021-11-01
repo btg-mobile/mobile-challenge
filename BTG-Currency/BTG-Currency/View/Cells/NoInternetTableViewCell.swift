@@ -8,6 +8,7 @@
 import UIKit
 
 class NoInternetTableViewCell: UITableViewCell {
+    //MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none

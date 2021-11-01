@@ -9,10 +9,10 @@ import Foundation
 
 public struct Currency {
     public var value: Decimal
-    public var symbol: String
+    public var code: String
     
-    public init(value: Decimal = 0.0, symbol: String) {
+    public init(value: Decimal = 0.0, code: String) {
         self.value = value
-        self.symbol = symbol
+        self.code = code
     }
 }

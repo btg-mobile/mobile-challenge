@@ -8,18 +8,20 @@
 import UIKit
 
 class ListItemTableViewCell: UITableViewCell {
-    
+    //MARK: - Outlets
     @IBOutlet weak var layerView: UIView!
     @IBOutlet weak var flagLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var countryNameLabel: UILabel!
     
+    //MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
         layerView.layer.cornerRadius = 20
     }
     
+    //MARK: - Methods
     private func flag(country: String) -> String {
         let base: UInt32 = 127397
         var s = ""
