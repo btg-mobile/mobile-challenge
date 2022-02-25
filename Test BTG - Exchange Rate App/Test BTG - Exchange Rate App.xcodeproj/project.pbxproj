@@ -12,6 +12,7 @@
 		C194E6F527C93D5A0029CCAF /* Test_BTG___Exchange_Rate_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C194E6F327C93D5A0029CCAF /* Test_BTG___Exchange_Rate_App.xcdatamodeld */; };
 		C194E6F727C93D5D0029CCAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C194E6F627C93D5D0029CCAF /* Assets.xcassets */; };
 		C194E6FA27C93D5D0029CCAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194E6F827C93D5D0029CCAF /* LaunchScreen.storyboard */; };
+		C194E70327C948830029CCAF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E70227C948830029CCAF /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C194E6F627C93D5D0029CCAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C194E6F927C93D5D0029CCAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C194E6FB27C93D5D0029CCAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C194E70227C948830029CCAF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		C194E6E927C93D590029CCAF /* Test BTG - Exchange Rate App */ = {
 			isa = PBXGroup;
 			children = (
+				C194E70127C948690029CCAF /* Extension */,
 				C194E6EA27C93D590029CCAF /* AppDelegate.swift */,
 				C194E6EC27C93D5A0029CCAF /* SceneDelegate.swift */,
 				C194E6F627C93D5D0029CCAF /* Assets.xcassets */,
@@ -62,6 +65,14 @@
 				C194E6F327C93D5A0029CCAF /* Test_BTG___Exchange_Rate_App.xcdatamodeld */,
 			);
 			path = "Test BTG - Exchange Rate App";
+			sourceTree = "<group>";
+		};
+		C194E70127C948690029CCAF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C194E70227C948830029CCAF /* UIColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 				C194E6F527C93D5A0029CCAF /* Test_BTG___Exchange_Rate_App.xcdatamodeld in Sources */,
 				C194E6EB27C93D590029CCAF /* AppDelegate.swift in Sources */,
 				C194E6ED27C93D5A0029CCAF /* SceneDelegate.swift in Sources */,
+				C194E70327C948830029CCAF /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
