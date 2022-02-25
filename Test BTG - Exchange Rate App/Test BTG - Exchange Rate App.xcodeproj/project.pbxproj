@@ -14,6 +14,12 @@
 		C194E6FA27C93D5D0029CCAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194E6F827C93D5D0029CCAF /* LaunchScreen.storyboard */; };
 		C194E70327C948830029CCAF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E70227C948830029CCAF /* UIColorExtension.swift */; };
 		C194E71427C95A9C0029CCAF /* ExchangeControllerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71327C95A9C0029CCAF /* ExchangeControllerController.swift */; };
+		C194E71827C967D60029CCAF /* ViewCodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71727C967D60029CCAF /* ViewCodeConfiguration.swift */; };
+		C194E71A27C969F10029CCAF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71927C969F10029CCAF /* UIViewExtension.swift */; };
+		C194E71D27C96BE50029CCAF /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71C27C96BE50029CCAF /* ExchangeRateTableViewCell.swift */; };
+		C194E71F27C97DD40029CCAF /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71E27C97DD40029CCAF /* UIViewControllerExtension.swift */; };
+		C194E72227C97EDC0029CCAF /* UILabelDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E72127C97EDC0029CCAF /* UILabelDefault.swift */; };
+		C194E72527C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		C194E6FB27C93D5D0029CCAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C194E70227C948830029CCAF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C194E71327C95A9C0029CCAF /* ExchangeControllerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeControllerController.swift; sourceTree = "<group>"; };
+		C194E71727C967D60029CCAF /* ViewCodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeConfiguration.swift; sourceTree = "<group>"; };
+		C194E71927C969F10029CCAF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		C194E71C27C96BE50029CCAF /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateTableViewCell.swift; sourceTree = "<group>"; };
+		C194E71E27C97DD40029CCAF /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		C194E72127C97EDC0029CCAF /* UILabelDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelDefault.swift; sourceTree = "<group>"; };
+		C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +70,13 @@
 		C194E6E927C93D590029CCAF /* Test BTG - Exchange Rate App */ = {
 			isa = PBXGroup;
 			children = (
+				C194E72027C97EBB0029CCAF /* Common */,
+				C194E71527C967BC0029CCAF /* Utils */,
 				C194E71127C95A780029CCAF /* Exchange Rate */,
 				C194E70127C948690029CCAF /* Extension */,
 				C194E6EA27C93D590029CCAF /* AppDelegate.swift */,
 				C194E6EC27C93D5A0029CCAF /* SceneDelegate.swift */,
+				C194E72327C97EF30029CCAF /* Font */,
 				C194E6F627C93D5D0029CCAF /* Assets.xcassets */,
 				C194E6F827C93D5D0029CCAF /* LaunchScreen.storyboard */,
 				C194E6FB27C93D5D0029CCAF /* Info.plist */,
@@ -74,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				C194E70227C948830029CCAF /* UIColorExtension.swift */,
+				C194E71927C969F10029CCAF /* UIViewExtension.swift */,
+				C194E71E27C97DD40029CCAF /* UIViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -81,6 +98,7 @@
 		C194E71127C95A780029CCAF /* Exchange Rate */ = {
 			isa = PBXGroup;
 			children = (
+				C194E71B27C96B6E0029CCAF /* Cell */,
 				C194E71227C95A840029CCAF /* Controller */,
 			);
 			path = "Exchange Rate";
@@ -92,6 +110,46 @@
 				C194E71327C95A9C0029CCAF /* ExchangeControllerController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C194E71527C967BC0029CCAF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C194E71627C967C00029CCAF /* Protocol */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C194E71627C967C00029CCAF /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C194E71727C967D60029CCAF /* ViewCodeConfiguration.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C194E71B27C96B6E0029CCAF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C194E71C27C96BE50029CCAF /* ExchangeRateTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C194E72027C97EBB0029CCAF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C194E72127C97EDC0029CCAF /* UILabelDefault.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C194E72327C97EF30029CCAF /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C194E6FA27C93D5D0029CCAF /* LaunchScreen.storyboard in Resources */,
+				C194E72527C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				C194E6F727C93D5D0029CCAF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,9 +223,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C194E71827C967D60029CCAF /* ViewCodeConfiguration.swift in Sources */,
 				C194E71427C95A9C0029CCAF /* ExchangeControllerController.swift in Sources */,
+				C194E71F27C97DD40029CCAF /* UIViewControllerExtension.swift in Sources */,
 				C194E6F527C93D5A0029CCAF /* Test_BTG___Exchange_Rate_App.xcdatamodeld in Sources */,
+				C194E72227C97EDC0029CCAF /* UILabelDefault.swift in Sources */,
 				C194E6EB27C93D590029CCAF /* AppDelegate.swift in Sources */,
+				C194E71D27C96BE50029CCAF /* ExchangeRateTableViewCell.swift in Sources */,
+				C194E71A27C969F10029CCAF /* UIViewExtension.swift in Sources */,
 				C194E6ED27C93D5A0029CCAF /* SceneDelegate.swift in Sources */,
 				C194E70327C948830029CCAF /* UIColorExtension.swift in Sources */,
 			);
