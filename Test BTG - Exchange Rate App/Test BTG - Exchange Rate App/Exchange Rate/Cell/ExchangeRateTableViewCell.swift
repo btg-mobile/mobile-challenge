@@ -80,7 +80,7 @@ class ExchangeRateTableViewCell: UITableViewCell {
             top: contentView.topAnchor,
             bottom: contentView.bottomAnchor,
             right: contentView.rightAnchor,
-            paddingRight: 35,
+            paddingRight: 20,
             width: contentView.frame.size.width / 2
         )
     }

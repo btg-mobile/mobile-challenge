@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btgp-dark-blue" translatesAutoresizingMaskIntoConstraints="NO" id="DUD-I3-0fd">
-                                <rect key="frame" x="87" y="383" width="240" height="130"/>
+                                <rect key="frame" x="89.5" y="375.5" width="235" height="145"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="fBP-ON-C9k"/>
-                                    <constraint firstAttribute="width" constant="240" id="iGK-a1-lrG"/>
+                                    <constraint firstAttribute="height" constant="145" id="fBP-ON-C9k"/>
+                                    <constraint firstAttribute="width" constant="235" id="iGK-a1-lrG"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-renan-marchini" translatesAutoresizingMaskIntoConstraints="NO" id="bNh-AQ-GfC">
@@ -47,6 +47,6 @@
     </scenes>
     <resources>
         <image name="btgp-dark-blue" width="171" height="67.5"/>
-        <image name="logo-renan-marchini" width="426" height="213"/>
+        <image name="logo-renan-marchini" width="426.5" height="213"/>
     </resources>
 </document>

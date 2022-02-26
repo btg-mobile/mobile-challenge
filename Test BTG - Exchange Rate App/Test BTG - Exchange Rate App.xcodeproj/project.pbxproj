@@ -20,6 +20,7 @@
 		C194E71F27C97DD40029CCAF /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71E27C97DD40029CCAF /* UIViewControllerExtension.swift */; };
 		C194E72227C97EDC0029CCAF /* UILabelDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E72127C97EDC0029CCAF /* UILabelDefault.swift */; };
 		C194E72527C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */; };
+		C1A7951727C9A39F00C904B1 /* UITextFieldDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A7951627C9A39F00C904B1 /* UITextFieldDefault.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C194E71E27C97DD40029CCAF /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C194E72127C97EDC0029CCAF /* UILabelDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelDefault.swift; sourceTree = "<group>"; };
 		C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		C1A7951627C9A39F00C904B1 /* UITextFieldDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldDefault.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				C194E72127C97EDC0029CCAF /* UILabelDefault.swift */,
+				C1A7951627C9A39F00C904B1 /* UITextFieldDefault.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				C194E71A27C969F10029CCAF /* UIViewExtension.swift in Sources */,
 				C194E6ED27C93D5A0029CCAF /* SceneDelegate.swift in Sources */,
 				C194E70327C948830029CCAF /* UIColorExtension.swift in Sources */,
+				C1A7951727C9A39F00C904B1 /* UITextFieldDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
