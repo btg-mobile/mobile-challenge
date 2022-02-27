@@ -153,8 +153,11 @@ extension ExchangeControllerController: ViewCodeConfiguration {
 extension ExchangeControllerController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("DEBUG: TableView cell \(indexPath.row) pressed!")
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let controller = CurrencyController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -172,7 +175,6 @@ extension ExchangeControllerController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExchangeRateTableViewCell.identifier, for: indexPath)
-        
         
         return cell
     }
