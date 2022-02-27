@@ -21,6 +21,8 @@
 		C194E72227C97EDC0029CCAF /* UILabelDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E72127C97EDC0029CCAF /* UILabelDefault.swift */; };
 		C194E72527C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */; };
 		C1A7951727C9A39F00C904B1 /* UITextFieldDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A7951627C9A39F00C904B1 /* UITextFieldDefault.swift */; };
+		C1A7951D27C9BD4000C904B1 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A7951C27C9BD4000C904B1 /* CurrencyController.swift */; };
+		C1A7952027C9C14F00C904B1 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A7951F27C9C14F00C904B1 /* CurrencyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		C194E72127C97EDC0029CCAF /* UILabelDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelDefault.swift; sourceTree = "<group>"; };
 		C194E72427C97F1F0029CCAF /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		C1A7951627C9A39F00C904B1 /* UITextFieldDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldDefault.swift; sourceTree = "<group>"; };
+		C1A7951C27C9BD4000C904B1 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
+		C1A7951F27C9C14F00C904B1 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 				C194E72027C97EBB0029CCAF /* Common */,
 				C194E71527C967BC0029CCAF /* Utils */,
 				C194E71127C95A780029CCAF /* Exchange Rate */,
+				C1A7951827C9B31000C904B1 /* Currency */,
 				C194E70127C948690029CCAF /* Extension */,
 				C194E6EA27C93D590029CCAF /* AppDelegate.swift */,
 				C194E6EC27C93D5A0029CCAF /* SceneDelegate.swift */,
@@ -155,6 +160,31 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		C1A7951827C9B31000C904B1 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				C1A7951E27C9C13800C904B1 /* Cell */,
+				C1A7951927C9B3D800C904B1 /* Controller */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		C1A7951927C9B3D800C904B1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C1A7951C27C9BD4000C904B1 /* CurrencyController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C1A7951E27C9C13800C904B1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C1A7951F27C9C14F00C904B1 /* CurrencyTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,8 +256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1A7952027C9C14F00C904B1 /* CurrencyTableViewCell.swift in Sources */,
 				C194E71827C967D60029CCAF /* ViewCodeConfiguration.swift in Sources */,
 				C194E71427C95A9C0029CCAF /* ExchangeControllerController.swift in Sources */,
+				C1A7951D27C9BD4000C904B1 /* CurrencyController.swift in Sources */,
 				C194E71F27C97DD40029CCAF /* UIViewControllerExtension.swift in Sources */,
 				C194E6F527C93D5A0029CCAF /* Test_BTG___Exchange_Rate_App.xcdatamodeld in Sources */,
 				C194E72227C97EDC0029CCAF /* UILabelDefault.swift in Sources */,

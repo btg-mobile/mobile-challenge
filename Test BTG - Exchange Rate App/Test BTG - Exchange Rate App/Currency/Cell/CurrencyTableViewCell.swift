@@ -1,5 +1,5 @@
 //
-//  ExchangeRateTableViewCell.swift
+//  CurrencyTableViewCell.swift
 //  Test BTG - Exchange Rate App
 // 
 //  Created by Renan Marchini Andrusiac on 25/02/22
@@ -8,21 +8,19 @@
 
 import UIKit
 
-class ExchangeRateTableViewCell: UITableViewCell {
+class CurrencyTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    static let identifier = "ExchangeRateTableViewCell"
+    static let identifier = "CurrencyTableViewCell"
     
-    private var currencyCode: UILabel = {
+    private let currencyCode: UILabel = {
         let label = UILabelDefault()
-        label.text  = "-"
         return label
     }()
     
-    private var currencyRate: UILabel = {
+    private let currencyName: UILabel = {
         let label = UILabelDefault()
-        label.text          = "0.00"
         label.textAlignment = .right
         return label
     }()
@@ -47,8 +45,8 @@ class ExchangeRateTableViewCell: UITableViewCell {
         self.currencyCode.text = code
     }
     
-    public func setCurrencyRate(_ rate: Double) {
-        self.currencyRate.text = String(format: "%.2f", rate)
+    public func setCurrencyName(_ name: String) {
+        self.currencyName.text = name
     }
     
     // MARK: - Methods
@@ -59,12 +57,11 @@ class ExchangeRateTableViewCell: UITableViewCell {
     }
     
     private func configureViews() {
-        self.accessoryType = .disclosureIndicator
     }
     
     private func buildHierarchy() {
         self.contentView.addSubview(currencyCode)
-        self.contentView.addSubview(currencyRate)
+        self.contentView.addSubview(currencyName)
     }
     
     override func layoutSubviews() {
@@ -78,7 +75,7 @@ class ExchangeRateTableViewCell: UITableViewCell {
             width: contentView.frame.size.width / 2
         )
         
-        currencyRate.anchor(
+        currencyName.anchor(
             top: contentView.topAnchor,
             bottom: contentView.bottomAnchor,
             right: contentView.rightAnchor,
