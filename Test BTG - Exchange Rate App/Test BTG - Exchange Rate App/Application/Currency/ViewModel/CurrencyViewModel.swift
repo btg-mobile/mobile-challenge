@@ -14,4 +14,11 @@ class CurrencyViewModel {
     
     public var lisCurrencies: Bindable<[CurrencyModel]>
     public var isUpdateTable: Bindable<Bool>
+    
+    // MARK: - Init's
+    
+    init() {
+        isUpdateTable = Bindable<Bool>()
+        lisCurrencies = Bindable<[CurrencyModel]>()
+    }
 }

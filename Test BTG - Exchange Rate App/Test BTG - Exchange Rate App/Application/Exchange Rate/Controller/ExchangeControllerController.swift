@@ -15,8 +15,6 @@ class ExchangeControllerController: UIViewController {
     private let logoImageView       = { return UIImageView(frame: .zero) }()
     
     private let instructionsLabel   = { return UILabelDefault() }()
-    private let resultAmountLabel   = { return UILabelDefault() }()
-    private let resultCodeLabel     = { return UILabelDefault() }()
     
     private let stackView           = { return UIStackView() }()
     
@@ -26,10 +24,17 @@ class ExchangeControllerController: UIViewController {
     
     private let resultView          = { return UIView(frame: .zero) }()
     
+    private var resultAmountLabel   = { return UILabelDefault() }()
+    private var resultCodeLabel     = { return UILabelDefault() }()
+    
+    private lazy var viewModel      = { return ExchangeRateViewModel() }()
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.getData()
 
         setupDelegate()
         setupDataSource()

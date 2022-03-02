@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CurrenciesListVO: Codable {
+struct CurrenciesVO: Codable {
     var success: Bool
     var currencies: [String: String]
 }

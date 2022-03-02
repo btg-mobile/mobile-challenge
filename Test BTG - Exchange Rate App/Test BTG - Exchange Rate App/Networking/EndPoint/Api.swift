@@ -26,9 +26,9 @@ extension Api: EndPointType {
     var path: String {
         switch self {
         case .live:
-            return "/list"
+            return "live"
         case .list:
-            return "/live"
+            return "list"
         }
     }
     

@@ -12,11 +12,11 @@ class CurrencyController: UIViewController {
     
     // MARK: - Properties
     
-    private let currencyTableView   = { return UITableView() }()
+    private let currencyTableView = { return UITableView() }()
     
     private var currencyList: [CurrencyModel]?
     
-    private lazy var viewModel      = { return CurrencyViewModel() }()
+    private lazy var viewModel = { return CurrencyViewModel() }()
     
     // MARK: - Lifecycle
 
@@ -37,15 +37,6 @@ class CurrencyController: UIViewController {
     
     private func setupDataSource() {
         currencyTableView.dataSource = self
-    }
-    
-    func setupBindables() {
-        viewModel.isUpdateTable.bind { [unowned self] (isUpdate) in
-            guard let update = isUpdate, update else {
-                return
-            }
-            self.tableView.reloadData()
-        }
     }
     
 }

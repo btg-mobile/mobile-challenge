@@ -114,7 +114,6 @@ extension NetworkManager {
                 }
                 do {
                     let apiResponse = try JSONDecoder().decode(ExchangeRateVO.self, from: responseData)
-                    print("API Response: \(apiResponse)")
                     let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
                     print("JSON Data: \(jsonData)")
                     completion(true, apiResponse, error)
@@ -132,7 +131,7 @@ extension NetworkManager {
         }
     }
     
-    func getCurrencies(completion: @escaping ResultResponse<CurrenciesListVO>) {
+    func getCurrencies(completion: @escaping ResultResponse<CurrenciesVO>) {
         router.request(.list) { (data, response, error) in
             let result = self.handleNetworkResponse(response, data, error)
             
@@ -142,7 +141,7 @@ extension NetworkManager {
                     return
                 }
                 do {
-                    let apiResponse = try JSONDecoder().decode(CurrenciesListVO.self, from: responseData)
+                    let apiResponse = try JSONDecoder().decode(CurrenciesVO.self, from: responseData)
                     print("API Response: \(apiResponse)")
                     let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
                     print("JSON Data: \(jsonData)")
