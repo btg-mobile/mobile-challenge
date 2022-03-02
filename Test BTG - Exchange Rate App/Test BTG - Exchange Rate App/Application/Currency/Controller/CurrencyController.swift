@@ -14,6 +14,10 @@ class CurrencyController: UIViewController {
     
     private let currencyTableView = { return UITableView() }()
     
+    private var currencyList: [CurrencyModel]?
+    
+    private lazy var viewModel = { return CurrencyViewModel() }()
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
