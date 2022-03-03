@@ -126,7 +126,7 @@ extension ExchangeController: ViewCodeConfiguration {
         amountTextField.setPlaceholder("Type amount")
         amountTextField.setCurrencyCode("-")
         amountTextField.backgroundColor = .white
-        amountTextField.keyboardType = .numberPad
+        amountTextField.keyboardType = .decimalPad
         
     }
     
