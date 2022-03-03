@@ -13,6 +13,7 @@
 		C18C043F27CED7670044C527 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C043E27CED7670044C527 /* Bindable.swift */; };
 		C18C044427CEDD8E0044C527 /* CurrenciesVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C044327CEDD8E0044C527 /* CurrenciesVO.swift */; };
 		C18EB8F727CF90490004E71E /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18EB8F627CF90490004E71E /* ExchangeRateViewModel.swift */; };
+		C18F094D27D0DD4A0036C651 /* DecimalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18F094C27D0DD4A0036C651 /* DecimalExtension.swift */; };
 		C190BB0727CDBBB40068E065 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190BB0627CDBBB40068E065 /* EndPointType.swift */; };
 		C190BB0927CDBC220068E065 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190BB0827CDBC220068E065 /* HTTPMethod.swift */; };
 		C190BB0B27CDBC8D0068E065 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190BB0A27CDBC8D0068E065 /* HTTPTask.swift */; };
@@ -28,7 +29,7 @@
 		C194E6F727C93D5D0029CCAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C194E6F627C93D5D0029CCAF /* Assets.xcassets */; };
 		C194E6FA27C93D5D0029CCAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194E6F827C93D5D0029CCAF /* LaunchScreen.storyboard */; };
 		C194E70327C948830029CCAF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E70227C948830029CCAF /* UIColorExtension.swift */; };
-		C194E71427C95A9C0029CCAF /* ExchangeControllerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71327C95A9C0029CCAF /* ExchangeControllerController.swift */; };
+		C194E71427C95A9C0029CCAF /* ExchangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71327C95A9C0029CCAF /* ExchangeController.swift */; };
 		C194E71827C967D60029CCAF /* ViewCodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71727C967D60029CCAF /* ViewCodeConfiguration.swift */; };
 		C194E71A27C969F10029CCAF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71927C969F10029CCAF /* UIViewExtension.swift */; };
 		C194E71D27C96BE50029CCAF /* ExchangeRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E71C27C96BE50029CCAF /* ExchangeRateTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 		C18C043E27CED7670044C527 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		C18C044327CEDD8E0044C527 /* CurrenciesVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesVO.swift; sourceTree = "<group>"; };
 		C18EB8F627CF90490004E71E /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
+		C18F094C27D0DD4A0036C651 /* DecimalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtension.swift; sourceTree = "<group>"; };
 		C190BB0627CDBBB40068E065 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		C190BB0827CDBC220068E065 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C190BB0A27CDBC8D0068E065 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 		C194E6F927C93D5D0029CCAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C194E6FB27C93D5D0029CCAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C194E70227C948830029CCAF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		C194E71327C95A9C0029CCAF /* ExchangeControllerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeControllerController.swift; sourceTree = "<group>"; };
+		C194E71327C95A9C0029CCAF /* ExchangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeController.swift; sourceTree = "<group>"; };
 		C194E71727C967D60029CCAF /* ViewCodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeConfiguration.swift; sourceTree = "<group>"; };
 		C194E71927C969F10029CCAF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		C194E71C27C96BE50029CCAF /* ExchangeRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateTableViewCell.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				C194E70227C948830029CCAF /* UIColorExtension.swift */,
 				C194E71927C969F10029CCAF /* UIViewExtension.swift */,
 				C194E71E27C97DD40029CCAF /* UIViewControllerExtension.swift */,
+				C18F094C27D0DD4A0036C651 /* DecimalExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -244,7 +247,7 @@
 		C194E71227C95A840029CCAF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C194E71327C95A9C0029CCAF /* ExchangeControllerController.swift */,
+				C194E71327C95A9C0029CCAF /* ExchangeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,7 +394,8 @@
 			files = (
 				C1A7952027C9C14F00C904B1 /* CurrencyTableViewCell.swift in Sources */,
 				C194E71827C967D60029CCAF /* ViewCodeConfiguration.swift in Sources */,
-				C194E71427C95A9C0029CCAF /* ExchangeControllerController.swift in Sources */,
+				C18F094D27D0DD4A0036C651 /* DecimalExtension.swift in Sources */,
+				C194E71427C95A9C0029CCAF /* ExchangeController.swift in Sources */,
 				C1A7951D27C9BD4000C904B1 /* CurrencyController.swift in Sources */,
 				C18C043C27CEC14F0044C527 /* NetworkManager.swift in Sources */,
 				C18C043F27CED7670044C527 /* Bindable.swift in Sources */,

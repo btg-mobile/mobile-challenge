@@ -47,8 +47,8 @@ class ExchangeRateTableViewCell: UITableViewCell {
         self.currencyCode.text = code
     }
     
-    public func setCurrencyRate(_ rate: Double) {
-        self.currencyRate.text = String(format: "%.2f", rate)
+    public func setCurrencyRate(_ rate: Decimal) {
+        self.currencyRate.text = String(format: "%.2f", rate.doubleValue)
     }
     
     // MARK: - Methods

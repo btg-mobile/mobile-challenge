@@ -41,12 +41,17 @@ class CurrencyTableViewCell: UITableViewCell {
     
     // MARK: - Setters
     
-    public func setCurrencyCode(_ code: String) {
+    private func setCurrencyCode(_ code: String) {
         self.currencyCode.text = code
     }
     
-    public func setCurrencyName(_ name: String) {
+    private func setCurrencyName(_ name: String) {
         self.currencyName.text = name
+    }
+    
+    public func setCurrency(_ currency: CurrencyModel) {
+        setCurrencyCode(currency.code)
+        setCurrencyName(currency.name)
     }
     
     // MARK: - Methods
