@@ -8,15 +8,21 @@
 
 import UIKit
 
+protocol CurrencyControllerProtocol {
+    func selectCurrency(_ currency: CurrencyModel?)
+}
+
 class CurrencyController: UIViewController {
     
     // MARK: - Properties
     
     private let currencyTableView = { return UITableView() }()
     
-    private var currencyList: [CurrencyModel]?
     
     private lazy var viewModel = { return CurrencyViewModel() }()
+    
+    public var currencyList:    [CurrencyModel]?
+    public var delegate:        CurrencyControllerProtocol?
     
     // MARK: - Lifecycle
 
@@ -25,6 +31,8 @@ class CurrencyController: UIViewController {
         
         setupDelegate()
         setupDataSource()
+
+        setupBindables()
 
         applyViewCode()
     }
@@ -39,12 +47,23 @@ class CurrencyController: UIViewController {
         currencyTableView.dataSource = self
     }
     
+    func setupBindables() {
+        viewModel.isUpdateTable.bind { [unowned self] (isUpdate) in
+            guard let update = isUpdate, update else {
+                return
+            }
+            self.currencyTableView.reloadData()
+        }
+    }
+    
 }
 
 // MARK: - ViewCodeConfiguration
 
 extension CurrencyController: ViewCodeConfiguration {
     public func configureViews() {
+        viewModel.setList(currencyList)
+        
         currencyTableView.register(CurrencyTableViewCell.self,
                                    forCellReuseIdentifier: CurrencyTableViewCell.identifier)
     }
@@ -64,8 +83,22 @@ extension CurrencyController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        guard let currency = viewModel.listCurrencies.value?[indexPath.row] else {
+            print("DEBUG: Currency at indexPath is empty.")
+            return
+        }
+        print(currency.code)
         
+        guard let delegate = self.delegate else {
+            print("DEBUG: Missing CurrencyControllerProtocol delegate.")
+            return
+        }
+        delegate.selectCurrency(currency)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 35
     }
 }
 
@@ -73,14 +106,14 @@ extension CurrencyController: UITableViewDelegate {
 
 extension CurrencyController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.listCurrencies.value?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as! CurrencyTableViewCell
         
-        cell.setCurrencyCode("USD")
-        cell.setCurrencyName("United States Dollar")
+        guard let currency = viewModel.listCurrencies.value?[indexPath.row] else { return cell }
+        cell.setCurrency(currency)
                 
         return cell
     }

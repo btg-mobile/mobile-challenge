@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExchangeControllerController: UIViewController {
+class ExchangeController: UIViewController {
     
     // MARK: - Properties
     
@@ -30,16 +30,25 @@ class ExchangeControllerController: UIViewController {
     private lazy var viewModel      = { return ExchangeRateViewModel() }()
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewModel.getData()
-
+        
         setupDelegate()
         setupDataSource()
         
         applyViewCode()
+        
+        setupBindables()
+        configureNotificationObservers()
+    }
+    
+    // MARK: - Actions
+    
+    @objc func textDidChange(_ sender: UITextField) {
+        viewModel.setBaseAmount(sender.text)
     }
     
     // MARK: - Methods
@@ -51,13 +60,46 @@ class ExchangeControllerController: UIViewController {
     private func setupDataSource() {
         exchangeTableView.dataSource = self
     }
-
+    
+    func setupBindables() {
+        viewModel.currencyBaseCode.bind { [unowned self] (baseCode) in
+            guard let baseCode = baseCode else { return }
+            let baseCell = self.exchangeTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ExchangeRateTableViewCell
+            baseCell.setCurrencyCode(baseCode)
+            baseCell.setCurrencyRate(1.00)
+            
+            amountTextField.setCurrencyCode(baseCode)
+        }
+        viewModel.currencyEchangedCode.bind { [unowned self] (exchangedCode) in
+            guard let exchangedCode = exchangedCode else { return }
+            let exchangedCell = self.exchangeTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ExchangeRateTableViewCell
+            exchangedCell.setCurrencyCode(exchangedCode)
+            
+            resultCodeLabel.text = exchangedCode
+        }
+        viewModel.currencyEchangedRate.bind { [unowned self] (exchangedRate) in
+            guard let exchangedRate = exchangedRate else { return }
+            let exchangedCell = self.exchangeTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ExchangeRateTableViewCell
+            exchangedCell.setCurrencyRate(exchangedRate)
+        }
+        viewModel.resultAmountLabel.bind { [unowned self] (result) in
+            guard let result = result else { return }
+            resultAmountLabel.text = result
+        }
+    }
+    
+    func configureNotificationObservers() {
+        amountTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
 }
 
 // MARK: - ViewCodeConfiguration
 
-extension ExchangeControllerController: ViewCodeConfiguration {
+extension ExchangeController: ViewCodeConfiguration {
     public func configureViews() {
+        
+        setupBindables()
         
         configureGradientLayer()
         
@@ -69,7 +111,7 @@ extension ExchangeControllerController: ViewCodeConfiguration {
         
         stackView.axis      = .vertical
         stackView.spacing   = 20
-
+        
         exchangeTableView.layer.cornerRadius = 10
         exchangeTableView.isScrollEnabled = false
         exchangeTableView.register(ExchangeRateTableViewCell.self,
@@ -84,7 +126,7 @@ extension ExchangeControllerController: ViewCodeConfiguration {
         amountTextField.setPlaceholder("Type amount")
         amountTextField.setCurrencyCode("-")
         amountTextField.backgroundColor = .white
-        amountTextField.keyboardType = .decimalPad
+        amountTextField.keyboardType = .numberPad
         
     }
     
@@ -143,7 +185,7 @@ extension ExchangeControllerController: ViewCodeConfiguration {
             bottom: resultView.bottomAnchor,
             paddingLeft: 35
         )
-
+        
         resultAmountLabel.anchor(
             top: resultView.topAnchor,
             bottom: resultView.bottomAnchor,
@@ -155,13 +197,16 @@ extension ExchangeControllerController: ViewCodeConfiguration {
 
 // MARK: - UITableViewDelegate
 
-extension ExchangeControllerController: UITableViewDelegate {
+extension ExchangeController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.setAsBaseCell(indexPath.row)
         
         let controller = CurrencyController()
+        controller.delegate = self
+        controller.currencyList = viewModel.getCurrenciesList()
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -173,7 +218,7 @@ extension ExchangeControllerController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension ExchangeControllerController: UITableViewDataSource {
+extension ExchangeController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -184,4 +229,14 @@ extension ExchangeControllerController: UITableViewDataSource {
         return cell
     }
     
+}
+
+// MARK: - CurrencyControllerProtocol
+
+extension ExchangeController: CurrencyControllerProtocol {
+    func selectCurrency(_ currency: CurrencyModel?) {
+        self.viewModel.setSelectedCurrency(currency)
+        self.exchangeTableView.reloadData()
+        self.navigationController?.popViewController(animated: true)
+    }
 }
