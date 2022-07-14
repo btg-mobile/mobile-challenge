@@ -9,14 +9,17 @@ import UIKit
 
 class ConversionViewController: UIViewController {
     
+    weak var coordinator: ConversionCoordinator?
+    
     override func loadView() {
         super.loadView()
         setupView()
-        
     }
-    
+        
     var viewModel: ConversionViewModel?
     var textFieldEnableCount = 0
+    
+    //MARK: - Views
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -36,8 +39,7 @@ class ConversionViewController: UIViewController {
         textField.keyboardType = .numberPad
         textField.textAlignment = .center
         textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange),
-                                  for: .editingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.isUserInteractionEnabled = false
         return textField
     }()
@@ -55,7 +57,7 @@ class ConversionViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .darkGray
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(tappedInitialCurrency), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapInitialCurrency), for: .touchUpInside)
         button.setTitle("Selecione Moeda inicial", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
@@ -65,11 +67,32 @@ class ConversionViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .darkGray
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(tappedFinalCurrency), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapFinalCurrency), for: .touchUpInside)
         button.setTitle("Selecione Moeda final", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
+    
+    //MARK: - Actions
+    
+    @objc func didTapInitialCurrency() {
+        if let viewModel = viewModel as? CurrencyListViewModel {
+            coordinator?.didTapInitialCurrency(viewModel: viewModel, isInitial: true)
+        }
+    }
+    
+    @objc func didTapFinalCurrency() {
+        if let viewModel = viewModel as? CurrencyListViewModel {
+            coordinator?.didTapFinalCurrency(viewModel: viewModel, isInitial: false)
+        }
+    }
+    
+    @objc func doneButtonTapped() {
+        view.endEditing(true)
+    }
+
+    
+    //MARK: - Functions
     
     func tapAnywhereOnScreenToDismissKeyboard() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
@@ -79,20 +102,6 @@ class ConversionViewController: UIViewController {
     
     func textChanged(text: String) {
         viewModel?.onValueChange(value: Float(text) ?? 0)
-    }
-    
-    @objc func tappedInitialCurrency() {
-        if let viewModel = viewModel as? CurrencyListViewModel {
-            let vc = CurrencyListScreenFactory.buildCurrencyListScreen(viewModel: viewModel, isInitial: true)
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    @objc func tappedFinalCurrency() {
-        if let viewModel = viewModel as? CurrencyListViewModel {
-            let vc = CurrencyListScreenFactory.buildCurrencyListScreen(viewModel: viewModel, isInitial: false)
-            navigationController?.pushViewController(vc, animated: true)
-        }
     }
     
     func setupTextFields() {
@@ -106,11 +115,7 @@ class ConversionViewController: UIViewController {
             toolbar.sizeToFit()
             
             inputTextField.inputAccessoryView = toolbar
-        }
-        
-        @objc func doneButtonTapped() {
-            view.endEditing(true)
-        }
+    }
     
     func enableInputTextField() {
         textFieldEnableCount = 0
@@ -118,6 +123,8 @@ class ConversionViewController: UIViewController {
         inputTextField.layer.borderColor = UIColor.gray.cgColor
     }
 }
+
+//MARK: - Extensions
 
 extension ConversionViewController: UITextFieldDelegate {
     @objc func textFieldDidChange() {

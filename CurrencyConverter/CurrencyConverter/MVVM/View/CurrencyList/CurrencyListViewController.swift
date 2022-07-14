@@ -9,6 +9,8 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
     
+    weak var coordinator: CurrencyListCoordinator?
+    
     override func loadView() {
         super.loadView()
         setupView()
@@ -20,6 +22,17 @@ class CurrencyListViewController: UIViewController {
     var isInitial: Bool = true
     
     let cellIdentifer = "cell"
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    
+    //MARK: - Views
     
     private lazy var indicatorView: UIActivityIndicatorView = {
         let indicator =  UIActivityIndicatorView()
@@ -36,27 +49,26 @@ class CurrencyListViewController: UIViewController {
         return tableView
     }()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    //MARK: - Actions
+
+    func tapCurrency() {
+        viewModel?.onSelect(currency: "asas", isInitial: isInitial)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    //MARK: - Functions
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Moedas"
     }
-    
-    func tapCurrency() {
-        viewModel?.onSelect(currency: "asas", isInitial: isInitial)
-    }
+
 }
+
+//MARK: - Extensions
 
 extension CurrencyListViewController: CurrencyListViewModelDelegate {
     func didSelectCurrency() {
-        navigationController?.popViewController(animated: true)
+        coordinator?.didSelectCurrency()
     }
     
     func didFetchCurrencies() {

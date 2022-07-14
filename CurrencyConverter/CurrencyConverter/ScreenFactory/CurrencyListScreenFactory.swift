@@ -8,7 +8,7 @@
 import UIKit
 
 struct CurrencyListScreenFactory {
-    static func buildCurrencyListScreen(viewModel: CurrencyListViewModel, isInitial: Bool) -> UIViewController {
+    static func buildCurrencyListScreen(viewModel: CurrencyListViewModel, isInitial: Bool) -> CurrencyListViewController {
         let viewController = CurrencyListViewController()
 
         viewController.isInitial = isInitial
