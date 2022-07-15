@@ -7,21 +7,21 @@
 
 import Foundation
 
-protocol Repository {
-    func fetchCurrencyList(completion: @escaping (Result<CurrencyList,RepositoryError>) -> Void)
+protocol ServiceProtocol {
+    func fetchCurrencyList(completion: @escaping (Result<Currencies,RepositoryError>) -> Void)
     func fetchQuotationLive(completion: @escaping (Result<QuotationLive,RepositoryError>) -> Void)
 }
 
-class RepositoryDefault: Repository {
+class RepositoryDefault: ServiceProtocol {
     
     var networkDispatcher: NetworkDispatcherProtocol = NetworkDispatcher()
     
-    func fetchCurrencyList(completion: @escaping (Result<CurrencyList, RepositoryError>) -> Void) {
+    func fetchCurrencyList(completion: @escaping (Result<Currencies, RepositoryError>) -> Void) {
         networkDispatcher.request(endpoint: .list) { result in
             switch result {
             case .success(let data):
                 do {
-                    let list = try JSONDecoder().decode(CurrencyList.self, from: data)
+                    let list = try JSONDecoder().decode(Currencies.self, from: data)
                     completion(.success(list))
                 } catch {
                     completion(.failure(RepositoryError.parseError))

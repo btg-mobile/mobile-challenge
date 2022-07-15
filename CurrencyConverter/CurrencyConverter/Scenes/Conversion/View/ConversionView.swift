@@ -1,22 +1,35 @@
 //
-//  ConversionViewController.swift
+//  ConversionView.swift
 //  CurrencyConverter
 //
-//  Created by Joao Jaco Santos Abreu on 25/09/21.
+//  Created by Joao Jaco Santos Abreu (ACT CONSULTORIA EM TECNOLOGIA LTDA – GEDES – MG) on 15/07/22.
 //
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+protocol ConversionViewDelegate {
+    func didTapInitialCurrency()
+    func didTapFinalCurrency()
+    func didTapDoneButton()
+}
+
+class ConversionView: UIView {
     
-    override func loadView() {
-        super.loadView()
+    var viewModel: ConversionViewModel
+    var delegate: ConversionViewDelegate?
+    var textFieldEnableCount = 0
+    
+    init(frame: CGRect = .zero, viewModel: ConversionViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: frame)
+        self.viewModel.conversionViewModelDelegate = self
         setupView()
-        
+        viewModel.fetchQuotationLive()
     }
     
-    var viewModel: ConversionViewModel?
-    var textFieldEnableCount = 0
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -36,8 +49,7 @@ class ConversionViewController: UIViewController {
         textField.keyboardType = .numberPad
         textField.textAlignment = .center
         textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange),
-                                  for: .editingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.isUserInteractionEnabled = false
         return textField
     }()
@@ -55,7 +67,7 @@ class ConversionViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .darkGray
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(tappedInitialCurrency), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapInitialCurrency), for: .touchUpInside)
         button.setTitle("Selecione Moeda inicial", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
@@ -65,61 +77,80 @@ class ConversionViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .darkGray
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(tappedFinalCurrency), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapFinalCurrency), for: .touchUpInside)
         button.setTitle("Selecione Moeda final", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
     
-    func tapAnywhereOnScreenToDismissKeyboard() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    func textChanged(text: String) {
-        viewModel?.onValueChange(value: Float(text) ?? 0)
-    }
-    
-    @objc func tappedInitialCurrency() {
-        if let viewModel = viewModel as? CurrencyListViewModel {
-            let vc = CurrencyListScreenFactory.buildCurrencyListScreen(viewModel: viewModel, isInitial: true)
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    @objc func tappedFinalCurrency() {
-        if let viewModel = viewModel as? CurrencyListViewModel {
-            let vc = CurrencyListScreenFactory.buildCurrencyListScreen(viewModel: viewModel, isInitial: false)
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
     func setupTextFields() {
             let toolbar = UIToolbar()
             let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: nil, action: nil)
-            let doneButton = UIBarButtonItem(title: "Done", style: .done,
-                                             target: self, action: #selector(doneButtonTapped))
+            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
             
             toolbar.setItems([flexSpace, doneButton], animated: true)
             toolbar.sizeToFit()
             
             inputTextField.inputAccessoryView = toolbar
-        }
-        
-        @objc func doneButtonTapped() {
-            view.endEditing(true)
-        }
+    }
     
     func enableInputTextField() {
         textFieldEnableCount = 0
         inputTextField.isUserInteractionEnabled = true
         inputTextField.layer.borderColor = UIColor.gray.cgColor
     }
+    
+    func tapAnywhereOnScreenToDismissKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        addGestureRecognizer(tap)
+    }
+    
+    func textChanged(text: String) {
+        viewModel.onValueChange(value: Float(text) ?? 0)
+    }
+    
+    @objc func didTapInitialCurrency() {
+        delegate?.didTapInitialCurrency()
+    }
+    
+    @objc func didTapFinalCurrency() {
+        delegate?.didTapFinalCurrency()
+    }
+    
+    @objc func didTapDoneButton() {
+        delegate?.didTapDoneButton()
+    }
+
 }
 
-extension ConversionViewController: UITextFieldDelegate {
+extension ConversionView: ViewCode {
+    func buildViewHierarchy() {
+        addSubview(stackView)
+        stackView.addArrangedSubview(convertedValueLabel)
+        stackView.addArrangedSubview(inputTextField)
+        stackView.addArrangedSubview(initialCurrencyButton)
+        stackView.addArrangedSubview(finalCurrencyButton)
+    }
+    
+    func setupConstraints() {
+        convertedValueLabel.anchor(widthConstant: 200, heightConstant: 40)
+        inputTextField.anchor(widthConstant: 200, heightConstant: 40)
+        initialCurrencyButton.anchor(widthConstant: 200, heightConstant: 40)
+        finalCurrencyButton.anchor(widthConstant: 200, heightConstant: 40)
+        stackView.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 20, leftConstant: 20, bottomConstant: 150, rightConstant: 20)
+    }
+    
+    func additionalConfigurations() {
+        backgroundColor = .white
+        setupTextFields()
+        tapAnywhereOnScreenToDismissKeyboard()
+    }
+    
+}
+
+extension ConversionView: UITextFieldDelegate {
     @objc func textFieldDidChange() {
         if let text = inputTextField.text {
             textChanged(text: text)
@@ -127,7 +158,7 @@ extension ConversionViewController: UITextFieldDelegate {
     }
 }
 
-extension ConversionViewController: ConversionViewModelDelegate {
+extension ConversionView: ConversionViewModelDelegate {
     func convertedValueDidChange(value: Float) {
         convertedValueLabel.text = String(value)
     }
@@ -146,30 +177,6 @@ extension ConversionViewController: ConversionViewModelDelegate {
         if textFieldEnableCount == 2 {
             enableInputTextField()
         }
-    }
-}
-
-extension ConversionViewController: ViewCode {
-    func buildViewHierarchy() {
-        view.addSubview(stackView)
-        stackView.addArrangedSubview(convertedValueLabel)
-        stackView.addArrangedSubview(inputTextField)
-        stackView.addArrangedSubview(initialCurrencyButton)
-        stackView.addArrangedSubview(finalCurrencyButton)
-    }
-    
-    func setupConstraints() {
-        convertedValueLabel.anchor(widthConstant: 200, heightConstant: 40)
-        inputTextField.anchor(widthConstant: 200, heightConstant: 40)
-        initialCurrencyButton.anchor(widthConstant: 200, heightConstant: 40)
-        finalCurrencyButton.anchor(widthConstant: 200, heightConstant: 40)
-        stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 20, leftConstant: 20, bottomConstant: 150, rightConstant: 20)
-    }
-    
-    func additionalConfigurations() {
-        view.backgroundColor = .white
-        setupTextFields()
-        tapAnywhereOnScreenToDismissKeyboard()
     }
 }
 
