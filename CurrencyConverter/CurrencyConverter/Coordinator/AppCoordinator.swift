@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 
+protocol AppCoordinatorConversionDelegate {
+    func didSelectCurrency(currency: String, isInitial: Bool)
+}
+
 class AppCoordinator: NSObject, Coordinator {
     
     var childCoordinators: [Coordinator]
     var navigationController: UINavigationController?
     private var window: UIWindow
+    var appCoordinatorConversionDelegate: AppCoordinatorConversionDelegate?
     
     init(window: UIWindow, navigationController: UINavigationController? = UINavigationController()) {
         self.window = window
@@ -32,12 +37,14 @@ class AppCoordinator: NSObject, Coordinator {
         child.parentCoordinator = self
         childCoordinators.append(child)
         child.start()
+        self.appCoordinatorConversionDelegate = child
     }
     
-    func goToCurrencyListScreen(viewModel: CurrencyListViewModel, isInitial: Bool) {
-        let child = CurrencyListCoordinator(navigationController: navigationController)
+    func goToCurrencyListScreen(isInitial: Bool) {
+        let child = CurrenciesCoordinator(navigationController: navigationController)
         childCoordinators.append(child)
-        child.start(viewModel: viewModel, isInitial: isInitial)
+        child.currenciesViewControllerDelegate = self
+        child.start(isInitial: isInitial)
     }
     
     func childDidFinish(_ child: Coordinator?) {
@@ -62,9 +69,17 @@ extension AppCoordinator: UINavigationControllerDelegate {
             childDidFinish(conversionViewController.coordinator)
         }
         
-        if let currencyListViewController = fromViewController as? CurrencyListViewController {
+        if let currencyListViewController = fromViewController as? CurrenciesViewController {
             childDidFinish(currencyListViewController.coordinator)
         }
 
     }
+}
+
+extension AppCoordinator: CurrenciesViewControllerDelegate {
+    func didSelectCurrency(currency: String, isInitial: Bool) {
+        appCoordinatorConversionDelegate?.didSelectCurrency(currency: currency, isInitial: isInitial)
+    }
+    
+    
 }

@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
-class CurrencyListCoordinator: Coordinator {
+protocol CurrenciesViewControllerDelegate {
+    func didSelectCurrency(currency: String, isInitial: Bool)
+}
+
+class CurrenciesCoordinator: Coordinator {
     
+    weak var parentCoordinator: AppCoordinator?
     var childCoordinators: [Coordinator]
     var navigationController: UINavigationController?
+    var currenciesViewControllerDelegate: CurrenciesViewControllerDelegate?
     
     init(navigationController: UINavigationController?) {
         childCoordinators = []
@@ -20,14 +26,15 @@ class CurrencyListCoordinator: Coordinator {
 
     func start() {}
     
-    func start(viewModel: CurrencyListViewModel, isInitial: Bool) {
-        let vc = CurrencyListScreenFactory.buildCurrencyListScreen(viewModel: viewModel, isInitial: isInitial)
+    func start(isInitial: Bool) {
+        let vc = CurrencyListScreenFactory.buildCurrencyListScreen(isInitial: isInitial)
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func didSelectCurrency() {
+    func didSelectCurrency(currency: String, isInitial: Bool) {
         navigationController?.popViewController(animated: true)
+        currenciesViewControllerDelegate?.didSelectCurrency(currency: currency, isInitial: isInitial)
     }
     
 }

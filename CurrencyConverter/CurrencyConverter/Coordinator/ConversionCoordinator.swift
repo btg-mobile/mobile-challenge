@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 
+protocol ConversionCoordinatorDelegate {
+    func didSelectCurrency(currency: String, isInitial: Bool)
+}
+
 class ConversionCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinator?
     var childCoordinators: [Coordinator]
     var navigationController: UINavigationController?
+    var conversionCoordinatorDelegate: ConversionCoordinatorDelegate?
     
     init(navigationController: UINavigationController?) {
         childCoordinators = []
@@ -22,15 +27,24 @@ class ConversionCoordinator: Coordinator {
     func start() {
         let vc = ConversionScreenFactory.buildConversionScreen()
         vc.coordinator = self
+        conversionCoordinatorDelegate = vc
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func didTapInitialCurrency(viewModel: CurrencyListViewModel, isInitial: Bool) {
-        parentCoordinator?.goToCurrencyListScreen(viewModel: viewModel, isInitial: isInitial)
+    func didTapInitialCurrency(isInitial: Bool) {
+        parentCoordinator?.goToCurrencyListScreen(isInitial: isInitial)
     }
     
-    func didTapFinalCurrency(viewModel: CurrencyListViewModel, isInitial: Bool) {
-        parentCoordinator?.goToCurrencyListScreen(viewModel: viewModel, isInitial: isInitial)
+    func didTapFinalCurrency(isInitial: Bool) {
+        parentCoordinator?.goToCurrencyListScreen(isInitial: isInitial)
     }
+    
+}
+
+extension ConversionCoordinator: AppCoordinatorConversionDelegate {
+    func didSelectCurrency(currency: String, isInitial: Bool) {
+        conversionCoordinatorDelegate?.didSelectCurrency(currency: currency, isInitial: isInitial)
+    }
+    
     
 }
