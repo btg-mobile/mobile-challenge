@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RepositoryError: Error {
+enum ServiceError: Error {
     case parseError
     case networkError(String)
     case badURL

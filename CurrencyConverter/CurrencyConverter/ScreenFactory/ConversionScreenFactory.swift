@@ -9,8 +9,8 @@ import UIKit
 
 struct ConversionScreenFactory {
     static func buildConversionScreen() -> ConversionViewController {
-        let repository = RepositoryDefault()
-        let viewModel = ConversionViewModel(repository: repository)
+        let service = ServiceDefault()
+        let viewModel = ConversionViewModel(service: service)
         let viewController = ConversionViewController(viewModel: viewModel)
         return viewController
     }
