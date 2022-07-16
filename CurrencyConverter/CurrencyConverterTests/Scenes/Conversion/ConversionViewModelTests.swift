@@ -13,7 +13,7 @@ final class ConversionViewModelTests: XCTestCase {
     func testOnInitialCurrencyChange() {
         // given
         let serviceMock = ServiceMock()
-        let sut = ConversionViewModel(repository: serviceMock)
+        let sut = ConversionViewModel(service: serviceMock)
         let delegateMock = ConversionViewModelDelegateMock()
         let expectedCurrency = "AED"
         let mockedCurrency = "USDAED"
@@ -31,7 +31,7 @@ final class ConversionViewModelTests: XCTestCase {
     func testOnFinalCurrencyChange() {
         // given
         let serviceMock = ServiceMock()
-        let sut = ConversionViewModel(repository: serviceMock)
+        let sut = ConversionViewModel(service: serviceMock)
         let delegateMock = ConversionViewModelDelegateMock()
         let expectedCurrency = "AED"
         let mockedCurrency = "USDAED"
@@ -43,6 +43,30 @@ final class ConversionViewModelTests: XCTestCase {
         // then
         
         XCTAssertEqual(expectedCurrency, delegateMock.givenFinalCurrency)
+    }
+    
+    func testOnValueChange() {
+        // given
+        let serviceMock = ServiceMock()
+        let sut = ConversionViewModel(service: serviceMock)
+        let delegateMock = ConversionViewModelDelegateMock()
+        let expectedValue = Float(5.342801)
+        let mockedValue = Float(1)
+        let mockedInitialCurrency = "USDUSD"
+        let mockedFinalCurrency = "USDBRL"
+        
+        // when
+        sut.conversionViewModelDelegate = delegateMock
+        serviceMock.quotationResult = .success(QuotationLive(quotes: ["USDUSD" : 1, "USDBRL" : 5.342801]))
+        sut.fetchQuotationLive()
+        sut.onInitialCurrencyChange(currency: mockedInitialCurrency)
+        sut.onFinalCurrencyChange(currency: mockedFinalCurrency)
+        sut.onValueChange(value: mockedValue)
+        
+        // then
+        
+        XCTAssertEqual(expectedValue, delegateMock.givenValue)
+        
     }
 }
 
@@ -65,13 +89,13 @@ class ConversionViewModelDelegateMock: ConversionViewModelDelegate{
 }
 
 class ServiceMock: ServiceProtocol {
-    var quotationResult: Result<QuotationLive, RepositoryError>?
+    var quotationResult: Result<QuotationLive, ServiceError>?
     
-    func fetchCurrencyList(completion: @escaping (Result<Currencies, RepositoryError>) -> Void) {
+    func fetchCurrencyList(completion: @escaping (Result<Currencies, ServiceError>) -> Void) {
         
     }
     
-    func fetchQuotationLive(completion: @escaping (Result<QuotationLive, RepositoryError>) -> Void) {
+    func fetchQuotationLive(completion: @escaping (Result<QuotationLive, ServiceError>) -> Void) {
         guard let quotationResult = quotationResult else {
             return
         }

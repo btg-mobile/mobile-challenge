@@ -14,7 +14,6 @@ protocol CurrenciesViewModelDelegate: AnyObject {
 
 protocol CurrenciesViewModelProtocol: AnyObject {
     var currenciesDelegate: CurrenciesViewModelDelegate? { get set }
-    func fetchCurrencies(completion: @escaping (Result<Bool, RepositoryError>) -> Void)
     func getCurrencyName(index: Int) -> String?
     func getCurrencyInitials(index: Int) -> String?
     func currenciesCount() -> Int?
@@ -25,11 +24,11 @@ protocol CurrenciesViewModelProtocol: AnyObject {
 class CurrenciesViewModel: CurrenciesViewModelProtocol {
 
     weak var currenciesDelegate: CurrenciesViewModelDelegate?
-    private var repository: ServiceProtocol
+    private var service: ServiceProtocol
     private(set) var currencies: [Currencie]?
     
-    init(repository: RepositoryDefault = RepositoryDefault()) {
-        self.repository = repository
+    init(service: ServiceProtocol = ServiceDefault()) {
+        self.service = service
     }
     
     private var currenciesResponse: Currencies? {
@@ -43,8 +42,8 @@ class CurrenciesViewModel: CurrenciesViewModelProtocol {
     
     // MARK: - Private Methods
     
-    func fetchCurrencies(completion: @escaping (Result<Bool, RepositoryError>) -> Void) {
-        repository.fetchCurrencyList { result in
+    private func fetchCurrencies(completion: @escaping (Result<Bool, ServiceError>) -> Void) {
+        service.fetchCurrencyList { result in
             switch result {
             case .success(let currencies):
                 self.currenciesResponse = currencies
@@ -82,22 +81,13 @@ class CurrenciesViewModel: CurrenciesViewModelProtocol {
     
     func onLoad() {
         fetchCurrencies() { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.currenciesDelegate?.didFetchCurrencies()
-                case .failure:
-                    self.currenciesDelegate?.didFailToFetchCurrencies()
-                }
+            switch result {
+            case .success:
+                self.currenciesDelegate?.didFetchCurrencies()
+            case .failure:
+                self.currenciesDelegate?.didFailToFetchCurrencies()
             }
         }
     }
     
-//    func setCurrency(currency: String, isInitial: Bool) {
-//        if isInitial {
-//            initialCurrency = currency
-//        } else {
-//            finalCurrency = currency
-//        }
-//    }
 }

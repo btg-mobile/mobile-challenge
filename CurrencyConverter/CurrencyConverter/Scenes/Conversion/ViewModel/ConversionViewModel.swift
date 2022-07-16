@@ -23,10 +23,12 @@ protocol ConversionViewModelProtocol: AnyObject {
 class ConversionViewModel: ConversionViewModelProtocol {
     
     //MARK: - Dependencies
+    
     weak var conversionViewModelDelegate: ConversionViewModelDelegate?
-    private var repository: ServiceProtocol
+    private var service: ServiceProtocol
     
     //MARK: - Properties
+    
     private var quotationLiveResponse: QuotationLive?
     
     private var convertedValue: Float? {
@@ -55,16 +57,14 @@ class ConversionViewModel: ConversionViewModelProtocol {
         }
     }
     
-    init(repository: ServiceProtocol = RepositoryDefault()) {
-        self.repository = repository
+    init(service: ServiceProtocol = ServiceDefault()) {
+        self.service = service
     }
-    
-    
     
     //MARK: - Functions
     
     func fetchQuotationLive() {
-        repository.fetchQuotationLive { result in
+        service.fetchQuotationLive { result in
             switch result {
             case .success(let quotationLive):
                 self.quotationLiveResponse = quotationLive

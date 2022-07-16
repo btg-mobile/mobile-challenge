@@ -8,14 +8,14 @@
 import Foundation
 
 protocol NetworkDispatcherProtocol {
-    func request(endpoint: String, completion: @escaping (Result<Data, RepositoryError>) -> Void)
+    func request(endpoint: String, completion: @escaping (Result<Data, ServiceError>) -> Void)
 }
 
 class NetworkDispatcher: NetworkDispatcherProtocol {
     
     private let session = URLSession.shared
     
-    func request(endpoint: String, completion: @escaping (Result<Data, RepositoryError>) -> Void) {
+    func request(endpoint: String, completion: @escaping (Result<Data, ServiceError>) -> Void) {
         
         guard let url = URL(string: .baseUrl + endpoint) else {
             completion(.failure(.badURL))
