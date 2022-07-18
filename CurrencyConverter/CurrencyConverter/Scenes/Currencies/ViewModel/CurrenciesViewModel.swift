@@ -20,14 +20,13 @@ protocol CurrenciesViewModelProtocol: AnyObject {
     func onLoad()
 }
 
-
 class CurrenciesViewModel: CurrenciesViewModelProtocol {
 
     weak var currenciesDelegate: CurrenciesViewModelDelegate?
-    private var service: ServiceProtocol
+    private var service: CurrenciesServiceProtocol
     private(set) var currencies: [Currencie]?
     
-    init(service: ServiceProtocol = ServiceDefault()) {
+    init(service: CurrenciesServiceProtocol = CurrenciesServiceDefault()) {
         self.service = service
     }
     

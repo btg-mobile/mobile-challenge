@@ -8,7 +8,7 @@
 import Foundation
 
 struct Currencies: Codable {
-    let currencies: [String:String]
+    let currencies: [String: String]
 }
 
 struct Currencie {

@@ -15,7 +15,7 @@ class ConversionViewController: UIViewController {
     
     init(viewModel: ConversionViewModelProtocol) {
         self.viewModel = viewModel
-        self.conversionView = ConversionView(viewModel: self.viewModel as! ConversionViewModel)
+        self.conversionView = ConversionView(viewModel: self.viewModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,15 +23,15 @@ class ConversionViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         conversionView.delegate = self
         view = conversionView
     }
     
 }
 
-//MARK: - Extensions
+    // MARK: - Extensions
 
 extension ConversionViewController: ConversionViewDelegate {
     func didTapInitialCurrency() {
@@ -56,6 +56,3 @@ extension ConversionViewController: ConversionCoordinatorDelegate {
         }
     }
 }
-
-
-

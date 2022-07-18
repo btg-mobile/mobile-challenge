@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 extension String {
     static let baseUrl = "https://btg-mobile-challenge.herokuapp.com/"
     static let list = "list"

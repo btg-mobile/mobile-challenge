@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 protocol ViewCode {
     func buildViewHierarchy()
     func setupConstraints()

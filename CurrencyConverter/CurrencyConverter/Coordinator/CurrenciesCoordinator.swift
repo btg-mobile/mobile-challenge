@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CurrenciesViewControllerDelegate {
+protocol CurrenciesViewControllerDelegate: AnyObject {
     func didSelectCurrency(currency: String, isInitial: Bool)
 }
 

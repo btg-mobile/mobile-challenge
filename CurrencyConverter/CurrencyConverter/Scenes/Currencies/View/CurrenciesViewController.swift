@@ -14,8 +14,8 @@ class CurrenciesViewController: UIViewController {
     var currenciesView: CurrenciesView
     var isInitial: Bool = true
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         view = currenciesView
         viewModel.onLoad()
         setupNavigationBar()
@@ -32,7 +32,7 @@ class CurrenciesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
         
-    //MARK: - Functions
+    // MARK: - Functions
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -41,7 +41,7 @@ class CurrenciesViewController: UIViewController {
 
 }
 
-//MARK: - Extensions
+    // MARK: - Extensions
 
 extension CurrenciesViewController: CurrenciesViewDelegate {
     func didSelectCurrency(currency: String) {
@@ -49,4 +49,3 @@ extension CurrenciesViewController: CurrenciesViewDelegate {
     }
     
 }
-

@@ -12,7 +12,7 @@ import XCTest
 final class ConversionViewModelTests: XCTestCase {
     func testOnInitialCurrencyChange() {
         // given
-        let serviceMock = ServiceMock()
+        let serviceMock = ConversionServiceMock()
         let sut = ConversionViewModel(service: serviceMock)
         let delegateMock = ConversionViewModelDelegateMock()
         let expectedCurrency = "AED"
@@ -30,7 +30,7 @@ final class ConversionViewModelTests: XCTestCase {
     
     func testOnFinalCurrencyChange() {
         // given
-        let serviceMock = ServiceMock()
+        let serviceMock = ConversionServiceMock()
         let sut = ConversionViewModel(service: serviceMock)
         let delegateMock = ConversionViewModelDelegateMock()
         let expectedCurrency = "AED"
@@ -47,7 +47,7 @@ final class ConversionViewModelTests: XCTestCase {
     
     func testOnValueChange() {
         // given
-        let serviceMock = ServiceMock()
+        let serviceMock = ConversionServiceMock()
         let sut = ConversionViewModel(service: serviceMock)
         let delegateMock = ConversionViewModelDelegateMock()
         let expectedValue = Float(5.342801)
@@ -57,7 +57,7 @@ final class ConversionViewModelTests: XCTestCase {
         
         // when
         sut.conversionViewModelDelegate = delegateMock
-        serviceMock.quotationResult = .success(QuotationLive(quotes: ["USDUSD" : 1, "USDBRL" : 5.342801]))
+        serviceMock.quotationResult = .success(QuotationLive(quotes: ["USDUSD": 1, "USDBRL": 5.342801]))
         sut.fetchQuotationLive()
         sut.onInitialCurrencyChange(currency: mockedInitialCurrency)
         sut.onFinalCurrencyChange(currency: mockedFinalCurrency)
@@ -70,7 +70,7 @@ final class ConversionViewModelTests: XCTestCase {
     }
 }
 
-class ConversionViewModelDelegateMock: ConversionViewModelDelegate{
+class ConversionViewModelDelegateMock: ConversionViewModelDelegate {
     var givenValue: Float?
     var givenInitialCurrency: String?
     var givenFinalCurrency: String?
@@ -88,12 +88,8 @@ class ConversionViewModelDelegateMock: ConversionViewModelDelegate{
     }
 }
 
-class ServiceMock: ServiceProtocol {
+class ConversionServiceMock: ConversionServiceProtocol {
     var quotationResult: Result<QuotationLive, ServiceError>?
-    
-    func fetchCurrencyList(completion: @escaping (Result<Currencies, ServiceError>) -> Void) {
-        
-    }
     
     func fetchQuotationLive(completion: @escaping (Result<QuotationLive, ServiceError>) -> Void) {
         guard let quotationResult = quotationResult else {
@@ -102,6 +98,5 @@ class ServiceMock: ServiceProtocol {
         
         completion(quotationResult)
     }
-    
     
 }

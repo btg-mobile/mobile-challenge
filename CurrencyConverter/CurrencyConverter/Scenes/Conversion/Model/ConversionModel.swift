@@ -8,5 +8,5 @@
 import Foundation
 
 struct QuotationLive: Codable {
-    let quotes: [String:Float]
+    let quotes: [String: Float]
 }

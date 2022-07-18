@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol AppCoordinatorConversionDelegate {
+protocol AppCoordinatorConversionDelegate: AnyObject {
     func didSelectCurrency(currency: String, isInitial: Bool)
 }
 
@@ -49,11 +49,9 @@ class AppCoordinator: NSObject, Coordinator {
     
     func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in
-                childCoordinators.enumerated() {
-            if coordinator === child {
+            childCoordinators.enumerated() where coordinator === child {
                 childCoordinators.remove(at: index)
                 break
-            }
         }
     }
 
@@ -80,6 +78,5 @@ extension AppCoordinator: CurrenciesViewControllerDelegate {
     func didSelectCurrency(currency: String, isInitial: Bool) {
         appCoordinatorConversionDelegate?.didSelectCurrency(currency: currency, isInitial: isInitial)
     }
-    
     
 }
