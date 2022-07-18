@@ -15,6 +15,7 @@ protocol ConversionViewModelDelegate: AnyObject {
 
 protocol ConversionViewModelProtocol: AnyObject {
     var conversionViewModelDelegate: ConversionViewModelDelegate? { get set }
+    func fetchQuotationLive()
     func onInitialCurrencyChange(currency: String)
     func onFinalCurrencyChange(currency: String)
     func onValueChange(value: Float)
@@ -22,12 +23,16 @@ protocol ConversionViewModelProtocol: AnyObject {
 
 class ConversionViewModel: ConversionViewModelProtocol {
     
-    //MARK: - Dependencies
+    // MARK: - Dependencies
     
     weak var conversionViewModelDelegate: ConversionViewModelDelegate?
-    private var service: ServiceProtocol
+    private var service: ConversionServiceProtocol
     
-    //MARK: - Properties
+    init(service: ConversionServiceProtocol = ConversionServiceDefault()) {
+        self.service = service
+    }
+
+    // MARK: - Properties
     
     private var quotationLiveResponse: QuotationLive?
     
@@ -57,11 +62,7 @@ class ConversionViewModel: ConversionViewModelProtocol {
         }
     }
     
-    init(service: ServiceProtocol = ServiceDefault()) {
-        self.service = service
-    }
-    
-    //MARK: - Functions
+    // MARK: - Functions
     
     func fetchQuotationLive() {
         service.fetchQuotationLive { result in

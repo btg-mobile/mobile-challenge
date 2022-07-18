@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ConversionViewDelegate {
+protocol ConversionViewDelegate: AnyObject {
     func didTapInitialCurrency()
     func didTapFinalCurrency()
     func didTapDoneButton()
@@ -15,11 +15,11 @@ protocol ConversionViewDelegate {
 
 class ConversionView: UIView {
     
-    var viewModel: ConversionViewModel
+    var viewModel: ConversionViewModelProtocol
     var delegate: ConversionViewDelegate?
     var textFieldEnableCount = 0
     
-    init(frame: CGRect = .zero, viewModel: ConversionViewModel) {
+    init(frame: CGRect = .zero, viewModel: ConversionViewModelProtocol) {
         self.viewModel = viewModel
         super.init(frame: frame)
         self.viewModel.conversionViewModelDelegate = self
@@ -83,43 +83,44 @@ class ConversionView: UIView {
         return button
     }()
     
-    func setupTextFields() {
+    private func setupTextFields() {
             let toolbar = UIToolbar()
-            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                            target: nil, action: nil)
+        
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
             let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
-            
+        
             toolbar.setItems([flexSpace, doneButton], animated: true)
             toolbar.sizeToFit()
-            
+        
             inputTextField.inputAccessoryView = toolbar
     }
     
-    func enableInputTextField() {
+   private func enableInputTextField() {
         textFieldEnableCount = 0
         inputTextField.isUserInteractionEnabled = true
         inputTextField.layer.borderColor = UIColor.gray.cgColor
     }
     
-    func tapAnywhereOnScreenToDismissKeyboard() {
+    private func tapAnywhereOnScreenToDismissKeyboard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         addGestureRecognizer(tap)
     }
     
-    func textChanged(text: String) {
+    private func textChanged(text: String) {
         viewModel.onValueChange(value: Float(text) ?? 0)
     }
-    
-    @objc func didTapInitialCurrency() {
+
+    @objc private func didTapInitialCurrency() {
         delegate?.didTapInitialCurrency()
     }
     
-    @objc func didTapFinalCurrency() {
+    @objc private func didTapFinalCurrency() {
         delegate?.didTapFinalCurrency()
     }
     
-    @objc func didTapDoneButton() {
+    @objc private func didTapDoneButton() {
         delegate?.didTapDoneButton()
     }
 
@@ -165,7 +166,7 @@ extension ConversionView: ConversionViewModelDelegate {
     
     func initialCurrencyDidChange(currency: String) {
         initialCurrencyButton.setTitle(currency, for: .normal)
-        textFieldEnableCount+=1
+        textFieldEnableCount += 1
         if textFieldEnableCount == 2 {
             enableInputTextField()
         }
@@ -173,10 +174,9 @@ extension ConversionView: ConversionViewModelDelegate {
     
     func finalCurrencyDidChange(currency: String) {
         finalCurrencyButton.setTitle(currency, for: .normal)
-        textFieldEnableCount+=1
+        textFieldEnableCount += 1
         if textFieldEnableCount == 2 {
             enableInputTextField()
         }
     }
 }
-

@@ -82,7 +82,6 @@ final class CurrenciesViewModelTests: XCTestCase {
         return sut
     }
     
-    
 }
 
 class CurrenciesViewModelDelegateMock: CurrenciesViewModelDelegate {
@@ -99,7 +98,7 @@ class CurrenciesViewModelDelegateMock: CurrenciesViewModelDelegate {
     }
 }
 
-class CurrenciesServiceMock: ServiceProtocol {
+class CurrenciesServiceMock: CurrenciesServiceProtocol {
     
     var result: Result<Currencies, ServiceError>?
     
@@ -107,10 +106,5 @@ class CurrenciesServiceMock: ServiceProtocol {
         guard let result = result else { return }
         completion(result)
     }
-    
-    func fetchQuotationLive(completion: @escaping (Result<QuotationLive, ServiceError>) -> Void) {
-        
-    }
-    
     
 }

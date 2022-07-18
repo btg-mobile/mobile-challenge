@@ -28,10 +28,10 @@ class CurrenciesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Views
+    // MARK: - Views
     
     private lazy var indicatorView: UIActivityIndicatorView = {
-        let indicator =  UIActivityIndicatorView()
+        let indicator = UIActivityIndicatorView()
         indicator.hidesWhenStopped = true
         return indicator
     }()

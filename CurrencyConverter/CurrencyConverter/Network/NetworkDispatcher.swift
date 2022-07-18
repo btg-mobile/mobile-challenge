@@ -22,7 +22,7 @@ class NetworkDispatcher: NetworkDispatcherProtocol {
             return
         }
         
-        session.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, _, _ in
             guard let data = data else {
                 completion(.failure(.emptyData))
                 return

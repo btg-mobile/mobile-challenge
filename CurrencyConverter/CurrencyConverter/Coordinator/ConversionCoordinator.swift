@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol ConversionCoordinatorDelegate {
+protocol ConversionCoordinatorDelegate: AnyObject {
     func didSelectCurrency(currency: String, isInitial: Bool)
 }
 
@@ -45,6 +45,5 @@ extension ConversionCoordinator: AppCoordinatorConversionDelegate {
     func didSelectCurrency(currency: String, isInitial: Bool) {
         conversionCoordinatorDelegate?.didSelectCurrency(currency: currency, isInitial: isInitial)
     }
-    
     
 }

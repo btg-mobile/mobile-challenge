@@ -1,21 +1,20 @@
 //
-//  Service.swift
+//  CurrenciesService.swift
 //  CurrencyConverter
 //
-//  Created by Joao Jaco Santos Abreu on 25/09/21.
+//  Created by Joao Jaco Santos Abreu (ACT CONSULTORIA EM TECNOLOGIA LTDA – GEDES – MG) on 17/07/22.
 //
 
 import Foundation
 
-protocol ServiceProtocol {
+protocol CurrenciesServiceProtocol {
     typealias CurrenciesResult = Result<Currencies, ServiceError>
     func fetchCurrencyList(completion: @escaping (CurrenciesResult) -> Void)
-    func fetchQuotationLive(completion: @escaping (Result<QuotationLive,ServiceError>) -> Void)
 }
 
-class ServiceDefault: ServiceProtocol {
+class CurrenciesServiceDefault: CurrenciesServiceProtocol {
     
-    var networkDispatcher: NetworkDispatcherProtocol = NetworkDispatcher()
+    private var networkDispatcher: NetworkDispatcherProtocol = NetworkDispatcher()
     
     private func dispatchCompletion(completion: @escaping (CurrenciesResult) -> Void, result: CurrenciesResult) {
         DispatchQueue.main.async {
@@ -36,23 +35,6 @@ class ServiceDefault: ServiceProtocol {
             
             case .failure(let err):
                 self.dispatchCompletion(completion: completion, result: .failure(ServiceError.networkError(err.localizedDescription)))
-            }
-        }
-    }
-    
-    func fetchQuotationLive(completion: @escaping (Result<QuotationLive, ServiceError>) -> Void) {
-        networkDispatcher.request(endpoint: .live) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let cotation = try JSONDecoder().decode(QuotationLive.self, from: data)
-                    completion(.success(cotation))
-                } catch {
-                    completion(.failure(ServiceError.parseError))
-                }
-            
-            case .failure(let err):
-                completion(.failure(ServiceError.networkError(err.localizedDescription)))
             }
         }
     }

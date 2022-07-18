@@ -41,4 +41,3 @@ extension CurrencyListTableViewCell: ViewCode {
         nameLabel.anchor(left: contentView.leftAnchor, right: contentView.rightAnchor, leftConstant: 20, rightConstant: 20)
     }
 }
-
