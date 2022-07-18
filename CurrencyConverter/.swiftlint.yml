@@ -25,7 +25,7 @@ opt_in_rules:
   - collection_alignment
   - contains_over_first_not_nil
   - empty_string
-#  - empty_xctest_method
+  - empty_xctest_method
   - explicit_init
   - fallthrough
   - fatal_error_message
@@ -46,17 +46,23 @@ opt_in_rules:
   - override_in_extension
   - pattern_matching_keywords
   - prohibited_super_call
-#  - quick_discouraged_focused_test
+  - quick_discouraged_focused_test
   - redundant_nil_coalescing
   - return_arrow_whitespace
-#  - single_test_class
+  - single_test_class
   - sorted_first_last
   - trailing_closure
   - unneeded_parentheses_in_closure_argument
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
   - yoda_condition
-
+  
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/ExcludedFile.swift
+  - Source/*/ExcludedFile.swift # Exclude files with a wildcard
 nesting:
   type_level:
     warning: 3
