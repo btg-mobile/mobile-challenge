@@ -46,6 +46,7 @@ class ConvertCurrencyFragment : BaseFragment(R.layout.fragment_convert) {
         activity?.apply {
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, list)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerCurrent.adapter = adapter
             spinnerCurrent.setOnItemClickListener { _, _, i, _ ->
                 tvResult.text = convertValue(i)
             }
@@ -56,6 +57,7 @@ class ConvertCurrencyFragment : BaseFragment(R.layout.fragment_convert) {
         activity?.apply {
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, list)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerConvert.adapter = adapter
             spinnerConvert.setOnItemClickListener { _, _, i, _ ->
                 tvResult.text = convertValue(i)
             }
