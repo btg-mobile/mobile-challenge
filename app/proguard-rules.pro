@@ -49,11 +49,11 @@
 
 
 # Build
--keep class br.com.redatoria.BuildConfig { *; }
+-keep class br.com.btg.mobile.challenge.BuildConfig { *; }
 
 
 # Project
--keep class br.com.redatoria.data.model.** { *; }
+-keep class br.com.btg.mobile.challenge.data.model.** { *; }
 
 ### OKHTTP
 -dontnote okio.**
