@@ -10,12 +10,12 @@ O Desafio consiste no desenvolvimento de um app de conversão de moedas. O app d
 
 O app deve counsumir a [Mobile Challenge API](https://documenter.getpostman.com/view/11242574/2sA3Qqgt3W), criada somente com o propósito desse desafio e portanto não apresenta dados reais. A API apresenta apenas as taxas de câmbio em relação a uma moeda de referência (dólar americano - `USD`), caso o usuário deseje fazer uma conversão entre quaisquer outras duas moedas, será necessário primeiro converter a moeda de origem para dólar e então de dólar para a moeda desejada.  
 
-* Android: _Kotlin_ | iOS: _Swift_
+* Android: _<b>Kotlin</b>_ | iOS: _<b>Swift - UIKit</b>_
 * O aplicativo deve ter duas telas principais:
    * A tela de conversão deve conter:
       * Dois botões que permitam o usuário a escolher as moedas de origem e de destino.
       * Um campo de entrada de texto onde o usuário possa inserir o valor a ser convertido.
-      * Uma campo de texto para apresentar o valor convertido.
+      * Um campo de texto para apresentar o valor convertido.
    * A tela de listagem de moedas deve conter:
       * Uma lista das moedas disponíves para conversão, mostrando código e nome da moeda.
     
@@ -28,8 +28,8 @@ O app deve counsumir a [Mobile Challenge API](https://documenter.getpostman.com/
 
 ## Features
 ### Obrigatórias:
-- [ ] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API Supported Currencies (/list)](https://btg-mobile-challenge.herokuapp.com/list)
-- [ ] A cotação atual deve ser obtida da chamada de [API Real-time Rates (/live)](https://btg-mobile-challenge.herokuapp.com/live)
+- [ ] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API Supported Currencies (/list)](https://documenter.getpostman.com/view/11242574/2sA3Qqgt3W)
+- [ ] A cotação atual deve ser obtida da chamada de [API Real-time Rates (/live)](https://documenter.getpostman.com/view/11242574/2sA3Qqgt3W)
 - [ ] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
 
 ### Opcionais (não necessário, porém contam pontos):
