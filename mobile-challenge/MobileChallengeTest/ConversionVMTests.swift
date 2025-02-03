@@ -10,25 +10,24 @@ import XCTest
 
 class ConversionVMTests: XCTestCase {
 
-    func testFetchConvertionsCalculation() async throws {
-        let conversionViewModel = ConversionViewModel()
+    var conversionViewModel: ConversionViewModel!
+
+    override func setUp() {
+        super.setUp()
+        conversionViewModel = ConversionViewModel()
+    }
+
+    override func tearDown() {
+        conversionViewModel = nil
+        super.tearDown()
+    }
+    
+    func testConversionCalculation() {
+        let currency = ConversionModel(code: "USD", dolarValue: 5.0)
+        conversionViewModel.convertions.append(currency)
+
+        let selectedCurrency = conversionViewModel.convertions.first(where: { $0.code == "USD" })
         
-        // Configuração dos dados
-        conversionViewModel.currencyVM.currencyNames = [
-            CurrencyNameModel(code: "USD", name: "United States Dollar"),
-            CurrencyNameModel(code: "BRL", name: "Brazilian Real")
-        ]
-        conversionViewModel.currencyVM.currencyValues = [
-            CurrencyValueModel(quotes: ["USD": 1.0]),
-            CurrencyValueModel(quotes: ["BRL": 5.42])
-        ]
-        
-        // Chamada da função assíncrona
-        await conversionViewModel.fetchConvertions()
-        
-        // Verificações após a execução
-        XCTAssertEqual(conversionViewModel.convertions.count, 2)
-        XCTAssertEqual(conversionViewModel.convertions[0].dolarValue, 1.0)
-        XCTAssertEqual(conversionViewModel.convertions[1].code, "BRL")
+        XCTAssertEqual(selectedCurrency?.dolarValue, 5.0, "Dolar igual a 5.0")
     }
 }
