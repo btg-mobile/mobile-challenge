@@ -9,17 +9,16 @@ import Foundation
 
 
 class CurrencyViewModel {
-    var currency: CurrencyResponse
+    var currency: CurrencyResponse?
     let currencyManager: CurrencyManager
     
-    init(currency: CurrencyResponse, currencyManager: CurrencyManager) {
-        self.currency = currency
+    init(currencyManager: CurrencyManager) {
         self.currencyManager = currencyManager
     }
     
     func getCurrencyData() async throws -> CurrencyResponse {
         currency = try await currencyManager.fetchRequest()
-        return currency
+        return currency ?? CurrencyResponse(currencies: [:])
     }
     
 }

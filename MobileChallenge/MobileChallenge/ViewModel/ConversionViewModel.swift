@@ -8,17 +8,16 @@
 import Foundation
 
 class ConversionViewModel {
-    var conversion: ConversionResponse
+    var conversion: ConversionResponse?
     let conversionManager: ConversionManager
 
-    init(conversion: ConversionResponse, conversionManager: ConversionManager) {
-        self.conversion = conversion
+    init(conversionManager: ConversionManager) {
         self.conversionManager = conversionManager
     }
     
     func getConversionsData() async throws -> ConversionResponse {
         conversion = try await conversionManager.fetchRequest()
-        return conversion
+        return conversion ?? ConversionResponse(quotes: [:])
     }
     
     
