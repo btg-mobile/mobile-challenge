@@ -28,6 +28,7 @@
 		FA5D07AF2D52A039008A424C /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07AE2D52A039008A424C /* CurrencyViewController.swift */; };
 		FA5D07B12D52A22B008A424C /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */; };
 		FA5D07B52D52F34D008A424C /* CurrencyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07B42D52F34D008A424C /* CurrencyTableViewDataSource.swift */; };
+		FA5D07B72D539E17008A424C /* CurrencyTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07B62D539E17008A424C /* CurrencyTableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		FA5D07AE2D52A039008A424C /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		FA5D07B42D52F34D008A424C /* CurrencyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewDataSource.swift; sourceTree = "<group>"; };
+		FA5D07B62D539E17008A424C /* CurrencyTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 		FA5D07B32D52F335008A424C /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D07B62D539E17008A424C /* CurrencyTableViewDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				FA5D07A52D529889008A424C /* CurrencyManager.swift in Sources */,
 				FA5D07AF2D52A039008A424C /* CurrencyViewController.swift in Sources */,
 				FA5D076A2D528E34008A424C /* ViewController.swift in Sources */,
+				FA5D07B72D539E17008A424C /* CurrencyTableViewDelegate.swift in Sources */,
 				FA5D07A92D529BE0008A424C /* ConversionViewModel.swift in Sources */,
 				FA5D07662D528E34008A424C /* AppDelegate.swift in Sources */,
 				FA5D079E2D52944F008A424C /* NetworkServiceProtocol.swift in Sources */,

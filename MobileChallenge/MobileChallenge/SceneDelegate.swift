@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let networkService = NetworkService()
         let currencyManager = CurrencyManager(currencyNetworkService: networkService)
         let currencyViewModel = CurrencyViewModel(currencyManager: currencyManager)
-        window?.rootViewController = CurrencyViewController(currencyViewModel: currencyViewModel)
+//        window?.rootViewController = CurrencyViewController(currencyViewModel: currencyViewModel)
+        window?.rootViewController = ConversionViewController(currencyViewModel: currencyViewModel)
         window?.makeKeyAndVisible()
     }
 
