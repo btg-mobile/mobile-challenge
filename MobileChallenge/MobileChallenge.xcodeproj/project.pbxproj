@@ -22,6 +22,11 @@
 		FA5D07A22D5294BF008A424C /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07A12D5294BF008A424C /* ServiceError.swift */; };
 		FA5D07A52D529889008A424C /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07A42D529889008A424C /* CurrencyManager.swift */; };
 		FA5D07A72D529893008A424C /* ConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07A62D529893008A424C /* ConversionManager.swift */; };
+		FA5D07A92D529BE0008A424C /* ConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07A82D529BE0008A424C /* ConversionViewModel.swift */; };
+		FA5D07AB2D529F73008A424C /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07AA2D529F73008A424C /* CurrencyViewModel.swift */; };
+		FA5D07AD2D529FF0008A424C /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07AC2D529FF0008A424C /* ConversionViewController.swift */; };
+		FA5D07AF2D52A039008A424C /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07AE2D52A039008A424C /* CurrencyViewController.swift */; };
+		FA5D07B12D52A22B008A424C /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		FA5D07A12D5294BF008A424C /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		FA5D07A42D529889008A424C /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
 		FA5D07A62D529893008A424C /* ConversionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionManager.swift; sourceTree = "<group>"; };
+		FA5D07A82D529BE0008A424C /* ConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
+		FA5D07AA2D529F73008A424C /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		FA5D07AC2D529FF0008A424C /* ConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
+		FA5D07AE2D52A039008A424C /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +165,8 @@
 		FA5D07962D528FD0008A424C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D07A82D529BE0008A424C /* ConversionViewModel.swift */,
+				FA5D07AA2D529F73008A424C /* CurrencyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -162,6 +174,9 @@
 		FA5D07972D528FD5008A424C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D07AC2D529FF0008A424C /* ConversionViewController.swift */,
+				FA5D07AE2D52A039008A424C /* CurrencyViewController.swift */,
+				FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,14 +331,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5D07A22D5294BF008A424C /* ServiceError.swift in Sources */,
+				FA5D07AB2D529F73008A424C /* CurrencyViewModel.swift in Sources */,
 				FA5D07A52D529889008A424C /* CurrencyManager.swift in Sources */,
+				FA5D07AF2D52A039008A424C /* CurrencyViewController.swift in Sources */,
 				FA5D076A2D528E34008A424C /* ViewController.swift in Sources */,
+				FA5D07A92D529BE0008A424C /* ConversionViewModel.swift in Sources */,
 				FA5D07662D528E34008A424C /* AppDelegate.swift in Sources */,
 				FA5D079E2D52944F008A424C /* NetworkServiceProtocol.swift in Sources */,
 				FA5D07A72D529893008A424C /* ConversionManager.swift in Sources */,
+				FA5D07AD2D529FF0008A424C /* ConversionViewController.swift in Sources */,
 				FA5D07682D528E34008A424C /* SceneDelegate.swift in Sources */,
 				FA5D07992D52922D008A424C /* CurrencyResponse.swift in Sources */,
 				FA5D079B2D5292F3008A424C /* ConversionResponse.swift in Sources */,
+				FA5D07B12D52A22B008A424C /* CurrencyTableViewCell.swift in Sources */,
 				FA5D07A02D52945E008A424C /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
