@@ -9,7 +9,7 @@ import Foundation
 
 
 class CurrencyViewModel {
-    var currency: CurrencyResponse?
+    var currency: [String : String]?
     let currencyManager: CurrencyManager
 
     
@@ -17,23 +17,25 @@ class CurrencyViewModel {
         self.currencyManager = currencyManager
     }
     
-    func getCurrencyData() async throws -> CurrencyResponse {
-        currency = try await currencyManager.fetchRequest()
-        return currency ?? CurrencyResponse(currencies: [:])
+    func getCurrencyData() async throws -> [String : String] {
+        let currencyResponse = try await currencyManager.fetchRequest()
+        currency = currencyResponse.currencies
+        return currency ?? [:]
+//        return currency ?? CurrencyResponse(currencies: [:])
     }
     
-    func filterCurrency(searchBarText: String) -> CurrencyResponse {
+    func filterCurrency(searchBarText: String) -> [String : String] {
         if searchBarText.isEmpty {
             if let currency = currency {
                 return currency
             }
         } else {
-            let filteredCurrency = currency?.currencies.filter { (key,value) in
+            let filteredCurrency = currency?.filter { (key,value) in
                 key.lowercased().contains(searchBarText.lowercased()) || value.lowercased().contains(searchBarText.lowercased())
             }
-            return CurrencyResponse(currencies: filteredCurrency ?? [:])
+            return filteredCurrency ?? [:]
         }
-        return CurrencyResponse(currencies: [:])
+        return [:]
     }
     
 }

@@ -16,7 +16,7 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
 
     var currencyViewModel: CurrencyViewModel
     
-    var filteredCurrency: CurrencyResponse? {
+    var filteredCurrency: [String : String]? {
         didSet {
             updateTableView()
         }
@@ -34,7 +34,7 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
     }
     
     
-    let searchController: UISearchBar = {
+    let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Procure uma moeda"
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -73,10 +73,6 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        
 
         Task {
             await fetchCurrencyResponse()
@@ -128,26 +124,22 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
     }
     
     func setTableView() {
-        self.view.addSubview(searchController)
-        searchController.delegate = self
+        self.view.addSubview(searchBar)
+        searchBar.delegate = self
 
         NSLayoutConstraint.activate([
-            searchController.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            searchController.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
-            searchController.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
         ])
         
-        
-        
+    
         
         self.view.addSubview(tableView)
-//        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-
-        
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchController.bottomAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: searchController.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: searchController.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
