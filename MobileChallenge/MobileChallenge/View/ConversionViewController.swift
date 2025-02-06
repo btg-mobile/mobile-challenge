@@ -15,7 +15,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
             currencySource = currency
         } else if selectedCurrencyType == .destination {
             buttonDestinationCurrency.setTitle(currency, for: .normal)
-            currencyDestionation = currency
+            currencyDestination = currency
         }
         dismiss(animated: true)
     }
@@ -24,14 +24,23 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     var currencyViewModel: CurrencyViewModel
     var conversionViewModel: ConversionViewModel
     var selectedCurrencyType: CurrencyType?
-    var convertedValue: Double = 0{
+    
+    var convertedValue: Double = 0 {
         didSet {
             updateConversion()
         }
     }
     
-    var currencySource: String = "USD"
-    var currencyDestionation: String = "BRL"
+    var currencySource: String = "USD" {
+        didSet {
+            convertValue()
+        }
+    }
+    var currencyDestination: String = "BRL" {
+        didSet {
+            convertValue()
+        }
+    }
     
     init(currencyViewModel: CurrencyViewModel, conversionViewModel: ConversionViewModel) {
         self.currencyViewModel = currencyViewModel
@@ -49,13 +58,16 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         textField.textColor = .blue
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Valor para converter"
         
         return textField
     }()
     
     let buttonSourceCurrency: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.red, for: .selected)
+
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -64,7 +76,6 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     let label: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "aaaaa"
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -72,8 +83,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     
     let buttonDestinationCurrency: UIButton = {
         let button = UIButton()
-        button.setTitle("tchau", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
 
@@ -114,7 +124,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         self.view.addSubview(textField)
         textField.delegate = self
         textField.keyboardType = .numberPad
-        addDoneButtonToKeyboard(textField: textField)
+        setDoneButton(textField: textField)
 
         
         NSLayoutConstraint.activate([
@@ -143,11 +153,11 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         
         self.view.addSubview(buttonDestinationCurrency)
         buttonDestinationCurrency.addTarget(self, action: #selector(showDestinationSheet), for: .touchUpInside)
-        buttonDestinationCurrency.setTitle(currencyDestionation, for: .normal)
+        buttonDestinationCurrency.setTitle(currencyDestination, for: .normal)
         
         NSLayoutConstraint.activate([
             buttonDestinationCurrency.trailingAnchor.constraint(equalTo: buttonSourceCurrency.trailingAnchor),
-            buttonDestinationCurrency.topAnchor.constraint(equalTo: label.topAnchor)
+            buttonDestinationCurrency.topAnchor.constraint(equalTo: label.topAnchor, constant: -5)
         ])
         
         
@@ -172,10 +182,10 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     
     
     func updateConversion() {
-        label.text = String(convertedValue)
+        label.text = String(format: "%.2f", convertedValue)
     }
     
-    func addDoneButtonToKeyboard(textField: UITextField) {
+    func setDoneButton(textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
 
@@ -187,9 +197,13 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     }
 
     @objc func doneButtonTapped() {
-        convertedValue = conversionViewModel.converterMoeda(valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestionation)
+        convertValue()
         view.endEditing(true)
 
+    }
+    
+    func convertValue() {
+        convertedValue = conversionViewModel.converterMoeda(valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestination)
     }
 
 }
