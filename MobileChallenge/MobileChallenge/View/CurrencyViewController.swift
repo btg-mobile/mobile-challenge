@@ -10,13 +10,11 @@ import UIKit
 class CurrencyViewController: UIViewController, UISearchBarDelegate {
 
     
-
-    
     weak var currencyCellDelegate: CurrencyCellDelegate?
 
     var currencyViewModel: CurrencyViewModel
     
-    var filteredCurrency: [String : String]? {
+    var filteredCurrency: [(String, String)]? {
         didSet {
             updateTableView()
         }
@@ -86,12 +84,10 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
             let data = try await currencyViewModel.getCurrencyData()
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
-                self?.tableViewDataSource = CurrencyTableViewDataSource(currencyResponse: data)
-                self?.tableViewDelegate = CurrencyTableViewDelegate(currencyResponse: data)
+                let sortedData = data.sorted { $0.0 < $1.0 }
+                self?.tableViewDataSource = CurrencyTableViewDataSource(currencyResponse: sortedData)
+                self?.tableViewDelegate = CurrencyTableViewDelegate(currencyResponse: self?.filteredCurrency ?? [])
                 self?.tableViewDelegate?.currencyCellDelegate = self?.currencyCellDelegate
-                
-                let sortedData = Dictionary(uniqueKeysWithValues: data.sorted { $0.key < $1.key })
-                print(sortedData)
                 self?.tableViewDataSource?.currencyResponse = sortedData
                 self?.tableView.delegate = self?.tableViewDelegate
                 self?.tableView.dataSource = self?.tableViewDataSource
@@ -152,6 +148,7 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
     func updateTableView() {
         if let filteredCurrency = filteredCurrency {
             self.tableViewDataSource?.currencyResponse = filteredCurrency
+            self.tableViewDelegate?.currencyResponse = filteredCurrency
             self.tableView.reloadData()
         }
     }

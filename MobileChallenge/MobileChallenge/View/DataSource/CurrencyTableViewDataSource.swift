@@ -10,9 +10,9 @@ import UIKit
 
 class CurrencyTableViewDataSource: NSObject, UITableViewDataSource {
     
-    var currencyResponse: [String : String]
+    var currencyResponse: [(String, String)]
     
-    init(currencyResponse: [String : String]) {
+    init(currencyResponse: [(String, String)]) {
         self.currencyResponse = currencyResponse
     }
     
@@ -24,14 +24,18 @@ class CurrencyTableViewDataSource: NSObject, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else {
             fatalError("failed to create cell")
         }
-        let keys = Array(self.currencyResponse.keys)
-        let key = keys[indexPath.row]
         
-        
-        if let currency = self.currencyResponse[key] {
-            cell.configureCell(name: currency, code: key)
-        }
-        
+        let currency = currencyResponse[indexPath.row]
+
+        cell.configureCell(name: currency.0, code: currency.1)
+//        let keys = Array(self.currencyResponse.keys)
+//        let key = keys[indexPath.row]
+//        
+//        
+//        if let currency = self.currencyResponse[key] {
+//            cell.configureCell(name: currency, code: key)
+//        }
+//        
         return cell
         
     }
