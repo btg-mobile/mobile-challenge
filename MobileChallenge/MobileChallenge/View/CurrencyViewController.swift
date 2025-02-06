@@ -89,7 +89,10 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
                 self?.tableViewDataSource = CurrencyTableViewDataSource(currencyResponse: data)
                 self?.tableViewDelegate = CurrencyTableViewDelegate(currencyResponse: data)
                 self?.tableViewDelegate?.currencyCellDelegate = self?.currencyCellDelegate
-                self?.tableViewDataSource?.currencyResponse = data
+                
+                let sortedData = Dictionary(uniqueKeysWithValues: data.sorted { $0.key < $1.key })
+                print(sortedData)
+                self?.tableViewDataSource?.currencyResponse = sortedData
                 self?.tableView.delegate = self?.tableViewDelegate
                 self?.tableView.dataSource = self?.tableViewDataSource
                 self?.isLoading = false

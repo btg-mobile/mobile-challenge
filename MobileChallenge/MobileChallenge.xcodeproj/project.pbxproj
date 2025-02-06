@@ -31,6 +31,9 @@
 		FA5D07B72D539E17008A424C /* CurrencyTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07B62D539E17008A424C /* CurrencyTableViewDelegate.swift */; };
 		FA5D07B92D53D878008A424C /* CurrencyCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07B82D53D878008A424C /* CurrencyCellDelegate.swift */; };
 		FA5D07BB2D53E050008A424C /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07BA2D53E050008A424C /* CurrencyType.swift */; };
+		FA5D07BE2D555038008A424C /* MockCurrencyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07BD2D555038008A424C /* MockCurrencyNetworkService.swift */; };
+		FA5D07C02D555155008A424C /* MockConversionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07BF2D555155008A424C /* MockConversionNetworkService.swift */; };
+		FA5D07C22D5551B9008A424C /* CurrencyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07C12D5551B9008A424C /* CurrencyManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		FA5D07B62D539E17008A424C /* CurrencyTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewDelegate.swift; sourceTree = "<group>"; };
 		FA5D07B82D53D878008A424C /* CurrencyCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellDelegate.swift; sourceTree = "<group>"; };
 		FA5D07BA2D53E050008A424C /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
+		FA5D07BD2D555038008A424C /* MockCurrencyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyNetworkService.swift; sourceTree = "<group>"; };
+		FA5D07BF2D555155008A424C /* MockConversionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConversionNetworkService.swift; sourceTree = "<group>"; };
+		FA5D07C12D5551B9008A424C /* CurrencyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 				FA5D07652D528E34008A424C /* AppDelegate.swift */,
 				FA5D07672D528E34008A424C /* SceneDelegate.swift */,
 				FA5D07692D528E34008A424C /* ViewController.swift */,
+				FA5D07BC2D55500D008A424C /* Mock */,
 				FA5D076E2D528E35008A424C /* Assets.xcassets */,
 				FA5D07702D528E35008A424C /* LaunchScreen.storyboard */,
 				FA5D07732D528E35008A424C /* Info.plist */,
@@ -148,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5D077C2D528E35008A424C /* MobileChallengeTests.swift */,
+				FA5D07C12D5551B9008A424C /* CurrencyManagerTests.swift */,
 			);
 			path = MobileChallengeTests;
 			sourceTree = "<group>";
@@ -226,6 +234,15 @@
 				FA5D07B82D53D878008A424C /* CurrencyCellDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		FA5D07BC2D55500D008A424C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D07BD2D555038008A424C /* MockCurrencyNetworkService.swift */,
+				FA5D07BF2D555155008A424C /* MockConversionNetworkService.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,8 +389,10 @@
 				FA5D07AD2D529FF0008A424C /* ConversionViewController.swift in Sources */,
 				FA5D07BB2D53E050008A424C /* CurrencyType.swift in Sources */,
 				FA5D07682D528E34008A424C /* SceneDelegate.swift in Sources */,
+				FA5D07BE2D555038008A424C /* MockCurrencyNetworkService.swift in Sources */,
 				FA5D07992D52922D008A424C /* CurrencyResponse.swift in Sources */,
 				FA5D079B2D5292F3008A424C /* ConversionResponse.swift in Sources */,
+				FA5D07C02D555155008A424C /* MockConversionNetworkService.swift in Sources */,
 				FA5D07B12D52A22B008A424C /* CurrencyTableViewCell.swift in Sources */,
 				FA5D07A02D52945E008A424C /* NetworkService.swift in Sources */,
 				FA5D07B52D52F34D008A424C /* CurrencyTableViewDataSource.swift in Sources */,
@@ -384,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5D07C22D5551B9008A424C /* CurrencyManagerTests.swift in Sources */,
 				FA5D077D2D528E35008A424C /* MobileChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
