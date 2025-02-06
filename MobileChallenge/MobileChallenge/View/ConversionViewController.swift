@@ -7,12 +7,35 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFieldDelegate {
+    
+    func didSelectCurrency(currency: String) {
+        if selectedCurrencyType == .source {
+            buttonSourceCurrency.setTitle(currency, for: .normal)
+            currencySource = currency
+        } else if selectedCurrencyType == .destination {
+            buttonDestinationCurrency.setTitle(currency, for: .normal)
+            currencyDestionation = currency
+        }
+        dismiss(animated: true)
+    }
+
     
     var currencyViewModel: CurrencyViewModel
+    var conversionViewModel: ConversionViewModel
+    var selectedCurrencyType: CurrencyType?
+    var convertedValue: Double = 0{
+        didSet {
+            updateConversion()
+        }
+    }
     
-    init(currencyViewModel: CurrencyViewModel) {
+    var currencySource: String = "USD"
+    var currencyDestionation: String = "BRL"
+    
+    init(currencyViewModel: CurrencyViewModel, conversionViewModel: ConversionViewModel) {
         self.currencyViewModel = currencyViewModel
+        self.conversionViewModel = conversionViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,7 +55,6 @@ class ConversionViewController: UIViewController {
     
     let buttonSourceCurrency: UIButton = {
         let button = UIButton()
-        button.setTitle("oi", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -61,14 +83,39 @@ class ConversionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Task {
+            await fetchConversionData()
+        }
         self.view.backgroundColor = .white
         setElements()
 
         // Do any additional setup after loading the view.
     }
     
+    
+    func fetchConversionData() async {
+        do {
+            let data = try await conversionViewModel.getConversionsData()
+            DispatchQueue.main.async { [weak self] in
+                self?.conversionViewModel.conversion = data
+            }
+        } catch ServiceError.invalidData{
+            print("Error type data")
+        } catch ServiceError.invalidResponse {
+            print("Error type response")
+        } catch ServiceError.invalidURL {
+            print("Error type URL")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func setElements() {
         self.view.addSubview(textField)
+        textField.delegate = self
+        textField.keyboardType = .numberPad
+        addDoneButtonToKeyboard(textField: textField)
+
         
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
@@ -77,7 +124,9 @@ class ConversionViewController: UIViewController {
         
         
         self.view.addSubview(buttonSourceCurrency)
-        buttonSourceCurrency.addTarget(self, action: #selector(showSheet), for: .touchUpInside)
+        buttonSourceCurrency.addTarget(self, action: #selector(showSourceSheet), for: .touchUpInside)
+        buttonSourceCurrency.setTitle(currencySource, for: .normal)
+
         
         NSLayoutConstraint.activate([
             buttonSourceCurrency.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
@@ -93,6 +142,8 @@ class ConversionViewController: UIViewController {
         ])
         
         self.view.addSubview(buttonDestinationCurrency)
+        buttonDestinationCurrency.addTarget(self, action: #selector(showDestinationSheet), for: .touchUpInside)
+        buttonDestinationCurrency.setTitle(currencyDestionation, for: .normal)
         
         NSLayoutConstraint.activate([
             buttonDestinationCurrency.trailingAnchor.constraint(equalTo: buttonSourceCurrency.trailingAnchor),
@@ -103,10 +154,47 @@ class ConversionViewController: UIViewController {
     }
     
     
-    @objc func showSheet() {
-        let sheetVC = CurrencyViewController(currencyViewModel: currencyViewModel)
-        sheetVC.modalPresentationStyle = .pageSheet
-        present(sheetVC, animated: true)
+    @objc func showSourceSheet() {
+        let sheetViewController = CurrencyViewController(currencyViewModel: currencyViewModel)
+        selectedCurrencyType = .source
+        sheetViewController.modalPresentationStyle = .pageSheet
+        sheetViewController.currencyCellDelegate = self
+        present(sheetViewController, animated: true)
+    }
+    
+    @objc func showDestinationSheet() {
+        let sheetViewController = CurrencyViewController(currencyViewModel: currencyViewModel)
+        selectedCurrencyType = .destination
+        sheetViewController.modalPresentationStyle = .pageSheet
+        sheetViewController.currencyCellDelegate = self
+        present(sheetViewController, animated: true)
+    }
+    
+    
+    func updateConversion() {
+        label.text = String(convertedValue)
+    }
+    
+    func addDoneButtonToKeyboard(textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
+
+        toolbar.items = [flexSpace, doneButton]
+        textField.inputAccessoryView = toolbar
+    }
+
+    @objc func doneButtonTapped() {
+        convertedValue = conversionViewModel.converterMoeda(value: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestionation)
+        view.endEditing(true)
+
     }
 
 }
+
+
+
+
+

@@ -8,7 +8,10 @@
 import UIKit
 
 class CurrencyViewController: UIViewController {
+
     
+    weak var currencyCellDelegate: CurrencyCellDelegate?
+
     var currencyViewModel: CurrencyViewModel
     
     init(currencyViewModel: CurrencyViewModel) {
@@ -40,6 +43,7 @@ class CurrencyViewController: UIViewController {
     
     var isLoading: Bool = true
     var tableViewDataSource: CurrencyTableViewDataSource?
+    var tableViewDelegate: CurrencyTableViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,15 +71,16 @@ class CurrencyViewController: UIViewController {
     func fetchCurrencyResponse() async {
         do {
             let data = try await currencyViewModel.getCurrencyData()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.tableViewDataSource = CurrencyTableViewDataSource(currencyResponse: data)
-                self.tableViewDataSource?.currencyResponse = data
-                self.tableView.dataSource = self.tableViewDataSource
-                    self.isLoading = false
-                    self.setTableView()
-                
-                
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+                self?.tableViewDataSource = CurrencyTableViewDataSource(currencyResponse: data)
+                self?.tableViewDelegate = CurrencyTableViewDelegate(currencyResponse: data)
+                self?.tableViewDelegate?.currencyCellDelegate = self?.currencyCellDelegate
+                self?.tableViewDataSource?.currencyResponse = data
+                self?.tableView.delegate = self?.tableViewDelegate
+                self?.tableView.dataSource = self?.tableViewDataSource
+                self?.isLoading = false
+                self?.setTableView()
             }
         } catch ServiceError.invalidData{
             print("Error type data")
