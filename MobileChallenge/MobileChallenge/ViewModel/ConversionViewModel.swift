@@ -21,7 +21,7 @@ class ConversionViewModel {
     }
     
     
-    func converterMoeda(valueToConvert: String, currencySource: String, currencyDestination: String) -> Double {
+    func converterMoeda(conversionResponse: ConversionResponse?, valueToConvert: String, currencySource: String, currencyDestination: String) -> Double {
 
         var resultadoFinal: Double
         
@@ -30,7 +30,7 @@ class ConversionViewModel {
         var quotes = currencySource + currencyDestination
         var valueDouble = Double(valueToConvert)
         
-        if let conversion = conversion?.quotes {
+        if let conversion = conversionResponse?.quotes {
             for i in conversion {
                 if !quotes.contains("USD") {
                     if i.key.contains(currencySource) {

@@ -27,15 +27,8 @@ class CurrencyTableViewDataSource: NSObject, UITableViewDataSource {
         
         let currency = currencyResponse[indexPath.row]
 
-        cell.configureCell(name: currency.0, code: currency.1)
-//        let keys = Array(self.currencyResponse.keys)
-//        let key = keys[indexPath.row]
-//        
-//        
-//        if let currency = self.currencyResponse[key] {
-//            cell.configureCell(name: currency, code: key)
-//        }
-//        
+        cell.configureCell(name: currency.1, code: currency.0)
+
         return cell
         
     }

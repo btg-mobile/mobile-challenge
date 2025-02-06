@@ -14,8 +14,12 @@ class MockConversionNetworkService: NetworkServiceProtocol {
         let mockJson = """
     {
             "quotes": {
-                "USDAED": 3.672979,
-                "USDAFN": 77.941225,
+                "USDAED": 3.6,
+                "USDAFN": 77.9,
+                "USDALL": 101.4,
+                "USDBRL": 5.3,
+                "USDEUR": 0.8
+
             }
 
     }

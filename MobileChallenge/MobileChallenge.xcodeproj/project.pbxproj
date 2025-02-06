@@ -34,6 +34,7 @@
 		FA5D07BE2D555038008A424C /* MockCurrencyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07BD2D555038008A424C /* MockCurrencyNetworkService.swift */; };
 		FA5D07C02D555155008A424C /* MockConversionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07BF2D555155008A424C /* MockConversionNetworkService.swift */; };
 		FA5D07C22D5551B9008A424C /* CurrencyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07C12D5551B9008A424C /* CurrencyManagerTests.swift */; };
+		FA5D07C42D556667008A424C /* ConversionManagerTestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07C32D556667008A424C /* ConversionManagerTestes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		FA5D07BD2D555038008A424C /* MockCurrencyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyNetworkService.swift; sourceTree = "<group>"; };
 		FA5D07BF2D555155008A424C /* MockConversionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConversionNetworkService.swift; sourceTree = "<group>"; };
 		FA5D07C12D5551B9008A424C /* CurrencyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManagerTests.swift; sourceTree = "<group>"; };
+		FA5D07C32D556667008A424C /* ConversionManagerTestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionManagerTestes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				FA5D077C2D528E35008A424C /* MobileChallengeTests.swift */,
 				FA5D07C12D5551B9008A424C /* CurrencyManagerTests.swift */,
+				FA5D07C32D556667008A424C /* ConversionManagerTestes.swift */,
 			);
 			path = MobileChallengeTests;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			files = (
 				FA5D07C22D5551B9008A424C /* CurrencyManagerTests.swift in Sources */,
 				FA5D077D2D528E35008A424C /* MobileChallengeTests.swift in Sources */,
+				FA5D07C42D556667008A424C /* ConversionManagerTestes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

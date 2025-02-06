@@ -205,7 +205,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     }
     
     func convertValue() {
-        convertedValue = conversionViewModel.converterMoeda(valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestination)
+        convertedValue = conversionViewModel.converterMoeda(conversionResponse: conversionViewModel.conversion, valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestination)
     }
 
 }
