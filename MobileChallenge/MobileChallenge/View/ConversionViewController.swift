@@ -55,7 +55,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     
     var textField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .blue
+        textField.textColor = .black
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Valor para converter"
@@ -205,7 +205,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     }
     
     func convertValue() {
-        convertedValue = conversionViewModel.converterMoeda(conversionResponse: conversionViewModel.conversion, valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestination)
+        convertedValue = conversionViewModel.convertValueAccordingToCurrency(conversionResponse: conversionViewModel.conversion, valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestination)
     }
 
 }

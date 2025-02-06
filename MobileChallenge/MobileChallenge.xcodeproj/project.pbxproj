@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FA5D07662D528E34008A424C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07652D528E34008A424C /* AppDelegate.swift */; };
 		FA5D07682D528E34008A424C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07672D528E34008A424C /* SceneDelegate.swift */; };
-		FA5D076A2D528E34008A424C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07692D528E34008A424C /* ViewController.swift */; };
 		FA5D076F2D528E35008A424C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5D076E2D528E35008A424C /* Assets.xcassets */; };
 		FA5D07722D528E35008A424C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5D07702D528E35008A424C /* LaunchScreen.storyboard */; };
 		FA5D077D2D528E35008A424C /* MobileChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D077C2D528E35008A424C /* MobileChallengeTests.swift */; };
@@ -58,7 +57,6 @@
 		FA5D07622D528E34008A424C /* MobileChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5D07652D528E34008A424C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5D07672D528E34008A424C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA5D07692D528E34008A424C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA5D076E2D528E35008A424C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5D07712D528E35008A424C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5D07732D528E35008A424C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,10 +139,11 @@
 				FA5D079C2D529427008A424C /* Service */,
 				FA5D07972D528FD5008A424C /* View */,
 				FA5D07962D528FD0008A424C /* ViewModel */,
+				FA5D07B32D52F335008A424C /* Delegate */,
+				FA5D07B22D52F32C008A424C /* DataSource */,
 				FA5D07952D528FCC008A424C /* Model */,
 				FA5D07652D528E34008A424C /* AppDelegate.swift */,
 				FA5D07672D528E34008A424C /* SceneDelegate.swift */,
-				FA5D07692D528E34008A424C /* ViewController.swift */,
 				FA5D07BC2D55500D008A424C /* Mock */,
 				FA5D076E2D528E35008A424C /* Assets.xcassets */,
 				FA5D07702D528E35008A424C /* LaunchScreen.storyboard */,
@@ -194,11 +193,9 @@
 		FA5D07972D528FD5008A424C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA5D07B32D52F335008A424C /* Delegate */,
-				FA5D07B22D52F32C008A424C /* DataSource */,
 				FA5D07AC2D529FF0008A424C /* ConversionViewController.swift */,
 				FA5D07AE2D52A039008A424C /* CurrencyViewController.swift */,
-				FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */,
+				FA5D07C72D557021008A424C /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +243,14 @@
 				FA5D07BF2D555155008A424C /* MockConversionNetworkService.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		FA5D07C72D557021008A424C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D07B02D52A22B008A424C /* CurrencyTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,7 +388,6 @@
 				FA5D07A52D529889008A424C /* CurrencyManager.swift in Sources */,
 				FA5D07B92D53D878008A424C /* CurrencyCellDelegate.swift in Sources */,
 				FA5D07AF2D52A039008A424C /* CurrencyViewController.swift in Sources */,
-				FA5D076A2D528E34008A424C /* ViewController.swift in Sources */,
 				FA5D07B72D539E17008A424C /* CurrencyTableViewDelegate.swift in Sources */,
 				FA5D07A92D529BE0008A424C /* ConversionViewModel.swift in Sources */,
 				FA5D07662D528E34008A424C /* AppDelegate.swift in Sources */,

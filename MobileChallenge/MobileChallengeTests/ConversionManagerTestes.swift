@@ -45,9 +45,9 @@ class ConversionManagerTestes: XCTestCase {
         let expectation = self.expectation(description: "converted currency")
         do {
             let data = try await conversionManager.fetchRequest()
-            let convertedCurrencyContainingUSD = conversionViewModel.converterMoeda(conversionResponse: data, valueToConvert: "38", currencySource: "USD", currencyDestination: "BRL")
+            let convertedCurrencyContainingUSD = conversionViewModel.convertValueAccordingToCurrency(conversionResponse: data, valueToConvert: "38", currencySource: "USD", currencyDestination: "BRL")
             XCTAssertEqual(convertedCurrencyContainingUSD, 201.4)
-            let convertedCurrencyWithoutUSD = conversionViewModel.converterMoeda(conversionResponse: data, valueToConvert: "38", currencySource: "EUR", currencyDestination: "BRL")
+            let convertedCurrencyWithoutUSD = conversionViewModel.convertValueAccordingToCurrency(conversionResponse: data, valueToConvert: "38", currencySource: "EUR", currencyDestination: "BRL")
             XCTAssertEqual(convertedCurrencyWithoutUSD, 251.75)
 
             expectation.fulfill()

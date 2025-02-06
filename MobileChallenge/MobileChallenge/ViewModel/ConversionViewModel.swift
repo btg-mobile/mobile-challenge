@@ -21,31 +21,28 @@ class ConversionViewModel {
     }
     
     
-    func converterMoeda(conversionResponse: ConversionResponse?, valueToConvert: String, currencySource: String, currencyDestination: String) -> Double {
+    func convertValueAccordingToCurrency(conversionResponse: ConversionResponse?, valueToConvert: String, currencySource: String, currencyDestination: String) -> Double {
 
-        var resultadoFinal: Double
-        
-        var result: Double
-        
-        var quotes = currencySource + currencyDestination
-        var valueDouble = Double(valueToConvert)
+        var convertedValue: Double
+        var intermediateConversion: Double
+        var currencyPair = currencySource + currencyDestination
+        var amountToConvert = Double(valueToConvert)
         
         if let conversion = conversionResponse?.quotes {
             for i in conversion {
-                if !quotes.contains("USD") {
+                if !currencyPair.contains("USD") {
                     if i.key.contains(currencySource) {
-                        result = (valueDouble ?? 0.0) / i.value
+                        intermediateConversion = (amountToConvert ?? 0.0) / i.value
                         for i in conversion {
                             if i.key.contains(currencyDestination) {
-                                resultadoFinal = result * i.value
-                                return resultadoFinal
+                                convertedValue = intermediateConversion * i.value
+                                return convertedValue
                             }
                         }
                     }
-                } else if quotes == i.key {
-                    resultadoFinal = (valueDouble ?? 0.0) * i.value
-                    print(resultadoFinal)
-                    return resultadoFinal
+                } else if currencyPair == i.key {
+                    convertedValue = (amountToConvert ?? 0.0) * i.value
+                    return convertedValue
                 }
                 
                 
