@@ -187,7 +187,7 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
     }
 
     @objc func doneButtonTapped() {
-        convertedValue = conversionViewModel.converterMoeda(value: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestionation)
+        convertedValue = conversionViewModel.converterMoeda(valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestionation)
         view.endEditing(true)
 
     }

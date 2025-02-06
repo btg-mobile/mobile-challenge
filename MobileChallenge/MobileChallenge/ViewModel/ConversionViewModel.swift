@@ -21,26 +21,33 @@ class ConversionViewModel {
     }
     
     
-    func converterMoeda(value: String, currencySource: String, currencyDestination: String) -> Double {
+    func converterMoeda(valueToConvert: String, currencySource: String, currencyDestination: String) -> Double {
 
         var resultadoFinal: Double
         
+        var result: Double
+        
         var quotes = currencySource + currencyDestination
-        var valueDouble = Double(value)
+        var valueDouble = Double(valueToConvert)
         
         if let conversion = conversion?.quotes {
             for i in conversion {
-                if quotes == i.key {
-                            resultadoFinal = (valueDouble ?? 0.0) / i.value
-                            print(resultadoFinal)
-                            return resultadoFinal
-                    }else if !quotes.contains("USD"){
-                        if quotes.contains(currencySource) {
-                            resultadoFinal = (valueDouble ?? 0.0) / (i.value * i.value)
-                            return resultadoFinal
+                if !quotes.contains("USD") {
+                    if i.key.contains(currencySource) {
+                        result = (valueDouble ?? 0.0) / i.value
+                        for i in conversion {
+                            if i.key.contains(currencyDestination) {
+                                resultadoFinal = result * i.value
+                                return resultadoFinal
+                            }
                         }
-
                     }
+                } else if quotes == i.key {
+                    resultadoFinal = (valueDouble ?? 0.0) / i.value
+                    print(resultadoFinal)
+                    return resultadoFinal
+                }
+                
                 
             }
         }
