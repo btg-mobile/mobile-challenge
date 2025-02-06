@@ -163,6 +163,18 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         
     }
     
+    func setDoneButton(textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
+
+        toolbar.items = [flexSpace, doneButton]
+        textField.inputAccessoryView = toolbar
+    }
+
+    
     
     @objc func showSourceSheet() {
         let sheetViewController = CurrencyViewController(currencyViewModel: currencyViewModel)
@@ -185,16 +197,6 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         label.text = String(format: "%.2f", convertedValue)
     }
     
-    func setDoneButton(textField: UITextField) {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
-
-        toolbar.items = [flexSpace, doneButton]
-        textField.inputAccessoryView = toolbar
-    }
 
     @objc func doneButtonTapped() {
         convertValue()

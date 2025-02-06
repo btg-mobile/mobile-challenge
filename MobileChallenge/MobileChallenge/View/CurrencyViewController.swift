@@ -7,12 +7,20 @@
 
 import UIKit
 
-class CurrencyViewController: UIViewController {
+class CurrencyViewController: UIViewController, UISearchBarDelegate {
+
+    
 
     
     weak var currencyCellDelegate: CurrencyCellDelegate?
 
     var currencyViewModel: CurrencyViewModel
+    
+    var filteredCurrency: CurrencyResponse? {
+        didSet {
+            updateTableView()
+        }
+    }
     
     init(currencyViewModel: CurrencyViewModel) {
         self.currencyViewModel = currencyViewModel
@@ -26,9 +34,17 @@ class CurrencyViewController: UIViewController {
     }
     
     
+    let searchController: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Procure uma moeda"
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+
+        return searchBar
+    }()
+    
     let text: UILabel = {
         let text = UILabel()
-        text.text = "Loading..."
+        text.text = "Carregando..."
         text.textColor = .gray
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
@@ -38,6 +54,7 @@ class CurrencyViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         return tableView
     }()
     
@@ -111,19 +128,44 @@ class CurrencyViewController: UIViewController {
     }
     
     func setTableView() {
+        self.view.addSubview(searchController)
+        searchController.delegate = self
+
+        NSLayoutConstraint.activate([
+            searchController.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            searchController.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            searchController.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+        ])
+        
+        
+        
+        
         self.view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+//        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
 
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
-            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            tableView.topAnchor.constraint(equalTo: searchController.bottomAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: searchController.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: searchController.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
 
     }
+    
+    func updateTableView() {
+        if let filteredCurrency = filteredCurrency {
+            self.tableViewDataSource?.currencyResponse = filteredCurrency
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredCurrency = currencyViewModel.filterCurrency(searchBarText: searchText)
+    }
+     
+
 
 }
+
