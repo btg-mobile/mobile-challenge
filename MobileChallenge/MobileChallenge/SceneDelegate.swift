@@ -22,7 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let networkService = NetworkService()
         let currencyManager = CurrencyManager(currencyNetworkService: networkService)
-        let currencyViewModel = CurrencyViewModel(currencyManager: currencyManager)
+        let monitor = NetworkMonitor()
+        let storage = CurrencyStorage()
+        let currencyViewModel = CurrencyViewModel(currencyManager: currencyManager, storage: storage, monitor: monitor)
         
         let conversionManager = ConversionManager(conversionNetworkService: networkService)
         let conversionViewModel = ConversionViewModel(conversionManager: conversionManager)
