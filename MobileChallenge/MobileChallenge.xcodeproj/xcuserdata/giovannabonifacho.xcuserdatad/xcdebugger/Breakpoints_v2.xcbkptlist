@@ -295,8 +295,8 @@
             filePath = "MobileChallenge/View/CurrencyViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -311,10 +311,10 @@
             filePath = "MobileChallenge/View/CurrencyViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "CurrencyViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "EF75F4DB-338F-402B-88AA-60EF84B05621 - a6834ecfe349ef6a"

@@ -98,6 +98,9 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         }
         self.view.backgroundColor = .white
         setElements()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
 
         // Do any additional setup after loading the view.
     }
@@ -192,11 +195,6 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
         present(sheetViewController, animated: true)
     }
     
-    
-    func updateConversion() {
-        label.text = String(format: "%.2f", convertedValue)
-    }
-    
 
     @objc func doneButtonTapped() {
         convertValue()
@@ -204,10 +202,20 @@ class ConversionViewController: UIViewController, CurrencyCellDelegate, UITextFi
 
     }
     
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        
+    }
+    
+    func updateConversion() {
+        label.text = String(format: "%.2f", convertedValue)
+    }
+
     func convertValue() {
         convertedValue = conversionViewModel.convertValueAccordingToCurrency(conversionResponse: conversionViewModel.conversion, valueToConvert: textField.text ?? "10", currencySource: currencySource, currencyDestination: currencyDestination)
     }
-
+    
 }
 
 

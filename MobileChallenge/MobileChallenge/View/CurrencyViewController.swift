@@ -66,6 +66,9 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
         self.view.backgroundColor = .white
 
         setIsLoadingText()
+        
+        
+
 
         // Do any additional setup after loading the view.
     }
