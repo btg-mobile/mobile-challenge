@@ -25,8 +25,8 @@ class ConversionViewModel {
 
         var convertedValue: Double
         var intermediateConversion: Double
-        var currencyPair = currencySource + currencyDestination
-        var amountToConvert = Double(valueToConvert)
+        let currencyPair = currencySource + currencyDestination
+        let amountToConvert = Double(valueToConvert)
         
         if let conversion = conversionResponse?.quotes {
             for i in conversion {

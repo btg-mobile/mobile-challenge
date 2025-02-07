@@ -20,8 +20,11 @@ class NetworkMonitor {
         monitor.pathUpdateHandler = { path in // sempre que houver mudanca na conexao sera chamado
             if path.status == .satisfied {
                 self.statusMonitor = true
+                print("conectado")
             } else {
                 self.statusMonitor = false
+                print("desconectado")
+
             }
             
         }

@@ -43,7 +43,7 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
     let text: UILabel = {
         let text = UILabel()
         text.text = "Carregando..."
-        text.textColor = .gray
+        text.textColor = .black
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -86,7 +86,7 @@ class CurrencyViewController: UIViewController, UISearchBarDelegate {
                 self?.tableView.reloadData()
                 let sortedData = data.sorted { $0.0 < $1.0 }
                 self?.tableViewDataSource = CurrencyTableViewDataSource(currencyResponse: sortedData)
-                self?.tableViewDelegate = CurrencyTableViewDelegate(currencyResponse: self?.filteredCurrency ?? [])
+                self?.tableViewDelegate = CurrencyTableViewDelegate(currencyResponse: sortedData)
                 self?.tableViewDelegate?.currencyCellDelegate = self?.currencyCellDelegate
                 self?.tableViewDataSource?.currencyResponse = sortedData
                 self?.tableView.delegate = self?.tableViewDelegate
